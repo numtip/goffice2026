@@ -4,52 +4,137 @@
   "categories": [
     {
       "id": "cat1",
+      "number": 1,
       "title": "Energy Management",
       "shortTitle": "Energy",
       "score": 85,
-      "description": "Reduce energy consumption and improve efficiency across facilities."
+      "description": "Overview and evidence for energy efficiency.",
+      "purpose": "Reduce energy consumption and improve efficiency across facilities.",
+      "criteriaSummary": [
+        "Implement energy monitoring systems.",
+        "Adopt LED lighting and efficient HVAC.",
+        "Set reduction targets aligned with GREENOFFICE_2569."
+      ],
+      "evidenceChecklist": [
+        "Energy audit reports",
+        "Metering data files",
+        "Improvement project documentation"
+      ]
     },
     {
       "id": "cat2",
+      "number": 2,
       "title": "Water Management",
       "shortTitle": "Water",
       "score": 78,
-      "description": "Optimize water usage and implement conservation measures."
+      "description": "Water usage and conservation strategies.",
+      "purpose": "Optimize water usage and implement conservation measures.",
+      "criteriaSummary": [
+        "Install water metering systems.",
+        "Implement leak detection and repair programs.",
+        "Promote water-efficient fixtures."
+      ],
+      "evidenceChecklist": [
+        "Water audit reports",
+        "Metering data",
+        "Conservation initiative records"
+      ]
     },
     {
       "id": "cat3",
+      "number": 3,
       "title": "Waste Management",
       "shortTitle": "Waste",
       "score": 92,
-      "description": "Minimize waste generation and maximize recycling programs."
+      "description": "Waste reduction and recycling programs.",
+      "purpose": "Minimize waste generation and maximize recycling and responsible disposal.",
+      "criteriaSummary": [
+        "Implement waste segregation and recycling programs.",
+        "Track waste volumes by type and disposal route.",
+        "Set reduction targets aligned with GREENOFFICE_2569."
+      ],
+      "evidenceChecklist": [
+        "Waste audit reports",
+        "Recycling vendor contracts",
+        "Monthly waste tracking data"
+      ]
     },
     {
       "id": "cat4",
+      "number": 4,
       "title": "GHG Emissions",
+      "headline": "Greenhouse Gas Emissions",
       "shortTitle": "Emissions",
       "score": 71,
-      "description": "Track and reduce greenhouse gas emissions."
+      "description": "Greenhouse gas tracking and reduction.",
+      "purpose": "Measure, report, and reduce greenhouse gas emissions across operations.",
+      "criteriaSummary": [
+        "Establish GHG inventory for Scope 1 and Scope 2 emissions.",
+        "Identify emission reduction opportunities.",
+        "Report progress against reduction targets."
+      ],
+      "evidenceChecklist": [
+        "GHG inventory reports",
+        "Emission factor documentation",
+        "Carbon reduction project records"
+      ]
     },
     {
       "id": "cat5",
+      "number": 5,
       "title": "Indoor Environmental Quality",
       "shortTitle": "Indoor Quality",
       "score": 88,
-      "description": "Maintain healthy indoor air and comfort standards."
+      "description": "Indoor environmental quality standards.",
+      "purpose": "Maintain healthy indoor environments for occupants through air quality and comfort standards.",
+      "criteriaSummary": [
+        "Monitor indoor air quality parameters.",
+        "Maintain ventilation and thermal comfort standards.",
+        "Use low-emission materials and cleaning products."
+      ],
+      "evidenceChecklist": [
+        "IAQ monitoring reports",
+        "Ventilation maintenance logs",
+        "Green cleaning product inventory"
+      ]
     },
     {
       "id": "cat6",
+      "number": 6,
       "title": "Transportation",
       "shortTitle": "Transportation",
       "score": 74,
-      "description": "Promote sustainable commuting and fleet efficiency."
+      "description": "Sustainable transport initiatives.",
+      "purpose": "Promote sustainable commuting and reduce transport-related environmental impact.",
+      "criteriaSummary": [
+        "Encourage public transit, cycling, and carpooling.",
+        "Track fleet fuel consumption and emissions.",
+        "Support remote work and virtual meetings where appropriate."
+      ],
+      "evidenceChecklist": [
+        "Commute survey results",
+        "Fleet fuel usage records",
+        "Sustainable transport policy documents"
+      ]
     },
     {
       "id": "cat7",
+      "number": 7,
       "title": "Innovation and Additional Features",
       "shortTitle": "Innovation",
       "score": 80,
-      "description": "Demonstrate leadership through green innovation initiatives."
+      "description": "Additional green initiatives.",
+      "purpose": "Demonstrate leadership through innovative green initiatives beyond core criteria.",
+      "criteriaSummary": [
+        "Implement pilot projects for emerging sustainability practices.",
+        "Engage staff in green innovation programs.",
+        "Share best practices with external stakeholders."
+      ],
+      "evidenceChecklist": [
+        "Innovation project proposals",
+        "Staff engagement activity records",
+        "External recognition or partnership documents"
+      ]
     }
   ]
 }

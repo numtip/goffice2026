@@ -1,29 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
+import dashboardKpi from '../data/dashboard-kpi.json';
+
+const trendLabel: Record<string, string> = {
+  up: '↑',
+  down: '↓',
+  stable: '→',
+};
 ---
 
 <BaseLayout title="Dashboard">
   <div class="p-4">
-    <h1 class="text-2xl font-bold mb-4">Green Office Dashboard</h1>
+    <h1 class="text-2xl font-bold mb-2">Green Office Dashboard</h1>
+    <p class="text-sm text-gray-500 mb-4">Updated: {dashboardKpi.updated}</p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="bg-white rounded-lg shadow p-4">
-        <h2 class="text-sm text-gray-600">Energy Score</h2>
-        <p class="text-2xl font-bold text-green-600">85%</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white rounded-lg shadow p-4 md:col-span-2 lg:col-span-4">
+        <h2 class="text-sm text-gray-600">Overall Score</h2>
+        <p class="text-3xl font-bold text-green-600">{dashboardKpi.overallScore}</p>
       </div>
-      <div class="bg-white rounded-lg shadow p-4">
-        <h2 class="text-sm text-gray-600">Water Score</h2>
-        <p class="text-2xl font-bold text-green-600">78%</p>
-      </div>
-      <div class="bg-white rounded-lg shadow p-4">
-        <h2 class="text-sm text-gray-600">Waste Score</h2>
-        <p class="text-2xl font-bold text-green-600">92%</p>
-      </div>
-      <div class="bg-white rounded-lg shadow p-4">
-        <h2 class="text-sm text-gray-600">Overall</h2>
-        <p class="text-2xl font-bold text-green-600">85</p>
-      </div>
+
+      {dashboardKpi.kpis.map((kpi) => (
+        <div class="bg-white rounded-lg shadow p-4">
+          <h2 class="text-sm text-gray-600">{kpi.label}</h2>
+          <p class="text-2xl font-bold text-green-600">
+            {kpi.value}{kpi.unit}
+            <span class="text-base text-gray-400 ml-1" title={`Trend: ${kpi.trend}`}>
+              {trendLabel[kpi.trend] ?? ''}
+            </span>
+          </p>
+          <a href={`/categories/${kpi.categoryId}`} class="text-xs text-green-600 underline mt-1 inline-block">
+            View category
+          </a>
+        </div>
+      ))}
     </div>
   </div>
 </BaseLayout>
