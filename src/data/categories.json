@@ -1,0 +1,55 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-06-11",
+  "categories": [
+    {
+      "id": "cat1",
+      "title": "Energy Management",
+      "shortTitle": "Energy",
+      "score": 85,
+      "description": "Reduce energy consumption and improve efficiency across facilities."
+    },
+    {
+      "id": "cat2",
+      "title": "Water Management",
+      "shortTitle": "Water",
+      "score": 78,
+      "description": "Optimize water usage and implement conservation measures."
+    },
+    {
+      "id": "cat3",
+      "title": "Waste Management",
+      "shortTitle": "Waste",
+      "score": 92,
+      "description": "Minimize waste generation and maximize recycling programs."
+    },
+    {
+      "id": "cat4",
+      "title": "GHG Emissions",
+      "shortTitle": "Emissions",
+      "score": 71,
+      "description": "Track and reduce greenhouse gas emissions."
+    },
+    {
+      "id": "cat5",
+      "title": "Indoor Environmental Quality",
+      "shortTitle": "Indoor Quality",
+      "score": 88,
+      "description": "Maintain healthy indoor air and comfort standards."
+    },
+    {
+      "id": "cat6",
+      "title": "Transportation",
+      "shortTitle": "Transportation",
+      "score": 74,
+      "description": "Promote sustainable commuting and fleet efficiency."
+    },
+    {
+      "id": "cat7",
+      "title": "Innovation and Additional Features",
+      "shortTitle": "Innovation",
+      "score": 80,
+      "description": "Demonstrate leadership through green innovation initiatives."
+    }
+  ]
+}

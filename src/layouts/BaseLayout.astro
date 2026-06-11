@@ -1,0 +1,28 @@
+---
+import Navigation from '../components/ui/Navigation.astro';
+
+const { title } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} - Green Office Platform</title>
+  </head>
+  <body class="bg-gray-50 text-gray-900 antialiased">
+    <header class="bg-white shadow-md">
+      <Navigation />
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 mt-8">
+      <div class="container mx-auto text-center">
+        <p>&copy; {new Date().getFullYear()} Green Office Platform. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+import categoriesData from '../data/categories.json';
+---
+
+<BaseLayout title="Document Center">
+  <div class="p-4 max-w-4xl mx-auto">
+    <h1 class="text-2xl font-bold mb-4">Document Center</h1>
+    <p class="text-gray-600 mb-6">Placeholder document hub organized by Green Office category.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {categoriesData.categories.map((category) => (
+        <a
+          href={`/documents/${category.id}`}
+          class="bg-white rounded-lg shadow p-4 hover:shadow-md transition"
+        >
+          <h2 class="font-bold text-green-700">{category.title}</h2>
+          <p class="text-sm text-gray-600 mt-1">{category.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

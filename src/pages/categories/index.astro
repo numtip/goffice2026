@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/global.css';
+---
+
+<BaseLayout title="Categories">
+  <div class="p-4">
+    <h1 class="text-2xl font-bold mb-4">Green Office Categories</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a href="/categories/cat1" class="bg-white rounded-lg shadow p-4 hover:shadow-md transition">
+        <h2 class="font-bold text-green-700">Category 1: Energy Management</h2>
+        <p class="text-sm text-gray-600">Overview and evidence for energy efficiency.</p>
+      </a>
+      <a href="/categories/cat2" class="bg-white rounded-lg shadow p-4 hover:shadow-md transition">
+        <h2 class="font-bold text-green-700">Category 2: Water Management</h2>
+        <p class="text-sm text-gray-600">Water usage and conservation strategies.</p>
+      </a>
+      <a href="/categories/cat3" class="bg-white rounded-lg shadow p-4 hover:shadow-md transition">
+        <h2 class="font-bold text-green-700">Category 3: Waste Management</h2>
+        <p class="text-sm text-gray-600">Waste reduction and recycling programs.</p>
+      </a>
+      <a href="/categories/cat4" class="bg-white rounded-lg shadow p-4 hover:shadow-md transition">
+        <h2 class="font-bold text-green-700">Category 4: GHG Emissions</h2>
+        <p class="text-sm text-gray-600">Greenhouse gas tracking and reduction.</p>
+      </a>
+      <a href="/categories/cat5" class="bg-white rounded-lg shadow p-4 hover:shadow-md transition">
+        <h2 class="font-bold text-green-700">Category 5: Indoor Quality</h2>
+        <p class="text-sm text-gray-600">Indoor environmental quality standards.</p>
+      </a>
+      <a href="/categories/cat6" class="bg-white rounded-lg shadow p-4 hover:shadow-md transition">
+        <h2 class="font-bold text-green-700">Category 6: Transportation</h2>
+        <p class="text-sm text-gray-600">Sustainable transport initiatives.</p>
+      </a>
+      <a href="/categories/cat7" class="bg-white rounded-lg shadow p-4 hover:shadow-md transition">
+        <h2 class="font-bold text-green-700">Category 7: Innovation</h2>
+        <p class="text-sm text-gray-600">Additional green initiatives.</p>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

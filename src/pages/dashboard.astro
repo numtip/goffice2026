@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Dashboard">
+  <div class="p-4">
+    <h1 class="text-2xl font-bold mb-4">Green Office Dashboard</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-white rounded-lg shadow p-4">
+        <h2 class="text-sm text-gray-600">Energy Score</h2>
+        <p class="text-2xl font-bold text-green-600">85%</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4">
+        <h2 class="text-sm text-gray-600">Water Score</h2>
+        <p class="text-2xl font-bold text-green-600">78%</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4">
+        <h2 class="text-sm text-gray-600">Waste Score</h2>
+        <p class="text-2xl font-bold text-green-600">92%</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4">
+        <h2 class="text-sm text-gray-600">Overall</h2>
+        <p class="text-2xl font-bold text-green-600">85</p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

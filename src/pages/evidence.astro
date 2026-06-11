@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+import evidenceIndex from '../data/evidence-index.json';
+---
+
+<BaseLayout title="Evidence Library">
+  <div class="p-4 max-w-4xl mx-auto">
+    <h1 class="text-2xl font-bold mb-4">Evidence Library</h1>
+    <p class="text-gray-600 mb-6">Placeholder index of certification evidence items. Full search and filtering coming in a later sprint.</p>
+
+    <div class="space-y-4">
+      {evidenceIndex.items.map((item) => (
+        <article class="bg-white rounded-lg shadow p-4">
+          <h2 class="font-semibold text-green-700">{item.title}</h2>
+          <p class="text-sm text-gray-500 mt-1">
+            Category: {item.categoryId} · Type: {item.type} · Status: {item.status}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

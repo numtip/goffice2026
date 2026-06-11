@@ -1,0 +1,62 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-06-11",
+  "items": [
+    {
+      "id": "ev-energy-audit-2025",
+      "title": "Energy Audit Report 2025",
+      "categoryId": "cat1",
+      "type": "report",
+      "status": "available",
+      "path": "/documents/cat1/placeholder.md"
+    },
+    {
+      "id": "ev-water-meter-q1",
+      "title": "Water Metering Data Q1 2025",
+      "categoryId": "cat2",
+      "type": "data",
+      "status": "available",
+      "path": "/documents/cat2/placeholder.md"
+    },
+    {
+      "id": "ev-waste-recycling-2025",
+      "title": "Waste Recycling Summary 2025",
+      "categoryId": "cat3",
+      "type": "report",
+      "status": "available",
+      "path": "/documents/cat3/placeholder.md"
+    },
+    {
+      "id": "ev-ghg-inventory-2025",
+      "title": "GHG Inventory 2025",
+      "categoryId": "cat4",
+      "type": "report",
+      "status": "pending",
+      "path": "/documents/cat4/placeholder.md"
+    },
+    {
+      "id": "ev-iaq-survey-2025",
+      "title": "Indoor Air Quality Survey 2025",
+      "categoryId": "cat5",
+      "type": "survey",
+      "status": "available",
+      "path": "/documents/cat5/placeholder.md"
+    },
+    {
+      "id": "ev-transport-commute-2025",
+      "title": "Employee Commute Survey 2025",
+      "categoryId": "cat6",
+      "type": "survey",
+      "status": "available",
+      "path": "/documents/cat6/placeholder.md"
+    },
+    {
+      "id": "ev-innovation-pilot-2025",
+      "title": "Green Innovation Pilot Project",
+      "categoryId": "cat7",
+      "type": "project",
+      "status": "in-review",
+      "path": "/documents/cat7/placeholder.md"
+    }
+  ]
+}

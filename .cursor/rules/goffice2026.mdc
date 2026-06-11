@@ -1,0 +1,40 @@
+---
+description: Green Office 2026 governance rules for static platform development
+globs: "**/*"
+alwaysApply: true
+---
+
+# Green Office 2026 Governance Rules
+
+## Constitution-First
+Always reference 00-GREENOFFICE_PROJECT_CONSTITUTION.MD before making decisions.
+
+## GitHub is Source of Truth
+All project assets originate from GitHub. No direct production editing.
+
+## Static-First Principle
+Prefer Markdown → JSON → CSV before considering database/API/backend.
+
+## Reuse Before Generate
+Check existing components, documents, templates, and assets before creating new ones.
+
+## Context Pack Before Long Prompt
+Use curated context packs for agent tasks. Avoid large prompt dumps.
+
+## Chunk Not Dump
+Large files must be chunked, indexed, and retrieved - never pasted directly into AI.
+
+## Markdown First
+Knowledge must be stored in Markdown for token efficiency.
+
+## No Database/API/Backend (MVP)
+Do not add database, API, or backend services unless approved by Product Owner.
+
+## No Production Edit
+Direct production editing is strictly prohibited.
+
+## Build PASS ≠ Release Ready
+Runtime QA is required before declaring completion.
+
+## Token-Saving Workflow
+Reuse → Context Pack → Chunk → Skill → Build → QA → Commit

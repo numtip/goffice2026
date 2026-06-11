@@ -1,0 +1,63 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-06-11",
+  "overallScore": 85,
+  "kpis": [
+    {
+      "id": "energy",
+      "label": "Energy Score",
+      "value": 85,
+      "unit": "%",
+      "categoryId": "cat1",
+      "trend": "up"
+    },
+    {
+      "id": "water",
+      "label": "Water Score",
+      "value": 78,
+      "unit": "%",
+      "categoryId": "cat2",
+      "trend": "stable"
+    },
+    {
+      "id": "waste",
+      "label": "Waste Score",
+      "value": 92,
+      "unit": "%",
+      "categoryId": "cat3",
+      "trend": "up"
+    },
+    {
+      "id": "emissions",
+      "label": "Emissions Score",
+      "value": 71,
+      "unit": "%",
+      "categoryId": "cat4",
+      "trend": "down"
+    },
+    {
+      "id": "indoor",
+      "label": "Indoor Quality Score",
+      "value": 88,
+      "unit": "%",
+      "categoryId": "cat5",
+      "trend": "up"
+    },
+    {
+      "id": "transport",
+      "label": "Transportation Score",
+      "value": 74,
+      "unit": "%",
+      "categoryId": "cat6",
+      "trend": "stable"
+    },
+    {
+      "id": "innovation",
+      "label": "Innovation Score",
+      "value": 80,
+      "unit": "%",
+      "categoryId": "cat7",
+      "trend": "up"
+    }
+  ]
+}
