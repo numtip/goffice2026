@@ -38,3 +38,11 @@ Runtime QA is required before declaring completion.
 
 ## Token-Saving Workflow
 Reuse → Context Pack → Chunk → Skill → Build → QA → Commit
+
+## RTK Policy (Local Agent Helper)
+- Prefer RTK for repeated shell operations (`rtk git status`, `rtk npm run build`, `rtk ls`, `rtk read`)
+- Record reusable RTK commands in `docs/runbooks/RTK_USAGE.md` when patterns emerge
+- Use `rtk gain` periodically to review token savings
+- Do **not** use RTK to edit or deploy to production — RTK only compresses command output
+- Use direct `npm` / `git` binaries when the RTK PowerShell wrapper blocks native behavior (e.g. `npm install`)
+- See skill **RTK_WORKFLOW** in `docs/KB/SKILLS_REGISTRY.md`
