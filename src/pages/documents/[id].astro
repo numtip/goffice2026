@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/global.css';
+import categoriesData from '../../data/categories.json';
+import evidenceIndex from '../../data/evidence-index.json';
+
+export function getStaticPaths() {
+  return categoriesData.categories.map((category) => ({
+    params: { id: category.id },
+    props: {
+      category,
+      documents: evidenceIndex.items.filter((item) => item.categoryId === category.id),
+    },
+  }));
+}
+
+const { category, documents } = Astro.props;
+const headline = category.headline ?? category.title;
+---
+
+<BaseLayout title={`Documents: ${category.title}`}>
+  <div class="p-4 max-w-3xl mx-auto">
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/documents" class="text-green-600 underline">Document Center</a>
+      <span aria-hidden="true"> / </span>
+      <span>{category.title}</span>
+    </nav>
+
+    <h1 class="text-2xl font-bold mb-2">{headline} — Documents</h1>
+    <p class="text-gray-600 mb-6">{category.purpose}</p>
+
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold mb-3">Category Files</h2>
+      {documents.length > 0 ? (
+        <ul class="space-y-3">
+          {documents.map((doc) => (
+            <li class="bg-white rounded-lg shadow p-4">
+              <a href={doc.path} class="font-medium text-green-700 underline">
+                {doc.title}
+              </a>
+              <p class="text-sm text-gray-500 mt-1">
+                Type: {doc.type} · Status: {doc.status}
+              </p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-gray-600">No evidence files indexed for this category yet.</p>
+      )}
+    </section>
+
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold mb-3">Placeholder</h2>
+      <p class="text-gray-600 mb-2">
+        Sample document folder for MVP evidence stubs:
+      </p>
+      <a
+        href={`/documents/${category.id}/placeholder.md`}
+        class="text-green-600 underline"
+      >
+        {category.id}/placeholder.md
+      </a>
+    </section>
+
+    <p class="text-sm">
+      <a href={`/categories/${category.id}`} class="text-green-600 underline">
+        Back to category overview
+      </a>
+    </p>
+  </div>
+</BaseLayout>
