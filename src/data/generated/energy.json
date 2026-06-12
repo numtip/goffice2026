@@ -1,0 +1,57 @@
+{
+  "metric": "energy",
+  "label": "Electricity Consumption",
+  "unit": "kWh",
+  "kpiField": "kwh",
+  "baselineYear": 2568,
+  "currentYear": 2569,
+  "years": {
+    "2568": {
+      "year": 2568,
+      "isBaseline": true,
+      "dataStatus": "complete",
+      "source": "Electricity bills — 12-elect.xlsx (converted)",
+      "updated": "2026-06-12",
+      "months": [
+        { "month": 1, "value": 19850, "label": "Jan" },
+        { "month": 2, "value": 18500, "label": "Feb" },
+        { "month": 3, "value": 17600, "label": "Mar" },
+        { "month": 4, "value": 18200, "label": "Apr" },
+        { "month": 5, "value": 19100, "label": "May" },
+        { "month": 6, "value": 20400, "label": "Jun" },
+        { "month": 7, "value": 21500, "label": "Jul" },
+        { "month": 8, "value": 21000, "label": "Aug" },
+        { "month": 9, "value": 19500, "label": "Sep" },
+        { "month": 10, "value": 18800, "label": "Oct" },
+        { "month": 11, "value": 17500, "label": "Nov" },
+        { "month": 12, "value": 16800, "label": "Dec" }
+      ],
+      "total": 229250,
+      "average": 19104.17
+    },
+    "2569": {
+      "year": 2569,
+      "isBaseline": false,
+      "dataStatus": "in_progress",
+      "source": "Electricity bills — 12-elect.xlsx (partial, 8 of 12 months)",
+      "updated": "2026-06-12",
+      "months": [
+        { "month": 1, "value": 19200, "label": "Jan" },
+        { "month": 2, "value": 18100, "label": "Feb" },
+        { "month": 3, "value": 17200, "label": "Mar" },
+        { "month": 4, "value": 18600, "label": "Apr" },
+        { "month": 5, "value": 19500, "label": "May" },
+        { "month": 6, "value": 21000, "label": "Jun" },
+        { "month": 7, "value": 22000, "label": "Jul" },
+        { "month": 8, "value": 20500, "label": "Aug" }
+      ],
+      "total": 156100,
+      "average": 19512.50
+    }
+  },
+  "yoyChange": {
+    "absolute": -73150,
+    "percent": -32,
+    "direction": "down"
+  }
+}

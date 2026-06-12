@@ -1,0 +1,200 @@
+# Data Pipeline: Multi-Year Dashboard Data
+
+**Last updated:** 2026-06-12
+
+---
+
+## Overview
+
+The Green Office multi-year dashboard model compares **2568 (baseline)** data against **2569 (current operational year)** data. All data is static JSON, generated from staff Excel submissions and validated before inclusion.
+
+---
+
+## 1. Data Flow
+
+```
+Staff Excel Files (1.1-Water.xlsx, 12-elect.xlsx, 1.5_GreenhouseGas.xlsx, etc.)
+        │
+        ▼
+Manual conversion → validated CSV/JSON
+        │
+        ▼
+src/data/generated/{metric}.json   ← Canonical multi-year data
+        │
+        ▼
+src/pages/dashboard/[id].astro      ← Build-time import
+        │
+        ▼
+Static HTML pages in dist/          ← Published
+```
+
+### Key Principle
+- No runtime database, API, or backend.
+- Excel → CSV/JSON conversion is done **manually** or via a build script.
+- Dashboards consume the generated JSON at build time.
+
+---
+
+## 2. Canonical Schema
+
+Each dashboard metric is stored in `src/data/generated/{metric}.json` using this schema:
+
+```typescript
+interface MultiYearMetric {
+  metric: string;          // Unique key: "energy", "water", "fuel", "paper", "waste", "ghg"
+  label: string;           // Human-readable: "Electricity Consumption"
+  unit: string;            // "kWh", "m³", "L", "kg", "%", "tCO₂e"
+  kpiField: string;        // The data field name used for KPI display
+  baselineYear: number;    // 2568
+  currentYear: number;     // 2569
+  years: Record<number, YearData>;
+  yoyChange: YoyChange;    // Pre-computed Year-over-Year change
+}
+
+interface YearData {
+  year: number;
+  isBaseline: boolean;
+  dataStatus: 'complete' | 'in_progress' | 'missing';
+  source: string;           // Source file reference, e.g. "1.1-Water.xlsx (converted)"
+  updated: string;          // ISO date
+  months: MonthlyValue[];   // Monthly data points
+  total: number;            // Sum of monthly values
+  average: number;          // Average monthly value
+}
+
+interface MonthlyValue {
+  month: number;            // 1-12
+  value: number;
+  label: string;            // "Jan", "Feb", etc.
+}
+
+interface YoyChange {
+  absolute: number;         // currentTotal - baselineTotal
+  percent: number;          // (absolute / baselineTotal) * 100
+  direction: 'up' | 'down' | 'stable';
+}
+```
+
+Type definitions are in `src/utils/multi-year-schema.ts`.
+
+---
+
+## 3. 2568 Baseline Data
+
+| Metric | Source File | Months | Status | Updated |
+|--------|-------------|--------|--------|---------|
+| Energy | `12-elect.xlsx` | 12 | ✅ Complete | 2026-06-12 |
+| Water | `1.1-Water.xlsx` | 12 | ✅ Complete | 2026-06-12 |
+| Fuel | Fuel purchase records (Excel) | 12 | ✅ Complete | 2026-06-12 |
+| Paper | Paper ordering records (Excel) | 12 | ✅ Complete | 2026-06-12 |
+| Waste | Waste segregation records (Excel) | 12 | ✅ Complete | 2026-06-12 |
+| GHG | `1.5_GreenhouseGas.xlsx` | 12 | ✅ Complete | 2026-06-12 |
+
+Baseline is marked with `"isBaseline": true` and `"dataStatus": "complete"`.
+
+---
+
+## 4. 2569 Current-Year Data
+
+| Metric | Source File | Months Available | Status | Updated |
+|--------|-------------|-----------------|--------|---------|
+| Energy | `12-elect.xlsx` | 8 (Jan-Aug) | 🟡 In Progress | 2026-06-12 |
+| Water | `1.1-Water.xlsx` | 7 (Jan-Jul) | 🟡 In Progress | 2026-06-12 |
+| Fuel | Fuel purchase records | 9 (Jan-Sep) | 🟡 In Progress | 2026-06-12 |
+| Paper | Paper ordering records | 6 (Jan-Jun) | 🟡 In Progress | 2026-06-12 |
+| Waste | Waste segregation records | 10 (Jan-Oct) | 🟡 In Progress | 2026-06-12 |
+| GHG | `1.5_GreenhouseGas.xlsx` | 8 (Jan-Aug) | 🟡 In Progress | 2026-06-12 |
+
+Current-year data is marked with `"isBaseline": false` and `"dataStatus": "in_progress"` until all 12 months are present.
+
+---
+
+## 5. How to Update Data
+
+### Adding New 2569 Monthly Data
+
+1. **Obtain the Excel file** from staff (e.g., updated `1.1-Water.xlsx` with new months).
+2. **Convert to JSON:**
+   - Open the Excel file.
+   - Extract the monthly values for the relevant metric.
+   - Add each new month to the `months` array in `src/data/generated/{metric}.json`.
+   - Recalculate `total`, `average`, and `yoyChange`.
+3. **Update metadata:**
+   - Set `"updated": "2026-06-12"` to the current date.
+   - If all 12 months are now present, change `"dataStatus": "in_progress"` → `"complete"`.
+4. **Run validation:**
+   ```bash
+   npm run check
+   npm run build
+   npm run preview
+   ```
+5. **Verify:** Check `/dashboard/{metric}` renders correctly with new data.
+
+### Example: Adding Month 9 for Water
+
+```json
+// In src/data/generated/water.json, years.2569.months:
+"months": [
+  { "month": 1, "value": 5600, "label": "Jan" },
+  // ... existing 7 months ...
+  { "month": 8, "value": 5400, "label": "Aug" },
+  { "month": 9, "value": 5300, "label": "Sep" }  // ← ADD
+],
+// Recompute total: 37450 + 5300 = 42750
+// Recompute average: 42750 / 9 = 4750
+// Recompute yoyChange
+```
+
+---
+
+## 6. Validation Rules
+
+| Check | Rule | Error Handling |
+|-------|------|---------------|
+| Month range | Each month value must be 1-12 | JSON schema validation |
+| Duplicates | No duplicate month numbers in same year | Manual review |
+| Completeness | 12 months → status=complete; <12 → status=in_progress | Auto-detected by `computeYearData()` in `multi-year-schema.ts` |
+| Baseline flag | Exactly 1 year must have isBaseline=true | Enforced at build time |
+| Missing data | Missing months show as "Pending" in UI with reduced opacity | Dashboard handles gracefully |
+
+---
+
+## 7. UI Behavior for Incomplete Data
+
+- **2569 Badge:** Yellow "In Progress" badge with month count (e.g., "8 of 12 months").
+- **Monthly Table:** Rows without 2569 data are shown at 50% opacity with "Pending" label.
+- **YoY Cards:** Differences and percent changes are computed only on available months.
+- **Sparkline:** Plots only available 2569 months.
+- **Attribution:** Notes "Partial year comparison" when <12 months.
+
+---
+
+## 8. Adding a New Dashboard Metric
+
+1. Create the Excel source file for baseline + current year data.
+2. Create `src/data/generated/{metric}.json` following the schema.
+3. Add the config entry in `src/data/dashboard-config.ts`.
+4. Add the raw CSV to `src/data/csv/` for backward compatibility.
+5. Add the import in `src/pages/dashboard/[id].astro`.
+6. Run QA.
+
+---
+
+## 9. Excel Reference Files
+
+Staff submit data in the following files (not in git — kept in shared drive):
+
+| File | Metric | Contact |
+|------|--------|---------|
+| `1.1-Water.xlsx` | Water consumption | Facilities |
+| `12-elect.xlsx` | Electricity consumption | Facilities |
+| `1.5_GreenhouseGas.xlsx` | GHG emissions | Environment |
+| Fuel purchase records (Excel) | Fuel consumption | Fleet |
+| Paper ordering records (Excel) | Paper consumption | Procurement |
+| Waste segregation records (Excel) | Waste & recycling | Facilities |
+
+These files are **not committed** to the repo. Only the converted `src/data/generated/*.json` files are committed.
+
+---
+
+*Source: Green Office Platform, Maejo University.*

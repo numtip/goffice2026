@@ -3,25 +3,24 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/global.css';
 import { dashboards } from '../../data/dashboard-config';
 import type { DashboardMeta } from '../../data/dashboard-config';
-import { parseCsv, getLatestValue, computeChange, getNumericValues } from '../../utils/parse-csv';
-import DashboardKpiCard from '../../components/dashboard/DashboardKpiCard.astro';
-import DashboardDataTable from '../../components/dashboard/DashboardDataTable.astro';
+import type { MultiYearMetric, YearData } from '../../utils/multi-year-schema';
 import Sparkline from '../../components/dashboard/Sparkline.astro';
 import categoriesData from '../../data/categories.json';
-import energyRaw from '../../data/csv/energy.csv?raw';
-import waterRaw from '../../data/csv/water.csv?raw';
-import wasteRaw from '../../data/csv/waste.csv?raw';
-import ghgRaw from '../../data/csv/ghg.csv?raw';
-import fuelRaw from '../../data/csv/fuel.csv?raw';
-import paperRaw from '../../data/csv/paper.csv?raw';
 
-const csvMap: Record<string, string> = {
-  'energy.csv': energyRaw,
-  'water.csv': waterRaw,
-  'waste.csv': wasteRaw,
-  'ghg.csv': ghgRaw,
-  'fuel.csv': fuelRaw,
-  'paper.csv': paperRaw,
+import energyGen from '../../data/generated/energy.json';
+import waterGen from '../../data/generated/water.json';
+import fuelGen from '../../data/generated/fuel.json';
+import paperGen from '../../data/generated/paper.json';
+import wasteGen from '../../data/generated/waste.json';
+import ghgGen from '../../data/generated/ghg.json';
+
+const genMap: Record<string, MultiYearMetric> = {
+  energy: energyGen as MultiYearMetric,
+  water: waterGen as MultiYearMetric,
+  fuel: fuelGen as MultiYearMetric,
+  paper: paperGen as MultiYearMetric,
+  waste: wasteGen as MultiYearMetric,
+  ghg: ghgGen as MultiYearMetric,
 };
 
 export function getStaticPaths() {
@@ -32,23 +31,37 @@ export function getStaticPaths() {
 }
 
 const { dashboard } = Astro.props as { dashboard: DashboardMeta };
+const metric = genMap[dashboard.id];
 
-const raw = csvMap[dashboard.csvFile] || '';
-const { headers, rows } = parseCsv(raw);
-
-const latestVal = getLatestValue(rows, dashboard.kpiField);
-const change = computeChange(rows, dashboard.kpiField);
-const numericVals = getNumericValues(rows, dashboard.kpiField);
+// If generated data exists, use it; otherwise fall back to config-only display
+const baselineYear = metric?.years[metric.baselineYear.toString()] as YearData | undefined;
+const currentYear = metric?.years[metric.currentYear.toString()] as YearData | undefined;
+const yoy = metric?.yoyChange;
 
 const category = dashboard.categoryId
   ? categoriesData.categories.find((c: { id: string }) => c.id === dashboard.categoryId)
   : null;
-const latestRow = rows.length > 0 ? rows[rows.length - 1] : null;
-const trendDir = dashboard.trend;
-const trendColor = change.percent <= -5 ? 'red' : change.percent >= 5 ? 'green' : 'yellow';
 
-function titleCase(s: string): string {
-  return s.replace(/_/g, ' ').replace(/\b\w/g, function (ch: string) { return ch.toUpperCase(); });
+/** Build month-abbreviation list */
+const monthAbbr = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/** Status badge styling */
+function statusBadge(status: string): string {
+  if (status === 'complete') return 'bg-green-100 text-green-800';
+  if (status === 'in_progress') return 'bg-yellow-100 text-yellow-800';
+  return 'bg-gray-100 text-gray-500';
+}
+
+function arrow(dir: string): string {
+  if (dir === 'up') return '\u2191';
+  if (dir === 'down') return '\u2193';
+  return '\u2192';
+}
+
+function arrowColor(dir: string): string {
+  if (dir === 'up') return 'text-green-500';
+  if (dir === 'down') return 'text-red-500';
+  return 'text-gray-400';
 }
 ---
 
@@ -67,70 +80,159 @@ function titleCase(s: string): string {
       <p class="text-gray-600 mt-1">{dashboard.description}</p>
     </div>
 
-    <!-- KPI Row -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-      <DashboardKpiCard
-        label={dashboard.kpiLabel}
-        value={dashboard.kpiScore ?? latestVal}
-        unit={dashboard.kpiUnit ?? (dashboard.kpiScore ? '%' : '')}
-        trend={dashboard.trend}
-        trendLabel={`${dashboard.trend === 'up' ? 'Increasing' : dashboard.trend === 'down' ? 'Decreasing' : 'Stable'}`}
-        {...(category ? { href: `/categories/${dashboard.categoryId}` } : {})}
-      />
-      <DashboardKpiCard
-        label={`Latest ${dashboard.kpiField.replace(/_/g, ' ')}`}
-        value={Intl.NumberFormat().format(latestVal)}
-        trend={trendDir}
-        trendLabel={`Change: ${change.percent > 0 ? '+' : ''}${change.percent}%`}
-      />
-      <DashboardKpiCard
-        label={`Change (${rows.length > 0 ? rows[0].date : 'start'} \u2192 ${latestRow?.date || 'now'})`}
-        value={change.percent > 0 ? '+' + change.percent : change.percent}
-        unit="%"
-        color={trendColor}
-        trend={change.percent > 0 ? 'up' : change.percent < 0 ? 'down' : 'stable'}
-        trendLabel={`Absolute: ${Intl.NumberFormat().format(change.absolute)}`}
-      />
-    </div>
+    {metric && baselineYear ? (
+      <>
+        <!-- Data Status Badge Row -->
+        <div class="flex flex-wrap gap-3 mb-6">
+          <span class={"inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium " + statusBadge(baselineYear.dataStatus)}>
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            {metric.baselineYear} Baseline: Complete ({baselineYear.months.length} months)
+          </span>
+          <span class={"inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium " + statusBadge(currentYear?.dataStatus ?? 'missing')}>
+            {currentYear?.dataStatus === 'in_progress' ? (
+              <svg class="w-3.5 h-3.5 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+            ) : (
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            )}
+            {metric.currentYear} Current: {currentYear?.dataStatus === 'complete' ? 'Complete' : 'In Progress'} ({currentYear?.months.length ?? 0} of 12 months)
+          </span>
+        </div>
 
-    <!-- Sparkline -->
-    {numericVals.length >= 2 && (
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
-        <h2 class="text-sm font-semibold text-gray-700 mb-3">
-          {titleCase(dashboard.kpiField)} Trend
-        </h2>
-        <div class="flex items-center gap-4">
-          <Sparkline values={numericVals} color={dashboard.color} label={dashboard.kpiField} />
-          <div class="text-xs text-gray-400">
-            <span class="block">{rows[0]?.date} &ndash; {latestRow?.date}</span>
-            <span class="block mt-1">
-              {dashboard.kpiField}: {Intl.NumberFormat().format(Math.min(...numericVals))} &ndash; {Intl.NumberFormat().format(Math.max(...numericVals))}
-            </span>
+        <!-- YoY KPI Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+          <!-- Baseline Total -->
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+            <p class="text-xs text-gray-500 mb-1">{metric.baselineYear} Baseline Total</p>
+            <p class="text-2xl font-bold text-gray-800">{Intl.NumberFormat().format(baselineYear.total)}<span class="text-sm text-gray-400 ml-1">{metric.unit}</span></p>
+            <p class="text-xs text-gray-400 mt-1">{baselineYear.months.length} months</p>
+          </div>
+
+          <!-- Current Total -->
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+            <p class="text-xs text-gray-500 mb-1">{metric.currentYear} Current Total</p>
+            <p class="text-2xl font-bold text-gray-800">{Intl.NumberFormat().format(currentYear?.total ?? 0)}<span class="text-sm text-gray-400 ml-1">{metric.unit}</span></p>
+            <p class="text-xs text-gray-400 mt-1">{currentYear?.months.length ?? 0} of 12 months</p>
+          </div>
+
+          <!-- YoY Difference -->
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+            <p class="text-xs text-gray-500 mb-1">YoY Difference</p>
+            <p class={"text-2xl font-bold " + (yoy && yoy.absolute < 0 ? 'text-green-600' : 'text-red-600')}>
+              {yoy ? (yoy.absolute > 0 ? '+' : '') + Intl.NumberFormat().format(yoy.absolute) : 'N/A'}
+              <span class="text-sm text-gray-400 ml-1">{metric.unit}</span>
+            </p>
+            <p class="text-xs text-gray-400 mt-1">{yoy && baselineYear ? Intl.NumberFormat().format(baselineYear.total) : ''} baseline</p>
+          </div>
+
+          <!-- YoY Percent Change -->
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+            <p class="text-xs text-gray-500 mb-1">YoY Change</p>
+            <p class="text-2xl font-bold">
+              <span class={yoy ? arrowColor(yoy.direction) : 'text-gray-400'}>
+                {yoy ? (yoy.percent > 0 ? '+' : '') + yoy.percent + '%' : 'N/A'}
+              </span>
+              {yoy && <span class={"text-base ml-1 " + arrowColor(yoy.direction)}>{arrow(yoy.direction)}</span>}
+            </p>
+            <p class="text-xs text-gray-400 mt-1">
+              {currentYear?.months.length === 12 ? 'Annual comparison' : 'Partial year comparison'}
+            </p>
           </div>
         </div>
+
+        <!-- Monthly Comparison Table -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
+          <h2 class="text-sm font-semibold text-gray-700 mb-3">Monthly Comparison: {metric.baselineYear} vs {metric.currentYear}</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left">
+              <thead class="bg-gray-50 border-b border-gray-100">
+                <tr>
+                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">Month</th>
+                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{metric.baselineYear}</th>
+                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{metric.currentYear}</th>
+                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">Diff</th>
+                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">Change</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-50">
+                {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => {
+                  const bVal = baselineYear.months.find((mo) => mo.month === m);
+                  const cVal = currentYear?.months.find((mo) => mo.month === m);
+                  const diff = bVal && cVal ? cVal.value - bVal.value : null;
+                  const pct = bVal && diff !== null && bVal.value !== 0 ? Math.round((diff / bVal.value) * 100) : null;
+                  const hasCurrent = !!cVal;
+                  return (
+                    <tr class={"hover:bg-gray-50 transition-colors " + (hasCurrent ? '' : 'opacity-50')}>
+                      <td class="px-3 py-2 text-gray-700 font-medium">{monthAbbr[m]}</td>
+                      <td class="px-3 py-2 text-gray-700">{bVal ? Intl.NumberFormat().format(bVal.value) : '-'}</td>
+                      <td class="px-3 py-2 text-gray-700">
+                        {hasCurrent ? Intl.NumberFormat().format(cVal.value) : <span class="text-gray-400 italic">Pending</span>}
+                      </td>
+                      <td class={"px-3 py-2 " + (diff !== null ? (diff < 0 ? 'text-green-600' : diff > 0 ? 'text-red-600' : 'text-gray-500') : 'text-gray-400')}>
+                        {diff !== null ? (diff > 0 ? '+' : '') + Intl.NumberFormat().format(diff) : '-'}
+                      </td>
+                      <td class={"px-3 py-2 " + (pct !== null ? (pct < 0 ? 'text-green-600' : pct > 0 ? 'text-red-600' : 'text-gray-500') : 'text-gray-400')}>
+                        {pct !== null ? (pct > 0 ? '+' : '') + pct + '%' : '-'}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">
+            * Rows without {metric.currentYear} data are shown at reduced opacity — data entry still in progress.
+          </p>
+        </div>
+
+        <!-- Sparkline: current year trend -->
+        {currentYear && currentYear.months.length >= 2 && (
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
+            <h2 class="text-sm font-semibold text-gray-700 mb-3">
+              {metric.currentYear} Monthly Trend
+            </h2>
+            <div class="flex items-center gap-4">
+              <Sparkline
+                values={currentYear.months.map((m) => m.value)}
+                color={dashboard.color}
+                label={metric.kpiField}
+              />
+              <div class="text-xs text-gray-400">
+                <span class="block">{currentYear.months[0]?.label} &ndash; {currentYear.months[currentYear.months.length - 1]?.label}</span>
+                <span class="block mt-1">
+                  {metric.kpiField}: {Intl.NumberFormat().format(Math.min(...currentYear.months.map((m) => m.value)))} &ndash; {Intl.NumberFormat().format(Math.max(...currentYear.months.map((m) => m.value)))}
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <!-- Source & Attribution -->
+        <div class="text-sm text-gray-500 mt-6 bg-gray-50 rounded-xl border border-gray-200 p-4">
+          {category ? (
+            <p class="mb-1">
+              Category: <a href={`/categories/${dashboard.categoryId}`} class="text-green-600 underline hover:text-green-800">
+                {category.title}
+              </a>
+            </p>
+          ) : (
+            <p class="mb-1 text-gray-400">Resource monitoring dashboard (not tied to a single certification category)</p>
+          )}
+          <div class="text-xs text-gray-400 space-y-0.5 mt-2">
+            <p><strong>{metric.baselineYear} Baseline:</strong> {baselineYear.source} &middot; Updated: {baselineYear.updated}</p>
+            <p><strong>{metric.currentYear} Current:</strong> {currentYear?.source} &middot; Updated: {currentYear?.updated}</p>
+            <p>Data model: <code>src/data/generated/{metric.metric}.json</code> &middot; Ref: {dashboard.sourceLabel}</p>
+          </div>
+        </div>
+      </>
+    ) : (
+      <!-- Fallback when no generated data yet -->
+      <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-6 mb-6">
+        <p class="text-yellow-800 font-medium">Data Ingest Pending</p>
+        <p class="text-yellow-700 text-sm mt-1">
+          Multi-year monitoring data for this dashboard has not yet been entered into the system.
+          Staff are currently compiling data from Excel records.
+        </p>
       </div>
     )}
-
-    <!-- Data Table -->
-    <div class="mb-6">
-      <h2 class="text-lg font-semibold text-gray-800 mb-3">Monthly Data</h2>
-      <DashboardDataTable headers={headers} rows={rows} caption="Source: Green Office monitoring records" />
-    </div>
-
-    <!-- Category / Source link -->
-    <div class="text-sm text-gray-500 mt-6">
-      {category ? (
-        <p class="mb-1">
-          Category: <a href={`/categories/${dashboard.categoryId}`} class="text-green-600 underline hover:text-green-800">
-            {category.title}
-          </a>
-        </p>
-      ) : (
-        <p class="mb-1 text-gray-400">Resource monitoring dashboard (not tied to a single certification category)</p>
-      )}
-      <p class="text-xs text-gray-400">
-        Data source: <code>{dashboard.csvFile}</code> &middot; {rows.length} records &middot; Ref: {dashboard.sourceLabel}
-      </p>
-    </div>
   </div>
 </BaseLayout>
