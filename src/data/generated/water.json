@@ -13,44 +13,115 @@
       "source": "Water bills — 1.1-Water.xlsx (converted)",
       "updated": "2026-06-12",
       "months": [
-        { "month": 1, "value": 5820, "label": "Jan" },
-        { "month": 2, "value": 5600, "label": "Feb" },
-        { "month": 3, "value": 5450, "label": "Mar" },
-        { "month": 4, "value": 5380, "label": "Apr" },
-        { "month": 5, "value": 5500, "label": "May" },
-        { "month": 6, "value": 5620, "label": "Jun" },
-        { "month": 7, "value": 5710, "label": "Jul" },
-        { "month": 8, "value": 5580, "label": "Aug" },
-        { "month": 9, "value": 5400, "label": "Sep" },
-        { "month": 10, "value": 5350, "label": "Oct" },
-        { "month": 11, "value": 5480, "label": "Nov" },
-        { "month": 12, "value": 5560, "label": "Dec" }
+        {
+          "month": 1,
+          "value": 5820,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 5600,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 5450,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 5380,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 5500,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 5620,
+          "label": "Jun"
+        },
+        {
+          "month": 7,
+          "value": 5710,
+          "label": "Jul"
+        },
+        {
+          "month": 8,
+          "value": 5580,
+          "label": "Aug"
+        },
+        {
+          "month": 9,
+          "value": 5400,
+          "label": "Sep"
+        },
+        {
+          "month": 10,
+          "value": 5350,
+          "label": "Oct"
+        },
+        {
+          "month": 11,
+          "value": 5480,
+          "label": "Nov"
+        },
+        {
+          "month": 12,
+          "value": 5560,
+          "label": "Dec"
+        }
       ],
       "total": 66450,
-      "average": 5537.50
+      "average": 5537.5
     },
     "2569": {
       "year": 2569,
       "isBaseline": false,
-      "dataStatus": "in_progress",
-      "source": "Water bills — 1.1-Water.xlsx (partial, 7 of 12 months)",
-      "updated": "2026-06-12",
       "months": [
-        { "month": 1, "value": 5600, "label": "Jan" },
-        { "month": 2, "value": 5400, "label": "Feb" },
-        { "month": 3, "value": 5200, "label": "Mar" },
-        { "month": 4, "value": 5100, "label": "Apr" },
-        { "month": 5, "value": 5250, "label": "May" },
-        { "month": 6, "value": 5400, "label": "Jun" },
-        { "month": 7, "value": 5500, "label": "Jul" }
+        {
+          "month": 1,
+          "value": 5400,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 5200,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 5100,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 5050,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 5150,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 5300,
+          "label": "Jun"
+        }
       ],
-      "total": 37450,
-      "average": 5350.00
+      "total": 31200,
+      "average": 5200,
+      "dataStatus": "in_progress",
+      "source": "1.1-Water.xlsx converted — partial, 6 of 12 months",
+      "updated": "2026-06-12"
     }
   },
   "yoyChange": {
-    "absolute": -29000,
-    "percent": -44,
+    "absolute": -35250,
+    "percent": -53,
     "direction": "down"
   }
 }

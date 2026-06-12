@@ -8,6 +8,8 @@
 
 The Green Office multi-year dashboard model compares **2568 (baseline)** data against **2569 (current operational year)** data. All data is static JSON, generated from staff Excel submissions and validated before inclusion.
 
+**NEW — Automated Import Pipeline:** Staff can now export Excel data to CSV and run `node scripts/import-dashboard-data.mjs` to automatically validate, normalize, and generate the dashboard JSON files. See [Excel Import Workflow](excel-import-workflow.md) for the full guide.
+
 ---
 
 ## 1. Data Flow
@@ -110,6 +112,24 @@ Current-year data is marked with `"isBaseline": false` and `"dataStatus": "in_pr
 ---
 
 ## 5. How to Update Data
+
+**Recommended — Automated Import (NEW):**
+
+Use the import script to update data from CSV. See [Excel Import Workflow](excel-import-workflow.md) for full instructions.
+
+Quick reference:
+```bash
+# Place CSV in data/import/{metric}-{year}.csv
+node scripts/import-dashboard-data.mjs --metric=water --year=2569
+# Or import all files at once:
+node scripts/import-dashboard-data.mjs --all
+# Validate without writing:
+node scripts/import-dashboard-data.mjs --all --dry-run
+```
+
+### Manual Fallback
+
+If you prefer to edit JSON directly:
 
 ### Adding New 2569 Monthly Data
 

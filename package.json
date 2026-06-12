@@ -8,7 +8,9 @@
     "preview": "astro preview",
     "check": "astro check",
     "qa:build": "npm run build",
-    "qa:runtime": "npm run preview"
+    "qa:runtime": "npm run preview",
+    "import:data": "node scripts/import-dashboard-data.mjs",
+    "import:validate": "node scripts/import-dashboard-data.mjs --all --dry-run"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
