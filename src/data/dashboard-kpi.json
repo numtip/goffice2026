@@ -1,6 +1,6 @@
 {
-  "version": "0.1.0",
-  "updated": "2026-06-11",
+  "version": "0.2.0",
+  "updated": "2026-06-12",
   "overallScore": 85,
   "kpis": [
     {
@@ -9,7 +9,8 @@
       "value": 85,
       "unit": "%",
       "categoryId": "cat1",
-      "trend": "up"
+      "trend": "up",
+      "description": "Electricity consumption and energy efficiency"
     },
     {
       "id": "water",
@@ -17,7 +18,8 @@
       "value": 78,
       "unit": "%",
       "categoryId": "cat2",
-      "trend": "stable"
+      "trend": "stable",
+      "description": "Water consumption and conservation"
     },
     {
       "id": "waste",
@@ -25,7 +27,8 @@
       "value": 92,
       "unit": "%",
       "categoryId": "cat3",
-      "trend": "up"
+      "trend": "up",
+      "description": "Waste segregation and recycling"
     },
     {
       "id": "emissions",
@@ -33,7 +36,8 @@
       "value": 71,
       "unit": "%",
       "categoryId": "cat4",
-      "trend": "down"
+      "trend": "down",
+      "description": "Greenhouse gas emissions"
     },
     {
       "id": "indoor",
@@ -41,7 +45,8 @@
       "value": 88,
       "unit": "%",
       "categoryId": "cat5",
-      "trend": "up"
+      "trend": "up",
+      "description": "Indoor environmental quality"
     },
     {
       "id": "transport",
@@ -49,7 +54,8 @@
       "value": 74,
       "unit": "%",
       "categoryId": "cat6",
-      "trend": "stable"
+      "trend": "stable",
+      "description": "Sustainable transport management"
     },
     {
       "id": "innovation",
@@ -57,7 +63,24 @@
       "value": 80,
       "unit": "%",
       "categoryId": "cat7",
-      "trend": "up"
+      "trend": "up",
+      "description": "Green innovation initiatives"
+    },
+    {
+      "id": "fuel",
+      "label": "Fuel Consumption",
+      "value": 22928,
+      "unit": "L",
+      "trend": "down",
+      "description": "Fuel consumption (liters)"
+    },
+    {
+      "id": "paper",
+      "label": "Paper Consumption",
+      "value": 2198,
+      "unit": "kg",
+      "trend": "up",
+      "description": "Paper consumption (kg)"
     }
   ]
 }

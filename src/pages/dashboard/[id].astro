@@ -12,12 +12,16 @@ import energyRaw from '../../data/csv/energy.csv?raw';
 import waterRaw from '../../data/csv/water.csv?raw';
 import wasteRaw from '../../data/csv/waste.csv?raw';
 import ghgRaw from '../../data/csv/ghg.csv?raw';
+import fuelRaw from '../../data/csv/fuel.csv?raw';
+import paperRaw from '../../data/csv/paper.csv?raw';
 
 const csvMap: Record<string, string> = {
   'energy.csv': energyRaw,
   'water.csv': waterRaw,
   'waste.csv': wasteRaw,
   'ghg.csv': ghgRaw,
+  'fuel.csv': fuelRaw,
+  'paper.csv': paperRaw,
 };
 
 export function getStaticPaths() {
@@ -36,7 +40,9 @@ const latestVal = getLatestValue(rows, dashboard.kpiField);
 const change = computeChange(rows, dashboard.kpiField);
 const numericVals = getNumericValues(rows, dashboard.kpiField);
 
-const category = categoriesData.categories.find((c: { id: string }) => c.id === dashboard.categoryId);
+const category = dashboard.categoryId
+  ? categoriesData.categories.find((c: { id: string }) => c.id === dashboard.categoryId)
+  : null;
 const latestRow = rows.length > 0 ? rows[rows.length - 1] : null;
 const trendDir = dashboard.trend;
 const trendColor = change.percent <= -5 ? 'red' : change.percent >= 5 ? 'green' : 'yellow';
@@ -65,11 +71,11 @@ function titleCase(s: string): string {
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
       <DashboardKpiCard
         label={dashboard.kpiLabel}
-        value={dashboard.kpiScore}
-        unit="%"
+        value={dashboard.kpiScore ?? latestVal}
+        unit={dashboard.kpiUnit ?? (dashboard.kpiScore ? '%' : '')}
         trend={dashboard.trend}
-        trendLabel={`${dashboard.trend === 'up' ? 'Improving' : dashboard.trend === 'down' ? 'Declining' : 'Stable'}`}
-        href={`/categories/${dashboard.categoryId}`}
+        trendLabel={`${dashboard.trend === 'up' ? 'Increasing' : dashboard.trend === 'down' ? 'Decreasing' : 'Stable'}`}
+        {...(category ? { href: `/categories/${dashboard.categoryId}` } : {})}
       />
       <DashboardKpiCard
         label={`Latest ${dashboard.kpiField.replace(/_/g, ' ')}`}
@@ -98,7 +104,7 @@ function titleCase(s: string): string {
           <div class="text-xs text-gray-400">
             <span class="block">{rows[0]?.date} &ndash; {latestRow?.date}</span>
             <span class="block mt-1">
-              {dashboard.kpiField}: {Math.min(...numericVals)} &ndash; {Math.max(...numericVals)}
+              {dashboard.kpiField}: {Intl.NumberFormat().format(Math.min(...numericVals))} &ndash; {Intl.NumberFormat().format(Math.max(...numericVals))}
             </span>
           </div>
         </div>
@@ -111,15 +117,19 @@ function titleCase(s: string): string {
       <DashboardDataTable headers={headers} rows={rows} caption="Source: Green Office monitoring records" />
     </div>
 
-    <!-- Category link -->
+    <!-- Category / Source link -->
     <div class="text-sm text-gray-500 mt-6">
-      <p class="mb-1">
-        Category: <a href={`/categories/${dashboard.categoryId}`} class="text-green-600 underline hover:text-green-800">
-          {category?.title || dashboard.categoryId}
-        </a>
-      </p>
+      {category ? (
+        <p class="mb-1">
+          Category: <a href={`/categories/${dashboard.categoryId}`} class="text-green-600 underline hover:text-green-800">
+            {category.title}
+          </a>
+        </p>
+      ) : (
+        <p class="mb-1 text-gray-400">Resource monitoring dashboard (not tied to a single certification category)</p>
+      )}
       <p class="text-xs text-gray-400">
-        Data source: <code>{dashboard.csvFile}</code> &middot; {rows.length} records
+        Data source: <code>{dashboard.csvFile}</code> &middot; {rows.length} records &middot; Ref: {dashboard.sourceLabel}
       </p>
     </div>
   </div>
