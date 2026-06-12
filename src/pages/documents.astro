@@ -2,23 +2,60 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 import categoriesData from '../data/categories.json';
+import evidenceIndex from '../data/evidence-index.json';
+
+function getDocumentCounts(categoryId: string) {
+  const items = evidenceIndex.items.filter((item) => item.categoryId === categoryId);
+  return {
+    total: items.length,
+    available: items.filter((i) => i.status === 'available').length,
+  };
+}
 ---
 
 <BaseLayout title="Document Center">
-  <div class="p-4 max-w-4xl mx-auto">
-    <h1 class="text-2xl font-bold mb-4">Document Center</h1>
-    <p class="text-gray-600 mb-6">Placeholder document hub organized by Green Office category.</p>
+  <div class="p-4 max-w-5xl mx-auto">
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900">Document Center</h1>
+      <p class="text-gray-600 mt-2">
+        Browse and download certification evidence documents organized by Green Office category.
+      </p>
+    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {categoriesData.categories.map((category) => (
-        <a
-          href={`/documents/${category.id}`}
-          class="bg-white rounded-lg shadow p-4 hover:shadow-md transition"
-        >
-          <h2 class="font-bold text-green-700">{category.title}</h2>
-          <p class="text-sm text-gray-600 mt-1">{category.description}</p>
-        </a>
-      ))}
+    <!-- Category grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {categoriesData.categories.map((category) => {
+        const { total, available } = getDocumentCounts(category.id);
+        const allAvailable = total > 0 && total === available;
+        const badgeBg = allAvailable ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-600';
+        return (
+          <a
+            href={`/documents/${category.id}`}
+            class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:shadow-md hover:border-green-200 transition-all group"
+          >
+            <div class="flex items-start justify-between">
+              <div class="flex-1">
+                <h2 class="font-bold text-green-700 group-hover:text-green-800 text-lg">
+                  {category.title}
+                </h2>
+                <p class="text-sm text-gray-600 mt-1">{category.description}</p>
+              </div>
+              <span class={"inline-flex items-center px-3 py-1 rounded-full text-sm font-medium shrink-0 ml-3 " + badgeBg}>
+                {available}/{total} file{total !== 1 ? 's' : ''}
+              </span>
+            </div>
+            <div class="mt-3 text-sm text-gray-400">
+              Score: {category.score}%
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- Summary -->
+    <div class="mt-8 text-center text-xs text-gray-400">
+      Total: {categoriesData.categories.length} categories &middot; {evidenceIndex.items.length} evidence items
     </div>
   </div>
 </BaseLayout>

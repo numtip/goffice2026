@@ -2,22 +2,81 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 import evidenceIndex from '../data/evidence-index.json';
+import categoriesData from '../data/categories.json';
+import EvidenceCard from '../components/evidence/EvidenceCard.astro';
+
+const categoryMap = new Map(categoriesData.categories.map((c) => [c.id, c]));
+const totalItems = evidenceIndex.items.length;
+const availableItems = evidenceIndex.items.filter((i) => i.status === 'available').length;
+const placeholderItems = evidenceIndex.items.filter((i) => i.status === 'placeholder').length;
+const pendingItems = evidenceIndex.items.filter((i) => i.status === 'pending').length;
+const reviewItems = evidenceIndex.items.filter((i) => i.status === 'in-review').length;
 ---
 
 <BaseLayout title="Evidence Library">
-  <div class="p-4 max-w-4xl mx-auto">
-    <h1 class="text-2xl font-bold mb-4">Evidence Library</h1>
-    <p class="text-gray-600 mb-6">Placeholder index of certification evidence items. Full search and filtering coming in a later sprint.</p>
-
-    <div class="space-y-4">
-      {evidenceIndex.items.map((item) => (
-        <article class="bg-white rounded-lg shadow p-4">
-          <h2 class="font-semibold text-green-700">{item.title}</h2>
-          <p class="text-sm text-gray-500 mt-1">
-            Category: {item.categoryId} · Type: {item.type} · Status: {item.status}
-          </p>
-        </article>
-      ))}
+  <div class="p-4 max-w-5xl mx-auto">
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900">Evidence Library</h1>
+      <p class="text-gray-600 mt-2">
+        Browse certification evidence items organized by Green Office category and indicator.
+      </p>
     </div>
+
+    <!-- Summary stats -->
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
+        <p class="text-2xl font-bold text-gray-900">{totalItems}</p>
+        <p class="text-sm text-gray-500">Total Items</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
+        <p class="text-2xl font-bold text-green-600">{availableItems}</p>
+        <p class="text-sm text-gray-500">Available</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
+        <p class="text-2xl font-bold text-gray-400">{placeholderItems}</p>
+        <p class="text-sm text-gray-500">Placeholder</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
+        <p class="text-2xl font-bold text-yellow-600">{pendingItems}</p>
+        <p class="text-sm text-gray-500">Pending</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
+        <p class="text-2xl font-bold text-blue-600">{reviewItems}</p>
+        <p class="text-sm text-gray-500">In Review</p>
+      </div>
+    </div>
+
+    <!-- Evidence items -->
+    {evidenceIndex.items.length > 0 ? (
+      <div class="space-y-4">
+        {evidenceIndex.items.map((item) => (
+          <EvidenceCard
+            id={item.id}
+            title={item.title}
+            description={item.description}
+            year={item.year}
+            fileType={item.fileType}
+            status={item.status}
+            path={item.path}
+            indicator={item.indicator}
+            categoryTitle={categoryMap.get(item.categoryId)?.title}
+          />
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-12 bg-white rounded-xl border border-dashed border-gray-300">
+        <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        <p class="text-gray-500 text-lg">No evidence items found.</p>
+        <p class="text-gray-400 text-sm mt-1">Evidence items will appear here once indexed.</p>
+      </div>
+    )}
+
+    <!-- Updated date -->
+    <p class="text-xs text-gray-400 mt-6 text-center">
+      Last updated: {evidenceIndex.updated} · Schema: v{evidenceIndex.version}
+    </p>
   </div>
 </BaseLayout>

@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/global.css';
 import categoriesData from '../../data/categories.json';
 import evidenceIndex from '../../data/evidence-index.json';
+import EvidenceCard from '../../components/evidence/EvidenceCard.astro';
 
 export function getStaticPaths() {
   return categoriesData.categories.map((category) => ({
@@ -16,56 +17,67 @@ export function getStaticPaths() {
 
 const { category, documents } = Astro.props;
 const headline = category.headline ?? category.title;
+const availableCount = documents.filter((d) => d.status === 'available').length;
+const placeholderCount = documents.filter((d) => d.status === 'placeholder').length;
 ---
 
 <BaseLayout title={`Documents: ${category.title}`}>
-  <div class="p-4 max-w-3xl mx-auto">
+  <div class="p-4 max-w-4xl mx-auto">
+    <!-- Breadcrumb -->
     <nav class="text-sm text-gray-500 mb-4">
-      <a href="/documents" class="text-green-600 underline">Document Center</a>
+      <a href="/documents" class="text-green-600 underline hover:text-green-800">Document Center</a>
       <span aria-hidden="true"> / </span>
-      <span>{category.title}</span>
+      <span class="text-gray-700 font-medium">{category.title}</span>
     </nav>
 
-    <h1 class="text-2xl font-bold mb-2">{headline} — Documents</h1>
-    <p class="text-gray-600 mb-6">{category.purpose}</p>
+    <!-- Category header -->
+    <div class="mb-8">
+      <div class="flex flex-wrap items-center gap-3 mb-2">
+        <h1 class="text-2xl font-bold text-gray-900">{headline}</h1>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+          {availableCount} available
+        </span>
+        {placeholderCount > 0 && (
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-500">
+            {placeholderCount} placeholder{placeholderCount !== 1 ? 's' : ''}
+          </span>
+        )}
+      </div>
+      <p class="text-gray-600">{category.purpose}</p>
+    </div>
 
-    <section class="mb-6">
-      <h2 class="text-xl font-semibold mb-3">Category Files</h2>
-      {documents.length > 0 ? (
-        <ul class="space-y-3">
-          {documents.map((doc) => (
-            <li class="bg-white rounded-lg shadow p-4">
-              <a href={doc.path} class="font-medium text-green-700 underline">
-                {doc.title}
-              </a>
-              <p class="text-sm text-gray-500 mt-1">
-                Type: {doc.type} · Status: {doc.status}
-              </p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class="text-gray-600">No evidence files indexed for this category yet.</p>
-      )}
-    </section>
+    <!-- Evidence / Documents -->
+    {documents.length > 0 ? (
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800">Evidence Items</h2>
+        {documents.map((doc) => (
+          <EvidenceCard
+            id={doc.id}
+            title={doc.title}
+            description={doc.description}
+            year={doc.year}
+            fileType={doc.fileType}
+            status={doc.status}
+            path={doc.path}
+            indicator={doc.indicator}
+          />
+        ))}
+      </section>
+    ) : (
+      <div class="text-center py-12 bg-white rounded-xl border border-dashed border-gray-300">
+        <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        <p class="text-gray-500 text-lg">No evidence files indexed for this category yet.</p>
+        <p class="text-gray-400 text-sm mt-1">Documents will appear here once uploaded.</p>
+      </div>
+    )}
 
-    <section class="mb-6">
-      <h2 class="text-xl font-semibold mb-3">Placeholder</h2>
-      <p class="text-gray-600 mb-2">
-        Sample document folder for MVP evidence stubs:
-      </p>
-      <a
-        href={`/documents/${category.id}/placeholder.md`}
-        class="text-green-600 underline"
-      >
-        {category.id}/placeholder.md
+    <!-- Back link -->
+    <div class="mt-8">
+      <a href={`/categories/${category.id}`} class="text-green-600 underline hover:text-green-800 text-sm">
+        &larr; Back to {category.title} overview
       </a>
-    </section>
-
-    <p class="text-sm">
-      <a href={`/categories/${category.id}`} class="text-green-600 underline">
-        Back to category overview
-      </a>
-    </p>
+    </div>
   </div>
 </BaseLayout>

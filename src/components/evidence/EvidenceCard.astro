@@ -1,0 +1,116 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  year: number;
+  fileType: string;
+  status: string;
+  path: string;
+  indicator?: string;
+  categoryTitle?: string;
+}
+
+const { id, title, description, year, fileType, status, path, indicator, categoryTitle } = Astro.props;
+
+const isAvailable = status === 'available';
+const isPlaceholder = status === 'placeholder';
+
+const statusBadgeColor: Record<string, string> = {
+  available: 'bg-green-100 text-green-800',
+  pending: 'bg-yellow-100 text-yellow-800',
+  'in-review': 'bg-blue-100 text-blue-800',
+  placeholder: 'bg-gray-100 text-gray-500',
+};
+const statusLabel: Record<string, string> = {
+  available: 'Available',
+  pending: 'Pending',
+  'in-review': 'In Review',
+  placeholder: 'Placeholder',
+};
+const fileTypeBadgeColor: Record<string, string> = {
+  PDF: 'bg-red-100 text-red-700',
+  XLSX: 'bg-emerald-100 text-emerald-700',
+  DOCX: 'bg-indigo-100 text-indigo-700',
+  MD: 'bg-gray-100 text-gray-600',
+};
+
+const fileTypeClass = fileTypeBadgeColor[fileType] || 'bg-gray-100 text-gray-700';
+const statusClass = statusBadgeColor[status] || 'bg-gray-100 text-gray-800';
+const label = statusLabel[status] || status;
+const cardBorder = isPlaceholder ? 'border-dashed border-gray-200' : 'border-gray-100';
+const cardOpacity = isPlaceholder ? 'opacity-80' : '';
+---
+
+<article class={`bg-white rounded-xl shadow-sm border ${cardBorder} p-5 hover:shadow-md transition-shadow ${cardOpacity}`}>
+  <div class="flex flex-wrap items-start gap-2 mb-2">
+    <!-- Year badge -->
+    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700">
+      {year}
+    </span>
+    <!-- File type badge -->
+    <span class:list={["inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium", fileTypeClass]}>
+      {fileType}
+    </span>
+    <!-- Status badge -->
+    <span class:list={["inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium", statusClass]}>
+      {label}
+    </span>
+    {categoryTitle && (
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+        {categoryTitle}
+      </span>
+    )}
+  </div>
+
+  <!-- Title -->
+  {isAvailable ? (
+    <h3 class="text-lg font-semibold text-gray-900 mt-1">
+      <a href={path} class="text-green-700 hover:text-green-800 underline decoration-green-300 underline-offset-2">
+        {title}
+      </a>
+    </h3>
+  ) : (
+    <h3 class="text-lg font-semibold text-gray-700 mt-1">
+      {title}
+    </h3>
+  )}
+
+  {indicator && (
+    <p class="text-sm text-gray-500 mt-1">
+      <span class="font-medium">Indicator:</span> {indicator}
+    </p>
+  )}
+
+  <p class="text-sm text-gray-600 mt-2 leading-relaxed">{description}</p>
+
+  <!-- Action row -->
+  <div class="mt-3 flex items-center gap-3">
+    {isAvailable ? (
+      <a
+        href={path}
+        class="inline-flex items-center gap-1.5 text-sm font-medium text-green-600 hover:text-green-800 transition-colors"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        Open Document
+      </a>
+    ) : isPlaceholder ? (
+      <span class="inline-flex items-center gap-1.5 text-sm text-gray-400 italic">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Coming Soon
+      </span>
+    ) : (
+      <span class="inline-flex items-center gap-1.5 text-sm text-gray-400 italic">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Awaiting Upload
+      </span>
+    )}
+    <span class="text-xs text-gray-400">ID: {id}</span>
+  </div>
+</article>
