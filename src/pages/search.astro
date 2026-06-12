@@ -3,65 +3,201 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 import categoriesData from '../data/categories.json';
 import evidenceIndex from '../data/evidence-index.json';
+import EvidenceCard from '../components/evidence/EvidenceCard.astro';
 
-const plannedIndexFields = [
-  'Page and category titles',
-  'Category short names and descriptions',
-  'Evidence item titles and types',
-  'Document paths under public/documents/',
-];
+const categoryMap = new Map(categoriesData.categories.map((c) => [c.id, c]));
+
+const searchData = evidenceIndex.items.map((item) => {
+  const cat = categoryMap.get(item.categoryId);
+  return {
+    id: item.id,
+    title: item.title,
+    indicator: item.indicator,
+    description: item.description,
+    year: item.year,
+    categoryId: item.categoryId,
+    categoryTitle: cat?.title ?? '',
+    fileType: item.fileType,
+    status: item.status,
+    path: item.path,
+  };
+});
+
+const years = [...new Set(evidenceIndex.items.map((i) => i.year))].sort((a, b) => b - a);
+const categories = categoriesData.categories;
 ---
 
 <BaseLayout title="Search">
-  <div class="p-4 max-w-3xl mx-auto">
-    <h1 class="text-2xl font-bold mb-4">Search</h1>
-    <p class="text-gray-600 mb-4">
-      Static placeholder only. No search engine or client-side index is active in Sprint 0.1.
-    </p>
-    <p class="text-gray-600 mb-6">
-      A future sprint will add build-time search over titles, categories, and evidence metadata
-      from <code class="text-sm bg-gray-100 px-1 rounded">categories.json</code> and{' '}
-      <code class="text-sm bg-gray-100 px-1 rounded">evidence-index.json</code>.
-    </p>
+  <div class="p-4 max-w-5xl mx-auto">
+    <!-- Header -->
+    <div class="mb-6">
+      <h1 class="text-3xl font-bold text-gray-900">Search Evidence Library</h1>
+      <p class="text-gray-600 mt-2">
+        Search by title, indicator, category, year, or description across all {evidenceIndex.items.length} evidence items.
+      </p>
+    </div>
 
-    <section class="bg-white rounded-lg shadow p-4 mb-6">
-      <h2 class="text-lg font-semibold mb-3">Planned index scope</h2>
-      <ul class="list-disc list-inside text-gray-700 space-y-1">
-        {plannedIndexFields.map((field) => (
-          <li>{field}</li>
-        ))}
-      </ul>
-    </section>
+    <!-- Search controls -->
+    <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 mb-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Search input -->
+        <div class="md:col-span-2">
+          <label for="search-q" class="sr-only">Search</label>
+          <input
+            id="search-q"
+            type="search"
+            placeholder="Search by title, indicator, description..."
+            class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+            autocomplete="off"
+          />
+        </div>
+        <!-- Category filter -->
+        <div>
+          <label for="search-cat" class="sr-only">Filter by category</label>
+          <select
+            id="search-cat"
+            class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-white"
+          >
+            <option value="">All Categories</option>
+            {categories.map((cat) => (
+              <option value={cat.id}>{cat.title}</option>
+            ))}
+          </select>
+        </div>
+        <!-- Year filter -->
+        <div class="hidden md:block">
+          <label for="search-year" class="sr-only">Filter by year</label>
+          <select
+            id="search-year"
+            class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-white"
+          >
+            <option value="">All Years</option>
+            {years.map((y) => (
+              <option value={y}>{y}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <!-- Year filter for mobile -->
+      <div class="mt-3 md:hidden">
+        <label for="search-year-mobile" class="sr-only">Filter by year</label>
+        <select
+          id="search-year-mobile"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-white"
+        >
+          <option value="">All Years</option>
+          {years.map((y) => (
+            <option value={y}>{y}</option>
+          ))}
+        </select>
+      </div>
+    </div>
 
-    <section class="bg-gray-100 rounded-lg p-4 mb-6">
-      <h2 class="text-lg font-semibold mb-3">Preview: searchable titles (static list)</h2>
-      <ul class="text-sm text-gray-700 space-y-2">
-        {categoriesData.categories.map((category) => (
-          <li>
-            <span class="font-medium">{category.title}</span>
-            <span class="text-gray-500"> — category {category.id}</span>
-          </li>
-        ))}
-        {evidenceIndex.items.map((item) => (
-          <li>
-            <span class="font-medium">{item.title}</span>
-            <span class="text-gray-500"> — evidence · {item.categoryId}</span>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <!-- Result count -->
+    <div id="search-count" class="text-sm text-gray-500 mb-4">
+      {searchData.length} result{searchData.length !== 1 ? 's' : ''}
+    </div>
 
-    <div class="bg-white rounded-lg shadow p-4 opacity-75">
-      <label for="q" class="block text-sm font-medium text-gray-700 mb-2">Search query (disabled)</label>
-      <input
-        id="q"
-        name="q"
-        type="search"
-        disabled
-        placeholder="Search will be enabled in a later sprint..."
-        class="w-full border border-gray-300 rounded px-3 py-2 bg-gray-50 text-gray-500 cursor-not-allowed"
-      />
-      <p class="text-xs text-gray-500 mt-2">Form is non-functional by design for this sprint.</p>
+    <!-- Results -->
+    <div id="search-results" class="space-y-4">
+      {searchData.map((item) => (
+        <div
+          class="search-item"
+          data-title={item.title.toLowerCase()}
+          data-indicator={item.indicator?.toLowerCase() ?? ''}
+          data-description={item.description.toLowerCase()}
+          data-year={String(item.year)}
+          data-category={item.categoryId}
+          data-category-title={item.categoryTitle.toLowerCase()}
+        >
+          <EvidenceCard
+            id={item.id}
+            title={item.title}
+            description={item.description}
+            year={item.year}
+            fileType={item.fileType}
+            status={item.status}
+            path={item.path}
+            indicator={item.indicator}
+            categoryTitle={item.categoryTitle}
+          />
+        </div>
+      ))}
+    </div>
+
+    <!-- Empty state -->
+    <div id="search-empty" class="hidden text-center py-12 bg-white rounded-xl border border-dashed border-gray-300">
+      <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+      <p class="text-gray-500 text-lg">No evidence items match your search.</p>
+      <p class="text-gray-400 text-sm mt-1">Try adjusting your search terms or filters.</p>
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  const q = document.getElementById('search-q') as HTMLInputElement;
+  const cat = document.getElementById('search-cat') as HTMLSelectElement;
+  const year = document.getElementById('search-year') as HTMLSelectElement;
+  const yearMobile = document.getElementById('search-year-mobile') as HTMLSelectElement;
+  const results = document.getElementById('search-results') as HTMLElement;
+  const empty = document.getElementById('search-empty') as HTMLElement;
+  const count = document.getElementById('search-count') as HTMLElement;
+  const items = document.querySelectorAll('.search-item') as NodeListOf<HTMLElement>;
+
+  function syncYear() {
+    if (yearMobile.value !== year.value) yearMobile.value = year.value;
+    if (year.value !== yearMobile.value) year.value = yearMobile.value;
+  }
+
+  year.addEventListener('change', syncYear);
+  yearMobile.addEventListener('change', syncYear);
+
+  function filter() {
+    var query = q.value.toLowerCase().trim();
+    var catVal = cat.value;
+    var yearVal = year.value || yearMobile.value;
+    var visible = 0;
+
+    items.forEach(function(el: HTMLElement) {
+      var ds = el.dataset;
+      var title = ds.title || '';
+      var indicator = ds.indicator || '';
+      var description = ds.description || '';
+      var itemYear = ds.year || '';
+      var itemCat = ds.category || '';
+      var catTitle = ds.categoryTitle || '';
+
+      var matchesQuery = !query ||
+        title.indexOf(query) !== -1 ||
+        indicator.indexOf(query) !== -1 ||
+        description.indexOf(query) !== -1 ||
+        catTitle.indexOf(query) !== -1 ||
+        itemYear === query;
+
+      var matchesCat = !catVal || itemCat === catVal;
+      var matchesYear = !yearVal || itemYear === yearVal;
+
+      el.style.display = (matchesQuery && matchesCat && matchesYear) ? '' : 'none';
+      if (matchesQuery && matchesCat && matchesYear) visible++;
+    });
+
+    count.textContent = visible + ' result' + (visible !== 1 ? 's' : '');
+    results.classList.toggle('hidden', visible === 0);
+    empty.classList.toggle('hidden', visible > 0);
+  }
+
+  q.addEventListener('input', filter);
+  cat.addEventListener('change', filter);
+  year.addEventListener('change', filter);
+  yearMobile.addEventListener('change', filter);
+
+  document.addEventListener('keydown', function(e: KeyboardEvent) {
+    var target = e.target as HTMLElement;
+    if (e.key === '/' && ['INPUT', 'SELECT', 'TEXTAREA'].indexOf(target.nodeName) === -1) {
+      e.preventDefault();
+      q.focus();
+    }
+  });
+</script>
