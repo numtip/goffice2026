@@ -1,0 +1,31 @@
+---
+interface Props {
+  headers: string[];
+  rows: Record<string, string>[];
+  caption?: string;
+}
+
+const { headers, rows, caption } = Astro.props;
+---
+
+<div class="overflow-x-auto bg-white rounded-xl shadow-sm border border-gray-100">
+  <table class="w-full text-sm text-left">
+    {caption && <caption class="text-xs text-gray-400 p-3 text-left">{caption}</caption>}
+    <thead class="bg-gray-50 border-b border-gray-100">
+      <tr>
+        {headers.map((h) => (
+          <th class="px-4 py-3 font-medium text-gray-600 text-xs uppercase tracking-wider">{h}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-50">
+      {rows.map((row) => (
+        <tr class="hover:bg-gray-50 transition-colors">
+          {headers.map((h) => (
+            <td class="px-4 py-2.5 text-gray-700 whitespace-nowrap">{row[h]}</td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,45 @@
+---
+interface Props {
+  values: number[];
+  width?: number;
+  height?: number;
+  color?: string;
+  label?: string;
+}
+
+const { values, width = 160, height = 40, color = '#059669', label } = Astro.props;
+
+const min = Math.min(...values);
+const max = Math.max(...values);
+const range = max - min || 1;
+const stepX = width / (values.length - 1 || 1);
+
+const points = values
+  .map((v, i) => {
+    const x = i * stepX;
+    const y = height - ((v - min) / range) * (height - 4) - 2;
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  })
+  .join(' ');
+
+const trend = values.length >= 2 ? (values[values.length - 1] - values[0]) : 0;
+const trendDir = trend > 0 ? 'up' : trend < 0 ? 'down' : 'flat';
+---
+
+<div class="inline-flex items-center gap-2">
+  <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} class="overflow-visible" aria-label={label || 'sparkline'}>
+    <polyline
+      fill="none"
+      stroke={color}
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      points={points}
+    />
+  </svg>
+  {trendDir !== 'flat' && (
+    <span class={"text-xs " + (trendDir === 'up' ? 'text-green-500' : 'text-red-500')}>
+      {trendDir === 'up' ? '↑' : '↓'}
+    </span>
+  )}
+</div>

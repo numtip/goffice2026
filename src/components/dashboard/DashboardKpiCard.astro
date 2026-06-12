@@ -1,0 +1,37 @@
+---
+interface Props {
+  label: string;
+  value: string | number;
+  unit?: string;
+  trend?: 'up' | 'down' | 'stable';
+  trendLabel?: string;
+  href?: string;
+  color?: 'green' | 'yellow' | 'red';
+}
+
+const { label, value, unit = '', trend, trendLabel, href } = Astro.props;
+
+const trendSymbol: Record<string, string> = { up: '\u2191', down: '\u2193', stable: '\u2192' };
+const trendColors: Record<string, string> = {
+  up: 'text-green-500',
+  down: 'text-red-500',
+  stable: 'text-gray-400',
+};
+---
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+  <p class="text-sm text-gray-500 mb-1">{label}</p>
+  <p class="text-3xl font-bold text-green-600">
+    {value}{unit}
+    {trend && (
+      <span class={"text-base ml-1 " + (trendColors[trend] || 'text-gray-400')} title={trendLabel || trend}>
+        {trendSymbol[trend] || ''}
+      </span>
+    )}
+  </p>
+  {href && (
+    <a href={href} class="text-xs text-green-600 underline mt-2 inline-block hover:text-green-800">
+      View details &rarr;
+    </a>
+  )}
+</div>

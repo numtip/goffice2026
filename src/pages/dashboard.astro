@@ -2,39 +2,93 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 import dashboardKpi from '../data/dashboard-kpi.json';
+import { dashboards } from '../data/dashboard-config';
 
 const trendLabel: Record<string, string> = {
   up: '↑',
   down: '↓',
   stable: '→',
 };
+const trendColors: Record<string, string> = {
+  up: 'text-green-500',
+  down: 'text-red-500',
+  stable: 'text-gray-400',
+};
 ---
 
 <BaseLayout title="Dashboard">
-  <div class="p-4">
-    <h1 class="text-2xl font-bold mb-2">Green Office Dashboard</h1>
-    <p class="text-sm text-gray-500 mb-4">Updated: {dashboardKpi.updated}</p>
+  <div class="p-4 max-w-5xl mx-auto">
+    <!-- Header -->
+    <div class="mb-6">
+      <h1 class="text-3xl font-bold text-gray-900">Green Office Dashboard</h1>
+      <p class="text-gray-600 mt-1">Overall certification progress and per-category monitoring dashboards.</p>
+    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-      <div class="bg-white rounded-lg shadow p-4 md:col-span-2 lg:col-span-4">
-        <h2 class="text-sm text-gray-600">Overall Score</h2>
-        <p class="text-3xl font-bold text-green-600">{dashboardKpi.overallScore}</p>
-      </div>
+    <!-- Overall Score -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+      <p class="text-sm text-gray-500 mb-1">Overall Certification Score</p>
+      <p class="text-4xl font-bold text-green-600">{dashboardKpi.overallScore}<span class="text-2xl">%</span></p>
+      <p class="text-xs text-gray-400 mt-2">Updated: {dashboardKpi.updated}</p>
+    </div>
 
-      {dashboardKpi.kpis.map((kpi) => (
-        <div class="bg-white rounded-lg shadow p-4">
-          <h2 class="text-sm text-gray-600">{kpi.label}</h2>
-          <p class="text-2xl font-bold text-green-600">
-            {kpi.value}{kpi.unit}
-            <span class="text-base text-gray-400 ml-1" title={`Trend: ${kpi.trend}`}>
-              {trendLabel[kpi.trend] ?? ''}
+    <!-- KPI Grid -->
+    <h2 class="text-lg font-semibold text-gray-800 mb-3">Category Scores</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      {dashboardKpi.kpis.map((kpi) => {
+        const dash = dashboards.find((d) => d.id === kpi.id);
+        return (
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
+            <p class="text-sm text-gray-500">{kpi.label}</p>
+            <p class="text-2xl font-bold text-green-600 mt-1">
+              {kpi.value}{kpi.unit}
+              <span class={"text-base ml-1 " + (trendColors[kpi.trend] || 'text-gray-400')}>
+                {trendLabel[kpi.trend] ?? ''}
+              </span>
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <a href={`/categories/${kpi.categoryId}`} class="text-xs text-green-600 underline hover:text-green-800">
+                Category
+              </a>
+              {dash ? (
+                <a href={`/dashboard/${dash.id}`} class="text-xs text-blue-600 underline hover:text-blue-800">
+                  Dashboard &rarr;
+                </a>
+              ) : (
+                <span class="text-xs text-gray-400">Dashboard planned</span>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Dashboard Detail Links -->
+    <h2 class="text-lg font-semibold text-gray-800 mb-3">Detail Dashboards</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      {dashboards.map((d) => (
+        <a
+          href={`/dashboard/${d.id}`}
+          class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:shadow-md hover:border-green-200 transition-all group"
+        >
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="font-semibold text-green-700 group-hover:text-green-800">{d.title}</h3>
+              <p class="text-sm text-gray-600 mt-1">{d.description}</p>
+            </div>
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 shrink-0 ml-3">
+              {d.kpiScore}%
             </span>
-          </p>
-          <a href={`/categories/${kpi.categoryId}`} class="text-xs text-green-600 underline mt-1 inline-block">
-            View category
-          </a>
-        </div>
+          </div>
+        </a>
       ))}
+    </div>
+
+    <!-- Planned dashboards -->
+    <div class="bg-white rounded-xl shadow-sm border border-dashed border-gray-200 p-5">
+      <h3 class="text-sm font-semibold text-gray-500">Planned Dashboards</h3>
+      <p class="text-xs text-gray-400 mt-1">
+        Fuel consumption and Paper usage dashboards will be added once monitoring data is available.
+      </p>
     </div>
   </div>
 </BaseLayout>

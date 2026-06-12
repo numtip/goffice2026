@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/global.css';
+import { dashboards } from '../../data/dashboard-config';
+import type { DashboardMeta } from '../../data/dashboard-config';
+import { parseCsv, getLatestValue, computeChange, getNumericValues } from '../../utils/parse-csv';
+import DashboardKpiCard from '../../components/dashboard/DashboardKpiCard.astro';
+import DashboardDataTable from '../../components/dashboard/DashboardDataTable.astro';
+import Sparkline from '../../components/dashboard/Sparkline.astro';
+import categoriesData from '../../data/categories.json';
+import energyRaw from '../../data/csv/energy.csv?raw';
+import waterRaw from '../../data/csv/water.csv?raw';
+import wasteRaw from '../../data/csv/waste.csv?raw';
+import ghgRaw from '../../data/csv/ghg.csv?raw';
+
+const csvMap: Record<string, string> = {
+  'energy.csv': energyRaw,
+  'water.csv': waterRaw,
+  'waste.csv': wasteRaw,
+  'ghg.csv': ghgRaw,
+};
+
+export function getStaticPaths() {
+  return dashboards.map((d) => ({
+    params: { id: d.id },
+    props: { dashboard: d },
+  }));
+}
+
+const { dashboard } = Astro.props as { dashboard: DashboardMeta };
+
+const raw = csvMap[dashboard.csvFile] || '';
+const { headers, rows } = parseCsv(raw);
+
+const latestVal = getLatestValue(rows, dashboard.kpiField);
+const change = computeChange(rows, dashboard.kpiField);
+const numericVals = getNumericValues(rows, dashboard.kpiField);
+
+const category = categoriesData.categories.find((c: { id: string }) => c.id === dashboard.categoryId);
+const latestRow = rows.length > 0 ? rows[rows.length - 1] : null;
+const trendDir = dashboard.trend;
+const trendColor = change.percent <= -5 ? 'red' : change.percent >= 5 ? 'green' : 'yellow';
+
+function titleCase(s: string): string {
+  return s.replace(/_/g, ' ').replace(/\b\w/g, function (ch: string) { return ch.toUpperCase(); });
+}
+---
+
+<BaseLayout title={dashboard.title}>
+  <div class="p-4 max-w-5xl mx-auto">
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/dashboard" class="text-green-600 underline hover:text-green-800">Dashboard</a>
+      <span aria-hidden="true"> / </span>
+      <span class="text-gray-700 font-medium">{dashboard.title}</span>
+    </nav>
+
+    <!-- Header -->
+    <div class="mb-6">
+      <h1 class="text-2xl font-bold text-gray-900">{dashboard.title}</h1>
+      <p class="text-gray-600 mt-1">{dashboard.description}</p>
+    </div>
+
+    <!-- KPI Row -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <DashboardKpiCard
+        label={dashboard.kpiLabel}
+        value={dashboard.kpiScore}
+        unit="%"
+        trend={dashboard.trend}
+        trendLabel={`${dashboard.trend === 'up' ? 'Improving' : dashboard.trend === 'down' ? 'Declining' : 'Stable'}`}
+        href={`/categories/${dashboard.categoryId}`}
+      />
+      <DashboardKpiCard
+        label={`Latest ${dashboard.kpiField.replace(/_/g, ' ')}`}
+        value={Intl.NumberFormat().format(latestVal)}
+        trend={trendDir}
+        trendLabel={`Change: ${change.percent > 0 ? '+' : ''}${change.percent}%`}
+      />
+      <DashboardKpiCard
+        label={`Change (${rows.length > 0 ? rows[0].date : 'start'} \u2192 ${latestRow?.date || 'now'})`}
+        value={change.percent > 0 ? '+' + change.percent : change.percent}
+        unit="%"
+        color={trendColor}
+        trend={change.percent > 0 ? 'up' : change.percent < 0 ? 'down' : 'stable'}
+        trendLabel={`Absolute: ${Intl.NumberFormat().format(change.absolute)}`}
+      />
+    </div>
+
+    <!-- Sparkline -->
+    {numericVals.length >= 2 && (
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
+        <h2 class="text-sm font-semibold text-gray-700 mb-3">
+          {titleCase(dashboard.kpiField)} Trend
+        </h2>
+        <div class="flex items-center gap-4">
+          <Sparkline values={numericVals} color={dashboard.color} label={dashboard.kpiField} />
+          <div class="text-xs text-gray-400">
+            <span class="block">{rows[0]?.date} &ndash; {latestRow?.date}</span>
+            <span class="block mt-1">
+              {dashboard.kpiField}: {Math.min(...numericVals)} &ndash; {Math.max(...numericVals)}
+            </span>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- Data Table -->
+    <div class="mb-6">
+      <h2 class="text-lg font-semibold text-gray-800 mb-3">Monthly Data</h2>
+      <DashboardDataTable headers={headers} rows={rows} caption="Source: Green Office monitoring records" />
+    </div>
+
+    <!-- Category link -->
+    <div class="text-sm text-gray-500 mt-6">
+      <p class="mb-1">
+        Category: <a href={`/categories/${dashboard.categoryId}`} class="text-green-600 underline hover:text-green-800">
+          {category?.title || dashboard.categoryId}
+        </a>
+      </p>
+      <p class="text-xs text-gray-400">
+        Data source: <code>{dashboard.csvFile}</code> &middot; {rows.length} records
+      </p>
+    </div>
+  </div>
+</BaseLayout>
