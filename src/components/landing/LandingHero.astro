@@ -1,0 +1,91 @@
+---
+import { withBase } from '../../utils/with-base';
+
+interface Props {
+  overallScore: number;
+}
+
+const { overallScore } = Astro.props;
+
+const heroImage =
+  'https://lh3.googleusercontent.com/aida/AP1WRLuDfA1SvH4NfEcQj-PgvC74zlZhO9NNON1L4iC5DTrNEI7nzkGTUfG4toLPuFfHsyPfMawrPPwMyGb3YLJvBVCCCTRriVpSPlFWlXXPivxNvH272JEthKppXKArd99Xpqr6wq58BpkbsfmgNj9k2LiqT5DIvBAQnAQd56aVQUj6NGmP80V9bnNx1ue4TjfJ3O5g8FeTPdxS2towj5KzyqqKMM1bsz-DZMmzq5nSJmYkfrNAcg_-hF_gLA0';
+---
+
+<header class="relative flex min-h-[92vh] items-center justify-center overflow-hidden bg-surface-container-lowest pt-8">
+  <div class="absolute inset-0 z-0" aria-hidden="true">
+    <img
+      src={heroImage}
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover opacity-90"
+      loading="eager"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/25 to-transparent" />
+    <div class="absolute inset-0 bg-primary/10 mix-blend-multiply" />
+  </div>
+
+  <div class="relative z-10 mx-auto mt-16 w-full max-w-5xl px-margin-mobile text-center md:px-margin-desktop lg:mt-20">
+    <div class="glass-panel mb-8 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2">
+      <span class="h-2 w-2 animate-pulse rounded-full bg-secondary-fixed" aria-hidden="true" />
+      <span class="font-mono text-label-sm uppercase tracking-widest text-primary">Precision Environmentalism</span>
+    </div>
+
+    <h1
+      class="mb-6 text-4xl font-bold tracking-tight text-primary md:text-display-xl"
+      style="text-shadow: 0 4px 24px rgba(255,255,255,0.6);"
+    >
+      Green Office 2026:<br />
+      <span class="text-gradient-stitch">Environmental Intelligence Platform</span>
+    </h1>
+
+    <p class="mx-auto mb-10 max-w-2xl rounded-stitch-lg border border-white/40 bg-surface-container-lowest/60 p-6 text-body-lg text-on-surface-variant backdrop-blur-md">
+      Maejo University's centralized hub for executive decision-makers. Monitor continuous improvement
+      metrics, track immutable evidence, and lead the future of institutional sustainability.
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-4">
+      <a
+        href={withBase('/dashboard')}
+        class="inline-flex items-center gap-2 rounded-full border border-primary-container/20 bg-primary/90 px-8 py-4 text-label-sm font-medium uppercase tracking-wider text-white shadow-lg backdrop-blur-md transition hover:bg-primary hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-fixed"
+      >
+        Explore Dashboard
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a
+        href={withBase('/categories')}
+        class="glass-panel inline-flex items-center gap-2 rounded-full px-8 py-4 text-label-sm font-medium uppercase tracking-wider text-primary transition hover:bg-white/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-container"
+      >
+        Explore Green Office
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="mx-auto mt-14 max-w-3xl">
+      <div class="dark-glass overflow-hidden rounded-stitch-lg border border-white/10 p-1 shadow-2xl">
+        <div class="rounded-[calc(2rem-4px)] bg-slate-950/75 p-5 ring-1 ring-white/10 md:p-6">
+          <div class="mb-4 flex items-center justify-between">
+            <p class="font-mono text-label-sm uppercase tracking-widest text-outline-variant">Executive Preview</p>
+            <span class="flex items-center gap-2 rounded-full border border-white/5 bg-black/40 px-3 py-1">
+              <span class="h-2 w-2 rounded-full bg-secondary-fixed" aria-hidden="true" />
+              <span class="font-mono text-[11px] text-outline-variant">Live · {overallScore}%</span>
+            </span>
+          </div>
+          <div class="grid grid-cols-3 gap-2 md:grid-cols-6">
+            {['Energy', 'Water', 'Fuel', 'Paper', 'Waste', 'GHG'].map((label) => (
+              <div class="rounded-lg bg-white/5 p-2 text-center ring-1 ring-white/10">
+                <p class="text-[10px] uppercase tracking-wide text-outline-variant">{label}</p>
+                <div class="mx-auto mt-2 h-1 w-full overflow-hidden rounded-full bg-white/10">
+                  <div class="h-full rounded-full bg-gradient-to-r from-primary-fixed to-secondary-fixed" style="width: 72%;" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

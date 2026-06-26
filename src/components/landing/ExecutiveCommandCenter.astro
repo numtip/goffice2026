@@ -1,0 +1,143 @@
+---
+import { withBase } from '../../utils/with-base';
+import { dashboards } from '../../data/dashboard-config';
+
+interface MetricDisplay {
+  id: string;
+  label: string;
+  value: string;
+  unit: string;
+  barWidth: string;
+  barColor: string;
+}
+
+const metricIcons: Record<string, string> = {
+  energy: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z',
+  water: 'M12 2.69l5.66 5.66a8 8 0 11-11.32 0z',
+  fuel: 'M3 22h18M6 18V8a2 2 0 012-2h8a2 2 0 012 2v10',
+  paper: 'M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z M14 2v6h6',
+  waste: 'M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2',
+  ghg: 'M2 20h20M7 20V10M12 20V4M17 20v-6',
+};
+
+const metrics: MetricDisplay[] = dashboards.map((d) => {
+  const score = d.kpiScore ?? 0;
+  const unit = d.kpiUnit ?? (d.id === 'waste' || d.id === 'energy' || d.id === 'water' || d.id === 'ghg' ? '%' : '');
+  let displayValue = String(score);
+  let displayUnit = unit;
+
+  if (d.id === 'fuel') {
+    displayValue = '-8.4';
+    displayUnit = '% YoY';
+  } else if (d.id === 'paper') {
+    displayValue = '12.5';
+    displayUnit = 'Reams';
+  } else if (d.id === 'energy') {
+    displayValue = '1.24';
+    displayUnit = 'kWh/m²';
+  } else if (d.id === 'water') {
+    displayValue = '45.2';
+    displayUnit = 'L/pax';
+  } else if (d.id === 'waste') {
+    displayValue = '85';
+    displayUnit = '% Recycled';
+  } else if (d.id === 'ghg') {
+    displayValue = '-15';
+    displayUnit = '%';
+  }
+
+  const barWidth = `${Math.min(95, Math.max(25, score || 40))}%`;
+  const barColor = d.id === 'water' || d.id === 'paper' || d.id === 'ghg' ? 'bg-primary-fixed' : 'bg-secondary-fixed';
+
+  return {
+    id: d.id,
+    label: d.id === 'ghg' ? 'GHG' : d.title.split(' ')[0],
+    value: displayValue,
+    unit: displayUnit,
+    barWidth,
+    barColor,
+  };
+});
+
+const terminalBg =
+  'https://lh3.googleusercontent.com/aida/AP1WRLtkZ1wlcygyjubO1VjDBShaK7DTL8pdbt5-gNJaoULnscCd27cFcEBd912dtoPrPxYLPjG2N8sbE8wM9Pdpa0_1lkjLc-fqSK_GyQ4lHq0GE71xZfYV6etomoLknSScCxyhPvEHGuaXDnh5N4bSY-SfXDltaM_IEt_ghV9Mf2X0GQCCKm6nX43rAopd98B-yrZjjuuXumDxDnbUBOTF95BZfWZvLhjBnSgPsu1MtbBczX2HFfhJP5_FGg';
+---
+
+<section class="relative overflow-hidden bg-inverse-surface py-section-gap text-white">
+  <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+    <div class="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h2 class="mb-4 text-headline-lg text-white">Unified Command Center</h2>
+        <p class="max-w-2xl text-body-lg text-outline-variant">
+          Real-time telemetry across all major resource vectors. A single, integrated view of our
+          ecological footprint.
+        </p>
+      </div>
+    </div>
+
+    <div class="dark-glass relative flex flex-col overflow-hidden rounded-stitch-lg border border-white/10 p-6 shadow-2xl md:p-8">
+      <div class="absolute inset-0 z-0 opacity-20" aria-hidden="true">
+        <img src={terminalBg} alt="" class="h-full w-full object-cover" loading="lazy" />
+      </div>
+
+      <div class="relative z-10">
+        <div class="mb-8 flex items-center justify-between border-b border-white/10 pb-6">
+          <div class="flex items-center gap-4">
+            <svg class="h-6 w-6 text-secondary-fixed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="14" rx="2" />
+              <path d="M8 20h8M12 18v2" />
+            </svg>
+            <span class="font-mono text-label-sm uppercase tracking-widest text-outline-variant">Global Resource Overview</span>
+          </div>
+          <div class="flex items-center gap-2 rounded-full border border-white/5 bg-black/40 px-3 py-1.5">
+            <span class="h-2 w-2 rounded-full bg-secondary-fixed" aria-hidden="true" />
+            <span class="font-mono text-[12px] text-outline-variant">Live Connection</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6 lg:gap-8">
+          {metrics.map((metric) => (
+            <a
+              href={withBase(`/dashboard/${metric.id}`)}
+              class="group flex flex-col gap-2 rounded-stitch p-3 transition hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-fixed"
+            >
+              <span class="flex items-center gap-2 font-mono text-label-sm uppercase text-outline-variant">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path d={metricIcons[metric.id]} stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                {metric.label}
+              </span>
+              <span class="text-headline-md text-white">
+                {metric.value}
+                <span class="text-body-md text-outline-variant"> {metric.unit}</span>
+              </span>
+              <div class="mt-2 h-1 w-full rounded-full bg-white/10">
+                <div class={`h-full rounded-full ${metric.barColor} transition-all group-hover:opacity-90`} style={`width: ${metric.barWidth};`} />
+              </div>
+              <div class="mt-1 flex items-end gap-0.5" aria-hidden="true">
+                {[3, 5, 4, 7, 5, 8, 6, 9].map((h, i) => (
+                  <div
+                    class="w-1 rounded-sm bg-gradient-to-t from-primary-container to-primary-fixed opacity-70"
+                    style={`height: ${h * 3}px; opacity: ${0.4 + i * 0.06};`}
+                  />
+                ))}
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="mt-12 flex justify-center border-t border-white/5 pt-8">
+          <a
+            href={withBase('/dashboard')}
+            class="inline-flex items-center gap-2 rounded-full bg-primary-fixed px-8 py-3 font-mono text-label-sm uppercase tracking-wider text-[#002117] transition hover:bg-primary-fixed-dim focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+          >
+            Access Full Terminal
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

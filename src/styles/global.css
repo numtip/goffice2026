@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,6 +45,44 @@
 
   .animate-shimmer {
     animation: shimmer 6s linear infinite;
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark-glass {
+    background: rgba(17, 24, 39, 0.85);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .text-gradient-stitch {
+    background: linear-gradient(135deg, #003527, #064e3b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .landing-mesh-bg {
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 25%, rgba(176, 240, 214, 0.35), transparent 55%),
+      radial-gradient(ellipse 70% 50% at 85% 15%, rgba(211, 228, 254, 0.25), transparent 50%),
+      radial-gradient(ellipse 60% 45% at 50% 90%, rgba(149, 211, 186, 0.2), transparent 55%),
+      linear-gradient(180deg, #eff4ff 0%, #f8f9ff 45%, #ecfdf5 100%);
+  }
+
+  .framework-connector {
+    background: linear-gradient(90deg, rgba(6, 78, 59, 0.15), rgba(0, 53, 39, 0.35), rgba(6, 78, 59, 0.15));
+  }
+
+  .journey-line {
+    background: linear-gradient(90deg, #064e3b 0%, #95d3ba 50%, #064e3b 100%);
   }
 }
 

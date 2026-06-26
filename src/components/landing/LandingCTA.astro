@@ -1,0 +1,49 @@
+---
+import { withBase } from '../../utils/with-base';
+---
+
+<section class="eco-mesh-bg py-16 md:py-24">
+  <div class="mx-auto max-w-4xl px-margin-mobile text-center md:px-margin-desktop">
+    <p class="mb-4 font-mono text-label-sm uppercase tracking-widest text-emerald-100/80">Ready to explore</p>
+    <h2 class="mb-5 text-3xl font-semibold tracking-tight text-white md:text-headline-lg">
+      Your next-generation Green Office command center
+    </h2>
+    <p class="mx-auto mb-10 max-w-2xl text-body-lg text-emerald-50/85">
+      Welcome to the next-generation Green Office dashboard — start with executive monitoring,
+      category review, or evidence discovery.
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      <a
+        href={withBase('/dashboard')}
+        class="inline-flex items-center justify-center rounded-stitch bg-emerald-500 px-6 py-3 text-label-sm font-semibold uppercase tracking-wider text-white shadow-lg transition hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200"
+      >
+        Explore Dashboard
+      </a>
+      <a
+        href={withBase('/categories')}
+        class="inline-flex items-center justify-center rounded-stitch border border-white/15 bg-white/10 px-6 py-3 text-label-sm font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+      >
+        Explore Green Office
+      </a>
+      <a
+        href={withBase('/evidence')}
+        class="inline-flex items-center justify-center rounded-stitch border border-white/15 bg-white/10 px-6 py-3 text-label-sm font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+      >
+        Evidence Library
+      </a>
+      <a
+        href={withBase('/documents')}
+        class="inline-flex items-center justify-center rounded-stitch border border-white/15 bg-white/10 px-6 py-3 text-label-sm font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+      >
+        Document Center
+      </a>
+      <a
+        href={withBase('/search')}
+        class="inline-flex items-center justify-center rounded-stitch border border-white/15 bg-white/10 px-6 py-3 text-label-sm font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+      >
+        Search
+      </a>
+    </div>
+  </div>
+</section>

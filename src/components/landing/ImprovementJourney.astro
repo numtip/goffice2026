@@ -1,0 +1,96 @@
+---
+import { withBase } from '../../utils/with-base';
+
+const stages = [
+  {
+    step: 1,
+    title: 'Policy',
+    subtitle: 'Planning & Governance',
+    description: 'Strategic commitments and organizational structure for sustainability leadership.',
+    href: '/categories/cat7',
+  },
+  {
+    step: 2,
+    title: 'Awareness',
+    subtitle: 'Communication & Training',
+    description: 'Behavioral change through campaigns, workshops, and institutional engagement.',
+    href: '/categories',
+  },
+  {
+    step: 3,
+    title: 'Resource Management',
+    subtitle: 'Energy · Water · Materials',
+    description: 'Conservation across electricity, water, fuel, and paper consumption vectors.',
+    href: '/categories/cat1',
+  },
+  {
+    step: 4,
+    title: 'Waste',
+    subtitle: 'Reduction & Recycling',
+    description: 'Segregation, diversion, and responsible disposal across campus operations.',
+    href: '/categories/cat3',
+  },
+  {
+    step: 5,
+    title: 'Safety',
+    subtitle: 'Environment & Occupant Health',
+    description: 'Indoor air quality, ergonomics, and emergency readiness standards.',
+    href: '/categories/cat5',
+  },
+  {
+    step: 6,
+    title: 'Green Procurement',
+    subtitle: 'Sustainable Purchasing',
+    description: 'Supplier evaluation and environmentally preferred purchasing policies.',
+    href: '/categories/cat6',
+  },
+  {
+    step: 7,
+    title: 'Continuous Improvement',
+    subtitle: 'Audit & Refinement',
+    description: 'Management review, target refinement, and certification readiness cycles.',
+    href: '/categories/cat7',
+  },
+];
+---
+
+<section class="landing-mesh-bg py-section-gap">
+  <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+    <div class="mb-14 text-center">
+      <p class="mb-3 font-mono text-label-sm uppercase tracking-widest text-secondary">Lifecycle Narrative</p>
+      <h2 class="mb-4 text-headline-lg text-primary">Improvement Journey</h2>
+      <p class="mx-auto max-w-2xl text-body-lg text-on-surface-variant">
+        From policy to perpetual refinement — the environmental storytelling arc that guides Maejo
+        Green Office toward institutional excellence.
+      </p>
+    </div>
+
+    <div class="relative hidden lg:block" aria-hidden="true">
+      <div class="journey-line absolute left-[7%] right-[7%] top-[2.75rem] h-0.5 rounded-full opacity-40" />
+    </div>
+
+    <ol class="grid gap-6 md:grid-cols-2 lg:grid-cols-7 lg:gap-4">
+      {stages.map((stage, index) => (
+        <li class="relative">
+          {index < stages.length - 1 && (
+            <div class="absolute left-[calc(50%+1.5rem)] top-6 hidden h-px w-[calc(100%-3rem)] bg-primary-container/25 lg:block" aria-hidden="true" />
+          )}
+          <a
+            href={withBase(stage.href)}
+            class="group flex h-full flex-col rounded-stitch-lg border border-outline-variant/20 bg-surface-container-lowest/80 p-5 shadow-sm backdrop-blur-sm transition hover:-translate-y-1 hover:border-primary-container/30 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-container"
+          >
+            <div class="mb-4 flex items-center gap-3">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
+                {stage.step}
+              </span>
+              <div class="h-px flex-1 bg-gradient-to-r from-primary-container/40 to-transparent lg:hidden" aria-hidden="true" />
+            </div>
+            <h3 class="mb-1 text-lg font-semibold text-primary group-hover:text-secondary">{stage.title}</h3>
+            <p class="mb-3 font-mono text-[11px] uppercase tracking-wider text-outline">{stage.subtitle}</p>
+            <p class="text-sm leading-relaxed text-on-surface-variant">{stage.description}</p>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

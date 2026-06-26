@@ -1,0 +1,126 @@
+---
+import { withBase } from '../../utils/with-base';
+
+interface EvidenceItem {
+  id: string;
+  title: string;
+  description: string;
+  fileType: string;
+  status: string;
+  updated: string;
+  categoryId: string;
+}
+
+interface Props {
+  items: EvidenceItem[];
+  totalItems: number;
+  availableItems: number;
+}
+
+const { items, totalItems, availableItems } = Astro.props;
+
+const vaultImage =
+  'https://lh3.googleusercontent.com/aida/AP1WRLvqfkvTkNATznp32j6WfcTos6hUaN7Pa0r2xWCfpOa5V3SJoeIvou1LtGkL7TIEys7Qut2BM7I75MgLBN-7XUAr3Vf-jyMEbslpajcnO9nIiQTwI7ZIcYJ0Sb9_J18rmAcwPIstCXNQqCW1lpdfTAGzQIDkINL5td35lxRUF2KAPzxX3pcx4_Ps5SvG-13k8npxrPjvq9MZZMjr1AxbH0ADHu5JZ0tR2Egjh0O6xoADjeepNPMph-40LJA';
+---
+
+<section class="bg-surface-container-lowest py-section-gap">
+  <div class="mx-auto grid max-w-container-max grid-cols-1 items-center gap-16 px-margin-mobile md:px-margin-desktop lg:grid-cols-2">
+    <div class="relative order-2 overflow-hidden rounded-stitch-lg shadow-xl lg:order-1">
+      <img
+        src={vaultImage}
+        alt="Green Office compliance document previews"
+        class="h-auto w-full object-cover"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/80 to-transparent p-6" aria-hidden="true">
+        <div class="grid gap-3">
+          {items.map((item) => (
+            <div class="glass-panel rounded-stitch border border-white/30 p-3">
+              <div class="mb-2 flex items-center justify-between gap-2">
+                <span class="truncate text-sm font-medium text-primary">{item.title}</span>
+                <span class="shrink-0 rounded bg-surface-container px-2 py-0.5 font-mono text-[10px] uppercase text-on-surface-variant">
+                  {item.fileType}
+                </span>
+              </div>
+              <div class="space-y-1.5" aria-hidden="true">
+                <div class="h-1.5 w-full rounded bg-surface-container-high" />
+                <div class="h-1.5 w-4/5 rounded bg-surface-container-high" />
+                <div class="h-1.5 w-3/5 rounded bg-surface-container-high" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="order-1 lg:order-2">
+      <div class="mb-6 inline-flex items-center gap-2 rounded-stitch border border-outline-variant/30 bg-surface-container px-3 py-1.5">
+        <svg class="h-4 w-4 text-[#0078d4]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6 0H12.6V0H24v11.4z" />
+        </svg>
+        <span class="font-mono text-[12px] font-medium text-on-surface-variant">Secured by SharePoint · Microsoft 365</span>
+      </div>
+
+      <h2 class="mb-6 text-headline-lg text-primary">Immutable Evidence Vault</h2>
+      <p class="mb-6 text-body-lg text-on-surface-variant">
+        Preview highlighted compliance documents from our centralized Document Center — a separate
+        Microsoft 365-backed platform for version-controlled evidence, auditor access, and category
+        mapping.
+      </p>
+
+      <dl class="mb-8 grid grid-cols-2 gap-4">
+        <div class="glass-panel rounded-stitch p-4">
+          <dt class="font-mono text-label-sm uppercase text-outline">Total Records</dt>
+          <dd class="mt-1 text-headline-md text-primary">{totalItems}</dd>
+        </div>
+        <div class="glass-panel rounded-stitch p-4">
+          <dt class="font-mono text-label-sm uppercase text-outline">Available</dt>
+          <dd class="mt-1 text-headline-md text-primary">{availableItems}</dd>
+        </div>
+      </dl>
+
+      <ul class="mb-8 space-y-4">
+        <li class="flex items-start gap-3 text-body-md text-on-surface-variant">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" />
+            <path d="M22 4L12 14.01l-3-3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Automated document mapping to matrix categories
+        </li>
+        <li class="flex items-start gap-3 text-body-md text-on-surface-variant">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" />
+            <path d="M22 4L12 14.01l-3-3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Version history and audit trails
+        </li>
+        <li class="flex items-start gap-3 text-body-md text-on-surface-variant">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" />
+            <path d="M22 4L12 14.01l-3-3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Secure external auditor access portals
+        </li>
+      </ul>
+
+      <div class="flex flex-wrap gap-3">
+        <a
+          href={withBase('/documents')}
+          class="inline-flex items-center gap-2 rounded-full border border-outline-variant/30 bg-surface-container-high px-6 py-3 font-mono text-label-sm uppercase tracking-wider text-primary transition hover:bg-surface-variant focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-container"
+        >
+          Open Document Center
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a
+          href={withBase('/evidence')}
+          class="inline-flex items-center gap-2 rounded-full border border-outline-variant/30 px-6 py-3 font-mono text-label-sm uppercase tracking-wider text-secondary transition hover:bg-surface-container-low focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
+        >
+          Browse Evidence Library
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

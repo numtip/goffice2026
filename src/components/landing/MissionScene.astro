@@ -1,0 +1,48 @@
+---
+import { withBase } from '../../utils/with-base';
+
+const campusImage =
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuACEgRv-sHtaTAnTlOVyJfWzMgEMBtNTmnYLrpZSijFkW9OPNKYUwmqZ2rRXe1KnvyvBfOlGgNUua2THZLhB5xTi7teOROuYjeg2LVkEO-YOKQM0OjLM_AR6DQtGVysFW8nm4SnEFMsZfuSVR05XYwTYPnYiTao2Yvp0DNW8Ravname-xUw_uCD6DTVjMfLCWuXQ0TN5wp0eQY8pDmlQtFtJ5kZvQEBHrLjaD3oeMIXxso8Cpi2nIPzSLUsTZx5tQ11HkjBv-r8iBE';
+---
+
+<section class="relative z-10 bg-surface-container-lowest py-section-gap">
+  <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+    <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+      <div>
+        <h2 class="mb-6 text-headline-lg text-primary md:text-[2.5rem] md:leading-[3rem]">
+          Institutional Commitment to a Sustainable Future
+        </h2>
+        <p class="mb-6 text-body-lg leading-relaxed text-on-surface-variant">
+          At Maejo University, sustainability is not a project; it is the fundamental operating system
+          of our campus. The Green Office 2026 initiative represents a comprehensive transformation in
+          how we manage resources, procure materials, and cultivate environmental awareness among our
+          staff and students.
+        </p>
+        <p class="mb-8 text-body-md leading-relaxed text-outline">
+          By integrating data-driven decision-making with strict adherence to national ecological
+          standards, we are setting a benchmark for educational institutions across the region.
+        </p>
+        <a
+          href={withBase('/categories')}
+          class="inline-flex items-center gap-2 font-mono text-label-sm uppercase tracking-wider text-secondary transition hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
+        >
+          Read the Full Mandate
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="relative overflow-hidden rounded-stitch-lg shadow-2xl">
+        <img
+          src={campusImage}
+          alt="Maejo University campus architecture"
+          class="h-auto w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" aria-hidden="true" />
+      </div>
+    </div>
+  </div>
+</section>
