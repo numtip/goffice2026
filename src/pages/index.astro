@@ -2,19 +2,167 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 import { withBase } from '../utils/with-base';
+import { dashboards } from '../data/dashboard-config';
+import categoriesData from '../data/categories.json';
+import dashboardKpi from '../data/dashboard-kpi.json';
+import evidenceIndex from '../data/evidence-index.json';
+
+import Hero from '../components/home/Hero.astro';
+import SectionHeader from '../components/home/SectionHeader.astro';
+import MetricCard from '../components/home/MetricCard.astro';
+import CategoryCard from '../components/home/CategoryCard.astro';
+import DashboardPreview from '../components/home/DashboardPreview.astro';
+import EvidencePreview from '../components/home/EvidencePreview.astro';
+
+const categoryAccents: Record<string, string> = {
+  cat1: '#059669',
+  cat2: '#0284c7',
+  cat3: '#7c3aed',
+  cat4: '#dc2626',
+  cat5: '#0d9488',
+  cat6: '#d97706',
+  cat7: '#6366f1',
+};
+
+const scoreKpis = dashboardKpi.kpis.filter((k) => k.categoryId);
+const resourceKpis = dashboardKpi.kpis.filter((k) => !k.categoryId);
+const previewEvidence = evidenceIndex.items.slice(0, 3);
+const availableItems = evidenceIndex.items.filter((i) => i.status === 'available').length;
 ---
 
 <BaseLayout title="Green Office Home">
-  <main class="p-4">
-    <h1 class="text-3xl font-bold">Green Office Platform</h1>
-    <p class="text-gray-700">Welcome to the next-generation Green Office dashboard.</p>
+  <Hero overallScore={dashboardKpi.overallScore} updated={dashboardKpi.updated} />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-      <a href={withBase('/dashboard')} class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Dashboard</a>
-      <a href={withBase('/categories')} class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Categories</a>
-      <a href={withBase('/evidence')} class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Evidence Library</a>
-      <a href={withBase('/documents')} class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Document Center</a>
-      <a href={withBase('/search')} class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Search</a>
+  <section class="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
+    <SectionHeader
+      eyebrow="Environmental Intelligence"
+      title="Executive metrics at a glance"
+      description="Track certification scores and operational indicators across energy, water, waste, emissions, and resource consumption."
+    />
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {scoreKpis.slice(0, 4).map((kpi) => (
+        <MetricCard
+          label={kpi.label}
+          value={String(kpi.value)}
+          unit={kpi.unit}
+          trend={kpi.trend as 'up' | 'down' | 'stable' | undefined}
+          description={kpi.description}
+          href={kpi.categoryId ? withBase(`/categories/${kpi.categoryId}`) : undefined}
+        />
+      ))}
     </div>
-  </main>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      {resourceKpis.map((kpi) => (
+        <MetricCard
+          label={kpi.label}
+          value={Intl.NumberFormat().format(kpi.value)}
+          unit={kpi.unit}
+          trend={kpi.trend as 'up' | 'down' | 'stable' | undefined}
+          description={kpi.description}
+          href={withBase(`/dashboard/${kpi.id}`)}
+          accent={kpi.id === 'fuel' ? 'amber' : 'violet'}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-slate-50/80 py-14 md:py-20">
+    <div class="mx-auto max-w-6xl px-4 md:px-6">
+      <SectionHeader
+        eyebrow="Operational Dashboards"
+        title="Data-driven monitoring for every resource"
+        description="Multi-year dashboards compare 2568 baseline and 2569 current operational data — aligned to Green Office certification categories."
+      />
+      <DashboardPreview dashboards={dashboards} />
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
+    <SectionHeader
+      eyebrow="7 Green Office Categories"
+      title="Certification coverage across every dimension"
+      description="Explore category scores, criteria summaries, and evidence checklists for Thailand's Green Office 2569+ framework."
+      align="center"
+    />
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {categoriesData.categories.map((category) => (
+        <CategoryCard
+          id={category.id}
+          number={category.number}
+          title={category.title}
+          shortTitle={category.shortTitle}
+          score={category.score}
+          description={category.description}
+          accent={categoryAccents[category.id] ?? '#059669'}
+        />
+      ))}
+    </div>
+    <div class="mt-8 text-center">
+      <a
+        href={withBase('/categories')}
+        class="inline-flex items-center justify-center rounded-xl border border-emerald-200 bg-emerald-50 px-5 py-3 text-sm font-semibold text-emerald-800 transition hover:bg-emerald-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+      >
+        View all categories
+      </a>
+    </div>
+  </section>
+
+  <section class="bg-gradient-to-b from-white to-emerald-50/50 py-14 md:py-20">
+    <div class="mx-auto max-w-6xl px-4 md:px-6">
+      <SectionHeader
+        eyebrow="Evidence & Discovery"
+        title="From audit-ready documents to instant search"
+        description="Maintain certification evidence, organize documents by category, and discover resources across the platform."
+      />
+      <EvidencePreview
+        items={previewEvidence}
+        totalItems={evidenceIndex.items.length}
+        availableItems={availableItems}
+      />
+    </div>
+  </section>
+
+  <section class="eco-mesh-bg py-16 md:py-20">
+    <div class="mx-auto max-w-4xl px-4 text-center md:px-6">
+      <SectionHeader
+        eyebrow="Ready to explore"
+        title="Your next-generation Green Office command center"
+        description="Welcome to the next-generation Green Office dashboard — start with executive monitoring, category review, or evidence discovery."
+        align="center"
+        light={true}
+      />
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a
+          href={withBase('/dashboard')}
+          class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200"
+        >
+          Dashboard
+        </a>
+        <a
+          href={withBase('/categories')}
+          class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        >
+          Categories
+        </a>
+        <a
+          href={withBase('/evidence')}
+          class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        >
+          Evidence Library
+        </a>
+        <a
+          href={withBase('/documents')}
+          class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        >
+          Document Center
+        </a>
+        <a
+          href={withBase('/search')}
+          class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        >
+          Search
+        </a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
