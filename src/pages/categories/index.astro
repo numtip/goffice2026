@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/global.css';
 import categoriesData from '../../data/categories.json';
+import { withBase } from '../../utils/with-base';
 ---
 
 <BaseLayout title="Categories">
@@ -11,7 +12,7 @@ import categoriesData from '../../data/categories.json';
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {categoriesData.categories.map((category) => (
         <a
-          href={`/categories/${category.id}`}
+          href={withBase(`/categories/${category.id}`)}
           class="bg-white rounded-lg shadow p-4 hover:shadow-md transition"
         >
           <h2 class="font-bold text-green-700">

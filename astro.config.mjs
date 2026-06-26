@@ -1,6 +1,20 @@
+import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
-export default {
-  ssr: false,
+const deployTarget = process.env.DEPLOY_TARGET ?? 'local';
+const isGitHubPages =
+  deployTarget === 'github-pages' || process.env.GITHUB_ACTIONS === 'true';
+
+const [owner, repo] = (process.env.GITHUB_REPOSITORY ?? 'numtip/goffice2026').split('/');
+const site = isGitHubPages
+  ? `https://${owner}.github.io`
+  : process.env.PUBLIC_SITE_URL;
+const base = isGitHubPages ? `/${repo}/` : '/';
+
+/** @type {import('astro').AstroUserConfig} */
+export default defineConfig({
+  site,
+  base,
+  output: 'static',
   integrations: [tailwind()],
-};
+});

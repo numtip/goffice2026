@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/global.css';
 import categoriesData from '../../data/categories.json';
+import { withBase } from '../../utils/with-base';
 
 export function getStaticPaths() {
   return categoriesData.categories.map((category) => ({
@@ -44,7 +45,7 @@ const headline = category.headline ?? category.title;
 
     <section class="mb-6">
       <h2 class="text-xl font-semibold">Relevant Documents</h2>
-      <a href={`/documents/${category.id}`} class="text-green-600 underline">View Documents</a>
+      <a href={withBase(`/documents/${category.id}`)} class="text-green-600 underline">View Documents</a>
     </section>
   </div>
 </BaseLayout>

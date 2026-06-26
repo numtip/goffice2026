@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 import categoriesData from '../data/categories.json';
 import evidenceIndex from '../data/evidence-index.json';
+import { withBase } from '../utils/with-base';
 
 function getDocumentCounts(categoryId: string) {
   const items = evidenceIndex.items.filter((item) => item.categoryId === categoryId);
@@ -31,7 +32,7 @@ function getDocumentCounts(categoryId: string) {
         const badgeBg = allAvailable ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-600';
         return (
           <a
-            href={`/documents/${category.id}`}
+            href={withBase(`/documents/${category.id}`)}
             class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:shadow-md hover:border-green-200 transition-all group"
           >
             <div class="flex items-start justify-between">

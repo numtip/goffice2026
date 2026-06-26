@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
+import { withBase } from '../utils/with-base';
 ---
 
 <BaseLayout title="Green Office Home">
@@ -9,11 +10,11 @@ import '../styles/global.css';
     <p class="text-gray-700">Welcome to the next-generation Green Office dashboard.</p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-      <a href="/dashboard" class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Dashboard</a>
-      <a href="/categories" class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Categories</a>
-      <a href="/evidence" class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Evidence Library</a>
-      <a href="/documents" class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Document Center</a>
-      <a href="/search" class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Search</a>
+      <a href={withBase('/dashboard')} class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Dashboard</a>
+      <a href={withBase('/categories')} class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Categories</a>
+      <a href={withBase('/evidence')} class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Evidence Library</a>
+      <a href={withBase('/documents')} class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Document Center</a>
+      <a href={withBase('/search')} class="bg-green-100 hover:bg-green-200 rounded-lg p-4 transition">Search</a>
     </div>
   </main>
 </BaseLayout>
