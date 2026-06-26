@@ -33,33 +33,39 @@ const activities = [
 ];
 ---
 
-<section class="bg-surface py-section-gap">
-  <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-    <div class="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+<section class="landing-section relative bg-surface" aria-labelledby="activities-scene-title">
+  <div class="pointer-events-none absolute inset-x-0 -top-16 h-16 bg-gradient-to-b from-surface-container-lowest to-surface" aria-hidden="true" />
+
+  <div class="landing-container">
+    <div class="landing-reveal mb-10 flex flex-col gap-3 sm:mb-12 sm:gap-4 md:flex-row md:items-end md:justify-between">
       <div>
-        <h2 class="mb-2 text-headline-lg text-primary">The Environmental Journey</h2>
-        <p class="text-body-lg text-on-surface-variant">Latest activities, campaigns, awareness, and training milestones.</p>
+        <h2 id="activities-scene-title" class="landing-heading mb-2">The Environmental Journey</h2>
+        <p class="text-body-md text-on-surface-variant sm:text-body-lg">
+          Latest activities, campaigns, awareness, and training milestones.
+        </p>
       </div>
       <p class="font-mono text-label-sm uppercase tracking-wider text-outline">Editorial Highlights</p>
     </div>
 
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+    <div class="landing-stagger grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 xl:grid-cols-3" role="list" aria-label="Recent environmental activities">
       {activities.map((activity) => (
-        <article class="group">
-          <div class="relative mb-6 h-64 overflow-hidden rounded-stitch-lg bg-surface-container-high">
-            <div class="absolute inset-0 z-10 bg-primary/5 transition-colors group-hover:bg-transparent" aria-hidden="true" />
+        <article class="landing-reveal group" role="listitem">
+          <div class="relative mb-5 aspect-[4/3] overflow-hidden rounded-stitch-lg bg-surface-container-high sm:mb-6 sm:h-64 sm:aspect-auto">
+            <div class="absolute inset-0 z-10 bg-primary/5 transition-colors duration-300 group-hover:bg-transparent" aria-hidden="true" />
             <img
               src={activity.image}
               alt={activity.alt}
-              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+              width="800"
+              height="600"
+              class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
               loading="lazy"
               decoding="async"
             />
           </div>
-          <p class="mb-2 block font-mono text-[12px] text-outline">
-            {activity.date} · {activity.category}
+          <p class="mb-2 block font-mono text-[11px] text-outline sm:text-[12px]">
+            <time>{activity.date}</time> · {activity.category}
           </p>
-          <h3 class="mb-3 text-xl font-semibold text-primary transition-colors group-hover:text-secondary">
+          <h3 class="mb-2 text-lg font-semibold text-primary transition-colors duration-300 group-hover:text-secondary sm:mb-3 sm:text-xl">
             {activity.title}
           </h3>
           <p class="line-clamp-2 text-sm leading-relaxed text-on-surface-variant">{activity.excerpt}</p>

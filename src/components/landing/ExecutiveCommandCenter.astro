@@ -63,61 +63,74 @@ const terminalBg =
   'https://lh3.googleusercontent.com/aida/AP1WRLtkZ1wlcygyjubO1VjDBShaK7DTL8pdbt5-gNJaoULnscCd27cFcEBd912dtoPrPxYLPjG2N8sbE8wM9Pdpa0_1lkjLc-fqSK_GyQ4lHq0GE71xZfYV6etomoLknSScCxyhPvEHGuaXDnh5N4bSY-SfXDltaM_IEt_ghV9Mf2X0GQCCKm6nX43rAopd98B-yrZjjuuXumDxDnbUBOTF95BZfWZvLhjBnSgPsu1MtbBczX2HFfhJP5_FGg';
 ---
 
-<section class="relative overflow-hidden bg-inverse-surface py-section-gap text-white">
-  <div class="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-    <div class="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+<section
+  class="landing-section relative overflow-hidden bg-inverse-surface text-white"
+  aria-labelledby="command-center-title"
+>
+  <div class="pointer-events-none absolute inset-x-0 -top-16 h-16 landing-scene-bridge-dark-top" aria-hidden="true" />
+
+  <div class="landing-container">
+    <div class="landing-reveal mb-10 flex flex-col gap-4 sm:mb-12 sm:gap-6 md:flex-row md:items-end md:justify-between">
       <div>
-        <h2 class="mb-4 text-headline-lg text-white">Unified Command Center</h2>
-        <p class="max-w-2xl text-body-lg text-outline-variant">
+        <h2 id="command-center-title" class="landing-heading mb-3 text-white sm:mb-4">
+          Unified Command Center
+        </h2>
+        <p class="max-w-2xl text-body-md text-outline-variant sm:text-body-lg">
           Real-time telemetry across all major resource vectors. A single, integrated view of our
           ecological footprint.
         </p>
       </div>
+      <p class="font-mono text-label-sm uppercase tracking-wider text-outline-variant">Dashboard Preview</p>
     </div>
 
-    <div class="dark-glass relative flex flex-col overflow-hidden rounded-stitch-lg border border-white/10 p-6 shadow-2xl md:p-8">
+    <div class="landing-reveal dark-glass relative flex flex-col overflow-hidden rounded-stitch-lg border border-white/10 p-5 shadow-2xl sm:p-6 md:p-8">
       <div class="absolute inset-0 z-0 opacity-20" aria-hidden="true">
-        <img src={terminalBg} alt="" class="h-full w-full object-cover" loading="lazy" />
+        <img src={terminalBg} alt="" width="1600" height="900" class="h-full w-full object-cover" loading="lazy" decoding="async" />
       </div>
 
       <div class="relative z-10">
-        <div class="mb-8 flex items-center justify-between border-b border-white/10 pb-6">
-          <div class="flex items-center gap-4">
-            <svg class="h-6 w-6 text-secondary-fixed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <div class="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-5 sm:mb-8 sm:pb-6">
+          <div class="flex items-center gap-3 sm:gap-4">
+            <svg class="h-5 w-5 text-secondary-fixed sm:h-6 sm:w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <rect x="3" y="4" width="18" height="14" rx="2" />
               <path d="M8 20h8M12 18v2" />
             </svg>
             <span class="font-mono text-label-sm uppercase tracking-widest text-outline-variant">Global Resource Overview</span>
           </div>
           <div class="flex items-center gap-2 rounded-full border border-white/5 bg-black/40 px-3 py-1.5">
-            <span class="h-2 w-2 rounded-full bg-secondary-fixed" aria-hidden="true" />
+            <span class="h-2 w-2 rounded-full bg-secondary-fixed animate-pulse" aria-hidden="true" />
             <span class="font-mono text-[12px] text-outline-variant">Live Connection</span>
           </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6 lg:gap-8">
+        <div class="landing-stagger grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-6 lg:gap-8" role="list" aria-label="Resource metrics preview">
           {metrics.map((metric) => (
             <a
               href={withBase(`/dashboard/${metric.id}`)}
-              class="group flex flex-col gap-2 rounded-stitch p-3 transition hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-fixed"
+              role="listitem"
+              class="landing-reveal dashboard-metric-highlight group flex flex-col gap-2 p-2 sm:p-3"
+              aria-label={`${metric.label}: ${metric.value} ${metric.unit}`}
             >
-              <span class="flex items-center gap-2 font-mono text-label-sm uppercase text-outline-variant">
-                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <span class="flex items-center gap-2 font-mono text-[11px] uppercase text-outline-variant sm:text-label-sm">
+                <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                   <path d={metricIcons[metric.id]} stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 {metric.label}
               </span>
-              <span class="text-headline-md text-white">
+              <span class="text-lg font-semibold text-white sm:text-headline-md">
                 {metric.value}
-                <span class="text-body-md text-outline-variant"> {metric.unit}</span>
+                <span class="text-sm text-outline-variant sm:text-body-md"> {metric.unit}</span>
               </span>
-              <div class="mt-2 h-1 w-full rounded-full bg-white/10">
-                <div class={`h-full rounded-full ${metric.barColor} transition-all group-hover:opacity-90`} style={`width: ${metric.barWidth};`} />
+              <div class="mt-1 h-1 w-full overflow-hidden rounded-full bg-white/10 sm:mt-2">
+                <div
+                  class={`landing-metric-bar h-full rounded-full ${metric.barColor}`}
+                  style={`width: ${metric.barWidth};`}
+                />
               </div>
-              <div class="mt-1 flex items-end gap-0.5" aria-hidden="true">
+              <div class="mt-1 hidden items-end gap-0.5 sm:flex" aria-hidden="true">
                 {[3, 5, 4, 7, 5, 8, 6, 9].map((h, i) => (
                   <div
-                    class="w-1 rounded-sm bg-gradient-to-t from-primary-container to-primary-fixed opacity-70"
+                    class="w-1 rounded-sm bg-gradient-to-t from-primary-container to-primary-fixed opacity-70 transition-opacity group-hover:opacity-100"
                     style={`height: ${h * 3}px; opacity: ${0.4 + i * 0.06};`}
                   />
                 ))}
@@ -126,10 +139,10 @@ const terminalBg =
           ))}
         </div>
 
-        <div class="mt-12 flex justify-center border-t border-white/5 pt-8">
+        <div class="mt-10 flex justify-center border-t border-white/5 pt-7 sm:mt-12 sm:pt-8">
           <a
             href={withBase('/dashboard')}
-            class="inline-flex items-center gap-2 rounded-full bg-primary-fixed px-8 py-3 font-mono text-label-sm uppercase tracking-wider text-[#002117] transition hover:bg-primary-fixed-dim focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            class="inline-flex items-center gap-2 rounded-full bg-primary-fixed px-6 py-3 font-mono text-label-sm uppercase tracking-wider text-[#002117] shadow-lg transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary-fixed-dim focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 sm:px-8"
           >
             Access Full Terminal
             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

@@ -19,7 +19,7 @@ const availableItems = evidenceIndex.items.filter((i) => i.status === 'available
 ---
 
 <BaseLayout title="Green Office Home">
-  <div class="landing-page -mt-8 bg-surface text-on-surface">
+  <div class="landing-page -mt-8 overflow-x-clip bg-surface text-on-surface">
     <LandingHero overallScore={dashboardKpi.overallScore} />
     <MissionScene />
     <ExecutiveCommandCenter />
@@ -34,3 +34,7 @@ const availableItems = evidenceIndex.items.filter((i) => i.status === 'available
     <LandingCTA />
   </div>
 </BaseLayout>
+
+<script>
+  import '../scripts/landing-motion.ts';
+</script>

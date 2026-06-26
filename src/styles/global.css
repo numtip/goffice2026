@@ -8,6 +8,61 @@
   html {
     @apply scroll-smooth;
   }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid #064e3b;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .landing-section {
+    @apply relative py-section-gap;
+  }
+
+  .landing-container {
+    @apply mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop;
+  }
+
+  .landing-heading {
+    @apply text-3xl font-semibold tracking-tight text-primary md:text-headline-lg;
+  }
+
+  .landing-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-primary-container/20 bg-primary/90 px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-white shadow-lg backdrop-blur-md transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary hover:shadow-xl focus-visible:ring-2 focus-visible:ring-primary-fixed focus-visible:ring-offset-2;
+  }
+
+  .landing-btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-outline-variant/30 px-6 py-3 text-label-sm font-medium uppercase tracking-wider transition duration-300 ease-out hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-primary-container focus-visible:ring-offset-2;
+  }
+
+  .landing-btn-glass {
+    @apply glass-panel inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-primary transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-white/90 hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary-container focus-visible:ring-offset-2;
+  }
+
+  .landing-card-interactive {
+    @apply transition duration-300 ease-out hover:-translate-y-1 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-primary-container focus-visible:ring-offset-2;
+  }
+
+  .landing-glass-hover {
+    @apply transition duration-300 ease-out hover:border-white/50 hover:bg-white/85 hover:shadow-lg;
+  }
+
+  .landing-scene-bridge-top {
+    background: linear-gradient(180deg, rgba(248, 249, 255, 0) 0%, rgba(248, 249, 255, 1) 100%);
+  }
+
+  .landing-scene-bridge-dark-top {
+    background: linear-gradient(180deg, rgba(33, 49, 69, 0) 0%, rgba(33, 49, 69, 1) 100%);
+  }
+
+  .landing-scene-bridge-light-top {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(239, 244, 255, 1) 100%);
+  }
 }
 
 @layer utilities {
@@ -17,6 +72,11 @@
       radial-gradient(ellipse 70% 50% at 90% 10%, rgba(14, 165, 233, 0.14), transparent 50%),
       radial-gradient(ellipse 60% 45% at 50% 100%, rgba(16, 185, 129, 0.12), transparent 55%),
       linear-gradient(160deg, #04130a 0%, #0b2e1c 38%, #0f172a 100%);
+  }
+
+  .eco-mesh-bg-ambient {
+    background-size: 120% 120%;
+    animation: ambient-shift 18s ease-in-out infinite;
   }
 
   .glass-card {
@@ -77,12 +137,59 @@
       linear-gradient(180deg, #eff4ff 0%, #f8f9ff 45%, #ecfdf5 100%);
   }
 
+  .landing-mesh-bg-ambient {
+    background-size: 120% 120%;
+    animation: ambient-shift 20s ease-in-out infinite;
+  }
+
   .framework-connector {
     background: linear-gradient(90deg, rgba(6, 78, 59, 0.15), rgba(0, 53, 39, 0.35), rgba(6, 78, 59, 0.15));
   }
 
   .journey-line {
     background: linear-gradient(90deg, #064e3b 0%, #95d3ba 50%, #064e3b 100%);
+  }
+
+  .landing-reveal {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition:
+      opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .landing-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .landing-stagger > .landing-reveal:nth-child(1) { transition-delay: 0ms; }
+  .landing-stagger > .landing-reveal:nth-child(2) { transition-delay: 80ms; }
+  .landing-stagger > .landing-reveal:nth-child(3) { transition-delay: 160ms; }
+  .landing-stagger > .landing-reveal:nth-child(4) { transition-delay: 240ms; }
+  .landing-stagger > .landing-reveal:nth-child(5) { transition-delay: 320ms; }
+  .landing-stagger > .landing-reveal:nth-child(6) { transition-delay: 400ms; }
+  .landing-stagger > .landing-reveal:nth-child(7) { transition-delay: 480ms; }
+
+  .landing-metric-bar {
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .landing-reveal.is-visible .landing-metric-bar,
+  .is-visible .landing-metric-bar {
+    transform: scaleX(1);
+  }
+
+  .dashboard-metric-highlight {
+    @apply rounded-stitch ring-1 ring-transparent transition duration-300 ease-out;
+  }
+
+  .dashboard-metric-highlight:hover,
+  .dashboard-metric-highlight:focus-visible {
+    @apply bg-white/10 ring-primary-fixed/40 shadow-[0_0_24px_rgba(111,251,190,0.12)];
   }
 }
 
@@ -115,11 +222,54 @@
   }
 }
 
+@keyframes ambient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .animate-float-slow,
   .animate-float-delayed,
   .animate-pulse-glow,
-  .animate-shimmer {
+  .animate-shimmer,
+  .animate-pulse,
+  .eco-mesh-bg-ambient,
+  .landing-mesh-bg-ambient {
     animation: none;
+  }
+
+  .landing-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .landing-metric-bar {
+    transform: scaleX(1);
+    transition: none;
+  }
+
+  .landing-card-interactive,
+  .landing-btn-primary,
+  .landing-btn-ghost,
+  .landing-btn-glass,
+  .dashboard-metric-highlight {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 374px) {
+  .landing-hero-title {
+    font-size: 2rem;
+    line-height: 2.375rem;
   }
 }

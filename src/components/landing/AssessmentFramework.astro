@@ -20,58 +20,69 @@ const droneBg =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDzUHXDO1n4ZfBGpBdy5geSwVDTjPRTvY7z52AV3r5iiyCxqJw8o1y2lW5axHTpjNTY8GAbXP5mLbyJBbPy8V5Kpxf4kEWIQGfGxEgvIuQkU_471M2V-wfxDX3LbMC2_ahsa1YdSgwq_VMZhPio9tpJ890IHfrDolGppaF1pmxRLJ6DHApWGTAmYWWH0CbZQJZpg0TESVqsDAFtKd5I9LAxPRoYDD1sLYI1e4hSnGV0nVZ10JaAEZQJRIpFqCSpB4ZNJu1Tcms1kp4';
 ---
 
-<section class="relative overflow-hidden bg-surface py-section-gap">
+<section
+  class="landing-section relative overflow-hidden bg-surface"
+  aria-labelledby="assessment-framework-title"
+>
+  <div class="pointer-events-none absolute inset-x-0 -top-16 h-16 bg-gradient-to-b from-inverse-surface/0 to-surface" aria-hidden="true" />
+
   <div class="absolute inset-0 z-0 opacity-10" aria-hidden="true">
-    <img src={droneBg} alt="" class="h-full w-full object-cover" loading="lazy" />
+    <img src={droneBg} alt="" width="1920" height="1080" class="h-full w-full object-cover" loading="lazy" decoding="async" />
   </div>
 
-  <div class="relative z-10 mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-    <div class="mb-16 text-center">
-      <h2 class="mb-4 text-headline-lg text-primary">Assessment Matrix Framework</h2>
-      <p class="mx-auto max-w-2xl text-body-lg text-on-surface-variant">
+  <div class="landing-container relative z-10">
+    <div class="landing-reveal mb-12 text-center sm:mb-16">
+      <h2 id="assessment-framework-title" class="landing-heading mb-3 sm:mb-4">Assessment Matrix Framework</h2>
+      <p class="mx-auto max-w-2xl text-body-md text-on-surface-variant sm:text-body-lg">
         Seven certification dimensions — systematically tracked, connected, and validated across the
         Green Office 2569+ program.
       </p>
     </div>
 
     <div class="relative mx-auto max-w-5xl">
-      <div class="framework-connector absolute left-1/2 top-1/2 hidden h-px w-[78%] -translate-x-1/2 -translate-y-1/2 lg:block" aria-hidden="true" />
-      <div class="framework-connector absolute left-1/2 top-1/2 hidden h-[68%] w-px -translate-x-1/2 -translate-y-1/2 lg:block" aria-hidden="true" />
+      <div class="framework-connector absolute left-1/2 top-1/2 hidden h-px w-[78%] -translate-x-1/2 -translate-y-1/2 xl:block" aria-hidden="true" />
+      <div class="framework-connector absolute left-1/2 top-1/2 hidden h-[68%] w-px -translate-x-1/2 -translate-y-1/2 xl:block" aria-hidden="true" />
 
-      <div class="relative mb-10 flex justify-center">
-        <div class="glass-panel rounded-full border border-primary-container/20 px-8 py-4 text-center shadow-lg">
+      <div class="landing-reveal relative mb-8 flex justify-center sm:mb-10">
+        <div class="glass-panel landing-glass-hover rounded-full border border-primary-container/20 px-6 py-3 text-center shadow-lg sm:px-8 sm:py-4">
           <p class="font-mono text-label-sm uppercase tracking-widest text-primary">Green Office 2569+</p>
-          <p class="mt-1 text-headline-md text-primary">Connected Assessment System</p>
+          <p class="mt-1 text-lg font-semibold text-primary sm:text-headline-md">Connected Assessment System</p>
         </div>
       </div>
 
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="landing-stagger grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4" role="list" aria-label="Certification categories">
         {categories.map((category, index) => {
           const isHighlight = index === categories.length - 1;
           return (
             <a
               href={withBase(`/categories/${category.id}`)}
+              role="listitem"
               class:list={[
-                'glass-panel group relative rounded-stitch-lg border p-5 transition hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-container',
-                isHighlight ? 'border-primary-container/30 bg-surface-container-low sm:col-span-2 lg:col-span-2' : 'border-outline-variant/20',
+                'landing-reveal glass-panel landing-card-interactive group relative rounded-stitch-lg border p-4 sm:p-5',
+                isHighlight ? 'border-primary-container/30 bg-surface-container-low sm:col-span-2 lg:col-span-2' : 'border-outline-variant/20 landing-glass-hover',
               ]}
+              aria-label={`Category ${category.number}: ${category.title}, score ${category.score} percent`}
             >
               <div class="mb-3 flex items-center justify-between gap-3">
                 <span
                   class:list={[
-                    'flex h-10 w-10 items-center justify-center rounded-stitch text-sm font-bold',
+                    'flex h-9 w-9 items-center justify-center rounded-stitch text-sm font-bold sm:h-10 sm:w-10',
                     isHighlight ? 'bg-primary text-white' : 'bg-surface-container text-primary',
                   ]}
                 >
                   {category.number}
                 </span>
-                <span class="font-mono text-mono-data text-primary">{category.score}%</span>
+                <span class="font-mono text-mono-data text-primary">
+                  <span data-count-up={category.score} data-count-suffix="%">0%</span>
+                </span>
               </div>
-              <h3 class="mb-2 text-lg font-semibold text-primary group-hover:text-secondary">{category.shortTitle}</h3>
+              <h3 class="mb-2 text-base font-semibold text-primary transition-colors group-hover:text-secondary sm:text-lg">
+                {category.shortTitle}
+              </h3>
               <p class="text-sm leading-relaxed text-on-surface-variant">{category.description}</p>
               <div class="mt-4 h-1 overflow-hidden rounded-full bg-surface-container">
                 <div
-                  class="h-full rounded-full bg-gradient-to-r from-primary-container to-secondary-fixed"
+                  class="landing-metric-bar h-full rounded-full bg-gradient-to-r from-primary-container to-secondary-fixed"
                   style={`width: ${category.score}%;`}
                 />
               </div>
@@ -80,11 +91,8 @@ const droneBg =
         })}
       </div>
 
-      <div class="mt-10 text-center">
-        <a
-          href={withBase('/categories')}
-          class="inline-flex items-center gap-2 rounded-full border border-outline-variant/30 bg-surface-container-high px-6 py-3 font-mono text-label-sm uppercase tracking-wider text-primary transition hover:bg-surface-variant focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-container"
-        >
+      <div class="landing-reveal mt-8 text-center sm:mt-10">
+        <a href={withBase('/categories')} class="landing-btn-ghost bg-surface-container-high text-primary hover:bg-surface-variant">
           View Full Framework
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />

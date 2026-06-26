@@ -2,48 +2,49 @@
 import { withBase } from '../../utils/with-base';
 ---
 
-<section class="eco-mesh-bg py-16 md:py-24">
-  <div class="mx-auto max-w-4xl px-margin-mobile text-center md:px-margin-desktop">
-    <p class="mb-4 font-mono text-label-sm uppercase tracking-widest text-emerald-100/80">Ready to explore</p>
-    <h2 class="mb-5 text-3xl font-semibold tracking-tight text-white md:text-headline-lg">
+<section class="relative eco-mesh-bg eco-mesh-bg-ambient py-14 sm:py-16 md:py-24" aria-labelledby="landing-cta-title">
+  <div class="pointer-events-none absolute inset-x-0 -top-16 h-16 bg-gradient-to-b from-[#ecfdf5]/0 to-[#04130a]/20" aria-hidden="true" />
+
+  <div class="landing-container max-w-4xl text-center">
+    <p class="landing-reveal mb-3 font-mono text-label-sm uppercase tracking-widest text-emerald-100/80 sm:mb-4">
+      Ready to explore
+    </p>
+    <h2 id="landing-cta-title" class="landing-reveal landing-heading mb-4 text-white sm:mb-5">
       Your next-generation Green Office command center
     </h2>
-    <p class="mx-auto mb-10 max-w-2xl text-body-lg text-emerald-50/85">
+    <p class="landing-reveal mx-auto mb-8 max-w-2xl text-body-md text-emerald-50/85 sm:mb-10 sm:text-body-lg">
       Welcome to the next-generation Green Office dashboard — start with executive monitoring,
       category review, or evidence discovery.
     </p>
 
-    <div class="flex flex-wrap items-center justify-center gap-3">
-      <a
-        href={withBase('/dashboard')}
-        class="inline-flex items-center justify-center rounded-stitch bg-emerald-500 px-6 py-3 text-label-sm font-semibold uppercase tracking-wider text-white shadow-lg transition hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200"
-      >
+    <nav class="landing-reveal landing-stagger flex flex-wrap items-center justify-center gap-2 sm:gap-3" aria-label="Primary destinations">
+      <a href={withBase('/dashboard')} class="landing-btn-primary bg-emerald-500 hover:bg-emerald-400 focus-visible:ring-emerald-200">
         Explore Dashboard
       </a>
       <a
         href={withBase('/categories')}
-        class="inline-flex items-center justify-center rounded-stitch border border-white/15 bg-white/10 px-6 py-3 text-label-sm font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        class="landing-btn-glass border-white/15 bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40"
       >
         Explore Green Office
       </a>
       <a
         href={withBase('/evidence')}
-        class="inline-flex items-center justify-center rounded-stitch border border-white/15 bg-white/10 px-6 py-3 text-label-sm font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        class="landing-btn-glass border-white/15 bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40"
       >
         Evidence Library
       </a>
       <a
         href={withBase('/documents')}
-        class="inline-flex items-center justify-center rounded-stitch border border-white/15 bg-white/10 px-6 py-3 text-label-sm font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        class="landing-btn-glass border-white/15 bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40"
       >
         Document Center
       </a>
       <a
         href={withBase('/search')}
-        class="inline-flex items-center justify-center rounded-stitch border border-white/15 bg-white/10 px-6 py-3 text-label-sm font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        class="landing-btn-glass border-white/15 bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40"
       >
         Search
       </a>
-    </div>
+    </nav>
   </div>
 </section>
