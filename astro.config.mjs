@@ -2,8 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 const deployTarget = process.env.DEPLOY_TARGET ?? 'local';
-const isGitHubPages =
-  deployTarget === 'github-pages' || process.env.GITHUB_ACTIONS === 'true';
+const isGitHubPages = deployTarget === 'github-pages';
 
 const [owner, repo] = (process.env.GITHUB_REPOSITORY ?? 'numtip/goffice2026').split('/');
 const site = isGitHubPages
@@ -17,4 +16,11 @@ export default defineConfig({
   base,
   output: 'static',
   integrations: [tailwind()],
+  vite: {
+    define: {
+      'import.meta.env.PUBLIC_PREVIEW_BADGE': JSON.stringify(
+        process.env.PUBLIC_PREVIEW_BADGE === 'true'
+      ),
+    },
+  },
 });

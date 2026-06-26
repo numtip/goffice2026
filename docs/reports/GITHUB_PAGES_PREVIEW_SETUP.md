@@ -2,7 +2,8 @@
 
 **Date:** 2026-06-26  
 **Project:** Green Office Platform (`goffice2026`)  
-**Status:** Preview deployment configured — production unchanged
+**Branch:** `master`  
+**Status:** Preview deployment finalized — production unchanged
 
 ---
 
@@ -23,91 +24,99 @@ GitHub → GitHub Actions → GitHub Pages (Preview) → Manual VPS → greenoff
 
 ---
 
+## Governance Links
+
+| Document | Purpose |
+|----------|---------|
+| [ADR-0002: GitHub Pages as Preview Only](../adr/ADR-0002_GITHUB_PAGES_PREVIEW.md) | Architecture decision |
+| [Preview Release Runbook](../runbooks/PREVIEW_RELEASE.md) | End-to-end preview → production process |
+
+---
+
 ## Changes Made
 
 ### 1. Astro configuration (`astro.config.mjs`)
 
 Environment-aware `site` and `base` — no hardcoded production URLs:
 
-| `DEPLOY_TARGET` | `site` | `base` |
-|-----------------|--------|--------|
-| `local` (default) | `PUBLIC_SITE_URL` or unset | `/` |
-| `github-pages` | `https://<owner>.github.io` | `/<repo>/` |
+| `DEPLOY_TARGET` | `site` | `base` | Preview badge |
+|-----------------|--------|--------|---------------|
+| `local` (default) | `PUBLIC_SITE_URL` or unset | `/` | Hidden |
+| `github-pages` | `https://<owner>.github.io` | `/<repo>/` | Shown |
 
 - CI sets `DEPLOY_TARGET=github-pages`.
 - `GITHUB_REPOSITORY` (set automatically in Actions) drives owner/repo resolution.
-- Local fallback: `numtip/goffice2026`.
+- Local fallback only: `numtip/goffice2026`.
+- Optional local badge test: `PUBLIC_PREVIEW_BADGE=true`.
 
 ### 2. GitHub Actions workflow (`.github/workflows/deploy-pages.yml`)
 
-- Triggers: push to `master`, `workflow_dispatch`
-- Build job: `npm ci` → `npm run build` with `DEPLOY_TARGET=github-pages`
-- Deploy job: official `actions/deploy-pages@v4`
-- Permissions: `pages: write`, `id-token: write`
+- Branch trigger: `master`
+- Manual trigger: `workflow_dispatch`
+- Node 20, `npm ci`
+- Build env: `DEPLOY_TARGET=github-pages`
+- Pages actions:
+  - `actions/configure-pages@v5`
+  - `actions/upload-pages-artifact@v3`
+  - `actions/deploy-pages@v4`
+- Deploy environment: `github-pages`
+- Environment URL: `${{ steps.deployment.outputs.page_url }}`
 
 ### 3. Base-path link helper (`src/utils/with-base.ts`)
 
 Internal navigation and document links use `withBase()` so routes resolve under the GitHub Pages subpath (`/goffice2026/`) while remaining `/` for local and production VPS builds.
 
-Updated components/pages: `Navigation.astro`, home, dashboard, categories, documents, evidence cards.
+Safeguards:
+
+- Skips external URLs (`http`, `https`, `mailto`, `tel`)
+- Skips anchors (`#...`)
+- Avoids double-prefix when path already includes `BASE_URL`
+
+### 4. Preview badge (`src/components/ui/PreviewBadge.astro`)
+
+Shown only when:
+
+- `DEPLOY_TARGET=github-pages`, or
+- `PUBLIC_PREVIEW_BADGE=true`
+
+Hidden in default/VPS production builds. Fixed-position, accessible, mobile-safe badge text:
+
+- **PREVIEW**
+- GitHub Pages
 
 ---
 
 ## Verification Results
 
-### Build PASS
+### Latest QA (2026-06-26)
 
-```powershell
-cd G:\ProjectAI\goffice2026
-npm run check    # 0 errors, 0 warnings
-npm run build    # 26 static pages, exit 0
-```
+| Check | Result |
+|-------|--------|
+| `rtk npm run check` | PASS — 0 errors, 0 warnings, 0 hints |
+| `rtk npm run build` (default) | PASS — 26 pages, exit 0 |
+| Pages-mode build (`DEPLOY_TARGET=github-pages`) | PASS — 26 pages, exit 0 |
+| `dist/index.html` | Present |
+| Pages links/assets use `/goffice2026/` | Verified in `dist/index.html` |
+| Preview badge in Pages build | Present (`role="status"`, GitHub Pages label) |
+| 26 static pages | Confirmed |
 
-### Dist PASS (local default)
+### Runtime Preview (default build)
 
-- `dist/index.html` present
-- Route folders: `categories/`, `dashboard/`, `documents/`, `evidence/`, `search/`
-- 26 HTML files generated (13 core routes + detail pages)
-
-### Dist PASS (GitHub Pages mode)
-
-```powershell
-$env:DEPLOY_TARGET = 'github-pages'
-npm run build
-```
-
-- Asset and nav links prefixed with `/goffice2026/` (verified in `dist/index.html`)
-- 26 HTML files generated
-
-### Runtime Preview PASS (local default)
-
-```powershell
-npm run preview -- --host 127.0.0.1 --port 4321
-```
-
-All 13 core routes returned HTTP 200:
+All 13 core routes previously returned HTTP 200 on local preview:
 
 `/`, `/dashboard`, `/categories`, `/categories/cat1`–`cat7`, `/evidence`, `/documents`, `/search`
 
-> **Note:** `astro preview` serves the default build at `/`. GitHub Pages serves the same artifact at `https://numtip.github.io/goffice2026/`; subpath behavior is validated via the Pages-mode dist output.
+> **Note:** `astro preview` serves the default build at `/`. GitHub Pages serves the Pages-mode artifact at `https://numtip.github.io/goffice2026/`.
 
 ---
 
 ## GitHub Pages Enablement
 
-### Automated (if `gh` has admin access)
-
-```powershell
-gh api repos/numtip/goffice2026/pages -X POST -f build_type=workflow
-```
-
-Or via UI: **Settings → Pages → Build and deployment → Source: GitHub Actions**
-
-### Manual step (if API/settings blocked)
+### Manual step (if preview 404)
 
 1. Open https://github.com/numtip/goffice2026/settings/pages
 2. Under **Build and deployment**, set **Source** to **GitHub Actions**
-3. After the first workflow run on `master`, the preview URL appears in the Actions deploy job and under **Environments → github-pages**
+3. After the next workflow run on `master`, use the deploy job URL
 
 No custom domain should be configured for preview. Do **not** point `greenoffice.mju.ac.th` at GitHub Pages.
 
@@ -118,7 +127,7 @@ No custom domain should be configured for preview. Do **not** point `greenoffice
 VPS production build uses default local settings:
 
 ```powershell
-# Optional canonical URL for sitemap/OG tags only
+Remove-Item Env:DEPLOY_TARGET -ErrorAction SilentlyContinue
 $env:PUBLIC_SITE_URL = 'https://greenoffice.mju.ac.th'
 npm run build
 # Deploy dist/ to VPS manually — separate process
@@ -130,19 +139,14 @@ npm run build
 
 | File | Action |
 |------|--------|
-| `astro.config.mjs` | Modified — env-aware site/base |
-| `.github/workflows/deploy-pages.yml` | Added |
-| `src/utils/with-base.ts` | Added |
-| `src/components/ui/Navigation.astro` | Modified |
-| `src/components/evidence/EvidenceCard.astro` | Modified |
-| `src/pages/index.astro` | Modified |
-| `src/pages/dashboard.astro` | Modified |
-| `src/pages/dashboard/[id].astro` | Modified |
-| `src/pages/categories/index.astro` | Modified |
-| `src/pages/categories/[id].astro` | Modified |
-| `src/pages/documents.astro` | Modified |
-| `src/pages/documents/[id].astro` | Modified |
-| `docs/reports/GITHUB_PAGES_PREVIEW_SETUP.md` | Added (this report) |
+| `astro.config.mjs` | Modified — env-aware site/base + preview badge flag |
+| `.github/workflows/deploy-pages.yml` | Modified — added `configure-pages@v5` |
+| `src/utils/with-base.ts` | Modified — external/anchor/double-prefix guards |
+| `src/components/ui/PreviewBadge.astro` | Added |
+| `src/layouts/BaseLayout.astro` | Modified — render preview badge |
+| `docs/adr/ADR-0002_GITHUB_PAGES_PREVIEW.md` | Added |
+| `docs/runbooks/PREVIEW_RELEASE.md` | Added |
+| `docs/reports/GITHUB_PAGES_PREVIEW_SETUP.md` | Updated (this report) |
 
 ---
 
@@ -151,12 +155,12 @@ npm run build
 - [x] No VPS deployment
 - [x] No production server edits
 - [x] No DNS changes
+- [x] No custom domain for preview
 - [x] No `greenoffice.mju.ac.th` configuration changes
 - [x] Static-first preserved (no API/database added)
-- [x] Build and preview QA passed locally
 
 ---
 
-## Preview URL (after first successful workflow run)
+## Preview URL
 
 **https://numtip.github.io/goffice2026/**
