@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -38,6 +38,7 @@ jobs:
         run: npm run build
         env:
           DEPLOY_TARGET: github-pages
+          PUBLIC_PREVIEW_BADGE: "true"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

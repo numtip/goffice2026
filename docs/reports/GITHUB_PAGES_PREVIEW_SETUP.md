@@ -54,7 +54,8 @@ Environment-aware `site` and `base` — no hardcoded production URLs:
 - Branch trigger: `master`
 - Manual trigger: `workflow_dispatch`
 - Node 20, `npm ci`
-- Build env: `DEPLOY_TARGET=github-pages`
+- Concurrency group: `pages` with cancel-in-progress enabled
+- Build env: `DEPLOY_TARGET=github-pages` and `PUBLIC_PREVIEW_BADGE=true`
 - Pages actions:
   - `actions/configure-pages@v5`
   - `actions/upload-pages-artifact@v3`
@@ -92,9 +93,9 @@ Hidden in default/VPS production builds. Fixed-position, accessible, mobile-safe
 
 | Check | Result |
 |-------|--------|
-| `rtk npm run check` | PASS — 0 errors, 0 warnings, 0 hints |
-| `rtk npm run build` (default) | PASS — 26 pages, exit 0 |
-| Pages-mode build (`DEPLOY_TARGET=github-pages`) | PASS — 26 pages, exit 0 |
+| `npm run check` | PASS — 0 errors, 0 warnings, 0 hints |
+| `npm run build` (default) | PASS — 26 pages, exit 0 |
+| Pages-mode build (`DEPLOY_TARGET=github-pages`, `PUBLIC_PREVIEW_BADGE=true`) | PASS — 26 pages, exit 0 |
 | `dist/index.html` | Present |
 | Pages links/assets use `/goffice2026/` | Verified in `dist/index.html` |
 | Preview badge in Pages build | Present (`role="status"`, GitHub Pages label) |
@@ -112,11 +113,18 @@ All 13 core routes previously returned HTTP 200 on local preview:
 
 ## GitHub Pages Enablement
 
-### Manual step (if preview 404)
+### Current Pages UI Diagnosis
+
+The Pages settings now show **Source = GitHub Actions** for `numtip/goffice2026`, which is the correct configuration for this Astro preview build.
+
+If the UI ever flips back to **Deploy from a branch** / `master` / `root`, that branch source should be treated as invalid for this project and changed back to **GitHub Actions** before relying on the preview URL.
+
+### Manual step (only if the UI reverts)
 
 1. Open https://github.com/numtip/goffice2026/settings/pages
 2. Under **Build and deployment**, set **Source** to **GitHub Actions**
-3. After the next workflow run on `master`, use the deploy job URL
+3. Rerun the workflow named **Deploy GitHub Pages Preview** on `master`
+4. Use the deploy job URL after the next successful run
 
 No custom domain should be configured for preview. Do **not** point `greenoffice.mju.ac.th` at GitHub Pages.
 
