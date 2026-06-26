@@ -252,7 +252,13 @@ Static HTML Pages (Production)
 | [GREENOFFICE_DASHBOARD_SPEC.md](docs/KB/GREENOFFICE_DASHBOARD_SPEC.md) | Dashboard requirements & features |
 | [RTK_USAGE.md](docs/runbooks/RTK_USAGE.md) | Real-time token knowledge usage |
 | [BUILD_VERIFICATION.md](docs/runbooks/BUILD_VERIFICATION.md) | Pre-push verification checklist |
-| [RELEASE_SAFETY_CHECK.md](docs/runbooks/RELEASE_SAFETY_CHECK.md) | Production release procedure |
+| [SESSION_SUMMARY_2026-06-26.md](docs/reports/SESSION_SUMMARY_2026-06-26.md) | Today's session handoff |
+| [NEXT_SPRINT_PLAN.md](docs/reports/NEXT_SPRINT_PLAN.md) | EP-2 / EP-3 roadmap |
+| [PROJECT_MEMORY.md](docs/reports/PROJECT_MEMORY.md) | Long-term project memory |
+| [EXECUTIVE_HANDOFF.md](docs/reports/EXECUTIVE_HANDOFF.md) | Executive one-page summary |
+| [EP1_PERFORMANCE_REVIEW.md](docs/reports/EP1_PERFORMANCE_REVIEW.md) | Experience polish audit |
+| [GITHUB_PAGES_PREVIEW_SETUP.md](docs/reports/GITHUB_PAGES_PREVIEW_SETUP.md) | Preview deployment report |
+| [CHANGELOG.md](CHANGELOG.md) | Version history |
 
 ---
 
@@ -285,14 +291,98 @@ npm run validate:data
 
 ---
 
-## 🎯 Current Status
+## 🎯 Current Project Status
 
-- **Version:** 0.1.0 (MVP)
-- **Release Date:** 2026-06-15
-- **Status:** Active Development
-- **Latest Updates:** 2026-06-12
+**Last updated:** 2026-06-26 · **Version:** 0.2.0 (Preview-ready landing)
 
-### What's Included
+| Milestone | Status |
+|-----------|--------|
+| Design Freeze v1 (Stitch landing) | ✅ Complete |
+| EP-1 Experience Polish | ✅ Complete |
+| GitHub Pages Preview | ✅ Operational |
+| Production (`greenoffice.mju.ac.th`) | ⏸ Unchanged — manual VPS only |
+
+**Preview URL:** https://numtip.github.io/goffice2026/
+
+Handoff docs: [Session Summary](docs/reports/SESSION_SUMMARY_2026-06-26.md) · [Next Sprint](docs/reports/NEXT_SPRINT_PLAN.md) · [Project Memory](docs/reports/PROJECT_MEMORY.md) · [Executive Handoff](docs/reports/EXECUTIVE_HANDOFF.md)
+
+---
+
+## 🔄 Development Workflow
+
+```text
+Local dev → npm run check → npm run build → push master
+    → GitHub Actions (DEPLOY_TARGET=github-pages)
+    → GitHub Pages Preview (/goffice2026/)
+    → PO / executive approval
+    → Manual VPS deploy → greenoffice.mju.ac.th (production)
+```
+
+### Local commands
+
+```bash
+npm run dev          # Development server
+npm run check        # Astro type check
+npm run build        # Production build (local base /)
+npm run preview      # Preview dist/
+```
+
+### GitHub Pages preview build (local simulation)
+
+```powershell
+$env:DEPLOY_TARGET='github-pages'
+$env:PUBLIC_PREVIEW_BADGE='true'
+npm run build
+# Verify 26 pages, /goffice2026/ paths, preview badge
+```
+
+### Rules (locked)
+
+- **Preview:** GitHub Pages only — automated from `master`
+- **Production:** VPS manual deploy only — not triggered by preview
+- **No backend/database/API** in MVP without PO approval
+- **Document Center:** Separate M365 project — landing previews only
+
+See [ADR-0002](docs/adr/ADR-0002_GITHUB_PAGES_PREVIEW.md) and [PREVIEW_RELEASE](docs/runbooks/PREVIEW_RELEASE.md).
+
+---
+
+## 🏗 Architecture Diagram
+
+```text
+┌──────────────────────────────────────────────────────────────┐
+│                  GitHub (Source of Truth)                     │
+│                   numtip/goffice2026                          │
+└────────────────────────────┬─────────────────────────────────┘
+                             │
+         ┌───────────────────┴───────────────────┐
+         ▼                                       ▼
+┌─────────────────────┐               ┌─────────────────────┐
+│   GitHub Actions    │               │  Manual VPS Deploy  │
+│   Astro static build│               │  (PO approved)      │
+└──────────┬──────────┘               └──────────┬──────────┘
+           ▼                                      ▼
+┌─────────────────────┐               ┌─────────────────────┐
+│   GitHub Pages      │               │   Production        │
+│   PREVIEW ONLY      │               │   greenoffice.mju   │
+│   /goffice2026/     │               │   .ac.th            │
+└─────────────────────┘               └─────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│  Document Center (separate project · Microsoft 365)            │
+│  SharePoint · Graph · OneDrive — landing preview links only  │
+└──────────────────────────────────────────────────────────────┘
+```
+
+Data layer (static-first): **CSV → JSON → Astro pages** — no database in MVP.
+
+---
+
+## 🎯 Platform Status (MVP)
+
+✅ Stitch Design Freeze homepage (`src/components/landing/`)  
+✅ GitHub Pages preview pipeline with preview badge  
+✅ EP-1 motion, accessibility, and performance polish  
 ✅ Core platform infrastructure  
 ✅ Multi-year data schema (2568 baseline complete)  
 ✅ CSV/JSON data pipeline  
@@ -306,7 +396,7 @@ npm run validate:data
 ❌ Database (CSV/JSON files)  
 ❌ User authentication  
 ❌ Real-time data  
-❌ Production deployment (pending PO approval)  
+❌ Production auto-deploy from preview (manual VPS only)  
 
 ---
 
@@ -324,7 +414,9 @@ npm run validate:data
 ## 🔗 Links
 
 - **GitHub Repository:** https://github.com/numtip/goffice2026
-- **Local Path:** `/mnt/g/ProjectAI/goffice2026`
+- **Preview (GitHub Pages):** https://numtip.github.io/goffice2026/
+- **Production:** https://greenoffice.mju.ac.th (manual VPS — unchanged)
+- **Local Path:** `G:\ProjectAI\goffice2026`
 - **Green Office 2569 Criteria:** See [2026 Green Office Assessment Criteria.MD](2026%20Green%20Office%20Assessment%20Criteria.MD)
 
 ---
@@ -356,6 +448,6 @@ For questions or issues:
 
 ---
 
-**Last Updated:** 2026-06-15  
-**Platform Version:** 0.1.0 (MVP)  
+**Last Updated:** 2026-06-26  
+**Platform Version:** 0.2.0 (Preview-ready landing)  
 **Made with 🌱 for sustainable operations**
