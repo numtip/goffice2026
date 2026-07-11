@@ -1,7 +1,7 @@
 # Project Memory — Green Office 2026
 
 **Purpose:** Long-term institutional memory for agents, developers, and stakeholders.  
-**Last updated:** 2026-06-26  
+**Last updated:** 2026-07-11  
 **Repository:** https://github.com/numtip/goffice2026
 
 ---
@@ -167,10 +167,11 @@ Docs: [RELEASE_SAFETY_CHECK.md](../runbooks/RELEASE_SAFETY_CHECK.md)
 |--------|--------|
 | Design Freeze v1 | ✅ Complete |
 | EP-1 Experience Polish | ✅ Complete |
-| EP-2 Local Integrity Checkpoint | ✅ Complete locally (2026-07-11) |
+| EP-2 Local Integrity Checkpoint | ✅ Complete (committed 2026-07-11) |
+| EP-2 Readiness Advancement | ✅ Evidence UX, data provenance, pipeline templates, route QA |
 | Session handoff docs | ✅ Complete (2026-06-26) |
 
-**Latest commits:** `f639956` (Stitch landing), `4c07989` (EP-1 polish)
+**Latest commits:** `f639956` (Stitch landing), `4c07989` (EP-1 polish), `5da7978` (EP-2 local integrity)
 
 ---
 
@@ -205,7 +206,13 @@ Plan: [NEXT_SPRINT_PLAN.md](./NEXT_SPRINT_PLAN.md)
 - [x] EP-2 local integrity checkpoint: dashboard preview wiring, evidence placeholder classification, stale QA docs
 - [ ] PO-approved Maejo image assets for hero/activity sections
 - [ ] Verified static activities/news data model and source content
-- [ ] Add source-backed import CSVs for fuel, paper, waste, and GHG if pipeline coverage must include every metric
+- [x] CSV import templates created in `data/import/` with format documentation
+- [x] Evidence UX: source-pending visual treatment improved on evidence page and cards
+- [x] Dashboard data provenance: month completeness visualization added
+- [x] Route smoke QA: 26/26 routes verified
+- [x] Build verification: 0 type errors, 0 build errors
+- [ ] PO-approved Maejo image assets for hero/activity sections
+- [ ] Verified static activities/news data model and source content
 - [ ] EP-3 Document Center integration spec
 - [ ] Production VPS release (PO-approved, manual)
 

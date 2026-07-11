@@ -1,7 +1,7 @@
 # Next Sprint Plan — Green Office 2026
 
-**Updated:** 2026-06-26  
-**Current milestone complete:** Design Freeze v1 + EP-1 Experience Polish  
+**Updated:** 2026-07-11  
+**Current milestone complete:** Design Freeze v1 + EP-1 + EP-2 Local Integrity  
 **Preview:** https://numtip.github.io/goffice2026/
 
 ---
@@ -13,6 +13,7 @@
 | Design Freeze v1 | Stitch Landing | ✅ Complete | Approved homepage implementation |
 | EP-1 | Experience Polish | ✅ Complete | Motion, a11y, responsive, performance |
 | **EP-2** | **Real Content Integration** | **In Progress** | Replace placeholders with real Maejo content |
+| EP-2a | Readiness Advancement | ✅ Complete | Evidence UX, data provenance, pipeline templates, route QA |
 | EP-3 | Document Center Integration | Planned | Microsoft 365 preview hooks from landing |
 
 ---
@@ -34,12 +35,15 @@
 - [x] Remove dependency on third-party CDN for LCP-critical hero image
 - [ ] Re-run Lighthouse on GitHub Pages preview; target Performance >95
 
-#### 2. Integrate real dashboard preview data
+#### 2. Dashboard data provenance & completeness
 
-- [x] Wire Executive Command Center preview to generated dashboard JSON / `dashboard-config.ts` values (display formatting only — still preview)
+- [x] Wire Executive Command Center preview to generated dashboard JSON / `dashboard-config.ts` values
 - [x] Ensure preview labels clearly distinguish static snapshot vs live dashboard
-- [ ] Validate links to `/dashboard`, `/dashboard/energy`, etc.
+- [x] Validate links to `/dashboard`, `/dashboard/energy`, etc. (26/26 routes verified)
 - [x] Confirm multi-year 2568→2569 data displays correctly on actual dashboard pages
+- [x] Add month completeness heatmap visualization (dashboard overview)
+- [x] Add partial-year YoY caveat banners (dashboard + detail pages)
+- [x] Enhanced source provenance section with import pipeline references
 
 #### 3. Integrate real activities / news
 
@@ -59,8 +63,10 @@
 #### 5. Navigation / footer visual alignment
 
 - [x] Align `Navigation.astro` and footer with Stitch landing tokens (visual only — links unchanged)
-- [ ] Preserve preview badge behavior
-- [ ] Responsive nav review at 320–768px
+- [x] Preview badge behavior verified
+- [x] Responsive nav review: `overflow-x-auto` on mobile, flex-wrap on desktop
+- [x] Evidence placeholder UX: source-pending banners, improved card treatment
+- [x] Import pipeline CSV templates created in `data/import/` with documentation
 - [ ] Do not add new nav items without PO approval
 
 #### 6. Executive review preparation

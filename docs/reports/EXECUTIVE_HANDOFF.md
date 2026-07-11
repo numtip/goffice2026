@@ -1,6 +1,6 @@
 # Executive Handoff — Green Office 2026
 
-**Date:** 26 June 2026  
+**Date:** 11 July 2026  
 **Institution:** Maejo University  
 **Platform:** Green Office Environmental Intelligence  
 **Audience:** Executive stakeholders and product leadership
@@ -9,23 +9,28 @@
 
 ## Current Status
 
-The Green Office 2026 platform now has an **approved executive landing experience** and a **live preview environment** for review. The design reflects Maejo’s commitment to precision, sustainability leadership, and institutional credibility. Production systems at the university were **not changed** during this work.
+The Green Office 2026 platform has an **approved executive landing experience** and a **live preview environment** for review. The design reflects Maejo's commitment to precision, sustainability leadership, and institutional credibility. Production systems at the university were **not changed** during this work.
 
 ---
 
 ## Completed
 
 - **Design Freeze v1** — Homepage approved and built to the Google Stitch executive design standard.
-- **Experience Polish (EP-1)** — Refinements to motion, accessibility, mobile responsiveness, and performance quality without altering the approved design.
-- **GitHub Pages Preview** — A secure preview site is available for stakeholder review before any production release.
-
-**Preview for review:** https://numtip.github.io/goffice2026/
+- **Experience Polish (EP-1)** — Refinements to motion, accessibility, mobile responsiveness, and performance quality.
+- **EP-2 Local Integrity Checkpoint** — Dashboard preview wiring, evidence classification, stale QA docs updated.
+- **EP-2 Readiness Advancement** — Evidence placeholder UX, dashboard data provenance, CSV import pipeline templates, route QA (26/26), a11y review, context cleanup.
+- **GitHub Pages Preview** — https://numtip.github.io/goffice2026/
 
 ---
 
-## In Progress
+## Active Development
 
-Nothing is currently in active development. Today’s session is **closed** with full documentation for the next working day.
+1. **Evidence UX** — Source-pending visual states being refined throughout the evidence library and cards.
+2. **Dashboard data provenance** — Month completeness visualization, partial-year YoY caveats.
+3. **Import pipeline** — CSV templates created, format documentation, pipeline validated.
+4. **Project documentation** — Memory, sprint plan, executive handoff, context packs updated.
+
+EP-2 Readiness Advancement workstreams continue locally before source-dependent content can be integrated.
 
 ---
 
@@ -57,7 +62,7 @@ Following content integration, the platform will connect its evidence preview to
 
 | Item | Status |
 |------|--------|
-| Production website (`greenoffice.mju.ac.th`) | **Not modified** |
+| Production website (greenoffice.mju.ac.th) | **Not modified** |
 | University servers (VPS) | **Not modified** |
 | DNS / domain configuration | **Not modified** |
 | Live user-facing production release | **Not performed** |

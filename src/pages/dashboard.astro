@@ -44,6 +44,8 @@ function statusBadge(status: string): string {
   if (status === 'in_progress') return 'bg-yellow-100 text-yellow-800';
   return 'bg-gray-100 text-gray-500';
 }
+
+const monthAbbr = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 ---
 
 <BaseLayout title="Dashboard">
@@ -90,8 +92,9 @@ function statusBadge(status: string): string {
             <div class="flex items-start justify-between mb-2">
               <h3 class="font-semibold text-green-700 group-hover:text-green-800">{d.title}</h3>
               {current && (
-                <span class={"inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium shrink-0 ml-3 " + statusBadge(current.dataStatus)}>
-                  {current.months.length}/12
+                <span class={"inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium shrink-0 ml-3 " + statusBadge(current.dataStatus)} title={`${current.months.length} of 12 months entered`}>
+                  {current.months.length}
+                  <span class="text-gray-500 font-normal">/{current.dataStatus === 'complete' ? 12 : `12`}</span>
                 </span>
               )}
             </div>
@@ -101,18 +104,23 @@ function statusBadge(status: string): string {
             {m && baseline && current ? (
               <div class="mt-3 grid grid-cols-2 gap-2 text-xs border-t border-gray-50 pt-3">
                 <div>
-                  <span class="text-gray-400 block">{m.baselineYear} Total</span>
+                  <span class="text-gray-400 block">{m.baselineYear} <span class="text-green-600 font-medium">Baseline</span></span>
                   <span class="font-medium text-gray-800">{Intl.NumberFormat().format(baseline.total)}{m.unit}</span>
+                  <span class="text-gray-400 ml-1">(12 mo.)</span>
                 </div>
                 <div>
-                  <span class="text-gray-400 block">{m.currentYear} Total</span>
+                  <span class="text-gray-400 block">{m.currentYear} <span class="text-amber-600 font-medium">Current</span></span>
                   <span class="font-medium text-gray-800">{Intl.NumberFormat().format(current.total)}{m.unit}</span>
+                  <span class="text-gray-400 ml-1">({current.months.length} mo.)</span>
                 </div>
                 <div class="col-span-2 mt-1">
                   <span class="text-gray-400">YoY: </span>
                   <span class={yoyColor(yoy.percent)}>
                     {yoy.percent > 0 ? '+' : ''}{yoy.percent}% {trendLabel[yoy.direction]}
                   </span>
+                  {current.dataStatus === 'in_progress' && (
+                    <span class="text-amber-500 text-[10px] ml-2">(partial year)</span>
+                  )}
                 </div>
               </div>
             ) : (
@@ -123,6 +131,20 @@ function statusBadge(status: string): string {
           </a>
         );
       })}
+    </div>
+
+    <!-- Partial-Year Caveat -->
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 flex items-start gap-3">
+      <svg class="w-5 h-5 text-amber-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+      </svg>
+      <div>
+        <p class="text-sm font-semibold text-amber-800">Partial-Year Comparison</p>
+        <p class="text-xs text-amber-700 mt-1">
+          2569 (current year) data entry is still in progress across all metrics. The YoY percentages shown above reflect a partial-year comparison
+          and may not be representative of full annual trends. Interpret with caution until complete 12-month data is available.
+        </p>
+      </div>
     </div>
 
     <!-- Certification Category Scores -->
@@ -158,30 +180,93 @@ function statusBadge(status: string): string {
       })}
     </div>
 
-    <!-- Data Completeness Summary -->
+    <!-- Data Completeness -- Heatmap Grid -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 mb-6">
-      <h3 class="text-sm font-semibold text-gray-700 mb-2">Data Completeness</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-        {Object.entries(genMap).map(([, m]) => {
-          const c = m.years[m.currentYear.toString()];
-          return (
-            <div class="text-xs">
-              <span class="font-medium text-gray-700">{m.label}</span>
-              <div class="mt-1 flex items-center gap-1">
-                <span class={"inline-block w-2 h-2 rounded-full " + (c?.dataStatus === 'complete' ? 'bg-green-400' : 'bg-yellow-400')}></span>
-                <span class="text-gray-500">{c?.months.length ?? 0}/12 months</span>
-              </div>
-            </div>
-          );
-        })}
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-sm font-semibold text-gray-700">2569 Data Completeness — Month-by-Month</h3>
+        <div class="flex items-center gap-3 text-xs text-gray-400">
+          <span class="flex items-center gap-1">
+            <span class="inline-block w-2.5 h-2.5 rounded-sm bg-green-400"></span> Data present
+          </span>
+          <span class="flex items-center gap-1">
+            <span class="inline-block w-2.5 h-2.5 rounded-sm bg-gray-200"></span> Pending
+          </span>
+        </div>
+      </div>
+      <p class="text-xs text-gray-400 mb-2">All metrics have complete 2568 baseline (12/12 months). Grid below shows current-year data only.</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs">
+          <thead>
+            <tr>
+              <th class="text-left font-medium text-gray-500 pr-3 py-1">Metric</th>
+              <th class="text-center font-medium text-gray-500 px-1 py-1" colspan="12">Month</th>
+              <th class="text-center font-medium text-gray-500 pl-3 py-1">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dashboards.map((d) => {
+              const metricData = genMap[d.id];
+              const curYear = metricData ? metricData.years[metricData.currentYear.toString()] : null;
+              const monthPresent = (num: number) => curYear ? curYear.months.some((mo) => mo.month === num) : false;
+              const monthCount = curYear ? curYear.months.length : 0;
+              return (
+                <tr class="border-t border-gray-50">
+                  <td class="pr-3 py-2 text-gray-700 font-medium whitespace-nowrap">{metricData?.label ?? d.title}</td>
+                  {Array.from({ length: 12 }, (_, i) => i + 1).map((monthNum) => {
+                    const hasData = monthPresent(monthNum);
+                    return (
+                      <td class="px-0.5 py-1.5 text-center" title={monthAbbr[monthNum] + (hasData ? '' : ' — pending')}>
+                        <span class={"inline-block w-4 h-4 rounded-sm " + (hasData ? 'bg-green-400' : 'bg-gray-200')}></span>
+                      </td>
+                    );
+                  })}
+                  <td class="pl-3 py-2 text-center text-gray-500 whitespace-nowrap">{monthCount}/12</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
 
-    <!-- Reference attribution -->
+    <!-- Source Provenance -->
     <div class="bg-gray-50 rounded-xl border border-gray-200 p-4 text-xs text-gray-400">
-      <p class="font-medium text-gray-500 mb-1">Source Reference</p>
-      <p>Dashboard structure and KPI terminology adapted from <a href="https://goffice.mju.ac.th/" class="underline hover:text-green-600" target="_blank">goffice.mju.ac.th</a> — Green Office Platform, Maejo University.</p>
-      <p class="mt-1">2568 baseline from: <code>1.1-Water.xlsx</code>, <code>12-elect.xlsx</code>, <code>1.5_GreenhouseGas.xlsx</code> and departmental records. 2569 current data from ongoing staff Excel submissions.</p>
+      <p class="font-semibold text-gray-500 mb-2">Source Provenance &amp; Data Pipeline</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-2">
+        <div>
+          <p class="text-gray-500 font-medium mb-1">2568 Baseline Sources</p>
+          <ul class="space-y-0.5">
+            <li><span class="text-green-600">&bull;</span> <code>12-elect.xlsx</code> — Electricity Consumption (energy)</li>
+            <li><span class="text-green-600">&bull;</span> <code>1.1-Water.xlsx</code> — Water Consumption (water)</li>
+            <li><span class="text-green-600">&bull;</span> <code>1.5_GreenhouseGas.xlsx</code> — GHG Emissions (ghg)</li>
+            <li><span class="text-green-600">&bull;</span> Departmental records — Fuel, Paper, Waste</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-gray-500 font-medium mb-1">2569 Current Sources</p>
+          <ul class="space-y-0.5">
+            <li><span class="text-amber-600">&bull;</span> Staff Excel submissions (partial year)</li>
+            <li><span class="text-amber-600">&bull;</span> Same source files as baseline, updated monthly</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-200 pt-2 mt-2">
+        <p class="text-gray-500 font-medium mb-1">Import Pipeline</p>
+        <p>
+          Excel &rarr; CSV &rarr; <code>scripts/import-dashboard-data.mjs</code> &rarr; <code>src/data/generated/{'{metric}'}.json</code> &rarr; Astro page
+        </p>
+        <p class="mt-1">
+          Last updated: <time datetime="2026-06-12">2026-06-12</time> &middot;
+          Generated data: <code>src/data/generated/energy.json</code>, <code>water.json</code>, <code>fuel.json</code>, <code>paper.json</code>, <code>waste.json</code>, <code>ghg.json</code>
+        </p>
+      </div>
+
+      <div class="border-t border-gray-200 pt-2 mt-2">
+        <p class="text-gray-500 font-medium mb-1">Reference</p>
+        <p>Dashboard structure and KPI terminology adapted from <a href="https://goffice.mju.ac.th/" class="underline hover:text-green-600" target="_blank">goffice.mju.ac.th</a> — Green Office Platform, Maejo University.</p>
+      </div>
     </div>
   </div>
 </BaseLayout>
