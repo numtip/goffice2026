@@ -11,16 +11,14 @@ Before every commit that changes `src/`, config, or data consumed at build time.
 ### 1. Install (if needed)
 
 ```powershell
-cd G:\ProjectAI\goffice2026
-# Use direct npm if RTK wrapper blocks install:
-& "G:\nodejs\node.exe" "...\npm-cli.js" install
+rtk pwd
+rtk npm ci
 ```
 
 ### 2. Type and template check
 
 ```powershell
 rtk npm run check
-# or: npm run check
 ```
 
 **Pass criteria:** 0 errors, 0 warnings (hints acceptable).
@@ -29,15 +27,16 @@ rtk npm run check
 
 ```powershell
 rtk npm run build
-# or: npm run build
 ```
 
 **Pass criteria:** All expected routes listed; `dist/` generated; exit code 0.
 
 ### 4. Verify output
 
-- Confirm 13 pages in build log
+- Confirm 26 pages in build log
 - Category routes: `/categories/cat1` … `/categories/cat7` via `[id].astro`
+- Dashboard routes: `/dashboard/energy`, `/dashboard/water`, `/dashboard/fuel`, `/dashboard/paper`, `/dashboard/waste`, `/dashboard/ghg`
+- Document routes: `/documents/cat1` … `/documents/cat7`
 
 ## Fail Actions
 

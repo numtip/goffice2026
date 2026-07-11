@@ -14,7 +14,7 @@ Static MVP — manual/heuristic review; no automated axe CI yet.
 
 ### Document structure
 
-- [ ] `<html lang="en">` set (`BaseLayout.astro`)
+- [ ] `<html lang>` reflects the primary page language (`BaseLayout.astro`)
 - [ ] `<meta name="viewport">` present
 - [ ] One `<h1>` per page
 - [ ] Logical heading order (h1 → h2 sections)
@@ -27,7 +27,7 @@ Static MVP — manual/heuristic review; no automated axe CI yet.
 ### Forms (search page)
 
 - [ ] Search input has associated `<label>`
-- [ ] Disabled placeholder form clearly marked non-functional
+- [ ] Search form has a working client-side filter and visible empty state
 
 ### Color and contrast
 
@@ -36,7 +36,8 @@ Static MVP — manual/heuristic review; no automated axe CI yet.
 
 ### Images
 
-- [ ] N/A for current MVP (no content images) — recheck when assets added
+- [ ] Decorative images use empty alt text
+- [ ] Content or placeholder images use accurate, non-fabricated alt text
 
 ## Manual Steps
 
@@ -46,8 +47,8 @@ Static MVP — manual/heuristic review; no automated axe CI yet.
 
 ## Known Gaps (Sprint 0.x)
 
-- Skip link not yet implemented
-- Focus styles rely on browser defaults
+- Skip link implemented; verify it remains visible on focus after layout changes
+- Focus styles are present on navigation and primary controls; continue spot checks
 - No automated a11y CI
 
 Document gaps in sprint summary; do not block MVP commit if baseline passes.

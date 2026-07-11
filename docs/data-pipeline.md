@@ -101,7 +101,7 @@ Baseline is marked with `"isBaseline": true` and `"dataStatus": "complete"`.
 | Metric | Source File | Months Available | Status | Updated |
 |--------|-------------|-----------------|--------|---------|
 | Energy | `12-elect.xlsx` | 8 (Jan-Aug) | 🟡 In Progress | 2026-06-12 |
-| Water | `1.1-Water.xlsx` | 7 (Jan-Jul) | 🟡 In Progress | 2026-06-12 |
+| Water | `1.1-Water.xlsx` | 6 (Jan-Jun) | 🟡 In Progress | 2026-06-12 |
 | Fuel | Fuel purchase records | 9 (Jan-Sep) | 🟡 In Progress | 2026-06-12 |
 | Paper | Paper ordering records | 6 (Jan-Jun) | 🟡 In Progress | 2026-06-12 |
 | Waste | Waste segregation records | 10 (Jan-Oct) | 🟡 In Progress | 2026-06-12 |
@@ -156,12 +156,11 @@ If you prefer to edit JSON directly:
 // In src/data/generated/water.json, years.2569.months:
 "months": [
   { "month": 1, "value": 5600, "label": "Jan" },
-  // ... existing 7 months ...
-  { "month": 8, "value": 5400, "label": "Aug" },
-  { "month": 9, "value": 5300, "label": "Sep" }  // ← ADD
+  // ... existing 6 months ...
+  { "month": 7, "value": 5400, "label": "Jul" },
+  { "month": 8, "value": 5300, "label": "Aug" }  // ← ADD
 ],
-// Recompute total: 37450 + 5300 = 42750
-// Recompute average: 42750 / 9 = 4750
+// Recompute total and average from the full months array
 // Recompute yoyChange
 ```
 

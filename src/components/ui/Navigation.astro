@@ -1,13 +1,38 @@
 ---
 import { withBase } from '../../utils/with-base';
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/dashboard', label: 'Dashboard' },
+  { href: '/categories', label: 'Categories' },
+  { href: '/evidence', label: 'Evidence' },
+  { href: '/documents', label: 'Documents' },
+  { href: '/search', label: 'Search' },
+];
 ---
-<nav class="bg-white shadow-md px-4 py-3">
-  <ul class="flex space-x-6">
-    <li><a href={withBase('/')} class="text-gray-700 hover:text-green-600 transition">Home</a></li>
-    <li><a href={withBase('/dashboard')} class="text-gray-700 hover:text-green-600 transition">Dashboard</a></li>
-    <li><a href={withBase('/categories')} class="text-gray-700 hover:text-green-600 transition">Categories</a></li>
-    <li><a href={withBase('/evidence')} class="text-gray-700 hover:text-green-600 transition">Evidence</a></li>
-    <li><a href={withBase('/documents')} class="text-gray-700 hover:text-green-600 transition">Documents</a></li>
-    <li><a href={withBase('/search')} class="text-gray-700 hover:text-green-600 transition">Search</a></li>
-  </ul>
+<nav class="border-b border-primary/10 bg-surface/95 px-4 py-3 backdrop-blur" aria-label="Primary navigation">
+  <div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <a href={withBase('/')} class="group inline-flex items-center gap-3 text-left">
+      <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white shadow-sm">
+        GO
+      </span>
+      <span>
+        <span class="block text-sm font-semibold leading-tight text-primary">Green Office 2026</span>
+        <span class="block text-[11px] uppercase tracking-wide text-outline">Maejo University</span>
+      </span>
+    </a>
+
+    <ul class="flex gap-1 overflow-x-auto pb-1 text-sm sm:flex-wrap sm:justify-end sm:overflow-visible sm:pb-0">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={withBase(item.href)}
+            class="inline-flex min-h-9 items-center whitespace-nowrap rounded-full px-3 py-2 font-medium text-on-surface-variant transition hover:bg-primary-container hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
 </nav>

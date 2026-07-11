@@ -1,34 +1,19 @@
 ---
 const activities = [
   {
-    date: 'MAR 12, 2026',
-    category: 'AWARENESS',
-    title: 'Annual Campus Reforestation Initiative Launches',
-    excerpt:
-      'Over 500 staff and students participated in planting native species across the northern campus boundary.',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuB0m4no-v4H0-VlD6KU8FMSADNay7j-uAVJdpXXg5TikfL2YuMvKckW51-MnMuU-wIqcDubWEKzjvXgQD9bYl01Qa9PN_r2AecPrMhSsYO8uyRc54s3lBlRrkVOrdgp5im7xa5qEzXtBf6qkWHB-dBtENnoQN9CU8B6rnpHLaO-yUbS6Dha-TxSz0sTe3CjHjz334Lza8WfMO2hglr9rulPWkfldIjZ6fZsEJ0bQV-gMVeNXzSgwz_ruCyn2eMU50JC-LyvIgaG0Zg',
-    alt: 'Campus greenhouse and reforestation activity',
+    category: 'Content slot',
+    title: 'Activity records not yet integrated',
+    excerpt: 'This space is reserved for approved local activity evidence once real records are added to the repository.',
   },
   {
-    date: 'FEB 28, 2026',
-    category: 'RESOURCE MGMT',
-    title: 'Phase 3 Solar Integration Complete',
-    excerpt:
-      'New photovoltaic arrays activated on the central library, expected to offset grid reliance by an additional 12%.',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCl9OptXV1ADwcrGISJbcaxnKN3Jb7ggm7s5kLb3YGNHS9mBRT0cwdTJffUJHj276k_iAh8UuI1ZuYAULy83ubZpvmi8gCbsqJ0l2jPCtY5OfnK7SCRj9s3k6mEZnjJvue7v6tSDmYgfDv9zWl02hY3S0agA3g6rgTDqzv8rCVTJgGldui6SKWznsmxj-0Upx06DiWUGkZK2IxQXjYTnz_xRWlx6qAI0Kx1fcH7CsJ5oj3tOn-SiRSLDLeyrrukOwg9zUM9wvUEwkQ',
-    alt: 'Modern interior with solar integration',
+    category: 'Content slot',
+    title: 'Campaign content pending source files',
+    excerpt: 'Add verified campaign summaries, dates, and images before this card is promoted as real content.',
   },
   {
-    date: 'JAN 15, 2026',
-    category: 'WASTE MGMT',
-    title: 'Advanced Sorting Protocol Implementation',
-    excerpt:
-      'Introduction of smart-bins with automated categorical sorting in all administrative buildings.',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCT9clsmLUlRTkVaR0U-QK7zOhWzT3ZcPQ-xrKPweyDIEOkXcOUT59F7khauQamEJVFy1hUOeilPNzIFJQfjDTMjDYbN6gubdCuSHUsp8m55qrIHaijm775C8pv6wKBHDrN925rxH7t4bGt3SenvdhRvzwsA1WrYrvbrJPEE8sH7kvYKN2Im40BZW0FnCUcQD-CTJT5Vy30UhMH4r0bVywCWhlB1R3sJgj_8-4b4Iajc9t521vXL0hr1Dk_qizT-Pc2Z6N5gysD3vI',
-    alt: 'Research building exterior',
+    category: 'Content slot',
+    title: 'Training milestones need evidence links',
+    excerpt: 'This placeholder avoids inventing dates, attendance, or outcomes until approved documents exist locally.',
   },
 ];
 ---
@@ -41,29 +26,23 @@ const activities = [
       <div>
         <h2 id="activities-scene-title" class="landing-heading mb-2">The Environmental Journey</h2>
         <p class="text-body-md text-on-surface-variant sm:text-body-lg">
-          Latest activities, campaigns, awareness, and training milestones.
+          Preview slots for activities, campaigns, awareness, and training milestones.
         </p>
       </div>
-      <p class="font-mono text-label-sm uppercase tracking-wider text-outline">Editorial Highlights</p>
+      <p class="font-mono text-label-sm uppercase tracking-wider text-outline">Pending approved content</p>
     </div>
 
-    <div class="landing-stagger grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 xl:grid-cols-3" role="list" aria-label="Recent environmental activities">
+    <div class="landing-stagger grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 xl:grid-cols-3" role="list" aria-label="Activity content placeholders">
       {activities.map((activity) => (
         <article class="landing-reveal group" role="listitem">
-          <div class="relative mb-5 aspect-[4/3] overflow-hidden rounded-stitch-lg bg-surface-container-high sm:mb-6 sm:h-64 sm:aspect-auto">
-            <div class="absolute inset-0 z-10 bg-primary/5 transition-colors duration-300 group-hover:bg-transparent" aria-hidden="true" />
-            <img
-              src={activity.image}
-              alt={activity.alt}
-              width="800"
-              height="600"
-              class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-              loading="lazy"
-              decoding="async"
-            />
+          <div class="relative mb-5 flex aspect-[4/3] items-center justify-center overflow-hidden rounded-stitch-lg border border-dashed border-outline-variant/40 bg-surface-container-high sm:mb-6 sm:h-64 sm:aspect-auto">
+            <div class="absolute inset-0 landing-mesh-bg opacity-50" aria-hidden="true" />
+            <span class="relative rounded-full bg-surface-container-lowest/75 px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-outline">
+              Image pending
+            </span>
           </div>
           <p class="mb-2 block font-mono text-[11px] text-outline sm:text-[12px]">
-            <time>{activity.date}</time> · {activity.category}
+            Preview · {activity.category}
           </p>
           <h3 class="mb-2 text-lg font-semibold text-primary transition-colors duration-300 group-hover:text-secondary sm:mb-3 sm:text-xl">
             {activity.title}

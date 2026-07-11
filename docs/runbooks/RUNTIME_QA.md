@@ -4,15 +4,14 @@ Skill: **RUNTIME_QA**
 
 ## When to Run
 
-After `npm run build` passes and before commit/push.
+After `rtk npm run build` passes and before commit/push.
 
 ## Steps
 
 ### 1. Start preview
 
 ```powershell
-cd G:\ProjectAI\goffice2026
-npm run preview -- --host 127.0.0.1 --port 4321
+rtk npm run preview -- --host 127.0.0.1 --port 4321
 ```
 
 ### 2. Route smoke test
@@ -23,23 +22,23 @@ Verify HTTP 200 for each route:
 |-------|
 | `/` |
 | `/dashboard` |
+| `/dashboard/energy` |
+| `/dashboard/water` |
+| `/dashboard/fuel` |
+| `/dashboard/paper` |
+| `/dashboard/waste` |
+| `/dashboard/ghg` |
 | `/categories` |
 | `/categories/cat1` … `/categories/cat7` |
 | `/evidence` |
 | `/documents` |
+| `/documents/cat1` … `/documents/cat7` |
 | `/search` |
 
-PowerShell example:
+Compact local route check after preview is running:
 
 ```powershell
-$routes = @('/', '/dashboard', '/categories',
-  '/categories/cat1','/categories/cat2','/categories/cat3',
-  '/categories/cat4','/categories/cat5','/categories/cat6','/categories/cat7',
-  '/evidence','/documents','/search')
-$base = 'http://127.0.0.1:4321'
-foreach ($r in $routes) {
-  (Invoke-WebRequest ($base + $r) -UseBasicParsing).StatusCode
-}
+rtk npm run qa:routes
 ```
 
 ### 3. Navigation check
@@ -50,8 +49,10 @@ foreach ($r in $routes) {
 ### 4. Content sanity
 
 - Dashboard shows KPI data from JSON
+- Dashboard detail pages show 2568 baseline and 2569 month-count badges
 - Categories index lists 7 categories
 - Evidence page lists items from `evidence-index.json`
+- Placeholder evidence is visibly marked and does not present missing files as available
 
 ## Pass Criteria
 

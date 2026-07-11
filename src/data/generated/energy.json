@@ -74,8 +74,8 @@
           "label": "Dec"
         }
       ],
-      "total": 229250,
-      "average": 19104.17
+      "total": 228750,
+      "average": 19062.5
     },
     "2569": {
       "year": 2569,
@@ -130,7 +130,7 @@
     }
   },
   "yoyChange": {
-    "absolute": -80150,
+    "absolute": -79650,
     "percent": -35,
     "direction": "down"
   }

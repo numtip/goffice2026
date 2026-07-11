@@ -1,8 +1,5 @@
 ---
 import { withBase } from '../../utils/with-base';
-
-const campusImage =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuACEgRv-sHtaTAnTlOVyJfWzMgEMBtNTmnYLrpZSijFkW9OPNKYUwmqZ2rRXe1KnvyvBfOlGgNUua2THZLhB5xTi7teOROuYjeg2LVkEO-YOKQM0OjLM_AR6DQtGVysFW8nm4SnEFMsZfuSVR05XYwTYPnYiTao2Yvp0DNW8Ravname-xUw_uCD6DTVjMfLCWuXQ0TN5wp0eQY8pDmlQtFtJ5kZvQEBHrLjaD3oeMIXxso8Cpi2nIPzSLUsTZx5tQ11HkjBv-r8iBE';
 ---
 
 <section
@@ -15,17 +12,16 @@ const campusImage =
     <div class="grid grid-cols-1 items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16">
       <div>
         <h2 id="mission-scene-title" class="landing-reveal landing-heading mb-5 sm:mb-6">
-          Institutional Commitment to a Sustainable Future
+          Green Office 2026 Content Framework
         </h2>
         <p class="landing-reveal mb-5 text-body-md leading-relaxed text-on-surface-variant sm:mb-6 sm:text-body-lg">
-          At Maejo University, sustainability is not a project; it is the fundamental operating system
-          of our campus. The Green Office 2026 initiative represents a comprehensive transformation in
-          how we manage resources, procure materials, and cultivate environmental awareness among our
-          staff and students.
+          This landing page introduces the repository's current Green Office structure: resource
+          dashboards, assessment categories, document placeholders, and navigation into the evidence
+          library.
         </p>
         <p class="landing-reveal mb-7 text-body-md leading-relaxed text-outline sm:mb-8">
-          By integrating data-driven decision-making with strict adherence to national ecological
-          standards, we are setting a benchmark for educational institutions across the region.
+          Institutional narratives, campus photography, and activity outcomes should be added only
+          after approved local content is available in the repo.
         </p>
         <a
           href={withBase('/categories')}
@@ -38,17 +34,14 @@ const campusImage =
         </a>
       </div>
 
-      <div class="landing-reveal relative aspect-[4/3] overflow-hidden rounded-stitch-lg shadow-2xl">
-        <img
-          src={campusImage}
-          alt="Maejo University campus architecture"
-          width="1200"
-          height="900"
-          class="h-full w-full object-cover transition duration-700 ease-out hover:scale-[1.02] motion-reduce:transition-none motion-reduce:hover:scale-100"
-          loading="lazy"
-          decoding="async"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" aria-hidden="true" />
+      <div class="landing-reveal relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-stitch-lg border border-dashed border-outline-variant/40 bg-surface-container-high shadow-2xl">
+        <div class="absolute inset-0 landing-mesh-bg landing-mesh-bg-ambient opacity-80" aria-hidden="true" />
+        <div class="relative max-w-sm px-6 text-center">
+          <p class="font-mono text-label-sm uppercase tracking-widest text-outline">Local asset pending</p>
+          <p class="mt-3 text-body-md text-on-surface-variant">
+            Replace this preview once approved campus or program imagery is committed under public assets.
+          </p>
+        </div>
       </div>
     </div>
   </div>

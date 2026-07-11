@@ -6,9 +6,6 @@ interface Props {
 }
 
 const { overallScore } = Astro.props;
-
-const heroImage =
-  'https://lh3.googleusercontent.com/aida/AP1WRLuDfA1SvH4NfEcQj-PgvC74zlZhO9NNON1L4iC5DTrNEI7nzkGTUfG4toLPuFfHsyPfMawrPPwMyGb3YLJvBVCCCTRriVpSPlFWlXXPivxNvH272JEthKppXKArd99Xpqr6wq58BpkbsfmgNj9k2LiqT5DIvBAQnAQd56aVQUj6NGmP80V9bnNx1ue4TjfJ3O5g8FeTPdxS2towj5KzyqqKMM1bsz-DZMmzq5nSJmYkfrNAcg_-hF_gLA0';
 ---
 
 <header
@@ -16,18 +13,8 @@ const heroImage =
   aria-labelledby="landing-hero-title"
 >
   <div class="absolute inset-0 z-0" aria-hidden="true">
-    <img
-      src={heroImage}
-      alt=""
-      width="1920"
-      height="1080"
-      class="absolute inset-0 h-full w-full object-cover opacity-90"
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/25 to-transparent" />
-    <div class="absolute inset-0 bg-primary/10 mix-blend-multiply" />
+    <div class="absolute inset-0 landing-mesh-bg landing-mesh-bg-ambient" />
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/45 to-surface-container-lowest/10" />
   </div>
 
   <div class="relative z-10 mx-auto mt-12 w-full max-w-5xl px-margin-mobile text-center sm:mt-16 md:px-margin-desktop lg:mt-20">
@@ -42,12 +29,12 @@ const heroImage =
       style="text-shadow: 0 4px 24px rgba(255,255,255,0.6);"
     >
       Green Office 2026:<br />
-      <span class="text-gradient-stitch">Environmental Intelligence Platform</span>
+      <span class="text-gradient-stitch">Repository Preview Platform</span>
     </h1>
 
     <p class="landing-reveal mx-auto mb-8 max-w-2xl rounded-stitch-lg border border-white/40 bg-surface-container-lowest/60 p-5 text-body-md text-on-surface-variant backdrop-blur-md sm:mb-10 sm:p-6 sm:text-body-lg">
-      Maejo University's centralized hub for executive decision-makers. Monitor continuous improvement
-      metrics, track immutable evidence, and lead the future of institutional sustainability.
+      Preview interface for the Green Office 2026 repository. Explore the dashboard structure,
+      category framework, and evidence placeholders currently available in this static site.
     </p>
 
     <div class="landing-reveal landing-stagger flex flex-wrap justify-center gap-3 sm:gap-4">
@@ -76,7 +63,7 @@ const heroImage =
             <span class="flex items-center gap-2 rounded-full border border-white/5 bg-black/40 px-3 py-1">
               <span class="h-2 w-2 rounded-full bg-secondary-fixed animate-pulse" aria-hidden="true" />
               <span class="font-mono text-[11px] text-outline-variant">
-                Live · <span data-count-up={overallScore} data-count-suffix="%">0%</span>
+                Preview · <span data-count-up={overallScore} data-count-suffix="%">0%</span>
               </span>
             </span>
           </div>

@@ -18,9 +18,6 @@ interface Props {
 }
 
 const { items, totalItems, availableItems } = Astro.props;
-
-const vaultImage =
-  'https://lh3.googleusercontent.com/aida/AP1WRLvqfkvTkNATznp32j6WfcTos6hUaN7Pa0r2xWCfpOa5V3SJoeIvou1LtGkL7TIEys7Qut2BM7I75MgLBN-7XUAr3Vf-jyMEbslpajcnO9nIiQTwI7ZIcYJ0Sb9_J18rmAcwPIstCXNQqCW1lpdfTAGzQIDkINL5td35lxRUF2KAPzxX3pcx4_Ps5SvG-13k8npxrPjvq9MZZMjr1AxbH0ADHu5JZ0tR2Egjh0O6xoADjeepNPMph-40LJA';
 ---
 
 <section
@@ -31,16 +28,8 @@ const vaultImage =
 
   <div class="landing-container grid grid-cols-1 items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16">
     <div class="landing-reveal relative order-2 aspect-[4/3] overflow-hidden rounded-stitch-lg shadow-xl lg:order-1">
-      <img
-        src={vaultImage}
-        alt="Green Office compliance document previews"
-        width="1200"
-        height="900"
-        class="h-full w-full object-cover"
-        loading="lazy"
-        decoding="async"
-      />
-      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/85 to-transparent p-4 sm:p-6" aria-hidden="true">
+      <div class="absolute inset-0 landing-mesh-bg landing-mesh-bg-ambient bg-surface-container-high" aria-hidden="true" />
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/85 to-transparent p-4 sm:p-6">
         <div class="landing-stagger grid gap-2 sm:gap-3" role="list" aria-label="Highlighted document previews">
           {items.map((item) => (
             <div class="landing-reveal glass-panel landing-glass-hover rounded-stitch border border-white/30 p-2.5 sm:p-3" role="listitem">
@@ -63,19 +52,16 @@ const vaultImage =
 
     <div class="order-1 lg:order-2">
       <div class="landing-reveal mb-5 inline-flex items-center gap-2 rounded-stitch border border-outline-variant/30 bg-surface-container px-3 py-1.5 sm:mb-6">
-        <svg class="h-4 w-4 text-[#0078d4]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6 0H12.6V0H24v11.4z" />
-        </svg>
-        <span class="font-mono text-[11px] font-medium text-on-surface-variant sm:text-[12px]">Secured by SharePoint · Microsoft 365</span>
+        <span class="h-2 w-2 rounded-full bg-secondary" aria-hidden="true" />
+        <span class="font-mono text-[11px] font-medium text-on-surface-variant sm:text-[12px]">Repository evidence index</span>
       </div>
 
       <h2 id="evidence-gateway-title" class="landing-reveal landing-heading mb-5 sm:mb-6">
-        Immutable Evidence Vault
+        Evidence Library Preview
       </h2>
       <p class="landing-reveal mb-5 text-body-md text-on-surface-variant sm:mb-6 sm:text-body-lg">
-        Preview highlighted compliance documents from our centralized Document Center — a separate
-        Microsoft 365-backed platform for version-controlled evidence, auditor access, and category
-        mapping.
+        Preview highlighted evidence entries from the local repository index. Current records are
+        placeholders until approved source documents are committed.
       </p>
 
       <dl class="landing-reveal mb-7 grid grid-cols-2 gap-3 sm:mb-8 sm:gap-4">
@@ -99,21 +85,21 @@ const vaultImage =
             <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" />
             <path d="M22 4L12 14.01l-3-3" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          Automated document mapping to matrix categories
+          Evidence entries mapped to configured Green Office categories
         </li>
         <li class="flex items-start gap-3 text-body-md text-on-surface-variant">
           <svg class="mt-0.5 h-5 w-5 shrink-0 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" />
             <path d="M22 4L12 14.01l-3-3" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          Version history and audit trails
+          Placeholder status visible before source files are integrated
         </li>
         <li class="flex items-start gap-3 text-body-md text-on-surface-variant">
           <svg class="mt-0.5 h-5 w-5 shrink-0 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" />
             <path d="M22 4L12 14.01l-3-3" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          Secure external auditor access portals
+          Local paths prepared for future approved document uploads
         </li>
       </ul>
 

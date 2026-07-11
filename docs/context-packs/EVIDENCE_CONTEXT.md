@@ -18,7 +18,7 @@ Use for evidence library, document center, and placeholder content.
     "title": "string",
     "categoryId": "cat1",
     "type": "report|data|survey|project",
-    "status": "available|pending|in-review",
+    "status": "available|pending|in-review|placeholder",
     "path": "/documents/cat1/placeholder.md"
   }]
 }
@@ -29,6 +29,7 @@ Use for evidence library, document center, and placeholder content.
 - Location: `public/documents/cat1/` … `cat7/`
 - Served as static files after build
 - Placeholders are Markdown stubs for MVP
+- Current repository state: placeholder stubs are classified as `placeholder`, not production-ready evidence.
 
 ## Models (stubs)
 
@@ -39,7 +40,8 @@ Use for evidence library, document center, and placeholder content.
 
 - No upload pipeline or backend storage
 - Evidence paths must match files under `public/documents/`
+- Do not mark an evidence item `available` unless the target file exists locally and represents approved publishable evidence.
 
 ## Future
 
-- Build-time search over evidence titles (see `/search` placeholder)
+- Search currently runs client-side over evidence titles, indicators, descriptions, categories, and years.

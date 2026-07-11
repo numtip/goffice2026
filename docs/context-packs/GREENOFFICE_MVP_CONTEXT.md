@@ -10,20 +10,22 @@ Use for MVP feature work, routing, and static page changes.
 
 ## Project Root
 
-- Windows: `G:\ProjectAI\goffice2026`
-- WSL: `/mnt/g/ProjectAI/goffice2026`
+- Windows: `F:\projectAi\goffice2026`
+- WSL: `/mnt/f/projectAi/goffice2026`
 
-## Routes (13 pages)
+## Routes
 
 | Route | Source |
 |-------|--------|
 | `/` | `src/pages/index.astro` |
-| `/dashboard` | `src/pages/dashboard.astro` → `dashboard-kpi.json` |
+| `/dashboard` | `src/pages/dashboard.astro` → `dashboard-kpi.json` + `src/data/generated/*.json` |
+| `/dashboard/{energy,water,fuel,paper,waste,ghg}` | `src/pages/dashboard/[id].astro` → `dashboard-config.ts` + generated metric JSON |
 | `/categories` | `src/pages/categories/index.astro` → `categories.json` |
 | `/categories/cat1`–`cat7` | `src/pages/categories/[id].astro` → `categories.json` |
 | `/evidence` | `src/pages/evidence.astro` → `evidence-index.json` |
 | `/documents` | `src/pages/documents.astro` → `categories.json` |
-| `/search` | `src/pages/search.astro` (static placeholder) |
+| `/documents/cat1`–`/documents/cat7` | `src/pages/documents/[id].astro` → `categories.json` + `evidence-index.json` |
+| `/search` | `src/pages/search.astro` → client-side filtering over `evidence-index.json` |
 
 ## Key Files
 
@@ -40,9 +42,9 @@ Use for MVP feature work, routing, and static page changes.
 ## Commands
 
 ```powershell
-npm run check
-npm run build
-npm run preview
+rtk npm run check
+rtk npm run build
+rtk npm run preview
 ```
 
 See `docs/runbooks/BUILD_VERIFICATION.md` and `docs/runbooks/RUNTIME_QA.md`.

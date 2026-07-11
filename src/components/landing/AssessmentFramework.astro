@@ -15,9 +15,6 @@ interface Props {
 }
 
 const { categories } = Astro.props;
-
-const droneBg =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDzUHXDO1n4ZfBGpBdy5geSwVDTjPRTvY7z52AV3r5iiyCxqJw8o1y2lW5axHTpjNTY8GAbXP5mLbyJBbPy8V5Kpxf4kEWIQGfGxEgvIuQkU_471M2V-wfxDX3LbMC2_ahsa1YdSgwq_VMZhPio9tpJ890IHfrDolGppaF1pmxRLJ6DHApWGTAmYWWH0CbZQJZpg0TESVqsDAFtKd5I9LAxPRoYDD1sLYI1e4hSnGV0nVZ10JaAEZQJRIpFqCSpB4ZNJu1Tcms1kp4';
 ---
 
 <section
@@ -26,16 +23,14 @@ const droneBg =
 >
   <div class="pointer-events-none absolute inset-x-0 -top-16 h-16 bg-gradient-to-b from-inverse-surface/0 to-surface" aria-hidden="true" />
 
-  <div class="absolute inset-0 z-0 opacity-10" aria-hidden="true">
-    <img src={droneBg} alt="" width="1920" height="1080" class="h-full w-full object-cover" loading="lazy" decoding="async" />
-  </div>
+  <div class="absolute inset-0 z-0 landing-mesh-bg opacity-20" aria-hidden="true" />
 
   <div class="landing-container relative z-10">
     <div class="landing-reveal mb-12 text-center sm:mb-16">
       <h2 id="assessment-framework-title" class="landing-heading mb-3 sm:mb-4">Assessment Matrix Framework</h2>
       <p class="mx-auto max-w-2xl text-body-md text-on-surface-variant sm:text-body-lg">
-        Seven certification dimensions — systematically tracked, connected, and validated across the
-        Green Office 2569+ program.
+        Seven configured Green Office dimensions from the repository category data, presented as a
+        static assessment preview.
       </p>
     </div>
 

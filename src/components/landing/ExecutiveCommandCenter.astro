@@ -1,15 +1,33 @@
 ---
 import { withBase } from '../../utils/with-base';
 import { dashboards } from '../../data/dashboard-config';
+import type { MultiYearMetric } from '../../utils/multi-year-schema';
+
+import energyGen from '../../data/generated/energy.json';
+import waterGen from '../../data/generated/water.json';
+import fuelGen from '../../data/generated/fuel.json';
+import paperGen from '../../data/generated/paper.json';
+import wasteGen from '../../data/generated/waste.json';
+import ghgGen from '../../data/generated/ghg.json';
 
 interface MetricDisplay {
   id: string;
   label: string;
   value: string;
   unit: string;
+  status: string;
   barWidth: string;
   barColor: string;
 }
+
+const genMap: Record<string, MultiYearMetric> = {
+  energy: energyGen as MultiYearMetric,
+  water: waterGen as MultiYearMetric,
+  fuel: fuelGen as MultiYearMetric,
+  paper: paperGen as MultiYearMetric,
+  waste: wasteGen as MultiYearMetric,
+  ghg: ghgGen as MultiYearMetric,
+};
 
 const metricIcons: Record<string, string> = {
   energy: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z',
@@ -21,32 +39,13 @@ const metricIcons: Record<string, string> = {
 };
 
 const metrics: MetricDisplay[] = dashboards.map((d) => {
-  const score = d.kpiScore ?? 0;
-  const unit = d.kpiUnit ?? (d.id === 'waste' || d.id === 'energy' || d.id === 'water' || d.id === 'ghg' ? '%' : '');
-  let displayValue = String(score);
-  let displayUnit = unit;
-
-  if (d.id === 'fuel') {
-    displayValue = '-8.4';
-    displayUnit = '% YoY';
-  } else if (d.id === 'paper') {
-    displayValue = '12.5';
-    displayUnit = 'Reams';
-  } else if (d.id === 'energy') {
-    displayValue = '1.24';
-    displayUnit = 'kWh/m²';
-  } else if (d.id === 'water') {
-    displayValue = '45.2';
-    displayUnit = 'L/pax';
-  } else if (d.id === 'waste') {
-    displayValue = '85';
-    displayUnit = '% Recycled';
-  } else if (d.id === 'ghg') {
-    displayValue = '-15';
-    displayUnit = '%';
-  }
-
-  const barWidth = `${Math.min(95, Math.max(25, score || 40))}%`;
+  const metric = genMap[d.id];
+  const current = metric?.years[metric.currentYear.toString()];
+  const monthCount = current?.months.length ?? 0;
+  const displayValue = current ? Intl.NumberFormat('en', { maximumFractionDigits: 1 }).format(current.total) : 'Pending';
+  const displayUnit = metric?.unit ?? d.kpiUnit ?? '';
+  const status = current ? `${metric.currentYear} · ${monthCount}/12 months` : 'Data pending';
+  const barWidth = `${Math.min(95, Math.max(20, Math.round((monthCount / 12) * 100)))}%`;
   const barColor = d.id === 'water' || d.id === 'paper' || d.id === 'ghg' ? 'bg-primary-fixed' : 'bg-secondary-fixed';
 
   return {
@@ -54,13 +53,12 @@ const metrics: MetricDisplay[] = dashboards.map((d) => {
     label: d.id === 'ghg' ? 'GHG' : d.title.split(' ')[0],
     value: displayValue,
     unit: displayUnit,
+    status,
     barWidth,
     barColor,
   };
 });
 
-const terminalBg =
-  'https://lh3.googleusercontent.com/aida/AP1WRLtkZ1wlcygyjubO1VjDBShaK7DTL8pdbt5-gNJaoULnscCd27cFcEBd912dtoPrPxYLPjG2N8sbE8wM9Pdpa0_1lkjLc-fqSK_GyQ4lHq0GE71xZfYV6etomoLknSScCxyhPvEHGuaXDnh5N4bSY-SfXDltaM_IEt_ghV9Mf2X0GQCCKm6nX43rAopd98B-yrZjjuuXumDxDnbUBOTF95BZfWZvLhjBnSgPsu1MtbBczX2HFfhJP5_FGg';
 ---
 
 <section
@@ -76,8 +74,8 @@ const terminalBg =
           Unified Command Center
         </h2>
         <p class="max-w-2xl text-body-md text-outline-variant sm:text-body-lg">
-          Real-time telemetry across all major resource vectors. A single, integrated view of our
-          ecological footprint.
+          Build-time dashboard snapshot across the six operational resource metrics, prepared from
+          generated static JSON in the repository.
         </p>
       </div>
       <p class="font-mono text-label-sm uppercase tracking-wider text-outline-variant">Dashboard Preview</p>
@@ -85,7 +83,7 @@ const terminalBg =
 
     <div class="landing-reveal dark-glass relative flex flex-col overflow-hidden rounded-stitch-lg border border-white/10 p-5 shadow-2xl sm:p-6 md:p-8">
       <div class="absolute inset-0 z-0 opacity-20" aria-hidden="true">
-        <img src={terminalBg} alt="" width="1600" height="900" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+        <div class="h-full w-full landing-mesh-bg" />
       </div>
 
       <div class="relative z-10">
@@ -99,7 +97,7 @@ const terminalBg =
           </div>
           <div class="flex items-center gap-2 rounded-full border border-white/5 bg-black/40 px-3 py-1.5">
             <span class="h-2 w-2 rounded-full bg-secondary-fixed animate-pulse" aria-hidden="true" />
-            <span class="font-mono text-[12px] text-outline-variant">Live Connection</span>
+            <span class="font-mono text-[12px] text-outline-variant">Static Snapshot</span>
           </div>
         </div>
 
@@ -121,6 +119,7 @@ const terminalBg =
                 {metric.value}
                 <span class="text-sm text-outline-variant sm:text-body-md"> {metric.unit}</span>
               </span>
+              <span class="font-mono text-[10px] uppercase tracking-wide text-outline-variant">{metric.status}</span>
               <div class="mt-1 h-1 w-full overflow-hidden rounded-full bg-white/10 sm:mt-2">
                 <div
                   class={`landing-metric-bar h-full rounded-full ${metric.barColor}`}
@@ -144,7 +143,7 @@ const terminalBg =
             href={withBase('/dashboard')}
             class="inline-flex items-center gap-2 rounded-full bg-primary-fixed px-6 py-3 font-mono text-label-sm uppercase tracking-wider text-[#002117] shadow-lg transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary-fixed-dim focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 sm:px-8"
           >
-            Access Full Terminal
+            Open Dashboard
             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>

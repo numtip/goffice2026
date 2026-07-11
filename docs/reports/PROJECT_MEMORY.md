@@ -167,6 +167,7 @@ Docs: [RELEASE_SAFETY_CHECK.md](../runbooks/RELEASE_SAFETY_CHECK.md)
 |--------|--------|
 | Design Freeze v1 | ✅ Complete |
 | EP-1 Experience Polish | ✅ Complete |
+| EP-2 Local Integrity Checkpoint | ✅ Complete locally (2026-07-11) |
 | Session handoff docs | ✅ Complete (2026-06-26) |
 
 **Latest commits:** `f639956` (Stitch landing), `4c07989` (EP-1 polish)
@@ -177,11 +178,11 @@ Docs: [RELEASE_SAFETY_CHECK.md](../runbooks/RELEASE_SAFETY_CHECK.md)
 
 **EP-2 — Real Content Integration**
 
-- Maejo imagery (replace CDN placeholders)
-- Real dashboard preview data wiring
-- Real activities/news content
+- Maejo imagery (replace CDN placeholders) — blocked until approved local assets are available
+- Real dashboard preview data wiring — local checkpoint wired landing preview to generated dashboard JSON
+- Real activities/news content — blocked until verified source content is available
 - Document Center hook preparation
-- Nav/footer visual alignment
+- Nav/footer visual alignment — local checkpoint improved responsive institutional navigation/footer
 - Executive review prep
 
 Plan: [NEXT_SPRINT_PLAN.md](./NEXT_SPRINT_PLAN.md)
@@ -190,22 +191,21 @@ Plan: [NEXT_SPRINT_PLAN.md](./NEXT_SPRINT_PLAN.md)
 
 ## Known Constraints
 
-- External Stitch CDN images impact LCP until EP-2 self-hosting
-- Nav/footer still legacy styling (outside EP-1 scope)
-- Activity cards use placeholder editorial content
+- Approved local image assets are not yet present under `public/images/`
+- Activity cards must remain source-pending placeholders until verified activity/news content is provided
+- Evidence records are placeholder-classified until target files exist and are approved for publication
 - Document Center not yet connected to M365 APIs
 - Production VPS not updated during preview sprints
-- Untracked repo files: `.zai/`, `data/import/googlestitch/`, `compliance-criteria.json` — triage next session
+- 2569 operational data is still partial; do not treat partial-year YoY values as final environmental performance conclusions
 
 ---
 
 ## Outstanding Tasks
 
-- [ ] EP-2 sprint kickoff and PO content approval
-- [ ] Self-host hero and activity images
-- [ ] Static activities/news data model
-- [ ] Nav/footer Stitch token alignment
-- [ ] Commit or gitignore untracked import/design assets
+- [x] EP-2 local integrity checkpoint: dashboard preview wiring, evidence placeholder classification, stale QA docs
+- [ ] PO-approved Maejo image assets for hero/activity sections
+- [ ] Verified static activities/news data model and source content
+- [ ] Add source-backed import CSVs for fuel, paper, waste, and GHG if pipeline coverage must include every metric
 - [ ] EP-3 Document Center integration spec
 - [ ] Production VPS release (PO-approved, manual)
 

@@ -9,7 +9,7 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Maejo University Green Office 2026 — executive environmental intelligence, certification dashboards, and evidence preview." />
+    <meta name="description" content="Green Office 2026 static preview with repository-backed dashboards, categories, and evidence placeholders." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>{title} - Green Office Platform</title>
@@ -21,7 +21,7 @@ const { title } = Astro.props;
     >
       Skip to main content
     </a>
-    <header class="bg-white shadow-md">
+    <header>
       <Navigation />
     </header>
 
@@ -29,9 +29,13 @@ const { title } = Astro.props;
       <slot />
     </main>
 
-    <footer class="bg-gray-800 text-white py-4 mt-8">
-      <div class="container mx-auto text-center">
-        <p>&copy; {new Date().getFullYear()} Green Office Platform. All rights reserved.</p>
+    <footer class="mt-8 border-t border-primary/10 bg-inverse-surface py-8 text-white">
+      <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 text-sm text-outline-variant sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p class="font-semibold text-white">Green Office 2026</p>
+          <p>Static preview. Content and evidence are repository-backed unless marked as placeholder.</p>
+        </div>
+        <p class="text-xs">&copy; {new Date().getFullYear()} Green Office Platform</p>
       </div>
     </footer>
     <PreviewBadge />

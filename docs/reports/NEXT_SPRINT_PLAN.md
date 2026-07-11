@@ -12,7 +12,7 @@
 |--------|------|--------|-------|
 | Design Freeze v1 | Stitch Landing | ✅ Complete | Approved homepage implementation |
 | EP-1 | Experience Polish | ✅ Complete | Motion, a11y, responsive, performance |
-| **EP-2** | **Real Content Integration** | **Next** | Replace placeholders with real Maejo content |
+| **EP-2** | **Real Content Integration** | **In Progress** | Replace placeholders with real Maejo content |
 | EP-3 | Document Center Integration | Planned | Microsoft 365 preview hooks from landing |
 
 ---
@@ -27,37 +27,38 @@
 
 #### 1. Replace placeholder imagery with real Maejo assets
 
-- [ ] Audit all external Google Stitch CDN URLs in `src/components/landing/`
+- [x] Audit all external Google Stitch CDN URLs in `src/components/landing/`
 - [ ] Source approved Maejo campus, facility, and activity photography
 - [ ] Add optimized assets to `public/images/` (WebP + fallback, sized variants)
 - [ ] Update landing components with `srcset` / responsive sizes
-- [ ] Remove dependency on third-party CDN for LCP-critical hero image
+- [x] Remove dependency on third-party CDN for LCP-critical hero image
 - [ ] Re-run Lighthouse on GitHub Pages preview; target Performance >95
 
 #### 2. Integrate real dashboard preview data
 
-- [ ] Wire Executive Command Center preview to `dashboard-kpi.json` / `dashboard-config.ts` values (display formatting only — still preview)
-- [ ] Ensure preview labels clearly distinguish preview vs live dashboard
+- [x] Wire Executive Command Center preview to generated dashboard JSON / `dashboard-config.ts` values (display formatting only — still preview)
+- [x] Ensure preview labels clearly distinguish static snapshot vs live dashboard
 - [ ] Validate links to `/dashboard`, `/dashboard/energy`, etc.
-- [ ] Confirm multi-year 2568→2569 data displays correctly on actual dashboard pages
+- [x] Confirm multi-year 2568→2569 data displays correctly on actual dashboard pages
 
 #### 3. Integrate real activities / news
 
 - [ ] Define static content model for activities (Markdown or JSON — static-first)
-- [ ] Replace editorial placeholder cards in `ActivitiesScene.astro`
+- [x] Remove unsupported editorial claims from `ActivitiesScene.astro`
+- [ ] Replace source-pending cards in `ActivitiesScene.astro` after verified content is available
 - [ ] Add optional links to external Maejo news sources or internal static pages
 - [ ] PO review of copy and dates
 
 #### 4. Prepare Document Center integration hooks
 
-- [ ] Define preview contract: what landing shows vs what Document Center owns
+- [x] Define current preview contract: landing shows placeholder-classified repository index only
 - [ ] Document URL/env placeholders for future M365 Document Center (no live API in EP-2)
-- [ ] Align Evidence Gateway copy with Document Center project naming
+- [x] Align Evidence Gateway copy with current repository evidence state
 - [ ] List required SharePoint / Graph fields for EP-3 (read-only preview)
 
 #### 5. Navigation / footer visual alignment
 
-- [ ] Align `Navigation.astro` and footer with Stitch landing tokens (visual only — links unchanged)
+- [x] Align `Navigation.astro` and footer with Stitch landing tokens (visual only — links unchanged)
 - [ ] Preserve preview badge behavior
 - [ ] Responsive nav review at 320–768px
 - [ ] Do not add new nav items without PO approval
@@ -85,8 +86,8 @@ Verify: 26 pages, preview badge, `/goffice2026/` paths, no broken links, mobile 
 ### EP-2 Deliverables
 
 - Self-hosted optimized images
-- Real activity/news content file(s)
-- Dashboard preview wired to real KPI JSON
+- Real activity/news content file(s), after source approval
+- Dashboard preview wired to real generated dashboard JSON
 - Nav/footer visual alignment
 - Updated performance report or EP-2 review doc
 
