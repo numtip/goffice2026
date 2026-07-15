@@ -1,0 +1,83 @@
+---
+interface CategorySummary {
+  code: string;
+  title: { th: string; en: string };
+  summary: { th: string; en: string };
+  weight: number | null;
+  scoringModel?: {
+    type: string;
+    description: string;
+    internalWeighting?: Record<string, number>;
+  };
+}
+
+interface Props {
+  category: CategorySummary;
+  issueCount: number;
+  indicatorCount: number;
+  locale: 'th' | 'en';
+  isSeparate?: boolean;
+}
+
+const { category, issueCount, indicatorCount, locale, isSeparate = false } = Astro.props;
+
+function t(field: { th: string; en: string }): string {
+  return field[locale] || field.th;
+}
+
+const title = t(category.title);
+const summary = t(category.summary);
+const code = category.code;
+
+const cardClasses = isSeparate
+  ? 'border-amber-300 bg-amber-50/60 hover:border-amber-400 hover:bg-amber-50/80'
+  : 'border-green-100 bg-white hover:border-green-300 hover:shadow-md';
+const badgeClasses = isSeparate
+  ? 'bg-amber-100 text-amber-800'
+  : 'bg-green-100 text-green-800';
+const accentClasses = isSeparate
+  ? 'border-l-amber-400'
+  : 'border-l-green-500';
+---
+
+<a
+  href={`/categories/${code}/`}
+  class={`group block rounded-xl border p-5 transition-all duration-200 ${cardClasses} border-l-4 ${accentClasses}`}
+>
+  <div class="mb-2 flex items-start justify-between gap-2">
+    <h2 class="text-base font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
+      {title}
+    </h2>
+    <span class={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${badgeClasses}`}>
+      {code}
+    </span>
+  </div>
+
+  <p class="mb-4 text-sm leading-relaxed text-gray-600 line-clamp-2">
+    {summary}
+  </p>
+
+  <div class="flex flex-wrap items-center gap-3 text-xs text-gray-500">
+    <span class="inline-flex items-center gap-1">
+      <svg class="h-3.5 w-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+      </svg>
+      {issueCount} {locale === 'th' ? 'ประเด็น' : 'issues'}
+    </span>
+    <span class="inline-flex items-center gap-1">
+      <svg class="h-3.5 w-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      {indicatorCount} {locale === 'th' ? 'ตัวชี้วัด' : 'indicators'}
+    </span>
+    {isSeparate ? (
+      <span class="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-amber-700 font-medium">
+        {locale === 'th' ? 'แยกประเมิน' : 'Separate'}
+      </span>
+    ) : (
+      <span class="inline-flex items-center gap-1 font-medium text-gray-600">
+        {category.weight}%
+      </span>
+    )}
+  </div>
+</a>
