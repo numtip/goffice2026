@@ -1,0 +1,246 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/global.css';
+import { getLocalizedPath } from '../../../i18n/utils';
+import categoryData from '../../../data/criteria/categories.json';
+import issueData from '../../../data/criteria/issues.json';
+import indicatorData from '../../../data/criteria/indicators.json';
+
+const locale = 'en';
+
+export function getStaticPaths() {
+  const issues = issueData.issues;
+  const indicators = indicatorData.indicators;
+
+  return categoryData.categories.map((cat) => {
+    const catIssues = issues.filter((i) => i.categoryCode === cat.code);
+    const issueIds = new Set(catIssues.map((i) => i.id));
+    const catIndicators = indicators.filter((ind) => issueIds.has(ind.issueCode));
+
+    const issuesWithIndicators = catIssues.map((issue) => {
+      const issueIndicators = catIndicators.filter((ind) => ind.issueCode === issue.id);
+      return {
+        issue,
+        indicators: issueIndicators,
+        indicatorCount: issueIndicators.length,
+      };
+    });
+
+    return {
+      params: { id: cat.code },
+      props: {
+        category: cat,
+        issuesWithIndicators,
+        issueCount: catIssues.length,
+        indicatorCount: catIndicators.length,
+      },
+    };
+  });
+}
+
+interface IssueItem {
+  id: string;
+  code: string;
+  categoryCode: string;
+  title: { th: string; en: string };
+}
+
+interface IndicatorItem {
+  id: string;
+  code: string;
+  categoryCode: string;
+  issueCode: string;
+  title: { th: string; en: string };
+  requirementSummary: { th: string; en: string };
+  relatedDashboards: string[];
+}
+
+interface IssueWithIndicators {
+  issue: IssueItem;
+  indicators: IndicatorItem[];
+  indicatorCount: number;
+}
+
+interface CategoryItem {
+  id: string;
+  code: string;
+  title: { th: string; en: string };
+  summary: { th: string; en: string };
+  weight: number | null;
+  scoringModel?: {
+    type: string;
+    description: string;
+    internalWeighting?: Record<string, number>;
+  };
+}
+
+const props = Astro.props as {
+  category: CategoryItem;
+  issuesWithIndicators: IssueWithIndicators[];
+  issueCount: number;
+  indicatorCount: number;
+};
+
+const { category, issuesWithIndicators, issueCount, indicatorCount } = props;
+
+function t(field: { th: string; en: string }): string {
+  return field.en || field.th;
+}
+
+const title = t(category.title);
+const summary = t(category.summary);
+const isCat7 = category.code === 'cat7';
+
+const pageTitle = `${title} | Category`;
+const breadcrumbHome = 'Home';
+const breadcrumbCategories = 'Categories';
+
+const weightLabel = isCat7
+  ? 'Separate Assessment'
+  : `Weight ${category.weight}%`;
+
+function localizedUrl(path: string): string {
+  return getLocalizedPath('en', path);
+}
+---
+
+<BaseLayout title={pageTitle} locale={locale}>
+  <div class="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+    <!-- Breadcrumb -->
+    <nav class="mb-6 flex items-center gap-2 text-sm text-gray-500" aria-label="Breadcrumb">
+      <a href={localizedUrl('/')} class="hover:text-green-700 transition-colors">{breadcrumbHome}</a>
+      <span aria-hidden="true">/</span>
+      <a href={localizedUrl('/categories/')} class="hover:text-green-700 transition-colors">{breadcrumbCategories}</a>
+      <span aria-hidden="true">/</span>
+      <span class="text-gray-900 font-medium truncate">{title}</span>
+    </nav>
+
+    <!-- Category Header -->
+    <header class={`mb-10 rounded-xl border-l-4 p-6 ${isCat7 ? 'border-l-amber-400 bg-amber-50/40' : 'border-l-green-600 bg-green-50/40'}`}>
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <span class={`rounded-full px-2.5 py-0.5 text-xs font-medium ${isCat7 ? 'bg-amber-100 text-amber-800' : 'bg-green-100 text-green-800'}`}>
+              {category.code}
+            </span>
+            <span class={`rounded-full px-2.5 py-0.5 text-xs font-medium ${isCat7 ? 'bg-amber-200 text-amber-900' : 'bg-green-200 text-green-900'}`}>
+              {weightLabel}
+            </span>
+            {isCat7 && (
+              <span class="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-800">
+                Renewal/Upgrade
+              </span>
+            )}
+          </div>
+          <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">
+            {title}
+          </h1>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600 max-w-3xl">
+            {summary}
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-gray-500">
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+          {issueCount} issues
+        </span>
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          {indicatorCount} indicators
+        </span>
+      </div>
+    </header>
+
+    <!-- Cat7 Scoring Model Info -->
+    {isCat7 && category.scoringModel && (
+      <div class="mb-8 rounded-lg border border-amber-200 bg-amber-50/60 p-4 text-sm text-amber-800">
+        <p class="font-semibold mb-1">
+          Separate Scoring Model
+        </p>
+        <p class="text-amber-700">
+          Category 7 is assessed independently from Categories 1–6 and applies only to renewal or upgrade certification. Internal weighting:
+        </p>
+        {category.scoringModel.internalWeighting && (
+          <div class="mt-2 flex gap-4">
+            {Object.entries(category.scoringModel.internalWeighting).map(([issueId, weight]) => (
+              <span class="inline-flex items-center gap-1 rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">
+                {issueId}: {weight}%
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    )}
+
+    <!-- Issues and Indicators -->
+    <section>
+      <h2 class="mb-6 text-lg font-semibold text-gray-800">
+        Issues and Indicators
+      </h2>
+
+      <div class="space-y-4">
+        {issuesWithIndicators.map((item) => (
+          <div class="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+            <!-- Issue Header -->
+            <div class={`flex items-center gap-3 px-5 py-4 ${isCat7 ? 'bg-amber-50/60' : 'bg-gray-50'}`}>
+              <span class={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold ${isCat7 ? 'bg-amber-200 text-amber-800' : 'bg-green-100 text-green-800'}`}>
+                {item.issue.id}
+              </span>
+              <div class="flex-1 min-w-0">
+                <h3 class="text-sm font-semibold text-gray-900">
+                  {t(item.issue.title)}
+                </h3>
+              </div>
+              <span class="shrink-0 text-xs text-gray-400">
+                {item.indicatorCount} indicators
+              </span>
+            </div>
+
+            <!-- Indicators List -->
+            <ul class="divide-y divide-gray-100">
+              {item.indicators.map((indicator) => (
+                <li>
+                  <a
+                    href={localizedUrl(`/indicators/${indicator.code}/`)}
+                    class="flex items-start gap-3 px-5 py-3 text-sm transition-colors hover:bg-green-50/50 group"
+                  >
+                    <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border border-gray-300 bg-white text-[10px] font-medium text-gray-500 group-hover:border-green-400 group-hover:text-green-700">
+                      {indicator.code}
+                    </span>
+                    <div class="min-w-0 flex-1">
+                      <span class="font-medium text-gray-800 group-hover:text-green-700 transition-colors">
+                        {t(indicator.title)}
+                      </span>
+                      <p class="mt-0.5 text-xs text-gray-500 line-clamp-1">
+                        {t(indicator.requirementSummary)}
+                      </p>
+                    </div>
+                    <svg class="mt-1 h-4 w-4 shrink-0 text-gray-300 group-hover:text-green-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Bottom navigation -->
+    <nav class="mt-10 flex items-center justify-between border-t border-gray-200 pt-6">
+      <a href={localizedUrl('/categories/')} class="inline-flex items-center gap-1.5 text-sm font-medium text-green-700 hover:text-green-800 transition-colors">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        All Categories
+      </a>
+    </nav>
+  </div>
+</BaseLayout>

@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/global.css';
+import evidenceIndex from '../../../data/evidence-index.json';
+import categoriesData from '../../../data/criteria/categories.json';
+import EvidenceCard from '../../../components/evidence/EvidenceCard.astro';
+
+const locale = 'en';
+
+// Build canonical category lookup
+const categoryMap = new Map(categoriesData.categories.map((c: any) => [c.code, c]));
+
+// Traceability levels and their display config
+const traceabilityOrder = ['indicator', 'issue', 'category', 'unmapped'] as const;
+const traceLabels: Record<string, { th: string; en: string }> = {
+  indicator: { th: 'เชื่อมโยงตัวชี้วัด', en: 'Indicator-linked' },
+  issue: { th: 'เชื่อมโยงประเด็น', en: 'Issue-linked' },
+  category: { th: 'เชื่อมโยงหมวดหมู่', en: 'Category-linked' },
+  unmapped: { th: 'ยังไม่เชื่อมโยง', en: 'Unmapped' },
+};
+
+const verLabels: Record<string, { th: string; en: string }> = {
+  verified: { th: 'ยืนยันแล้ว', en: 'Verified' },
+  unresolved: { th: 'ยังไม่ยืนยัน', en: 'Unresolved' },
+  rejected: { th: 'ไม่ผ่าน', en: 'Rejected' },
+};
+
+// Normalize evidence items (handle old schema gracefully, target new schema)
+const items = evidenceIndex.items.map((raw: Record<string, any>) => {
+  const categoryCodes: string[] = Array.isArray(raw.categoryCodes)
+    ? raw.categoryCodes
+    : raw.categoryId
+      ? [raw.categoryId]
+      : [];
+
+  const traceabilityLevel: string = raw.traceabilityLevel
+    || (Array.isArray(raw.indicatorCodes) && raw.indicatorCodes.length > 0
+      ? 'indicator'
+      : Array.isArray(raw.issueCodes) && raw.issueCodes.length > 0
+        ? 'issue'
+        : categoryCodes.length > 0
+          ? 'category'
+          : 'unmapped');
+
+  const verification = raw.verification || { status: 'unresolved', basis: '' };
+
+  const firstCat = categoryCodes
+    .map((code: string) => categoryMap.get(code))
+    .find(Boolean);
+
+  return {
+    id: raw.id,
+    title: raw.title,
+    description: raw.description,
+    year: raw.year,
+    fileType: raw.fileType,
+    status: raw.status,
+    path: raw.path,
+    traceabilityLevel,
+    verificationStatus: verification.status || 'unresolved',
+    categoryTitle: firstCat?.title?.en,
+  };
+});
+
+const totalItems = items.length;
+const placeholderItems = items.filter((i: any) => i.status === 'placeholder').length;
+const allPlaceholder = placeholderItems === totalItems;
+
+// Precompute stat arrays for template
+const traceStats: { label: string; count: number; key: string }[] = [];
+for (const level of traceabilityOrder) {
+  const count = items.filter((i: any) => i.traceabilityLevel === level).length;
+  if (count > 0) {
+    traceStats.push({
+      key: level,
+      count,
+      label: traceLabels[level].en,
+    });
+  }
+}
+
+const verStats: { label: string; count: number; key: string; color: string }[] = [];
+const verColorMap: Record<string, string> = {
+  verified: 'text-green-600',
+  unresolved: 'text-yellow-600',
+  rejected: 'text-red-600',
+};
+for (const [key, labelObj] of Object.entries(verLabels)) {
+  const count = items.filter((i: any) => i.verificationStatus === key).length;
+  if (count > 0 || key === 'unresolved') {
+    verStats.push({
+      key,
+      count,
+      label: labelObj.en,
+      color: verColorMap[key] || 'text-gray-600',
+    });
+  }
+}
+
+const pageTitle = 'Evidence Library';
+const hasItems = items.length > 0;
+---
+
+<BaseLayout title={pageTitle} locale={locale}>
+  <div class="p-4 max-w-5xl mx-auto">
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900">{pageTitle}</h1>
+      <p class="text-gray-600 mt-2">
+        Browse certification evidence records organized by Green Office category, issue, and indicator.
+      </p>
+    </div>
+
+    <!-- Source Pending banner -->
+    {allPlaceholder && (
+      <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 mb-6 flex items-start gap-4 shadow-sm">
+        <div class="flex-shrink-0 mt-0.5">
+          <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-lg font-bold text-amber-800">
+            Source Pending — Awaiting Approved Documents
+          </h2>
+          <p class="text-sm text-amber-700 mt-1 leading-relaxed">
+            All {totalItems} evidence items are currently placeholder records. These entries define the certification evidence structure — indicator mappings, expected document types, and descriptions — but no actual source documents have been uploaded yet. Once approved office documents are indexed, they will replace these placeholders and the evidence library will become fully navigable.
+          </p>
+        </div>
+      </div>
+    )}
+
+    <!-- Summary stats: total + by traceability -->
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
+      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
+        <p class="text-2xl font-bold text-gray-900">{totalItems}</p>
+        <p class="text-sm text-gray-500">Total Items</p>
+      </div>
+      {traceStats.map((stat) => (
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
+          <p class="text-2xl font-bold text-gray-900">{stat.count}</p>
+          <p class="text-sm text-gray-500">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Verification stats -->
+    <div class="grid grid-cols-3 gap-4 mb-6">
+      {verStats.map((stat) => (
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-3 text-center">
+          <p class={`text-xl font-bold ${stat.color}`}>{stat.count}</p>
+          <p class="text-xs text-gray-500">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Evidence items -->
+    {hasItems ? (
+      <div class="space-y-4">
+        {items.map((item: any) => {
+          const catTitle = item.categoryTitle;
+          return (
+            <EvidenceCard
+              id={item.id}
+              title={item.title}
+              description={item.description}
+              year={item.year}
+              fileType={item.fileType}
+              status={item.status}
+              traceabilityLevel={item.traceabilityLevel}
+              verificationStatus={item.verificationStatus}
+              categoryTitle={catTitle}
+              locale={locale}
+            />
+          );
+        })}
+      </div>
+    ) : (
+      <div class="text-center py-12 bg-white rounded-xl border border-dashed border-gray-300">
+        <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        <p class="text-gray-500 text-lg">No evidence items found.</p>
+        <p class="text-gray-400 text-sm mt-1">Evidence items will appear here once indexed.</p>
+      </div>
+    )}
+
+    <!-- Updated date -->
+    <p class="text-xs text-gray-400 mt-6 text-center">
+      Last updated: {evidenceIndex.updated} · Schema: v{evidenceIndex.version}
+    </p>
+  </div>
+</BaseLayout>

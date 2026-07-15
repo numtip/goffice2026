@@ -1,0 +1,284 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/global.css';
+import indicatorsData from '../../../data/criteria/indicators.json';
+import issuesData from '../../../data/criteria/issues.json';
+import categoriesData from '../../../data/criteria/categories.json';
+import evidenceIndex from '../../../data/evidence-index.json';
+import { getLocalizedPath } from '../../../i18n/utils';
+
+const locale = 'en';
+
+export function getStaticPaths() {
+  return indicatorsData.indicators.map((indicator, index) => {
+    const issue = issuesData.issues.find((i) => i.id === indicator.issueCode);
+    const category = categoriesData.categories.find((c) => c.code === indicator.categoryCode);
+    return {
+      params: { code: indicator.code },
+      props: { indicator, issue, category, index, total: indicatorsData.indicators.length },
+    };
+  });
+}
+
+const { indicator, issue, category, index, total } = Astro.props;
+const allIndicators = indicatorsData.indicators;
+const prevIndicator = index > 0 ? allIndicators[index - 1] : null;
+const nextIndicator = index < total - 1 ? allIndicators[index + 1] : null;
+
+const dashboardRoutes: Record<string, string> = {
+  energy: '/dashboard/energy',
+  water: '/dashboard/water',
+  fuel: '/dashboard/fuel',
+  paper: '/dashboard/paper',
+  waste: '/dashboard/waste',
+  ghg: '/dashboard/ghg',
+};
+
+const dashboardLabels: Record<string, string> = {
+  energy: 'Energy',
+  water: 'Water',
+  fuel: 'Fuel',
+  paper: 'Paper',
+  waste: 'Waste',
+  ghg: 'GHG',
+};
+
+const dashboardLinks = (indicator.relatedDashboards || []).map((id: string) => ({
+  id,
+  route: dashboardRoutes[id] || null,
+  label: dashboardLabels[id] || id,
+}));
+
+// Exact indicator-level evidence
+const exactEvidence: any[] = evidenceIndex.items.filter(
+  (e: any) => Array.isArray(e.indicatorCodes) && e.indicatorCodes.indexOf(indicator.code) !== -1
+);
+const hasExactEvidence = exactEvidence.length > 0;
+
+// Category-level evidence (fallback for same category)
+const categoryEvidence: any[] = evidenceIndex.items.filter(
+  (e: any) => {
+    if (hasExactEvidence) return false;
+    const codes: string[] = Array.isArray(e.categoryCodes) ? e.categoryCodes : e.categoryId ? [e.categoryId] : [];
+    return codes.indexOf(indicator.categoryCode) !== -1;
+  }
+);
+const hasCategoryEvidence = categoryEvidence.length > 0;
+
+function localizedUrl(path: string): string {
+  return getLocalizedPath('en', path);
+}
+---
+
+<BaseLayout title={`Indicator ${indicator.code}: ${indicator.title.en || indicator.title.th}`} locale={locale}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+        <li>
+          <a href={localizedUrl('/')} class="text-green-600 hover:text-green-800 hover:underline transition-colors">
+            Home
+          </a>
+        </li>
+        <li class="text-gray-300 select-none" aria-hidden="true">/</li>
+        <li>
+          <a href={localizedUrl('/categories/')} class="text-green-600 hover:text-green-800 hover:underline transition-colors">
+            Categories
+          </a>
+        </li>
+        <li class="text-gray-300 select-none" aria-hidden="true">/</li>
+        <li>
+          <a href={localizedUrl(`/categories/${category?.code}`)} class="text-green-600 hover:text-green-800 hover:underline transition-colors">
+            {category?.title?.en || indicator.categoryCode}
+          </a>
+        </li>
+        <li class="text-gray-300 select-none" aria-hidden="true">/</li>
+        <li class="text-gray-500">{issue?.title?.en || indicator.issueCode}</li>
+        <li class="text-gray-300 select-none" aria-hidden="true">/</li>
+        <li class="text-gray-700 font-medium">{indicator.title.en || indicator.title.th}</li>
+      </ol>
+    </nav>
+
+    <!-- Indicator Header -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+      <div class="flex items-start gap-3 mb-3">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 shrink-0">
+          Indicator {indicator.code}
+        </span>
+      </div>
+      <h1 class="text-2xl font-bold text-gray-900 mb-4">
+        {indicator.title.en || indicator.title.th}
+      </h1>
+    </div>
+
+    <!-- Requirement Summary -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+      <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+        Requirement Summary
+      </h2>
+      <p class="text-gray-800 leading-relaxed">
+        {indicator.requirementSummary.en || indicator.requirementSummary.th}
+      </p>
+    </div>
+
+    <!-- Meta Information Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <!-- Parent Category -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+        <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+          Category
+        </h2>
+        {category ? (
+          <>
+            <a
+              href={localizedUrl(`/categories/${category.code}`)}
+              class="text-green-600 hover:text-green-800 hover:underline font-medium"
+            >
+              {category.title.en}
+            </a>
+            {category.weight !== null && (
+              <p class="text-sm text-gray-500 mt-1">Weight: {category.weight}%</p>
+            )}
+          </>
+        ) : (
+          <span class="text-gray-400">{indicator.categoryCode}</span>
+        )}
+      </div>
+
+      <!-- Parent Issue -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+        <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+          Issue
+        </h2>
+        {issue ? (
+          <p class="text-gray-800 font-medium">{issue.title.en}</p>
+        ) : (
+          <span class="text-gray-400">{indicator.issueCode}</span>
+        )}
+        <p class="text-xs text-gray-400 mt-1">Code: {indicator.issueCode}</p>
+      </div>
+    </div>
+
+    <!-- Related Dashboards -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+      <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+        Related Dashboards
+      </h2>
+      {
+        dashboardLinks.length > 0 ? (
+          <ul class="space-y-2">
+            {dashboardLinks.map((link: { id: string; route: string | null; label: string }) => (
+              <li>
+                {link.route ? (
+                  <a
+                    href={localizedUrl(link.route)}
+                    class="inline-flex items-center gap-2 text-green-600 hover:text-green-800 hover:underline transition-colors"
+                  >
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                    <span>{link.label}</span>
+                  </a>
+                ) : (
+                  <span class="text-gray-400 italic">{link.id}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="text-gray-400 italic">
+            No direct dashboard connection
+          </p>
+        )
+      }
+    </div>
+
+    <!-- Exact Indicator Evidence Section -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+      <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+        Evidence Linked to This Indicator
+      </h2>
+      {
+        hasExactEvidence ? (
+          <ul class="space-y-2">
+            {exactEvidence.map((ev: { id: string; title: string }) => (
+              <li>
+                <a
+                  href={localizedUrl(`/evidence/${ev.id}/`)}
+                  class="inline-flex items-center gap-2 text-green-600 hover:text-green-800 hover:underline transition-colors text-sm"
+                >
+                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <span>{ev.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="text-gray-400 italic">No evidence directly linked to this indicator yet.</p>
+        )
+      }
+    </div>
+
+    <!-- Category-Level Evidence Section -->
+    {
+      hasCategoryEvidence && (
+        <div class="bg-white rounded-xl shadow-sm border border-amber-100 bg-amber-50/30 p-6 mb-6">
+          <h2 class="text-sm font-semibold text-amber-700 uppercase tracking-wider mb-3">
+            Related Evidence in This Category
+          </h2>
+          <p class="text-xs text-amber-600 mb-3">Category-level evidence — may not be directly linked to this indicator.</p>
+          <a
+            href={localizedUrl('/evidence/')}
+            class="inline-flex items-center gap-2 text-amber-700 hover:text-amber-900 hover:underline transition-colors text-sm"
+          >
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>View {categoryEvidence.length} evidence records in this category</span>
+          </a>
+        </div>
+      )
+    }
+
+    <!-- Previous / Next Navigation -->
+    <div class="flex items-center justify-between gap-4 pt-4 border-t border-gray-200">
+      {
+        prevIndicator ? (
+          <a
+            href={localizedUrl(`/indicators/${prevIndicator.code}/`)}
+            class="group flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-green-700 hover:bg-green-50 transition-colors"
+          >
+            <svg class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            <span class="hidden sm:inline">Previous:</span>
+            <span class="text-green-600 group-hover:text-green-800">{prevIndicator.code}</span>
+          </a>
+        ) : (
+          <div></div>
+        )
+      }
+      <span class="text-xs text-gray-400 select-none shrink-0">
+        {index + 1} / {total}
+      </span>
+      {
+        nextIndicator ? (
+          <a
+            href={localizedUrl(`/indicators/${nextIndicator.code}/`)}
+            class="group flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-green-700 hover:bg-green-50 transition-colors"
+          >
+            <span class="text-green-600 group-hover:text-green-800">{nextIndicator.code}</span>
+            <span class="hidden sm:inline">:Next</span>
+            <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        ) : (
+          <div></div>
+        )
+      }
+    </div>
+  </div>
+</BaseLayout>

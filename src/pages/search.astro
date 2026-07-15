@@ -1,209 +1,503 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
-import categoriesData from '../data/categories.json';
-import evidenceIndex from '../data/evidence-index.json';
-import EvidenceCard from '../components/evidence/EvidenceCard.astro';
+import { withBase } from '../utils/with-base';
 import { getLocale } from '../i18n/utils';
+import categoriesData from '../data/criteria/categories.json';
+import issuesData from '../data/criteria/issues.json';
+import indicatorsData from '../data/criteria/indicators.json';
+import evidenceIndex from '../data/evidence-index.json';
 
 const locale = getLocale(Astro.url);
-const categoryMap = new Map(categoriesData.categories.map((c) => [c.id, c]));
-
-const searchData = evidenceIndex.items.map((item) => {
-  const cat = categoryMap.get(item.categoryId);
-  const itemVerification = (item as any).verification || { status: 'unresolved' };
-  return {
-    id: item.id,
-    title: item.title,
-    indicator: item.indicator,
-    description: item.description,
-    year: item.year,
-    categoryId: item.categoryId,
-    categoryTitle: cat?.title ?? '',
-    fileType: item.fileType,
-    status: item.status,
-    path: item.path,
-    traceabilityLevel: (item as any).traceabilityLevel || 'category',
-    verification: itemVerification,
-  };
-});
-
-const years = [...new Set(evidenceIndex.items.map((i) => i.year))].sort((a, b) => b - a);
 const categories = categoriesData.categories;
+const issues = issuesData.issues;
+const indicators = indicatorsData.indicators;
+const evidence = evidenceIndex.items;
+
+// Lookup: categoryCode (e.g. "cat1") → canonical category
+const categoryByCode = new Map(categories.map((c) => [c.code, c]));
+
+// Group evidence items by categoryId for document indexing
+/** @type {Map<string, typeof evidence>} */
+const evidenceByCategory = new Map();
+for (const ev of evidence) {
+  const existing = evidenceByCategory.get(ev.categoryId) || [];
+  existing.push(ev);
+  evidenceByCategory.set(ev.categoryId, existing);
+}
+
+interface SearchItem {
+  type: 'category' | 'issue' | 'indicator' | 'evidence' | 'document';
+  typeLabel: [string, string];
+  id: string;
+  title: [string, string];
+  context: [string, string];
+  categoryTitle: [string, string];
+  route: string;
+  searchText: string;
+}
+
+const searchData: SearchItem[] = [];
+
+// 1. Categories (7 items)
+for (const cat of categories) {
+  searchData.push({
+    type: 'category',
+    typeLabel: ['หมวดหมู่', 'Category'],
+    id: cat.code,
+    title: [cat.title.th, cat.title.en],
+    context: [cat.summary.th, cat.summary.en],
+    categoryTitle: [cat.title.th, cat.title.en],
+    route: withBase(`/categories/${cat.code}/`),
+    searchText: `${cat.title.th} ${cat.title.en} ${cat.summary.th} ${cat.summary.en} ${cat.code}`
+      .toLowerCase(),
+  });
+}
+
+// 2. Issues (24 items)
+for (const issue of issues) {
+  const cat = categoryByCode.get(issue.categoryCode);
+  searchData.push({
+    type: 'issue',
+    typeLabel: ['ประเด็น', 'Issue'],
+    id: issue.id,
+    title: [issue.title.th, issue.title.en],
+    context: [
+      `หมวด ${issue.categoryCode} — ${issue.id}`,
+      `Category ${issue.categoryCode} — ${issue.id}`,
+    ],
+    categoryTitle: [cat?.title.th ?? '', cat?.title.en ?? ''],
+    route: withBase(`/categories/${issue.categoryCode}/`),
+    searchText:
+      `${issue.title.th} ${issue.title.en} ${cat?.title.th ?? ''} ${cat?.title.en ?? ''} ${issue.id} ${issue.code}`
+        .toLowerCase(),
+  });
+}
+
+// 3. Indicators (65 items)
+for (const indicator of indicators) {
+  const cat = categoryByCode.get(indicator.categoryCode);
+  searchData.push({
+    type: 'indicator',
+    typeLabel: ['ตัวชี้วัด', 'Indicator'],
+    id: indicator.id,
+    title: [indicator.title.th, indicator.title.en],
+    context: [indicator.requirementSummary.th, indicator.requirementSummary.en],
+    categoryTitle: [cat?.title.th ?? '', cat?.title.en ?? ''],
+    route: withBase(`/indicators/${indicator.id}/`),
+    searchText:
+      `${indicator.title.th} ${indicator.title.en} ${indicator.requirementSummary.th} ${indicator.requirementSummary.en} ${cat?.title.th ?? ''} ${cat?.title.en ?? ''} ${indicator.id}`
+        .toLowerCase(),
+  });
+}
+
+// 4. Evidence (21 items)
+for (const ev of evidence) {
+  const cat = categoryByCode.get(ev.categoryId);
+  searchData.push({
+    type: 'evidence',
+    typeLabel: ['หลักฐาน', 'Evidence'],
+    id: ev.id,
+    title: [ev.title, ev.title],
+    context: [ev.description, ev.description],
+    categoryTitle: [cat?.title.th ?? '', cat?.title.en ?? ''],
+    route: withBase(`/evidence/${ev.id}/`),
+    searchText:
+      `${ev.title} ${ev.description} ${ev.indicator} ${cat?.title.th ?? ''} ${cat?.title.en ?? ''} ${ev.id} ${ev.year} ${ev.fileType}`
+        .toLowerCase(),
+  });
+}
+
+// 5. Documents — category-level document pages (7 items)
+for (const cat of categories) {
+  const catEvidence = evidenceByCategory.get(cat.code) || [];
+  const docCount = catEvidence.length;
+  const docTitles = catEvidence.map((e: { title: string }) => e.title).join(' ');
+  searchData.push({
+    type: 'document',
+    typeLabel: ['เอกสาร', 'Document'],
+    id: `doc-${cat.code}`,
+    title: [cat.title.th, cat.title.en],
+    context: [
+      `${docCount} รายการเอกสาร${docCount > 0 ? '' : ''}`,
+      `${docCount} document item${docCount !== 1 ? 's' : ''}`,
+    ],
+    categoryTitle: [cat.title.th, cat.title.en],
+    route: withBase(`/documents/${cat.code}/`),
+    searchText:
+      `${cat.title.th} ${cat.title.en} ${cat.summary.th} ${cat.summary.en} ${docTitles} เอกสาร document`
+        .toLowerCase(),
+  });
+}
+
+const totalResults = searchData.length;
+const searchDataJson = JSON.stringify(searchData);
+
+// Localized strings
+const pageTitle =
+  locale === 'th' ? 'ค้นหา | Search — Green Office 2026' : 'Search | ค้นหา — Green Office 2026';
+const heading = locale === 'th' ? 'ค้นหาทุกเนื้อหา' : 'Search All Content';
+const subtitle =
+  locale === 'th'
+    ? `ค้นหาจาก ${totalResults} รายการ ใน ${categories.length} หมวดหมู่ ${issues.length} ประเด็น ${indicators.length} ตัวชี้วัด หลักฐาน และเอกสาร`
+    : `Search ${totalResults} items across ${categories.length} categories, ${issues.length} issues, ${indicators.length} indicators, evidence, and documents`;
+const searchPlaceholder =
+  locale === 'th' ? 'ค้นหาด้วยชื่อ คำสำคัญ หรือรหัส...' : 'Search by name, keyword, or code...';
+const emptyTitle = locale === 'th' ? 'ไม่พบรายการที่ค้นหา' : 'No results found';
+const emptyDesc =
+  locale === 'th'
+    ? 'ลองเปลี่ยนคำค้นหาหรือตัวกรองประเภทเนื้อหา'
+    : 'Try adjusting your search terms or type filter';
+const srSearchResults = locale === 'th' ? 'ผลการค้นหา' : 'Search results';
+const prefixSearch = locale === 'th' ? 'กด / เพื่อค้นหา' : 'Press / to search';
+const viewDetails = locale === 'th' ? 'ดูรายละเอียด' : 'View details';
+
+const typeColorMap: Record<string, string> = {
+  category: 'bg-purple-100 text-purple-700 border-purple-200',
+  issue: 'bg-blue-100 text-blue-700 border-blue-200',
+  indicator: 'bg-amber-100 text-amber-700 border-amber-200',
+  evidence: 'bg-green-100 text-green-700 border-green-200',
+  document: 'bg-rose-100 text-rose-700 border-rose-200',
+};
+
+const typeLabels: Record<string, [string, string]> = {
+  all: [locale === 'th' ? 'ทั้งหมด' : 'All', locale === 'th' ? 'ทั้งหมด' : 'All'],
+  category: ['หมวดหมู่', 'Categories'],
+  issue: ['ประเด็น', 'Issues'],
+  indicator: ['ตัวชี้วัด', 'Indicators'],
+  evidence: ['หลักฐาน', 'Evidence'],
+  document: ['เอกสาร', 'Documents'],
+};
 ---
 
-<BaseLayout title="Search">
+<BaseLayout title={pageTitle}>
   <div class="p-4 max-w-5xl mx-auto">
     <!-- Header -->
     <div class="mb-6">
-      <h1 class="text-3xl font-bold text-gray-900">Search Evidence Library</h1>
-      <p class="text-gray-600 mt-2">
-        Search by title, indicator, category, year, or description across all {evidenceIndex.items.length} evidence items.
-      </p>
+      <h1 class="text-3xl font-bold text-gray-900">{heading}</h1>
+      <p class="text-gray-600 mt-2">{subtitle}</p>
     </div>
 
     <!-- Search controls -->
     <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 mb-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <!-- Search input -->
-        <div class="md:col-span-2">
-          <label for="search-q" class="sr-only">Search</label>
-          <input
-            id="search-q"
-            type="search"
-            placeholder="Search by title, indicator, description..."
-            class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
-            autocomplete="off"
-          />
-        </div>
-        <!-- Category filter -->
-        <div>
-          <label for="search-cat" class="sr-only">Filter by category</label>
-          <select
-            id="search-cat"
-            class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-white"
-          >
-            <option value="">All Categories</option>
-            {categories.map((cat) => (
-              <option value={cat.id}>{cat.title}</option>
-            ))}
-          </select>
-        </div>
-        <!-- Year filter -->
-        <div class="hidden md:block">
-          <label for="search-year" class="sr-only">Filter by year</label>
-          <select
-            id="search-year"
-            class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-white"
-          >
-            <option value="">All Years</option>
-            {years.map((y) => (
-              <option value={y}>{y}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-      <!-- Year filter for mobile -->
-      <div class="mt-3 md:hidden">
-        <label for="search-year-mobile" class="sr-only">Filter by year</label>
-        <select
-          id="search-year-mobile"
-          class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-white"
+      <!-- Search input -->
+      <div class="relative">
+        <label for="search-q" class="sr-only">{searchPlaceholder}</label>
+        <input
+          id="search-q"
+          type="search"
+          placeholder={searchPlaceholder}
+          class="w-full border border-gray-300 rounded-lg pl-10 pr-4 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+          autocomplete="off"
+          aria-describedby="search-hint"
+        />
+        <svg
+          class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
         >
-          <option value="">All Years</option>
-          {years.map((y) => (
-            <option value={y}>{y}</option>
-          ))}
-        </select>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
+        <kbd
+          id="search-hint"
+          class="hidden md:inline-flex absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded border border-gray-200"
+        >
+          {prefixSearch}
+        </kbd>
       </div>
+
+      <!-- Type filter -->
+      <fieldset class="mt-4">
+        <legend class="sr-only">
+          {locale === 'th' ? 'กรองตามประเภทเนื้อหา' : 'Filter by content type'}
+        </legend>
+        <div
+          id="type-filters"
+          class="flex flex-wrap gap-2"
+          role="group"
+          aria-label={locale === 'th' ? 'กรองตามประเภท' : 'Type filter'}
+        >
+          {Object.entries(typeLabels).map(([type, label]) => {
+            const isAll = type === 'all';
+            return (
+              <button
+                data-type={type}
+                class:list={[
+                  'type-filter px-3 py-1.5 rounded-full text-sm font-medium border transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-1',
+                  isAll
+                    ? 'bg-green-700 text-white border-green-700'
+                    : 'bg-white text-gray-600 border-gray-200 hover:border-green-300 hover:text-green-700',
+                ]}
+                aria-pressed={isAll ? 'true' : 'false'}
+              >
+                {label[locale === 'th' ? 0 : 1]}
+              </button>
+            );
+          })}
+        </div>
+      </fieldset>
     </div>
 
-    <!-- Result count -->
-    <div id="search-count" class="text-sm text-gray-500 mb-4">
-      {searchData.length} result{searchData.length !== 1 ? 's' : ''}
+    <!-- Result count (aria-live region) -->
+    <div
+      id="search-count"
+      class="text-sm text-gray-500 mb-4"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      {totalResults} {locale === 'th' ? 'รายการ' : 'results'}
     </div>
 
     <!-- Results -->
-    <div id="search-results" class="space-y-4">
-      {searchData.map((item) => (
-        <div
-          class="search-item"
-          data-title={item.title.toLowerCase()}
-          data-indicator={item.indicator?.toLowerCase() ?? ''}
-          data-description={item.description.toLowerCase()}
-          data-year={String(item.year)}
-          data-category={item.categoryId}
-          data-category-title={item.categoryTitle.toLowerCase()}
-        >
-          <EvidenceCard
-            id={item.id}
-            title={item.title}
-            description={item.description}
-            year={item.year}
-            fileType={item.fileType}
-            status={item.status}
-            traceabilityLevel={item.traceabilityLevel || 'category'}
-            verificationStatus={(item.verification?.status) || 'unresolved'}
-            categoryTitle={item.categoryTitle}
-            locale={locale}
-          />
-        </div>
-      ))}
+    <div id="search-results" class="space-y-3" role="list" aria-label={srSearchResults}>
+        {
+        searchData.map((item) => {
+          const color = typeColorMap[item.type] || 'bg-gray-100 text-gray-600';
+          const title = locale === 'th' ? item.title[0] : item.title[1];
+          const context = locale === 'th' ? item.context[0] : item.context[1];
+          const catTitle = locale === 'th' ? item.categoryTitle[0] : item.categoryTitle[1];
+          const typeLabel = locale === 'th' ? item.typeLabel[0] : item.typeLabel[1];
+
+          return (
+            <article
+              class="search-result bg-white rounded-xl border border-gray-100 shadow-sm p-4 hover:shadow-md transition-shadow"
+              role="listitem"
+              data-type={item.type}
+              data-search-text={item.searchText}
+            >
+              <div class="flex items-start gap-3">
+                <div class="flex-1 min-w-0">
+                  <!-- Badges row -->
+                  <div class="flex flex-wrap items-center gap-2 mb-2">
+                    <span
+                      class:list={[
+                        'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border',
+                        color,
+                      ]}
+                    >
+                      {typeLabel}
+                    </span>
+                    {catTitle && (
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-500">
+                        {catTitle}
+                      </span>
+                    )}
+                    <span class="text-xs text-gray-400 ml-auto font-mono">{item.id}</span>
+                  </div>
+
+                  <!-- Title -->
+                  <a href={item.route} class="block group">
+                    <h3 class="text-base font-semibold text-gray-900 group-hover:text-green-700 transition-colors line-clamp-2">
+                      {title}
+                    </h3>
+                    <p class="text-sm text-gray-600 mt-1 leading-relaxed line-clamp-2">
+                      {context}
+                    </p>
+                  </a>
+
+                  <!-- View link -->
+                  <div class="mt-2">
+                    <a
+                      href={item.route}
+                      class="inline-flex items-center gap-1 text-xs font-medium text-green-600 hover:text-green-800 transition-colors"
+                    >
+                      {viewDetails}
+                      <svg
+                        class="w-3 h-3"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
     </div>
 
     <!-- Empty state -->
-    <div id="search-empty" class="hidden text-center py-12 bg-white rounded-xl border border-dashed border-gray-300">
-      <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    <div
+      id="search-empty"
+      class="hidden text-center py-16 bg-white rounded-xl border border-dashed border-gray-300"
+    >
+      <svg
+        class="w-16 h-16 mx-auto text-gray-300 mb-4"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        />
       </svg>
-      <p class="text-gray-500 text-lg">No evidence items match your search.</p>
-      <p class="text-gray-400 text-sm mt-1">Try adjusting your search terms or filters.</p>
+      <p class="text-gray-500 text-lg font-medium">{emptyTitle}</p>
+      <p class="text-gray-400 text-sm mt-1">{emptyDesc}</p>
     </div>
   </div>
 </BaseLayout>
 
+<!-- Embedded search data for client-side filtering -->
+<script id="search-data" type="application/json">
+  {searchDataJson}
+</script>
+
 <script>
+  interface SearchItemData {
+    type: string;
+    typeLabel: [string, string];
+    id: string;
+    title: [string, string];
+    context: [string, string];
+    categoryTitle: [string, string];
+    route: string;
+    searchText: string;
+  }
+
+  const locale: 'th' | 'en' = document.documentElement.lang === 'en' ? 'en' : 'th';
+
+  const data: SearchItemData[] = JSON.parse(
+    document.getElementById('search-data')!.textContent!
+  );
+
   const q = document.getElementById('search-q') as HTMLInputElement;
-  const cat = document.getElementById('search-cat') as HTMLSelectElement;
-  const year = document.getElementById('search-year') as HTMLSelectElement;
-  const yearMobile = document.getElementById('search-year-mobile') as HTMLSelectElement;
   const results = document.getElementById('search-results') as HTMLElement;
   const empty = document.getElementById('search-empty') as HTMLElement;
   const count = document.getElementById('search-count') as HTMLElement;
-  const items = document.querySelectorAll('.search-item') as NodeListOf<HTMLElement>;
+  const typeFilters = document.querySelectorAll(
+    '.type-filter'
+  ) as NodeListOf<HTMLButtonElement>;
+  const items = document.querySelectorAll(
+    '.search-result'
+  ) as NodeListOf<HTMLElement>;
 
-  function syncYear() {
-    if (yearMobile.value !== year.value) yearMobile.value = year.value;
-    if (year.value !== yearMobile.value) year.value = yearMobile.value;
+  let activeType: string = 'all';
+  let currentQuery: string = '';
+  let debounceTimer: ReturnType<typeof setTimeout> | null = null;
+
+  function t(pair: [string, string]): string {
+    return locale === 'th' ? pair[0] : pair[1];
   }
 
-  year.addEventListener('change', syncYear);
-  yearMobile.addEventListener('change', syncYear);
+  function render() {
+    const query = q.value.toLowerCase().trim();
+    currentQuery = query;
 
-  function filter() {
-    var query = q.value.toLowerCase().trim();
-    var catVal = cat.value;
-    var yearVal = year.value || yearMobile.value;
     var visible = 0;
 
-    items.forEach(function(el: HTMLElement) {
-      var ds = el.dataset;
-      var title = ds.title || '';
-      var indicator = ds.indicator || '';
-      var description = ds.description || '';
-      var itemYear = ds.year || '';
-      var itemCat = ds.category || '';
-      var catTitle = ds.categoryTitle || '';
+    items.forEach(function (el: HTMLElement) {
+      var itemType = el.dataset.type || '';
+      var searchText = el.dataset.searchText || '';
 
-      var matchesQuery = !query ||
-        title.indexOf(query) !== -1 ||
-        indicator.indexOf(query) !== -1 ||
-        description.indexOf(query) !== -1 ||
-        catTitle.indexOf(query) !== -1 ||
-        itemYear === query;
+      var matchesType = activeType === 'all' || itemType === activeType;
+      var matchesQuery =
+        !query || searchText.indexOf(query) !== -1;
 
-      var matchesCat = !catVal || itemCat === catVal;
-      var matchesYear = !yearVal || itemYear === yearVal;
-
-      el.style.display = (matchesQuery && matchesCat && matchesYear) ? '' : 'none';
-      if (matchesQuery && matchesCat && matchesYear) visible++;
+      var show = matchesType && matchesQuery;
+      el.classList.toggle('hidden', !show);
+      if (show) visible++;
     });
 
-    count.textContent = visible + ' result' + (visible !== 1 ? 's' : '');
-    results.classList.toggle('hidden', visible === 0);
-    empty.classList.toggle('hidden', visible > 0);
+    // Update count
+    var countText =
+      visible +
+      ' ' +
+      (visible !== 1
+        ? locale === 'th'
+          ? 'รายการ'
+          : 'results'
+        : locale === 'th'
+          ? 'รายการ'
+          : 'result');
+    count.textContent = countText;
+
+    // Toggle empty state
+    var hasResults = visible > 0;
+    results.classList.toggle('hidden', !hasResults);
+    empty.classList.toggle('hidden', hasResults);
   }
 
-  q.addEventListener('input', filter);
-  cat.addEventListener('change', filter);
-  year.addEventListener('change', filter);
-  yearMobile.addEventListener('change', filter);
+  // Debounced search input
+  q.addEventListener('input', function () {
+    if (debounceTimer) clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(render, 100);
+  });
 
-  document.addEventListener('keydown', function(e: KeyboardEvent) {
+  // Type filter buttons
+  typeFilters.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      // Update active state
+      typeFilters.forEach(function (b) {
+        b.classList.remove(
+          'bg-green-700',
+          'text-white',
+          'border-green-700'
+        );
+        b.classList.add(
+          'bg-white',
+          'text-gray-600',
+          'border-gray-200'
+        );
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.remove(
+        'bg-white',
+        'text-gray-600',
+        'border-gray-200'
+      );
+      btn.classList.add(
+        'bg-green-700',
+        'text-white',
+        'border-green-700'
+      );
+      btn.setAttribute('aria-pressed', 'true');
+
+      activeType = btn.dataset.type || 'all';
+      render();
+    });
+  });
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', function (e: KeyboardEvent) {
     var target = e.target as HTMLElement;
-    if (e.key === '/' && ['INPUT', 'SELECT', 'TEXTAREA'].indexOf(target.nodeName) === -1) {
+    // '/' to focus search
+    if (
+      e.key === '/' &&
+      ['INPUT', 'SELECT', 'TEXTAREA'].indexOf(target.nodeName) === -1
+    ) {
       e.preventDefault();
       q.focus();
     }
+    // Escape to clear search
+    if (e.key === 'Escape' && document.activeElement === q) {
+      q.value = '';
+      render();
+      q.blur();
+    }
   });
+
+  // Initial render
+  render();
 </script>
