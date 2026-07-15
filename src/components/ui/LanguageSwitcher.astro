@@ -5,14 +5,14 @@ import { getLocale } from '../../i18n/utils';
 const locale = getLocale(Astro.url);
 ---
 
-<div class="inline-flex items-center gap-1 rounded-full border border-outline-variant/30 bg-surface-container-low p-0.5 text-label-sm" role="group" aria-label="Language selector">
+<div class="inline-flex items-center gap-1 rounded-full border border-white/30 bg-white/10 p-0.5 text-label-sm shadow-sm" role="group" aria-label="Choose language">
   <a
-    href={withBase(locale === 'th' ? '#' : (Astro.url.pathname.replace(/^\/en/, '') || '/'))}
+    href={withBase(locale === 'th' ? Astro.url.pathname : (Astro.url.pathname.replace(/^\/en/, '') || '/'))}
     class:list={[
-      'inline-flex min-h-7 items-center rounded-full px-3 text-sm font-medium transition',
+      'inline-flex min-h-8 items-center rounded-full px-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary',
       locale === 'th'
-        ? 'bg-primary text-white shadow-sm'
-        : 'text-on-surface-variant hover:text-primary',
+        ? 'bg-white text-primary shadow-sm'
+        : 'text-white hover:bg-white/15 hover:text-white',
     ]}
     aria-current={locale === 'th' ? 'true' : undefined}
     aria-label="Switch to Thai"
@@ -20,12 +20,12 @@ const locale = getLocale(Astro.url);
     TH
   </a>
   <a
-    href={withBase(locale === 'en' ? '#' : `/en${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`)}
+    href={withBase(locale === 'en' ? Astro.url.pathname : `/en${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`)}
     class:list={[
-      'inline-flex min-h-7 items-center rounded-full px-3 text-sm font-medium transition',
+      'inline-flex min-h-8 items-center rounded-full px-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary',
       locale === 'en'
-        ? 'bg-primary text-white shadow-sm'
-        : 'text-on-surface-variant hover:text-primary',
+        ? 'bg-white text-primary shadow-sm'
+        : 'text-white hover:bg-white/15 hover:text-white',
     ]}
     aria-current={locale === 'en' ? 'true' : undefined}
     aria-label="Switch to English"

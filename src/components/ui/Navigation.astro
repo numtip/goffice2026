@@ -29,34 +29,83 @@ const navItems = [
   { href: '/documents', label: navLabels.documents },
   { href: '/search', label: navLabels.search },
 ];
+
+const base = import.meta.env.BASE_URL;
+const pathWithoutBase = base !== '/' && Astro.url.pathname.startsWith(base)
+  ? Astro.url.pathname.slice(base.length - 1)
+  : Astro.url.pathname;
+const currentPath = pathWithoutBase.replace(/^\/en(?=\/|$)/, '') || '/';
+const isActive = (href: string) =>
+  href === '/' ? currentPath === '/' : currentPath === href || currentPath.startsWith(`${href}/`);
 ---
 
-<nav class="border-b border-primary/10 bg-surface/95 px-4 py-3 backdrop-blur" aria-label="Primary navigation">
-  <div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-    <a href={withBase(locale === 'en' ? '/en' : '/')} class="group inline-flex items-center gap-3 text-left">
+<div class="bg-primary text-white">
+  <div class="mx-auto flex min-h-10 max-w-6xl items-center justify-between gap-3 px-4 py-2 text-xs sm:text-sm">
+    <p class="font-medium tracking-wide">
+      Maejo University <span class="hidden text-primary-fixed sm:inline">· Green Office Platform</span>
+    </p>
+    <LanguageSwitcher />
+  </div>
+</div>
+
+<nav class="border-b border-primary/10 bg-white px-4 py-3 shadow-sm" aria-label="Primary navigation">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4">
+    <a href={withBase(locale === 'en' ? '/en' : '/')} class="group inline-flex min-w-0 items-center gap-3 text-left">
       <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white shadow-sm">
         GO
       </span>
-      <span>
+      <span class="min-w-0">
         <span class="block text-sm font-semibold leading-tight text-primary">{siteName}</span>
         <span class="block text-[11px] uppercase tracking-wide text-outline">Maejo University</span>
       </span>
     </a>
 
-    <div class="flex items-center gap-3">
-      <ul class="flex gap-1 overflow-x-auto pb-1 text-sm sm:flex-wrap sm:justify-end sm:overflow-visible sm:pb-0">
-        {navItems.map((item) => (
-          <li>
-            <a
-              href={withBase(locale === 'en' ? `/en${item.href === '/' ? '' : item.href}` : item.href)}
-              class="inline-flex min-h-9 items-center whitespace-nowrap rounded-full px-3 py-2 font-medium text-on-surface-variant transition hover:bg-primary-container hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-800"
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <LanguageSwitcher />
-    </div>
+    <ul class="hidden items-center gap-1 text-sm lg:flex">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={withBase(locale === 'en' ? `/en${item.href === '/' ? '' : item.href}` : item.href)}
+            class:list={[
+              'inline-flex min-h-10 items-center whitespace-nowrap rounded-md px-3 py-2 font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
+              isActive(item.href)
+                ? 'bg-primary text-white'
+                : 'text-on-surface hover:bg-primary-50 hover:text-primary',
+            ]}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <details class="relative lg:hidden">
+      <summary class="flex min-h-10 cursor-pointer list-none items-center rounded-md border border-primary/20 px-3 py-2 text-sm font-semibold text-primary transition hover:bg-primary-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+        <span>Menu</span>
+        <svg class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 6h14M3 10h14M3 14h14" />
+        </svg>
+      </summary>
+      <div class="absolute right-0 z-50 mt-2 w-64 rounded-lg border border-primary/15 bg-white p-2 shadow-xl">
+        <ul class="space-y-1">
+          {navItems.map((item) => (
+            <li>
+              <a
+                href={withBase(locale === 'en' ? `/en${item.href === '/' ? '' : item.href}` : item.href)}
+                class:list={[
+                  'flex min-h-11 items-center rounded-md px-3 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+                  isActive(item.href)
+                    ? 'bg-primary text-white'
+                    : 'text-on-surface hover:bg-primary-50 hover:text-primary',
+                ]}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </details>
   </div>
 </nav>
