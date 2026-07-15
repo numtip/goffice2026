@@ -4,7 +4,10 @@ import '../../styles/global.css';
 import categoriesData from '../../data/categories.json';
 import evidenceIndex from '../../data/evidence-index.json';
 import EvidenceCard from '../../components/evidence/EvidenceCard.astro';
+import { getLocale } from '../../i18n/utils';
 import { withBase } from '../../utils/with-base';
+
+const locale = getLocale(Astro.url);
 
 export function getStaticPaths() {
   return categoriesData.categories.map((category) => ({
@@ -59,8 +62,9 @@ const placeholderCount = documents.filter((d) => d.status === 'placeholder').len
             year={doc.year}
             fileType={doc.fileType}
             status={doc.status}
-            path={doc.path}
-            indicator={doc.indicator}
+            traceabilityLevel={doc.traceabilityLevel || 'category'}
+            verificationStatus={(doc.verification?.status) || 'unresolved'}
+            locale={locale}
           />
         ))}
       </section>

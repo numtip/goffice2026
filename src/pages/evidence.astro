@@ -2,145 +2,198 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 import evidenceIndex from '../data/evidence-index.json';
-import categoriesData from '../data/categories.json';
+import categoriesData from '../data/criteria/categories.json';
 import EvidenceCard from '../components/evidence/EvidenceCard.astro';
+import { getLocale } from '../i18n/utils';
 
-const categoryMap = new Map(categoriesData.categories.map((c) => [c.id, c]));
-const totalItems = evidenceIndex.items.length;
-const availableItems = evidenceIndex.items.filter((i) => i.status === 'available').length;
-const placeholderItems = evidenceIndex.items.filter((i) => i.status === 'placeholder').length;
-const pendingItems = evidenceIndex.items.filter((i) => i.status === 'pending').length;
-const reviewItems = evidenceIndex.items.filter((i) => i.status === 'in-review').length;
+const locale = getLocale(Astro.url);
+const isTh = locale === 'th';
+
+// Build canonical category lookup
+const categoryMap = new Map(categoriesData.categories.map((c: any) => [c.code, c]));
+
+// Traceability levels and their display config
+const traceabilityOrder = ['indicator', 'issue', 'category', 'unmapped'] as const;
+const traceLabels: Record<string, { th: string; en: string }> = {
+  indicator: { th: 'เชื่อมโยงตัวชี้วัด', en: 'Indicator-linked' },
+  issue: { th: 'เชื่อมโยงประเด็น', en: 'Issue-linked' },
+  category: { th: 'เชื่อมโยงหมวดหมู่', en: 'Category-linked' },
+  unmapped: { th: 'ยังไม่เชื่อมโยง', en: 'Unmapped' },
+};
+
+const verLabels: Record<string, { th: string; en: string }> = {
+  verified: { th: 'ยืนยันแล้ว', en: 'Verified' },
+  unresolved: { th: 'ยังไม่ยืนยัน', en: 'Unresolved' },
+  rejected: { th: 'ไม่ผ่าน', en: 'Rejected' },
+};
+
+// Normalize evidence items (handle old schema gracefully, target new schema)
+const items = evidenceIndex.items.map((raw: Record<string, any>) => {
+  const categoryCodes: string[] = Array.isArray(raw.categoryCodes)
+    ? raw.categoryCodes
+    : raw.categoryId
+      ? [raw.categoryId]
+      : [];
+
+  const traceabilityLevel: string = raw.traceabilityLevel
+    || (Array.isArray(raw.indicatorCodes) && raw.indicatorCodes.length > 0
+      ? 'indicator'
+      : Array.isArray(raw.issueCodes) && raw.issueCodes.length > 0
+        ? 'issue'
+        : categoryCodes.length > 0
+          ? 'category'
+          : 'unmapped');
+
+  const verification = raw.verification || { status: 'unresolved', basis: '' };
+
+  const firstCat = categoryCodes
+    .map((code: string) => categoryMap.get(code))
+    .find(Boolean);
+
+  return {
+    id: raw.id,
+    title: raw.title,
+    description: raw.description,
+    year: raw.year,
+    fileType: raw.fileType,
+    status: raw.status,
+    path: raw.path,
+    traceabilityLevel,
+    verificationStatus: verification.status || 'unresolved',
+    categoryTitle: isTh ? firstCat?.title?.th : firstCat?.title?.en,
+  };
+});
+
+const totalItems = items.length;
+const placeholderItems = items.filter((i: any) => i.status === 'placeholder').length;
+const allPlaceholder = placeholderItems === totalItems;
+
+// Precompute stat arrays for template
+const traceStats: { label: string; count: number; key: string }[] = [];
+for (const level of traceabilityOrder) {
+  const count = items.filter((i: any) => i.traceabilityLevel === level).length;
+  if (count > 0) {
+    traceStats.push({
+      key: level,
+      count,
+      label: isTh ? traceLabels[level].th : traceLabels[level].en,
+    });
+  }
+}
+
+const verStats: { label: string; count: number; key: string; color: string }[] = [];
+const verColorMap: Record<string, string> = {
+  verified: 'text-green-600',
+  unresolved: 'text-yellow-600',
+  rejected: 'text-red-600',
+};
+for (const [key, labelObj] of Object.entries(verLabels)) {
+  const count = items.filter((i: any) => i.verificationStatus === key).length;
+  if (count > 0 || key === 'unresolved') {
+    verStats.push({
+      key,
+      count,
+      label: isTh ? labelObj.th : labelObj.en,
+      color: verColorMap[key] || 'text-gray-600',
+    });
+  }
+}
+
+const pageTitle = isTh ? 'คลังหลักฐาน' : 'Evidence Library';
+const hasItems = items.length > 0;
 ---
 
-<BaseLayout title="Evidence Library">
+<BaseLayout title={pageTitle} locale={locale}>
   <div class="p-4 max-w-5xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
-      <h1 class="text-3xl font-bold text-gray-900">Evidence Library</h1>
+      <h1 class="text-3xl font-bold text-gray-900">{pageTitle}</h1>
       <p class="text-gray-600 mt-2">
-        Browse certification evidence items organized by Green Office category and indicator.
+        {isTh
+          ? 'เรียกดูรายการหลักฐานการรับรองสำนักงานสีเขียว จำแนกตามหมวดหมู่ ประเด็น และตัวชี้วัด'
+          : 'Browse certification evidence records organized by Green Office category, issue, and indicator.'}
       </p>
     </div>
 
     <!-- Source Pending banner -->
-    <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 mb-6 flex items-start gap-4 shadow-sm">
-      <div class="flex-shrink-0 mt-0.5">
-        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
-        </svg>
+    {allPlaceholder && (
+      <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 mb-6 flex items-start gap-4 shadow-sm">
+        <div class="flex-shrink-0 mt-0.5">
+          <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-lg font-bold text-amber-800">
+            {isTh ? 'ยังไม่มีไฟล์ต้นฉบับ — รอเอกสารที่ได้รับการอนุมัติ' : 'Source Pending — Awaiting Approved Documents'}
+          </h2>
+          <p class="text-sm text-amber-700 mt-1 leading-relaxed">
+            {isTh
+              ? `รายการหลักฐานทั้งหมด ${totalItems} รายการเป็นตำแหน่งว่างชั่วคราว (placeholder) รายการเหล่านี้กำหนดโครงสร้างหลักฐานการรับรอง — การเชื่อมโยงตัวชี้วัด ประเภทเอกสารที่คาดหวัง และคำอธิบาย — แต่ยังไม่มีเอกสารต้นฉบับอัปโหลด เมื่อเอกสารที่ได้รับอนุมัติถูกจัดทำดัชนีแล้ว จะแทนที่ตำแหน่งว่างเหล่านี้ และคลังหลักฐานจะสามารถเรียกดูได้อย่างสมบูรณ์`
+              : `All ${totalItems} evidence items are currently placeholder records. These entries define the certification evidence structure — indicator mappings, expected document types, and descriptions — but no actual source documents have been uploaded yet. Once approved office documents are indexed, they will replace these placeholders and the evidence library will become fully navigable.`}
+          </p>
+        </div>
       </div>
-      <div>
-        <h2 class="text-lg font-bold text-amber-800">Source Pending — Awaiting Approved Documents</h2>
-        <p class="text-sm text-amber-700 mt-1 leading-relaxed">
-          All <strong>{totalItems}</strong> evidence items are currently placeholder records. These entries define the
-          certification evidence structure — indicator mappings, expected document types, and descriptions — but
-          <strong>no actual source documents have been uploaded yet</strong>. Once approved office documents are indexed,
-          they will replace these placeholders and the evidence library will become fully navigable.
-        </p>
-      </div>
-    </div>
+    )}
 
-    <!-- Summary stats -->
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+    <!-- Summary stats: total + by traceability -->
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
       <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
         <p class="text-2xl font-bold text-gray-900">{totalItems}</p>
-        <p class="text-sm text-gray-500">Total Items</p>
+        <p class="text-sm text-gray-500">{isTh ? 'รายการทั้งหมด' : 'Total Items'}</p>
       </div>
-      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
-        <p class="text-2xl font-bold text-green-600">{availableItems}</p>
-        <p class="text-sm text-gray-500">Available</p>
-      </div>
-      <div class="bg-amber-50 rounded-xl border-2 border-amber-300 shadow-sm p-4 text-center col-span-2 md:col-span-1 scale-105 ring-2 ring-amber-200">
-        <div class="flex items-center justify-center gap-1.5 mb-1">
-          <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <p class="text-3xl font-bold text-amber-700">{placeholderItems}</p>
+      {traceStats.map((stat) => (
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
+          <p class="text-2xl font-bold text-gray-900">{stat.count}</p>
+          <p class="text-sm text-gray-500">{stat.label}</p>
         </div>
-        <p class="text-sm font-semibold text-amber-700">Placeholder</p>
-        <p class="text-xs text-amber-500 mt-0.5">100% — source pending</p>
-      </div>
-      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
-        <p class="text-2xl font-bold text-yellow-600">{pendingItems}</p>
-        <p class="text-sm text-gray-500">Pending</p>
-      </div>
-      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
-        <p class="text-2xl font-bold text-blue-600">{reviewItems}</p>
-        <p class="text-sm text-gray-500">In Review</p>
-      </div>
+      ))}
     </div>
 
-    <!-- Status legend -->
-    <details class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 mb-6 group">
-      <summary class="flex items-center gap-2 cursor-pointer text-sm font-medium text-gray-700 select-none">
-        <svg class="w-4 h-4 text-gray-400 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-        Status definitions
-      </summary>
-      <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-        <div class="flex items-start gap-2 p-2 rounded-lg bg-amber-50 border border-amber-100">
-          <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-200 text-amber-700 text-xs font-bold flex-shrink-0 mt-0.5">P</span>
-          <div>
-            <p class="font-semibold text-amber-800">Placeholder</p>
-            <p class="text-amber-700">Record exists with title, indicator mapping, and description, but no actual source document has been uploaded. This is the initial state for all evidence items.</p>
-          </div>
+    <!-- Verification stats -->
+    <div class="grid grid-cols-3 gap-4 mb-6">
+      {verStats.map((stat) => (
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-3 text-center">
+          <p class={`text-xl font-bold ${stat.color}`}>{stat.count}</p>
+          <p class="text-xs text-gray-500">{stat.label}</p>
         </div>
-        <div class="flex items-start gap-2 p-2 rounded-lg bg-blue-50 border border-blue-100">
-          <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-200 text-blue-700 text-xs font-bold flex-shrink-0 mt-0.5">R</span>
-          <div>
-            <p class="font-semibold text-blue-800">In Review</p>
-            <p class="text-blue-700">A source document has been submitted and is undergoing verification to confirm it meets certification standards.</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-2 p-2 rounded-lg bg-yellow-50 border border-yellow-100">
-          <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-yellow-200 text-yellow-700 text-xs font-bold flex-shrink-0 mt-0.5">A</span>
-          <div>
-            <p class="font-semibold text-yellow-800">Pending</p>
-            <p class="text-yellow-700">Document has been identified but is awaiting final approval or formal indexing into the evidence library.</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-2 p-2 rounded-lg bg-green-50 border border-green-100">
-          <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-200 text-green-700 text-xs font-bold flex-shrink-0 mt-0.5">A</span>
-          <div>
-            <p class="font-semibold text-green-800">Available</p>
-            <p class="text-green-700">Source document has been approved, indexed, and is ready to view and download. This is the target state for every evidence item.</p>
-          </div>
-        </div>
-      </div>
-    </details>
+      ))}
+    </div>
 
     <!-- Evidence items -->
-    {evidenceIndex.items.length > 0 ? (
+    {hasItems ? (
       <div class="space-y-4">
-        {evidenceIndex.items.map((item) => (
-          <EvidenceCard
-            id={item.id}
-            title={item.title}
-            description={item.description}
-            year={item.year}
-            fileType={item.fileType}
-            status={item.status}
-            path={item.path}
-            indicator={item.indicator}
-            categoryTitle={categoryMap.get(item.categoryId)?.title}
-          />
-        ))}
+        {items.map((item: any) => {
+          const catTitle = item.categoryTitle;
+          return (
+            <EvidenceCard
+              id={item.id}
+              title={item.title}
+              description={item.description}
+              year={item.year}
+              fileType={item.fileType}
+              status={item.status}
+              traceabilityLevel={item.traceabilityLevel}
+              verificationStatus={item.verificationStatus}
+              categoryTitle={catTitle}
+              locale={locale}
+            />
+          );
+        })}
       </div>
     ) : (
       <div class="text-center py-12 bg-white rounded-xl border border-dashed border-gray-300">
         <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
-        <p class="text-gray-500 text-lg">No evidence items found.</p>
-        <p class="text-gray-400 text-sm mt-1">Evidence items will appear here once indexed.</p>
+        <p class="text-gray-500 text-lg">{isTh ? 'ไม่พบรายการหลักฐาน' : 'No evidence items found.'}</p>
+        <p class="text-gray-400 text-sm mt-1">{isTh ? 'รายการจะปรากฏเมื่อถูกจัดทำดัชนีแล้ว' : 'Evidence items will appear here once indexed.'}</p>
       </div>
     )}
 
     <!-- Updated date -->
     <p class="text-xs text-gray-400 mt-6 text-center">
-      Last updated: {evidenceIndex.updated} · Schema: v{evidenceIndex.version}
+      {isTh ? 'อัปเดตล่าสุด' : 'Last updated'}: {evidenceIndex.updated} · Schema: v{evidenceIndex.version}
     </p>
   </div>
 </BaseLayout>

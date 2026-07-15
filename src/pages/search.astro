@@ -4,11 +4,14 @@ import '../styles/global.css';
 import categoriesData from '../data/categories.json';
 import evidenceIndex from '../data/evidence-index.json';
 import EvidenceCard from '../components/evidence/EvidenceCard.astro';
+import { getLocale } from '../i18n/utils';
 
+const locale = getLocale(Astro.url);
 const categoryMap = new Map(categoriesData.categories.map((c) => [c.id, c]));
 
 const searchData = evidenceIndex.items.map((item) => {
   const cat = categoryMap.get(item.categoryId);
+  const itemVerification = (item as any).verification || { status: 'unresolved' };
   return {
     id: item.id,
     title: item.title,
@@ -20,6 +23,8 @@ const searchData = evidenceIndex.items.map((item) => {
     fileType: item.fileType,
     status: item.status,
     path: item.path,
+    traceabilityLevel: (item as any).traceabilityLevel || 'category',
+    verification: itemVerification,
   };
 });
 
@@ -117,9 +122,10 @@ const categories = categoriesData.categories;
             year={item.year}
             fileType={item.fileType}
             status={item.status}
-            path={item.path}
-            indicator={item.indicator}
+            traceabilityLevel={item.traceabilityLevel || 'category'}
+            verificationStatus={(item.verification?.status) || 'unresolved'}
             categoryTitle={item.categoryTitle}
+            locale={locale}
           />
         </div>
       ))}

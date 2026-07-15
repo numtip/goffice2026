@@ -1,6 +1,6 @@
 {
-  "version": "0.2.0",
-  "updated": "2026-06-12",
+  "version": "0.3.0",
+  "updated": "2026-07-15",
   "items": [
     {
       "id": "ev-energy-audit-2025",
@@ -12,7 +12,15 @@
       "path": "/documents/cat1/placeholder.md",
       "fileType": "MD",
       "status": "placeholder",
-      "updated": "2025-12-15"
+      "updated": "2025-12-15",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat1"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-energy-metering-2025",
@@ -24,7 +32,15 @@
       "path": "/documents/cat1/metering-data-2025.xlsx",
       "fileType": "XLSX",
       "status": "placeholder",
-      "updated": "2026-01-10"
+      "updated": "2026-01-10",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat1"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-energy-led-project",
@@ -36,7 +52,15 @@
       "path": "/documents/cat1/led-retrofit-summary.pdf",
       "fileType": "PDF",
       "status": "placeholder",
-      "updated": "2024-11-20"
+      "updated": "2024-11-20",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat1"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-water-meter-q1",
@@ -48,7 +72,15 @@
       "path": "/documents/cat2/placeholder.md",
       "fileType": "MD",
       "status": "placeholder",
-      "updated": "2025-04-05"
+      "updated": "2025-04-05",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat2"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-water-audit-2025",
@@ -60,7 +92,15 @@
       "path": "/documents/cat2/water-audit-2025.pdf",
       "fileType": "PDF",
       "status": "placeholder",
-      "updated": "2026-02-28"
+      "updated": "2026-02-28",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat2"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-water-conservation",
@@ -72,7 +112,15 @@
       "path": "/documents/cat2/conservation-initiatives.pdf",
       "fileType": "PDF",
       "status": "placeholder",
-      "updated": "2025-09-12"
+      "updated": "2025-09-12",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat2"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-waste-recycling-2025",
@@ -84,7 +132,15 @@
       "path": "/documents/cat3/placeholder.md",
       "fileType": "MD",
       "status": "placeholder",
-      "updated": "2026-01-15"
+      "updated": "2026-01-15",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat3"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-waste-audit-2025",
@@ -96,7 +152,15 @@
       "path": "/documents/cat3/waste-audit-2025.pdf",
       "fileType": "PDF",
       "status": "placeholder",
-      "updated": "2025-08-22"
+      "updated": "2025-08-22",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat3"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-waste-monthly-2025",
@@ -108,7 +172,15 @@
       "path": "/documents/cat3/waste-monthly-2025.xlsx",
       "fileType": "XLSX",
       "status": "placeholder",
-      "updated": "2026-03-01"
+      "updated": "2026-03-01",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat3"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-ghg-inventory-2025",
@@ -120,7 +192,15 @@
       "path": "/documents/cat4/placeholder.md",
       "fileType": "MD",
       "status": "placeholder",
-      "updated": "2026-04-10"
+      "updated": "2026-04-10",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat4"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-ghg-reduction-plan",
@@ -132,7 +212,15 @@
       "path": "/documents/cat4/carbon-reduction-plan.pdf",
       "fileType": "PDF",
       "status": "placeholder",
-      "updated": "2025-10-05"
+      "updated": "2025-10-05",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat4"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-ghg-emission-factors",
@@ -144,7 +232,15 @@
       "path": "/documents/cat4/emission-factors.xlsx",
       "fileType": "XLSX",
       "status": "placeholder",
-      "updated": "2025-06-30"
+      "updated": "2025-06-30",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat4"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-iaq-survey-2025",
@@ -156,7 +252,15 @@
       "path": "/documents/cat5/placeholder.md",
       "fileType": "MD",
       "status": "placeholder",
-      "updated": "2025-07-18"
+      "updated": "2025-07-18",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat5"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-iaq-ventilation-logs",
@@ -168,7 +272,15 @@
       "path": "/documents/cat5/ventilation-logs-2025.xlsx",
       "fileType": "XLSX",
       "status": "placeholder",
-      "updated": "2025-12-20"
+      "updated": "2025-12-20",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat5"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-iaq-green-cleaning",
@@ -180,7 +292,15 @@
       "path": "/documents/cat5/green-cleaning-inventory.pdf",
       "fileType": "PDF",
       "status": "placeholder",
-      "updated": "2026-02-14"
+      "updated": "2026-02-14",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat5"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-transport-commute-2025",
@@ -192,7 +312,15 @@
       "path": "/documents/cat6/placeholder.md",
       "fileType": "MD",
       "status": "placeholder",
-      "updated": "2025-11-30"
+      "updated": "2025-11-30",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat6"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-transport-fleet-2025",
@@ -204,7 +332,15 @@
       "path": "/documents/cat6/fleet-fuel-2025.xlsx",
       "fileType": "XLSX",
       "status": "placeholder",
-      "updated": "2026-01-05"
+      "updated": "2026-01-05",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat6"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-transport-policy",
@@ -216,7 +352,15 @@
       "path": "/documents/cat6/transport-policy.pdf",
       "fileType": "PDF",
       "status": "placeholder",
-      "updated": "2024-08-15"
+      "updated": "2024-08-15",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat6"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-innovation-pilot-2025",
@@ -228,7 +372,15 @@
       "path": "/documents/cat7/placeholder.md",
       "fileType": "MD",
       "status": "placeholder",
-      "updated": "2026-03-20"
+      "updated": "2026-03-20",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat7"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-innovation-staff-2025",
@@ -240,7 +392,15 @@
       "path": "/documents/cat7/staff-engagement-2025.pdf",
       "fileType": "PDF",
       "status": "placeholder",
-      "updated": "2025-10-30"
+      "updated": "2025-10-30",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat7"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     },
     {
       "id": "ev-innovation-partnerships",
@@ -252,7 +412,15 @@
       "path": "/documents/cat7/partnerships-2025.pdf",
       "fileType": "PDF",
       "status": "placeholder",
-      "updated": "2026-04-22"
+      "updated": "2026-04-22",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": ["cat7"],
+      "verification": {
+        "status": "unresolved",
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+      }
     }
   ]
 }

@@ -49,8 +49,21 @@ const dashboardLinks = (indicator.relatedDashboards || []).map((id: string) => (
   label: dashboardLabels[id] || id,
 }));
 
-const evidenceItems = evidenceIndex.items.filter((e) => e.categoryId === indicator.categoryCode);
-const hasEvidence = evidenceItems.length > 0;
+// Exact indicator-level evidence
+const exactEvidence: any[] = evidenceIndex.items.filter(
+  (e: any) => Array.isArray(e.indicatorCodes) && e.indicatorCodes.indexOf(indicator.code) !== -1
+);
+const hasExactEvidence = exactEvidence.length > 0;
+
+// Category-level evidence (fallback for same category)
+const categoryEvidence: any[] = evidenceIndex.items.filter(
+  (e: any) => {
+    if (hasExactEvidence) return false;
+    const codes: string[] = Array.isArray(e.categoryCodes) ? e.categoryCodes : e.categoryId ? [e.categoryId] : [];
+    return codes.indexOf(indicator.categoryCode) !== -1;
+  }
+);
+const hasCategoryEvidence = categoryEvidence.length > 0;
 
 function safeLabel(th: string, en: string): string {
   return th || en || '';
@@ -180,27 +193,54 @@ function safeLabel(th: string, en: string): string {
       }
     </div>
 
-    <!-- Evidence Section -->
+    <!-- Exact Indicator Evidence Section -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
       <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-        หลักฐานที่เกี่ยวข้อง
+        หลักฐานที่เชื่อมโยงกับตัวชี้วัดนี้
       </h2>
       {
-        hasEvidence ? (
+        hasExactEvidence ? (
+          <ul class="space-y-2">
+            {exactEvidence.map((ev: { id: string; title: string }) => (
+              <li>
+                <a
+                  href={withBase(`/evidence/${ev.id}/`)}
+                  class="inline-flex items-center gap-2 text-green-600 hover:text-green-800 hover:underline transition-colors text-sm"
+                >
+                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <span>{ev.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="text-gray-400 italic">ยังไม่มีหลักฐานที่เชื่อมโยงกับตัวชี้วัดนี้โดยตรง</p>
+        )
+      }
+    </div>
+
+    <!-- Category-Level Evidence Section -->
+    {
+      hasCategoryEvidence && (
+        <div class="bg-white rounded-xl shadow-sm border border-amber-100 bg-amber-50/30 p-6 mb-6">
+          <h2 class="text-sm font-semibold text-amber-700 uppercase tracking-wider mb-3">
+            หลักฐานที่เกี่ยวข้องในหมวดนี้
+          </h2>
+          <p class="text-xs text-amber-600 mb-3">หลักฐานระดับหมวดหมู่ — อาจไม่เชื่อมโยงกับตัวชี้วัดนี้โดยตรง</p>
           <a
             href={withBase('/evidence/')}
-            class="inline-flex items-center gap-2 text-green-600 hover:text-green-800 hover:underline transition-colors"
+            class="inline-flex items-center gap-2 text-amber-700 hover:text-amber-900 hover:underline transition-colors text-sm"
           >
             <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            <span>หลักฐานที่เกี่ยวข้องในหมวดนี้ {evidenceItems.length} รายการ</span>
+            <span>ดูหลักฐานในหมวดนี้ {categoryEvidence.length} รายการ</span>
           </a>
-        ) : (
-          <p class="text-gray-400 italic">ยังไม่มีหลักฐานที่เชื่อมโยง</p>
-        )
-      }
-    </div>
+        </div>
+      )
+    }
 
     <!-- Previous / Next Navigation -->
     <div class="flex items-center justify-between gap-4 pt-4 border-t border-gray-200">
