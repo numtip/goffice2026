@@ -1,19 +1,25 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "status": "CANONICAL AND VALIDATED",
   "frozenAt": "2026-07-15",
+  "validatedAt": "2026-07-16T04:00:00+07:00",
+  "validationBasis": "Every mapped indicator code confirmed against canonical indicators.json. Codes, categories, issues, and relatedDashboard relationships verified.",
   "mappings": [
     {
       "resourceDomain": "water",
       "label": "Water Consumption",
       "dashboardId": "water",
       "unit": "m³",
-      "primaryCategory": "cat1",
-      "primaryCategoryLabel": "การจัดการสิ่งแวดล้อมในสำนักงาน",
+      "primaryCategory": "cat3",
+      "primaryCategoryLabel": "การใช้ทรัพยากรและพลังงาน",
       "mappedIndicators": [
         {
-          "code": "3.2.1",
-          "title": "ปริมาณการใช้น้ำ",
-          "mappingBasis": "Direct resource measurement indicator — water consumption (m³)"
+          "code": "3.1.2",
+          "canonicalTitle": "มีการจัดทำข้อมูลการใช้น้ำต่อหน่วยเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล",
+          "issueCode": "3.1",
+          "issueTitle": "การใช้น้ำ",
+          "relatedDashboardMatch": true,
+          "mappingBasis": "Direct resource measurement indicator — compiles water consumption data (per unit), compares with targets, and analyzes results. Dashboard supplies the underlying consumption measurements (m³)."
         }
       ]
     },
@@ -22,13 +28,16 @@
       "label": "Electricity Consumption",
       "dashboardId": "energy",
       "unit": "kWh",
-      "primaryCategory": "cat1",
-      "primaryCategoryLabel": "การจัดการสิ่งแวดล้อมในสำนักงาน",
+      "primaryCategory": "cat3",
+      "primaryCategoryLabel": "การใช้ทรัพยากรและพลังงาน",
       "mappedIndicators": [
         {
           "code": "3.2.2",
-          "title": "ปริมาณการใช้ไฟฟ้า",
-          "mappingBasis": "Direct resource measurement indicator — electricity consumption (kWh)"
+          "canonicalTitle": "มีการจัดทำข้อมูลการใช้ไฟฟ้าต่อหน่วยเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล",
+          "issueCode": "3.2",
+          "issueTitle": "การใช้พลังงาน",
+          "relatedDashboardMatch": true,
+          "mappingBasis": "Direct resource measurement indicator — compiles electricity consumption data (per unit), compares with targets, and analyzes results. Dashboard supplies the underlying consumption measurements (kWh)."
         }
       ]
     },
@@ -37,18 +46,24 @@
       "label": "Fuel Consumption",
       "dashboardId": "fuel",
       "unit": "L",
-      "primaryCategory": "cat1",
-      "primaryCategoryLabel": "การจัดการสิ่งแวดล้อมในสำนักงาน",
+      "primaryCategory": "cat3",
+      "primaryCategoryLabel": "การใช้ทรัพยากรและพลังงาน",
       "mappedIndicators": [
         {
-          "code": "3.2.4",
-          "title": "ปริมาณการใช้น้ำมันเชื้อเพลิง",
-          "mappingBasis": "Direct resource measurement indicator — fuel consumption (liters)"
+          "code": "3.2.5",
+          "canonicalTitle": "มีการจัดทำข้อมูลการใช้น้ำมันเชื้อเพลิงต่อระยะทางเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล",
+          "issueCode": "3.2",
+          "issueTitle": "การใช้พลังงาน",
+          "relatedDashboardMatch": true,
+          "mappingBasis": "Direct resource measurement indicator — compiles fuel consumption data (per distance), compares with targets, and analyzes results. Dashboard supplies the underlying consumption measurements (liters)."
         },
         {
-          "code": "3.2.5",
-          "title": "มีมาตรการลดการใช้น้ำมันเชื้อเพลิง",
-          "mappingBasis": "Policy/measure indicator related to fuel usage reduction"
+          "code": "3.2.4",
+          "canonicalTitle": "มาตรการหรือแนวทางการใช้น้ำมันเชื้อเพลิงในการเดินทางที่เหมาะสมกับสำนักงาน",
+          "issueCode": "3.2",
+          "issueTitle": "การใช้พลังงาน",
+          "relatedDashboardMatch": true,
+          "mappingBasis": "Policy/measure indicator — defines fuel conservation measures for office-related travel. Dashboard consumption data supports analysis of measure effectiveness."
         }
       ]
     },
@@ -57,13 +72,16 @@
       "label": "Paper Consumption",
       "dashboardId": "paper",
       "unit": "kg",
-      "primaryCategory": "cat1",
-      "primaryCategoryLabel": "การจัดการสิ่งแวดล้อมในสำนักงาน",
+      "primaryCategory": "cat3",
+      "primaryCategoryLabel": "การใช้ทรัพยากรและพลังงาน",
       "mappedIndicators": [
         {
-          "code": "3.3.4",
-          "title": "ปริมาณการใช้กระดาษ",
-          "mappingBasis": "Direct resource measurement indicator — paper consumption (kg)"
+          "code": "3.3.2",
+          "canonicalTitle": "มีการจัดทำข้อมูลการใช้กระดาษต่อหน่วยเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล",
+          "issueCode": "3.3",
+          "issueTitle": "การใช้ทรัพยากรอื่นๆ",
+          "relatedDashboardMatch": true,
+          "mappingBasis": "Direct resource measurement indicator — compiles paper consumption data (per unit), compares with targets, and analyzes results. Dashboard supplies the underlying consumption measurements (kg)."
         }
       ]
     },
@@ -72,18 +90,24 @@
       "label": "Waste Management",
       "dashboardId": "waste",
       "unit": "% (recycling rate)",
-      "primaryCategory": "cat3",
+      "primaryCategory": "cat4",
       "primaryCategoryLabel": "การจัดการของเสีย",
       "mappedIndicators": [
         {
-          "code": "4.1.1",
-          "title": "การคัดแยกขยะ",
-          "mappingBasis": "Waste segregation indicator — directly supported by recycling rate data"
+          "code": "4.1.2",
+          "canonicalTitle": "มีการดำเนินงานตามแนวทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม",
+          "issueCode": "4.1",
+          "issueTitle": "การจัดการขยะ",
+          "relatedDashboardMatch": true,
+          "mappingBasis": "Implementation indicator — tracks waste sorting, collection and disposal performance. Dashboard recycling rate data supports monitoring of waste diversion from landfill."
         },
         {
-          "code": "4.1.2",
-          "title": "การนำขยะกลับมาใช้ใหม่",
-          "mappingBasis": "Recycling/reuse indicator — directly supported by recycling rate data"
+          "code": "4.1.3",
+          "canonicalTitle": "การนำขยะกลับมาใช้ประโยชน์ หรือนำกลับมาใช้ใหม่ ส่งผลให้ขยะที่จะส่งไปกำจัดมีปริมาณน้อยลง",
+          "issueCode": "4.1",
+          "issueTitle": "การจัดการขยะ",
+          "relatedDashboardMatch": true,
+          "mappingBasis": "Outcome indicator — measures waste reuse/recycling resulting in reduced disposal volume. Dashboard recycling % is the direct quantitative measure for this indicator."
         }
       ]
     },
@@ -93,21 +117,35 @@
       "dashboardId": "ghg",
       "unit": "tCO₂e",
       "primaryCategory": "cat1",
-      "primaryCategoryLabel": "การจัดการสิ่งแวดล้อมในสำนักงาน",
+      "primaryCategoryLabel": "การกำหนดนโยบาย การวางแผนการดำเนินงานสำนักงานสีเขียว",
       "mappedIndicators": [
         {
           "code": "1.5.1",
-          "title": "ปริมาณก๊าซเรือนกระจก",
-          "mappingBasis": "Direct GHG measurement — total emissions in tCO₂e"
+          "canonicalTitle": "การเก็บข้อมูลก๊าซเรือนกระจกจากกิจกรรมในสำนักงาน",
+          "issueCode": "1.5",
+          "issueTitle": "ข้อมูลก๊าซเรือนกระจก",
+          "relatedDashboardMatch": true,
+          "mappingBasis": "Direct GHG measurement — collection of greenhouse gas data from office activities. Dashboard supplies total emissions in tCO₂e computed via TGO methodology from energy, fuel, and waste inputs."
+        },
+        {
+          "code": "1.5.2",
+          "canonicalTitle": "ปริมาณก๊าซเรือนกระจกบรรลุเป้าหมาย สรุปและการวิเคราะห์ผล",
+          "issueCode": "1.5",
+          "issueTitle": "ข้อมูลก๊าซเรือนกระจก",
+          "relatedDashboardMatch": true,
+          "mappingBasis": "Outcome indicator — whether GHG emissions meet targets with summary and analysis. Dashboard baseline-vs-current comparison directly feeds this analysis."
         },
         {
           "code": "1.6.1",
-          "title": "การตรวจวัดก๊าซเรือนกระจก",
-          "mappingBasis": "GHG monitoring indicator — supported by inventory methodology"
+          "canonicalTitle": "จัดทำแผนการดำเนินงานขับเคลื่อนสู่การลดก๊าซเรือนกระจกของหน่วยงาน",
+          "issueCode": "1.6",
+          "issueTitle": "แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน",
+          "relatedDashboardMatch": true,
+          "mappingBasis": "Planning indicator — GHG reduction action plan for the organization. Dashboard baseline data and trend analysis inform reduction target-setting and plan development."
         }
       ]
     }
   ],
   "totalResourceDomains": 6,
-  "totalMappedIndicators": 9
+  "totalMappedIndicators": 10
 }

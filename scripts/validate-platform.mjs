@@ -8,6 +8,7 @@
  *
  * Phases:
  *   1. Taxonomy validation (delegates to validate-criteria.mjs)
+ *   1.5 Resource-Indicator Map validation (delegates to validate-resource-indicator-map.mjs)
  *   2. Evidence validation (delegates to validate-evidence.mjs)
  *   3. Route verification (dist/ inspection)
  *   4. Summary report
@@ -105,6 +106,15 @@ function phaseTaxonomy() {
   console.log('PHASE 1: Taxonomy Validation');
   console.log('========================================');
   return runScript('validate-criteria.mjs');
+}
+
+// ── Phase 1.5: Resource-Indicator Map Validation ─────────────
+
+function phaseResourceIndicatorMap() {
+  console.log('\n========================================');
+  console.log('PHASE 1.5: Resource-Indicator Map Validation');
+  console.log('========================================');
+  return runScript('validate-resource-indicator-map.mjs');
 }
 
 // ── Phase 2: Evidence Validation ────────────────────────────
@@ -263,6 +273,7 @@ function main() {
   console.log('========================================\n');
 
   const taxonomyResult = phaseTaxonomy();
+  const resourceMapResult = phaseResourceIndicatorMap();
   const evidenceResult = phaseEvidence();
   const routeResult = phaseRoutes();
 
@@ -273,9 +284,10 @@ function main() {
 
   const routeOk = routeResult.ok || routeResult.skipped;
   const results = [
-    { phase: 'Taxonomy Validation', ok: taxonomyResult.ok },
-    { phase: 'Evidence Validation', ok: evidenceResult.ok },
-    { phase: 'Route Verification',  ok: routeOk },
+    { phase: 'Taxonomy Validation',    ok: taxonomyResult.ok },
+    { phase: 'Resource-Indicator Map', ok: resourceMapResult.ok },
+    { phase: 'Evidence Validation',    ok: evidenceResult.ok },
+    { phase: 'Route Verification',     ok: routeOk },
   ];
 
   let allPassed = true;
@@ -287,6 +299,9 @@ function main() {
 
   if (!taxonomyResult.ok) {
     console.log('\n  ⚠  Taxonomy validator reported issues. Check output above.');
+  }
+  if (!resourceMapResult.ok) {
+    console.log('  ⚠  Resource-Indicator Map validator reported issues. Check output above.');
   }
   if (!evidenceResult.ok) {
     console.log('  ⚠  Evidence validator reported issues. Check output above.');
