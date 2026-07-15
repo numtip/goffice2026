@@ -52,11 +52,11 @@ month,value
 | Excel Source File    | Metric | Year | CSV Filename             |
 |---------------------|--------|------|--------------------------|
 | `1.1-Water.xlsx`    | water  | 2569 | `water-2569.csv`         |
-| `12-elect.xlsx`     | energy | 2569 | `energy-2569.csv`        |
-| `1.5_GreenhouseGas.xlsx` | ghg | 2569 | `ghg-2569.csv`      |
-| Fuel purchase records | fuel | 2569 | `fuel-2569.csv`       |
-| Paper ordering records | paper | 2569 | `paper-2569.csv`     |
-| Waste segregation records | waste | 2569 | `waste-2569.csv`   |
+| `1.2-elect.xlsx`    | energy | 2569 | `energy-2569.csv`        |
+| `1.6_GreenhouseGas.xlsx` | ghg | 2569 | `ghg-2569.csv`      |
+| `1.3_Gassolene.xlsx` | fuel | 2569 | `fuel-2569.csv`       |
+| `1.4_Paper.xlsx` | paper | 2569 | `paper-2569.csv`     |
+| `1.5_Waste.xlsx` | waste | 2569 | `waste-2569.csv`   |
 
 ### Step 2 — Place CSV in Import Directory
 
@@ -108,12 +108,12 @@ Open the preview URL and check:
 
 | Metric | Label | Unit | KPI Field | Excel Source | Baseline 2568 Months | Current 2569 Months |
 |--------|-------|------|-----------|-------------|---------------------|--------------------|
-| `energy` | Electricity Consumption | kWh | `kwh` | `12-elect.xlsx` | 12 ✅ | 8 🟡 |
+| `energy` | Electricity Consumption | kWh | `kwh` | `1.2-elect.xlsx` | 12 ✅ | 8 🟡 |
 | `water` | Water Consumption | m³ | `cubic_meters` | `1.1-Water.xlsx` | 12 ✅ | 7 🟡 |
-| `fuel` | Fuel Consumption | L | `liters` | Fuel purchase records | 12 ✅ | 9 🟡 |
-| `paper` | Paper Consumption | kg | `kg_estimated` | Paper ordering records | 12 ✅ | 6 🟡 |
-| `waste` | Waste Management | % | `recycle_pct` | Waste segregation records | 12 ✅ | 10 🟡 |
-| `ghg` | GHG Emissions | tCO₂e | `total_tco2e` | `1.5_GreenhouseGas.xlsx` | 12 ✅ | 8 🟡 |
+| `fuel` | Fuel Consumption | L | `liters` | `1.3_Gassolene.xlsx` | 12 ✅ | 9 🟡 |
+| `paper` | Paper Consumption | kg | `kg_estimated` | `1.4_Paper.xlsx` | 12 ✅ | 6 🟡 |
+| `waste` | Waste Management | % | `recycle_pct` | `1.5_Waste.xlsx` | 12 ✅ | 10 🟡 |
+| `ghg` | GHG Emissions | tCO₂e | `total_tco2e` | `1.6_GreenhouseGas.xlsx` | 12 ✅ | 8 🟡 |
 
 ---
 

@@ -9,73 +9,73 @@
     "2568": {
       "year": 2568,
       "isBaseline": true,
-      "dataStatus": "complete",
-      "source": "Electricity bills — 12-elect.xlsx (converted)",
-      "updated": "2026-06-12",
       "months": [
         {
           "month": 1,
-          "value": 19850,
+          "value": 17434.4,
           "label": "Jan"
         },
         {
           "month": 2,
-          "value": 18500,
+          "value": 24458.4,
           "label": "Feb"
         },
         {
           "month": 3,
-          "value": 17600,
+          "value": 37355.2,
           "label": "Mar"
         },
         {
           "month": 4,
-          "value": 18200,
+          "value": 36772.8,
           "label": "Apr"
         },
         {
           "month": 5,
-          "value": 19100,
+          "value": 40243.2,
           "label": "May"
         },
         {
           "month": 6,
-          "value": 20400,
+          "value": 38310.4,
           "label": "Jun"
         },
         {
           "month": 7,
-          "value": 21500,
+          "value": 39260.8,
           "label": "Jul"
         },
         {
           "month": 8,
-          "value": 21000,
+          "value": 39360,
           "label": "Aug"
         },
         {
           "month": 9,
-          "value": 19500,
+          "value": 41646.4,
           "label": "Sep"
         },
         {
           "month": 10,
-          "value": 18800,
+          "value": 33204.8,
           "label": "Oct"
         },
         {
           "month": 11,
-          "value": 17500,
+          "value": 31715.2,
           "label": "Nov"
         },
         {
           "month": 12,
-          "value": 16800,
+          "value": 23275.2,
           "label": "Dec"
         }
       ],
-      "total": 228750,
-      "average": 19062.5
+      "total": 403036.80000000005,
+      "average": 33586.4,
+      "dataStatus": "complete",
+      "source": "1.2-elect.xlsx (energy-2568.csv) — complete",
+      "updated": "2026-07-15"
     },
     "2569": {
       "year": 2569,
@@ -125,13 +125,13 @@
       "total": 149100,
       "average": 18637.5,
       "dataStatus": "in_progress",
-      "source": "12-elect.xlsx converted — partial, 8 of 12 months",
-      "updated": "2026-06-12"
+      "source": "1.2-elect.xlsx (energy-2569.csv) — partial, 8 of 12 months",
+      "updated": "2026-07-15"
     }
   },
   "yoyChange": {
-    "absolute": -79650,
-    "percent": -35,
+    "absolute": -253936.80000000005,
+    "percent": -63,
     "direction": "down"
   }
 }

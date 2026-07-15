@@ -65,7 +65,7 @@ const dashboards: DashboardMeta[] = [
     kpiUnit: 'L',
     trend: kpiMap.get('fuel')?.trend ?? 'down',
     color: '#d97706',
-    sourceLabel: 'Fuel purchase records — goffice.mju.ac.th',
+    sourceLabel: 'Fuel consumption records — 1.3_Gassolene.xlsx',
   },
   {
     id: 'paper',
@@ -78,7 +78,7 @@ const dashboards: DashboardMeta[] = [
     kpiUnit: 'kg',
     trend: kpiMap.get('paper')?.trend ?? 'up',
     color: '#6366f1',
-    sourceLabel: 'Paper ordering records — goffice.mju.ac.th',
+    sourceLabel: 'Paper consumption records — 1.4_Paper.xlsx',
   },
   {
     id: 'waste',

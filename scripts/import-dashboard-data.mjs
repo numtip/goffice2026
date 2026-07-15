@@ -41,7 +41,7 @@ const METRIC_CONFIG = {
     kpiField: 'kwh',
     csvField: 'kwh',
     description: 'Electricity consumption in kilowatt-hours',
-    excelSource: '12-elect.xlsx',
+    excelSource: '1.2-elect.xlsx',
   },
   water: {
     label: 'Water Consumption',
@@ -57,7 +57,7 @@ const METRIC_CONFIG = {
     kpiField: 'liters',
     csvField: 'liters',
     description: 'Fuel consumption in liters',
-    excelSource: 'Fuel purchase records',
+    excelSource: '1.3_Gassolene.xlsx',
   },
   paper: {
     label: 'Paper Consumption',
@@ -65,7 +65,7 @@ const METRIC_CONFIG = {
     kpiField: 'kg_estimated',
     csvField: 'kg_estimated',
     description: 'Paper consumption in kg',
-    excelSource: 'Paper ordering records',
+    excelSource: '1.4_Paper.xlsx',
   },
   waste: {
     label: 'Waste Management',
@@ -73,7 +73,7 @@ const METRIC_CONFIG = {
     kpiField: 'recycle_pct',
     csvField: 'recycle_pct',
     description: 'Waste recycling rate percentage',
-    excelSource: 'Waste segregation records',
+    excelSource: '1.5_Waste.xlsx',
   },
   ghg: {
     label: 'GHG Emissions',
@@ -81,7 +81,7 @@ const METRIC_CONFIG = {
     kpiField: 'total_tco2e',
     csvField: 'total_tco2e',
     description: 'Greenhouse gas emissions in tCO₂e',
-    excelSource: '1.5_GreenhouseGas.xlsx',
+    excelSource: '1.6_GreenhouseGas.xlsx',
   },
 };
 

@@ -9,73 +9,73 @@
     "2568": {
       "year": 2568,
       "isBaseline": true,
-      "dataStatus": "complete",
-      "source": "Water bills — 1.1-Water.xlsx (converted)",
-      "updated": "2026-06-12",
       "months": [
         {
           "month": 1,
-          "value": 5820,
+          "value": 939,
           "label": "Jan"
         },
         {
           "month": 2,
-          "value": 5600,
+          "value": 447.5,
           "label": "Feb"
         },
         {
           "month": 3,
-          "value": 5450,
+          "value": 555,
           "label": "Mar"
         },
         {
           "month": 4,
-          "value": 5380,
+          "value": 594.6,
           "label": "Apr"
         },
         {
           "month": 5,
-          "value": 5500,
+          "value": 697.3,
           "label": "May"
         },
         {
           "month": 6,
-          "value": 5620,
+          "value": 662.7,
           "label": "Jun"
         },
         {
           "month": 7,
-          "value": 5710,
+          "value": 642.7,
           "label": "Jul"
         },
         {
           "month": 8,
-          "value": 5580,
+          "value": 696.5,
           "label": "Aug"
         },
         {
           "month": 9,
-          "value": 5400,
+          "value": 734.1,
           "label": "Sep"
         },
         {
           "month": 10,
-          "value": 5350,
+          "value": 599.4,
           "label": "Oct"
         },
         {
           "month": 11,
-          "value": 5480,
+          "value": 840.6,
           "label": "Nov"
         },
         {
           "month": 12,
-          "value": 5560,
+          "value": 928.1,
           "label": "Dec"
         }
       ],
-      "total": 66450,
-      "average": 5537.5
+      "total": 8337.5,
+      "average": 694.79,
+      "dataStatus": "complete",
+      "source": "1.1-Water.xlsx (water-2568.csv) — complete",
+      "updated": "2026-07-15"
     },
     "2569": {
       "year": 2569,
@@ -115,13 +115,13 @@
       "total": 31200,
       "average": 5200,
       "dataStatus": "in_progress",
-      "source": "1.1-Water.xlsx converted — partial, 6 of 12 months",
-      "updated": "2026-06-12"
+      "source": "1.1-Water.xlsx (water-2569.csv) — partial, 6 of 12 months",
+      "updated": "2026-07-15"
     }
   },
   "yoyChange": {
-    "absolute": -35250,
-    "percent": -53,
-    "direction": "down"
+    "absolute": 22862.5,
+    "percent": 274,
+    "direction": "up"
   }
 }

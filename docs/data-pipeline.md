@@ -85,12 +85,12 @@ Type definitions are in `src/utils/multi-year-schema.ts`.
 
 | Metric | Source File | Months | Status | Updated |
 |--------|-------------|--------|--------|---------|
-| Energy | `12-elect.xlsx` | 12 | ✅ Complete | 2026-06-12 |
-| Water | `1.1-Water.xlsx` | 12 | ✅ Complete | 2026-06-12 |
-| Fuel | Fuel purchase records (Excel) | 12 | ✅ Complete | 2026-06-12 |
-| Paper | Paper ordering records (Excel) | 12 | ✅ Complete | 2026-06-12 |
-| Waste | Waste segregation records (Excel) | 12 | ✅ Complete | 2026-06-12 |
-| GHG | `1.5_GreenhouseGas.xlsx` | 12 | ✅ Complete | 2026-06-12 |
+| Energy | `1.2-elect.xlsx` — XLSX Sheet "2568" col[6] (kWh) | 12 | ✅ Complete | 2026-07-15 |
+| Water | `1.1-Water.xlsx` — XLSX Sheet "2568" col[6] (m³) | 12 | ✅ Complete | 2026-07-15 |
+| Fuel | `1.3_Gassolene.xlsx` — XLSX Sheet "2568" col[6] (liters) | 12 | ✅ Complete | 2026-07-15 |
+| Paper | `1.4_Paper.xlsx` — XLSX Sheet "2568" col[6] (kg) | 12 | ✅ Complete | 2026-07-15 |
+| Waste | `1.5_Waste.xlsx` — Sheet "คำนวณ%" recycling % (decimal → %) | 12 | ✅ Complete | 2026-07-15 |
+| GHG | `1.6_GreenhouseGas.xlsx` — Sheet "สรุปการคำนวณ ปี 2568" row "GHG ปี 2568 (kgCO2e)" | 12 | ✅ Complete | 2026-07-15 |
 
 Baseline is marked with `"isBaseline": true` and `"dataStatus": "complete"`.
 
@@ -100,12 +100,12 @@ Baseline is marked with `"isBaseline": true` and `"dataStatus": "complete"`.
 
 | Metric | Source File | Months Available | Status | Updated |
 |--------|-------------|-----------------|--------|---------|
-| Energy | `12-elect.xlsx` | 8 (Jan-Aug) | 🟡 In Progress | 2026-06-12 |
+| Energy | `1.2-elect.xlsx` | 8 (Jan-Aug) | 🟡 In Progress | 2026-06-12 |
 | Water | `1.1-Water.xlsx` | 6 (Jan-Jun) | 🟡 In Progress | 2026-06-12 |
-| Fuel | Fuel purchase records | 9 (Jan-Sep) | 🟡 In Progress | 2026-06-12 |
-| Paper | Paper ordering records | 6 (Jan-Jun) | 🟡 In Progress | 2026-06-12 |
-| Waste | Waste segregation records | 10 (Jan-Oct) | 🟡 In Progress | 2026-06-12 |
-| GHG | `1.5_GreenhouseGas.xlsx` | 8 (Jan-Aug) | 🟡 In Progress | 2026-06-12 |
+| Fuel | `1.3_Gassolene.xlsx` | N/A (no 2569 data in XLSX) | 🟡 In Progress | 2026-06-12 |
+| Paper | `1.4_Paper.xlsx` | N/A (no 2569 data in XLSX) | 🟡 In Progress | 2026-06-12 |
+| Waste | `1.5_Waste.xlsx` | N/A (no 2569 data in XLSX) | 🟡 In Progress | 2026-06-12 |
+| GHG | `1.6_GreenhouseGas.xlsx` | N/A (no 2569 data in XLSX) | 🟡 In Progress | 2026-06-12 |
 
 Current-year data is marked with `"isBaseline": false` and `"dataStatus": "in_progress"` until all 12 months are present.
 
@@ -201,18 +201,20 @@ If you prefer to edit JSON directly:
 
 ## 9. Excel Reference Files
 
-Staff submit data in the following files (not in git — kept in shared drive):
+Staff submit data in the following files (tracked in `docs/`, not directly consumed by dashboards):
 
-| File | Metric | Contact |
-|------|--------|---------|
-| `1.1-Water.xlsx` | Water consumption | Facilities |
-| `12-elect.xlsx` | Electricity consumption | Facilities |
-| `1.5_GreenhouseGas.xlsx` | GHG emissions | Environment |
-| Fuel purchase records (Excel) | Fuel consumption | Fleet |
-| Paper ordering records (Excel) | Paper consumption | Procurement |
-| Waste segregation records (Excel) | Waste & recycling | Facilities |
+| File | Metric | Column Extracted |
+|------|--------|-----------------|
+| `1.1-Water.xlsx` | Water consumption | Sheet "2568", col[6] (units = m³) |
+| `1.2-elect.xlsx` | Electricity consumption | Sheet "2568", col[6] (kWh) |
+| `1.3_Gassolene.xlsx` | Fuel consumption | Sheet "2568", col[6] (liters) |
+| `1.4_Paper.xlsx` | Paper consumption | Sheet "2568", col[6] (kg) |
+| `1.5_Waste.xlsx` | Waste & recycling | Sheet "คำนวณ%", recycling % row |
+| `1.6_GreenhouseGas.xlsx` | GHG emissions | Sheet "สรุปการคำนวณ ปี 2568", row "GHG ปี 2568 (kgCO2e)" |
 
-These files are **not committed** to the repo. Only the converted `src/data/generated/*.json` files are committed.
+The extraction pipeline is `scripts/extract-xlsx-to-csv.mjs` → `data/import/{metric}-2568.csv` → `scripts/import-dashboard-data.mjs` → `src/data/generated/{metric}.json`.
+
+Only the converted `src/data/generated/*.json` files are committed as canonical dashboard data.
 
 ---
 

@@ -9,50 +9,134 @@
     "2568": {
       "year": 2568,
       "isBaseline": true,
-      "dataStatus": "complete",
-      "source": "Fuel purchase records (converted from Excel)",
-      "updated": "2026-06-12",
       "months": [
-        { "month": 1, "value": 2050, "label": "Jan" },
-        { "month": 2, "value": 1980, "label": "Feb" },
-        { "month": 3, "value": 1920, "label": "Mar" },
-        { "month": 4, "value": 1880, "label": "Apr" },
-        { "month": 5, "value": 1850, "label": "May" },
-        { "month": 6, "value": 1900, "label": "Jun" },
-        { "month": 7, "value": 1950, "label": "Jul" },
-        { "month": 8, "value": 1880, "label": "Aug" },
-        { "month": 9, "value": 1820, "label": "Sep" },
-        { "month": 10, "value": 1780, "label": "Oct" },
-        { "month": 11, "value": 1750, "label": "Nov" },
-        { "month": 12, "value": 1700, "label": "Dec" }
+        {
+          "month": 1,
+          "value": 82.44,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 23.46,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 39.18,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 39.07,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 48.89,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 106.79,
+          "label": "Jun"
+        },
+        {
+          "month": 7,
+          "value": 0,
+          "label": "Jul"
+        },
+        {
+          "month": 8,
+          "value": 0,
+          "label": "Aug"
+        },
+        {
+          "month": 9,
+          "value": 0,
+          "label": "Sep"
+        },
+        {
+          "month": 10,
+          "value": 0,
+          "label": "Oct"
+        },
+        {
+          "month": 11,
+          "value": 0,
+          "label": "Nov"
+        },
+        {
+          "month": 12,
+          "value": 0,
+          "label": "Dec"
+        }
       ],
-      "total": 22460,
-      "average": 1871.67
+      "total": 339.83000000000004,
+      "average": 28.32,
+      "dataStatus": "complete",
+      "source": "1.3_Gassolene.xlsx (fuel-2568.csv) — complete",
+      "updated": "2026-07-15"
     },
     "2569": {
       "year": 2569,
       "isBaseline": false,
       "dataStatus": "in_progress",
-      "source": "Fuel purchase records (partial, 9 of 12 months)",
+      "source": "1.3_Gassolene.xlsx (placeholder data — no 2569 data in source XLSX)",
       "updated": "2026-06-12",
       "months": [
-        { "month": 1, "value": 1950, "label": "Jan" },
-        { "month": 2, "value": 1880, "label": "Feb" },
-        { "month": 3, "value": 1820, "label": "Mar" },
-        { "month": 4, "value": 1750, "label": "Apr" },
-        { "month": 5, "value": 1720, "label": "May" },
-        { "month": 6, "value": 1780, "label": "Jun" },
-        { "month": 7, "value": 1850, "label": "Jul" },
-        { "month": 8, "value": 1750, "label": "Aug" },
-        { "month": 9, "value": 1700, "label": "Sep" }
+        {
+          "month": 1,
+          "value": 1950,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 1880,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 1820,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 1750,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 1720,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 1780,
+          "label": "Jun"
+        },
+        {
+          "month": 7,
+          "value": 1850,
+          "label": "Jul"
+        },
+        {
+          "month": 8,
+          "value": 1750,
+          "label": "Aug"
+        },
+        {
+          "month": 9,
+          "value": 1700,
+          "label": "Sep"
+        }
       ],
       "total": 16200,
-      "average": 1800.00
+      "average": 1800
     }
   },
   "yoyChange": {
-    "absolute": -6260,
-    "percent": -28,
-    "direction": "down"
+    "absolute": 15860.17,
+    "percent": 4667,
+    "direction": "up"
   }
 }
