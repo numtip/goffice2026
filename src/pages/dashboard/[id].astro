@@ -35,16 +35,15 @@ export function getStaticPaths() {
 const { dashboard } = Astro.props as { dashboard: DashboardMeta };
 const metric = genMap[dashboard.id];
 
-// If generated data exists, use it; otherwise fall back to config-only display
 const baselineYear = metric?.years[metric.baselineYear.toString()] as YearData | undefined;
 const currentYear = metric?.years[metric.currentYear.toString()] as YearData | undefined;
 const yoy = metric?.yoyChange;
+const target = metric?.target;
 
 const category = dashboard.categoryId
   ? categoriesData.categories.find((c: { code: string }) => c.code === dashboard.categoryId)
   : null;
 
-// Related indicators that reference this dashboard
 const relatedIndicators = indicatorsData.indicators.filter(
   (ind: { relatedDashboards: string[] }) => ind.relatedDashboards.includes(dashboard.id)
 );
@@ -54,6 +53,9 @@ const monthAbbr = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', '
 
 /** Status badge styling */
 function statusBadge(status: string): string {
+  if (status === 'VERIFIED_BASELINE') return 'bg-blue-100 text-blue-800';
+  if (status === 'TARGET_PENDING_APPROVAL') return 'bg-yellow-100 text-yellow-800';
+  if (status === 'CURRENT_DATA_PENDING') return 'bg-gray-100 text-gray-500';
   if (status === 'complete') return 'bg-green-100 text-green-800';
   if (status === 'in_progress') return 'bg-yellow-100 text-yellow-800';
   return 'bg-gray-100 text-gray-500';
@@ -89,19 +91,46 @@ function arrowColor(dir: string): string {
 
     {metric && baselineYear ? (
       <>
+        <!-- Pipeline Status Section -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
+          <h2 class="text-sm font-semibold text-gray-700 mb-3">Pipeline Status</h2>
+          <div class="flex flex-wrap gap-3">
+            <!-- Baseline -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 border border-blue-200">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              2568 Baseline &mdash; Frozen
+            </div>
+            <!-- Target -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800 border border-yellow-200">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+              2569 Target &mdash; Awaiting Approval
+            </div>
+            <!-- Current -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-gray-100 text-gray-500 border border-gray-200">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              2569 Actual &mdash; Data Not Yet Available
+            </div>
+          </div>
+        </div>
+
         <!-- Data Status Badge Row -->
         <div class="flex flex-wrap gap-3 mb-6">
           <span class={"inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium " + statusBadge(baselineYear.dataStatus)}>
             <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            {metric.baselineYear} Baseline: Complete ({baselineYear.months.length} months)
+            {metric.baselineYear} Baseline: Verified &amp; Frozen ({baselineYear.months.length} months)
           </span>
           <span class={"inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium " + statusBadge(currentYear?.dataStatus ?? 'missing')}>
-            {currentYear?.dataStatus === 'in_progress' ? (
+            {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? (
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            ) : currentYear?.dataStatus === 'in_progress' ? (
               <svg class="w-3.5 h-3.5 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
             ) : (
               <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             )}
-            {metric.currentYear} Current: {currentYear?.dataStatus === 'complete' ? 'Complete' : 'In Progress'} ({currentYear?.months.length ?? 0} of 12 months)
+            {metric.currentYear} Current: {
+              currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? 'Data Pending' :
+              currentYear?.dataStatus === 'complete' ? 'Complete' : 'In Progress'
+            } ({currentYear?.months.length ?? 0} of 12 months)
           </span>
         </div>
 
@@ -126,49 +155,42 @@ function arrowColor(dir: string): string {
           </div>
         )}
 
-        <!-- YoY KPI Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-          <!-- Baseline Total -->
+        <!-- Baseline / Target / Current KPI Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <!-- Baseline (2568) -->
           <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
-            <p class="text-xs text-gray-500 mb-1">{metric.baselineYear} Baseline Total</p>
+            <p class="text-xs text-gray-500 mb-1">Baseline ({metric.baselineYear})</p>
             <p class="text-2xl font-bold text-gray-800">{Intl.NumberFormat().format(baselineYear.total)}<span class="text-sm text-gray-400 ml-1">{metric.unit}</span></p>
-            <p class="text-xs text-gray-400 mt-1">{baselineYear.months.length} months</p>
+            <p class="text-xs text-gray-400 mt-1">Frozen baseline &middot; {baselineYear.months.length} months</p>
           </div>
 
-          <!-- Current Total -->
-          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
-            <p class="text-xs text-gray-500 mb-1">{metric.currentYear} Current Total</p>
-            <p class="text-2xl font-bold text-gray-800">{Intl.NumberFormat().format(currentYear?.total ?? 0)}<span class="text-sm text-gray-400 ml-1">{metric.unit}</span></p>
-            <p class="text-xs text-gray-400 mt-1">{currentYear?.months.length ?? 0} of 12 months</p>
-          </div>
-
-          <!-- YoY Difference -->
-          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
-            <p class="text-xs text-gray-500 mb-1">YoY Difference</p>
-            <p class={"text-2xl font-bold " + (yoy && yoy.absolute < 0 ? 'text-green-600' : 'text-red-600')}>
-              {yoy ? (yoy.absolute > 0 ? '+' : '') + Intl.NumberFormat().format(yoy.absolute) : 'N/A'}
+          <!-- Target (2569) -->
+          <div class="bg-white rounded-xl shadow-sm border border-yellow-200 p-5">
+            <p class="text-xs text-gray-500 mb-1">Target ({metric.targetYear ?? metric.currentYear})</p>
+            <p class="text-2xl font-bold text-yellow-600">
+              {target && target.targetValue !== null ? Intl.NumberFormat().format(target.targetValue) : 'TBD'}
               <span class="text-sm text-gray-400 ml-1">{metric.unit}</span>
             </p>
-            <p class="text-xs text-gray-400 mt-1">{yoy && baselineYear ? Intl.NumberFormat().format(baselineYear.total) : ''} baseline</p>
+            <p class="text-xs text-gray-400 mt-1">
+              {target && target.status === 'TARGET_PENDING_APPROVAL' ? 'Awaiting staff approval' : 'Reduction target'}
+            </p>
           </div>
 
-          <!-- YoY Percent Change -->
+          <!-- Current (2569) -->
           <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
-            <p class="text-xs text-gray-500 mb-1">YoY Change</p>
-            <p class="text-2xl font-bold">
-              <span class={yoy ? arrowColor(yoy.direction) : 'text-gray-400'}>
-                {yoy ? (yoy.percent > 0 ? '+' : '') + yoy.percent + '%' : 'N/A'}
-              </span>
-              {yoy && <span class={"text-base ml-1 " + arrowColor(yoy.direction)}>{arrow(yoy.direction)}</span>}
+            <p class="text-xs text-gray-500 mb-1">Current ({metric.currentYear})</p>
+            <p class={"text-2xl font-bold " + (currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? 'text-gray-400' : 'text-gray-800')}>
+              {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? 'No data' : Intl.NumberFormat().format(currentYear?.total ?? 0)}
+              <span class="text-sm text-gray-400 ml-1">{metric.unit}</span>
             </p>
             <p class="text-xs text-gray-400 mt-1">
-              {currentYear?.months.length === 12 ? 'Annual comparison' : 'Partial year comparison'}
+              {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? 'Data not yet available' : (currentYear?.months.length ?? 0) + ' of 12 months'}
             </p>
           </div>
         </div>
 
         <!-- Partial-Year Warning -->
-        {currentYear && currentYear.dataStatus === 'in_progress' && (
+        {currentYear && currentYear.dataStatus !== 'CURRENT_DATA_PENDING' && currentYear.months.length < 12 && (
           <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 flex items-start gap-3">
             <svg class="w-5 h-5 text-amber-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
@@ -184,7 +206,7 @@ function arrowColor(dir: string): string {
           </div>
         )}
 
-        <!-- Monthly Comparison Table -->
+        <!-- Monthly Comparison Table with Target Column -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
           <h2 class="text-sm font-semibold text-gray-700 mb-3">Monthly Comparison: {metric.baselineYear} vs {metric.currentYear}</h2>
           <div class="overflow-x-auto">
@@ -192,8 +214,9 @@ function arrowColor(dir: string): string {
               <thead class="bg-gray-50 border-b border-gray-100">
                 <tr>
                   <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">Month</th>
-                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{metric.baselineYear}</th>
-                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{metric.currentYear}</th>
+                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{metric.baselineYear} Baseline</th>
+                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{metric.targetYear ?? metric.currentYear} Target</th>
+                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{metric.currentYear} Actual</th>
                   <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">Diff</th>
                   <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">Change</th>
                 </tr>
@@ -205,12 +228,22 @@ function arrowColor(dir: string): string {
                   const diff = bVal && cVal ? cVal.value - bVal.value : null;
                   const pct = bVal && diff !== null && bVal.value !== 0 ? Math.round((diff / bVal.value) * 100) : null;
                   const hasCurrent = !!cVal;
+                  const isTargetPending = target?.status === 'TARGET_PENDING_APPROVAL';
                   return (
-                    <tr class={"hover:bg-gray-50 transition-colors " + (hasCurrent ? '' : 'opacity-50')}>
+                    <tr class={"hover:bg-gray-50 transition-colors " + (currentYear?.dataStatus !== 'CURRENT_DATA_PENDING' && !hasCurrent ? 'opacity-50' : '')}>
                       <td class="px-3 py-2 text-gray-700 font-medium">{monthAbbr[m]}</td>
                       <td class="px-3 py-2 text-gray-700">{bVal ? Intl.NumberFormat().format(bVal.value) : '-'}</td>
+                      <td class="px-3 py-2 text-yellow-600">
+                        {isTargetPending ? '--' : (target?.months.find((tm) => tm.month === m) ? Intl.NumberFormat().format(target.months.find((tm) => tm.month === m)!.value) : '--')}
+                      </td>
                       <td class="px-3 py-2 text-gray-700">
-                        {hasCurrent ? Intl.NumberFormat().format(cVal.value) : <span class="text-gray-400 italic">Pending</span>}
+                        {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? (
+                          <span class="text-gray-400 italic">Pending</span>
+                        ) : hasCurrent ? (
+                          Intl.NumberFormat().format(cVal.value)
+                        ) : (
+                          <span class="text-gray-400 italic">Pending</span>
+                        )}
                       </td>
                       <td class={"px-3 py-2 " + (diff !== null ? (diff < 0 ? 'text-green-600' : diff > 0 ? 'text-red-600' : 'text-gray-500') : 'text-gray-400')}>
                         {diff !== null ? (diff > 0 ? '+' : '') + Intl.NumberFormat().format(diff) : '-'}
@@ -225,12 +258,16 @@ function arrowColor(dir: string): string {
             </table>
           </div>
           <p class="text-xs text-gray-400 mt-3">
-            * Rows without {metric.currentYear} data are shown at reduced opacity — data entry still in progress.
+            * {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? (
+              '2569 actual data is not yet available from source XLSX files — all rows show "Pending" until data entry begins.'
+            ) : (
+              'Rows without ' + metric.currentYear + ' data are shown at reduced opacity — data entry still in progress.'
+            )}
           </p>
         </div>
 
         <!-- Sparkline: current year trend -->
-        {currentYear && currentYear.months.length >= 2 && (
+        {currentYear && currentYear.dataStatus !== 'CURRENT_DATA_PENDING' && currentYear.months.length >= 2 && (
           <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
             <h2 class="text-sm font-semibold text-gray-700 mb-3">
               {metric.currentYear} Monthly Trend
@@ -245,6 +282,60 @@ function arrowColor(dir: string): string {
                 <span class="block">{currentYear.months[0]?.label} &ndash; {currentYear.months[currentYear.months.length - 1]?.label}</span>
                 <span class="block mt-1">
                   {metric.kpiField}: {Intl.NumberFormat().format(Math.min(...currentYear.months.map((m) => m.value)))} &ndash; {Intl.NumberFormat().format(Math.max(...currentYear.months.map((m) => m.value)))}
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <!-- Provenance Attribution -->
+        {baselineYear.provenance && (
+          <div class="bg-white rounded-xl shadow-sm border border-blue-200 p-5 mb-6">
+            <h2 class="text-sm font-semibold text-blue-700 mb-3 flex items-center gap-2">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              Provenance &amp; Source Attribution
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+              <div class="space-y-1">
+                <p class="text-gray-500">Source Workbook</p>
+                <p class="text-gray-800 font-mono">{baselineYear.provenance.sourceWorkbook}</p>
+              </div>
+              <div class="space-y-1">
+                <p class="text-gray-500">Source Sheet</p>
+                <p class="text-gray-800 font-mono">{baselineYear.provenance.sourceSheet}</p>
+              </div>
+              {baselineYear.provenance.sourceColumn && (
+                <div class="space-y-1">
+                  <p class="text-gray-500">Source Column</p>
+                  <p class="text-gray-800 font-mono">{baselineYear.provenance.sourceColumn}</p>
+                </div>
+              )}
+              {baselineYear.provenance.sourceRowRange && (
+                <div class="space-y-1">
+                  <p class="text-gray-500">Source Row Range</p>
+                  <p class="text-gray-800 font-mono">{baselineYear.provenance.sourceRowRange}</p>
+                </div>
+              )}
+              <div class="space-y-1">
+                <p class="text-gray-500">Extraction Script</p>
+                <p class="text-gray-800 font-mono">{baselineYear.provenance.extractionScript}</p>
+              </div>
+              <div class="space-y-1">
+                <p class="text-gray-500">Extraction Timestamp</p>
+                <p class="text-gray-800 font-mono">{baselineYear.provenance.extractionTimestamp}</p>
+              </div>
+              <div class="space-y-1">
+                <p class="text-gray-500">Normalization Script</p>
+                <p class="text-gray-800 font-mono">{baselineYear.provenance.normalizationScript}</p>
+              </div>
+              <div class="space-y-1">
+                <p class="text-gray-500">Normalization Timestamp</p>
+                <p class="text-gray-800 font-mono">{baselineYear.provenance.normalizationTimestamp}</p>
+              </div>
+              <div class="space-y-1 col-span-2">
+                <p class="text-gray-500">Validation Status</p>
+                <span class={"inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium " + statusBadge(baselineYear.provenance.validationStatus)}>
+                  {baselineYear.provenance.validationStatus}
                 </span>
               </div>
             </div>

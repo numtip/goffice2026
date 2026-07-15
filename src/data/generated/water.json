@@ -3,121 +3,79 @@
   "label": "Water Consumption",
   "unit": "m³",
   "kpiField": "cubic_meters",
+  "status": "VERIFIED_BASELINE",
   "baselineYear": 2568,
   "currentYear": 2569,
+  "targetYear": 2569,
   "years": {
     "2568": {
       "year": 2568,
       "isBaseline": true,
       "months": [
-        {
-          "month": 1,
-          "value": 939,
-          "label": "Jan"
-        },
-        {
-          "month": 2,
-          "value": 447.5,
-          "label": "Feb"
-        },
-        {
-          "month": 3,
-          "value": 555,
-          "label": "Mar"
-        },
-        {
-          "month": 4,
-          "value": 594.6,
-          "label": "Apr"
-        },
-        {
-          "month": 5,
-          "value": 697.3,
-          "label": "May"
-        },
-        {
-          "month": 6,
-          "value": 662.7,
-          "label": "Jun"
-        },
-        {
-          "month": 7,
-          "value": 642.7,
-          "label": "Jul"
-        },
-        {
-          "month": 8,
-          "value": 696.5,
-          "label": "Aug"
-        },
-        {
-          "month": 9,
-          "value": 734.1,
-          "label": "Sep"
-        },
-        {
-          "month": 10,
-          "value": 599.4,
-          "label": "Oct"
-        },
-        {
-          "month": 11,
-          "value": 840.6,
-          "label": "Nov"
-        },
-        {
-          "month": 12,
-          "value": 928.1,
-          "label": "Dec"
-        }
+        { "month": 1, "value": 939, "label": "Jan" },
+        { "month": 2, "value": 447.5, "label": "Feb" },
+        { "month": 3, "value": 555, "label": "Mar" },
+        { "month": 4, "value": 594.6, "label": "Apr" },
+        { "month": 5, "value": 697.3, "label": "May" },
+        { "month": 6, "value": 662.7, "label": "Jun" },
+        { "month": 7, "value": 642.7, "label": "Jul" },
+        { "month": 8, "value": 696.5, "label": "Aug" },
+        { "month": 9, "value": 734.1, "label": "Sep" },
+        { "month": 10, "value": 599.4, "label": "Oct" },
+        { "month": 11, "value": 840.6, "label": "Nov" },
+        { "month": 12, "value": 928.1, "label": "Dec" }
       ],
       "total": 8337.5,
       "average": 694.79,
-      "dataStatus": "complete",
+      "dataStatus": "VERIFIED_BASELINE",
       "source": "1.1-Water.xlsx (water-2568.csv) — complete",
-      "updated": "2026-07-15"
+      "updated": "2026-07-15",
+      "provenance": {
+        "sourceWorkbook": "docs/1.1-Water.xlsx",
+        "sourceSheet": "2568",
+        "sourceColumn": "[6] — \"(หน่วย) ปี 2568\" column",
+        "sourceRowRange": "rows 4-15 (Thai month-labeled rows)",
+        "extractionScript": "scripts/extract-xlsx-to-csv.mjs",
+        "extractionTimestamp": "2026-07-15T03:48:00+07:00",
+        "normalizationScript": "scripts/import-dashboard-data.mjs",
+        "normalizationTimestamp": "2026-07-15T03:50:00+07:00",
+        "validationStatus": "VERIFIED_BASELINE"
+      }
     },
     "2569": {
       "year": 2569,
       "isBaseline": false,
       "months": [
-        {
-          "month": 1,
-          "value": 5400,
-          "label": "Jan"
-        },
-        {
-          "month": 2,
-          "value": 5200,
-          "label": "Feb"
-        },
-        {
-          "month": 3,
-          "value": 5100,
-          "label": "Mar"
-        },
-        {
-          "month": 4,
-          "value": 5050,
-          "label": "Apr"
-        },
-        {
-          "month": 5,
-          "value": 5150,
-          "label": "May"
-        },
-        {
-          "month": 6,
-          "value": 5300,
-          "label": "Jun"
-        }
+        { "month": 1, "value": 5400, "label": "Jan" },
+        { "month": 2, "value": 5200, "label": "Feb" },
+        { "month": 3, "value": 5100, "label": "Mar" },
+        { "month": 4, "value": 5050, "label": "Apr" },
+        { "month": 5, "value": 5150, "label": "May" },
+        { "month": 6, "value": 5300, "label": "Jun" }
       ],
       "total": 31200,
       "average": 5200,
-      "dataStatus": "in_progress",
+      "dataStatus": "CURRENT_DATA_PENDING",
       "source": "1.1-Water.xlsx (water-2569.csv) — partial, 6 of 12 months",
-      "updated": "2026-07-15"
+      "updated": "2026-07-15",
+      "provenance": {
+        "sourceWorkbook": "docs/1.1-Water.xlsx",
+        "sourceSheet": "2568",
+        "extractionStatus": "NO_2569_DATA — target year data not yet available in source XLSX",
+        "validationStatus": "CURRENT_DATA_PENDING"
+      }
     }
+  },
+  "target": {
+    "year": 2569,
+    "status": "TARGET_PENDING_APPROVAL",
+    "targetType": "reduction",
+    "targetUnit": "m³",
+    "targetValue": null,
+    "targetBasis": "Green Office 2569 criteria require year-over-year reduction. Specific target value must be set by authorized staff during assessment planning.",
+    "targetSetBy": null,
+    "targetSetDate": null,
+    "months": []
   },
   "yoyChange": {
     "absolute": 22862.5,

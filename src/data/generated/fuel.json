@@ -3,136 +3,82 @@
   "label": "Fuel Consumption",
   "unit": "L",
   "kpiField": "liters",
+  "status": "VERIFIED_BASELINE",
   "baselineYear": 2568,
   "currentYear": 2569,
+  "targetYear": 2569,
   "years": {
     "2568": {
       "year": 2568,
       "isBaseline": true,
       "months": [
-        {
-          "month": 1,
-          "value": 82.44,
-          "label": "Jan"
-        },
-        {
-          "month": 2,
-          "value": 23.46,
-          "label": "Feb"
-        },
-        {
-          "month": 3,
-          "value": 39.18,
-          "label": "Mar"
-        },
-        {
-          "month": 4,
-          "value": 39.07,
-          "label": "Apr"
-        },
-        {
-          "month": 5,
-          "value": 48.89,
-          "label": "May"
-        },
-        {
-          "month": 6,
-          "value": 106.79,
-          "label": "Jun"
-        },
-        {
-          "month": 7,
-          "value": 0,
-          "label": "Jul"
-        },
-        {
-          "month": 8,
-          "value": 0,
-          "label": "Aug"
-        },
-        {
-          "month": 9,
-          "value": 0,
-          "label": "Sep"
-        },
-        {
-          "month": 10,
-          "value": 0,
-          "label": "Oct"
-        },
-        {
-          "month": 11,
-          "value": 0,
-          "label": "Nov"
-        },
-        {
-          "month": 12,
-          "value": 0,
-          "label": "Dec"
-        }
+        { "month": 1, "value": 82.44, "label": "Jan" },
+        { "month": 2, "value": 23.46, "label": "Feb" },
+        { "month": 3, "value": 39.18, "label": "Mar" },
+        { "month": 4, "value": 39.07, "label": "Apr" },
+        { "month": 5, "value": 48.89, "label": "May" },
+        { "month": 6, "value": 106.79, "label": "Jun" },
+        { "month": 7, "value": 0, "label": "Jul" },
+        { "month": 8, "value": 0, "label": "Aug" },
+        { "month": 9, "value": 0, "label": "Sep" },
+        { "month": 10, "value": 0, "label": "Oct" },
+        { "month": 11, "value": 0, "label": "Nov" },
+        { "month": 12, "value": 0, "label": "Dec" }
       ],
       "total": 339.83000000000004,
       "average": 28.32,
-      "dataStatus": "complete",
+      "dataStatus": "VERIFIED_BASELINE",
       "source": "1.3_Gassolene.xlsx (fuel-2568.csv) — complete",
-      "updated": "2026-07-15"
+      "updated": "2026-07-15",
+      "provenance": {
+        "sourceWorkbook": "docs/1.3_Gassolene.xlsx",
+        "sourceSheet": "2568",
+        "sourceColumn": "[6] — \"(ลิตร) ปี 2568\" column",
+        "sourceRowRange": "rows 4-15 (Thai month-labeled rows)",
+        "extractionScript": "scripts/extract-xlsx-to-csv.mjs",
+        "extractionTimestamp": "2026-07-15T03:48:00+07:00",
+        "normalizationScript": "scripts/import-dashboard-data.mjs",
+        "normalizationTimestamp": "2026-07-15T03:50:00+07:00",
+        "validationStatus": "VERIFIED_BASELINE"
+      }
     },
     "2569": {
       "year": 2569,
       "isBaseline": false,
-      "dataStatus": "in_progress",
-      "source": "1.3_Gassolene.xlsx (placeholder data — no 2569 data in source XLSX)",
-      "updated": "2026-06-12",
       "months": [
-        {
-          "month": 1,
-          "value": 1950,
-          "label": "Jan"
-        },
-        {
-          "month": 2,
-          "value": 1880,
-          "label": "Feb"
-        },
-        {
-          "month": 3,
-          "value": 1820,
-          "label": "Mar"
-        },
-        {
-          "month": 4,
-          "value": 1750,
-          "label": "Apr"
-        },
-        {
-          "month": 5,
-          "value": 1720,
-          "label": "May"
-        },
-        {
-          "month": 6,
-          "value": 1780,
-          "label": "Jun"
-        },
-        {
-          "month": 7,
-          "value": 1850,
-          "label": "Jul"
-        },
-        {
-          "month": 8,
-          "value": 1750,
-          "label": "Aug"
-        },
-        {
-          "month": 9,
-          "value": 1700,
-          "label": "Sep"
-        }
+        { "month": 1, "value": 1950, "label": "Jan" },
+        { "month": 2, "value": 1880, "label": "Feb" },
+        { "month": 3, "value": 1820, "label": "Mar" },
+        { "month": 4, "value": 1750, "label": "Apr" },
+        { "month": 5, "value": 1720, "label": "May" },
+        { "month": 6, "value": 1780, "label": "Jun" },
+        { "month": 7, "value": 1850, "label": "Jul" },
+        { "month": 8, "value": 1750, "label": "Aug" },
+        { "month": 9, "value": 1700, "label": "Sep" }
       ],
       "total": 16200,
-      "average": 1800
+      "average": 1800,
+      "dataStatus": "CURRENT_DATA_PENDING",
+      "source": "1.3_Gassolene.xlsx (placeholder data — no 2569 data in source XLSX)",
+      "updated": "2026-06-12",
+      "provenance": {
+        "sourceWorkbook": "docs/1.3_Gassolene.xlsx",
+        "sourceSheet": "2568",
+        "extractionStatus": "NO_2569_DATA — target year data not yet available in source XLSX",
+        "validationStatus": "CURRENT_DATA_PENDING"
+      }
     }
+  },
+  "target": {
+    "year": 2569,
+    "status": "TARGET_PENDING_APPROVAL",
+    "targetType": "reduction",
+    "targetUnit": "L",
+    "targetValue": null,
+    "targetBasis": "Green Office 2569 criteria require year-over-year reduction. Specific target value must be set by authorized staff during assessment planning.",
+    "targetSetBy": null,
+    "targetSetDate": null,
+    "months": []
   },
   "yoyChange": {
     "absolute": 15860.17,

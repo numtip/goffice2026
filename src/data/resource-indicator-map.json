@@ -1,0 +1,113 @@
+{
+  "version": "1.0.0",
+  "frozenAt": "2026-07-15",
+  "mappings": [
+    {
+      "resourceDomain": "water",
+      "label": "Water Consumption",
+      "dashboardId": "water",
+      "unit": "m³",
+      "primaryCategory": "cat1",
+      "primaryCategoryLabel": "การจัดการสิ่งแวดล้อมในสำนักงาน",
+      "mappedIndicators": [
+        {
+          "code": "3.2.1",
+          "title": "ปริมาณการใช้น้ำ",
+          "mappingBasis": "Direct resource measurement indicator — water consumption (m³)"
+        }
+      ]
+    },
+    {
+      "resourceDomain": "energy",
+      "label": "Electricity Consumption",
+      "dashboardId": "energy",
+      "unit": "kWh",
+      "primaryCategory": "cat1",
+      "primaryCategoryLabel": "การจัดการสิ่งแวดล้อมในสำนักงาน",
+      "mappedIndicators": [
+        {
+          "code": "3.2.2",
+          "title": "ปริมาณการใช้ไฟฟ้า",
+          "mappingBasis": "Direct resource measurement indicator — electricity consumption (kWh)"
+        }
+      ]
+    },
+    {
+      "resourceDomain": "fuel",
+      "label": "Fuel Consumption",
+      "dashboardId": "fuel",
+      "unit": "L",
+      "primaryCategory": "cat1",
+      "primaryCategoryLabel": "การจัดการสิ่งแวดล้อมในสำนักงาน",
+      "mappedIndicators": [
+        {
+          "code": "3.2.4",
+          "title": "ปริมาณการใช้น้ำมันเชื้อเพลิง",
+          "mappingBasis": "Direct resource measurement indicator — fuel consumption (liters)"
+        },
+        {
+          "code": "3.2.5",
+          "title": "มีมาตรการลดการใช้น้ำมันเชื้อเพลิง",
+          "mappingBasis": "Policy/measure indicator related to fuel usage reduction"
+        }
+      ]
+    },
+    {
+      "resourceDomain": "paper",
+      "label": "Paper Consumption",
+      "dashboardId": "paper",
+      "unit": "kg",
+      "primaryCategory": "cat1",
+      "primaryCategoryLabel": "การจัดการสิ่งแวดล้อมในสำนักงาน",
+      "mappedIndicators": [
+        {
+          "code": "3.3.4",
+          "title": "ปริมาณการใช้กระดาษ",
+          "mappingBasis": "Direct resource measurement indicator — paper consumption (kg)"
+        }
+      ]
+    },
+    {
+      "resourceDomain": "waste",
+      "label": "Waste Management",
+      "dashboardId": "waste",
+      "unit": "% (recycling rate)",
+      "primaryCategory": "cat3",
+      "primaryCategoryLabel": "การจัดการของเสีย",
+      "mappedIndicators": [
+        {
+          "code": "4.1.1",
+          "title": "การคัดแยกขยะ",
+          "mappingBasis": "Waste segregation indicator — directly supported by recycling rate data"
+        },
+        {
+          "code": "4.1.2",
+          "title": "การนำขยะกลับมาใช้ใหม่",
+          "mappingBasis": "Recycling/reuse indicator — directly supported by recycling rate data"
+        }
+      ]
+    },
+    {
+      "resourceDomain": "ghg",
+      "label": "GHG Emissions",
+      "dashboardId": "ghg",
+      "unit": "tCO₂e",
+      "primaryCategory": "cat1",
+      "primaryCategoryLabel": "การจัดการสิ่งแวดล้อมในสำนักงาน",
+      "mappedIndicators": [
+        {
+          "code": "1.5.1",
+          "title": "ปริมาณก๊าซเรือนกระจก",
+          "mappingBasis": "Direct GHG measurement — total emissions in tCO₂e"
+        },
+        {
+          "code": "1.6.1",
+          "title": "การตรวจวัดก๊าซเรือนกระจก",
+          "mappingBasis": "GHG monitoring indicator — supported by inventory methodology"
+        }
+      ]
+    }
+  ],
+  "totalResourceDomains": 6,
+  "totalMappedIndicators": 9
+}

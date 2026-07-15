@@ -3,121 +3,79 @@
   "label": "Paper Consumption",
   "unit": "kg",
   "kpiField": "kg_estimated",
+  "status": "VERIFIED_BASELINE",
   "baselineYear": 2568,
   "currentYear": 2569,
+  "targetYear": 2569,
   "years": {
     "2568": {
       "year": 2568,
       "isBaseline": true,
       "months": [
-        {
-          "month": 1,
-          "value": 194.4,
-          "label": "Jan"
-        },
-        {
-          "month": 2,
-          "value": 175.5,
-          "label": "Feb"
-        },
-        {
-          "month": 3,
-          "value": 245.7,
-          "label": "Mar"
-        },
-        {
-          "month": 4,
-          "value": 189,
-          "label": "Apr"
-        },
-        {
-          "month": 5,
-          "value": 126.9,
-          "label": "May"
-        },
-        {
-          "month": 6,
-          "value": 183.6,
-          "label": "Jun"
-        },
-        {
-          "month": 7,
-          "value": 159.3,
-          "label": "Jul"
-        },
-        {
-          "month": 8,
-          "value": 206.55,
-          "label": "Aug"
-        },
-        {
-          "month": 9,
-          "value": 198.45,
-          "label": "Sep"
-        },
-        {
-          "month": 10,
-          "value": 140.4,
-          "label": "Oct"
-        },
-        {
-          "month": 11,
-          "value": 213.3,
-          "label": "Nov"
-        },
-        {
-          "month": 12,
-          "value": 164.7,
-          "label": "Dec"
-        }
+        { "month": 1, "value": 194.4, "label": "Jan" },
+        { "month": 2, "value": 175.5, "label": "Feb" },
+        { "month": 3, "value": 245.7, "label": "Mar" },
+        { "month": 4, "value": 189, "label": "Apr" },
+        { "month": 5, "value": 126.9, "label": "May" },
+        { "month": 6, "value": 183.6, "label": "Jun" },
+        { "month": 7, "value": 159.3, "label": "Jul" },
+        { "month": 8, "value": 206.55, "label": "Aug" },
+        { "month": 9, "value": 198.45, "label": "Sep" },
+        { "month": 10, "value": 140.4, "label": "Oct" },
+        { "month": 11, "value": 213.3, "label": "Nov" },
+        { "month": 12, "value": 164.7, "label": "Dec" }
       ],
       "total": 2197.7999999999997,
       "average": 183.15,
-      "dataStatus": "complete",
+      "dataStatus": "VERIFIED_BASELINE",
       "source": "1.4_Paper.xlsx (paper-2568.csv) — complete",
-      "updated": "2026-07-15"
+      "updated": "2026-07-15",
+      "provenance": {
+        "sourceWorkbook": "docs/1.4_Paper.xlsx",
+        "sourceSheet": "2568",
+        "sourceColumn": "[6] — \"(กิโลกรัม) ปี 2568\" column",
+        "sourceRowRange": "rows 4-15 (Thai month-labeled rows)",
+        "extractionScript": "scripts/extract-xlsx-to-csv.mjs",
+        "extractionTimestamp": "2026-07-15T03:48:00+07:00",
+        "normalizationScript": "scripts/import-dashboard-data.mjs",
+        "normalizationTimestamp": "2026-07-15T03:50:00+07:00",
+        "validationStatus": "VERIFIED_BASELINE"
+      }
     },
     "2569": {
       "year": 2569,
       "isBaseline": false,
-      "dataStatus": "in_progress",
-      "source": "1.4_Paper.xlsx (placeholder data — no 2569 data in source XLSX)",
-      "updated": "2026-06-12",
       "months": [
-        {
-          "month": 1,
-          "value": 155,
-          "label": "Jan"
-        },
-        {
-          "month": 2,
-          "value": 145,
-          "label": "Feb"
-        },
-        {
-          "month": 3,
-          "value": 140,
-          "label": "Mar"
-        },
-        {
-          "month": 4,
-          "value": 148,
-          "label": "Apr"
-        },
-        {
-          "month": 5,
-          "value": 160,
-          "label": "May"
-        },
-        {
-          "month": 6,
-          "value": 168,
-          "label": "Jun"
-        }
+        { "month": 1, "value": 155, "label": "Jan" },
+        { "month": 2, "value": 145, "label": "Feb" },
+        { "month": 3, "value": 140, "label": "Mar" },
+        { "month": 4, "value": 148, "label": "Apr" },
+        { "month": 5, "value": 160, "label": "May" },
+        { "month": 6, "value": 168, "label": "Jun" }
       ],
       "total": 916,
-      "average": 152.67
+      "average": 152.67,
+      "dataStatus": "CURRENT_DATA_PENDING",
+      "source": "1.4_Paper.xlsx (placeholder data — no 2569 data in source XLSX)",
+      "updated": "2026-06-12",
+      "provenance": {
+        "sourceWorkbook": "docs/1.4_Paper.xlsx",
+        "sourceSheet": "2568",
+        "extractionStatus": "NO_2569_DATA — target year data not yet available in source XLSX",
+        "validationStatus": "CURRENT_DATA_PENDING"
+      }
     }
+  },
+  "target": {
+    "year": 2569,
+    "status": "TARGET_PENDING_APPROVAL",
+    "targetType": "reduction",
+    "targetUnit": "kg",
+    "targetValue": null,
+    "targetBasis": "Green Office 2569 criteria require year-over-year reduction. Specific target value must be set by authorized staff during assessment planning.",
+    "targetSetBy": null,
+    "targetSetDate": null,
+    "months": []
   },
   "yoyChange": {
     "absolute": -1281.7999999999997,

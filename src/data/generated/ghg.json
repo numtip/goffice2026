@@ -3,131 +3,81 @@
   "label": "GHG Emissions",
   "unit": "tCO₂e",
   "kpiField": "total_tco2e",
+  "status": "VERIFIED_BASELINE",
   "baselineYear": 2568,
   "currentYear": 2569,
+  "targetYear": 2569,
   "years": {
     "2568": {
       "year": 2568,
       "isBaseline": true,
       "months": [
-        {
-          "month": 1,
-          "value": 11.53,
-          "label": "Jan"
-        },
-        {
-          "month": 2,
-          "value": 14.45,
-          "label": "Feb"
-        },
-        {
-          "month": 3,
-          "value": 21.38,
-          "label": "Mar"
-        },
-        {
-          "month": 4,
-          "value": 20.86,
-          "label": "Apr"
-        },
-        {
-          "month": 5,
-          "value": 22.67,
-          "label": "May"
-        },
-        {
-          "month": 6,
-          "value": 21.78,
-          "label": "Jun"
-        },
-        {
-          "month": 7,
-          "value": 21.96,
-          "label": "Jul"
-        },
-        {
-          "month": 8,
-          "value": 22.23,
-          "label": "Aug"
-        },
-        {
-          "month": 9,
-          "value": 23.44,
-          "label": "Sep"
-        },
-        {
-          "month": 10,
-          "value": 18.85,
-          "label": "Oct"
-        },
-        {
-          "month": 11,
-          "value": 18.43,
-          "label": "Nov"
-        },
-        {
-          "month": 12,
-          "value": 14.02,
-          "label": "Dec"
-        }
+        { "month": 1, "value": 11.53, "label": "Jan" },
+        { "month": 2, "value": 14.45, "label": "Feb" },
+        { "month": 3, "value": 21.38, "label": "Mar" },
+        { "month": 4, "value": 20.86, "label": "Apr" },
+        { "month": 5, "value": 22.67, "label": "May" },
+        { "month": 6, "value": 21.78, "label": "Jun" },
+        { "month": 7, "value": 21.96, "label": "Jul" },
+        { "month": 8, "value": 22.23, "label": "Aug" },
+        { "month": 9, "value": 23.44, "label": "Sep" },
+        { "month": 10, "value": 18.85, "label": "Oct" },
+        { "month": 11, "value": 18.43, "label": "Nov" },
+        { "month": 12, "value": 14.02, "label": "Dec" }
       ],
       "total": 231.6,
       "average": 19.3,
-      "dataStatus": "complete",
+      "dataStatus": "VERIFIED_BASELINE",
       "source": "1.6_GreenhouseGas.xlsx (ghg-2568.csv) — complete",
-      "updated": "2026-07-15"
+      "updated": "2026-07-15",
+      "provenance": {
+        "sourceWorkbook": "docs/1.6_GreenhouseGas.xlsx",
+        "sourceSheet": "สรุปการคำนวณ ปี 2568",
+        "sourceColumn": "col[3]-col[14]",
+        "sourceRowRange": "row 67 \"GHG ปี 2568 (kgCO2e)\" — kg values converted to tCO₂e",
+        "extractionScript": "scripts/extract-xlsx-to-csv.mjs",
+        "extractionTimestamp": "2026-07-15T03:48:00+07:00",
+        "normalizationScript": "scripts/import-dashboard-data.mjs",
+        "normalizationTimestamp": "2026-07-15T03:50:00+07:00",
+        "validationStatus": "VERIFIED_BASELINE"
+      }
     },
     "2569": {
       "year": 2569,
       "isBaseline": false,
-      "dataStatus": "in_progress",
-      "source": "1.6_GreenhouseGas.xlsx (placeholder data — no 2569 data in source XLSX)",
-      "updated": "2026-06-12",
       "months": [
-        {
-          "month": 1,
-          "value": 50,
-          "label": "Jan"
-        },
-        {
-          "month": 2,
-          "value": 48,
-          "label": "Feb"
-        },
-        {
-          "month": 3,
-          "value": 46,
-          "label": "Mar"
-        },
-        {
-          "month": 4,
-          "value": 44,
-          "label": "Apr"
-        },
-        {
-          "month": 5,
-          "value": 42,
-          "label": "May"
-        },
-        {
-          "month": 6,
-          "value": 41,
-          "label": "Jun"
-        },
-        {
-          "month": 7,
-          "value": 40,
-          "label": "Jul"
-        },
-        {
-          "month": 8,
-          "value": 38,
-          "label": "Aug"
-        }
+        { "month": 1, "value": 50, "label": "Jan" },
+        { "month": 2, "value": 48, "label": "Feb" },
+        { "month": 3, "value": 46, "label": "Mar" },
+        { "month": 4, "value": 44, "label": "Apr" },
+        { "month": 5, "value": 42, "label": "May" },
+        { "month": 6, "value": 41, "label": "Jun" },
+        { "month": 7, "value": 40, "label": "Jul" },
+        { "month": 8, "value": 38, "label": "Aug" }
       ],
       "total": 349,
-      "average": 43.63
+      "average": 43.63,
+      "dataStatus": "CURRENT_DATA_PENDING",
+      "source": "1.6_GreenhouseGas.xlsx (placeholder data — no 2569 data in source XLSX)",
+      "updated": "2026-06-12",
+      "provenance": {
+        "sourceWorkbook": "docs/1.6_GreenhouseGas.xlsx",
+        "sourceSheet": "สรุปการคำนวณ ปี 2568",
+        "extractionStatus": "NO_2569_DATA — target year data not yet available in source XLSX",
+        "validationStatus": "CURRENT_DATA_PENDING"
+      }
     }
+  },
+  "target": {
+    "year": 2569,
+    "status": "TARGET_PENDING_APPROVAL",
+    "targetType": "reduction",
+    "targetUnit": "tCO₂e",
+    "targetValue": null,
+    "targetBasis": "Green Office 2569 criteria require year-over-year reduction. Specific target value must be set by authorized staff during assessment planning.",
+    "targetSetBy": null,
+    "targetSetDate": null,
+    "months": []
   },
   "yoyChange": {
     "absolute": 117.4,
