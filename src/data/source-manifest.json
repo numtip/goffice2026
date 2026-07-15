@@ -1,0 +1,77 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2026-07-16T03:24:00+07:00",
+  "description": "Machine-readable source inventory for Green Office 2026 evidence onboarding",
+  "sources": [
+    {
+      "sourceId": "src-xlsx-water-usage",
+      "originalFilename": "1.1-Water.xlsx",
+      "storedPath": "docs/1.1-Water.xlsx",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeBytes": 99511,
+      "sha256": "79528053C4228A0302D1D1BB79645434D753C210908C509489D4B79CC3F47D09",
+      "sourceType": "operational-data",
+      "ingestedAt": "2026-07-16"
+    },
+    {
+      "sourceId": "src-xlsx-electricity-usage",
+      "originalFilename": "1.2-elect.xlsx",
+      "storedPath": "docs/1.2-elect.xlsx",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeBytes": 93921,
+      "sha256": "576B2E3EC202447B90F7A1E0599ABC906B31B0E33CEA2C38CC6ACF671116021D",
+      "sourceType": "operational-data",
+      "ingestedAt": "2026-07-16"
+    },
+    {
+      "sourceId": "src-xlsx-fuel-usage",
+      "originalFilename": "1.3_Gassolene.xlsx",
+      "storedPath": "docs/1.3_Gassolene.xlsx",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeBytes": 254868,
+      "sha256": "8FD700F2A491E0E95443DE4572A7DF7CCE6E350B72D7F6DEC2BE4CDF3F124085",
+      "sourceType": "operational-data",
+      "ingestedAt": "2026-07-16"
+    },
+    {
+      "sourceId": "src-xlsx-paper-consumption",
+      "originalFilename": "1.4_Paper.xlsx",
+      "storedPath": "docs/1.4_Paper.xlsx",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeBytes": 207178,
+      "sha256": "CCE54E1A2DBAC5BC67F581891783A2DE866BC9E8061383FB7E410CD73D748924",
+      "sourceType": "operational-data",
+      "ingestedAt": "2026-07-16"
+    },
+    {
+      "sourceId": "src-xlsx-waste-data",
+      "originalFilename": "1.5_Waste.xlsx",
+      "storedPath": "docs/1.5_Waste.xlsx",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeBytes": 44014,
+      "sha256": "5BC4605335C85C58BCC89EB1D32E9E15912257F1A9D71379CAB24310D493C333",
+      "sourceType": "operational-data",
+      "ingestedAt": "2026-07-16"
+    },
+    {
+      "sourceId": "src-xlsx-greenhouse-gas",
+      "originalFilename": "1.6_GreenhouseGas.xlsx",
+      "storedPath": "docs/1.6_GreenhouseGas.xlsx",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeBytes": 528383,
+      "sha256": "8A0B9C0D100D26B7CDDEBE12315D145731AE06E1F9586A7A165084D80009EE12",
+      "sourceType": "operational-data",
+      "ingestedAt": "2026-07-16"
+    },
+    {
+      "sourceId": "src-pdf-assessment-criteria",
+      "originalFilename": "เกณฑ์การประเมินสำนักงานสีเขียว-ปี-2569.pdf",
+      "storedPath": "doc/เกณฑ์การประเมินสำนักงานสีเขียว-ปี-2569.pdf",
+      "mimeType": "application/pdf",
+      "sizeBytes": 1051724,
+      "sha256": "E5EA60433AE6B350115C55824253F758CD825E1C34891BCF6614EFE55EEAB9A7",
+      "sourceType": "assessment-reference",
+      "ingestedAt": "2026-07-16"
+    }
+  ]
+}

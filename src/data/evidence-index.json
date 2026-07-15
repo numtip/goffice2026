@@ -1,6 +1,6 @@
 {
-  "version": "0.3.0",
-  "updated": "2026-07-15",
+  "version": "0.4.0",
+  "updated": "2026-07-16",
   "items": [
     {
       "id": "ev-energy-audit-2025",
@@ -31,15 +31,18 @@
       "year": 2025,
       "path": "/documents/cat1/metering-data-2025.xlsx",
       "fileType": "XLSX",
-      "status": "placeholder",
-      "updated": "2026-01-10",
+      "status": "available",
+      "updated": "2026-07-16",
+      "sourceId": "src-xlsx-electricity-usage",
+      "realSourcePath": "docs/1.2-elect.xlsx",
+      "realSourceAvailable": true,
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
       "categoryCodes": ["cat1"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Real source file `docs/1.2-elect.xlsx` (SHA256: 576B2E3E...) ingested during Evidence Onboarding Sprint. Spreadsheet contains monthly electricity consumption data (form 3.2(1)). Candidate mapping to indicators 3.2.1/3.2.2 is pending human review. Verification status remains unresolved — source existence is system-validated, not human-verified."
       }
     },
     {
@@ -70,16 +73,19 @@
       "description": "Quarterly water consumption readings from main and sub-meters.",
       "year": 2025,
       "path": "/documents/cat2/placeholder.md",
-      "fileType": "MD",
-      "status": "placeholder",
-      "updated": "2025-04-05",
+      "fileType": "XLSX",
+      "status": "available",
+      "updated": "2026-07-16",
+      "sourceId": "src-xlsx-water-usage",
+      "realSourcePath": "docs/1.1-Water.xlsx",
+      "realSourceAvailable": true,
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
       "categoryCodes": ["cat2"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Real source file `docs/1.1-Water.xlsx` (SHA256: 79528053...) ingested during Evidence Onboarding Sprint. Spreadsheet contains quarterly water consumption data (form 3.2(1)). Candidate mapping to indicator 3.1.1 is pending human review. Verification status remains unresolved — source existence is system-validated, not human-verified."
       }
     },
     {
@@ -171,15 +177,18 @@
       "year": 2025,
       "path": "/documents/cat3/waste-monthly-2025.xlsx",
       "fileType": "XLSX",
-      "status": "placeholder",
-      "updated": "2026-03-01",
+      "status": "available",
+      "updated": "2026-07-16",
+      "sourceId": "src-xlsx-waste-data",
+      "realSourcePath": "docs/1.5_Waste.xlsx",
+      "realSourceAvailable": true,
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
       "categoryCodes": ["cat3"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Real source file `docs/1.5_Waste.xlsx` (SHA256: 5BC46053...) ingested during Evidence Onboarding Sprint. Spreadsheet contains monthly waste generation data (form 4.1(1)). Candidate mapping to indicators 4.1.1/4.1.2 is pending human review. Verification status remains unresolved — source existence is system-validated, not human-verified."
       }
     },
     {
@@ -190,16 +199,19 @@
       "description": "Scope 1 and Scope 2 greenhouse gas emissions inventory with methodology documentation.",
       "year": 2025,
       "path": "/documents/cat4/placeholder.md",
-      "fileType": "MD",
-      "status": "placeholder",
-      "updated": "2026-04-10",
+      "fileType": "XLSX",
+      "status": "available",
+      "updated": "2026-07-16",
+      "sourceId": "src-xlsx-greenhouse-gas",
+      "realSourcePath": "docs/1.6_GreenhouseGas.xlsx",
+      "realSourceAvailable": true,
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
       "categoryCodes": ["cat4"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Real source file `docs/1.6_GreenhouseGas.xlsx` (SHA256: 8A0B9C0D...) ingested during Evidence Onboarding Sprint. Spreadsheet contains GHG inventory calculations (form 1.5(1)) across years 2567-2568. Candidate mapping to indicator 4.2.1 is pending human review. Verification status remains unresolved — source existence is system-validated, not human-verified."
       }
     },
     {

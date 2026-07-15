@@ -1,0 +1,350 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-07-16",
+  "meta": {
+    "totalItems": 23,
+    "sourceInventory": [
+      {
+        "sourceId": "src-xlsx-water-usage",
+        "path": "docs/1.1-Water.xlsx",
+        "sha256": "79528053C4228A0302D1D1BB79645434D753C210908C509489D4B79CC3F47D09",
+        "size": 99511,
+        "type": "XLSX",
+        "classification": "operational-data",
+        "description": "Water usage monitoring (form 3.2(1))"
+      },
+      {
+        "sourceId": "src-xlsx-elect-usage",
+        "path": "docs/1.2-elect.xlsx",
+        "sha256": "576B2E3EC202447B90F7A1E0599ABC906B31B0E33CEA2C38CC6ACF671116021D",
+        "size": 93921,
+        "type": "XLSX",
+        "classification": "operational-data",
+        "description": "Electricity usage monitoring (form 3.2(1))"
+      },
+      {
+        "sourceId": "src-xlsx-fuel-usage",
+        "path": "docs/1.3_Gassolene.xlsx",
+        "sha256": "8FD700F2A491E0E95443DE4572A7DF7CCE6E350B72D7F6DEC2BE4CDF3F124085",
+        "size": 254868,
+        "type": "XLSX",
+        "classification": "operational-data",
+        "description": "Fuel usage monitoring (forms 3.2(2), 3.2(1))"
+      },
+      {
+        "sourceId": "src-xlsx-paper-usage",
+        "path": "docs/1.4_Paper.xlsx",
+        "sha256": "CCE54E1A2DBAC5BC67F581891783A2DE866BC9E8061383FB7E410CD73D748924",
+        "size": 207178,
+        "type": "XLSX",
+        "classification": "operational-data",
+        "description": "Paper usage + reuse (form 3.2(1))"
+      },
+      {
+        "sourceId": "src-xlsx-waste-management",
+        "path": "docs/1.5_Waste.xlsx",
+        "sha256": "5BC4605335C85C58BCC89EB1D32E9E15912257F1A9D71379CAB24310D493C333",
+        "size": 44014,
+        "type": "XLSX",
+        "classification": "operational-data",
+        "description": "Waste management data (form 4.1(1))"
+      },
+      {
+        "sourceId": "src-xlsx-ghg-data",
+        "path": "docs/1.6_GreenhouseGas.xlsx",
+        "sha256": "8A0B9C0D100D26B7CDDEBE12315D145731AE06E1F9586A7A165084D80009EE12",
+        "size": 528383,
+        "type": "XLSX",
+        "classification": "operational-data",
+        "description": "GHG calculation data (form 1.5(1))"
+      },
+      {
+        "sourceId": "src-pdf-assessment-criteria-2026",
+        "path": "doc/เกณฑ์การประเมินสำนักงานสีเขียว-ปี-2569.pdf",
+        "sha256": "E5EA60433AE6B350115C55824253F758CD825E1C34891BCF6614EFE55EEAB9A7",
+        "size": 1051724,
+        "type": "PDF",
+        "classification": "assessment-reference",
+        "description": "Green Office assessment criteria 2026 (reference)"
+      }
+    ]
+  },
+  "items": [
+    {
+      "reviewId": "review-001",
+      "evidenceId": "ev-energy-audit-2025",
+      "categoryId": "cat1",
+      "sourceId": null,
+      "sourceAvailable": false,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "No real source document identified. Placeholder record (path: /documents/cat1/placeholder.md) requires a verified Energy Audit Report 2025. No matching source file found in docs/ inventory.",
+      "decision": "pending",
+      "notes": "Source document needed: energy audit report covering all facilities (lighting, HVAC, equipment efficiency assessments)."
+    },
+    {
+      "reviewId": "review-002",
+      "evidenceId": "ev-energy-metering-2025",
+      "categoryId": "cat1",
+      "sourceId": "src-xlsx-elect-usage",
+      "sourceAvailable": true,
+      "proposedIndicatorCodes": ["3.2.1", "3.2.2"],
+      "confidence": "high",
+      "mappingBasis": "Electricity usage spreadsheet docs/1.2-elect.xlsx (form 3.2(1)) directly matches the Monthly Energy Metering Data described in ev-energy-metering-2025. Indicator 3.2.1 covers electricity conservation measures; indicator 3.2.2 covers electricity consumption data per unit compared with targets.",
+      "decision": "pending",
+      "notes": "Strong candidate for placeholder replacement. File is operational-data XLSX (93KB, SHA256 verified)."
+    },
+    {
+      "reviewId": "review-003",
+      "evidenceId": "ev-energy-led-project",
+      "categoryId": "cat1",
+      "sourceId": null,
+      "sourceAvailable": false,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "No real source document identified. Placeholder record (path: /documents/cat1/led-retrofit-summary.pdf) requires a verified LED Retrofit Project Summary. No matching source file found in docs/ inventory.",
+      "decision": "pending",
+      "notes": "Source document needed: LED retrofit project documentation including cost-benefit analysis and energy savings data."
+    },
+    {
+      "reviewId": "review-004",
+      "evidenceId": "ev-water-meter-q1",
+      "categoryId": "cat2",
+      "sourceId": "src-xlsx-water-usage",
+      "sourceAvailable": true,
+      "proposedIndicatorCodes": ["3.1.2"],
+      "confidence": "high",
+      "mappingBasis": "Water usage monitoring spreadsheet docs/1.1-Water.xlsx (form 3.2(1)) directly matches the Water Metering Data Q1 2025 described in ev-water-meter-q1. Indicator 3.1.2 covers water consumption data per unit compared with targets.",
+      "decision": "pending",
+      "notes": "Strong candidate for placeholder replacement. File is operational-data XLSX (99KB, SHA256 verified). Note: indicator 3.1.x is under cat3 (Resource and Energy Utilization) in the canonical taxonomy, while this evidence is currently categorized under cat2."
+    },
+    {
+      "reviewId": "review-005",
+      "evidenceId": "ev-water-audit-2025",
+      "categoryId": "cat2",
+      "sourceId": null,
+      "sourceAvailable": false,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "No real source document identified. Placeholder record (path: /documents/cat2/water-audit-2025.pdf) requires a verified Water Audit Report 2025. No matching source file found in docs/ inventory.",
+      "decision": "pending",
+      "notes": "Source document needed: detailed water audit identifying consumption patterns, leaks, and conservation opportunities."
+    },
+    {
+      "reviewId": "review-006",
+      "evidenceId": "ev-water-conservation",
+      "categoryId": "cat2",
+      "sourceId": null,
+      "sourceAvailable": false,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "No real source document identified. Placeholder record (path: /documents/cat2/conservation-initiatives.pdf) requires verified Water Conservation Initiative Records. No matching source file found in docs/ inventory.",
+      "decision": "pending",
+      "notes": "Source document needed: records of water-saving measures including fixture upgrades and awareness campaigns."
+    },
+    {
+      "reviewId": "review-007",
+      "evidenceId": "ev-waste-recycling-2025",
+      "categoryId": "cat3",
+      "sourceId": "src-xlsx-waste-management",
+      "sourceAvailable": true,
+      "proposedIndicatorCodes": ["4.1.3"],
+      "confidence": "medium",
+      "mappingBasis": "docs/1.5_Waste.xlsx (form 4.1(1)) records waste management data which is relevant to recycling performance. Indicator 4.1.3 covers waste reuse and recycling resulting in reduced waste sent for disposal. Exact scope alignment unclear without direct file inspection.",
+      "decision": "pending",
+      "notes": "Partial candidate. The waste spreadsheet likely contains recycling data but may not be exclusively focused on recycling. Human reviewer should verify whether this file fully replaces the placeholder or if a separate recycling-specific document is needed."
+    },
+    {
+      "reviewId": "review-008",
+      "evidenceId": "ev-waste-audit-2025",
+      "categoryId": "cat3",
+      "sourceId": null,
+      "sourceAvailable": false,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "No real source document identified. Placeholder record (path: /documents/cat3/waste-audit-2025.pdf) requires a verified Waste Audit Report 2025. No matching source file found in docs/ inventory.",
+      "decision": "pending",
+      "notes": "Source document needed: composition and volume analysis of waste streams with reduction recommendations."
+    },
+    {
+      "reviewId": "review-009",
+      "evidenceId": "ev-waste-monthly-2025",
+      "categoryId": "cat3",
+      "sourceId": "src-xlsx-waste-management",
+      "sourceAvailable": true,
+      "proposedIndicatorCodes": ["4.1.2"],
+      "confidence": "high",
+      "mappingBasis": "docs/1.5_Waste.xlsx (form 4.1(1)) directly matches Monthly Waste Tracking Data 2025. Indicator 4.1.2 covers implementation of proper waste sorting, collection, and disposal. The form 4.1(1) is the standard waste management reporting form.",
+      "decision": "pending",
+      "notes": "Strong candidate for placeholder replacement. File is operational-data XLSX (44KB, SHA256 verified). Note: indicator 4.1.x is under cat4 (Waste Management) in the canonical taxonomy, while this evidence is currently categorized under cat3."
+    },
+    {
+      "reviewId": "review-010",
+      "evidenceId": "ev-ghg-inventory-2025",
+      "categoryId": "cat4",
+      "sourceId": "src-xlsx-ghg-data",
+      "sourceAvailable": true,
+      "proposedIndicatorCodes": ["1.5.1"],
+      "confidence": "high",
+      "mappingBasis": "docs/1.6_GreenhouseGas.xlsx (form 1.5(1)) directly matches the GHG Inventory 2025. Indicator 1.5.1 covers collection of greenhouse gas data from office activities. Form 1.5(1) is the standard GHG calculation form.",
+      "decision": "pending",
+      "notes": "Strong candidate for placeholder replacement. File is operational-data XLSX (528KB, SHA256 verified). Note: indicator 1.5.x is under cat1 (Environmental Policy and Green Office Planning) in the canonical taxonomy, while this evidence is currently categorized under cat4."
+    },
+    {
+      "reviewId": "review-011",
+      "evidenceId": "ev-ghg-reduction-plan",
+      "categoryId": "cat4",
+      "sourceId": null,
+      "sourceAvailable": false,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "No real source document identified. Placeholder record (path: /documents/cat4/carbon-reduction-plan.pdf) requires a verified Carbon Reduction Project Plan. No matching source file found in docs/ inventory.",
+      "decision": "pending",
+      "notes": "Source document needed: strategic plan outlining emission reduction targets, initiatives, and projected timelines."
+    },
+    {
+      "reviewId": "review-012",
+      "evidenceId": "ev-ghg-emission-factors",
+      "categoryId": "cat4",
+      "sourceId": "src-xlsx-ghg-data",
+      "sourceAvailable": true,
+      "proposedIndicatorCodes": ["1.5.1"],
+      "confidence": "medium",
+      "mappingBasis": "docs/1.6_GreenhouseGas.xlsx (form 1.5(1)) contains GHG calculation methodology which likely includes emission factors used for calculations. However, the file may not contain a standalone emission factor reference document as described in the evidence record.",
+      "decision": "pending",
+      "notes": "Partial candidate. The GHG spreadsheet likely contains embedded emission factors but may not be a dedicated emission factor reference document. Human reviewer should verify if this file sufficiently covers the emission factor documentation requirement."
+    },
+    {
+      "reviewId": "review-013",
+      "evidenceId": "ev-iaq-survey-2025",
+      "categoryId": "cat5",
+      "sourceId": null,
+      "sourceAvailable": false,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "No real source document identified. Placeholder record (path: /documents/cat5/placeholder.md) requires a verified Indoor Air Quality Survey 2025. No matching source file found in docs/ inventory.",
+      "decision": "pending",
+      "notes": "Source document needed: IAQ measurement results including CO2, PM2.5, temperature, and humidity data across office zones."
+    },
+    {
+      "reviewId": "review-014",
+      "evidenceId": "ev-iaq-ventilation-logs",
+      "categoryId": "cat5",
+      "sourceId": null,
+      "sourceAvailable": false,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "No real source document identified. Placeholder record (path: /documents/cat5/ventilation-logs-2025.xlsx) requires verified Ventilation Maintenance Logs 2025. No matching source file found in docs/ inventory.",
+      "decision": "pending",
+      "notes": "Source document needed: scheduled maintenance and inspection records for HVAC ventilation systems."
+    },
+    {
+      "reviewId": "review-015",
+      "evidenceId": "ev-iaq-green-cleaning",
+      "categoryId": "cat5",
+      "sourceId": null,
+      "sourceAvailable": false,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "No real source document identified. Placeholder record (path: /documents/cat5/green-cleaning-inventory.pdf) requires a verified Green Cleaning Product Inventory. No matching source file found in docs/ inventory.",
+      "decision": "pending",
+      "notes": "Source document needed: inventory of approved low-emission cleaning products and supplier certifications."
+    },
+    {
+      "reviewId": "review-016",
+      "evidenceId": "ev-transport-commute-2025",
+      "categoryId": "cat6",
+      "sourceId": null,
+      "sourceAvailable": false,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "No real source document identified. Placeholder record (path: /documents/cat6/placeholder.md) requires a verified Employee Commute Survey 2025. No matching source file found in docs/ inventory.",
+      "decision": "pending",
+      "notes": "Source document needed: survey results on employee commuting patterns, mode share, and satisfaction with sustainable transport options."
+    },
+    {
+      "reviewId": "review-017",
+      "evidenceId": "ev-transport-fleet-2025",
+      "categoryId": "cat6",
+      "sourceId": "src-xlsx-fuel-usage",
+      "sourceAvailable": true,
+      "proposedIndicatorCodes": ["3.2.4", "3.2.5"],
+      "confidence": "medium",
+      "mappingBasis": "docs/1.3_Gassolene.xlsx (forms 3.2(2), 3.2(1)) contains fuel usage data relevant to Fleet Fuel Usage Records 2025. Indicator 3.2.4 covers fuel conservation measures for office-related travel; indicator 3.2.5 covers fuel consumption data per distance. However, the spreadsheet covers general office fuel usage, not exclusively fleet fuel.",
+      "decision": "pending",
+      "notes": "Good candidate. Note cross-category mapping: evidence is categorized under cat6 (Procurement and Hiring/Fleet), but indicators 3.2.4 and 3.2.5 are under cat3 (Resource and Energy Utilization/Energy Consumption). Human reviewer should confirm the intended category alignment."
+    },
+    {
+      "reviewId": "review-018",
+      "evidenceId": "ev-transport-policy",
+      "categoryId": "cat6",
+      "sourceId": null,
+      "sourceAvailable": false,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "No real source document identified. Placeholder record (path: /documents/cat6/transport-policy.pdf) requires a verified Sustainable Transport Policy. No matching source file found in docs/ inventory.",
+      "decision": "pending",
+      "notes": "Source document needed: organizational policy document promoting low-carbon commuting and virtual meeting adoption."
+    },
+    {
+      "reviewId": "review-019",
+      "evidenceId": "ev-innovation-pilot-2025",
+      "categoryId": "cat7",
+      "sourceId": null,
+      "sourceAvailable": false,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "No real source document identified. Placeholder record (path: /documents/cat7/placeholder.md) requires verified Green Innovation Pilot Project documentation. No matching source file found in docs/ inventory.",
+      "decision": "pending",
+      "notes": "Source document needed: pilot project documentation for emerging sustainability practices (smart sensors, green roofs, etc.)."
+    },
+    {
+      "reviewId": "review-020",
+      "evidenceId": "ev-innovation-staff-2025",
+      "categoryId": "cat7",
+      "sourceId": null,
+      "sourceAvailable": false,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "No real source document identified. Placeholder record (path: /documents/cat7/staff-engagement-2025.pdf) requires verified Staff Green Engagement Records. No matching source file found in docs/ inventory.",
+      "decision": "pending",
+      "notes": "Source document needed: records of staff participation in green innovation programs, workshops, and idea submissions."
+    },
+    {
+      "reviewId": "review-021",
+      "evidenceId": "ev-innovation-partnerships",
+      "categoryId": "cat7",
+      "sourceId": null,
+      "sourceAvailable": false,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "No real source document identified. Placeholder record (path: /documents/cat7/partnerships-2025.pdf) requires verified External Partnerships & Recognition documentation. No matching source file found in docs/ inventory.",
+      "decision": "pending",
+      "notes": "Source document needed: documentation of external sustainability partnerships, awards, and best practice sharing activities."
+    },
+    {
+      "reviewId": "review-022",
+      "evidenceId": null,
+      "categoryId": "cat3",
+      "sourceId": "src-xlsx-paper-usage",
+      "sourceAvailable": true,
+      "proposedIndicatorCodes": ["3.3.1", "3.3.2"],
+      "confidence": "medium",
+      "mappingBasis": "docs/1.4_Paper.xlsx (form 3.2(1)) contains paper usage and reuse data. Indicator 3.3.1 covers paper conservation measures; indicator 3.3.2 covers paper consumption data per unit compared with targets. No existing evidence record in evidence-index.json corresponds to paper usage data. A new evidence record may be needed.",
+      "decision": "pending",
+      "notes": "New source candidate — no matching placeholder exists in evidence-index.json. Human reviewer should determine whether to: (a) create a new evidence record for paper usage, or (b) map this file to an existing placeholder if scope overlap is confirmed."
+    },
+    {
+      "reviewId": "review-023",
+      "evidenceId": null,
+      "categoryId": null,
+      "sourceId": "src-pdf-assessment-criteria-2026",
+      "sourceAvailable": true,
+      "proposedIndicatorCodes": [],
+      "confidence": "low",
+      "mappingBasis": "Reference document: official Green Office assessment criteria for 2026 (เกณฑ์การประเมินสำนักงานสีเขียว). This is a reference PDF providing the assessment framework rather than operational evidence. It may inform evidence requirements across all categories but does not directly replace any placeholder record.",
+      "decision": "pending",
+      "notes": "Reference document (PDF, 1MB, SHA256 verified). Not operational evidence but useful as a taxonomy/requirements reference for all evidence mapping decisions. Human reviewer should determine if this should be linked as supporting documentation for any specific evidence records."
+    }
+  ]
+}
