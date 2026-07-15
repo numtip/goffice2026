@@ -1,5 +1,20 @@
 ---
 import { withBase } from '../../utils/with-base';
+
+interface Props {
+  t?: { label: string; heading: string; description: string; btn_dashboard: string; btn_categories: string; btn_evidence: string; btn_documents: string; btn_search: string };
+}
+
+const t = Astro.props.t ?? {
+  label: 'Ready to explore',
+  heading: 'Your next-generation Green Office command center',
+  description: 'Welcome to the next-generation Green Office dashboard — start with executive monitoring, category review, or evidence discovery.',
+  btn_dashboard: 'Explore Dashboard',
+  btn_categories: 'Explore Green Office',
+  btn_evidence: 'Evidence Library',
+  btn_documents: 'Document Center',
+  btn_search: 'Search',
+};
 ---
 
 <section class="relative eco-mesh-bg eco-mesh-bg-ambient py-14 sm:py-16 md:py-24" aria-labelledby="landing-cta-title">
@@ -7,43 +22,42 @@ import { withBase } from '../../utils/with-base';
 
   <div class="landing-container max-w-4xl text-center">
     <p class="landing-reveal mb-3 font-mono text-label-sm uppercase tracking-widest text-emerald-100/80 sm:mb-4">
-      Ready to explore
+      {t.label}
     </p>
     <h2 id="landing-cta-title" class="landing-reveal landing-heading mb-4 text-white sm:mb-5">
-      Your next-generation Green Office command center
+      {t.heading}
     </h2>
     <p class="landing-reveal mx-auto mb-8 max-w-2xl text-body-md text-emerald-50/85 sm:mb-10 sm:text-body-lg">
-      Welcome to the next-generation Green Office dashboard — start with executive monitoring,
-      category review, or evidence discovery.
+      {t.description}
     </p>
 
     <nav class="landing-reveal landing-stagger flex flex-wrap items-center justify-center gap-2 sm:gap-3" aria-label="Primary destinations">
       <a href={withBase('/dashboard')} class="landing-btn-primary bg-emerald-500 hover:bg-emerald-400 focus-visible:ring-emerald-200">
-        Explore Dashboard
+        {t.btn_dashboard}
       </a>
       <a
         href={withBase('/categories')}
         class="landing-btn-glass border-white/15 bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40"
       >
-        Explore Green Office
+        {t.btn_categories}
       </a>
       <a
         href={withBase('/evidence')}
         class="landing-btn-glass border-white/15 bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40"
       >
-        Evidence Library
+        {t.btn_evidence}
       </a>
       <a
         href={withBase('/documents')}
         class="landing-btn-glass border-white/15 bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40"
       >
-        Document Center
+        {t.btn_documents}
       </a>
       <a
         href={withBase('/search')}
         class="landing-btn-glass border-white/15 bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40"
       >
-        Search
+        {t.btn_search}
       </a>
     </nav>
   </div>

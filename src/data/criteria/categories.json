@@ -1,0 +1,103 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "code": "cat1",
+      "title": {
+        "th": "การกำหนดนโยบาย การวางแผนการดำเนินงานสำนักงานสีเขียว",
+        "en": "Environmental Policy and Green Office Planning"
+      },
+      "summary": {
+        "th": "กำหนดนโยบายสิ่งแวดล้อม แต่งตั้งคณะทำงาน วางแผนการดำเนินงาน ติดตามและประเมินผล",
+        "en": "Define environmental policy, appoint working teams, plan operations and evaluate results"
+      },
+      "weight": 25
+    },
+    {
+      "id": "2",
+      "code": "cat2",
+      "title": {
+        "th": "การสื่อสารและสร้างจิตสำนึก",
+        "en": "Communication and Awareness Cultivation"
+      },
+      "summary": {
+        "th": "อบรมให้ความรู้ สื่อสารและประชาสัมพันธ์ด้านสิ่งแวดล้อมแก่บุคลากรทั้งภายในและภายนอกสำนักงาน",
+        "en": "Train, communicate and raise environmental awareness among internal and external personnel"
+      },
+      "weight": 15
+    },
+    {
+      "id": "3",
+      "code": "cat3",
+      "title": {
+        "th": "การใช้ทรัพยากรและพลังงาน",
+        "en": "Resource and Energy Utilization"
+      },
+      "summary": {
+        "th": "จัดการการใช้น้ำ ไฟฟ้า น้ำมันเชื้อเพลิง กระดาษ และทรัพยากรอื่นๆ อย่างมีประสิทธิภาพ ลดผลกระทบต่อสิ่งแวดล้อม",
+        "en": "Manage efficient use of water, electricity, fuel, paper and other resources to reduce environmental impact"
+      },
+      "weight": 15
+    },
+    {
+      "id": "4",
+      "code": "cat4",
+      "title": {
+        "th": "การจัดการของเสีย",
+        "en": "Waste Management"
+      },
+      "summary": {
+        "th": "จัดการขยะมูลฝอยและน้ำเสียอย่างเหมาะสม ลดปริมาณของเสียที่ส่งไปกำจัด และนำกลับมาใช้ประโยชน์",
+        "en": "Manage solid waste and wastewater appropriately, reduce waste sent for disposal and promote reuse"
+      },
+      "weight": 15
+    },
+    {
+      "id": "5",
+      "code": "cat5",
+      "title": {
+        "th": "สภาพแวดล้อมและความปลอดภัย",
+        "en": "Environment and Safety"
+      },
+      "summary": {
+        "th": "ควบคุมคุณภาพอากาศ แสงสว่าง เสียง ความน่าอยู่ และเตรียมพร้อมต่อสภาวะฉุกเฉินในสำนักงาน",
+        "en": "Control air quality, lighting, noise, livability and emergency preparedness in the office"
+      },
+      "weight": 15
+    },
+    {
+      "id": "6",
+      "code": "cat6",
+      "title": {
+        "th": "การจัดซื้อและจัดจ้าง",
+        "en": "Procurement and Hiring"
+      },
+      "summary": {
+        "th": "จัดซื้อสินค้าและจัดจ้างบริการที่เป็นมิตรกับสิ่งแวดล้อม ส่งเสริมตลาดสินค้าสีเขียว",
+        "en": "Procure environmentally friendly products and services, promote green market"
+      },
+      "weight": 15
+    },
+    {
+      "id": "7",
+      "code": "cat7",
+      "title": {
+        "th": "การดำเนินงานสำนักงานสีเขียวเพื่อความต่อเนื่อง",
+        "en": "Green Office Operations for Continuity"
+      },
+      "summary": {
+        "th": "สำหรับหน่วยงานขอต่ออายุหรือขอยกระดับการรับรอง — ตรวจประเมินภายในเพื่อการปรับปรุงอย่างต่อเนื่อง และพัฒนา/ต่อยอดการดำเนินงาน",
+        "en": "For renewal/upgrade certification — internal audit for continuous improvement and development/advancement of operations"
+      },
+      "weight": null,
+      "scoringModel": {
+        "type": "separate",
+        "description": "Category 7 is assessed independently from Categories 1–6. It applies only to renewal or upgrade certification.",
+        "internalWeighting": {
+          "7.1": 40,
+          "7.2": 60
+        }
+      }
+    }
+  ]
+}

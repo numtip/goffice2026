@@ -1,0 +1,244 @@
+{
+  "issues": [
+    {
+      "id": "1.1",
+      "code": "issue-1-1",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "title": {
+        "th": "การกำหนดแนวทางการดำเนินงานสำนักงานสีเขียว",
+        "en": "Defining Green Office Operational Guidelines"
+      }
+    },
+    {
+      "id": "1.2",
+      "code": "issue-1-2",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "title": {
+        "th": "คณะทำงานด้านสิ่งแวดล้อม",
+        "en": "Environmental Working Team"
+      }
+    },
+    {
+      "id": "1.3",
+      "code": "issue-1-3",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "title": {
+        "th": "การระบุประเด็นปัญหาทรัพยากรและสิ่งแวดล้อม",
+        "en": "Identification of Resource and Environmental Issues"
+      }
+    },
+    {
+      "id": "1.4",
+      "code": "issue-1-4",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "title": {
+        "th": "กฎหมายและข้อกำหนดอื่นๆ ที่เกี่ยวข้อง",
+        "en": "Relevant Laws and Regulations"
+      }
+    },
+    {
+      "id": "1.5",
+      "code": "issue-1-5",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "title": {
+        "th": "ข้อมูลก๊าซเรือนกระจก",
+        "en": "Greenhouse Gas Data"
+      }
+    },
+    {
+      "id": "1.6",
+      "code": "issue-1-6",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "title": {
+        "th": "แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน",
+        "en": "GHG Reduction Plans and Projects"
+      }
+    },
+    {
+      "id": "1.7",
+      "code": "issue-1-7",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "title": {
+        "th": "การทบทวนฝ่ายบริหาร",
+        "en": "Management Review"
+      }
+    },
+    {
+      "id": "2.1",
+      "code": "issue-2-1",
+      "categoryCode": "cat2",
+      "categoryId": "2",
+      "title": {
+        "th": "การอบรมให้ความรู้และประเมินความเข้าใจ",
+        "en": "Training and Knowledge Assessment"
+      }
+    },
+    {
+      "id": "2.2",
+      "code": "issue-2-2",
+      "categoryCode": "cat2",
+      "categoryId": "2",
+      "title": {
+        "th": "การรณรงค์และประชาสัมพันธ์แก่บุคลากร",
+        "en": "Campaigns and Public Relations"
+      }
+    },
+    {
+      "id": "3.1",
+      "code": "issue-3-1",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "title": {
+        "th": "การใช้น้ำ",
+        "en": "Water Consumption"
+      }
+    },
+    {
+      "id": "3.2",
+      "code": "issue-3-2",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "title": {
+        "th": "การใช้พลังงาน",
+        "en": "Energy Consumption"
+      }
+    },
+    {
+      "id": "3.3",
+      "code": "issue-3-3",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "title": {
+        "th": "การใช้ทรัพยากรอื่นๆ",
+        "en": "Use of Other Resources"
+      }
+    },
+    {
+      "id": "3.4",
+      "code": "issue-3-4",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "title": {
+        "th": "การประชุมและการจัดนิทรรศการ",
+        "en": "Meetings and Exhibitions"
+      }
+    },
+    {
+      "id": "4.1",
+      "code": "issue-4-1",
+      "categoryCode": "cat4",
+      "categoryId": "4",
+      "title": {
+        "th": "การจัดการขยะ",
+        "en": "Waste Management"
+      }
+    },
+    {
+      "id": "4.2",
+      "code": "issue-4-2",
+      "categoryCode": "cat4",
+      "categoryId": "4",
+      "title": {
+        "th": "การจัดการน้ำเสีย",
+        "en": "Wastewater Management"
+      }
+    },
+    {
+      "id": "5.1",
+      "code": "issue-5-1",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "title": {
+        "th": "อากาศในสำนักงาน",
+        "en": "Indoor Air Quality"
+      }
+    },
+    {
+      "id": "5.2",
+      "code": "issue-5-2",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "title": {
+        "th": "แสงในสำนักงาน",
+        "en": "Office Lighting"
+      }
+    },
+    {
+      "id": "5.3",
+      "code": "issue-5-3",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "title": {
+        "th": "เสียง",
+        "en": "Noise Management"
+      }
+    },
+    {
+      "id": "5.4",
+      "code": "issue-5-4",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "title": {
+        "th": "ความน่าอยู่",
+        "en": "Livability"
+      }
+    },
+    {
+      "id": "5.5",
+      "code": "issue-5-5",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "title": {
+        "th": "การเตรียมพร้อมต่อสภาวะฉุกเฉิน",
+        "en": "Emergency Preparedness"
+      }
+    },
+    {
+      "id": "6.1",
+      "code": "issue-6-1",
+      "categoryCode": "cat6",
+      "categoryId": "6",
+      "title": {
+        "th": "การจัดซื้อสินค้า",
+        "en": "Green Product Procurement"
+      }
+    },
+    {
+      "id": "6.2",
+      "code": "issue-6-2",
+      "categoryCode": "cat6",
+      "categoryId": "6",
+      "title": {
+        "th": "การจัดจ้าง",
+        "en": "Green Service Procurement"
+      }
+    },
+    {
+      "id": "7.1",
+      "code": "issue-7-1",
+      "categoryCode": "cat7",
+      "categoryId": "7",
+      "title": {
+        "th": "การตรวจประเมินสำนักงานสีเขียวเพื่อให้เกิดการปรับปรุงอย่างต่อเนื่อง",
+        "en": "Green Office Internal Audit for Continuous Improvement"
+      }
+    },
+    {
+      "id": "7.2",
+      "code": "issue-7-2",
+      "categoryCode": "cat7",
+      "categoryId": "7",
+      "title": {
+        "th": "การพัฒนาหรือต่อยอดการดำเนินงานสำนักงานสีเขียว",
+        "en": "Green Office Advancement and Development"
+      }
+    }
+  ]
+}

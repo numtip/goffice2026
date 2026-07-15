@@ -1,11 +1,31 @@
 ---
 import { withBase } from '../../utils/with-base';
+import type { HomeHeroStrings } from '../../i18n/dictionary';
 
 interface Props {
   overallScore: number;
+  t?: HomeHeroStrings;
 }
 
 const { overallScore } = Astro.props;
+const t = Astro.props.t ?? {
+  badge: 'Precision Environmentalism',
+  title_line1: 'Green Office 2026:',
+  title_line2: 'Repository Preview Platform',
+  description: 'Preview interface for the Green Office 2026 repository. Explore the dashboard structure, category framework, and evidence placeholders currently available in this static site.',
+  cta_dashboard: 'Explore Dashboard',
+  cta_categories: 'Explore Green Office',
+  executive_preview: 'Executive Preview',
+  preview_only: 'Preview only — not live dashboard data',
+  metric_energy: 'Energy',
+  metric_water: 'Water',
+  metric_fuel: 'Fuel',
+  metric_paper: 'Paper',
+  metric_waste: 'Waste',
+  metric_ghg: 'GHG',
+} as HomeHeroStrings;
+
+const metricLabels = [t.metric_energy, t.metric_water, t.metric_fuel, t.metric_paper, t.metric_waste, t.metric_ghg];
 ---
 
 <header
@@ -20,7 +40,7 @@ const { overallScore } = Astro.props;
   <div class="relative z-10 mx-auto mt-12 w-full max-w-5xl px-margin-mobile text-center sm:mt-16 md:px-margin-desktop lg:mt-20">
     <div class="landing-reveal glass-panel landing-glass-hover mb-6 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 sm:mb-8">
       <span class="h-2 w-2 animate-pulse rounded-full bg-secondary-fixed" aria-hidden="true" />
-      <span class="font-mono text-label-sm uppercase tracking-widest text-primary">Precision Environmentalism</span>
+      <span class="font-mono text-label-sm uppercase tracking-widest text-primary">{t.badge}</span>
     </div>
 
     <h1
@@ -28,24 +48,23 @@ const { overallScore } = Astro.props;
       class="landing-reveal landing-hero-title mb-5 text-4xl font-bold tracking-tight text-primary sm:mb-6 md:text-display-xl"
       style="text-shadow: 0 4px 24px rgba(255,255,255,0.6);"
     >
-      Green Office 2026:<br />
-      <span class="text-gradient-stitch">Repository Preview Platform</span>
+      {t.title_line1}<br />
+      <span class="text-gradient-stitch">{t.title_line2}</span>
     </h1>
 
     <p class="landing-reveal mx-auto mb-8 max-w-2xl rounded-stitch-lg border border-white/40 bg-surface-container-lowest/60 p-5 text-body-md text-on-surface-variant backdrop-blur-md sm:mb-10 sm:p-6 sm:text-body-lg">
-      Preview interface for the Green Office 2026 repository. Explore the dashboard structure,
-      category framework, and evidence placeholders currently available in this static site.
+      {t.description}
     </p>
 
     <div class="landing-reveal landing-stagger flex flex-wrap justify-center gap-3 sm:gap-4">
       <a href={withBase('/dashboard')} class="landing-btn-primary px-6 py-3.5 sm:px-8 sm:py-4">
-        Explore Dashboard
+        {t.cta_dashboard}
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </a>
       <a href={withBase('/categories')} class="landing-btn-glass px-6 py-3.5 sm:px-8 sm:py-4">
-        Explore Green Office
+        {t.cta_categories}
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
@@ -59,7 +78,7 @@ const { overallScore } = Astro.props;
       >
         <div class="rounded-[calc(2rem-4px)] bg-slate-950/75 p-4 ring-1 ring-white/10 sm:p-5 md:p-6">
           <div class="mb-4 flex flex-wrap items-center justify-between gap-2">
-            <p class="font-mono text-label-sm uppercase tracking-widest text-outline-variant">Executive Preview</p>
+            <p class="font-mono text-label-sm uppercase tracking-widest text-outline-variant">{t.executive_preview}</p>
             <span class="flex items-center gap-2 rounded-full border border-white/5 bg-black/40 px-3 py-1">
               <span class="h-2 w-2 rounded-full bg-secondary-fixed animate-pulse" aria-hidden="true" />
               <span class="font-mono text-[11px] text-outline-variant">
@@ -68,7 +87,7 @@ const { overallScore } = Astro.props;
             </span>
           </div>
           <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-6" role="list" aria-label="Resource preview indicators">
-            {['Energy', 'Water', 'Fuel', 'Paper', 'Waste', 'GHG'].map((label, i) => (
+            {metricLabels.map((label, i) => (
               <div class="rounded-lg bg-white/5 p-2 text-center ring-1 ring-white/10" role="listitem">
                 <p class="text-[10px] uppercase tracking-wide text-outline-variant">{label}</p>
                 <div class="mx-auto mt-2 h-1 w-full overflow-hidden rounded-full bg-white/10">
@@ -81,7 +100,7 @@ const { overallScore } = Astro.props;
             ))}
           </div>
           <p class="mt-3 text-center font-mono text-[10px] uppercase tracking-wider text-outline-variant/80">
-            Preview only — not live dashboard data
+            {t.preview_only}
           </p>
         </div>
       </aside>

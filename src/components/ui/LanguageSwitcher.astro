@@ -1,0 +1,35 @@
+---
+import { withBase } from '../../utils/with-base';
+import { getLocale } from '../../i18n/utils';
+
+const locale = getLocale(Astro.url);
+---
+
+<nav class="inline-flex items-center gap-1 rounded-full border border-outline-variant/30 bg-surface-container-low p-0.5 text-label-sm" aria-label="Language selector">
+  <a
+    href={withBase(locale === 'th' ? '#' : (Astro.url.pathname.replace(/^\/en/, '') || '/'))}
+    class:list={[
+      'inline-flex min-h-7 items-center rounded-full px-3 text-sm font-medium transition',
+      locale === 'th'
+        ? 'bg-primary text-white shadow-sm'
+        : 'text-on-surface-variant hover:text-primary',
+    ]}
+    aria-current={locale === 'th' ? 'true' : undefined}
+    aria-label="Switch to Thai"
+  >
+    TH
+  </a>
+  <a
+    href={withBase(locale === 'en' ? '#' : `/en${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`)}
+    class:list={[
+      'inline-flex min-h-7 items-center rounded-full px-3 text-sm font-medium transition',
+      locale === 'en'
+        ? 'bg-primary text-white shadow-sm'
+        : 'text-on-surface-variant hover:text-primary',
+    ]}
+    aria-current={locale === 'en' ? 'true' : undefined}
+    aria-label="Switch to English"
+  >
+    EN
+  </a>
+</nav>

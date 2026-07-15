@@ -1,20 +1,28 @@
 ---
+import type { HomeActivitiesStrings } from '../../i18n/dictionary';
+
+interface Props {
+  t?: HomeActivitiesStrings;
+}
+
+const dict = Astro.props.t ?? {
+  heading: 'The Environmental Journey',
+  description: 'Preview slots for activities, campaigns, awareness, and training milestones.',
+  status: 'Pending approved content',
+  placeholder_image: 'Image pending',
+  placeholder_category: 'Content slot',
+  activity_1_title: 'Activity records not yet integrated',
+  activity_1_excerpt: 'This space is reserved for approved local activity evidence once real records are added to the repository.',
+  activity_2_title: 'Campaign content pending source files',
+  activity_2_excerpt: 'Add verified campaign summaries, dates, and images before this card is promoted as real content.',
+  activity_3_title: 'Training milestones need evidence links',
+  activity_3_excerpt: 'This placeholder avoids inventing dates, attendance, or outcomes until approved documents exist locally.',
+} as HomeActivitiesStrings;
+
 const activities = [
-  {
-    category: 'Content slot',
-    title: 'Activity records not yet integrated',
-    excerpt: 'This space is reserved for approved local activity evidence once real records are added to the repository.',
-  },
-  {
-    category: 'Content slot',
-    title: 'Campaign content pending source files',
-    excerpt: 'Add verified campaign summaries, dates, and images before this card is promoted as real content.',
-  },
-  {
-    category: 'Content slot',
-    title: 'Training milestones need evidence links',
-    excerpt: 'This placeholder avoids inventing dates, attendance, or outcomes until approved documents exist locally.',
-  },
+  { category: dict.placeholder_category, title: dict.activity_1_title, excerpt: dict.activity_1_excerpt },
+  { category: dict.placeholder_category, title: dict.activity_2_title, excerpt: dict.activity_2_excerpt },
+  { category: dict.placeholder_category, title: dict.activity_3_title, excerpt: dict.activity_3_excerpt },
 ];
 ---
 
@@ -24,12 +32,12 @@ const activities = [
   <div class="landing-container">
     <div class="landing-reveal mb-10 flex flex-col gap-3 sm:mb-12 sm:gap-4 md:flex-row md:items-end md:justify-between">
       <div>
-        <h2 id="activities-scene-title" class="landing-heading mb-2">The Environmental Journey</h2>
+        <h2 id="activities-scene-title" class="landing-heading mb-2">{dict.heading}</h2>
         <p class="text-body-md text-on-surface-variant sm:text-body-lg">
-          Preview slots for activities, campaigns, awareness, and training milestones.
+          {dict.description}
         </p>
       </div>
-      <p class="font-mono text-label-sm uppercase tracking-wider text-outline">Pending approved content</p>
+      <p class="font-mono text-label-sm uppercase tracking-wider text-outline">{dict.status}</p>
     </div>
 
     <div class="landing-stagger grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 xl:grid-cols-3" role="list" aria-label="Activity content placeholders">
@@ -38,7 +46,7 @@ const activities = [
           <div class="relative mb-5 flex aspect-[4/3] items-center justify-center overflow-hidden rounded-stitch-lg border border-dashed border-outline-variant/40 bg-surface-container-high sm:mb-6 sm:h-64 sm:aspect-auto">
             <div class="absolute inset-0 landing-mesh-bg opacity-50" aria-hidden="true" />
             <span class="relative rounded-full bg-surface-container-lowest/75 px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-outline">
-              Image pending
+              {dict.placeholder_image}
             </span>
           </div>
           <p class="mb-2 block font-mono text-[11px] text-outline sm:text-[12px]">

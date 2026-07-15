@@ -1,0 +1,1044 @@
+{
+  "indicators": [
+    {
+      "id": "1.1.1",
+      "code": "1.1.1",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.1",
+      "title": {
+        "th": "มีบริบทองค์กรและขอบเขตของการจัดการสิ่งแวดล้อมในสำนักงาน",
+        "en": "Organizational context and scope of environmental management in the office"
+      },
+      "requirementSummary": {
+        "th": "กำหนดขอบเขตการจัดการสิ่งแวดล้อมของสำนักงานให้ชัดเจน",
+        "en": "Clearly define the scope of office environmental management"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "1.1.2",
+      "code": "1.1.2",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.1",
+      "title": {
+        "th": "การกำหนดนโยบายด้านสิ่งแวดล้อมจากผู้บริหารระดับสูง ที่สอดคล้องและครอบคลุมประเด็นตามเกณฑ์สำนักงานสีเขียวโดยแสดงความมุ่งมั่นอย่างต่อเนื่อง",
+        "en": "Senior management environmental policy aligned with green office criteria demonstrating continuous commitment"
+      },
+      "requirementSummary": {
+        "th": "ผู้บริหารระดับสูงกำหนดนโยบายสิ่งแวดล้อมที่ครอบคลุมทุกประเด็นตามเกณฑ์สำนักงานสีเขียว",
+        "en": "Senior management defines an environmental policy covering all green office criteria aspects"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "1.1.3",
+      "code": "1.1.3",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.1",
+      "title": {
+        "th": "มีการกำหนดเป้าหมาย และตัวชี้วัดที่ชัดเจนด้านการใช้ทรัพยากร พลังงาน และของเสีย และปริมาณก๊าซเรือนกระจก",
+        "en": "Clear targets and indicators for resource use, energy, waste and greenhouse gas emissions"
+      },
+      "requirementSummary": {
+        "th": "กำหนดเป้าหมายและตัวชี้วัดด้านทรัพยากร พลังงาน ของเสีย และก๊าซเรือนกระจกอย่างชัดเจน",
+        "en": "Establish clear targets and indicators for resources, energy, waste and GHG"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "1.1.4",
+      "code": "1.1.4",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.1",
+      "title": {
+        "th": "มีการกำหนดแผนการดำเนินงานสำนักงานสีเขียวประจำปี",
+        "en": "Annual green office operational plan"
+      },
+      "requirementSummary": {
+        "th": "จัดทำแผนการดำเนินงานสำนักงานสีเขียวประจำปีที่ชัดเจน",
+        "en": "Prepare a clear annual green office operational plan"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "1.2.1",
+      "code": "1.2.1",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.2",
+      "title": {
+        "th": "มีการแต่งตั้งคณะกรรมการหรือทีมงานด้านสิ่งแวดล้อม",
+        "en": "Appointment of environmental committee or working team"
+      },
+      "requirementSummary": {
+        "th": "แต่งตั้งคณะกรรมการหรือทีมงานด้านสิ่งแวดล้อมอย่างเป็นทางการ",
+        "en": "Officially appoint an environmental committee or working team"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "1.2.2",
+      "code": "1.2.2",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.2",
+      "title": {
+        "th": "ร้อยละของคณะกรรมการ หรือทีมงานด้านสิ่งแวดล้อมที่มีความเข้าใจในบทบาท และหน้าที่รับผิดชอบ",
+        "en": "Percentage of environmental committee members who understand their roles and responsibilities"
+      },
+      "requirementSummary": {
+        "th": "คณะกรรมการด้านสิ่งแวดล้อมต้องเข้าใจบทบาทและหน้าที่ของตนเอง",
+        "en": "Environmental committee members must understand their roles and responsibilities"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "1.3.1",
+      "code": "1.3.1",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.3",
+      "title": {
+        "th": "กิจกรรมทั้งหมดของสำนักงานภายใต้ขอบเขตการขอการรับรองสำนักงานสีเขียวจะต้องได้รับการระบุและประเมินปัญหาสิ่งแวดล้อม",
+        "en": "All office activities within green office certification scope must be identified and assessed for environmental issues"
+      },
+      "requirementSummary": {
+        "th": "ระบุและประเมินปัญหาสิ่งแวดล้อมจากทุกกิจกรรมในสำนักงานภายใต้ขอบเขตการรับรอง",
+        "en": "Identify and assess environmental issues from all office activities within certification scope"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "1.3.2",
+      "code": "1.3.2",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.3",
+      "title": {
+        "th": "การวิเคราะห์และแนวทางการแก้ไขปัญหาสิ่งแวดล้อมที่มีนัยสำคัญ",
+        "en": "Analysis and solutions for significant environmental issues"
+      },
+      "requirementSummary": {
+        "th": "วิเคราะห์ปัญหาสิ่งแวดล้อมที่มีนัยสำคัญและกำหนดแนวทางแก้ไข",
+        "en": "Analyze significant environmental issues and define solutions"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "1.3.3",
+      "code": "1.3.3",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.3",
+      "title": {
+        "th": "แผนงานโครงการที่จัดทำขึ้นเพื่อแก้ไขปัญหาสิ่งแวดล้อมที่มีนัยสำคัญ หรือโครงการที่สอดคล้องกับนโยบายสิ่งแวดล้อม หรือกฎหมายสิ่งแวดล้อม",
+        "en": "Project plans addressing significant environmental issues or aligned with environmental policy or law"
+      },
+      "requirementSummary": {
+        "th": "จัดทำแผนงานโครงการเพื่อแก้ไขปัญหาสิ่งแวดล้อมที่มีนัยสำคัญ",
+        "en": "Develop project plans to address significant environmental issues"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "1.4.1",
+      "code": "1.4.1",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.4",
+      "title": {
+        "th": "มีการรวบรวมกฎหมายสิ่งแวดล้อมและความปลอดภัยที่เกี่ยวข้องกับสำนักงาน",
+        "en": "Collection of environmental and safety laws relevant to the office"
+      },
+      "requirementSummary": {
+        "th": "รวบรวมกฎหมายสิ่งแวดล้อมและความปลอดภัยที่เกี่ยวข้องกับสำนักงานให้ครบถ้วน",
+        "en": "Compile all environmental and safety laws relevant to the office"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "1.4.2",
+      "code": "1.4.2",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.4",
+      "title": {
+        "th": "ประเมินความสอดคล้องของกฎหมายกับการดำเนินงานการจัดการสิ่งแวดล้อมของสำนักงาน",
+        "en": "Assessment of legal compliance with office environmental management operations"
+      },
+      "requirementSummary": {
+        "th": "ประเมินความสอดคล้องระหว่างการดำเนินงานกับข้อกำหนดกฎหมายด้านสิ่งแวดล้อม",
+        "en": "Assess compliance of operations with environmental legal requirements"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "1.5.1",
+      "code": "1.5.1",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.5",
+      "title": {
+        "th": "การเก็บข้อมูลก๊าซเรือนกระจกจากกิจกรรมในสำนักงาน",
+        "en": "Collection of greenhouse gas data from office activities"
+      },
+      "requirementSummary": {
+        "th": "เก็บรวบรวมข้อมูลก๊าซเรือนกระจกจากกิจกรรมต่างๆ ในสำนักงาน",
+        "en": "Collect greenhouse gas data from all office activities"
+      },
+      "relatedDashboards": ["ghg"]
+    },
+    {
+      "id": "1.5.2",
+      "code": "1.5.2",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.5",
+      "title": {
+        "th": "ปริมาณก๊าซเรือนกระจกบรรลุเป้าหมาย สรุปและการวิเคราะห์ผล",
+        "en": "Greenhouse gas emissions meeting targets with summary and analysis"
+      },
+      "requirementSummary": {
+        "th": "วิเคราะห์และสรุปผลปริมาณก๊าซเรือนกระจกเทียบกับเป้าหมายที่กำหนด",
+        "en": "Analyze and summarize GHG emissions against established targets"
+      },
+      "relatedDashboards": ["ghg"]
+    },
+    {
+      "id": "1.5.3",
+      "code": "1.5.3",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.5",
+      "title": {
+        "th": "บุคลากร/ผู้ที่เกี่ยวข้อง (Outsource) มีความรู้ ความเข้าใจเกี่ยวกับก๊าซเรือนกระจกในภาพรวมของสำนักงาน",
+        "en": "Personnel and outsourced staff have knowledge and understanding of office-wide GHG"
+      },
+      "requirementSummary": {
+        "th": "บุคลากรและผู้เกี่ยวข้องมีความรู้ความเข้าใจเกี่ยวกับก๊าซเรือนกระจกของสำนักงาน",
+        "en": "Personnel and relevant parties understand the office greenhouse gas profile"
+      },
+      "relatedDashboards": ["ghg"]
+    },
+    {
+      "id": "1.6.1",
+      "code": "1.6.1",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.6",
+      "title": {
+        "th": "จัดทำแผนการดำเนินงานขับเคลื่อนสู่การลดก๊าซเรือนกระจกของหน่วยงาน",
+        "en": "GHG reduction action plan for the organization"
+      },
+      "requirementSummary": {
+        "th": "จัดทำแผนการดำเนินงานเพื่อขับเคลื่อนการลดก๊าซเรือนกระจกของหน่วยงาน",
+        "en": "Develop an action plan to drive organizational GHG reduction"
+      },
+      "relatedDashboards": ["ghg"]
+    },
+    {
+      "id": "1.6.2",
+      "code": "1.6.2",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.6",
+      "title": {
+        "th": "โครงการที่นำไปสู่การลดก๊าซเรือนกระจกของหน่วยงาน",
+        "en": "Projects leading to organizational GHG reduction"
+      },
+      "requirementSummary": {
+        "th": "ดำเนินโครงการที่นำไปสู่การลดก๊าซเรือนกระจกของหน่วยงาน",
+        "en": "Implement projects that lead to organizational GHG reduction"
+      },
+      "relatedDashboards": ["ghg"]
+    },
+    {
+      "id": "1.7.1",
+      "code": "1.7.1",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.7",
+      "title": {
+        "th": "การกำหนดองค์ประชุมทบทวนฝ่ายบริหาร",
+        "en": "Establishment of management review quorum"
+      },
+      "requirementSummary": {
+        "th": "กำหนดองค์ประชุมสำหรับการทบทวนฝ่ายบริหารด้านสิ่งแวดล้อม",
+        "en": "Define quorum requirements for environmental management review meetings"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "1.7.2",
+      "code": "1.7.2",
+      "categoryCode": "cat1",
+      "categoryId": "1",
+      "issueCode": "1.7",
+      "title": {
+        "th": "มีการกำหนดวาระการประชุม และทำการประชุมทบทวนฝ่ายบริหาร",
+        "en": "Meeting agenda defined and management review meetings conducted"
+      },
+      "requirementSummary": {
+        "th": "กำหนดวาระการประชุมและดำเนินการประชุมทบทวนฝ่ายบริหารตามกำหนด",
+        "en": "Define meeting agendas and conduct management review meetings as scheduled"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "2.1.1",
+      "code": "2.1.1",
+      "categoryCode": "cat2",
+      "categoryId": "2",
+      "issueCode": "2.1",
+      "title": {
+        "th": "กำหนดแผนการฝึกอบรม ดำเนินการอบรม การประเมินผล และบันทึกประวัติการฝึกอบรม",
+        "en": "Training plan, delivery, evaluation and record keeping"
+      },
+      "requirementSummary": {
+        "th": "กำหนดแผนการฝึกอบรม ดำเนินการอบรม ประเมินผล และบันทึกประวัติ",
+        "en": "Define training plan, deliver training, evaluate results and maintain records"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "2.1.2",
+      "code": "2.1.2",
+      "categoryCode": "cat2",
+      "categoryId": "2",
+      "issueCode": "2.1",
+      "title": {
+        "th": "กำหนดผู้รับผิดชอบด้านการอบรมแต่ละหลักสูตรมีความเหมาะสม",
+        "en": "Appropriate responsible person assigned for each training course"
+      },
+      "requirementSummary": {
+        "th": "กำหนดผู้รับผิดชอบการอบรมแต่ละหลักสูตรอย่างเหมาะสม",
+        "en": "Assign suitable responsible persons for each training course"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "2.2.1",
+      "code": "2.2.1",
+      "categoryCode": "cat2",
+      "categoryId": "2",
+      "issueCode": "2.2",
+      "title": {
+        "th": "มีการกำหนดผู้รับผิดชอบและแนวทางสื่อสารด้านสิ่งแวดล้อมทั้งภายในและภายนอกสำนักงาน",
+        "en": "Designated responsible persons and communication guidelines for internal and external environmental communication"
+      },
+      "requirementSummary": {
+        "th": "กำหนดผู้รับผิดชอบและแนวทางการสื่อสารด้านสิ่งแวดล้อมทั้งภายในและภายนอก",
+        "en": "Designate responsible persons and define environmental communication guidelines internally and externally"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "2.2.2",
+      "code": "2.2.2",
+      "categoryCode": "cat2",
+      "categoryId": "2",
+      "issueCode": "2.2",
+      "title": {
+        "th": "มีการรณรงค์สื่อสารและให้ความรู้ตามที่กำหนดในข้อ 2.2.1",
+        "en": "Communication campaigns and knowledge sharing as defined in 2.2.1"
+      },
+      "requirementSummary": {
+        "th": "ดำเนินการรณรงค์สื่อสารและให้ความรู้ตามแนวทางที่กำหนด",
+        "en": "Conduct communication campaigns and knowledge sharing per defined guidelines"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "2.2.3",
+      "code": "2.2.3",
+      "categoryCode": "cat2",
+      "categoryId": "2",
+      "issueCode": "2.2",
+      "title": {
+        "th": "ร้อยละความเข้าใจนโยบายสิ่งแวดล้อมและการดำเนินงานสำนักงานสีเขียว (สุ่มอย่างน้อย 4 คน)",
+        "en": "Percentage of personnel understanding environmental policy and green office operations (random sample of at least 4 people)"
+      },
+      "requirementSummary": {
+        "th": "ประเมินความเข้าใจของบุคลากรเกี่ยวกับนโยบายสิ่งแวดล้อมและการดำเนินงานสำนักงานสีเขียว",
+        "en": "Assess personnel understanding of environmental policy and green office operations"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "2.2.4",
+      "code": "2.2.4",
+      "categoryCode": "cat2",
+      "categoryId": "2",
+      "issueCode": "2.2",
+      "title": {
+        "th": "มีช่องทางรับข้อเสนอแนะ/ข้อคิดเห็นด้านสิ่งแวดล้อม และนำมาปรับปรุงแก้ไข",
+        "en": "Channel for environmental feedback and suggestions with documented improvements"
+      },
+      "requirementSummary": {
+        "th": "จัดให้มีช่องทางรับข้อเสนอแนะด้านสิ่งแวดล้อมและนำมาปรับปรุงแก้ไข",
+        "en": "Provide channels for environmental feedback and implement improvements"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "3.1.1",
+      "code": "3.1.1",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.1",
+      "title": {
+        "th": "มาตรการหรือแนวทางใช้น้ำมีความเหมาะสมกับสำนักงาน",
+        "en": "Water conservation measures appropriate for the office"
+      },
+      "requirementSummary": {
+        "th": "กำหนดมาตรการหรือแนวทางการใช้น้ำที่เหมาะสมกับสำนักงาน",
+        "en": "Define water conservation measures appropriate for the office"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "3.1.2",
+      "code": "3.1.2",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.1",
+      "title": {
+        "th": "มีการจัดทำข้อมูลการใช้น้ำต่อหน่วยเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล",
+        "en": "Water consumption data per unit compared with targets and analysis"
+      },
+      "requirementSummary": {
+        "th": "จัดทำข้อมูลการใช้น้ำต่อหน่วย เปรียบเทียบกับเป้าหมายและวิเคราะห์ผล",
+        "en": "Compile water consumption data per unit, compare with targets and analyze results"
+      },
+      "relatedDashboards": ["water"]
+    },
+    {
+      "id": "3.1.3",
+      "code": "3.1.3",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.1",
+      "title": {
+        "th": "การปฏิบัติตามมาตรการประหยัดน้ำในพื้นที่ทำงาน (ประเมินจากพฤติกรรมของบุคลากรในพื้นที่)",
+        "en": "Compliance with water conservation measures in work areas (assessed from personnel behavior)"
+      },
+      "requirementSummary": {
+        "th": "บุคลากรปฏิบัติตามมาตรการประหยัดน้ำในพื้นที่ทำงาน",
+        "en": "Personnel comply with water conservation measures in work areas"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "3.2.1",
+      "code": "3.2.1",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.2",
+      "title": {
+        "th": "มาตรการหรือแนวทางการใช้ไฟฟ้าเหมาะสมกับสำนักงาน",
+        "en": "Electricity conservation measures appropriate for the office"
+      },
+      "requirementSummary": {
+        "th": "กำหนดมาตรการหรือแนวทางการใช้ไฟฟ้าที่เหมาะสมกับสำนักงาน",
+        "en": "Define electricity conservation measures appropriate for the office"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "3.2.2",
+      "code": "3.2.2",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.2",
+      "title": {
+        "th": "มีการจัดทำข้อมูลการใช้ไฟฟ้าต่อหน่วยเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล",
+        "en": "Electricity consumption data per unit compared with targets and analysis"
+      },
+      "requirementSummary": {
+        "th": "จัดทำข้อมูลการใช้ไฟฟ้าต่อหน่วย เปรียบเทียบกับเป้าหมายและวิเคราะห์ผล",
+        "en": "Compile electricity consumption data per unit, compare with targets and analyze results"
+      },
+      "relatedDashboards": ["energy"]
+    },
+    {
+      "id": "3.2.3",
+      "code": "3.2.3",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.2",
+      "title": {
+        "th": "การปฏิบัติตามมาตรการประหยัดไฟฟ้าในพื้นที่ทำงาน",
+        "en": "Compliance with electricity conservation measures in work areas"
+      },
+      "requirementSummary": {
+        "th": "บุคลากรปฏิบัติตามมาตรการประหยัดไฟฟ้าในพื้นที่ทำงาน",
+        "en": "Personnel comply with electricity conservation measures in work areas"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "3.2.4",
+      "code": "3.2.4",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.2",
+      "title": {
+        "th": "มาตรการหรือแนวทางการใช้น้ำมันเชื้อเพลิงในการเดินทางที่เหมาะสมกับสำนักงาน",
+        "en": "Fuel conservation measures for office-related travel"
+      },
+      "requirementSummary": {
+        "th": "กำหนดมาตรการหรือแนวทางการใช้น้ำมันเชื้อเพลิงในการเดินทางที่เหมาะสม",
+        "en": "Define appropriate fuel conservation measures for office-related travel"
+      },
+      "relatedDashboards": ["fuel"]
+    },
+    {
+      "id": "3.2.5",
+      "code": "3.2.5",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.2",
+      "title": {
+        "th": "มีการจัดทำข้อมูลการใช้น้ำมันเชื้อเพลิงต่อระยะทางเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล",
+        "en": "Fuel consumption data per distance compared with targets and analysis"
+      },
+      "requirementSummary": {
+        "th": "จัดทำข้อมูลการใช้น้ำมันเชื้อเพลิงต่อระยะทาง เปรียบเทียบกับเป้าหมายและวิเคราะห์ผล",
+        "en": "Compile fuel consumption data per distance, compare with targets and analyze results"
+      },
+      "relatedDashboards": ["fuel"]
+    },
+    {
+      "id": "3.3.1",
+      "code": "3.3.1",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.3",
+      "title": {
+        "th": "มาตรการหรือแนวทางการใช้กระดาษที่เหมาะสมกับสำนักงาน",
+        "en": "Paper conservation measures appropriate for the office"
+      },
+      "requirementSummary": {
+        "th": "กำหนดมาตรการหรือแนวทางการใช้กระดาษที่เหมาะสมกับสำนักงาน",
+        "en": "Define paper conservation measures appropriate for the office"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "3.3.2",
+      "code": "3.3.2",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.3",
+      "title": {
+        "th": "มีการจัดทำข้อมูลการใช้กระดาษต่อหน่วยเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล",
+        "en": "Paper consumption data per unit compared with targets and analysis"
+      },
+      "requirementSummary": {
+        "th": "จัดทำข้อมูลการใช้กระดาษต่อหน่วย เปรียบเทียบกับเป้าหมายและวิเคราะห์ผล",
+        "en": "Compile paper consumption data per unit, compare with targets and analyze results"
+      },
+      "relatedDashboards": ["paper"]
+    },
+    {
+      "id": "3.3.3",
+      "code": "3.3.3",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.3",
+      "title": {
+        "th": "การปฏิบัติตามมาตรการประหยัดกระดาษในพื้นที่ทำงาน",
+        "en": "Compliance with paper conservation measures in work areas"
+      },
+      "requirementSummary": {
+        "th": "บุคลากรปฏิบัติตามมาตรการประหยัดกระดาษในพื้นที่ทำงาน",
+        "en": "Personnel comply with paper conservation measures in work areas"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "3.3.4",
+      "code": "3.3.4",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.3",
+      "title": {
+        "th": "มาตรการหรือแนวทางการใช้หมึกพิมพ์ อุปกรณ์เครื่องเขียน วัสดุอุปกรณ์เหมาะสมกับสำนักงาน",
+        "en": "Measures for printer ink, stationery and office supplies appropriate for the office"
+      },
+      "requirementSummary": {
+        "th": "กำหนดมาตรการการใช้หมึกพิมพ์ อุปกรณ์เครื่องเขียน และวัสดุอุปกรณ์สำนักงาน",
+        "en": "Define measures for use of printer ink, stationery and office supplies"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "3.3.5",
+      "code": "3.3.5",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.3",
+      "title": {
+        "th": "การดำเนินตามมาตรการประหยัดการใช้หมึกพิมพ์ อุปกรณ์เครื่องเขียน วัสดุอุปกรณ์สำนักงาน",
+        "en": "Compliance with conservation measures for printer ink, stationery and office supplies"
+      },
+      "requirementSummary": {
+        "th": "ปฏิบัติตามมาตรการประหยัดการใช้หมึกพิมพ์ อุปกรณ์เครื่องเขียน วัสดุอุปกรณ์สำนักงาน",
+        "en": "Comply with conservation measures for printer ink, stationery and office supplies"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "3.4.1",
+      "code": "3.4.1",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.4",
+      "title": {
+        "th": "มาตรการหรือแนวทางการจัดการประชุมและนิทรรศการที่เป็นมิตรกับสิ่งแวดล้อม",
+        "en": "Measures for environmentally friendly meetings and exhibitions"
+      },
+      "requirementSummary": {
+        "th": "กำหนดมาตรการจัดการประชุมและนิทรรศการที่เป็นมิตรกับสิ่งแวดล้อม",
+        "en": "Define measures for environmentally friendly meetings and exhibitions"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "3.4.2",
+      "code": "3.4.2",
+      "categoryCode": "cat3",
+      "categoryId": "3",
+      "issueCode": "3.4",
+      "title": {
+        "th": "การจัดการประชุมและนิทรรศการที่มีการใช้วัสดุที่เป็นมิตรกับสิ่งแวดล้อม ลดการใช้ทรัพยากร-พลังงาน และลดของเสียที่เกิดขึ้น",
+        "en": "Meetings and exhibitions using environmentally friendly materials, reducing resource-energy use and waste"
+      },
+      "requirementSummary": {
+        "th": "จัดประชุมและนิทรรศการโดยใช้วัสดุที่เป็นมิตรกับสิ่งแวดล้อมและลดผลกระทบ",
+        "en": "Conduct meetings and exhibitions using eco-friendly materials and minimizing environmental impact"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "4.1.1",
+      "code": "4.1.1",
+      "categoryCode": "cat4",
+      "categoryId": "4",
+      "issueCode": "4.1",
+      "title": {
+        "th": "มาตรการหรือแนวทางจัดการขยะที่เหมาะสมกับสำนักงาน มีการสร้างความตระหนัก และการมีส่วนร่วมของบุคลากร",
+        "en": "Waste management measures with awareness building and personnel participation"
+      },
+      "requirementSummary": {
+        "th": "กำหนดมาตรการจัดการขยะ สร้างความตระหนักและส่งเสริมการมีส่วนร่วมของบุคลากร",
+        "en": "Define waste management measures, build awareness and encourage personnel participation"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "4.1.2",
+      "code": "4.1.2",
+      "categoryCode": "cat4",
+      "categoryId": "4",
+      "issueCode": "4.1",
+      "title": {
+        "th": "มีการดำเนินงานตามแนวทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม",
+        "en": "Implementation of proper waste sorting, collection and disposal"
+      },
+      "requirementSummary": {
+        "th": "ดำเนินการคัดแยก รวบรวม และกำจัดขยะตามแนวทางที่กำหนด",
+        "en": "Implement waste sorting, collection and disposal according to defined guidelines"
+      },
+      "relatedDashboards": ["waste"]
+    },
+    {
+      "id": "4.1.3",
+      "code": "4.1.3",
+      "categoryCode": "cat4",
+      "categoryId": "4",
+      "issueCode": "4.1",
+      "title": {
+        "th": "การนำขยะกลับมาใช้ประโยชน์ หรือนำกลับมาใช้ใหม่ ส่งผลให้ขยะที่จะส่งไปกำจัดมีปริมาณน้อยลง",
+        "en": "Waste reuse and recycling resulting in reduced waste sent for disposal"
+      },
+      "requirementSummary": {
+        "th": "นำขยะกลับมาใช้ประโยชน์หรือนำกลับมาใช้ใหม่เพื่อลดปริมาณขยะที่ส่งกำจัด",
+        "en": "Reuse or recycle waste to reduce the amount sent for disposal"
+      },
+      "relatedDashboards": ["waste"]
+    },
+    {
+      "id": "4.2.1",
+      "code": "4.2.1",
+      "categoryCode": "cat4",
+      "categoryId": "4",
+      "issueCode": "4.2",
+      "title": {
+        "th": "การจัดการน้ำเสียของสำนักงาน และคุณภาพน้ำทิ้งจะต้องอยู่ในมาตรฐานกฎหมายที่เกี่ยวข้อง",
+        "en": "Office wastewater management and effluent quality meeting legal standards"
+      },
+      "requirementSummary": {
+        "th": "จัดการน้ำเสียและควบคุมคุณภาพน้ำทิ้งให้เป็นไปตามมาตรฐานกฎหมาย",
+        "en": "Manage wastewater and ensure effluent quality meets legal standards"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "4.2.2",
+      "code": "4.2.2",
+      "categoryCode": "cat4",
+      "categoryId": "4",
+      "issueCode": "4.2",
+      "title": {
+        "th": "การจัดการดูแลการบำบัดน้ำเสีย",
+        "en": "Wastewater treatment maintenance and management"
+      },
+      "requirementSummary": {
+        "th": "ดูแลและบำรุงรักษาระบบบำบัดน้ำเสียให้มีประสิทธิภาพ",
+        "en": "Maintain and manage wastewater treatment system effectively"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "5.1.1",
+      "code": "5.1.1",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "issueCode": "5.1",
+      "title": {
+        "th": "การควบคุมมลพิษทางอากาศในสำนักงาน",
+        "en": "Indoor air pollution control in the office"
+      },
+      "requirementSummary": {
+        "th": "ควบคุมและจัดการมลพิษทางอากาศภายในสำนักงานให้เหมาะสม",
+        "en": "Control and manage indoor air pollution appropriately"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "5.1.2",
+      "code": "5.1.2",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "issueCode": "5.1",
+      "title": {
+        "th": "มีการรณรงค์ไม่สูบบุหรี่หรือมีการกำหนดพื้นที่สูบบุหรี่ที่เหมาะสมและปฏิบัติตามที่กำหนด",
+        "en": "No-smoking campaign or designated smoking areas with compliance"
+      },
+      "requirementSummary": {
+        "th": "รณรงค์ไม่สูบบุหรี่หรือกำหนดพื้นที่สูบบุหรี่ที่เหมาะสมและปฏิบัติตาม",
+        "en": "Promote no-smoking or designate appropriate smoking areas and ensure compliance"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "5.1.3",
+      "code": "5.1.3",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "issueCode": "5.1",
+      "title": {
+        "th": "การจัดการมลพิษทางอากาศจากการก่อสร้าง ปรับปรุง อาคารหรืออื่นๆ ในสำนักงานที่ส่งผลต่อบุคลากร",
+        "en": "Management of air pollution from construction, renovation or other activities affecting personnel"
+      },
+      "requirementSummary": {
+        "th": "จัดการมลพิษทางอากาศจากการก่อสร้างหรือปรับปรุงอาคารที่ส่งผลต่อบุคลากร",
+        "en": "Manage air pollution from construction or renovation affecting personnel"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "5.2.1",
+      "code": "5.2.1",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "issueCode": "5.2",
+      "title": {
+        "th": "มีการตรวจวัดความเข้มของแสงสว่าง และดำเนินการแก้ไขตามที่มาตรฐานกำหนด",
+        "en": "Light intensity measurement and corrective action per standards"
+      },
+      "requirementSummary": {
+        "th": "ตรวจวัดความเข้มแสงสว่างและดำเนินการแก้ไขให้เป็นไปตามมาตรฐาน",
+        "en": "Measure light intensity and take corrective action to meet standards"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "5.3.1",
+      "code": "5.3.1",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "issueCode": "5.3",
+      "title": {
+        "th": "การควบคุมมลพิษทางเสียงภายในอาคารสำนักงาน",
+        "en": "Noise pollution control within the office building"
+      },
+      "requirementSummary": {
+        "th": "ควบคุมมลพิษทางเสียงภายในอาคารสำนักงานให้อยู่ในระดับที่เหมาะสม",
+        "en": "Control noise pollution within the office building at appropriate levels"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "5.3.2",
+      "code": "5.3.2",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "issueCode": "5.3",
+      "title": {
+        "th": "การจัดการเสียงดังจากการก่อสร้าง ปรับปรุง อาคารหรืออื่นๆ ในสำนักงานที่ส่งผลต่อบุคลากร",
+        "en": "Management of noise from construction, renovation or other activities affecting personnel"
+      },
+      "requirementSummary": {
+        "th": "จัดการเสียงดังจากการก่อสร้างหรือปรับปรุงอาคารที่ส่งผลต่อบุคลากร",
+        "en": "Manage noise from construction or renovation affecting personnel"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "5.4.1",
+      "code": "5.4.1",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "issueCode": "5.4",
+      "title": {
+        "th": "มีการวางแผนจัดการความน่าอยู่ของสำนักงาน",
+        "en": "Office livability management plan"
+      },
+      "requirementSummary": {
+        "th": "วางแผนจัดการความน่าอยู่ของสำนักงานอย่างเป็นระบบ",
+        "en": "Plan and manage office livability systematically"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "5.4.2",
+      "code": "5.4.2",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "issueCode": "5.4",
+      "title": {
+        "th": "ร้อยละการใช้สอยพื้นที่เป็นไปตามวัตถุประสงค์ที่สำนักงานกำหนด",
+        "en": "Percentage of space utilization meeting office-defined objectives"
+      },
+      "requirementSummary": {
+        "th": "การใช้สอยพื้นที่สำนักงานเป็นไปตามวัตถุประสงค์ที่กำหนด",
+        "en": "Office space utilization meets defined objectives"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "5.4.3",
+      "code": "5.4.3",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "issueCode": "5.4",
+      "title": {
+        "th": "ร้อยละการดูแลบำรุงรักษาพื้นที่ต่างๆ",
+        "en": "Percentage of area maintenance and upkeep"
+      },
+      "requirementSummary": {
+        "th": "ดูแลบำรุงรักษาพื้นที่ต่างๆ ในสำนักงานอย่างสม่ำเสมอ",
+        "en": "Regularly maintain and upkeep all office areas"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "5.4.4",
+      "code": "5.4.4",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "issueCode": "5.4",
+      "title": {
+        "th": "มีการควบคุมสัตว์พาหะนำโรคและดำเนินการได้ตามที่กำหนด",
+        "en": "Vector control implemented as specified"
+      },
+      "requirementSummary": {
+        "th": "ควบคุมสัตว์พาหะนำโรคตามมาตรการที่กำหนด",
+        "en": "Control disease vectors according to specified measures"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "5.5.1",
+      "code": "5.5.1",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "issueCode": "5.5",
+      "title": {
+        "th": "การอบรมฝึกซ้อมดับเพลิงและอพยพหนีไฟตามแผนที่กำหนด",
+        "en": "Fire drill and evacuation training according to plan"
+      },
+      "requirementSummary": {
+        "th": "จัดอบรมฝึกซ้อมดับเพลิงและอพยพหนีไฟตามแผนที่กำหนด",
+        "en": "Conduct fire drill and evacuation training according to defined plan"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "5.5.2",
+      "code": "5.5.2",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "issueCode": "5.5",
+      "title": {
+        "th": "มีแผนฉุกเฉินที่เป็นปัจจุบันและเหมาะสม และร้อยละของบุคลากรที่เข้าใจแผนฉุกเฉิน",
+        "en": "Current and appropriate emergency plan with percentage of personnel understanding it"
+      },
+      "requirementSummary": {
+        "th": "จัดทำแผนฉุกเฉินที่เป็นปัจจุบันและบุคลากรเข้าใจแผน",
+        "en": "Maintain current emergency plan and ensure personnel understanding"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "5.5.3",
+      "code": "5.5.3",
+      "categoryCode": "cat5",
+      "categoryId": "5",
+      "issueCode": "5.5",
+      "title": {
+        "th": "ความเพียงพอและการพร้อมใช้งานของอุปกรณ์ระบบดับเพลิงและป้องกันอัคคีภัย และระบบสัญญาณแจ้งเหตุเพลิงไหม้ และร้อยละของบุคลากรทราบวิธีการใช้และตรวจสอบอุปกรณ์",
+        "en": "Adequacy and readiness of fire protection equipment and alarm systems with personnel knowing usage and inspection"
+      },
+      "requirementSummary": {
+        "th": "อุปกรณ์ดับเพลิงและระบบแจ้งเหตุเพียงพอ พร้อมใช้งาน และบุคลากรทราบวิธีการใช้",
+        "en": "Fire equipment and alarm systems adequate, ready for use, and personnel know operation"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "6.1.1",
+      "code": "6.1.1",
+      "categoryCode": "cat6",
+      "categoryId": "6",
+      "issueCode": "6.1",
+      "title": {
+        "th": "การจัดซื้อสินค้าที่เป็นมิตรกับสิ่งแวดล้อม",
+        "en": "Environmentally friendly product procurement"
+      },
+      "requirementSummary": {
+        "th": "ดำเนินการจัดซื้อสินค้าที่เป็นมิตรกับสิ่งแวดล้อม",
+        "en": "Procure environmentally friendly products"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "6.1.2",
+      "code": "6.1.2",
+      "categoryCode": "cat6",
+      "categoryId": "6",
+      "issueCode": "6.1",
+      "title": {
+        "th": "รายงานการจัดซื้อสินค้าประเภทวัสดุอุปกรณ์ในสำนักงานที่เป็นมิตรกับสิ่งแวดล้อม",
+        "en": "Report on procurement of environmentally friendly office materials and equipment"
+      },
+      "requirementSummary": {
+        "th": "จัดทำรายงานการจัดซื้อวัสดุอุปกรณ์สำนักงานที่เป็นมิตรกับสิ่งแวดล้อม",
+        "en": "Prepare report on procurement of environmentally friendly office materials and equipment"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "6.1.3",
+      "code": "6.1.3",
+      "categoryCode": "cat6",
+      "categoryId": "6",
+      "issueCode": "6.1",
+      "title": {
+        "th": "ร้อยละของปริมาณและประเภทของวัสดุอุปกรณ์ในสำนักงานที่เป็นมิตรกับสิ่งแวดล้อม",
+        "en": "Percentage of quantity and types of environmentally friendly office materials and equipment"
+      },
+      "requirementSummary": {
+        "th": "วัดและรายงานสัดส่วนวัสดุอุปกรณ์สำนักงานที่เป็นมิตรกับสิ่งแวดล้อม",
+        "en": "Measure and report the proportion of environmentally friendly office materials and equipment"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "6.2.1",
+      "code": "6.2.1",
+      "categoryCode": "cat6",
+      "categoryId": "6",
+      "issueCode": "6.2",
+      "title": {
+        "th": "การจัดจ้างหน่วยงานหรือบุคคลที่มีการดำเนินงานที่เป็นมิตรกับสิ่งแวดล้อม",
+        "en": "Engagement of contractors or individuals with environmentally friendly operations"
+      },
+      "requirementSummary": {
+        "th": "จัดจ้างหน่วยงานหรือบุคคลที่มีการดำเนินงานที่เป็นมิตรกับสิ่งแวดล้อม",
+        "en": "Engage contractors or individuals who operate in an environmentally friendly manner"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "6.2.2",
+      "code": "6.2.2",
+      "categoryCode": "cat6",
+      "categoryId": "6",
+      "issueCode": "6.2",
+      "title": {
+        "th": "การตรวจสอบด้านการดูแลสิ่งแวดล้อมในพื้นที่ปฏิบัติงาน ของหน่วยงานหรือบุคคลที่เข้ามาดำเนินการ",
+        "en": "Environmental inspection of work areas of contracted entities or individuals"
+      },
+      "requirementSummary": {
+        "th": "ตรวจสอบการดูแลสิ่งแวดล้อมในพื้นที่ปฏิบัติงานของผู้รับจ้าง",
+        "en": "Inspect environmental care in work areas of contracted entities"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "6.2.3",
+      "code": "6.2.3",
+      "categoryCode": "cat6",
+      "categoryId": "6",
+      "issueCode": "6.2",
+      "title": {
+        "th": "แนวทางของการเลือกใช้บริการที่เป็นมิตรกับสิ่งแวดล้อม (นอกสำนักงาน)",
+        "en": "Guidelines for selecting environmentally friendly external services"
+      },
+      "requirementSummary": {
+        "th": "กำหนดแนวทางการเลือกใช้บริการภายนอกที่เป็นมิตรกับสิ่งแวดล้อม",
+        "en": "Define guidelines for selecting environmentally friendly external services"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "7.1",
+      "code": "7.1",
+      "categoryCode": "cat7",
+      "categoryId": "7",
+      "issueCode": "7.1",
+      "title": {
+        "th": "การตรวจประเมินสำนักงานสีเขียวเพื่อให้เกิดการปรับปรุงอย่างต่อเนื่อง",
+        "en": "Green Office Internal Audit for Continuous Improvement"
+      },
+      "requirementSummary": {
+        "th": "ดำเนินการตรวจประเมินภายในอย่างเป็นระบบ กำหนดคณะกรรมการ ความถี่ ขอบเขต และคุณสมบัติผู้ตรวจ เพื่อให้เกิดการปรับปรุงอย่างต่อเนื่อง",
+        "en": "Conduct systematic internal audits covering committee appointment, frequency, scope, auditor qualifications, and reporting for continuous improvement"
+      },
+      "relatedDashboards": []
+    },
+    {
+      "id": "7.2",
+      "code": "7.2",
+      "categoryCode": "cat7",
+      "categoryId": "7",
+      "issueCode": "7.2",
+      "title": {
+        "th": "การพัฒนาหรือต่อยอดการดำเนินงานสำนักงานสีเขียว",
+        "en": "Green Office Advancement and Development"
+      },
+      "requirementSummary": {
+        "th": "ต่อยอดสู่มาตรฐานอื่น ส่งเสริมความรู้ สร้างเครือข่ายพี่เลี้ยง และจัดกิจกรรมร่วมกับชุมชน",
+        "en": "Extend to other standards, promote knowledge sharing, build mentorship networks, and engage with the community"
+      },
+      "relatedDashboards": []
+    }
+  ]
+}

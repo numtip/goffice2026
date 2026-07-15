@@ -1,5 +1,6 @@
 ---
 import { withBase } from '../../utils/with-base';
+import type { HomeAssessmentStrings } from '../../i18n/dictionary';
 
 interface Category {
   id: string;
@@ -12,9 +13,17 @@ interface Category {
 
 interface Props {
   categories: Category[];
+  t?: HomeAssessmentStrings;
 }
 
 const { categories } = Astro.props;
+const t = Astro.props.t ?? {
+  heading: 'Assessment Matrix Framework',
+  description: 'Seven configured Green Office dimensions from the repository category data, presented as a static assessment preview.',
+  hub_label: 'Green Office 2569+',
+  hub_title: 'Connected Assessment System',
+  cta: 'View Full Framework',
+} as HomeAssessmentStrings;
 ---
 
 <section
@@ -27,10 +36,9 @@ const { categories } = Astro.props;
 
   <div class="landing-container relative z-10">
     <div class="landing-reveal mb-12 text-center sm:mb-16">
-      <h2 id="assessment-framework-title" class="landing-heading mb-3 sm:mb-4">Assessment Matrix Framework</h2>
+      <h2 id="assessment-framework-title" class="landing-heading mb-3 sm:mb-4">{t.heading}</h2>
       <p class="mx-auto max-w-2xl text-body-md text-on-surface-variant sm:text-body-lg">
-        Seven configured Green Office dimensions from the repository category data, presented as a
-        static assessment preview.
+        {t.description}
       </p>
     </div>
 
@@ -40,8 +48,8 @@ const { categories } = Astro.props;
 
       <div class="landing-reveal relative mb-8 flex justify-center sm:mb-10">
         <div class="glass-panel landing-glass-hover rounded-full border border-primary-container/20 px-6 py-3 text-center shadow-lg sm:px-8 sm:py-4">
-          <p class="font-mono text-label-sm uppercase tracking-widest text-primary">Green Office 2569+</p>
-          <p class="mt-1 text-lg font-semibold text-primary sm:text-headline-md">Connected Assessment System</p>
+          <p class="font-mono text-label-sm uppercase tracking-widest text-primary">{t.hub_label}</p>
+          <p class="mt-1 text-lg font-semibold text-primary sm:text-headline-md">{t.hub_title}</p>
         </div>
       </div>
 
@@ -88,7 +96,7 @@ const { categories } = Astro.props;
 
       <div class="landing-reveal mt-8 text-center sm:mt-10">
         <a href={withBase('/categories')} class="landing-btn-ghost bg-surface-container-high text-primary hover:bg-surface-variant">
-          View Full Framework
+          {t.cta}
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
           </svg>

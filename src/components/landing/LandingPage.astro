@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/global.css';
+import categoriesData from '../../data/categories.json';
+import dashboardKpi from '../../data/dashboard-kpi.json';
+import evidenceIndex from '../../data/evidence-index.json';
+import { getDictionary } from '../../i18n/dictionary';
+
+import LandingHero from './LandingHero.astro';
+import MissionScene from './MissionScene.astro';
+import ExecutiveCommandCenter from './ExecutiveCommandCenter.astro';
+import AssessmentFramework from './AssessmentFramework.astro';
+import EvidenceGateway from './EvidenceGateway.astro';
+import ActivitiesScene from './ActivitiesScene.astro';
+import ImprovementJourney from './ImprovementJourney.astro';
+import LandingCTA from './LandingCTA.astro';
+
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const dict = await getDictionary(locale);
+const { home } = dict;
+
+const previewEvidence = evidenceIndex.items.slice(0, 3);
+const availableItems = evidenceIndex.items.filter((i: { status: string }) => i.status === 'available').length;
+---
+
+<BaseLayout locale={locale} dict={dict}>
+  <div class="landing-page -mt-8 overflow-x-clip bg-surface text-on-surface">
+    <LandingHero overallScore={dashboardKpi.overallScore} t={home.hero} />
+    <MissionScene t={home.mission} />
+    <ExecutiveCommandCenter t={home.executive} />
+    <AssessmentFramework categories={categoriesData.categories} t={home.assessment} />
+    <EvidenceGateway
+      items={previewEvidence}
+      totalItems={evidenceIndex.items.length}
+      availableItems={availableItems}
+      t={home.evidence}
+    />
+    <ActivitiesScene t={home.activities} />
+    <ImprovementJourney t={home.improvement} />
+    <LandingCTA t={home.cta} />
+  </div>
+</BaseLayout>
+
+<script>
+  import '../../scripts/landing-motion.ts';
+</script>

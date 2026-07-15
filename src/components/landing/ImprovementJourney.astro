@@ -1,56 +1,46 @@
 ---
 import { withBase } from '../../utils/with-base';
+import type { HomeImprovementStrings } from '../../i18n/dictionary';
+
+interface Props {
+  t?: HomeImprovementStrings;
+}
+
+const t = Astro.props.t ?? {
+  label: 'Lifecycle Narrative',
+  heading: 'Improvement Journey',
+  description: 'A navigational overview of the configured category flow. Replace with verified program narrative once approved source material is available.',
+  stage_1_title: 'Policy',
+  stage_1_subtitle: 'Planning & Governance',
+  stage_1_description: 'Strategic commitments and organizational structure for sustainability leadership.',
+  stage_2_title: 'Awareness',
+  stage_2_subtitle: 'Communication & Training',
+  stage_2_description: 'Behavioral change through campaigns, workshops, and institutional engagement.',
+  stage_3_title: 'Resource Management',
+  stage_3_subtitle: 'Energy · Water · Materials',
+  stage_3_description: 'Conservation across electricity, water, fuel, and paper consumption vectors.',
+  stage_4_title: 'Waste',
+  stage_4_subtitle: 'Reduction & Recycling',
+  stage_4_description: 'Segregation, diversion, and responsible disposal across campus operations.',
+  stage_5_title: 'Safety',
+  stage_5_subtitle: 'Environment & Occupant Health',
+  stage_5_description: 'Indoor air quality, ergonomics, and emergency readiness standards.',
+  stage_6_title: 'Green Procurement',
+  stage_6_subtitle: 'Sustainable Purchasing',
+  stage_6_description: 'Supplier evaluation and environmentally preferred purchasing policies.',
+  stage_7_title: 'Continuous Improvement',
+  stage_7_subtitle: 'Audit & Refinement',
+  stage_7_description: 'Management review, target refinement, and certification readiness cycles.',
+} as HomeImprovementStrings;
 
 const stages = [
-  {
-    step: 1,
-    title: 'Policy',
-    subtitle: 'Planning & Governance',
-    description: 'Strategic commitments and organizational structure for sustainability leadership.',
-    href: '/categories/cat7',
-  },
-  {
-    step: 2,
-    title: 'Awareness',
-    subtitle: 'Communication & Training',
-    description: 'Behavioral change through campaigns, workshops, and institutional engagement.',
-    href: '/categories',
-  },
-  {
-    step: 3,
-    title: 'Resource Management',
-    subtitle: 'Energy · Water · Materials',
-    description: 'Conservation across electricity, water, fuel, and paper consumption vectors.',
-    href: '/categories/cat1',
-  },
-  {
-    step: 4,
-    title: 'Waste',
-    subtitle: 'Reduction & Recycling',
-    description: 'Segregation, diversion, and responsible disposal across campus operations.',
-    href: '/categories/cat3',
-  },
-  {
-    step: 5,
-    title: 'Safety',
-    subtitle: 'Environment & Occupant Health',
-    description: 'Indoor air quality, ergonomics, and emergency readiness standards.',
-    href: '/categories/cat5',
-  },
-  {
-    step: 6,
-    title: 'Green Procurement',
-    subtitle: 'Sustainable Purchasing',
-    description: 'Supplier evaluation and environmentally preferred purchasing policies.',
-    href: '/categories/cat6',
-  },
-  {
-    step: 7,
-    title: 'Continuous Improvement',
-    subtitle: 'Audit & Refinement',
-    description: 'Management review, target refinement, and certification readiness cycles.',
-    href: '/categories/cat7',
-  },
+  { step: 1, title: t.stage_1_title, subtitle: t.stage_1_subtitle, description: t.stage_1_description, href: '/categories/cat7' },
+  { step: 2, title: t.stage_2_title, subtitle: t.stage_2_subtitle, description: t.stage_2_description, href: '/categories' },
+  { step: 3, title: t.stage_3_title, subtitle: t.stage_3_subtitle, description: t.stage_3_description, href: '/categories/cat1' },
+  { step: 4, title: t.stage_4_title, subtitle: t.stage_4_subtitle, description: t.stage_4_description, href: '/categories/cat3' },
+  { step: 5, title: t.stage_5_title, subtitle: t.stage_5_subtitle, description: t.stage_5_description, href: '/categories/cat5' },
+  { step: 6, title: t.stage_6_title, subtitle: t.stage_6_subtitle, description: t.stage_6_description, href: '/categories/cat6' },
+  { step: 7, title: t.stage_7_title, subtitle: t.stage_7_subtitle, description: t.stage_7_description, href: '/categories/cat7' },
 ];
 ---
 
@@ -62,11 +52,10 @@ const stages = [
 
   <div class="landing-container">
     <div class="landing-reveal mb-10 text-center sm:mb-14">
-      <p class="mb-3 font-mono text-label-sm uppercase tracking-widest text-secondary">Lifecycle Narrative</p>
-      <h2 id="improvement-journey-title" class="landing-heading mb-3 sm:mb-4">Improvement Journey</h2>
+      <p class="mb-3 font-mono text-label-sm uppercase tracking-widest text-secondary">{t.label}</p>
+      <h2 id="improvement-journey-title" class="landing-heading mb-3 sm:mb-4">{t.heading}</h2>
       <p class="mx-auto max-w-2xl text-body-md text-on-surface-variant sm:text-body-lg">
-        A navigational overview of the configured category flow. Replace with verified program
-        narrative once approved source material is available.
+        {t.description}
       </p>
     </div>
 

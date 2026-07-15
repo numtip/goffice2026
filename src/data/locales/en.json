@@ -1,0 +1,127 @@
+{
+  "site": {
+    "name": "Green Office 2026",
+    "university": "Maejo University",
+    "tagline": "Maejo University",
+    "title_suffix": "Green Office Platform",
+    "skip_to_content": "Skip to main content",
+    "language": "Language"
+  },
+  "home": {
+    "hero": {
+      "badge": "Precision Environmentalism",
+      "title_line1": "Green Office 2026:",
+      "title_line2": "Repository Preview Platform",
+      "description": "Preview interface for the Green Office 2026 repository. Explore the dashboard structure, category framework, and evidence placeholders currently available in this static site.",
+      "cta_dashboard": "Explore Dashboard",
+      "cta_categories": "Explore Green Office",
+      "executive_preview": "Executive Preview",
+      "preview_only": "Preview only — not live dashboard data",
+      "metric_energy": "Energy",
+      "metric_water": "Water",
+      "metric_fuel": "Fuel",
+      "metric_paper": "Paper",
+      "metric_waste": "Waste",
+      "metric_ghg": "GHG"
+    },
+    "mission": {
+      "heading": "Green Office 2026 Content Framework",
+      "description1": "This landing page introduces the repository's current Green Office structure: resource dashboards, assessment categories, document placeholders, and navigation into the evidence library.",
+      "description2": "Institutional narratives, campus photography, and activity outcomes should be added only after approved local content is available in the repo.",
+      "cta": "Read the Full Mandate",
+      "placeholder_label": "Local asset pending",
+      "placeholder_instruction": "Replace this preview once approved campus or program imagery is committed under public assets."
+    },
+    "executive": {
+      "heading": "Unified Command Center",
+      "description": "Build-time dashboard snapshot across the six operational resource metrics, prepared from generated static JSON in the repository.",
+      "label": "Dashboard Preview",
+      "overview": "Global Resource Overview",
+      "snapshot": "Static Snapshot",
+      "cta": "Open Dashboard",
+      "data_pending": "Data pending",
+      "months_format": "{year} · {months}/12 months"
+    },
+    "assessment": {
+      "heading": "Assessment Matrix Framework",
+      "description": "Seven configured Green Office dimensions from the repository category data, presented as a static assessment preview.",
+      "hub_label": "Green Office 2569+",
+      "hub_title": "Connected Assessment System",
+      "cta": "View Full Framework"
+    },
+    "evidence": {
+      "badge": "Repository evidence index",
+      "heading": "Evidence Library Preview",
+      "description": "Preview highlighted evidence entries from the local repository index. Current records are placeholders until approved source documents are committed.",
+      "total_records": "Total Records",
+      "available": "Available",
+      "capability_1": "Evidence entries mapped to configured Green Office categories",
+      "capability_2": "Placeholder status visible before source files are integrated",
+      "capability_3": "Local paths prepared for future approved document uploads",
+      "cta_documents": "Open Document Center",
+      "cta_evidence": "Browse Evidence Library"
+    },
+    "activities": {
+      "heading": "The Environmental Journey",
+      "description": "Preview slots for activities, campaigns, awareness, and training milestones.",
+      "status": "Pending approved content",
+      "placeholder_image": "Image pending",
+      "placeholder_category": "Content slot",
+      "activity_1_title": "Activity records not yet integrated",
+      "activity_1_excerpt": "This space is reserved for approved local activity evidence once real records are added to the repository.",
+      "activity_2_title": "Campaign content pending source files",
+      "activity_2_excerpt": "Add verified campaign summaries, dates, and images before this card is promoted as real content.",
+      "activity_3_title": "Training milestones need evidence links",
+      "activity_3_excerpt": "This placeholder avoids inventing dates, attendance, or outcomes until approved documents exist locally."
+    },
+    "improvement": {
+      "label": "Lifecycle Narrative",
+      "heading": "Improvement Journey",
+      "description": "A navigational overview of the configured category flow. Replace with verified program narrative once approved source material is available.",
+      "stage_1_title": "Policy",
+      "stage_1_subtitle": "Planning & Governance",
+      "stage_1_description": "Strategic commitments and organizational structure for sustainability leadership.",
+      "stage_2_title": "Awareness",
+      "stage_2_subtitle": "Communication & Training",
+      "stage_2_description": "Behavioral change through campaigns, workshops, and institutional engagement.",
+      "stage_3_title": "Resource Management",
+      "stage_3_subtitle": "Energy · Water · Materials",
+      "stage_3_description": "Conservation across electricity, water, fuel, and paper consumption vectors.",
+      "stage_4_title": "Waste",
+      "stage_4_subtitle": "Reduction & Recycling",
+      "stage_4_description": "Segregation, diversion, and responsible disposal across campus operations.",
+      "stage_5_title": "Safety",
+      "stage_5_subtitle": "Environment & Occupant Health",
+      "stage_5_description": "Indoor air quality, ergonomics, and emergency readiness standards.",
+      "stage_6_title": "Green Procurement",
+      "stage_6_subtitle": "Sustainable Purchasing",
+      "stage_6_description": "Supplier evaluation and environmentally preferred purchasing policies.",
+      "stage_7_title": "Continuous Improvement",
+      "stage_7_subtitle": "Audit & Refinement",
+      "stage_7_description": "Management review, target refinement, and certification readiness cycles."
+    },
+    "cta": {
+      "label": "Ready to explore",
+      "heading": "Your next-generation Green Office command center",
+      "description": "Welcome to the next-generation Green Office dashboard — start with executive monitoring, category review, or evidence discovery.",
+      "btn_dashboard": "Explore Dashboard",
+      "btn_categories": "Explore Green Office",
+      "btn_evidence": "Evidence Library",
+      "btn_documents": "Document Center",
+      "btn_search": "Search"
+    },
+    "nav": {
+      "home": "Home",
+      "dashboard": "Dashboard",
+      "categories": "Categories",
+      "evidence": "Evidence",
+      "documents": "Documents",
+      "search": "Search"
+    },
+    "footer": {
+      "title": "Green Office 2026",
+      "description": "Static preview. Content and evidence are repository-backed unless marked as placeholder.",
+      "copyright": "Green Office Platform"
+    }
+  }
+}

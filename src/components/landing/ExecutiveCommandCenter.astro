@@ -2,6 +2,7 @@
 import { withBase } from '../../utils/with-base';
 import { dashboards } from '../../data/dashboard-config';
 import type { MultiYearMetric } from '../../utils/multi-year-schema';
+import type { HomeExecutiveStrings } from '../../i18n/dictionary';
 
 import energyGen from '../../data/generated/energy.json';
 import waterGen from '../../data/generated/water.json';
@@ -9,6 +10,21 @@ import fuelGen from '../../data/generated/fuel.json';
 import paperGen from '../../data/generated/paper.json';
 import wasteGen from '../../data/generated/waste.json';
 import ghgGen from '../../data/generated/ghg.json';
+
+interface Props {
+  t?: HomeExecutiveStrings;
+}
+
+const t = Astro.props.t ?? {
+  heading: 'Unified Command Center',
+  description: 'Build-time dashboard snapshot across the six operational resource metrics, prepared from generated static JSON in the repository.',
+  label: 'Dashboard Preview',
+  overview: 'Global Resource Overview',
+  snapshot: 'Static Snapshot',
+  cta: 'Open Dashboard',
+  data_pending: 'Data pending',
+  months_format: '{year} \u00b7 {months}/12 months',
+} as HomeExecutiveStrings;
 
 interface MetricDisplay {
   id: string;
@@ -42,9 +58,13 @@ const metrics: MetricDisplay[] = dashboards.map((d) => {
   const metric = genMap[d.id];
   const current = metric?.years[metric.currentYear.toString()];
   const monthCount = current?.months.length ?? 0;
-  const displayValue = current ? Intl.NumberFormat('en', { maximumFractionDigits: 1 }).format(current.total) : 'Pending';
+  const displayValue = current
+    ? Intl.NumberFormat('en', { maximumFractionDigits: 1 }).format(current.total)
+    : t.data_pending;
   const displayUnit = metric?.unit ?? d.kpiUnit ?? '';
-  const status = current ? `${metric.currentYear} · ${monthCount}/12 months` : 'Data pending';
+  const status = current
+    ? t.months_format.replace('{year}', String(metric.currentYear)).replace('{months}', String(monthCount))
+    : t.data_pending;
   const barWidth = `${Math.min(95, Math.max(20, Math.round((monthCount / 12) * 100)))}%`;
   const barColor = d.id === 'water' || d.id === 'paper' || d.id === 'ghg' ? 'bg-primary-fixed' : 'bg-secondary-fixed';
 
@@ -58,7 +78,6 @@ const metrics: MetricDisplay[] = dashboards.map((d) => {
     barColor,
   };
 });
-
 ---
 
 <section
@@ -71,14 +90,13 @@ const metrics: MetricDisplay[] = dashboards.map((d) => {
     <div class="landing-reveal mb-10 flex flex-col gap-4 sm:mb-12 sm:gap-6 md:flex-row md:items-end md:justify-between">
       <div>
         <h2 id="command-center-title" class="landing-heading mb-3 text-white sm:mb-4">
-          Unified Command Center
+          {t.heading}
         </h2>
         <p class="max-w-2xl text-body-md text-outline-variant sm:text-body-lg">
-          Build-time dashboard snapshot across the six operational resource metrics, prepared from
-          generated static JSON in the repository.
+          {t.description}
         </p>
       </div>
-      <p class="font-mono text-label-sm uppercase tracking-wider text-outline-variant">Dashboard Preview</p>
+      <p class="font-mono text-label-sm uppercase tracking-wider text-outline-variant">{t.label}</p>
     </div>
 
     <div class="landing-reveal dark-glass relative flex flex-col overflow-hidden rounded-stitch-lg border border-white/10 p-5 shadow-2xl sm:p-6 md:p-8">
@@ -93,11 +111,11 @@ const metrics: MetricDisplay[] = dashboards.map((d) => {
               <rect x="3" y="4" width="18" height="14" rx="2" />
               <path d="M8 20h8M12 18v2" />
             </svg>
-            <span class="font-mono text-label-sm uppercase tracking-widest text-outline-variant">Global Resource Overview</span>
+            <span class="font-mono text-label-sm uppercase tracking-widest text-outline-variant">{t.overview}</span>
           </div>
           <div class="flex items-center gap-2 rounded-full border border-white/5 bg-black/40 px-3 py-1.5">
             <span class="h-2 w-2 rounded-full bg-secondary-fixed animate-pulse" aria-hidden="true" />
-            <span class="font-mono text-[12px] text-outline-variant">Static Snapshot</span>
+            <span class="font-mono text-[12px] text-outline-variant">{t.snapshot}</span>
           </div>
         </div>
 
@@ -143,7 +161,7 @@ const metrics: MetricDisplay[] = dashboards.map((d) => {
             href={withBase('/dashboard')}
             class="inline-flex items-center gap-2 rounded-full bg-primary-fixed px-6 py-3 font-mono text-label-sm uppercase tracking-wider text-[#002117] shadow-lg transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary-fixed-dim focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 sm:px-8"
           >
-            Open Dashboard
+            {t.cta}
             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>

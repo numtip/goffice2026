@@ -1,5 +1,19 @@
 ---
 import { withBase } from '../../utils/with-base';
+import type { HomeMissionStrings } from '../../i18n/dictionary';
+
+interface Props {
+  t?: HomeMissionStrings;
+}
+
+const t = Astro.props.t ?? {
+  heading: 'Green Office 2026 Content Framework',
+  description1: 'This landing page introduces the repository\'s current Green Office structure: resource dashboards, assessment categories, document placeholders, and navigation into the evidence library.',
+  description2: 'Institutional narratives, campus photography, and activity outcomes should be added only after approved local content is available in the repo.',
+  cta: 'Read the Full Mandate',
+  placeholder_label: 'Local asset pending',
+  placeholder_instruction: 'Replace this preview once approved campus or program imagery is committed under public assets.',
+} as HomeMissionStrings;
 ---
 
 <section
@@ -12,22 +26,19 @@ import { withBase } from '../../utils/with-base';
     <div class="grid grid-cols-1 items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16">
       <div>
         <h2 id="mission-scene-title" class="landing-reveal landing-heading mb-5 sm:mb-6">
-          Green Office 2026 Content Framework
+          {t.heading}
         </h2>
         <p class="landing-reveal mb-5 text-body-md leading-relaxed text-on-surface-variant sm:mb-6 sm:text-body-lg">
-          This landing page introduces the repository's current Green Office structure: resource
-          dashboards, assessment categories, document placeholders, and navigation into the evidence
-          library.
+          {t.description1}
         </p>
         <p class="landing-reveal mb-7 text-body-md leading-relaxed text-outline sm:mb-8">
-          Institutional narratives, campus photography, and activity outcomes should be added only
-          after approved local content is available in the repo.
+          {t.description2}
         </p>
         <a
           href={withBase('/categories')}
           class="landing-reveal landing-btn-ghost inline-flex border-transparent px-0 text-secondary hover:bg-transparent hover:text-primary"
         >
-          Read the Full Mandate
+          {t.cta}
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
@@ -37,9 +48,9 @@ import { withBase } from '../../utils/with-base';
       <div class="landing-reveal relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-stitch-lg border border-dashed border-outline-variant/40 bg-surface-container-high shadow-2xl">
         <div class="absolute inset-0 landing-mesh-bg landing-mesh-bg-ambient opacity-80" aria-hidden="true" />
         <div class="relative max-w-sm px-6 text-center">
-          <p class="font-mono text-label-sm uppercase tracking-widest text-outline">Local asset pending</p>
+          <p class="font-mono text-label-sm uppercase tracking-widest text-outline">{t.placeholder_label}</p>
           <p class="mt-3 text-body-md text-on-surface-variant">
-            Replace this preview once approved campus or program imagery is committed under public assets.
+            {t.placeholder_instruction}
           </p>
         </div>
       </div>

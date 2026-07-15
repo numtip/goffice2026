@@ -1,5 +1,6 @@
 ---
 import { withBase } from '../../utils/with-base';
+import type { HomeEvidenceStrings } from '../../i18n/dictionary';
 
 interface EvidenceItem {
   id: string;
@@ -15,9 +16,22 @@ interface Props {
   items: EvidenceItem[];
   totalItems: number;
   availableItems: number;
+  t?: HomeEvidenceStrings;
 }
 
 const { items, totalItems, availableItems } = Astro.props;
+const t = Astro.props.t ?? {
+  badge: 'Repository evidence index',
+  heading: 'Evidence Library Preview',
+  description: 'Preview highlighted evidence entries from the local repository index. Current records are placeholders until approved source documents are committed.',
+  total_records: 'Total Records',
+  available: 'Available',
+  capability_1: 'Evidence entries mapped to configured Green Office categories',
+  capability_2: 'Placeholder status visible before source files are integrated',
+  capability_3: 'Local paths prepared for future approved document uploads',
+  cta_documents: 'Open Document Center',
+  cta_evidence: 'Browse Evidence Library',
+} as HomeEvidenceStrings;
 ---
 
 <section
@@ -53,26 +67,25 @@ const { items, totalItems, availableItems } = Astro.props;
     <div class="order-1 lg:order-2">
       <div class="landing-reveal mb-5 inline-flex items-center gap-2 rounded-stitch border border-outline-variant/30 bg-surface-container px-3 py-1.5 sm:mb-6">
         <span class="h-2 w-2 rounded-full bg-secondary" aria-hidden="true" />
-        <span class="font-mono text-[11px] font-medium text-on-surface-variant sm:text-[12px]">Repository evidence index</span>
+        <span class="font-mono text-[11px] font-medium text-on-surface-variant sm:text-[12px]">{t.badge}</span>
       </div>
 
       <h2 id="evidence-gateway-title" class="landing-reveal landing-heading mb-5 sm:mb-6">
-        Evidence Library Preview
+        {t.heading}
       </h2>
       <p class="landing-reveal mb-5 text-body-md text-on-surface-variant sm:mb-6 sm:text-body-lg">
-        Preview highlighted evidence entries from the local repository index. Current records are
-        placeholders until approved source documents are committed.
+        {t.description}
       </p>
 
       <dl class="landing-reveal mb-7 grid grid-cols-2 gap-3 sm:mb-8 sm:gap-4">
         <div class="glass-panel landing-glass-hover rounded-stitch p-3 sm:p-4">
-          <dt class="font-mono text-label-sm uppercase text-outline">Total Records</dt>
+          <dt class="font-mono text-label-sm uppercase text-outline">{t.total_records}</dt>
           <dd class="mt-1 text-xl font-semibold text-primary sm:text-headline-md">
             <span data-count-up={totalItems}>0</span>
           </dd>
         </div>
         <div class="glass-panel landing-glass-hover rounded-stitch p-3 sm:p-4">
-          <dt class="font-mono text-label-sm uppercase text-outline">Available</dt>
+          <dt class="font-mono text-label-sm uppercase text-outline">{t.available}</dt>
           <dd class="mt-1 text-xl font-semibold text-primary sm:text-headline-md">
             <span data-count-up={availableItems}>0</span>
           </dd>
@@ -85,33 +98,33 @@ const { items, totalItems, availableItems } = Astro.props;
             <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" />
             <path d="M22 4L12 14.01l-3-3" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          Evidence entries mapped to configured Green Office categories
+          {t.capability_1}
         </li>
         <li class="flex items-start gap-3 text-body-md text-on-surface-variant">
           <svg class="mt-0.5 h-5 w-5 shrink-0 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" />
             <path d="M22 4L12 14.01l-3-3" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          Placeholder status visible before source files are integrated
+          {t.capability_2}
         </li>
         <li class="flex items-start gap-3 text-body-md text-on-surface-variant">
           <svg class="mt-0.5 h-5 w-5 shrink-0 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" />
             <path d="M22 4L12 14.01l-3-3" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          Local paths prepared for future approved document uploads
+          {t.capability_3}
         </li>
       </ul>
 
       <div class="landing-reveal flex flex-wrap gap-3">
         <a href={withBase('/documents')} class="landing-btn-ghost bg-surface-container-high text-primary hover:bg-surface-variant">
-          Open Document Center
+          {t.cta_documents}
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </a>
         <a href={withBase('/evidence')} class="landing-btn-ghost text-secondary hover:bg-surface-container-low">
-          Browse Evidence Library
+          {t.cta_evidence}
         </a>
       </div>
     </div>

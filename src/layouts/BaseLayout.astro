@@ -1,28 +1,56 @@
 ---
 import Navigation from '../components/ui/Navigation.astro';
 import PreviewBadge from '../components/ui/PreviewBadge.astro';
+import type { LocaleStrings, HomeNavStrings } from '../i18n/dictionary';
 
-const { title } = Astro.props;
+interface Props {
+  // Legacy: used by all non-landing pages
+  title?: string;
+  // New: used by LandingPage.astro for bilingual support
+  locale?: 'th' | 'en';
+  dict?: LocaleStrings;
+}
+
+const { title, locale, dict } = Astro.props;
+
+// Determine final values from dict (bilingual) or hardcoded defaults (legacy)
+const lang = locale ?? 'en';
+const skipLabel = dict?.site?.skip_to_content ?? 'Skip to main content';
+const desc = dict?.home?.hero?.description ?? 'Green Office 2026 static preview with repository-backed dashboards, categories, and evidence placeholders.';
+const footerTitle = dict?.home?.footer?.title ?? 'Green Office 2026';
+const footerDesc = dict?.home?.footer?.description ?? 'Static preview. Content and evidence are repository-backed unless marked as placeholder.';
+const footerCopy = dict?.home?.footer?.copyright ?? 'Green Office Platform';
+const siteTagline = dict?.site?.tagline ?? 'Maejo University';
+
+// Title: either explicit title prop or generated from dict
+const pageTitle = title ?? `${dict?.site?.name ?? 'Green Office 2026'} - ${dict?.site?.title_suffix ?? 'Green Office Platform'}`;
+
+// Navigation labels
+const navLabels: HomeNavStrings = dict?.home?.nav ?? {
+  home: 'Home', dashboard: 'Dashboard', categories: 'Categories',
+  evidence: 'Evidence', documents: 'Documents', search: 'Search',
+} as HomeNavStrings;
 ---
+
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Green Office 2026 static preview with repository-backed dashboards, categories, and evidence placeholders." />
+    <meta name="description" content={desc} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <title>{title} - Green Office Platform</title>
+    <title>{pageTitle}</title>
   </head>
-  <body class="bg-gray-50 text-gray-900 antialiased">
+  <body class="bg-gray-50 text-gray-90î€€ antialiased">
     <a
       href="#main-content"
       class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-stitch focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
     >
-      Skip to main content
+      {skipLabel}
     </a>
     <header>
-      <Navigation />
+      <Navigation locale={lang} t={navLabels} />
     </header>
 
     <main id="main-content">
@@ -32,10 +60,10 @@ const { title } = Astro.props;
     <footer class="mt-8 border-t border-primary/10 bg-inverse-surface py-8 text-white">
       <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 text-sm text-outline-variant sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p class="font-semibold text-white">Green Office 2026</p>
-          <p>Static preview. Content and evidence are repository-backed unless marked as placeholder.</p>
+          <p class="font-semibold text-white">{footerTitle}</p>
+          <p>{footerDesc}</p>
         </div>
-        <p class="text-xs">&copy; {new Date().getFullYear()} Green Office Platform</p>
+        <p class="text-xs">&copy; {new Date().getFullYear()} {footerCopy}</p>
       </div>
     </footer>
     <PreviewBadge />

@@ -1,0 +1,127 @@
+{
+  "site": {
+    "name": "Green Office 2026",
+    "university": "มหาวิทยาลัยแม่โจ้",
+    "tagline": "Maejo University",
+    "title_suffix": "Green Office Platform",
+    "skip_to_content": "ข้ามไปยังเนื้อหาหลัก",
+    "language": "ภาษา"
+  },
+  "home": {
+    "hero": {
+      "badge": "Precision Environmentalism",
+      "title_line1": "Green Office 2026:",
+      "title_line2": "Repository Preview Platform",
+      "description": "หน้าตัวอย่างสำหรับ Green Office 2026 repository สำรวจโครงสร้างแดชบอร์ด กรอบหมวดหมู่ และตัวอย่างหลักฐานที่มีอยู่ใน static site นี้",
+      "cta_dashboard": "สำรวจแดชบอร์ด",
+      "cta_categories": "สำรวจ Green Office",
+      "executive_preview": "Executive Preview",
+      "preview_only": "ตัวอย่างเท่านั้น — ไม่ใช่ข้อมูลจริงจากระบบ",
+      "metric_energy": "พลังงาน",
+      "metric_water": "น้ำ",
+      "metric_fuel": "เชื้อเพลิง",
+      "metric_paper": "กระดาษ",
+      "metric_waste": "ขยะ",
+      "metric_ghg": "GHG"
+    },
+    "mission": {
+      "heading": "Green Office 2026 Content Framework",
+      "description1": "หน้า Landing Page นี้แนะนำโครงสร้าง Green Office ปัจจุบันใน repository: แดชบอร์ดทรัพยากร หมวดหมู่การประเมิน ตัวอย่างเอกสาร และการเข้าถึงคลังหลักฐาน",
+      "description2": "เนื้อหาเชิงสถาบัน ภาพถ่ายมหาวิทยาลัย และผลลัพธ์กิจกรรม ควรเพิ่มหลังจากเนื้อหาที่ได้รับอนุมัติพร้อมใช้งานใน repository แล้วเท่านั้น",
+      "cta": "อ่านรายละเอียดเพิ่มเติม",
+      "placeholder_label": "รอเนื้อหาจากหน่วยงาน",
+      "placeholder_instruction": "แทนที่ตัวอย่างนี้เมื่อได้รับอนุมัติภาพถ่ายมหาวิทยาลัยหรือโครงการ และ commit เข้า public assets"
+    },
+    "executive": {
+      "heading": "Unified Command Center",
+      "description": "ภาพรวมแดชบอร์ด ณ เวลา build จากข้อมูลทรัพยากร 6 ด้าน จัดเตรียมจาก static JSON ใน repository",
+      "label": "Dashboard Preview",
+      "overview": "ภาพรวมทรัพยากร",
+      "snapshot": "Static Snapshot",
+      "cta": "เปิดแดชบอร์ด",
+      "data_pending": "รอข้อมูล",
+      "months_format": "{year} · {months}/12 เดือน"
+    },
+    "assessment": {
+      "heading": "Assessment Matrix Framework",
+      "description": "7 มิติ Green Office ที่ตั้งค่าจากข้อมูลหมวดหมู่ใน repository นำเสนอเป็นตัวอย่างการประเมินแบบ static",
+      "hub_label": "Green Office 2569+",
+      "hub_title": "Connected Assessment System",
+      "cta": "ดูกรอบทั้งหมด"
+    },
+    "evidence": {
+      "badge": "ดัชนีหลักฐานใน repository",
+      "heading": "Evidence Library Preview",
+      "description": "ตัวอย่างรายการหลักฐานจากดัชนี repository ในเครื่อง รายการปัจจุบันเป็น placeholder จนกว่าจะมีการ commit เอกสารต้นฉบับที่ได้รับอนุมัติ",
+      "total_records": "รายการทั้งหมด",
+      "available": "พร้อมใช้งาน",
+      "capability_1": "รายการหลักฐานเชื่อมโยงกับหมวดหมู่ Green Office ที่กำหนดค่าไว้",
+      "capability_2": "แสดงสถานะ placeholder ก่อนรวมไฟล์ต้นฉบับ",
+      "capability_3": "เตรียมเส้นทางในเครื่องสำหรับการอัปโหลดเอกสารในอนาคต",
+      "cta_documents": "เปิดศูนย์เอกสาร",
+      "cta_evidence": "เรียกดูคลังหลักฐาน"
+    },
+    "activities": {
+      "heading": "เส้นทางสิ่งแวดล้อม",
+      "description": "พื้นที่ตัวอย่างสำหรับกิจกรรม โครงการรณรงค์ การสร้างความตระหนัก และการฝึกอบรม",
+      "status": "รอเนื้อหาที่ได้รับอนุมัติ",
+      "placeholder_image": "รอรูปภาพ",
+      "placeholder_category": "Content slot",
+      "activity_1_title": "บันทึกกิจกรรมยังไม่พร้อมใช้งาน",
+      "activity_1_excerpt": "พื้นที่นี้สงวนไว้สำหรับหลักฐานกิจกรรมที่ได้รับอนุมัติ เมื่อมีการเพิ่มข้อมูลจริงลงใน repository",
+      "activity_2_title": "เนื้อหาโครงการรอไฟล์ต้นฉบับ",
+      "activity_2_excerpt": "เพิ่มสรุปโครงการ วันที่ และรูปภาพที่ผ่านการตรวจสอบ ก่อนย้ายการ์ดนี้เป็นเนื้อหาจริง",
+      "activity_3_title": "ข้อมูลการฝึกอบรมต้องเชื่อมโยงหลักฐาน",
+      "activity_3_excerpt": "placeholder นี้หลีกเลี่ยงการกำหนดวันที่ จำนวนผู้เข้าร่วม หรือผลลัพธ์ จนกว่าจะมีเอกสารที่ได้รับอนุมัติในเครื่อง"
+    },
+    "improvement": {
+      "label": "Lifecycle Narrative",
+      "heading": "Improvement Journey",
+      "description": "ภาพรวมการนำทางตามลำดับขั้นของหมวดหมู่ที่กำหนดค่าไว้ แทนที่ด้วยเนื้อหาโครงการจริงเมื่อมีเนื้อหาที่ได้รับอนุมัติ",
+      "stage_1_title": "นโยบาย",
+      "stage_1_subtitle": "การวางแผนและธรรมาภิบาล",
+      "stage_1_description": "ความมุ่งมั่นเชิงกลยุทธ์และโครงสร้างองค์กรเพื่อความเป็นผู้นำด้านความยั่งยืน",
+      "stage_2_title": "ความตระหนัก",
+      "stage_2_subtitle": "การสื่อสารและการฝึกอบรม",
+      "stage_2_description": "การเปลี่ยนแปลงพฤติกรรมผ่านโครงการรณรงค์ การประชุมเชิงปฏิบัติการ และการมีส่วนร่วมของสถาบัน",
+      "stage_3_title": "การจัดการทรัพยากร",
+      "stage_3_subtitle": "พลังงาน · น้ำ · วัสดุ",
+      "stage_3_description": "การอนุรักษ์ในมิติการใช้ไฟฟ้า น้ำ เชื้อเพลิง และกระดาษ",
+      "stage_4_title": "ของเสีย",
+      "stage_4_subtitle": "การลดและการรีไซเคิล",
+      "stage_4_description": "การคัดแยก การลดปริมาณ และการกำจัดอย่างรับผิดชอบทั่วทั้งการดำเนินงานของมหาวิทยาลัย",
+      "stage_5_title": "ความปลอดภัย",
+      "stage_5_subtitle": "สิ่งแวดล้อมและสุขภาพผู้ใช้อาคาร",
+      "stage_5_description": "มาตรฐานคุณภาพอากาศภายในอาคาร การยศาสตร์ และความพร้อมรับเหตุฉุกเฉิน",
+      "stage_6_title": "การจัดซื้อสีเขียว",
+      "stage_6_subtitle": "การจัดซื้อที่ยั่งยืน",
+      "stage_6_description": "การประเมินผู้ขายและนโยบายการจัดซื้อที่เป็นมิตรต่อสิ่งแวดล้อม",
+      "stage_7_title": "การปรับปรุงต่อเนื่อง",
+      "stage_7_subtitle": "การตรวจสอบและการปรับปรุง",
+      "stage_7_description": "การทบทวนของฝ่ายบริหาร การปรับปรุงเป้าหมาย และวงจรความพร้อมรับการตรวจประเมิน"
+    },
+    "cta": {
+      "label": "พร้อมสำรวจ",
+      "heading": "ศูนย์บัญชาการ Green Office รุ่นต่อไปของคุณ",
+      "description": "ยินดีต้อนรับสู่ Green Office dashboard รุ่นต่อไป — เริ่มต้นด้วยการติดตามผลระดับบริหาร การทบทวนหมวดหมู่ หรือการค้นพบหลักฐาน",
+      "btn_dashboard": "สำรวจแดชบอร์ด",
+      "btn_categories": "สำรวจ Green Office",
+      "btn_evidence": "คลังหลักฐาน",
+      "btn_documents": "ศูนย์เอกสาร",
+      "btn_search": "ค้นหา"
+    },
+    "nav": {
+      "home": "หน้าแรก",
+      "dashboard": "แดชบอร์ด",
+      "categories": "หมวดหมู่",
+      "evidence": "หลักฐาน",
+      "documents": "เอกสาร",
+      "search": "ค้นหา"
+    },
+    "footer": {
+      "title": "Green Office 2026",
+      "description": "ตัวอย่างแบบ static เนื้อหาและหลักฐานอ้างอิงจาก repository ยกเว้นที่มีเครื่องหมาย placeholder",
+      "copyright": "Green Office Platform"
+    }
+  }
+}

@@ -1,38 +1,62 @@
 ---
 import { withBase } from '../../utils/with-base';
+import LanguageSwitcher from '../ui/LanguageSwitcher.astro';
+import type { HomeNavStrings } from '../../i18n/dictionary';
+
+interface Props {
+  locale?: 'th' | 'en';
+  t?: HomeNavStrings;
+}
+
+const locale = Astro.props.locale ?? 'en';
+const t = Astro.props.t;
+const navLabels = t ?? {
+  home: 'Home',
+  dashboard: 'Dashboard',
+  categories: 'Categories',
+  evidence: 'Evidence',
+  documents: 'Documents',
+  search: 'Search',
+} as HomeNavStrings;
+
+const siteName = 'Green Office 2026';
 
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/dashboard', label: 'Dashboard' },
-  { href: '/categories', label: 'Categories' },
-  { href: '/evidence', label: 'Evidence' },
-  { href: '/documents', label: 'Documents' },
-  { href: '/search', label: 'Search' },
+  { href: '/', label: navLabels.home },
+  { href: '/dashboard', label: navLabels.dashboard },
+  { href: '/categories', label: navLabels.categories },
+  { href: '/evidence', label: navLabels.evidence },
+  { href: '/documents', label: navLabels.documents },
+  { href: '/search', label: navLabels.search },
 ];
 ---
+
 <nav class="border-b border-primary/10 bg-surface/95 px-4 py-3 backdrop-blur" aria-label="Primary navigation">
   <div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-    <a href={withBase('/')} class="group inline-flex items-center gap-3 text-left">
+    <a href={withBase(locale === 'en' ? '/en' : '/')} class="group inline-flex items-center gap-3 text-left">
       <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white shadow-sm">
         GO
       </span>
       <span>
-        <span class="block text-sm font-semibold leading-tight text-primary">Green Office 2026</span>
+        <span class="block text-sm font-semibold leading-tight text-primary">{siteName}</span>
         <span class="block text-[11px] uppercase tracking-wide text-outline">Maejo University</span>
       </span>
     </a>
 
-    <ul class="flex gap-1 overflow-x-auto pb-1 text-sm sm:flex-wrap sm:justify-end sm:overflow-visible sm:pb-0">
-      {navItems.map((item) => (
-        <li>
-          <a
-            href={withBase(item.href)}
-            class="inline-flex min-h-9 items-center whitespace-nowrap rounded-full px-3 py-2 font-medium text-on-surface-variant transition hover:bg-primary-container hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div class="flex items-center gap-3">
+      <ul class="flex gap-1 overflow-x-auto pb-1 text-sm sm:flex-wrap sm:justify-end sm:overflow-visible sm:pb-0">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={withBase(locale === 'en' ? `/en${item.href === '/' ? '' : item.href}` : item.href)}
+              class="inline-flex min-h-9 items-center whitespace-nowrap rounded-full px-3 py-2 font-medium text-on-surface-variant transition hover:bg-primary-container hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-40"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <LanguageSwitcher />
+    </div>
   </div>
 </nav>
