@@ -13,6 +13,8 @@
 | Branch | `master` |
 | Round 1 baseline commit | `75a8b14` (clean) |
 | Round 2 starting HEAD | `75a8b14` |
+| Round 2 implementation commit | `eb62587` |
+| Round 2 correction commit | `b63e2d6` |
 
 ---
 
@@ -80,8 +82,9 @@ Generated: **65 static routes** (all canonical indicators)
 - Empty `relatedDashboards` shows "ไม่มีการเชื่อมโยงโดยตรงกับ Dashboard"
 
 ### Evidence Behavior
-- Cross-references `evidence-index.json` by `categoryCode`
-- All 7 categories currently have evidence items → "มีหลักฐานที่เชื่อมโยง 3 รายการ"
+- Cross-references `evidence-index.json` by `categoryCode` only (not indicator-level)
+- Label explicitly says "หลักฐานที่เกี่ยวข้องในหมวดนี้ X รายการ" — category-level evidence, not indicator-level traceability
+- All 7 categories currently have evidence items → "หลักฐานที่เกี่ยวข้องในหมวดนี้ 3 รายการ"
 - Link points to `/evidence/`
 - No fabricated evidence
 
@@ -92,9 +95,16 @@ Generated: **65 static routes** (all canonical indicators)
 ## Head Integration
 
 ### Defects Fixed by Head
-1. **Breadcrumb link bug**: Indicator template used `category.id` (`"1"`..`"7"`) instead of `category.code` (`"cat1"`..`"cat7"`) for category links. Fixed in `[code].astro` (2 occurrences).
-2. **Missing locale**: Indicator template didn't pass `locale` to `BaseLayout`, causing `lang="en"` and English navigation labels on Thai indicator pages. Fixed by adding `getLocale()` and `locale` prop.
-3. **Contract per-category counts**: Round 2 contracts had approximate per-category indicator counts. Actual canonical data counts are documented in the table above. All 65 indicators verified.
+
+**Round 2 implementation:**
+1. **Breadcrumb link bug**: Indicator template used `category.id` (`"1"`..`"7"`) instead of `category.code` (`"cat1"`..`"cat7"`). Fixed in `[code].astro`.
+2. **Missing locale**: Indicator template didn't pass `locale` to `BaseLayout`. Fixed by adding `getLocale()` and `locale` prop.
+3. **Contract per-category counts**: Round 2 contracts had approximate counts. Corrected in follow-up.
+
+**Round 2 final correction (`b63e2d6`):**
+4. **Contract counts corrected**: Contracts doc now shows exact canonical counts (cat1=18, cat2=6, cat3=15, cat4=5, cat5=13, cat6=6, cat7=2).
+5. **Route example corrected**: `/indicators/7.2.1/` replaced with canonical `/indicators/7.1/`.
+6. **Evidence semantics fixed**: Changed from "มีหลักฐานที่เชื่อมโยง" (implies indicator-level) to "หลักฐานที่เกี่ยวข้องในหมวดนี้" (explicitly category-level).
 
 ### Cross-Links Verified
 - Category → indicator links: correct (`/indicators/{code}/`)
@@ -130,40 +140,48 @@ None — Worker A and Worker B operated in non-overlapping file zones.
 
 ## Git
 
-| Item | Status |
-|------|--------|
-| Commits | Pending (Round 2 changes uncommitted) |
-| Working tree | Modified: 2, New: 3 directories |
+| Item | Value |
+|------|-------|
+| Round 2 implementation | `eb62587` |
+| Round 2 correction | `b63e2d6` |
+| Final HEAD | `b63e2d6` |
+| Working tree | Clean — nothing to commit |
 | Branch | `master` |
 
 ---
 
 ## Known Limitations
 
-1. **Per-category indicator counts in contract**: The Round 2 contracts document used approximate counts (e.g., cat1=22 instead of 18). Actual counts from canonical data are now documented above. The taxonomy is correct — 65 total, 7/24 structure preserved.
+1. ~~Per-category indicator counts in contract: The Round 2 contracts document used approximate counts (e.g., cat1=22 instead of 18).~~ **CORRECTED**: Contracts doc now reflects exact canonical counts (18/6/15/5/13/6/2).
 2. **English indicator routes**: Not yet implemented. English expansion is optional per Round 2 contract. Components accept locale-ready data for future `/en/indicators/` expansion.
 3. **No hreflang tags**: Deferred until bilingual route coverage expands beyond home and categories.
-4. **Evidence cross-reference by category only**: Evidence index uses `categoryId`, not indicator codes. Per-indicator evidence matching deferred.
+4. **Evidence cross-reference by category only**: Evidence index uses `categoryId`, not indicator codes. UI explicitly labels as "หลักฐานที่เกี่ยวข้องในหมวดนี้" to avoid false indicator-level traceability. Per-indicator evidence matching deferred.
 5. **Issue pages**: Issues have no standalone pages — they appear as groups within category detail pages. This is by design per Round 2 scope.
 
 ---
 
 ## Round 2 Verdict
 
-**PASS**
+**ROUND 2 CLOSED**
 
 All exit criteria met:
-- [x] Round 1 baseline committed and clean
-- [x] 7 canonical categories render correctly
-- [x] 24 issues reconcile exactly
-- [x] 65 canonical indicator pages exist
-- [x] Category → indicator navigation works
-- [x] Indicator → parent hierarchy works
-- [x] Category 7 semantics remain correct
-- [x] Dashboard references use existing routes only
-- [x] No evidence fabricated
-- [x] Taxonomy validator passes
-- [x] Astro check passes
-- [x] Production build passes
-- [x] Existing routes remain intact
-- [x] GitHub Pages compatibility preserved
+
+| # | Criterion | Status |
+|---|-----------|--------|
+| 1 | Round 1 baseline committed and clean | ✓ |
+| 2 | 7 canonical categories render correctly | ✓ |
+| 3 | 24 issues reconcile exactly | ✓ |
+| 4 | 65 canonical indicator pages exist | ✓ |
+| 5 | Category → indicator navigation works | ✓ |
+| 6 | Indicator → parent hierarchy works | ✓ |
+| 7 | Category 7 semantics remain correct | ✓ |
+| 8 | Dashboard references use existing routes only | ✓ |
+| 9 | No evidence fabricated | ✓ |
+| 10 | Taxonomy validator passes | ✓ |
+| 11 | Astro check passes | ✓ |
+| 12 | Production build passes (92 pages) | ✓ |
+| 13 | Existing routes remain intact | ✓ |
+| 14 | GitHub Pages compatibility preserved | ✓ |
+| 15 | Documentation matches canonical data | ✓ |
+| 16 | Evidence semantics are accurate (category-level) | ✓ |
+| 17 | All Round 2 changes committed | ✓ |
