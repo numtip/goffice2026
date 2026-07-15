@@ -85,7 +85,7 @@ function label(th: string, en: string): string {
 const pageTitle = raw.title || raw.id;
 ---
 
-<BaseLayout title={`${pageTitle} — ${label('คลังหลักฐาน', 'Evidence Library')}`} locale={locale}>
+<BaseLayout title={`${pageTitle} — ${label('คลังหลักฐาน', 'Evidence Library')}`} description={raw.description || ''} locale={locale}>
   <div class="max-w-4xl mx-auto px-4 py-8">
     <!-- Breadcrumb -->
     <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
@@ -101,6 +101,16 @@ const pageTitle = raw.title || raw.id;
             {label('หลักฐาน', 'Evidence')}
           </a>
         </li>
+        {categories.length > 0 && (
+          <>
+            <li class="text-gray-300 select-none" aria-hidden="true">/</li>
+            <li>
+              <a href={withBase(`/categories/${categories[0]!.code}/`)} class="text-green-600 hover:text-green-800 hover:underline transition-colors">
+                {label(categories[0]!.title.th, categories[0]!.title.en)}
+              </a>
+            </li>
+          </>
+        )}
         <li class="text-gray-300 select-none" aria-hidden="true">/</li>
         <li class="text-gray-700 font-medium truncate max-w-[200px]">{pageTitle}</li>
       </ol>
@@ -301,8 +311,20 @@ const pageTitle = raw.title || raw.id;
       </div>
     </div>
 
-    <!-- Back link -->
-    <div class="mt-6">
+    <!-- Back links -->
+    <div class="mt-6 flex flex-wrap items-center gap-4">
+      {categories.length > 0 && (
+        <a
+          href={withBase(`/categories/${categories[0]!.code}/`)}
+          class="inline-flex items-center gap-1.5 text-sm font-medium text-amber-600 hover:text-amber-800 transition-colors"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          {label('กลับไปยังหมวด', 'Back to Category')}
+          <span class="text-amber-500 font-normal">({categories.length > 0 ? label(categories[0]!.title.th, categories[0]!.title.en) : ''})</span>
+        </a>
+      )}
       <a
         href={withBase('/evidence/')}
         class="inline-flex items-center gap-1.5 text-sm font-medium text-green-600 hover:text-green-800 transition-colors"

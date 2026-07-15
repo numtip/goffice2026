@@ -70,7 +70,7 @@ function safeLabel(th: string, en: string): string {
 }
 ---
 
-<BaseLayout title={`ตัวชี้วัด ${indicator.code}: ${safeLabel(indicator.title.th, indicator.title.en)}`} locale={locale}>
+<BaseLayout title={`${locale === 'th' ? 'ตัวชี้วัด' : 'Indicator'} ${indicator.code}: ${safeLabel(indicator.title.th, indicator.title.en)}`} locale={locale}>
   <div class="max-w-4xl mx-auto px-4 py-8">
     <!-- Breadcrumb -->
     <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
