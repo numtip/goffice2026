@@ -89,7 +89,8 @@ All 6 dashboard metrics now source from real operational XLSX files:
 
 - **URL:** https://numtip.github.io/goffice2026/
 - **Deployment:** Automatic via `.github/workflows/deploy-pages.yml` (push to master)
-- **Status:** [set during deployment]
+- **Status:** LIVE (verified via runtime checks)
+- **Routes verified:** homepage, /dashboard/ (water, energy, ghg, +3), /categories/, /evidence/, /search/, /en/ — all HTTP 200 with real baseline data
 
 ---
 
