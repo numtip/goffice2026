@@ -6,17 +6,20 @@ import type { LocaleStrings, HomeNavStrings } from '../i18n/dictionary';
 interface Props {
   // Legacy: used by all non-landing pages
   title?: string;
+  // Custom meta description (optional — falls back to dict or default)
+  description?: string;
   // New: used by LandingPage.astro for bilingual support
   locale?: 'th' | 'en';
   dict?: LocaleStrings;
 }
 
-const { title, locale, dict } = Astro.props;
+const { title, description: customDesc, locale, dict } = Astro.props;
 
 // Determine final values from dict (bilingual) or hardcoded defaults (legacy)
 const lang = locale ?? 'en';
 const skipLabel = dict?.site?.skip_to_content ?? 'Skip to main content';
-const desc = dict?.home?.hero?.description ?? 'Green Office 2026 static preview with repository-backed dashboards, categories, and evidence placeholders.';
+const defaultDesc = dict?.home?.hero?.description ?? 'Green Office 2026 static preview with repository-backed dashboards, categories, and evidence placeholders.';
+const desc = customDesc ?? defaultDesc;
 const footerTitle = dict?.home?.footer?.title ?? 'Green Office 2026';
 const footerDesc = dict?.home?.footer?.description ?? 'Static preview. Content and evidence are repository-backed unless marked as placeholder.';
 const footerCopy = dict?.home?.footer?.copyright ?? 'Green Office Platform';
@@ -30,6 +33,12 @@ const navLabels: HomeNavStrings = dict?.home?.nav ?? {
   home: 'Home', dashboard: 'Dashboard', categories: 'Categories',
   evidence: 'Evidence', documents: 'Documents', search: 'Search',
 } as HomeNavStrings;
+
+// hreflang alternate links
+const canonical = Astro.url.pathname.replace(/^\/en(?:\/|$)/, '/');
+const siteUrl = Astro.site?.href.replace(/\/+$/, '') || '';
+const thUrl = siteUrl ? `${siteUrl}${canonical}` : '';
+const enUrl = siteUrl ? `${siteUrl}/en${canonical}` : '';
 ---
 
 <!DOCTYPE html>
@@ -41,8 +50,13 @@ const navLabels: HomeNavStrings = dict?.home?.nav ?? {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>{pageTitle}</title>
+
+    <!-- hreflang alternate links for bilingual content -->
+    {thUrl && <link rel="alternate" hreflang="th" href={thUrl} />}
+    {enUrl && thUrl !== enUrl && <link rel="alternate" hreflang="en" href={enUrl} />}
+    {thUrl && <link rel="alternate" hreflang="x-default" href={thUrl} />}
   </head>
-  <body class="bg-gray-50 text-gray-90î€€ antialiased">
+  <body class="bg-gray-50 text-gray-900 antialiased">
     <a
       href="#main-content"
       class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-stitch focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"

@@ -5,7 +5,7 @@ import { getLocale } from '../../i18n/utils';
 const locale = getLocale(Astro.url);
 ---
 
-<nav class="inline-flex items-center gap-1 rounded-full border border-outline-variant/30 bg-surface-container-low p-0.5 text-label-sm" aria-label="Language selector">
+<div class="inline-flex items-center gap-1 rounded-full border border-outline-variant/30 bg-surface-container-low p-0.5 text-label-sm" role="group" aria-label="Language selector">
   <a
     href={withBase(locale === 'th' ? '#' : (Astro.url.pathname.replace(/^\/en/, '') || '/'))}
     class:list={[
@@ -32,4 +32,4 @@ const locale = getLocale(Astro.url);
   >
     EN
   </a>
-</nav>
+</div>

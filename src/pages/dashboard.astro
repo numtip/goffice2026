@@ -11,6 +11,7 @@ import fuelGen from '../data/generated/fuel.json';
 import paperGen from '../data/generated/paper.json';
 import wasteGen from '../data/generated/waste.json';
 import ghgGen from '../data/generated/ghg.json';
+import { getLocale } from '../i18n/utils';
 import { withBase } from '../utils/with-base';
 
 const genMap: Record<string, MultiYearMetric> = {
@@ -45,10 +46,12 @@ function statusBadge(status: string): string {
   return 'bg-gray-100 text-gray-500';
 }
 
+const locale = getLocale(Astro.url);
+
 const monthAbbr = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 ---
 
-<BaseLayout title="Dashboard">
+<BaseLayout title={locale === 'th' ? 'แดชบอร์ด | Dashboard' : 'Dashboard | แดชบอร์ด'} description="Multi-year Green Office resource monitoring dashboard with certification scores, YoY comparisons, and data completeness tracking.">
   <div class="p-4 max-w-5xl mx-auto">
     <!-- Header -->
     <div class="mb-6">

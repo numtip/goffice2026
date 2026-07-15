@@ -1,12 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
-import categoriesData from '../data/categories.json';
+import categoriesData from '../data/criteria/categories.json';
 import evidenceIndex from '../data/evidence-index.json';
+import { getLocale } from '../i18n/utils';
 import { withBase } from '../utils/with-base';
 
-function getDocumentCounts(categoryId: string) {
-  const items = evidenceIndex.items.filter((item) => item.categoryId === categoryId);
+const locale = getLocale(Astro.url);
+
+function getDocumentCounts(categoryCode: string) {
+  const items = evidenceIndex.items.filter((item) => {
+    const codes = Array.isArray(item.categoryCodes) ? item.categoryCodes : item.categoryId ? [item.categoryId] : [];
+    return codes.includes(categoryCode);
+  });
   return {
     total: items.length,
     available: items.filter((i) => i.status === 'available').length,
@@ -14,7 +20,7 @@ function getDocumentCounts(categoryId: string) {
 }
 ---
 
-<BaseLayout title="Document Center">
+<BaseLayout title={locale === 'th' ? 'ศูนย์เอกสาร | Document Center' : 'Document Center | ศูนย์เอกสาร'} description="Browse and download Green Office certification evidence documents organized by assessment category.">
   <div class="p-4 max-w-5xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -27,27 +33,26 @@ function getDocumentCounts(categoryId: string) {
     <!-- Category grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       {categoriesData.categories.map((category) => {
-        const { total, available } = getDocumentCounts(category.id);
+        const { total, available } = getDocumentCounts(category.code);
         const allAvailable = total > 0 && total === available;
         const badgeBg = allAvailable ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-600';
+        const catTitle = locale === 'th' ? (category.title.th || category.title.en) : category.title.en;
+        const catDesc = locale === 'th' ? (category.summary.th || category.summary.en) : category.summary.en;
         return (
           <a
-            href={withBase(`/documents/${category.id}`)}
+            href={withBase(`/documents/${category.code}`)}
             class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:shadow-md hover:border-green-200 transition-all group"
           >
             <div class="flex items-start justify-between">
               <div class="flex-1">
                 <h2 class="font-bold text-green-700 group-hover:text-green-800 text-lg">
-                  {category.title}
+                  {catTitle}
                 </h2>
-                <p class="text-sm text-gray-600 mt-1">{category.description}</p>
+                <p class="text-sm text-gray-600 mt-1">{catDesc}</p>
               </div>
               <span class={"inline-flex items-center px-3 py-1 rounded-full text-sm font-medium shrink-0 ml-3 " + badgeBg}>
                 {available}/{total} file{total !== 1 ? 's' : ''}
               </span>
-            </div>
-            <div class="mt-3 text-sm text-gray-400">
-              Score: {category.score}%
             </div>
           </a>
         );
