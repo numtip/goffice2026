@@ -15,6 +15,8 @@ Every mapped indicator code has been verified against the canonical taxonomy for
 
 The mapping supports a **dashboard → indicator → evidence** traceability chain, but it does not guarantee that evidence currently exists at the indicator level. All evidence is currently at the **category** traceability level with `verification.status: "unresolved"`.
 
+**Terminology note:** Where baseline data values are quoted in this document (e.g., "SYSTEM-VALIDATED BASELINE: 8,337.5 m³/ปี"), the status refers to automated system validation only — source workbook identified, extraction path recorded, generated JSON validated, and SHA-256 frozen. It does NOT imply human data-owner sign-off or certification auditor approval. See `GOFFICE2026_BASELINE_FREEZE.md` for the full verification terminology.
+
 ---
 
 ## 2. Mapping Summary
@@ -36,14 +38,14 @@ The mapping supports a **dashboard → indicator → evidence** traceability cha
 
 - **Indicator 3.1.2**: "มีการจัดทำข้อมูลการใช้น้ำต่อหน่วยเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล" (cat3, issue: 3.1 การใช้น้ำ)
 - Requires compilation of water consumption data per unit compared with targets and analysis of results
-- The `water` dashboard tracks monthly water usage extracted from `docs/1.1-Water.xlsx` (VERIFIED_BASELINE: 8,337.5 m³/ปี)
+- The `water` dashboard tracks monthly water usage extracted from `docs/1.1-Water.xlsx` (SYSTEM-VALIDATED BASELINE: 8,337.5 m³/ปี)
 - `relatedDashboards: ["water"]` confirms canonical linkage
 
 ### 3.2 Energy → 3.2.2
 
 - **Indicator 3.2.2**: "มีการจัดทำข้อมูลการใช้ไฟฟ้าต่อหน่วยเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล" (cat3, issue: 3.2 การใช้พลังงาน)
 - Requires compilation of electricity consumption data per unit compared with targets and analysis of results
-- The `energy` dashboard tracks monthly electricity usage from `docs/1.2-elect.xlsx` (VERIFIED_BASELINE: 403,036.8 kWh/ปี)
+- The `energy` dashboard tracks monthly electricity usage from `docs/1.2-elect.xlsx` (SYSTEM-VALIDATED BASELINE: 403,036.8 kWh/ปี)
 - `relatedDashboards: ["energy"]` confirms canonical linkage
 
 ### 3.3 Fuel → 3.2.5 + 3.2.4
@@ -54,14 +56,14 @@ The mapping supports a **dashboard → indicator → evidence** traceability cha
 - **Indicator 3.2.4**: "มาตรการหรือแนวทางการใช้น้ำมันเชื้อเพลิงในการเดินทางที่เหมาะสมกับสำนักงาน" (cat3, issue: 3.2 การใช้พลังงาน)
   - Evaluates fuel conservation measures for office-related travel
   - `relatedDashboards: ["fuel"]` confirms canonical linkage
-- The `fuel` dashboard tracks fleet fuel usage from `docs/1.3_Gassolene.xlsx` (VERIFIED_BASELINE: 339.83 L/ปี)
+- The `fuel` dashboard tracks fleet fuel usage from `docs/1.3_Gassolene.xlsx` (SYSTEM-VALIDATED BASELINE: 339.83 L/ปี)
 - Note: Fuel baseline has 6 months with zero values (Jul–Dec). Human review is required.
 
 ### 3.4 Paper → 3.3.2
 
 - **Indicator 3.3.2**: "มีการจัดทำข้อมูลการใช้กระดาษต่อหน่วยเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล" (cat3, issue: 3.3 การใช้ทรัพยากรอื่นๆ)
 - Requires compilation of paper consumption data per unit compared with targets and analysis
-- The `paper` dashboard tracks monthly usage from `docs/1.4_Paper.xlsx` (VERIFIED_BASELINE: 2,197.8 kg/ปี)
+- The `paper` dashboard tracks monthly usage from `docs/1.4_Paper.xlsx` (SYSTEM-VALIDATED BASELINE: 2,197.8 kg/ปี)
 - `relatedDashboards: ["paper"]` confirms canonical linkage
 
 ### 3.5 Waste → 4.1.2 + 4.1.3
@@ -72,7 +74,7 @@ The mapping supports a **dashboard → indicator → evidence** traceability cha
 - **Indicator 4.1.3**: "การนำขยะกลับมาใช้ประโยชน์ หรือนำกลับมาใช้ใหม่ ส่งผลให้ขยะที่จะส่งไปกำจัดมีปริมาณน้อยลง" (cat4, issue: 4.1 การจัดการขยะ)
   - Measures waste reuse/recycling resulting in reduced waste sent for disposal
   - `relatedDashboards: ["waste"]` confirms canonical linkage
-- The `waste` dashboard tracks recycling rates from `docs/1.5_Waste.xlsx` (VERIFIED_BASELINE: ~21.57% avg recycling rate)
+- The `waste` dashboard tracks recycling rates from `docs/1.5_Waste.xlsx` (SYSTEM-VALIDATED BASELINE: ~21.57% avg recycling rate)
 
 ### 3.6 GHG → 1.5.1 + 1.5.2 + 1.6.1
 
@@ -85,7 +87,7 @@ The mapping supports a **dashboard → indicator → evidence** traceability cha
 - **Indicator 1.6.1**: "จัดทำแผนการดำเนินงานขับเคลื่อนสู่การลดก๊าซเรือนกระจกของหน่วยงาน" (cat1, issue: 1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจก)
   - Requires a GHG reduction action plan
   - `relatedDashboards: ["ghg"]` confirms canonical linkage
-- The `ghg` dashboard tracks emissions from `docs/1.6_GreenhouseGas.xlsx` (VERIFIED_BASELINE: 231.60 tCO₂e/ปี)
+- The `ghg` dashboard tracks emissions from `docs/1.6_GreenhouseGas.xlsx` (SYSTEM-VALIDATED BASELINE: 231.60 tCO₂e/ปี)
 
 ---
 
@@ -93,22 +95,26 @@ The mapping supports a **dashboard → indicator → evidence** traceability cha
 
 ```
 Resource Monitoring (Dashboard)
-  → Resource Data (src/data/generated/{metric}.json — VERIFIED_BASELINE)
+  → Resource Data (src/data/generated/{metric}.json — SYSTEM-VALIDATED BASELINE)
     → Certification Indicator (canonical code — relatedDashboards verified)
       → Evidence Files (src/data/evidence-index.json — category-level, unresolved)
 ```
 
-**Example (Energy):**
+**Existing related source/evidence candidates (Energy → 3.2.2):**
 
-1. **Dashboard:** `/dashboard/energy/` — interactive monitoring of electricity consumption
-2. **Baseline Data:** `src/data/generated/energy.json` — 403,036.8 kWh (2568, frozen)
-3. **Indicator:** `3.2.2` — "มีการจัดทำข้อมูลการใช้ไฟฟ้าต่อหน่วยเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล" (canonical, cat3)
-4. **Evidence:** Three evidence records exist in `evidence-index.json` for cat1:
+Three evidence records exist in `evidence-index.json`. They are **not** currently a valid exact evidence chain for Indicator 3.2.2, and they must not be presented as such. The issues are:
+
+- **Category mismatch:** Indicator 3.2.2 belongs to **cat3** (การใช้ทรัพยากรและพลังงาน), but the existing evidence records are linked to **cat1** (การกำหนดนโยบาย การวางแผนการดำเนินงานสำนักงานสีเขียว). This taxonomy misalignment means the records have never been evaluated for the correct category context.
+- **Traceability level:** All three records remain at `traceabilityLevel: "category"`, `verification.status: "unresolved"` — none are at exact indicator-level traceability.
+- **Human review required:** Proper evidence alignment to Indicator 3.2.2 requires human review to assess content relevance, confirm the correct category association in `categoryCodes`, and potentially raise traceability to the indicator level.
+
+The existing records are:
+
    - `ev-energy-metering-2025` — SYSTEM-VALIDATED source-backed (linked to `docs/1.2-elect.xlsx`)
    - `ev-energy-audit-2025` — placeholder (no real source file)
    - `ev-energy-led-project` — placeholder (no real source file)
-   - **All are at traceabilityLevel: "category", verification.status: "unresolved"**
-   - **None are at exact indicator-level traceability** — human review required before claiming indicator-level evidence
+
+**Summary:** These records are category-level evidence candidates in cat1. Before any can be claimed as Indicator 3.2.2 evidence, a human reviewer must: (1) confirm content relevance to 3.2.2's requirement, (2) update `categoryCodes` to include cat3 where appropriate, and (3) approve a traceability upgrade if warranted. Until then, they are **related candidates only**, not exact indicator evidence.
 
 ---
 
