@@ -29,12 +29,12 @@ src/data/criteria/indicators.json  → 65 indicators
 
 | Category | Code | Weight | Issues | Indicators |
 |----------|------|--------|--------|------------|
-| 1 | cat1 | 25 | 7 | 22 |
-| 2 | cat2 | 15 | 2 | 5 |
-| 3 | cat3 | 15 | 4 | 13 |
-| 4 | cat4 | 15 | 2 | 9 |
-| 5 | cat5 | 15 | 5 | 9 |
-| 6 | cat6 | 15 | 2 | 5 |
+| 1 | cat1 | 25 | 7 | 18 |
+| 2 | cat2 | 15 | 2 | 6 |
+| 3 | cat3 | 15 | 4 | 15 |
+| 4 | cat4 | 15 | 2 | 5 |
+| 5 | cat5 | 15 | 5 | 13 |
+| 6 | cat6 | 15 | 2 | 6 |
 | 7 | cat7 | null (separate) | 2 | 2 |
 
 ### Field Map (canonical data)
@@ -88,7 +88,7 @@ Route param: `code` field from canonical categories (NOT `id` which is `"1"`..`"
 /indicators/{indicator-code}/
 ```
 
-Examples: `/indicators/1.1.1/`, `/indicators/7.2.1/`
+Examples: `/indicators/1.1.1/`, `/indicators/7.1/`
 
 Route param: `code` field from canonical indicators (same as `id`).
 
