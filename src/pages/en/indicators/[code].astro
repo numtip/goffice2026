@@ -5,6 +5,8 @@ import indicatorsData from '../../../data/criteria/indicators.json';
 import issuesData from '../../../data/criteria/issues.json';
 import categoriesData from '../../../data/criteria/categories.json';
 import evidenceIndex from '../../../data/evidence-index.json';
+import { getEvidenceForIndicator } from '../../../utils/evidence-traceability';
+import LinkedEvidenceList from '../../../components/evidence/LinkedEvidenceList.astro';
 import { getLocalizedPath } from '../../../i18n/utils';
 
 const locale = 'en';
@@ -49,10 +51,7 @@ const dashboardLinks = (indicator.relatedDashboards || []).map((id: string) => (
   label: dashboardLabels[id] || id,
 }));
 
-// Exact indicator-level evidence
-const exactEvidence: any[] = evidenceIndex.items.filter(
-  (e: any) => Array.isArray(e.indicatorCodes) && e.indicatorCodes.indexOf(indicator.code) !== -1
-);
+const exactEvidence = getEvidenceForIndicator(indicator.code);
 const hasExactEvidence = exactEvidence.length > 0;
 
 // Category-level evidence (fallback for same category)
@@ -193,30 +192,21 @@ function localizedUrl(path: string): string {
       }
     </div>
 
-    <!-- Exact Indicator Evidence Section -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
-      <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-        Evidence Linked to This Indicator
-      </h2>
       {
         hasExactEvidence ? (
-          <ul class="space-y-2">
-            {exactEvidence.map((ev: { id: string; title: string }) => (
-              <li>
-                <a
-                  href={localizedUrl(`/evidence/${ev.id}/`)}
-                  class="inline-flex items-center gap-2 text-green-600 hover:text-green-800 hover:underline transition-colors text-sm"
-                >
-                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  <span>{ev.title}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <LinkedEvidenceList
+            items={exactEvidence}
+            locale={locale}
+            headingId="indicator-linked-evidence"
+          />
         ) : (
-          <p class="text-gray-400 italic">No evidence directly linked to this indicator yet.</p>
+          <>
+            <h2 id="indicator-linked-evidence" class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+              Evidence Linked to This Indicator
+            </h2>
+            <p class="text-gray-400 italic">No evidence directly linked to this indicator yet.</p>
+          </>
         )
       }
     </div>

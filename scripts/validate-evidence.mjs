@@ -23,7 +23,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 
 const VALID_TRACEABILITY = new Set(['indicator', 'issue', 'category', 'unmapped']);
-const VALID_VERIFICATION = new Set(['verified', 'reviewed', 'pending', 'unresolved']);
+const VALID_VERIFICATION = new Set(['verified', 'reviewed', 'pending', 'unresolved', 'rejected', 'deferred']);
+const LOCAL_PATH_PATTERNS = [/F:\\/i, /projectAi/i];
 
 function readJSON(relativePath) {
   const raw = readFileSync(resolve(ROOT, relativePath), 'utf-8');
@@ -156,6 +157,10 @@ function main() {
     if (!Array.isArray(rec.indicatorCodes)) {
       errors.push(`Rule 6 — ${label}: indicatorCodes is not an array`);
     } else {
+      const indicatorDups = findDuplicates(rec.indicatorCodes);
+      if (indicatorDups.length > 0) {
+        errors.push(`Rule 6b — ${label}: duplicate indicatorCodes ${indicatorDups.join(', ')}`);
+      }
       for (const code of rec.indicatorCodes) {
         if (!indicatorCodes.has(code)) {
           errors.push(`Rule 6 — ${label}: indicatorCode "${code}" not found in canonical indicators`);
@@ -213,6 +218,48 @@ function main() {
       }
     }
 
+    // Rule 12: verified records require provenance metadata
+    if (v?.status === 'verified') {
+      const prov = rec.provenance;
+      if (!prov || !prov.sourceLabel) {
+        errors.push(`Rule 12 — ${label}: verification.status is "verified" but provenance.sourceLabel is missing`);
+      }
+    }
+
+    // Rule 13: unresolved records cannot claim verified status (covered by Rule 12 context)
+    if (v?.status === 'verified' && level !== 'indicator' && level !== 'issue') {
+      errors.push(`Rule 13 — ${label}: verified status requires indicator or issue traceabilityLevel`);
+    }
+
+    // Rule 14: public text fields must not expose local filesystem paths
+    const publicFields = [
+      rec.title,
+      rec.description,
+      v?.basis,
+      rec.provenance?.sourceLabel,
+      rec.path,
+    ].filter(Boolean);
+    for (const field of publicFields) {
+      if (LOCAL_PATH_PATTERNS.some((pattern) => pattern.test(String(field)))) {
+        errors.push(`Rule 14 — ${label}: public field contains local filesystem path pattern`);
+        break;
+      }
+    }
+
+    // Rule 15: indicator-level hierarchy must include matching issue and category
+    if (level === 'indicator' && rec.indicatorCodes?.length) {
+      for (const indCode of rec.indicatorCodes) {
+        const expectedIssue = indicatorToIssue.get(indCode);
+        const expectedCat = expectedIssue ? issueToCategory.get(expectedIssue) : undefined;
+        if (expectedIssue && (!rec.issueCodes || !rec.issueCodes.includes(expectedIssue))) {
+          errors.push(`Rule 15 — ${label}: indicator "${indCode}" requires issueCodes to include "${expectedIssue}"`);
+        }
+        if (expectedCat && (!rec.categoryCodes || !rec.categoryCodes.includes(expectedCat))) {
+          errors.push(`Rule 15 — ${label}: indicator "${indCode}" requires categoryCodes to include "${expectedCat}"`);
+        }
+      }
+    }
+
     // Count by fileType
     const ft = rec.fileType || 'unknown';
     counts.byFileType[ft] = (counts.byFileType[ft] || 0) + 1;
@@ -230,7 +277,7 @@ function main() {
   console.log('');
 
   console.log('Verification Statuses:');
-  for (const status of ['verified', 'reviewed', 'pending', 'unresolved']) {
+  for (const status of ['verified', 'reviewed', 'pending', 'unresolved', 'rejected', 'deferred']) {
     const c = counts.byVerification[status] || 0;
     console.log(`  ${status}: ${c}`);
   }

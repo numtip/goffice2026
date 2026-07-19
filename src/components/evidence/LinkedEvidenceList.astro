@@ -1,0 +1,79 @@
+---
+import { withBase } from '../../utils/with-base';
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface EvidenceRow {
+  id: string;
+  title: string;
+  year?: number;
+  fileType?: string;
+  verification?: { status?: string };
+}
+
+interface Props {
+  items: EvidenceRow[];
+  locale?: 'th' | 'en';
+  headingId?: string;
+}
+
+const { items, locale = 'th', headingId } = Astro.props;
+
+const verificationLabels: Record<string, { th: string; en: string; cls: string }> = {
+  verified: { th: 'ยืนยันแล้ว', en: 'Verified', cls: 'bg-green-100 text-green-800' },
+  pending: { th: 'รอการยืนยัน', en: 'Pending review', cls: 'bg-amber-100 text-amber-800' },
+  reviewed: { th: 'ตรวจแล้ว', en: 'Reviewed', cls: 'bg-blue-100 text-blue-800' },
+  unresolved: { th: 'ยังไม่ยืนยัน', en: 'Unresolved', cls: 'bg-yellow-100 text-yellow-800' },
+  rejected: { th: 'ไม่ผ่าน', en: 'Rejected', cls: 'bg-red-100 text-red-800' },
+  deferred: { th: 'เลื่อน', en: 'Deferred', cls: 'bg-gray-100 text-gray-700' },
+};
+
+function verStatus(item: EvidenceRow): string {
+  return item.verification?.status || 'unresolved';
+}
+
+function evidenceHref(id: string): string {
+  return locale === 'en' ? getLocalizedPath('en', `/evidence/${id}/`) : withBase(`/evidence/${id}/`);
+}
+---
+
+{items.length > 0 && (
+  <section aria-labelledby={headingId}>
+    {headingId && (
+      <h2 id={headingId} class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+        {locale === 'th'
+          ? `หลักฐานที่เชื่อมโยง (${items.length})`
+          : `Linked Evidence (${items.length})`}
+      </h2>
+    )}
+    <ul class="space-y-3" role="list">
+      {items.map((item) => {
+        const ver = verificationLabels[verStatus(item)] || verificationLabels.unresolved;
+        return (
+          <li class="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
+            <a
+              href={evidenceHref(item.id)}
+              class="text-sm font-semibold text-green-700 hover:text-green-900 hover:underline"
+            >
+              {item.title}
+            </a>
+            <div class="mt-2 flex flex-wrap items-center gap-2 text-xs">
+              {item.year && (
+                <span class="rounded-full bg-purple-100 px-2 py-0.5 font-medium text-purple-700">
+                  {item.year}
+                </span>
+              )}
+              {item.fileType && (
+                <span class="rounded-full bg-emerald-100 px-2 py-0.5 font-medium text-emerald-700">
+                  {item.fileType}
+                </span>
+              )}
+              <span class:list={['rounded-full px-2 py-0.5 font-medium', ver.cls]}>
+                {locale === 'th' ? ver.th : ver.en}
+              </span>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+)}

@@ -11,6 +11,19 @@
 
 The evidence review queue has been created with **23 items** requiring human review. These items span across all 7 categories of the Green Office 2026 taxonomy. Of the 21 existing placeholder records in `evidence-index.json`, **7 have candidate real-source mappings** while **14 remain without any identified source document**. An additional **2 queue items** were created for new source files that have no corresponding placeholder record.
 
+### ET-1 Update (2026-07-19)
+
+Four high-confidence resource workbook mappings were promoted to **indicator-level traceability** in `evidence-index.json` v0.5.0. **No Product Owner approval was recorded.** All promoted records retain `verification.status: pending`.
+
+| Evidence ID | Indicator(s) | Decision | Human approval still required |
+|---|---|---|---|
+| ev-energy-metering-2025 | 3.2.2 | traceability-promoted | Yes |
+| ev-water-meter-q1 | 3.1.2 | traceability-promoted | Yes |
+| ev-waste-monthly-2025 | 4.1.2 | traceability-promoted | Yes |
+| ev-ghg-inventory-2025 | 1.5.1 | traceability-promoted | Yes |
+
+**Excluded from promotion:** Indicator 3.2.1 for electricity (policy measures — not supported by consumption workbook alone). Medium/low-confidence items remain `pending`.
+
 ---
 
 ## 1. Total Pending Items

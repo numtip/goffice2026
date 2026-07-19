@@ -88,11 +88,12 @@
       "categoryId": "cat1",
       "sourceId": "src-xlsx-elect-usage",
       "sourceAvailable": true,
-      "proposedIndicatorCodes": ["3.2.1", "3.2.2"],
+      "proposedIndicatorCodes": ["3.2.2"],
       "confidence": "high",
-      "mappingBasis": "Electricity usage spreadsheet docs/1.2-elect.xlsx (form 3.2(1)) directly matches the Monthly Energy Metering Data described in ev-energy-metering-2025. Indicator 3.2.1 covers electricity conservation measures; indicator 3.2.2 covers electricity consumption data per unit compared with targets.",
-      "decision": "pending",
-      "notes": "Strong candidate for placeholder replacement. File is operational-data XLSX (93KB, SHA256 verified)."
+      "mappingBasis": "Electricity usage spreadsheet docs/1.2-elect.xlsx (form 3.2(1)) directly matches the Monthly Energy Metering Data described in ev-energy-metering-2025. Indicator 3.2.2 covers electricity consumption data per unit compared with targets.",
+      "decision": "traceability-promoted",
+      "humanApprovalRequired": true,
+      "notes": "ET-1 (2026-07-19): Promoted to indicator-level traceability for 3.2.2 only. Indicator 3.2.1 (policy measures) excluded — spreadsheet is consumption data, not policy documentation. verification.status remains pending; PO verification still required."
     },
     {
       "reviewId": "review-003",
@@ -115,8 +116,9 @@
       "proposedIndicatorCodes": ["3.1.2"],
       "confidence": "high",
       "mappingBasis": "Water usage monitoring spreadsheet docs/1.1-Water.xlsx (form 3.2(1)) directly matches the Water Metering Data Q1 2025 described in ev-water-meter-q1. Indicator 3.1.2 covers water consumption data per unit compared with targets.",
-      "decision": "pending",
-      "notes": "Strong candidate for placeholder replacement. File is operational-data XLSX (99KB, SHA256 verified). Note: indicator 3.1.x is under cat3 (Resource and Energy Utilization) in the canonical taxonomy, while this evidence is currently categorized under cat2."
+      "decision": "traceability-promoted",
+      "humanApprovalRequired": true,
+      "notes": "ET-1 (2026-07-19): Promoted to indicator-level traceability for 3.1.2 under canonical cat3. categoryCodes corrected from legacy cat2. verification.status remains pending; PO verification still required."
     },
     {
       "reviewId": "review-005",
@@ -175,8 +177,9 @@
       "proposedIndicatorCodes": ["4.1.2"],
       "confidence": "high",
       "mappingBasis": "docs/1.5_Waste.xlsx (form 4.1(1)) directly matches Monthly Waste Tracking Data 2025. Indicator 4.1.2 covers implementation of proper waste sorting, collection, and disposal. The form 4.1(1) is the standard waste management reporting form.",
-      "decision": "pending",
-      "notes": "Strong candidate for placeholder replacement. File is operational-data XLSX (44KB, SHA256 verified). Note: indicator 4.1.x is under cat4 (Waste Management) in the canonical taxonomy, while this evidence is currently categorized under cat3."
+      "decision": "traceability-promoted",
+      "humanApprovalRequired": true,
+      "notes": "ET-1 (2026-07-19): Promoted to indicator-level traceability for 4.1.2 under canonical cat4. categoryCodes corrected from legacy cat3. verification.status remains pending; PO verification still required."
     },
     {
       "reviewId": "review-010",
@@ -187,8 +190,9 @@
       "proposedIndicatorCodes": ["1.5.1"],
       "confidence": "high",
       "mappingBasis": "docs/1.6_GreenhouseGas.xlsx (form 1.5(1)) directly matches the GHG Inventory 2025. Indicator 1.5.1 covers collection of greenhouse gas data from office activities. Form 1.5(1) is the standard GHG calculation form.",
-      "decision": "pending",
-      "notes": "Strong candidate for placeholder replacement. File is operational-data XLSX (528KB, SHA256 verified). Note: indicator 1.5.x is under cat1 (Environmental Policy and Green Office Planning) in the canonical taxonomy, while this evidence is currently categorized under cat4."
+      "decision": "traceability-promoted",
+      "humanApprovalRequired": true,
+      "notes": "ET-1 (2026-07-19): Promoted to indicator-level traceability for 1.5.1 under canonical cat1. categoryCodes corrected from legacy cat4. verification.status remains pending; PO verification still required."
     },
     {
       "reviewId": "review-011",

@@ -15,6 +15,8 @@ import paperGen from '../../data/generated/paper.json';
 import wasteGen from '../../data/generated/waste.json';
 import ghgGen from '../../data/generated/ghg.json';
 import { withBase } from '../../utils/with-base';
+import { getEvidenceForDashboard } from '../../utils/evidence-traceability';
+import LinkedEvidenceList from '../../components/evidence/LinkedEvidenceList.astro';
 
 const genMap: Record<string, MultiYearMetric> = {
   energy: energyGen as MultiYearMetric,
@@ -47,6 +49,7 @@ const category = dashboard.categoryId
 const relatedIndicators = indicatorsData.indicators.filter(
   (ind: { relatedDashboards: string[] }) => ind.relatedDashboards.includes(dashboard.id)
 );
+const linkedEvidence = getEvidenceForDashboard(dashboard.id);
 
 /** Build month-abbreviation list */
 const monthAbbr = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -372,6 +375,16 @@ function arrowColor(dir: string): string {
           Multi-year monitoring data for this dashboard has not yet been entered into the system.
           Staff are currently compiling data from Excel records.
         </p>
+      </div>
+    )}
+
+    {linkedEvidence.length > 0 && (
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
+        <LinkedEvidenceList
+          items={linkedEvidence}
+          locale="th"
+          headingId="dashboard-linked-evidence"
+        />
       </div>
     )}
 
