@@ -2,9 +2,20 @@
  * Detect the locale from an Astro URL.
  * - '/' or '/anything' (no /en/ prefix) → 'th'
  * - '/en/' or '/en/anything' → 'en'
+ *
+ * Works with Astro base paths (e.g. /goffice2026/en/categories).
  */
+export function stripBasePath(pathname: string): string {
+  const base = (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '');
+  if (base && base !== '/' && pathname.startsWith(base)) {
+    const rest = pathname.slice(base.length);
+    return rest.startsWith('/') ? rest : `/${rest}`;
+  }
+  return pathname;
+}
+
 export function getLocale(url: URL): 'th' | 'en' {
-  const pathname = url.pathname;
+  const pathname = stripBasePath(url.pathname);
   if (pathname.startsWith('/en/') || pathname === '/en') {
     return 'en';
   }
@@ -26,16 +37,12 @@ export function getLocalizedPath(locale: 'th' | 'en', path: string): string {
   if (locale === 'en') {
     return `${base}/en${pathWithSlash}`;
   }
-  // Thai — no prefix; homepage is just base
   if (pathWithSlash === '' || pathWithSlash === '/') {
     return base || '/';
   }
   return `${base}${pathWithSlash}`;
 }
 
-/**
- * Return the other locale.
- */
 export function switchLocale(current: 'th' | 'en'): 'th' | 'en' {
   return current === 'th' ? 'en' : 'th';
 }
@@ -43,25 +50,27 @@ export function switchLocale(current: 'th' | 'en'): 'th' | 'en' {
 /**
  * Strip the locale prefix from a URL path to get the canonical path.
  * '/en/categories' → '/categories'
- * '/categories' → '/categories'
- * '/' → '/'
  */
 export function stripLocalePrefix(pathname: string): string {
-  if (pathname.startsWith('/en/')) {
-    return pathname.slice(3) || '/';
+  const appPath = stripBasePath(pathname);
+  if (appPath.startsWith('/en/')) {
+    return appPath.slice(3) || '/';
   }
-  if (pathname === '/en') {
+  if (appPath === '/en') {
     return '/';
   }
-  return pathname;
+  return appPath;
 }
 
 /**
- * Get the target locale-switch path for the language switcher.
- * For example, if we're on /en/categories (English), switching to Thai gives /categories.
- * If we're on /categories (Thai), switching to English gives /en/categories.
+ * Language switcher target href for the current page.
  */
 export function getSwitcherHref(currentUrl: URL, targetLocale: 'th' | 'en'): string {
   const canonicalPath = stripLocalePrefix(currentUrl.pathname);
   return getLocalizedPath(targetLocale, canonicalPath);
+}
+
+/** Localized internal link helper (alias). */
+export function localizedHref(locale: 'th' | 'en', path: string): string {
+  return getLocalizedPath(locale, path);
 }

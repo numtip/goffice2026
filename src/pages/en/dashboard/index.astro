@@ -1,17 +1,17 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/global.css';
-import dashboardKpi from '../data/dashboard-kpi.json';
-import { dashboards } from '../data/dashboard-config';
-import type { MultiYearMetric } from '../utils/multi-year-schema';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/global.css';
+import dashboardKpi from '../../../data/dashboard-kpi.json';
+import { dashboards } from '../../../data/dashboard-config';
+import type { MultiYearMetric } from '../../../utils/multi-year-schema';
 
-import energyGen from '../data/generated/energy.json';
-import waterGen from '../data/generated/water.json';
-import fuelGen from '../data/generated/fuel.json';
-import paperGen from '../data/generated/paper.json';
-import wasteGen from '../data/generated/waste.json';
-import ghgGen from '../data/generated/ghg.json';
-import { getLocale, getLocalizedPath } from '../i18n/utils';
+import energyGen from '../../../data/generated/energy.json';
+import waterGen from '../../../data/generated/water.json';
+import fuelGen from '../../../data/generated/fuel.json';
+import paperGen from '../../../data/generated/paper.json';
+import wasteGen from '../../../data/generated/waste.json';
+import ghgGen from '../../../data/generated/ghg.json';
+import { getLocale, getLocalizedPath } from '../../../i18n/utils';
 
 const genMap: Record<string, MultiYearMetric> = {
   energy: energyGen as MultiYearMetric,

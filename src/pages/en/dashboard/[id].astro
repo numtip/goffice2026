@@ -1,22 +1,22 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import '../../styles/global.css';
-import { dashboards } from '../../data/dashboard-config';
-import type { DashboardMeta } from '../../data/dashboard-config';
-import type { MultiYearMetric, YearData } from '../../utils/multi-year-schema';
-import Sparkline from '../../components/dashboard/Sparkline.astro';
-import categoriesData from '../../data/criteria/categories.json';
-import indicatorsData from '../../data/criteria/indicators.json';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/global.css';
+import { dashboards } from '../../../data/dashboard-config';
+import type { DashboardMeta } from '../../../data/dashboard-config';
+import type { MultiYearMetric, YearData } from '../../../utils/multi-year-schema';
+import Sparkline from '../../../components/dashboard/Sparkline.astro';
+import categoriesData from '../../../data/criteria/categories.json';
+import indicatorsData from '../../../data/criteria/indicators.json';
 
-import energyGen from '../../data/generated/energy.json';
-import waterGen from '../../data/generated/water.json';
-import fuelGen from '../../data/generated/fuel.json';
-import paperGen from '../../data/generated/paper.json';
-import wasteGen from '../../data/generated/waste.json';
-import ghgGen from '../../data/generated/ghg.json';
-import { getLocale, getLocalizedPath } from '../../i18n/utils';
-import { getEvidenceForDashboard } from '../../utils/evidence-traceability';
-import LinkedEvidenceList from '../../components/evidence/LinkedEvidenceList.astro';
+import energyGen from '../../../data/generated/energy.json';
+import waterGen from '../../../data/generated/water.json';
+import fuelGen from '../../../data/generated/fuel.json';
+import paperGen from '../../../data/generated/paper.json';
+import wasteGen from '../../../data/generated/waste.json';
+import ghgGen from '../../../data/generated/ghg.json';
+import { getLocale, getLocalizedPath } from '../../../i18n/utils';
+import { getEvidenceForDashboard } from '../../../utils/evidence-traceability';
+import LinkedEvidenceList from '../../../components/evidence/LinkedEvidenceList.astro';
 
 const genMap: Record<string, MultiYearMetric> = {
   energy: energyGen as MultiYearMetric,

@@ -1,13 +1,14 @@
 ---
-import { withBase } from '../../utils/with-base';
-import { getLocale } from '../../i18n/utils';
+import { getLocale, getSwitcherHref } from '../../i18n/utils';
 
 const locale = getLocale(Astro.url);
+const thHref = getSwitcherHref(Astro.url, 'th');
+const enHref = getSwitcherHref(Astro.url, 'en');
 ---
 
 <div class="inline-flex items-center gap-1 rounded-full border border-white/30 bg-white/10 p-0.5 text-label-sm shadow-sm" role="group" aria-label="Choose language">
   <a
-    href={withBase(locale === 'th' ? Astro.url.pathname : (Astro.url.pathname.replace(/^\/en/, '') || '/'))}
+    href={thHref}
     class:list={[
       'inline-flex min-h-8 items-center rounded-full px-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary',
       locale === 'th'
@@ -20,7 +21,7 @@ const locale = getLocale(Astro.url);
     TH
   </a>
   <a
-    href={withBase(locale === 'en' ? Astro.url.pathname : `/en${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`)}
+    href={enHref}
     class:list={[
       'inline-flex min-h-8 items-center rounded-full px-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary',
       locale === 'en'

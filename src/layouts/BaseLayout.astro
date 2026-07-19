@@ -1,4 +1,5 @@
 ---
+import { stripLocalePrefix, stripBasePath, getLocalizedPath, getLocale } from '../i18n/utils';
 import Navigation from '../components/ui/Navigation.astro';
 import PreviewBadge from '../components/ui/PreviewBadge.astro';
 import type { LocaleStrings, HomeNavStrings } from '../i18n/dictionary';
@@ -13,10 +14,10 @@ interface Props {
   dict?: LocaleStrings;
 }
 
-const { title, description: customDesc, locale, dict } = Astro.props;
+const { title, description: customDesc, locale: localeProp, dict } = Astro.props;
 
 // Determine final values from dict (bilingual) or hardcoded defaults (legacy)
-const lang = locale ?? 'en';
+const lang = localeProp ?? getLocale(Astro.url);
 const skipLabel = dict?.site?.skip_to_content ?? 'Skip to main content';
 const defaultDesc = dict?.home?.hero?.description ?? 'Green Office 2026 static preview with repository-backed dashboards, categories, and evidence placeholders.';
 const desc = customDesc ?? defaultDesc;
@@ -35,10 +36,9 @@ const navLabels: HomeNavStrings = dict?.home?.nav ?? {
 } as HomeNavStrings;
 
 // hreflang alternate links
-const canonical = Astro.url.pathname.replace(/^\/en(?:\/|$)/, '/');
-const siteUrl = Astro.site?.href.replace(/\/+$/, '') || '';
-const thUrl = siteUrl ? `${siteUrl}${canonical}` : '';
-const enUrl = siteUrl ? `${siteUrl}/en${canonical}` : '';
+const appPath = stripLocalePrefix(stripBasePath(Astro.url.pathname));
+const thUrl = Astro.url.origin ? `${Astro.url.origin}${getLocalizedPath('th', appPath)}` : '';
+const enUrl = Astro.url.origin ? `${Astro.url.origin}${getLocalizedPath('en', appPath)}` : '';
 ---
 
 <!DOCTYPE html>
