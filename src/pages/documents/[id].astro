@@ -5,8 +5,11 @@ import categoriesData from '../../data/criteria/categories.json';
 import evidenceIndex from '../../data/evidence-index.json';
 import EvidenceCard from '../../components/evidence/EvidenceCard.astro';
 import { getLocale, getLocalizedPath } from '../../i18n/utils';
+import { getDictionary } from '../../i18n/dictionary';
 
 const locale = getLocale(Astro.url);
+const dict = await getDictionary(locale);
+const t = dict.documentsPage;
 
 export function getStaticPaths() {
   return categoriesData.categories.map((category) => ({
@@ -32,7 +35,7 @@ const placeholderCount = documents.filter((d) => d.status === 'placeholder').len
   <div class="p-4 max-w-4xl mx-auto">
     <!-- Breadcrumb -->
     <nav class="text-sm text-gray-500 mb-4">
-      <a href={getLocalizedPath(locale, '/documents')} class="text-green-600 underline hover:text-green-800">Document Center</a>
+      <a href={getLocalizedPath(locale, '/documents')} class="text-green-600 underline hover:text-green-800">{t.breadcrumb_label}</a>
       <span aria-hidden="true"> / </span>
       <span class="text-gray-700 font-medium">{catTitle}</span>
     </nav>
@@ -42,11 +45,11 @@ const placeholderCount = documents.filter((d) => d.status === 'placeholder').len
       <div class="flex flex-wrap items-center gap-3 mb-2">
         <h1 class="text-2xl font-bold text-gray-900">{catTitle}</h1>
         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-          {availableCount} available
+          {availableCount} {t.available_suffix}
         </span>
         {placeholderCount > 0 && (
           <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-500">
-            {placeholderCount} placeholder{placeholderCount !== 1 ? 's' : ''}
+            {placeholderCount} {t.pending_suffix}
           </span>
         )}
       </div>
@@ -56,12 +59,12 @@ const placeholderCount = documents.filter((d) => d.status === 'placeholder').len
     <!-- Evidence / Documents -->
     {documents.length > 0 ? (
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold text-gray-800">Evidence Items</h2>
+        <h2 class="text-xl font-semibold text-gray-800">{t.evidence_items_heading}</h2>
         {documents.map((doc) => (
           <EvidenceCard
             id={doc.id}
-            title={doc.title}
-            description={doc.description}
+            title={locale === 'th' ? (doc.titleTh || doc.title) : doc.title}
+            description={locale === 'th' ? (doc.descriptionTh || doc.description) : doc.description}
             year={doc.year}
             fileType={doc.fileType}
             status={doc.status}
@@ -76,15 +79,15 @@ const placeholderCount = documents.filter((d) => d.status === 'placeholder').len
         <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
-        <p class="text-gray-500 text-lg">No evidence files indexed for this category yet.</p>
-        <p class="text-gray-400 text-sm mt-1">Documents will appear here once uploaded.</p>
+        <p class="text-gray-500 text-lg">{t.empty_title}</p>
+        <p class="text-gray-400 text-sm mt-1">{t.empty_body}</p>
       </div>
     )}
 
     <!-- Back link -->
     <div class="mt-8">
       <a href={getLocalizedPath(locale, `/categories/${category.code}`)} class="text-green-600 underline hover:text-green-800 text-sm">
-        &larr; Back to {catTitle} overview
+        &larr; {t.back_to_prefix} {catTitle} {t.back_to_suffix}
       </a>
     </div>
   </div>

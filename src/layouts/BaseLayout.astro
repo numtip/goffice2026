@@ -76,6 +76,6 @@ const enUrl = Astro.url.origin ? `${Astro.url.origin}${getLocalizedPath('en', ap
         <p class="text-xs">&copy; {new Date().getFullYear()} {footerCopy}</p>
       </div>
     </footer>
-    <PreviewBadge />
+    <PreviewBadge locale={lang} />
   </body>
 </html>

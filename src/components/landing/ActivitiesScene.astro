@@ -9,6 +9,7 @@ const dict = Astro.props.t ?? {
   heading: 'The Environmental Journey',
   description: 'Preview slots for activities, campaigns, awareness, and training milestones.',
   status: 'Pending approved content',
+  preview_label: 'Preview',
   placeholder_image: 'Image pending',
   placeholder_category: 'Content slot',
   activity_1_title: 'Activity records not yet integrated',
@@ -50,7 +51,7 @@ const activities = [
             </span>
           </div>
           <p class="mb-2 block font-mono text-[11px] text-outline sm:text-[12px]">
-            Preview · {activity.category}
+            {dict.preview_label} · {activity.category}
           </p>
           <h3 class="mb-2 text-lg font-semibold text-primary transition-colors duration-300 group-hover:text-secondary sm:mb-3 sm:text-xl">
             {activity.title}

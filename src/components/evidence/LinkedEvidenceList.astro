@@ -5,6 +5,7 @@ import { getLocalizedPath } from '../../i18n/utils';
 interface EvidenceRow {
   id: string;
   title: string;
+  titleTh?: string;
   year?: number;
   fileType?: string;
   verification?: { status?: string };
@@ -18,11 +19,15 @@ interface Props {
 
 const { items, locale = 'th', headingId } = Astro.props;
 
+function itemTitle(item: EvidenceRow): string {
+  return locale === 'th' ? (item.titleTh || item.title) : item.title;
+}
+
 const verificationLabels: Record<string, { th: string; en: string; cls: string }> = {
-  verified: { th: 'ยืนยันแล้ว', en: 'Verified', cls: 'bg-green-100 text-green-800' },
-  pending: { th: 'รอการยืนยัน', en: 'Pending review', cls: 'bg-amber-100 text-amber-800' },
+  verified: { th: 'ตรวจสอบแล้ว', en: 'Verified', cls: 'bg-green-100 text-green-800' },
+  pending: { th: 'รอตรวจสอบ', en: 'Pending review', cls: 'bg-amber-100 text-amber-800' },
   reviewed: { th: 'ตรวจแล้ว', en: 'Reviewed', cls: 'bg-blue-100 text-blue-800' },
-  unresolved: { th: 'ยังไม่ยืนยัน', en: 'Unresolved', cls: 'bg-yellow-100 text-yellow-800' },
+  unresolved: { th: 'ยังไม่ตรวจสอบ', en: 'Unresolved', cls: 'bg-yellow-100 text-yellow-800' },
   rejected: { th: 'ไม่ผ่าน', en: 'Rejected', cls: 'bg-red-100 text-red-800' },
   deferred: { th: 'เลื่อน', en: 'Deferred', cls: 'bg-gray-100 text-gray-700' },
 };
@@ -54,7 +59,7 @@ function evidenceHref(id: string): string {
               href={evidenceHref(item.id)}
               class="text-sm font-semibold text-green-700 hover:text-green-900 hover:underline"
             >
-              {item.title}
+              {itemTitle(item)}
             </a>
             <div class="mt-2 flex flex-wrap items-center gap-2 text-xs">
               {item.year && (

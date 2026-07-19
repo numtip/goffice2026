@@ -65,6 +65,7 @@
       "heading": "The Environmental Journey",
       "description": "Preview slots for activities, campaigns, awareness, and training milestones.",
       "status": "Pending approved content",
+      "preview_label": "Preview",
       "placeholder_image": "Image pending",
       "placeholder_category": "Content slot",
       "activity_1_title": "Activity records not yet integrated",
@@ -163,5 +164,21 @@
     "last_updated_label": "Last updated",
     "generated_data_label": "Generated data",
     "reference_note": "Dashboard structure and KPI terminology adapted from the Green Office Platform, Maejo University"
+  },
+  "documentsPage": {
+    "title": "Document Center",
+    "description": "Browse and download certification evidence documents organized by Green Office category.",
+    "files_unit": "files",
+    "total_label": "Total",
+    "categories_unit": "categories",
+    "evidence_items_unit": "evidence items",
+    "breadcrumb_label": "Document Center",
+    "available_suffix": "available",
+    "pending_suffix": "pending",
+    "evidence_items_heading": "Evidence Items",
+    "empty_title": "No evidence files indexed for this category yet.",
+    "empty_body": "Documents will appear here once uploaded.",
+    "back_to_prefix": "Back to",
+    "back_to_suffix": "overview"
   }
 }

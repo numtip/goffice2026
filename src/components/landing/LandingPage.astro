@@ -22,7 +22,10 @@ const { locale } = Astro.props;
 const dict = await getDictionary(locale);
 const { home } = dict;
 
-const previewEvidence = evidenceIndex.items.slice(0, 3);
+const previewEvidence = evidenceIndex.items.slice(0, 3).map((item) => ({
+  ...item,
+  title: locale === 'th' ? (item.titleTh || item.title) : item.title,
+}));
 const availableItems = evidenceIndex.items.filter((i: { status: string }) => i.status === 'available').length;
 ---
 

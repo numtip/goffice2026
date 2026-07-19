@@ -78,6 +78,7 @@ export interface HomeActivitiesStrings {
   heading: string;
   description: string;
   status: string;
+  preview_label: string;
   placeholder_image: string;
   placeholder_category: string;
   activity_1_title: string;
@@ -195,10 +196,28 @@ export interface DashboardPageStrings {
   reference_note: string;
 }
 
+export interface DocumentsPageStrings {
+  title: string;
+  description: string;
+  files_unit: string;
+  total_label: string;
+  categories_unit: string;
+  evidence_items_unit: string;
+  breadcrumb_label: string;
+  available_suffix: string;
+  pending_suffix: string;
+  evidence_items_heading: string;
+  empty_title: string;
+  empty_body: string;
+  back_to_prefix: string;
+  back_to_suffix: string;
+}
+
 export interface LocaleStrings {
   site: SiteStrings;
   home: HomeStrings;
   dashboardPage: DashboardPageStrings;
+  documentsPage: DocumentsPageStrings;
 }
 
 // ── Dictionary loading ────────────────────────────────────────────────

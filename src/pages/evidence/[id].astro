@@ -45,7 +45,7 @@ const traceabilityLevel: string = raw.traceabilityLevel
 
 const verification = raw.verification || { status: 'unresolved', basis: '' };
 const verificationStatus = verification.status || 'unresolved';
-const verificationBasis = verification.basis || '';
+const verificationBasis = (locale === 'th' ? verification.basisTh : verification.basis) || verification.basis || '';
 
 const isPlaceholder = raw.status === 'placeholder';
 
@@ -86,10 +86,20 @@ function label(th: string, en: string): string {
   return locale === 'th' ? th : en;
 }
 
-const pageTitle = raw.title || raw.id;
+const pageTitle = (locale === 'th' ? (raw.titleTh || raw.title) : raw.title) || raw.id;
+const pageDescription = locale === 'th' ? (raw.descriptionTh || raw.description) : raw.description;
+
+const confidenceLabels: Record<string, { th: string; en: string }> = {
+  high: { th: 'สูง', en: 'high' },
+  medium: { th: 'ปานกลาง', en: 'medium' },
+  low: { th: 'ต่ำ', en: 'low' },
+};
+const confidenceLabel = raw.provenance?.mappingConfidence
+  ? (confidenceLabels[raw.provenance.mappingConfidence]?.[locale === 'th' ? 'th' : 'en'] ?? raw.provenance.mappingConfidence)
+  : '';
 ---
 
-<BaseLayout title={`${pageTitle} — ${label('คลังหลักฐาน', 'Evidence Library')}`} description={raw.description || ''} locale={locale}>
+<BaseLayout title={`${pageTitle} — ${label('คลังหลักฐาน', 'Evidence Library')}`} description={pageDescription || ''} locale={locale}>
   <div class="max-w-4xl mx-auto px-4 py-8">
     <!-- Breadcrumb -->
     <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
@@ -147,7 +157,7 @@ const pageTitle = raw.title || raw.id;
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              Source Pending
+              {label('ยังไม่มีไฟล์ต้นฉบับ', 'Source Pending')}
             </span>
           ) : (
             <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
@@ -162,18 +172,18 @@ const pageTitle = raw.title || raw.id;
         <h1 class="text-2xl font-bold text-gray-900">{pageTitle}</h1>
 
         <p class="text-xs text-gray-400 mt-2">
-          ID: {raw.id}
+          {label('รหัส', 'ID')}: {raw.id}
           {raw.updated && <span class="ml-3">{label('อัปเดต', 'Updated')}: {raw.updated}</span>}
         </p>
       </div>
 
       <!-- Description -->
-      {raw.description && (
+      {pageDescription && (
         <div class="p-6 border-b border-gray-100">
           <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
             {label('คำอธิบาย', 'Description')}
           </h2>
-          <p class="text-gray-800 leading-relaxed">{raw.description}</p>
+          <p class="text-gray-800 leading-relaxed">{pageDescription}</p>
         </div>
       )}
 
@@ -277,17 +287,17 @@ const pageTitle = raw.title || raw.id;
       </div>
 
       <!-- Provenance (public-safe) -->
-      {(raw.provenance?.sourceLabel || publicSourceLabel(raw as import('../../utils/evidence-traceability').EvidenceItem)) && (
+      {(raw.provenance?.sourceLabel || publicSourceLabel(raw as import('../../utils/evidence-traceability').EvidenceItem, locale)) && (
         <div class="p-6 border-b border-gray-100">
           <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
             {label('ที่มาของข้อมูล', 'Provenance')}
           </h2>
           <p class="text-sm text-gray-700">
-            {raw.provenance?.sourceLabel || publicSourceLabel(raw as import('../../utils/evidence-traceability').EvidenceItem)}
+            {publicSourceLabel(raw as import('../../utils/evidence-traceability').EvidenceItem, locale)}
           </p>
           {raw.provenance?.mappingConfidence && (
             <p class="text-xs text-gray-500 mt-2">
-              {label('ความมั่นใจในการเชื่อมโยง', 'Mapping confidence')}: {raw.provenance.mappingConfidence}
+              {label('ความมั่นใจในการเชื่อมโยง', 'Mapping confidence')}: {confidenceLabel}
               {raw.provenance.humanVerificationRequired && (
                 <span class="ml-2 text-amber-700">
                   · {label('ต้องรอผู้รับผิดชอบข้อมูลตรวจสอบก่อน', 'Human verification required')}

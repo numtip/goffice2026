@@ -97,12 +97,12 @@ for (const ev of evidence) {
     type: 'evidence',
     typeLabel: ['หลักฐาน', 'Evidence'],
     id: ev.id,
-    title: [ev.title, ev.title],
-    context: [ev.description, ev.description],
+    title: [ev.titleTh || ev.title, ev.title],
+    context: [ev.descriptionTh || ev.description, ev.description],
     categoryTitle: [cat?.title.th ?? '', cat?.title.en ?? ''],
     route: getLocalizedPath(locale, `/evidence/${ev.id}/`),
     searchText:
-      `${ev.title} ${ev.description} ${ev.indicator} ${cat?.title.th ?? ''} ${cat?.title.en ?? ''} ${ev.id} ${ev.year} ${ev.fileType}`
+      `${ev.titleTh || ev.title} ${ev.title} ${ev.descriptionTh || ev.description} ${ev.description} ${ev.indicator} ${cat?.title.th ?? ''} ${cat?.title.en ?? ''} ${ev.id} ${ev.year} ${ev.fileType}`
         .toLowerCase(),
   });
 }

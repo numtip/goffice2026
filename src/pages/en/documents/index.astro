@@ -4,8 +4,11 @@ import '../../../styles/global.css';
 import categoriesData from '../../../data/criteria/categories.json';
 import evidenceIndex from '../../../data/evidence-index.json';
 import { getLocale, getLocalizedPath } from '../../../i18n/utils';
+import { getDictionary } from '../../../i18n/dictionary';
 
 const locale = getLocale(Astro.url);
+const dict = await getDictionary(locale);
+const t = dict.documentsPage;
 
 function getDocumentCounts(categoryCode: string) {
   const items = evidenceIndex.items.filter((item) => {
@@ -19,13 +22,13 @@ function getDocumentCounts(categoryCode: string) {
 }
 ---
 
-<BaseLayout title={locale === 'th' ? 'ศูนย์เอกสาร | Document Center' : 'Document Center | ศูนย์เอกสาร'} description="Browse and download Green Office certification evidence documents organized by assessment category." locale={locale}>
+<BaseLayout title={locale === 'th' ? 'ศูนย์เอกสาร | Document Center' : 'Document Center | ศูนย์เอกสาร'} description={t.description} locale={locale}>
   <div class="p-4 max-w-5xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
-      <h1 class="text-3xl font-bold text-gray-900">Document Center</h1>
+      <h1 class="text-3xl font-bold text-gray-900">{t.title}</h1>
       <p class="text-gray-600 mt-2">
-        Browse and download certification evidence documents organized by Green Office category.
+        {t.description}
       </p>
     </div>
 
@@ -50,7 +53,7 @@ function getDocumentCounts(categoryCode: string) {
                 <p class="text-sm text-gray-600 mt-1">{catDesc}</p>
               </div>
               <span class={"inline-flex items-center px-3 py-1 rounded-full text-sm font-medium shrink-0 ml-3 " + badgeBg}>
-                {available}/{total} file{total !== 1 ? 's' : ''}
+                {available}/{total} {t.files_unit}
               </span>
             </div>
           </a>
@@ -60,7 +63,7 @@ function getDocumentCounts(categoryCode: string) {
 
     <!-- Summary -->
     <div class="mt-8 text-center text-xs text-gray-400">
-      Total: {categoriesData.categories.length} categories &middot; {evidenceIndex.items.length} evidence items
+      {t.total_label}: {categoriesData.categories.length} {t.categories_unit} &middot; {evidenceIndex.items.length} {t.evidence_items_unit}
     </div>
   </div>
 </BaseLayout>

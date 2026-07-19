@@ -37,12 +37,12 @@ const dashboardRoutes: Record<string, string> = {
 };
 
 const dashboardLabels: Record<string, string> = {
-  energy: 'พลังงาน (Energy)',
-  water: 'น้ำ (Water)',
-  fuel: 'น้ำมันเชื้อเพลิง (Fuel)',
-  paper: 'กระดาษ (Paper)',
-  waste: 'ขยะ (Waste)',
-  ghg: 'ก๊าซเรือนกระจก (GHG)',
+  energy: 'พลังงาน',
+  water: 'น้ำ',
+  fuel: 'น้ำมันเชื้อเพลิง',
+  paper: 'กระดาษ',
+  waste: 'ขยะ',
+  ghg: 'ก๊าซเรือนกระจก',
 };
 
 const dashboardLinks = (indicator.relatedDashboards || []).map((id: string) => ({
@@ -114,7 +114,7 @@ function safeLabel(th: string, en: string): string {
     <!-- Requirement Summary -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
       <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-        ข้อกำหนด (Requirement Summary)
+        ข้อกำหนด
       </h2>
       <p class="text-gray-800 leading-relaxed">
         {safeLabel(indicator.requirementSummary.th, indicator.requirementSummary.en)}
@@ -126,7 +126,7 @@ function safeLabel(th: string, en: string): string {
       <!-- Parent Category -->
       <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
         <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-          หมวดหมู่ (Category)
+          หมวดหมู่
         </h2>
         {category ? (
           <>
@@ -148,7 +148,7 @@ function safeLabel(th: string, en: string): string {
       <!-- Parent Issue -->
       <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
         <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-          ประเด็น (Issue)
+          ประเด็น
         </h2>
         {issue ? (
           <p class="text-gray-800 font-medium">{issue.title.th}</p>
@@ -162,7 +162,7 @@ function safeLabel(th: string, en: string): string {
     <!-- Related Dashboards -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
       <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-        Dashboard ที่เกี่ยวข้อง
+        แดชบอร์ดที่เกี่ยวข้อง
       </h2>
       {
         dashboardLinks.length > 0 ? (
@@ -187,7 +187,7 @@ function safeLabel(th: string, en: string): string {
           </ul>
         ) : (
           <p class="text-gray-400 italic">
-            ไม่มีการเชื่อมโยงโดยตรงกับ Dashboard
+            ไม่มีการเชื่อมโยงโดยตรงกับแดชบอร์ด
           </p>
         )
       }

@@ -4,6 +4,7 @@ import evidenceIndexData from '../data/evidence-index.json';
 export interface EvidenceProvenance {
   sourceType?: string;
   sourceLabel?: string;
+  sourceLabelTh?: string;
   mappingReviewId?: string;
   mappingConfidence?: string;
   humanVerificationRequired?: boolean;
@@ -12,6 +13,7 @@ export interface EvidenceProvenance {
 export interface EvidenceItem {
   id: string;
   title: string;
+  titleTh?: string;
   year?: number;
   fileType?: string;
   traceabilityLevel?: string;
@@ -20,7 +22,7 @@ export interface EvidenceItem {
   categoryCodes?: string[];
   status?: string;
   provenance?: EvidenceProvenance;
-  verification?: { status?: string; basis?: string };
+  verification?: { status?: string; basis?: string; basisTh?: string };
 }
 
 type ResourceIndicatorMap = typeof resourceIndicatorMapData;
@@ -64,8 +66,9 @@ export function getEvidenceForDashboard(
   );
 }
 
-export function publicSourceLabel(item: EvidenceItem): string | null {
+export function publicSourceLabel(item: EvidenceItem, locale: 'th' | 'en' = 'en'): string | null {
+  if (locale === 'th' && item.provenance?.sourceLabelTh) return item.provenance.sourceLabelTh;
   if (item.provenance?.sourceLabel) return item.provenance.sourceLabel;
-  if (item.fileType === 'XLSX') return 'Operational monitoring workbook';
+  if (item.fileType === 'XLSX') return locale === 'th' ? 'ไฟล์บันทึกข้อมูลการปฏิบัติงาน' : 'Operational monitoring workbook';
   return null;
 }

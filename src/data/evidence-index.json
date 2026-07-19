@@ -7,7 +7,9 @@
       "categoryId": "cat1",
       "indicator": "Energy audit and monitoring",
       "title": "Energy Audit Report 2025",
+      "titleTh": "รายงานตรวจสอบการใช้พลังงาน ปี 2568",
       "description": "Comprehensive energy audit covering all facilities, including lighting, HVAC, and equipment efficiency assessments.",
+      "descriptionTh": "รายงานตรวจสอบการใช้พลังงานครอบคลุมทุกพื้นที่ ทั้งระบบไฟฟ้าแสงสว่าง ระบบปรับอากาศ และการประเมินประสิทธิภาพอุปกรณ์",
       "year": 2025,
       "path": "/documents/cat1/placeholder.md",
       "fileType": "MD",
@@ -19,7 +21,8 @@
       "categoryCodes": ["cat1"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -27,7 +30,9 @@
       "categoryId": "cat3",
       "indicator": "Energy metering data",
       "title": "Monthly Energy Metering Data 2025",
+      "titleTh": "ข้อมูลมิเตอร์ไฟฟ้ารายเดือน ปี 2568",
       "description": "Monthly electricity consumption data from sub-meters across all building zones.",
+      "descriptionTh": "ข้อมูลการใช้ไฟฟ้ารายเดือนจากมิเตอร์ย่อยในทุกพื้นที่ของอาคาร",
       "year": 2025,
       "path": "/documents/cat1/metering-data-2025.xlsx",
       "fileType": "XLSX",
@@ -43,6 +48,7 @@
       "provenance": {
         "sourceType": "operational-xlsx",
         "sourceLabel": "Electricity usage monitoring workbook (Green Office form 3.2(1))",
+        "sourceLabelTh": "ไฟล์บันทึกการใช้ไฟฟ้า (แบบฟอร์มสำนักงานสีเขียว 3.2(1))",
         "mappingReviewId": "review-002",
         "mappingConfidence": "high",
         "humanVerificationRequired": true
@@ -50,6 +56,7 @@
       "verification": {
         "status": "pending",
         "basis": "ET-1 traceability promotion: operational electricity consumption workbook directly supports indicator 3.2.2 (consumption data per unit vs targets). Source file existence is system-validated; human data-owner verification is still required before verified status.",
+        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์บันทึกการใช้ไฟฟ้าในการปฏิบัติงานสนับสนุนตัวชี้วัด 3.2.2 (ข้อมูลการใช้ไฟฟ้าต่อหน่วยเทียบกับเป้าหมาย) โดยตรง ระบบได้ตรวจสอบว่ามีไฟล์ต้นฉบับอยู่จริงแล้ว แต่ยังต้องรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนจึงจะเปลี่ยนเป็นสถานะตรวจสอบแล้ว",
         "reviewPhase": "REL-1",
         "reviewedAt": "2026-07-19",
         "reviewOutcome": "pending-po-signoff"
@@ -60,7 +67,9 @@
       "categoryId": "cat1",
       "indicator": "Energy efficiency projects",
       "title": "LED Retrofit Project Summary",
+      "titleTh": "สรุปโครงการเปลี่ยนหลอดไฟเป็น LED",
       "description": "Documentation of LED lighting retrofit project including cost-benefit analysis and energy savings.",
+      "descriptionTh": "เอกสารสรุปโครงการเปลี่ยนหลอดไฟเป็น LED พร้อมการวิเคราะห์ความคุ้มค่าและพลังงานที่ประหยัดได้",
       "year": 2024,
       "path": "/documents/cat1/led-retrofit-summary.pdf",
       "fileType": "PDF",
@@ -72,7 +81,8 @@
       "categoryCodes": ["cat1"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -80,7 +90,9 @@
       "categoryId": "cat3",
       "indicator": "Water metering and monitoring",
       "title": "Water Metering Data Q1 2025",
+      "titleTh": "ข้อมูลมิเตอร์น้ำ ไตรมาส 1 ปี 2568",
       "description": "Quarterly water consumption readings from main and sub-meters.",
+      "descriptionTh": "ข้อมูลการใช้น้ำรายไตรมาสจากมิเตอร์หลักและมิเตอร์ย่อย",
       "year": 2025,
       "path": "/documents/cat2/placeholder.md",
       "fileType": "XLSX",
@@ -96,6 +108,7 @@
       "provenance": {
         "sourceType": "operational-xlsx",
         "sourceLabel": "Water usage monitoring workbook (Green Office form 3.1(1))",
+        "sourceLabelTh": "ไฟล์บันทึกการใช้น้ำ (แบบฟอร์มสำนักงานสีเขียว 3.1(1))",
         "mappingReviewId": "review-004",
         "mappingConfidence": "high",
         "humanVerificationRequired": true
@@ -103,6 +116,7 @@
       "verification": {
         "status": "pending",
         "basis": "ET-1 traceability promotion: water consumption monitoring workbook directly supports indicator 3.1.2 (water consumption data per unit vs targets). Source file existence is system-validated; human data-owner verification is still required before verified status.",
+        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์บันทึกการใช้น้ำสนับสนุนตัวชี้วัด 3.1.2 (ข้อมูลการใช้น้ำต่อหน่วยเทียบกับเป้าหมาย) โดยตรง ระบบได้ตรวจสอบว่ามีไฟล์ต้นฉบับอยู่จริงแล้ว แต่ยังต้องรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนจึงจะเปลี่ยนเป็นสถานะตรวจสอบแล้ว",
         "reviewPhase": "REL-1",
         "reviewedAt": "2026-07-19",
         "reviewOutcome": "pending-po-signoff"
@@ -113,7 +127,9 @@
       "categoryId": "cat2",
       "indicator": "Water audit reports",
       "title": "Water Audit Report 2025",
+      "titleTh": "รายงานตรวจสอบการใช้น้ำ ปี 2568",
       "description": "Detailed water audit identifying consumption patterns, leaks, and conservation opportunities.",
+      "descriptionTh": "รายงานตรวจสอบการใช้น้ำโดยละเอียด ระบุรูปแบบการใช้น้ำ จุดรั่วไหล และแนวทางการอนุรักษ์น้ำ",
       "year": 2025,
       "path": "/documents/cat2/water-audit-2025.pdf",
       "fileType": "PDF",
@@ -125,7 +141,8 @@
       "categoryCodes": ["cat2"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -133,7 +150,9 @@
       "categoryId": "cat2",
       "indicator": "Water conservation initiatives",
       "title": "Water Conservation Initiative Records",
+      "titleTh": "บันทึกกิจกรรมอนุรักษ์น้ำ",
       "description": "Records of implemented water-saving measures including fixture upgrades and awareness campaigns.",
+      "descriptionTh": "บันทึกมาตรการประหยัดน้ำที่ดำเนินการ ทั้งการปรับปรุงอุปกรณ์และกิจกรรมสร้างความตระหนัก",
       "year": 2025,
       "path": "/documents/cat2/conservation-initiatives.pdf",
       "fileType": "PDF",
@@ -145,7 +164,8 @@
       "categoryCodes": ["cat2"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -153,7 +173,9 @@
       "categoryId": "cat3",
       "indicator": "Waste segregation and recycling",
       "title": "Waste Recycling Summary 2025",
+      "titleTh": "สรุปการคัดแยกและรีไซเคิลของเสีย ปี 2568",
       "description": "Annual summary of waste segregation and recycling performance across all departments.",
+      "descriptionTh": "สรุปผลการคัดแยกและรีไซเคิลของเสียประจำปีของทุกหน่วยงาน",
       "year": 2025,
       "path": "/documents/cat3/placeholder.md",
       "fileType": "MD",
@@ -165,7 +187,8 @@
       "categoryCodes": ["cat3"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -173,7 +196,9 @@
       "categoryId": "cat3",
       "indicator": "Waste audit reports",
       "title": "Waste Audit Report 2025",
+      "titleTh": "รายงานตรวจสอบของเสีย ปี 2568",
       "description": "Composition and volume analysis of waste streams with recommendations for reduction.",
+      "descriptionTh": "การวิเคราะห์องค์ประกอบและปริมาณของเสีย พร้อมข้อเสนอแนะในการลดปริมาณ",
       "year": 2025,
       "path": "/documents/cat3/waste-audit-2025.pdf",
       "fileType": "PDF",
@@ -185,7 +210,8 @@
       "categoryCodes": ["cat3"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -193,7 +219,9 @@
       "categoryId": "cat4",
       "indicator": "Monthly waste tracking",
       "title": "Monthly Waste Tracking Data 2025",
+      "titleTh": "ข้อมูลติดตามของเสียรายเดือน ปี 2568",
       "description": "Monthly waste generation and diversion data by waste type and disposal method.",
+      "descriptionTh": "ข้อมูลปริมาณของเสียและการจัดการรายเดือน แยกตามประเภทของเสียและวิธีกำจัด",
       "year": 2025,
       "path": "/documents/cat3/waste-monthly-2025.xlsx",
       "fileType": "XLSX",
@@ -209,6 +237,7 @@
       "provenance": {
         "sourceType": "operational-xlsx",
         "sourceLabel": "Waste management reporting workbook (Green Office form 4.1(1))",
+        "sourceLabelTh": "ไฟล์บันทึกการจัดการของเสีย (แบบฟอร์มสำนักงานสีเขียว 4.1(1))",
         "mappingReviewId": "review-009",
         "mappingConfidence": "high",
         "humanVerificationRequired": true
@@ -216,6 +245,7 @@
       "verification": {
         "status": "pending",
         "basis": "ET-1 traceability promotion: monthly waste tracking workbook (form 4.1(1)) directly supports indicator 4.1.2 (sorting, collection, and disposal implementation). Source file existence is system-validated; human data-owner verification is still required before verified status.",
+        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์บันทึกข้อมูลของเสียรายเดือน (แบบฟอร์ม 4.1(1)) สนับสนุนตัวชี้วัด 4.1.2 (การคัดแยก การเก็บรวบรวม และการกำจัดของเสีย) โดยตรง ระบบได้ตรวจสอบว่ามีไฟล์ต้นฉบับอยู่จริงแล้ว แต่ยังต้องรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนจึงจะเปลี่ยนเป็นสถานะตรวจสอบแล้ว",
         "reviewPhase": "REL-1",
         "reviewedAt": "2026-07-19",
         "reviewOutcome": "pending-po-signoff"
@@ -226,7 +256,9 @@
       "categoryId": "cat1",
       "indicator": "GHG inventory",
       "title": "GHG Inventory 2025",
+      "titleTh": "บัญชีก๊าซเรือนกระจก ปี 2568",
       "description": "Scope 1 and Scope 2 greenhouse gas emissions inventory with methodology documentation.",
+      "descriptionTh": "บัญชีการปล่อยก๊าซเรือนกระจกขอบเขตที่ 1 และ 2 พร้อมเอกสารวิธีการคำนวณ",
       "year": 2025,
       "path": "/documents/cat4/placeholder.md",
       "fileType": "XLSX",
@@ -242,6 +274,7 @@
       "provenance": {
         "sourceType": "operational-xlsx",
         "sourceLabel": "Greenhouse gas inventory workbook (Green Office form 1.5(1))",
+        "sourceLabelTh": "ไฟล์บันทึกบัญชีก๊าซเรือนกระจก (แบบฟอร์มสำนักงานสีเขียว 1.5(1))",
         "mappingReviewId": "review-010",
         "mappingConfidence": "high",
         "humanVerificationRequired": true
@@ -249,6 +282,7 @@
       "verification": {
         "status": "pending",
         "basis": "ET-1 traceability promotion: GHG inventory workbook (form 1.5(1)) directly supports indicator 1.5.1 (collection of GHG data from office activities). Source file existence is system-validated; human data-owner verification is still required before verified status.",
+        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์บันทึกบัญชีก๊าซเรือนกระจก (แบบฟอร์ม 1.5(1)) สนับสนุนตัวชี้วัด 1.5.1 (การรวบรวมข้อมูลก๊าซเรือนกระจกจากกิจกรรมในสำนักงาน) โดยตรง ระบบได้ตรวจสอบว่ามีไฟล์ต้นฉบับอยู่จริงแล้ว แต่ยังต้องรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนจึงจะเปลี่ยนเป็นสถานะตรวจสอบแล้ว",
         "reviewPhase": "REL-1",
         "reviewedAt": "2026-07-19",
         "reviewOutcome": "pending-po-signoff"
@@ -259,7 +293,9 @@
       "categoryId": "cat4",
       "indicator": "Emission reduction projects",
       "title": "Carbon Reduction Project Plan",
+      "titleTh": "แผนโครงการลดการปล่อยคาร์บอน",
       "description": "Strategic plan outlining emission reduction targets, initiatives, and projected timelines.",
+      "descriptionTh": "แผนกลยุทธ์ระบุเป้าหมายการลดการปล่อยก๊าซเรือนกระจก แนวทางดำเนินงาน และกรอบเวลา",
       "year": 2025,
       "path": "/documents/cat4/carbon-reduction-plan.pdf",
       "fileType": "PDF",
@@ -271,7 +307,8 @@
       "categoryCodes": ["cat4"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -279,7 +316,9 @@
       "categoryId": "cat4",
       "indicator": "Emission factor documentation",
       "title": "Emission Factor Documentation",
+      "titleTh": "เอกสารค่าสัมประสิทธิ์การปล่อยก๊าซเรือนกระจก",
       "description": "Reference documentation for emission factors used in GHG calculations.",
+      "descriptionTh": "เอกสารอ้างอิงค่าสัมประสิทธิ์ที่ใช้ในการคำนวณก๊าซเรือนกระจก",
       "year": 2025,
       "path": "/documents/cat4/emission-factors.xlsx",
       "fileType": "XLSX",
@@ -291,7 +330,8 @@
       "categoryCodes": ["cat4"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -299,7 +339,9 @@
       "categoryId": "cat5",
       "indicator": "Indoor air quality monitoring",
       "title": "Indoor Air Quality Survey 2025",
+      "titleTh": "แบบสำรวจคุณภาพอากาศภายในอาคาร ปี 2568",
       "description": "IAQ measurement results including CO2, PM2.5, temperature, and humidity data across office zones.",
+      "descriptionTh": "ผลการตรวจวัดคุณภาพอากาศภายในอาคาร ทั้งค่า CO2, PM2.5 อุณหภูมิ และความชื้นในแต่ละพื้นที่สำนักงาน",
       "year": 2025,
       "path": "/documents/cat5/placeholder.md",
       "fileType": "MD",
@@ -311,7 +353,8 @@
       "categoryCodes": ["cat5"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -319,7 +362,9 @@
       "categoryId": "cat5",
       "indicator": "Ventilation maintenance",
       "title": "Ventilation Maintenance Logs 2025",
+      "titleTh": "บันทึกการบำรุงรักษาระบบระบายอากาศ ปี 2568",
       "description": "Scheduled maintenance and inspection records for HVAC ventilation systems.",
+      "descriptionTh": "บันทึกการตรวจสอบและบำรุงรักษาระบบปรับอากาศและระบายอากาศตามรอบที่กำหนด",
       "year": 2025,
       "path": "/documents/cat5/ventilation-logs-2025.xlsx",
       "fileType": "XLSX",
@@ -331,7 +376,8 @@
       "categoryCodes": ["cat5"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -339,7 +385,9 @@
       "categoryId": "cat5",
       "indicator": "Low-emission materials and cleaning",
       "title": "Green Cleaning Product Inventory",
+      "titleTh": "รายการผลิตภัณฑ์ทำความสะอาดที่เป็นมิตรต่อสิ่งแวดล้อม",
       "description": "Inventory of approved low-emission cleaning products and supplier certifications.",
+      "descriptionTh": "รายการผลิตภัณฑ์ทำความสะอาดที่ผ่านการรับรองว่าปล่อยสารพิษต่ำ พร้อมใบรับรองจากผู้จำหน่าย",
       "year": 2025,
       "path": "/documents/cat5/green-cleaning-inventory.pdf",
       "fileType": "PDF",
@@ -351,7 +399,8 @@
       "categoryCodes": ["cat5"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -359,7 +408,9 @@
       "categoryId": "cat6",
       "indicator": "Sustainable commuting",
       "title": "Employee Commute Survey 2025",
+      "titleTh": "แบบสำรวจการเดินทางของพนักงาน ปี 2568",
       "description": "Survey results on employee commuting patterns, mode share, and satisfaction with sustainable transport options.",
+      "descriptionTh": "ผลสำรวจรูปแบบการเดินทางของพนักงาน สัดส่วนการใช้ยานพาหนะ และความพึงพอใจต่อการเดินทางแบบยั่งยืน",
       "year": 2025,
       "path": "/documents/cat6/placeholder.md",
       "fileType": "MD",
@@ -371,7 +422,8 @@
       "categoryCodes": ["cat6"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -379,7 +431,9 @@
       "categoryId": "cat6",
       "indicator": "Fleet fuel consumption",
       "title": "Fleet Fuel Usage Records 2025",
+      "titleTh": "บันทึกการใช้เชื้อเพลิงยานพาหนะ ปี 2568",
       "description": "Monthly fuel consumption and mileage records for the organizational vehicle fleet.",
+      "descriptionTh": "บันทึกปริมาณการใช้เชื้อเพลิงและระยะทางรายเดือนของยานพาหนะของหน่วยงาน",
       "year": 2025,
       "path": "/documents/cat6/fleet-fuel-2025.xlsx",
       "fileType": "XLSX",
@@ -391,7 +445,8 @@
       "categoryCodes": ["cat6"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -399,7 +454,9 @@
       "categoryId": "cat6",
       "indicator": "Sustainable transport policy",
       "title": "Sustainable Transport Policy",
+      "titleTh": "นโยบายการเดินทางที่ยั่งยืน",
       "description": "Organizational policy document promoting low-carbon commuting and virtual meeting adoption.",
+      "descriptionTh": "เอกสารนโยบายส่งเสริมการเดินทางแบบคาร์บอนต่ำและการใช้ระบบประชุมทางไกล",
       "year": 2024,
       "path": "/documents/cat6/transport-policy.pdf",
       "fileType": "PDF",
@@ -411,7 +468,8 @@
       "categoryCodes": ["cat6"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -419,7 +477,9 @@
       "categoryId": "cat7",
       "indicator": "Pilot projects for sustainability",
       "title": "Green Innovation Pilot Project",
+      "titleTh": "โครงการนำร่องนวัตกรรมสีเขียว",
       "description": "Pilot project documentation for emerging sustainability practices including smart sensors and green roofs.",
+      "descriptionTh": "เอกสารโครงการนำร่องแนวปฏิบัติด้านความยั่งยืนใหม่ๆ เช่น เซนเซอร์อัจฉริยะและหลังคาสีเขียว",
       "year": 2025,
       "path": "/documents/cat7/placeholder.md",
       "fileType": "MD",
@@ -431,7 +491,8 @@
       "categoryCodes": ["cat7"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -439,7 +500,9 @@
       "categoryId": "cat7",
       "indicator": "Staff engagement in green programs",
       "title": "Staff Green Engagement Records 2025",
+      "titleTh": "บันทึกการมีส่วนร่วมด้านสิ่งแวดล้อมของพนักงาน ปี 2568",
       "description": "Records of staff participation in green innovation programs, workshops, and idea submissions.",
+      "descriptionTh": "บันทึกการมีส่วนร่วมของพนักงานในกิจกรรมนวัตกรรมสีเขียว การอบรม และการเสนอไอเดีย",
       "year": 2025,
       "path": "/documents/cat7/staff-engagement-2025.pdf",
       "fileType": "PDF",
@@ -451,7 +514,8 @@
       "categoryCodes": ["cat7"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     },
     {
@@ -459,7 +523,9 @@
       "categoryId": "cat7",
       "indicator": "External recognition and partnerships",
       "title": "External Partnerships & Recognition",
+      "titleTh": "ความร่วมมือภายนอกและรางวัลที่ได้รับ",
       "description": "Documentation of external sustainability partnerships, awards, and best practice sharing activities.",
+      "descriptionTh": "เอกสารความร่วมมือด้านความยั่งยืนกับภายนอก รางวัลที่ได้รับ และกิจกรรมแลกเปลี่ยนแนวปฏิบัติที่ดี",
       "year": 2025,
       "path": "/documents/cat7/partnerships-2025.pdf",
       "fileType": "PDF",
@@ -471,7 +537,8 @@
       "categoryCodes": ["cat7"],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established."
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
       }
     }
   ]

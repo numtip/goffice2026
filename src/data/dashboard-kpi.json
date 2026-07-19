@@ -6,81 +6,99 @@
     {
       "id": "energy",
       "label": "Energy Score",
+      "labelTh": "คะแนนพลังงาน",
       "value": 85,
       "unit": "%",
       "categoryId": "cat1",
       "trend": "up",
-      "description": "Electricity consumption and energy efficiency"
+      "description": "Electricity consumption and energy efficiency",
+      "descriptionTh": "การใช้ไฟฟ้าและประสิทธิภาพพลังงาน"
     },
     {
       "id": "water",
       "label": "Water Score",
+      "labelTh": "คะแนนน้ำ",
       "value": 78,
       "unit": "%",
       "categoryId": "cat2",
       "trend": "stable",
-      "description": "Water consumption and conservation"
+      "description": "Water consumption and conservation",
+      "descriptionTh": "การใช้น้ำและการอนุรักษ์น้ำ"
     },
     {
       "id": "waste",
       "label": "Waste Score",
+      "labelTh": "คะแนนของเสีย",
       "value": 92,
       "unit": "%",
       "categoryId": "cat3",
       "trend": "up",
-      "description": "Waste segregation and recycling"
+      "description": "Waste segregation and recycling",
+      "descriptionTh": "การคัดแยกและรีไซเคิลของเสีย"
     },
     {
       "id": "emissions",
       "label": "Emissions Score",
+      "labelTh": "คะแนนการปล่อยก๊าซเรือนกระจก",
       "value": 71,
       "unit": "%",
       "categoryId": "cat4",
       "trend": "down",
-      "description": "Greenhouse gas emissions"
+      "description": "Greenhouse gas emissions",
+      "descriptionTh": "การปล่อยก๊าซเรือนกระจก"
     },
     {
       "id": "indoor",
       "label": "Indoor Quality Score",
+      "labelTh": "คะแนนคุณภาพภายในอาคาร",
       "value": 88,
       "unit": "%",
       "categoryId": "cat5",
       "trend": "up",
-      "description": "Indoor environmental quality"
+      "description": "Indoor environmental quality",
+      "descriptionTh": "คุณภาพสิ่งแวดล้อมภายในอาคาร"
     },
     {
       "id": "transport",
       "label": "Transportation Score",
+      "labelTh": "คะแนนการเดินทาง",
       "value": 74,
       "unit": "%",
       "categoryId": "cat6",
       "trend": "stable",
-      "description": "Sustainable transport management"
+      "description": "Sustainable transport management",
+      "descriptionTh": "การจัดการการเดินทางที่ยั่งยืน"
     },
     {
       "id": "innovation",
       "label": "Innovation Score",
+      "labelTh": "คะแนนนวัตกรรม",
       "value": 80,
       "unit": "%",
       "categoryId": "cat7",
       "trend": "up",
-      "description": "Green innovation initiatives"
+      "description": "Green innovation initiatives",
+      "descriptionTh": "กิจกรรมนวัตกรรมสีเขียว"
     },
     {
       "id": "fuel",
       "label": "Fuel Consumption",
+      "labelTh": "การใช้เชื้อเพลิง",
       "value": 22928,
       "unit": "L",
       "trend": "down",
-      "description": "Fuel consumption (liters)"
+      "description": "Fuel consumption (liters)",
+      "descriptionTh": "ปริมาณการใช้เชื้อเพลิง (ลิตร)"
     },
     {
       "id": "paper",
       "label": "Paper Consumption",
+      "labelTh": "การใช้กระดาษ",
       "value": 2198,
       "unit": "kg",
       "trend": "up",
-      "description": "Paper consumption (kg)"
+      "description": "Paper consumption (kg)",
+      "descriptionTh": "ปริมาณการใช้กระดาษ (กิโลกรัม)"
     }
   ]
 }

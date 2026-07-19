@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/global.css';
 import { getLocale } from '../../i18n/utils';
 import { withBase } from '../../utils/with-base';
-import { dashboards } from '../../data/dashboard-config';
+import { dashboards, dashTitle, dashDescription } from '../../data/dashboard-config';
 import categoryData from '../../data/criteria/categories.json';
 import issueData from '../../data/criteria/issues.json';
 import indicatorData from '../../data/criteria/indicators.json';
@@ -276,8 +276,8 @@ const weightLabel = isCat7
               href={withBase(`/dashboard/${d.id}/`)}
               class="block rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all hover:shadow-md hover:border-green-300"
             >
-              <h3 class="text-sm font-semibold text-green-700">{d.title}</h3>
-              <p class="mt-1 text-xs text-gray-500 line-clamp-2">{d.description}</p>
+              <h3 class="text-sm font-semibold text-green-700">{dashTitle(d, locale)}</h3>
+              <p class="mt-1 text-xs text-gray-500 line-clamp-2">{dashDescription(d, locale)}</p>
             </a>
           ))}
         </div>

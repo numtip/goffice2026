@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/global.css';
-import { dashboards } from '../../data/dashboard-config';
+import { dashboards, dashTitle, dashDescription, dashSourceLabel } from '../../data/dashboard-config';
 import type { DashboardMeta } from '../../data/dashboard-config';
 import type { MultiYearMetric, YearData } from '../../utils/multi-year-schema';
 import Sparkline from '../../components/dashboard/Sparkline.astro';
@@ -85,21 +85,23 @@ const currentStatusLabel = currentYear?.dataStatus === 'CURRENT_DATA_PENDING'
   : currentYear?.dataStatus === 'complete'
     ? (isTh ? 'ครบถ้วน' : 'Complete')
     : (isTh ? 'กำลังบันทึก' : 'In Progress');
+const pageTitle = dashTitle(dashboard, locale);
+const pageDescription = dashDescription(dashboard, locale);
 ---
 
-<BaseLayout title={dashboard.title} description={dashboard.description} locale={locale}>
+<BaseLayout title={pageTitle} description={pageDescription} locale={locale}>
   <div class="p-4 max-w-5xl mx-auto">
     <!-- Breadcrumb -->
     <nav class="text-sm text-gray-500 mb-4">
       <a href={getLocalizedPath(locale, '/dashboard')} class="text-green-600 underline hover:text-green-800">{isTh ? 'แดชบอร์ด' : 'Dashboard'}</a>
       <span aria-hidden="true"> / </span>
-      <span class="text-gray-700 font-medium">{dashboard.title}</span>
+      <span class="text-gray-700 font-medium">{pageTitle}</span>
     </nav>
 
     <!-- Header -->
     <div class="mb-6">
-      <h1 class="text-2xl font-bold text-gray-900">{dashboard.title}</h1>
-      <p class="text-gray-600 mt-1">{dashboard.description}</p>
+      <h1 class="text-2xl font-bold text-gray-900">{pageTitle}</h1>
+      <p class="text-gray-600 mt-1">{pageDescription}</p>
     </div>
 
     {metric && baselineYear ? (
@@ -378,7 +380,7 @@ const currentStatusLabel = currentYear?.dataStatus === 'CURRENT_DATA_PENDING'
           <div class="text-xs text-gray-400 space-y-0.5 mt-2">
             <p><strong>{isTh ? `ปีฐาน ${metric.baselineYear}:` : `${metric.baselineYear} Baseline:`}</strong> {baselineYear.source} &middot; {isTh ? 'อัปเดตเมื่อ' : 'Updated'}: {baselineYear.updated}</p>
             <p><strong>{isTh ? `ปีปัจจุบัน ${metric.currentYear}:` : `${metric.currentYear} Current:`}</strong> {currentYear?.source} &middot; {isTh ? 'อัปเดตเมื่อ' : 'Updated'}: {currentYear?.updated}</p>
-            <p>{isTh ? 'โครงสร้างข้อมูล' : 'Data model'}: <code>src/data/generated/{metric.metric}.json</code> &middot; {isTh ? 'อ้างอิง' : 'Ref'}: {dashboard.sourceLabel}</p>
+            <p>{isTh ? 'โครงสร้างข้อมูล' : 'Data model'}: <code>src/data/generated/{metric.metric}.json</code> &middot; {isTh ? 'อ้างอิง' : 'Ref'}: {dashSourceLabel(dashboard, locale)}</p>
             <p class="border-t border-gray-200 pt-1 mt-1">
               {isTh ? 'ขั้นตอนนำเข้าข้อมูล' : 'Import pipeline'}: <code>scripts/import-dashboard-data.mjs</code> &middot;
               {isTh ? 'ไฟล์ CSV ต้นทาง' : 'CSV source'}: <code>data/import/{dashboard.csvFile.replace('.csv', '')}-{metric.currentYear}.csv</code>

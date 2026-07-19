@@ -53,8 +53,8 @@ const items = evidenceIndex.items.map((raw: Record<string, any>) => {
 
   return {
     id: raw.id,
-    title: raw.title,
-    description: raw.description,
+    title: isTh ? (raw.titleTh || raw.title) : raw.title,
+    description: isTh ? (raw.descriptionTh || raw.description) : raw.description,
     year: raw.year,
     fileType: raw.fileType,
     status: raw.status,
