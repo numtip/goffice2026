@@ -1,5 +1,5 @@
 {
-  "version": "0.5.0",
+  "version": "0.5.1",
   "updated": "2026-07-19",
   "items": [
     {
@@ -49,7 +49,10 @@
       },
       "verification": {
         "status": "pending",
-        "basis": "ET-1 traceability promotion: operational electricity consumption workbook directly supports indicator 3.2.2 (consumption data per unit vs targets). Source file existence is system-validated; human data-owner verification is still required before verified status."
+        "basis": "ET-1 traceability promotion: operational electricity consumption workbook directly supports indicator 3.2.2 (consumption data per unit vs targets). Source file existence is system-validated; human data-owner verification is still required before verified status.",
+        "reviewPhase": "REL-1",
+        "reviewedAt": "2026-07-19",
+        "reviewOutcome": "pending-po-signoff"
       }
     },
     {
@@ -99,7 +102,10 @@
       },
       "verification": {
         "status": "pending",
-        "basis": "ET-1 traceability promotion: water consumption monitoring workbook directly supports indicator 3.1.2 (water consumption data per unit vs targets). Source file existence is system-validated; human data-owner verification is still required before verified status."
+        "basis": "ET-1 traceability promotion: water consumption monitoring workbook directly supports indicator 3.1.2 (water consumption data per unit vs targets). Source file existence is system-validated; human data-owner verification is still required before verified status.",
+        "reviewPhase": "REL-1",
+        "reviewedAt": "2026-07-19",
+        "reviewOutcome": "pending-po-signoff"
       }
     },
     {
@@ -209,7 +215,10 @@
       },
       "verification": {
         "status": "pending",
-        "basis": "ET-1 traceability promotion: monthly waste tracking workbook (form 4.1(1)) directly supports indicator 4.1.2 (sorting, collection, and disposal implementation). Source file existence is system-validated; human data-owner verification is still required before verified status."
+        "basis": "ET-1 traceability promotion: monthly waste tracking workbook (form 4.1(1)) directly supports indicator 4.1.2 (sorting, collection, and disposal implementation). Source file existence is system-validated; human data-owner verification is still required before verified status.",
+        "reviewPhase": "REL-1",
+        "reviewedAt": "2026-07-19",
+        "reviewOutcome": "pending-po-signoff"
       }
     },
     {
@@ -239,7 +248,10 @@
       },
       "verification": {
         "status": "pending",
-        "basis": "ET-1 traceability promotion: GHG inventory workbook (form 1.5(1)) directly supports indicator 1.5.1 (collection of GHG data from office activities). Source file existence is system-validated; human data-owner verification is still required before verified status."
+        "basis": "ET-1 traceability promotion: GHG inventory workbook (form 1.5(1)) directly supports indicator 1.5.1 (collection of GHG data from office activities). Source file existence is system-validated; human data-owner verification is still required before verified status.",
+        "reviewPhase": "REL-1",
+        "reviewedAt": "2026-07-19",
+        "reviewOutcome": "pending-po-signoff"
       }
     },
     {

@@ -24,6 +24,19 @@ Four high-confidence resource workbook mappings were promoted to **indicator-lev
 
 **Excluded from promotion:** Indicator 3.2.1 for electricity (policy measures — not supported by consumption workbook alone). Medium/low-confidence items remain `pending`.
 
+### REL-1 Update (2026-07-19)
+
+Baseline: `master @ 75064b8`. All four indicator-level mappings were re-audited. **No Product Owner approval was recorded.** Verification status unchanged (`pending`).
+
+| Evidence ID | Indicator | Source (local) | REL-1 audit | verification.status |
+|---|---|---|---|---|
+| ev-energy-metering-2025 | 3.2.2 | docs/1.2-elect.xlsx | Mapping valid; source present | **pending** (PO sign-off required) |
+| ev-water-meter-q1 | 3.1.2 | docs/1.1-Water.xlsx | Mapping valid; source present | **pending** (PO sign-off required) |
+| ev-waste-monthly-2025 | 4.1.2 | docs/1.5_Waste.xlsx | Mapping valid; source present | **pending** (PO sign-off required) |
+| ev-ghg-inventory-2025 | 1.5.1 | docs/1.6_GreenhouseGas.xlsx | Mapping valid; source present | **pending** (PO sign-off required) |
+
+**REL-1 verdict:** `awaiting-po` — structural traceability confirmed; human data-owner verification not fabricated.
+
 ---
 
 ## 1. Total Pending Items
@@ -31,12 +44,13 @@ Four high-confidence resource workbook mappings were promoted to **indicator-lev
 | Status | Count |
 |--------|-------|
 | **Total queue items** | **23** |
-| `decision: pending` | 23 (100%) |
+| `decision: traceability-promoted` | 4 |
+| `decision: pending` | 19 |
 | `decision: approved` | 0 |
 | `decision: rejected` | 0 |
 | `decision: needs-more-information` | 0 |
 
-All items start as `pending` per the automated candidate policy. No items have been pre-approved or pre-rejected.
+Four items were promoted to indicator-level traceability in ET-1 but retain `verification.status: pending` until PO sign-off. Nineteen items remain fully pending review.
 
 ---
 
