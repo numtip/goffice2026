@@ -12,6 +12,7 @@ export interface SiteStrings {
   university: string;
   tagline: string;
   title_suffix: string;
+  platform_version?: string;
   skip_to_content: string;
   language: string;
 }
