@@ -22,8 +22,9 @@ const traceLabels: Record<string, { th: string; en: string }> = {
 };
 
 const verLabels: Record<string, { th: string; en: string }> = {
-  verified: { th: 'ยืนยันแล้ว', en: 'Verified' },
-  unresolved: { th: 'ยังไม่ยืนยัน', en: 'Unresolved' },
+  verified: { th: 'ตรวจสอบแล้ว', en: 'Verified' },
+  pending: { th: 'รอตรวจสอบ', en: 'Pending review' },
+  unresolved: { th: 'ยังไม่ตรวจสอบ', en: 'Unresolved' },
   rejected: { th: 'ไม่ผ่าน', en: 'Rejected' },
 };
 
@@ -84,6 +85,7 @@ for (const level of traceabilityOrder) {
 const verStats: { label: string; count: number; key: string; color: string }[] = [];
 const verColorMap: Record<string, string> = {
   verified: 'text-green-600',
+  pending: 'text-amber-600',
   unresolved: 'text-yellow-600',
   rejected: 'text-red-600',
 };
@@ -125,11 +127,11 @@ const hasItems = items.length > 0;
         </div>
         <div>
           <h2 class="text-lg font-bold text-amber-800">
-            {isTh ? 'ยังไม่มีไฟล์ต้นฉบับ — รอเอกสารที่ได้รับการอนุมัติ' : 'Source Pending — Awaiting Approved Documents'}
+            {isTh ? 'ยังไม่มีเอกสารจริง — กำลังรอไฟล์ที่ได้รับอนุมัติ' : 'Source Pending — Awaiting Approved Documents'}
           </h2>
           <p class="text-sm text-amber-700 mt-1 leading-relaxed">
             {isTh
-              ? `รายการหลักฐานทั้งหมด ${totalItems} รายการเป็นตำแหน่งว่างชั่วคราว (placeholder) รายการเหล่านี้กำหนดโครงสร้างหลักฐานการรับรอง — การเชื่อมโยงตัวชี้วัด ประเภทเอกสารที่คาดหวัง และคำอธิบาย — แต่ยังไม่มีเอกสารต้นฉบับอัปโหลด เมื่อเอกสารที่ได้รับอนุมัติถูกจัดทำดัชนีแล้ว จะแทนที่ตำแหน่งว่างเหล่านี้ และคลังหลักฐานจะสามารถเรียกดูได้อย่างสมบูรณ์`
+              ? `ขณะนี้รายการหลักฐานทั้งหมด ${totalItems} รายการยังเป็นเพียงตัวอย่างที่บอกว่าหลักฐานนี้เกี่ยวข้องกับตัวชี้วัดใด ควรใช้เอกสารประกอบแบบใด และมีรายละเอียดอย่างไร แต่ยังไม่มีไฟล์เอกสารจริงแนบอยู่ เมื่อหน่วยงานอัปโหลดเอกสารที่ได้รับอนุมัติแล้ว ไฟล์จริงจะเข้ามาแทนที่ตัวอย่างเหล่านี้ และจะสามารถเปิดดูหลักฐานทั้งหมดได้ครบถ้วน`
               : `All ${totalItems} evidence items are currently placeholder records. These entries define the certification evidence structure — indicator mappings, expected document types, and descriptions — but no actual source documents have been uploaded yet. Once approved office documents are indexed, they will replace these placeholders and the evidence library will become fully navigable.`}
           </p>
         </div>
@@ -193,7 +195,9 @@ const hasItems = items.length > 0;
 
     <!-- Updated date -->
     <p class="text-xs text-gray-400 mt-6 text-center">
-      {isTh ? 'อัปเดตล่าสุด' : 'Last updated'}: {evidenceIndex.updated} · Schema: v{evidenceIndex.version}
+      {isTh
+        ? `อัปเดตล่าสุด: ${evidenceIndex.updated} · เวอร์ชันข้อมูล v${evidenceIndex.version}`
+        : `Last updated: ${evidenceIndex.updated} · Schema: v${evidenceIndex.version}`}
     </p>
   </div>
 </BaseLayout>

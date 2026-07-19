@@ -20,8 +20,9 @@ const traceLabels: Record<string, { th: string; en: string }> = {
 };
 
 const verLabels: Record<string, { th: string; en: string }> = {
-  verified: { th: 'ยืนยันแล้ว', en: 'Verified' },
-  unresolved: { th: 'ยังไม่ยืนยัน', en: 'Unresolved' },
+  verified: { th: 'ตรวจสอบแล้ว', en: 'Verified' },
+  pending: { th: 'รอตรวจสอบ', en: 'Pending review' },
+  unresolved: { th: 'ยังไม่ตรวจสอบ', en: 'Unresolved' },
   rejected: { th: 'ไม่ผ่าน', en: 'Rejected' },
 };
 
@@ -82,6 +83,7 @@ for (const level of traceabilityOrder) {
 const verStats: { label: string; count: number; key: string; color: string }[] = [];
 const verColorMap: Record<string, string> = {
   verified: 'text-green-600',
+  pending: 'text-amber-600',
   unresolved: 'text-yellow-600',
   rejected: 'text-red-600',
 };

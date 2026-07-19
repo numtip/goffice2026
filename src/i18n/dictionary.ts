@@ -155,9 +155,50 @@ export interface HomeStrings {
   footer: HomeFooterStrings;
 }
 
+export interface DashboardPageStrings {
+  title: string;
+  subtitle: string;
+  reference_label: string;
+  updated_label: string;
+  overall_score_label: string;
+  taxonomy_summary: string;
+  view_reference: string;
+  yoy_heading: string;
+  yoy_caption: string;
+  baseline_label: string;
+  current_label: string;
+  months_unit: string;
+  yoy_prefix: string;
+  partial_year_tag: string;
+  data_pending: string;
+  partial_year_title: string;
+  partial_year_body: string;
+  category_scores_heading: string;
+  category_prefix: string;
+  dashboard_link: string;
+  completeness_heading: string;
+  legend_present: string;
+  legend_pending: string;
+  completeness_note: string;
+  table_metric: string;
+  table_month: string;
+  table_total: string;
+  source_heading: string;
+  source_baseline_label: string;
+  source_current_label: string;
+  source_departmental: string;
+  source_staff_excel: string;
+  source_same_files: string;
+  pipeline_heading: string;
+  last_updated_label: string;
+  generated_data_label: string;
+  reference_note: string;
+}
+
 export interface LocaleStrings {
   site: SiteStrings;
   home: HomeStrings;
+  dashboardPage: DashboardPageStrings;
 }
 
 // ── Dictionary loading ────────────────────────────────────────────────

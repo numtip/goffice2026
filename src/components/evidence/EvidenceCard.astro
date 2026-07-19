@@ -57,17 +57,17 @@ const traceCfg = traceabilityConfig[traceabilityLevel] || traceabilityConfig.unm
 // Verification status config
 const verificationConfig: Record<string, { th: string; en: string; class: string }> = {
   verified: {
-    th: 'ยืนยันแล้ว',
+    th: 'ตรวจสอบแล้ว',
     en: 'Verified',
     class: 'bg-green-100 text-green-800',
   },
   pending: {
-    th: 'รอการยืนยัน',
+    th: 'รอตรวจสอบ',
     en: 'Pending review',
     class: 'bg-amber-100 text-amber-800',
   },
   unresolved: {
-    th: 'ยังไม่ยืนยัน',
+    th: 'ยังไม่ตรวจสอบ',
     en: 'Unresolved',
     class: 'bg-yellow-100 text-yellow-800',
   },
@@ -111,7 +111,7 @@ const detailHref = withBase(`/evidence/${id}/`);
         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        Source Pending
+        {locale === 'th' ? 'ยังไม่มีไฟล์ต้นฉบับ' : 'Source Pending'}
       </span>
     )}
     <!-- File type badge -->
@@ -176,6 +176,6 @@ const detailHref = withBase(`/evidence/${id}/`);
       </svg>
       {locale === 'th' ? 'ดูรายละเอียด' : 'View Details'}
     </a>
-    <span class="text-xs text-gray-400 ml-auto">ID: {id}</span>
+    <span class="text-xs text-gray-400 ml-auto">{locale === 'th' ? 'รหัส' : 'ID'}: {id}</span>
   </div>
 </article>

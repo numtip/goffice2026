@@ -14,7 +14,7 @@ import fuelGen from '../../../data/generated/fuel.json';
 import paperGen from '../../../data/generated/paper.json';
 import wasteGen from '../../../data/generated/waste.json';
 import ghgGen from '../../../data/generated/ghg.json';
-import { getLocale, getLocalizedPath } from '../../../i18n/utils';
+import { getLocalizedPath } from '../../../i18n/utils';
 import { getEvidenceForDashboard } from '../../../utils/evidence-traceability';
 import LinkedEvidenceList from '../../../components/evidence/LinkedEvidenceList.astro';
 
@@ -35,7 +35,8 @@ export function getStaticPaths() {
 }
 
 const { dashboard } = Astro.props as { dashboard: DashboardMeta };
-const locale = getLocale(Astro.url);
+const locale = 'en' as const;
+const isTh = false;
 const metric = genMap[dashboard.id];
 
 const baselineYear = metric?.years[metric.baselineYear.toString()] as YearData | undefined;
@@ -53,7 +54,9 @@ const relatedIndicators = indicatorsData.indicators.filter(
 const linkedEvidence = getEvidenceForDashboard(dashboard.id);
 
 /** Build month-abbreviation list */
-const monthAbbr = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const monthAbbr = isTh
+  ? ['', 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.']
+  : ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 /** Status badge styling */
 function statusBadge(status: string): string {
@@ -76,13 +79,19 @@ function arrowColor(dir: string): string {
   if (dir === 'down') return 'text-red-500';
   return 'text-gray-400';
 }
+
+const currentStatusLabel = currentYear?.dataStatus === 'CURRENT_DATA_PENDING'
+  ? (isTh ? 'รอข้อมูล' : 'Data Pending')
+  : currentYear?.dataStatus === 'complete'
+    ? (isTh ? 'ครบถ้วน' : 'Complete')
+    : (isTh ? 'กำลังบันทึก' : 'In Progress');
 ---
 
 <BaseLayout title={dashboard.title} description={dashboard.description} locale={locale}>
   <div class="p-4 max-w-5xl mx-auto">
     <!-- Breadcrumb -->
     <nav class="text-sm text-gray-500 mb-4">
-      <a href={getLocalizedPath(locale, '/dashboard')} class="text-green-600 underline hover:text-green-800">Dashboard</a>
+      <a href={getLocalizedPath(locale, '/dashboard')} class="text-green-600 underline hover:text-green-800">{isTh ? 'แดชบอร์ด' : 'Dashboard'}</a>
       <span aria-hidden="true"> / </span>
       <span class="text-gray-700 font-medium">{dashboard.title}</span>
     </nav>
@@ -97,22 +106,22 @@ function arrowColor(dir: string): string {
       <>
         <!-- Pipeline Status Section -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
-          <h2 class="text-sm font-semibold text-gray-700 mb-3">Pipeline Status</h2>
+          <h2 class="text-sm font-semibold text-gray-700 mb-3">{isTh ? 'สถานะข้อมูล' : 'Pipeline Status'}</h2>
           <div class="flex flex-wrap gap-3">
             <!-- Baseline -->
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 border border-blue-200">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-              2568 Baseline &mdash; Frozen
+              {isTh ? `ปีฐาน ${metric.baselineYear} — ข้อมูลสมบูรณ์` : `${metric.baselineYear} Baseline — Frozen`}
             </div>
             <!-- Target -->
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800 border border-yellow-200">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
-              2569 Target &mdash; Awaiting Approval
+              {isTh ? `เป้าหมาย ${metric.targetYear ?? metric.currentYear} — รอการอนุมัติ` : `${metric.targetYear ?? metric.currentYear} Target — Awaiting Approval`}
             </div>
             <!-- Current -->
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-gray-100 text-gray-500 border border-gray-200">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-              2569 Actual &mdash; Data Not Yet Available
+              {isTh ? `ข้อมูลจริงปี ${metric.currentYear} — ยังไม่มีข้อมูล` : `${metric.currentYear} Actual — Data Not Yet Available`}
             </div>
           </div>
         </div>
@@ -121,7 +130,9 @@ function arrowColor(dir: string): string {
         <div class="flex flex-wrap gap-3 mb-6">
           <span class={"inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium " + statusBadge(baselineYear.dataStatus)}>
             <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            {metric.baselineYear} Baseline: Verified &amp; Frozen ({baselineYear.months.length} months)
+            {isTh
+              ? `ปีฐาน ${metric.baselineYear}: ตรวจสอบแล้ว ครบถ้วน (${baselineYear.months.length} เดือน)`
+              : `${metric.baselineYear} Baseline: Verified & Frozen (${baselineYear.months.length} months)`}
           </span>
           <span class={"inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium " + statusBadge(currentYear?.dataStatus ?? 'missing')}>
             {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? (
@@ -131,10 +142,9 @@ function arrowColor(dir: string): string {
             ) : (
               <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             )}
-            {metric.currentYear} Current: {
-              currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? 'Data Pending' :
-              currentYear?.dataStatus === 'complete' ? 'Complete' : 'In Progress'
-            } ({currentYear?.months.length ?? 0} of 12 months)
+            {isTh
+              ? `ปีปัจจุบัน ${metric.currentYear}: ${currentStatusLabel} (${currentYear?.months.length ?? 0} จาก 12 เดือน)`
+              : `${metric.currentYear} Current: ${currentStatusLabel} (${currentYear?.months.length ?? 0} of 12 months)`}
           </span>
         </div>
 
@@ -142,14 +152,14 @@ function arrowColor(dir: string): string {
         {currentYear && (
           <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-6">
             <div class="flex items-center justify-between mb-2">
-              <h2 class="text-xs font-semibold text-gray-700">{metric.currentYear} Month-by-Month Data Entry</h2>
-              <span class="text-[10px] text-gray-400">{currentYear.months.length} of 12 months entered</span>
+              <h2 class="text-xs font-semibold text-gray-700">{isTh ? `การบันทึกข้อมูลรายเดือนปี ${metric.currentYear}` : `${metric.currentYear} Month-by-Month Data Entry`}</h2>
+              <span class="text-[10px] text-gray-400">{isTh ? `บันทึกแล้ว ${currentYear.months.length} จาก 12 เดือน` : `${currentYear.months.length} of 12 months entered`}</span>
             </div>
             <div class="grid grid-cols-12 gap-1">
               {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => {
                 const hasData = currentYear.months.some((mo) => mo.month === m);
                 return (
-                  <div class="flex flex-col items-center" title={monthAbbr[m] + (hasData ? '' : ' — data pending')}>
+                  <div class="flex flex-col items-center" title={monthAbbr[m] + (hasData ? '' : (isTh ? ' — ยังไม่มีข้อมูล' : ' — data pending'))}>
                     <span class={"w-full rounded-sm " + (hasData ? 'bg-green-400' : 'bg-gray-200')} style="height: 20px;"></span>
                     <span class="text-[10px] text-gray-400 mt-0.5">{monthAbbr[m]}</span>
                   </div>
@@ -163,32 +173,36 @@ function arrowColor(dir: string): string {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <!-- Baseline (2568) -->
           <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
-            <p class="text-xs text-gray-500 mb-1">Baseline ({metric.baselineYear})</p>
+            <p class="text-xs text-gray-500 mb-1">{isTh ? `ปีฐาน (${metric.baselineYear})` : `Baseline (${metric.baselineYear})`}</p>
             <p class="text-2xl font-bold text-gray-800">{Intl.NumberFormat().format(baselineYear.total)}<span class="text-sm text-gray-400 ml-1">{metric.unit}</span></p>
-            <p class="text-xs text-gray-400 mt-1">Frozen baseline &middot; {baselineYear.months.length} months</p>
+            <p class="text-xs text-gray-400 mt-1">{isTh ? `ข้อมูลปีฐานครบถ้วน · ${baselineYear.months.length} เดือน` : `Frozen baseline · ${baselineYear.months.length} months`}</p>
           </div>
 
           <!-- Target (2569) -->
           <div class="bg-white rounded-xl shadow-sm border border-yellow-200 p-5">
-            <p class="text-xs text-gray-500 mb-1">Target ({metric.targetYear ?? metric.currentYear})</p>
+            <p class="text-xs text-gray-500 mb-1">{isTh ? `เป้าหมาย (${metric.targetYear ?? metric.currentYear})` : `Target (${metric.targetYear ?? metric.currentYear})`}</p>
             <p class="text-2xl font-bold text-yellow-600">
-              {target && target.targetValue !== null ? Intl.NumberFormat().format(target.targetValue) : 'TBD'}
+              {target && target.targetValue !== null ? Intl.NumberFormat().format(target.targetValue) : (isTh ? 'ยังไม่กำหนด' : 'TBD')}
               <span class="text-sm text-gray-400 ml-1">{metric.unit}</span>
             </p>
             <p class="text-xs text-gray-400 mt-1">
-              {target && target.status === 'TARGET_PENDING_APPROVAL' ? 'Awaiting staff approval' : 'Reduction target'}
+              {target && target.status === 'TARGET_PENDING_APPROVAL'
+                ? (isTh ? 'รอการอนุมัติจากเจ้าหน้าที่' : 'Awaiting staff approval')
+                : (isTh ? 'เป้าหมายการลดใช้' : 'Reduction target')}
             </p>
           </div>
 
           <!-- Current (2569) -->
           <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
-            <p class="text-xs text-gray-500 mb-1">Current ({metric.currentYear})</p>
+            <p class="text-xs text-gray-500 mb-1">{isTh ? `ปีปัจจุบัน (${metric.currentYear})` : `Current (${metric.currentYear})`}</p>
             <p class={"text-2xl font-bold " + (currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? 'text-gray-400' : 'text-gray-800')}>
-              {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? 'No data' : Intl.NumberFormat().format(currentYear?.total ?? 0)}
+              {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? (isTh ? 'ยังไม่มีข้อมูล' : 'No data') : Intl.NumberFormat().format(currentYear?.total ?? 0)}
               <span class="text-sm text-gray-400 ml-1">{metric.unit}</span>
             </p>
             <p class="text-xs text-gray-400 mt-1">
-              {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? 'Data not yet available' : (currentYear?.months.length ?? 0) + ' of 12 months'}
+              {currentYear?.dataStatus === 'CURRENT_DATA_PENDING'
+                ? (isTh ? 'ยังไม่มีข้อมูล' : 'Data not yet available')
+                : (isTh ? `${currentYear?.months.length ?? 0} จาก 12 เดือน` : `${currentYear?.months.length ?? 0} of 12 months`)}
             </p>
           </div>
         </div>
@@ -200,11 +214,11 @@ function arrowColor(dir: string): string {
               <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
             </svg>
             <div>
-              <p class="text-sm font-semibold text-amber-800">Partial-Year Comparison</p>
+              <p class="text-sm font-semibold text-amber-800">{isTh ? 'ข้อมูลยังไม่ครบปี' : 'Partial-Year Comparison'}</p>
               <p class="text-xs text-amber-700 mt-1">
-                2569 (current year) has data for {currentYear.months.length} of 12 months.
-                The YoY comparison above reflects a partial-year comparison against the full {metric.baselineYear} baseline and
-                may not be representative of the full annual trend. Data entry is ongoing — figures will update as new months are added.
+                {isTh
+                  ? `ปี ${metric.currentYear} มีข้อมูลแล้ว ${currentYear.months.length} จาก 12 เดือน ตัวเลขเทียบปีข้างต้นจึงเป็นการเทียบกับข้อมูลปีฐาน ${metric.baselineYear} แบบยังไม่ครบปี อาจไม่สะท้อนแนวโน้มที่แท้จริงทั้งปี ตัวเลขจะปรับเปลี่ยนเมื่อมีการบันทึกข้อมูลเดือนใหม่เพิ่มขึ้น`
+                  : `2569 (current year) has data for ${currentYear.months.length} of 12 months. The YoY comparison above reflects a partial-year comparison against the full ${metric.baselineYear} baseline and may not be representative of the full annual trend. Data entry is ongoing — figures will update as new months are added.`}
               </p>
             </div>
           </div>
@@ -212,17 +226,17 @@ function arrowColor(dir: string): string {
 
         <!-- Monthly Comparison Table with Target Column -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
-          <h2 class="text-sm font-semibold text-gray-700 mb-3">Monthly Comparison: {metric.baselineYear} vs {metric.currentYear}</h2>
+          <h2 class="text-sm font-semibold text-gray-700 mb-3">{isTh ? `เปรียบเทียบข้อมูลรายเดือน: ${metric.baselineYear} เทียบกับ ${metric.currentYear}` : `Monthly Comparison: ${metric.baselineYear} vs ${metric.currentYear}`}</h2>
           <div class="overflow-x-auto">
             <table class="w-full text-sm text-left">
               <thead class="bg-gray-50 border-b border-gray-100">
                 <tr>
-                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">Month</th>
-                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{metric.baselineYear} Baseline</th>
-                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{metric.targetYear ?? metric.currentYear} Target</th>
-                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{metric.currentYear} Actual</th>
-                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">Diff</th>
-                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">Change</th>
+                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{isTh ? 'เดือน' : 'Month'}</th>
+                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{isTh ? `ปีฐาน ${metric.baselineYear}` : `${metric.baselineYear} Baseline`}</th>
+                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{isTh ? `เป้าหมาย ${metric.targetYear ?? metric.currentYear}` : `${metric.targetYear ?? metric.currentYear} Target`}</th>
+                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{isTh ? `ข้อมูลจริง ${metric.currentYear}` : `${metric.currentYear} Actual`}</th>
+                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{isTh ? 'ผลต่าง' : 'Diff'}</th>
+                  <th class="px-3 py-2 font-medium text-gray-600 text-xs uppercase tracking-wider">{isTh ? 'การเปลี่ยนแปลง' : 'Change'}</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-50">
@@ -242,11 +256,11 @@ function arrowColor(dir: string): string {
                       </td>
                       <td class="px-3 py-2 text-gray-700">
                         {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? (
-                          <span class="text-gray-400 italic">Pending</span>
+                          <span class="text-gray-400 italic">{isTh ? 'รอข้อมูล' : 'Pending'}</span>
                         ) : hasCurrent ? (
                           Intl.NumberFormat().format(cVal.value)
                         ) : (
-                          <span class="text-gray-400 italic">Pending</span>
+                          <span class="text-gray-400 italic">{isTh ? 'รอข้อมูล' : 'Pending'}</span>
                         )}
                       </td>
                       <td class={"px-3 py-2 " + (diff !== null ? (diff < 0 ? 'text-green-600' : diff > 0 ? 'text-red-600' : 'text-gray-500') : 'text-gray-400')}>
@@ -263,9 +277,13 @@ function arrowColor(dir: string): string {
           </div>
           <p class="text-xs text-gray-400 mt-3">
             * {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? (
-              '2569 actual data is not yet available from source XLSX files — all rows show "Pending" until data entry begins.'
+              isTh
+                ? `ยังไม่มีข้อมูลจริงของปี ${metric.currentYear} จากไฟล์ต้นฉบับ — ทุกแถวจึงแสดง "รอข้อมูล" จนกว่าจะเริ่มบันทึกข้อมูล`
+                : '2569 actual data is not yet available from source XLSX files — all rows show "Pending" until data entry begins.'
             ) : (
-              'Rows without ' + metric.currentYear + ' data are shown at reduced opacity — data entry still in progress.'
+              isTh
+                ? `แถวที่ยังไม่มีข้อมูลปี ${metric.currentYear} จะแสดงแบบจาง ๆ เนื่องจากยังอยู่ระหว่างการบันทึกข้อมูล`
+                : `Rows without ${metric.currentYear} data are shown at reduced opacity — data entry still in progress.`
             )}
           </p>
         </div>
@@ -274,7 +292,7 @@ function arrowColor(dir: string): string {
         {currentYear && currentYear.dataStatus !== 'CURRENT_DATA_PENDING' && currentYear.months.length >= 2 && (
           <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
             <h2 class="text-sm font-semibold text-gray-700 mb-3">
-              {metric.currentYear} Monthly Trend
+              {isTh ? `แนวโน้มรายเดือนปี ${metric.currentYear}` : `${metric.currentYear} Monthly Trend`}
             </h2>
             <div class="flex items-center gap-4">
               <Sparkline
@@ -297,47 +315,47 @@ function arrowColor(dir: string): string {
           <div class="bg-white rounded-xl shadow-sm border border-blue-200 p-5 mb-6">
             <h2 class="text-sm font-semibold text-blue-700 mb-3 flex items-center gap-2">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-              Provenance &amp; Source Attribution
+              {isTh ? 'ที่มาของข้อมูล' : 'Provenance & Source Attribution'}
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
               <div class="space-y-1">
-                <p class="text-gray-500">Source Workbook</p>
+                <p class="text-gray-500">{isTh ? 'ไฟล์ต้นฉบับ' : 'Source Workbook'}</p>
                 <p class="text-gray-800 font-mono">{baselineYear.provenance.sourceWorkbook}</p>
               </div>
               <div class="space-y-1">
-                <p class="text-gray-500">Source Sheet</p>
+                <p class="text-gray-500">{isTh ? 'ชีตข้อมูล' : 'Source Sheet'}</p>
                 <p class="text-gray-800 font-mono">{baselineYear.provenance.sourceSheet}</p>
               </div>
               {baselineYear.provenance.sourceColumn && (
                 <div class="space-y-1">
-                  <p class="text-gray-500">Source Column</p>
+                  <p class="text-gray-500">{isTh ? 'คอลัมน์ข้อมูล' : 'Source Column'}</p>
                   <p class="text-gray-800 font-mono">{baselineYear.provenance.sourceColumn}</p>
                 </div>
               )}
               {baselineYear.provenance.sourceRowRange && (
                 <div class="space-y-1">
-                  <p class="text-gray-500">Source Row Range</p>
+                  <p class="text-gray-500">{isTh ? 'ช่วงแถวข้อมูล' : 'Source Row Range'}</p>
                   <p class="text-gray-800 font-mono">{baselineYear.provenance.sourceRowRange}</p>
                 </div>
               )}
               <div class="space-y-1">
-                <p class="text-gray-500">Extraction Script</p>
+                <p class="text-gray-500">{isTh ? 'สคริปต์ดึงข้อมูล' : 'Extraction Script'}</p>
                 <p class="text-gray-800 font-mono">{baselineYear.provenance.extractionScript}</p>
               </div>
               <div class="space-y-1">
-                <p class="text-gray-500">Extraction Timestamp</p>
+                <p class="text-gray-500">{isTh ? 'เวลาที่ดึงข้อมูล' : 'Extraction Timestamp'}</p>
                 <p class="text-gray-800 font-mono">{baselineYear.provenance.extractionTimestamp}</p>
               </div>
               <div class="space-y-1">
-                <p class="text-gray-500">Normalization Script</p>
+                <p class="text-gray-500">{isTh ? 'สคริปต์ปรับรูปแบบข้อมูล' : 'Normalization Script'}</p>
                 <p class="text-gray-800 font-mono">{baselineYear.provenance.normalizationScript}</p>
               </div>
               <div class="space-y-1">
-                <p class="text-gray-500">Normalization Timestamp</p>
+                <p class="text-gray-500">{isTh ? 'เวลาที่ปรับรูปแบบข้อมูล' : 'Normalization Timestamp'}</p>
                 <p class="text-gray-800 font-mono">{baselineYear.provenance.normalizationTimestamp}</p>
               </div>
               <div class="space-y-1 col-span-2">
-                <p class="text-gray-500">Validation Status</p>
+                <p class="text-gray-500">{isTh ? 'สถานะการตรวจสอบ' : 'Validation Status'}</p>
                 <span class={"inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium " + statusBadge(baselineYear.provenance.validationStatus)}>
                   {baselineYear.provenance.validationStatus}
                 </span>
@@ -350,20 +368,20 @@ function arrowColor(dir: string): string {
         <div class="text-sm text-gray-500 mt-6 bg-gray-50 rounded-xl border border-gray-200 p-4">
           {category ? (
             <p class="mb-1">
-              Category: <a href={getLocalizedPath(locale, `/categories/${category.code}`)} class="text-green-600 underline hover:text-green-800">
-                {category.title.th}
+              {isTh ? 'หมวด' : 'Category'}: <a href={getLocalizedPath(locale, `/categories/${category.code}`)} class="text-green-600 underline hover:text-green-800">
+                {isTh ? category.title.th : category.title.en}
               </a>
             </p>
           ) : (
-            <p class="mb-1 text-gray-400">Resource monitoring dashboard (not tied to a single certification category)</p>
+            <p class="mb-1 text-gray-400">{isTh ? 'แดชบอร์ดติดตามการใช้ทรัพยากร (ไม่ได้ผูกกับหมวดการประเมินใดหมวดหนึ่งโดยตรง)' : 'Resource monitoring dashboard (not tied to a single certification category)'}</p>
           )}
           <div class="text-xs text-gray-400 space-y-0.5 mt-2">
-            <p><strong>{metric.baselineYear} Baseline:</strong> {baselineYear.source} &middot; Updated: {baselineYear.updated}</p>
-            <p><strong>{metric.currentYear} Current:</strong> {currentYear?.source} &middot; Updated: {currentYear?.updated}</p>
-            <p>Data model: <code>src/data/generated/{metric.metric}.json</code> &middot; Ref: {dashboard.sourceLabel}</p>
+            <p><strong>{isTh ? `ปีฐาน ${metric.baselineYear}:` : `${metric.baselineYear} Baseline:`}</strong> {baselineYear.source} &middot; {isTh ? 'อัปเดตเมื่อ' : 'Updated'}: {baselineYear.updated}</p>
+            <p><strong>{isTh ? `ปีปัจจุบัน ${metric.currentYear}:` : `${metric.currentYear} Current:`}</strong> {currentYear?.source} &middot; {isTh ? 'อัปเดตเมื่อ' : 'Updated'}: {currentYear?.updated}</p>
+            <p>{isTh ? 'โครงสร้างข้อมูล' : 'Data model'}: <code>src/data/generated/{metric.metric}.json</code> &middot; {isTh ? 'อ้างอิง' : 'Ref'}: {dashboard.sourceLabel}</p>
             <p class="border-t border-gray-200 pt-1 mt-1">
-              Import pipeline: <code>scripts/import-dashboard-data.mjs</code> &middot;
-              CSV source: <code>data/import/{dashboard.csvFile.replace('.csv', '')}-{metric.currentYear}.csv</code>
+              {isTh ? 'ขั้นตอนนำเข้าข้อมูล' : 'Import pipeline'}: <code>scripts/import-dashboard-data.mjs</code> &middot;
+              {isTh ? 'ไฟล์ CSV ต้นทาง' : 'CSV source'}: <code>data/import/{dashboard.csvFile.replace('.csv', '')}-{metric.currentYear}.csv</code>
             </p>
           </div>
         </div>
@@ -371,10 +389,11 @@ function arrowColor(dir: string): string {
     ) : (
       <!-- Fallback when no generated data yet -->
       <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-6 mb-6">
-        <p class="text-yellow-800 font-medium">Data Ingest Pending</p>
+        <p class="text-yellow-800 font-medium">{isTh ? 'ยังไม่มีข้อมูลเข้าสู่ระบบ' : 'Data Ingest Pending'}</p>
         <p class="text-yellow-700 text-sm mt-1">
-          Multi-year monitoring data for this dashboard has not yet been entered into the system.
-          Staff are currently compiling data from Excel records.
+          {isTh
+            ? 'ยังไม่มีการบันทึกข้อมูลหลายปีของแดชบอร์ดนี้เข้าสู่ระบบ เจ้าหน้าที่กำลังรวบรวมข้อมูลจากไฟล์ Excel'
+            : 'Multi-year monitoring data for this dashboard has not yet been entered into the system. Staff are currently compiling data from Excel records.'}
         </p>
       </div>
     )}
@@ -392,8 +411,8 @@ function arrowColor(dir: string): string {
     <!-- Related Indicators -->
     {relatedIndicators.length > 0 && (
       <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
-        <h2 class="text-sm font-semibold text-gray-700 mb-3">ตัวชี้วัดที่เกี่ยวข้อง</h2>
-        <p class="text-xs text-gray-500 mb-3">ตัวชี้วัดที่เกี่ยวข้องกับ Dashboard นี้ (จาก <code>relatedDashboards</code>)</p>
+        <h2 class="text-sm font-semibold text-gray-700 mb-3">{isTh ? 'ตัวชี้วัดที่เกี่ยวข้อง' : 'Related Indicators'}</h2>
+        <p class="text-xs text-gray-500 mb-3">{isTh ? 'ตัวชี้วัดที่เกี่ยวข้องกับแดชบอร์ดนี้' : 'Indicators related to this dashboard'}</p>
         <div class="flex flex-wrap gap-2">
           {relatedIndicators.map((ind: any) => (
             <a
@@ -401,7 +420,7 @@ function arrowColor(dir: string): string {
               class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-50 border border-green-200 text-sm text-green-700 hover:bg-green-100 hover:text-green-800 transition-colors"
             >
               <span class="text-[10px] font-mono text-green-500">{ind.code}</span>
-              <span>{ind.title.th}</span>
+              <span>{isTh ? ind.title.th : ind.title.en}</span>
             </a>
           ))}
         </div>

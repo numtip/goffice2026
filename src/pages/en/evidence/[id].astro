@@ -60,10 +60,10 @@ const tCfg = traceConfig[traceabilityLevel] || traceConfig.unmapped;
 
 // Verification config
 const verConfig: Record<string, { th: string; en: string; cls: string }> = {
-  verified: { th: 'ยืนยันแล้ว', en: 'Verified', cls: 'bg-green-100 text-green-800' },
-  pending: { th: 'รอการยืนยัน', en: 'Pending review', cls: 'bg-amber-100 text-amber-800' },
+  verified: { th: 'ตรวจสอบแล้ว', en: 'Verified', cls: 'bg-green-100 text-green-800' },
+  pending: { th: 'รอตรวจสอบ', en: 'Pending review', cls: 'bg-amber-100 text-amber-800' },
   reviewed: { th: 'ตรวจแล้ว', en: 'Reviewed', cls: 'bg-blue-100 text-blue-800' },
-  unresolved: { th: 'ยังไม่ได้รับการยืนยัน', en: 'Unresolved', cls: 'bg-yellow-100 text-yellow-800' },
+  unresolved: { th: 'ยังไม่ตรวจสอบ', en: 'Unresolved', cls: 'bg-yellow-100 text-yellow-800' },
   rejected: { th: 'ไม่ผ่าน', en: 'Rejected', cls: 'bg-red-100 text-red-800' },
   deferred: { th: 'เลื่อน', en: 'Deferred', cls: 'bg-gray-100 text-gray-700' },
 };

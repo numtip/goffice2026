@@ -60,10 +60,10 @@ const tCfg = traceConfig[traceabilityLevel] || traceConfig.unmapped;
 
 // Verification config
 const verConfig: Record<string, { th: string; en: string; cls: string }> = {
-  verified: { th: 'ยืนยันแล้ว', en: 'Verified', cls: 'bg-green-100 text-green-800' },
-  pending: { th: 'รอการยืนยัน', en: 'Pending review', cls: 'bg-amber-100 text-amber-800' },
+  verified: { th: 'ตรวจสอบแล้ว', en: 'Verified', cls: 'bg-green-100 text-green-800' },
+  pending: { th: 'รอตรวจสอบ', en: 'Pending review', cls: 'bg-amber-100 text-amber-800' },
   reviewed: { th: 'ตรวจแล้ว', en: 'Reviewed', cls: 'bg-blue-100 text-blue-800' },
-  unresolved: { th: 'ยังไม่ได้รับการยืนยัน', en: 'Unresolved', cls: 'bg-yellow-100 text-yellow-800' },
+  unresolved: { th: 'ยังไม่ตรวจสอบ', en: 'Unresolved', cls: 'bg-yellow-100 text-yellow-800' },
   rejected: { th: 'ไม่ผ่าน', en: 'Rejected', cls: 'bg-red-100 text-red-800' },
   deferred: { th: 'เลื่อน', en: 'Deferred', cls: 'bg-gray-100 text-gray-700' },
 };
@@ -254,7 +254,7 @@ const pageTitle = raw.title || raw.id;
       <!-- Verification details -->
       <div class="p-6 border-b border-gray-100">
         <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-          {label('สถานะการยืนยัน', 'Verification Status')}
+          {label('สถานะการตรวจสอบ', 'Verification Status')}
         </h2>
         <div class="flex items-center gap-2 mb-2">
           <span class:list={["inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium", vCfg.cls]}>
@@ -263,11 +263,11 @@ const pageTitle = raw.title || raw.id;
         </div>
         {verificationBasis ? (
           <p class="text-sm text-gray-600 mt-1">
-            <span class="font-medium">{label('พื้นฐานการยืนยัน', 'Verification Basis')}:</span> {verificationBasis}
+            <span class="font-medium">{label('รายละเอียดการตรวจสอบ', 'Verification Basis')}:</span> {verificationBasis}
           </p>
         ) : verificationStatus === 'unresolved' ? (
           <p class="text-sm text-amber-600 mt-1 italic">
-            {label('ยังไม่ได้รับการยืนยัน', 'Not yet verified')}
+            {label('ยังไม่มีการตรวจสอบ', 'Not yet verified')}
           </p>
         ) : (
           <p class="text-sm text-gray-400 mt-1 italic">
@@ -290,7 +290,7 @@ const pageTitle = raw.title || raw.id;
               {label('ความมั่นใจในการเชื่อมโยง', 'Mapping confidence')}: {raw.provenance.mappingConfidence}
               {raw.provenance.humanVerificationRequired && (
                 <span class="ml-2 text-amber-700">
-                  · {label('ต้องการการยืนยันจากเจ้าของข้อมูล', 'Human verification required')}
+                  · {label('ต้องรอผู้รับผิดชอบข้อมูลตรวจสอบก่อน', 'Human verification required')}
                 </span>
               )}
             </p>
