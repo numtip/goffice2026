@@ -1,41 +1,51 @@
 #!/usr/bin/env node
 
 /**
- * Smoke-test the static preview routes after `rtk npm run preview` is running.
- * This script does not start a server and does not modify files.
+ * Smoke-test static preview routes after `npm run preview`.
+ * Supports GitHub Pages base path via PREVIEW_BASE_URL (e.g. http://127.0.0.1:4321/goffice2026).
  */
 
 const baseUrl = (process.env.PREVIEW_BASE_URL ?? 'http://127.0.0.1:4321').replace(/\/$/, '');
 
-const routes = [
+const thRoutes = [
   '/',
-  '/dashboard',
-  '/dashboard/energy',
-  '/dashboard/water',
-  '/dashboard/fuel',
-  '/dashboard/paper',
-  '/dashboard/waste',
-  '/dashboard/ghg',
-  '/categories',
-  '/categories/cat1',
-  '/categories/cat2',
-  '/categories/cat3',
-  '/categories/cat4',
-  '/categories/cat5',
-  '/categories/cat6',
-  '/categories/cat7',
-  '/evidence',
-  '/documents',
-  '/documents/cat1',
-  '/documents/cat2',
-  '/documents/cat3',
-  '/documents/cat4',
-  '/documents/cat5',
-  '/documents/cat6',
-  '/documents/cat7',
-  '/search',
+  '/dashboard/',
+  '/dashboard/energy/',
+  '/dashboard/water/',
+  '/dashboard/fuel/',
+  '/dashboard/paper/',
+  '/dashboard/waste/',
+  '/dashboard/ghg/',
+  '/categories/',
+  '/categories/cat1/',
+  '/categories/cat2/',
+  '/categories/cat3/',
+  '/categories/cat4/',
+  '/categories/cat5/',
+  '/categories/cat6/',
+  '/categories/cat7/',
+  '/evidence/',
+  '/documents/',
+  '/documents/cat1/',
+  '/documents/cat2/',
+  '/documents/cat3/',
+  '/documents/cat4/',
+  '/documents/cat5/',
+  '/documents/cat6/',
+  '/documents/cat7/',
+  '/search/',
 ];
 
+const enRoutes = [
+  '/en/',
+  '/en/dashboard/',
+  '/en/categories/',
+  '/en/evidence/',
+  '/en/documents/',
+  '/en/search/',
+];
+
+const routes = [...thRoutes, ...enRoutes];
 const failures = [];
 
 for (const route of routes) {

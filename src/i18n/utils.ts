@@ -22,25 +22,40 @@ export function getLocale(url: URL): 'th' | 'en' {
   return 'th';
 }
 
+/** Ensure internal app paths use a trailing slash (GitHub Pages directory indexes). */
+export function normalizeInternalPath(path: string): string {
+  if (!path || path === '/') {
+    return '/';
+  }
+  const withLeading = path.startsWith('/') ? path : `/${path}`;
+  if (/\.[a-zA-Z0-9]+$/.test(withLeading)) {
+    return withLeading;
+  }
+  return withLeading.endsWith('/') ? withLeading : `${withLeading}/`;
+}
+
 /**
  * Given a locale and a path relative to the site root, return the localized
  * path with the correct locale prefix under the Astro base URL.
  *
- * - locale='th': no prefix (e.g. /categories → /goffice2026/categories)
- * - locale='en': /en/ prefix (e.g. /categories → /goffice2026/en/categories)
+ * - locale='th': no prefix (e.g. /categories → /goffice2026/categories/)
+ * - locale='en': /en/ prefix (e.g. /categories → /goffice2026/en/categories/)
  */
 export function getLocalizedPath(locale: 'th' | 'en', path: string): string {
   const base = import.meta.env.BASE_URL ? import.meta.env.BASE_URL.replace(/\/$/, '') : '';
-  const pathNoSlash = path.replace(/^\/+/, '');
-  const pathWithSlash = pathNoSlash ? `/${pathNoSlash}` : '';
+  const normalized = normalizeInternalPath(path);
 
   if (locale === 'en') {
-    return `${base}/en${pathWithSlash}`;
+    if (normalized === '/') {
+      return `${base}/en/`;
+    }
+    return `${base}/en${normalized}`;
   }
-  if (pathWithSlash === '' || pathWithSlash === '/') {
-    return base || '/';
+
+  if (normalized === '/') {
+    return base ? `${base}/` : '/';
   }
-  return `${base}${pathWithSlash}`;
+  return `${base}${normalized}`;
 }
 
 export function switchLocale(current: 'th' | 'en'): 'th' | 'en' {
@@ -49,17 +64,18 @@ export function switchLocale(current: 'th' | 'en'): 'th' | 'en' {
 
 /**
  * Strip the locale prefix from a URL path to get the canonical path.
- * '/en/categories' → '/categories'
+ * '/en/categories/' → '/categories/'
  */
 export function stripLocalePrefix(pathname: string): string {
   const appPath = stripBasePath(pathname);
   if (appPath.startsWith('/en/')) {
-    return appPath.slice(3) || '/';
+    const rest = appPath.slice(3) || '/';
+    return normalizeInternalPath(rest);
   }
-  if (appPath === '/en') {
+  if (appPath === '/en' || appPath === '/en/') {
     return '/';
   }
-  return appPath;
+  return normalizeInternalPath(appPath);
 }
 
 /**

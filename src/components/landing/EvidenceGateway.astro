@@ -1,5 +1,5 @@
 ---
-import { withBase } from '../../utils/with-base';
+import { getLocalizedPath } from '../../i18n/utils';
 import type { HomeEvidenceStrings } from '../../i18n/dictionary';
 
 interface EvidenceItem {
@@ -13,13 +13,14 @@ interface EvidenceItem {
 }
 
 interface Props {
+  locale?: 'th' | 'en';
   items: EvidenceItem[];
   totalItems: number;
   availableItems: number;
   t?: HomeEvidenceStrings;
 }
 
-const { items, totalItems, availableItems } = Astro.props;
+const { items, totalItems, availableItems, locale = 'th' } = Astro.props;
 const t = Astro.props.t ?? {
   badge: 'Repository evidence index',
   heading: 'Evidence Library Preview',
@@ -117,13 +118,13 @@ const t = Astro.props.t ?? {
       </ul>
 
       <div class="landing-reveal flex flex-wrap gap-3">
-        <a href={withBase('/documents')} class="landing-btn-ghost bg-surface-container-high text-primary hover:bg-surface-variant">
+        <a href={getLocalizedPath(locale, '/documents')} class="landing-btn-ghost bg-surface-container-high text-primary hover:bg-surface-variant">
           {t.cta_documents}
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </a>
-        <a href={withBase('/evidence')} class="landing-btn-ghost text-secondary hover:bg-surface-container-low">
+        <a href={getLocalizedPath(locale, '/evidence')} class="landing-btn-ghost text-secondary hover:bg-surface-container-low">
           {t.cta_evidence}
         </a>
       </div>

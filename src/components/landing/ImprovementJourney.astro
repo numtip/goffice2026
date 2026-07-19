@@ -1,11 +1,13 @@
 ---
-import { withBase } from '../../utils/with-base';
+import { getLocalizedPath } from '../../i18n/utils';
 import type { HomeImprovementStrings } from '../../i18n/dictionary';
 
 interface Props {
+  locale?: 'th' | 'en';
   t?: HomeImprovementStrings;
 }
 
+const { locale = 'th' } = Astro.props;
 const t = Astro.props.t ?? {
   label: 'Lifecycle Narrative',
   heading: 'Improvement Journey',
@@ -70,7 +72,7 @@ const stages = [
             <div class="absolute left-[calc(50%+1.5rem)] top-6 hidden h-px w-[calc(100%-3rem)] bg-primary-container/25 xl:block" aria-hidden="true" />
           )}
           <a
-            href={withBase(stage.href)}
+            href={getLocalizedPath(locale, stage.href)}
             class="landing-card-interactive group flex h-full flex-col rounded-stitch-lg border border-outline-variant/20 bg-surface-container-lowest/80 p-4 shadow-sm backdrop-blur-sm hover:border-primary-container/30 sm:p-5"
           >
             <div class="mb-3 flex items-center gap-3 sm:mb-4">

@@ -133,6 +133,7 @@ export interface HomeNavStrings {
   evidence: string;
   documents: string;
   search: string;
+  menu: string;
 }
 
 export interface HomeFooterStrings {

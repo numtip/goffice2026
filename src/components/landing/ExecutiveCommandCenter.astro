@@ -1,8 +1,8 @@
 ---
-import { withBase } from '../../utils/with-base';
+import { getLocalizedPath } from '../../i18n/utils';
 import { dashboards } from '../../data/dashboard-config';
 import type { MultiYearMetric } from '../../utils/multi-year-schema';
-import type { HomeExecutiveStrings } from '../../i18n/dictionary';
+import type { HomeExecutiveStrings, HomeHeroStrings } from '../../i18n/dictionary';
 
 import energyGen from '../../data/generated/energy.json';
 import waterGen from '../../data/generated/water.json';
@@ -12,9 +12,12 @@ import wasteGen from '../../data/generated/waste.json';
 import ghgGen from '../../data/generated/ghg.json';
 
 interface Props {
+  locale?: 'th' | 'en';
   t?: HomeExecutiveStrings;
+  metrics?: HomeHeroStrings;
 }
 
+const { locale = 'th', metrics: heroMetrics } = Astro.props;
 const t = Astro.props.t ?? {
   heading: 'Unified Command Center',
   description: 'Build-time dashboard snapshot across the six operational resource metrics, prepared from generated static JSON in the repository.',
@@ -54,7 +57,16 @@ const metricIcons: Record<string, string> = {
   ghg: 'M2 20h20M7 20V10M12 20V4M17 20v-6',
 };
 
-const metrics: MetricDisplay[] = dashboards.map((d) => {
+const metricLabelMap: Record<string, string> = {
+  energy: heroMetrics?.metric_energy ?? 'Energy',
+  water: heroMetrics?.metric_water ?? 'Water',
+  fuel: heroMetrics?.metric_fuel ?? 'Fuel',
+  paper: heroMetrics?.metric_paper ?? 'Paper',
+  waste: heroMetrics?.metric_waste ?? 'Waste',
+  ghg: heroMetrics?.metric_ghg ?? 'GHG',
+};
+
+const metricDisplays: MetricDisplay[] = dashboards.map((d) => {
   const metric = genMap[d.id];
   const current = metric?.years[metric.currentYear.toString()];
   const monthCount = current?.months.length ?? 0;
@@ -70,7 +82,7 @@ const metrics: MetricDisplay[] = dashboards.map((d) => {
 
   return {
     id: d.id,
-    label: d.id === 'ghg' ? 'GHG' : d.title.split(' ')[0],
+    label: metricLabelMap[d.id] ?? d.id,
     value: displayValue,
     unit: displayUnit,
     status,
@@ -120,9 +132,9 @@ const metrics: MetricDisplay[] = dashboards.map((d) => {
         </div>
 
         <div class="landing-stagger grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-6 lg:gap-8" role="list" aria-label="Resource metrics preview">
-          {metrics.map((metric) => (
+          {metricDisplays.map((metric) => (
             <a
-              href={withBase(`/dashboard/${metric.id}`)}
+              href={getLocalizedPath(locale, `/dashboard/${metric.id}`)}
               role="listitem"
               class="landing-reveal dashboard-metric-highlight group flex flex-col gap-2 p-2 sm:p-3"
               aria-label={`${metric.label}: ${metric.value} ${metric.unit}`}
@@ -158,7 +170,7 @@ const metrics: MetricDisplay[] = dashboards.map((d) => {
 
         <div class="mt-10 flex justify-center border-t border-white/5 pt-7 sm:mt-12 sm:pt-8">
           <a
-            href={withBase('/dashboard')}
+            href={getLocalizedPath(locale, '/dashboard')}
             class="inline-flex items-center gap-2 rounded-full bg-primary-fixed px-6 py-3 font-mono text-label-sm uppercase tracking-wider text-[#002117] shadow-lg transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary-fixed-dim focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 sm:px-8"
           >
             {t.cta}

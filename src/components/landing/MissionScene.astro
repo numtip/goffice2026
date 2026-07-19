@@ -1,11 +1,13 @@
 ---
-import { withBase } from '../../utils/with-base';
+import { getLocalizedPath } from '../../i18n/utils';
 import type { HomeMissionStrings } from '../../i18n/dictionary';
 
 interface Props {
+  locale?: 'th' | 'en';
   t?: HomeMissionStrings;
 }
 
+const { locale = 'th' } = Astro.props;
 const t = Astro.props.t ?? {
   heading: 'Green Office 2026 Content Framework',
   description1: 'This landing page introduces the repository\'s current Green Office structure: resource dashboards, assessment categories, document placeholders, and navigation into the evidence library.',
@@ -35,7 +37,7 @@ const t = Astro.props.t ?? {
           {t.description2}
         </p>
         <a
-          href={withBase('/categories')}
+          href={getLocalizedPath(locale, '/categories')}
           class="landing-reveal landing-btn-ghost inline-flex border-transparent px-0 text-secondary hover:bg-transparent hover:text-primary"
         >
           {t.cta}

@@ -14,6 +14,7 @@ const base = isGitHubPages ? `/${repo}/` : '/';
 export default defineConfig({
   site,
   base,
+  trailingSlash: 'always',
   output: 'static',
   integrations: [tailwind()],
   vite: {

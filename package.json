@@ -10,6 +10,7 @@
     "qa:build": "npm run build",
     "qa:runtime": "npm run preview",
     "qa:routes": "node scripts/smoke-routes.mjs",
+    "qa:links": "node scripts/check-production-links.mjs",
     "import:data": "node scripts/import-dashboard-data.mjs",
     "import:validate": "node scripts/import-dashboard-data.mjs --all --dry-run",
     "validate": "node scripts/validate-platform.mjs"

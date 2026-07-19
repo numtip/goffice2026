@@ -1,8 +1,10 @@
 ---
-import { withBase } from '../../utils/with-base';
+import { getLocalizedPath } from '../../i18n/utils';
+import criteriaData from '../../data/criteria/categories.json';
+import scoresData from '../../data/categories.json';
 import type { HomeAssessmentStrings } from '../../i18n/dictionary';
 
-interface Category {
+interface DisplayCategory {
   id: string;
   number: number;
   title: string;
@@ -12,11 +14,26 @@ interface Category {
 }
 
 interface Props {
-  categories: Category[];
+  locale?: 'th' | 'en';
   t?: HomeAssessmentStrings;
 }
 
-const { categories } = Astro.props;
+const locale = Astro.props.locale ?? 'th';
+const scoreMap = new Map(scoresData.categories.map((c) => [c.id, c]));
+
+const categories: DisplayCategory[] = criteriaData.categories.map((c) => {
+  const scoreEntry = scoreMap.get(c.code);
+  const title = c.title[locale];
+  return {
+    id: c.code,
+    number: Number(c.id),
+    title,
+    shortTitle: title,
+    score: scoreEntry?.score ?? 0,
+    description: c.summary[locale],
+  };
+});
+
 const t = Astro.props.t ?? {
   heading: 'Assessment Matrix Framework',
   description: 'Seven configured Green Office dimensions from the repository category data, presented as a static assessment preview.',
@@ -58,7 +75,7 @@ const t = Astro.props.t ?? {
           const isHighlight = index === categories.length - 1;
           return (
             <a
-              href={withBase(`/categories/${category.id}`)}
+              href={getLocalizedPath(locale, `/categories/${category.id}`)}
               role="listitem"
               class:list={[
                 'landing-reveal glass-panel landing-card-interactive group relative rounded-stitch-lg border p-4 sm:p-5',
@@ -95,7 +112,7 @@ const t = Astro.props.t ?? {
       </div>
 
       <div class="landing-reveal mt-8 text-center sm:mt-10">
-        <a href={withBase('/categories')} class="landing-btn-ghost bg-surface-container-high text-primary hover:bg-surface-variant">
+        <a href={getLocalizedPath(locale, '/categories')} class="landing-btn-ghost bg-surface-container-high text-primary hover:bg-surface-variant">
           {t.cta}
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />

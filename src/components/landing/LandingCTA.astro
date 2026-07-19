@@ -1,10 +1,12 @@
 ---
-import { withBase } from '../../utils/with-base';
+import { getLocalizedPath } from '../../i18n/utils';
 
 interface Props {
+  locale?: 'th' | 'en';
   t?: { label: string; heading: string; description: string; btn_dashboard: string; btn_categories: string; btn_evidence: string; btn_documents: string; btn_search: string };
 }
 
+const { locale = 'th' } = Astro.props;
 const t = Astro.props.t ?? {
   label: 'Ready to explore',
   heading: 'Your next-generation Green Office command center',
@@ -32,29 +34,29 @@ const t = Astro.props.t ?? {
     </p>
 
     <nav class="landing-reveal landing-stagger flex flex-wrap items-center justify-center gap-2 sm:gap-3" aria-label="Primary destinations">
-      <a href={withBase('/dashboard')} class="landing-btn-primary bg-emerald-500 hover:bg-emerald-400 focus-visible:ring-emerald-200">
+      <a href={getLocalizedPath(locale, '/dashboard')} class="landing-btn-primary bg-emerald-500 hover:bg-emerald-400 focus-visible:ring-emerald-200">
         {t.btn_dashboard}
       </a>
       <a
-        href={withBase('/categories')}
+        href={getLocalizedPath(locale, '/categories')}
         class="landing-btn-glass border-white/15 bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40"
       >
         {t.btn_categories}
       </a>
       <a
-        href={withBase('/evidence')}
+        href={getLocalizedPath(locale, '/evidence')}
         class="landing-btn-glass border-white/15 bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40"
       >
         {t.btn_evidence}
       </a>
       <a
-        href={withBase('/documents')}
+        href={getLocalizedPath(locale, '/documents')}
         class="landing-btn-glass border-white/15 bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40"
       >
         {t.btn_documents}
       </a>
       <a
-        href={withBase('/search')}
+        href={getLocalizedPath(locale, '/search')}
         class="landing-btn-glass border-white/15 bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40"
       >
         {t.btn_search}

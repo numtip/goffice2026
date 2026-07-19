@@ -71,7 +71,7 @@ function getDistHtmlPaths() {
       if (entry.isDirectory()) {
         walk(full, `${prefix}/${entry.name}`);
       } else if (entry.name === 'index.html') {
-        const route = (prefix || '/').replace(/\\/g, '/');
+        const route = prefix === '' ? '/' : `${prefix.replace(/\\/g, '/')}/`;
         paths.push(route);
       }
     }
@@ -85,8 +85,8 @@ function countByPrefix(routes, prefix) {
 }
 
 function countDetailByPrefix(routes, prefix) {
-  // Count routes under prefix excluding the hub page
-  return routes.filter(r => r.startsWith(`${prefix}/`)).length;
+  const hub = `${prefix.replace(/\/$/, '')}/`;
+  return routes.filter((r) => r.startsWith(`${prefix}/`) && r !== hub).length;
 }
 
 function checkDuplicates(routes) {
@@ -124,6 +124,13 @@ function phaseEvidence() {
   console.log('PHASE 2: Evidence Validation');
   console.log('========================================');
   return runScript('validate-evidence.mjs');
+}
+
+function phaseLinks() {
+  console.log('\n========================================');
+  console.log('PHASE 3.5: Production Link Check');
+  console.log('========================================');
+  return runScript('check-production-links.mjs');
 }
 
 // ── Phase 3: Route Verification ─────────────────────────────
@@ -186,10 +193,10 @@ function phaseRoutes() {
 
   // ── Verify core TH routes exist ─────────────────────────
   const thCoreRoutes = [
-    '/', '/categories', '/categories/cat1', '/categories/cat2',
-    '/categories/cat3', '/categories/cat4', '/categories/cat5',
-    '/categories/cat6', '/categories/cat7',
-    '/evidence', '/dashboard', '/documents', '/search',
+    '/', '/categories/', '/categories/cat1/', '/categories/cat2/',
+    '/categories/cat3/', '/categories/cat4/', '/categories/cat5/',
+    '/categories/cat6/', '/categories/cat7/',
+    '/evidence/', '/dashboard/', '/documents/', '/search/',
   ];
   const missingTh = thCoreRoutes.filter(r => !routes.includes(r));
   if (missingTh.length > 0) {
@@ -198,7 +205,7 @@ function phaseRoutes() {
 
   // ── Verify specific dashboard detail routes ─────────────
   const missingDashboards = VALID_DASHBOARDS
-    .map(d => `/dashboard/${d}`)
+    .map(d => `/dashboard/${d}/`)
     .filter(r => !routes.includes(r));
   if (missingDashboards.length > 0) {
     hardErrors.push(`Missing dashboard detail routes: ${missingDashboards.join(', ')}`);
@@ -206,20 +213,20 @@ function phaseRoutes() {
 
   // ── Verify specific document category routes ────────────
   const missingDocs = VALID_CATEGORY_CODES
-    .map(c => `/documents/${c}`)
+    .map(c => `/documents/${c}/`)
     .filter(r => !routes.includes(r));
   if (missingDocs.length > 0) {
     hardErrors.push(`Missing document category routes: ${missingDocs.join(', ')}`);
   }
 
   // ── Verify core EN routes (informational) ───────────────
-  const hasEnIndex = routes.includes('/en');
+  const hasEnIndex = routes.includes('/en/');
 
   if (!hasEnIndex) {
     console.log('\nℹ  EN routes not found in dist/ — EN routes may not have been built yet.');
     console.log('   This is expected if Worker C (bilingual expansion) has not run.\n');
   } else {
-    const hasEnCategories = routes.includes('/en/categories');
+    const hasEnCategories = routes.includes('/en/categories/');
     const enIndicatorCount = countDetailByPrefix(routes, '/en/indicators');
     const enEvidenceCount = countDetailByPrefix(routes, '/en/evidence');
     const enCategoryCount = countByPrefix(routes, '/en/categories');
@@ -276,6 +283,7 @@ function main() {
   const resourceMapResult = phaseResourceIndicatorMap();
   const evidenceResult = phaseEvidence();
   const routeResult = phaseRoutes();
+  const linkResult = routeResult.skipped ? { ok: true, skipped: true } : phaseLinks();
 
   // ── Phase 4: Summary ────────────────────────────────────
   console.log('\n========================================');
@@ -283,11 +291,13 @@ function main() {
   console.log('========================================\n');
 
   const routeOk = routeResult.ok || routeResult.skipped;
+  const linkOk = linkResult.ok || linkResult.skipped;
   const results = [
     { phase: 'Taxonomy Validation',    ok: taxonomyResult.ok },
     { phase: 'Resource-Indicator Map', ok: resourceMapResult.ok },
     { phase: 'Evidence Validation',    ok: evidenceResult.ok },
     { phase: 'Route Verification',     ok: routeOk },
+    { phase: 'Production Link Check',  ok: linkOk },
   ];
 
   let allPassed = true;
@@ -310,6 +320,11 @@ function main() {
     console.log('\n  ℹ  Route verification skipped (dist/ not found). Build with "npm run build" first.');
   } else if (!routeResult.ok) {
     console.log('  ⚠  Route verification found hard issues. See Phase 3 for details.');
+  }
+  if (linkResult.skipped) {
+    console.log('  ℹ  Production link check skipped (dist/ not found).');
+  } else if (!linkResult.ok) {
+    console.log('  ⚠  Production link check failed. See Phase 3.5 for details.');
   }
   if (routeResult.enPartial) {
     console.log('  ℹ  EN routes are partial — bilingual expansion may be pending. This is not a hard failure.');

@@ -1,13 +1,14 @@
 ---
-import { withBase } from '../../utils/with-base';
+import { getLocalizedPath } from '../../i18n/utils';
 import type { HomeHeroStrings } from '../../i18n/dictionary';
 
 interface Props {
+  locale?: 'th' | 'en';
   overallScore: number;
   t?: HomeHeroStrings;
 }
 
-const { overallScore } = Astro.props;
+const { overallScore, locale = 'th' } = Astro.props;
 const t = Astro.props.t ?? {
   badge: 'Precision Environmentalism',
   title_line1: 'Green Office 2026:',
@@ -26,6 +27,7 @@ const t = Astro.props.t ?? {
 } as HomeHeroStrings;
 
 const metricLabels = [t.metric_energy, t.metric_water, t.metric_fuel, t.metric_paper, t.metric_waste, t.metric_ghg];
+const previewScoreLabel = locale === 'th' ? 'ตัวอย่าง ·' : 'Preview ·';
 ---
 
 <header
@@ -57,13 +59,13 @@ const metricLabels = [t.metric_energy, t.metric_water, t.metric_fuel, t.metric_p
     </p>
 
     <div class="landing-reveal landing-stagger flex flex-wrap justify-center gap-3 sm:gap-4">
-      <a href={withBase('/dashboard')} class="landing-btn-primary px-6 py-3.5 sm:px-8 sm:py-4">
+      <a href={getLocalizedPath(locale, '/dashboard')} class="landing-btn-primary px-6 py-3.5 sm:px-8 sm:py-4">
         {t.cta_dashboard}
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </a>
-      <a href={withBase('/categories')} class="landing-btn-glass px-6 py-3.5 sm:px-8 sm:py-4">
+      <a href={getLocalizedPath(locale, '/categories')} class="landing-btn-glass px-6 py-3.5 sm:px-8 sm:py-4">
         {t.cta_categories}
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round" />
@@ -82,7 +84,7 @@ const metricLabels = [t.metric_energy, t.metric_water, t.metric_fuel, t.metric_p
             <span class="flex items-center gap-2 rounded-full border border-white/5 bg-black/40 px-3 py-1">
               <span class="h-2 w-2 rounded-full bg-secondary-fixed animate-pulse" aria-hidden="true" />
               <span class="font-mono text-[11px] text-outline-variant">
-                Preview · <span data-count-up={overallScore} data-count-suffix="%">0%</span>
+                {previewScoreLabel} <span data-count-up={overallScore} data-count-suffix="%">0%</span>
               </span>
             </span>
           </div>

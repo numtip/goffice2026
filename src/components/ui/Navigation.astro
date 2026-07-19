@@ -1,24 +1,28 @@
 ---
-import { getLocalizedPath, stripBasePath, stripLocalePrefix } from '../../i18n/utils';
+import { getLocalizedPath, stripBasePath, stripLocalePrefix, getLocale } from '../../i18n/utils';
 import LanguageSwitcher from '../ui/LanguageSwitcher.astro';
 import type { HomeNavStrings } from '../../i18n/dictionary';
 
 interface Props {
   locale?: 'th' | 'en';
   t?: HomeNavStrings;
+  university?: string;
+  platformLabel?: string;
 }
 
-const locale = Astro.props.locale ?? 'en';
-const t = Astro.props.t;
-const navLabels = t ?? {
+const locale = Astro.props.locale ?? getLocale(Astro.url);
+const navLabels = Astro.props.t ?? {
   home: 'Home',
   dashboard: 'Dashboard',
   categories: 'Categories',
   evidence: 'Evidence',
   documents: 'Documents',
   search: 'Search',
+  menu: 'Menu',
 } as HomeNavStrings;
 
+const university = Astro.props.university ?? 'Maejo University';
+const platformLabel = Astro.props.platformLabel ?? 'Green Office Platform';
 const siteName = 'Green Office 2026';
 
 const navItems = [
@@ -32,20 +36,23 @@ const navItems = [
 
 const pathWithoutBase = stripLocalePrefix(stripBasePath(Astro.url.pathname));
 const currentPath = pathWithoutBase || '/';
-const isActive = (href: string) =>
-  href === '/' ? currentPath === '/' : currentPath === href || currentPath.startsWith(`${href}/`);
+const isActive = (href: string) => {
+  const normalized = href === '/' ? '/' : `${href.replace(/\/$/, '')}/`;
+  if (normalized === '/') return currentPath === '/';
+  return currentPath === normalized || currentPath.startsWith(normalized);
+};
 ---
 
 <div class="bg-primary text-white">
   <div class="mx-auto flex min-h-10 max-w-6xl items-center justify-between gap-3 px-4 py-2 text-xs sm:text-sm">
     <p class="font-medium tracking-wide">
-      Maejo University <span class="hidden text-primary-fixed sm:inline">· Green Office Platform</span>
+      {university} <span class="hidden text-primary-fixed sm:inline">· {platformLabel}</span>
     </p>
     <LanguageSwitcher />
   </div>
 </div>
 
-<nav class="border-b border-primary/10 bg-white px-4 py-3 shadow-sm" aria-label="Primary navigation">
+<nav class="border-b border-primary/10 bg-white/95 px-4 py-3 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/90" aria-label="Primary navigation">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4">
     <a href={getLocalizedPath(locale, '/')} class="group inline-flex min-w-0 items-center gap-3 text-left">
       <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white shadow-sm">
@@ -53,7 +60,7 @@ const isActive = (href: string) =>
       </span>
       <span class="min-w-0">
         <span class="block text-sm font-semibold leading-tight text-primary">{siteName}</span>
-        <span class="block text-[11px] uppercase tracking-wide text-outline">Maejo University</span>
+        <span class="block text-[11px] uppercase tracking-wide text-outline">{university}</span>
       </span>
     </a>
 
@@ -78,12 +85,12 @@ const isActive = (href: string) =>
 
     <details class="relative lg:hidden">
       <summary class="flex min-h-10 cursor-pointer list-none items-center rounded-md border border-primary/20 px-3 py-2 text-sm font-semibold text-primary transition hover:bg-primary-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-        <span>Menu</span>
+        <span>{navLabels.menu}</span>
         <svg class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M3 6h14M3 10h14M3 14h14" />
         </svg>
       </summary>
-      <div class="absolute right-0 z-50 mt-2 w-64 rounded-lg border border-primary/15 bg-white p-2 shadow-xl">
+      <div class="absolute right-0 z-[60] mt-2 w-64 rounded-lg border border-primary/15 bg-white p-2 shadow-xl">
         <ul class="space-y-1">
           {navItems.map((item) => (
             <li>
