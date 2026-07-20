@@ -8,7 +8,8 @@
       "displayName": "RAE SharePoint / Document Center",
       "defaultUrl": "https://maejo365.sharepoint.com/sites/msteams_54adc4/SitePages/Home.aspx",
       "loginHintUrl": "https://maejo365.sharepoint.com/sites/msteams_54adc4?login_hint=researchmju%40mju.ac.th",
-      "expectedHosts": ["maejo365.sharepoint.com"]
+      "expectedHosts": ["maejo365.sharepoint.com"],
+      "expectedSitePath": "/sites/msteams_54adc4"
     },
     "prinya": {
       "upn": "prinya_mju_ac_th@maejo365",

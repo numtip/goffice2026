@@ -41,13 +41,18 @@ function Get-M365AccountEntry {
   if (-not $Config.accounts.PSObject.Properties.Name.Contains($Alias)) {
     throw "INVALID_ACCOUNT: Unknown alias '$Alias'. Use researchmju or prinya."
   }
+  $sitePath = $null
+  if ($Config.accounts.$Alias.PSObject.Properties.Name -contains 'expectedSitePath') {
+    $sitePath = $Config.accounts.$Alias.expectedSitePath
+  }
   return [PSCustomObject]@{
-    Alias         = $Alias
-    Upn           = $Config.accounts.$Alias.upn
-    DisplayName   = $Config.accounts.$Alias.displayName
-    DefaultUrl    = $Config.accounts.$Alias.defaultUrl
-    LoginHintUrl  = $Config.accounts.$Alias.loginHintUrl
-    ExpectedHosts = @($Config.accounts.$Alias.expectedHosts)
+    Alias             = $Alias
+    Upn               = $Config.accounts.$Alias.upn
+    DisplayName       = $Config.accounts.$Alias.displayName
+    DefaultUrl        = $Config.accounts.$Alias.defaultUrl
+    LoginHintUrl      = $Config.accounts.$Alias.loginHintUrl
+    ExpectedHosts     = @($Config.accounts.$Alias.expectedHosts)
+    ExpectedSitePath  = $sitePath
   }
 }
 
@@ -144,7 +149,9 @@ function Invoke-M365AuthProbe {
     [string] $RepoRoot,
     [string] $ProfilePath,
     [string] $TargetUrl,
-    [string] $ExpectedHost
+    [string] $ExpectedHost,
+    [string] $ExpectedSitePath,
+    [string] $ExpectedUpn
   )
   $node = Get-M365NodePath
   $probe = Join-Path $RepoRoot 'scripts/m365-auth-probe.mjs'
@@ -156,7 +163,15 @@ function Invoke-M365AuthProbe {
     if (-not (Test-Path $playwrightDir)) {
       return [PSCustomObject]@{ Status = 'SESSION_PRESENT_AUTH_UNVERIFIED'; Reason = 'playwright_core_missing' }
     }
-    $output = & $node $probe --user-data-dir $ProfilePath --url $TargetUrl --expected-host $ExpectedHost 2>&1 | Out-String
+    $probeArgs = @(
+      $probe,
+      '--user-data-dir', $ProfilePath,
+      '--url', $TargetUrl,
+      '--expected-host', $ExpectedHost
+    )
+    if ($ExpectedSitePath) { $probeArgs += @('--expected-site-path', $ExpectedSitePath) }
+    if ($ExpectedUpn) { $probeArgs += @('--expected-upn', $ExpectedUpn) }
+    $output = & $node @probeArgs 2>&1 | Out-String
     if ($output -match 'existing browser session') {
       return [PSCustomObject]@{ Status = 'PROFILE_IN_USE'; Reason = 'profile_in_use_by_edge' }
     }
@@ -268,7 +283,13 @@ function Get-M365SessionStatus {
       }
     }
     Start-Sleep -Seconds 1
-    $probe = Invoke-M365AuthProbe -RepoRoot $RepoRoot -ProfilePath $profilePath -TargetUrl $targetUrl -ExpectedHost $expectedHost
+    $probe = Invoke-M365AuthProbe `
+      -RepoRoot $RepoRoot `
+      -ProfilePath $profilePath `
+      -TargetUrl $targetUrl `
+      -ExpectedHost $expectedHost `
+      -ExpectedSitePath $entry.ExpectedSitePath `
+      -ExpectedUpn $entry.Upn
     $status = if ($probe.Status) { $probe.Status } else { 'SESSION_PRESENT_AUTH_UNVERIFIED' }
     $reason = if ($probe.PSObject.Properties.Name -contains 'Reason') { $probe.Reason } elseif ($probe.PSObject.Properties.Name -contains 'reason') { $probe.reason } else { 'Auth probe completed.' }
     return [PSCustomObject]@{
@@ -331,6 +352,8 @@ function Get-M365ExitCode {
     'INVALID_ACCOUNT' { return 4 }
     'CONFIGURATION_ERROR' { return 5 }
     'SESSION_PRESENT_AUTH_UNVERIFIED' { return 6 }
+    'WRONG_SITE_CONTEXT' { return 7 }
+    'WRONG_ACCOUNT' { return 8 }
     default { return 5 }
   }
 }

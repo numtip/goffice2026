@@ -47,11 +47,28 @@ This bootstrap:
 
 ---
 
+## Canonical RAE SharePoint Site
+
+**Important:** An earlier GO-SP-1 assessment incorrectly used the Maejo365 **tenant root** (`https://maejo365.sharepoint.com`). That URL must **not** be used as the default for `researchmju`.
+
+| Item | Value |
+|------|-------|
+| Canonical RAE site | `https://maejo365.sharepoint.com/sites/msteams_54adc4` |
+| Site title | สำนักวิจัยฯ (สำนักวิจัยและส่งเสริมวิชาการการเกษตร) |
+| Default landing | `https://maejo365.sharepoint.com/sites/msteams_54adc4/SitePages/Home.aspx` |
+| Green Office library | `GreenOfficeEvidence` on the canonical site only |
+
+All Green Office central-library operations (assessment, creation, migration, permissions) must use **`/sites/msteams_54adc4`**, not the tenant root, `/sites/RAE`, or `/sites/Research`.
+
+Auth verification returns **`WRONG_SITE_CONTEXT`** if the session resolves to the tenant root or any path outside `/sites/msteams_54adc4`.
+
+---
+
 ## Default URLs
 
 | Account | Landing URL | Source |
 |---------|-------------|--------|
-| researchmju | `https://maejo365.sharepoint.com/SitePages/Home.aspx` | GO-SP-1 assessed RAE site (Maejo university Team Site) |
+| researchmju | `https://maejo365.sharepoint.com/sites/msteams_54adc4/SitePages/Home.aspx` | Canonical RAE site (PO-approved) |
 | prinya | `https://maejo365-my.sharepoint.com/personal/prinya_mju_ac_th/Documents/Forms/All.aspx` | Legacy evidence OneDrive (micro pilot) |
 
 Override with `-Url "https://..."` when needed. Only host/path are logged — sensitive query parameters are stripped from logs.
@@ -150,15 +167,17 @@ scripts\m365-agent-bootstrap.cmd researchmju -CheckOnly
 
 | Status | Meaning |
 |--------|---------|
-| `READY` | Target host reachable; login page not detected (auth probe) |
+| `READY` | Canonical site reachable; login page not shown; account and path verified (when probe runs) |
 | `LOGIN_REQUIRED` | Profile missing or Microsoft login/MFA required — **pause for PO** |
 | `PROFILE_IN_USE` | Edge already running with this profile — reuse window or close instance |
+| `WRONG_SITE_CONTEXT` | Session authenticated but **not** on canonical RAE path (`/sites/msteams_54adc4`) — e.g. tenant root |
+| `WRONG_ACCOUNT` | Signed-in UPN does not match configured account |
 | `EDGE_NOT_FOUND` | Edge executable missing |
 | `INVALID_ACCOUNT` | Alias not `researchmju` or `prinya` |
 | `CONFIGURATION_ERROR` | Missing config/scripts/repo root |
 | `SESSION_PRESENT_AUTH_UNVERIFIED` | Profile exists; auth not confirmed — PO should verify in Edge |
 
-Exit codes match status (0=READY, 1=LOGIN_REQUIRED, 2=PROFILE_IN_USE, …).
+Exit codes: 0=READY, 1=LOGIN_REQUIRED, 2=PROFILE_IN_USE, 6=SESSION_PRESENT_AUTH_UNVERIFIED, 7=WRONG_SITE_CONTEXT, 8=WRONG_ACCOUNT.
 
 ---
 
@@ -228,9 +247,10 @@ Before any Microsoft 365 operation, run:
 powershell -ExecutionPolicy Bypass -File scripts/m365-agent-bootstrap.ps1 -Account <researchmju|prinya> -CheckOnly
 
 Use:
-- researchmju for RAE SharePoint Site, Document Center, central libraries, permissions, and Power Automate.
+- researchmju for canonical RAE SharePoint Site (/sites/msteams_54adc4), Document Center, central libraries, permissions, and Power Automate.
 - prinya for reading or exporting legacy Green Office evidence from the original personal OneDrive.
 
+Never use https://maejo365.sharepoint.com (tenant root) as the RAE default.
 Never switch accounts automatically.
 Never create a temporary browser profile.
 Pause for Product Owner action when LOGIN_REQUIRED or MFA is shown.
@@ -260,5 +280,6 @@ Bootstrap scripts must **not**:
 
 ## Related Documentation
 
-- `docs/sharepoint/GO-SP1-site-assessment.md` — RAE SharePoint assessed URL
+- `docs/sharepoint/GO-SP1R-correction-report.md` — canonical RAE site correction
+- `docs/sharepoint/GO-SP2-library-creation-report.md` — Green Office evidence library
 - `docs/migration/sharepoint-export-micro-pilot/` — legacy evidence export pilot

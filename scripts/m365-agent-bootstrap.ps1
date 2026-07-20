@@ -74,15 +74,10 @@ try {
   }
 
   $launch = -not ($CheckOnly -or $NoLaunch)
-  $verify = $false
+  $verify = [bool]$CheckOnly
 
-  if ($Account -eq 'researchmju' -and -not $Url) {
-    $raeDoc = Join-Path $repoRoot 'docs/sharepoint/GO-SP1-site-assessment.md'
-    if (Test-Path $raeDoc) {
-      if ($VerboseMode) { Write-Host 'RAE site URL sourced from docs/sharepoint/GO-SP1-site-assessment.md (maejo365.sharepoint.com).' }
-    } else {
-      if ($VerboseMode) { Write-Host 'RAE site URL not resolved in docs; using config defaultUrl.' }
-    }
+  if ($VerboseMode -and $Account -eq 'researchmju' -and -not $Url) {
+    Write-Host 'Canonical RAE site: https://maejo365.sharepoint.com/sites/msteams_54adc4'
   }
 
   New-Item -ItemType Directory -Force -Path $profilePath | Out-Null
@@ -117,6 +112,16 @@ try {
   if ($result.Status -eq 'PROFILE_IN_USE') {
     Write-Host ''
     Write-Host 'RECOVERY: Reuse the existing Edge window for this profile, or close that Edge instance before relaunching.'
+  }
+
+  if ($result.Status -eq 'WRONG_SITE_CONTEXT') {
+    Write-Host ''
+    Write-Host 'RECOVERY: Session is not on the canonical RAE site (/sites/msteams_54adc4). Navigate Edge to the configured defaultUrl or re-run bootstrap without -CheckOnly.'
+  }
+
+  if ($result.Status -eq 'WRONG_ACCOUNT') {
+    Write-Host ''
+    Write-Host 'RECOVERY: Wrong Microsoft account active. Ask Product Owner to sign in as the masked UPN shown above in this profile Edge window.'
   }
 
   exit (Get-M365ExitCode -Status $result.Status)
