@@ -19,6 +19,7 @@ Curated map for agents and contributors. Prefer links over copying content.
 | `docs/runbooks/BUILD_VERIFICATION.md` | Build/check checklist |
 | `docs/runbooks/RUNTIME_QA.md` | Preview and route QA |
 | `docs/runbooks/RELEASE_SAFETY_CHECK.md` | Pre-push/release safety |
+| `docs/runbooks/OPERATIONS_RUNBOOK.md` | Dev workspace, build, and release paths |
 | `docs/runbooks/HOMEPAGE_REVIEW.md` | Home page review |
 | `docs/runbooks/A11Y_REVIEW.md` | Accessibility checklist |
 

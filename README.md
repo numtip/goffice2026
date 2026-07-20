@@ -128,6 +128,20 @@ goffice2026/
 
 ---
 
+## 📍 Workspace Paths
+
+| Environment | Path | Purpose |
+|-------------|------|---------|
+| **Development (Linux VPS)** | `/home/rae_admin/goffice2026` | Git working copy, `npm run dev`, commits |
+| **Build output** | `/home/rae_admin/goffice2026/dist/` | Static artifact from `npm run build` |
+| **Production releases** | `/var/www/goffice/releases/<version>/` | Deployed static site (symlink via `current`) |
+| **Legacy archive** | `/home/rae_admin/joomla-greenoffice` | Joomla archive + production ops scripts |
+| **Windows (optional)** | `G:\ProjectAI\goffice2026` | Alternate dev workstation |
+
+Production deploy runbook: `joomla-greenoffice/docs/OPERATIONS_RUNBOOK.md` (build from development path above).
+
+---
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -418,8 +432,9 @@ Data layer (static-first): **CSV → JSON → Astro pages** — no database in M
 
 - **GitHub Repository:** https://github.com/numtip/goffice2026
 - **Preview (GitHub Pages):** https://numtip.github.io/goffice2026/
-- **Production:** https://greenoffice.mju.ac.th (manual VPS — unchanged)
-- **Local Path:** `G:\ProjectAI\goffice2026`
+- **Production:** https://goffice.mju.ac.th (manual VPS — unchanged)
+- **Development (VPS):** `/home/rae_admin/goffice2026`
+- **Local Path (Windows):** `G:\ProjectAI\goffice2026`
 - **Green Office 2569 Criteria:** See [2026 Green Office Assessment Criteria.MD](2026%20Green%20Office%20Assessment%20Criteria.MD)
 
 ---
@@ -451,6 +466,6 @@ For questions or issues:
 
 ---
 
-**Last Updated:** 2026-06-26  
-**Platform Version:** 0.2.0 (Preview-ready landing)  
+**Last Updated:** 2026-07-20  
+**Platform Version:** 1.1.1 (Production on VPS)  
 **Made with 🌱 for sustainable operations**

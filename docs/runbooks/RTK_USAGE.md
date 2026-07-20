@@ -58,6 +58,12 @@ rtk gain
 
 ## Project Paths
 
+**Linux VPS (primary development):**
+
+```
+/home/rae_admin/goffice2026
+```
+
 **Windows:**
 
 ```

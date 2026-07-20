@@ -10,6 +10,7 @@ Use for MVP feature work, routing, and static page changes.
 
 ## Project Root
 
+- Linux VPS (primary): `/home/rae_admin/goffice2026`
 - Windows: `F:\projectAi\goffice2026`
 - WSL: `/mnt/f/projectAi/goffice2026`
 

@@ -5,7 +5,10 @@ Use before first GitHub push, tag, or any deploy discussion.
 ## Source of Truth
 
 - GitHub: https://github.com/numtip/goffice2026
-- Local path: `G:\ProjectAI\goffice2026`
+- Development (Linux VPS): `/home/rae_admin/goffice2026`
+- Build output: `/home/rae_admin/goffice2026/dist/`
+- Production releases: `/var/www/goffice/releases/<version>/`
+- Local path (Windows): `G:\ProjectAI\goffice2026`
 - Remote: `origin` → `https://github.com/numtip/goffice2026.git`
 
 ## Pre-Push Checklist

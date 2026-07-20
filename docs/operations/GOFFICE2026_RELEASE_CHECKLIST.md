@@ -8,6 +8,8 @@
 
 ## 1. Repository State
 
+Development workspace: `/home/rae_admin/goffice2026`
+
 - [ ] `git status` is clean (no uncommitted changes)
 - [ ] Working tree has no untracked files except intended new assets
 - [ ] All Round 4 work is committed on the release branch
