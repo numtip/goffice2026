@@ -34,10 +34,12 @@ const thRoutes = [
   '/documents/cat6/',
   '/documents/cat7/',
   '/search/',
+  '/404/',
 ];
 
 const enRoutes = [
   '/en/',
+  '/en/404/',
   '/en/dashboard/',
   '/en/categories/',
   '/en/evidence/',

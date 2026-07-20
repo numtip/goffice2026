@@ -32,6 +32,7 @@ mustExist('manifest.webmanifest');
 mustExist('favicon.svg');
 mustExist('favicon.ico');
 mustExist('404.html');
+mustExist('en/404/index.html');
 mustExist('icons/icon-192.png');
 mustExist('icons/icon-512.png');
 mustExist('icons/apple-touch-icon.png');
@@ -66,5 +67,11 @@ for (const [name, re] of checks) {
 const notFound = readFileSync(resolve(DIST, '404.html'), 'utf8');
 if (/noindex/i.test(notFound)) ok('404.html noindex');
 else bad('404.html noindex');
+
+const enNotFound = readFileSync(resolve(DIST, 'en/404/index.html'), 'utf8');
+if (/noindex/i.test(enNotFound)) ok('en/404 noindex');
+else bad('en/404 noindex');
+if (/Page not found/i.test(enNotFound)) ok('en/404 English content');
+else bad('en/404 English content');
 
 process.exit(fail);

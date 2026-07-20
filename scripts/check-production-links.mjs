@@ -20,7 +20,20 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const DIST = resolve(ROOT, process.env.DIST_DIR ?? 'dist');
-const GHP_BASE = (process.env.GHP_BASE ?? '/goffice2026').replace(/\/$/, '');
+
+/** Auto-detect base path: prod/local = '', GitHub Pages = /{repo} */
+function resolveGhpBase() {
+  if (process.env.GHP_BASE !== undefined) {
+    return process.env.GHP_BASE.replace(/\/$/, '');
+  }
+  if (process.env.DEPLOY_TARGET === 'github-pages') {
+    const repo = (process.env.GITHUB_REPOSITORY ?? 'numtip/goffice2026').split('/')[1] ?? 'goffice2026';
+    return `/${repo}`;
+  }
+  return '';
+}
+
+const GHP_BASE = resolveGhpBase();
 
 const A_HREF_RE = /<a\b[^>]*\shref=["']([^"'#?]+)["']/gi;
 const SKIP_SCHEMES = /^(https?:|mailto:|tel:|javascript:)/i;

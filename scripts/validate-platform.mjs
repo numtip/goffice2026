@@ -219,6 +219,18 @@ function phaseRoutes() {
     hardErrors.push(`Missing document category routes: ${missingDocs.join(', ')}`);
   }
 
+  // ── Verify bilingual error pages ─────────────────────────
+  const missing404 = [];
+  if (!existsSync(resolve(DIST, '404.html'))) {
+    missing404.push('404.html');
+  }
+  if (!routes.includes('/en/404/')) {
+    missing404.push('/en/404/');
+  }
+  if (missing404.length > 0) {
+    hardErrors.push(`Missing error page artifacts: ${missing404.join(', ')}`);
+  }
+
   // ── Verify core EN routes (informational) ───────────────
   const hasEnIndex = routes.includes('/en/');
 
