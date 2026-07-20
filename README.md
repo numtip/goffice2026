@@ -307,20 +307,22 @@ npm run validate:data
 
 ## 🎯 Current Project Status
 
-**Last updated:** 2026-07-20 · **Version:** 1.1.1 (SEO / metadata / PWA baseline)
+**Last updated:** 2026-07-20 · **Version:** 1.2.0 (Green Office Evidence Platform Foundation)
 
 | Milestone | Status |
 |-----------|--------|
 | Design Freeze v1 (Stitch landing) | ✅ Complete |
 | EP-1 Experience Polish | ✅ Complete |
 | GitHub Pages Preview | ✅ Operational |
-| PROD v1.1.0 (goffice.mju.ac.th) | ✅ Live on VPS |
-| v1.1.1 SEO / metadata / PWA | ✅ Repository release (VPS deploy pending) |
+| PROD v1.1.3 (goffice.mju.ac.th) | ✅ Live on VPS |
+| v1.2.0 Evidence platform foundation | ✅ Repository release (SharePoint + M365 bootstrap) |
+| SharePoint central library | ✅ `GreenOfficeEvidence` on `/sites/msteams_54adc4` |
+| Full evidence migration | ⏳ Next phase (GO-SP-3) |
 
-**Production URL:** https://goffice.mju.ac.th/ (VPS v1.1.0 until manual deploy)  
+**Production URL:** https://goffice.mju.ac.th/ (VPS v1.1.3 — frontend unchanged in v1.2.0)  
 **Preview URL:** https://numtip.github.io/goffice2026/
 
-Release notes: [v1.1.1](docs/releases/GOFFICE2026_RELEASE_v1.1.1.md) · Reports: [SEO](docs/reports/SEO_REPORT.md) · [QA](docs/reports/QA_REPORT.md)
+Release notes: [v1.2.0](docs/releases/GOFFICE2026_RELEASE_v1.2.0.md) · [v1.1.3](docs/releases/GOFFICE2026_RELEASE_v1.1.3.md) · [Changelog](docs/releases/GOFFICE2026_CHANGELOG.md)
 
 ---
 
@@ -467,5 +469,5 @@ For questions or issues:
 ---
 
 **Last Updated:** 2026-07-20  
-**Platform Version:** 1.1.1 (Production on VPS)  
+**Platform Version:** 1.2.0 (Evidence platform foundation — VPS frontend v1.1.3)  
 **Made with 🌱 for sustainable operations**

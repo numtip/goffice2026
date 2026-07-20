@@ -8,6 +8,64 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Planned (EP-3 / GO-SP-3)
+
+- SharePoint column cleanup and content-type binding confirmation
+- Controlled evidence pilot upload to `GreenOfficeEvidence`
+- Full 134-file registry sync and migration planning
+- goffice2026 Document Center deep links to stable SharePoint URLs
+
+---
+
+## [1.2.0] — 2026-07-20
+
+**Green Office Evidence Platform Foundation** — repository release (no VPS deploy).
+
+### Added
+
+- Central SharePoint evidence library on canonical RAE site (`GreenOfficeEvidence`)
+- GO-SP-1/1R/2 SharePoint documentation and schema manifest
+- M365 Agent Bootstrap (persistent Edge profiles, canonical site auth verification)
+- `scripts/go-sp2-library-create.mjs` library automation
+
+### Changed
+
+- Canonical RAE site corrected to `/sites/msteams_54adc4` (was incorrectly assessed as tenant root)
+- M365 bootstrap default URL and auth probe for `researchmju`
+
+### Known limitations
+
+- SharePoint column internal name encoding; duplicate columns pending cleanup
+- No bulk evidence migration; VPS remains v1.1.3
+
+See [docs/releases/GOFFICE2026_RELEASE_v1.2.0.md](docs/releases/GOFFICE2026_RELEASE_v1.2.0.md).
+
+---
+
+## [1.1.3] — 2026-07-20
+
+### Changed
+
+- Official Green Office logo across site (production hotfix)
+
+See [docs/releases/GOFFICE2026_RELEASE_v1.1.3.md](docs/releases/GOFFICE2026_RELEASE_v1.1.3.md).
+
+---
+
+## [1.1.2] — 2026-07-20
+
+### Added
+
+- CI quality gates and Node engines
+
+### Fixed
+
+- Dashboard mappings and bilingual 404 pages
+
+---
+
+## [Unreleased — prior EP-2 planning]
+
 ### Planned (EP-2)
 
 - Real Maejo imagery replacing external placeholder CDN assets
