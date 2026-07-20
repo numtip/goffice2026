@@ -18,6 +18,8 @@ interface Props {
   dict?: LocaleStrings;
   ogImage?: string;
   noindex?: boolean;
+  /** Error pages: hreflang + language switcher target locale home, not /404/ */
+  errorPage?: boolean;
 }
 
 const {
@@ -27,6 +29,7 @@ const {
   dict: dictProp,
   ogImage,
   noindex = false,
+  errorPage = false,
 } = Astro.props;
 
 const lang = localeProp ?? getLocale(Astro.url);
@@ -43,7 +46,7 @@ const pageTitle = title ?? `${dict.site.name} - ${dict.site.title_suffix}`;
 
 const navLabels: HomeNavStrings = dict.home.nav;
 
-const appPath = stripLocalePrefix(stripBasePath(Astro.url.pathname));
+const appPath = errorPage ? '/' : stripLocalePrefix(stripBasePath(Astro.url.pathname));
 const siteOrigin = resolveSiteOrigin(Astro.site, Astro.url.origin);
 const thUrl = new URL(getLocalizedPath('th', appPath), `${siteOrigin}/`).href;
 const enUrl = new URL(getLocalizedPath('en', appPath), `${siteOrigin}/`).href;

@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NotFound from '../../components/ui/NotFound.astro';
+
+const locale = 'en';
+const title = 'Page Not Found | Green Office 2026';
+const description =
+  'The page you requested may have been moved, removed, or does not exist on Green Office 2026.';
+---
+
+<BaseLayout title={title} description={description} locale={locale} noindex={true} errorPage={true}>
+  <NotFound locale={locale} />
+</BaseLayout>

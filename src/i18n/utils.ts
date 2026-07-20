@@ -80,8 +80,18 @@ export function stripLocalePrefix(pathname: string): string {
 
 /**
  * Language switcher target href for the current page.
+ * On 404 routes, always switch to locale home (not /en/404/).
  */
 export function getSwitcherHref(currentUrl: URL, targetLocale: 'th' | 'en'): string {
+  const pathname = stripBasePath(currentUrl.pathname);
+  if (
+    pathname === '/404/' ||
+    pathname === '/404' ||
+    pathname === '/en/404/' ||
+    pathname === '/en/404'
+  ) {
+    return getLocalizedPath(targetLocale, '/');
+  }
   const canonicalPath = stripLocalePrefix(currentUrl.pathname);
   return getLocalizedPath(targetLocale, canonicalPath);
 }
