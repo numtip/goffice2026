@@ -2,6 +2,7 @@
 
 **Date:** 2026-07-20  
 **Baseline:** v1.1.1 @ `33bb924` (freeze)  
+**Implementation HEAD:** `2483803`  
 **Version:** 1.1.2  
 **Scope:** Hardening patch (REL-1.1.2-IMPLEMENT)
 
