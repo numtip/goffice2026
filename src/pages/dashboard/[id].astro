@@ -17,6 +17,13 @@ import ghgGen from '../../data/generated/ghg.json';
 import { getLocale, getLocalizedPath } from '../../i18n/utils';
 import { getEvidenceForDashboard } from '../../utils/evidence-traceability';
 import LinkedEvidenceList from '../../components/evidence/LinkedEvidenceList.astro';
+import {
+  resolveDisplayStatus,
+  shouldShowYoy,
+  hasDisplayableTotal,
+  statusBadgeClass,
+  displayStatusLabel,
+} from '../../utils/data-status';
 
 const genMap: Record<string, MultiYearMetric> = {
   energy: energyGen as MultiYearMetric,
@@ -58,14 +65,9 @@ const monthAbbr = isTh
   ? ['', 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.']
   : ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-/** Status badge styling */
+/** Status badge styling (delegates to unified resolver) */
 function statusBadge(status: string): string {
-  if (status === 'VERIFIED_BASELINE') return 'bg-blue-100 text-blue-800';
-  if (status === 'TARGET_PENDING_APPROVAL') return 'bg-yellow-100 text-yellow-800';
-  if (status === 'CURRENT_DATA_PENDING') return 'bg-gray-100 text-gray-500';
-  if (status === 'complete') return 'bg-green-100 text-green-800';
-  if (status === 'in_progress') return 'bg-yellow-100 text-yellow-800';
-  return 'bg-gray-100 text-gray-500';
+  return statusBadgeClass(status as Parameters<typeof statusBadgeClass>[0]);
 }
 
 function arrow(dir: string): string {
@@ -80,11 +82,10 @@ function arrowColor(dir: string): string {
   return 'text-gray-400';
 }
 
-const currentStatusLabel = currentYear?.dataStatus === 'CURRENT_DATA_PENDING'
-  ? (isTh ? 'รอข้อมูล' : 'Data Pending')
-  : currentYear?.dataStatus === 'complete'
-    ? (isTh ? 'ครบถ้วน' : 'Complete')
-    : (isTh ? 'กำลังบันทึก' : 'In Progress');
+const currentDisplayStatus = resolveDisplayStatus(currentYear);
+const showYoy = shouldShowYoy(currentYear);
+const showCurrentTotal = hasDisplayableTotal(currentYear);
+const currentStatusLabel = displayStatusLabel(currentDisplayStatus, locale);
 const pageTitle = dashTitle(dashboard, locale);
 const pageDescription = dashDescription(dashboard, locale);
 ---
@@ -123,7 +124,9 @@ const pageDescription = dashDescription(dashboard, locale);
             <!-- Current -->
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-gray-100 text-gray-500 border border-gray-200">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-              {isTh ? `ข้อมูลจริงปี ${metric.currentYear} — ยังไม่มีข้อมูล` : `${metric.currentYear} Actual — Data Not Yet Available`}
+              {showCurrentTotal
+                ? (isTh ? `ข้อมูลจริงปี ${metric.currentYear} — กำลังบันทึก (${currentYear?.months.length ?? 0}/12)` : `${metric.currentYear} Actual — In Progress (${currentYear?.months.length ?? 0}/12)`)
+                : (isTh ? `ข้อมูลจริงปี ${metric.currentYear} — ยังไม่มีข้อมูล` : `${metric.currentYear} Actual — Data Not Yet Available`)}
             </div>
           </div>
         </div>
@@ -136,10 +139,10 @@ const pageDescription = dashDescription(dashboard, locale);
               ? `ปีฐาน ${metric.baselineYear}: ตรวจสอบแล้ว ครบถ้วน (${baselineYear.months.length} เดือน)`
               : `${metric.baselineYear} Baseline: Verified & Frozen (${baselineYear.months.length} months)`}
           </span>
-          <span class={"inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium " + statusBadge(currentYear?.dataStatus ?? 'missing')}>
-            {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? (
+          <span class={"inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium " + statusBadgeClass(currentDisplayStatus)}>
+            {currentDisplayStatus === 'pending' ? (
               <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-            ) : currentYear?.dataStatus === 'in_progress' ? (
+            ) : currentDisplayStatus === 'in_progress' ? (
               <svg class="w-3.5 h-3.5 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
             ) : (
               <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -197,20 +200,20 @@ const pageDescription = dashDescription(dashboard, locale);
           <!-- Current (2569) -->
           <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
             <p class="text-xs text-gray-500 mb-1">{isTh ? `ปีปัจจุบัน (${metric.currentYear})` : `Current (${metric.currentYear})`}</p>
-            <p class={"text-2xl font-bold " + (currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? 'text-gray-400' : 'text-gray-800')}>
-              {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? (isTh ? 'ยังไม่มีข้อมูล' : 'No data') : Intl.NumberFormat().format(currentYear?.total ?? 0)}
+            <p class={"text-2xl font-bold " + (showCurrentTotal ? 'text-gray-800' : 'text-gray-400')}>
+              {showCurrentTotal ? Intl.NumberFormat().format(currentYear?.total ?? 0) : (isTh ? 'ยังไม่มีข้อมูล' : 'No data')}
               <span class="text-sm text-gray-400 ml-1">{metric.unit}</span>
             </p>
             <p class="text-xs text-gray-400 mt-1">
-              {currentYear?.dataStatus === 'CURRENT_DATA_PENDING'
-                ? (isTh ? 'ยังไม่มีข้อมูล' : 'Data not yet available')
-                : (isTh ? `${currentYear?.months.length ?? 0} จาก 12 เดือน` : `${currentYear?.months.length ?? 0} of 12 months`)}
+              {showCurrentTotal
+                ? (isTh ? `${currentYear?.months.length ?? 0} จาก 12 เดือน` : `${currentYear?.months.length ?? 0} of 12 months`)
+                : (isTh ? 'ยังไม่มีข้อมูล' : 'Data not yet available')}
             </p>
           </div>
         </div>
 
         <!-- Partial-Year Warning -->
-        {currentYear && currentYear.dataStatus !== 'CURRENT_DATA_PENDING' && currentYear.months.length < 12 && (
+        {currentYear && currentDisplayStatus === 'in_progress' && currentYear.months.length < 12 && (
           <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 flex items-start gap-3">
             <svg class="w-5 h-5 text-amber-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
@@ -250,16 +253,14 @@ const pageDescription = dashDescription(dashboard, locale);
                   const hasCurrent = !!cVal;
                   const isTargetPending = target?.status === 'TARGET_PENDING_APPROVAL';
                   return (
-                    <tr class={"hover:bg-gray-50 transition-colors " + (currentYear?.dataStatus !== 'CURRENT_DATA_PENDING' && !hasCurrent ? 'opacity-50' : '')}>
+                    <tr class={"hover:bg-gray-50 transition-colors " + (showCurrentTotal && !hasCurrent ? 'opacity-50' : '')}>
                       <td class="px-3 py-2 text-gray-700 font-medium">{monthAbbr[m]}</td>
                       <td class="px-3 py-2 text-gray-700">{bVal ? Intl.NumberFormat().format(bVal.value) : '-'}</td>
                       <td class="px-3 py-2 text-yellow-600">
                         {isTargetPending ? '--' : (target?.months.find((tm) => tm.month === m) ? Intl.NumberFormat().format(target.months.find((tm) => tm.month === m)!.value) : '--')}
                       </td>
                       <td class="px-3 py-2 text-gray-700">
-                        {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? (
-                          <span class="text-gray-400 italic">{isTh ? 'รอข้อมูล' : 'Pending'}</span>
-                        ) : hasCurrent ? (
+                        {showCurrentTotal && hasCurrent ? (
                           Intl.NumberFormat().format(cVal.value)
                         ) : (
                           <span class="text-gray-400 italic">{isTh ? 'รอข้อมูล' : 'Pending'}</span>
@@ -278,20 +279,20 @@ const pageDescription = dashDescription(dashboard, locale);
             </table>
           </div>
           <p class="text-xs text-gray-400 mt-3">
-            * {currentYear?.dataStatus === 'CURRENT_DATA_PENDING' ? (
-              isTh
-                ? `ยังไม่มีข้อมูลจริงของปี ${metric.currentYear} จากไฟล์ต้นฉบับ — ทุกแถวจึงแสดง "รอข้อมูล" จนกว่าจะเริ่มบันทึกข้อมูล`
-                : '2569 actual data is not yet available from source XLSX files — all rows show "Pending" until data entry begins.'
-            ) : (
+            * {showCurrentTotal ? (
               isTh
                 ? `แถวที่ยังไม่มีข้อมูลปี ${metric.currentYear} จะแสดงแบบจาง ๆ เนื่องจากยังอยู่ระหว่างการบันทึกข้อมูล`
                 : `Rows without ${metric.currentYear} data are shown at reduced opacity — data entry still in progress.`
+            ) : (
+              isTh
+                ? `ยังไม่มีข้อมูลจริงของปี ${metric.currentYear} จากไฟล์ต้นฉบับ — ทุกแถวจึงแสดง "รอข้อมูล" จนกว่าจะเริ่มบันทึกข้อมูล`
+                : '2569 actual data is not yet available from source XLSX files — all rows show "Pending" until data entry begins.'
             )}
           </p>
         </div>
 
         <!-- Sparkline: current year trend -->
-        {currentYear && currentYear.dataStatus !== 'CURRENT_DATA_PENDING' && currentYear.months.length >= 2 && (
+        {currentYear && showCurrentTotal && currentYear.months.length >= 2 && (
           <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
             <h2 class="text-sm font-semibold text-gray-700 mb-3">
               {isTh ? `แนวโน้มรายเดือนปี ${metric.currentYear}` : `${metric.currentYear} Monthly Trend`}

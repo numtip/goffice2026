@@ -9,7 +9,7 @@
       "labelTh": "คะแนนพลังงาน",
       "value": 85,
       "unit": "%",
-      "categoryId": "cat1",
+      "categoryId": "cat3",
       "trend": "up",
       "description": "Electricity consumption and energy efficiency",
       "descriptionTh": "การใช้ไฟฟ้าและประสิทธิภาพพลังงาน"
@@ -20,7 +20,7 @@
       "labelTh": "คะแนนน้ำ",
       "value": 78,
       "unit": "%",
-      "categoryId": "cat2",
+      "categoryId": "cat3",
       "trend": "stable",
       "description": "Water consumption and conservation",
       "descriptionTh": "การใช้น้ำและการอนุรักษ์น้ำ"
@@ -31,7 +31,7 @@
       "labelTh": "คะแนนของเสีย",
       "value": 92,
       "unit": "%",
-      "categoryId": "cat3",
+      "categoryId": "cat4",
       "trend": "up",
       "description": "Waste segregation and recycling",
       "descriptionTh": "การคัดแยกและรีไซเคิลของเสีย"
@@ -42,7 +42,7 @@
       "labelTh": "คะแนนการปล่อยก๊าซเรือนกระจก",
       "value": 71,
       "unit": "%",
-      "categoryId": "cat4",
+      "categoryId": "cat1",
       "trend": "down",
       "description": "Greenhouse gas emissions",
       "descriptionTh": "การปล่อยก๊าซเรือนกระจก"
@@ -86,6 +86,7 @@
       "labelTh": "การใช้เชื้อเพลิง",
       "value": 22928,
       "unit": "L",
+      "categoryId": "cat3",
       "trend": "down",
       "description": "Fuel consumption (liters)",
       "descriptionTh": "ปริมาณการใช้เชื้อเพลิง (ลิตร)"
@@ -96,6 +97,7 @@
       "labelTh": "การใช้กระดาษ",
       "value": 2198,
       "unit": "kg",
+      "categoryId": "cat3",
       "trend": "up",
       "description": "Paper consumption (kg)",
       "descriptionTh": "ปริมาณการใช้กระดาษ (กิโลกรัม)"

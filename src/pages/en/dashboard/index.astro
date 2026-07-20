@@ -13,6 +13,11 @@ import wasteGen from '../../../data/generated/waste.json';
 import ghgGen from '../../../data/generated/ghg.json';
 import { getLocalizedPath } from '../../../i18n/utils';
 import { getDictionary } from '../../../i18n/dictionary';
+import {
+  resolveDisplayStatus,
+  shouldShowYoy,
+  statusBadgeClass,
+} from '../../../utils/data-status';
 
 const genMap: Record<string, MultiYearMetric> = {
   energy: energyGen as MultiYearMetric,
@@ -38,12 +43,6 @@ function yoyColor(percent: number): string {
   if (percent <= -5) return 'text-green-600';
   if (percent >= 5) return 'text-red-600';
   return 'text-yellow-600';
-}
-
-function statusBadge(status: string): string {
-  if (status === 'complete') return 'bg-green-100 text-green-800';
-  if (status === 'in_progress') return 'bg-yellow-100 text-yellow-800';
-  return 'bg-gray-100 text-gray-500';
 }
 
 const locale = 'en' as const;
@@ -89,6 +88,8 @@ const monthAbbr = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', '
         const yoy = m?.yoyChange;
         const baseline = m ? m.years[m.baselineYear.toString()] : null;
         const current = m ? m.years[m.currentYear.toString()] : null;
+        const displayStatus = resolveDisplayStatus(current ?? undefined);
+        const showYoy = shouldShowYoy(current ?? undefined);
         return (
           <a
             href={getLocalizedPath(locale, `/dashboard/${d.id}`)}
@@ -97,7 +98,7 @@ const monthAbbr = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', '
             <div class="flex items-start justify-between mb-2">
               <h3 class="font-semibold text-green-700 group-hover:text-green-800">{d.title}</h3>
               {current && (
-                <span class={"inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium shrink-0 ml-3 " + statusBadge(current.dataStatus)} title={`${current.months.length}/12 ${t.months_unit}`}>
+                <span class={"inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium shrink-0 ml-3 " + statusBadgeClass(displayStatus)} title={`${current.months.length}/12 ${t.months_unit}`}>
                   {current.months.length}
                   <span class="text-gray-500 font-normal">/12</span>
                 </span>
@@ -120,11 +121,14 @@ const monthAbbr = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', '
                 </div>
                 <div class="col-span-2 mt-1">
                   <span class="text-gray-400">{t.yoy_prefix}: </span>
-                  <span class={yoyColor(yoy.percent)}>
-                    {yoy.percent > 0 ? '+' : ''}{yoy.percent}% {trendLabel[yoy.direction]}
-                  </span>
-                  {current.dataStatus === 'in_progress' && (
-                    <span class="text-amber-500 text-[10px] ml-2">({t.partial_year_tag})</span>
+                  {showYoy && yoy ? (
+                    <span class={yoyColor(yoy.percent)}>
+                      {yoy.percent > 0 ? '+' : ''}{yoy.percent}% {trendLabel[yoy.direction]}
+                    </span>
+                  ) : displayStatus === 'in_progress' ? (
+                    <span class="text-amber-600 text-xs">{t.partial_year_tag} — N/A</span>
+                  ) : (
+                    <span class="text-gray-400 text-xs">—</span>
                   )}
                 </div>
               </div>
