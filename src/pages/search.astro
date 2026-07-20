@@ -337,6 +337,9 @@ const typeLabels: Record<string, [string, string]> = {
     <div
       id="search-empty"
       class="hidden text-center py-16 bg-white rounded-xl border border-dashed border-gray-300"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
     >
       <svg
         class="w-16 h-16 mx-auto text-gray-300 mb-4"
@@ -352,7 +355,7 @@ const typeLabels: Record<string, [string, string]> = {
           d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
         />
       </svg>
-      <p class="text-gray-500 text-lg font-medium">{emptyTitle}</p>
+      <h2 class="text-gray-500 text-lg font-medium">{emptyTitle}</h2>
       <p class="text-gray-400 text-sm mt-1">{emptyDesc}</p>
     </div>
   </div>

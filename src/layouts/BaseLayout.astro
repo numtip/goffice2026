@@ -3,6 +3,12 @@ import { stripLocalePrefix, stripBasePath, getLocalizedPath, getLocale } from '.
 import { getDictionary } from '../i18n/dictionary';
 import Navigation from '../components/ui/Navigation.astro';
 import PreviewBadge from '../components/ui/PreviewBadge.astro';
+import {
+  SITE_META,
+  resolveSiteOrigin,
+  buildCanonicalUrl,
+  assetUrl,
+} from '../config/site-meta';
 import type { LocaleStrings, HomeNavStrings } from '../i18n/dictionary';
 
 interface Props {
@@ -10,9 +16,18 @@ interface Props {
   description?: string;
   locale?: 'th' | 'en';
   dict?: LocaleStrings;
+  ogImage?: string;
+  noindex?: boolean;
 }
 
-const { title, description: customDesc, locale: localeProp, dict: dictProp } = Astro.props;
+const {
+  title,
+  description: customDesc,
+  locale: localeProp,
+  dict: dictProp,
+  ogImage,
+  noindex = false,
+} = Astro.props;
 
 const lang = localeProp ?? getLocale(Astro.url);
 const dict = dictProp ?? await getDictionary(lang);
@@ -29,8 +44,22 @@ const pageTitle = title ?? `${dict.site.name} - ${dict.site.title_suffix}`;
 const navLabels: HomeNavStrings = dict.home.nav;
 
 const appPath = stripLocalePrefix(stripBasePath(Astro.url.pathname));
-const thUrl = Astro.url.origin ? `${Astro.url.origin}${getLocalizedPath('th', appPath)}` : '';
-const enUrl = Astro.url.origin ? `${Astro.url.origin}${getLocalizedPath('en', appPath)}` : '';
+const siteOrigin = resolveSiteOrigin(Astro.site, Astro.url.origin);
+const thUrl = new URL(getLocalizedPath('th', appPath), `${siteOrigin}/`).href;
+const enUrl = new URL(getLocalizedPath('en', appPath), `${siteOrigin}/`).href;
+const canonicalUrl = buildCanonicalUrl(siteOrigin, Astro.url.pathname);
+const baseUrl = import.meta.env.BASE_URL ?? '/';
+const defaultOgImage = assetUrl(siteOrigin, baseUrl, SITE_META.ogDefaultImagePath);
+const socialImage = ogImage ? assetUrl(siteOrigin, baseUrl, ogImage) : defaultOgImage;
+const manifestHref = assetUrl(siteOrigin, baseUrl, '/manifest.webmanifest');
+const faviconSvg = assetUrl(siteOrigin, baseUrl, '/favicon.svg');
+const faviconIco = assetUrl(siteOrigin, baseUrl, '/favicon.ico');
+const appleTouchIcon = assetUrl(siteOrigin, baseUrl, '/icons/apple-touch-icon.png');
+const maskIcon = assetUrl(siteOrigin, baseUrl, '/icons/safari-pinned-tab.svg');
+const ogLocale = lang === 'en' ? SITE_META.alternateLocale : SITE_META.locale;
+const ogLocaleAlt = lang === 'en' ? SITE_META.locale : SITE_META.alternateLocale;
+const keywords = SITE_META.keywords.join(', ');
+const robotsContent = noindex ? 'noindex, follow' : 'index, follow';
 ---
 
 <!DOCTYPE html>
@@ -39,13 +68,50 @@ const enUrl = Astro.url.origin ? `${Astro.url.origin}${getLocalizedPath('en', ap
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={desc} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="author" content={SITE_META.author} />
+    <meta name="keywords" content={keywords} />
+    <meta name="application-name" content={SITE_META.applicationName} />
+    <meta name="color-scheme" content={SITE_META.colorScheme} />
+    <meta name="theme-color" content={SITE_META.themeColor} />
+    <meta name="robots" content={robotsContent} />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content={SITE_META.applicationName} />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="msapplication-config" content={assetUrl(siteOrigin, baseUrl, '/browserconfig.xml')} />
+
     <title>{pageTitle}</title>
+    <link rel="canonical" href={canonicalUrl} />
 
     {thUrl && <link rel="alternate" hreflang="th" href={thUrl} />}
     {enUrl && thUrl !== enUrl && <link rel="alternate" hreflang="en" href={enUrl} />}
     {thUrl && <link rel="alternate" hreflang="x-default" href={thUrl} />}
+
+    <link rel="icon" href={faviconIco} sizes="32x32" />
+    <link rel="icon" href={faviconSvg} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={appleTouchIcon} />
+    <link rel="mask-icon" href={maskIcon} color={SITE_META.themeColor} />
+    <link rel="manifest" href={manifestHref} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_META.applicationName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogLocaleAlt} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content={String(SITE_META.ogImageWidth)} />
+    <meta property="og:image:height" content={String(SITE_META.ogImageHeight)} />
+    <meta property="og:image:alt" content={pageTitle} />
+
+    <meta name="twitter:card" content={SITE_META.twitterCard} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={pageTitle} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body class="bg-gray-50 text-gray-900 antialiased">
     <a

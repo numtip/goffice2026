@@ -293,18 +293,20 @@ npm run validate:data
 
 ## 🎯 Current Project Status
 
-**Last updated:** 2026-06-26 · **Version:** 0.2.0 (Preview-ready landing)
+**Last updated:** 2026-07-20 · **Version:** 1.1.1 (SEO / metadata / PWA baseline)
 
 | Milestone | Status |
 |-----------|--------|
 | Design Freeze v1 (Stitch landing) | ✅ Complete |
 | EP-1 Experience Polish | ✅ Complete |
 | GitHub Pages Preview | ✅ Operational |
-| Production (`greenoffice.mju.ac.th`) | ⏸ Unchanged — manual VPS only |
+| PROD v1.1.0 (goffice.mju.ac.th) | ✅ Live on VPS |
+| v1.1.1 SEO / metadata / PWA | ✅ Repository release (VPS deploy pending) |
 
+**Production URL:** https://goffice.mju.ac.th/ (VPS v1.1.0 until manual deploy)  
 **Preview URL:** https://numtip.github.io/goffice2026/
 
-Handoff docs: [Session Summary](docs/reports/SESSION_SUMMARY_2026-06-26.md) · [Next Sprint](docs/reports/NEXT_SPRINT_PLAN.md) · [Project Memory](docs/reports/PROJECT_MEMORY.md) · [Executive Handoff](docs/reports/EXECUTIVE_HANDOFF.md)
+Release notes: [v1.1.1](docs/releases/GOFFICE2026_RELEASE_v1.1.1.md) · Reports: [SEO](docs/reports/SEO_REPORT.md) · [QA](docs/reports/QA_REPORT.md)
 
 ---
 
@@ -323,7 +325,8 @@ Local dev → npm run check → npm run build → push master
 ```bash
 npm run dev          # Development server
 npm run check        # Astro type check
-npm run build        # Production build (local base /)
+PUBLIC_SITE_URL=https://goffice.mju.ac.th npm run build   # Production artifact
+npm run qa:seo       # Validate robots, sitemap, manifest, metadata in dist/
 npm run preview      # Preview dist/
 ```
 

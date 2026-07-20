@@ -1,6 +1,6 @@
 {
   "name": "goffice2026",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
@@ -13,10 +13,12 @@
     "qa:links": "node scripts/check-production-links.mjs",
     "import:data": "node scripts/import-dashboard-data.mjs",
     "import:validate": "node scripts/import-dashboard-data.mjs --all --dry-run",
-    "validate": "node scripts/validate-platform.mjs"
+    "validate": "node scripts/validate-platform.mjs",
+    "qa:seo": "node scripts/qa-seo-release.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
+    "@astrojs/sitemap": "3.2.1",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^4.0.0",
     "autoprefixer": "^10.4.0",
