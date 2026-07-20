@@ -36,7 +36,8 @@ mustExist('en/404/index.html');
 mustExist('icons/icon-192.png');
 mustExist('icons/icon-512.png');
 mustExist('icons/apple-touch-icon.png');
-mustExist('images/og-default.svg');
+mustExist('images/LogoGreen2025.png');
+mustExist('images/og-default.png');
 
 const robots = readFileSync(resolve(DIST, 'robots.txt'), 'utf8');
 if (/Sitemap:/i.test(robots)) ok('robots.txt has Sitemap');

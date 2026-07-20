@@ -1,0 +1,22 @@
+---
+/** Official Green Office logo — LogoGreen2025.png */
+interface Props {
+  class?: string;
+  width?: number;
+  height?: number;
+}
+
+const { class: className = 'h-9 w-auto max-w-[7.5rem] object-contain object-left', width = 36, height = 29 } = Astro.props;
+const base = import.meta.env.BASE_URL ?? '/';
+const src = `${base}images/LogoGreen2025.png`.replace(/\/{2,}/g, '/').replace(':/', '://');
+---
+
+<img
+  src={src}
+  alt="Green Office 2026"
+  class={className}
+  width={width}
+  height={height}
+  loading="eager"
+  decoding="async"
+/>

@@ -16,7 +16,7 @@ export const SITE_META = {
   themeColor: '#003527',
   backgroundColor: '#f8f9ff',
   colorScheme: 'light' as const,
-  ogDefaultImagePath: '/images/og-default.svg',
+  ogDefaultImagePath: '/images/og-default.png',
   ogImageWidth: 1200,
   ogImageHeight: 630,
   twitterCard: 'summary_large_image' as const,
