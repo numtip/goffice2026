@@ -20,15 +20,9 @@
 
 | Check | Result |
 |-------|--------|
-| `gh auth status` | **Not authenticated** |
-| `gh api user --jq .login` | Not run (blocked) |
-
-**Operator action required:**
-
-```bash
-gh auth login
-gh api user --jq .login   # verify after login
-```
+| `gh auth status` | **Authenticated** as `numtip` |
+| `gh api user --jq .login` | `numtip` |
+| Git protocol | HTTPS via `gh` credential helper |
 
 Do not store tokens in repository files or shell scripts.
 
@@ -38,16 +32,16 @@ Do not store tokens in repository files or shell scripts.
 
 | Item | Value |
 |------|-------|
-| Current branch | `main` |
-| Local HEAD | `8c75784` — `chore(repo): normalize development workspace` |
-| Remote HEAD (`origin/master`) | `da623c0` — `docs(release): freeze v1.1.0 production baseline` |
+| Current branch | `master` (tracks `origin/master`) |
+| Local HEAD | `2ef5339` — `docs(release): audit v1.1.1 release state` |
+| Remote HEAD (`origin/master`) | `2ef5339` — in sync with local |
 | Remote default branch | `master` |
 | `main` on remote | **No** — local only |
-| `master` on remote | **Yes** — at `da623c0` |
-| Local `main` | `8c75784` |
-| Local `master` | `8c75784` (same as `main`) |
+| `master` on remote | **Yes** — at `2ef5339` |
+| Local `main` | `2ef5339` |
+| Local `master` | `2ef5339` (same as `main`) |
 | `main` / `master` divergence | **None locally** — identical tips |
-| Local vs remote divergence | Local is **2 commits ahead** of `origin/master` (fast-forward) |
+| Local vs remote divergence | **None** — pushed 2026-07-20 |
 
 ### Canonical branch recommendation
 
@@ -74,7 +68,7 @@ Optional follow-up (not required for this preflight): add remote `main` later if
 |------|-------|
 | Latest local tags | `v1.1.1`, `v1.1.0` |
 | Local `v1.1.1` | **Exists** → `1c73215` |
-| Remote `v1.1.1` | **Does not exist** (`git ls-remote --tags origin 'v1.1.1'` empty) |
+| Remote `v1.1.1` | **Published** → `1c73215` (pushed 2026-07-20) |
 | `v1.1.1` target commit | `1c73215f5048fc77ae3e5c51b4cb168e143d5275` |
 | Commit message | `feat(seo): production metadata and PWA baseline` |
 | Already SEO / Metadata / PWA? | **Yes** — tag sits on completed SEO/PWA work |
@@ -84,12 +78,13 @@ Optional follow-up (not required for this preflight): add remote `main` later if
 Recent history:
 
 ```
-8c75784 (HEAD -> main, master) chore(repo): normalize development workspace
+2ef5339 (HEAD -> master, main, origin/master) docs(release): audit v1.1.1 release state
+8c75784 chore(repo): normalize development workspace
 1c73215 (tag: v1.1.1) feat(seo): production metadata and PWA baseline
 da623c0 (tag: v1.1.0) docs(release): freeze v1.1.0 production baseline
 ```
 
-**Never delete or overwrite an existing published tag.** Remote has no `v1.1.1`; local tag is unpublished.
+**Never delete or overwrite an existing published tag.** `v1.1.1` is now published on GitHub.
 
 ---
 
@@ -97,10 +92,10 @@ da623c0 (tag: v1.1.0) docs(release): freeze v1.1.0 production baseline
 
 | Item | Value |
 |------|-------|
-| Expected commit | `8c75784` |
-| Push attempted | **No** — blocked by authentication |
-| Push result | **Blocked** — run `gh auth login` first |
-| Intended command (after auth) | `git push -u origin master` |
+| Commits pushed | `1c73215`, `8c75784`, `2ef5339` |
+| Push command | `git push -u origin master` |
+| Push result | **Success** — `da623c0..2ef5339 master -> master` |
+| Tag push | **Success** — `v1.1.1 -> v1.1.1` (new tag on remote) |
 
 ---
 
@@ -127,23 +122,20 @@ da623c0 (tag: v1.1.0) docs(release): freeze v1.1.0 production baseline
 3. HEAD (`8c75784`) is a post-tag documentation commit (DEV-0 workspace normalization); it does not require a new semver for the SEO/PWA release.
 4. Production remains on v1.1.0 until an explicit deploy from `v1.1.1`.
 
-After authentication, recommended sequence:
+Push completed 2026-07-20:
 
 ```bash
-gh auth login
-git push -u origin master          # publishes 1c73215 + 8c75784
-git push origin v1.1.1             # publishes tag (no force)
+git push -u origin master    # da623c0..2ef5339
+git push origin v1.1.1       # new tag on remote
 ```
 
 ---
 
 ## Preflight Verdict
 
-**PREFLIGHT_AUTH_BLOCKED**
+**PREFLIGHT_CONTINUE_V1.1.1** (auth resolved; remote synchronized)
 
-Resolve GitHub authentication, then re-run push and tag publish before production deploy.
-
-When unblocked, release engineering should **continue v1.1.1** (not start v1.1.2).
+Production deploy may proceed from tag **`v1.1.1`** (`1c73215`). Deploy from `master` HEAD only if DEV-0/preflight docs must ship with the release artifact.
 
 ---
 
