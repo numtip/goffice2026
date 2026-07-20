@@ -1,0 +1,3157 @@
+{
+  "generated_at": "2026-07-20T08:00:16.547Z",
+  "account": {
+    "email": "researchmju@mju.ac.th",
+    "title": "สำนักวิจัยและส่งเสริมวิชาการการเกษตร"
+  },
+  "sites": [
+    {
+      "base": "https://maejo365.sharepoint.com/sites/RAE",
+      "error": "web_404",
+      "pageUrl": "https://maejo365.sharepoint.com/sites/RAE",
+      "pageTitle": ""
+    },
+    {
+      "base": "https://maejo365.sharepoint.com/sites/Research",
+      "error": "web_403",
+      "pageUrl": "https://maejo365.sharepoint.com/sites/Research/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fmaejo365.sharepoint.com%2Fsites%2FResearch&correlation=790b29a2-6091-8000-3172-76b97d87cd76&Type=web&SiteId=1125f670-d4b3-4217-b577-d23efb46adbb&allowautoredirecttosource=true",
+      "pageTitle": ""
+    },
+    {
+      "base": "https://maejo365.sharepoint.com/sites/GreenOffice",
+      "error": "web_404",
+      "pageUrl": "https://maejo365.sharepoint.com/sites/GreenOffice",
+      "pageTitle": ""
+    }
+  ],
+  "assessed": {
+    "base": "https://maejo365.sharepoint.com",
+    "pageUrl": "https://maejo365.sharepoint.com/SitePages/Home.aspx",
+    "pageTitle": "Maejo university Team Site - Home",
+    "web": {
+      "Configuration": 0,
+      "Created": "2014-02-24T04:06:23.067",
+      "Description": "",
+      "Language": 1033,
+      "ServerRelativeUrl": "/",
+      "Title": "Maejo university Team Site",
+      "Url": "https://maejo365.sharepoint.com",
+      "WebTemplate": "STS"
+    },
+    "docLibs": [
+      {
+        "title": "Documents",
+        "description": "",
+        "itemCount": 4,
+        "versioning": true,
+        "minorVersions": false,
+        "checkout": false,
+        "path": "/Shared Documents",
+        "uniquePermissions": true
+      },
+      {
+        "title": "Form Templates",
+        "description": "This library contains administrator-approved form templates that were activated to this site collection.",
+        "itemCount": 1,
+        "versioning": false,
+        "minorVersions": false,
+        "checkout": false,
+        "path": "/FormServerTemplates",
+        "uniquePermissions": false
+      },
+      {
+        "title": "Site Assets",
+        "description": "Use this library to store files which are included on pages within this site, such as images on Wiki pages.",
+        "itemCount": 0,
+        "versioning": false,
+        "minorVersions": false,
+        "checkout": false,
+        "path": "/SiteAssets",
+        "uniquePermissions": false
+      },
+      {
+        "title": "Style Library",
+        "description": "Use the style library to store style sheets, such as CSS or XSL files. The style sheets in this gallery can be used by this site or any of its subsites.",
+        "itemCount": 5,
+        "versioning": true,
+        "minorVersions": true,
+        "checkout": true,
+        "path": "/Style Library",
+        "uniquePermissions": false
+      },
+      {
+        "title": "three",
+        "description": "",
+        "itemCount": 0,
+        "versioning": true,
+        "minorVersions": false,
+        "checkout": false,
+        "path": "/three",
+        "uniquePermissions": false
+      }
+    ],
+    "allLists": [
+      {
+        "title": "_5463_2564_2_317946/Shared%20Documents/General/Recordings/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B9%83%E0%B8%99%20%27%E0%B8%9C%E0%B8%AA210%20%E0%B9%80%E0%B8%97%E0%B8%84",
+        "template": 103,
+        "items": 0
+      },
+      {
+        "title": "Calendar",
+        "template": 106,
+        "items": 0
+      },
+      {
+        "title": "Cocolism",
+        "template": 106,
+        "items": 0
+      },
+      {
+        "title": "Contacts",
+        "template": 105,
+        "items": 0
+      },
+      {
+        "title": "Document Request Invite speakers",
+        "template": 100,
+        "items": 3
+      },
+      {
+        "title": "Documents",
+        "template": 101,
+        "items": 4
+      },
+      {
+        "title": "eform_rae",
+        "template": 100,
+        "items": 0
+      },
+      {
+        "title": "Form Templates",
+        "template": 101,
+        "items": 1
+      },
+      {
+        "title": "MicroFeed",
+        "template": 544,
+        "items": 2
+      },
+      {
+        "title": "PicIt",
+        "template": 109,
+        "items": 0
+      },
+      {
+        "title": "Site Assets",
+        "template": 101,
+        "items": 0
+      },
+      {
+        "title": "Site Pages",
+        "template": 119,
+        "items": 28
+      },
+      {
+        "title": "Style Library",
+        "template": 101,
+        "items": 5
+      },
+      {
+        "title": "Task",
+        "template": 171,
+        "items": 1
+      },
+      {
+        "title": "test",
+        "template": 109,
+        "items": 0
+      },
+      {
+        "title": "three",
+        "template": 101,
+        "items": 0
+      },
+      {
+        "title": "Tracking",
+        "template": 1100,
+        "items": 1
+      },
+      {
+        "title": "ระบบ e-Form สำนักวิจัยและส่งเสริมวิชาการการเกษตร",
+        "template": 115,
+        "items": 0
+      }
+    ],
+    "contentTypes": [
+      {
+        "name": "System",
+        "group": "_Hidden",
+        "id": "0x"
+      },
+      {
+        "name": "Common Indicator Columns",
+        "group": "_Hidden",
+        "id": "0x00A7470EADF4194E2E9ED1031B61DA0884"
+      },
+      {
+        "name": "Fixed Value based Status Indicator",
+        "group": "Business Intelligence",
+        "id": "0x00A7470EADF4194E2E9ED1031B61DA088401"
+      },
+      {
+        "name": "SharePoint List based Status Indicator",
+        "group": "Business Intelligence",
+        "id": "0x00A7470EADF4194E2E9ED1031B61DA088402"
+      },
+      {
+        "name": "Excel based Status Indicator",
+        "group": "Business Intelligence",
+        "id": "0x00A7470EADF4194E2E9ED1031B61DA088403"
+      },
+      {
+        "name": "SQL Server Analysis Services based Status Indicator",
+        "group": "Business Intelligence",
+        "id": "0x00A7470EADF4194E2E9ED1031B61DA088404"
+      },
+      {
+        "name": "Item",
+        "group": "List Content Types",
+        "id": "0x01"
+      },
+      {
+        "name": "Circulation",
+        "group": "Group Work Content Types",
+        "id": "0x01000F389E14C9CE4CE486270B9D4713A5D6"
+      },
+      {
+        "name": "New Word",
+        "group": "Group Work Content Types",
+        "id": "0x010018F21907ED4E401CB4F14422ABC65304"
+      },
+      {
+        "name": "Category",
+        "group": "Community Content Types",
+        "id": "0x010019ACC57FBA4146AFA4C822E719824BED"
+      },
+      {
+        "name": "Site Membership",
+        "group": "Community Content Types",
+        "id": "0x010027FC2137D8DE4B00A40E14346D070D52"
+      },
+      {
+        "name": "Community Member",
+        "group": "Community Content Types",
+        "id": "0x010027FC2137D8DE4B00A40E14346D070D5201"
+      },
+      {
+        "name": "WorkflowServiceDefinition",
+        "group": "_Hidden",
+        "id": "0x01002A2479FF33DD4BC3B1533A012B653717"
+      },
+      {
+        "name": "Health Analyzer Rule Definition",
+        "group": "_Hidden",
+        "id": "0x01003A8AA7A4F53046158C5ABD98036A01D5"
+      },
+      {
+        "name": "Resource",
+        "group": "Group Work Content Types",
+        "id": "0x01004C9F4486FBF54864A7B0A33D02AD19B1"
+      },
+      {
+        "name": "Official Notice",
+        "group": "Group Work Content Types",
+        "id": "0x01007CE30DD1206047728BAFD1C39A850120"
+      },
+      {
+        "name": "Phone Call Memo",
+        "group": "Group Work Content Types",
+        "id": "0x0100807FBAC5EB8A4653B8D24775195B5463"
+      },
+      {
+        "name": "Project Policy",
+        "group": "_Hidden",
+        "id": "0x010085EC78BE64F9478AAE3ED069093B9963"
+      },
+      {
+        "name": "Holiday",
+        "group": "Group Work Content Types",
+        "id": "0x01009BE2AB5291BF4C1A986910BD278E4F18"
+      },
+      {
+        "name": "What's New Notification",
+        "group": "Group Work Content Types",
+        "id": "0x0100A2CA87FF01B442AD93F37CD7DD0943EB"
+      },
+      {
+        "name": "WorkflowServiceSubscription",
+        "group": "_Hidden",
+        "id": "0x0100AA27A923036E459D9EF0D18BBD0B9587"
+      },
+      {
+        "name": "Timecard",
+        "group": "Group Work Content Types",
+        "id": "0x0100C30DDA8EDB2E434EA22D793D9EE42058"
+      },
+      {
+        "name": "Resource Group",
+        "group": "Group Work Content Types",
+        "id": "0x0100CA13F2F8D61541B180952DFB25E3E8E4"
+      },
+      {
+        "name": "Rule",
+        "group": "_Hidden",
+        "id": "0x0100DC2417D125A4489CA59DCC70E3F152B2"
+      },
+      {
+        "name": "Health Analyzer Report",
+        "group": "_Hidden",
+        "id": "0x0100F95DB3A97E8046B58C6A54FB31F2BD46"
+      },
+      {
+        "name": "Users",
+        "group": "Group Work Content Types",
+        "id": "0x0100FBEEE6F0C500489B99CDA6BB16C398F7"
+      },
+      {
+        "name": "Document",
+        "group": "Document Content Types",
+        "id": "0x0101"
+      },
+      {
+        "name": "Display Template",
+        "group": "_Hidden",
+        "id": "0x0101002039C03B61C64EC4A04F5361F3851066"
+      },
+      {
+        "name": "Display Template Code",
+        "group": "_Hidden",
+        "id": "0x0101002039C03B61C64EC4A04F5361F385106605"
+      },
+      {
+        "name": "JavaScript Display Template",
+        "group": "Display Template Content Types",
+        "id": "0x0101002039C03B61C64EC4A04F5361F3851068"
+      },
+      {
+        "name": "Report",
+        "group": "Business Intelligence",
+        "id": "0x01010058DDEB47312E4967BFC1576B96E8C3D4"
+      },
+      {
+        "name": "Office Data Connection File",
+        "group": "_Hidden",
+        "id": "0x010100629D00608F814DD6AC8A86903AEE72AA"
+      },
+      {
+        "name": "List View Style",
+        "group": "Document Content Types",
+        "id": "0x010100734778F2B7DF462491FC91844AE431CF"
+      },
+      {
+        "name": "Rich Media Asset",
+        "group": "Digital Asset Content Types",
+        "id": "0x0101009148F5A04DDD49CBA7127AADA5FB792B"
+      },
+      {
+        "name": "Video Rendition",
+        "group": "Digital Asset Content Types",
+        "id": "0x0101009148F5A04DDD49CBA7127AADA5FB792B00291D173ECE694D56B19D111489C4369D"
+      },
+      {
+        "name": "Audio",
+        "group": "Digital Asset Content Types",
+        "id": "0x0101009148F5A04DDD49CBA7127AADA5FB792B006973ACD696DC4858A76371B2FB2F439A"
+      },
+      {
+        "name": "Image",
+        "group": "Digital Asset Content Types",
+        "id": "0x0101009148F5A04DDD49CBA7127AADA5FB792B00AADE34325A8B49CDA8BB4DB53328F214"
+      },
+      {
+        "name": "Site Page",
+        "group": "Document Content Types",
+        "id": "0x0101009D1CB255DA76424F860D91F20E6C4118"
+      },
+      {
+        "name": "Repost Page",
+        "group": "Document Content Types",
+        "id": "0x0101009D1CB255DA76424F860D91F20E6C4118002A50BFCFB7614729B56886FADA02339B"
+      },
+      {
+        "name": "Web Part Page with Status List",
+        "group": "Business Intelligence",
+        "id": "0x010100A2E3C117A0C5482FAEE3D57C48CB042F"
+      },
+      {
+        "name": "Universal Data Connection File",
+        "group": "_Hidden",
+        "id": "0x010100B4CBD48E029A4AD8B62CB0E41868F2B0"
+      },
+      {
+        "name": "Design File",
+        "group": "_Hidden",
+        "id": "0x010100C5033D6CFB8447359FB795C8A73A2B19"
+      },
+      {
+        "name": "Form",
+        "group": "Document Content Types",
+        "id": "0x010101"
+      },
+      {
+        "name": "Picture",
+        "group": "Document Content Types",
+        "id": "0x010102"
+      },
+      {
+        "name": "Unknown Document Type",
+        "group": "Special Content Types",
+        "id": "0x010104"
+      },
+      {
+        "name": "Master Page",
+        "group": "Document Content Types",
+        "id": "0x010105"
+      },
+      {
+        "name": "Master Page Preview",
+        "group": "Document Content Types",
+        "id": "0x010106"
+      },
+      {
+        "name": "User Workflow Document",
+        "group": "_Hidden",
+        "id": "0x010107"
+      },
+      {
+        "name": "Wiki Page",
+        "group": "Document Content Types",
+        "id": "0x010108"
+      },
+      {
+        "name": "Basic Page",
+        "group": "Document Content Types",
+        "id": "0x010109"
+      },
+      {
+        "name": "Web Part Page",
+        "group": "Document Content Types",
+        "id": "0x01010901"
+      },
+      {
+        "name": "Link to a Document",
+        "group": "Document Content Types",
+        "id": "0x01010A"
+      },
+      {
+        "name": "Dublin Core Columns",
+        "group": "Document Content Types",
+        "id": "0x01010B"
+      },
+      {
+        "name": "Event",
+        "group": "List Content Types",
+        "id": "0x0102"
+      },
+      {
+        "name": "Reservations",
+        "group": "List Content Types",
+        "id": "0x0102004F51EFDEA49C49668EF9C6744C8CF87D"
+      },
+      {
+        "name": "Schedule and Reservations",
+        "group": "List Content Types",
+        "id": "0x01020072BB2A38F0DB49C3A96CF4FA85529956"
+      },
+      {
+        "name": "Schedule",
+        "group": "List Content Types",
+        "id": "0x0102007DBDC1392EAF4EBBBF99E41D8922B264"
+      },
+      {
+        "name": "Issue",
+        "group": "List Content Types",
+        "id": "0x0103"
+      },
+      {
+        "name": "Announcement",
+        "group": "List Content Types",
+        "id": "0x0104"
+      },
+      {
+        "name": "Link",
+        "group": "List Content Types",
+        "id": "0x0105"
+      },
+      {
+        "name": "Contact",
+        "group": "List Content Types",
+        "id": "0x0106"
+      },
+      {
+        "name": "Message",
+        "group": "List Content Types",
+        "id": "0x0107"
+      },
+      {
+        "name": "Task",
+        "group": "List Content Types",
+        "id": "0x0108"
+      },
+      {
+        "name": "Workflow History",
+        "group": "_Hidden",
+        "id": "0x0109"
+      },
+      {
+        "name": "Person",
+        "group": "_Hidden",
+        "id": "0x010A"
+      },
+      {
+        "name": "SharePointGroup",
+        "group": "_Hidden",
+        "id": "0x010B"
+      },
+      {
+        "name": "DomainGroup",
+        "group": "_Hidden",
+        "id": "0x010C"
+      },
+      {
+        "name": "Post",
+        "group": "List Content Types",
+        "id": "0x0110"
+      },
+      {
+        "name": "Comment",
+        "group": "List Content Types",
+        "id": "0x0111"
+      },
+      {
+        "name": "East Asia Contact",
+        "group": "List Content Types",
+        "id": "0x0116"
+      },
+      {
+        "name": "Folder",
+        "group": "Folder Content Types",
+        "id": "0x0120"
+      },
+      {
+        "name": "RootOfList",
+        "group": "_Hidden",
+        "id": "0x012001"
+      },
+      {
+        "name": "Discussion",
+        "group": "Folder Content Types",
+        "id": "0x012002"
+      },
+      {
+        "name": "Summary Task",
+        "group": "Folder Content Types",
+        "id": "0x012004"
+      },
+      {
+        "name": "Document Collection Folder",
+        "group": "_Hidden",
+        "id": "0x0120D5"
+      },
+      {
+        "name": "Document Set",
+        "group": "Document Set Content Types",
+        "id": "0x0120D520"
+      },
+      {
+        "name": "System Media Collection",
+        "group": "_Hidden",
+        "id": "0x0120D520A8"
+      },
+      {
+        "name": "Video",
+        "group": "Digital Asset Content Types",
+        "id": "0x0120D520A808"
+      }
+    ],
+    "fields": [
+      {
+        "title": "Lower values are better",
+        "internal": "LowerValuesAreBetter",
+        "type": "Boolean",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Other Address Country/Region",
+        "internal": "OtherAddressCountry",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Categories",
+        "internal": "Categories",
+        "type": "Text",
+        "group": "Base Columns"
+      },
+      {
+        "title": "Enterprise Keywords",
+        "internal": "TaxKeyword",
+        "type": "TaxonomyFieldTypeMulti",
+        "group": "Enterprise Keywords Group"
+      },
+      {
+        "title": "Manager's Name",
+        "internal": "ManagersName",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Number of Ratings",
+        "internal": "RatingCount",
+        "type": "RatingCount",
+        "group": "Content Feedback"
+      },
+      {
+        "title": "Children's Names",
+        "internal": "ChildrensNames",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Date Modified",
+        "internal": "_DCDateModified",
+        "type": "DateTime",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Company",
+        "internal": "Company",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Home Address State Or Province",
+        "internal": "HomeAddressStateOrProvince",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Break",
+        "internal": "Break",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Author",
+        "internal": "_Author",
+        "type": "Text",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Late Night",
+        "internal": "NightWork",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "End",
+        "internal": "End",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Out of Office(Private)",
+        "internal": "Oof",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Description",
+        "internal": "RoutingRuleDescription",
+        "type": "Text",
+        "group": "Document and Record Management Columns"
+      },
+      {
+        "title": "Route To External Location",
+        "internal": "RoutingRuleExternal",
+        "type": "Boolean",
+        "group": "Document and Record Management Columns"
+      },
+      {
+        "title": "Formatted indicator warning",
+        "internal": "FormattedWarning",
+        "type": "Text",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Primary Phone",
+        "internal": "PrimaryNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Holiday",
+        "internal": "HolidayWork",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Title",
+        "internal": "Title",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Call To Action",
+        "internal": "_SPCallToAction",
+        "type": "Note",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Target Folder",
+        "internal": "RoutingTargetFolder",
+        "type": "Text",
+        "group": "Document and Record Management Columns"
+      },
+      {
+        "title": "Full Name",
+        "internal": "FullName",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Icon URL",
+        "internal": "XSLStyleIconUrl",
+        "type": "URL",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Report Description",
+        "internal": "ReportDescription",
+        "type": "Note",
+        "group": "Reports"
+      },
+      {
+        "title": "Enabled",
+        "internal": "HealthRuleCheckEnabled",
+        "type": "Boolean",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Profession",
+        "internal": "Profession",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Organizational ID Number",
+        "internal": "OrganizationalIDNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Comment 2",
+        "internal": "IMEComment2",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Task Outcome",
+        "internal": "TaskOutcome",
+        "type": "OutcomeChoice",
+        "group": "Custom Columns"
+      },
+      {
+        "title": "Percent Expression",
+        "internal": "PercentExpression",
+        "type": "Boolean",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Compatible Managed Properties",
+        "internal": "CompatibleManagedProperties",
+        "type": "Note",
+        "group": "Display Template Columns"
+      },
+      {
+        "title": "Description",
+        "internal": "KpiDescription",
+        "type": "Note",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Comment 3",
+        "internal": "IMEComment3",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Non-Working Day",
+        "internal": "IsNonWorkingDay",
+        "type": "Boolean",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Priority",
+        "internal": "RoutingPriority",
+        "type": "Text",
+        "group": "Document and Record Management Columns"
+      },
+      {
+        "title": "Copyright",
+        "internal": "wic_System_Copyright",
+        "type": "Text",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Warning Cell",
+        "internal": "WarningCell",
+        "type": "Text",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Frame Width",
+        "internal": "VideoWidthInPixels",
+        "type": "Integer",
+        "group": "_Hidden"
+      },
+      {
+        "title": "E-Mail To",
+        "internal": "EmailTo",
+        "type": "Note",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Outcome",
+        "internal": "Outcome",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Template Id",
+        "internal": "TemplateId",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Form Relative Url",
+        "internal": "FormRelativeUrl",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "User ID",
+        "internal": "User",
+        "type": "Integer",
+        "group": "Base Columns"
+      },
+      {
+        "title": "Comment 1",
+        "internal": "IMEComment1",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Managed Property Mappings",
+        "internal": "ManagedPropertyMapping",
+        "type": "Note",
+        "group": "Display Template Columns"
+      },
+      {
+        "title": "Indicator Value",
+        "internal": "Value",
+        "type": "Number",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Report Parent Name",
+        "internal": "ParentName",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Date Picture Taken",
+        "internal": "ImageCreateDate",
+        "type": "DateTime",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Target List Template ID",
+        "internal": "DisplayTemplateJSTargetListTemplate",
+        "type": "Text",
+        "group": "JavaScript Display Template Columns"
+      },
+      {
+        "title": "Birthday",
+        "internal": "Birthday",
+        "type": "DateTime",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Goal from workbook",
+        "internal": "GoalFromWorkBook",
+        "type": "Boolean",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Related Issues",
+        "internal": "RelatedIssues",
+        "type": "LookupMulti",
+        "group": "Extended Columns"
+      },
+      {
+        "title": "Business Phone",
+        "internal": "WorkPhone",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Subject",
+        "internal": "Subject",
+        "type": "Text",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Middle Name",
+        "internal": "MiddleName",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "ISDN",
+        "internal": "ISDNNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Thumbnail Preview",
+        "internal": "ThumbnailOnForm",
+        "type": "Computed",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Report Created By",
+        "internal": "ReportCreatedBy",
+        "type": "User",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Number of Likes",
+        "internal": "LikesCount",
+        "type": "Likes",
+        "group": "Content Feedback"
+      },
+      {
+        "title": "E-Mail Calendar Sequence",
+        "internal": "EmailCalendarSequence",
+        "type": "Integer",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Indicator Comments",
+        "internal": "KpiComments",
+        "type": "Note",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Detail Link",
+        "internal": "DetailLink",
+        "type": "URL",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Anniversary",
+        "internal": "Anniversary",
+        "type": "DateTime",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Body",
+        "internal": "Body",
+        "type": "Note",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Data Source",
+        "internal": "DataSource",
+        "type": "URL",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Home from Offsite",
+        "internal": "GoingHome",
+        "type": "Boolean",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Bit Rate",
+        "internal": "VideoRenditionBitRate",
+        "type": "Integer",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Location",
+        "internal": "Location",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Assistant's Phone",
+        "internal": "AssistantNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Date Occurred",
+        "internal": "Occurred",
+        "type": "DateTime",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Save to report history",
+        "internal": "SaveToReportHistory",
+        "type": "Boolean",
+        "group": "Reports"
+      },
+      {
+        "title": "Trend",
+        "internal": "Trend",
+        "type": "Number",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Indicator Status",
+        "internal": "KpiStatus",
+        "type": "Number",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Length (seconds)",
+        "internal": "MediaLengthInSeconds",
+        "type": "Integer",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Assigned To",
+        "internal": "AssignedTo",
+        "type": "User",
+        "group": "Core Task and Issue Columns"
+      },
+      {
+        "title": "UDC Purpose",
+        "internal": "Purpose",
+        "type": "Choice",
+        "group": "Extended Columns"
+      },
+      {
+        "title": "Business Phone 2",
+        "internal": "Business2Number",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Category",
+        "internal": "PostCategory",
+        "type": "LookupMulti",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Telex",
+        "internal": "TelexNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "WSPublishError",
+        "internal": "WSPublishError",
+        "type": "Note",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Priority",
+        "internal": "Priority",
+        "type": "Choice",
+        "group": "Core Task and Issue Columns"
+      },
+      {
+        "title": "User Field 3",
+        "internal": "UserField3",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "% Complete",
+        "internal": "PercentComplete",
+        "type": "Number",
+        "group": "Core Task and Issue Columns"
+      },
+      {
+        "title": "Crawler XSL File",
+        "internal": "CrawlerXSLFile",
+        "type": "URL",
+        "group": "Display Template Columns"
+      },
+      {
+        "title": "Home Address Street",
+        "internal": "HomeAddressStreet",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Report Modified",
+        "internal": "ReportModified",
+        "type": "DateTime",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Status",
+        "internal": "_Status",
+        "type": "Choice",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Compatible UI Version(s)",
+        "internal": "UIVersion",
+        "type": "MultiChoice",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Custom Router",
+        "internal": "RoutingCustomRouter",
+        "type": "Text",
+        "group": "Document and Record Management Columns"
+      },
+      {
+        "title": "E-Mail",
+        "internal": "EMail",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Assistant's Name",
+        "internal": "AssistantsName",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Form Category",
+        "internal": "FormCategory",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Radio Phone",
+        "internal": "RadioNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Display",
+        "internal": "IMEDisplay",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Keywords",
+        "internal": "Keywords",
+        "type": "Note",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Failing Services",
+        "internal": "HealthReportServices",
+        "type": "Note",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Job Title",
+        "internal": "JobTitle",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Description",
+        "internal": "CategoryDescription",
+        "type": "Text",
+        "group": "Custom Columns"
+      },
+      {
+        "title": "End Date",
+        "internal": "_EndDate",
+        "type": "DateTime",
+        "group": "Base Columns"
+      },
+      {
+        "title": "Vacation Length",
+        "internal": "NumberOfVacation",
+        "type": "Choice",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Category",
+        "internal": "Category",
+        "type": "Choice",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Append-Only Comments",
+        "internal": "V3Comments",
+        "type": "Note",
+        "group": "Base Columns"
+      },
+      {
+        "title": "Description",
+        "internal": "Comment",
+        "type": "Note",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Department",
+        "internal": "Department",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Relation",
+        "internal": "_Relation",
+        "type": "Note",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Version",
+        "internal": "HealthRuleVersion",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "ZIP/Postal Code",
+        "internal": "WorkZip",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Description",
+        "internal": "DLC_Description",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Recurrence",
+        "internal": "fRecurrence",
+        "type": "Recurrence",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Content Type",
+        "internal": "ContentType",
+        "type": "Computed",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Home Address City",
+        "internal": "HomeAddressCity",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Callback Number",
+        "internal": "CallbackNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Home Fax",
+        "internal": "HomeFaxNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Default CSS File",
+        "internal": "DefaultCssFile",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Most recent indicator data update",
+        "internal": "LastUpdated",
+        "type": "DateTime",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Total Work",
+        "internal": "TotalWork",
+        "type": "Number",
+        "group": "Core Task and Issue Columns"
+      },
+      {
+        "title": "Active",
+        "internal": "RoutingEnabled",
+        "type": "Boolean",
+        "group": "Document and Record Management Columns"
+      },
+      {
+        "title": "Expires",
+        "internal": "Expires",
+        "type": "DateTime",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Form Description",
+        "internal": "FormDescription",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Issue Status",
+        "internal": "IssueStatus",
+        "type": "Choice",
+        "group": "Extended Columns"
+      },
+      {
+        "title": "SIP Address",
+        "internal": "SipAddress",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Home Phone 2",
+        "internal": "Home2Number",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Repair Automatically",
+        "internal": "HealthRuleAutoRepairEnabled",
+        "type": "Boolean",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Direct to Offsite",
+        "internal": "GoFromHome",
+        "type": "Boolean",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Resource Identifier",
+        "internal": "_Identifier",
+        "type": "Text",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "E-Mail From",
+        "internal": "EmailFrom",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "WSEnabled",
+        "internal": "WSEnabled",
+        "type": "Boolean",
+        "group": "Custom Columns"
+      },
+      {
+        "title": "E-Mail Calendar UID",
+        "internal": "EmailCalendarUid",
+        "type": "Note",
+        "group": "_Hidden"
+      },
+      {
+        "title": "WSEventSource",
+        "internal": "WSEventSource",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Goal Cell",
+        "internal": "GoalCell",
+        "type": "Text",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Billing Information",
+        "internal": "BillingInformation",
+        "type": "Text",
+        "group": "Core Task and Issue Columns"
+      },
+      {
+        "title": "Start",
+        "internal": "Start",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Name",
+        "internal": "FileLeafRef",
+        "type": "File",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Last Name Phonetic",
+        "internal": "LastNamePhonetic",
+        "type": "Text",
+        "group": "Extended Columns"
+      },
+      {
+        "title": "Goal Sheet",
+        "internal": "GoalSheet",
+        "type": "Text",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "FTP Site",
+        "internal": "FTPSite",
+        "type": "URL",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Target Web Part",
+        "internal": "XSLStyleWPType",
+        "type": "Choice",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Workflow History Parent Instance",
+        "internal": "WorkflowInstance",
+        "type": "Guid",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Resource Type",
+        "internal": "_ResourceType",
+        "type": "Text",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Value Expression",
+        "internal": "ValueExpression",
+        "type": "Note",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Target Control Type",
+        "internal": "DisplayTemplateJSTargetControlType",
+        "type": "Choice",
+        "group": "JavaScript Display Template Columns"
+      },
+      {
+        "title": "Warning Sheet",
+        "internal": "WarningSheet",
+        "type": "Text",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Contact Information",
+        "internal": "ContactInfo",
+        "type": "ContactInfo",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Pager",
+        "internal": "PagerNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Form ID",
+        "internal": "FormId",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Rule Settings",
+        "internal": "HealthRuleReportLink",
+        "type": "URL",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Picture",
+        "internal": "Picture",
+        "type": "URL",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Vacation Type",
+        "internal": "Vacation",
+        "type": "Choice",
+        "group": "_Hidden"
+      }
+    ],
+    "taxonomyFields": [
+      {
+        "title": "Enterprise Keywords",
+        "internal": "TaxKeyword",
+        "type": "TaxonomyFieldTypeMulti"
+      }
+    ],
+    "subsites": [],
+    "permissions": null,
+    "folderSamples": [
+      {
+        "library": "Documents",
+        "folders": [
+          "Forms"
+        ]
+      },
+      {
+        "library": "Form Templates",
+        "folders": [
+          "Forms"
+        ]
+      },
+      {
+        "library": "Site Assets",
+        "folders": [
+          "Forms"
+        ]
+      },
+      {
+        "library": "Style Library",
+        "folders": [
+          "Forms",
+          "Media Player"
+        ]
+      },
+      {
+        "library": "three",
+        "folders": [
+          "Forms"
+        ]
+      }
+    ],
+    "fileSamples": [
+      {
+        "library": "Documents",
+        "files": [
+          {
+            "name": "Document.docx",
+            "contentType": "Document",
+            "modified": "2026-02-26T07:30:42Z"
+          },
+          {
+            "name": "ตลาดเงิน.docx",
+            "contentType": "Document",
+            "modified": "2026-02-22T10:16:19Z"
+          },
+          {
+            "name": "Pirisa Korea chicken sauce.pdf",
+            "contentType": "Document",
+            "modified": "2025-12-09T15:44:53Z"
+          }
+        ]
+      },
+      {
+        "library": "Form Templates",
+        "files": [
+          {
+            "name": "จิตวิทยาาาาาาาาาาา.docx",
+            "contentType": "InfoPath Form Template",
+            "modified": "2021-10-13T02:29:07Z"
+          }
+        ]
+      },
+      {
+        "library": "Site Assets",
+        "files": []
+      },
+      {
+        "library": "Style Library",
+        "files": [
+          {
+            "name": "Media Player",
+            "contentType": "Folder",
+            "modified": "2014-02-10T23:22:58Z"
+          },
+          {
+            "name": "AlternateMediaPlayer.xaml",
+            "contentType": "Document",
+            "modified": "2014-02-10T23:22:58Z"
+          },
+          {
+            "name": "AudioPreview.png",
+            "contentType": "Document",
+            "modified": "2014-02-10T23:22:58Z"
+          },
+          {
+            "name": "VideoPreview.png",
+            "contentType": "Document",
+            "modified": "2014-02-10T23:22:58Z"
+          },
+          {
+            "name": "MediaWebPartPreview.png",
+            "contentType": "Document",
+            "modified": "2014-02-10T23:22:58Z"
+          }
+        ]
+      },
+      {
+        "library": "three",
+        "files": []
+      }
+    ]
+  },
+  "root": {
+    "base": "https://maejo365.sharepoint.com",
+    "pageUrl": "https://maejo365.sharepoint.com/SitePages/Home.aspx",
+    "pageTitle": "Maejo university Team Site - Home",
+    "web": {
+      "Configuration": 0,
+      "Created": "2014-02-24T04:06:23.067",
+      "Description": "",
+      "Language": 1033,
+      "ServerRelativeUrl": "/",
+      "Title": "Maejo university Team Site",
+      "Url": "https://maejo365.sharepoint.com",
+      "WebTemplate": "STS"
+    },
+    "docLibs": [
+      {
+        "title": "Documents",
+        "description": "",
+        "itemCount": 4,
+        "versioning": true,
+        "minorVersions": false,
+        "checkout": false,
+        "path": "/Shared Documents",
+        "uniquePermissions": true
+      },
+      {
+        "title": "Form Templates",
+        "description": "This library contains administrator-approved form templates that were activated to this site collection.",
+        "itemCount": 1,
+        "versioning": false,
+        "minorVersions": false,
+        "checkout": false,
+        "path": "/FormServerTemplates",
+        "uniquePermissions": false
+      },
+      {
+        "title": "Site Assets",
+        "description": "Use this library to store files which are included on pages within this site, such as images on Wiki pages.",
+        "itemCount": 0,
+        "versioning": false,
+        "minorVersions": false,
+        "checkout": false,
+        "path": "/SiteAssets",
+        "uniquePermissions": false
+      },
+      {
+        "title": "Style Library",
+        "description": "Use the style library to store style sheets, such as CSS or XSL files. The style sheets in this gallery can be used by this site or any of its subsites.",
+        "itemCount": 5,
+        "versioning": true,
+        "minorVersions": true,
+        "checkout": true,
+        "path": "/Style Library",
+        "uniquePermissions": false
+      },
+      {
+        "title": "three",
+        "description": "",
+        "itemCount": 0,
+        "versioning": true,
+        "minorVersions": false,
+        "checkout": false,
+        "path": "/three",
+        "uniquePermissions": false
+      }
+    ],
+    "allLists": [
+      {
+        "title": "_5463_2564_2_317946/Shared%20Documents/General/Recordings/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B9%83%E0%B8%99%20%27%E0%B8%9C%E0%B8%AA210%20%E0%B9%80%E0%B8%97%E0%B8%84",
+        "template": 103,
+        "items": 0
+      },
+      {
+        "title": "Calendar",
+        "template": 106,
+        "items": 0
+      },
+      {
+        "title": "Cocolism",
+        "template": 106,
+        "items": 0
+      },
+      {
+        "title": "Contacts",
+        "template": 105,
+        "items": 0
+      },
+      {
+        "title": "Document Request Invite speakers",
+        "template": 100,
+        "items": 3
+      },
+      {
+        "title": "Documents",
+        "template": 101,
+        "items": 4
+      },
+      {
+        "title": "eform_rae",
+        "template": 100,
+        "items": 0
+      },
+      {
+        "title": "Form Templates",
+        "template": 101,
+        "items": 1
+      },
+      {
+        "title": "MicroFeed",
+        "template": 544,
+        "items": 2
+      },
+      {
+        "title": "PicIt",
+        "template": 109,
+        "items": 0
+      },
+      {
+        "title": "Site Assets",
+        "template": 101,
+        "items": 0
+      },
+      {
+        "title": "Site Pages",
+        "template": 119,
+        "items": 28
+      },
+      {
+        "title": "Style Library",
+        "template": 101,
+        "items": 5
+      },
+      {
+        "title": "Task",
+        "template": 171,
+        "items": 1
+      },
+      {
+        "title": "test",
+        "template": 109,
+        "items": 0
+      },
+      {
+        "title": "three",
+        "template": 101,
+        "items": 0
+      },
+      {
+        "title": "Tracking",
+        "template": 1100,
+        "items": 1
+      },
+      {
+        "title": "ระบบ e-Form สำนักวิจัยและส่งเสริมวิชาการการเกษตร",
+        "template": 115,
+        "items": 0
+      }
+    ],
+    "contentTypes": [
+      {
+        "name": "System",
+        "group": "_Hidden",
+        "id": "0x"
+      },
+      {
+        "name": "Common Indicator Columns",
+        "group": "_Hidden",
+        "id": "0x00A7470EADF4194E2E9ED1031B61DA0884"
+      },
+      {
+        "name": "Fixed Value based Status Indicator",
+        "group": "Business Intelligence",
+        "id": "0x00A7470EADF4194E2E9ED1031B61DA088401"
+      },
+      {
+        "name": "SharePoint List based Status Indicator",
+        "group": "Business Intelligence",
+        "id": "0x00A7470EADF4194E2E9ED1031B61DA088402"
+      },
+      {
+        "name": "Excel based Status Indicator",
+        "group": "Business Intelligence",
+        "id": "0x00A7470EADF4194E2E9ED1031B61DA088403"
+      },
+      {
+        "name": "SQL Server Analysis Services based Status Indicator",
+        "group": "Business Intelligence",
+        "id": "0x00A7470EADF4194E2E9ED1031B61DA088404"
+      },
+      {
+        "name": "Item",
+        "group": "List Content Types",
+        "id": "0x01"
+      },
+      {
+        "name": "Circulation",
+        "group": "Group Work Content Types",
+        "id": "0x01000F389E14C9CE4CE486270B9D4713A5D6"
+      },
+      {
+        "name": "New Word",
+        "group": "Group Work Content Types",
+        "id": "0x010018F21907ED4E401CB4F14422ABC65304"
+      },
+      {
+        "name": "Category",
+        "group": "Community Content Types",
+        "id": "0x010019ACC57FBA4146AFA4C822E719824BED"
+      },
+      {
+        "name": "Site Membership",
+        "group": "Community Content Types",
+        "id": "0x010027FC2137D8DE4B00A40E14346D070D52"
+      },
+      {
+        "name": "Community Member",
+        "group": "Community Content Types",
+        "id": "0x010027FC2137D8DE4B00A40E14346D070D5201"
+      },
+      {
+        "name": "WorkflowServiceDefinition",
+        "group": "_Hidden",
+        "id": "0x01002A2479FF33DD4BC3B1533A012B653717"
+      },
+      {
+        "name": "Health Analyzer Rule Definition",
+        "group": "_Hidden",
+        "id": "0x01003A8AA7A4F53046158C5ABD98036A01D5"
+      },
+      {
+        "name": "Resource",
+        "group": "Group Work Content Types",
+        "id": "0x01004C9F4486FBF54864A7B0A33D02AD19B1"
+      },
+      {
+        "name": "Official Notice",
+        "group": "Group Work Content Types",
+        "id": "0x01007CE30DD1206047728BAFD1C39A850120"
+      },
+      {
+        "name": "Phone Call Memo",
+        "group": "Group Work Content Types",
+        "id": "0x0100807FBAC5EB8A4653B8D24775195B5463"
+      },
+      {
+        "name": "Project Policy",
+        "group": "_Hidden",
+        "id": "0x010085EC78BE64F9478AAE3ED069093B9963"
+      },
+      {
+        "name": "Holiday",
+        "group": "Group Work Content Types",
+        "id": "0x01009BE2AB5291BF4C1A986910BD278E4F18"
+      },
+      {
+        "name": "What's New Notification",
+        "group": "Group Work Content Types",
+        "id": "0x0100A2CA87FF01B442AD93F37CD7DD0943EB"
+      },
+      {
+        "name": "WorkflowServiceSubscription",
+        "group": "_Hidden",
+        "id": "0x0100AA27A923036E459D9EF0D18BBD0B9587"
+      },
+      {
+        "name": "Timecard",
+        "group": "Group Work Content Types",
+        "id": "0x0100C30DDA8EDB2E434EA22D793D9EE42058"
+      },
+      {
+        "name": "Resource Group",
+        "group": "Group Work Content Types",
+        "id": "0x0100CA13F2F8D61541B180952DFB25E3E8E4"
+      },
+      {
+        "name": "Rule",
+        "group": "_Hidden",
+        "id": "0x0100DC2417D125A4489CA59DCC70E3F152B2"
+      },
+      {
+        "name": "Health Analyzer Report",
+        "group": "_Hidden",
+        "id": "0x0100F95DB3A97E8046B58C6A54FB31F2BD46"
+      },
+      {
+        "name": "Users",
+        "group": "Group Work Content Types",
+        "id": "0x0100FBEEE6F0C500489B99CDA6BB16C398F7"
+      },
+      {
+        "name": "Document",
+        "group": "Document Content Types",
+        "id": "0x0101"
+      },
+      {
+        "name": "Display Template",
+        "group": "_Hidden",
+        "id": "0x0101002039C03B61C64EC4A04F5361F3851066"
+      },
+      {
+        "name": "Display Template Code",
+        "group": "_Hidden",
+        "id": "0x0101002039C03B61C64EC4A04F5361F385106605"
+      },
+      {
+        "name": "JavaScript Display Template",
+        "group": "Display Template Content Types",
+        "id": "0x0101002039C03B61C64EC4A04F5361F3851068"
+      },
+      {
+        "name": "Report",
+        "group": "Business Intelligence",
+        "id": "0x01010058DDEB47312E4967BFC1576B96E8C3D4"
+      },
+      {
+        "name": "Office Data Connection File",
+        "group": "_Hidden",
+        "id": "0x010100629D00608F814DD6AC8A86903AEE72AA"
+      },
+      {
+        "name": "List View Style",
+        "group": "Document Content Types",
+        "id": "0x010100734778F2B7DF462491FC91844AE431CF"
+      },
+      {
+        "name": "Rich Media Asset",
+        "group": "Digital Asset Content Types",
+        "id": "0x0101009148F5A04DDD49CBA7127AADA5FB792B"
+      },
+      {
+        "name": "Video Rendition",
+        "group": "Digital Asset Content Types",
+        "id": "0x0101009148F5A04DDD49CBA7127AADA5FB792B00291D173ECE694D56B19D111489C4369D"
+      },
+      {
+        "name": "Audio",
+        "group": "Digital Asset Content Types",
+        "id": "0x0101009148F5A04DDD49CBA7127AADA5FB792B006973ACD696DC4858A76371B2FB2F439A"
+      },
+      {
+        "name": "Image",
+        "group": "Digital Asset Content Types",
+        "id": "0x0101009148F5A04DDD49CBA7127AADA5FB792B00AADE34325A8B49CDA8BB4DB53328F214"
+      },
+      {
+        "name": "Site Page",
+        "group": "Document Content Types",
+        "id": "0x0101009D1CB255DA76424F860D91F20E6C4118"
+      },
+      {
+        "name": "Repost Page",
+        "group": "Document Content Types",
+        "id": "0x0101009D1CB255DA76424F860D91F20E6C4118002A50BFCFB7614729B56886FADA02339B"
+      },
+      {
+        "name": "Web Part Page with Status List",
+        "group": "Business Intelligence",
+        "id": "0x010100A2E3C117A0C5482FAEE3D57C48CB042F"
+      },
+      {
+        "name": "Universal Data Connection File",
+        "group": "_Hidden",
+        "id": "0x010100B4CBD48E029A4AD8B62CB0E41868F2B0"
+      },
+      {
+        "name": "Design File",
+        "group": "_Hidden",
+        "id": "0x010100C5033D6CFB8447359FB795C8A73A2B19"
+      },
+      {
+        "name": "Form",
+        "group": "Document Content Types",
+        "id": "0x010101"
+      },
+      {
+        "name": "Picture",
+        "group": "Document Content Types",
+        "id": "0x010102"
+      },
+      {
+        "name": "Unknown Document Type",
+        "group": "Special Content Types",
+        "id": "0x010104"
+      },
+      {
+        "name": "Master Page",
+        "group": "Document Content Types",
+        "id": "0x010105"
+      },
+      {
+        "name": "Master Page Preview",
+        "group": "Document Content Types",
+        "id": "0x010106"
+      },
+      {
+        "name": "User Workflow Document",
+        "group": "_Hidden",
+        "id": "0x010107"
+      },
+      {
+        "name": "Wiki Page",
+        "group": "Document Content Types",
+        "id": "0x010108"
+      },
+      {
+        "name": "Basic Page",
+        "group": "Document Content Types",
+        "id": "0x010109"
+      },
+      {
+        "name": "Web Part Page",
+        "group": "Document Content Types",
+        "id": "0x01010901"
+      },
+      {
+        "name": "Link to a Document",
+        "group": "Document Content Types",
+        "id": "0x01010A"
+      },
+      {
+        "name": "Dublin Core Columns",
+        "group": "Document Content Types",
+        "id": "0x01010B"
+      },
+      {
+        "name": "Event",
+        "group": "List Content Types",
+        "id": "0x0102"
+      },
+      {
+        "name": "Reservations",
+        "group": "List Content Types",
+        "id": "0x0102004F51EFDEA49C49668EF9C6744C8CF87D"
+      },
+      {
+        "name": "Schedule and Reservations",
+        "group": "List Content Types",
+        "id": "0x01020072BB2A38F0DB49C3A96CF4FA85529956"
+      },
+      {
+        "name": "Schedule",
+        "group": "List Content Types",
+        "id": "0x0102007DBDC1392EAF4EBBBF99E41D8922B264"
+      },
+      {
+        "name": "Issue",
+        "group": "List Content Types",
+        "id": "0x0103"
+      },
+      {
+        "name": "Announcement",
+        "group": "List Content Types",
+        "id": "0x0104"
+      },
+      {
+        "name": "Link",
+        "group": "List Content Types",
+        "id": "0x0105"
+      },
+      {
+        "name": "Contact",
+        "group": "List Content Types",
+        "id": "0x0106"
+      },
+      {
+        "name": "Message",
+        "group": "List Content Types",
+        "id": "0x0107"
+      },
+      {
+        "name": "Task",
+        "group": "List Content Types",
+        "id": "0x0108"
+      },
+      {
+        "name": "Workflow History",
+        "group": "_Hidden",
+        "id": "0x0109"
+      },
+      {
+        "name": "Person",
+        "group": "_Hidden",
+        "id": "0x010A"
+      },
+      {
+        "name": "SharePointGroup",
+        "group": "_Hidden",
+        "id": "0x010B"
+      },
+      {
+        "name": "DomainGroup",
+        "group": "_Hidden",
+        "id": "0x010C"
+      },
+      {
+        "name": "Post",
+        "group": "List Content Types",
+        "id": "0x0110"
+      },
+      {
+        "name": "Comment",
+        "group": "List Content Types",
+        "id": "0x0111"
+      },
+      {
+        "name": "East Asia Contact",
+        "group": "List Content Types",
+        "id": "0x0116"
+      },
+      {
+        "name": "Folder",
+        "group": "Folder Content Types",
+        "id": "0x0120"
+      },
+      {
+        "name": "RootOfList",
+        "group": "_Hidden",
+        "id": "0x012001"
+      },
+      {
+        "name": "Discussion",
+        "group": "Folder Content Types",
+        "id": "0x012002"
+      },
+      {
+        "name": "Summary Task",
+        "group": "Folder Content Types",
+        "id": "0x012004"
+      },
+      {
+        "name": "Document Collection Folder",
+        "group": "_Hidden",
+        "id": "0x0120D5"
+      },
+      {
+        "name": "Document Set",
+        "group": "Document Set Content Types",
+        "id": "0x0120D520"
+      },
+      {
+        "name": "System Media Collection",
+        "group": "_Hidden",
+        "id": "0x0120D520A8"
+      },
+      {
+        "name": "Video",
+        "group": "Digital Asset Content Types",
+        "id": "0x0120D520A808"
+      }
+    ],
+    "fields": [
+      {
+        "title": "Lower values are better",
+        "internal": "LowerValuesAreBetter",
+        "type": "Boolean",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Other Address Country/Region",
+        "internal": "OtherAddressCountry",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Categories",
+        "internal": "Categories",
+        "type": "Text",
+        "group": "Base Columns"
+      },
+      {
+        "title": "Enterprise Keywords",
+        "internal": "TaxKeyword",
+        "type": "TaxonomyFieldTypeMulti",
+        "group": "Enterprise Keywords Group"
+      },
+      {
+        "title": "Manager's Name",
+        "internal": "ManagersName",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Number of Ratings",
+        "internal": "RatingCount",
+        "type": "RatingCount",
+        "group": "Content Feedback"
+      },
+      {
+        "title": "Children's Names",
+        "internal": "ChildrensNames",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Date Modified",
+        "internal": "_DCDateModified",
+        "type": "DateTime",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Company",
+        "internal": "Company",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Home Address State Or Province",
+        "internal": "HomeAddressStateOrProvince",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Break",
+        "internal": "Break",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Author",
+        "internal": "_Author",
+        "type": "Text",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Late Night",
+        "internal": "NightWork",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "End",
+        "internal": "End",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Out of Office(Private)",
+        "internal": "Oof",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Description",
+        "internal": "RoutingRuleDescription",
+        "type": "Text",
+        "group": "Document and Record Management Columns"
+      },
+      {
+        "title": "Route To External Location",
+        "internal": "RoutingRuleExternal",
+        "type": "Boolean",
+        "group": "Document and Record Management Columns"
+      },
+      {
+        "title": "Formatted indicator warning",
+        "internal": "FormattedWarning",
+        "type": "Text",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Primary Phone",
+        "internal": "PrimaryNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Holiday",
+        "internal": "HolidayWork",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Title",
+        "internal": "Title",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Call To Action",
+        "internal": "_SPCallToAction",
+        "type": "Note",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Target Folder",
+        "internal": "RoutingTargetFolder",
+        "type": "Text",
+        "group": "Document and Record Management Columns"
+      },
+      {
+        "title": "Full Name",
+        "internal": "FullName",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Icon URL",
+        "internal": "XSLStyleIconUrl",
+        "type": "URL",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Report Description",
+        "internal": "ReportDescription",
+        "type": "Note",
+        "group": "Reports"
+      },
+      {
+        "title": "Enabled",
+        "internal": "HealthRuleCheckEnabled",
+        "type": "Boolean",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Profession",
+        "internal": "Profession",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Organizational ID Number",
+        "internal": "OrganizationalIDNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Comment 2",
+        "internal": "IMEComment2",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Task Outcome",
+        "internal": "TaskOutcome",
+        "type": "OutcomeChoice",
+        "group": "Custom Columns"
+      },
+      {
+        "title": "Percent Expression",
+        "internal": "PercentExpression",
+        "type": "Boolean",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Compatible Managed Properties",
+        "internal": "CompatibleManagedProperties",
+        "type": "Note",
+        "group": "Display Template Columns"
+      },
+      {
+        "title": "Description",
+        "internal": "KpiDescription",
+        "type": "Note",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Comment 3",
+        "internal": "IMEComment3",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Non-Working Day",
+        "internal": "IsNonWorkingDay",
+        "type": "Boolean",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Priority",
+        "internal": "RoutingPriority",
+        "type": "Text",
+        "group": "Document and Record Management Columns"
+      },
+      {
+        "title": "Copyright",
+        "internal": "wic_System_Copyright",
+        "type": "Text",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Warning Cell",
+        "internal": "WarningCell",
+        "type": "Text",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Frame Width",
+        "internal": "VideoWidthInPixels",
+        "type": "Integer",
+        "group": "_Hidden"
+      },
+      {
+        "title": "E-Mail To",
+        "internal": "EmailTo",
+        "type": "Note",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Outcome",
+        "internal": "Outcome",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Template Id",
+        "internal": "TemplateId",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Form Relative Url",
+        "internal": "FormRelativeUrl",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "User ID",
+        "internal": "User",
+        "type": "Integer",
+        "group": "Base Columns"
+      },
+      {
+        "title": "Comment 1",
+        "internal": "IMEComment1",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Managed Property Mappings",
+        "internal": "ManagedPropertyMapping",
+        "type": "Note",
+        "group": "Display Template Columns"
+      },
+      {
+        "title": "Indicator Value",
+        "internal": "Value",
+        "type": "Number",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Report Parent Name",
+        "internal": "ParentName",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Date Picture Taken",
+        "internal": "ImageCreateDate",
+        "type": "DateTime",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Target List Template ID",
+        "internal": "DisplayTemplateJSTargetListTemplate",
+        "type": "Text",
+        "group": "JavaScript Display Template Columns"
+      },
+      {
+        "title": "Birthday",
+        "internal": "Birthday",
+        "type": "DateTime",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Goal from workbook",
+        "internal": "GoalFromWorkBook",
+        "type": "Boolean",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Related Issues",
+        "internal": "RelatedIssues",
+        "type": "LookupMulti",
+        "group": "Extended Columns"
+      },
+      {
+        "title": "Business Phone",
+        "internal": "WorkPhone",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Subject",
+        "internal": "Subject",
+        "type": "Text",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Middle Name",
+        "internal": "MiddleName",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "ISDN",
+        "internal": "ISDNNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Thumbnail Preview",
+        "internal": "ThumbnailOnForm",
+        "type": "Computed",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Report Created By",
+        "internal": "ReportCreatedBy",
+        "type": "User",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Number of Likes",
+        "internal": "LikesCount",
+        "type": "Likes",
+        "group": "Content Feedback"
+      },
+      {
+        "title": "E-Mail Calendar Sequence",
+        "internal": "EmailCalendarSequence",
+        "type": "Integer",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Indicator Comments",
+        "internal": "KpiComments",
+        "type": "Note",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Detail Link",
+        "internal": "DetailLink",
+        "type": "URL",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Anniversary",
+        "internal": "Anniversary",
+        "type": "DateTime",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Body",
+        "internal": "Body",
+        "type": "Note",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Data Source",
+        "internal": "DataSource",
+        "type": "URL",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Home from Offsite",
+        "internal": "GoingHome",
+        "type": "Boolean",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Bit Rate",
+        "internal": "VideoRenditionBitRate",
+        "type": "Integer",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Location",
+        "internal": "Location",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Assistant's Phone",
+        "internal": "AssistantNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Date Occurred",
+        "internal": "Occurred",
+        "type": "DateTime",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Save to report history",
+        "internal": "SaveToReportHistory",
+        "type": "Boolean",
+        "group": "Reports"
+      },
+      {
+        "title": "Trend",
+        "internal": "Trend",
+        "type": "Number",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Indicator Status",
+        "internal": "KpiStatus",
+        "type": "Number",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Length (seconds)",
+        "internal": "MediaLengthInSeconds",
+        "type": "Integer",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Assigned To",
+        "internal": "AssignedTo",
+        "type": "User",
+        "group": "Core Task and Issue Columns"
+      },
+      {
+        "title": "UDC Purpose",
+        "internal": "Purpose",
+        "type": "Choice",
+        "group": "Extended Columns"
+      },
+      {
+        "title": "Business Phone 2",
+        "internal": "Business2Number",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Category",
+        "internal": "PostCategory",
+        "type": "LookupMulti",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Telex",
+        "internal": "TelexNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "WSPublishError",
+        "internal": "WSPublishError",
+        "type": "Note",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Priority",
+        "internal": "Priority",
+        "type": "Choice",
+        "group": "Core Task and Issue Columns"
+      },
+      {
+        "title": "User Field 3",
+        "internal": "UserField3",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "% Complete",
+        "internal": "PercentComplete",
+        "type": "Number",
+        "group": "Core Task and Issue Columns"
+      },
+      {
+        "title": "Crawler XSL File",
+        "internal": "CrawlerXSLFile",
+        "type": "URL",
+        "group": "Display Template Columns"
+      },
+      {
+        "title": "Home Address Street",
+        "internal": "HomeAddressStreet",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Report Modified",
+        "internal": "ReportModified",
+        "type": "DateTime",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Status",
+        "internal": "_Status",
+        "type": "Choice",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Compatible UI Version(s)",
+        "internal": "UIVersion",
+        "type": "MultiChoice",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Custom Router",
+        "internal": "RoutingCustomRouter",
+        "type": "Text",
+        "group": "Document and Record Management Columns"
+      },
+      {
+        "title": "E-Mail",
+        "internal": "EMail",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Assistant's Name",
+        "internal": "AssistantsName",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Form Category",
+        "internal": "FormCategory",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Radio Phone",
+        "internal": "RadioNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Display",
+        "internal": "IMEDisplay",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Keywords",
+        "internal": "Keywords",
+        "type": "Note",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Failing Services",
+        "internal": "HealthReportServices",
+        "type": "Note",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Job Title",
+        "internal": "JobTitle",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Description",
+        "internal": "CategoryDescription",
+        "type": "Text",
+        "group": "Custom Columns"
+      },
+      {
+        "title": "End Date",
+        "internal": "_EndDate",
+        "type": "DateTime",
+        "group": "Base Columns"
+      },
+      {
+        "title": "Vacation Length",
+        "internal": "NumberOfVacation",
+        "type": "Choice",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Category",
+        "internal": "Category",
+        "type": "Choice",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Append-Only Comments",
+        "internal": "V3Comments",
+        "type": "Note",
+        "group": "Base Columns"
+      },
+      {
+        "title": "Description",
+        "internal": "Comment",
+        "type": "Note",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Department",
+        "internal": "Department",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Relation",
+        "internal": "_Relation",
+        "type": "Note",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Version",
+        "internal": "HealthRuleVersion",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "ZIP/Postal Code",
+        "internal": "WorkZip",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Description",
+        "internal": "DLC_Description",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Recurrence",
+        "internal": "fRecurrence",
+        "type": "Recurrence",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Content Type",
+        "internal": "ContentType",
+        "type": "Computed",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Home Address City",
+        "internal": "HomeAddressCity",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Callback Number",
+        "internal": "CallbackNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Home Fax",
+        "internal": "HomeFaxNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Default CSS File",
+        "internal": "DefaultCssFile",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Most recent indicator data update",
+        "internal": "LastUpdated",
+        "type": "DateTime",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Total Work",
+        "internal": "TotalWork",
+        "type": "Number",
+        "group": "Core Task and Issue Columns"
+      },
+      {
+        "title": "Active",
+        "internal": "RoutingEnabled",
+        "type": "Boolean",
+        "group": "Document and Record Management Columns"
+      },
+      {
+        "title": "Expires",
+        "internal": "Expires",
+        "type": "DateTime",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Form Description",
+        "internal": "FormDescription",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Issue Status",
+        "internal": "IssueStatus",
+        "type": "Choice",
+        "group": "Extended Columns"
+      },
+      {
+        "title": "SIP Address",
+        "internal": "SipAddress",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Home Phone 2",
+        "internal": "Home2Number",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Repair Automatically",
+        "internal": "HealthRuleAutoRepairEnabled",
+        "type": "Boolean",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Direct to Offsite",
+        "internal": "GoFromHome",
+        "type": "Boolean",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Resource Identifier",
+        "internal": "_Identifier",
+        "type": "Text",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "E-Mail From",
+        "internal": "EmailFrom",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "WSEnabled",
+        "internal": "WSEnabled",
+        "type": "Boolean",
+        "group": "Custom Columns"
+      },
+      {
+        "title": "E-Mail Calendar UID",
+        "internal": "EmailCalendarUid",
+        "type": "Note",
+        "group": "_Hidden"
+      },
+      {
+        "title": "WSEventSource",
+        "internal": "WSEventSource",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Goal Cell",
+        "internal": "GoalCell",
+        "type": "Text",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Billing Information",
+        "internal": "BillingInformation",
+        "type": "Text",
+        "group": "Core Task and Issue Columns"
+      },
+      {
+        "title": "Start",
+        "internal": "Start",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Name",
+        "internal": "FileLeafRef",
+        "type": "File",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Last Name Phonetic",
+        "internal": "LastNamePhonetic",
+        "type": "Text",
+        "group": "Extended Columns"
+      },
+      {
+        "title": "Goal Sheet",
+        "internal": "GoalSheet",
+        "type": "Text",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "FTP Site",
+        "internal": "FTPSite",
+        "type": "URL",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Target Web Part",
+        "internal": "XSLStyleWPType",
+        "type": "Choice",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Workflow History Parent Instance",
+        "internal": "WorkflowInstance",
+        "type": "Guid",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Resource Type",
+        "internal": "_ResourceType",
+        "type": "Text",
+        "group": "Core Document Columns"
+      },
+      {
+        "title": "Value Expression",
+        "internal": "ValueExpression",
+        "type": "Note",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Target Control Type",
+        "internal": "DisplayTemplateJSTargetControlType",
+        "type": "Choice",
+        "group": "JavaScript Display Template Columns"
+      },
+      {
+        "title": "Warning Sheet",
+        "internal": "WarningSheet",
+        "type": "Text",
+        "group": "Status Indicators"
+      },
+      {
+        "title": "Contact Information",
+        "internal": "ContactInfo",
+        "type": "ContactInfo",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Pager",
+        "internal": "PagerNumber",
+        "type": "Text",
+        "group": "Core Contact and Calendar Columns"
+      },
+      {
+        "title": "Form ID",
+        "internal": "FormId",
+        "type": "Text",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Rule Settings",
+        "internal": "HealthRuleReportLink",
+        "type": "URL",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Picture",
+        "internal": "Picture",
+        "type": "URL",
+        "group": "_Hidden"
+      },
+      {
+        "title": "Vacation Type",
+        "internal": "Vacation",
+        "type": "Choice",
+        "group": "_Hidden"
+      }
+    ],
+    "taxonomyFields": [
+      {
+        "title": "Enterprise Keywords",
+        "internal": "TaxKeyword",
+        "type": "TaxonomyFieldTypeMulti"
+      }
+    ],
+    "subsites": [],
+    "permissions": null,
+    "folderSamples": [
+      {
+        "library": "Documents",
+        "folders": [
+          "Forms"
+        ]
+      },
+      {
+        "library": "Form Templates",
+        "folders": [
+          "Forms"
+        ]
+      },
+      {
+        "library": "Site Assets",
+        "folders": [
+          "Forms"
+        ]
+      },
+      {
+        "library": "Style Library",
+        "folders": [
+          "Forms",
+          "Media Player"
+        ]
+      },
+      {
+        "library": "three",
+        "folders": [
+          "Forms"
+        ]
+      }
+    ],
+    "fileSamples": [
+      {
+        "library": "Documents",
+        "files": [
+          {
+            "name": "Document.docx",
+            "contentType": "Document",
+            "modified": "2026-02-26T07:30:42Z"
+          },
+          {
+            "name": "ตลาดเงิน.docx",
+            "contentType": "Document",
+            "modified": "2026-02-22T10:16:19Z"
+          },
+          {
+            "name": "Pirisa Korea chicken sauce.pdf",
+            "contentType": "Document",
+            "modified": "2025-12-09T15:44:53Z"
+          }
+        ]
+      },
+      {
+        "library": "Form Templates",
+        "files": [
+          {
+            "name": "จิตวิทยาาาาาาาาาาา.docx",
+            "contentType": "InfoPath Form Template",
+            "modified": "2021-10-13T02:29:07Z"
+          }
+        ]
+      },
+      {
+        "library": "Site Assets",
+        "files": []
+      },
+      {
+        "library": "Style Library",
+        "files": [
+          {
+            "name": "Media Player",
+            "contentType": "Folder",
+            "modified": "2014-02-10T23:22:58Z"
+          },
+          {
+            "name": "AlternateMediaPlayer.xaml",
+            "contentType": "Document",
+            "modified": "2014-02-10T23:22:58Z"
+          },
+          {
+            "name": "AudioPreview.png",
+            "contentType": "Document",
+            "modified": "2014-02-10T23:22:58Z"
+          },
+          {
+            "name": "VideoPreview.png",
+            "contentType": "Document",
+            "modified": "2014-02-10T23:22:58Z"
+          },
+          {
+            "name": "MediaWebPartPreview.png",
+            "contentType": "Document",
+            "modified": "2014-02-10T23:22:58Z"
+          }
+        ]
+      },
+      {
+        "library": "three",
+        "files": []
+      }
+    ]
+  }
+}

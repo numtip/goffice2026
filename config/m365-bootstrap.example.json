@@ -1,0 +1,26 @@
+{
+  "$schema": "Green Office 2026 M365 bootstrap config (copy to m365-bootstrap.json — not committed)",
+  "profileRoot": "D:\\AgentProfiles\\M365",
+  "defaultAccount": "researchmju",
+  "accounts": {
+    "researchmju": {
+      "upn": "researchmju@mju.ac.th",
+      "displayName": "RAE SharePoint / Document Center",
+      "defaultUrl": "https://maejo365.sharepoint.com/sites/msteams_54adc4/SitePages/Home.aspx",
+      "loginHintUrl": "https://maejo365.sharepoint.com/sites/msteams_54adc4?login_hint=researchmju%40mju.ac.th",
+      "expectedHosts": ["maejo365.sharepoint.com"]
+    },
+    "prinya": {
+      "upn": "prinya_mju_ac_th@maejo365",
+      "displayName": "Legacy Green Office evidence (personal OneDrive)",
+      "defaultUrl": "https://maejo365-my.sharepoint.com/personal/prinya_mju_ac_th/Documents/Forms/All.aspx",
+      "loginHintUrl": "https://maejo365-my.sharepoint.com/personal/prinya_mju_ac_th/?login_hint=prinya_mju_ac_th%40maejo365",
+      "expectedHosts": ["maejo365-my.sharepoint.com"]
+    }
+  },
+  "edgeArgs": [
+    "--no-first-run",
+    "--no-default-browser-check"
+  ],
+  "logDirectory": ".local/m365-bootstrap/logs"
+}

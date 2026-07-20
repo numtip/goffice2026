@@ -4,3 +4,11 @@ dist/
 *.log
 .env
 .env.*
+
+# M365 agent bootstrap — local session data (never commit)
+.local/
+config/m365-bootstrap.json
+
+# Browser profiles live outside repo at D:\AgentProfiles\M365 — do not copy into Git
+AgentProfiles/
+**/AgentProfiles/

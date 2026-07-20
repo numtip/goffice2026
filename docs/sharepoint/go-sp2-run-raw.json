@@ -1,0 +1,520 @@
+{
+  "generated_at": "2026-07-20T08:12:55.840Z",
+  "phase": "create",
+  "canonical_site": "https://maejo365.sharepoint.com/sites/msteams_54adc4",
+  "profile": "D:\\AgentProfiles\\M365\\researchmju",
+  "verification": {
+    "siteUrl": "https://maejo365.sharepoint.com/sites/msteams_54adc4",
+    "reachable": true,
+    "account": "researchmju@mju.ac.th",
+    "accountOk": true,
+    "siteTitle": "สำนักวิจัยฯ",
+    "siteTitleOk": true,
+    "canCreateList": true,
+    "greenOfficeExists": true,
+    "documentCenterSnapshot": [
+      {
+        "title": "Documents",
+        "items": 3,
+        "path": "/sites/msteams_54adc4/Shared Documents"
+      },
+      {
+        "title": "RAE Document Registry",
+        "items": 627,
+        "path": "/sites/msteams_54adc4/Lists/RAE Document Registry"
+      },
+      {
+        "title": "เอกสารประกอบของคลาส",
+        "items": 2,
+        "path": "/sites/msteams_54adc4/DocLib"
+      }
+    ],
+    "blockers": [],
+    "permissions": {
+      "effective": {
+        "__metadata": {
+          "type": "SP.BasePermissions"
+        },
+        "High": "2147483647",
+        "Low": "4294705151"
+      }
+    }
+  },
+  "creation": {
+    "steps": [
+      {
+        "step": "create_library",
+        "status": "exists",
+        "listId": "558b5abf-dfea-4b19-9d43-bf5341fc0bdf",
+        "listPath": "/sites/msteams_54adc4/GreenOfficeEvidence"
+      },
+      {
+        "step": "versioning",
+        "status": "ok",
+        "code": 204
+      },
+      {
+        "step": "columns",
+        "results": [
+          {
+            "internal": "GO_DocumentID",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_IndicatorCode",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_Category",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_ResourceDomain",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_FiscalYear",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_EvidenceType",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_EvidenceStatus",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_EvidenceDate",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_MappingConfidence",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_SHA256",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_OriginalFileName",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_LegacyURL",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_OriginalSharePointURL",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_JoomlaArticleID",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_LegacySourcePath",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_Visibility",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_PublicDistributionURL",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_VerifiedDate",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          },
+          {
+            "internal": "GO_ImportedDate",
+            "status": "failed",
+            "code": 500,
+            "listAdd": {
+              "status": "ok"
+            }
+          }
+        ]
+      },
+      {
+        "step": "content_types",
+        "results": [
+          {
+            "name": "Green Office Evidence Document",
+            "status": "failed",
+            "code": 500,
+            "text": "{\"error\":{\"code\":\"183, Microsoft.SharePoint.SPException\",\"message\":{\"lang\":\"en-US\",\"value\":\"A duplicate content type \\\"Green Office Evidence Document\\\" was found.\"}}}"
+          },
+          {
+            "name": "Green Office Evidence Workbook",
+            "status": "failed",
+            "code": 500,
+            "text": "{\"error\":{\"code\":\"183, Microsoft.SharePoint.SPException\",\"message\":{\"lang\":\"en-US\",\"value\":\"A duplicate content type \\\"Green Office Evidence Workbook\\\" was found.\"}}}"
+          }
+        ]
+      },
+      {
+        "step": "folders",
+        "results": [
+          {
+            "folder": "2568",
+            "status": "ok",
+            "code": 201
+          },
+          {
+            "folder": "2569",
+            "status": "ok",
+            "code": 201
+          }
+        ]
+      },
+      {
+        "step": "views",
+        "results": [
+          {
+            "title": "หลักฐานทั้งหมด",
+            "status": "created",
+            "code": 201
+          },
+          {
+            "title": "ตามหมวด",
+            "status": "created",
+            "code": 201
+          },
+          {
+            "title": "ตามตัวชี้วัด",
+            "status": "created",
+            "code": 201
+          },
+          {
+            "title": "รอตรวจสอบ",
+            "status": "created",
+            "code": 201
+          },
+          {
+            "title": "พร้อมเผยแพร่",
+            "status": "created",
+            "code": 201
+          },
+          {
+            "title": "ปี 2568",
+            "status": "created",
+            "code": 201
+          },
+          {
+            "title": "ปี 2569",
+            "status": "created",
+            "code": 201
+          }
+        ]
+      }
+    ],
+    "success": true,
+    "library": {
+      "__metadata": {
+        "id": "https://maejo365.sharepoint.com/sites/msteams_54adc4/_api/Web/Lists(guid'558b5abf-dfea-4b19-9d43-bf5341fc0bdf')",
+        "uri": "https://maejo365.sharepoint.com/sites/msteams_54adc4/_api/Web/Lists(guid'558b5abf-dfea-4b19-9d43-bf5341fc0bdf')",
+        "etag": "\"42\"",
+        "type": "SP.List"
+      },
+      "RootFolder": {
+        "__metadata": {
+          "id": "https://maejo365.sharepoint.com/sites/msteams_54adc4/_api/Web/Lists(guid'558b5abf-dfea-4b19-9d43-bf5341fc0bdf')/RootFolder",
+          "uri": "https://maejo365.sharepoint.com/sites/msteams_54adc4/_api/Web/Lists(guid'558b5abf-dfea-4b19-9d43-bf5341fc0bdf')/RootFolder",
+          "type": "SP.Folder"
+        },
+        "ServerRelativeUrl": "/sites/msteams_54adc4/GreenOfficeEvidence"
+      },
+      "HasUniqueRoleAssignments": false,
+      "Description": "คลังหลักฐานกลางสำหรับการดำเนินงานและการประเมินสำนักงานสีเขียวของสำนักวิจัยและส่งเสริมวิชาการการเกษตร",
+      "EnableMinorVersions": false,
+      "EnableModeration": false,
+      "EnableVersioning": true,
+      "ForceCheckout": false,
+      "ItemCount": 2,
+      "MajorVersionLimit": 50,
+      "Title": "หลักฐานสำนักงานสีเขียว"
+    },
+    "columns": [
+      {
+        "title": "GO Document ID",
+        "internal": "GO_x0020_Document_x0020_ID",
+        "type": "Text"
+      },
+      {
+        "title": "GO Indicator Code",
+        "internal": "GO_x0020_Indicator_x0020_Code",
+        "type": "Text"
+      },
+      {
+        "title": "GO Category",
+        "internal": "GO_x0020_Category",
+        "type": "Choice"
+      },
+      {
+        "title": "GO Resource Domain",
+        "internal": "GO_x0020_Resource_x0020_Domain",
+        "type": "Choice"
+      },
+      {
+        "title": "GO Fiscal Year",
+        "internal": "GO_x0020_Fiscal_x0020_Year",
+        "type": "Choice"
+      },
+      {
+        "title": "GO Evidence Type",
+        "internal": "GO_x0020_Evidence_x0020_Type",
+        "type": "Choice"
+      },
+      {
+        "title": "GO Evidence Status",
+        "internal": "GO_x0020_Evidence_x0020_Status",
+        "type": "Choice"
+      },
+      {
+        "title": "GO Evidence Date",
+        "internal": "GO_x0020_Evidence_x0020_Date",
+        "type": "DateTime"
+      },
+      {
+        "title": "GO Mapping Confidence",
+        "internal": "GO_x0020_Mapping_x0020_Confidence",
+        "type": "Choice"
+      },
+      {
+        "title": "GO SHA256",
+        "internal": "GO_x0020_SHA256",
+        "type": "Text"
+      },
+      {
+        "title": "GO Original File Name",
+        "internal": "GO_x0020_Original_x0020_File_x0020_Name",
+        "type": "Text"
+      },
+      {
+        "title": "GO Legacy URL",
+        "internal": "GO_x0020_Legacy_x0020_URL",
+        "type": "URL"
+      },
+      {
+        "title": "GO Original SharePoint URL",
+        "internal": "GO_x0020_Original_x0020_SharePoint_x0020_URL",
+        "type": "URL"
+      },
+      {
+        "title": "GO Joomla Article ID",
+        "internal": "GO_x0020_Joomla_x0020_Article_x0020_ID",
+        "type": "Text"
+      },
+      {
+        "title": "GO Legacy Source Path",
+        "internal": "GO_x0020_Legacy_x0020_Source_x0020_Path",
+        "type": "Note"
+      },
+      {
+        "title": "GO Visibility",
+        "internal": "GO_x0020_Visibility",
+        "type": "Choice"
+      },
+      {
+        "title": "GO Public Distribution URL",
+        "internal": "GO_x0020_Public_x0020_Distribution_x0020_URL",
+        "type": "URL"
+      },
+      {
+        "title": "GO Verified Date",
+        "internal": "GO_x0020_Verified_x0020_Date",
+        "type": "DateTime"
+      },
+      {
+        "title": "GO Imported Date",
+        "internal": "GO_x0020_Imported_x0020_Date",
+        "type": "DateTime"
+      },
+      {
+        "title": "GO Document ID",
+        "internal": "GO_x0020_Document_x0020_ID0",
+        "type": "Text"
+      },
+      {
+        "title": "GO Indicator Code",
+        "internal": "GO_x0020_Indicator_x0020_Code0",
+        "type": "Text"
+      },
+      {
+        "title": "GO Category",
+        "internal": "GO_x0020_Category0",
+        "type": "Choice"
+      },
+      {
+        "title": "GO Resource Domain",
+        "internal": "GO_x0020_Resource_x0020_Domain0",
+        "type": "Choice"
+      },
+      {
+        "title": "GO Fiscal Year",
+        "internal": "GO_x0020_Fiscal_x0020_Year0",
+        "type": "Choice"
+      },
+      {
+        "title": "GO Evidence Type",
+        "internal": "GO_x0020_Evidence_x0020_Type0",
+        "type": "Choice"
+      },
+      {
+        "title": "GO Evidence Status",
+        "internal": "GO_x0020_Evidence_x0020_Status0",
+        "type": "Choice"
+      },
+      {
+        "title": "GO Evidence Date",
+        "internal": "GO_x0020_Evidence_x0020_Date0",
+        "type": "DateTime"
+      },
+      {
+        "title": "GO Mapping Confidence",
+        "internal": "GO_x0020_Mapping_x0020_Confidence0",
+        "type": "Choice"
+      },
+      {
+        "title": "GO SHA256",
+        "internal": "GO_x0020_SHA2560",
+        "type": "Text"
+      },
+      {
+        "title": "GO Original File Name",
+        "internal": "GO_x0020_Original_x0020_File_x0020_Name0",
+        "type": "Text"
+      },
+      {
+        "title": "GO Legacy URL",
+        "internal": "GO_x0020_Legacy_x0020_URL0",
+        "type": "URL"
+      },
+      {
+        "title": "GO Original SharePoint URL",
+        "internal": "GO_x0020_Original_x0020_SharePoint_x0020_URL0",
+        "type": "URL"
+      },
+      {
+        "title": "GO Joomla Article ID",
+        "internal": "GO_x0020_Joomla_x0020_Article_x0020_ID0",
+        "type": "Text"
+      },
+      {
+        "title": "GO Legacy Source Path",
+        "internal": "GO_x0020_Legacy_x0020_Source_x0020_Path0",
+        "type": "Note"
+      },
+      {
+        "title": "GO Visibility",
+        "internal": "GO_x0020_Visibility0",
+        "type": "Choice"
+      },
+      {
+        "title": "GO Public Distribution URL",
+        "internal": "GO_x0020_Public_x0020_Distribution_x0020_URL0",
+        "type": "URL"
+      },
+      {
+        "title": "GO Verified Date",
+        "internal": "GO_x0020_Verified_x0020_Date0",
+        "type": "DateTime"
+      },
+      {
+        "title": "GO Imported Date",
+        "internal": "GO_x0020_Imported_x0020_Date0",
+        "type": "DateTime"
+      }
+    ],
+    "views": [
+      "All Documents",
+      "Merge Documents",
+      "Relink Documents",
+      "assetLibTemp",
+      "หลักฐานทั้งหมด",
+      "ตามหมวด",
+      "ตามตัวชี้วัด",
+      "รอตรวจสอบ",
+      "พร้อมเผยแพร่",
+      "ปี 2568",
+      "ปี 2569"
+    ],
+    "libraryUrl": "https://maejo365.sharepoint.com/sites/msteams_54adc4/GreenOfficeEvidence"
+  },
+  "verdict": "GO_SP2_LIBRARY_READY"
+}

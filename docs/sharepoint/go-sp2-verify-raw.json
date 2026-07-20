@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-07-20T08:10:23.106Z",
+  "phase": "verify",
+  "canonical_site": "https://maejo365.sharepoint.com/sites/msteams_54adc4",
+  "profile": "D:\\AgentProfiles\\M365\\researchmju",
+  "verification": {
+    "siteUrl": "https://maejo365.sharepoint.com/sites/msteams_54adc4",
+    "reachable": true,
+    "account": "researchmju@mju.ac.th",
+    "accountOk": true,
+    "siteTitle": "สำนักวิจัยฯ",
+    "siteTitleOk": true,
+    "canCreateList": true,
+    "greenOfficeExists": false,
+    "documentCenterSnapshot": [
+      {
+        "title": "Documents",
+        "items": 3,
+        "path": "/sites/msteams_54adc4/Shared Documents"
+      },
+      {
+        "title": "RAE Document Registry",
+        "items": 627,
+        "path": "/sites/msteams_54adc4/Lists/RAE Document Registry"
+      },
+      {
+        "title": "เอกสารประกอบของคลาส",
+        "items": 2,
+        "path": "/sites/msteams_54adc4/DocLib"
+      }
+    ],
+    "blockers": [],
+    "permissions": {
+      "effective": {
+        "__metadata": {
+          "type": "SP.BasePermissions"
+        },
+        "High": "2147483647",
+        "Low": "4294705151"
+      }
+    }
+  }
+}

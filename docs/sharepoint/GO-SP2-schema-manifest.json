@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-07-20T15:15:00+07:00",
+  "project": "Green Office 2026",
+  "phase": "GO-SP-2",
+  "canonical_site": {
+    "url": "https://maejo365.sharepoint.com/sites/msteams_54adc4",
+    "title": "สำนักวิจัยฯ",
+    "full_title_context": "สำนักวิจัยและส่งเสริมวิชาการการเกษตร"
+  },
+  "account": "researchmju@mju.ac.th",
+  "library": {
+    "display_name": "หลักฐานสำนักงานสีเขียว",
+    "english_name": "Green Office Evidence",
+    "internal_url": "GreenOfficeEvidence",
+    "list_id": "558b5abf-dfea-4b19-9d43-bf5341fc0bdf",
+    "url": "https://maejo365.sharepoint.com/sites/msteams_54adc4/GreenOfficeEvidence",
+    "server_relative_url": "/sites/msteams_54adc4/GreenOfficeEvidence",
+    "description": "คลังหลักฐานกลางสำหรับการดำเนินงานและการประเมินสำนักงานสีเขียวของสำนักวิจัยและส่งเสริมวิชาการการเกษตร"
+  },
+  "settings": {
+    "versioning": true,
+    "major_versions": true,
+    "major_version_limit": 50,
+    "minor_versions": false,
+    "require_checkout": false,
+    "content_approval": false,
+    "folder_creation": true,
+    "permission_inheritance": true,
+    "has_unique_role_assignments": false,
+    "anonymous_access": false,
+    "external_sharing_links": false
+  },
+  "folders": ["2568", "2569"],
+  "content_types": [
+    {
+      "name": "Green Office Evidence Document",
+      "base": "Document",
+      "status": "site_level_exists"
+    },
+    {
+      "name": "Green Office Evidence Workbook",
+      "base": "Document",
+      "status": "site_level_exists"
+    }
+  ],
+  "columns": [
+    { "spec_internal": "GO_DocumentID", "sharepoint_internal": "GO_x0020_Document_x0020_ID", "title": "GO Document ID", "type": "Text" },
+    { "spec_internal": "GO_IndicatorCode", "sharepoint_internal": "GO_x0020_Indicator_x0020_Code", "title": "GO Indicator Code", "type": "Text" },
+    { "spec_internal": "GO_Category", "sharepoint_internal": "GO_x0020_Category", "title": "GO Category", "type": "Choice", "choices": ["Category 1", "Category 2", "Category 3", "Category 4", "Category 5", "Category 6"] },
+    { "spec_internal": "GO_ResourceDomain", "sharepoint_internal": "GO_x0020_Resource_x0020_Domain", "title": "GO Resource Domain", "type": "Choice", "choices": ["Water", "Electricity", "Fuel", "Paper", "Waste", "Greenhouse Gas", "Other"] },
+    { "spec_internal": "GO_FiscalYear", "sharepoint_internal": "GO_x0020_Fiscal_x0020_Year", "title": "GO Fiscal Year", "type": "Choice", "choices": ["2568", "2569"] },
+    { "spec_internal": "GO_EvidenceType", "sharepoint_internal": "GO_x0020_Evidence_x0020_Type", "title": "GO Evidence Type", "type": "Choice", "choices": ["PDF Document", "Workbook", "Image", "Form", "Report", "Certificate", "Other"] },
+    { "spec_internal": "GO_EvidenceStatus", "sharepoint_internal": "GO_x0020_Evidence_x0020_Status", "title": "GO Evidence Status", "type": "Choice", "choices": ["Draft", "Under Review", "Verified", "Approved", "Superseded", "Archived"] },
+    { "spec_internal": "GO_EvidenceDate", "sharepoint_internal": "GO_x0020_Evidence_x0020_Date", "title": "GO Evidence Date", "type": "DateOnly" },
+    { "spec_internal": "GO_MappingConfidence", "sharepoint_internal": "GO_x0020_Mapping_x0020_Confidence", "title": "GO Mapping Confidence", "type": "Choice", "choices": ["Confirmed", "Probable", "Needs Review"] },
+    { "spec_internal": "GO_SHA256", "sharepoint_internal": "GO_x0020_SHA256", "title": "GO SHA256", "type": "Text" },
+    { "spec_internal": "GO_OriginalFileName", "sharepoint_internal": "GO_x0020_Original_x0020_File_x0020_Name", "title": "GO Original File Name", "type": "Text" },
+    { "spec_internal": "GO_LegacyURL", "sharepoint_internal": "GO_x0020_Legacy_x0020_URL", "title": "GO Legacy URL", "type": "URL" },
+    { "spec_internal": "GO_OriginalSharePointURL", "sharepoint_internal": "GO_x0020_Original_x0020_SharePoint_x0020_URL", "title": "GO Original SharePoint URL", "type": "URL" },
+    { "spec_internal": "GO_JoomlaArticleID", "sharepoint_internal": "GO_x0020_Joomla_x0020_Article_x0020_ID", "title": "GO Joomla Article ID", "type": "Text" },
+    { "spec_internal": "GO_LegacySourcePath", "sharepoint_internal": "GO_x0020_Legacy_x0020_Source_x0020_Path", "title": "GO Legacy Source Path", "type": "Note" },
+    { "spec_internal": "GO_Visibility", "sharepoint_internal": "GO_x0020_Visibility", "title": "GO Visibility", "type": "Choice", "choices": ["Internal", "Auditor", "Public Candidate", "Public"] },
+    { "spec_internal": "GO_PublicDistributionURL", "sharepoint_internal": "GO_x0020_Public_x0020_Distribution_x0020_URL", "title": "GO Public Distribution URL", "type": "URL" },
+    { "spec_internal": "GO_VerifiedDate", "sharepoint_internal": "GO_x0020_Verified_x0020_Date", "title": "GO Verified Date", "type": "DateOnly" },
+    { "spec_internal": "GO_ImportedDate", "sharepoint_internal": "GO_x0020_Imported_x0020_Date", "title": "GO Imported Date", "type": "DateTime" }
+  ],
+  "views": [
+    "หลักฐานทั้งหมด",
+    "ตามหมวด",
+    "ตามตัวชี้วัด",
+    "รอตรวจสอบ",
+    "พร้อมเผยแพร่",
+    "ปี 2568",
+    "ปี 2569"
+  ],
+  "limitations": [
+    "SharePoint encoded column internal names from display titles (spaces → _x0020_); canonical REST/internal names differ from GO_* spec",
+    "Duplicate column set exists from partial automation retry (fields suffixed with 0); manual cleanup recommended before migration",
+    "Custom content types exist at site level; library-level content type association not verified via REST",
+    "View column layouts use default REST view creation; manual view column tuning may improve UX"
+  ]
+}
