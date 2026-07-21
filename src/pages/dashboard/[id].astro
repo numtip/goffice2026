@@ -163,10 +163,16 @@ const pageDescription = dashDescription(dashboard, locale);
             <div class="grid grid-cols-12 gap-1">
               {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => {
                 const hasData = currentYear.months.some((mo) => mo.month === m);
+                const monthStatus = hasData ? (isTh ? 'มีข้อมูลแล้ว' : 'data entered') : (isTh ? 'ยังไม่มีข้อมูล' : 'data pending');
                 return (
-                  <div class="flex flex-col items-center" title={monthAbbr[m] + (hasData ? '' : (isTh ? ' — ยังไม่มีข้อมูล' : ' — data pending'))}>
-                    <span class={"w-full rounded-sm " + (hasData ? 'bg-green-400' : 'bg-gray-200')} style="height: 20px;"></span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">{monthAbbr[m]}</span>
+                  <div class="flex flex-col items-center" title={`${monthAbbr[m]} — ${monthStatus}`}>
+                    <span
+                      class={"flex h-5 w-full items-center justify-center rounded-sm text-xs font-bold " + (hasData ? 'bg-green-500 text-white' : 'bg-gray-200 text-black')}
+                      aria-label={`${monthAbbr[m]} — ${monthStatus}`}
+                    >
+                      {hasData ? '✓' : '–'}
+                    </span>
+                    <span class="mt-0.5 text-[10px] text-gray-500">{monthAbbr[m]}</span>
                   </div>
                 );
               })}
