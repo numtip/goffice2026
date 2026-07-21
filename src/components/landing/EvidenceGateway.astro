@@ -47,7 +47,7 @@ const t = Astro.props.t ?? {
       <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/85 to-transparent p-4 sm:p-6">
         <div class="landing-stagger grid gap-2 sm:gap-3" role="list" aria-label="Highlighted document previews">
           {items.map((item) => (
-            <div class="landing-reveal glass-panel landing-glass-hover rounded-stitch border border-white/30 p-2.5 sm:p-3" role="listitem">
+            <div class="landing-reveal rounded-stitch border border-outline-variant/20 bg-surface-container-lowest p-2.5 sm:p-3" role="listitem">
               <div class="mb-2 flex items-center justify-between gap-2">
                 <span class="truncate text-xs font-medium text-primary sm:text-sm">{item.title}</span>
                 <span class="shrink-0 rounded bg-surface-container px-2 py-0.5 font-mono text-[10px] uppercase text-on-surface-variant">
@@ -79,14 +79,14 @@ const t = Astro.props.t ?? {
       </p>
 
       <dl class="landing-reveal mb-7 grid grid-cols-2 gap-3 sm:mb-8 sm:gap-4">
-        <div class="glass-panel landing-glass-hover rounded-stitch p-3 sm:p-4">
-          <dt class="font-mono text-label-sm uppercase text-outline">{t.total_records}</dt>
+        <div class="rounded-stitch border border-outline-variant/20 bg-surface-container p-3 sm:p-4">
+          <dt class="text-label-sm text-outline">{t.total_records}</dt>
           <dd class="mt-1 text-xl font-semibold text-primary sm:text-headline-md">
             <span data-count-up={totalItems}>0</span>
           </dd>
         </div>
-        <div class="glass-panel landing-glass-hover rounded-stitch p-3 sm:p-4">
-          <dt class="font-mono text-label-sm uppercase text-outline">{t.available}</dt>
+        <div class="rounded-stitch border border-outline-variant/20 bg-surface-container p-3 sm:p-4">
+          <dt class="text-label-sm text-outline">{t.available}</dt>
           <dd class="mt-1 text-xl font-semibold text-primary sm:text-headline-md">
             <span data-count-up={availableItems}>0</span>
           </dd>

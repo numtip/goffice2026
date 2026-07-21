@@ -40,7 +40,7 @@ const previewScoreLabel = locale === 'th' ? 'ตัวอย่าง ·' : 'Pre
   </div>
 
   <div class="relative z-10 mx-auto mt-12 w-full max-w-5xl px-margin-mobile text-center sm:mt-16 md:px-margin-desktop lg:mt-20">
-    <div class="landing-reveal glass-panel landing-glass-hover mb-6 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 sm:mb-8">
+    <div class="landing-reveal mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-outline-variant/30 bg-surface-container px-4 py-2 sm:mb-8">
       <span class="h-2 w-2 animate-pulse rounded-full bg-secondary-fixed" aria-hidden="true" />
       <span class="font-mono text-label-sm uppercase tracking-widest text-primary">{t.badge}</span>
     </div>
@@ -51,10 +51,10 @@ const previewScoreLabel = locale === 'th' ? 'ตัวอย่าง ·' : 'Pre
       style="text-shadow: 0 4px 24px rgba(255,255,255,0.6);"
     >
       {t.title_line1}<br />
-      <span class="text-gradient-stitch">{t.title_line2}</span>
+      <span class="text-primary">{t.title_line2}</span>
     </h1>
 
-    <p class="landing-reveal mx-auto mb-8 max-w-2xl rounded-stitch-lg border border-white/40 bg-surface-container-lowest/60 p-5 text-body-md text-on-surface-variant backdrop-blur-md sm:mb-10 sm:p-6 sm:text-body-lg">
+    <p class="landing-reveal mx-auto mb-8 max-w-2xl rounded-stitch-lg border border-outline-variant/20 bg-surface-container p-5 text-body-md text-on-surface-variant sm:mb-10 sm:p-6 sm:text-body-lg">
       {t.description}
     </p>
 
@@ -75,12 +75,12 @@ const previewScoreLabel = locale === 'th' ? 'ตัวอย่าง ·' : 'Pre
 
     <div class="landing-reveal mx-auto mt-10 max-w-3xl sm:mt-14">
       <aside
-        class="dark-glass overflow-hidden rounded-stitch-lg border border-white/10 p-1 shadow-2xl"
+        class="overflow-hidden rounded-stitch-lg border border-outline/20 bg-inverse-surface p-1 shadow-lg"
         aria-label="Executive dashboard preview"
       >
-        <div class="rounded-[calc(2rem-4px)] bg-slate-950/75 p-4 ring-1 ring-white/10 sm:p-5 md:p-6">
+        <div class="rounded-[calc(2rem-4px)] bg-primary-container/60 p-4 ring-1 ring-outline/10 sm:p-5 md:p-6">
           <div class="mb-4 flex flex-wrap items-center justify-between gap-2">
-            <p class="font-mono text-label-sm uppercase tracking-widest text-outline-variant">{t.executive_preview}</p>
+            <p class="text-label-sm text-outline-variant">{t.executive_preview}</p>
             <span class="flex items-center gap-2 rounded-full border border-white/5 bg-black/40 px-3 py-1">
               <span class="h-2 w-2 rounded-full bg-secondary-fixed animate-pulse" aria-hidden="true" />
               <span class="font-mono text-[11px] text-outline-variant">
@@ -91,7 +91,7 @@ const previewScoreLabel = locale === 'th' ? 'ตัวอย่าง ·' : 'Pre
           <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-6" role="list" aria-label="Resource preview indicators">
             {metricLabels.map((label, i) => (
               <div class="rounded-lg bg-white/5 p-2 text-center ring-1 ring-white/10" role="listitem">
-                <p class="text-[10px] uppercase tracking-wide text-outline-variant">{label}</p>
+                <p class="text-[10px] text-outline-variant">{label}</p>
                 <div class="mx-auto mt-2 h-1 w-full overflow-hidden rounded-full bg-white/10">
                   <div
                     class="landing-metric-bar h-full rounded-full bg-gradient-to-r from-primary-fixed to-secondary-fixed"
@@ -101,7 +101,7 @@ const previewScoreLabel = locale === 'th' ? 'ตัวอย่าง ·' : 'Pre
               </div>
             ))}
           </div>
-          <p class="mt-3 text-center font-mono text-[10px] uppercase tracking-wider text-outline-variant/80">
+          <p class="mt-3 text-center text-[10px] text-outline-variant/70">
             {t.preview_only}
           </p>
         </div>
