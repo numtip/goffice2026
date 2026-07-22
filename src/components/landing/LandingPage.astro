@@ -10,7 +10,6 @@ import MissionScene from './MissionScene.astro';
 import ExecutiveCommandCenter from './ExecutiveCommandCenter.astro';
 import AssessmentFramework from './AssessmentFramework.astro';
 import EvidenceGateway from './EvidenceGateway.astro';
-import ActivitiesScene from './ActivitiesScene.astro';
 import ImprovementJourney from './ImprovementJourney.astro';
 import LandingCTA from './LandingCTA.astro';
 
@@ -42,7 +41,6 @@ const availableItems = evidenceIndex.items.filter((i: { status: string }) => i.s
       availableItems={availableItems}
       t={home.evidence}
     />
-    <ActivitiesScene t={home.activities} />
     <ImprovementJourney locale={locale} t={home.improvement} />
     <LandingCTA locale={locale} t={home.cta} />
   </div>

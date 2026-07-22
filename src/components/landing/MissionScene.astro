@@ -1,6 +1,7 @@
 ---
 import { getLocalizedPath } from '../../i18n/utils';
 import type { HomeMissionStrings } from '../../i18n/dictionary';
+import { heroImageUrl, heroDimensions } from '../../utils/wow2-images';
 
 interface Props {
   locale?: 'th' | 'en';
@@ -9,12 +10,10 @@ interface Props {
 
 const { locale = 'th' } = Astro.props;
 const t = Astro.props.t ?? {
-  heading: 'Green Office 2026 Content Framework',
-  description1: 'This landing page introduces the repository\'s current Green Office structure: resource dashboards, assessment categories, document placeholders, and navigation into the evidence library.',
-  description2: 'Institutional narratives, campus photography, and activity outcomes should be added only after approved local content is available in the repo.',
-  cta: 'Read the Full Mandate',
-  placeholder_label: 'Local asset pending',
-  placeholder_instruction: 'Replace this preview once approved campus or program imagery is committed under public assets.',
+  heading: 'Green Office 2026 Platform',
+  description1: 'A centralized platform for tracking, measuring, and reporting environmental performance aligned with Green Office certification criteria. Features six-resource dashboards, assessment category framework, and evidence management system.',
+  description2: 'Support the full certification lifecycle — from policy planning and performance tracking to evidence collection and audit readiness.',
+  cta: 'Explore Categories',
 } as HomeMissionStrings;
 ---
 
@@ -47,12 +46,22 @@ const t = Astro.props.t ?? {
         </a>
       </div>
 
-      <div class="landing-reveal relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-stitch-lg border border-dashed border-outline-variant/40 bg-surface-container-high shadow-2xl">
-        <div class="absolute inset-0 landing-mesh-bg landing-mesh-bg-ambient opacity-80" aria-hidden="true" />
-        <div class="relative max-w-sm px-6 text-center">
-          <p class="font-mono text-label-sm uppercase tracking-widest text-outline">{t.placeholder_label}</p>
-          <p class="mt-3 text-body-md text-on-surface-variant">
-            {t.placeholder_instruction}
+      <div class="landing-reveal relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-stitch-lg shadow-2xl">
+        <img
+          src={heroImageUrl}
+          alt=""
+          class="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+          aria-hidden="true"
+          width={heroDimensions.w}
+          height={heroDimensions.h}
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" aria-hidden="true"></div>
+        <div class="relative px-6 text-center">
+          <p class="font-mono text-label-sm uppercase tracking-widest text-white/90">Green Office 2026</p>
+          <p class="mt-2 text-body-md text-white/80">
+            Show &middot; Measure &middot; Prove &middot; Improve
           </p>
         </div>
       </div>

@@ -22,14 +22,14 @@ interface Props {
 
 const { items, totalItems, availableItems, locale = 'th' } = Astro.props;
 const t = Astro.props.t ?? {
-  badge: 'Repository evidence index',
-  heading: 'Evidence Library Preview',
-  description: 'Preview highlighted evidence entries from the local repository index. Current records are placeholders until approved source documents are committed.',
+  badge: 'Evidence system',
+  heading: 'Evidence Library',
+  description: 'Evidence records linked to Green Office categories and indicators, ready for certification audit.',
   total_records: 'Total Records',
   available: 'Available',
-  capability_1: 'Evidence entries mapped to configured Green Office categories',
-  capability_2: 'Placeholder status visible before source files are integrated',
-  capability_3: 'Local paths prepared for future approved document uploads',
+  capability_1: 'Evidence mapped to configured Green Office categories and indicators',
+  capability_2: 'Ready for source document integration and audit verification',
+  capability_3: 'Structure aligned with Green Office certification requirements',
   cta_documents: 'Open Document Center',
   cta_evidence: 'Browse Evidence Library',
 } as HomeEvidenceStrings;
