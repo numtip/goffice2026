@@ -124,7 +124,13 @@
     "footer": {
       "title": "Green Office 2026",
       "description": "หน้าตัวอย่างของระบบ เนื้อหาและหลักฐานอ้างอิงจากข้อมูลจริงที่บันทึกในระบบ ยกเว้นรายการที่ระบุว่าเป็นข้อมูลตัวอย่างชั่วคราว",
-      "copyright": "แพลตฟอร์ม Green Office"
+      "copyright": "แพลตฟอร์ม Green Office",
+      "links_documents": "ศูนย์เอกสาร",
+      "links_evidence": "คลังหลักฐาน",
+      "links_data_source": "ที่มาของข้อมูล",
+      "links_org": "มหาวิทยาลัยแม่โจ้",
+      "links_accessibility": "การเข้าถึงเว็บไซต์",
+      "label_nav": "ลิงก์เพิ่มเติม"
     }
   },
   "dashboardPage": {

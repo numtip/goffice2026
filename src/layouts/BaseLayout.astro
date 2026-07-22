@@ -41,6 +41,7 @@ const desc = customDesc ?? defaultDesc;
 const footerTitle = dict.home.footer.title;
 const footerDesc = dict.home.footer.description;
 const footerCopy = dict.home.footer.copyright;
+const footerLinks = dict.home.footer;
 
 const pageTitle = title ?? `${dict.site.name} - ${dict.site.title_suffix}`;
 
@@ -137,12 +138,24 @@ const robotsContent = noindex ? 'noindex, follow' : 'index, follow';
     </main>
 
     <footer class="mt-8 border-t border-primary/10 bg-inverse-surface py-8 text-white">
-      <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 text-sm text-outline-variant sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p class="font-semibold text-white">{footerTitle}</p>
-          <p>{footerDesc}</p>
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+          <div class="max-w-md">
+            <p class="font-semibold text-white">{footerTitle}</p>
+            <p class="text-sm text-outline-variant mt-1">{footerDesc}</p>
+          </div>
+          <nav class="grid grid-cols-2 gap-x-8 gap-y-2 text-sm" aria-label={footerLinks.label_nav}>
+            <a href={getLocalizedPath(lang, '/documents')} class="text-outline-variant hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface rounded-sm">{footerLinks.links_documents}</a>
+            <a href={getLocalizedPath(lang, '/evidence')} class="text-outline-variant hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface rounded-sm">{footerLinks.links_evidence}</a>
+            <a href={getLocalizedPath(lang, '/dashboard')} class="text-outline-variant hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface rounded-sm">{footerLinks.links_data_source}</a>
+            <a href={getLocalizedPath(lang, '/search')} class="text-outline-variant hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface rounded-sm">{dict.home.cta.btn_search}</a>
+            <a href="https://www.mju.ac.th/" class="text-outline-variant hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface rounded-sm" target="_blank" rel="noopener noreferrer">{footerLinks.links_org}</a>
+            <span class="text-outline/50 text-xs cursor-default" role="note">{footerLinks.links_accessibility} &mdash; {lang === 'th' ? 'อยู่ระหว่างดำเนินการ' : 'in progress'}</span>
+          </nav>
         </div>
-        <p class="text-xs">&copy; {new Date().getFullYear()} {footerCopy}</p>
+        <div class="mt-6 border-t border-white/10 pt-4 text-xs text-outline/60">
+          <p>&copy; {new Date().getFullYear()} {footerCopy}</p>
+        </div>
       </div>
     </footer>
     <PreviewBadge locale={lang} />

@@ -142,6 +142,12 @@ export interface HomeFooterStrings {
   title: string;
   description: string;
   copyright: string;
+  links_documents: string;
+  links_evidence: string;
+  links_data_source: string;
+  links_org: string;
+  links_accessibility: string;
+  label_nav: string;
 }
 
 export interface HomeStrings {

@@ -82,21 +82,51 @@ const isActive = (href: string) => {
       ))}
     </ul>
 
-    <details class="relative lg:hidden">
-      <summary class="flex min-h-10 cursor-pointer list-none items-center rounded-md border border-primary/20 px-3 py-2 text-sm font-semibold text-primary transition hover:bg-primary-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-        <span>{navLabels.menu}</span>
-        <svg class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <details class="group relative lg:hidden" id="mobile-nav">
+      <summary class="flex min-h-10 cursor-pointer list-none items-center rounded-md border border-primary/20 px-3 py-2 text-sm font-semibold text-primary transition hover:bg-primary-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label={navLabels.menu}>
+        <span class="nav-menu-label">{navLabels.menu}</span>
+        <svg class="nav-icon-hamburger ml-2 h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M3 6h14M3 10h14M3 14h14" />
         </svg>
+        <svg class="nav-icon-close ml-2 hidden h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M6 6l8 8M14 6l-8 8" />
+        </svg>
       </summary>
-      <div class="absolute right-0 z-[60] mt-2 w-64 rounded-lg border border-primary/15 bg-white p-2 shadow-xl">
-        <ul class="space-y-1">
-          {navItems.map((item) => (
+      <div class="absolute right-0 z-[60] mt-2 w-64 rounded-lg border border-primary/15 bg-white p-3 shadow-xl" role="navigation" aria-label={navLabels.menu}>
+        <div class="flex items-center justify-between mb-2 pb-2 border-b border-gray-100">
+          <span class="nav-menu-heading text-xs font-semibold text-outline">{navLabels.menu}</span>
+          <button type="button" class="nav-close-btn flex items-center justify-center h-7 w-7 rounded-md text-outline hover:bg-gray-100 hover:text-on-surface transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label={`${locale === 'th' ? 'ปิด' : 'Close'} ${navLabels.menu}`}>
+            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M6 6l8 8M14 6l-8 8" />
+            </svg>
+          </button>
+        </div>
+        <ul class="space-y-0.5">
+          {navItems.slice(0, 3).map((item) => (
             <li>
               <a
                 href={getLocalizedPath(locale, item.href)}
                 class:list={[
-                  'flex min-h-11 items-center rounded-md px-3 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+                  'flex min-h-11 items-center rounded-md px-3 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1',
+                  isActive(item.href)
+                    ? 'bg-primary text-white'
+                    : 'text-on-surface hover:bg-primary-50 hover:text-primary',
+                ]}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div class="my-1.5 border-t border-gray-100" aria-hidden="true"></div>
+        <ul class="space-y-0.5">
+          {navItems.slice(3).map((item) => (
+            <li>
+              <a
+                href={getLocalizedPath(locale, item.href)}
+                class:list={[
+                  'flex min-h-11 items-center rounded-md px-3 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1',
                   isActive(item.href)
                     ? 'bg-primary text-white'
                     : 'text-on-surface hover:bg-primary-50 hover:text-primary',
@@ -110,5 +140,57 @@ const isActive = (href: string) => {
         </ul>
       </div>
     </details>
+
+    <style>
+      details[open] .nav-icon-hamburger { display: none; }
+      details[open] .nav-icon-close { display: block; }
+    </style>
+
+    <script>
+      const details = document.getElementById('mobile-nav') as HTMLDetailsElement | null;
+      if (details) {
+        const summary = details.querySelector('summary');
+        const label = details.querySelector('.nav-menu-label') as HTMLElement | null;
+        const closeBtn = details.querySelector('.nav-close-btn') as HTMLElement | null;
+        const openLabel = '{navLabels.menu}';
+        const closeLabel = '{locale === "th" ? "ปิด" : "Close"}';
+
+        const updateState = () => {
+          const isOpen = details.open;
+          if (summary) {
+            summary.setAttribute('aria-expanded', String(isOpen));
+            summary.setAttribute('aria-label', isOpen ? closeLabel + ' ' + openLabel : openLabel);
+          }
+          if (label) {
+            label.textContent = isOpen ? closeLabel : openLabel;
+          }
+        };
+
+        details.addEventListener('toggle', updateState);
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            details.open = false;
+          });
+        }
+
+        details.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && details.open) {
+            details.open = false;
+            if (summary) summary.focus();
+          }
+        });
+
+        document.addEventListener('click', (e) => {
+          if (details.open && !details.contains(e.target as Node)) {
+            details.open = false;
+          }
+        });
+
+        updateState();
+      }
+    </script>
   </div>
 </nav>

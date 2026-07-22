@@ -124,7 +124,13 @@
     "footer": {
       "title": "Green Office 2026",
       "description": "Static preview. Content and evidence are repository-backed unless marked as placeholder.",
-      "copyright": "Green Office Platform"
+      "copyright": "Green Office Platform",
+      "links_documents": "Document Center",
+      "links_evidence": "Evidence Library",
+      "links_data_source": "Data Sources",
+      "links_org": "Maejo University",
+      "links_accessibility": "Accessibility",
+      "label_nav": "Quick Links"
     }
   },
   "dashboardPage": {
