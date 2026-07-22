@@ -605,11 +605,6 @@ const partialCount = insightIncomplete.length;
             : 'Show · Measure · Prove · Improve'}
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a href={getLocalizedPath(locale, '/indicators/')}
-             class="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/15 px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-white shadow-lg backdrop-blur-sm hover:bg-white/25 hover:-translate-y-0.5 transition"
-             aria-label={th ? 'ไปยังตัวชี้วัดทั้งหมด' : 'View All Indicators'}>
-            {th ? 'ตัวชี้วัดทั้งหมด' : 'All Indicators'}
-          </a>
           <a href={getLocalizedPath(locale, '/evidence')}
              class="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/15 px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-white shadow-lg backdrop-blur-sm hover:bg-white/25 hover:-translate-y-0.5 transition"
              aria-label={th ? 'ไปยังคลังหลักฐาน' : 'Go to Evidence Library'}>
