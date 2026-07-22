@@ -12,7 +12,6 @@ function readJSON(relativePath) {
 
 function main() {
   const errors = [];
-  const warnings = [];
 
   // ── 1. Load data ──────────────────────────────────────────
   let categories, issues, indicators;
@@ -110,7 +109,6 @@ function main() {
 
   // ── 5. Required fields ────────────────────────────────────
   // Categories: th/en titles + summaries
-  const cat7 = catList.find(c => c.id === '7');
   for (const cat of catList) {
     if (!cat.title?.th) errors.push(`Category ${cat.id}: missing title.th`);
     if (!cat.title?.en) errors.push(`Category ${cat.id}: missing title.en`);

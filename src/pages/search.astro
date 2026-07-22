@@ -17,8 +17,7 @@ const evidence = evidenceIndex.items;
 const categoryByCode = new Map(categories.map((c) => [c.code, c]));
 
 // Group evidence items by categoryId for document indexing
-/** @type {Map<string, typeof evidence>} */
-const evidenceByCategory = new Map();
+const evidenceByCategory: Map<string, typeof evidence> = new Map();
 for (const ev of evidence) {
   const existing = evidenceByCategory.get(ev.categoryId) || [];
   existing.push(ev);
@@ -130,7 +129,6 @@ for (const cat of categories) {
 }
 
 const totalResults = searchData.length;
-const searchDataJson = JSON.stringify(searchData);
 
 // Localized strings
 const pageTitle =
@@ -361,28 +359,8 @@ const typeLabels: Record<string, [string, string]> = {
   </div>
 </BaseLayout>
 
-<!-- Embedded search data for client-side filtering -->
-<script id="search-data" type="application/json">
-  {searchDataJson}
-</script>
-
 <script>
-  interface SearchItemData {
-    type: string;
-    typeLabel: [string, string];
-    id: string;
-    title: [string, string];
-    context: [string, string];
-    categoryTitle: [string, string];
-    route: string;
-    searchText: string;
-  }
-
   const locale: 'th' | 'en' = document.documentElement.lang === 'en' ? 'en' : 'th';
-
-  const data: SearchItemData[] = JSON.parse(
-    document.getElementById('search-data')!.textContent!
-  );
 
   const q = document.getElementById('search-q') as HTMLInputElement;
   const results = document.getElementById('search-results') as HTMLElement;
@@ -396,16 +374,10 @@ const typeLabels: Record<string, [string, string]> = {
   ) as NodeListOf<HTMLElement>;
 
   let activeType: string = 'all';
-  let currentQuery: string = '';
   let debounceTimer: ReturnType<typeof setTimeout> | null = null;
-
-  function t(pair: [string, string]): string {
-    return locale === 'th' ? pair[0] : pair[1];
-  }
 
   function render() {
     const query = q.value.toLowerCase().trim();
-    currentQuery = query;
 
     var visible = 0;
 

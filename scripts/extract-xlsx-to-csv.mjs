@@ -59,7 +59,7 @@ function sheetToRows(wb, sheetName) {
  * These all use the same form template: Sheet "2568", data starts at
  * rows with Thai month names in column[0], value in column[6].
  */
-function extractColumn6Metric(filepath, sheetName, year, metric) {
+function extractColumn6Metric(filepath, sheetName, _year, metric) {
   const wb = readXlsx(filepath);
   const rows = sheetToRows(wb, sheetName);
   if (rows.length === 0) {

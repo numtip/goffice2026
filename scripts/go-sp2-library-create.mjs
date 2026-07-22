@@ -4,7 +4,7 @@
  * Uses persistent Edge profile (researchmju) — never clears cookies.
  */
 import { chromium } from 'playwright-core';
-import { writeFileSync, mkdirSync, readFileSync, existsSync } from 'node:fs';
+import { writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -517,7 +517,7 @@ async function createLibrary(page, report) {
   // Views — create via CSOM-like REST is limited; use addview or modify default
   const viewResults = [];
   for (const v of VIEWS) {
-    const viewXml = buildViewXml(v);
+    buildViewXml(v);
     const vr = await spRest(page, CANONICAL_SITE, `/_api/web/lists(guid'${listId}')/views`, {
       method: 'POST',
       body: {
