@@ -31,49 +31,61 @@ const metricLabels = [t.metric_energy, t.metric_water, t.metric_fuel, t.metric_p
 ---
 
 <header
-  class="relative flex min-h-[88vh] items-center justify-center overflow-hidden pt-6 sm:min-h-[92vh] sm:pt-8"
+  class="group relative flex min-h-[65vh] items-center justify-center overflow-hidden sm:min-h-[75vh] lg:min-h-[85vh]"
   aria-labelledby="landing-hero-title"
 >
+  <!-- Hero background image -->
   <div class="absolute inset-0 z-0" aria-hidden="true">
     <img
       src={heroImageUrl}
       alt=""
-      class="h-full w-full object-cover object-center"
+      class="h-full w-full object-cover object-[center_30%] transition-transform duration-[2s] ease-out group-hover:scale-105"
       loading="eager"
       decoding="async"
       aria-hidden="true"
       width={heroDimensions.w}
       height={heroDimensions.h}
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-[#001a12]/92 via-[#002620]/80 to-[#001a12]/85" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#001a12]/50 via-[#001a12]/45 to-[#001a12]/70" aria-hidden="true"></div>
   </div>
 
-  <div class="relative z-10 mx-auto mt-12 w-full max-w-5xl px-margin-mobile text-center sm:mt-16 md:px-margin-desktop lg:mt-20">
+  <!-- Content -->
+  <div class="relative z-10 mx-auto w-full max-w-5xl px-4 pt-20 pb-8 text-center sm:px-6 sm:pt-24 sm:pb-14 md:px-8 lg:pt-28">
+    <!-- Badge -->
     <div class="landing-reveal mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm sm:mb-8">
       <span class="h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true"></span>
       <span class="font-mono text-label-sm uppercase tracking-widest text-white">{t.badge}</span>
     </div>
 
+    <!-- Heading -->
     <h1
       id="landing-hero-title"
-      class="landing-reveal landing-hero-title mb-5 text-4xl font-bold tracking-tight text-white sm:mb-6 md:text-display-xl"
+      class="landing-reveal mx-auto mb-5 max-w-3xl text-4xl font-bold leading-[1.1] tracking-tight text-white sm:mb-6 sm:text-5xl sm:leading-[1.05] md:text-6xl md:leading-[1.05] lg:text-7xl"
     >
       {t.title_line1}<br />
       <span class="text-emerald-300">{t.title_line2}</span>
     </h1>
 
-    <p class="landing-reveal mx-auto mb-8 max-w-2xl rounded-stitch-lg border border-white/10 bg-white/5 p-5 text-body-md text-white/85 backdrop-blur-sm sm:mb-10 sm:p-6 sm:text-body-lg">
+    <!-- Description - premium glass panel -->
+    <p class="landing-reveal mx-auto mb-8 max-w-xl rounded-xl border border-white/15 bg-white/8 px-6 py-4 text-base leading-relaxed text-white/90 shadow-lg backdrop-blur-md sm:mb-10 sm:px-8 sm:py-5 sm:text-lg">
       {t.description}
     </p>
 
-    <div class="landing-reveal landing-stagger flex flex-wrap justify-center gap-3 sm:gap-4">
-      <a href={getLocalizedPath(locale, '/dashboard')} class="landing-btn-primary px-6 py-3.5 sm:px-8 sm:py-4">
+    <!-- CTAs -->
+    <div class="landing-reveal landing-stagger flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+      <a
+        href={getLocalizedPath(locale, '/dashboard')}
+        class="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-6 py-3.5 text-label-sm font-semibold uppercase tracking-wider text-white shadow-lg shadow-emerald-500/25 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-emerald-400 hover:shadow-xl hover:shadow-emerald-500/30 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 sm:px-8 sm:py-4"
+      >
         {t.cta_dashboard}
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </a>
-      <a href={getLocalizedPath(locale, '/categories')} class="landing-btn-glass px-6 py-3.5 sm:px-8 sm:py-4">
+      <a
+        href={getLocalizedPath(locale, '/categories')}
+        class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/30 bg-transparent px-6 py-3.5 text-label-sm font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 sm:px-8 sm:py-4"
+      >
         {t.cta_categories}
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round" />
@@ -81,17 +93,18 @@ const metricLabels = [t.metric_energy, t.metric_water, t.metric_fuel, t.metric_p
       </a>
     </div>
 
-    <div class="landing-reveal mx-auto mt-10 max-w-3xl sm:mt-14">
+    <!-- KPI cards - floated over hero edge -->
+    <div class="landing-reveal mx-auto -mb-24 mt-12 max-w-3xl sm:-mb-32 sm:mt-16 lg:-mb-40">
       <aside
-        class="overflow-hidden rounded-stitch-lg border border-white/10 bg-black/30 p-1 shadow-lg backdrop-blur-sm"
+        class="overflow-hidden rounded-stitch-lg border border-white/15 bg-black/40 p-1 shadow-2xl backdrop-blur-xl"
         aria-label={locale === 'th' ? 'ภาพรวมผู้บริหาร' : 'Executive dashboard overview'}
       >
         <div class="rounded-[calc(2rem-4px)] p-4 sm:p-5 md:p-6">
           <div class="mb-4 flex flex-wrap items-center justify-between gap-2">
-            <p class="text-label-sm text-white/70">{t.executive_preview}</p>
-            <span class="flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1">
+            <p class="text-label-sm font-medium text-white/80">{t.executive_preview}</p>
+            <span class="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1">
               <span class="h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true"></span>
-              <span class="font-mono text-[11px] text-white/70">
+              <span class="font-mono text-[11px] font-medium text-white/80">
                 <span data-count-up={overallScore} data-count-suffix="%">0%</span>
               </span>
             </span>
@@ -99,10 +112,10 @@ const metricLabels = [t.metric_energy, t.metric_water, t.metric_fuel, t.metric_p
           <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-6" role="list" aria-label={locale === 'th' ? 'ตัวชี้วัดทรัพยากร' : 'Resource indicators'}>
             {metricLabels.map((label, i) => (
               <div class="rounded-lg bg-white/5 p-2 text-center ring-1 ring-white/10" role="listitem">
-                <p class="text-[10px] text-white/60">{label}</p>
+                <p class="text-[10px] font-medium text-white/70">{label}</p>
                 <div class="mx-auto mt-2 h-1 w-full overflow-hidden rounded-full bg-white/10">
                   <div
-                    class="landing-metric-bar h-full rounded-full bg-gradient-to-r from-emerald-400 to-emerald-600"
+                    class="landing-metric-bar h-full rounded-full bg-gradient-to-r from-emerald-400 to-emerald-500"
                     style={`width: ${62 + i * 5}%;`}
                   />
                 </div>
