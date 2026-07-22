@@ -1,0 +1,34 @@
+---
+export interface LegendItem {
+  color: string;
+  label: string;
+  symbol?: 'square' | 'line' | 'dash';
+}
+
+interface Props {
+  items: LegendItem[];
+  class?: string;
+  ariaLabel?: string;
+}
+
+const { items, class: cls = '', ariaLabel } = Astro.props;
+---
+
+<div class={`chart-legend ${cls}`} role="list" aria-label={ariaLabel ?? 'Chart legend'}>
+  {items.map((item) => (
+    <span class="flex items-center gap-2 text-xs text-on-surface-variant" role="listitem">
+      {item.symbol === 'line' ? (
+        <svg class="h-1 w-5 shrink-0" aria-hidden="true" viewBox="0 0 20 4">
+          <line x1="0" y1="2" x2="20" y2="2" stroke={item.color} stroke-width="2" stroke-linecap="round" />
+        </svg>
+      ) : item.symbol === 'dash' ? (
+        <svg class="h-1 w-5 shrink-0" aria-hidden="true" viewBox="0 0 20 4">
+          <line x1="0" y1="2" x2="20" y2="2" stroke={item.color} stroke-width="2" stroke-dasharray="3 3" stroke-linecap="round" />
+        </svg>
+      ) : (
+        <span class="inline-block h-3 w-3 shrink-0 rounded-sm" style={`background-color: ${item.color}`} aria-hidden="true"></span>
+      )}
+      <span>{item.label}</span>
+    </span>
+  ))}
+</div>

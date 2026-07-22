@@ -1,0 +1,122 @@
+---
+import ChartLegend from './ChartLegend.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  resources: {
+    id: string;
+    label: string;
+    color: string;
+    baselineTotal: number;
+    currentTotal: number;
+  }[];
+  baselineLabel: string;
+  currentLabel: string;
+  locale?: 'th' | 'en';
+}
+
+const {
+  title, description, resources,
+  baselineLabel, currentLabel, locale = 'th',
+} = Astro.props;
+
+const pad = { top: 24, right: 24, bottom: 24, left: 140 };
+const chartW = 600; const chartH = resources.length * 48 + pad.top + pad.bottom;
+const drawW = chartW - pad.left - pad.right;
+const barH = 20;
+const rowGap = 28;
+
+// Normalize: baseline = 100 for each resource
+const data = resources.map((r) => {
+  const normalized = r.baselineTotal > 0 ? Math.round((r.currentTotal / r.baselineTotal) * 100) : 0;
+  return { ...r, normalized };
+});
+
+const allNorm = data.map((d) => d.normalized);
+const maxNorm = Math.max(100, ...allNorm);
+const minNorm = Math.min(100, ...allNorm);
+const xScale = (v: number) => pad.left + ((v - Math.min(80, minNorm - 5)) / (Math.max(120, maxNorm + 5) - Math.min(80, minNorm - 5))) * drawW;
+const baselineX = xScale(100);
+---
+
+<div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm mb-6">
+  <h3 class="text-sm font-semibold text-on-surface mb-1">{title}</h3>
+  {description && <p class="text-xs text-outline-variant mb-3">{description}</p>}
+
+  <ChartLegend
+    items={[
+      { color: '#006c49', label: currentLabel, symbol: 'square' },
+      { color: '#707974', label: `${baselineLabel} = 100`, symbol: 'dash' },
+    ]}
+    class="mb-3 flex flex-wrap gap-3"
+  />
+
+  <div class="overflow-x-auto" tabindex="0" role="img" aria-label={title}>
+    <svg
+      width={chartW}
+      height={chartH}
+      viewBox={`0 0 ${chartW} ${chartH}`}
+      role="img"
+      aria-label={title}
+    >
+      <title>{title}</title>
+      <desc>{description ?? `Normalized performance chart with ${baselineLabel} = 100`}</desc>
+
+      {/* Baseline reference line per row */}
+      {[...Array(resources.length)].map((_, i) => {
+        const y = pad.top + i * rowGap + barH / 2;
+        return (
+          <line
+            x1={baselineX}
+            y1={y - 10}
+            x2={baselineX}
+            y2={y + 10}
+            stroke="#bfc9c3"
+            stroke-width="1"
+            stroke-dasharray="3 3"
+          />
+        );
+      })}
+      {/* Vertical baseline line */}
+      <line x1={baselineX} y1={pad.top} x2={baselineX} y2={chartH - pad.bottom} stroke="#bfc9c3" stroke-width="1" stroke-dasharray="4 4" />
+      <text x={baselineX} y={pad.top - 6} text-anchor="middle" class="text-[9px] fill-outline" fill="#707974">100</text>
+
+      {/* Bars */}
+      {data.map((r, i) => {
+        const y = pad.top + i * rowGap;
+        const barLeft = r.normalized >= 100 ? baselineX : xScale(r.normalized);
+        const barW = Math.abs(baselineX - xScale(r.normalized));
+        return (
+          <g>
+            <text x={pad.left - 8} y={y + barH - 3} text-anchor="end" class="text-[11px] fill-on-surface" fill="#0b1c30" font-weight="600">{r.label}</text>
+            <rect
+              x={barLeft}
+              y={y}
+              width={Math.max(2, barW)}
+              height={barH}
+              fill={r.color}
+              rx="2"
+              opacity={r.normalized < 100 ? '0.75' : '0.85'}
+            >
+              <title>{`${r.label}: ${r.normalized} (${baselineLabel} = 100)`}</title>
+            </rect>
+            <text
+              x={r.normalized >= 100 ? barLeft + barW + 6 : barLeft - 6}
+              y={y + barH - 3}
+              text-anchor={r.normalized >= 100 ? 'start' : 'end'}
+              class="text-[10px] fill-outline"
+              fill="#707974"
+            >{r.normalized}</text>
+          </g>
+        );
+      })}
+
+      <text x={pad.left} y={chartH - 6} class="text-[8px] fill-outline/50" fill="#707974" opacity="0.5">
+        {locale === 'th'
+          ? `วิธีคำนวณ: (ค่าปัจจุบัน ÷ ค่าปีฐาน) × 100 · แกนแนวนอนไม่ได้เปรียบเทียบหน่วยดิบข้ามหมวดหมู่`
+          : `Method: (current value ÷ baseline value) × 100 · Horizontal axis does not compare raw units across categories`}
+      </text>
+    </svg>
+  </div>
+</div>

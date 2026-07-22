@@ -19,7 +19,6 @@ import ResourcePerformanceCard from '../../../components/dashboard/ResourcePerfo
 import NormalizedTrendChart from '../../../components/dashboard/NormalizedTrendChart.astro';
 import CategoryScoreChart from '../../../components/dashboard/CategoryScoreChart.astro';
 import DataReadinessMatrix from '../../../components/dashboard/DataReadinessMatrix.astro';
-import DashboardInsight from '../../../components/dashboard/DashboardInsight.astro';
 
 const genMap: Record<string, MultiYearMetric> = {
   energy: energyGen as MultiYearMetric,
@@ -81,36 +80,168 @@ const readinessResources = dashboards.map((d) => {
 });
 
 const updatedDate = dashboardKpi.updated ?? '2026-06-12';
+
+// ── Key Insights derived from YoY data ──────────────────────────
+const insightImproved: { label: string; yoyPct: number; monthsCount: number; color: string }[] = [];
+const insightAttention: { label: string; yoyPct: number; monthsCount: number; color: string }[] = [];
+const insightIncomplete: { label: string; monthsCount: number; color: string }[] = [];
+
+dashboards.forEach((d) => {
+  const m = genMap[d.id];
+  if (!m) return;
+  const yoy = m.yoyChange;
+  const current = m.years[m.currentYear.toString()];
+  const monthsCount = current?.months.length ?? 0;
+  const label = resourceLabels[d.id] ?? d.title;
+
+  const isWaste = d.id === 'waste'; // recycling: up = good, down = bad
+
+  if (yoy && current && monthsCount > 0 && yoy.direction !== 'stable') {
+    const isImprovement = isWaste ? yoy.direction === 'up' : yoy.direction === 'down';
+    const item = { label, yoyPct: yoy.percent, monthsCount, color: d.color };
+    if (isImprovement) insightImproved.push(item);
+    else insightAttention.push(item);
+  }
+
+  if (monthsCount < 12) {
+    insightIncomplete.push({ label, monthsCount, color: d.color });
+  }
+});
+
+// ── Category score mini-pills for hero ──────────────────────────
+const catScoreMini = dashboardKpi.kpis
+  .filter((k) => k.categoryId)
+  .map((kpi) => ({
+    code: kpi.categoryId!,
+    label: kpi.label,
+    score: kpi.value ?? 0,
+    trend: kpi.trend as 'up' | 'down' | 'stable' | undefined,
+  }));
+
+const totalImproving = insightImproved.length;
+const totalAttention = insightAttention.length;
+const partialCount = insightIncomplete.length;
 ---
 
 <BaseLayout title="Dashboard | แดชบอร์ด" description={t.subtitle} locale={locale}>
   <div class="p-4 max-w-6xl mx-auto">
 
-    <!-- Executive Header -->
+    <!-- 1. Executive Score Hero -->
     <section class="mb-8">
-      <div class="bg-primary rounded-stitch-lg p-6 md:p-8 text-white">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div>
-            <p class="text-primary-fixed/70 text-xs uppercase tracking-wide font-semibold mb-1">Overall Certification Score</p>
-            <p class="text-5xl md:text-7xl font-bold leading-none tracking-tight">
-              {dashboardKpi.overallScore}<span class="text-3xl md:text-4xl text-primary-fixed/60">%</span>
-            </p>
+      <div class="bg-primary rounded-stitch-lg p-6 md:p-8 text-white relative overflow-hidden" style="background: linear-gradient(135deg, #003527 0%, #004d38 40%, #003527 100%);">
+        <!-- Subtle ambient glow -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-400/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/4"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-teal-300/5 rounded-full blur-2xl pointer-events-none translate-y-1/2 -translate-x-1/4"></div>
+
+        <div class="relative z-10">
+          <!-- Top bar -->
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-6">
+            <div>
+              <p class="text-primary-fixed/50 text-[10px] uppercase tracking-[0.25em] font-bold mb-1">GREEN COMMAND CENTER</p>
+              <h1 class="text-xl md:text-2xl font-bold text-primary-fixed tracking-tight">Green Office Readiness Overview</h1>
+            </div>
+            <div class="text-right text-primary-fixed/40 text-[10px] leading-relaxed shrink-0">
+              <p>{t.taxonomy_summary}</p>
+              <p class="text-primary-fixed/30">Updated: <time datetime={updatedDate} class="text-primary-fixed/50">{updatedDate}</time></p>
+              <a href="https://goffice.mju.ac.th/" class="underline hover:text-primary-fixed/70 transition-colors" target="_blank" rel="noopener">goffice.mju.ac.th</a>
+            </div>
           </div>
-          <div class="text-right text-primary-fixed/60 text-xs space-y-1">
-            <p>{t.taxonomy_summary}</p>
-            <p>Updated: <time datetime={updatedDate}>{updatedDate}</time></p>
-            <a href="https://goffice.mju.ac.th/" class="underline hover:text-primary-fixed" target="_blank" rel="noopener">goffice.mju.ac.th</a>
+
+          <!-- Score + Gauge -->
+          <div class="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+            <!-- SVG Ring Gauge -->
+            <div class="shrink-0 relative">
+              <svg viewBox="0 0 150 150" width="140" height="140" class="drop-shadow-lg">
+                <defs>
+                  <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#6ffbbe"/>
+                    <stop offset="100%" stop-color="#2dd4bf"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="75" cy="75" r="64" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="12"/>
+                <circle cx="75" cy="75" r="64" fill="none" stroke="url(#gaugeGrad)" stroke-width="12"
+                  stroke-dasharray="402.12" stroke-dashoffset={402.12 * (1 - dashboardKpi.overallScore / 100)}
+                  stroke-linecap="round" transform="rotate(-90 75 75)"
+                  style="transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1);"/>
+                <text x="75" y="68" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" font-weight="700" fill="white">{dashboardKpi.overallScore}</text>
+                <text x="75" y="88" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.4)" letter-spacing="0.15em">PERCENT</text>
+              </svg>
+              <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-emerald-400/20 border border-emerald-400/20 text-[10px] font-bold text-emerald-300 tracking-wide whitespace-nowrap">
+                {dashboardKpi.overallScore >= 80 ? 'EXCELLENT' : dashboardKpi.overallScore >= 60 ? 'GOOD' : 'FAIR'}
+              </div>
+            </div>
+
+            <!-- Score Details -->
+            <div class="flex-1 text-center md:text-left">
+              <div class="flex items-baseline gap-2 justify-center md:justify-start">
+                <span class="text-6xl md:text-7xl font-bold tracking-tight text-white">{dashboardKpi.overallScore}</span>
+                <span class="text-3xl md:text-4xl font-light text-primary-fixed/30">%</span>
+              </div>
+              <p class="text-primary-fixed/50 text-xs mt-1 tracking-wide uppercase font-semibold">Overall Certification Score</p>
+
+              <!-- Stat row -->
+              <div class="flex flex-wrap gap-3 mt-3 justify-center md:justify-start text-[10px] text-primary-fixed/40">
+                <span class="flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  {totalImproving} improving
+                </span>
+                <span class="flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                  {totalAttention} need attention
+                </span>
+                <span class="flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-sky-300"></span>
+                  {partialCount}/6 partial-year
+                </span>
+              </div>
+
+              <!-- Category Score Pills -->
+              <div class="flex flex-wrap gap-1.5 mt-4 justify-center md:justify-start">
+                {catScoreMini.map((cat) => {
+                  const trendIcon = cat.trend === 'up' ? '\u2191' : cat.trend === 'down' ? '\u2193' : '\u2192';
+                  const trendCls = cat.trend === 'up' ? 'text-emerald-300' : cat.trend === 'down' ? 'text-red-300' : 'text-primary-fixed/30';
+                  return (
+                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-semibold bg-white/8 text-primary-fixed/60 backdrop-blur-sm border border-white/5 transition-colors hover:bg-white/12 hover:text-primary-fixed/80">
+                      <span class="max-w-[70px] truncate">{cat.label}</span>
+                      <span class="text-primary-fixed/40">{cat.score}</span>
+                      <span class={trendCls}>{trendIcon}</span>
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
           </div>
+
+          <!-- Footer caveat -->
+          <p class="text-primary-fixed/30 text-[10px] mt-6 max-w-3xl leading-relaxed border-t border-white/5 pt-4">
+            Executive-level Green Office readiness overview. Actual 2569 figures are partial-year and will adjust as data entry continues.
+          </p>
         </div>
-        <p class="text-primary-fixed/50 text-xs mt-4 max-w-2xl leading-relaxed">
-          Score is an executive-level Green Office readiness overview derived from 7 configured category indicators as of the latest available data. Actual 2569 figures are partial-year and will adjust as monthly data entry continues.
-        </p>
       </div>
     </section>
 
-    <!-- Resource Cards -->
+    <!-- 2. Six Resource KPI Cards -->
     <section class="mb-8">
-      <h2 class="text-lg font-semibold text-on-surface mb-4">6-Resource Overview</h2>
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-4">
+        <div>
+          <h2 class="text-lg font-bold text-on-surface tracking-tight">6-Resource Overview</h2>
+          <p class="text-xs text-outline-variant mt-0.5">Current year (2569) vs baseline (2568) with monthly trends</p>
+        </div>
+        <div class="flex items-center gap-3 text-[11px] text-outline-variant shrink-0">
+          <span class="flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            {totalImproving} improved
+          </span>
+          <span class="flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+            {totalAttention} attention
+          </span>
+          <span class="flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+            {partialCount}/6 partial
+          </span>
+        </div>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {dashboards.map((d) => {
           const m = genMap[d.id];
@@ -147,13 +278,112 @@ const updatedDate = dashboardKpi.updated ?? '2026-06-12';
       </div>
     </section>
 
-    <DashboardInsight
-      heading="Partial-Year Data"
-      body="2569 data entry is still in progress across all metrics. The YoY comparisons above reflect a partial-year comparison and may not be representative of full annual trends. Interpret with caution until complete 12-month data is available."
-      type="warning"
-    />
+    <!-- 3. Key Insights Panel -->
+    <section class="mb-8">
+      <h2 class="text-lg font-bold text-on-surface tracking-tight mb-3">Executive Insights</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Improved -->
+        <div class="bg-emerald-50/60 rounded-stitch-lg border border-emerald-200/60 p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500 text-white text-sm font-bold" aria-hidden="true">&#8595;</span>
+            <h3 class="text-sm font-bold text-emerald-800">
+              Improving
+              <span class="text-emerald-600/60 font-normal text-xs ml-1">({insightImproved.length})</span>
+            </h3>
+          </div>
+          {insightImproved.length > 0 ? (
+            <ul class="space-y-2">
+              {insightImproved.map((item) => (
+                <li class="flex items-center justify-between text-xs">
+                  <span class="flex items-center gap-1.5 text-emerald-700 font-medium">
+                    <span class="w-1.5 h-1.5 rounded-full shrink-0" style={`background-color:${item.color}`}></span>
+                    {item.label}
+                  </span>
+                  <span class="text-emerald-600 font-bold tabular-nums">{item.yoyPct > 0 ? '+' : ''}{item.yoyPct}%</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p class="text-xs text-emerald-600/60 italic">No clear improving trends yet</p>
+          )}
+          <p class="text-[10px] text-emerald-600/40 mt-3">Negative = reduced consumption (good)</p>
+        </div>
 
+        <!-- Attention -->
+        <div class="bg-amber-50/60 rounded-stitch-lg border border-amber-200/60 p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-amber-500 text-white text-sm font-bold" aria-hidden="true">&#8593;</span>
+            <h3 class="text-sm font-bold text-amber-800">
+              Needs Attention
+              <span class="text-amber-600/60 font-normal text-xs ml-1">({insightAttention.length})</span>
+            </h3>
+          </div>
+          {insightAttention.length > 0 ? (
+            <ul class="space-y-2">
+              {insightAttention.map((item) => (
+                <li class="flex items-center justify-between text-xs">
+                  <span class="flex items-center gap-1.5 text-amber-700 font-medium">
+                    <span class="w-1.5 h-1.5 rounded-full shrink-0" style={`background-color:${item.color}`}></span>
+                    {item.label}
+                  </span>
+                  <span class="text-amber-600 font-bold tabular-nums">+{item.yoyPct}%</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p class="text-xs text-amber-600/60 italic">No areas of concern</p>
+          )}
+          <p class="text-[10px] text-amber-600/40 mt-3">Positive = increased consumption (monitor)</p>
+        </div>
+
+        <!-- Incomplete Data -->
+        <div class="bg-sky-50/60 rounded-stitch-lg border border-sky-200/60 p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-sky-500 text-white text-xs font-bold" aria-hidden="true">!</span>
+            <h3 class="text-sm font-bold text-sky-800">
+              Partial-Year Data
+              <span class="text-sky-600/60 font-normal text-xs ml-1">({insightIncomplete.length})</span>
+            </h3>
+          </div>
+          <ul class="space-y-2">
+            {insightIncomplete.map((item) => (
+              <li class="flex items-center justify-between text-xs">
+                <span class="flex items-center gap-1.5 text-sky-700 font-medium">
+                  <span class="w-1.5 h-1.5 rounded-full shrink-0" style={`background-color:${item.color}`}></span>
+                  {item.label}
+                </span>
+                <span class="text-sky-600 font-bold tabular-nums">{item.monthsCount}/12 mo</span>
+              </li>
+            ))}
+          </ul>
+          <p class="text-[10px] text-sky-600/40 mt-3 leading-relaxed">
+            2569 data entry is still in progress. YoY comparisons reflect partial-year and may not represent full annual trends. Interpret with caution.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Baseline vs Current Comparison -->
     {resourcePerf.length > 0 && (
+      <section class="mb-8">
+        <div class="mb-3">
+          <h2 class="text-lg font-bold text-on-surface tracking-tight mb-1">Baseline vs Current Comparison</h2>
+          <p class="text-xs text-outline-variant">
+            Index below 100 = reduced consumption (improvement) · {resourcePerf.length} resources compared to baseline 2568
+          </p>
+          <div class="flex flex-wrap gap-2 mt-2">
+            {resourcePerf.map((r) => {
+              const norm = r.baselineTotal > 0 ? Math.round((r.currentTotal / r.baselineTotal) * 100) : 0;
+              const isImproved = norm < 100;
+              return (
+                <span class={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold border ${isImproved ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-amber-50 text-amber-700 border-amber-200'}`}>
+                  <span class="w-1.5 h-1.5 rounded-full shrink-0" style={`background-color:${r.color}`}></span>
+                  {r.label} <span class="font-bold tabular-nums">{norm}</span>
+                </span>
+              );
+            })}
+          </div>
+        </div>
       <NormalizedTrendChart
         title="Normalized Resource Performance vs Baseline (Index = 100)"
         description="Each resource compared against its own baseline set at 100. Values below 100 indicate reduced consumption (improvement), values above 100 indicate increased consumption."
@@ -162,17 +392,30 @@ const updatedDate = dashboardKpi.updated ?? '2026-06-12';
         currentLabel="Current 2569"
         locale={locale}
       />
+      </section>
     )}
 
+    <!-- 5. Category Score Visualization -->
     {catScores.length > 0 && (
+      <section class="mb-8">
+        <div class="mb-3">
+          <h2 class="text-lg font-bold text-on-surface tracking-tight mb-1">Green Office Category Scores</h2>
+          <p class="text-xs text-outline-variant">
+            {catScores.length} category scores from reference system · Average {Math.round(catScores.reduce((s, c) => s + c.score, 0) / catScores.length)}%
+          </p>
+        </div>
       <CategoryScoreChart
         title="Green Office Certification Category Scores"
         description="Green Office certification scores by category from the reference system"
         categories={catScores}
         locale={locale}
       />
+      </section>
     )}
 
+    <!-- 6. Data Readiness Matrix -->
+    <section class="mb-8">
+      <h2 class="text-lg font-bold text-on-surface tracking-tight mb-3">Monthly Data Readiness</h2>
     <DataReadinessMatrix
       title="2569 Monthly Data Readiness"
       description="Monthly data entry progress for all resources. Baseline 2568 is complete across all metrics (12/12 months)."
@@ -180,9 +423,13 @@ const updatedDate = dashboardKpi.updated ?? '2026-06-12';
       monthLabels={monthAbbr.slice(1)}
       locale={locale}
     />
+    </section>
 
+    <!-- 7. Trust and Evidence Panel -->
     <section class="bg-surface-container rounded-stitch-lg border border-outline-variant/20 p-5 mb-6 text-xs text-outline-variant">
-      <h3 class="font-semibold text-on-surface text-sm mb-2">Data Trust & Evidence</h3>
+      <div class="flex items-center gap-2 mb-3">
+        <h3 class="font-bold text-on-surface text-sm">Data Trust & Evidence</h3>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <p class="font-medium text-on-surface-variant mb-1">Data Sources</p>

@@ -1,0 +1,38 @@
+---
+interface Props {
+  heading: string;
+  body: string;
+  type?: 'info' | 'warning' | 'positive' | 'neutral';
+}
+
+const { heading, body, type = 'info' } = Astro.props;
+
+const borderMap: Record<string, string> = {
+  info: 'border-blue-200 bg-blue-50',
+  warning: 'border-amber-200 bg-amber-50',
+  positive: 'border-green-200 bg-green-50',
+  neutral: 'border-outline-variant/30 bg-surface-container',
+};
+
+const textMap: Record<string, string> = {
+  info: 'text-blue-800',
+  warning: 'text-amber-800',
+  positive: 'text-green-800',
+  neutral: 'text-on-surface-variant',
+};
+
+const dotMap: Record<string, string> = {
+  info: 'text-blue-500',
+  warning: 'text-amber-500',
+  positive: 'text-green-500',
+  neutral: 'text-outline',
+};
+---
+
+<div class={`rounded-stitch border p-4 mb-6 ${borderMap[type]}`}>
+  <p class={`text-sm font-semibold ${textMap[type]} mb-1`}>
+    <span class={`mr-1.5 ${dotMap[type]}`} aria-hidden="true">&bull;</span>
+    {heading}
+  </p>
+  <p class={`text-xs ${type === 'neutral' ? 'text-outline-variant' : textMap[type]} opacity-80 leading-relaxed`}>{body}</p>
+</div>

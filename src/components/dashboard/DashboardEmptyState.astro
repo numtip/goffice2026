@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  backHref: string;
+  backLabel: string;
+  extraLinks?: { href: string; label: string }[];
+}
+
+const { title, body, backHref, backLabel, extraLinks = [] } = Astro.props;
+---
+
+<div class="bg-surface-container rounded-stitch-lg border border-amber-200 p-6 mb-6">
+  <p class="text-amber-800 font-semibold">{title}</p>
+  <p class="text-amber-700 text-sm mt-2 max-w-prose">{body}</p>
+  <div class="mt-4 flex flex-wrap gap-2">
+    <a href={backHref} class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-100 border border-amber-300 text-sm text-amber-800 hover:bg-amber-200 transition-colors">
+      <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd"/></svg>
+      {backLabel}
+    </a>
+    {extraLinks.map((link) => (
+      <a href={link.href} class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-50 border border-green-200 text-sm text-green-700 hover:bg-green-100 transition-colors">
+        {link.label}
+      </a>
+    ))}
+  </div>
+</div>

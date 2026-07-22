@@ -1,0 +1,171 @@
+---
+import ChartLegend from './ChartLegend.astro';
+
+export interface MonthEntry {
+  month: number;
+  label: string;
+  baseline?: number;
+  current?: number;
+  target?: number;
+}
+
+interface Props {
+  title: string;
+  description?: string;
+  months: MonthEntry[];
+  unit: string;
+  baselineLabel: string;
+  currentLabel: string;
+  targetLabel?: string;
+  baselineColor?: string;
+  currentColor?: string;
+  targetColor?: string;
+  height?: number;
+  showTarget?: boolean;
+  locale?: 'th' | 'en';
+}
+
+const {
+  title, description, months, unit,
+  baselineLabel, currentLabel, targetLabel = 'Target',
+  baselineColor = '#003527', currentColor = '#006c49', targetColor = '#d97706',
+  height = 280, showTarget = false, locale = 'th',
+} = Astro.props;
+
+const pad = { top: 24, right: 24, bottom: 40, left: 56 };
+const chartW = 640; const chartH = height;
+const drawW = chartW - pad.left - pad.right;
+const drawH = chartH - pad.top - pad.bottom;
+
+// Find max value across all series
+let maxVal = 0;
+for (const m of months) {
+  if (m.baseline != null && m.baseline > maxVal) maxVal = m.baseline;
+  if (m.current != null && m.current > maxVal) maxVal = m.current;
+  if (showTarget && m.target != null && m.target > maxVal) maxVal = m.target;
+}
+maxVal = maxVal || 1;
+const yScale = (v: number) => pad.top + drawH - ((v / maxVal) * drawH);
+
+const barW = Math.max(4, Math.floor(drawW / months.length * 0.65));
+const groupGap = Math.floor(drawW / months.length);
+const nBars = showTarget ? 3 : 2;
+const barPad = Math.floor((groupGap - barW * nBars) / (nBars + 1));
+
+// Y-axis ticks
+const tickCount = 5;
+const tickStep = Math.ceil(maxVal / tickCount / 10) * 10 || 1;
+const ticks: number[] = [];
+for (let i = 0; i <= tickCount; i++) {
+  const v = i * tickStep;
+  if (v <= maxVal) ticks.push(v);
+}
+
+const fmt = (v: number) => Intl.NumberFormat(locale === 'th' ? 'th' : 'en', { notation: v > 9999 ? 'compact' : 'standard' }).format(Math.round(v));
+---
+
+<div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm mb-6">
+  <h3 class="text-sm font-semibold text-on-surface mb-1">{title}</h3>
+  {description && <p class="text-xs text-outline-variant mb-3">{description}</p>}
+
+  <ChartLegend
+    items={[
+      { color: baselineColor, label: baselineLabel, symbol: 'square' },
+      { color: currentColor, label: currentLabel, symbol: 'square' },
+      ...(showTarget ? [{ color: targetColor, label: targetLabel, symbol: 'square' as const }] : []),
+    ]}
+    class="mb-3 flex flex-wrap gap-3"
+  />
+
+  <div class="overflow-x-auto" tabindex="0" role="img" aria-label={title}>
+    <svg
+      width={chartW}
+      height={chartH}
+      viewBox={`0 0 ${chartW} ${chartH}`}
+      class="chart-svg"
+      role="img"
+      aria-label={title}
+    >
+      <title>{title}</title>
+      <desc>{description ?? `Monthly comparison chart showing ${baselineLabel} and ${currentLabel} values`}</desc>
+
+      {/* Y-axis grid + labels */}
+      {ticks.map((tick) => {
+        const y = yScale(tick);
+        return (
+          <g>
+            <line x1={pad.left} y1={y} x2={chartW - pad.right} y2={y} stroke="#e5e7eb" stroke-width="0.5" />
+            <text x={pad.left - 8} y={y + 4} text-anchor="end" class="text-[10px] fill-outline-variant" fill="#707974">{fmt(tick)}</text>
+          </g>
+        );
+      })}
+
+      {/* Bars */}
+      {months.map((m, gi) => {
+        const groupX = pad.left + gi * groupGap;
+        const b1x = groupX + barPad;
+        const b2x = b1x + barW + barPad;
+        const b3x = b2x + barW + barPad;
+
+        const basH = m.baseline != null ? drawH - ((m.baseline / maxVal) * drawH) : 0;
+        const curH = m.current != null ? drawH - ((m.current / maxVal) * drawH) : 0;
+        const tgtH = showTarget && m.target != null ? drawH - ((m.target / maxVal) * drawH) : 0;
+
+        return (
+          <g>
+            {/* Baseline bar */}
+            {m.baseline != null && (
+              <rect x={b1x} y={pad.top + basH} width={barW} height={drawH - basH} fill={baselineColor} opacity="0.7" rx="1">
+                <title>{`${m.label}: ${baselineLabel} ${fmt(m.baseline)}${unit}`}</title>
+              </rect>
+            )}
+            {/* Current bar */}
+            {m.current != null && (
+              <rect x={b2x} y={pad.top + curH} width={barW} height={drawH - curH} fill={currentColor} opacity="0.85" rx="1">
+                <title>{`${m.label}: ${currentLabel} ${fmt(m.current)}${unit}`}</title>
+              </rect>
+            )}
+            {/* Target bar */}
+            {showTarget && m.target != null && (
+              <rect x={b3x} y={pad.top + tgtH} width={barW} height={drawH - tgtH} fill={targetColor} opacity="0.9" rx="1">
+                <title>{`${m.label}: ${targetLabel} ${fmt(m.target)}${unit}`}</title>
+              </rect>
+            )}
+            {/* Month label */}
+            <text x={groupX + groupGap / 2} y={chartH - 8} text-anchor="middle" class="text-[10px] fill-outline-variant" fill="#707974">{m.label}</text>
+          </g>
+        );
+      })}
+
+      {/* Unit label on Y axis */}
+      <text x={12} y={pad.top - 8} class="text-[9px] fill-outline" fill="#404944">{unit}</text>
+    </svg>
+  </div>
+
+  {/* Accessible table fallback */}
+  <details class="mt-3">
+    <summary class="text-xs text-outline cursor-pointer hover:text-primary">Data table</summary>
+    <div class="mt-2 overflow-x-auto">
+      <table class="w-full text-xs text-left">
+        <thead class="border-b border-outline-variant/20">
+          <tr>
+            <th class="py-1 px-2 font-medium text-outline">{locale === 'th' ? 'เดือน' : 'Month'}</th>
+            <th class="py-1 px-2 font-medium text-outline">{baselineLabel}</th>
+            <th class="py-1 px-2 font-medium text-outline">{currentLabel}</th>
+            {showTarget && <th class="py-1 px-2 font-medium text-outline">{targetLabel}</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {months.map((m) => (
+            <tr class="border-b border-outline-variant/5">
+              <td class="py-1 px-2 text-on-surface font-medium">{m.label}</td>
+              <td class="py-1 px-2 text-on-surface-variant">{m.baseline != null ? fmt(m.baseline) : '-'}</td>
+              <td class="py-1 px-2 text-on-surface-variant">{m.current != null ? fmt(m.current) : '-'}</td>
+              {showTarget && <td class="py-1 px-2 text-on-surface-variant">{m.target != null ? fmt(m.target) : '-'}</td>}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </details>
+</div>

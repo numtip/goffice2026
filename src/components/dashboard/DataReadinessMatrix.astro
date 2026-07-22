@@ -1,0 +1,66 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  resources: {
+    id: string;
+    label: string;
+    monthsPresent: boolean[];
+  }[];
+  monthLabels: string[];
+  locale?: 'th' | 'en';
+}
+
+const { title, description, resources, monthLabels, locale = 'th' } = Astro.props;
+---
+
+<div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm mb-6">
+  <h3 class="text-sm font-semibold text-on-surface mb-1">{title}</h3>
+  {description && <p class="text-xs text-outline-variant mb-3">{description}</p>}
+
+  <div class="flex items-center gap-3 text-xs text-outline-variant mb-3 flex-wrap">
+    <span class="flex items-center gap-1">
+      <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm bg-green-600 text-[10px] font-bold text-white" aria-hidden="true">&#10003;</span>
+      {locale === 'th' ? 'มีข้อมูลแล้ว' : 'Data present'}
+    </span>
+    <span class="flex items-center gap-1">
+      <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm bg-gray-200 text-[10px] font-bold text-black" aria-hidden="true">&ndash;</span>
+      {locale === 'th' ? 'ยังไม่มีข้อมูล' : 'Pending'}
+    </span>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="w-full text-xs" role="table" aria-label={title}>
+      <thead>
+        <tr>
+          <th class="text-left font-medium text-outline pr-3 py-1.5 whitespace-nowrap">{locale === 'th' ? 'รายการ' : 'Metric'}</th>
+          {monthLabels.map((ml) => (
+            <th class="text-center font-medium text-outline px-1 py-1.5 w-7" aria-label={ml}>{ml}</th>
+          ))}
+          <th class="text-center font-medium text-outline pl-3 py-1.5">{locale === 'th' ? 'รวม' : 'Total'}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {resources.map((r) => {
+          const present = r.monthsPresent.filter(Boolean).length;
+          return (
+            <tr class="border-t border-outline-variant/10">
+              <td class="pr-3 py-2 text-on-surface font-medium whitespace-nowrap">{r.label}</td>
+              {r.monthsPresent.map((hasData, mi) => (
+                <td class="px-0.5 py-1.5 text-center" title={`${monthLabels[mi]}: ${hasData ? (locale === 'th' ? 'มีข้อมูลแล้ว' : 'Data present') : (locale === 'th' ? 'ยังไม่มีข้อมูล' : 'Pending')}`}>
+                  <span
+                    class={`inline-flex h-5 w-5 items-center justify-center rounded-sm text-[10px] font-bold ${hasData ? 'bg-green-600 text-white' : 'bg-gray-200 text-black'}`}
+                    aria-label={`${monthLabels[mi]} — ${hasData ? (locale === 'th' ? 'มีข้อมูลแล้ว' : 'Data present') : (locale === 'th' ? 'ยังไม่มีข้อมูล' : 'Pending')}`}
+                  >
+                    {hasData ? '\u2713' : '\u2013'}
+                  </span>
+                </td>
+              ))}
+              <td class="pl-3 py-2 text-center text-outline-variant whitespace-nowrap font-medium">{present}/12</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+</div>
