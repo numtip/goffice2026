@@ -33,6 +33,14 @@
       "placeholder_label": "Green Office 2026",
       "placeholder_instruction": "Show · Measure · Prove · Improve"
     },
+    "executiveKpi": {
+      "heading": "Executive Environmental Performance",
+      "subtitle": "A real-time overview of key environmental indicators supporting executive decisions and Green Office certification.",
+      "score_environmental": "Overall Environmental Score",
+      "score_categories": "Category Readiness",
+      "score_evidence": "Evidence Readiness",
+      "cta_dashboard": "View Full Executive Dashboard"
+    },
     "executive": {
       "heading": "Resource Command Center",
       "description": "Build-time dashboard across six operational resource metrics with monthly trends and year-over-year baseline comparison.",

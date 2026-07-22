@@ -1,0 +1,150 @@
+---
+import ResourcePerformanceCard from '../dashboard/ResourcePerformanceCard.astro';
+import { getLocalizedPath } from '../../i18n/utils';
+import type { HomeExecutiveKpiStrings } from '../../i18n/dictionary';
+import { resourceIconMap, resourceAccentMap } from '../../utils/wow2-images';
+import { resolveDisplayStatus, shouldShowYoy } from '../../utils/data-status';
+import { dashboards, dashTitle } from '../../data/dashboard-config';
+import type { MultiYearMetric } from '../../utils/multi-year-schema';
+
+interface Props {
+  locale: 'th' | 'en';
+  t: HomeExecutiveKpiStrings;
+  overallScore: number;
+  categoryAvg: number;
+  evidenceAvailable: number;
+  evidenceTotal: number;
+  genMap: Record<string, MultiYearMetric>;
+}
+
+const { locale, t, overallScore, categoryAvg, evidenceAvailable, evidenceTotal, genMap } = Astro.props;
+
+const fmtCompact = (v: number) =>
+  Intl.NumberFormat(locale === 'th' ? 'th' : 'en', { notation: 'compact', maximumFractionDigits: 1 }).format(v);
+
+const resourceIds = ['energy', 'water', 'fuel', 'paper', 'waste', 'ghg'] as const;
+
+const resourceCards = resourceIds.map((id) => {
+  const d = dashboards.find((dd) => dd.id === id)!;
+  const m = genMap[id] as MultiYearMetric | undefined;
+  const yoy = m?.yoyChange;
+  const current = m ? m.years[m.currentYear.toString()] : undefined;
+  const baseline = m ? m.years[m.baselineYear.toString()] : undefined;
+  const displayStatus = resolveDisplayStatus(current);
+  const showYoy = shouldShowYoy(current);
+  const monthsCount = current?.months?.length ?? 0;
+  const partialYear = displayStatus === 'in_progress' && monthsCount < 12;
+  const hasData = displayStatus !== 'pending' && displayStatus !== 'missing';
+
+  return {
+    title: dashTitle(d, locale),
+    href: getLocalizedPath(locale, `/dashboard/${d.id}`),
+    currentValue: hasData ? fmtCompact(current!.total) : (locale === 'th' ? 'รอข้อมูล' : 'Pending'),
+    baselineValue: baseline ? fmtCompact(baseline.total) : '-',
+    unit: d.kpiUnit ?? '%',
+    trendPct: showYoy && yoy ? yoy.percent : (null as number | null),
+    trendDir: (yoy?.direction ?? 'stable') as 'up' | 'down' | 'stable',
+    monthsCompleted: monthsCount,
+    statusLabel: monthsCount > 0
+      ? (locale === 'th' ? `${monthsCount} จาก 12 เดือน` : `${monthsCount} of 12 months`)
+      : (locale === 'th' ? 'รอข้อมูล' : 'Data Pending'),
+    partialYear,
+    monthlyValues: current?.months?.map((mo) => mo.value) ?? [],
+    iconUrl: resourceIconMap[id],
+    accentColor: resourceAccentMap[id],
+    color: d.color,
+  };
+});
+---
+
+<section
+  id="executive-kpi-preview"
+  class="relative bg-white py-16 sm:py-20 lg:py-24"
+  aria-labelledby="executive-kpi-heading"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="mx-auto mb-10 max-w-2xl text-center sm:mb-14">
+      <h2
+        id="executive-kpi-heading"
+        class="text-3xl font-bold tracking-tight text-on-surface sm:text-4xl"
+      >
+        {t.heading}
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-outline sm:text-lg">
+        {t.subtitle}
+      </p>
+    </div>
+
+    <!-- Summary stat cards -->
+    <div class="mx-auto mb-12 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
+      <!-- Overall Environmental Score -->
+      <div class="flex flex-col items-center rounded-2xl border border-emerald-200/60 bg-gradient-to-b from-emerald-50/50 to-white p-6 text-center shadow-sm">
+        <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-outline-variant">
+          {t.score_environmental}
+        </span>
+        <span class="text-4xl font-bold tracking-tight text-emerald-700">
+          {overallScore}<span class="text-xl text-emerald-500">%</span>
+        </span>
+      </div>
+
+      <!-- Category Readiness -->
+      <div class="flex flex-col items-center rounded-2xl border border-sky-200/60 bg-gradient-to-b from-sky-50/50 to-white p-6 text-center shadow-sm">
+        <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-outline-variant">
+          {t.score_categories}
+        </span>
+        <span class="text-4xl font-bold tracking-tight text-sky-700">
+          {Math.round(categoryAvg)}<span class="text-xl text-sky-500">%</span>
+        </span>
+      </div>
+
+      <!-- Evidence Readiness -->
+      <div class="flex flex-col items-center rounded-2xl border border-violet-200/60 bg-gradient-to-b from-violet-50/50 to-white p-6 text-center shadow-sm">
+        <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-outline-variant">
+          {t.score_evidence}
+        </span>
+        <span class="text-4xl font-bold tracking-tight text-violet-700">
+          {evidenceAvailable}<span class="text-xl text-violet-500">/{evidenceTotal}</span>
+        </span>
+        <span class="mt-1 text-xs text-outline-variant">
+          {Math.round((evidenceAvailable / evidenceTotal) * 100)}% {locale === 'th' ? 'พร้อมใช้งาน' : 'ready'}
+        </span>
+      </div>
+    </div>
+
+    <!-- Resource KPI cards -->
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {resourceCards.map((card) => (
+        <ResourcePerformanceCard
+          title={card.title}
+          href={card.href}
+          currentValue={card.currentValue}
+          baselineValue={card.baselineValue}
+          unit={card.unit}
+          trendPct={card.trendPct}
+          trendDir={card.trendDir}
+          monthsCompleted={card.monthsCompleted}
+          statusLabel={card.statusLabel}
+          partialYear={card.partialYear}
+          monthlyValues={card.monthlyValues.length >= 2 ? card.monthlyValues : undefined}
+          iconUrl={card.iconUrl}
+          accentColor={card.accentColor}
+          color={card.color}
+        />
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-10 text-center sm:mt-14">
+      <a
+        href={getLocalizedPath(locale, '/dashboard')}
+        class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-8 py-3.5 text-label-sm font-semibold uppercase tracking-wider text-white shadow-md shadow-emerald-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-600/25 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+      >
+        {t.cta_dashboard}
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

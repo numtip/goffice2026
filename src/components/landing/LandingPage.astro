@@ -4,8 +4,17 @@ import '../../styles/global.css';
 import dashboardKpi from '../../data/dashboard-kpi.json';
 import evidenceIndex from '../../data/evidence-index.json';
 import { getDictionary } from '../../i18n/dictionary';
+import type { MultiYearMetric } from '../../utils/multi-year-schema';
+
+import energyGen from '../../data/generated/energy.json';
+import waterGen from '../../data/generated/water.json';
+import fuelGen from '../../data/generated/fuel.json';
+import paperGen from '../../data/generated/paper.json';
+import wasteGen from '../../data/generated/waste.json';
+import ghgGen from '../../data/generated/ghg.json';
 
 import LandingHero from './LandingHero.astro';
+import ExecutiveKPIPreview from './ExecutiveKPIPreview.astro';
 import DashboardShowcase from './DashboardShowcase.astro';
 import ExecutiveCommandCenter from './ExecutiveCommandCenter.astro';
 import AssessmentFramework from './AssessmentFramework.astro';
@@ -26,11 +35,35 @@ const previewEvidence = evidenceIndex.items.slice(0, 3).map((item) => ({
   title: locale === 'th' ? (item.titleTh || item.title) : item.title,
 }));
 const availableItems = evidenceIndex.items.filter((i: { status: string }) => i.status === 'available').length;
+
+const genMap: Record<string, MultiYearMetric> = {
+  energy: energyGen as MultiYearMetric,
+  water: waterGen as MultiYearMetric,
+  fuel: fuelGen as MultiYearMetric,
+  paper: paperGen as MultiYearMetric,
+  waste: wasteGen as MultiYearMetric,
+  ghg: ghgGen as MultiYearMetric,
+};
+
+const kpiScores = dashboardKpi.kpis.filter((k) => k.value != null && k.categoryId && k.unit === '%');
+const categoryAvg = kpiScores.length > 0
+  ? kpiScores.reduce((sum, k) => sum + (k.value ?? 0), 0) / kpiScores.length
+  : 0;
 ---
+
 
 <BaseLayout locale={locale} dict={dict}>
   <div class="landing-page overflow-x-clip bg-surface text-on-surface">
-    <LandingHero locale={locale} overallScore={dashboardKpi.overallScore} t={home.hero} />
+    <LandingHero locale={locale} t={home.hero} />
+    <ExecutiveKPIPreview
+      locale={locale}
+      t={home.executiveKpi}
+      overallScore={dashboardKpi.overallScore}
+      categoryAvg={categoryAvg}
+      evidenceAvailable={availableItems}
+      evidenceTotal={evidenceIndex.items.length}
+      genMap={genMap}
+    />
     <DashboardShowcase locale={locale} t={home.showcase} />
     <ExecutiveCommandCenter locale={locale} t={home.executive} metrics={home.hero} />
     <AssessmentFramework locale={locale} t={home.assessment} />

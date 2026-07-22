@@ -131,6 +131,15 @@ export interface HomeShowcaseStrings {
   cta_evidence: string;
 }
 
+export interface HomeExecutiveKpiStrings {
+  heading: string;
+  subtitle: string;
+  score_environmental: string;
+  score_categories: string;
+  score_evidence: string;
+  cta_dashboard: string;
+}
+
 export interface HomeCtaStrings {
   label: string;
   heading: string;
@@ -168,6 +177,7 @@ export interface HomeStrings {
   hero: HomeHeroStrings;
   mission: HomeMissionStrings;
   showcase: HomeShowcaseStrings;
+  executiveKpi: HomeExecutiveKpiStrings;
   executive: HomeExecutiveStrings;
   assessment: HomeAssessmentStrings;
   evidence: HomeEvidenceStrings;
