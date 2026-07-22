@@ -102,6 +102,19 @@
       "stage_7_subtitle": "Audit & Refinement",
       "stage_7_description": "Management review, target refinement, and certification readiness cycles."
     },
+    "showcase": {
+      "heading": "Environmental Intelligence Center",
+      "subtitle": "Green Office 2026 Platform",
+      "body": "The organization's environmental intelligence hub supporting end-to-end Green Office operations — from executive KPI monitoring and resource analytics to evidence management and continuous improvement.",
+      "bullet_kpi": "Executive KPI Dashboard",
+      "bullet_intelligence": "Resource Intelligence",
+      "bullet_analytics": "Environmental Analytics",
+      "bullet_evidence": "Evidence Management",
+      "bullet_assessment": "Green Office Assessment",
+      "bullet_improvement": "Continuous Improvement",
+      "cta_dashboard": "Explore Dashboard",
+      "cta_evidence": "View Evidence"
+    },
     "cta": {
       "label": "Ready to explore",
       "heading": "Green Office Command Center",

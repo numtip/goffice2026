@@ -117,6 +117,20 @@ export interface HomeImprovementStrings {
   stage_7_description: string;
 }
 
+export interface HomeShowcaseStrings {
+  heading: string;
+  subtitle: string;
+  body: string;
+  bullet_kpi: string;
+  bullet_intelligence: string;
+  bullet_analytics: string;
+  bullet_evidence: string;
+  bullet_assessment: string;
+  bullet_improvement: string;
+  cta_dashboard: string;
+  cta_evidence: string;
+}
+
 export interface HomeCtaStrings {
   label: string;
   heading: string;
@@ -153,6 +167,7 @@ export interface HomeFooterStrings {
 export interface HomeStrings {
   hero: HomeHeroStrings;
   mission: HomeMissionStrings;
+  showcase: HomeShowcaseStrings;
   executive: HomeExecutiveStrings;
   assessment: HomeAssessmentStrings;
   evidence: HomeEvidenceStrings;

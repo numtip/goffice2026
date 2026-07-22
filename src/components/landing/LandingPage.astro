@@ -6,7 +6,7 @@ import evidenceIndex from '../../data/evidence-index.json';
 import { getDictionary } from '../../i18n/dictionary';
 
 import LandingHero from './LandingHero.astro';
-import MissionScene from './MissionScene.astro';
+import DashboardShowcase from './DashboardShowcase.astro';
 import ExecutiveCommandCenter from './ExecutiveCommandCenter.astro';
 import AssessmentFramework from './AssessmentFramework.astro';
 import EvidenceGateway from './EvidenceGateway.astro';
@@ -31,7 +31,7 @@ const availableItems = evidenceIndex.items.filter((i: { status: string }) => i.s
 <BaseLayout locale={locale} dict={dict}>
   <div class="landing-page overflow-x-clip bg-surface text-on-surface">
     <LandingHero locale={locale} overallScore={dashboardKpi.overallScore} t={home.hero} />
-    <MissionScene locale={locale} t={home.mission} />
+    <DashboardShowcase locale={locale} t={home.showcase} />
     <ExecutiveCommandCenter locale={locale} t={home.executive} metrics={home.hero} />
     <AssessmentFramework locale={locale} t={home.assessment} />
     <EvidenceGateway

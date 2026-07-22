@@ -1,0 +1,125 @@
+---
+import { getLocalizedPath } from '../../i18n/utils';
+import type { HomeShowcaseStrings } from '../../i18n/dictionary';
+import { dashboardScreenshotImageUrl, dashboardScreenshotDimensions } from '../../utils/wow2-images';
+
+interface Props {
+  locale?: 'th' | 'en';
+  t?: HomeShowcaseStrings;
+}
+
+const { locale = 'th' } = Astro.props;
+const t = Astro.props.t ?? {
+  heading: 'Environmental Intelligence Center',
+  subtitle: 'Green Office 2026 Platform',
+  body: "The organization's environmental intelligence hub supporting end-to-end Green Office operations — from executive KPI monitoring and resource analytics to evidence management and continuous improvement.",
+  bullet_kpi: 'Executive KPI Dashboard',
+  bullet_intelligence: 'Resource Intelligence',
+  bullet_analytics: 'Environmental Analytics',
+  bullet_evidence: 'Evidence Management',
+  bullet_assessment: 'Green Office Assessment',
+  bullet_improvement: 'Continuous Improvement',
+  cta_dashboard: 'Explore Dashboard',
+  cta_evidence: 'View Evidence',
+} as HomeShowcaseStrings;
+
+const bullets = [
+  { key: 'bullet_kpi', icon: 'M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01' },
+  { key: 'bullet_intelligence', icon: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z' },
+  { key: 'bullet_analytics', icon: 'M3 3v18h18 M18 9V5M13 13V5M8 9v8' },
+  { key: 'bullet_evidence', icon: 'M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z M14 2v6h6' },
+  { key: 'bullet_assessment', icon: 'M22 11.08V12a10 10 0 11-5.93-9.14 M22 4L12 14.01l-3-3' },
+  { key: 'bullet_improvement', icon: 'M12 20v-6M9 17l3 3 3-3 M6 4v3a2 2 0 002 2h8a2 2 0 002-2V4' },
+] as const;
+---
+
+<section
+  class="landing-section relative overflow-hidden bg-surface"
+  aria-labelledby="dashboard-showcase-title"
+>
+  <div class="pointer-events-none absolute inset-x-0 -top-16 h-16 landing-scene-bridge-top" aria-hidden="true" />
+
+  <div class="landing-container">
+    <div class="grid grid-cols-1 items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16">
+      <!-- Left: Content -->
+      <div class="lg:max-w-[45%] lg:pr-2 xl:pr-4">
+        <p class="landing-reveal mb-2 font-mono text-label-sm uppercase tracking-widest text-secondary sm:mb-3">
+          {t.subtitle}
+        </p>
+        <h2 id="dashboard-showcase-title" class="landing-reveal landing-heading mb-4 sm:mb-5">
+          {t.heading}
+        </h2>
+        <p class="landing-reveal mb-6 text-body-md leading-relaxed text-on-surface-variant sm:mb-7 sm:text-body-lg">
+          {t.body}
+        </p>
+
+        <!-- Capability bullets -->
+        <ul class="landing-reveal mb-7 grid gap-2.5 sm:mb-8 sm:gap-3" role="list" aria-label={locale === 'th' ? 'ความสามารถของแพลตฟอร์ม' : 'Platform capabilities'}>
+          {bullets.map((b) => (
+            <li class="flex items-start gap-3 text-body-md text-on-surface-variant">
+              <svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d={b.icon} stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span>{t[b.key as keyof HomeShowcaseStrings]}</span>
+            </li>
+          ))}
+        </ul>
+
+        <!-- CTAs -->
+        <div class="landing-reveal landing-stagger flex flex-wrap gap-3">
+          <a
+            href={getLocalizedPath(locale, '/dashboard')}
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-label-sm font-semibold uppercase tracking-wider text-white shadow-lg shadow-emerald-600/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-emerald-500 hover:shadow-xl hover:shadow-emerald-600/25 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+          >
+            {t.cta_dashboard}
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a
+            href={getLocalizedPath(locale, '/evidence')}
+            class="inline-flex items-center justify-center gap-2 rounded-full border border-outline-variant/40 bg-white px-6 py-3 text-label-sm font-semibold uppercase tracking-wider text-primary transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
+          >
+            {t.cta_evidence}
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M9 12h6M12 9v6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Dashboard Screenshot -->
+      <div class="landing-reveal lg:order-2">
+        <div class="showcase-image-wrapper relative mx-auto max-w-lg lg:max-w-none">
+          <img
+            src={dashboardScreenshotImageUrl}
+            alt={locale === 'th' ? 'ภาพหน้าจอแดชบอร์ดผู้บริหาร Green Office 2026' : 'Green Office 2026 executive dashboard screenshot'}
+            class="w-full rounded-2xl border border-white/20 shadow-2xl shadow-black/15"
+            style="aspect-ratio: 1280/720;"
+            loading="lazy"
+            decoding="async"
+            width={dashboardScreenshotDimensions.w}
+            height={dashboardScreenshotDimensions.h}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .showcase-image-wrapper {
+    animation: showcase-float 6s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .showcase-image-wrapper {
+      animation: none;
+    }
+  }
+
+  @keyframes showcase-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+</style>

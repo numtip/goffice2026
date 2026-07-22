@@ -56,6 +56,12 @@ export const categoryImageDimensions: Record<string, { w: number; h: number }> =
   cat7: { w: 1812, h: 868 },
 };
 
+/** Executive Dashboard Screenshot image URL (for Platform Showcase section). */
+export const dashboardScreenshotImageUrl: string = assetUrl('Executive Dashboard Screens.png');
+
+/** Executive Dashboard Screenshot image dimensions. */
+export const dashboardScreenshotDimensions = { w: 1280, h: 720 };
+
 /** Hero image dimensions. */
 export const heroDimensions = { w: 2048, h: 1152 };
 
