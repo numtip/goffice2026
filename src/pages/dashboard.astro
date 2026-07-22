@@ -122,6 +122,14 @@ dashboards.forEach((d) => {
   }
 });
 
+// ── Highest Risk derivation ─────────────────────────────────────
+const insightHighestRisk: { label: string; yoyPct: number; monthsCount: number; color: string }[] = [];
+const riskCandidates = insightAttention.filter((item) => item.monthsCount >= 3);
+if (riskCandidates.length > 0) {
+  const maxRisk = riskCandidates.reduce((prev, curr) => (curr.yoyPct > prev.yoyPct ? curr : prev));
+  insightHighestRisk.push(maxRisk);
+}
+
 // ── Category score mini-pills for hero ──────────────────────────
 const catScoreMini = dashboardKpi.kpis
   .filter((k) => k.categoryId)
@@ -141,34 +149,20 @@ const partialCount = insightIncomplete.length;
   <div class="p-4 max-w-6xl mx-auto">
 
     <!-- 1. Executive Score Hero -->
-    <section class="mb-8">
-      <div class="bg-primary rounded-stitch-lg p-6 md:p-8 text-white relative overflow-hidden" style="background: linear-gradient(135deg, #003527 0%, #004d38 40%, #003527 100%);">
-        <!-- Subtle ambient glow -->
-        <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-400/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/4"></div>
-        <div class="absolute bottom-0 left-0 w-48 h-48 bg-teal-300/5 rounded-full blur-2xl pointer-events-none translate-y-1/2 -translate-x-1/4"></div>
+    <section class="dashboard-section mb-8">
+      <div class="bg-primary rounded-stitch-lg p-6 md:p-8 text-white relative overflow-hidden" style="background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 24px), repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 24px), linear-gradient(135deg, #003527 0%, #004d38 40%, #003527 100%);">
 
         <div class="relative z-10">
-          <!-- Top bar -->
-          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-6">
-            <div>
-              <p class="text-primary-fixed/50 text-[10px] uppercase tracking-[0.25em] font-bold mb-1">
-                {th ? 'GREEN COMMAND CENTER' : 'GREEN COMMAND CENTER'}
-              </p>
-              <h1 class="text-xl md:text-2xl font-bold text-primary-fixed tracking-tight">
-                {th ? 'ภาพรวมความพร้อม สำนักงานสีเขียว' : 'Green Office Readiness Overview'}
-              </h1>
-            </div>
-            <div class="text-right text-primary-fixed/40 text-[10px] leading-relaxed shrink-0">
-              <p>{t.taxonomy_summary}</p>
-              <p class="text-primary-fixed/30">{th ? 'อัปเดต' : 'Updated'}: <time datetime={updatedDate} class="text-primary-fixed/50">{updatedDate}</time></p>
-              <a href="https://goffice.mju.ac.th/" class="underline hover:text-primary-fixed/70 transition-colors" target="_blank" rel="noopener">goffice.mju.ac.th</a>
-            </div>
-          </div>
+          <!-- Top label -->
+          <p class="text-primary-fixed/40 text-[10px] uppercase tracking-[0.25em] font-bold mb-6">
+            {th ? 'GREEN COMMAND CENTER' : 'GREEN COMMAND CENTER'}
+          </p>
 
-          <!-- Score + Gauge -->
-          <div class="flex flex-col md:flex-row items-center gap-6 md:gap-10">
-            <!-- SVG Ring Gauge -->
-            <div class="shrink-0 relative">
+          <!-- 3-Zone Layout: Gauge | Score | Context -->
+          <div class="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10">
+
+            <!-- ZONE 1: Gauge (left, ~140px) -->
+            <div class="shrink-0 flex flex-col items-center gap-2 w-[140px]">
               <svg viewBox="0 0 150 150" width="140" height="140" class="drop-shadow-lg">
                 <defs>
                   <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -177,61 +171,73 @@ const partialCount = insightIncomplete.length;
                   </linearGradient>
                 </defs>
                 <!-- Track -->
-                <circle cx="75" cy="75" r="64" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="12"/>
+                <circle cx="75" cy="75" r="64" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="12"/>
                 <!-- Progress -->
                 <circle cx="75" cy="75" r="64" fill="none" stroke="url(#gaugeGrad)" stroke-width="12"
                   stroke-dasharray="402.12" stroke-dashoffset={402.12 * (1 - dashboardKpi.overallScore / 100)}
                   stroke-linecap="round" transform="rotate(-90 75 75)"
-                  style="transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1);"/>
-                <!-- Center text -->
-                <text x="75" y="68" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" font-weight="700" fill="white">{dashboardKpi.overallScore}</text>
-                <text x="75" y="88" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.4)" letter-spacing="0.15em">PERCENT</text>
+                  class="gauge-progress-ring"
+                  style={`--gauge-target-offset: ${402.12 * (1 - dashboardKpi.overallScore / 100)}; transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1);`}/>
               </svg>
-              <!-- Score badge -->
-              <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-emerald-400/20 border border-emerald-400/20 text-[10px] font-bold text-emerald-300 tracking-wide whitespace-nowrap">
+              <!-- Score badge below gauge -->
+              <span class="px-3 py-0.5 rounded-full bg-emerald-400/20 border border-emerald-400/20 text-[10px] font-bold text-emerald-300 tracking-wide whitespace-nowrap">
                 {dashboardKpi.overallScore >= 80 ? (th ? 'ดีเยี่ยม' : 'EXCELLENT') : dashboardKpi.overallScore >= 60 ? (th ? 'ดี' : 'GOOD') : (th ? 'พอใช้' : 'FAIR')}
-              </div>
+              </span>
             </div>
 
-            <!-- Score Details -->
-            <div class="flex-1 text-center md:text-left">
-              <div class="flex items-baseline gap-2 justify-center md:justify-start">
-                <span class="text-6xl md:text-7xl font-bold tracking-tight text-white">{dashboardKpi.overallScore}</span>
-                <span class="text-3xl md:text-4xl font-light text-primary-fixed/30">%</span>
+            <!-- ZONE 2: Score (center, flex-1) -->
+            <div class="flex-1 flex flex-col items-center md:items-start min-w-0">
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-7xl md:text-8xl font-bold tracking-tight text-white leading-none">{dashboardKpi.overallScore}</span>
+                <span class="text-4xl md:text-5xl font-light text-primary-fixed/30">%</span>
               </div>
-              <p class="text-primary-fixed/50 text-xs mt-1 tracking-wide uppercase font-semibold">
+              <p class="text-primary-fixed/50 text-[12px] mt-1 tracking-[0.15em] uppercase font-semibold">
                 {th ? 'คะแนนรวมการรับรอง' : 'Overall Certification Score'}
               </p>
 
-              <!-- Stat row -->
-              <div class="flex flex-wrap gap-3 mt-3 justify-center md:justify-start text-[10px] text-primary-fixed/40">
-                <span class="flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                  {th ? `${totalImproving} ด้านดีขึ้น` : `${totalImproving} improving`}
-                </span>
-                <span class="flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                  {th ? `${totalAttention} ด้านต้องระวัง` : `${totalAttention} need attention`}
-                </span>
-                <span class="flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-sky-300"></span>
-                  {th ? `${partialCount}/6 ข้อมูลยังไม่ครบปี` : `${partialCount}/6 partial-year`}
-                </span>
-              </div>
-
-              <!-- Category Score Pills -->
-              <div class="flex flex-wrap gap-1.5 mt-4 justify-center md:justify-start">
+              <!-- Category Score Pills (max 2 rows) -->
+              <div class="flex flex-wrap gap-1.5 mt-4 max-h-[3.25rem] overflow-hidden">
                 {catScoreMini.map((cat) => {
                   const trendIcon = cat.trend === 'up' ? '\u2191' : cat.trend === 'down' ? '\u2193' : '\u2192';
                   const trendCls = cat.trend === 'up' ? 'text-emerald-300' : cat.trend === 'down' ? 'text-red-300' : 'text-primary-fixed/30';
                   return (
-                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-semibold bg-white/8 text-primary-fixed/60 backdrop-blur-sm border border-white/5 transition-colors hover:bg-white/12 hover:text-primary-fixed/80">
-                      <span class="max-w-[70px] truncate">{cat.label}</span>
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/8 text-primary-fixed/60 border border-white/5 transition-colors hover:bg-white/12 hover:text-primary-fixed/80">
+                      <span class="max-w-[60px] truncate">{cat.label}</span>
                       <span class="text-primary-fixed/40">{cat.score}</span>
                       <span class={trendCls}>{trendIcon}</span>
                     </span>
                   );
                 })}
+              </div>
+            </div>
+
+            <!-- ZONE 3: Context (right) -->
+            <div class="shrink-0 flex flex-col items-end gap-3 text-right min-w-[180px]">
+              <!-- Updated date -->
+              <div>
+                <p class="text-[10px] uppercase tracking-[0.15em] text-primary-fixed/30 font-semibold mb-0.5">
+                  {th ? 'อัปเดตล่าสุด' : 'Last Updated'}
+                </p>
+                <time datetime={updatedDate} class="text-sm font-bold text-primary-fixed/70 tabular-nums">{updatedDate}</time>
+              </div>
+
+              <!-- Taxonomy summary -->
+              <p class="text-[11px] text-primary-fixed/40 leading-relaxed max-w-[200px]">{t.taxonomy_summary}</p>
+
+              <!-- Quick Facts (compact row) -->
+              <div class="flex flex-wrap gap-1.5 justify-end">
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/8 text-emerald-300 border border-white/5">
+                  <span class="w-1 h-1 rounded-full bg-emerald-400 shrink-0"></span>
+                  {th ? `${totalImproving} ดีขึ้น` : `${totalImproving} Improving`}
+                </span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/8 text-amber-300 border border-white/5">
+                  <span class="w-1 h-1 rounded-full bg-amber-400 shrink-0"></span>
+                  {th ? `${totalAttention} ต้องระวัง` : `${totalAttention} Attention`}
+                </span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/8 text-sky-300 border border-white/5">
+                  <span class="w-1 h-1 rounded-full bg-sky-300 shrink-0"></span>
+                  {th ? `${partialCount}/6 ไม่ครบปี` : `${partialCount}/6 Partial`}
+                </span>
               </div>
             </div>
           </div>
@@ -247,7 +253,7 @@ const partialCount = insightIncomplete.length;
     </section>
 
     <!-- 2. Six Resource KPI Cards -->
-    <section class="mb-8">
+    <section class="dashboard-section mb-8">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-4">
         <div>
           <h2 class="text-lg font-bold text-on-surface tracking-tight">{th ? 'ภาพรวมการใช้ทรัพยากร 6 ด้าน' : '6-Resource Overview'}</h2>
@@ -314,20 +320,22 @@ const partialCount = insightIncomplete.length;
     </section>
 
     <!-- 3. Key Insights Panel -->
-    <section class="mb-8">
+    <section class="dashboard-section mb-8">
       <h2 class="text-lg font-bold text-on-surface tracking-tight mb-3">{th ? 'ข้อมูลเชิงลึกสำหรับผู้บริหาร' : 'Executive Insights'}</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <!-- Improved -->
-        <div class="bg-emerald-50/60 rounded-stitch-lg border border-emerald-200/60 p-5">
-          <div class="flex items-center gap-2 mb-3">
-            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500 text-white text-sm font-bold" aria-hidden="true">&#8595;</span>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Improving (top-left) -->
+        <div class="bg-emerald-50/60 rounded-stitch-lg border-l-4 border-l-emerald-500 border border-outline-variant/20 p-4">
+          <div class="flex items-center gap-2.5 mb-2.5">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white shrink-0" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </span>
             <h3 class="text-sm font-bold text-emerald-800">
               {th ? 'ด้านที่ดีขึ้น' : 'Improving'}
               <span class="text-emerald-600/60 font-normal text-xs ml-1">({insightImproved.length})</span>
             </h3>
           </div>
           {insightImproved.length > 0 ? (
-            <ul class="space-y-2">
+            <ul class="space-y-1.5">
               {insightImproved.map((item) => (
                 <li class="flex items-center justify-between text-xs">
                   <span class="flex items-center gap-1.5 text-emerald-700 font-medium">
@@ -341,20 +349,22 @@ const partialCount = insightIncomplete.length;
           ) : (
             <p class="text-xs text-emerald-600/60 italic">{th ? 'ยังไม่มีแนวโน้มที่ดีขึ้นที่ชัดเจน' : 'No clear improving trends yet'}</p>
           )}
-          <p class="text-[10px] text-emerald-600/40 mt-3">{th ? 'ค่าติดลบ = การใช้ทรัพยากรลดลง (ดี)' : 'Negative = reduced consumption (good)'}</p>
+          <p class="text-[10px] text-emerald-600/40 mt-2.5">{th ? 'ค่าติดลบ = การใช้ทรัพยากรลดลง (ดี)' : 'Negative = reduced consumption (good)'}</p>
         </div>
 
-        <!-- Attention -->
-        <div class="bg-amber-50/60 rounded-stitch-lg border border-amber-200/60 p-5">
-          <div class="flex items-center gap-2 mb-3">
-            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-amber-500 text-white text-sm font-bold" aria-hidden="true">&#8593;</span>
+        <!-- Needs Attention (top-right) -->
+        <div class="bg-amber-50/60 rounded-stitch-lg border-l-4 border-l-amber-500 border border-outline-variant/20 p-4">
+          <div class="flex items-center gap-2.5 mb-2.5">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-amber-500 text-white shrink-0" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+            </span>
             <h3 class="text-sm font-bold text-amber-800">
               {th ? 'ด้านที่ต้องระวัง' : 'Needs Attention'}
               <span class="text-amber-600/60 font-normal text-xs ml-1">({insightAttention.length})</span>
             </h3>
           </div>
           {insightAttention.length > 0 ? (
-            <ul class="space-y-2">
+            <ul class="space-y-1.5">
               {insightAttention.map((item) => (
                 <li class="flex items-center justify-between text-xs">
                   <span class="flex items-center gap-1.5 text-amber-700 font-medium">
@@ -368,19 +378,51 @@ const partialCount = insightIncomplete.length;
           ) : (
             <p class="text-xs text-amber-600/60 italic">{th ? 'ไม่มีด้านที่ต้องกังวลเป็นพิเศษ' : 'No areas of concern'}</p>
           )}
-          <p class="text-[10px] text-amber-600/40 mt-3">{th ? 'ค่าบวก = การใช้ทรัพยากรเพิ่มขึ้น (ต้องติดตาม)' : 'Positive = increased consumption (monitor)'}</p>
+          <p class="text-[10px] text-amber-600/40 mt-2.5">{th ? 'ค่าบวก = การใช้ทรัพยากรเพิ่มขึ้น (ต้องติดตาม)' : 'Positive = increased consumption (monitor)'}</p>
         </div>
 
-        <!-- Incomplete Data -->
-        <div class="bg-sky-50/60 rounded-stitch-lg border border-sky-200/60 p-5">
-          <div class="flex items-center gap-2 mb-3">
-            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-sky-500 text-white text-xs font-bold" aria-hidden="true">!</span>
+        <!-- Highest Risk (bottom-left) -->
+        <div class="bg-rose-50/60 rounded-stitch-lg border-l-4 border-l-rose-500 border border-outline-variant/20 p-4">
+          <div class="flex items-center gap-2.5 mb-2.5">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-rose-500 text-white shrink-0" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </span>
+            <h3 class="text-sm font-bold text-rose-800">
+              {th ? 'ความเสี่ยงสูงสุด' : 'Highest Risk'}
+            </h3>
+          </div>
+          {insightHighestRisk.length > 0 ? (
+            <ul class="space-y-1.5">
+              {insightHighestRisk.map((item) => (
+                <li class="flex items-center justify-between text-xs">
+                  <span class="flex items-center gap-1.5 text-rose-700 font-medium">
+                    <span class="w-1.5 h-1.5 rounded-full shrink-0" style={`background-color:${item.color}`}></span>
+                    {item.label}
+                  </span>
+                  <span class="text-rose-600 font-bold tabular-nums">+{item.yoyPct}%</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p class="text-xs text-rose-600/60 italic">{th ? 'ไม่มีทรัพยากรที่เพิ่มขึ้นอย่างมีนัยสำคัญ' : 'No resources with significant increase'}</p>
+          )}
+          <p class="text-[10px] text-rose-600/40 mt-2.5">
+            {th ? 'เพิ่มขึ้นสูงสุดเทียบปีฐาน — ต้องตรวจสอบทันที' : 'Highest increase vs baseline — requires immediate review'}
+          </p>
+        </div>
+
+        <!-- Partial-Year Data (bottom-right) -->
+        <div class="bg-sky-50/60 rounded-stitch-lg border-l-4 border-l-sky-500 border border-outline-variant/20 p-4">
+          <div class="flex items-center gap-2.5 mb-2.5">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-sky-500 text-white shrink-0" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </span>
             <h3 class="text-sm font-bold text-sky-800">
               {th ? 'ข้อมูลยังไม่ครบปี' : 'Partial-Year Data'}
               <span class="text-sky-600/60 font-normal text-xs ml-1">({insightIncomplete.length})</span>
             </h3>
           </div>
-          <ul class="space-y-2">
+          <ul class="space-y-1.5">
             {insightIncomplete.map((item) => (
               <li class="flex items-center justify-between text-xs">
                 <span class="flex items-center gap-1.5 text-sky-700 font-medium">
@@ -391,7 +433,7 @@ const partialCount = insightIncomplete.length;
               </li>
             ))}
           </ul>
-          <p class="text-[10px] text-sky-600/40 mt-3 leading-relaxed">
+          <p class="text-[10px] text-sky-600/40 mt-2.5 leading-relaxed">
             {th
               ? 'ข้อมูลปี 2569 อยู่ระหว่างบันทึก — การเปรียบเทียบ YoY อาจไม่สะท้อนแนวโน้มที่แท้จริงทั้งปี ควรพิจารณาอย่างระมัดระวังจนกว่าจะมีข้อมูลครบ 12 เดือน'
               : '2569 data entry is still in progress. YoY comparisons reflect partial-year and may not represent full annual trends. Interpret with caution.'}
@@ -402,7 +444,7 @@ const partialCount = insightIncomplete.length;
 
     <!-- 4. Baseline vs Current Comparison -->
     {resourcePerf.length > 0 && (
-      <section class="mb-8">
+      <section class="dashboard-section mb-8">
         <div class="mb-3">
           <h2 class="text-lg font-bold text-on-surface tracking-tight mb-1">{th ? 'เปรียบเทียบประสิทธิภาพเทียบปีฐาน' : 'Baseline vs Current Comparison'}</h2>
           <p class="text-xs text-outline-variant">
@@ -439,7 +481,7 @@ const partialCount = insightIncomplete.length;
 
     <!-- 5. Category Score Visualization -->
     {catScores.length > 0 && (
-      <section class="mb-8">
+      <section class="dashboard-section mb-8">
         <div class="mb-3">
           <h2 class="text-lg font-bold text-on-surface tracking-tight mb-1">{th ? 'คะแนนรายหมวด Green Office' : 'Green Office Category Scores'}</h2>
           <p class="text-xs text-outline-variant">
@@ -460,7 +502,7 @@ const partialCount = insightIncomplete.length;
     )}
 
     <!-- 6. Data Readiness Matrix -->
-    <section class="mb-8">
+    <section class="dashboard-section mb-8">
       <h2 class="text-lg font-bold text-on-surface tracking-tight mb-3">{th ? 'ความครบถ้วนของข้อมูลรายเดือน' : 'Monthly Data Readiness'}</h2>
     <DataReadinessMatrix
       title={th ? 'ความครบถ้วนของข้อมูลรายเดือน ปี 2569' : '2569 Monthly Data Readiness'}
@@ -474,7 +516,7 @@ const partialCount = insightIncomplete.length;
     </section>
 
     <!-- 7. Trust and Evidence Panel -->
-    <section class="bg-surface-container rounded-stitch-lg border border-outline-variant/20 p-5 mb-6 text-xs text-outline-variant">
+    <section class="dashboard-section bg-surface-container rounded-stitch-lg border border-outline-variant/20 p-5 mb-6 text-xs text-outline-variant">
       <div class="flex items-center gap-2 mb-3">
         <h3 class="font-bold text-on-surface text-sm">{th ? 'ที่มาและความน่าเชื่อถือของข้อมูล' : 'Data Trust & Evidence'}</h3>
       </div>
@@ -503,5 +545,77 @@ const partialCount = insightIncomplete.length;
       </p>
     </section>
 
+    <!-- 8. Closing Statement -->
+    <section class="mt-8 border-t border-outline-variant/10 bg-surface-container rounded-stitch-lg p-8 md:p-10 text-center">
+      <p class="text-lg md:text-xl font-bold text-on-surface tracking-tight mb-2">
+        Green Office 2026
+      </p>
+      <p class="text-sm text-outline-variant mb-6 max-w-2xl mx-auto leading-relaxed">
+        {th
+          ? 'ขับเคลื่อนด้วยข้อมูล · ใช้หลักฐานสนับสนุน · พร้อมรับการรับรอง'
+          : 'Driven by Data · Powered by Evidence · Ready for Certification'}
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href={getLocalizedPath(locale, '/evidence')}
+           class="inline-flex items-center justify-center gap-2 rounded-full border border-primary-container/20 bg-primary/90 px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-white shadow-lg hover:bg-primary hover:-translate-y-0.5 transition"
+           aria-label={th ? 'ไปยังคลังหลักฐาน' : 'Go to Evidence Library'}>
+          {th ? 'คลังหลักฐาน' : 'Evidence Library'}
+        </a>
+        <a href={getLocalizedPath(locale, '/documents')}
+           class="inline-flex items-center justify-center gap-2 rounded-full border border-outline-variant/30 px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-on-surface hover:-translate-y-0.5 transition"
+           aria-label={th ? 'ไปยังศูนย์เอกสาร' : 'Go to Document Center'}>
+          {th ? 'ศูนย์เอกสาร' : 'Document Center'}
+        </a>
+      </div>
+    </section>
+
   </div>
+<style>
+  /* --- Card hover --- */
+  .resource-card {
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .resource-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+  }
+
+  /* --- Section fade-in --- */
+  @media (prefers-reduced-motion: no-preference) {
+    .dashboard-section {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: section-reveal 0.6s ease-out forwards;
+    }
+    .dashboard-section:nth-child(1) { animation-delay: 0s; }
+    .dashboard-section:nth-child(2) { animation-delay: 0.15s; }
+    .dashboard-section:nth-child(3) { animation-delay: 0.3s; }
+    .dashboard-section:nth-child(4) { animation-delay: 0.45s; }
+    .dashboard-section:nth-child(5) { animation-delay: 0.6s; }
+    .dashboard-section:nth-child(6) { animation-delay: 0.75s; }
+    .dashboard-section:nth-child(7) { animation-delay: 0.9s; }
+
+    @keyframes section-reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  /* --- Ring gauge fill animation --- */
+  @media (prefers-reduced-motion: no-preference) {
+    .gauge-progress-ring {
+      animation: gauge-fill 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes gauge-fill {
+      from { stroke-dashoffset: 402.12; }
+      to { stroke-dashoffset: var(--gauge-target-offset); }
+    }
+  }
+</style>
+
 </BaseLayout>
