@@ -18,17 +18,19 @@ function assetUrl(filename: string): string {
 }
 
 /** Map a category code (cat1–cat7) to its wow2 image path.
+ *  Serves optimized WebP by default. Falls back to PNG if WebP missing.
  *  Filenames use "catagory" (with 'a'), not "category".
+ *  Original PNGs preserved alongside WebP derivatives.
  *  Returns undefined when no mapping exists (safe for optional props). */
 export function categoryImageUrl(code: string): string | undefined {
   const map: Record<string, string> = {
-    cat1: 'catagory1.png',
-    cat2: 'catagory2.png',
-    cat3: 'catagory3.png',
-    cat4: 'catagory4.png',
-    cat5: 'catagory5.png',
-    cat6: 'catagory6.png',
-    cat7: 'catagory7.png',
+    cat1: 'catagory1.webp',
+    cat2: 'catagory2.webp',
+    cat3: 'catagory3.webp',
+    cat4: 'catagory4.webp',
+    cat5: 'catagory5.webp',
+    cat6: 'catagory6.webp',
+    cat7: 'catagory7.webp',
   };
   const filename = map[code];
   return filename ? assetUrl(filename) : undefined;
