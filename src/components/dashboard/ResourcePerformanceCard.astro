@@ -30,8 +30,8 @@ const accent = accentColor ?? color;
 // YoY trend colors: negative = good (reduction), positive = bad (increase)
 const hasYoy = trendPct != null && monthsCompleted > 0;
 const yoyColor = hasYoy
-  ? (trendPct! < 0 ? 'text-emerald-600' : trendPct! > 0 ? 'text-amber-600' : 'text-outline')
-  : 'text-outline-variant/50';
+  ? (trendPct! < 0 ? 'text-emerald-600' : trendPct! > 0 ? 'text-amber-600' : 'text-slate-600')
+  : 'text-slate-400';
 
 const trendArrow = trendDir === 'up' ? '\u2191' : trendDir === 'down' ? '\u2193' : '\u2192';
 const yoyDisplay = hasYoy ? `${trendPct! > 0 ? '+' : ''}${trendPct}% ${trendArrow}` : '\u2014';
@@ -115,11 +115,11 @@ if (hasSparkline) {
   <!-- Current value + unit -->
   <p class="text-3xl font-bold text-on-surface leading-none tracking-tight">
     {currentValue}
-    <span class="text-base text-outline-variant font-medium ml-1">{unit}</span>
+    <span class="text-base text-slate-700 font-medium ml-1">{unit}</span>
   </p>
 
   <!-- Baseline reference -->
-  <p class="text-xs text-outline-variant mt-1.5">
+  <p class="text-xs text-slate-500 mt-1.5">
     Baseline: {baselineValue}{unit}
   </p>
 

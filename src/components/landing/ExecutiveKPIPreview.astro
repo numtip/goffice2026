@@ -41,7 +41,7 @@ const resourceCards = resourceIds.map((id) => {
     href: getLocalizedPath(locale, `/dashboard/${d.id}`),
     currentValue: hasData ? fmtCompact(current!.total) : (locale === 'th' ? 'รอข้อมูล' : 'Pending'),
     baselineValue: baseline ? fmtCompact(baseline.total) : '-',
-    unit: d.kpiUnit ?? '%',
+    unit: m?.unit ?? d.kpiUnit ?? '',
     trendPct: showYoy && yoy ? yoy.percent : (null as number | null),
     trendDir: (yoy?.direction ?? 'stable') as 'up' | 'down' | 'stable',
     monthsCompleted: monthsCount,
@@ -71,7 +71,7 @@ const resourceCards = resourceIds.map((id) => {
       >
         {t.heading}
       </h2>
-      <p class="mt-4 text-base leading-relaxed text-outline sm:text-lg">
+      <p class="mt-4 text-base leading-relaxed text-slate-700 sm:text-lg">
         {t.subtitle}
       </p>
     </div>
@@ -80,7 +80,7 @@ const resourceCards = resourceIds.map((id) => {
     <div class="mx-auto mb-12 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
       <!-- Overall Environmental Score -->
       <div class="flex flex-col items-center rounded-2xl border border-emerald-200/60 bg-gradient-to-b from-emerald-50/50 to-white p-6 text-center shadow-sm">
-        <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-outline-variant">
+        <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">
           {t.score_environmental}
         </span>
         <span class="text-4xl font-bold tracking-tight text-emerald-700">
@@ -90,7 +90,7 @@ const resourceCards = resourceIds.map((id) => {
 
       <!-- Category Readiness -->
       <div class="flex flex-col items-center rounded-2xl border border-sky-200/60 bg-gradient-to-b from-sky-50/50 to-white p-6 text-center shadow-sm">
-        <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-outline-variant">
+        <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">
           {t.score_categories}
         </span>
         <span class="text-4xl font-bold tracking-tight text-sky-700">
@@ -100,13 +100,13 @@ const resourceCards = resourceIds.map((id) => {
 
       <!-- Evidence Readiness -->
       <div class="flex flex-col items-center rounded-2xl border border-violet-200/60 bg-gradient-to-b from-violet-50/50 to-white p-6 text-center shadow-sm">
-        <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-outline-variant">
+        <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">
           {t.score_evidence}
         </span>
         <span class="text-4xl font-bold tracking-tight text-violet-700">
           {evidenceAvailable}<span class="text-xl text-violet-500">/{evidenceTotal}</span>
         </span>
-        <span class="mt-1 text-xs text-outline-variant">
+        <span class="mt-1 text-xs text-slate-700">
           {Math.round((evidenceAvailable / evidenceTotal) * 100)}% {locale === 'th' ? 'พร้อมใช้งาน' : 'ready'}
         </span>
       </div>
