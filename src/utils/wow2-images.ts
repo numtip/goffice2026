@@ -68,5 +68,21 @@ export const heroDimensions = { w: 2048, h: 1152 };
 /** Closing banner image dimensions. */
 export const closingBannerDimensions = { w: 2048, h: 1152 };
 
-/** Resource Icons image dimensions. */
-export const resourceIconsDimensions = { w: 2048, h: 1152 };
+/** Resource icon URLs (split from combined Resource Icons asset).
+ *  Map a resource key to its individual icon asset path. */
+export const resourceIconMap: Record<string, string> = {
+  energy: assetUrl('electricity.webp'),
+  water: assetUrl('water.webp'),
+  fuel: assetUrl('fuel.webp'),
+  paper: assetUrl('paper.webp'),
+  waste: assetUrl('waste.webp'),
+  ghg: assetUrl('ghg.webp'),
+};
+
+/** Resource icon URL by key. Returns undefined for unmapped keys. */
+export function resourceIconUrl(key: string): string | undefined {
+  return resourceIconMap[key];
+}
+
+/** Resource icon image dimensions (all extracted as 683×576). */
+export const resourceIconDimensions = { w: 683, h: 576 };

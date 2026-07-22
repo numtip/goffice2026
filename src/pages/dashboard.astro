@@ -14,7 +14,7 @@ import ghgGen from '../data/generated/ghg.json';
 import { getLocale, getLocalizedPath } from '../i18n/utils';
 import { getDictionary } from '../i18n/dictionary';
 import { resolveDisplayStatus, shouldShowYoy } from '../utils/data-status';
-import { heroImageUrl, closingBannerImageUrl, resourceIconsImageUrl } from '../utils/wow2-images';
+import { heroImageUrl, closingBannerImageUrl, resourceIconMap } from '../utils/wow2-images';
 
 import ResourcePerformanceCard from '../components/dashboard/ResourcePerformanceCard.astro';
 import NormalizedTrendChart from '../components/dashboard/NormalizedTrendChart.astro';
@@ -278,18 +278,20 @@ const partialCount = insightIncomplete.length;
             <h2 class="text-lg font-bold text-on-surface tracking-tight">{th ? 'ภาพรวมการใช้ทรัพยากร 6 ด้าน' : '6-Resource Overview'}</h2>
             <p class="text-xs text-outline-variant mt-0.5">{th ? 'เปรียบเทียบปีปัจจุบัน (2569) กับปีฐาน (2568) พร้อมแนวโน้มรายเดือน' : 'Current year (2569) vs baseline (2568) with monthly trends'}</p>
           </div>
-        <!-- Resource Icons decorative image -->
-        <div class="absolute inset-0 opacity-[0.07] pointer-events-none" aria-hidden="true">
-          <img
-            src={resourceIconsImageUrl}
-            alt=""
-            class="w-full h-full object-cover"
-            loading="lazy"
-            decoding="async"
-            aria-hidden="true"
-            width="2048"
-            height="1152"
-          />
+        <!-- Resource Icons decorative row -->
+        <div class="absolute inset-0 opacity-[0.06] pointer-events-none flex items-center justify-center gap-4 px-6 py-2" aria-hidden="true">
+          {['energy','water','fuel','paper','waste','ghg'].map((key) => (
+            <img
+              src={resourceIconMap[key]}
+              alt=""
+              class="h-10 w-auto object-contain"
+              loading="lazy"
+              decoding="async"
+              aria-hidden="true"
+              width={64}
+              height={54}
+            />
+          ))}
         </div>
         <!-- Quick summary badges -->
         <div class="flex items-center gap-3 text-[11px] text-outline-variant shrink-0">
