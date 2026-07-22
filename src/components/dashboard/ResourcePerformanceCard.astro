@@ -12,13 +12,20 @@ interface Props {
   monthlyValues?: number[];
   statusLabel?: string;
   partialYear?: boolean;
+  /** Per-resource icon URL from resourceIconMap */
+  iconUrl?: string;
+  /** Semantic accent color from resourceAccentMap */
+  accentColor?: string;
 }
 
 const {
   title, href, currentValue, baselineValue, unit,
   trendPct, trendDir = 'stable', monthsCompleted, color,
   monthlyValues, statusLabel, partialYear,
+  iconUrl, accentColor,
 } = Astro.props;
+
+const accent = accentColor ?? color;
 
 // YoY trend colors: negative = good (reduction), positive = bad (increase)
 const hasYoy = trendPct != null && monthsCompleted > 0;
@@ -38,7 +45,7 @@ const badgeColor = monthsCompleted >= 12
 
 const badgeLabel = statusLabel ?? `${monthsCompleted} of 12 months`;
 
-// Mini sparkline SVG (increased height)
+// Mini sparkline SVG
 const hasSparkline = monthlyValues && monthlyValues.length >= 2;
 let sparkPoints = '';
 let sparkTrendDir: 'up' | 'down' | 'flat' = 'flat';
@@ -58,7 +65,6 @@ if (hasSparkline) {
     return `${x.toFixed(1)},${y.toFixed(1)}`;
   }).join(' ');
 
-  // Area fill polygon: start at bottom-left, follow points, end at bottom-right
   const lastIdx = values.length - 1;
   sparkLastX = lastIdx * stepX;
   sparkLastY = h - pad - ((values[lastIdx] - min) / range) * (h - pad * 2);
@@ -71,40 +77,64 @@ if (hasSparkline) {
 
 <a
   href={href}
-  style={`border-left-color:${color};`}
-  class="group flex flex-col bg-white rounded-stitch-lg border border-outline-variant/20 border-l-4 p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 h-full"
+  class="group flex flex-col bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 h-full"
 >
-  <!-- Top row: title + YoY trend -->
-  <div class="flex items-start justify-between gap-2 mb-3">
-    <h3 class="text-lg font-bold text-on-surface leading-snug">{title}</h3>
-    <span class={`inline-flex items-center gap-0.5 shrink-0 text-xs font-semibold tabular-nums ${yoyColor}`}>
-      {yoyDisplay}
-    </span>
+  <!-- Header: icon + title + trend -->
+  <div class="flex items-start gap-3 mb-3">
+    {iconUrl ? (
+      <div
+        class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border"
+        style={`background-color:${accent}10; border-color:${accent}30;`}
+      >
+        <img
+          src={iconUrl}
+          alt=""
+          class="h-6 w-6 object-contain"
+          loading="lazy"
+          decoding="async"
+          aria-hidden="true"
+          width={48}
+          height={48}
+        />
+      </div>
+    ) : (
+      <div
+        class="h-11 w-11 shrink-0 rounded-xl"
+        style={`background-color:${accent}15;`}
+        aria-hidden="true"
+      />
+    )}
+    <div class="min-w-0 flex-1">
+      <h3 class="text-sm font-bold text-on-surface leading-snug">{title}</h3>
+      <span class={`inline-flex items-center gap-0.5 text-xs font-semibold tabular-nums ${yoyColor}`}>
+        {yoyDisplay}
+      </span>
+    </div>
   </div>
 
-  <!-- Current value + unit (prominent) -->
+  <!-- Current value + unit -->
   <p class="text-3xl font-bold text-on-surface leading-none tracking-tight">
     {currentValue}
     <span class="text-base text-outline-variant font-medium ml-1">{unit}</span>
   </p>
 
-  <!-- Baseline subtle reference -->
+  <!-- Baseline reference -->
   <p class="text-xs text-outline-variant mt-1.5">
     Baseline: {baselineValue}{unit}
   </p>
 
-  <!-- Sparkline (more prominent) -->
+  <!-- Sparkline -->
   {hasSparkline ? (
     <div class="mt-3 mb-3">
       <svg width="100%" height="40" viewBox="0 0 150 40" preserveAspectRatio="none" class="w-full" aria-hidden="true">
         <polygon
           points={sparkAreaPoints}
-          fill={color}
+          fill={accent}
           opacity="0.1"
         />
         <polyline
           fill="none"
-          stroke={color}
+          stroke={accent}
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -115,7 +145,7 @@ if (hasSparkline) {
             cx={sparkLastX}
             cy={sparkLastY}
             r="3"
-            fill={color}
+            fill={accent}
           />
         )}
       </svg>
@@ -124,8 +154,8 @@ if (hasSparkline) {
     <div class="flex-1"></div>
   )}
 
-  <!-- Status badge at bottom -->
-  <div class="mt-auto pt-3 border-t border-outline-variant/10">
+  <!-- Status badge -->
+  <div class="mt-auto pt-3 border-t" style={`border-color:${accent}18;`}>
     <span class={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold ${badgeColor}`}>
       {badgeLabel}
       {partialYear && <span class="ml-1 opacity-70">*</span>}

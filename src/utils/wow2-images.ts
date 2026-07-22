@@ -79,9 +79,25 @@ export const resourceIconMap: Record<string, string> = {
   ghg: assetUrl('ghg.webp'),
 };
 
+/** Semantic accent colors per resource type.
+ *  electricity=amber, water=cyan, fuel=orange, paper=slate, waste=emerald, ghg=violet */
+export const resourceAccentMap: Record<string, string> = {
+  energy: '#d97706',
+  water: '#0891b2',
+  fuel: '#ea580c',
+  paper: '#64748b',
+  waste: '#059669',
+  ghg: '#7c3aed',
+};
+
 /** Resource icon URL by key. Returns undefined for unmapped keys. */
 export function resourceIconUrl(key: string): string | undefined {
   return resourceIconMap[key];
+}
+
+/** Resource accent color by key. Returns undefined for unmapped keys. */
+export function resourceAccentColor(key: string): string | undefined {
+  return resourceAccentMap[key];
 }
 
 /** Resource icon image dimensions (all extracted as 683×576). */
