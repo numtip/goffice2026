@@ -80,26 +80,26 @@ if (hasSparkline) {
   class="group flex flex-col bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 h-full"
 >
   <!-- Header: icon + title + trend -->
-  <div class="flex items-start gap-3 mb-3">
+  <div class="flex items-start gap-2.5 sm:gap-2.5 mb-3">
     {iconUrl ? (
       <div
-        class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border"
+        class="flex h-12 w-12 sm:h-[50px] sm:w-[50px] md:h-[52px] md:w-[52px] shrink-0 items-center justify-center rounded-xl border"
         style={`background-color:${accent}10; border-color:${accent}30;`}
       >
         <img
           src={iconUrl}
           alt=""
-          class="h-6 w-6 object-contain"
+          class="h-7 w-7 sm:h-[30px] sm:w-[30px] md:h-8 md:w-8 object-contain"
           loading="lazy"
           decoding="async"
           aria-hidden="true"
-          width={48}
-          height={48}
+          width={64}
+          height={64}
         />
       </div>
     ) : (
       <div
-        class="h-11 w-11 shrink-0 rounded-xl"
+        class="h-12 w-12 sm:h-[50px] sm:w-[50px] md:h-[52px] md:w-[52px] shrink-0 rounded-xl"
         style={`background-color:${accent}15;`}
         aria-hidden="true"
       />
