@@ -14,6 +14,7 @@ import ghgGen from '../../../data/generated/ghg.json';
 import { getLocalizedPath } from '../../../i18n/utils';
 import { getDictionary } from '../../../i18n/dictionary';
 import { resolveDisplayStatus, shouldShowYoy } from '../../../utils/data-status';
+import { heroImageUrl, closingBannerImageUrl, resourceIconsImageUrl } from '../../../utils/wow2-images';
 
 import ResourcePerformanceCard from '../../../components/dashboard/ResourcePerformanceCard.astro';
 import NormalizedTrendChart from '../../../components/dashboard/NormalizedTrendChart.astro';
@@ -136,9 +137,24 @@ const partialCount = insightIncomplete.length;
 
     <!-- 1. Executive Score Hero -->
     <section class="mb-8">
-      <div class="bg-primary rounded-stitch-lg p-6 md:p-8 text-white relative overflow-hidden" style="background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 24px), repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 24px), linear-gradient(135deg, #003527 0%, #004d38 40%, #003527 100%);">
+      <div class="relative rounded-stitch-lg overflow-hidden text-white min-h-[320px] md:min-h-[380px] flex items-stretch">
+        <!-- Hero Background Image -->
+        <div class="absolute inset-0">
+          <img
+            src={heroImageUrl}
+            alt=""
+            class="w-full h-full object-cover"
+            loading="eager"
+            decoding="async"
+            aria-hidden="true"
+            width="2048"
+            height="1152"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-[#001a12]/90 via-[#002b1e]/75 to-[#003527]/60" aria-hidden="true"></div>
+          <div class="absolute inset-0" style="background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 24px), repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 24px);" aria-hidden="true"></div>
+        </div>
 
-        <div class="relative z-10">
+        <div class="relative z-10 p-6 md:p-8 w-full">
           <!-- Top label -->
           <p class="text-primary-fixed/40 text-[10px] uppercase tracking-[0.25em] font-bold mb-6">GREEN COMMAND CENTER</p>
 
@@ -231,10 +247,24 @@ const partialCount = insightIncomplete.length;
 
     <!-- 2. Six Resource KPI Cards -->
     <section class="mb-8">
-      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-4">
-        <div>
-          <h2 class="text-lg font-bold text-on-surface tracking-tight">6-Resource Overview</h2>
-          <p class="text-xs text-outline-variant mt-0.5">Current year (2569) vs baseline (2568) with monthly trends</p>
+      <div class="relative overflow-hidden rounded-stitch-lg bg-surface-container/60 border border-outline-variant/10 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 p-4 md:p-5">
+          <div class="relative z-10">
+            <h2 class="text-lg font-bold text-on-surface tracking-tight">6-Resource Overview</h2>
+            <p class="text-xs text-outline-variant mt-0.5">Current year (2569) vs baseline (2568) with monthly trends</p>
+          </div>
+        <!-- Resource Icons decorative image -->
+        <div class="absolute inset-0 opacity-[0.07] pointer-events-none" aria-hidden="true">
+          <img
+            src={resourceIconsImageUrl}
+            alt=""
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+            aria-hidden="true"
+            width="2048"
+            height="1152"
+          />
         </div>
         <div class="flex items-center gap-3 text-[11px] text-outline-variant shrink-0">
           <span class="flex items-center gap-1">
@@ -250,6 +280,7 @@ const partialCount = insightIncomplete.length;
             {partialCount}/6 partial
           </span>
         </div>
+      </div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {dashboards.map((d) => {
@@ -498,25 +529,47 @@ const partialCount = insightIncomplete.length;
       <p class="mt-2 text-outline/60">Last updated: {updatedDate} · Generated data: src/data/generated/</p>
     </section>
 
-    <!-- 8. Closing Statement -->
-    <section class="mt-8 border-t border-outline-variant/10 bg-surface-container rounded-stitch-lg p-8 md:p-10 text-center">
-      <p class="text-lg md:text-xl font-bold text-on-surface tracking-tight mb-2">
-        Green Office 2026
-      </p>
-      <p class="text-sm text-outline-variant mb-6 max-w-2xl mx-auto leading-relaxed">
-        Driven by Data · Powered by Evidence · Ready for Certification
-      </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-        <a href={getLocalizedPath(locale, '/evidence')}
-           class="inline-flex items-center justify-center gap-2 rounded-full border border-primary-container/20 bg-primary/90 px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-white shadow-lg hover:bg-primary hover:-translate-y-0.5 transition"
-           aria-label="Go to Evidence Library">
-          Evidence Library
-        </a>
-        <a href={getLocalizedPath(locale, '/documents')}
-           class="inline-flex items-center justify-center gap-2 rounded-full border border-outline-variant/30 px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-on-surface hover:-translate-y-0.5 transition"
-           aria-label="Go to Document Center">
-          Document Center
-        </a>
+    <!-- 8. Closing Statement with Banner -->
+    <section class="mt-8 rounded-stitch-lg overflow-hidden relative min-h-[240px] flex items-center">
+      <!-- Background banner image -->
+      <div class="absolute inset-0">
+        <img
+          src={closingBannerImageUrl}
+          alt=""
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+          aria-hidden="true"
+          width="2048"
+          height="1152"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-[#001a12]/85 via-[#002b1e]/70 to-[#003527]/60" aria-hidden="true"></div>
+      </div>
+
+      <div class="relative z-10 w-full p-8 md:p-10 text-center">
+        <p class="text-lg md:text-xl font-bold text-white tracking-tight mb-2">
+          Green Office 2026
+        </p>
+        <p class="text-sm text-white/80 mb-6 max-w-2xl mx-auto leading-relaxed">
+          Show · Measure · Prove · Improve
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href={getLocalizedPath(locale, '/indicators/')}
+             class="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/15 px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-white shadow-lg backdrop-blur-sm hover:bg-white/25 hover:-translate-y-0.5 transition"
+             aria-label="View All Indicators">
+            All Indicators
+          </a>
+          <a href={getLocalizedPath(locale, '/evidence')}
+             class="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/15 px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-white shadow-lg backdrop-blur-sm hover:bg-white/25 hover:-translate-y-0.5 transition"
+             aria-label="Go to Evidence Library">
+            Evidence Library
+          </a>
+          <a href={getLocalizedPath(locale, '/categories/')}
+             class="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-white/90 hover:text-white hover:bg-white/15 hover:-translate-y-0.5 transition"
+             aria-label="Explore Categories">
+            Explore Categories
+          </a>
+        </div>
       </div>
     </section>
 

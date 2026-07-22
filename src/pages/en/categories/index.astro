@@ -5,6 +5,7 @@ import categoryData from '../../../data/criteria/categories.json';
 import issueData from '../../../data/criteria/issues.json';
 import indicatorData from '../../../data/criteria/indicators.json';
 import CategoryCard from '../../../components/categories/CategoryCard.astro';
+import { categoryImageUrl } from '../../../utils/wow2-images';
 
 const locale = 'en';
 const categories = categoryData.categories;
@@ -60,6 +61,7 @@ const separateCategory = categories.find((c) => c.code === 'cat7');
                 issueCount={issueCount}
                 indicatorCount={indicatorCount}
                 locale={locale}
+                imageUrl={categoryImageUrl(cat.code)}
               />
             );
           })
@@ -84,6 +86,7 @@ const separateCategory = categories.find((c) => c.code === 'cat7');
                 indicatorCount={indicatorCount}
                 locale={locale}
                 isSeparate={true}
+                imageUrl={categoryImageUrl(separateCategory.code)}
               />
               <div class="rounded-xl border border-dashed border-amber-200 bg-amber-50/30 p-5 text-sm text-amber-800">
                 <p class="font-semibold mb-2">
