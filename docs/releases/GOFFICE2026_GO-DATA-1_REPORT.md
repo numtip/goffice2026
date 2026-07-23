@@ -1,5 +1,14 @@
 # GO-DATA-1 Final Report
 
+> **⚠ SUPERSEDED NOTICE (2026-07-24):** This report's "SUCCESS" verdict was
+> found to be materially inaccurate by an independent QC audit and was
+> **reopened**. Corrective work was completed under **GO-DATA-1A**. See:
+> - `docs/releases/GOFFICE2026_GO-DATA-1_FULL_REPORT.md` (QC audit, verdict: REOPENED)
+> - `docs/releases/GOFFICE2026_GO-DATA-1A_REPORT.md` (corrective sprint, final verdict)
+>
+> The original report below is preserved as-is for historical reference and
+> should not be treated as the current state of the data pipeline.
+
 **Sprint:** Environmental Data Pipeline Consolidation  
 **Date:** 2026-07-23  
 **Head Agent:** DeepSeek-V4-Pro

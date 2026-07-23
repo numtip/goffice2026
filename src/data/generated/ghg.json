@@ -76,10 +76,10 @@
       "total": 231.6,
       "average": 19.3,
       "dataStatus": "VERIFIED_BASELINE",
-      "source": "1.6_GreenhouseGas.xlsx (ghg-2568.csv) — complete",
+      "source": "1.5_GreenhouseGas.xlsx (ghg-2568.csv) — complete",
       "updated": "2026-07-15",
       "provenance": {
-        "sourceWorkbook": "docs/1.6_GreenhouseGas.xlsx",
+        "sourceWorkbook": "docs/1.5_GreenhouseGas.xlsx",
         "sourceSheet": "สรุปการคำนวณ ปี 2568",
         "sourceColumn": "col[3]-col[14]",
         "sourceRowRange": "row 67 \"GHG ปี 2568 (kgCO2e)\" — kg values converted to tCO₂e",
@@ -93,7 +93,9 @@
         "valid": true,
         "warnings": [],
         "reconciliationDifference": 0
-      }
+      },
+      "aggregation": "sum",
+      "dataClassification": "CONFIRMED_XLSX"
     },
     "2569": {
       "year": 2569,
@@ -143,10 +145,10 @@
       "total": 349,
       "average": 43.63,
       "dataStatus": "CURRENT_DATA_PENDING",
-      "source": "1.6_GreenhouseGas.xlsx (placeholder data — no 2569 data in source XLSX)",
+      "source": "1.5_GreenhouseGas.xlsx (placeholder data — no 2569 data in source XLSX)",
       "updated": "2026-06-12",
       "provenance": {
-        "sourceWorkbook": "docs/1.6_GreenhouseGas.xlsx",
+        "sourceWorkbook": "docs/1.5_GreenhouseGas.xlsx",
         "sourceSheet": "สรุปการคำนวณ ปี 2568",
         "extractionStatus": "NO_2569_DATA — target year data not yet available in source XLSX",
         "validationStatus": "CURRENT_DATA_PENDING"
@@ -157,7 +159,9 @@
           "Data may contain placeholder values — verify against source workbook"
         ],
         "reconciliationDifference": 0
-      }
+      },
+      "aggregation": "sum",
+      "dataClassification": "PLACEHOLDER"
     }
   },
   "target": {

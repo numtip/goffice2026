@@ -11,6 +11,17 @@ export type DataStatus =
 // ── Target Status — criteria-aligned progress tracking ────────────────────
 export type MetricTargetStatus = 'on-track' | 'off-track' | 'no-target' | 'insufficient-data';
 
+// ── Data Classification — provenance-based confidence tier ────────────────
+// Explicit classification of how a year's data was obtained, replacing
+// fragile string-matching (e.g. checking for the word "placeholder").
+export type DataClassification =
+  | 'CONFIRMED_XLSX'      // Verified directly against a source XLSX present in the repo
+  | 'DERIVED_FROM_CSV'    // Imported from CSV only, no XLSX available for reconciliation (unverified)
+  | 'PRESERVED_LEGACY'    // Carried over from an earlier extraction; source XLSX is missing and cannot be re-verified
+  | 'PLACEHOLDER'         // Known placeholder/demo values, not real measurements
+  | 'MANUAL_ENTRY'        // Entered directly by staff, not derived from a workbook
+  | 'UNKNOWN';            // Origin cannot be determined
+
 // ── Monthly Value ─────────────────────────────────────────────────────────
 export interface MonthlyValue {
   month: number;
@@ -71,10 +82,14 @@ export interface YearData {
   months: MonthlyValue[];
   total: number;
   average: number;
+  /** How the annual total is derived from monthly values. 'average' is required for percentage-unit metrics. */
+  aggregation?: 'sum' | 'average';
   dataStatus: DataStatus;
   source: string;
   sourceRef?: SourceRef;
   quality?: DataQuality;
+  /** Explicit provenance classification — see DataClassification. */
+  dataClassification?: DataClassification;
   updated: string;
   provenance?: Provenance;
 }
@@ -91,6 +106,8 @@ export interface IndicatorMapping {
   indicatorId: string;
   label: string;
   relevance: 'primary' | 'supporting' | 'related';
+  /** Optional note, e.g. flagging that detailed sub-indicator mapping is still pending confirmation. */
+  note?: string;
 }
 
 // ── Multi-Year Metric (Canonical Schema) ──────────────────────────────────
@@ -127,6 +144,8 @@ export interface ExecutiveKpiEntry {
   yoyChange: YoyChange | null;
   dataQuality: DataQuality | null;
   sourceFile: string;
+  /** Whether the current-year value is confirmed valid (quality.valid !== false). */
+  verified?: boolean;
 }
 
 // ── Data Quality Summary ──────────────────────────────────────────────────

@@ -1,8 +1,8 @@
 {
   "generatedFrom": "canonical-metrics",
   "totalMetrics": 6,
-  "metricsWithWarnings": 4,
-  "metricsWithErrors": 4,
+  "metricsWithWarnings": 6,
+  "metricsWithErrors": 6,
   "entries": [
     {
       "metric": "energy",
@@ -16,8 +16,10 @@
     {
       "metric": "energy",
       "yearBE": 2569,
-      "valid": true,
-      "warnings": [],
+      "valid": false,
+      "warnings": [
+        "Current-year data imported from CSV only — no source workbook (XLSX) was available for reconciliation. Treat as unverified/demo until confirmed against the official source."
+      ],
       "reconciliationDifference": null,
       "monthCount": 8,
       "dataStatus": "in_progress"
@@ -34,8 +36,10 @@
     {
       "metric": "water",
       "yearBE": 2569,
-      "valid": true,
-      "warnings": [],
+      "valid": false,
+      "warnings": [
+        "Current-year data imported from CSV only — no source workbook (XLSX) was available for reconciliation. Treat as unverified/demo until confirmed against the official source."
+      ],
       "reconciliationDifference": null,
       "monthCount": 6,
       "dataStatus": "in_progress"

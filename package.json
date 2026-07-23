@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "node --test scripts/test-data-status.mjs scripts/test-i18n-paths.mjs",
+    "test": "node --test scripts/test-data-status.mjs scripts/test-i18n-paths.mjs scripts/test-data-pipeline-quality.mjs",
     "qa:build": "npm run build",
     "qa:runtime": "npm run preview",
     "qa:routes": "node scripts/smoke-routes.mjs",

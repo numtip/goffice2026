@@ -17,11 +17,14 @@
         "direction": "down"
       },
       "dataQuality": {
-        "valid": true,
-        "warnings": [],
+        "valid": false,
+        "warnings": [
+          "Current-year data imported from CSV only — no source workbook (XLSX) was available for reconciliation. Treat as unverified/demo until confirmed against the official source."
+        ],
         "reconciliationDifference": null
       },
-      "sourceFile": "1.2-elect.xlsx converted — partial, 8 of 12 months"
+      "sourceFile": "12-elect.xlsx converted — partial, 8 of 12 months",
+      "verified": false
     },
     {
       "metric": "water",
@@ -39,11 +42,14 @@
         "direction": "up"
       },
       "dataQuality": {
-        "valid": true,
-        "warnings": [],
+        "valid": false,
+        "warnings": [
+          "Current-year data imported from CSV only — no source workbook (XLSX) was available for reconciliation. Treat as unverified/demo until confirmed against the official source."
+        ],
         "reconciliationDifference": null
       },
-      "sourceFile": "1.1-Water.xlsx converted — partial, 6 of 12 months"
+      "sourceFile": "1.1-Water.xlsx converted — partial, 6 of 12 months",
+      "verified": false
     },
     {
       "metric": "fuel",
@@ -67,7 +73,8 @@
         ],
         "reconciliationDifference": 0
       },
-      "sourceFile": "1.3_Gassolene.xlsx (placeholder data — no 2569 data in source XLSX)"
+      "sourceFile": "1.3_Gassolene.xlsx (placeholder data — no 2569 data in source XLSX)",
+      "verified": false
     },
     {
       "metric": "paper",
@@ -80,7 +87,7 @@
       "targetStatus": "no-target",
       "baselineValue": 2197.7999999999997,
       "yoyChange": {
-        "absolute": -1281.7999999999997,
+        "absolute": -1281.8,
         "percent": -58,
         "direction": "down"
       },
@@ -91,7 +98,8 @@
         ],
         "reconciliationDifference": 0
       },
-      "sourceFile": "1.4_Paper.xlsx (placeholder data — no 2569 data in source XLSX)"
+      "sourceFile": "1.4_Paper.xlsx (placeholder data — no 2569 data in source XLSX)",
+      "verified": false
     },
     {
       "metric": "waste",
@@ -99,13 +107,13 @@
       "labelTh": "การจัดการของเสีย",
       "unit": "%",
       "yearBE": 2569,
-      "value": 846,
+      "value": 84.6,
       "target": null,
       "targetStatus": "no-target",
-      "baselineValue": 258.83000000000004,
+      "baselineValue": 21.57,
       "yoyChange": {
-        "absolute": 587.17,
-        "percent": 227,
+        "absolute": 63.03,
+        "percent": 292,
         "direction": "up"
       },
       "dataQuality": {
@@ -115,7 +123,8 @@
         ],
         "reconciliationDifference": 0
       },
-      "sourceFile": "1.5_Waste.xlsx (placeholder data — no 2569 data in source XLSX)"
+      "sourceFile": "1.5_Waste.xlsx (placeholder data — no 2569 data in source XLSX)",
+      "verified": false
     },
     {
       "metric": "ghg",
@@ -139,7 +148,8 @@
         ],
         "reconciliationDifference": 0
       },
-      "sourceFile": "1.6_GreenhouseGas.xlsx (placeholder data — no 2569 data in source XLSX)"
+      "sourceFile": "1.5_GreenhouseGas.xlsx (placeholder data — no 2569 data in source XLSX)",
+      "verified": false
     }
   ]
 }

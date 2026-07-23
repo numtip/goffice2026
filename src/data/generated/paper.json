@@ -93,7 +93,9 @@
         "valid": true,
         "warnings": [],
         "reconciliationDifference": 0
-      }
+      },
+      "aggregation": "sum",
+      "dataClassification": "PRESERVED_LEGACY"
     },
     "2569": {
       "year": 2569,
@@ -147,7 +149,9 @@
           "Data may contain placeholder values — verify against source workbook"
         ],
         "reconciliationDifference": 0
-      }
+      },
+      "aggregation": "sum",
+      "dataClassification": "PLACEHOLDER"
     }
   },
   "target": {
@@ -162,7 +166,7 @@
     "months": []
   },
   "yoyChange": {
-    "absolute": -1281.7999999999997,
+    "absolute": -1281.8,
     "percent": -58,
     "direction": "down"
   },

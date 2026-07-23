@@ -1,7 +1,7 @@
 # GO-DATA-1: Canonical Data Contract
 
-**Date:** 2026-07-23  
-**Status:** FINAL
+**Date:** 2026-07-23 (updated 2026-07-24 — GO-DATA-1A corrective sprint)  
+**Status:** CORRECTED — see `docs/releases/GOFFICE2026_GO-DATA-1A_REPORT.md`
 
 ---
 
@@ -39,8 +39,21 @@ The canonical environmental metric schema is defined in `src/utils/multi-year-sc
 | `average` | `number` | ✅ | Average monthly value |
 | `dataStatus` | `DataStatus` | ✅ | Pipeline state |
 | `source` | `string` | ✅ | Source workbook reference |
+| `aggregation` | `'sum' \| 'average'` | | How `total` is derived from `months`. **Required to be `'average'` for `%`-unit metrics** (GO-DATA-1A) — summing percentage rates is invalid. |
 | `quality` | `DataQuality \| undefined` | ✅ | Validation and reconciliation info |
+| `dataClassification` | `DataClassification` | | Explicit provenance tier (GO-DATA-1A) — see below. Replaces fragile string-matching on the word "placeholder". |
 | `updated` | `string` | ✅ | Date of last update (ISO date only, no time) |
+
+### DataClassification (added in GO-DATA-1A)
+
+| Value | Meaning |
+|-------|---------|
+| `CONFIRMED_XLSX` | Verified directly against a source XLSX confirmed present in git history (water, energy, GHG 2568 baselines) |
+| `DERIVED_FROM_CSV` | Imported from CSV only, no XLSX available for reconciliation — unverified (energy, water 2569) |
+| `PRESERVED_LEGACY` | Carried over from an earlier extraction; source XLSX was never committed to git and cannot be re-verified (fuel, paper, waste 2568 baselines) |
+| `PLACEHOLDER` | Known placeholder/demo values, not real measurements (fuel, paper, waste, GHG 2569) |
+| `MANUAL_ENTRY` | Entered directly by staff, not derived from a workbook |
+| `UNKNOWN` | Origin cannot be determined |
 
 ### DataQuality
 
@@ -63,14 +76,14 @@ The canonical environmental metric schema is defined in `src/utils/multi-year-sc
 
 ## 2. Metric Types
 
-| Metric ID | Unit | Source Workbook | Criteria | KPI Field |
-|-----------|------|----------------|----------|-----------|
-| `energy` | kWh | 1.2-elect.xlsx | 3.2.2 | `kwh` |
-| `water` | m³ | 1.1-Water.xlsx | 3.1.2 | `cubic_meters` |
-| `fuel` | L | 1.3_Gassolene.xlsx | 3.2.5 | `liters` |
-| `paper` | kg | 1.4_Paper.xlsx | 3.3.2 | `kg_estimated` |
-| `waste` | % | 1.5_Waste.xlsx | 4.1.x | `recycle_pct` |
-| `ghg` | tCO₂e | 1.6_GreenhouseGas.xlsx | 1.5.1 / 1.5.2 | `total_tco2e` |
+| Metric ID | Unit | Source Workbook | Criteria | KPI Field | Aggregation |
+|-----------|------|----------------|----------|-----------|-------------|
+| `energy` | kWh | 12-elect.xlsx | 3.2.2 | `kwh` | sum |
+| `water` | m³ | 1.1-Water.xlsx | 3.1.2 | `cubic_meters` | sum |
+| `fuel` | L | 1.3_Gassolene.xlsx | 3.2.5 | `liters` | sum |
+| `paper` | kg | 1.4_Paper.xlsx | 3.3.2 | `kg_estimated` | sum |
+| `waste` | % | 1.5_Waste.xlsx | 4.1 (detailed sub-mapping pending) | `recycle_pct` | **average** (GO-DATA-1A correction — summing % rates is invalid) |
+| `ghg` | tCO₂e | 1.5_GreenhouseGas.xlsx | 1.5.1 / 1.5.2 | `total_tco2e` | sum |
 
 ---
 

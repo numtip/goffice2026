@@ -73,7 +73,7 @@
           "label": "Dec"
         }
       ],
-      "total": 258.83000000000004,
+      "total": 21.57,
       "average": 21.57,
       "dataStatus": "VERIFIED_BASELINE",
       "source": "1.5_Waste.xlsx (waste-2568.csv) — complete",
@@ -93,7 +93,9 @@
         "valid": true,
         "warnings": [],
         "reconciliationDifference": 0
-      }
+      },
+      "aggregation": "average",
+      "dataClassification": "PRESERVED_LEGACY"
     },
     "2569": {
       "year": 2569,
@@ -150,7 +152,7 @@
           "label": "Oct"
         }
       ],
-      "total": 846,
+      "total": 84.6,
       "average": 84.6,
       "dataStatus": "CURRENT_DATA_PENDING",
       "source": "1.5_Waste.xlsx (placeholder data — no 2569 data in source XLSX)",
@@ -167,7 +169,9 @@
           "Data may contain placeholder values — verify against source workbook"
         ],
         "reconciliationDifference": 0
-      }
+      },
+      "aggregation": "average",
+      "dataClassification": "PLACEHOLDER"
     }
   },
   "target": {
@@ -182,16 +186,17 @@
     "months": []
   },
   "yoyChange": {
-    "absolute": 587.17,
-    "percent": 227,
+    "absolute": 63.03,
+    "percent": 292,
     "direction": "up"
   },
   "relatedIndicators": [
     {
-      "indicatorId": "4.1.x",
-      "label": "Waste management",
+      "indicatorId": "4.1",
+      "label": "Waste management section",
       "labelTh": "การจัดการของเสีย",
-      "relevance": "primary"
+      "relevance": "primary",
+      "note": "Detailed sub-indicator mapping pending confirmation from Green Office 2569 criteria document."
     }
   ],
   "sourceEvidence": [],

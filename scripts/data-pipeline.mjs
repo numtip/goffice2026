@@ -36,7 +36,7 @@
  *   --verbose        Detailed output
  */
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -71,7 +71,7 @@ const METRIC_CONFIG = {
     kpiField: 'kwh',
     csvField: 'kwh',
     description: 'Electricity consumption in kilowatt-hours',
-    excelSource: '1.2-elect.xlsx',
+    excelSource: '12-elect.xlsx',
     criteriaId: '3.2.2',
   },
   water: {
@@ -112,7 +112,7 @@ const METRIC_CONFIG = {
     csvField: 'recycle_pct',
     description: 'Waste recycling rate percentage',
     excelSource: '1.5_Waste.xlsx',
-    criteriaId: '4.1.x',
+    criteriaId: '4.1',
   },
   ghg: {
     label: 'GHG Emissions',
@@ -121,7 +121,7 @@ const METRIC_CONFIG = {
     kpiField: 'total_tco2e',
     csvField: 'total_tco2e',
     description: 'Greenhouse gas emissions in tCO₂e',
-    excelSource: '1.6_GreenhouseGas.xlsx',
+    excelSource: '1.5_GreenhouseGas.xlsx',
     criteriaId: '1.5.1',
   },
 };
@@ -254,8 +254,14 @@ function importMetric(metric, year, csvPath, _verbose) {
   })).sort((a, b) => a.month - b.month);
 
   const monthCount = normalizedMonths.length;
-  const totalValue = normalizedMonths.reduce((s, m) => s + m.value, 0);
+  const sumValue = normalizedMonths.reduce((s, m) => s + m.value, 0);
+  const averageValue = monthCount > 0 ? sumValue / monthCount : 0;
   const isBaseline = (Number(year) <= 2568);
+
+  // Percentage-unit metrics (e.g. waste recycling rate) must be aggregated as an
+  // average across months, never summed — summing percentages is semantically invalid.
+  const aggregation = cfg.unit === '%' ? 'average' : 'sum';
+  const totalValue = aggregation === 'average' ? averageValue : sumValue;
 
   // 4. Build year data (deterministic — no runtime timestamp in data)
   const months = normalizedMonths.map(m => ({
@@ -267,19 +273,38 @@ function importMetric(metric, year, csvPath, _verbose) {
   const monthStatus = monthCount >= 12 ? 'complete' : `partial, ${monthCount} of 12 months`;
   const sourceDesc = `${cfg.excelSource} converted — ${monthStatus}`;
 
-  // Reconcile with workbook total (if available via --workbook-total)
-  // Default: no workbook total known, so reconciliation is skipped
-  const quality = reconcileTotal(totalValue, null, cfg.unit);
+  // Reconcile with workbook total (if available via --workbook-total).
+  // This pipeline only parses CSV — it has no way to reconcile against the source
+  // XLSX workbook. Any current-year (non-baseline) import is therefore unverified
+  // by construction and must never be silently reported as valid.
+  let quality;
+  let dataClassification;
+  if (isBaseline) {
+    quality = reconcileTotal(totalValue, null, cfg.unit);
+    dataClassification = 'PRESERVED_LEGACY';
+  } else {
+    quality = {
+      valid: false,
+      warnings: [
+        'Current-year data imported from CSV only — no source workbook (XLSX) was available for reconciliation. Treat as unverified/demo until confirmed against the official source.',
+      ],
+      reconciliationDifference: null,
+    };
+    dataClassification = 'DERIVED_FROM_CSV';
+  }
 
   const yearData = {
     year: Number(year),
     isBaseline,
     months,
     total: Math.round(totalValue * 100) / 100,
-    average: monthCount > 0 ? Math.round((totalValue / monthCount) * 100) / 100 : 0,
+    average: Math.round(averageValue * 100) / 100,
+    aggregation,
     dataStatus: monthCount >= 12 ? 'complete' : 'in_progress',
     source: sourceDesc,
     quality,
+    dataClassification,
+    updated: statSync(csvPath).mtime.toISOString().slice(0, 10),
   };
 
   // 5. Read existing JSON and merge
@@ -494,13 +519,41 @@ function validateGenerated(verbose) {
           }
         }
 
-        // Validate total
+        // Validate total against the correct aggregation method.
+        // Percentage-unit metrics must use 'average', never 'sum' — summing
+        // percentage rates across months is semantically invalid.
+        if (data.unit === '%' && yearData.aggregation && yearData.aggregation !== 'average') {
+          fileErrors.push(`Year ${yearStr}: unit '%' must use aggregation 'average', found '${yearData.aggregation}'`);
+        }
+        if (data.unit === '%' && !yearData.aggregation) {
+          fileWarnings.push(`Year ${yearStr}: unit '%' has no 'aggregation' field set — assumed 'sum', which is invalid for percentages`);
+        }
+
         if (yearData.months && yearData.total !== undefined) {
-          const calcTotal = Math.round(yearData.months.reduce((s, m) => s + m.value, 0) * 100) / 100;
+          const aggregation = yearData.aggregation || 'sum';
+          const calcTotal = aggregation === 'average'
+            ? (yearData.months.length > 0 ? Math.round((yearData.months.reduce((s, m) => s + m.value, 0) / yearData.months.length) * 100) / 100 : 0)
+            : Math.round(yearData.months.reduce((s, m) => s + m.value, 0) * 100) / 100;
           const storedTotal = Math.round(yearData.total * 100) / 100;
           if (calcTotal !== storedTotal) {
-            fileWarnings.push(`Year ${yearStr}: stored total (${storedTotal}) ≠ calculated total (${calcTotal})`);
+            fileWarnings.push(`Year ${yearStr}: stored total (${storedTotal}) ≠ calculated ${aggregation} (${calcTotal})`);
           }
+        }
+
+        // Quality flags must not be silently ignored — an invalid quality state
+        // must always surface at least one warning at validation time.
+        if (yearData.quality && yearData.quality.valid === false) {
+          const detail = yearData.quality.warnings?.length ? yearData.quality.warnings.join('; ') : 'no detail provided';
+          fileWarnings.push(`Year ${yearStr}: quality flagged INVALID — ${detail}`);
+        }
+        if (!yearData.quality) {
+          fileWarnings.push(`Year ${yearStr}: no quality field present — data quality has not been assessed`);
+        }
+
+        // Provenance classification must be present so downstream consumers
+        // (KPI summary, dashboard) can distinguish confirmed vs unverified data.
+        if (!yearData.dataClassification) {
+          fileWarnings.push(`Year ${yearStr}: no dataClassification set — provenance is unknown`);
         }
 
         // Check unit
@@ -508,6 +561,17 @@ function validateGenerated(verbose) {
           fileErrors.push('Missing required unit');
         }
       }
+    }
+
+    // sourceEvidence should be populated once evidence documents are linked.
+    if (!data.sourceEvidence || data.sourceEvidence.length === 0) {
+      fileWarnings.push('No sourceEvidence recorded for this metric');
+    }
+
+    // Extreme YoY swings often indicate one side is placeholder/demo data
+    // rather than a genuine trend — flag for manual review.
+    if (data.yoyChange && Math.abs(data.yoyChange.percent) > 100) {
+      fileWarnings.push(`Extreme YoY change detected (${data.yoyChange.percent}%) — verify both years' data before trusting this trend`);
     }
 
     // Check for hardcoded target values (should be null unless staff-set)
@@ -551,9 +615,14 @@ function generateOutputs(_verbose) {
   }
 
   // 1. Executive KPI Summary
+  // Executive KPIs must never present unverified/placeholder data as if it were
+  // confirmed. Any metric-year whose quality.valid !== true is marked
+  // verified:false and its value is still returned for transparency but must be
+  // treated by consumers as unverified, not a confirmed KPI figure.
   const kpiEntries = metrics.map(m => {
     const currentYearData = m.years?.[String(m.currentYear)];
     const baselineYearData = m.years?.[String(m.baselineYear)];
+    const verified = currentYearData?.quality?.valid === true;
     return {
       metric: m.metric,
       label: m.label,
@@ -567,6 +636,7 @@ function generateOutputs(_verbose) {
       yoyChange: m.yoyChange || null,
       dataQuality: currentYearData?.quality || null,
       sourceFile: currentYearData?.source || '',
+      verified,
     };
   });
 
@@ -734,4 +804,9 @@ function main() {
   console.log('✅ Pipeline completed successfully.');
 }
 
-main();
+// Only run the CLI when this file is executed directly (not when imported by tests).
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  main();
+}
+
+export { importMetric, validateGenerated, generateOutputs, reconcileTotal, runCheck, METRIC_CONFIG, VALID_METRICS };

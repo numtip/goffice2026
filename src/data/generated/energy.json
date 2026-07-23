@@ -76,10 +76,10 @@
       "total": 403036.80000000005,
       "average": 33586.4,
       "dataStatus": "VERIFIED_BASELINE",
-      "source": "1.2-elect.xlsx (energy-2568.csv) — complete",
+      "source": "12-elect.xlsx (energy-2568.csv) — complete",
       "updated": "2026-07-15",
       "provenance": {
-        "sourceWorkbook": "docs/1.2-elect.xlsx",
+        "sourceWorkbook": "docs/12-elect.xlsx",
         "sourceSheet": "2568",
         "sourceColumn": "[6] — \"(kwh) ปี 2568\" column",
         "sourceRowRange": "rows 4-15 (Thai month-labeled rows)",
@@ -93,7 +93,9 @@
         "valid": true,
         "warnings": [],
         "reconciliationDifference": 0
-      }
+      },
+      "aggregation": "sum",
+      "dataClassification": "CONFIRMED_XLSX"
     },
     "2569": {
       "year": 2569,
@@ -142,13 +144,18 @@
       ],
       "total": 149100,
       "average": 18637.5,
+      "aggregation": "sum",
       "dataStatus": "in_progress",
-      "source": "1.2-elect.xlsx converted — partial, 8 of 12 months",
+      "source": "12-elect.xlsx converted — partial, 8 of 12 months",
       "quality": {
-        "valid": true,
-        "warnings": [],
+        "valid": false,
+        "warnings": [
+          "Current-year data imported from CSV only — no source workbook (XLSX) was available for reconciliation. Treat as unverified/demo until confirmed against the official source."
+        ],
         "reconciliationDifference": null
-      }
+      },
+      "dataClassification": "DERIVED_FROM_CSV",
+      "updated": "2026-06-26"
     }
   },
   "target": {

@@ -17,11 +17,11 @@ const DOCS = join(ROOT, 'docs');
 
 const FILES = [
   { file: '1.1-Water.xlsx',       metric: 'water' },
-  { file: '1.2-elect.xlsx',       metric: 'energy' },
+  { file: '12-elect.xlsx',        metric: 'energy' },
   { file: '1.3_Gassolene.xlsx',   metric: 'fuel' },
   { file: '1.4_Paper.xlsx',       metric: 'paper' },
   { file: '1.5_Waste.xlsx',       metric: 'waste' },
-  { file: '1.6_GreenhouseGas.xlsx', metric: 'ghg' },
+  { file: '1.5_GreenhouseGas.xlsx', metric: 'ghg' },
 ];
 
 for (const { file, metric } of FILES) {

@@ -41,7 +41,7 @@ const METRIC_CONFIG = {
     kpiField: 'kwh',
     csvField: 'kwh',
     description: 'Electricity consumption in kilowatt-hours',
-    excelSource: '1.2-elect.xlsx',
+    excelSource: '12-elect.xlsx',
   },
   water: {
     label: 'Water Consumption',
@@ -81,7 +81,7 @@ const METRIC_CONFIG = {
     kpiField: 'total_tco2e',
     csvField: 'total_tco2e',
     description: 'Greenhouse gas emissions in tCO₂e',
-    excelSource: '1.6_GreenhouseGas.xlsx',
+    excelSource: '1.5_GreenhouseGas.xlsx',
   },
 };
 

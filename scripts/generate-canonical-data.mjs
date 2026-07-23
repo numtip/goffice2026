@@ -28,7 +28,7 @@ const CRITERIA_MAP = {
   fuel:    [{ indicatorId: '3.2.5', label: 'Fuel consumption', labelTh: 'การใช้เชื้อเพลิง', relevance: 'primary' }],
   paper:   [{ indicatorId: '3.3.2', label: 'Paper consumption', labelTh: 'การใช้กระดาษ', relevance: 'primary' }],
   waste:   [
-    { indicatorId: '4.1.x', label: 'Waste management', labelTh: 'การจัดการของเสีย', relevance: 'primary' },
+    { indicatorId: '4.1', label: 'Waste management section', labelTh: 'การจัดการของเสีย', relevance: 'primary', note: 'Detailed sub-indicator mapping pending confirmation from Green Office 2569 criteria document.' },
   ],
   ghg:     [
     { indicatorId: '1.5.1', label: 'GHG emissions (Scope 1,2,3)', labelTh: 'ก๊าซเรือนกระจก', relevance: 'primary' },
@@ -44,6 +44,12 @@ const RECONCILIATION_TOLERANCE = {
   '%': 0.5,
   'tCO₂e': 0.5,
 };
+
+// Metrics whose baseline source XLSX was confirmed present in git history
+// (docs/12-elect.xlsx, docs/1.1-Water.xlsx, docs/1.5_GreenhouseGas.xlsx).
+// fuel/paper/waste XLSX were never committed to the repository and cannot be
+// re-verified — their baseline data is preserved from an earlier extraction.
+const CONFIRMED_XLSX_METRICS = new Set(['water', 'energy', 'ghg']);
 
 function readJSON(filePath) {
   if (!existsSync(filePath)) return null;
@@ -85,6 +91,13 @@ function main() {
     if (!data.relatedIndicators || data.relatedIndicators.length === 0) {
       data.relatedIndicators = CRITERIA_MAP[metric] || [];
       console.log(`   ➕ Added relatedIndicators: ${data.relatedIndicators.map(i => i.indicatorId).join(', ')}`);
+    }
+
+    // 1a. Fix known-invalid wildcard indicator mapping for waste ('4.1.x' is
+    // not a valid criteria ID) — force-correct regardless of prior presence.
+    if (metric === 'waste' && data.relatedIndicators?.some(i => i.indicatorId === '4.1.x')) {
+      data.relatedIndicators = CRITERIA_MAP.waste;
+      console.log(`   🔧 Fixed waste relatedIndicators: '4.1.x' → '4.1'`);
     }
 
     // 2. Add sourceEvidence if missing
@@ -131,6 +144,47 @@ function main() {
         if (yearData.source) {
           yearData.source = yearData.source.replace(/[A-Z]:\\[^,]+\\/gi, '');
         }
+
+        // 5a. Fix incorrect GHG source workbook filename (confirmed correct
+        // name per git history is 1.5_GreenhouseGas.xlsx, not 1.6_...).
+        if (metric === 'ghg') {
+          if (yearData.source) yearData.source = yearData.source.replace('1.6_GreenhouseGas.xlsx', '1.5_GreenhouseGas.xlsx');
+          if (yearData.provenance?.sourceWorkbook) {
+            yearData.provenance.sourceWorkbook = yearData.provenance.sourceWorkbook.replace('1.6_GreenhouseGas.xlsx', '1.5_GreenhouseGas.xlsx');
+          }
+        }
+        if (metric === 'energy') {
+          if (yearData.source) yearData.source = yearData.source.replace('1.2-elect.xlsx', '12-elect.xlsx');
+          if (yearData.provenance?.sourceWorkbook) {
+            yearData.provenance.sourceWorkbook = yearData.provenance.sourceWorkbook.replace('1.2-elect.xlsx', '12-elect.xlsx');
+          }
+        }
+
+        // 5b. Waste (and any other '%'-unit metric) must be aggregated as an
+        // average across months, never summed — summing percentage rates is
+        // semantically invalid and produces meaningless YoY figures.
+        if (unit === '%' && yearData.months && yearData.months.length > 0) {
+          const avg = Math.round((yearData.months.reduce((s, m) => s + m.value, 0) / yearData.months.length) * 100) / 100;
+          if (yearData.aggregation !== 'average' || Math.abs(yearData.total - avg) > 0.01) {
+            console.log(`   🔧 Fixed ${metric} ${yearStr}: total ${yearData.total} (sum) → ${avg} (average)`);
+            yearData.total = avg;
+            yearData.aggregation = 'average';
+          }
+        } else if (!yearData.aggregation) {
+          yearData.aggregation = 'sum';
+        }
+
+        // 5c. Assign explicit provenance classification if missing.
+        if (!yearData.dataClassification) {
+          if (yearData.quality && yearData.quality.warnings?.some(w => w.toLowerCase().includes('placeholder'))) {
+            yearData.dataClassification = 'PLACEHOLDER';
+          } else if (yearData.isBaseline) {
+            yearData.dataClassification = CONFIRMED_XLSX_METRICS.has(metric) ? 'CONFIRMED_XLSX' : 'PRESERVED_LEGACY';
+          } else {
+            yearData.dataClassification = 'DERIVED_FROM_CSV';
+          }
+          console.log(`   ➕ Added dataClassification for ${yearStr}: ${yearData.dataClassification}`);
+        }
       }
     }
 
@@ -148,16 +202,17 @@ function main() {
       console.log(`   ➕ Added labelTh: ${data.labelTh}`);
     }
 
-    // 7. Ensure yoyChange is present
-    if (!data.yoyChange) {
+    // 7. Recompute yoyChange from current baseline/current totals (always,
+    // so corrections to totals — e.g. waste sum→average — are reflected).
+    {
       const bYear = data.years?.[String(data.baselineYear)];
       const cYear = data.years?.[String(data.currentYear)];
       if (bYear && cYear) {
-        const absolute = cYear.total - bYear.total;
+        const absolute = Math.round((cYear.total - bYear.total) * 100) / 100;
         const percent = bYear.total !== 0 ? Math.round((absolute / bYear.total) * 100) : 0;
         const direction = percent > 0 ? 'up' : percent < 0 ? 'down' : 'stable';
         data.yoyChange = { absolute, percent, direction };
-        console.log(`   ➕ Computed yoyChange: ${direction} (${percent}%)`);
+        console.log(`   ➕ yoyChange: ${direction} (${percent}%)`);
       }
     }
 
@@ -185,6 +240,7 @@ function main() {
       yoyChange: m.yoyChange || null,
       dataQuality: cYear?.quality || null,
       sourceFile: cYear?.source?.split('(')[0]?.trim() || '',
+      verified: cYear?.quality?.valid === true,
     };
   });
 

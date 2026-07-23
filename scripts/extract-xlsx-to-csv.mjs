@@ -137,8 +137,8 @@ function extractWater() {
 }
 
 function extractEnergy() {
-  console.log('\n📊 Energy — 1.2-elect.xlsx');
-  const path = join(DOCS, '1.2-elect.xlsx');
+  console.log('\n📊 Energy — 12-elect.xlsx');
+  const path = join(DOCS, '12-elect.xlsx');
   const months = extractColumn6Metric(path, '2568', 2568, 'energy');
   if (months) writeCsv('energy', 2568, months);
 }
@@ -220,8 +220,8 @@ function extractWaste() {
 }
 
 function extractGhg() {
-  console.log('\n📊 GHG — 1.6_GreenhouseGas.xlsx');
-  const path = join(DOCS, '1.6_GreenhouseGas.xlsx');
+  console.log('\n📊 GHG — 1.5_GreenhouseGas.xlsx');
+  const path = join(DOCS, '1.5_GreenhouseGas.xlsx');
   const wb = readXlsx(path);
   const sheetName = 'สรุปการคำนวณ ปี 2568';
   const rows = sheetToRows(wb, sheetName);

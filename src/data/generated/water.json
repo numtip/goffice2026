@@ -93,7 +93,9 @@
         "valid": true,
         "warnings": [],
         "reconciliationDifference": 0
-      }
+      },
+      "aggregation": "sum",
+      "dataClassification": "CONFIRMED_XLSX"
     },
     "2569": {
       "year": 2569,
@@ -132,13 +134,18 @@
       ],
       "total": 31200,
       "average": 5200,
+      "aggregation": "sum",
       "dataStatus": "in_progress",
       "source": "1.1-Water.xlsx converted — partial, 6 of 12 months",
       "quality": {
-        "valid": true,
-        "warnings": [],
+        "valid": false,
+        "warnings": [
+          "Current-year data imported from CSV only — no source workbook (XLSX) was available for reconciliation. Treat as unverified/demo until confirmed against the official source."
+        ],
         "reconciliationDifference": null
-      }
+      },
+      "dataClassification": "DERIVED_FROM_CSV",
+      "updated": "2026-06-26"
     }
   },
   "target": {
