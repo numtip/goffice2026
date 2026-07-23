@@ -18,7 +18,12 @@
     "import:data": "node scripts/import-dashboard-data.mjs",
     "import:validate": "node scripts/import-dashboard-data.mjs --all --dry-run",
     "validate": "node scripts/validate-platform.mjs",
-    "qa:seo": "node scripts/qa-seo-release.mjs"
+    "qa:seo": "node scripts/qa-seo-release.mjs",
+    "data:import": "node scripts/data-pipeline.mjs import",
+    "data:validate": "node scripts/data-pipeline.mjs validate",
+    "data:generate": "node scripts/data-pipeline.mjs generate",
+    "data:check": "node scripts/data-pipeline.mjs check",
+    "data:build": "node scripts/data-pipeline.mjs build"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.2.1",

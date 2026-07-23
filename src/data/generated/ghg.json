@@ -12,18 +12,66 @@
       "year": 2568,
       "isBaseline": true,
       "months": [
-        { "month": 1, "value": 11.53, "label": "Jan" },
-        { "month": 2, "value": 14.45, "label": "Feb" },
-        { "month": 3, "value": 21.38, "label": "Mar" },
-        { "month": 4, "value": 20.86, "label": "Apr" },
-        { "month": 5, "value": 22.67, "label": "May" },
-        { "month": 6, "value": 21.78, "label": "Jun" },
-        { "month": 7, "value": 21.96, "label": "Jul" },
-        { "month": 8, "value": 22.23, "label": "Aug" },
-        { "month": 9, "value": 23.44, "label": "Sep" },
-        { "month": 10, "value": 18.85, "label": "Oct" },
-        { "month": 11, "value": 18.43, "label": "Nov" },
-        { "month": 12, "value": 14.02, "label": "Dec" }
+        {
+          "month": 1,
+          "value": 11.53,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 14.45,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 21.38,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 20.86,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 22.67,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 21.78,
+          "label": "Jun"
+        },
+        {
+          "month": 7,
+          "value": 21.96,
+          "label": "Jul"
+        },
+        {
+          "month": 8,
+          "value": 22.23,
+          "label": "Aug"
+        },
+        {
+          "month": 9,
+          "value": 23.44,
+          "label": "Sep"
+        },
+        {
+          "month": 10,
+          "value": 18.85,
+          "label": "Oct"
+        },
+        {
+          "month": 11,
+          "value": 18.43,
+          "label": "Nov"
+        },
+        {
+          "month": 12,
+          "value": 14.02,
+          "label": "Dec"
+        }
       ],
       "total": 231.6,
       "average": 19.3,
@@ -40,20 +88,57 @@
         "normalizationScript": "scripts/import-dashboard-data.mjs",
         "normalizationTimestamp": "2026-07-15T03:50:00+07:00",
         "validationStatus": "VERIFIED_BASELINE"
+      },
+      "quality": {
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": 0
       }
     },
     "2569": {
       "year": 2569,
       "isBaseline": false,
       "months": [
-        { "month": 1, "value": 50, "label": "Jan" },
-        { "month": 2, "value": 48, "label": "Feb" },
-        { "month": 3, "value": 46, "label": "Mar" },
-        { "month": 4, "value": 44, "label": "Apr" },
-        { "month": 5, "value": 42, "label": "May" },
-        { "month": 6, "value": 41, "label": "Jun" },
-        { "month": 7, "value": 40, "label": "Jul" },
-        { "month": 8, "value": 38, "label": "Aug" }
+        {
+          "month": 1,
+          "value": 50,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 48,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 46,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 44,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 42,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 41,
+          "label": "Jun"
+        },
+        {
+          "month": 7,
+          "value": 40,
+          "label": "Jul"
+        },
+        {
+          "month": 8,
+          "value": 38,
+          "label": "Aug"
+        }
       ],
       "total": 349,
       "average": 43.63,
@@ -65,6 +150,13 @@
         "sourceSheet": "สรุปการคำนวณ ปี 2568",
         "extractionStatus": "NO_2569_DATA — target year data not yet available in source XLSX",
         "validationStatus": "CURRENT_DATA_PENDING"
+      },
+      "quality": {
+        "valid": false,
+        "warnings": [
+          "Data may contain placeholder values — verify against source workbook"
+        ],
+        "reconciliationDifference": 0
       }
     }
   },
@@ -83,5 +175,22 @@
     "absolute": 117.4,
     "percent": 51,
     "direction": "up"
-  }
+  },
+  "relatedIndicators": [
+    {
+      "indicatorId": "1.5.1",
+      "label": "GHG emissions (Scope 1,2,3)",
+      "labelTh": "ก๊าซเรือนกระจก",
+      "relevance": "primary"
+    },
+    {
+      "indicatorId": "1.5.2",
+      "label": "GHG reduction target",
+      "labelTh": "เป้าหมายลดก๊าซเรือนกระจก",
+      "relevance": "supporting"
+    }
+  ],
+  "sourceEvidence": [],
+  "targetStatus": "no-target",
+  "labelTh": "ก๊าซเรือนกระจก"
 }

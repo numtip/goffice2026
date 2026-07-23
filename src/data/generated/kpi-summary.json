@@ -1,0 +1,145 @@
+{
+  "generatedFrom": "canonical-metrics",
+  "metrics": [
+    {
+      "metric": "energy",
+      "label": "Electricity Consumption",
+      "labelTh": "การใช้ไฟฟ้า",
+      "unit": "kWh",
+      "yearBE": 2569,
+      "value": 149100,
+      "target": null,
+      "targetStatus": "no-target",
+      "baselineValue": 403036.80000000005,
+      "yoyChange": {
+        "absolute": -253936.80000000005,
+        "percent": -63,
+        "direction": "down"
+      },
+      "dataQuality": {
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": null
+      },
+      "sourceFile": "1.2-elect.xlsx converted — partial, 8 of 12 months"
+    },
+    {
+      "metric": "water",
+      "label": "Water Consumption",
+      "labelTh": "การใช้น้ำ",
+      "unit": "m³",
+      "yearBE": 2569,
+      "value": 31200,
+      "target": null,
+      "targetStatus": "no-target",
+      "baselineValue": 8337.5,
+      "yoyChange": {
+        "absolute": 22862.5,
+        "percent": 274,
+        "direction": "up"
+      },
+      "dataQuality": {
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": null
+      },
+      "sourceFile": "1.1-Water.xlsx converted — partial, 6 of 12 months"
+    },
+    {
+      "metric": "fuel",
+      "label": "Fuel Consumption",
+      "labelTh": "การใช้เชื้อเพลิง",
+      "unit": "L",
+      "yearBE": 2569,
+      "value": 16200,
+      "target": null,
+      "targetStatus": "no-target",
+      "baselineValue": 339.83000000000004,
+      "yoyChange": {
+        "absolute": 15860.17,
+        "percent": 4667,
+        "direction": "up"
+      },
+      "dataQuality": {
+        "valid": false,
+        "warnings": [
+          "Data may contain placeholder values — verify against source workbook"
+        ],
+        "reconciliationDifference": 0
+      },
+      "sourceFile": "1.3_Gassolene.xlsx (placeholder data — no 2569 data in source XLSX)"
+    },
+    {
+      "metric": "paper",
+      "label": "Paper Consumption",
+      "labelTh": "การใช้กระดาษ",
+      "unit": "kg",
+      "yearBE": 2569,
+      "value": 916,
+      "target": null,
+      "targetStatus": "no-target",
+      "baselineValue": 2197.7999999999997,
+      "yoyChange": {
+        "absolute": -1281.7999999999997,
+        "percent": -58,
+        "direction": "down"
+      },
+      "dataQuality": {
+        "valid": false,
+        "warnings": [
+          "Data may contain placeholder values — verify against source workbook"
+        ],
+        "reconciliationDifference": 0
+      },
+      "sourceFile": "1.4_Paper.xlsx (placeholder data — no 2569 data in source XLSX)"
+    },
+    {
+      "metric": "waste",
+      "label": "Waste Management",
+      "labelTh": "การจัดการของเสีย",
+      "unit": "%",
+      "yearBE": 2569,
+      "value": 846,
+      "target": null,
+      "targetStatus": "no-target",
+      "baselineValue": 258.83000000000004,
+      "yoyChange": {
+        "absolute": 587.17,
+        "percent": 227,
+        "direction": "up"
+      },
+      "dataQuality": {
+        "valid": false,
+        "warnings": [
+          "Data may contain placeholder values — verify against source workbook"
+        ],
+        "reconciliationDifference": 0
+      },
+      "sourceFile": "1.5_Waste.xlsx (placeholder data — no 2569 data in source XLSX)"
+    },
+    {
+      "metric": "ghg",
+      "label": "GHG Emissions",
+      "labelTh": "ก๊าซเรือนกระจก",
+      "unit": "tCO₂e",
+      "yearBE": 2569,
+      "value": 349,
+      "target": null,
+      "targetStatus": "no-target",
+      "baselineValue": 231.6,
+      "yoyChange": {
+        "absolute": 117.4,
+        "percent": 51,
+        "direction": "up"
+      },
+      "dataQuality": {
+        "valid": false,
+        "warnings": [
+          "Data may contain placeholder values — verify against source workbook"
+        ],
+        "reconciliationDifference": 0
+      },
+      "sourceFile": "1.6_GreenhouseGas.xlsx (placeholder data — no 2569 data in source XLSX)"
+    }
+  ]
+}

@@ -12,18 +12,66 @@
       "year": 2568,
       "isBaseline": true,
       "months": [
-        { "month": 1, "value": 194.4, "label": "Jan" },
-        { "month": 2, "value": 175.5, "label": "Feb" },
-        { "month": 3, "value": 245.7, "label": "Mar" },
-        { "month": 4, "value": 189, "label": "Apr" },
-        { "month": 5, "value": 126.9, "label": "May" },
-        { "month": 6, "value": 183.6, "label": "Jun" },
-        { "month": 7, "value": 159.3, "label": "Jul" },
-        { "month": 8, "value": 206.55, "label": "Aug" },
-        { "month": 9, "value": 198.45, "label": "Sep" },
-        { "month": 10, "value": 140.4, "label": "Oct" },
-        { "month": 11, "value": 213.3, "label": "Nov" },
-        { "month": 12, "value": 164.7, "label": "Dec" }
+        {
+          "month": 1,
+          "value": 194.4,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 175.5,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 245.7,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 189,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 126.9,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 183.6,
+          "label": "Jun"
+        },
+        {
+          "month": 7,
+          "value": 159.3,
+          "label": "Jul"
+        },
+        {
+          "month": 8,
+          "value": 206.55,
+          "label": "Aug"
+        },
+        {
+          "month": 9,
+          "value": 198.45,
+          "label": "Sep"
+        },
+        {
+          "month": 10,
+          "value": 140.4,
+          "label": "Oct"
+        },
+        {
+          "month": 11,
+          "value": 213.3,
+          "label": "Nov"
+        },
+        {
+          "month": 12,
+          "value": 164.7,
+          "label": "Dec"
+        }
       ],
       "total": 2197.7999999999997,
       "average": 183.15,
@@ -40,18 +88,47 @@
         "normalizationScript": "scripts/import-dashboard-data.mjs",
         "normalizationTimestamp": "2026-07-15T03:50:00+07:00",
         "validationStatus": "VERIFIED_BASELINE"
+      },
+      "quality": {
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": 0
       }
     },
     "2569": {
       "year": 2569,
       "isBaseline": false,
       "months": [
-        { "month": 1, "value": 155, "label": "Jan" },
-        { "month": 2, "value": 145, "label": "Feb" },
-        { "month": 3, "value": 140, "label": "Mar" },
-        { "month": 4, "value": 148, "label": "Apr" },
-        { "month": 5, "value": 160, "label": "May" },
-        { "month": 6, "value": 168, "label": "Jun" }
+        {
+          "month": 1,
+          "value": 155,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 145,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 140,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 148,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 160,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 168,
+          "label": "Jun"
+        }
       ],
       "total": 916,
       "average": 152.67,
@@ -63,6 +140,13 @@
         "sourceSheet": "2568",
         "extractionStatus": "NO_2569_DATA — target year data not yet available in source XLSX",
         "validationStatus": "CURRENT_DATA_PENDING"
+      },
+      "quality": {
+        "valid": false,
+        "warnings": [
+          "Data may contain placeholder values — verify against source workbook"
+        ],
+        "reconciliationDifference": 0
       }
     }
   },
@@ -81,5 +165,16 @@
     "absolute": -1281.7999999999997,
     "percent": -58,
     "direction": "down"
-  }
+  },
+  "relatedIndicators": [
+    {
+      "indicatorId": "3.3.2",
+      "label": "Paper consumption",
+      "labelTh": "การใช้กระดาษ",
+      "relevance": "primary"
+    }
+  ],
+  "sourceEvidence": [],
+  "targetStatus": "no-target",
+  "labelTh": "การใช้กระดาษ"
 }

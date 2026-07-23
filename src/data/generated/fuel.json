@@ -12,18 +12,66 @@
       "year": 2568,
       "isBaseline": true,
       "months": [
-        { "month": 1, "value": 82.44, "label": "Jan" },
-        { "month": 2, "value": 23.46, "label": "Feb" },
-        { "month": 3, "value": 39.18, "label": "Mar" },
-        { "month": 4, "value": 39.07, "label": "Apr" },
-        { "month": 5, "value": 48.89, "label": "May" },
-        { "month": 6, "value": 106.79, "label": "Jun" },
-        { "month": 7, "value": 0, "label": "Jul" },
-        { "month": 8, "value": 0, "label": "Aug" },
-        { "month": 9, "value": 0, "label": "Sep" },
-        { "month": 10, "value": 0, "label": "Oct" },
-        { "month": 11, "value": 0, "label": "Nov" },
-        { "month": 12, "value": 0, "label": "Dec" }
+        {
+          "month": 1,
+          "value": 82.44,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 23.46,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 39.18,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 39.07,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 48.89,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 106.79,
+          "label": "Jun"
+        },
+        {
+          "month": 7,
+          "value": 0,
+          "label": "Jul"
+        },
+        {
+          "month": 8,
+          "value": 0,
+          "label": "Aug"
+        },
+        {
+          "month": 9,
+          "value": 0,
+          "label": "Sep"
+        },
+        {
+          "month": 10,
+          "value": 0,
+          "label": "Oct"
+        },
+        {
+          "month": 11,
+          "value": 0,
+          "label": "Nov"
+        },
+        {
+          "month": 12,
+          "value": 0,
+          "label": "Dec"
+        }
       ],
       "total": 339.83000000000004,
       "average": 28.32,
@@ -40,21 +88,62 @@
         "normalizationScript": "scripts/import-dashboard-data.mjs",
         "normalizationTimestamp": "2026-07-15T03:50:00+07:00",
         "validationStatus": "VERIFIED_BASELINE"
+      },
+      "quality": {
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": 0
       }
     },
     "2569": {
       "year": 2569,
       "isBaseline": false,
       "months": [
-        { "month": 1, "value": 1950, "label": "Jan" },
-        { "month": 2, "value": 1880, "label": "Feb" },
-        { "month": 3, "value": 1820, "label": "Mar" },
-        { "month": 4, "value": 1750, "label": "Apr" },
-        { "month": 5, "value": 1720, "label": "May" },
-        { "month": 6, "value": 1780, "label": "Jun" },
-        { "month": 7, "value": 1850, "label": "Jul" },
-        { "month": 8, "value": 1750, "label": "Aug" },
-        { "month": 9, "value": 1700, "label": "Sep" }
+        {
+          "month": 1,
+          "value": 1950,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 1880,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 1820,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 1750,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 1720,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 1780,
+          "label": "Jun"
+        },
+        {
+          "month": 7,
+          "value": 1850,
+          "label": "Jul"
+        },
+        {
+          "month": 8,
+          "value": 1750,
+          "label": "Aug"
+        },
+        {
+          "month": 9,
+          "value": 1700,
+          "label": "Sep"
+        }
       ],
       "total": 16200,
       "average": 1800,
@@ -66,6 +155,13 @@
         "sourceSheet": "2568",
         "extractionStatus": "NO_2569_DATA — target year data not yet available in source XLSX",
         "validationStatus": "CURRENT_DATA_PENDING"
+      },
+      "quality": {
+        "valid": false,
+        "warnings": [
+          "Data may contain placeholder values — verify against source workbook"
+        ],
+        "reconciliationDifference": 0
       }
     }
   },
@@ -84,5 +180,16 @@
     "absolute": 15860.17,
     "percent": 4667,
     "direction": "up"
-  }
+  },
+  "relatedIndicators": [
+    {
+      "indicatorId": "3.2.5",
+      "label": "Fuel consumption",
+      "labelTh": "การใช้เชื้อเพลิง",
+      "relevance": "primary"
+    }
+  ],
+  "sourceEvidence": [],
+  "targetStatus": "no-target",
+  "labelTh": "การใช้เชื้อเพลิง"
 }

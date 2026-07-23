@@ -1,0 +1,124 @@
+{
+  "generatedFrom": "canonical-metrics",
+  "totalMetrics": 6,
+  "metricsWithWarnings": 4,
+  "metricsWithErrors": 4,
+  "entries": [
+    {
+      "metric": "energy",
+      "yearBE": 2568,
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 12,
+      "dataStatus": "VERIFIED_BASELINE"
+    },
+    {
+      "metric": "energy",
+      "yearBE": 2569,
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": null,
+      "monthCount": 8,
+      "dataStatus": "in_progress"
+    },
+    {
+      "metric": "water",
+      "yearBE": 2568,
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 12,
+      "dataStatus": "VERIFIED_BASELINE"
+    },
+    {
+      "metric": "water",
+      "yearBE": 2569,
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": null,
+      "monthCount": 6,
+      "dataStatus": "in_progress"
+    },
+    {
+      "metric": "fuel",
+      "yearBE": 2568,
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 12,
+      "dataStatus": "VERIFIED_BASELINE"
+    },
+    {
+      "metric": "fuel",
+      "yearBE": 2569,
+      "valid": false,
+      "warnings": [
+        "Data may contain placeholder values — verify against source workbook"
+      ],
+      "reconciliationDifference": 0,
+      "monthCount": 9,
+      "dataStatus": "CURRENT_DATA_PENDING"
+    },
+    {
+      "metric": "paper",
+      "yearBE": 2568,
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 12,
+      "dataStatus": "VERIFIED_BASELINE"
+    },
+    {
+      "metric": "paper",
+      "yearBE": 2569,
+      "valid": false,
+      "warnings": [
+        "Data may contain placeholder values — verify against source workbook"
+      ],
+      "reconciliationDifference": 0,
+      "monthCount": 6,
+      "dataStatus": "CURRENT_DATA_PENDING"
+    },
+    {
+      "metric": "waste",
+      "yearBE": 2568,
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 12,
+      "dataStatus": "VERIFIED_BASELINE"
+    },
+    {
+      "metric": "waste",
+      "yearBE": 2569,
+      "valid": false,
+      "warnings": [
+        "Data may contain placeholder values — verify against source workbook"
+      ],
+      "reconciliationDifference": 0,
+      "monthCount": 10,
+      "dataStatus": "CURRENT_DATA_PENDING"
+    },
+    {
+      "metric": "ghg",
+      "yearBE": 2568,
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 12,
+      "dataStatus": "VERIFIED_BASELINE"
+    },
+    {
+      "metric": "ghg",
+      "yearBE": 2569,
+      "valid": false,
+      "warnings": [
+        "Data may contain placeholder values — verify against source workbook"
+      ],
+      "reconciliationDifference": 0,
+      "monthCount": 8,
+      "dataStatus": "CURRENT_DATA_PENDING"
+    }
+  ]
+}
