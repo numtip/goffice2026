@@ -251,10 +251,10 @@ const partialCount = insightIncomplete.length;
         <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 p-4 md:p-5">
           <div class="relative z-10">
             <h2 class="text-lg font-bold text-on-surface tracking-tight">6-Resource Overview</h2>
-            <p class="text-xs text-outline-variant mt-0.5">Current year (2569) vs baseline (2568) with monthly trends</p>
+            <p class="text-xs text-on-surface-variant mt-0.5">Current year (2569) vs baseline (2568) with monthly trends</p>
           </div>
         <!-- Resource Icons decorative row -->
-        <div class="flex items-center gap-3 text-[11px] text-outline-variant shrink-0">
+        <div class="flex items-center gap-3 text-[11px] text-on-surface-variant shrink-0">
           <span class="flex items-center gap-1">
             <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
             {totalImproving} improved
@@ -434,7 +434,7 @@ const partialCount = insightIncomplete.length;
       <section class="mb-8">
         <div class="mb-3">
           <h2 class="text-lg font-bold text-on-surface tracking-tight mb-1">Baseline vs Current Comparison</h2>
-          <p class="text-xs text-outline-variant">
+          <p class="text-xs text-on-surface-variant">
             Index below 100 = reduced consumption (improvement) · {resourcePerf.length} resources compared to baseline 2568
           </p>
           <div class="flex flex-wrap gap-2 mt-2">
@@ -466,7 +466,7 @@ const partialCount = insightIncomplete.length;
       <section class="mb-8">
         <div class="mb-3">
           <h2 class="text-lg font-bold text-on-surface tracking-tight mb-1">Green Office Category Scores</h2>
-          <p class="text-xs text-outline-variant">
+          <p class="text-xs text-on-surface-variant">
             {catScores.length} category scores from reference system · Average {Math.round(catScores.reduce((s, c) => s + c.score, 0) / catScores.length)}%
           </p>
         </div>
@@ -492,7 +492,7 @@ const partialCount = insightIncomplete.length;
     </section>
 
     <!-- 7. Trust and Evidence Panel -->
-    <section class="bg-surface-container rounded-stitch-lg border border-outline-variant/20 p-5 mb-6 text-xs text-outline-variant">
+    <section class="bg-surface-container rounded-stitch-lg border border-outline-variant/20 p-5 mb-6 text-xs text-on-surface-variant">
       <div class="flex items-center gap-2 mb-3">
         <h3 class="font-bold text-on-surface text-sm">Data Trust & Evidence</h3>
       </div>

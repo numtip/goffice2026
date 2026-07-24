@@ -276,11 +276,11 @@ const partialCount = insightIncomplete.length;
         <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 p-4 md:p-5">
           <div class="relative z-10">
             <h2 class="text-lg font-bold text-on-surface tracking-tight">{th ? 'ภาพรวมการใช้ทรัพยากร 6 ด้าน' : '6-Resource Overview'}</h2>
-            <p class="text-xs text-outline-variant mt-0.5">{th ? 'เปรียบเทียบปีปัจจุบัน (2569) กับปีฐาน (2568) พร้อมแนวโน้มรายเดือน' : 'Current year (2569) vs baseline (2568) with monthly trends'}</p>
+            <p class="text-xs text-on-surface-variant mt-0.5">{th ? 'เปรียบเทียบปีปัจจุบัน (2569) กับปีฐาน (2568) พร้อมแนวโน้มรายเดือน' : 'Current year (2569) vs baseline (2568) with monthly trends'}</p>
           </div>
         <!-- Resource Icons decorative row -->
         <!-- Quick summary badges -->
-        <div class="flex items-center gap-3 text-[11px] text-outline-variant shrink-0">
+        <div class="flex items-center gap-3 text-[11px] text-on-surface-variant shrink-0">
           <span class="flex items-center gap-1">
             <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
             {th ? `${totalImproving} ดีขึ้น` : `${totalImproving} improved`}
@@ -470,7 +470,7 @@ const partialCount = insightIncomplete.length;
       <section class="dashboard-section mb-8">
         <div class="mb-3">
           <h2 class="text-lg font-bold text-on-surface tracking-tight mb-1">{th ? 'เปรียบเทียบประสิทธิภาพเทียบปีฐาน' : 'Baseline vs Current Comparison'}</h2>
-          <p class="text-xs text-outline-variant">
+          <p class="text-xs text-on-surface-variant">
             {th
               ? `ค่าดัชนีที่ต่ำกว่า 100 = การใช้ทรัพยากรลดลง (ดีขึ้น) · ${resourcePerf.length} ทรัพยากรเปรียบเทียบกับปีฐาน 2568`
               : `Index below 100 = reduced consumption (improvement) · ${resourcePerf.length} resources compared to baseline 2568`}
@@ -507,7 +507,7 @@ const partialCount = insightIncomplete.length;
       <section class="dashboard-section mb-8">
         <div class="mb-3">
           <h2 class="text-lg font-bold text-on-surface tracking-tight mb-1">{th ? 'คะแนนรายหมวด Green Office' : 'Green Office Category Scores'}</h2>
-          <p class="text-xs text-outline-variant">
+          <p class="text-xs text-on-surface-variant">
             {th
               ? `คะแนนประเมิน ${catScores.length} หมวดหมู่ จากระบบอ้างอิง · ค่าเฉลี่ย ${Math.round(catScores.reduce((s, c) => s + c.score, 0) / catScores.length)}%`
               : `${catScores.length} category scores from reference system · Average ${Math.round(catScores.reduce((s, c) => s + c.score, 0) / catScores.length)}%`}
@@ -539,7 +539,7 @@ const partialCount = insightIncomplete.length;
     </section>
 
     <!-- 7. Trust and Evidence Panel -->
-    <section class="dashboard-section bg-surface-container rounded-stitch-lg border border-outline-variant/20 p-5 mb-6 text-xs text-outline-variant">
+    <section class="dashboard-section bg-surface-container rounded-stitch-lg border border-outline-variant/20 p-5 mb-6 text-xs text-on-surface-variant">
       <div class="flex items-center gap-2 mb-3">
         <h3 class="font-bold text-on-surface text-sm">{th ? 'ที่มาและความน่าเชื่อถือของข้อมูล' : 'Data Trust & Evidence'}</h3>
       </div>

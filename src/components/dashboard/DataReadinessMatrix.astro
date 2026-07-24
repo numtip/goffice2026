@@ -16,9 +16,9 @@ const { title, description, resources, monthLabels, locale = 'th' } = Astro.prop
 
 <div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm mb-6">
   <h3 class="text-sm font-semibold text-on-surface mb-1">{title}</h3>
-  {description && <p class="text-xs text-outline-variant mb-3">{description}</p>}
+  {description && <p class="text-xs text-on-surface-variant mb-3">{description}</p>}
 
-  <div class="flex items-center gap-3 text-xs text-outline-variant mb-3 flex-wrap">
+  <div class="flex items-center gap-3 text-xs text-on-surface-variant mb-3 flex-wrap">
     <span class="flex items-center gap-1">
       <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm bg-green-600 text-[10px] font-bold text-white" aria-hidden="true">&#10003;</span>
       {locale === 'th' ? 'มีข้อมูลแล้ว' : 'Data present'}
@@ -33,11 +33,11 @@ const { title, description, resources, monthLabels, locale = 'th' } = Astro.prop
     <table class="w-full text-xs" role="table" aria-label={title}>
       <thead>
         <tr>
-          <th class="text-left font-medium text-outline pr-3 py-1.5 whitespace-nowrap">{locale === 'th' ? 'รายการ' : 'Metric'}</th>
+          <th class="text-left font-medium text-on-surface-variant pr-3 py-1.5 whitespace-nowrap">{locale === 'th' ? 'รายการ' : 'Metric'}</th>
           {monthLabels.map((ml) => (
-            <th class="text-center font-medium text-outline px-1 py-1.5 w-7" aria-label={ml}>{ml}</th>
+            <th class="text-center font-medium text-on-surface-variant px-1 py-1.5 w-7" aria-label={ml}>{ml}</th>
           ))}
-          <th class="text-center font-medium text-outline pl-3 py-1.5">{locale === 'th' ? 'รวม' : 'Total'}</th>
+          <th class="text-center font-medium text-on-surface-variant pl-3 py-1.5">{locale === 'th' ? 'รวม' : 'Total'}</th>
         </tr>
       </thead>
       <tbody>
@@ -56,7 +56,7 @@ const { title, description, resources, monthLabels, locale = 'th' } = Astro.prop
                   </span>
                 </td>
               ))}
-              <td class="pl-3 py-2 text-center text-outline-variant whitespace-nowrap font-medium">{present}/12</td>
+              <td class="pl-3 py-2 text-center text-on-surface-variant whitespace-nowrap font-medium">{present}/12</td>
             </tr>
           );
         })}
