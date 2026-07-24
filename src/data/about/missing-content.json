@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "updated": "2026-07-24",
-  "note": "Missing content items required for About Center pages. Each item must be obtained before the corresponding page can be completed.",
+  "note": "Missing content items required for About Center pages. Updated with GO-ABOUT-1B document intake results. Each resolved item references the validated document ID.",
   "missing": {
     "policy": {
       "page": "about-policy",
@@ -18,7 +18,10 @@
           "requiredByIndicator": "1.2.1",
           "format": "PDF",
           "signed": true,
-          "language": "th"
+          "language": "th",
+          "status": "RESOLVED",
+          "documentId": "doc-policy-signed",
+          "resolutionNotes": "GreenOfficePolicy2026.pdf validated. Signed by Asst.Prof.Dr. Nattapon Laoharodphan. OCR-derived content requires human verification."
         },
         {
           "id": "missing-policy-review",
@@ -30,7 +33,10 @@
           "requiredByIndicator": "1.2.2",
           "format": "PDF",
           "signed": false,
-          "language": "th"
+          "language": "th",
+          "status": "RESOLVED",
+          "documentId": "doc-policy-review",
+          "resolutionNotes": "Evidenceofpolicyreview.pdf validated. Meeting minutes dated 9 Feb 2569 document policy review."
         }
       ]
     },
@@ -49,7 +55,10 @@
           "requiredByIndicator": "1.4.1",
           "format": "PDF",
           "signed": true,
-          "language": "th"
+          "language": "th",
+          "status": "RESOLVED",
+          "documentId": "doc-committee-order",
+          "resolutionNotes": "Order_appointing_the_committee.pdf validated. Signed official order."
         },
         {
           "id": "missing-committee-understanding",
@@ -61,7 +70,10 @@
           "requiredByIndicator": "1.4.2",
           "format": "PDF",
           "signed": false,
-          "language": "th"
+          "language": "th",
+          "status": "PARTIALLY_RESOLVED",
+          "documentId": "doc-committee-understanding",
+          "resolutionNotes": "WARNING: File is identical to Evidenceofpolicyreview.pdf (duplicate). Meeting minutes discuss roles but are not a dedicated assessment instrument. Confirm if distinct document needed."
         },
         {
           "id": "missing-committee-photo",
@@ -71,7 +83,8 @@
           "descriptionTh": "ภาพถ่ายกลุ่มของคณะกรรมการ/ทีมงานด้านสิ่งแวดล้อม",
           "descriptionEn": "Group photo of the environmental committee/working team",
           "format": "JPG/PNG",
-          "optimizationRequired": true
+          "optimizationRequired": true,
+          "status": "STILL_MISSING"
         },
         {
           "id": "missing-org-chart",
@@ -81,7 +94,8 @@
           "descriptionTh": "แผนผังแสดงโครงสร้างคณะกรรมการและเส้นทางรายงาน",
           "descriptionEn": "Chart showing committee structure and reporting lines",
           "format": "PNG/SVG",
-          "optimizationRequired": false
+          "optimizationRequired": false,
+          "status": "STILL_MISSING"
         }
       ]
     },
@@ -100,7 +114,10 @@
           "requiredByIndicator": "1.1.1",
           "format": "PDF",
           "signed": false,
-          "language": "th"
+          "language": "th",
+          "status": "RESOLVED",
+          "documentId": "doc-scope",
+          "resolutionNotes": "Scope of Work and Activities.pdf validated. Signed scope document with area, personnel, and agency definitions."
         },
         {
           "id": "missing-activity-assessment",
@@ -112,7 +129,9 @@
           "requiredByIndicator": "1.1.2",
           "format": "PDF",
           "signed": false,
-          "language": "th"
+          "language": "th",
+          "status": "STILL_MISSING",
+          "resolutionNotes": "Not supplied in this intake. The scope document defines area/personnel but does not contain activity-level environmental issue assessment."
         },
         {
           "id": "missing-office-photo",
@@ -122,7 +141,8 @@
           "descriptionTh": "ภาพถ่ายแสดงพื้นที่สำนักงานที่อยู่ภายใต้ขอบเขตการรับรอง",
           "descriptionEn": "Photo showing the office premises covered by the certification scope",
           "format": "JPG",
-          "optimizationRequired": true
+          "optimizationRequired": true,
+          "status": "STILL_MISSING"
         }
       ]
     },
@@ -141,7 +161,10 @@
           "requiredByIndicator": "1.3.1",
           "format": "PDF",
           "signed": false,
-          "language": "th"
+          "language": "th",
+          "status": "RESOLVED",
+          "documentId": "doc-goals",
+          "resolutionNotes": "Green Office Goals.pdf validated. Signed 1-page document with 6 environmental targets. OCR-derived numeric values require human verification."
         },
         {
           "id": "missing-targets-evidence",
@@ -153,7 +176,9 @@
           "requiredByIndicator": "1.3.2",
           "format": "PDF",
           "signed": false,
-          "language": "th"
+          "language": "th",
+          "status": "STILL_MISSING",
+          "resolutionNotes": "Not supplied in this intake. Action plan contains some performance tracking but no dedicated target vs actual analysis document."
         },
         {
           "id": "missing-targets-communication",
@@ -165,7 +190,9 @@
           "requiredByIndicator": "1.3.3",
           "format": "PDF",
           "signed": false,
-          "language": "th"
+          "language": "th",
+          "status": "STILL_MISSING",
+          "resolutionNotes": "Not supplied in this intake."
         }
       ]
     },
@@ -184,7 +211,10 @@
           "requiredByIndicator": "1.5.1",
           "format": "PDF",
           "signed": false,
-          "language": "th"
+          "language": "th",
+          "status": "RESOLVED",
+          "documentId": "doc-action-plan",
+          "resolutionNotes": "Action plan and performance results.pdf validated. 21-page comprehensive plan covering all 7 categories."
         },
         {
           "id": "missing-action-results",
@@ -196,7 +226,10 @@
           "requiredByIndicator": "1.5.2",
           "format": "PDF",
           "signed": false,
-          "language": "th"
+          "language": "th",
+          "status": "RESOLVED",
+          "documentId": "doc-action-plan",
+          "resolutionNotes": "Action plan PDF includes both plan (แผน) and results (ผล) columns, satisfying indicator 1.5.2 requirements within a single document."
         }
       ]
     },
@@ -215,7 +248,9 @@
           "requiredByIndicator": null,
           "format": "PDF",
           "signed": true,
-          "language": "th"
+          "language": "th",
+          "status": "STILL_MISSING",
+          "resolutionNotes": "Not supplied in this intake. Action plan mentions Gold level award received but no certificate PDF was provided."
         },
         {
           "id": "missing-certification-badge",
@@ -225,7 +260,8 @@
           "descriptionTh": "ตราสัญลักษณ์การรับรองสำนักงานสีเขียวจาก TGO สำหรับแสดงผล",
           "descriptionEn": "Green Office certification badge from TGO for display",
           "format": "PNG/SVG",
-          "optimizationRequired": false
+          "optimizationRequired": false,
+          "status": "STILL_MISSING"
         }
       ]
     },
@@ -244,7 +280,10 @@
           "requiredByIndicator": "2.2.4",
           "format": "PDF",
           "signed": false,
-          "language": "th"
+          "language": "th",
+          "status": "RESOLVED",
+          "documentId": "doc-feedback-channels",
+          "resolutionNotes": "Details of the feedback channels.pdf validated. Embedded text (no OCR needed). Describes 4 feedback channels with flowchart and procedures. Contains personal email and phone — redaction recommended before public publication."
         },
         {
           "id": "missing-feedback-improvements",
@@ -256,16 +295,23 @@
           "requiredByIndicator": "2.2.4",
           "format": "PDF",
           "signed": false,
-          "language": "th"
+          "language": "th",
+          "status": "PARTIALLY_RESOLVED",
+          "documentId": "doc-feedback-channels",
+          "resolutionNotes": "The feedback channels document describes the improvement procedures (ขั้นตอนการปรับปรุงแก้ไข) but does not contain specific examples of implemented improvements. The action plan may contain related evidence."
         }
       ]
     }
   },
   "summary": {
-    "totalMissingDocuments": 13,
+    "totalMissingDocuments": 15,
     "totalMissingImages": 4,
-    "highPriority": 5,
+    "highPriority": 4,
     "mediumPriority": 10,
-    "lowPriority": 2
+    "lowPriority": 5,
+    "resolved": 7,
+    "partiallyResolved": 2,
+    "stillMissing": 6,
+    "note": "Updated 2026-07-24. GO-ABOUT-1B resolved 7 document gaps, partially resolved 2. 6 items (including 4 images) still outstanding."
   }
 }

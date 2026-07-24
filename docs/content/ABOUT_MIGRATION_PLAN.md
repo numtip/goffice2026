@@ -11,20 +11,30 @@ Generated: 2026-07-24
 
 ---
 
-## Phase 1: Content Acquisition (Blocked on External)
+## Phase 1: Content Acquisition (Updated via GO-ABOUT-1B)
 
-| Page | Required Content | Owner | Status |
-|---|---|---|---|
-| about-policy | Signed environmental policy PDF | Senior management | MISSING |
-| about-committee | Committee appointment order | HR/Admin | MISSING |
-| about-committee | Committee photo | Communications | MISSING |
-| about-scope | Scope definition document | Green Office team | MISSING |
-| about-goals | Goals and indicators document | Green Office team | MISSING |
-| about-action-plan | Action plan document | Green Office team | MISSING |
-| about-certification | Green Office certificate | TGO | MISSING |
-| about-certification | Certification badge image | TGO | MISSING |
+| Page | Required Content | Owner | Status | Document Source |
+|---|---|---|---|---|
+| about-policy | Signed environmental policy PDF | Senior management | ✅ OBTAINED | GreenOfficePolicy2026.pdf |
+| about-policy | Policy review evidence | Committee | ✅ OBTAINED | Evidenceofpolicyreview.pdf |
+| about-committee | Committee appointment order | HR/Admin | ✅ OBTAINED | Order_appointing_the_committee.pdf |
+| about-committee | Role understanding evidence | Committee | ⚠️ PARTIAL | Duplicate of policy review — confirm |
+| about-committee | Committee photo | Communications | ❌ MISSING | — |
+| about-scope | Scope definition document | Green Office team | ✅ OBTAINED | Scope of Work and Activities.pdf |
+| about-goals | Goals and indicators document | Green Office team | ✅ OBTAINED | Green Office Goals.pdf |
+| about-action-plan | Action plan document | Green Office team | ✅ OBTAINED | Action plan and performance results.pdf |
+| about-feedback | Feedback channel description | Green Office team | ✅ OBTAINED | Details of the feedback channels.pdf |
+| about-certification | Green Office certificate | TGO | ❌ MISSING | — |
+| about-certification | Certification badge image | TGO | ❌ MISSING | — |
 
-**Decision:** Generate Missing Content Report (done). Wait for user to obtain documents.
+**Key findings:**
+- 8 of 8 priority documents received and validated
+- 7 document gaps resolved, 2 partially resolved, 6 still outstanding
+- Evidenceofpolicyreview.pdf and committee understanding PDF are duplicate files (identical SHA-256)
+- All PDFs are scanned (image-only) except feedback channels PDF
+- No certificate or badge for about-certification — still blocked on TGO
+
+**Decision:** Proceed to Phase 2 for pages with resolved documents. about-certification remains blocked.
 
 ---
 

@@ -105,6 +105,23 @@ No About-specific components exist. Landing components are tied to homepage.
 | `LogoGreen2025.png` | Site logo | about-index (organization logo) |
 | Dashboard/category images | Dashboard/Categories | None — decorative only |
 
+## Priority Document Intake (GO-ABOUT-1B)
+
+### New Source Documents Added
+
+| Document | Source Path | Target Page | Type | Status |
+|---|---|---|---|---|
+| GreenOfficePolicy2026.pdf | doc/ | about-policy | Signed policy | ✅ Validated |
+| Evidenceofpolicyreview.pdf | doc/ | about-policy | Policy review evidence | ✅ Validated |
+| Order_appointing_the_committee.pdf | doc/ | about-committee | Committee order | ✅ Validated |
+| Evidence clarifying the role...pdf | doc/ | about-committee | Role understanding | ⚠️ Duplicate file |
+| Green Office Goals.pdf | doc/ | about-goals | Goals document | ✅ Validated |
+| Scope of Work and Activities.pdf | doc/ | about-scope | Scope document | ✅ Validated |
+| Action plan and performance results.pdf | doc/ | about-action-plan | Action plan | ✅ Validated |
+| Details of the feedback channels.pdf | doc/ | about-feedback | Feedback channels | ✅ Validated |
+
+All documents are scanned (image-only) except feedback channels PDF (embedded text). All require OCR verification before public use.
+
 ## Classification Summary
 
 | Item | Classification | Count |
@@ -113,6 +130,7 @@ No About-specific components exist. Landing components are tied to homepage.
 | i18n glossary terms | REUSE | 6+ terms |
 | Evidence index items | MERGE | 2+ items |
 | Green Office criteria PDFs | REUSE | 2 files |
+| Priority source documents (GO-ABOUT-1B) | PRIMARY | 8 files |
 | Project constitution | NEEDS_REVIEW | 1 file |
 | Logo image | REUSE | 1 file |
 | Dashboard/landing images | NOT_APPLICABLE | 15+ files |
@@ -124,5 +142,7 @@ No About-specific components exist. Landing components are tied to homepage.
 2. **REUSE** i18n glossary for consistent terminology
 3. **REUSE** LogoGreen2025.png on About index
 4. **REUSE** criteria PDFs as downloadable references
-5. **NEEDS_REVIEW** project constitution before any public use
-6. **MERGE** relevant evidence items into About pages where appropriate
+5. **PRIMARY** use new GO-ABOUT-1B documents as source for About Center content
+6. **NEEDS_REVIEW** project constitution before any public use
+7. **MERGE** relevant evidence items into About pages where appropriate
+8. **DUPLICATE FILE** — Evidence clarifying the role and understanding of the committee.pdf is identical to Evidenceofpolicyreview.pdf

@@ -25,10 +25,16 @@
       "descriptionTh": "ขอบเขตการจัดการสิ่งแวดล้อมของสำนักงานภายใต้การรับรองสำนักงานสีเขียว",
       "descriptionEn": "Scope of environmental management for the office under Green Office certification",
       "status": "NOT_CREATED",
-      "classification": "MISSING",
-      "contentSources": [],
+      "classification": "PARTIALLY_READY",
+      "contentSources": ["criteria-indicators-1.1.1", "criteria-indicators-1.1.2"],
       "relatedIndicators": ["1.1.1", "1.1.2"],
-      "relatedCriteriaCategory": "cat1"
+      "relatedCriteriaCategory": "cat1",
+      "documents": ["doc-scope"],
+      "sourceReferences": ["doc/Scope of Work and Activities.pdf"],
+      "contentReadiness": "scope_definition_ready",
+      "migrationAction": "DOCUMENTS_READY",
+      "lastReviewed": "2026-07-24",
+      "notes": "Scope document validated and mapped. Indicator 1.1.1 satisfied. Indicator 1.1.2 (activity assessment) still missing."
     },
     {
       "id": "about-policy",
@@ -39,10 +45,16 @@
       "descriptionTh": "นโยบายด้านสิ่งแวดล้อมจากผู้บริหารระดับสูง สอดคล้องกับเกณฑ์สำนักงานสีเขียว",
       "descriptionEn": "Senior management environmental policy aligned with Green Office criteria",
       "status": "NOT_CREATED",
-      "classification": "MISSING",
+      "classification": "PARTIALLY_READY",
       "contentSources": ["criteria-indicators-1.2.1", "criteria-indicators-1.2.2"],
       "relatedIndicators": ["1.2.1", "1.2.2"],
-      "relatedCriteriaCategory": "cat1"
+      "relatedCriteriaCategory": "cat1",
+      "documents": ["doc-policy-signed", "doc-policy-review"],
+      "sourceReferences": ["doc/GreenOfficePolicy2026.pdf", "doc/Evidenceofpolicyreview.pdf"],
+      "contentReadiness": "both_documents_ready",
+      "migrationAction": "DOCUMENTS_READY",
+      "lastReviewed": "2026-07-24",
+      "notes": "Both signed policy and review evidence validated and mapped."
     },
     {
       "id": "about-goals",
@@ -53,10 +65,16 @@
       "descriptionTh": "เป้าหมายและตัวชี้วัดด้านการใช้ทรัพยากร พลังงาน ของเสีย และก๊าซเรือนกระจก",
       "descriptionEn": "Targets and indicators for resource use, energy, waste and greenhouse gas emissions",
       "status": "NOT_CREATED",
-      "classification": "MISSING",
+      "classification": "PARTIALLY_READY",
       "contentSources": ["criteria-indicators-1.3.1", "criteria-indicators-1.3.2", "criteria-indicators-1.3.3"],
       "relatedIndicators": ["1.3.1", "1.3.2", "1.3.3"],
-      "relatedCriteriaCategory": "cat1"
+      "relatedCriteriaCategory": "cat1",
+      "documents": ["doc-goals"],
+      "sourceReferences": ["doc/Green Office Goals.pdf"],
+      "contentReadiness": "goals_document_ready",
+      "migrationAction": "DOCUMENTS_READY",
+      "lastReviewed": "2026-07-24",
+      "notes": "Goals document validated. Indicator 1.3.1 satisfied. Indicators 1.3.2 (achievement evidence) and 1.3.3 (communication evidence) still missing."
     },
     {
       "id": "about-committee",
@@ -67,10 +85,16 @@
       "descriptionTh": "คณะกรรมการและทีมงานด้านสิ่งแวดล้อมของสำนักงานสีเขียว",
       "descriptionEn": "Environmental committee and working team for the Green Office",
       "status": "NOT_CREATED",
-      "classification": "MISSING",
+      "classification": "PARTIALLY_READY",
       "contentSources": ["criteria-indicators-1.4.1", "criteria-indicators-1.4.2"],
       "relatedIndicators": ["1.4.1", "1.4.2"],
-      "relatedCriteriaCategory": "cat1"
+      "relatedCriteriaCategory": "cat1",
+      "documents": ["doc-committee-order", "doc-committee-understanding"],
+      "sourceReferences": ["doc/Order_appointing_the_committee.pdf", "doc/Evidence clarifying the role and understanding of the committee.pdf"],
+      "contentReadiness": "order_ready_understanding_needs_review",
+      "migrationAction": "DOCUMENTS_PARTIALLY_READY",
+      "lastReviewed": "2026-07-24",
+      "notes": "Committee order validated. Role understanding evidence is duplicate of policy review — confirm if distinct document is needed. Committee photo and org chart still missing."
     },
     {
       "id": "about-action-plan",
@@ -81,10 +105,16 @@
       "descriptionTh": "แผนงานโครงการเพื่อแก้ไขปัญหาสิ่งแวดล้อมที่มีนัยสำคัญ",
       "descriptionEn": "Project plans addressing significant environmental issues",
       "status": "NOT_CREATED",
-      "classification": "MISSING",
+      "classification": "PARTIALLY_READY",
       "contentSources": ["criteria-indicators-1.5.1", "criteria-indicators-1.5.2"],
       "relatedIndicators": ["1.5.1", "1.5.2"],
-      "relatedCriteriaCategory": "cat1"
+      "relatedCriteriaCategory": "cat1",
+      "documents": ["doc-action-plan"],
+      "sourceReferences": ["doc/Action plan and performance results.pdf"],
+      "contentReadiness": "action_plan_ready",
+      "migrationAction": "DOCUMENTS_READY",
+      "lastReviewed": "2026-07-24",
+      "notes": "21-page action plan with both plan and results columns. Satisfies both indicators 1.5.1 and 1.5.2 in a single document."
     },
     {
       "id": "about-certification",
@@ -108,10 +138,16 @@
       "descriptionTh": "ช่องทางรับข้อเสนอแนะด้านสิ่งแวดล้อมและการติดต่อ",
       "descriptionEn": "Channels for environmental feedback and suggestions",
       "status": "NOT_CREATED",
-      "classification": "MISSING",
+      "classification": "PARTIALLY_READY",
       "contentSources": ["criteria-indicators-2.2.4"],
       "relatedIndicators": ["2.2.4"],
-      "relatedCriteriaCategory": "cat2"
+      "relatedCriteriaCategory": "cat2",
+      "documents": ["doc-feedback-channels"],
+      "sourceReferences": ["doc/Details of the feedback channels.pdf"],
+      "contentReadiness": "channel_description_ready",
+      "migrationAction": "DOCUMENTS_READY_AFTER_REDACTION",
+      "lastReviewed": "2026-07-24",
+      "notes": "Feedback channel document validated (embedded text). Contains personal email and phone requiring redaction before publication. Improvement procedures described but specific implementation examples not included."
     }
   ]
 }

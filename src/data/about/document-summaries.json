@@ -1,0 +1,153 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-07-24",
+  "note": "Extracted summaries from priority source documents (GO-ABOUT-1B). Summaries are based on OCR-derived content and require human verification.",
+  "summaries": [
+    {
+      "documentId": "doc-policy-signed",
+      "relatedPage": "about-policy",
+      "summaryTh": "ประกาศนโยบายสำนักงานสีเขียว (Green Office) อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา ลงนามโดย ผศ.ดร.ณัฐพล เลาห์รอดพันธุ์ ผู้อำนวยการสำนักวิจัยและส่งเสริมวิชาการการเกษตร ประกอบด้วย 10 ข้อ ได้แก่ (1) ส่งเสริมความรู้ความเข้าใจด้านอนุรักษ์พลังงานและสิ่งแวดล้อม (2) พัฒนาเครือข่ายการเรียนรู้ (3) บริหารจัดการโครงสร้างพื้นฐานเพื่อลดพลังงานและผลกระทบ (4) บริหารจัดการทรัพยากรอย่างต่อเนื่อง (5) บริหารจัดการอาคารให้เป็นมิตรกับสิ่งแวดล้อม (6) จัดซื้อจัดจ้างที่เป็นมิตรกับสิ่งแวดล้อม (7) บริหารจัดการขนส่งเพื่อลดเชื้อเพลิง (8) ส่งเสริมลดก๊าซเรือนกระจก (9) ส่งเสริมการมีส่วนร่วมของบุคลากร (10) ปฏิบัติตามกฎหมายสิ่งแวดล้อม",
+      "summaryEn": null,
+      "keyPoints": [
+        "Signed by Asst.Prof.Dr. Nattapon Laoharodphan, Director of Agricultural Research and Extension Office",
+        "10 policy commitments covering energy, waste, water, GHG, procurement, transport",
+        "Applicable to Chalermprakiat Building at Maejo University",
+        "Fiscal year 2568 (2025)",
+        "Visible official signature and stamp on document"
+      ],
+      "authoritativeSource": true,
+      "extractedFromPages": "1-2",
+      "extractionMethod": "OCR (Thai+English)",
+      "reviewStatus": "OCR_DERIVED_NEEDS_VERIFICATION",
+      "notes": "OCR may contain Thai numeral errors. Document year appears as 2568 but OCR garbled some digits. Verify exact date."
+    },
+    {
+      "documentId": "doc-policy-review",
+      "relatedPage": "about-policy",
+      "summaryTh": "รายงานการประชุมคณะกรรมการดำเนินงานสำนักงานสีเขียว เมื่อวันที่ 9 กุมภาพันธ์ 2569 ณ ห้องประชุม 301 โดยมี ผศ.ภานุวัฒน์ เมฆะ เป็นประธานกรรมการ ระเบียบวาระประกอบด้วย (1) แจ้งเพื่อทราบ — การได้รับรางวัลระดับทอง และการตรวจสอบข้อมูลในเว็บไซต์ (2) รายงานความก้าวหน้าของแต่ละหมวด (หมวด 1-7) พร้อมปัญหา/อุปสรรคและแนวทางแก้ไข (3) เรื่องอื่นๆ",
+      "summaryEn": null,
+      "keyPoints": [
+        "Meeting date: 9 February 2026",
+        "Chaired by Asst.Prof. Panuwat Mekha",
+        "Reports Gold level award received",
+        "Progress review across all 7 categories",
+        "Discusses website content cleanup and data collection via OneDrive",
+        "Contains full committee attendance and names"
+      ],
+      "authoritativeSource": true,
+      "extractedFromPages": "1-9",
+      "extractionMethod": "OCR (Thai+English)",
+      "reviewStatus": "OCR_DERIVED_NEEDS_VERIFICATION",
+      "notes": "Full meeting minutes with detailed progress per category. OCR quality varies. Personal names throughout."
+    },
+    {
+      "documentId": "doc-committee-order",
+      "relatedPage": "about-committee",
+      "summaryTh": "คำสั่งสำนักวิจัยและส่งเสริมวิชาการการเกษตร เรื่อง แต่งตั้งคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา ประกอบด้วย คณะกรรมการอำนวยการ (มีรองอธิการบดีเป็นประธาน) และคณะกรรมการดำเนินงานแยกตาม 7 หมวด แต่ละหมวดมีประธาน กรรมการ และเลขานุการ พร้อมกำหนดหน้าที่รับผิดชอบชัดเจน",
+      "summaryEn": null,
+      "keyPoints": [
+        "Official appointment order from Agricultural Research and Extension Office",
+        "Oversight Committee chaired by Vice President of Maejo University",
+        "Operations committees for all 7 Green Office categories",
+        "Each committee has defined roles and responsibilities",
+        "Contains full names, positions, and roles of all members"
+      ],
+      "authoritativeSource": true,
+      "extractedFromPages": "1-6",
+      "extractionMethod": "OCR (Thai+English)",
+      "reviewStatus": "OCR_DERIVED_NEEDS_VERIFICATION",
+      "notes": "Full committee structure documented. Verify exact order number and date from original."
+    },
+    {
+      "documentId": "doc-committee-understanding",
+      "relatedPage": "about-committee",
+      "summaryTh": "⚠️ เอกสารนี้เป็นไฟล์ซ้ำกับ Evidenceofpolicyreview.pdf (SHA-256 เดียวกัน) เป็นรายงานการประชุมฯ วันที่ 9 กุมภาพันธ์ 2569 ซึ่งมีการหารือเกี่ยวกับบทบาทหน้าที่ของคณะกรรมการแต่ไม่ใช่แบบประเมินความเข้าใจโดยเฉพาะ",
+      "summaryEn": null,
+      "keyPoints": [
+        "DUPLICATE FILE — identical to Evidenceofpolicyreview.pdf",
+        "Meeting minutes discuss committee responsibilities indirectly",
+        "Not a dedicated role-understanding assessment instrument",
+        "May not fully satisfy indicator 1.4.2 requirements"
+      ],
+      "authoritativeSource": true,
+      "extractedFromPages": "1-9",
+      "extractionMethod": "OCR (Thai+English)",
+      "reviewStatus": "DUPLICATE_FILE_NEEDS_REVIEW",
+      "notes": "CRITICAL: Confirm with Green Office team whether a separate role-understanding document exists."
+    },
+    {
+      "documentId": "doc-goals",
+      "relatedPage": "about-goals",
+      "summaryTh": "ประกาศสำนักวิจัยและส่งเสริมวิชาการการเกษตร เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อม ประจำปี พ.ศ. 2568 อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา โดยใช้ปี 2568 เป็นปีฐาน กำหนด 6 เป้าหมาย: (1) ไฟฟ้าไม่เกิน 5,252.55 หน่วย/คน (2) น้ำมันเชื้อเพลิงไม่เกิน 255.52 ลิตร (3) น้ำไม่เกิน 53.30 ลบ.ม./คน (4) กระดาษไม่เกิน 23.13 กก./คน (5) ขยะทั่วไปไม่เกิน 50 กก./คน (6) ก๊าซเรือนกระจกไม่เกิน 203.15 kgCO2e/คน",
+      "summaryEn": null,
+      "keyPoints": [
+        "Signed by Asst.Prof.Dr. Nattapon Laoharodphan",
+        "6 environmental targets: electricity, fuel, water, paper, waste, GHG",
+        "Baseline year: 2568 (2025)",
+        "Single-page official announcement",
+        "OCR-derived numeric values require verification"
+      ],
+      "authoritativeSource": true,
+      "extractedFromPages": "1",
+      "extractionMethod": "OCR (Thai+English)",
+      "reviewStatus": "OCR_DERIVED_NEEDS_VERIFICATION",
+      "notes": "Numeric values are OCR-interpreted from Thai numerals. Verify exact target numbers from original PDF."
+    },
+    {
+      "documentId": "doc-scope",
+      "relatedPage": "about-scope",
+      "summaryTh": "ประกาศสำนักวิจัยและส่งเสริมวิชาการการเกษตร เรื่อง การกำหนดบริบทองค์กร และขอบเขตการจัดการสิ่งแวดล้อม ประจำปี พ.ศ. 2568 อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา กำหนดพื้นที่รับการรับรองรวม 8,533 ตร.ม. (ภายนอก 1,535 ตร.ม. ชั้น 1: 3,035 ตร.ม. ชั้น 2: 2,322 ตร.ม. ชั้น 3: 2,135 ตร.ม.) ครอบคลุมบุคลากร 53 คน จาก 5 หน่วยงาน รวมถึงกิจกรรมของหน่วยงานภายนอกที่ใช้พื้นที่",
+      "summaryEn": null,
+      "keyPoints": [
+        "Signed by Asst.Prof.Dr. Nattapon Laoharodphan",
+        "Date: 5 April 2568",
+        "Total certification area: 8,533 sq.m.",
+        "Covered personnel: 53",
+        "Covered agencies: 5 (Agricultural Research Office, Product Quality Inspection Institute, Agricultural Production Standard Certification Institute, Rice Breeding Center, Faculty of Science)",
+        "Detailed room-by-room area breakdown with floor plans"
+      ],
+      "authoritativeSource": true,
+      "extractedFromPages": "1-7",
+      "extractionMethod": "OCR (Thai+English)",
+      "reviewStatus": "OCR_DERIVED_NEEDS_VERIFICATION",
+      "notes": "Area figures and room details are OCR-derived. Floor plan data needs verification."
+    },
+    {
+      "documentId": "doc-action-plan",
+      "relatedPage": "about-action-plan",
+      "summaryTh": "แผน/ผลการดำเนินโครงการสำนักงานสีเขียว ประจำปี พ.ศ. 2569 อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา จำนวน 21 หน้า ครอบคลุมทุกหมวด (1-7) แต่ละกิจกรรมระบุแผน/ผล ความถี่ กรอบเวลา และผู้รับผิดชอบ ประกอบด้วย (1) การกำหนดนโยบายและวางแผน (2) การสื่อสารและสร้างจิตสำนึก (3) การใช้ทรัพยากรและพลังงาน (4) การจัดการของเสีย (5) สภาพแวดล้อมและความปลอดภัย (6) ก๊าซเรือนกระจก (7) การดำเนินงานเพื่อความต่อเนื่อง รวมถึงแผนตรวจประเมินภายใน และโครงการ LESS เพื่อยกระดับ",
+      "summaryEn": null,
+      "keyPoints": [
+        "21-page comprehensive action plan for FY 2569 (2026)",
+        "Covers all 7 Green Office categories",
+        "Each activity has plan (แผน) and results (ผล) columns",
+        "Includes internal audit plan and LESS project for certification upgrade",
+        "Mentions Gold level award received",
+        "Contains responsible person names for each activity"
+      ],
+      "authoritativeSource": true,
+      "extractedFromPages": "1-21",
+      "extractionMethod": "OCR (Thai+English)",
+      "reviewStatus": "OCR_DERIVED_NEEDS_VERIFICATION",
+      "notes": "Large document with detailed activity tables. Results column shows checkmarks for completed items. Verify specific dates and responsible persons."
+    },
+    {
+      "documentId": "doc-feedback-channels",
+      "relatedPage": "about-feedback",
+      "summaryTh": "แนวทางการรับข้อเสนอแนะ/ข้อคิดเห็นด้านสิ่งแวดล้อม และขั้นตอนการปรับปรุงแก้ไข ของโครงการสำนักงานสีเขียวอาคารเฉลิมพระเกียรติฯ มหาวิทยาลัยแม่โจ้ ประกอบด้วย 4 ช่องทาง: (1) QR Code บนเว็บไซต์ (2) แบบฟอร์มออนไลน์ (Google Forms) (3) อีเมล (4) โทรศัพท์ มีผู้รับเรื่องคือนายปริญญา เพียรอุตส่าห์ ทำหน้าที่รวบรวมข้อเสนอแนะและรายงานผู้บริหารภายใน 1 วัน พร้อมผังขั้นตอนและแนวทางการปรับปรุงแก้ไข",
+      "summaryEn": null,
+      "keyPoints": [
+        "4 feedback channels: QR code, online form, email, phone",
+        "Responsible person: Mr. Parinya Pien-utsa",
+        "1-day turnaround for reporting to management",
+        "Includes flowchart and improvement procedures",
+        "Contains personal email (raemju@gmail.com) and phone (0 5387 3400)"
+      ],
+      "authoritativeSource": true,
+      "extractedFromPages": "1-3",
+      "extractionMethod": "EMBEDDED_TEXT",
+      "reviewStatus": "VERIFIED_TEXT",
+      "notes": "Only PDF with embedded text — no OCR needed. Personal contact information requires redaction before public publication. Suggest replacing with generic channel contact."
+    }
+  ]
+}
