@@ -1,0 +1,274 @@
+---
+import ChartLegend from './ChartLegend.astro';
+import type { MetricTheme } from '../../data/metric-theme';
+
+export interface MonthEntry {
+  month: number;
+  label: string;
+  baseline?: number;
+  current?: number;
+  target?: number;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  months: MonthEntry[];
+  unit: string;
+  baselineLabel: string;
+  currentLabel: string;
+  targetLabel?: string;
+  showTarget: boolean;
+  theme: MetricTheme;
+  locale: 'th' | 'en';
+  /** Whether current-year data is unverified */
+  currentUnverified: boolean;
+}
+
+const {
+  title,
+  description,
+  months,
+  unit,
+  baselineLabel,
+  currentLabel,
+  targetLabel = 'Target',
+  showTarget,
+  theme,
+  locale,
+  currentUnverified,
+} = Astro.props;
+
+const th = locale === 'th';
+
+const baselineColor = theme.accentDark;
+const currentColor = currentUnverified ? '#a3a3a3' : theme.accent;
+const targetColor = '#d97706';
+
+const pad = { top: 24, right: 24, bottom: 40, left: 56 };
+const chartW = 760;
+const chartH = 320;
+const drawW = chartW - pad.left - pad.right;
+const drawH = chartH - pad.top - pad.bottom;
+
+// Find max value across all series
+let maxVal = 0;
+for (const m of months) {
+  if (m.baseline != null && m.baseline > maxVal) maxVal = m.baseline;
+  if (m.current != null && m.current > maxVal) maxVal = m.current;
+  if (showTarget && m.target != null && m.target > maxVal) maxVal = m.target;
+}
+maxVal = maxVal || 1;
+const yScale = (v: number) => pad.top + drawH - ((v / maxVal) * drawH);
+
+const barW = Math.max(4, Math.floor(drawW / months.length * 0.6));
+const groupGap = Math.floor(drawW / months.length);
+const nBars = showTarget ? 3 : 2;
+const barPad = Math.floor((groupGap - barW * nBars) / (nBars + 1));
+
+// Y-axis ticks
+const tickCount = 5;
+const tickStep = Math.ceil(maxVal / tickCount / 10) * 10 || 1;
+const ticks: number[] = [];
+for (let i = 0; i <= tickCount; i++) {
+  const v = i * tickStep;
+  if (v <= maxVal) ticks.push(v);
+}
+
+const fmt = (v: number) => Intl.NumberFormat(locale === 'th' ? 'th' : 'en', { notation: v > 9999 ? 'compact' : 'standard' }).format(Math.round(v));
+
+const chartId = `chart-${Math.random().toString(36).slice(2, 9)}`;
+const tableId = `table-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 md:p-6 shadow-sm">
+  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+    <div>
+      <h3 class="text-base font-semibold text-on-surface">{title}</h3>
+      <p class="text-xs text-outline-variant mt-0.5">{description}</p>
+    </div>
+
+    <!-- Chart/Table toggle -->
+    <div
+      class="inline-flex rounded-lg border border-outline-variant/30 bg-surface-container p-0.5 shrink-0"
+      role="tablist"
+      aria-label={th ? 'มุมมองข้อมูล' : 'Data view'}
+    >
+      <button
+        type="button"
+        class="chart-tab px-3 py-1.5 text-xs font-medium rounded-md transition"
+        role="tab"
+        aria-selected="true"
+        aria-controls={chartId}
+        data-target={chartId}
+        id={`${chartId}-tab`}
+      >
+        {th ? 'กราฟ' : 'Chart'}
+      </button>
+      <button
+        type="button"
+        class="table-tab px-3 py-1.5 text-xs font-medium rounded-md transition text-outline-variant"
+        role="tab"
+        aria-selected="false"
+        aria-controls={tableId}
+        data-target={tableId}
+        id={`${tableId}-tab`}
+      >
+        {th ? 'ตาราง' : 'Table'}
+      </button>
+    </div>
+  </div>
+
+  <!-- Unverified badge -->
+  {currentUnverified && (
+    <div class="mb-3">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-medium px-2.5 py-1">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+        </svg>
+        {th ? 'ข้อมูลปีปัจจุบันยังไม่ผ่านการยืนยัน' : 'Current-year data is unverified'}
+      </span>
+    </div>
+  )}
+
+  <!-- Legend -->
+  <ChartLegend
+    items={[
+      { color: baselineColor, label: baselineLabel, symbol: 'square' },
+      { color: currentColor, label: currentUnverified ? `${currentLabel} (${th ? 'ยังไม่ยืนยัน' : 'unverified'})` : currentLabel, symbol: 'square' },
+      ...(showTarget ? [{ color: targetColor, label: targetLabel, symbol: 'square' as const }] : []),
+    ]}
+    class="mb-4 flex flex-wrap gap-3"
+  />
+
+  <!-- Chart panel -->
+  <div id={chartId} role="tabpanel" aria-labelledby={`${chartId}-tab`} class="chart-panel">
+    <div class="overflow-x-auto" tabindex="0" role="img" aria-label={title}>
+      <svg
+        width={chartW}
+        height={chartH}
+        viewBox={`0 0 ${chartW} ${chartH}`}
+        class="chart-svg min-w-full"
+        role="img"
+        aria-label={title}
+      >
+        <title>{title}</title>
+        <desc>{description}</desc>
+
+        {/* Y-axis grid + labels */}
+        {ticks.map((tick) => {
+          const y = yScale(tick);
+          return (
+            <g>
+              <line x1={pad.left} y1={y} x2={chartW - pad.right} y2={y} stroke="#e5e7eb" stroke-width="0.5" />
+              <text x={pad.left - 8} y={y + 4} text-anchor="end" class="text-[10px]" fill="#707974">{fmt(tick)}</text>
+            </g>
+          );
+        })}
+
+        {/* Bars */}
+        {months.map((m, gi) => {
+          const groupX = pad.left + gi * groupGap;
+          const b1x = groupX + barPad;
+          const b2x = b1x + barW + barPad;
+          const b3x = b2x + barW + barPad;
+
+          return (
+            <g>
+              {/* Baseline bar — only render if present */}
+              {m.baseline != null && (
+                <rect x={b1x} y={yScale(m.baseline)} width={barW} height={pad.top + drawH - yScale(m.baseline)} fill={baselineColor} opacity="0.85" rx="1.5">
+                  <title>{`${m.label}: ${baselineLabel} ${fmt(m.baseline)}${unit}`}</title>
+                </rect>
+              )}
+
+              {/* Current bar — only render if present (missing = gap, NOT zero) */}
+              {m.current != null && (
+                <rect x={b2x} y={yScale(m.current)} width={barW} height={pad.top + drawH - yScale(m.current)} fill={currentColor} opacity={currentUnverified ? '0.5' : '0.85'} rx="1.5">
+                  <title>{`${m.label}: ${currentLabel} ${fmt(m.current)}${unit}${currentUnverified ? ` (${th ? 'ยังไม่ยืนยัน' : 'unverified'})` : ''}`}</title>
+                </rect>
+              )}
+
+              {/* Target bar */}
+              {showTarget && m.target != null && (
+                <rect x={b3x} y={yScale(m.target)} width={barW} height={pad.top + drawH - yScale(m.target)} fill={targetColor} opacity="0.9" rx="1.5">
+                  <title>{`${m.label}: ${targetLabel} ${fmt(m.target)}${unit}`}</title>
+                </rect>
+              )}
+
+              {/* Missing month indicator — subtle dashed placeholder */}
+              {m.current == null && (
+                <line x1={b2x + barW / 2} y1={pad.top + drawH - 8} x2={b2x + barW / 2} y2={pad.top + drawH} stroke="#d4d4d4" stroke-width="1" stroke-dasharray="2 2" opacity="0.5">
+                  <title>{`${m.label}: ${th ? 'ยังไม่มีข้อมูลปีปัจจุบัน' : 'No current-year data'}`}</title>
+                </line>
+              )}
+
+              {/* Month label */}
+              <text x={groupX + groupGap / 2} y={chartH - 8} text-anchor="middle" class="text-[10px]" fill="#707974">{m.label}</text>
+            </g>
+          );
+        })}
+
+        {/* Unit label on Y axis */}
+        <text x={12} y={pad.top - 8} class="text-[9px]" fill="#404944">{unit}</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Table panel (hidden by default) -->
+  <div id={tableId} role="tabpanel" aria-labelledby={`${tableId}-tab`} class="table-panel hidden">
+    <div class="overflow-x-auto">
+      <table class="w-full text-xs text-left border-collapse">
+        <thead class="border-b-2 border-outline-variant/30">
+          <tr>
+            <th scope="col" class="py-2 px-3 font-semibold text-on-surface">{th ? 'เดือน' : 'Month'}</th>
+            <th scope="col" class="py-2 px-3 font-semibold text-on-surface text-right">{baselineLabel}</th>
+            <th scope="col" class="py-2 px-3 font-semibold text-on-surface text-right">{currentLabel}{currentUnverified ? ' *' : ''}</th>
+            {showTarget && <th scope="col" class="py-2 px-3 font-semibold text-on-surface text-right">{targetLabel}</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {months.map((m) => (
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/50">
+              <td class="py-1.5 px-3 text-on-surface font-medium">{m.label}</td>
+              <td class="py-1.5 px-3 text-right text-on-surface-variant tabular-nums">{m.baseline != null ? fmt(m.baseline) : '—'}</td>
+              <td class="py-1.5 px-3 text-right text-on-surface-variant tabular-nums">{m.current != null ? fmt(m.current) : '—'}</td>
+              {showTarget && <td class="py-1.5 px-3 text-right text-on-surface-variant tabular-nums">{m.target != null ? fmt(m.target) : '—'}</td>}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {currentUnverified && (
+        <p class="text-[10px] text-amber-600 mt-2">* {th ? 'ข้อมูลยังไม่ผ่านการยืนยัน' : 'Unverified data'}</p>
+      )}
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ chartId, tableId }}>
+  (function () {
+    var chartTab = document.getElementById(chartId + '-tab');
+    var tableTab = document.getElementById(tableId + '-tab');
+    var chartPanel = document.getElementById(chartId);
+    var tablePanel = document.getElementById(tableId);
+    if (!chartTab || !tableTab || !chartPanel || !tablePanel) return;
+
+    function activate(tab, panel, otherTab, otherPanel) {
+      tab.setAttribute('aria-selected', 'true');
+      tab.classList.add('bg-white', 'text-on-surface', 'shadow-sm');
+      tab.classList.remove('text-outline-variant');
+      panel.classList.remove('hidden');
+      otherTab.setAttribute('aria-selected', 'false');
+      otherTab.classList.remove('bg-white', 'text-on-surface', 'shadow-sm');
+      otherTab.classList.add('text-outline-variant');
+      otherPanel.classList.add('hidden');
+    }
+
+    chartTab.addEventListener('click', function () {
+      activate(chartTab, chartPanel, tableTab, tablePanel);
+    });
+    tableTab.addEventListener('click', function () {
+      activate(tableTab, tablePanel, chartTab, chartPanel);
+    });
+  })();
+</script>

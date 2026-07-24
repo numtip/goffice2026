@@ -1,0 +1,111 @@
+---
+import DataStatusBadge from './DataStatusBadge.astro';
+import type { MetricTheme } from '../../data/metric-theme';
+import type { DisplayStatus } from '../../utils/data-status';
+
+interface KpiCard {
+  id: 'baseline' | 'current' | 'completeness' | 'target';
+  label: string;
+  value: string;
+  unit?: string;
+  contextLine: string;
+  trendLabel?: string;
+  trendColor?: string;
+  /** Progress 0–100 for ring/bar (used for completeness) */
+  progress?: number;
+  verified?: boolean;
+  status?: DisplayStatus;
+  /** If true, de-emphasize value (unverified current year) */
+  dimmed?: boolean;
+}
+
+interface Props {
+  cards: KpiCard[];
+  theme: MetricTheme;
+  locale: 'th' | 'en';
+}
+
+const { cards, theme, locale } = Astro.props;
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+  {cards.map((card) => {
+    const isTargetNoValue = card.id === 'target' && card.value === '__NONE__';
+    const displayValue = isTargetNoValue ? '' : card.value;
+    return (
+      <div
+        class={`kpi-card relative rounded-stitch border border-outline-variant/20 bg-white p-4 shadow-sm transition hover:shadow-md ${card.dimmed ? 'opacity-80' : ''}`}
+      >
+        <!-- Top accent strip -->
+        <div
+          class="absolute top-0 left-4 right-4 h-0.5 rounded-b-full"
+          style={`background-color: ${card.dimmed ? '#d4d4d4' : theme.accent};`}
+          aria-hidden="true"
+        >
+        </div>
+
+        <div class="flex items-start justify-between gap-2 mb-2">
+          <p class="text-[11px] font-semibold text-outline uppercase tracking-wide leading-tight">
+            {card.label}
+          </p>
+          {card.verified === true && (
+            <svg class="w-4 h-4 text-green-500 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-label={locale === 'th' ? 'ยืนยันแล้ว' : 'Verified'} role="img">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+          )}
+          {card.verified === false && (
+            <svg class="w-4 h-4 text-amber-500 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-label={locale === 'th' ? 'ยังไม่ยืนยัน' : 'Unverified'} role="img">
+              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+            </svg>
+          )}
+        </div>
+
+        <div class="flex items-baseline gap-1">
+          {isTargetNoValue ? (
+            <p class={`text-sm font-semibold ${card.dimmed ? 'text-outline-variant' : 'text-on-surface'}`}>
+              {locale === 'th' ? 'ยังไม่กำหนดเป้าหมาย' : 'Target not set'}
+            </p>
+          ) : (
+            <>
+              <p class={`text-2xl font-bold leading-none ${card.dimmed ? 'text-outline-variant' : 'text-on-surface'}`}>
+                {displayValue}
+              </p>
+              {card.unit && (
+                <span class={`text-sm font-normal ${card.dimmed ? 'text-outline-variant' : 'text-outline'}`}>
+                  {card.unit}
+                </span>
+              )}
+            </>
+          )}
+        </div>
+
+        {card.trendLabel && (
+          <p class={`text-xs font-semibold mt-1.5 ${card.trendColor ?? 'text-outline'}`}>
+            {card.trendLabel}
+          </p>
+        )}
+
+        {card.status && card.verified !== undefined && (
+          <div class="mt-1.5">
+            <DataStatusBadge status={card.status} verified={card.verified} locale={locale} size="sm" />
+          </div>
+        )}
+
+        <p class="text-[11px] text-outline-variant mt-2 leading-tight">{card.contextLine}</p>
+
+        {/* Progress bar for completeness card */}
+        {card.progress !== undefined && (
+          <div class="mt-2.5" role="progressbar" aria-valuenow={card.progress} aria-valuemin="0" aria-valuemax="100" aria-label={card.label}>
+            <div class="h-1.5 w-full rounded-full bg-gray-100 overflow-hidden">
+              <div
+                class="h-full rounded-full transition-all duration-500"
+                style={`width: ${card.progress}%; background-color: ${card.dimmed ? '#d4d4d4' : theme.accent};`}
+              >
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  })}
+</div>

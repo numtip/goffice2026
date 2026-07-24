@@ -1,0 +1,52 @@
+---
+import MetricIcon from './MetricIcon.astro';
+import { metricThemes } from '../../data/metric-theme';
+import { dashboards, dashTitle } from '../../data/dashboard-config';
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface Props {
+  currentMetricId: string;
+  locale: 'th' | 'en';
+}
+
+const { currentMetricId, locale } = Astro.props;
+const th = locale === 'th';
+---
+
+<nav
+  class="metric-switcher rounded-stitch-lg border border-outline-variant/20 bg-white p-2 shadow-sm overflow-x-auto"
+  aria-label={th ? 'เลือกตัวชี้วัด' : 'Metric switcher'}
+>
+  <div class="flex items-center gap-1 min-w-min">
+    {dashboards.map((d) => {
+      const isActive = d.id === currentMetricId;
+      const theme = metricThemes[d.id];
+      const iconId = theme?.icon ?? 'energy';
+      const title = dashTitle(d, locale);
+      return (
+        <a
+          href={getLocalizedPath(locale, `/dashboard/${d.id}`)}
+          class={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1 ${
+            isActive
+              ? 'text-white shadow-sm'
+              : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
+          }`}
+          style={isActive && theme ? `background-color: ${theme.accent};` : ''}
+          aria-current={isActive ? 'page' : undefined}
+          aria-label={title}
+        >
+          {theme && (
+            <span
+              class="flex items-center justify-center w-5 h-5 shrink-0"
+              style={isActive ? 'color: white;' : `color: ${theme.accent};`}
+              aria-hidden="true"
+            >
+              <MetricIcon metric={iconId} class="w-4 h-4" />
+            </span>
+          )}
+          <span>{title}</span>
+        </a>
+      );
+    })}
+  </div>
+</nav>

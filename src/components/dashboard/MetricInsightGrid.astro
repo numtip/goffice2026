@@ -1,0 +1,80 @@
+---
+import type { MetricTheme } from '../../data/metric-theme';
+
+export interface InsightItem {
+  id: string;
+  label: string;
+  value: string;
+  unit?: string;
+  context?: string;
+  /** warning | info | positive | neutral */
+  tone?: 'warning' | 'info' | 'positive' | 'neutral';
+}
+
+interface Props {
+  title: string;
+  insights: InsightItem[];
+  theme: MetricTheme;
+  locale: 'th' | 'en';
+}
+
+const { title, insights, locale } = Astro.props;
+void locale; // locale is part of the component contract for future i18n
+
+const toneMap: Record<string, { bg: string; text: string; icon: string; iconPath: string }> = {
+  warning: {
+    bg: 'bg-amber-50',
+    text: 'text-amber-900',
+    icon: 'text-amber-500',
+    iconPath: 'M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z',
+  },
+  info: {
+    bg: 'bg-sky-50',
+    text: 'text-sky-900',
+    icon: 'text-sky-500',
+    iconPath: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
+  },
+  positive: {
+    bg: 'bg-green-50',
+    text: 'text-green-900',
+    icon: 'text-green-500',
+    iconPath: 'M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z',
+  },
+  neutral: {
+    bg: 'bg-surface-container',
+    text: 'text-on-surface-variant',
+    icon: 'text-outline',
+    iconPath: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
+  },
+};
+---
+
+{insights.length > 0 && (
+  <div>
+    <h3 class="text-sm font-semibold text-on-surface mb-3">{title}</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {insights.map((item) => {
+        const tone = toneMap[item.tone ?? 'neutral'];
+        return (
+          <div class={`rounded-stitch border border-outline-variant/20 p-4 ${tone.bg}`}>
+            <div class="flex items-start gap-2 mb-2">
+              <svg class={`w-4 h-4 shrink-0 mt-0.5 ${tone.icon}`} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d={tone.iconPath} clip-rule="evenodd" />
+              </svg>
+              <p class="text-[11px] font-semibold text-outline uppercase tracking-wide leading-tight">
+                {item.label}
+              </p>
+            </div>
+            <div class="flex items-baseline gap-1">
+              <span class={`text-lg font-bold ${tone.text}`}>{item.value}</span>
+              {item.unit && <span class={`text-xs ${tone.text} opacity-70`}>{item.unit}</span>}
+            </div>
+            {item.context && (
+              <p class={`text-[11px] ${tone.text} opacity-75 mt-1 leading-tight`}>{item.context}</p>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+)}

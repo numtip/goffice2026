@@ -1,0 +1,337 @@
+---
+import type { DashboardMeta } from '../../data/dashboard-config';
+import { dashTitle, dashDescription, dashSourceLabel } from '../../data/dashboard-config';
+import type { MultiYearMetric, YearData } from '../../utils/multi-year-schema';
+import { resolveDisplayStatus, shouldShowYoy, hasDisplayableTotal } from '../../utils/data-status';
+import { getLocalizedPath } from '../../i18n/utils';
+import { getEvidenceForDashboard } from '../../utils/evidence-traceability';
+import { metricThemes } from '../../data/metric-theme';
+import { computeMetricInsights, buildExecutiveInsight } from '../../utils/metric-insights';
+
+import MetricHero from './MetricHero.astro';
+import MetricKpiGrid from './MetricKpiGrid.astro';
+import ExecutiveInsight from './ExecutiveInsight.astro';
+import MonthlyProgress from './MonthlyProgress.astro';
+import MetricChartCard from './MetricChartCard.astro';
+import MetricInsightGrid from './MetricInsightGrid.astro';
+import DataEvidencePanel from './DataEvidencePanel.astro';
+import MetricSwitcher from './MetricSwitcher.astro';
+import DashboardEmptyState from './DashboardEmptyState.astro';
+import LinkedEvidenceList from '../evidence/LinkedEvidenceList.astro';
+
+import categoriesData from '../../data/criteria/categories.json';
+import indicatorsData from '../../data/criteria/indicators.json';
+
+interface Props {
+  dashboard: DashboardMeta;
+  metric: MultiYearMetric | undefined;
+  locale: 'th' | 'en';
+}
+
+const { dashboard, metric, locale } = Astro.props;
+const th = locale === 'th';
+
+const theme = metricThemes[dashboard.id] ?? metricThemes.energy;
+
+const baselineYear = metric?.years[metric.baselineYear.toString()] as YearData | undefined;
+const currentYear = metric?.years[metric.currentYear.toString()] as YearData | undefined;
+const yoy = metric?.yoyChange;
+const target = metric?.target;
+
+const pageTitle = dashTitle(dashboard, locale);
+const pageDescription = dashDescription(dashboard, locale);
+
+// Month labels
+const monthAbbr = th
+  ? ['', 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.']
+  : ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+const currentDisplayStatus = resolveDisplayStatus(currentYear);
+const showYoy = shouldShowYoy(currentYear);
+const showCurrentTotal = hasDisplayableTotal(currentYear);
+const currentVerified = currentYear?.quality?.valid !== false;
+
+const fmt = (v: number) => Intl.NumberFormat(th ? 'th' : 'en').format(Math.round(v));
+
+const yoyColor = (pct: number) => pct <= -5 ? 'text-green-600' : pct >= 5 ? 'text-red-600' : 'text-amber-600';
+const yoyArrow = (dir: string) => dir === 'up' ? '\u2191' : dir === 'down' ? '\u2193' : '\u2192';
+const yoyPctText = yoy ? `${yoy.percent > 0 ? '+' : ''}${yoy.percent}% ${yoyArrow(yoy.direction)}` : null;
+
+const showTargetMarker = target?.status !== 'TARGET_PENDING_APPROVAL' && (target?.months?.length ?? 0) > 0;
+
+const category = dashboard.categoryId
+  ? categoriesData.categories.find((c: { code: string }) => c.code === dashboard.categoryId)
+  : null;
+
+const relatedIndicators = indicatorsData.indicators.filter(
+  (ind: { relatedDashboards: string[] }) => ind.relatedDashboards.includes(dashboard.id)
+);
+const linkedEvidence = getEvidenceForDashboard(dashboard.id);
+
+// Prev/next navigation
+const dashboards = (await import('../../data/dashboard-config')).dashboards;
+const dashIndex = dashboards.findIndex((d) => d.id === dashboard.id);
+const prevDash = dashIndex > 0 ? dashboards[dashIndex - 1] : null;
+const nextDash = dashIndex < dashboards.length - 1 ? dashboards[dashIndex + 1] : null;
+
+// Build KPI cards
+const kpiCards = metric && baselineYear ? [
+  {
+    id: 'baseline' as const,
+    label: th ? `ปีฐาน ${metric.baselineYear}` : `Baseline ${metric.baselineYear}`,
+    value: fmt(baselineYear.total),
+    unit: metric.unit,
+    contextLine: th ? `ข้อมูลครบ 12 เดือน · ยืนยันแล้ว` : `Full 12 months · Verified`,
+    verified: true,
+    trendLabel: th ? 'ยืนยันแล้ว' : 'Verified',
+    trendColor: 'text-green-600',
+  },
+  {
+    id: 'current' as const,
+    label: th ? `ปีปัจจุบัน ${metric.currentYear}` : `Current ${metric.currentYear}`,
+    value: showCurrentTotal ? fmt(currentYear?.total ?? 0) : (th ? 'ไม่มี' : 'None'),
+    unit: metric.unit,
+    contextLine: showCurrentTotal
+      ? (th ? `${currentYear?.months.length ?? 0} จาก 12 เดือน` : `${currentYear?.months.length ?? 0} of 12 months`)
+      : (th ? 'ยังไม่มีข้อมูล' : 'No data yet'),
+    verified: currentVerified,
+    dimmed: !currentVerified,
+    trendLabel: showYoy && yoyPctText && currentVerified ? yoyPctText : (!currentVerified ? (th ? 'ข้อมูลตัวอย่าง/รอตรวจสอบ' : 'Sample/Pending') : undefined),
+    trendColor: showYoy && yoy && currentVerified ? yoyColor(yoy.percent) : 'text-amber-600',
+    status: currentDisplayStatus,
+  },
+  {
+    id: 'completeness' as const,
+    label: th ? 'ความครบถ้วน' : 'Completeness',
+    value: `${Math.round(((currentYear?.months.length ?? 0) / 12) * 100)}%`,
+    contextLine: th ? `${currentYear?.months.length ?? 0} จาก 12 เดือน` : `${currentYear?.months.length ?? 0} of 12 months`,
+    progress: Math.round(((currentYear?.months.length ?? 0) / 12) * 100),
+    verified: currentVerified,
+    dimmed: !currentVerified,
+  },
+  {
+    id: 'target' as const,
+    label: th ? `เป้าหมาย ${metric.targetYear ?? metric.currentYear}` : `Target ${metric.targetYear ?? metric.currentYear}`,
+    value: target && target.targetValue !== null ? fmt(target.targetValue) : '__NONE__',
+    unit: target && target.targetValue !== null ? metric.unit : undefined,
+    contextLine: target?.status === 'TARGET_PENDING_APPROVAL'
+      ? (th ? 'รอการอนุมัติ' : 'Awaiting approval')
+      : (th ? 'เป้าหมายการลด' : 'Reduction target'),
+    trendLabel: target?.status === 'TARGET_PENDING_APPROVAL' ? (th ? 'ยังไม่ยืนยัน' : 'Unconfirmed') : undefined,
+    trendColor: 'text-amber-600',
+  },
+] : [];
+
+// Build executive insight
+const execInsight = metric && baselineYear && currentYear
+  ? buildExecutiveInsight(metric, baselineYear, currentYear, locale)
+  : null;
+
+// Build metric-specific insights
+const metricInsights = metric && baselineYear
+  ? computeMetricInsights({ metric, baselineYear, currentYear, locale })
+  : [];
+
+// Build month presence array
+const monthPresent = currentYear
+  ? Array.from({ length: 12 }, (_, i) => currentYear.months.some((mo) => mo.month === i + 1))
+  : Array.from({ length: 12 }, () => false);
+
+// Build chart months
+const chartMonths = metric && baselineYear
+  ? Array.from({ length: 12 }, (_, i) => {
+      const m = i + 1;
+      return {
+        month: m,
+        label: monthAbbr[m],
+        baseline: baselineYear.months.find((mo) => mo.month === m)?.value,
+        current: currentYear?.months.find((mo) => mo.month === m)?.value,
+        target: showTargetMarker ? target?.months.find((tm) => tm.month === m)?.value : undefined,
+      };
+    })
+  : [];
+
+// Coverage string
+const coverage = currentYear
+  ? (th ? `${currentYear.months.length} จาก 12 เดือน` : `${currentYear.months.length} of 12 months`)
+  : (th ? 'ไม่มีข้อมูล' : 'No data');
+
+// Verification status string
+const verificationStatus = currentVerified
+  ? (th ? 'ยืนยันแล้ว' : 'Verified')
+  : (th ? 'ยังไม่ยืนยัน' : 'Unverified');
+
+// Primary indicator code
+const primaryIndicator = metric?.relatedIndicators?.[0];
+---
+
+<div class="max-w-6xl mx-auto px-4 py-4 md:px-6 md:py-6 space-y-5 md:space-y-6">
+
+  <!-- Breadcrumb -->
+  <nav class="text-xs text-outline-variant" aria-label={th ? 'เส้นทาง' : 'Breadcrumb'}>
+    <a href={getLocalizedPath(locale, '/')} class="text-primary hover:underline">{th ? 'หน้าแรก' : 'Home'}</a>
+    <span class="mx-1.5" aria-hidden="true">/</span>
+    <a href={getLocalizedPath(locale, '/dashboard')} class="text-primary hover:underline">{th ? 'แดชบอร์ด' : 'Dashboard'}</a>
+    <span class="mx-1.5" aria-hidden="true">/</span>
+    <span class="text-on-surface font-medium">{pageTitle}</span>
+  </nav>
+
+  {metric && baselineYear ? (
+    <>
+      <!-- Metric Switcher -->
+      <MetricSwitcher currentMetricId={dashboard.id} locale={locale} />
+
+      <!-- Hero Summary -->
+      <MetricHero
+        title={pageTitle}
+        purpose={pageDescription}
+        theme={theme}
+        indicatorCode={primaryIndicator?.indicatorId}
+        indicatorLabel={th ? primaryIndicator?.labelTh : primaryIndicator?.label}
+        currentDisplayStatus={currentDisplayStatus}
+        currentVerified={currentVerified}
+        lastUpdated={currentYear?.updated}
+        locale={locale}
+      />
+
+      <!-- KPI Command Center -->
+      <MetricKpiGrid cards={kpiCards} theme={theme} locale={locale} />
+
+      <!-- Executive Insight Strip -->
+      {execInsight && (
+        <ExecutiveInsight
+          summary={execInsight.summary}
+          monthsLine={execInsight.monthsLine}
+          interpretation={execInsight.interpretation}
+          type={execInsight.type}
+          theme={theme}
+          locale={locale}
+        />
+      )}
+
+      <!-- Main Chart + Monthly Progress (side by side on desktop) -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6">
+        <div class="lg:col-span-2">
+          <MetricChartCard
+            title={th ? `เปรียบเทียบรายเดือน: ${metric.baselineYear} vs ${metric.currentYear}` : `Monthly Comparison: ${metric.baselineYear} vs ${metric.currentYear}`}
+            description={th
+              ? `แท่งเข้ม = ปีฐาน · แท่งอ่อน = ปีปัจจุบัน${showTargetMarker ? ' · แท่งส้ม = เป้าหมาย' : ''}`
+              : `Dark = Baseline · Light = Current${showTargetMarker ? ' · Amber = Target' : ''}`}
+            months={chartMonths}
+            unit={metric.unit}
+            baselineLabel={th ? `ปีฐาน ${metric.baselineYear}` : `${metric.baselineYear} Baseline`}
+            currentLabel={th ? `ปีปัจจุบัน ${metric.currentYear}` : `${metric.currentYear} Current`}
+            targetLabel={th ? `เป้าหมาย ${metric.targetYear ?? metric.currentYear}` : `${metric.targetYear ?? metric.currentYear} Target`}
+            showTarget={showTargetMarker}
+            theme={theme}
+            locale={locale}
+            currentUnverified={!currentVerified}
+          />
+        </div>
+        <div class="lg:col-span-1">
+          <MonthlyProgress
+            year={metric.currentYear}
+            monthLabels={monthAbbr}
+            monthPresent={monthPresent}
+            verified={currentVerified}
+            status={currentDisplayStatus}
+            theme={theme}
+            locale={locale}
+          />
+        </div>
+      </div>
+
+      <!-- Metric-specific Insights -->
+      {metricInsights.length > 0 && (
+        <section class="space-y-3">
+          <MetricInsightGrid
+            title={th ? 'ข้อมูลเชิงลึกเฉพาะตัวชี้วัด' : 'Metric-Specific Insights'}
+            insights={metricInsights}
+            theme={theme}
+            locale={locale}
+          />
+        </section>
+      )}
+
+      <!-- Data & Evidence Panel -->
+      <DataEvidencePanel
+        sourceClassification={baselineYear.dataClassification}
+        sourceWorkbook={baselineYear.provenance?.sourceWorkbook}
+        coverage={coverage}
+        verificationStatus={verificationStatus}
+        evidenceCount={linkedEvidence.length}
+        baselineSource={baselineYear.source}
+        baselineUpdated={baselineYear.updated}
+        currentSource={currentYear?.source}
+        currentUpdated={currentYear?.updated}
+        baselineProvenance={baselineYear.provenance}
+        currentProvenance={currentYear?.provenance}
+        dataModelPath={`src/data/generated/${metric.metric}.json`}
+        sourceRefLabel={dashSourceLabel(dashboard, locale)}
+        theme={theme}
+        locale={locale}
+      />
+
+      <!-- Linked Evidence -->
+      {linkedEvidence.length > 0 && (
+        <div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm">
+          <LinkedEvidenceList items={linkedEvidence} locale={locale} headingId="dashboard-linked-evidence" />
+        </div>
+      )}
+
+      <!-- Related Indicators -->
+      {relatedIndicators.length > 0 && (
+        <div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm">
+          <h2 class="text-sm font-semibold text-on-surface mb-3">{th ? 'ตัวชี้วัดที่เกี่ยวข้อง' : 'Related Indicators'}</h2>
+          <div class="flex flex-wrap gap-2">
+            {relatedIndicators.map((ind: any) => (
+              <a
+                href={getLocalizedPath(locale, `/indicators/${ind.code}/`)}
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/20 text-sm text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-colors"
+              >
+                <span class="text-[10px] font-mono text-outline">{ind.code}</span>
+                <span>{th ? ind.title?.th ?? ind.title : ind.title?.en ?? ind.title}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Category link -->
+      {category && (
+        <div class="text-xs text-outline-variant">
+          {th ? 'หมวด' : 'Category'}: <a href={getLocalizedPath(locale, `/categories/${category.code}`)} class="text-primary underline hover:text-primary-container">{th ? category.title.th : category.title.en}</a>
+        </div>
+      )}
+
+      <!-- Prev / Next Navigation (de-emphasized) -->
+      <nav class="flex items-center justify-between gap-4 pt-4 border-t border-outline-variant/20 text-sm" aria-label={th ? 'การนำทางแดชบอร์ด' : 'Dashboard navigation'}>
+        {prevDash ? (
+          <a href={getLocalizedPath(locale, `/dashboard/${prevDash.id}`)} class="flex items-center gap-1.5 text-outline-variant hover:text-primary transition-colors">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <span class="hidden sm:inline">{dashTitle(prevDash, locale)}</span>
+            <span class="sm:hidden">{th ? 'ก่อนหน้า' : 'Prev'}</span>
+          </a>
+        ) : <div />}
+        {nextDash ? (
+          <a href={getLocalizedPath(locale, `/dashboard/${nextDash.id}`)} class="flex items-center gap-1.5 text-outline-variant hover:text-primary transition-colors">
+            <span class="hidden sm:inline">{dashTitle(nextDash, locale)}</span>
+            <span class="sm:hidden">{th ? 'ถัดไป' : 'Next'}</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          </a>
+        ) : <div />}
+      </nav>
+    </>
+  ) : (
+    <DashboardEmptyState
+      title={th ? 'ยังไม่มีข้อมูลเข้าสู่ระบบ' : 'Data Ingest Pending'}
+      body={th
+        ? 'ยังไม่มีการบันทึกข้อมูลหลายปีของแดชบอร์ดนี้เข้าสู่ระบบ เจ้าหน้าที่กำลังรวบรวมข้อมูลจากไฟล์ Excel เมื่อข้อมูลพร้อม หน้านี้จะแสดงการเปรียบเทียบรายเดือนและแนวโน้มโดยอัตโนมัติ'
+        : 'Multi-year monitoring data for this dashboard has not yet been entered. Staff are compiling data from Excel records. Once available, this page will automatically display monthly comparisons and trends.'}
+      backHref={getLocalizedPath(locale, '/dashboard')}
+      backLabel={th ? 'กลับไปภาพรวมแดชบอร์ด' : 'Back to Dashboard Overview'}
+      extraLinks={category ? [{ href: getLocalizedPath(locale, `/categories/${category.code}`), label: th ? `หมวด: ${category.title.th}` : `Category: ${category.title.en}` }] : []}
+    />
+  )}
+
+</div>

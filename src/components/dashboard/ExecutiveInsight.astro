@@ -1,0 +1,49 @@
+---
+import type { MetricTheme } from '../../data/metric-theme';
+
+interface Props {
+  /** What happened */
+  summary: string;
+  /** How many months of data */
+  monthsLine: string;
+  /** How to interpret */
+  interpretation: string;
+  /** warning | info | positive */
+  type: 'warning' | 'info' | 'positive';
+  theme: MetricTheme;
+  locale: 'th' | 'en';
+}
+
+const { summary, monthsLine, interpretation, type, locale } = Astro.props;
+const th = locale === 'th';
+
+const accentMap = {
+  warning: { bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-900', icon: 'text-amber-500' },
+  info: { bg: 'bg-sky-50', border: 'border-sky-200', text: 'text-sky-900', icon: 'text-sky-500' },
+  positive: { bg: 'bg-green-50', border: 'border-green-200', text: 'text-green-900', icon: 'text-green-500' },
+};
+const c = accentMap[type];
+
+const iconPath = type === 'warning'
+  ? 'M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z'
+  : type === 'positive'
+    ? 'M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z'
+    : 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z';
+---
+
+<aside
+  class={`exec-insight rounded-stitch-lg border p-4 md:p-5 ${c.bg} ${c.border}`}
+  role="note"
+  aria-label={th ? 'สรุปประเด็นสำคัญ' : 'Executive insight'}
+>
+  <div class="flex gap-3">
+    <svg class={`w-5 h-5 shrink-0 mt-0.5 ${c.icon}`} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d={iconPath} clip-rule="evenodd" />
+    </svg>
+    <div class="flex-1 min-w-0 space-y-1">
+      <p class={`text-sm font-semibold ${c.text}`}>{summary}</p>
+      <p class={`text-xs ${c.text} opacity-80`}>{monthsLine}</p>
+      <p class={`text-xs ${c.text} opacity-80`}>{interpretation}</p>
+    </div>
+  </div>
+</aside>

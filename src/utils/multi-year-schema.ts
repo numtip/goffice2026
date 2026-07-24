@@ -105,6 +105,8 @@ export interface YoyChange {
 export interface IndicatorMapping {
   indicatorId: string;
   label: string;
+  /** Optional Thai label, present in generated JSON but not required by schema. */
+  labelTh?: string;
   relevance: 'primary' | 'supporting' | 'related';
   /** Optional note, e.g. flagging that detailed sub-indicator mapping is still pending confirmation. */
   note?: string;

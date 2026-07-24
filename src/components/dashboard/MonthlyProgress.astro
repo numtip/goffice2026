@@ -1,0 +1,119 @@
+---
+import type { MetricTheme } from '../../data/metric-theme';
+import type { DisplayStatus } from '../../utils/data-status';
+
+interface Props {
+  year: number;
+  monthLabels: string[];
+  /** Array of 12 booleans — true if month has data */
+  monthPresent: boolean[];
+  /** Whether the current year is verified */
+  verified: boolean;
+  /** Display status of current year */
+  status: DisplayStatus;
+  theme: MetricTheme;
+  locale: 'th' | 'en';
+}
+
+const { year, monthLabels, monthPresent, verified, theme, locale } = Astro.props;
+const th = locale === 'th';
+
+const presentCount = monthPresent.filter(Boolean).length;
+const progressPct = Math.round((presentCount / 12) * 100);
+
+const label = th
+  ? `ความครบถ้วนข้อมูล ปี ${year}: ${presentCount} จาก 12 เดือน`
+  : `${year} data completeness: ${presentCount} of 12 months`;
+---
+
+<div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-4 md:p-5 shadow-sm">
+  <div class="flex items-center justify-between gap-3 mb-3">
+    <h3 class="text-sm font-semibold text-on-surface">
+      {th ? `ความคืบหน้ารายเดือน ปี ${year}` : `${year} Monthly Progress`}
+    </h3>
+    <span class="text-xs font-medium text-outline-variant shrink-0">
+      {presentCount}/12
+    </span>
+  </div>
+
+  <!-- Progress bar -->
+  <div
+    class="h-1.5 w-full rounded-full bg-gray-100 overflow-hidden mb-3"
+    role="progressbar"
+    aria-valuenow={progressPct}
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-label={label}
+  >
+    <div
+      class="h-full rounded-full transition-all duration-500"
+      style={`width: ${progressPct}%; background-color: ${verified ? theme.accent : '#d4d4d4'};`}
+    >
+    </div>
+  </div>
+
+  <!-- 12-month timeline -->
+  <div class="grid grid-cols-12 gap-1" role="list" aria-label={label}>
+    {monthPresent.map((present, i) => {
+      const m = i + 1;
+      const monthLabel = monthLabels[m] ?? `M${m}`;
+
+      // State: completed (verified), completed (unverified), missing
+      let cellClass: string;
+      let icon: string;
+      let stateText: string;
+
+      if (present && verified) {
+        cellClass = 'text-white';
+        icon = '\u2713';
+        stateText = th ? 'มีข้อมูล (ยืนยันแล้ว)' : 'Data present (verified)';
+      } else if (present && !verified) {
+        cellClass = 'text-white';
+        icon = '\u2713';
+        stateText = th ? 'มีข้อมูล (ยังไม่ยืนยัน)' : 'Data present (unverified)';
+      } else {
+        cellClass = 'text-gray-400';
+        icon = '\u2013';
+        stateText = th ? 'ยังไม่มีข้อมูล' : 'No data';
+      }
+
+      const bgColor = present
+        ? (verified ? theme.accent : '#d4d4d4')
+        : '#f3f4f6';
+
+      return (
+        <div class="flex flex-col items-center" role="listitem">
+          <span
+            class={`flex h-6 w-full items-center justify-center rounded text-[10px] font-bold ${cellClass}`}
+            style={`background-color: ${bgColor};`}
+            title={`${monthLabel} — ${stateText}`}
+            aria-label={`${monthLabel} — ${stateText}`}
+          >
+            {icon}
+          </span>
+          <span class="mt-0.5 text-[9px] text-outline-variant leading-none">{monthLabel}</span>
+        </div>
+      );
+    })}
+  </div>
+
+  <!-- Legend -->
+  <div class="flex flex-wrap items-center gap-3 mt-3 text-[10px] text-outline-variant">
+    {verified && (
+      <span class="flex items-center gap-1">
+        <span class="inline-block w-2.5 h-2.5 rounded" style={`background-color: ${theme.accent};`} aria-hidden="true"></span>
+        {th ? 'มีข้อมูล' : 'Present'}
+      </span>
+    )}
+    {!verified && presentCount > 0 && (
+      <span class="flex items-center gap-1">
+        <span class="inline-block w-2.5 h-2.5 rounded bg-gray-300" aria-hidden="true"></span>
+        {th ? 'มีข้อมูล (ยังไม่ยืนยัน)' : 'Present (unverified)'}
+      </span>
+    )}
+    <span class="flex items-center gap-1">
+      <span class="inline-block w-2.5 h-2.5 rounded bg-gray-100 border border-gray-200" aria-hidden="true"></span>
+      {th ? 'ยังไม่มีข้อมูล' : 'Missing'}
+    </span>
+  </div>
+</div>
