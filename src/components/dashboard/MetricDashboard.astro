@@ -6,11 +6,11 @@ import { resolveDisplayStatus, shouldShowYoy, hasDisplayableTotal } from '../../
 import { getLocalizedPath } from '../../i18n/utils';
 import { getEvidenceForDashboard } from '../../utils/evidence-traceability';
 import { metricThemes } from '../../data/metric-theme';
-import { computeMetricInsights, buildExecutiveInsight } from '../../utils/metric-insights';
+import { computeMetricInsights } from '../../utils/metric-insights';
 
 import MetricHero from './MetricHero.astro';
 import MetricKpiGrid from './MetricKpiGrid.astro';
-import ExecutiveInsight from './ExecutiveInsight.astro';
+import ExecutiveSummary from './ExecutiveSummary.astro';
 import MonthlyProgress from './MonthlyProgress.astro';
 import MetricChartCard from './MetricChartCard.astro';
 import MetricInsightGrid from './MetricInsightGrid.astro';
@@ -122,11 +122,6 @@ const kpiCards = metric && baselineYear ? [
   },
 ] : [];
 
-// Build executive insight
-const execInsight = metric && baselineYear && currentYear
-  ? buildExecutiveInsight(metric, baselineYear, currentYear, locale)
-  : null;
-
 // Build metric-specific insights
 const metricInsights = metric && baselineYear
   ? computeMetricInsights({ metric, baselineYear, currentYear, locale })
@@ -197,14 +192,11 @@ const primaryIndicator = metric?.relatedIndicators?.[0];
       <!-- KPI Command Center -->
       <MetricKpiGrid cards={kpiCards} theme={theme} locale={locale} />
 
-      <!-- Executive Insight Strip -->
-      {execInsight && (
-        <ExecutiveInsight
-          summary={execInsight.summary}
-          monthsLine={execInsight.monthsLine}
-          interpretation={execInsight.interpretation}
-          type={execInsight.type}
-          theme={theme}
+      <!-- Executive Summary -->
+      {metric && (
+        <ExecutiveSummary
+          metric={metric}
+          metricId={dashboard.id}
           locale={locale}
         />
       )}

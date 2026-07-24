@@ -1,0 +1,213 @@
+---
+/**
+ * ExecutiveSummary Component
+ * 
+ * Generates deterministic executive intelligence for dashboard pages.
+ * Includes: Current Status, Positive Findings, Attention Points, Recommendations, Confidence.
+ */
+
+import type { MultiYearMetric } from '../../utils/multi-year-schema';
+import {
+  calculateConfidence,
+  generateExecutiveInsights,
+} from '../../utils/dashboard-executive';
+
+interface Props {
+  metric: MultiYearMetric;
+  metricId: string;
+  locale: 'th' | 'en';
+}
+
+const { metric, metricId, locale } = Astro.props;
+const th = locale === 'th';
+
+const confidence = calculateConfidence(metric);
+const insights = generateExecutiveInsights(metric, locale);
+
+// Group insights by type
+const statusInsights = insights.filter(i => i.type === 'status');
+const positiveInsights = insights.filter(i => i.type === 'positive');
+const attentionInsights = insights.filter(i => i.type === 'attention');
+const recommendationInsights = insights.filter(i => i.type === 'recommendation');
+
+// Confidence level styling
+const confidenceLevel = confidence.level;
+const confidenceColor = {
+  High: 'text-green-700 bg-green-50 border-green-200',
+  Medium: 'text-amber-700 bg-amber-50 border-amber-200',
+  Low: 'text-slate-700 bg-slate-50 border-slate-200',
+}[confidenceLevel];
+
+const confidenceIcon = {
+  High: 'M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z',
+  Medium: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
+  Low: 'M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z',
+}[confidenceLevel];
+---
+
+<section
+  class="exec-summary space-y-4"
+  role="region"
+  aria-label={th ? 'สรุปผู้บริหาร' : 'Executive summary'}
+>
+  <!-- Confidence Badge -->
+  <div class="flex items-center gap-2">
+    <span class={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-medium ${confidenceColor}`}>
+      <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d={confidenceIcon} clip-rule="evenodd" />
+      </svg>
+      <span>
+        {th ? 'ความมั่นใจ' : 'Confidence'}: {th ? confidenceLevel === 'High' ? 'สูง' : confidenceLevel === 'Medium' ? 'ปานกลาง' : 'ต่ำ' : confidenceLevel} ({confidence.score})
+      </span>
+    </span>
+  </div>
+
+  <!-- Current Status -->
+  {statusInsights.length > 0 && (
+    <aside
+      class={`exec-summary-section bg-sky-50 border border-sky-200 rounded-stitch-lg p-4`}
+      role="note"
+      aria-label={th ? 'สถานะปัจจุบัน' : 'Current status'}
+    >
+      <h3 class={`text-sm font-semibold text-sky-900 mb-2 flex items-center gap-2`}>
+        <svg class="w-4 h-4 text-sky-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+        </svg>
+        {th ? 'สถานะปัจจุบัน' : 'Current Status'}
+      </h3>
+      <ul class="space-y-1.5">
+        {statusInsights.map((insight) => (
+          <li class="text-sm text-sky-900 opacity-90">
+            {insight.text}
+          </li>
+        ))}
+      </ul>
+    </aside>
+  )}
+
+  <!-- Positive Findings -->
+  {positiveInsights.length > 0 && (
+    <aside
+      class={`exec-summary-section bg-green-50 border border-green-200 rounded-stitch-lg p-4`}
+      role="note"
+      aria-label={th ? 'ข้อพบที่ดี' : 'Positive findings'}
+    >
+      <h3 class={`text-sm font-semibold text-green-900 mb-2 flex items-center gap-2`}>
+        <svg class="w-4 h-4 text-green-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        {th ? 'ข้อพบที่ดี' : 'Positive Findings'}
+      </h3>
+      <ul class="space-y-1.5">
+        {positiveInsights.map((insight) => (
+          <li class="text-sm text-green-900 opacity-90">
+            {insight.text}
+          </li>
+        ))}
+      </ul>
+    </aside>
+  )}
+
+  <!-- Attention Points -->
+  {attentionInsights.length > 0 && (
+    <aside
+      class={`exec-summary-section bg-amber-50 border border-amber-200 rounded-stitch-lg p-4`}
+      role="note"
+      aria-label={th ? 'ข้อพบที่ต้องติดตาม' : 'Attention points'}
+    >
+      <h3 class={`text-sm font-semibold text-amber-900 mb-2 flex items-center gap-2`}>
+        <svg class="w-4 h-4 text-amber-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+        </svg>
+        {th ? 'ข้อพบที่ต้องติดตาม' : 'Attention Points'}
+      </h3>
+      <ul class="space-y-1.5">
+        {attentionInsights.map((insight) => (
+          <li class="text-sm text-amber-900 opacity-90">
+            {insight.text}
+          </li>
+        ))}
+      </ul>
+    </aside>
+  )}
+
+  <!-- Recommendations -->
+  {recommendationInsights.length > 0 && (
+    <aside
+      class={`exec-summary-section bg-indigo-50 border border-indigo-200 rounded-stitch-lg p-4`}
+      role="note"
+      aria-label={th ? 'ข้อเสนอแนะ' : 'Recommendations'}
+    >
+      <h3 class={`text-sm font-semibold text-indigo-900 mb-2 flex items-center gap-2`}>
+        <svg class="w-4 h-4 text-indigo-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z" />
+        </svg>
+        {th ? 'ข้อเสนอแนะ' : 'Recommendations'}
+      </h3>
+      <ul class="space-y-1.5">
+        {recommendationInsights.map((insight) => (
+          <li class="text-sm text-indigo-900 opacity-90">
+            {insight.text}
+          </li>
+        ))}
+      </ul>
+    </aside>
+  )}
+
+  <!-- Confidence Reasons (expandable details) -->
+  {confidence.reasons.length > 1 && (
+    <details class="exec-summary-details group">
+      <summary class="cursor-pointer text-xs text-on-surface-variant hover:text-on-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded">
+        {th ? 'ดูรายละเอียดความมั่นใจ' : 'View confidence details'}
+      </summary>
+      <ul class="mt-2 pl-4 space-y-1 text-xs text-on-surface-variant">
+        {confidence.reasons.map((reason) => (
+          <li class="list-disc">
+            {reason}
+          </li>
+        ))}
+      </ul>
+    </details>
+  )}
+</section>
+
+<style>
+  /* Subtle entrance animation */
+  .exec-summary-section {
+    animation: fadeIn 0.3s ease-out;
+    animation-fill-mode: both;
+  }
+
+  .exec-summary-section:nth-child(2) { animation-delay: 0.05s; }
+  .exec-summary-section:nth-child(3) { animation-delay: 0.1s; }
+  .exec-summary-section:nth-child(4) { animation-delay: 0.15s; }
+  .exec-summary-section:nth-child(5) { animation-delay: 0.2s; }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .exec-summary-section {
+      animation: none;
+    }
+  }
+
+  /* Subtle hover for sections */
+  .exec-summary-section:hover {
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px 0 rgb(0 0 0 / 0.06);
+  }
+
+  /* Focus visible for accessibility */
+  .exec-summary-details summary:focus-visible {
+    outline: none;
+  }
+</style>
