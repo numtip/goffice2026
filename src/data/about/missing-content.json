@@ -1,0 +1,271 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-07-24",
+  "note": "Missing content items required for About Center pages. Each item must be obtained before the corresponding page can be completed.",
+  "missing": {
+    "policy": {
+      "page": "about-policy",
+      "route": "/about/policy/",
+      "priority": "high",
+      "items": [
+        {
+          "id": "missing-policy-signed",
+          "type": "document",
+          "titleTh": "นโยบายสิ่งแวดล้อมที่ลงนามโดยผู้บริหารระดับสูง",
+          "titleEn": "Signed Environmental Policy from Senior Management",
+          "descriptionTh": "เอกสารนโยบายสิ่งแวดล้อมอย่างเป็นทางการ ลงนามโดยผู้บริหารระดับสูง ครอบคลุมประเด็นตามเกณฑ์สำนักงานสีเขียวทุกประเด็น",
+          "descriptionEn": "Official environmental policy document signed by senior management, covering all Green Office criteria aspects",
+          "requiredByIndicator": "1.2.1",
+          "format": "PDF",
+          "signed": true,
+          "language": "th"
+        },
+        {
+          "id": "missing-policy-review",
+          "type": "document",
+          "titleTh": "หลักฐานการทบทวนนโยบายสิ่งแวดล้อม",
+          "titleEn": "Environmental Policy Review Evidence",
+          "descriptionTh": "เอกสารแสดงการทบทวนและปรับปรุงนโยบายสิ่งแวดล้อมอย่างต่อเนื่อง",
+          "descriptionEn": "Evidence of continuous review and improvement of environmental policy",
+          "requiredByIndicator": "1.2.2",
+          "format": "PDF",
+          "signed": false,
+          "language": "th"
+        }
+      ]
+    },
+    "committee": {
+      "page": "about-committee",
+      "route": "/about/committee/",
+      "priority": "high",
+      "items": [
+        {
+          "id": "missing-committee-order",
+          "type": "document",
+          "titleTh": "คำสั่งแต่งตั้งคณะกรรมการ/ทีมงานด้านสิ่งแวดล้อม",
+          "titleEn": "Environmental Committee Appointment Order",
+          "descriptionTh": "คำสั่ง/ประกาศแต่งตั้งคณะกรรมการหรือทีมงานด้านสิ่งแวดล้อมอย่างเป็นทางการ",
+          "descriptionEn": "Official order/announcement appointing the environmental committee or working team",
+          "requiredByIndicator": "1.4.1",
+          "format": "PDF",
+          "signed": true,
+          "language": "th"
+        },
+        {
+          "id": "missing-committee-understanding",
+          "type": "document",
+          "titleTh": "หลักฐานความเข้าใจบทบาทและหน้าที่ของคณะกรรมการ",
+          "titleEn": "Committee Role Understanding Evidence",
+          "descriptionTh": "เอกสารแสดงว่าคณะกรรมการเข้าใจบทบาทและหน้าที่ของตนเอง (เช่น บันทึกการประชุม แบบประเมิน)",
+          "descriptionEn": "Evidence showing committee members understand their roles and responsibilities (e.g. meeting minutes, assessment forms)",
+          "requiredByIndicator": "1.4.2",
+          "format": "PDF",
+          "signed": false,
+          "language": "th"
+        },
+        {
+          "id": "missing-committee-photo",
+          "type": "image",
+          "titleTh": "ภาพถ่ายคณะกรรมการสิ่งแวดล้อม",
+          "titleEn": "Environmental Committee Group Photo",
+          "descriptionTh": "ภาพถ่ายกลุ่มของคณะกรรมการ/ทีมงานด้านสิ่งแวดล้อม",
+          "descriptionEn": "Group photo of the environmental committee/working team",
+          "format": "JPG/PNG",
+          "optimizationRequired": true
+        },
+        {
+          "id": "missing-org-chart",
+          "type": "image",
+          "titleTh": "แผนผังองค์กร/โครงสร้างคณะกรรมการ",
+          "titleEn": "Organization/Committee Structure Chart",
+          "descriptionTh": "แผนผังแสดงโครงสร้างคณะกรรมการและเส้นทางรายงาน",
+          "descriptionEn": "Chart showing committee structure and reporting lines",
+          "format": "PNG/SVG",
+          "optimizationRequired": false
+        }
+      ]
+    },
+    "scope": {
+      "page": "about-scope",
+      "route": "/about/scope/",
+      "priority": "medium",
+      "items": [
+        {
+          "id": "missing-scope-document",
+          "type": "document",
+          "titleTh": "เอกสารกำหนดขอบเขตการจัดการสิ่งแวดล้อม",
+          "titleEn": "Environmental Management Scope Document",
+          "descriptionTh": "เอกสารระบุบริบทองค์กรและขอบเขตการจัดการสิ่งแวดล้อมของสำนักงานให้ชัดเจน",
+          "descriptionEn": "Document clearly defining organizational context and scope of office environmental management",
+          "requiredByIndicator": "1.1.1",
+          "format": "PDF",
+          "signed": false,
+          "language": "th"
+        },
+        {
+          "id": "missing-activity-assessment",
+          "type": "document",
+          "titleTh": "ผลการประเมินปัญหาสิ่งแวดล้อมจากกิจกรรมในสำนักงาน",
+          "titleEn": "Office Activity Environmental Assessment Results",
+          "descriptionTh": "ผลการระบุและประเมินปัญหาสิ่งแวดล้อมจากทุกกิจกรรมในสำนักงานภายใต้ขอบเขตการรับรอง",
+          "descriptionEn": "Results of identifying and assessing environmental issues from all office activities within certification scope",
+          "requiredByIndicator": "1.1.2",
+          "format": "PDF",
+          "signed": false,
+          "language": "th"
+        },
+        {
+          "id": "missing-office-photo",
+          "type": "image",
+          "titleTh": "ภาพถ่ายอาคารสำนักงาน/พื้นที่ดำเนินงาน",
+          "titleEn": "Office Building/Workspace Photo",
+          "descriptionTh": "ภาพถ่ายแสดงพื้นที่สำนักงานที่อยู่ภายใต้ขอบเขตการรับรอง",
+          "descriptionEn": "Photo showing the office premises covered by the certification scope",
+          "format": "JPG",
+          "optimizationRequired": true
+        }
+      ]
+    },
+    "goals": {
+      "page": "about-goals",
+      "route": "/about/goals/",
+      "priority": "medium",
+      "items": [
+        {
+          "id": "missing-goals-document",
+          "type": "document",
+          "titleTh": "เอกสารกำหนดเป้าหมายและตัวชี้วัด",
+          "titleEn": "Goals and Indicators Document",
+          "descriptionTh": "เอกสารกำหนดเป้าหมายและตัวชี้วัดที่ชัดเจนด้านการใช้ทรัพยากร พลังงาน ของเสีย และก๊าซเรือนกระจก",
+          "descriptionEn": "Document establishing clear targets and indicators for resource use, energy, waste and GHG emissions",
+          "requiredByIndicator": "1.3.1",
+          "format": "PDF",
+          "signed": false,
+          "language": "th"
+        },
+        {
+          "id": "missing-targets-evidence",
+          "type": "document",
+          "titleTh": "หลักฐานการบรรลุเป้าหมายและการวิเคราะห์ผล",
+          "titleEn": "Target Achievement and Analysis Evidence",
+          "descriptionTh": "ข้อมูลเปรียบเทียบผลการดำเนินงานกับเป้าหมายที่กำหนด พร้อมวิเคราะห์ผล",
+          "descriptionEn": "Performance comparison against established targets with analysis",
+          "requiredByIndicator": "1.3.2",
+          "format": "PDF",
+          "signed": false,
+          "language": "th"
+        },
+        {
+          "id": "missing-targets-communication",
+          "type": "document",
+          "titleTh": "หลักฐานการสื่อสารเป้าหมายให้บุคลากรทราบ",
+          "titleEn": "Target Communication Evidence",
+          "descriptionTh": "เอกสารแสดงการสื่อสารเป้าหมายและตัวชี้วัดให้บุคลากรทราบ",
+          "descriptionEn": "Evidence showing targets and indicators were communicated to personnel",
+          "requiredByIndicator": "1.3.3",
+          "format": "PDF",
+          "signed": false,
+          "language": "th"
+        }
+      ]
+    },
+    "actionPlan": {
+      "page": "about-action-plan",
+      "route": "/about/action-plan/",
+      "priority": "medium",
+      "items": [
+        {
+          "id": "missing-action-plan-doc",
+          "type": "document",
+          "titleTh": "แผนปฏิบัติการด้านสิ่งแวดล้อม",
+          "titleEn": "Environmental Action Plan",
+          "descriptionTh": "แผนงานโครงการเพื่อแก้ไขปัญหาสิ่งแวดล้อมที่มีนัยสำคัญ หรือสอดคล้องกับนโยบาย/กฎหมายสิ่งแวดล้อม",
+          "descriptionEn": "Project plans addressing significant environmental issues or aligned with environmental policy/law",
+          "requiredByIndicator": "1.5.1",
+          "format": "PDF",
+          "signed": false,
+          "language": "th"
+        },
+        {
+          "id": "missing-action-results",
+          "type": "document",
+          "titleTh": "ผลการดำเนินงานตามแผนปฏิบัติการ",
+          "titleEn": "Action Plan Implementation Results",
+          "descriptionTh": "รายงานผลการดำเนินงานตามแผนปฏิบัติการ พร้อมปรับปรุงแก้ไข",
+          "descriptionEn": "Implementation results report with continuous improvement",
+          "requiredByIndicator": "1.5.2",
+          "format": "PDF",
+          "signed": false,
+          "language": "th"
+        }
+      ]
+    },
+    "certification": {
+      "page": "about-certification",
+      "route": "/about/certification/",
+      "priority": "medium",
+      "items": [
+        {
+          "id": "missing-certification-certificate",
+          "type": "document",
+          "titleTh": "ใบรับรองสำนักงานสีเขียว",
+          "titleEn": "Green Office Certificate",
+          "descriptionTh": "ใบรับรองสำนักงานสีเขียวฉบับล่าสุดจาก TGO",
+          "descriptionEn": "Latest Green Office certificate from TGO",
+          "requiredByIndicator": null,
+          "format": "PDF",
+          "signed": true,
+          "language": "th"
+        },
+        {
+          "id": "missing-certification-badge",
+          "type": "image",
+          "titleTh": "ตราสัญลักษณ์การรับรองสำนักงานสีเขียว",
+          "titleEn": "Green Office Certification Badge",
+          "descriptionTh": "ตราสัญลักษณ์การรับรองสำนักงานสีเขียวจาก TGO สำหรับแสดงผล",
+          "descriptionEn": "Green Office certification badge from TGO for display",
+          "format": "PNG/SVG",
+          "optimizationRequired": false
+        }
+      ]
+    },
+    "feedback": {
+      "page": "about-feedback",
+      "route": "/about/feedback/",
+      "priority": "low",
+      "items": [
+        {
+          "id": "missing-feedback-channel",
+          "type": "document",
+          "titleTh": "ช่องทางรับข้อเสนอแนะด้านสิ่งแวดล้อม",
+          "titleEn": "Environmental Feedback Channel Description",
+          "descriptionTh": "เอกสารอธิบายช่องทางรับข้อเสนอแนะ/ข้อคิดเห็นด้านสิ่งแวดล้อม",
+          "descriptionEn": "Document describing the environmental feedback/suggestion channel",
+          "requiredByIndicator": "2.2.4",
+          "format": "PDF",
+          "signed": false,
+          "language": "th"
+        },
+        {
+          "id": "missing-feedback-improvements",
+          "type": "document",
+          "titleTh": "หลักฐานการนำข้อเสนอแนะมาปรับปรุงแก้ไข",
+          "titleEn": "Feedback Implementation Evidence",
+          "descriptionTh": "เอกสารแสดงการนำข้อเสนอแนะมาปรับปรุงแก้ไขอย่างเป็นระบบ",
+          "descriptionEn": "Evidence showing systematic improvement based on feedback",
+          "requiredByIndicator": "2.2.4",
+          "format": "PDF",
+          "signed": false,
+          "language": "th"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "totalMissingDocuments": 13,
+    "totalMissingImages": 4,
+    "highPriority": 5,
+    "mediumPriority": 10,
+    "lowPriority": 2
+  }
+}

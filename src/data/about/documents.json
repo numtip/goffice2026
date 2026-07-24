@@ -1,0 +1,139 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-07-24",
+  "note": "Document inventory for About Center content. Classification indicates suitability for About pages.",
+  "documents": [
+    {
+      "id": "doc-criteria-th",
+      "filename": "เกณฑ์การประเมินสำนักงานสีเขียว-ปี-2569.pdf",
+      "path": "public/documents/reference/เกณฑ์การประเมินสำนักงานสีเขียว-ปี-2569.pdf",
+      "pathPublic": "/documents/reference/เกณฑ์การประเมินสำนักงานสีเขียว-ปี-2569.pdf",
+      "titleTh": "เกณฑ์การประเมินสำนักงานสีเขียว ปี 2569",
+      "titleEn": "Green Office Assessment Criteria 2026 (Thai)",
+      "year": 2026,
+      "documentType": "assessment-criteria",
+      "language": "th",
+      "signed": false,
+      "publicInternal": "public",
+      "relatedPage": "about-certification",
+      "aboutClassification": "REUSE",
+      "reviewRequired": false,
+      "notes": "Official Green Office criteria from TGO. Reference material for all About pages. Already in public/documents/reference/."
+    },
+    {
+      "id": "doc-criteria-en",
+      "filename": "green-office-assessment-criteria-2569.pdf",
+      "path": "public/documents/reference/green-office-assessment-criteria-2569.pdf",
+      "pathPublic": "/documents/reference/green-office-assessment-criteria-2569.pdf",
+      "titleTh": "เกณฑ์การประเมินสำนักงานสีเขียว ปี 2569 (ภาษาอังกฤษ)",
+      "titleEn": "Green Office Assessment Criteria 2026 (English)",
+      "year": 2026,
+      "documentType": "assessment-criteria",
+      "language": "en",
+      "signed": false,
+      "publicInternal": "public",
+      "relatedPage": "about-certification",
+      "aboutClassification": "REUSE",
+      "reviewRequired": false,
+      "notes": "English translation of Green Office criteria. Reference material. Already in public/documents/reference/."
+    },
+    {
+      "id": "doc-water-data",
+      "filename": "1.1-Water.xlsx",
+      "path": "docs/1.1-Water.xlsx",
+      "titleTh": "ข้อมูลการใช้น้ำ",
+      "titleEn": "Water Usage Data",
+      "year": 2025,
+      "documentType": "data-workbook",
+      "language": "th",
+      "signed": false,
+      "publicInternal": "internal",
+      "relatedPage": null,
+      "aboutClassification": "NOT_APPLICABLE",
+      "reviewRequired": false,
+      "notes": "Operational data workbook. Not suitable for About pages. Tracked in document-registry.json."
+    },
+    {
+      "id": "doc-constitution",
+      "filename": "00-GREENOFFICE_PROJECT_CONSTITUTION.MD",
+      "path": "docs/00-GREENOFFICE_PROJECT_CONSTITUTION.MD",
+      "titleTh": "รัฐธรรมนูญโครงการ Green Office 2026",
+      "titleEn": "Green Office 2026 Project Constitution",
+      "year": 2026,
+      "documentType": "project-governance",
+      "language": "en",
+      "signed": false,
+      "publicInternal": "internal",
+      "relatedPage": "about-index",
+      "aboutClassification": "NEEDS_REVIEW",
+      "reviewRequired": true,
+      "notes": "Project governance document. May inform About page but contains internal decisions not for public."
+    },
+    {
+      "id": "doc-blueprint",
+      "filename": "GREENOFFICE2026_PLATFORM_BLUEPRINT_V3.md",
+      "path": "docs/GREENOFFICE2026_PLATFORM_BLUEPRINT_V3.md",
+      "titleTh": "แผนผังแพลตฟอร์ม Green Office 2026 v3",
+      "titleEn": "Green Office 2026 Platform Blueprint v3",
+      "year": 2026,
+      "documentType": "technical-specification",
+      "language": "en",
+      "signed": false,
+      "publicInternal": "internal",
+      "relatedPage": null,
+      "aboutClassification": "NOT_APPLICABLE",
+      "reviewRequired": false,
+      "notes": "Technical architecture document. Not suitable for About pages."
+    }
+  ],
+  "missingDocuments": [
+    {
+      "id": "missing-policy-pdf",
+      "titleTh": "นโยบายสิ่งแวดล้อมที่ลงนาม",
+      "titleEn": "Signed Environmental Policy",
+      "requiredFor": "about-policy",
+      "priority": "high",
+      "notes": "Official signed environmental policy document from senior management. Required by indicator 1.2.1."
+    },
+    {
+      "id": "missing-committee-order",
+      "titleTh": "คำสั่งแต่งตั้งคณะกรรมการสิ่งแวดล้อม",
+      "titleEn": "Environmental Committee Appointment Order",
+      "requiredFor": "about-committee",
+      "priority": "high",
+      "notes": "Official appointment order for the environmental committee/working team. Required by indicator 1.4.1."
+    },
+    {
+      "id": "missing-scope-doc",
+      "titleTh": "เอกสารกำหนดขอบเขตการจัดการสิ่งแวดล้อม",
+      "titleEn": "Environmental Management Scope Document",
+      "requiredFor": "about-scope",
+      "priority": "medium",
+      "notes": "Document defining the organizational context and scope of environmental management. Required by indicator 1.1.1."
+    },
+    {
+      "id": "missing-action-plan",
+      "titleTh": "แผนปฏิบัติการด้านสิ่งแวดล้อม",
+      "titleEn": "Environmental Action Plan",
+      "requiredFor": "about-action-plan",
+      "priority": "medium",
+      "notes": "Project plans addressing significant environmental issues aligned with policy. Required by indicator 1.5.1."
+    },
+    {
+      "id": "missing-certification-cert",
+      "titleTh": "ใบรับรองสำนักงานสีเขียว",
+      "titleEn": "Green Office Certificate",
+      "requiredFor": "about-certification",
+      "priority": "medium",
+      "notes": "Latest Green Office certification certificate. If renewal/upgrade, include previous certificates."
+    },
+    {
+      "id": "missing-goals-doc",
+      "titleTh": "เอกสารกำหนดเป้าหมายและตัวชี้วัด",
+      "titleEn": "Goals and Indicators Document",
+      "requiredFor": "about-goals",
+      "priority": "medium",
+      "notes": "Document establishing clear targets for resources, energy, waste and GHG. Required by indicator 1.3.1."
+    }
+  ]
+}

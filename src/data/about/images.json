@@ -1,0 +1,162 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-07-24",
+  "note": "Image inventory for About Center content. Only images with potential About page relevance are listed.",
+  "images": [
+    {
+      "id": "img-logo",
+      "filename": "LogoGreen2025.png",
+      "path": "public/images/LogoGreen2025.png",
+      "pathPublic": "/images/LogoGreen2025.png",
+      "currentUsage": "site-logo",
+      "suggestedAboutPage": "about-index",
+      "aboutRelevance": "organization-logo",
+      "optimizationRequired": false,
+      "notes": "Green Office logo. Already optimized and used site-wide. Reuse on About index."
+    },
+    {
+      "id": "img-hero-dashboard",
+      "filename": "Executive Dashboard Hero.jpg",
+      "path": "public/images/dashboard/wow2/Executive Dashboard Hero.jpg",
+      "pathPublic": "/images/dashboard/wow2/Executive Dashboard Hero.jpg",
+      "currentUsage": "landing-hero-background",
+      "suggestedAboutPage": null,
+      "aboutRelevance": "none",
+      "optimizationRequired": false,
+      "notes": "Landing page hero background. Not suitable for About pages."
+    },
+    {
+      "id": "img-dashboard-screens",
+      "filename": "Executive Dashboard Screens.png",
+      "path": "public/images/dashboard/wow2/Executive Dashboard Screens.png",
+      "pathPublic": "/images/dashboard/wow2/Executive Dashboard Screens.png",
+      "currentUsage": "landing-showcase",
+      "suggestedAboutPage": null,
+      "aboutRelevance": "none",
+      "optimizationRequired": false,
+      "notes": "Dashboard screenshot showcase. Not suitable for About pages."
+    },
+    {
+      "id": "img-resource-icons",
+      "filename": "Resource Icons.jpg",
+      "path": "public/images/dashboard/wow2/Resource Icons.jpg",
+      "pathPublic": "/images/dashboard/wow2/Resource Icons.jpg",
+      "currentUsage": "dashboard-decorative",
+      "suggestedAboutPage": null,
+      "aboutRelevance": "none",
+      "optimizationRequired": false,
+      "notes": "Decorative resource icon collage. Not suitable for About pages."
+    },
+    {
+      "id": "img-category-1",
+      "filename": "catagory1.webp",
+      "path": "public/images/dashboard/wow2/catagory1.webp",
+      "pathPublic": "/images/dashboard/wow2/catagory1.webp",
+      "currentUsage": "category-card-icon",
+      "suggestedAboutPage": null,
+      "aboutRelevance": "none",
+      "optimizationRequired": false,
+      "notes": "Category 1 icon. Used in dashboard/categories."
+    },
+    {
+      "id": "img-category-2",
+      "filename": "catagory2.webp",
+      "path": "public/images/dashboard/wow2/catagory2.webp",
+      "pathPublic": "/images/dashboard/wow2/catagory2.webp",
+      "currentUsage": "category-card-icon",
+      "suggestedAboutPage": null,
+      "aboutRelevance": "none",
+      "optimizationRequired": false,
+      "notes": "Category 2 icon. Used in dashboard/categories."
+    },
+    {
+      "id": "img-category-3",
+      "filename": "catagory3.webp",
+      "path": "public/images/dashboard/wow2/catagory3.webp",
+      "pathPublic": "/images/dashboard/wow2/catagory3.webp",
+      "currentUsage": "category-card-icon",
+      "suggestedAboutPage": null,
+      "aboutRelevance": "none",
+      "optimizationRequired": false,
+      "notes": "Category 3 icon. Used in dashboard/categories."
+    },
+    {
+      "id": "img-category-4",
+      "filename": "catagory4.webp",
+      "path": "public/images/dashboard/wow2/catagory4.webp",
+      "pathPublic": "/images/dashboard/wow2/catagory4.webp",
+      "currentUsage": "category-card-icon",
+      "suggestedAboutPage": null,
+      "aboutRelevance": "none",
+      "optimizationRequired": false,
+      "notes": "Category 4 icon. Used in dashboard/categories."
+    },
+    {
+      "id": "img-category-5",
+      "filename": "catagory5.webp",
+      "path": "public/images/dashboard/wow2/catagory5.webp",
+      "pathPublic": "/images/dashboard/wow2/catagory5.webp",
+      "currentUsage": "category-card-icon",
+      "suggestedAboutPage": null,
+      "aboutRelevance": "none",
+      "optimizationRequired": false,
+      "notes": "Category 5 icon. Used in dashboard/categories."
+    },
+    {
+      "id": "img-category-6",
+      "filename": "catagory6.webp",
+      "path": "public/images/dashboard/wow2/catagory6.webp",
+      "pathPublic": "/images/dashboard/wow2/catagory6.webp",
+      "currentUsage": "category-card-icon",
+      "suggestedAboutPage": null,
+      "aboutRelevance": "none",
+      "optimizationRequired": false,
+      "notes": "Category 6 icon. Used in dashboard/categories."
+    },
+    {
+      "id": "img-category-7",
+      "filename": "catagory7.webp",
+      "path": "public/images/dashboard/wow2/catagory7.webp",
+      "pathPublic": "/images/dashboard/wow2/catagory7.webp",
+      "currentUsage": "category-card-icon",
+      "suggestedAboutPage": null,
+      "aboutRelevance": "none",
+      "optimizationRequired": false,
+      "notes": "Category 7 icon. Used in dashboard/categories."
+    }
+  ],
+  "missingImages": [
+    {
+      "id": "missing-committee-photo",
+      "descriptionTh": "ภาพถ่ายคณะกรรมการสิ่งแวดล้อม",
+      "descriptionEn": "Environmental committee group photo",
+      "requiredFor": "about-committee",
+      "priority": "medium",
+      "notes": "Official group photo of the environmental committee/working team."
+    },
+    {
+      "id": "missing-org-chart",
+      "descriptionTh": "แผนผังองค์กร/คณะกรรมการ",
+      "descriptionEn": "Organization/committee structure chart",
+      "requiredFor": "about-committee",
+      "priority": "medium",
+      "notes": "Visual representation of the environmental committee structure and reporting lines."
+    },
+    {
+      "id": "missing-certification-badge",
+      "descriptionTh": "ตราสัญลักษณ์การรับรองสำนักงานสีเขียว",
+      "descriptionEn": "Green Office certification badge/logo",
+      "requiredFor": "about-certification",
+      "priority": "low",
+      "notes": "Official Green Office certification badge from TGO for display."
+    },
+    {
+      "id": "missing-office-photo",
+      "descriptionTh": "ภาพถ่ายอาคารสำนักงาน/พื้นที่ดำเนินงาน",
+      "descriptionEn": "Office building/workspace photo",
+      "requiredFor": "about-scope",
+      "priority": "low",
+      "notes": "Photo showing the office premises covered by the Green Office certification scope."
+    }
+  ]
+}
