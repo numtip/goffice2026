@@ -8,6 +8,7 @@ export interface MonthEntry {
   baseline?: number;
   current?: number;
   target?: number;
+  verified?: boolean;
 }
 
 interface Props {
@@ -23,6 +24,10 @@ interface Props {
   locale: 'th' | 'en';
   /** Whether current-year data is unverified */
   currentUnverified: boolean;
+  /** Baseline year (for label) */
+  baselineYear?: number;
+  /** Current year (for label) */
+  currentYear?: number;
 }
 
 const {
@@ -44,10 +49,13 @@ const th = locale === 'th';
 const baselineColor = theme.accentDark;
 const currentColor = currentUnverified ? '#a3a3a3' : theme.accent;
 const targetColor = '#d97706';
+const verifiedColor = '#16a34a';
+const unverifiedColor = '#d97706';
+const missingColor = '#9ca3af';
 
-const pad = { top: 24, right: 24, bottom: 40, left: 56 };
+const pad = { top: 28, right: 24, bottom: 44, left: 64 };
 const chartW = 760;
-const chartH = 320;
+const chartH = 340;
 const drawW = chartW - pad.left - pad.right;
 const drawH = chartH - pad.top - pad.bottom;
 
@@ -59,6 +67,8 @@ for (const m of months) {
   if (showTarget && m.target != null && m.target > maxVal) maxVal = m.target;
 }
 maxVal = maxVal || 1;
+// Add 10% headroom for extreme markers
+maxVal = maxVal * 1.1;
 const yScale = (v: number) => pad.top + drawH - ((v / maxVal) * drawH);
 
 const barW = Math.max(4, Math.floor(drawW / months.length * 0.6));
@@ -77,8 +87,55 @@ for (let i = 0; i <= tickCount; i++) {
 
 const fmt = (v: number) => Intl.NumberFormat(locale === 'th' ? 'th' : 'en', { notation: v > 9999 ? 'compact' : 'standard' }).format(Math.round(v));
 
+// ── Baseline reference line (average) ──
+const baselineValues = months.filter(m => m.baseline != null).map(m => m.baseline!);
+const baselineAvg = baselineValues.length > 0
+  ? baselineValues.reduce((a, b) => a + b, 0) / baselineValues.length
+  : null;
+
+// ── Extreme markers: highest & lowest current month ──
+let extremeHighIdx = -1;
+let extremeLowIdx = -1;
+let extremeHighVal = -Infinity;
+let extremeLowVal = Infinity;
+for (let i = 0; i < months.length; i++) {
+  const v = months[i].current;
+  if (v != null) {
+    if (v > extremeHighVal) { extremeHighVal = v; extremeHighIdx = i; }
+    if (v < extremeLowVal) { extremeLowVal = v; extremeLowIdx = i; }
+  }
+}
+const hasExtremes = extremeHighIdx >= 0 && extremeLowIdx >= 0 && extremeHighIdx !== extremeLowIdx;
+
+// ── Rolling average (3-month, >=3 consecutive valid months) ──
+interface RollingPoint { x: number; y: number; value: number; }
+const rollingPoints: RollingPoint[] = [];
+let rollingRun = 0;
+for (let i = 0; i < months.length; i++) {
+  if (months[i].current != null) {
+    rollingRun++;
+  } else {
+    rollingRun = 0;
+  }
+  if (rollingRun >= 3) {
+    const slice = months.slice(i - 2, i + 1);
+    const avg = slice.reduce((s, m) => s + (m.current ?? 0), 0) / 3;
+    const groupX = pad.left + i * groupGap;
+    rollingPoints.push({ x: groupX + groupGap / 2, y: yScale(avg), value: avg });
+  }
+}
+const showRollingAvg = rollingPoints.length >= 3;
+
+// ── Comparable-month validation ──
+const currentMonthsWithData = months.filter(m => m.current != null).length;
+const comparableMonths = months.filter(m => m.baseline != null && m.current != null).length;
+const showComparableWarning = currentMonthsWithData > 0 && comparableMonths < 3;
+
 const chartId = `chart-${Math.random().toString(36).slice(2, 9)}`;
 const tableId = `table-${Math.random().toString(36).slice(2, 9)}`;
+
+const descId = `desc-${chartId}`;
+const comparableId = `comparable-${chartId}`;
 ---
 
 <div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 md:p-6 shadow-sm">
@@ -137,13 +194,42 @@ const tableId = `table-${Math.random().toString(36).slice(2, 9)}`;
       { color: baselineColor, label: baselineLabel, symbol: 'square' },
       { color: currentColor, label: currentUnverified ? `${currentLabel} (${th ? 'ยังไม่ยืนยัน' : 'unverified'})` : currentLabel, symbol: 'square' },
       ...(showTarget ? [{ color: targetColor, label: targetLabel, symbol: 'square' as const }] : []),
+      { color: verifiedColor, label: th ? 'ยืนยันแล้ว' : 'Verified', symbol: 'circle' },
+      ...(currentUnverified ? [{ color: unverifiedColor, label: th ? 'ยังไม่ยืนยัน' : 'Unverified', symbol: 'circle' as const }] : []),
+      { color: missingColor, label: th ? 'ไม่มีข้อมูล' : 'Missing', symbol: 'dash' },
     ]}
     class="mb-4 flex flex-wrap gap-3"
   />
 
+  <!-- Target missing message -->
+  {!showTarget && (
+    <div class="mb-3">
+      <span class="inline-flex items-center gap-1.5 text-xs text-on-surface-variant italic">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="10" cy="10" r="8"/>
+          <line x1="10" y1="6" x2="10" y2="10.5"/>
+          <circle cx="10" cy="13.5" r="0.75" fill="currentColor" stroke="none"/>
+        </svg>
+        {th ? 'ยังไม่ได้กำหนดเป้าหมายรายปี' : 'No annual target defined'}
+      </span>
+    </div>
+  )}
+
+  <!-- Comparable-month warning -->
+  {showComparableWarning && (
+    <div class="mb-3">
+      <span class="inline-flex items-center gap-1.5 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-md px-2.5 py-1">
+        <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+        </svg>
+        {th ? 'ไม่สามารถเปรียบเทียบช่วงเวลาเดียวกันได้' : 'Comparable period unavailable'}
+      </span>
+    </div>
+  )}
+
   <!-- Chart panel -->
   <div id={chartId} role="tabpanel" aria-labelledby={`${chartId}-tab`} class="chart-panel">
-    <div class="overflow-x-auto" tabindex="0" role="img" aria-label={title}>
+    <div class="overflow-x-auto" tabindex="0" role="img" aria-label={title} aria-describedby={`${descId} ${showComparableWarning ? comparableId : ''}`}>
       <svg
         width={chartW}
         height={chartH}
@@ -151,9 +237,34 @@ const tableId = `table-${Math.random().toString(36).slice(2, 9)}`;
         class="chart-svg min-w-full"
         role="img"
         aria-label={title}
+        preserveAspectRatio="xMidYMid meet"
       >
         <title>{title}</title>
-        <desc>{description}</desc>
+        <desc id={descId}>{description}</desc>
+
+        {/* Baseline average reference line (dashed) */}
+        {baselineAvg != null && (
+          <g>
+            <line
+              x1={pad.left}
+              y1={yScale(baselineAvg)}
+              x2={chartW - pad.right}
+              y2={yScale(baselineAvg)}
+              stroke={baselineColor}
+              stroke-width="1.5"
+              stroke-dasharray="6 4"
+              opacity="0.35"
+            />
+            <text
+              x={chartW - pad.right + 4}
+              y={yScale(baselineAvg) + 3}
+              class="text-[11px]"
+              fill={baselineColor}
+              opacity="0.6"
+            >{fmt(baselineAvg)}</text>
+            <title>{`${baselineLabel}: ${th ? 'ค่าเฉลี่ย' : 'Average'} ${fmt(baselineAvg)} ${unit}`}</title>
+          </g>
+        )}
 
         {/* Y-axis grid + labels */}
         {ticks.map((tick) => {
@@ -161,10 +272,32 @@ const tableId = `table-${Math.random().toString(36).slice(2, 9)}`;
           return (
             <g>
               <line x1={pad.left} y1={y} x2={chartW - pad.right} y2={y} stroke="#e5e7eb" stroke-width="0.5" />
-              <text x={pad.left - 8} y={y + 4} text-anchor="end" class="text-[10px]" fill="#707974">{fmt(tick)}</text>
+              <text x={pad.left - 8} y={y + 5} text-anchor="end" class="text-[12px]" fill="#707974">{fmt(tick)}</text>
             </g>
           );
         })}
+
+        {/* Rolling average line */}
+        {showRollingAvg && rollingPoints.length >= 1 && (
+          <g>
+            <polyline
+              points={rollingPoints.map(p => `${p.x},${p.y}`).join(' ')}
+              fill="none"
+              stroke={currentColor}
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              opacity="0.6"
+              stroke-dasharray="4 2"
+            />
+            {rollingPoints.map((p) => (
+              <circle cx={p.x} cy={p.y} r="3" fill="white" stroke={currentColor} stroke-width="1.5" opacity="0.8">
+                <title>{`${th ? 'ค่าเฉลี่ยเคลื่อนที่ 3 เดือน' : '3-month rolling avg'}: ${fmt(p.value)} ${unit}`}</title>
+              </circle>
+            ))}
+            <title>{`${th ? 'ค่าเฉลี่ยเคลื่อนที่ 3 เดือน' : '3-month rolling average'}`}</title>
+          </g>
+        )}
 
         {/* Bars */}
         {months.map((m, gi) => {
@@ -172,21 +305,41 @@ const tableId = `table-${Math.random().toString(36).slice(2, 9)}`;
           const b1x = groupX + barPad;
           const b2x = b1x + barW + barPad;
           const b3x = b2x + barW + barPad;
+          const isExtremeHigh = gi === extremeHighIdx && hasExtremes;
+          const isExtremeLow = gi === extremeLowIdx && hasExtremes;
 
           return (
             <g>
-              {/* Baseline bar — only render if present */}
+              {/* Baseline bar — secondary, subtle */}
               {m.baseline != null && (
-                <rect x={b1x} y={yScale(m.baseline)} width={barW} height={pad.top + drawH - yScale(m.baseline)} fill={baselineColor} opacity="0.85" rx="1.5">
+                <rect x={b1x} y={yScale(m.baseline)} width={barW} height={pad.top + drawH - yScale(m.baseline)} fill={baselineColor} opacity="0.45" rx="1.5">
                   <title>{`${m.label}: ${baselineLabel} ${fmt(m.baseline)}${unit}`}</title>
                 </rect>
               )}
 
-              {/* Current bar — only render if present (missing = gap, NOT zero) */}
+              {/* Current bar — visually dominant */}
               {m.current != null && (
-                <rect x={b2x} y={yScale(m.current)} width={barW} height={pad.top + drawH - yScale(m.current)} fill={currentColor} opacity={currentUnverified ? '0.5' : '0.85'} rx="1.5">
-                  <title>{`${m.label}: ${currentLabel} ${fmt(m.current)}${unit}${currentUnverified ? ` (${th ? 'ยังไม่ยืนยัน' : 'unverified'})` : ''}`}</title>
-                </rect>
+                <g>
+                  <rect x={b2x} y={yScale(m.current)} width={barW} height={pad.top + drawH - yScale(m.current)} fill={currentColor} opacity={currentUnverified ? '0.5' : '0.9'} rx="1.5">
+                    <title>{`${m.label}: ${currentLabel} ${fmt(m.current)}${unit}${currentUnverified ? ` (${th ? 'ยังไม่ยืนยัน' : 'unverified'})` : ''}`}</title>
+                  </rect>
+                  {/* Extreme marker: highest month */}
+                  {isExtremeHigh && (
+                    <polygon
+                      points={`${b2x + barW/2},${yScale(m.current) - 10} ${b2x + barW/2 - 5},${yScale(m.current) - 1} ${b2x + barW/2 + 5},${yScale(m.current) - 1}`}
+                      fill={currentColor}
+                      opacity="0.9"
+                    >
+                      <title>{`${th ? 'สูงสุด' : 'Highest'}: ${m.label} ${fmt(m.current)}${unit}`}</title>
+                    </polygon>
+                  )}
+                  {/* Extreme marker: lowest month */}
+                  {isExtremeLow && (
+                    <circle cx={b2x + barW/2} cy={yScale(m.current) - 8} r="4" fill="none" stroke={currentColor} stroke-width="2" opacity="0.9">
+                      <title>{`${th ? 'ต่ำสุด' : 'Lowest'}: ${m.label} ${fmt(m.current)}${unit}`}</title>
+                    </circle>
+                  )}
+                </g>
               )}
 
               {/* Target bar */}
@@ -203,14 +356,14 @@ const tableId = `table-${Math.random().toString(36).slice(2, 9)}`;
                 </line>
               )}
 
-              {/* Month label */}
-              <text x={groupX + groupGap / 2} y={chartH - 8} text-anchor="middle" class="text-[10px]" fill="#707974">{m.label}</text>
+              {/* Month label — 12px for accessibility */}
+              <text x={groupX + groupGap / 2} y={chartH - 8} text-anchor="middle" class="text-[12px]" fill="#707974">{m.label}</text>
             </g>
           );
         })}
 
         {/* Unit label on Y axis */}
-        <text x={12} y={pad.top - 8} class="text-[10px]" fill="#404944">{unit}</text>
+        <text x={12} y={pad.top - 8} class="text-[12px]" fill="#404944">{unit}</text>
       </svg>
     </div>
   </div>

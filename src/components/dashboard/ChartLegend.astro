@@ -2,7 +2,7 @@
 export interface LegendItem {
   color: string;
   label: string;
-  symbol?: 'square' | 'line' | 'dash';
+  symbol?: 'square' | 'line' | 'dash' | 'circle';
 }
 
 interface Props {
@@ -25,6 +25,8 @@ const { items, class: cls = '', ariaLabel } = Astro.props;
         <svg class="h-1 w-5 shrink-0" aria-hidden="true" viewBox="0 0 20 4">
           <line x1="0" y1="2" x2="20" y2="2" stroke={item.color} stroke-width="2" stroke-dasharray="3 3" stroke-linecap="round" />
         </svg>
+      ) : item.symbol === 'circle' ? (
+        <span class="inline-block h-2.5 w-2.5 shrink-0 rounded-full" style={`background-color: ${item.color}`} aria-hidden="true"></span>
       ) : (
         <span class="inline-block h-3 w-3 shrink-0 rounded-sm" style={`background-color: ${item.color}`} aria-hidden="true"></span>
       )}
