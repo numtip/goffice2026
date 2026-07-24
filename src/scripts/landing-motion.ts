@@ -6,14 +6,12 @@ function revealOnScroll() {
   const targets = document.querySelectorAll<HTMLElement>('.landing-reveal');
   if (!targets.length) return;
 
-  targets.forEach((el) => {
-    el.dataset.revealReady = 'true';
-  });
-
   if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     targets.forEach((el) => el.classList.add('is-visible'));
     return;
   }
+
+  document.documentElement.classList.add('motion-ready');
 
   const observer = new IntersectionObserver(
     (entries) => {

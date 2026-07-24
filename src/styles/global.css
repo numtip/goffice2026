@@ -159,12 +159,12 @@
     will-change: opacity, transform;
   }
 
-  .landing-reveal[data-reveal-ready]:not(.is-visible) {
+  html.motion-ready .landing-reveal:not(.is-visible) {
     opacity: 0;
     transform: translateY(1.25rem);
   }
 
-  .landing-reveal.is-visible {
+  html.motion-ready .landing-reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
   }
@@ -183,12 +183,12 @@
     transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .landing-reveal[data-reveal-ready]:not(.is-visible) .landing-metric-bar {
+  html.motion-ready .landing-reveal:not(.is-visible) .landing-metric-bar {
     transform: scaleX(0);
   }
 
-  .landing-reveal.is-visible .landing-metric-bar,
-  .is-visible .landing-metric-bar {
+  html.motion-ready .landing-reveal.is-visible .landing-metric-bar,
+  html.motion-ready .is-visible .landing-metric-bar {
     transform: scaleX(1);
   }
 
