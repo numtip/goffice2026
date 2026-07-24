@@ -8,7 +8,7 @@
  * - Confidence caps and safeguards
  */
 
-import { resolveIndicatorDirection, calculateRecencyScore, getComparableMonths, calculateConfidence } from '../src/utils/dashboard-executive.js';
+import { resolveIndicatorDirection, calculateRecencyScore, getComparableMonths, calculateConfidence } from '../src/utils/dashboard-executive.ts';
 import assert from 'node:assert';
 
 console.log('Testing dashboard-executive.ts...\n');
@@ -311,6 +311,8 @@ test('comparable months ignore null/invalid values', () => {
       { month: 3, value: undefined },
       { month: 4, value: NaN },
       { month: 5, value: 110 },
+      { month: 6, value: 120 },
+      { month: 7, value: 130 },
     ],
     dataClassification: 'CONFIRMED_XLSX',
     quality: { valid: true },
@@ -319,8 +321,10 @@ test('comparable months ignore null/invalid values', () => {
   const current = {
     months: [
       { month: 1, value: 95 },
-      { month: 2, value: 105 },
+      { month: 2, value: 105 },   // baseline null → should be ignored
       { month: 5, value: 100 },
+      { month: 6, value: 115 },
+      { month: 7, value: 125 },
     ],
     dataClassification: 'CONFIRMED_XLSX',
     quality: { valid: true },
@@ -328,9 +332,9 @@ test('comparable months ignore null/invalid values', () => {
 
   const result = getComparableMonths(baseline, current);
   assert(result !== null);
-  assert.strictEqual(result.monthCount, 2); // Only months 1 and 5 have valid values in both
-  assert.deepStrictEqual(result.baselineValues, [100, 110]);
-  assert.deepStrictEqual(result.currentValues, [95, 100]);
+  assert.strictEqual(result.monthCount, 4); // Months 1, 5, 6, 7 have valid values in both
+  assert.deepStrictEqual(result.baselineValues, [100, 110, 120, 130]);
+  assert.deepStrictEqual(result.currentValues, [95, 100, 115, 125]);
 });
 
 // Summary

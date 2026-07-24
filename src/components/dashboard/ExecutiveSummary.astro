@@ -14,11 +14,10 @@ import {
 
 interface Props {
   metric: MultiYearMetric;
-  metricId: string;
   locale: 'th' | 'en';
 }
 
-const { metric, metricId, locale } = Astro.props;
+const { metric, locale } = Astro.props;
 const th = locale === 'th';
 
 const confidence = calculateConfidence(metric);

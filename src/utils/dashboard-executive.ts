@@ -119,17 +119,16 @@ export function getComparableMonths(
     }
   }
 
-  // Find matching months in current
+  // Find matching months in current (both must have valid values)
   const baselineValues: number[] = [];
   const currentValues: number[] = [];
 
   for (const m of current.months) {
-    if (m.value !== null && m.value !== undefined && !isNaN(m.value)) {
-      const baselineValue = baselineMap.get(m.month);
-      if (baselineValue !== undefined) {
-        baselineValues.push(baselineValue);
-        currentValues.push(m.value);
-      }
+    const baselineValue = baselineMap.get(m.month);
+    // Only include if baseline has valid value AND current has valid value
+    if (baselineValue !== undefined && m.value !== null && m.value !== undefined && !isNaN(m.value)) {
+      baselineValues.push(baselineValue);
+      currentValues.push(m.value);
     }
   }
 
@@ -244,6 +243,13 @@ export function calculateConfidence(
     level = 'Medium';
   } else {
     level = 'Low';
+  }
+
+  // Final safeguards: unverified or placeholder/unknown provenance cannot be High
+  if (level === 'High') {
+    if (!isVerified || provenance === 'PLACEHOLDER' || provenance === 'UNKNOWN') {
+      level = 'Medium';
+    }
   }
 
   return {
