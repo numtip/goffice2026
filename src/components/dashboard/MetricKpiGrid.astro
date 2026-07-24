@@ -34,7 +34,7 @@ const { cards, theme, locale } = Astro.props;
     const displayValue = isTargetNoValue ? '' : card.value;
     return (
       <div
-        class={`kpi-card relative rounded-stitch border border-outline-variant/20 bg-white p-4 shadow-sm transition hover:shadow-md ${card.dimmed ? 'opacity-80' : ''}`}
+        class={`kpi-card relative rounded-stitch border bg-white p-4 shadow-sm transition hover:shadow-md ${card.dimmed ? 'border-amber-200 bg-amber-50/30' : 'border-outline-variant/20'}`}
       >
         <!-- Top accent strip -->
         <div
@@ -62,16 +62,16 @@ const { cards, theme, locale } = Astro.props;
 
         <div class="flex items-baseline gap-1">
           {isTargetNoValue ? (
-            <p class={`text-sm font-semibold ${card.dimmed ? 'text-outline-variant' : 'text-on-surface'}`}>
+            <p class={`text-sm font-semibold ${card.dimmed ? 'text-on-surface-variant' : 'text-on-surface'}`}>
               {locale === 'th' ? 'ยังไม่กำหนดเป้าหมาย' : 'Target not set'}
             </p>
           ) : (
             <>
-              <p class={`text-2xl font-bold leading-none ${card.dimmed ? 'text-outline-variant' : 'text-on-surface'}`}>
+              <p class={`text-2xl font-bold leading-none ${card.dimmed ? 'text-on-surface-variant' : 'text-on-surface'}`}>
                 {displayValue}
               </p>
               {card.unit && (
-                <span class={`text-sm font-normal ${card.dimmed ? 'text-outline-variant' : 'text-outline'}`}>
+                <span class={`text-sm font-normal ${card.dimmed ? 'text-on-surface-variant' : 'text-outline'}`}>
                   {card.unit}
                 </span>
               )}
@@ -91,7 +91,7 @@ const { cards, theme, locale } = Astro.props;
           </div>
         )}
 
-        <p class="text-[11px] text-outline-variant mt-2 leading-tight">{card.contextLine}</p>
+        <p class="text-[11px] text-on-surface-variant mt-2 leading-tight">{card.contextLine}</p>
 
         {/* Progress bar for completeness card */}
         {card.progress !== undefined && (

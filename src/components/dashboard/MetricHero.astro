@@ -55,7 +55,7 @@ const indicatorBadgeLabel = th ? 'ตัวชี้วัด Green Office' : 'G
       <h1 id="metric-hero-title" class="text-xl md:text-2xl font-bold text-on-surface leading-tight">
         {title}
       </h1>
-      <p class="text-sm text-outline-variant mt-1 leading-relaxed">{purpose}</p>
+      <p class="text-sm text-on-surface-variant mt-1 leading-relaxed">{purpose}</p>
 
       <!-- Badges row -->
       <div class="flex flex-wrap items-center gap-2 mt-3">
@@ -69,7 +69,7 @@ const indicatorBadgeLabel = th ? 'ตัวชี้วัด Green Office' : 'G
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
             </svg>
             <span class="font-mono">{indicatorCode}</span>
-            {indicatorLabel && <span class="hidden sm:inline opacity-70">· {indicatorLabel}</span>}
+            {indicatorLabel && <span class="hidden sm:inline opacity-90">· {indicatorLabel}</span>}
           </span>
         )}
 
@@ -81,7 +81,7 @@ const indicatorBadgeLabel = th ? 'ตัวชี้วัด Green Office' : 'G
         />
 
         {lastUpdated && (
-          <span class="text-xs text-outline-variant" title={updatedLabel}>
+          <span class="text-xs text-on-surface-variant" title={updatedLabel}>
             {updatedLabel}: {lastUpdated}
           </span>
         )}

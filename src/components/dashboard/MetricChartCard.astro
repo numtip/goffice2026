@@ -85,7 +85,7 @@ const tableId = `table-${Math.random().toString(36).slice(2, 9)}`;
   <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
     <div>
       <h3 class="text-base font-semibold text-on-surface">{title}</h3>
-      <p class="text-xs text-outline-variant mt-0.5">{description}</p>
+      <p class="text-xs text-on-surface-variant mt-0.5">{description}</p>
     </div>
 
     <!-- Chart/Table toggle -->
@@ -107,7 +107,7 @@ const tableId = `table-${Math.random().toString(36).slice(2, 9)}`;
       </button>
       <button
         type="button"
-        class="table-tab px-3 py-1.5 text-xs font-medium rounded-md transition text-outline-variant"
+        class="table-tab px-3 py-1.5 text-xs font-medium rounded-md transition text-on-surface-variant"
         role="tab"
         aria-selected="false"
         aria-controls={tableId}
@@ -256,11 +256,11 @@ const tableId = `table-${Math.random().toString(36).slice(2, 9)}`;
     function activate(tab, panel, otherTab, otherPanel) {
       tab.setAttribute('aria-selected', 'true');
       tab.classList.add('bg-white', 'text-on-surface', 'shadow-sm');
-      tab.classList.remove('text-outline-variant');
+      tab.classList.remove('text-on-surface-variant');
       panel.classList.remove('hidden');
       otherTab.setAttribute('aria-selected', 'false');
       otherTab.classList.remove('bg-white', 'text-on-surface', 'shadow-sm');
-      otherTab.classList.add('text-outline-variant');
+      otherTab.classList.add('text-on-surface-variant');
       otherPanel.classList.add('hidden');
     }
 

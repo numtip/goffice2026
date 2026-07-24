@@ -67,10 +67,10 @@ const toneMap: Record<string, { bg: string; text: string; icon: string; iconPath
             </div>
             <div class="flex items-baseline gap-1">
               <span class={`text-lg font-bold ${tone.text}`}>{item.value}</span>
-              {item.unit && <span class={`text-xs ${tone.text} opacity-70`}>{item.unit}</span>}
+              {item.unit && <span class={`text-xs ${tone.text} opacity-90`}>{item.unit}</span>}
             </div>
             {item.context && (
-              <p class={`text-[11px] ${tone.text} opacity-75 mt-1 leading-tight`}>{item.context}</p>
+              <p class={`text-[11px] ${tone.text} opacity-90 mt-1 leading-tight`}>{item.context}</p>
             )}
           </div>
         );

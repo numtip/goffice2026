@@ -56,8 +56,6 @@ const classificationLabels: Record<string, { th: string; en: string }> = {
 const classLabel = sourceClassification
   ? classificationLabels[sourceClassification]?.[locale] ?? sourceClassification
   : (th ? 'ไม่ระบุ' : 'Not specified');
-
-const panelId = `evidence-${Math.random().toString(36).slice(2, 9)}`;
 ---
 
 <div class="bg-white rounded-stitch-lg border border-outline-variant/20 shadow-sm overflow-hidden">
@@ -72,19 +70,19 @@ const panelId = `evidence-${Math.random().toString(36).slice(2, 9)}`;
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
       <div>
-        <p class="text-outline-variant mb-0.5">{th ? 'การจำแนกแหล่งข้อมูล' : 'Source Classification'}</p>
+        <p class="text-on-surface-variant mb-0.5">{th ? 'การจำแนกแหล่งข้อมูล' : 'Source Classification'}</p>
         <p class="text-on-surface font-medium">{classLabel}</p>
       </div>
       <div>
-        <p class="text-outline-variant mb-0.5">{th ? 'ไฟล์ต้นฉบับ' : 'Source Workbook'}</p>
+        <p class="text-on-surface-variant mb-0.5">{th ? 'ไฟล์ต้นฉบับ' : 'Source Workbook'}</p>
         <p class="text-on-surface font-medium truncate" title={sourceWorkbook}>{sourceWorkbook ?? (th ? 'ไม่ระบุ' : 'Not specified')}</p>
       </div>
       <div>
-        <p class="text-outline-variant mb-0.5">{th ? 'ความครอบคลุม' : 'Coverage'}</p>
+        <p class="text-on-surface-variant mb-0.5">{th ? 'ความครอบคลุม' : 'Coverage'}</p>
         <p class="text-on-surface font-medium">{coverage}</p>
       </div>
       <div>
-        <p class="text-outline-variant mb-0.5">{th ? 'สถานะการตรวจสอบ' : 'Verification Status'}</p>
+        <p class="text-on-surface-variant mb-0.5">{th ? 'สถานะการตรวจสอบ' : 'Verification Status'}</p>
         <p class="text-on-surface font-medium">{verificationStatus}</p>
       </div>
     </div>
@@ -93,7 +91,7 @@ const panelId = `evidence-${Math.random().toString(36).slice(2, 9)}`;
       <svg class="w-3.5 h-3.5 text-outline" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
       </svg>
-      <span class="text-outline-variant">
+      <span class="text-on-surface-variant">
         {evidenceCount > 0
           ? (th ? `หลักฐานที่เชื่อมโยง: ${evidenceCount} รายการ` : `Linked evidence: ${evidenceCount} item${evidenceCount !== 1 ? 's' : ''}`)
           : (th ? 'ยังไม่มีหลักฐานที่เชื่อมโยง' : 'No linked evidence')}
@@ -105,7 +103,6 @@ const panelId = `evidence-${Math.random().toString(36).slice(2, 9)}`;
   <details class="border-t border-outline-variant/20 group">
     <summary
       class="flex items-center justify-between gap-2 px-4 md:px-5 py-3 text-xs font-medium text-primary cursor-pointer hover:bg-surface-container/50 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset"
-      id={`${panelId}-summary`}
     >
       <span class="flex items-center gap-1.5">
         <svg class="w-3.5 h-3.5 transition-transform group-open:rotate-90" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -122,39 +119,39 @@ const panelId = `evidence-${Math.random().toString(36).slice(2, 9)}`;
           <p class="text-xs font-semibold text-on-surface mb-2">{th ? 'ที่มาข้อมูลปีฐาน' : 'Baseline Provenance'}</p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-[11px]">
             <div class="space-y-0.5">
-              <p class="text-outline-variant">{th ? 'ไฟล์ต้นฉบับ' : 'Source Workbook'}</p>
+              <p class="text-on-surface-variant">{th ? 'ไฟล์ต้นฉบับ' : 'Source Workbook'}</p>
               <p class="text-on-surface font-mono break-all">{baselineProvenance.sourceWorkbook}</p>
             </div>
             <div class="space-y-0.5">
-              <p class="text-outline-variant">{th ? 'ชีตข้อมูล' : 'Source Sheet'}</p>
+              <p class="text-on-surface-variant">{th ? 'ชีตข้อมูล' : 'Source Sheet'}</p>
               <p class="text-on-surface font-mono break-all">{baselineProvenance.sourceSheet}</p>
             </div>
             {baselineProvenance.sourceColumn && (
               <div class="space-y-0.5">
-                <p class="text-outline-variant">{th ? 'คอลัมน์ข้อมูล' : 'Source Column'}</p>
+                <p class="text-on-surface-variant">{th ? 'คอลัมน์ข้อมูล' : 'Source Column'}</p>
                 <p class="text-on-surface font-mono break-all">{baselineProvenance.sourceColumn}</p>
               </div>
             )}
             {baselineProvenance.sourceRowRange && (
               <div class="space-y-0.5">
-                <p class="text-outline-variant">{th ? 'ช่วงแถว' : 'Row Range'}</p>
+                <p class="text-on-surface-variant">{th ? 'ช่วงแถว' : 'Row Range'}</p>
                 <p class="text-on-surface font-mono break-all">{baselineProvenance.sourceRowRange}</p>
               </div>
             )}
             {baselineProvenance.extractionScript && (
               <div class="space-y-0.5">
-                <p class="text-outline-variant">{th ? 'สคริปต์ดึงข้อมูล' : 'Extraction Script'}</p>
+                <p class="text-on-surface-variant">{th ? 'สคริปต์ดึงข้อมูล' : 'Extraction Script'}</p>
                 <p class="text-on-surface font-mono break-all">{baselineProvenance.extractionScript}</p>
               </div>
             )}
             {baselineProvenance.extractionTimestamp && (
               <div class="space-y-0.5">
-                <p class="text-outline-variant">{th ? 'เวลาที่ดึงข้อมูล' : 'Extraction Timestamp'}</p>
+                <p class="text-on-surface-variant">{th ? 'เวลาที่ดึงข้อมูล' : 'Extraction Timestamp'}</p>
                 <p class="text-on-surface font-mono break-all">{baselineProvenance.extractionTimestamp}</p>
               </div>
             )}
           </div>
-          <p class="text-[11px] text-outline-variant mt-2">{baselineSource}{baselineUpdated ? ` · ${th ? 'อัปเดตเมื่อ' : 'Updated'}: ${baselineUpdated}` : ''}</p>
+          <p class="text-[11px] text-on-surface-variant mt-2">{baselineSource}{baselineUpdated ? ` · ${th ? 'อัปเดตเมื่อ' : 'Updated'}: ${baselineUpdated}` : ''}</p>
         </div>
       )}
 
@@ -165,25 +162,25 @@ const panelId = `evidence-${Math.random().toString(36).slice(2, 9)}`;
           <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-[11px]">
             {currentProvenance.sourceWorkbook && (
               <div class="space-y-0.5">
-                <p class="text-outline-variant">{th ? 'ไฟล์ต้นฉบับ' : 'Source Workbook'}</p>
+                <p class="text-on-surface-variant">{th ? 'ไฟล์ต้นฉบับ' : 'Source Workbook'}</p>
                 <p class="text-on-surface font-mono break-all">{currentProvenance.sourceWorkbook}</p>
               </div>
             )}
             {currentProvenance.sourceSheet && (
               <div class="space-y-0.5">
-                <p class="text-outline-variant">{th ? 'ชีตข้อมูล' : 'Source Sheet'}</p>
+                <p class="text-on-surface-variant">{th ? 'ชีตข้อมูล' : 'Source Sheet'}</p>
                 <p class="text-on-surface font-mono break-all">{currentProvenance.sourceSheet}</p>
               </div>
             )}
             {currentProvenance.extractionStatus && (
               <div class="space-y-0.5">
-                <p class="text-outline-variant">{th ? 'สถานะการดึงข้อมูล' : 'Extraction Status'}</p>
+                <p class="text-on-surface-variant">{th ? 'สถานะการดึงข้อมูล' : 'Extraction Status'}</p>
                 <p class="text-on-surface font-mono break-all">{currentProvenance.extractionStatus}</p>
               </div>
             )}
           </div>
           {currentSource && (
-            <p class="text-[11px] text-outline-variant mt-2">{currentSource}{currentUpdated ? ` · ${th ? 'อัปเดตเมื่อ' : 'Updated'}: ${currentUpdated}` : ''}</p>
+            <p class="text-[11px] text-on-surface-variant mt-2">{currentSource}{currentUpdated ? ` · ${th ? 'อัปเดตเมื่อ' : 'Updated'}: ${currentUpdated}` : ''}</p>
           )}
         </div>
       )}
@@ -191,7 +188,7 @@ const panelId = `evidence-${Math.random().toString(36).slice(2, 9)}`;
       <!-- Data model reference -->
       {dataModelPath && (
         <div class="pt-2 border-t border-outline-variant/10">
-          <p class="text-[11px] text-outline-variant">
+          <p class="text-[11px] text-on-surface-variant">
             {th ? 'โครงสร้างข้อมูล' : 'Data model'}: <code class="text-on-surface-variant bg-surface-container px-1 py-0.5 rounded">{dataModelPath}</code>
             {sourceRefLabel && <span class="ml-2">· {th ? 'อ้างอิง' : 'Ref'}: {sourceRefLabel}</span>}
           </p>
