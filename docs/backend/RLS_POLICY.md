@@ -137,7 +137,9 @@ Migration 003 defines a `BEFORE UPDATE` trigger on `monthly_metric_entries`:
 
 ## View Security
 
-Public views are created with `security_invoker = true` (PostgreSQL 15+). They inherit the caller's RLS context on underlying tables while projecting only approved, non-sensitive columns.
+Public views use `security_invoker = false` with an approved-only projection in the view body. Anonymous callers receive `GRANT SELECT` on views only; operational tables remain revoked for `anon`.
+
+Migration **007** adds a `profiles` BEFORE UPDATE trigger so non-admin users cannot change their own `role`, `department_id`, or `is_active`. Reviewer audit log read is scoped to workflow entities (`monthly_metric_entries`, `review_comments`). Client-side `audit_logs` INSERT is not permitted; rows are written by audit triggers via `audit_log_write()`.
 
 Do not grant anon direct SELECT on base tables even if a view exists.
 

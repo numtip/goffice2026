@@ -36,11 +36,12 @@
  *   --verbose        Detailed output
  */
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { validateMonthData, monthLabel, formatValidationReport } from './data-validator.mjs';
+import { writeJsonFile } from './lib/serialize-json.mjs';
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -160,7 +161,7 @@ function readJSON(filePath) {
 function writeJSON(filePath, data) {
   const dir = dirname(filePath);
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
-  writeFileSync(filePath, JSON.stringify(data, null, 2) + '\n', 'utf-8');
+  writeJsonFile(filePath, data);
 }
 
 function parseMonthCsv(csvPath) {

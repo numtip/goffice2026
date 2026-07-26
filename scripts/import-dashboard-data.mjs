@@ -22,10 +22,11 @@
  *   node scripts/import-dashboard-data.mjs --all   (imports all available CSVs from data/import/)
  */
 
-import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateMonthData, monthLabel, formatValidationReport } from './data-validator.mjs';
+import { writeJsonFile } from './lib/serialize-json.mjs';
 
 // ── Config ───────────────────────────────────────────────────────────────────
 
@@ -169,7 +170,7 @@ function readExistingJson(metric) {
 
 function writeGeneratedJson(metric, data) {
   const filePath = join(GENERATED_DIR, `${metric}.json`);
-  writeFileSync(filePath, JSON.stringify(data, null, 2) + '\n', 'utf-8');
+  writeJsonFile(filePath, data);
   return filePath;
 }
 

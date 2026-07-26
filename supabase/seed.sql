@@ -7,7 +7,7 @@
 INSERT INTO public.metric_types (code, label_th, label_en, unit, sort_order, is_active)
 VALUES
   ('energy', 'พลังงานไฟฟ้า', 'Electricity', 'kWh', 1, true),
-  ('water', 'น้ำประปา', 'Water', 'm3', 2, true),
+  ('water', 'น้ำประปา', 'Water', 'm³', 2, true),
   ('fuel', 'เชื้อเพลิง', 'Fuel', 'L', 3, true),
   ('paper', 'กระดาษ', 'Paper', 'kg', 4, true),
   -- REVIEW_REQUIRED: waste unit confirmed as % for recycle_pct KPI; verify with PO

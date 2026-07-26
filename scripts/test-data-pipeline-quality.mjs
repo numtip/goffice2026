@@ -25,6 +25,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { validateGenerated, reconcileTotal } from './data-pipeline.mjs';
+import { serializeJson } from './lib/serialize-json.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -188,11 +189,30 @@ describe('RC-1/RC-4: executive KPI summary marks unverified data explicitly', ()
 });
 
 describe('Determinism: re-writing generated JSON produces byte-identical output', () => {
-  it('waste.json is stable across a read/serialize/write round-trip', () => {
-    const filePath = join(GENERATED_DIR, 'waste.json');
-    const before = readFileSync(filePath, 'utf-8');
-    const data = JSON.parse(before);
-    const after = JSON.stringify(data, null, 2) + '\n';
-    assert.equal(after, before);
+  const canonicalMetricFiles = [
+    'energy.json',
+    'water.json',
+    'fuel.json',
+    'paper.json',
+    'waste.json',
+    'ghg.json',
+    'kpi-summary.json',
+  ];
+
+  it('serializeJson uses LF line endings and a single trailing newline', () => {
+    const out = serializeJson({ metric: 'test', nested: { value: 1 } });
+    assert.ok(!out.includes('\r'), 'canonical JSON must not contain CR bytes');
+    assert.ok(out.endsWith('\n'), 'canonical JSON must end with a single LF newline');
+    assert.equal(out.split('\n').at(-1), '', 'canonical JSON must have exactly one trailing newline');
   });
+
+  for (const fileName of canonicalMetricFiles) {
+    it(`${fileName} is stable across a canonical serialize round-trip`, () => {
+      const filePath = join(GENERATED_DIR, fileName);
+      const before = readFileSync(filePath, 'utf-8');
+      const data = JSON.parse(before);
+      const after = serializeJson(data);
+      assert.equal(after, before);
+    });
+  }
 });

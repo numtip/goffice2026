@@ -2,20 +2,19 @@
 
 Operational backend schema for monthly environmental data entry, review workflow, and dashboard cache. This folder is **source of truth** for database structure; do not apply schema changes in Supabase Studio without a matching migration commit.
 
-## Migration order (001–006)
+## Migration order (001–007)
 
 Apply migrations in numeric filename order:
 
-| File | Owner | Purpose |
-|------|-------|---------|
-| `202607260001_*` | Worker A | Core tables: `departments`, `profiles`, `metric_types`, `monthly_metric_entries`, `review_comments` |
-| `202607260002_create_supporting_tables.sql` | Worker B | Supporting tables: settings, formulas, notifications, cache, evidence links, audit logs |
-| `202607260003_*` | Worker C | Indexes, constraints, and performance tuning (TBD) |
-| `202607260004_*` | Worker D | Row Level Security policies (TBD) |
-| `202607260005_*` | Worker E | Public-safe views and dashboard contract (TBD) |
-| `202607260006_create_audit_functions.sql` | Worker B | Audit trigger functions and triggers |
-
-Worker B deliverables in this sprint: **002** and **006** only. Migrations 003–005 are placeholders for parallel workers.
+| File | Purpose |
+|------|---------|
+| `202607260001_create_core_tables.sql` | Core tables: `departments`, `profiles`, `metric_types`, `monthly_metric_entries`, `review_comments` |
+| `202607260002_create_supporting_tables.sql` | Supporting tables: settings, formulas, notifications, cache, evidence links, audit logs |
+| `202607260003_create_indexes_and_constraints.sql` | Indexes, canonical unit CHECKs, approved-entry immutability trigger |
+| `202607260004_create_public_dashboard_views.sql` | Public-safe dashboard views (approved rows only) |
+| `202607260005_enable_rls_and_policies.sql` | RLS helper functions and policies |
+| `202607260006_create_audit_functions.sql` | Audit trigger functions and triggers |
+| `202607260007_harden_rls_and_profile_privileges.sql` | Profile privilege trigger, scoped reviewer audit read, audit insert hardening |
 
 ## Local development
 

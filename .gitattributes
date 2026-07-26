@@ -1,0 +1,2 @@
+# Generated dashboard JSON must stay LF for cross-platform determinism.
+src/data/generated/*.json text eol=lf
