@@ -481,13 +481,17 @@ src/
 
 ## 13. Open Questions Before Implementation
 
-1. Which departments are allowed to enter each metric?
-2. Should one metric value represent the whole office or one department?
-3. Should waste use `kg`, recycling `%`, or separate values?
-4. Should GHG be entered directly or calculated from energy, fuel, waste, and paper?
-5. Who is the reviewer for each metric?
-6. Should approved values be editable, or corrected by replacement records only?
-7. Which dashboard pages must be live first: executive summary or metric detail pages?
+**Resolved by [§17 Decision Baseline v1](#17-decision-baseline-v1)** (2026-07-26). Summary:
+
+| # | Question | Frozen answer |
+|---|----------|---------------|
+| 1 | Which departments enter each metric? | One **owner department** per metric via `metrics.owner_department_map` |
+| 2 | Whole office or department value? | **Office-wide** published value; department = data owner only |
+| 3 | Waste kg vs recycling %? | **`waste` = kg**, **`recycling_rate` = %** (separate codes) |
+| 4 | GHG direct or calculated? | **Calculated** from activity data via `metric_formulas` |
+| 5 | Reviewer per metric? | **One reviewer per metric** via `workflow.metric_reviewer_map` |
+| 6 | Edit approved values? | **No** — archive + replacement workflow only |
+| 7 | First live dashboard route? | Deferred to GO-BE-2 (default remains static mode) |
 
 ---
 
@@ -738,4 +742,62 @@ This amendment does **not** change §1 non-goals:
 | Supabase project | Not required for this amendment |
 | Production deploy | Unchanged — manual VPS after PO approval |
 
-**Next gate before live:** PO confirms §13 open questions, migration files land in `supabase/migrations/`, RLS tested, dashboard fallback smoke-tested per §14 checklist.
+**Next gate before live:** Migrations applied and RLS tested; dashboard fallback smoke-tested per §14 checklist. Business decisions frozen in §17.
+
+---
+
+## 17. Decision Baseline v1
+
+**Date:** 2026-07-26  
+**Status:** ACCEPTED — frozen for GO-BE-2 implementation  
+**Scope:** Documentation only; no SQL changes in GO-BE-2A
+
+Canonical phrase unchanged:
+
+> Supabase powers the back-office workflow; Astro remains the public Green Office platform.
+
+### 17.1 Metric ownership
+
+| Decision | Detail |
+|----------|--------|
+| Publication | **Office-wide** — one approved dashboard value per metric, year, and month |
+| Department role | **`department_id` = data owner only** — entry accountability and RLS scope, not a public split dimension |
+| Configuration | `organization_settings.metrics.owner_department_map`, `metric_types.config_metadata.publication_scope = "office_wide"`, `owner_department_code` per metric |
+
+### 17.2 Metric definitions
+
+| Code | Unit | Entry mode |
+|------|------|------------|
+| `energy`, `water`, `fuel`, `paper` | kWh, m³, L, kg | Staff manual monthly entry |
+| `waste` | **kg** (mass) | Staff manual monthly entry |
+| `recycling_rate` | **%** | Staff manual monthly entry (separate from waste mass) |
+| `ghg` | **tCO2e** | **Derived** from activity metrics via `metric_formulas`; manual entry disallowed |
+
+Current seed CHECK constraints still reflect the 6-metric GO-BE-1 catalog; GO-BE-2 will update constraints and seed without new tables.
+
+### 17.3 Workflow
+
+| Decision | Detail |
+|----------|--------|
+| States | `draft` → `submitted` → `approved` (or `needs_revision` loop) |
+| Immutability | Approved values cannot be edited by staff or reviewers |
+| Correction | Admin **archives** original; staff creates **replacement** draft; full review repeats |
+| Reviewers | **One reviewer per metric** — `organization_settings.workflow.metric_reviewer_map` |
+
+RLS and triggers from migrations 003/005/007 support this model. Partial unique index and per-metric reviewer enforcement are GO-BE-2 migration tasks.
+
+### 17.4 Implementation deferrals (GO-BE-2)
+
+1. Partial unique index for archive + replacement
+2. Seven-metric CHECK constraints and seed update
+3. `is_assigned_reviewer()` + scoped reviewer policies
+4. Owner-department filter on public views / repository layer
+5. Static JSON split (`waste.json` → kg + `recycling_rate.json`)
+6. Production department list and reviewer UUID assignment (PO)
+
+### 17.5 Related documents
+
+- [Schema — Decision Baseline v1](./backend/SUPABASE_SCHEMA.md#decision-baseline-v1)
+- [API Contract — Decision Baseline v1](./backend/API_CONTRACT.md#decision-baseline-v1)
+- [RLS Policy](./backend/RLS_POLICY.md)
+- ADR-003, ADR-004

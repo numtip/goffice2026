@@ -89,18 +89,70 @@ approved (original) ──admin archive──► archived
 
 ## Metric Units
 
-Canonical units align with `src/data/generated/*.json` and GO-DATA-1.
+**Decision Baseline v1 (2026-07-26)** supersedes prior `REVIEW_REQUIRED` flags below. Implementation migrations deferred to GO-BE-2.
 
-| Code | Metric | Unit | Notes |
-|------|--------|------|-------|
-| `energy` | Electricity | `kWh` | Confirmed |
-| `water` | Water | `m³` | Confirmed |
-| `fuel` | Fuel | `L` | Confirmed |
-| `paper` | Paper | `kg` | Confirmed |
-| `waste` | Waste / recycling | `%` | **REVIEW_REQUIRED** — aggregation is average, not sum |
-| `ghg` | Greenhouse gas | `tCO2e` | **REVIEW_REQUIRED** — direct entry vs formula-derived TBD |
+| Code | Metric | Unit | Entry mode | Aggregation |
+|------|--------|------|------------|-------------|
+| `energy` | Electricity | `kWh` | manual | sum |
+| `water` | Water | `m³` | manual | sum |
+| `fuel` | Fuel | `L` | manual | sum |
+| `paper` | Paper | `kg` | manual | sum |
+| `waste` | Waste mass | `kg` | manual | sum |
+| `recycling_rate` | Recycling rate | `%` | manual | average |
+| `ghg` | Greenhouse gas | `tCO2e` | **derived** (via `metric_formulas`) | sum |
 
-Unresolved units are seeded with review flags; do not treat as final production policy until PO confirms.
+Notes:
+
+- Current seed/migration CHECK constraints still encode the 6-metric catalog (`waste` = `%`). GO-BE-2 will add `recycling_rate` and update units without changing table shapes.
+- Static JSON `waste.json` (recycle %) maps to `recycling_rate` after data-pipeline split in GO-BE-2.
+- GHG monthly values are produced from activity metrics (energy, fuel, paper, waste kg) using versioned `metric_formulas`; manual GHG entry is disallowed in admin UI.
+
+---
+
+## Decision Baseline v1
+
+**Frozen:** 2026-07-26 · **Status:** ACCEPTED for GO-BE-2 implementation
+
+### Metric ownership
+
+| Decision | Detail |
+|----------|--------|
+| Publication grain | **Office-wide** — one approved value per `(metric_type, year, month)` on the public dashboard |
+| `department_id` role | **Data owner only** — responsible entry unit for RLS, workflow, and audit; not a public reporting dimension |
+| Owner mapping | `organization_settings.metrics.owner_department_map` + `metric_types.config_metadata.owner_department_code` |
+| Canonical office code | `organization_settings.metrics.office_canonical_department_code` (e.g. `OFFICE`) |
+
+Each environmental metric has exactly one owner department for data entry. Public views and API v1 expose one canonical row per metric/month (owner department filter at repository/view layer).
+
+### Metric definitions
+
+| Code | Frozen unit | Entry |
+|------|-------------|-------|
+| `waste` | `kg` (mass) | Staff manual monthly entry |
+| `recycling_rate` | `%` | Staff manual monthly entry |
+| `ghg` | `tCO2e` | Calculated from activity data via `metric_formulas`; no primary manual entry |
+
+`entry_mode` and `aggregation_rule` live in `metric_types.config_metadata` (no new columns).
+
+### Workflow
+
+| Decision | Detail |
+|----------|--------|
+| Path | Staff → submit → Reviewer → `approved` |
+| Immutability | Approved rows: value and status protected by trigger + RLS |
+| Correction | **Archive + replacement** — admin archives original; staff creates new `draft`; full workflow repeats |
+| Reviewer routing | **One reviewer per metric** via `organization_settings.workflow.metric_reviewer_map` (JSONB: metric code → profile UUID) |
+
+### Schema impact (GO-BE-2A)
+
+No SQL changes in this baseline document. Known follow-ups for GO-BE-2:
+
+1. Partial unique index on `(metric_type_id, department_id, year, month) WHERE status <> 'archived'` (correction replacement)
+2. ALTER metric CHECK constraints for 7-metric catalog and `waste` = `kg`
+3. `is_assigned_reviewer()` helper + reviewer RLS scope by metric
+4. Public view filter to owner-department rows for office-wide metrics
+
+RLS and triggers are **compatible** with the frozen workflow; routing and partial uniqueness are **not yet implemented**.
 
 ---
 
@@ -382,6 +434,7 @@ See [API Contract v1](./API_CONTRACT.md) for consumer field mapping.
 202607260004_create_public_dashboard_views.sql
 202607260005_enable_rls_and_policies.sql
 202607260006_create_audit_functions.sql
+202607260007_harden_rls_and_profile_privileges.sql
 ```
 
 ---

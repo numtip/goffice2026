@@ -98,7 +98,7 @@ Optional fallback fields:
 ## 1. Monthly Dashboard Metrics
 
 **Source view:** `public_dashboard_monthly_metrics`  
-**Static file per metric:** `src/data/generated/{energy,water,fuel,paper,waste,ghg}.json`
+**Static file per metric:** `src/data/generated/{energy,water,fuel,paper,waste,recycling_rate,ghg}.json` (GO-BE-2 split: current `waste.json` % series → `recycling_rate`)
 
 ### Metric item shape (live)
 
@@ -233,7 +233,7 @@ Repository layer normalizes static files into `PublicDashboardMetric[]` where ne
 }
 ```
 
-**Note:** `waste` (% unit) uses **average** aggregation across months, not sum (GO-DATA-1A). Executive summary derivation must respect per-metric aggregation rules from `metric_types.config_metadata`.
+**Note:** `recycling_rate` (% unit) uses **average** aggregation across months. Mass metrics (`energy`, `water`, `fuel`, `paper`, `waste`) use **sum**. `ghg` is formula-derived in live mode; static fallback may still use precomputed `ghg.json`.
 
 ---
 
@@ -451,6 +451,23 @@ Never include in v1 responses:
 ## Versioning
 
 Breaking changes require `contractVersion: "v2"`. Additive fields may be added to `v1` without version bump if consumers ignore unknown keys.
+
+---
+
+## Decision Baseline v1
+
+**Frozen:** 2026-07-26 · **Status:** ACCEPTED
+
+| Area | Decision |
+|------|----------|
+| Ownership | Office-wide publication; `department_id` = data owner only; one owner dept per metric |
+| Waste | `waste` = kg (mass); `recycling_rate` = % (separate metric code) |
+| GHG | Derived via `metric_formulas` from activity metrics; no manual primary entry |
+| Workflow | Staff → Reviewer → Approved; approved immutable; correction = archive + replacement |
+| Reviewers | One reviewer per metric (`workflow.metric_reviewer_map`) |
+| Public grain | One value per `(metric_code, year, month)`; `departmentCode` is provenance metadata |
+
+Live responses must filter to the canonical owner-department row for office-wide metrics. Executive summary aggregation respects `config_metadata.aggregation_rule` per metric.
 
 ---
 
