@@ -6,6 +6,11 @@ interface Props {
 
 const { title = 'Admin', activeNav = 'home' } = Astro.props;
 const base = import.meta.env.BASE_URL ?? '/';
+
+const navLinkClass =
+  'rounded px-3 py-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2';
+const navActiveClass = 'bg-primary text-white';
+const navIdleClass = 'text-gray-700 hover:bg-gray-100';
 ---
 
 <!DOCTYPE html>
@@ -16,15 +21,15 @@ const base = import.meta.env.BASE_URL ?? '/';
     <meta name="robots" content="noindex, nofollow" />
     <title>{title} — Green Office Admin</title>
   </head>
-  <body class="min-h-screen bg-surface text-on-surface bg-gray-50 text-gray-900">
+  <body class="min-h-screen bg-gray-50 text-gray-900">
     <a
       href="#admin-main"
-      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:shadow"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:shadow focus:outline-none focus:ring-2 focus:ring-primary"
     >
       ข้ามไปเนื้อหา / Skip to content
     </a>
     <header class="border-b border-gray-200 bg-white">
-      <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
+      <div class="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p class="text-sm font-semibold text-primary">Green Office 2026</p>
           <p class="text-xs text-gray-600">ระบบจัดการข้อมูล / Data Admin (local)</p>
@@ -32,29 +37,20 @@ const base = import.meta.env.BASE_URL ?? '/';
         <nav class="flex flex-wrap items-center gap-2 text-sm" aria-label="Admin navigation">
           <a
             href={`${base}admin/`}
-            class:list={[
-              'rounded px-3 py-1.5',
-              activeNav === 'home' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100',
-            ]}
+            class:list={[navLinkClass, activeNav === 'home' ? navActiveClass : navIdleClass]}
           >
             ภาพรวม / Overview
           </a>
           <a
             href={`${base}admin/entries/`}
-            class:list={[
-              'rounded px-3 py-1.5',
-              activeNav === 'entries' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100',
-            ]}
+            class:list={[navLinkClass, activeNav === 'entries' ? navActiveClass : navIdleClass]}
             data-nav-entries
           >
             บันทึกข้อมูล / Entries
           </a>
           <a
             href={`${base}admin/review/`}
-            class:list={[
-              'rounded px-3 py-1.5',
-              activeNav === 'review' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100',
-            ]}
+            class:list={[navLinkClass, activeNav === 'review' ? navActiveClass : navIdleClass]}
             data-nav-review
           >
             ตรวจสอบ / Review
@@ -62,7 +58,7 @@ const base = import.meta.env.BASE_URL ?? '/';
           <button
             type="button"
             id="admin-logout"
-            class="rounded border border-gray-300 px-3 py-1.5 text-gray-700 hover:bg-gray-50"
+            class="rounded border border-gray-300 px-3 py-1.5 text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
             ออกจากระบบ / Sign out
           </button>
@@ -74,9 +70,14 @@ const base = import.meta.env.BASE_URL ?? '/';
     </main>
     <script>
       import { signOut } from '../lib/supabase/auth';
+      import { bindSessionWatcher } from '../lib/admin/shell';
+
+      bindSessionWatcher();
 
       const logoutBtn = document.getElementById('admin-logout');
       logoutBtn?.addEventListener('click', async () => {
+        logoutBtn.setAttribute('aria-busy', 'true');
+        logoutBtn.setAttribute('disabled', 'true');
         await signOut();
         const base = import.meta.env.BASE_URL ?? '/';
         window.location.href = `${base}admin/login/`.replace(/\/{2,}/g, '/');

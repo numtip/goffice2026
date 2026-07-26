@@ -69,6 +69,19 @@ export function createEntryService(): EntryService {
         throw new Error('Staff profile has no department');
       }
 
+      const existing = await metrics.listEntries({
+        metricTypeId: input.metric_type_id,
+        departmentId: profile.department_id,
+        year: input.year,
+        month: input.month,
+      });
+
+      if (existing.length > 0) {
+        throw new Error(
+          'An entry for this metric, year, and month already exists.',
+        );
+      }
+
       return metrics.createEntry({
         ...input,
         department_id: profile.department_id,

@@ -96,7 +96,7 @@ Static dashboard works **without** Supabase when `PUBLIC_DASHBOARD_DATA_MODE=sta
 | ☐ Seed loaded | Included in reset; or `.\scripts\seed-local.ps1` |
 | ☐ Frontend build | `npm run build` |
 | ☐ Local auth bootstrap | `LOCAL_DEV_TEST_PASSWORD=… npm run bootstrap:local-auth` |
-| ☐ Admin E2E | `npm run test:admin-e2e` |
+| ☐ Admin E2E | `npm run test:admin-e2e` (13 steps incl. duplicate, revision, anon deny) |
 | ☐ Admin UI | `/admin/login/` (local Supabase + `.env`) |
 | ☐ PO owner sign-off | [PO Sign-off Checklist](./PO_SIGNOFF_CHECKLIST.md) |
 | ☐ Reviewer UUIDs | [Reviewer Assignment Runbook](./REVIEWER_ASSIGNMENT_RUNBOOK.md) |

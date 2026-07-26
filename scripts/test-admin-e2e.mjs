@@ -204,6 +204,129 @@ async function main() {
   assert(Number(publicRows[0].value) === testValue, 'Public view value must match approved entry');
   steps.push('7. Public approved view returns approved row only');
 
+  // 8. Duplicate month prevention
+  const staffDup = await signIn(url, anonKey, STAFF_EMAIL, password);
+  const { data: staffProfileDup } = await staffDup.from('profiles').select('id').single();
+  const { error: dupError } = await staffDup
+    .from('monthly_metric_entries')
+    .insert({
+      metric_type_id: energyMetric.id,
+      department_id: samngDept.id,
+      year: testYear,
+      month: testMonth,
+      value: 1,
+      status: 'draft',
+      created_by: staffProfileDup.id,
+    });
+  assert(dupError, 'Duplicate metric/year/month insert must fail');
+  steps.push('8. Duplicate month prevention');
+
+  // 9–11. Revision request → edit → resubmit → approve (month 8)
+  const revMonth = 8;
+  const revValue = 5555.5;
+  const revValue2 = 6666.6;
+
+  if (serviceKey) {
+    const svc = createClient(url, serviceKey, {
+      auth: { persistSession: false, autoRefreshToken: false },
+    });
+    await svc
+      .from('monthly_metric_entries')
+      .delete()
+      .eq('metric_type_id', energyMetric.id)
+      .eq('department_id', samngDept.id)
+      .eq('year', testYear)
+      .eq('month', revMonth);
+  }
+
+  const { data: revDraft, error: revCreateError } = await staffDup
+    .from('monthly_metric_entries')
+    .insert({
+      metric_type_id: energyMetric.id,
+      department_id: samngDept.id,
+      year: testYear,
+      month: revMonth,
+      value: revValue,
+      status: 'draft',
+      created_by: staffProfileDup.id,
+    })
+    .select('*')
+    .single();
+  if (revCreateError) throw revCreateError;
+
+  await staffDup
+    .from('monthly_metric_entries')
+    .update({
+      status: 'submitted',
+      submitted_at: new Date().toISOString(),
+      submitted_by: staffProfileDup.id,
+      updated_by: staffProfileDup.id,
+    })
+    .eq('id', revDraft.id);
+  steps.push('9. Staff submitted revision-cycle entry');
+
+  await staffDup.auth.signOut();
+
+  const reviewerEnergy3 = await signIn(url, anonKey, REVIEWER_ENERGY_EMAIL, password);
+  const { data: revReviewerProfile } = await reviewerEnergy3.from('profiles').select('id').single();
+  await reviewerEnergy3.from('review_comments').insert({
+    entry_id: revDraft.id,
+    comment: 'Please revise value',
+    created_by: revReviewerProfile.id,
+  });
+  await reviewerEnergy3
+    .from('monthly_metric_entries')
+    .update({
+      status: 'needs_revision',
+      updated_by: revReviewerProfile.id,
+    })
+    .eq('id', revDraft.id);
+  steps.push('10. Reviewer requested revision');
+  await reviewerEnergy3.auth.signOut();
+
+  const staff3 = await signIn(url, anonKey, STAFF_EMAIL, password);
+  const { data: staffProfile3 } = await staff3.from('profiles').select('id').single();
+  await staff3
+    .from('monthly_metric_entries')
+    .update({ value: revValue2, updated_by: staffProfile3.id })
+    .eq('id', revDraft.id);
+  await staff3
+    .from('monthly_metric_entries')
+    .update({
+      status: 'submitted',
+      submitted_at: new Date().toISOString(),
+      submitted_by: staffProfile3.id,
+      updated_by: staffProfile3.id,
+    })
+    .eq('id', revDraft.id);
+  steps.push('11. Staff edited and resubmitted');
+  await staff3.auth.signOut();
+
+  const reviewerEnergy4 = await signIn(url, anonKey, REVIEWER_ENERGY_EMAIL, password);
+  const { data: revReviewerProfile2 } = await reviewerEnergy4.from('profiles').select('id').single();
+  await reviewerEnergy4
+    .from('monthly_metric_entries')
+    .update({
+      status: 'approved',
+      approved_at: new Date().toISOString(),
+      approved_by: revReviewerProfile2.id,
+      updated_by: revReviewerProfile2.id,
+    })
+    .eq('id', revDraft.id);
+  steps.push('12. Reviewer approved resubmitted entry');
+  await reviewerEnergy4.auth.signOut();
+
+  // 13. Unauthenticated operational table access denied
+  const anon2 = createClient(url, anonKey, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+  const { data: anonOpRows, error: anonOpError } = await anon2
+    .from('monthly_metric_entries')
+    .select('id')
+    .limit(1);
+  assert(anonOpError || !anonOpRows?.length, 'Unauthenticated access to operational table must fail');
+  steps.push('13. Unauthenticated operational access denied');
+
   console.log('E2E PASS — local auth + approval MVP\n');
   for (const step of steps) {
     console.log(`  ✓ ${step}`);

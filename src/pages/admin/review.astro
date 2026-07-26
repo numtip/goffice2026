@@ -15,7 +15,7 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
       <p class="mt-1 text-sm text-gray-600">อนุมัติหรือส่งกลับรายการที่ส่งแล้ว (ตามตัวชี้วัดที่มอบหมาย) / Approve or reject submitted entries for assigned metrics.</p>
     </div>
 
-    <div id="review-queue" class="space-y-4"></div>
+    <div id="review-queue" class="space-y-4" role="list"></div>
     <p id="review-empty" class="hidden text-sm text-gray-500">ไม่มีรายการรอตรวจ / No submitted entries in your queue.</p>
   </section>
 </AdminLayout>
@@ -24,6 +24,9 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
   import { requireAdminSession, requireRole, redirectIfNeeded } from '../../lib/admin/guard';
   import { createReviewRepository } from '../../lib/repositories/review-repository';
   import { createMetricsRepository } from '../../lib/repositories/metrics-repository';
+  import { applyRoleNav } from '../../lib/admin/shell';
+  import { formatAdminError } from '../../lib/admin/errors';
+  import type { UserProfile } from '../../lib/repositories/profile-repository';
 
   const loadingEl = document.getElementById('review-loading');
   const errorEl = document.getElementById('review-error');
@@ -34,6 +37,7 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
 
   const reviewRepo = createReviewRepository();
   const metricsRepo = createMetricsRepository();
+  const actingIds = new Set<string>();
 
   function showError(message: string) {
     if (errorEl) {
@@ -42,7 +46,18 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
     }
   }
 
-  async function renderQueue(profile: import('../../lib/repositories/profile-repository').UserProfile) {
+  function setCardBusy(card: HTMLElement, busy: boolean) {
+    card.querySelectorAll('button, textarea').forEach((el) => {
+      if (busy) {
+        el.setAttribute('disabled', 'true');
+      } else {
+        el.removeAttribute('disabled');
+      }
+    });
+    card.setAttribute('aria-busy', busy ? 'true' : 'false');
+  }
+
+  async function renderQueue(profile: UserProfile) {
     if (!queueEl) return;
     queueEl.innerHTML = '';
 
@@ -61,6 +76,7 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
     for (const entry of entries) {
       const card = document.createElement('article');
       card.className = 'rounded-lg border border-gray-200 bg-white p-4 shadow-sm space-y-3';
+      card.setAttribute('role', 'listitem');
       const label = labelById.get(entry.metric_type_id) ?? entry.metric_type_id;
       card.innerHTML = `
         <div class="flex flex-wrap items-start justify-between gap-2">
@@ -71,8 +87,8 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
           <span class="rounded bg-blue-100 px-2 py-0.5 text-xs text-blue-800">${entry.status}</span>
         </div>
         <label class="block text-sm">
-          <span class="font-medium">ความคิดเห็น / Comment</span>
-          <textarea class="review-comment mt-1 w-full rounded border border-gray-300 px-3 py-2 text-sm" rows="2"></textarea>
+          <span class="font-medium">ความคิดเห็น / Comment <span class="text-gray-500 font-normal">(จำเป็นเมื่อส่งกลับ / required for revision)</span></span>
+          <textarea class="review-comment mt-1 w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary" rows="2" aria-label="Review comment"></textarea>
         </label>
         <div class="flex flex-wrap gap-2"></div>
       `;
@@ -82,45 +98,48 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
 
       const approveBtn = document.createElement('button');
       approveBtn.type = 'button';
-      approveBtn.className = 'rounded bg-primary px-3 py-1.5 text-sm text-white hover:bg-primary-800';
+      approveBtn.className = 'rounded bg-primary px-3 py-1.5 text-sm text-white hover:bg-primary-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2';
       approveBtn.textContent = 'อนุมัติ / Approve';
-      approveBtn.addEventListener('click', async () => {
-        try {
-          const comment = commentInput?.value.trim();
-          if (comment) {
-            await reviewRepo.addComment(entry.id, comment, profile.id);
-          }
-          await reviewRepo.transitionEntryStatus(entry.id, 'approved', profile.id);
-          card.remove();
-          if (queueEl.children.length === 0) {
-            emptyEl?.classList.remove('hidden');
-          }
-        } catch (err) {
-          showError(err instanceof Error ? err.message : 'Approve failed');
-        }
-      });
 
       const rejectBtn = document.createElement('button');
       rejectBtn.type = 'button';
-      rejectBtn.className = 'rounded border border-gray-300 px-3 py-1.5 text-sm hover:bg-gray-50';
+      rejectBtn.className = 'rounded border border-gray-300 px-3 py-1.5 text-sm hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2';
       rejectBtn.textContent = 'ส่งกลับแก้ไข / Request revision';
-      rejectBtn.addEventListener('click', async () => {
+
+      async function runAction(action: 'approve' | 'reject') {
+        if (actingIds.has(entry.id)) return;
+        actingIds.add(entry.id);
+        setCardBusy(card, true);
+        errorEl?.classList.add('hidden');
+
         try {
-          const comment = commentInput?.value.trim();
-          if (!comment) {
-            showError('Comment is required when requesting revision.');
+          const comment = commentInput?.value.trim() ?? '';
+          if (action === 'reject' && !comment) {
+            showError('กรุณาระบุความคิดเห็นเมื่อส่งกลับแก้ไข / Comment is required when requesting revision.');
             return;
           }
-          await reviewRepo.addComment(entry.id, comment, profile.id);
-          await reviewRepo.transitionEntryStatus(entry.id, 'needs_revision', profile.id);
+          if (comment) {
+            await reviewRepo.addComment(entry.id, comment, profile.id);
+          }
+          await reviewRepo.transitionEntryStatus(
+            entry.id,
+            action === 'approve' ? 'approved' : 'needs_revision',
+            profile.id,
+          );
           card.remove();
-          if (queueEl.children.length === 0) {
+          actingIds.delete(entry.id);
+          if (queueEl && queueEl.children.length === 0) {
             emptyEl?.classList.remove('hidden');
           }
         } catch (err) {
-          showError(err instanceof Error ? err.message : 'Reject failed');
+          showError(formatAdminError(err));
+          setCardBusy(card, false);
+          actingIds.delete(entry.id);
         }
-      });
+      }
+
+      approveBtn.addEventListener('click', () => void runAction('approve'));
+      rejectBtn.addEventListener('click', () => void runAction('reject'));
 
       actions?.appendChild(approveBtn);
       actions?.appendChild(rejectBtn);
@@ -137,6 +156,8 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
     }
 
     const profile = guard.profile!;
+    applyRoleNav(profile);
+
     if (!requireRole(profile, ['reviewer', 'admin'])) {
       loadingEl?.classList.add('hidden');
       deniedEl?.classList.remove('hidden');
@@ -147,7 +168,7 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
       await renderQueue(profile);
       panelEl?.classList.remove('hidden');
     } catch (err) {
-      showError(err instanceof Error ? err.message : 'Failed to load review queue');
+      showError(formatAdminError(err));
     } finally {
       loadingEl?.classList.add('hidden');
     }
