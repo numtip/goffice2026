@@ -38,6 +38,41 @@ Curated map for agents and contributors. Prefer links over copying content.
 |----------|---------|
 | `docs/architecture/ARCHITECTURE_OVERVIEW.md` | Static Astro overview |
 | `docs/architecture/DATA_FLOW.md` | JSON/CSV → pages flow |
+| `docs/GREENOFFICE2026_SUPABASE_BACKEND_BLUEPRINT_V1.md` | Planned Supabase backend scope for monthly data workflow and live approved dashboard values |
+
+## Architecture Decisions
+
+| Document | Purpose |
+|----------|---------|
+| `docs/architecture/adr/README.md` | ADR index |
+| `docs/architecture/adr/ADR-001-ASTRO-STATIC-FIRST.md` | Astro remains public static-first platform |
+| `docs/architecture/adr/ADR-002-DOCUMENT-CENTER-BOUNDARY.md` | Document Center stays M365-backed and separate |
+| `docs/architecture/adr/ADR-003-SUPABASE-OPERATIONAL-BACKEND.md` | Supabase limited operational backend scope |
+| `docs/architecture/adr/ADR-004-LIVE-DASHBOARD-WITH-STATIC-FALLBACK.md` | Live approved metrics with static JSON fallback |
+
+## Backend (Supabase foundation)
+
+| Document | Purpose |
+|----------|---------|
+| `docs/backend/README.md` | Backend documentation index |
+| `docs/backend/SUPABASE_SCHEMA.md` | Tables, relationships, status and correction model |
+| `docs/backend/RLS_POLICY.md` | Role-based access matrix |
+| `docs/backend/API_CONTRACT.md` | Public dashboard data contract v1 |
+
+## Database (Supabase migrations)
+
+| Path | Purpose |
+|------|---------|
+| `supabase/README.md` | Migration order, local dev, seed usage |
+| `supabase/migrations/` | Versioned SQL migrations (001–006) |
+| `supabase/seed.sql` | Safe development reference seed data |
+
+## Code boundaries (Supabase)
+
+| Path | Purpose |
+|------|---------|
+| `src/lib/supabase/` | Config, lazy client, shared types |
+| `src/lib/repositories/` | Repository interfaces and static/live data boundary |
 
 ## Context Packs (agent task context)
 
