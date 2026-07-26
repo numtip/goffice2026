@@ -2,7 +2,7 @@
 
 Operational backend schema for monthly environmental data entry, review workflow, and dashboard cache. This folder is **source of truth** for database structure; do not apply schema changes in Supabase Studio without a matching migration commit.
 
-## Migration order (001–009)
+## Migration order (001–010)
 
 Apply migrations in numeric filename order:
 
@@ -17,6 +17,7 @@ Apply migrations in numeric filename order:
 | `202607260007_harden_rls_and_profile_privileges.sql` | Profile privilege trigger, scoped reviewer audit read, audit insert hardening |
 | `202607260008_implement_decision_baseline_v1.sql` | Decision Baseline v1: 7-metric catalog, partial unique index, owner-dept views, per-metric reviewer RLS |
 | `202607260009_fix_audit_row_change_seed_compat.sql` | Multi-table audit trigger fix for organization_settings seed |
+| `202607260010_grant_table_privileges.sql` | Grant authenticated/service_role table access (RLS still applies) |
 
 ## Local development
 

@@ -19,6 +19,17 @@ export {
 } from './departments-repository';
 
 export {
+  createProfileRepository,
+  type ProfileRepository,
+  type UserProfile,
+} from './profile-repository';
+
+export {
+  createOrganizationRepository,
+  type OrganizationRepository,
+} from './organization-repository';
+
+export {
   createReviewRepository,
   type ReviewRepository,
   type ReviewComment,

@@ -1,0 +1,86 @@
+---
+interface Props {
+  title?: string;
+  activeNav?: 'home' | 'entries' | 'review';
+}
+
+const { title = 'Admin', activeNav = 'home' } = Astro.props;
+const base = import.meta.env.BASE_URL ?? '/';
+---
+
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} — Green Office Admin</title>
+  </head>
+  <body class="min-h-screen bg-surface text-on-surface bg-gray-50 text-gray-900">
+    <a
+      href="#admin-main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:shadow"
+    >
+      ข้ามไปเนื้อหา / Skip to content
+    </a>
+    <header class="border-b border-gray-200 bg-white">
+      <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
+        <div>
+          <p class="text-sm font-semibold text-primary">Green Office 2026</p>
+          <p class="text-xs text-gray-600">ระบบจัดการข้อมูล / Data Admin (local)</p>
+        </div>
+        <nav class="flex flex-wrap items-center gap-2 text-sm" aria-label="Admin navigation">
+          <a
+            href={`${base}admin/`}
+            class:list={[
+              'rounded px-3 py-1.5',
+              activeNav === 'home' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100',
+            ]}
+          >
+            ภาพรวม / Overview
+          </a>
+          <a
+            href={`${base}admin/entries/`}
+            class:list={[
+              'rounded px-3 py-1.5',
+              activeNav === 'entries' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100',
+            ]}
+            data-nav-entries
+          >
+            บันทึกข้อมูล / Entries
+          </a>
+          <a
+            href={`${base}admin/review/`}
+            class:list={[
+              'rounded px-3 py-1.5',
+              activeNav === 'review' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100',
+            ]}
+            data-nav-review
+          >
+            ตรวจสอบ / Review
+          </a>
+          <button
+            type="button"
+            id="admin-logout"
+            class="rounded border border-gray-300 px-3 py-1.5 text-gray-700 hover:bg-gray-50"
+          >
+            ออกจากระบบ / Sign out
+          </button>
+        </nav>
+      </div>
+    </header>
+    <main id="admin-main" class="mx-auto max-w-5xl px-4 py-6">
+      <slot />
+    </main>
+    <script>
+      import { signOut } from '../lib/supabase/auth';
+
+      const logoutBtn = document.getElementById('admin-logout');
+      logoutBtn?.addEventListener('click', async () => {
+        await signOut();
+        const base = import.meta.env.BASE_URL ?? '/';
+        window.location.href = `${base}admin/login/`.replace(/\/{2,}/g, '/');
+      });
+    </script>
+  </body>
+</html>

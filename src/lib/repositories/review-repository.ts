@@ -3,7 +3,7 @@ import type { EntryStatus, MonthlyMetricEntry } from '../supabase/types';
 
 export interface ReviewComment {
   id: string;
-  monthly_metric_entry_id: string;
+  entry_id: string;
   comment: string;
   created_by: string;
   created_at: string;
@@ -79,7 +79,7 @@ export function createReviewRepository(): ReviewRepository {
       const { data, error } = await client
         .from('review_comments')
         .select('*')
-        .eq('monthly_metric_entry_id', entryId)
+        .eq('entry_id', entryId)
         .order('created_at');
 
       if (error) {
@@ -98,7 +98,7 @@ export function createReviewRepository(): ReviewRepository {
       const { data, error } = await client
         .from('review_comments')
         .insert({
-          monthly_metric_entry_id: entryId,
+          entry_id: entryId,
           comment,
           created_by: createdBy,
         })

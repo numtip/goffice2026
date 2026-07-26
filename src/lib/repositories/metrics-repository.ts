@@ -25,6 +25,10 @@ export interface UpdateMetricEntryInput {
   note?: string | null;
   status?: EntryStatus;
   updated_by?: string | null;
+  submitted_at?: string | null;
+  submitted_by?: string | null;
+  approved_at?: string | null;
+  approved_by?: string | null;
 }
 
 export interface MetricsRepository {
@@ -178,6 +182,10 @@ export function createMetricsRepository(): MetricsRepository {
           ...(input.note !== undefined ? { note: input.note } : {}),
           ...(input.status !== undefined ? { status: input.status } : {}),
           ...(input.updated_by !== undefined ? { updated_by: input.updated_by } : {}),
+          ...(input.submitted_at !== undefined ? { submitted_at: input.submitted_at } : {}),
+          ...(input.submitted_by !== undefined ? { submitted_by: input.submitted_by } : {}),
+          ...(input.approved_at !== undefined ? { approved_at: input.approved_at } : {}),
+          ...(input.approved_by !== undefined ? { approved_by: input.approved_by } : {}),
         })
         .eq('id', id)
         .select('*')

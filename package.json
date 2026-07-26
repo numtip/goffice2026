@@ -23,7 +23,9 @@
     "data:validate": "node scripts/data-pipeline.mjs validate",
     "data:generate": "node scripts/data-pipeline.mjs generate",
     "data:check": "node scripts/data-pipeline.mjs check",
-    "data:build": "node scripts/data-pipeline.mjs build"
+    "data:build": "node scripts/data-pipeline.mjs build",
+    "bootstrap:local-auth": "node scripts/bootstrap-local-auth.mjs",
+    "test:admin-e2e": "node scripts/test-admin-e2e.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.2.1",

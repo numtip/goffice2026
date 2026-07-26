@@ -1,6 +1,6 @@
 # Local Development Guide
 
-**Task:** GO-INFRA-1 · **Next:** GO-BE-3 Supabase Dev activation
+**Task:** GO-INFRA-1 · **Next:** GO-BE-3 local auth + admin MVP
 
 Reproducible local setup for the Astro frontend and optional Supabase local stack. No cloud login or production changes.
 
@@ -95,6 +95,9 @@ Static dashboard works **without** Supabase when `PUBLIC_DASHBOARD_DATA_MODE=sta
 | ☐ Migrations applied | `.\scripts\reset-local.ps1` |
 | ☐ Seed loaded | Included in reset; or `.\scripts\seed-local.ps1` |
 | ☐ Frontend build | `npm run build` |
+| ☐ Local auth bootstrap | `LOCAL_DEV_TEST_PASSWORD=… npm run bootstrap:local-auth` |
+| ☐ Admin E2E | `npm run test:admin-e2e` |
+| ☐ Admin UI | `/admin/login/` (local Supabase + `.env`) |
 | ☐ PO owner sign-off | [PO Sign-off Checklist](./PO_SIGNOFF_CHECKLIST.md) |
 | ☐ Reviewer UUIDs | [Reviewer Assignment Runbook](./REVIEWER_ASSIGNMENT_RUNBOOK.md) |
 
