@@ -786,14 +786,17 @@ Current seed CHECK constraints still reflect the 6-metric GO-BE-1 catalog; GO-BE
 
 RLS and triggers from migrations 003/005/007 support this model. Partial unique index and per-metric reviewer enforcement are GO-BE-2 migration tasks.
 
-### 17.4 Implementation deferrals (GO-BE-2)
+### 17.4 Implementation status (GO-BE-2B)
+
+Implemented in migration `202607260008`:
 
 1. Partial unique index for archive + replacement
 2. Seven-metric CHECK constraints and seed update
 3. `is_assigned_reviewer()` + scoped reviewer policies
-4. Owner-department filter on public views / repository layer
-5. Static JSON split (`waste.json` → kg + `recycling_rate.json`)
-6. Production department list and reviewer UUID assignment (PO)
+4. Owner-department filter on public views (fixed `OFFICE` public label)
+5. Static JSON split (`waste.json` kg + `recycling_rate.json` %)
+
+**Still PO-assigned:** production department list, reviewer UUIDs, waste mass source data, GHG emission factors (GO-BE-2C).
 
 ### 17.5 Related documents
 

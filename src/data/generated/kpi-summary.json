@@ -103,8 +103,33 @@
     },
     {
       "metric": "waste",
-      "label": "Waste Management",
-      "labelTh": "การจัดการของเสีย",
+      "label": "Waste Mass",
+      "labelTh": "ปริมาณขยะ",
+      "unit": "kg",
+      "yearBE": 2569,
+      "value": 0,
+      "target": null,
+      "targetStatus": "no-target",
+      "baselineValue": 0,
+      "yoyChange": {
+        "absolute": 0,
+        "percent": 0,
+        "direction": "stable"
+      },
+      "dataQuality": {
+        "valid": false,
+        "warnings": [
+          "No waste mass data available for current year"
+        ],
+        "reconciliationDifference": null
+      },
+      "sourceFile": "Waste mass (kg) current year pending",
+      "verified": false
+    },
+    {
+      "metric": "recycling_rate",
+      "label": "Recycling Rate",
+      "labelTh": "อัตราการรีไซcle",
       "unit": "%",
       "yearBE": 2569,
       "value": 84.6,

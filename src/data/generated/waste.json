@@ -1,9 +1,9 @@
 {
   "metric": "waste",
-  "label": "Waste Management",
-  "unit": "%",
-  "kpiField": "recycle_pct",
-  "status": "VERIFIED_BASELINE",
+  "label": "Waste Mass",
+  "unit": "kg",
+  "kpiField": "total_kg",
+  "status": "CURRENT_DATA_PENDING",
   "baselineYear": 2568,
   "currentYear": 2569,
   "targetYear": 2569,
@@ -11,166 +11,51 @@
     "2568": {
       "year": 2568,
       "isBaseline": true,
-      "months": [
-        {
-          "month": 1,
-          "value": 20.83,
-          "label": "Jan"
-        },
-        {
-          "month": 2,
-          "value": 19.56,
-          "label": "Feb"
-        },
-        {
-          "month": 3,
-          "value": 25.66,
-          "label": "Mar"
-        },
-        {
-          "month": 4,
-          "value": 22.36,
-          "label": "Apr"
-        },
-        {
-          "month": 5,
-          "value": 26.05,
-          "label": "May"
-        },
-        {
-          "month": 6,
-          "value": 19.82,
-          "label": "Jun"
-        },
-        {
-          "month": 7,
-          "value": 21.8,
-          "label": "Jul"
-        },
-        {
-          "month": 8,
-          "value": 21.22,
-          "label": "Aug"
-        },
-        {
-          "month": 9,
-          "value": 20.16,
-          "label": "Sep"
-        },
-        {
-          "month": 10,
-          "value": 24.97,
-          "label": "Oct"
-        },
-        {
-          "month": 11,
-          "value": 15.77,
-          "label": "Nov"
-        },
-        {
-          "month": 12,
-          "value": 20.63,
-          "label": "Dec"
-        }
-      ],
-      "total": 21.57,
-      "average": 21.57,
-      "dataStatus": "VERIFIED_BASELINE",
-      "source": "1.5_Waste.xlsx (waste-2568.csv) — complete",
-      "updated": "2026-07-15",
-      "provenance": {
-        "sourceWorkbook": "docs/1.5_Waste.xlsx",
-        "sourceSheet": "คำนวณ%",
-        "sourceColumn": "col[1]-col[12]",
-        "sourceRowRange": "row \"%ขยะรีไซเคิล / นำกลับมาใช้ใหม่\" — decimal values converted to percentage",
-        "extractionScript": "scripts/extract-xlsx-to-csv.mjs",
-        "extractionTimestamp": "2026-07-15T03:48:00+07:00",
-        "normalizationScript": "scripts/import-dashboard-data.mjs",
-        "normalizationTimestamp": "2026-07-15T03:50:00+07:00",
-        "validationStatus": "VERIFIED_BASELINE"
-      },
-      "quality": {
-        "valid": true,
-        "warnings": [],
-        "reconciliationDifference": 0
-      },
-      "aggregation": "average",
-      "dataClassification": "PRESERVED_LEGACY"
-    },
-    "2569": {
-      "year": 2569,
-      "isBaseline": false,
-      "months": [
-        {
-          "month": 1,
-          "value": 75,
-          "label": "Jan"
-        },
-        {
-          "month": 2,
-          "value": 78,
-          "label": "Feb"
-        },
-        {
-          "month": 3,
-          "value": 81,
-          "label": "Mar"
-        },
-        {
-          "month": 4,
-          "value": 82,
-          "label": "Apr"
-        },
-        {
-          "month": 5,
-          "value": 85,
-          "label": "May"
-        },
-        {
-          "month": 6,
-          "value": 87,
-          "label": "Jun"
-        },
-        {
-          "month": 7,
-          "value": 88,
-          "label": "Jul"
-        },
-        {
-          "month": 8,
-          "value": 89,
-          "label": "Aug"
-        },
-        {
-          "month": 9,
-          "value": 90,
-          "label": "Sep"
-        },
-        {
-          "month": 10,
-          "value": 91,
-          "label": "Oct"
-        }
-      ],
-      "total": 84.6,
-      "average": 84.6,
+      "months": [],
+      "total": 0,
+      "average": 0,
       "dataStatus": "CURRENT_DATA_PENDING",
-      "source": "1.5_Waste.xlsx (placeholder data — no 2569 data in source XLSX)",
-      "updated": "2026-06-12",
+      "source": "Waste mass (kg) baseline pending — PO to supply source workbook (Decision Baseline v1 split from recycling_rate)",
+      "updated": "2026-07-26",
       "provenance": {
         "sourceWorkbook": "docs/1.5_Waste.xlsx",
-        "sourceSheet": "คำนวณ%",
-        "extractionStatus": "NO_2569_DATA — target year data not yet available in source XLSX",
+        "sourceSheet": "PENDING",
+        "extractionStatus": "MASS_KG_PENDING — recycling % moved to recycling_rate.json",
         "validationStatus": "CURRENT_DATA_PENDING"
       },
       "quality": {
         "valid": false,
         "warnings": [
-          "Data may contain placeholder values — verify against source workbook"
+          "Waste mass (kg) data not yet imported — awaiting PO source assignment"
         ],
-        "reconciliationDifference": 0
+        "reconciliationDifference": null
       },
-      "aggregation": "average",
+      "aggregation": "sum",
+      "dataClassification": "PLACEHOLDER"
+    },
+    "2569": {
+      "year": 2569,
+      "isBaseline": false,
+      "months": [],
+      "total": 0,
+      "average": 0,
+      "dataStatus": "CURRENT_DATA_PENDING",
+      "source": "Waste mass (kg) current year pending",
+      "updated": "2026-07-26",
+      "provenance": {
+        "sourceWorkbook": "docs/1.5_Waste.xlsx",
+        "sourceSheet": "PENDING",
+        "extractionStatus": "MASS_KG_PENDING",
+        "validationStatus": "CURRENT_DATA_PENDING"
+      },
+      "quality": {
+        "valid": false,
+        "warnings": [
+          "No waste mass data available for current year"
+        ],
+        "reconciliationDifference": null
+      },
+      "aggregation": "sum",
       "dataClassification": "PLACEHOLDER"
     }
   },
@@ -178,28 +63,28 @@
     "year": 2569,
     "status": "TARGET_PENDING_APPROVAL",
     "targetType": "reduction",
-    "targetUnit": "%",
+    "targetUnit": "kg",
     "targetValue": null,
-    "targetBasis": "Green Office 2569 criteria require year-over-year reduction. Specific target value must be set by authorized staff during assessment planning.",
+    "targetBasis": "Green Office policy target ≤50 kg/person — specific office-wide target set by authorized staff during assessment planning.",
     "targetSetBy": null,
     "targetSetDate": null,
     "months": []
   },
   "yoyChange": {
-    "absolute": 63.03,
-    "percent": 292,
-    "direction": "up"
+    "absolute": 0,
+    "percent": 0,
+    "direction": "stable"
   },
   "relatedIndicators": [
     {
-      "indicatorId": "4.1",
-      "label": "Waste management section",
-      "labelTh": "การจัดการของเสีย",
+      "indicatorId": "4.1.2",
+      "label": "Waste sorting and disposal",
+      "labelTh": "การคัดแยกและจัดการขยะ",
       "relevance": "primary",
-      "note": "Detailed sub-indicator mapping pending confirmation from Green Office 2569 criteria document."
+      "note": "Waste mass (kg) supports total waste generated tracking per Decision Baseline v1."
     }
   ],
   "sourceEvidence": [],
   "targetStatus": "no-target",
-  "labelTh": "การจัดการของเสีย"
+  "labelTh": "ปริมาณขยะ"
 }

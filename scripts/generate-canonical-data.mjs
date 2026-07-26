@@ -29,7 +29,10 @@ const CRITERIA_MAP = {
   fuel:    [{ indicatorId: '3.2.5', label: 'Fuel consumption', labelTh: 'การใช้เชื้อเพลิง', relevance: 'primary' }],
   paper:   [{ indicatorId: '3.3.2', label: 'Paper consumption', labelTh: 'การใช้กระดาษ', relevance: 'primary' }],
   waste:   [
-    { indicatorId: '4.1', label: 'Waste management section', labelTh: 'การจัดการของเสีย', relevance: 'primary', note: 'Detailed sub-indicator mapping pending confirmation from Green Office 2569 criteria document.' },
+    { indicatorId: '4.1.2', label: 'Waste sorting and disposal', labelTh: 'การคัดแยกและจัดการขยะ', relevance: 'primary' },
+  ],
+  recycling_rate: [
+    { indicatorId: '4.1', label: 'Waste management section', labelTh: 'การจัดการของเสีย', relevance: 'primary', note: 'Recycling rate % per Decision Baseline v1.' },
   ],
   ghg:     [
     { indicatorId: '1.5.1', label: 'GHG emissions (Scope 1,2,3)', labelTh: 'ก๊าซเรือนกระจก', relevance: 'primary' },
@@ -96,9 +99,9 @@ function main() {
 
     // 1a. Fix known-invalid wildcard indicator mapping for waste ('4.1.x' is
     // not a valid criteria ID) — force-correct regardless of prior presence.
-    if (metric === 'waste' && data.relatedIndicators?.some(i => i.indicatorId === '4.1.x')) {
-      data.relatedIndicators = CRITERIA_MAP.waste;
-      console.log(`   🔧 Fixed waste relatedIndicators: '4.1.x' → '4.1'`);
+    if (metric === 'recycling_rate' && data.relatedIndicators?.some(i => i.indicatorId === '4.1.x')) {
+      data.relatedIndicators = CRITERIA_MAP.recycling_rate;
+      console.log(`   🔧 Fixed recycling_rate relatedIndicators: '4.1.x' → '4.1'`);
     }
 
     // 2. Add sourceEvidence if missing
@@ -195,7 +198,8 @@ function main() {
       water: 'การใช้น้ำ',
       fuel: 'การใช้เชื้อเพลิง',
       paper: 'การใช้กระดาษ',
-      waste: 'การจัดการของเสีย',
+      waste: 'ปริมาณขยะ',
+      recycling_rate: 'อัตราการรีไซcle',
       ghg: 'ก๊าซเรือนกระจก',
     };
     if (!data.labelTh) {

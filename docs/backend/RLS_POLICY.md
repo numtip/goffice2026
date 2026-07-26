@@ -1,8 +1,8 @@
 # Row Level Security (RLS) Policy Reference
 
-**Version:** GO-BE-1 foundation  
+**Version:** GO-BE-2B (Decision Baseline v1)  
 **Updated:** 2026-07-26  
-**Implementation:** `supabase/migrations/202607260005_enable_rls_and_policies.sql`
+**Implementation:** `supabase/migrations/202607260005_enable_rls_and_policies.sql`, `202607260008_implement_decision_baseline_v1.sql`
 
 RLS is **mandatory** on every operational table. Anonymous users never receive direct access to operational tables.
 
@@ -18,7 +18,7 @@ These statements are non-negotiable project policy:
 
 3. **Staff cannot approve.** Transition to `approved` is reserved for `reviewer` and `admin` roles. Staff `UPDATE` policies must not permit setting `status = approved`.
 
-4. **Reviewer handles submitted workflow.** Reviewers read `submitted` entries (and context rows), set `approved` or `needs_revision`, and insert `review_comments`. They cannot bypass audit or immutability triggers.
+4. **Reviewer handles submitted workflow for assigned metrics only.** Reviewers read `submitted` entries for metrics in `workflow.metric_reviewer_map`, set `approved` or `needs_revision`, and insert `review_comments`. They cannot review cross-metric entries or bypass audit or immutability triggers.
 
 5. **Approved values cannot be silently overwritten.** Database triggers block non-admin modification of approved row values. Corrections require archive + replacement workflow (see [Schema](./SUPABASE_SCHEMA.md#correction-model)).
 
@@ -40,7 +40,7 @@ These statements are non-negotiable project policy:
 | `reviewer` | Authenticated, `profiles.role = reviewer` | Submitted workflow |
 | `admin` | Authenticated, `profiles.role = admin` | Full operational manage |
 
-Helper functions (migration 005): `current_user_role()`, `current_user_department_id()`, `is_admin()`, `is_reviewer()`.
+Helper functions (migrations 005, 008): `current_user_role()`, `current_user_department_id()`, `is_admin()`, `is_reviewer()`, `metric_owner_department_id()`, `is_assigned_reviewer()`.
 
 ---
 
@@ -55,7 +55,7 @@ Legend: **Y** = allowed, **—** = denied, **own** = own row or own department, 
 | `profiles` | — | own | own | own + workflow | Y | — | own | — | — | — | Y | Y | — |
 | `departments` | — | Y (active) | Y (active) | Y (active) | Y | — | — | — | — | — | Y | Y | — |
 | `metric_types` | — | Y (active) | Y (active) | Y (active) | Y | — | — | — | — | — | Y | Y | — |
-| `monthly_metric_entries` | — | appr | own dept | sub + own dept + appr | Y | own dept draft | own draft/needs_revision | — | — | sub→appr/needs_revision | Y | Y | — |
+| `monthly_metric_entries` | — | appr | own dept | assigned metric sub + appr | Y | own dept draft | own draft/needs_revision | — | — | assigned sub→appr/needs_revision | Y | Y | — |
 | `review_comments` | — | own dept entries | own dept entries | Y | Y | — | — | — | Y | — | Y | Y | — |
 
 ### Supporting tables

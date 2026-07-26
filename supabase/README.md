@@ -2,7 +2,7 @@
 
 Operational backend schema for monthly environmental data entry, review workflow, and dashboard cache. This folder is **source of truth** for database structure; do not apply schema changes in Supabase Studio without a matching migration commit.
 
-## Migration order (001–007)
+## Migration order (001–008)
 
 Apply migrations in numeric filename order:
 
@@ -15,6 +15,7 @@ Apply migrations in numeric filename order:
 | `202607260005_enable_rls_and_policies.sql` | RLS helper functions and policies |
 | `202607260006_create_audit_functions.sql` | Audit trigger functions and triggers |
 | `202607260007_harden_rls_and_profile_privileges.sql` | Profile privilege trigger, scoped reviewer audit read, audit insert hardening |
+| `202607260008_implement_decision_baseline_v1.sql` | Decision Baseline v1: 7-metric catalog, partial unique index, owner-dept views, per-metric reviewer RLS |
 
 ## Local development
 
@@ -43,8 +44,9 @@ supabase stop
 
 `seed.sql` loads **development reference data only**:
 
-- Six `metric_types` (`energy`, `water`, `fuel`, `paper`, `waste`, `ghg`)
+- Seven `metric_types` (`energy`, `water`, `fuel`, `paper`, `waste`, `recycling_rate`, `ghg`)
 - Three `[DEV]` departments (`DEV-HQ`, `DEV-OPS`, `DEV-QA`)
+- Placeholder `organization_settings` for owner-department and reviewer maps (null reviewer UUIDs until PO assigns)
 
 It does **not** create users, auth accounts, monthly entries, or production values. All inserts use `ON CONFLICT DO NOTHING` for idempotent re-runs.
 

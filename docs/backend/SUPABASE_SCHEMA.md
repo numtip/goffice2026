@@ -103,8 +103,8 @@ approved (original) ──admin archive──► archived
 
 Notes:
 
-- Current seed/migration CHECK constraints still encode the 6-metric catalog (`waste` = `%`). GO-BE-2 will add `recycling_rate` and update units without changing table shapes.
-- Static JSON `waste.json` (recycle %) maps to `recycling_rate` after data-pipeline split in GO-BE-2.
+- Migration `202607260008` implements the 7-metric catalog, partial unique index, owner-department public views, and per-metric reviewer RLS.
+- Static JSON: `recycling_rate.json` holds recycling %; `waste.json` holds mass (kg), pending PO source data.
 - GHG monthly values are produced from activity metrics (energy, fuel, paper, waste kg) using versioned `metric_formulas`; manual GHG entry is disallowed in admin UI.
 
 ---
@@ -143,16 +143,16 @@ Each environmental metric has exactly one owner department for data entry. Publi
 | Correction | **Archive + replacement** — admin archives original; staff creates new `draft`; full workflow repeats |
 | Reviewer routing | **One reviewer per metric** via `organization_settings.workflow.metric_reviewer_map` (JSONB: metric code → profile UUID) |
 
-### Schema impact (GO-BE-2A)
+### Schema impact (GO-BE-2B — implemented)
 
-No SQL changes in this baseline document. Known follow-ups for GO-BE-2:
+Migration `202607260008_implement_decision_baseline_v1.sql`:
 
-1. Partial unique index on `(metric_type_id, department_id, year, month) WHERE status <> 'archived'` (correction replacement)
-2. ALTER metric CHECK constraints for 7-metric catalog and `waste` = `kg`
-3. `is_assigned_reviewer()` helper + reviewer RLS scope by metric
-4. Public view filter to owner-department rows for office-wide metrics
+1. Partial unique index on `(metric_type_id, department_id, year, month) WHERE status <> 'archived'`
+2. Seven-metric CHECK constraints (`waste` = `kg`, `recycling_rate` = `%`)
+3. `metric_owner_department_id()` + owner-filtered public views (fixed `OFFICE` label)
+4. `is_assigned_reviewer()` + reviewer RLS scoped by metric
 
-RLS and triggers are **compatible** with the frozen workflow; routing and partial uniqueness are **not yet implemented**.
+RLS and triggers remain compatible with the frozen workflow.
 
 ---
 

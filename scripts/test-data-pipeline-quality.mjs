@@ -6,7 +6,7 @@
  * Covers:
  *   - Current-year CSV-only data must never be silently reported as verified (RC-1)
  *   - Placeholder data must stay invalid and unverified in the KPI summary (RC-1/RC-3)
- *   - Percentage-unit metrics (waste) must use average aggregation, not sum (RC-2)
+ *   - Percentage-unit metrics (recycling_rate) must use average aggregation, not sum (RC-2)
  *   - The validator must flag invalid quality states and bad unit/aggregation combos (RC-3)
  *   - Critical structural failures must be reported as errors (non-zero exit) (RC-3)
  *   - Generation is deterministic
@@ -75,18 +75,18 @@ describe('RC-1: current-year CSV-only data must not be silently marked valid', (
   });
 });
 
-describe('RC-2: waste (percentage unit) must use average aggregation, not sum', () => {
-  it('waste years use aggregation "average" and total equals the monthly average', () => {
-    const data = readGenerated('waste.json');
+describe('RC-2: recycling_rate (percentage unit) must use average aggregation, not sum', () => {
+  it('recycling_rate years use aggregation "average" and total equals the monthly average', () => {
+    const data = readGenerated('recycling_rate.json');
     for (const [yearStr, yearData] of Object.entries(data.years)) {
-      assert.equal(yearData.aggregation, 'average', `waste ${yearStr} must use average aggregation`);
+      assert.equal(yearData.aggregation, 'average', `recycling_rate ${yearStr} must use average aggregation`);
       const avg = Math.round((yearData.months.reduce((s, m) => s + m.value, 0) / yearData.months.length) * 100) / 100;
-      assert.equal(yearData.total, avg, `waste ${yearStr} total must equal monthly average, not a sum`);
+      assert.equal(yearData.total, avg, `recycling_rate ${yearStr} total must equal monthly average, not a sum`);
     }
   });
 
-  it('waste yoyChange is computed from average-to-average totals (not the old invalid +227% sum-based figure)', () => {
-    const data = readGenerated('waste.json');
+  it('recycling_rate yoyChange is computed from average-to-average totals (not the old invalid +227% sum-based figure)', () => {
+    const data = readGenerated('recycling_rate.json');
     const b = data.years[String(data.baselineYear)];
     const c = data.years[String(data.currentYear)];
     const expectedPercent = Math.round(((c.total - b.total) / b.total) * 100);
@@ -95,8 +95,8 @@ describe('RC-2: waste (percentage unit) must use average aggregation, not sum', 
 });
 
 describe('RC-4: indicator mapping no longer uses the invalid wildcard', () => {
-  it('waste relatedIndicators uses "4.1", not the invalid "4.1.x"', () => {
-    const data = readGenerated('waste.json');
+  it('recycling_rate relatedIndicators uses "4.1", not the invalid "4.1.x"', () => {
+    const data = readGenerated('recycling_rate.json');
     const ids = data.relatedIndicators.map((i) => i.indicatorId);
     assert.equal(ids.includes('4.1.x'), false);
     assert.equal(ids.includes('4.1'), true);
@@ -113,14 +113,14 @@ describe('RC-3: validator must surface unverified/invalid quality states, not si
   it('validateGenerated warns for every metric-year whose quality.valid is false', () => {
     const result = validateGenerated(false);
     const invalidWarnings = result.warnings.filter((w) => w.includes('quality flagged INVALID'));
-    // energy, water, fuel, paper, waste, ghg all have an invalid 2569 entry = 6
-    assert.equal(invalidWarnings.length, 6);
+    // energy, water, fuel, paper, waste (2568+2569), recycling_rate, ghg = 8 invalid year entries
+    assert.equal(invalidWarnings.length, 8);
   });
 
   it('validateGenerated raises an ERROR when a %-unit metric declares aggregation "sum"', () => {
     const tmpFile = join(GENERATED_DIR, '__test_percent_metric.json');
     const badMetric = {
-      metric: 'waste',
+      metric: 'recycling_rate',
       label: 'Test Percent Metric',
       unit: '%',
       kpiField: 'recycle_pct',
@@ -195,6 +195,7 @@ describe('Determinism: re-writing generated JSON produces byte-identical output'
     'fuel.json',
     'paper.json',
     'waste.json',
+    'recycling_rate.json',
     'ghg.json',
     'kpi-summary.json',
   ];

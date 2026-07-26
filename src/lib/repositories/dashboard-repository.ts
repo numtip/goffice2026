@@ -2,6 +2,7 @@ import energyData from '../../data/generated/energy.json';
 import fuelData from '../../data/generated/fuel.json';
 import ghgData from '../../data/generated/ghg.json';
 import paperData from '../../data/generated/paper.json';
+import recyclingRateData from '../../data/generated/recycling_rate.json';
 import wasteData from '../../data/generated/waste.json';
 import waterData from '../../data/generated/water.json';
 
@@ -9,6 +10,7 @@ import { getSupabaseClient, getSupabaseAvailability } from '../supabase/client';
 import { getSupabaseConfig } from '../supabase/config';
 import type {
   DashboardDataEnvelope,
+  MetricCode,
   PublicDashboardMetric,
   SupabaseAvailability,
 } from '../supabase/types';
@@ -32,7 +34,7 @@ interface StaticYearSlice {
 }
 
 interface StaticMetricSnapshot {
-  metric: string;
+  metric: MetricCode;
   label: string;
   labelTh?: string;
   unit: string;
@@ -40,8 +42,8 @@ interface StaticMetricSnapshot {
 }
 
 const STATIC_OFFICE_DEPARTMENT = {
-  code: 'office',
-  name_th: 'ทั้งหน่วยงาน',
+  code: 'OFFICE',
+  name_th: 'สำนักงานกลาง',
 } as const;
 
 const STATIC_METRIC_SNAPSHOTS: StaticMetricSnapshot[] = [
@@ -50,6 +52,7 @@ const STATIC_METRIC_SNAPSHOTS: StaticMetricSnapshot[] = [
   fuelData as StaticMetricSnapshot,
   paperData as StaticMetricSnapshot,
   wasteData as StaticMetricSnapshot,
+  recyclingRateData as StaticMetricSnapshot,
   ghgData as StaticMetricSnapshot,
 ];
 

@@ -69,7 +69,15 @@ const METRIC_CONFIG = {
     excelSource: '1.4_Paper.xlsx',
   },
   waste: {
-    label: 'Waste Management',
+    label: 'Waste Mass',
+    unit: 'kg',
+    kpiField: 'total_kg',
+    csvField: 'total_kg',
+    description: 'Waste mass in kilograms',
+    excelSource: '1.5_Waste.xlsx',
+  },
+  recycling_rate: {
+    label: 'Recycling Rate',
     unit: '%',
     kpiField: 'recycle_pct',
     csvField: 'recycle_pct',

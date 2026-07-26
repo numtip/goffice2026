@@ -15,10 +15,20 @@ export type EntryStatus =
 /** Dashboard data sourcing mode (PUBLIC_DASHBOARD_DATA_MODE). */
 export type DashboardDataMode = 'static' | 'live' | 'hybrid';
 
+/** Canonical metric codes (Decision Baseline v1). */
+export type MetricCode =
+  | 'energy'
+  | 'water'
+  | 'fuel'
+  | 'paper'
+  | 'waste'
+  | 'recycling_rate'
+  | 'ghg';
+
 /** Reference row from metric_types. */
 export interface MetricType {
   id: string;
-  code: string;
+  code: MetricCode;
   label_th: string;
   label_en: string | null;
   unit: string;
@@ -50,7 +60,7 @@ export interface MonthlyMetricEntry {
 
 /** Public-safe row from public_dashboard_monthly_metrics view. */
 export interface PublicDashboardMetric {
-  metric_code: string;
+  metric_code: MetricCode;
   metric_label_th: string;
   metric_label_en: string | null;
   unit: string;

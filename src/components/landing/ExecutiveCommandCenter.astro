@@ -8,7 +8,7 @@ import energyGen from '../../data/generated/energy.json';
 import waterGen from '../../data/generated/water.json';
 import fuelGen from '../../data/generated/fuel.json';
 import paperGen from '../../data/generated/paper.json';
-import wasteGen from '../../data/generated/waste.json';
+import recyclingRateGen from '../../data/generated/recycling_rate.json';
 import ghgGen from '../../data/generated/ghg.json';
 
 interface Props {
@@ -44,7 +44,7 @@ const genMap: Record<string, MultiYearMetric> = {
   water: waterGen as MultiYearMetric,
   fuel: fuelGen as MultiYearMetric,
   paper: paperGen as MultiYearMetric,
-  waste: wasteGen as MultiYearMetric,
+  waste: recyclingRateGen as MultiYearMetric,
   ghg: ghgGen as MultiYearMetric,
 };
 
