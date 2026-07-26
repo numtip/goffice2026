@@ -84,10 +84,10 @@ Apply in filename order only. No Studio-only changes.
 
 ---
 
-## Next phase (GO-BE-5)
+## Next phase (GO-BE-6)
 
 1. ~~PO completes owner sign-off checklist~~ **Done (GO-GATE-1)**
-2. Provision Supabase Cloud Dev per blueprint
+2. ~~Provision Supabase Cloud Dev per blueprint~~ **Done (GO-BE-5)** — [Cloud Dev Provisioning](./CLOUD_DEV_PROVISIONING.md)
 3. Create Auth for reviewer; assign profile UUID (secure channel)
 4. Apply PO owner map + reviewer map to cloud config
 5. Smoke-test admin against cloud Dev

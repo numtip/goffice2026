@@ -73,7 +73,7 @@ psql "$(supabase status -o env | grep DATABASE_URL | cut -d= -f2-)" -f supabase/
 
 1. **No Studio-only changes** — every schema change must be a committed migration file.
 2. **No service-role key in frontend** — browser code uses `PUBLIC_SUPABASE_ANON_KEY` only; RLS (004) enforces access. Never expose `SUPABASE_SERVICE_ROLE_KEY` in Astro client bundles or git.
-3. **Cloud deployment outside scope** — dev/staging/production Supabase project provisioning, secrets, and CI deploy are documented separately. This README covers local schema workflow only.
+3. **Cloud Dev provisioned (GO-BE-5)** — project `numtipProject` (`aryshyzolpdxxvmyhedx`, Free plan). See [Cloud Dev Provisioning](../docs/backend/CLOUD_DEV_PROVISIONING.md). Auth, config apply, and smoke-test are GO-BE-6.
 4. **Evidence links are URL-only** — `external_evidence_links` stores M365/SharePoint references; file upload remains in Document Center.
 5. **Audit logs exclude PII device data** — no IP addresses, fingerprints, or device IDs in schema or audit functions.
 

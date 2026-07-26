@@ -94,10 +94,19 @@ Formula `tgo_baseline_v1`: **INACTIVE** (PO confirmed for Cloud Dev).
 
 ---
 
-## Next gate (GO-BE-5)
+## GO-BE-5 (Cloud Dev provisioning)
 
-1. ~~PO sign-off~~ **Complete**
-2. Provision Supabase Cloud Dev (migrations `001–011`)
-3. Create Auth + profile for `raemju@gmail.com`; record UUID securely
-4. Apply PO owner map + reviewer map to cloud (config commit)
-5. Smoke-test admin; keep `PUBLIC_DASHBOARD_DATA_MODE=static`
+**Status:** **COMPLETE** (2026-07-26) — see [Cloud Dev Provisioning](./CLOUD_DEV_PROVISIONING.md)
+
+| Step | Status |
+|------|--------|
+| Link project `aryshyzolpdxxvmyhedx` | **Done** |
+| Apply migrations `001–011` | **Done** |
+| Schema + RLS verification | **Done** |
+| Free Plan / zero-cost | **Confirmed** |
+
+## Next gate (GO-BE-6)
+
+1. Create Auth + profile for `raemju@gmail.com`; record UUID securely
+2. Apply PO owner map + reviewer map to cloud (config commit)
+3. Smoke-test admin against Cloud Dev; keep `PUBLIC_DASHBOARD_DATA_MODE=static`

@@ -20,6 +20,7 @@ Supabase operational backend documentation for monthly environmental metrics, re
 | [PO Sign-off Checklist](./PO_SIGNOFF_CHECKLIST.md) | Owner department approval matrix (GO-BE-2D) |
 | [Reviewer Assignment Runbook](./REVIEWER_ASSIGNMENT_RUNBOOK.md) | Per-metric reviewer UUID procedure (GO-BE-2D) |
 | [Local Development Guide](./LOCAL_DEVELOPMENT_GUIDE.md) | GO-INFRA-1 bootstrap, scripts, troubleshooting |
+| [Cloud Dev Provisioning](./CLOUD_DEV_PROVISIONING.md) | GO-BE-5 Supabase Cloud Dev (migrations, verification) |
 
 ## Database & Migrations
 
