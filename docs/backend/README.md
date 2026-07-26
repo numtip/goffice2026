@@ -19,6 +19,7 @@ Supabase operational backend documentation for monthly environmental metrics, re
 | [Production Config Readiness](./PRODUCTION_CONFIG_READINESS.md) | GO-BE-2C/2D owner maps, waste kg, GHG evidence |
 | [PO Sign-off Checklist](./PO_SIGNOFF_CHECKLIST.md) | Owner department approval matrix (GO-BE-2D) |
 | [Reviewer Assignment Runbook](./REVIEWER_ASSIGNMENT_RUNBOOK.md) | Per-metric reviewer UUID procedure (GO-BE-2D) |
+| [Local Development Guide](./LOCAL_DEVELOPMENT_GUIDE.md) | GO-INFRA-1 bootstrap, scripts, troubleshooting |
 
 ## Database & Migrations
 

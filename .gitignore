@@ -4,6 +4,11 @@ dist/
 *.log
 .env
 .env.*
+!.env.example
+
+# Supabase local CLI state
+supabase/.branches/
+supabase/.temp/
 
 # M365 agent bootstrap — local session data (never commit)
 .local/

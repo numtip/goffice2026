@@ -19,10 +19,20 @@ Apply migrations in numeric filename order:
 
 ## Local development
 
-Prerequisites: [Supabase CLI](https://supabase.com/docs/guides/cli) installed.
+**Bootstrap:** [docs/backend/LOCAL_DEVELOPMENT_GUIDE.md](../docs/backend/LOCAL_DEVELOPMENT_GUIDE.md)
+
+Prerequisites: [Supabase CLI](https://supabase.com/docs/guides/cli) + Docker Desktop.
+
+```powershell
+# From repository root (Windows)
+.\scripts\check-local.ps1
+.\scripts\start-local.ps1
+.\scripts\reset-local.ps1
+```
+
+Or manually:
 
 ```bash
-# From repository root
 supabase start
 supabase db reset    # runs all migrations + seed.sql
 ```
