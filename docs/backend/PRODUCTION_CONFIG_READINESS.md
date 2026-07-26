@@ -1,72 +1,103 @@
-# Production Configuration Readiness (GO-BE-2C / GO-BE-2D)
+# Production Configuration Readiness (GO-BE-2C / GO-BE-2D / GO-GATE-1)
 
-**Date:** 2026-07-26  
-**Status:** **SIGNOFF_PENDING** — data and config prepared; PO owner confirmation and reviewer UUIDs outstanding  
-**Live mode:** `static` only — no Supabase cloud project
+**Date:** 2026-07-26
+**Status:** **`PO_OWNER_SIGNOFF_COMPLETE`**
+**Live mode:** `static` during Cloud Dev (PO approved)
+**Gate:** [PO Sign-off Checklist](./PO_SIGNOFF_CHECKLIST.md)
 
 ---
 
-## GO-BE-2D status
+## GO-GATE-1 readiness (GO-BE-5 prerequisite)
+
+| Input | State |
+|-------|-------|
+| Technical audit (GO-QA-1) | **READY_WITH_CONDITIONS** — [Production Readiness Audit](./PRODUCTION_READINESS_AUDIT.md) |
+| Backend V1 freeze | **FROZEN** — [BACKEND_V1_FREEZE.md](./BACKEND_V1_FREEZE.md) |
+| Owner mapping (7 metrics) | **PO_OWNER_SIGNOFF_COMPLETE** — all APPROVED |
+| Workflow policy | **Approved** — one reviewer/metric; multi-metric same person YES |
+| Reviewer identities | **Name/email recorded** — UUID pending Cloud Auth |
+| Cloud Dev activation | **Unblocked** for provisioning (GO-BE-5) |
+
+---
+
+## PO-approved owner department mappings
+
+Authorized approver: **Prinya Painussa** · Approval date: **2026-07-26**
+
+| Metric | Owner (PO) | Code | PO status |
+|--------|------------|------|-----------|
+| `energy` | IQS | `IQS` | **APPROVED** |
+| `water` | IQS | `IQS` | **APPROVED** |
+| `fuel` | IQS | `IQS` | **APPROVED** |
+| `paper` | สำนักวิจัยฯ | `SRCH` | **APPROVED** |
+| `waste` | สำนักวิจัยฯ | `SRCH` | **APPROVED** |
+| `recycling_rate` | สำนักวิจัยฯ | `SRCH` | **APPROVED** |
+| `ghg` | สำนักวิจัยฯ | `SRCH` | **APPROVED** |
+
+`seed.sql` still holds pre-signoff workbook defaults until GO-BE-5 config apply.
+
+### Department codes (reference)
+
+| Code | name_th | PO-assigned metrics |
+|------|---------|---------------------|
+| `IQS` | IQS | energy, water, fuel |
+| `SRCH` | สำนักวิจัย | paper, waste, recycling_rate, ghg |
+
+---
+
+## Workflow configuration (PO approved)
+
+| Policy | Value |
+|--------|-------|
+| Reviewers per metric | One |
+| Same person, multiple metrics | **YES** (Prinya Painussa — all 7) |
+| Correction method | Archive + replacement |
+| GHG formula | Inactive during Cloud Dev |
+| Dashboard mode | Static |
+
+---
+
+## Reviewer assignment (PO recorded)
+
+| Field | Value |
+|-------|-------|
+| Name | Prinya Painussa |
+| Email | raemju@gmail.com |
+| Metrics | energy, water, fuel, paper, waste, recycling_rate, ghg |
+| Profile UUID | _TODO — after Cloud Auth_ |
+
+---
+
+## Deliverable status
 
 | Deliverable | Location | State |
 |-------------|----------|-------|
-| PO owner approval matrix | [PO_SIGNOFF_CHECKLIST.md](./PO_SIGNOFF_CHECKLIST.md) | 4 APPROVED / 3 NEEDS_CONFIRMATION |
-| Reviewer assignment procedure | [REVIEWER_ASSIGNMENT_RUNBOOK.md](./REVIEWER_ASSIGNMENT_RUNBOOK.md) | Template ready; UUIDs null |
-| GHG formula | `metric_formulas.tgo_baseline_v1` | **INACTIVE** (unchanged) |
-
----
-
-## Owner department mappings
-
-Evidenced organizational units appear in source workbooks. See [PO Sign-off Checklist](./PO_SIGNOFF_CHECKLIST.md) for PO status per metric.
-
-| Metric | Owner code | Workbook evidence | PO status |
-|--------|------------|-------------------|-----------|
-| `energy` | `SAMNG` | Office-wide `2568` in `12-elect.xlsx` | NEEDS_CONFIRMATION |
-| `water` | `SAMNG` | Office-wide `2568` in `1.1-Water.xlsx` | NEEDS_CONFIRMATION |
-| `fuel` | `IQS` | `IQS` sheet in `1.3_Gassolene.xlsx` | **APPROVED** |
-| `paper` | `SAMNG` | `สำนักงาน` row / `2568` in `1.4_Paper.xlsx` | NEEDS_CONFIRMATION |
-| `waste` | `SAMNG` | Form 4.1(1) `1.5_Waste.xlsx` | **APPROVED** |
-| `recycling_rate` | `SAMNG` | `%` row `1.5_Waste.xlsx` | **APPROVED** |
-| `ghg` | `SAMNG` | TGO summary `1.6_GreenhouseGas.xlsx` | **APPROVED** |
-
-### Department codes (seed)
-
-| Code | name_th | Source |
-|------|---------|--------|
-| `IQS` | IQS | `1.3_Gassolene.xlsx` |
-| `SRCH` | สำนักวิจัย | `1.3_Gassolene.xlsx` |
-| `SAMNG` | สำนักงาน | `1.4_Paper.xlsx` |
-
-`DEV-*` departments remain for local development. Public views publish fixed `OFFICE` label.
+| PO owner approval | [PO_SIGNOFF_CHECKLIST.md](./PO_SIGNOFF_CHECKLIST.md) | **7/7 APPROVED** |
+| Reviewer procedure | [REVIEWER_ASSIGNMENT_RUNBOOK.md](./REVIEWER_ASSIGNMENT_RUNBOOK.md) | Name/email set; UUID pending |
+| GHG formula | `metric_formulas.tgo_baseline_v1` | **INACTIVE** (PO confirmed) |
 
 ---
 
 ## Waste mass (2568)
 
-**Source:** `1.5_Waste.xlsx` → `คำนวณ%` → `รวมขยะทั้งหมด` (kg)
+**Source:** `1.5_Waste.xlsx` → `คำนวณ%` → `รวมขยะทั้งหมด` (kg) · **Annual sum:** **5,625.7 kg**
 
-| Month | kg |
-|-------|-----|
-| Jan–Dec | 468.1 … 417.4 |
-| **Annual sum** | **5,625.7 kg** |
-
-Static: `src/data/generated/waste.json` (2568 verified). `recycling_rate.json` unchanged.
+Static: `src/data/generated/waste.json` (2568 verified).
 
 ---
 
 ## GHG calculation (2568)
 
-**Source:** `1.6_GreenhouseGas.xlsx` — TGO AR5 calculator  
-**Annual total:** 231,620.30 kgCO2e = **231.62 tCO2e**
+**Source:** `1.6_GreenhouseGas.xlsx` — TGO AR5 · **231.62 tCO2e**
 
-Formula `tgo_baseline_v1`: **INACTIVE** — documented in seed; activation is a separate PO decision (GO-BE-3+).
+Formula `tgo_baseline_v1`: **INACTIVE** (PO confirmed for Cloud Dev).
 
 ---
 
-## Next gate (GO-BE-3)
+## Next gate (GO-BE-5)
 
-1. PO completes [PO Sign-off Checklist](./PO_SIGNOFF_CHECKLIST.md) (resolve 3 NEEDS_CONFIRMATION rows)
-2. PO assigns reviewer UUIDs per [Reviewer Assignment Runbook](./REVIEWER_ASSIGNMENT_RUNBOOK.md)
-3. Local/Dev Supabase: `supabase start` + `supabase db reset`
-4. Optional: 2569 waste mass import, source XLSX commit policy
+1. ~~PO sign-off~~ **Complete**
+2. Provision Supabase Cloud Dev (migrations `001–011`)
+3. Create Auth + profile for `raemju@gmail.com`; record UUID securely
+4. Apply PO owner map + reviewer map to cloud (config commit)
+5. Smoke-test admin; keep `PUBLIC_DASHBOARD_DATA_MODE=static`

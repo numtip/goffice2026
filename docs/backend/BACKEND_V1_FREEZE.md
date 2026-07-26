@@ -1,8 +1,9 @@
 # Backend V1 Freeze Record
 
-**Date:** 2026-07-26  
-**Task:** GO-QA-1  
-**Status:** **FROZEN** (local + schema; cloud not activated)  
+**Date:** 2026-07-26
+**Task:** GO-QA-1 · **Gate:** GO-GATE-1 complete
+**Status:** **FROZEN** (local + schema; cloud not activated)
+**PO sign-off:** **`PO_OWNER_SIGNOFF_COMPLETE`** (2026-07-26, Prinya Painussa)
 **Audit:** [PRODUCTION_READINESS_AUDIT.md](./PRODUCTION_READINESS_AUDIT.md)
 
 ---
@@ -28,7 +29,7 @@
 - GHG runtime formula engine (`metric_formulas.tgo_baseline_v1` inactive)
 - File upload / evidence storage in Supabase
 - Production reviewer UUIDs in git
-- Git release tag (PO approval pending)
+- Git release tag (optional — PO may approve separately)
 
 ---
 
@@ -75,8 +76,9 @@ Apply in filename order only. No Studio-only changes.
 
 | Item | State |
 |------|-------|
-| Owner map PO confirmation | 3/7 metrics NEEDS_CONFIRMATION |
-| Reviewer UUIDs | Null in seed; local bootstrap assigns test users |
+| Owner map PO confirmation | **Complete** — 7/7 APPROVED ([PO checklist](./PO_SIGNOFF_CHECKLIST.md)) |
+| Owner map in `seed.sql` | Pre-signoff defaults — apply PO map in GO-BE-5 |
+| Reviewer identity | Name/email recorded; UUID pending Cloud Auth |
 | Cloud secrets | Not provisioned |
 | Admin bundle size | ~216 KB Supabase client on admin routes |
 
@@ -84,12 +86,12 @@ Apply in filename order only. No Studio-only changes.
 
 ## Next phase (GO-BE-5)
 
-1. PO completes owner sign-off checklist
-2. Assign production reviewer UUIDs (secure channel)
-3. Provision Supabase Cloud Dev per blueprint
-4. Apply migrations + reference seed (not local test users)
+1. ~~PO completes owner sign-off checklist~~ **Done (GO-GATE-1)**
+2. Provision Supabase Cloud Dev per blueprint
+3. Create Auth for reviewer; assign profile UUID (secure channel)
+4. Apply PO owner map + reviewer map to cloud config
 5. Smoke-test admin against cloud Dev
-6. Keep public dashboard static until PO approves live mode
+6. Keep public dashboard static until separate PO live-mode decision
 
 ---
 
