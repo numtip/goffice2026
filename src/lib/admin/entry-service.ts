@@ -4,7 +4,6 @@ import {
   type UpdateMetricEntryInput,
 } from '../repositories/metrics-repository';
 import { createDepartmentsRepository } from '../repositories/departments-repository';
-import { createOrganizationRepository } from '../repositories/organization-repository';
 import type { MetricType, MonthlyMetricEntry } from '../supabase/types';
 import type { UserProfile } from '../repositories/profile-repository';
 
@@ -27,10 +26,13 @@ export interface EntryService {
   submitDraft(profile: UserProfile, entryId: string): Promise<MonthlyMetricEntry>;
 }
 
+function ownerDepartmentCode(metric: MetricType): string | undefined {
+  return metric.config_metadata?.owner_department_code;
+}
+
 export function createEntryService(): EntryService {
   const metrics = createMetricsRepository();
   const departments = createDepartmentsRepository();
-  const organization = createOrganizationRepository();
 
   return {
     async listAssignableMetrics(profile) {
@@ -38,9 +40,8 @@ export function createEntryService(): EntryService {
         return [];
       }
 
-      const [dept, ownerMap, metricTypes] = await Promise.all([
+      const [dept, metricTypes] = await Promise.all([
         departments.getById(profile.department_id),
-        organization.getOwnerDepartmentMap(),
         metrics.listMetricTypes(),
       ]);
 
@@ -49,10 +50,10 @@ export function createEntryService(): EntryService {
       }
 
       return metricTypes
-        .filter((metric) => ownerMap[metric.code] === dept.code)
+        .filter((metric) => ownerDepartmentCode(metric) === dept.code)
         .map((metric) => ({
           ...metric,
-          ownerDepartmentCode: ownerMap[metric.code] ?? dept.code,
+          ownerDepartmentCode: ownerDepartmentCode(metric) ?? dept.code,
         }));
     },
 
@@ -67,6 +68,21 @@ export function createEntryService(): EntryService {
     async createDraft(profile, input) {
       if (!profile.department_id) {
         throw new Error('Staff profile has no department');
+      }
+
+      const [dept, metricTypes] = await Promise.all([
+        departments.getById(profile.department_id),
+        metrics.listMetricTypes(),
+      ]);
+
+      const metric = metricTypes.find((m) => m.id === input.metric_type_id) ?? null;
+
+      if (!dept || !metric) {
+        throw new Error('Invalid metric or department');
+      }
+
+      if (ownerDepartmentCode(metric) !== dept.code) {
+        throw new Error('Not authorized for this metric');
       }
 
       const existing = await metrics.listEntries({

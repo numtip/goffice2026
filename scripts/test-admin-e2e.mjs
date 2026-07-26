@@ -327,6 +327,45 @@ async function main() {
   assert(anonOpError || !anonOpRows?.length, 'Unauthenticated access to operational table must fail');
   steps.push('13. Unauthenticated operational access denied');
 
+  // 14. Staff cannot insert cross-owner metric (fuel owner IQS, staff SAMNG)
+  const staffCross = await signIn(url, anonKey, STAFF_EMAIL, password);
+  const { data: fuelMetric } = await staffCross
+    .from('metric_types')
+    .select('id')
+    .eq('code', 'fuel')
+    .single();
+  const { data: samngDept2 } = await staffCross
+    .from('departments')
+    .select('id')
+    .eq('code', 'SAMNG')
+    .single();
+  const { data: staffProfCross } = await staffCross.from('profiles').select('id').single();
+  const { error: crossOwnerError } = await staffCross.from('monthly_metric_entries').insert({
+    metric_type_id: fuelMetric.id,
+    department_id: samngDept2.id,
+    year: testYear,
+    month: 3,
+    value: 50,
+    status: 'draft',
+    created_by: staffProfCross.id,
+  });
+  assert(crossOwnerError, 'Staff cross-owner metric insert must fail');
+  steps.push('14. Staff cross-owner metric insert denied');
+  await staffCross.auth.signOut();
+
+  // 15. Staff assignable metrics via config_metadata (RLS-safe path)
+  const staffAssign = await signIn(url, anonKey, STAFF_EMAIL, password);
+  const { data: assignTypes } = await staffAssign
+    .from('metric_types')
+    .select('code, config_metadata')
+    .eq('is_active', true);
+  const assignableCount = (assignTypes ?? []).filter(
+    (m) => m.config_metadata?.owner_department_code === 'SAMNG',
+  ).length;
+  assert(assignableCount >= 5, 'Staff should see SAMNG-owned metrics via config_metadata');
+  steps.push('15. Staff assignable metrics available (config_metadata)');
+  await staffAssign.auth.signOut();
+
   console.log('E2E PASS — local auth + approval MVP\n');
   for (const step of steps) {
     console.log(`  ✓ ${step}`);

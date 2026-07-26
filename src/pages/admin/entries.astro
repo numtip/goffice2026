@@ -221,7 +221,6 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
     }
 
     const profile = guard.profile!;
-    currentProfile = profile;
     applyRoleNav(profile);
 
     if (!requireRole(profile, ['staff', 'admin'])) {

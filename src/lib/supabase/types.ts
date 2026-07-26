@@ -34,6 +34,12 @@ export interface MetricType {
   unit: string;
   sort_order: number;
   is_active: boolean;
+  config_metadata?: {
+    owner_department_code?: string;
+    publication_scope?: string;
+    entry_mode?: string;
+    aggregation_rule?: string;
+  };
   created_at?: string;
   updated_at?: string;
 }
