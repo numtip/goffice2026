@@ -1,5 +1,5 @@
--- GO-BE-2B: Development seed data (Decision Baseline v1)
--- Safe for local/dev only. No users, credentials, or production values.
+-- GO-BE-2C: Development + production-ready reference data
+-- Safe for local/dev. Production department codes sourced from workbooks (see docs/backend/PRODUCTION_CONFIG_READINESS.md).
 
 -- ---------------------------------------------------------------------------
 -- metric_types (7 canonical environmental metrics)
@@ -21,7 +21,7 @@ VALUES
     'kWh',
     1,
     true,
-    '{"publication_scope":"office_wide","owner_department_code":"DEV-HQ","entry_mode":"manual","aggregation_rule":"sum"}'::jsonb
+    '{"publication_scope":"office_wide","owner_department_code":"SAMNG","entry_mode":"manual","aggregation_rule":"sum"}'::jsonb
   ),
   (
     'water',
@@ -30,7 +30,7 @@ VALUES
     'm³',
     2,
     true,
-    '{"publication_scope":"office_wide","owner_department_code":"DEV-HQ","entry_mode":"manual","aggregation_rule":"sum"}'::jsonb
+    '{"publication_scope":"office_wide","owner_department_code":"SAMNG","entry_mode":"manual","aggregation_rule":"sum"}'::jsonb
   ),
   (
     'fuel',
@@ -39,7 +39,7 @@ VALUES
     'L',
     3,
     true,
-    '{"publication_scope":"office_wide","owner_department_code":"DEV-HQ","entry_mode":"manual","aggregation_rule":"sum"}'::jsonb
+    '{"publication_scope":"office_wide","owner_department_code":"IQS","entry_mode":"manual","aggregation_rule":"sum"}'::jsonb
   ),
   (
     'paper',
@@ -48,7 +48,7 @@ VALUES
     'kg',
     4,
     true,
-    '{"publication_scope":"office_wide","owner_department_code":"DEV-HQ","entry_mode":"manual","aggregation_rule":"sum"}'::jsonb
+    '{"publication_scope":"office_wide","owner_department_code":"SAMNG","entry_mode":"manual","aggregation_rule":"sum"}'::jsonb
   ),
   (
     'waste',
@@ -57,7 +57,7 @@ VALUES
     'kg',
     5,
     true,
-    '{"publication_scope":"office_wide","owner_department_code":"DEV-HQ","entry_mode":"manual","aggregation_rule":"sum"}'::jsonb
+    '{"publication_scope":"office_wide","owner_department_code":"SAMNG","entry_mode":"manual","aggregation_rule":"sum"}'::jsonb
   ),
   (
     'recycling_rate',
@@ -66,7 +66,7 @@ VALUES
     '%',
     6,
     true,
-    '{"publication_scope":"office_wide","owner_department_code":"DEV-HQ","entry_mode":"manual","aggregation_rule":"average"}'::jsonb
+    '{"publication_scope":"office_wide","owner_department_code":"SAMNG","entry_mode":"manual","aggregation_rule":"average"}'::jsonb
   ),
   (
     'ghg',
@@ -75,7 +75,7 @@ VALUES
     'tCO2e',
     7,
     true,
-    '{"publication_scope":"office_wide","owner_department_code":"DEV-HQ","entry_mode":"derived","aggregation_rule":"sum"}'::jsonb
+    '{"publication_scope":"office_wide","owner_department_code":"SAMNG","entry_mode":"derived","aggregation_rule":"sum"}'::jsonb
   )
 ON CONFLICT (code) DO UPDATE
 SET
@@ -88,10 +88,28 @@ SET
   updated_at = now();
 
 -- ---------------------------------------------------------------------------
--- departments (development placeholders — not production org units)
+-- departments (workbook-evidenced units + dev placeholders)
 -- ---------------------------------------------------------------------------
 INSERT INTO public.departments (code, name_th, name_en, is_active)
 VALUES
+  (
+    'IQS',
+    'IQS',
+    'IQS (evidenced in fuel/paper workbooks)',
+    true
+  ),
+  (
+    'SRCH',
+    'สำนักวิจัย',
+    'Research Unit (evidenced in fuel workbook)',
+    true
+  ),
+  (
+    'SAMNG',
+    'สำนักงาน',
+    'Office / Headquarters (evidenced in paper workbook)',
+    true
+  ),
   (
     'DEV-HQ',
     '[DEV] สำนักงานใหญ่ (Development Only)',
@@ -122,16 +140,16 @@ VALUES
     jsonb_build_object(
       'office_canonical_department_code', 'OFFICE',
       'owner_department_map', jsonb_build_object(
-        'energy', 'DEV-HQ',
-        'water', 'DEV-HQ',
-        'fuel', 'DEV-HQ',
-        'paper', 'DEV-HQ',
-        'waste', 'DEV-HQ',
-        'recycling_rate', 'DEV-HQ',
-        'ghg', 'DEV-HQ'
+        'energy', 'SAMNG',
+        'water', 'SAMNG',
+        'fuel', 'IQS',
+        'paper', 'SAMNG',
+        'waste', 'SAMNG',
+        'recycling_rate', 'SAMNG',
+        'ghg', 'SAMNG'
       )
     ),
-    '[DEV] Metric owner department map — replace DEV-HQ with production codes when PO assigns.',
+    'Metric owner map from workbook evidence (GO-BE-2C). PO may override SAMNG office-wide assignments.',
     false
   ),
   (
@@ -170,12 +188,36 @@ SELECT
   mt.id,
   'tgo_baseline_v1',
   jsonb_build_object(
-    'status', 'PLACEHOLDER',
-    'note', 'Emission factors and activity metric inputs assigned by PO in GO-BE-2C',
-    'source_metrics', jsonb_build_array('energy', 'fuel', 'paper', 'waste')
+    'status', 'DOCUMENTED_INACTIVE',
+    'sourceWorkbook', 'docs/1.6_GreenhouseGas.xlsx',
+    'sourceSheet', 'สรุปการคำนวณ ปี 2568',
+    'methodology', 'TGO AR5 Carbon Footprint Calculator',
+    'emissionFactorsSheet', 'EF TGO AR5',
+    'outputRow', 'GHG ปี 2568 (kgCO2e)',
+    'resultUnit', 'tCO2e',
+    'conversion', 'divide_kg_by_1000',
+    'annualTotalKg2568', 231620.303712,
+    'activityComponents', jsonb_build_array(
+      jsonb_build_object('category', 'electricity', 'metric_code', 'energy', 'sheetRow', 'การใช้พลังงานไฟฟ้า'),
+      jsonb_build_object('category', 'paper', 'metric_code', 'paper', 'sheetRow', 'การใช้กระดาษ A4 และ A3 (สีขาว)'),
+      jsonb_build_object('category', 'waste_landfill', 'metric_code', 'waste', 'ef_kgCO2e_per_kg', 2.32, 'sheetRow', 'ขยะของเสีย (ฝังกลบ)'),
+      jsonb_build_object('category', 'ch4_septic', 'sheet', 'CH4จาก Septic tank 2568'),
+      jsonb_build_object('category', 'ch4_wastewater', 'sheet', 'CH4จากบ่อบำบัดไม่เติมอากาศ 2568')
+    ),
+    'blockers', jsonb_build_array(
+      'No runtime formula engine in MVP',
+      'Live activity rows not auto-linked',
+      'PO sign-off required before activation',
+      'PUBLIC_DASHBOARD_DATA_MODE remains static'
+    )
   ),
   'tCO2e',
   false
 FROM public.metric_types AS mt
 WHERE mt.code = 'ghg'
-ON CONFLICT (metric_type_id, formula_code, effective_from) DO NOTHING;
+ON CONFLICT (metric_type_id, formula_code, effective_from) DO UPDATE
+SET
+  config = EXCLUDED.config,
+  result_unit = EXCLUDED.result_unit,
+  is_active = EXCLUDED.is_active,
+  updated_at = now();

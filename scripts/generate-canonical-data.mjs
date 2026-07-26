@@ -53,7 +53,7 @@ const RECONCILIATION_TOLERANCE = {
 // (docs/12-elect.xlsx, docs/1.1-Water.xlsx, docs/1.5_GreenhouseGas.xlsx).
 // fuel/paper/waste XLSX were never committed to the repository and cannot be
 // re-verified — their baseline data is preserved from an earlier extraction.
-const CONFIRMED_XLSX_METRICS = new Set(['water', 'energy', 'ghg']);
+const CONFIRMED_XLSX_METRICS = new Set(['water', 'energy', 'ghg', 'waste']);
 
 function readJSON(filePath) {
   if (!existsSync(filePath)) return null;

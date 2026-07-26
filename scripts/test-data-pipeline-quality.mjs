@@ -113,8 +113,8 @@ describe('RC-3: validator must surface unverified/invalid quality states, not si
   it('validateGenerated warns for every metric-year whose quality.valid is false', () => {
     const result = validateGenerated(false);
     const invalidWarnings = result.warnings.filter((w) => w.includes('quality flagged INVALID'));
-    // energy, water, fuel, paper, waste (2568+2569), recycling_rate, ghg = 8 invalid year entries
-    assert.equal(invalidWarnings.length, 8);
+    // energy, water, fuel, paper, waste (2569 only), recycling_rate, ghg = 7 invalid year entries
+    assert.equal(invalidWarnings.length, 7);
   });
 
   it('validateGenerated raises an ERROR when a %-unit metric declares aggregation "sum"', () => {

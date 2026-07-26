@@ -110,7 +110,7 @@
       "value": 0,
       "target": null,
       "targetStatus": "no-target",
-      "baselineValue": 0,
+      "baselineValue": 5625.7,
       "yoyChange": {
         "absolute": 0,
         "percent": 0,
@@ -123,7 +123,7 @@
         ],
         "reconciliationDifference": null
       },
-      "sourceFile": "Waste mass (kg) current year pending",
+      "sourceFile": "Waste mass (kg) current year pending — no 2569 mass data in source XLSX",
       "verified": false
     },
     {

@@ -3,7 +3,7 @@
   "label": "Waste Mass",
   "unit": "kg",
   "kpiField": "total_kg",
-  "status": "CURRENT_DATA_PENDING",
+  "status": "VERIFIED_BASELINE",
   "baselineYear": 2568,
   "currentYear": 2569,
   "targetYear": 2569,
@@ -11,27 +11,91 @@
     "2568": {
       "year": 2568,
       "isBaseline": true,
-      "months": [],
-      "total": 0,
-      "average": 0,
-      "dataStatus": "CURRENT_DATA_PENDING",
-      "source": "Waste mass (kg) baseline pending — PO to supply source workbook (Decision Baseline v1 split from recycling_rate)",
+      "months": [
+        {
+          "month": 1,
+          "value": 468.1,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 418.2,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 516.3,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 463.4,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 562.7,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 538.4,
+          "label": "Jun"
+        },
+        {
+          "month": 7,
+          "value": 462,
+          "label": "Jul"
+        },
+        {
+          "month": 8,
+          "value": 464.1,
+          "label": "Aug"
+        },
+        {
+          "month": 9,
+          "value": 440.9,
+          "label": "Sep"
+        },
+        {
+          "month": 10,
+          "value": 458.9,
+          "label": "Oct"
+        },
+        {
+          "month": 11,
+          "value": 415.3,
+          "label": "Nov"
+        },
+        {
+          "month": 12,
+          "value": 417.4,
+          "label": "Dec"
+        }
+      ],
+      "total": 5625.7,
+      "average": 468.81,
+      "dataStatus": "VERIFIED_BASELINE",
+      "source": "1.5_Waste.xlsx (waste-mass-2568.csv) — complete",
       "updated": "2026-07-26",
       "provenance": {
         "sourceWorkbook": "docs/1.5_Waste.xlsx",
-        "sourceSheet": "PENDING",
-        "extractionStatus": "MASS_KG_PENDING — recycling % moved to recycling_rate.json",
-        "validationStatus": "CURRENT_DATA_PENDING"
+        "sourceSheet": "คำนวณ%",
+        "sourceColumn": "col[1]-col[12]",
+        "sourceRowRange": "row \"รวมขยะทั้งหมด\" — total waste mass (kg) per month",
+        "extractionScript": "scripts/extract-xlsx-to-csv.mjs",
+        "extractionTimestamp": "2026-07-26T04:35:00+07:00",
+        "normalizationScript": "scripts/data-pipeline.mjs",
+        "normalizationTimestamp": "2026-07-26T04:35:00+07:00",
+        "validationStatus": "VERIFIED_BASELINE"
       },
       "quality": {
-        "valid": false,
-        "warnings": [
-          "Waste mass (kg) data not yet imported — awaiting PO source assignment"
-        ],
-        "reconciliationDifference": null
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": 0
       },
       "aggregation": "sum",
-      "dataClassification": "PLACEHOLDER"
+      "dataClassification": "CONFIRMED_XLSX"
     },
     "2569": {
       "year": 2569,
@@ -40,12 +104,12 @@
       "total": 0,
       "average": 0,
       "dataStatus": "CURRENT_DATA_PENDING",
-      "source": "Waste mass (kg) current year pending",
+      "source": "Waste mass (kg) current year pending — no 2569 mass data in source XLSX",
       "updated": "2026-07-26",
       "provenance": {
         "sourceWorkbook": "docs/1.5_Waste.xlsx",
         "sourceSheet": "PENDING",
-        "extractionStatus": "MASS_KG_PENDING",
+        "extractionStatus": "NO_2569_MASS_DATA",
         "validationStatus": "CURRENT_DATA_PENDING"
       },
       "quality": {

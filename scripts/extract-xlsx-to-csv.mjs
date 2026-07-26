@@ -157,8 +157,8 @@ function extractPaper() {
   if (months) writeCsv('paper', 2568, months);
 }
 
-function extractWaste() {
-  console.log('\n📊 Waste — 1.5_Waste.xlsx');
+function extractWasteRecyclingRate() {
+  console.log('\n📊 Recycling rate — 1.5_Waste.xlsx');
   const path = join(DOCS, '1.5_Waste.xlsx');
   const wb = readXlsx(path);
   const rows = sheetToRows(wb, 'คำนวณ%');
@@ -168,18 +168,6 @@ function extractWaste() {
     return;
   }
 
-  // Debug: print first 8 row labels
-  for (let r = 0; r < Math.min(rows.length, 8); r++) {
-    console.log('  Debug row ' + r + ': "' + rows[r][0] + '"');
-    if (r === 0) {
-      // Print month headers
-      var headers = [];
-      for (let c = 1; c <= 12; c++) headers.push(rows[r][c] || '');
-      console.log('    Months: ' + headers.join(', '));
-    }
-  }
-
-  // Find the recycling % row (starts with "%")
   let pctRow = null;
   for (let i = 0; i < rows.length; i++) {
     const label = String(rows[i][0] || '').trim();
@@ -201,7 +189,6 @@ function extractWaste() {
     if (rawVal === undefined || rawVal === '' || rawVal === '-') continue;
     const v = parseFloat(String(rawVal));
     if (isNaN(v)) continue;
-    // Value is decimal (0.2083), convert to percentage (20.83)
     const pct = Math.round(v * 10000) / 100;
     months.push({ month: col, value: pct });
   }
@@ -212,11 +199,58 @@ function extractWaste() {
   }
 
   months.sort(function(a, b) { return a.month - b.month; });
-  console.log('  Extracted ' + months.length + ' months of recycling data');
-  for (const m of months) {
-    console.log('    Month ' + m.month + ': ' + m.value + '%');
+  console.log('  Extracted ' + months.length + ' months of recycling rate data');
+  writeCsv('recycling_rate', 2568, months);
+}
+
+function extractWasteMass() {
+  console.log('\n📊 Waste mass (kg) — 1.5_Waste.xlsx');
+  const path = join(DOCS, '1.5_Waste.xlsx');
+  const wb = readXlsx(path);
+  const rows = sheetToRows(wb, 'คำนวณ%');
+
+  if (rows.length === 0) {
+    console.error('  ⚠ Sheet "คำนวณ%" not found');
+    return;
   }
-  writeCsv('waste', 2568, months);
+
+  let totalRow = null;
+  for (let i = 0; i < rows.length; i++) {
+    const label = String(rows[i][0] || '').trim();
+    if (label === 'รวมขยะทั้งหมด' || label.includes('รวมขยะทั้งหมด')) {
+      totalRow = rows[i];
+      console.log('  Found total mass row at index ' + i);
+      break;
+    }
+  }
+
+  if (!totalRow) {
+    console.error('  ⚠ Total waste mass row not found');
+    return;
+  }
+
+  const months = [];
+  for (let col = 1; col <= 12; col++) {
+    const rawVal = totalRow[col];
+    if (rawVal === undefined || rawVal === '' || rawVal === '-') continue;
+    const v = parseFloat(String(rawVal));
+    if (isNaN(v)) continue;
+    months.push({ month: col, value: Math.round(v * 10) / 10 });
+  }
+
+  if (months.length === 0) {
+    console.error('  ✗ No waste mass data extracted');
+    return;
+  }
+
+  months.sort(function(a, b) { return a.month - b.month; });
+  console.log('  Extracted ' + months.length + ' months of waste mass (kg)');
+  writeCsv('waste-mass', 2568, months);
+}
+
+function extractWaste() {
+  extractWasteRecyclingRate();
+  extractWasteMass();
 }
 
 function extractGhg() {

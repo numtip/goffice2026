@@ -1,8 +1,8 @@
 {
   "generatedFrom": "canonical-metrics",
   "totalMetrics": 7,
-  "metricsWithWarnings": 8,
-  "metricsWithErrors": 8,
+  "metricsWithWarnings": 7,
+  "metricsWithErrors": 7,
   "entries": [
     {
       "metric": "energy",
@@ -87,13 +87,11 @@
     {
       "metric": "waste",
       "yearBE": 2568,
-      "valid": false,
-      "warnings": [
-        "Waste mass (kg) data not yet imported — awaiting PO source assignment"
-      ],
-      "reconciliationDifference": null,
-      "monthCount": 0,
-      "dataStatus": "CURRENT_DATA_PENDING"
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 12,
+      "dataStatus": "VERIFIED_BASELINE"
     },
     {
       "metric": "waste",
