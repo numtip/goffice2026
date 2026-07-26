@@ -796,7 +796,7 @@ Implemented in migration `202607260008`:
 4. Owner-department filter on public views (fixed `OFFICE` public label)
 5. Static JSON split (`waste.json` kg + `recycling_rate.json` %)
 
-**Still PO-assigned:** reviewer profile UUIDs, SAMNG office-wide owner confirmation for energy/water/paper, live GHG formula activation (GO-BE-2D).
+**Still PO-assigned:** resolve 3 NEEDS_CONFIRMATION owner rows, reviewer profile UUIDs, then GO-BE-3 Supabase Dev activation.
 
 ### 17.5 Related documents
 

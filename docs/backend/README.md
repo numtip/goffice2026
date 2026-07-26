@@ -16,7 +16,9 @@ Supabase operational backend documentation for monthly environmental metrics, re
 | [Schema Reference](./SUPABASE_SCHEMA.md) | Tables, relationships, status model, correction model |
 | [RLS Policy Reference](./RLS_POLICY.md) | Role permissions and mandatory security statements |
 | [API Contract v1](./API_CONTRACT.md) | Public dashboard data envelope, metadata, fallback |
-| [Production Config Readiness](./PRODUCTION_CONFIG_READINESS.md) | GO-BE-2C owner maps, waste kg, GHG formula evidence |
+| [Production Config Readiness](./PRODUCTION_CONFIG_READINESS.md) | GO-BE-2C/2D owner maps, waste kg, GHG evidence |
+| [PO Sign-off Checklist](./PO_SIGNOFF_CHECKLIST.md) | Owner department approval matrix (GO-BE-2D) |
+| [Reviewer Assignment Runbook](./REVIEWER_ASSIGNMENT_RUNBOOK.md) | Per-metric reviewer UUID procedure (GO-BE-2D) |
 
 ## Database & Migrations
 
