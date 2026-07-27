@@ -41,6 +41,7 @@ import { join, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { validateMonthData, monthLabel, formatValidationReport } from './data-validator.mjs';
+import { validateMetricProvenance } from './validate-provenance.mjs';
 import { writeJsonFile } from './lib/serialize-json.mjs';
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -566,12 +567,16 @@ function validateGenerated(verbose) {
         if (!yearData.dataClassification) {
           fileWarnings.push(`Year ${yearStr}: no dataClassification set — provenance is unknown`);
         }
-
-        // Check unit
-        if (!data.unit) {
-          fileErrors.push('Missing required unit');
-        }
       }
+    }
+
+    // RC-1 provenance shape (sourceSheet required for CONFIRMED_XLSX baselines only)
+    const provResult = validateMetricProvenance(data, file);
+    fileErrors.push(...provResult.errors.map((e) => e.replace(`${file}: `, '')));
+    fileWarnings.push(...provResult.warnings.map((w) => w.replace(`${file}: `, '')));
+
+    if (!data.unit) {
+      fileErrors.push('Missing required unit');
     }
 
     // sourceEvidence should be populated once evidence documents are linked.
