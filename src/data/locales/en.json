@@ -6,7 +6,10 @@
     "title_suffix": "Green Office Platform",
     "platform_version": "1.1.1",
     "skip_to_content": "Skip to main content",
-    "language": "Language"
+    "language": "Language",
+    "choose_language": "Choose language",
+    "switch_to_thai": "Switch to Thai",
+    "switch_to_english": "Switch to English"
   },
   "home": {
     "hero": {
@@ -144,7 +147,8 @@
       "knowledge": "Knowledge",
       "about": "About",
       "search": "Search",
-      "menu": "Menu"
+      "menu": "Menu",
+      "primary_navigation": "Primary navigation"
     },
     "footer": {
       "title": "Green Office 2026",

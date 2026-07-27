@@ -9,6 +9,11 @@ interface Props {
   t?: HomeNavStrings;
   university?: string;
   platformLabel?: string;
+  languageLabels?: {
+    choose: string;
+    switchToThai: string;
+    switchToEnglish: string;
+  };
 }
 
 const locale = Astro.props.locale ?? getLocale(Astro.url);
@@ -24,11 +29,14 @@ const navLabels = Astro.props.t ?? {
   about: 'About',
   search: 'Search',
   menu: 'Menu',
+  primary_navigation: 'Primary navigation',
 } as HomeNavStrings;
 
 const university = Astro.props.university ?? 'Maejo University';
 const platformLabel = Astro.props.platformLabel ?? 'Green Office Platform';
+const languageLabels = Astro.props.languageLabels;
 const siteName = 'Green Office 2026';
+const primaryNavLabel = navLabels.primary_navigation ?? 'Primary navigation';
 
 const navItems = [
   { href: '/', label: navLabels.home },
@@ -61,11 +69,15 @@ const isActive = (href: string) => {
     <p class="font-medium tracking-wide">
       {university} <span class="hidden text-primary-fixed sm:inline">· {platformLabel}</span>
     </p>
-    <LanguageSwitcher />
+    <LanguageSwitcher
+      chooseLabel={languageLabels?.choose}
+      switchToThaiLabel={languageLabels?.switchToThai}
+      switchToEnglishLabel={languageLabels?.switchToEnglish}
+    />
   </div>
 </div>
 
-<nav class="border-b border-primary/10 bg-white/95 px-4 py-3 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/90" aria-label="Primary navigation">
+<nav class="border-b border-primary/10 bg-white/95 px-4 py-3 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/90" aria-label={primaryNavLabel}>
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4">
     <a href={getLocalizedPath(locale, '/')} class="group inline-flex min-w-0 items-center gap-3 text-left">
       <SiteLogo class="h-9 w-auto max-w-[7.5rem] shrink-0 object-contain object-left" width={36} height={29} />

@@ -130,6 +130,11 @@ const robotsContent = noindex ? 'noindex, follow' : 'index, follow';
         t={navLabels}
         university={dict.site.university}
         platformLabel={dict.site.title_suffix}
+        languageLabels={{
+          choose: dict.site.choose_language,
+          switchToThai: dict.site.switch_to_thai,
+          switchToEnglish: dict.site.switch_to_english,
+        }}
       />
     </header>
 
@@ -145,6 +150,10 @@ const robotsContent = noindex ? 'noindex, follow' : 'index, follow';
             <p class="text-sm text-outline-variant mt-1">{footerDesc}</p>
           </div>
           <nav class="grid grid-cols-2 gap-x-8 gap-y-2 text-sm" aria-label={footerLinks.label_nav}>
+            <a href={getLocalizedPath(lang, '/about')} class="text-outline-variant hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface rounded-sm">{navLabels.about ?? 'About'}</a>
+            <a href={getLocalizedPath(lang, '/news')} class="text-outline-variant hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface rounded-sm">{navLabels.news ?? 'News'}</a>
+            <a href={getLocalizedPath(lang, '/activities')} class="text-outline-variant hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface rounded-sm">{navLabels.activities ?? 'Activities'}</a>
+            <a href={getLocalizedPath(lang, '/knowledge')} class="text-outline-variant hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface rounded-sm">{navLabels.knowledge ?? 'Knowledge'}</a>
             <a href={getLocalizedPath(lang, '/documents')} class="text-outline-variant hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface rounded-sm">{footerLinks.links_documents}</a>
             <a href={getLocalizedPath(lang, '/evidence')} class="text-outline-variant hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface rounded-sm">{footerLinks.links_evidence}</a>
             <a href={getLocalizedPath(lang, '/dashboard')} class="text-outline-variant hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface rounded-sm">{footerLinks.links_data_source}</a>

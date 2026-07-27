@@ -5,6 +5,17 @@ export const WAITING_FY2569 = {
   en: 'Waiting for Official FY2569 Data',
 } as const;
 
+/** Alias — sheet mapping not yet available for pending FY2569 rows. */
+export const PENDING_SOURCE_SHEET = WAITING_FY2569;
+
+/** True when current-year provenance has no sheet yet (CURRENT_DATA_PENDING). */
+export function isPendingSourceSheet(
+  dataStatus?: string,
+  sourceSheet?: string,
+): boolean {
+  return dataStatus === 'CURRENT_DATA_PENDING' && !sourceSheet;
+}
+
 export const NO_PUBLISHED_EVIDENCE = {
   th: 'ยังไม่มีหลักฐานที่เผยแพร่',
   en: 'No published evidence',
