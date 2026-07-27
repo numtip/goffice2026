@@ -135,7 +135,7 @@
       "documentId": "doc-feedback-channels",
       "relatedPage": "about-feedback",
       "summaryTh": "แนวทางการรับข้อเสนอแนะ/ข้อคิดเห็นด้านสิ่งแวดล้อม และขั้นตอนการปรับปรุงแก้ไข ของโครงการสำนักงานสีเขียวอาคารเฉลิมพระเกียรติฯ มหาวิทยาลัยแม่โจ้ ประกอบด้วย 4 ช่องทาง: (1) QR Code บนเว็บไซต์ (2) แบบฟอร์มออนไลน์ (Google Forms) (3) อีเมล (4) โทรศัพท์ มีผู้รับเรื่องคือนายปริญญา เพียรอุตส่าห์ ทำหน้าที่รวบรวมข้อเสนอแนะและรายงานผู้บริหารภายใน 1 วัน พร้อมผังขั้นตอนและแนวทางการปรับปรุงแก้ไข",
-      "summaryEn": null,
+      "summaryEn": "Guidelines for receiving environmental feedback and suggestions, and improvement procedures for the Green Office project at Chalermprakiat Building, Maejo University. Four channels: (1) QR code on the website, (2) online form (Google Forms), (3) email, and (4) phone — specific contact details are documented internally and not published here. Mr. Parinya Pien-utsa serves as the intake coordinator, collecting feedback and reporting to management within one day. Includes a flowchart and improvement procedures.",
       "keyPoints": [
         "4 feedback channels: QR code, online form, email, phone",
         "Responsible person: Mr. Parinya Pien-utsa",
@@ -147,7 +147,7 @@
       "extractedFromPages": "1-3",
       "extractionMethod": "EMBEDDED_TEXT",
       "reviewStatus": "VERIFIED_TEXT",
-      "notes": "Only PDF with embedded text — no OCR needed. Personal contact information requires redaction before public publication. Suggest replacing with generic channel contact."
+      "notes": "Only PDF with embedded text — no OCR needed. Personal contact information requires redaction before public publication. summaryEn synthesized from embedded-text Thai source; email/phone omitted from public summary."
     }
   ]
 }
