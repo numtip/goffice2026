@@ -4,8 +4,9 @@
 > **Account**: `researchmju@mju.ac.th`  
 > **Site**: `https://maejo365.sharepoint.com/sites/msteams_54adc4`  
 > **List**: `GO Approval Workflow`  
-> **Status**: ✅ EPIC-02 PASS
-> **Flow ID**: `40e04977-38cf-42ad-a1e5-bbefbf5cbac1`
+> **Status**: ✅ EPIC-02 PASS — Historical reference only
+> **Flow ID**: `40e04977-38cf-42ad-a1e5-bbefbf5cbac1`  
+> **Architecture Decision**: ADR-0001 — Approval engine de-scoped. Schema preserved for evidence metadata reuse.
 
 ---
 

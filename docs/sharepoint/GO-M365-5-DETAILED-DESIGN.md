@@ -3,7 +3,9 @@
 > **Date**: 2026-07-27  
 > **Authoritative Baseline**: `docs/sharepoint/GO-M365-3-flow-contract.zip`  
 > **Reference Docs**: GO-M365-3-flow-contract.md, GO-M365-3-BASELINE-FREEZE.md, GO-M365-4-IMPLEMENTATION-SPEC.md, GO-M365-4-ARCHITECTURE-REVIEW.md  
-> **Status**: Design — not yet implemented
+> **Status**: **SUPERSEDED** — per ADR-0001, the approval engine is de-scoped. This design is archived as historical reference only.
+> **Architecture Decision**: ADR-0001 — Approval Engine removed from scope  
+> **Retained for**: SharePoint schema reference, connection inventory, flow backup documentation
 
 ---
 

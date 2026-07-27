@@ -1,14 +1,14 @@
-# 🌱 Green Office Platform 2569+
+# 🌱 Green Office 2026 — Environmental Communication & Assessment Evidence Platform
 
-A modern, performant environmental dashboard platform for Thailand's Green Office 2569+ certification. Track and report on key sustainability metrics with ease.
+A modern, performant platform for Thailand's Green Office 2569+ certification. Green Office 2026 is an **environmental communication and assessment evidence platform** — not a transaction or approval system.
 
 ## 📊 Overview
 
-The Green Office Platform is a **static-first environmental data portal** designed to:
-- 📈 Track 6 core environmental metrics (energy, water, fuel, paper, waste, GHG emissions)
-- 🎖️ Assess compliance against Thailand's Green Office 2569 criteria
-- 📚 Maintain an evidence library for certification documentation
-- 🚀 Deliver fast-loading, maintainable, and user-friendly dashboards
+The platform serves four core capabilities:
+- **Present** — Resource consumption dashboards for executive decision-making
+- **Prove** — Categorized evidence linking 7 categories / 24 issues / 65 indicators to SharePoint documents
+- **Communicate** — News, activities, and environmental performance stories
+- **Engage** — Knowledge media, campaigns, and awareness resources for staff and public
 
 **Philosophy:** Simplicity, speed, maintainability, and usability over technology complexity.
 
@@ -17,30 +17,36 @@ The Green Office Platform is a **static-first environmental data portal** design
 ## 🎯 Key Features
 
 ### 1. **Environmental Dashboard**
-- Multi-year metrics comparison (baseline year 2568 + current year 2569)
+- Multi-year metrics comparison (baseline + current year)
 - Year-over-year trend analysis
-- KPI tracking across 7 Green Office categories
+- KPI tracking across 6 resource domains (energy, water, fuel, paper, waste, GHG)
 - Interactive sparklines and data tables
 
-### 2. **Seven Green Office Categories**
-| Category | Focus Area | Current Score |
-|----------|-----------|---|
-| 1️⃣ Energy Management | Electricity efficiency, LED adoption | 85% |
-| 2️⃣ Water Management | Water metering, conservation | 78% |
-| 3️⃣ Waste Management | Segregation, recycling, diversion | 92% |
-| 4️⃣ GHG Emissions | Scope 1 & 2 tracking | 71% |
-| 5️⃣ Indoor Environmental Quality | Air, lighting, noise, comfort | 88% |
-| 6️⃣ Transportation | Sustainable transport, fuel efficiency | 74% |
-| 7️⃣ Innovation | Green initiatives, best practices | 80% |
+### 2. **Green Office Assessment Criteria**
+| Category | Focus Area |
+|----------|-----------|
+| 1️⃣ การกำหนดนโยบายและการวางแผน | Environmental Policy and Green Office Planning |
+| 2️⃣ การสื่อสารและสร้างจิตสำนึก | Communication and Awareness Cultivation |
+| 3️⃣ การใช้ทรัพยากรและพลังงาน | Resource and Energy Utilization |
+| 4️⃣ การจัดการของเสีย | Waste Management |
+| 5️⃣ สภาพแวดล้อมและความปลอดภัย | Environment and Safety |
+| 6️⃣ การจัดซื้อและจัดจ้าง | Procurement and Hiring |
+| 7️⃣ การดำเนินงานเพื่อความต่อเนื่อง | Green Office Operations for Continuity |
 
-### 3. **Evidence Library**
-- Compliance documentation repository
-- Category-specific evidence organization
-- Search and discovery functionality
+### 3. **Evidence Navigator**
+- Browse evidence by category, issue, or indicator
+- SharePoint document access with metadata
+- Search and filter capabilities
+- Stable URLs for auditor reference
 
-### 4. **Data Management**
-- CSV-based data import (no database required in MVP)
-- Automated validation and JSON generation
+### 4. **Public Communication & Engagement**
+- News and activities
+- Knowledge and awareness media
+- Featured projects and success stories
+
+### 5. **Data Management**
+- Excel-based data import via validated pipeline
+- Automated normalization and JSON generation
 - Multi-year historical tracking
 
 ---

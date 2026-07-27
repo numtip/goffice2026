@@ -1,11 +1,12 @@
 # GO-M365-6 — EPIC-03 Approval Engine Report
 
 > **Date**: 2026-07-27  
-> **Account**: `researchmju@mju.ac.th`  
+> **Account**: `researchmju@mju.ac.uk`  
 > **Environment**: `Default-8ec74a39-ddf6-41e1-b0a2-ff0459ea8eb8`  
 > **Target Flow**: GO Metric Approval Workflow  
 > **Flow ID**: `40e04977-38cf-42ad-a1e5-bbefbf5cbac1`  
-> **Status**: ⚠️ EPIC-03 PARTIAL
+> **Status**: ⚠️ EPIC-03 PARTIAL — **DE-SCOPED per ADR-0001**  
+> **Architecture Decision**: ADR-0001 — Approval engine removed from scope. This report is archived as historical reference.
 
 ---
 

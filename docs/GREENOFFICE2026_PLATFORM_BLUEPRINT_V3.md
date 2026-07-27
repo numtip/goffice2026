@@ -1,11 +1,12 @@
 # GREEN OFFICE 2026 --- PLATFORM BLUEPRINT V3.0
 
-**Project:** Green Office 2026 --- Environmental Intelligence & Evidence
-Platform\
+**Project:** Green Office 2026 --- Environmental Communication & Assessment Evidence Platform\
 **Repository:** `numtip/goffice2026`\
-**Status:** ACTIVE --- CANONICAL REFERENCE\
-**Version:** 3.0\
+**Status:** SUPERSEDED BY V4\
+**Version:** 3.0 (Historical)\
 **Updated:** 2026-07-15\
+**Superseded by:** `GREENOFFICE2026_PLATFORM_BLUEPRINT_V4.md`\
+**Architecture Decision:** ADR-0001 — Approval Engine removed from scope\
 **Supersedes:** Earlier Green Office website-oriented blueprint where
 inconsistent with this document
 
