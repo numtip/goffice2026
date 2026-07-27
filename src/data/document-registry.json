@@ -41,7 +41,8 @@
       "sizeBytes": 93921,
       "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "gitTracked": false,
-      "notes": "Untracked. Strong match for evidence ev-energy-metering-2025 (path: /documents/cat1/metering-data-2025.xlsx). Direct replacement candidate."
+      "fileOnDisk": false,
+      "notes": "Off-disk, untracked. Strong match for evidence ev-energy-metering-2025 (path: /documents/cat1/metering-data-2025.xlsx). RC-1: realSourceAvailable aligned false in evidence-index.json."
     },
     {
       "id": "doc-gasoline-fuel-2025",
@@ -107,7 +108,8 @@
       "sizeBytes": 44014,
       "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "gitTracked": false,
-      "notes": "Untracked. Strong match for evidence ev-waste-monthly-2025 (path: /documents/cat3/waste-monthly-2025.xlsx). WS-B secondary link: ev-waste-recycling-2025 (partial, indicator 4.1.3 recycling sheets)."
+      "fileOnDisk": false,
+      "notes": "Off-disk, untracked. Strong match for evidence ev-waste-monthly-2025 (path: /documents/cat3/waste-monthly-2025.xlsx). WS-B secondary link: ev-waste-recycling-2025 (partial, indicator 4.1.3 recycling sheets). RC-1: realSourceAvailable aligned false in evidence-index.json."
     },
     {
       "id": "doc-ghg-inventory-2025",
