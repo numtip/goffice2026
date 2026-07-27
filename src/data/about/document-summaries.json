@@ -7,7 +7,7 @@
       "documentId": "doc-policy-signed",
       "relatedPage": "about-policy",
       "summaryTh": "ประกาศนโยบายสำนักงานสีเขียว (Green Office) อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา ลงนามโดย ผศ.ดร.ณัฐพล เลาห์รอดพันธุ์ ผู้อำนวยการสำนักวิจัยและส่งเสริมวิชาการการเกษตร ประกอบด้วย 10 ข้อ ได้แก่ (1) ส่งเสริมความรู้ความเข้าใจด้านอนุรักษ์พลังงานและสิ่งแวดล้อม (2) พัฒนาเครือข่ายการเรียนรู้ (3) บริหารจัดการโครงสร้างพื้นฐานเพื่อลดพลังงานและผลกระทบ (4) บริหารจัดการทรัพยากรอย่างต่อเนื่อง (5) บริหารจัดการอาคารให้เป็นมิตรกับสิ่งแวดล้อม (6) จัดซื้อจัดจ้างที่เป็นมิตรกับสิ่งแวดล้อม (7) บริหารจัดการขนส่งเพื่อลดเชื้อเพลิง (8) ส่งเสริมลดก๊าซเรือนกระจก (9) ส่งเสริมการมีส่วนร่วมของบุคลากร (10) ปฏิบัติตามกฎหมายสิ่งแวดล้อม",
-      "summaryEn": null,
+      "summaryEn": "Green Office policy announcement for Chalermprakiat Building, signed by Asst.Prof.Dr. Nattapon Laoharodphan, Director of Agricultural Research and Extension Office. Contains 10 commitments: (1) promote energy and environmental conservation awareness, (2) develop learning networks, (3) manage infrastructure to reduce energy and environmental impact, (4) manage resources continuously, (5) manage the building in an environmentally friendly manner, (6) environmentally friendly procurement, (7) manage transport to reduce fuel use, (8) promote greenhouse gas reduction, (9) promote personnel participation, and (10) comply with environmental laws.",
       "keyPoints": [
         "Signed by Asst.Prof.Dr. Nattapon Laoharodphan, Director of Agricultural Research and Extension Office",
         "10 policy commitments covering energy, waste, water, GHG, procurement, transport",
@@ -19,13 +19,13 @@
       "extractedFromPages": "1-2",
       "extractionMethod": "OCR (Thai+English)",
       "reviewStatus": "OCR_DERIVED_NEEDS_VERIFICATION",
-      "notes": "OCR may contain Thai numeral errors. Document year appears as 2568 but OCR garbled some digits. Verify exact date."
+      "notes": "OCR may contain Thai numeral errors. Document year appears as 2568 but OCR garbled some digits. Verify exact date. summaryEn synthesized from OCR-derived Thai source."
     },
     {
       "documentId": "doc-policy-review",
       "relatedPage": "about-policy",
       "summaryTh": "รายงานการประชุมคณะกรรมการดำเนินงานสำนักงานสีเขียว เมื่อวันที่ 9 กุมภาพันธ์ 2569 ณ ห้องประชุม 301 โดยมี ผศ.ภานุวัฒน์ เมฆะ เป็นประธานกรรมการ ระเบียบวาระประกอบด้วย (1) แจ้งเพื่อทราบ — การได้รับรางวัลระดับทอง และการตรวจสอบข้อมูลในเว็บไซต์ (2) รายงานความก้าวหน้าของแต่ละหมวด (หมวด 1-7) พร้อมปัญหา/อุปสรรคและแนวทางแก้ไข (3) เรื่องอื่นๆ",
-      "summaryEn": null,
+      "summaryEn": "Green Office Operations Committee meeting report dated 9 February 2569 (2026) at Meeting Room 301, chaired by Asst.Prof. Panuwat Mekha. Agenda: (1) For information — receipt of Gold level award and website content review, (2) Progress reports for each category (1–7) with problems, obstacles, and corrective approaches, (3) Other matters.",
       "keyPoints": [
         "Meeting date: 9 February 2026",
         "Chaired by Asst.Prof. Panuwat Mekha",
@@ -38,13 +38,13 @@
       "extractedFromPages": "1-9",
       "extractionMethod": "OCR (Thai+English)",
       "reviewStatus": "OCR_DERIVED_NEEDS_VERIFICATION",
-      "notes": "Full meeting minutes with detailed progress per category. OCR quality varies. Personal names throughout."
+      "notes": "Full meeting minutes with detailed progress per category. OCR quality varies. Personal names throughout. summaryEn synthesized from OCR-derived Thai source."
     },
     {
       "documentId": "doc-committee-order",
       "relatedPage": "about-committee",
       "summaryTh": "คำสั่งสำนักวิจัยและส่งเสริมวิชาการการเกษตร เรื่อง แต่งตั้งคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา ประกอบด้วย คณะกรรมการอำนวยการ (มีรองอธิการบดีเป็นประธาน) และคณะกรรมการดำเนินงานแยกตาม 7 หมวด แต่ละหมวดมีประธาน กรรมการ และเลขานุการ พร้อมกำหนดหน้าที่รับผิดชอบชัดเจน",
-      "summaryEn": null,
+      "summaryEn": "Official order from Agricultural Research and Extension Office appointing the Green Office Operations Committee for Chalermprakiat Building. Includes an Oversight Committee (chaired by the Vice President) and operations committees for all seven categories, each with a chair, members, and secretary, with clearly defined responsibilities.",
       "keyPoints": [
         "Official appointment order from Agricultural Research and Extension Office",
         "Oversight Committee chaired by Vice President of Maejo University",
@@ -56,13 +56,13 @@
       "extractedFromPages": "1-6",
       "extractionMethod": "OCR (Thai+English)",
       "reviewStatus": "OCR_DERIVED_NEEDS_VERIFICATION",
-      "notes": "Full committee structure documented. Verify exact order number and date from original."
+      "notes": "Full committee structure documented. Verify exact order number and date from original. summaryEn synthesized from OCR-derived Thai source."
     },
     {
       "documentId": "doc-committee-understanding",
       "relatedPage": "about-committee",
       "summaryTh": "⚠️ เอกสารนี้เป็นไฟล์ซ้ำกับ Evidenceofpolicyreview.pdf (SHA-256 เดียวกัน) เป็นรายงานการประชุมฯ วันที่ 9 กุมภาพันธ์ 2569 ซึ่งมีการหารือเกี่ยวกับบทบาทหน้าที่ของคณะกรรมการแต่ไม่ใช่แบบประเมินความเข้าใจโดยเฉพาะ",
-      "summaryEn": null,
+      "summaryEn": "⚠️ This document is a duplicate of Evidenceofpolicyreview.pdf (identical SHA-256). It is meeting minutes dated 9 February 2569 (2026) that discuss committee roles and responsibilities, but it is not a dedicated role-understanding assessment instrument.",
       "keyPoints": [
         "DUPLICATE FILE — identical to Evidenceofpolicyreview.pdf",
         "Meeting minutes discuss committee responsibilities indirectly",
@@ -73,13 +73,13 @@
       "extractedFromPages": "1-9",
       "extractionMethod": "OCR (Thai+English)",
       "reviewStatus": "DUPLICATE_FILE_NEEDS_REVIEW",
-      "notes": "CRITICAL: Confirm with Green Office team whether a separate role-understanding document exists."
+      "notes": "CRITICAL: Confirm with Green Office team whether a separate role-understanding document exists. summaryEn synthesized from OCR-derived Thai source."
     },
     {
       "documentId": "doc-goals",
       "relatedPage": "about-goals",
       "summaryTh": "ประกาศสำนักวิจัยและส่งเสริมวิชาการการเกษตร เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อม ประจำปี พ.ศ. 2568 อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา โดยใช้ปี 2568 เป็นปีฐาน กำหนด 6 เป้าหมาย: (1) ไฟฟ้าไม่เกิน 5,252.55 หน่วย/คน (2) น้ำมันเชื้อเพลิงไม่เกิน 255.52 ลิตร (3) น้ำไม่เกิน 53.30 ลบ.ม./คน (4) กระดาษไม่เกิน 23.13 กก./คน (5) ขยะทั่วไปไม่เกิน 50 กก./คน (6) ก๊าซเรือนกระจกไม่เกิน 203.15 kgCO2e/คน",
-      "summaryEn": null,
+      "summaryEn": "Agricultural Research and Extension Office announcement defining environmental targets for FY 2568 (2025), Chalermprakiat Building, using 2568 as the baseline year. Sets six per-person targets: (1) electricity not exceeding 5,252.55 units/person, (2) fuel not exceeding 255.52 liters, (3) water not exceeding 53.30 m³/person, (4) paper not exceeding 23.13 kg/person, (5) general waste not exceeding 50 kg/person, (6) greenhouse gas not exceeding 203.15 kgCO2e/person.",
       "keyPoints": [
         "Signed by Asst.Prof.Dr. Nattapon Laoharodphan",
         "6 environmental targets: electricity, fuel, water, paper, waste, GHG",
@@ -91,7 +91,7 @@
       "extractedFromPages": "1",
       "extractionMethod": "OCR (Thai+English)",
       "reviewStatus": "OCR_DERIVED_NEEDS_VERIFICATION",
-      "notes": "Numeric values are OCR-interpreted from Thai numerals. Verify exact target numbers from original PDF."
+      "notes": "Numeric values are OCR-interpreted from Thai numerals. Verify exact target numbers from original PDF. summaryEn synthesized from OCR-derived Thai source."
     },
     {
       "documentId": "doc-scope",
