@@ -11,7 +11,7 @@
 
 ## 1. Pre-push (local)
 
-- [ ] On branch `master` at commit `f95d4ac` or later (includes RC release pack)
+- [ ] On branch `master` at commit `ccb205d` (RC release pack)
 - [ ] `git status` — no unintended staged changes
 - [ ] PO recorded RC acceptance for **preview** (not production VPS)
 - [ ] [KNOWN_LIMITATIONS_RC1.md](./KNOWN_LIMITATIONS_RC1.md) acknowledged

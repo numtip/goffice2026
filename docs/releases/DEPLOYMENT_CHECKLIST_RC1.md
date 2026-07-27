@@ -10,7 +10,7 @@
 
 ## 1. Pre-flight
 
-- [ ] Branch `master` at `f95d4ac` or later (includes release pack)
+- [ ] Branch `master` at commit `ccb205d` (RC release pack)
 - [ ] `git status` clean for tracked files
 - [ ] [RELEASE_NOTES_RC1.md](./RELEASE_NOTES_RC1.md) reviewed
 - [ ] [KNOWN_LIMITATIONS_RC1.md](./KNOWN_LIMITATIONS_RC1.md) acknowledged
