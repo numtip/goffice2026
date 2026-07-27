@@ -49,20 +49,22 @@ describe('reconcileTotal (pure helper)', () => {
   });
 });
 
-describe('RC-1: current-year CSV-only data must not be silently marked valid', () => {
-  it('energy 2569 is quality.valid=false and classified DERIVED_FROM_CSV', () => {
+describe('RC-1: current-year FY2569 pending data must not be silently marked valid', () => {
+  it('energy 2569 is quality.valid=false and classified PLACEHOLDER while waiting for official FY2569 data', () => {
     const data = readGenerated('energy.json');
     const y2569 = data.years['2569'];
     assert.equal(y2569.quality.valid, false);
-    assert.equal(y2569.dataClassification, 'DERIVED_FROM_CSV');
+    assert.equal(y2569.dataStatus, 'CURRENT_DATA_PENDING');
+    assert.equal(y2569.dataClassification, 'PLACEHOLDER');
     assert.equal(y2569.quality.warnings.length > 0, true);
   });
 
-  it('water 2569 is quality.valid=false and classified DERIVED_FROM_CSV', () => {
+  it('water 2569 is quality.valid=false and classified PLACEHOLDER while waiting for official FY2569 data', () => {
     const data = readGenerated('water.json');
     const y2569 = data.years['2569'];
     assert.equal(y2569.quality.valid, false);
-    assert.equal(y2569.dataClassification, 'DERIVED_FROM_CSV');
+    assert.equal(y2569.dataStatus, 'CURRENT_DATA_PENDING');
+    assert.equal(y2569.dataClassification, 'PLACEHOLDER');
   });
 
   it('confirmed baseline years (energy/water/ghg 2568) remain quality.valid=true and CONFIRMED_XLSX', () => {
@@ -76,19 +78,30 @@ describe('RC-1: current-year CSV-only data must not be silently marked valid', (
 });
 
 describe('RC-2: recycling_rate (percentage unit) must use average aggregation, not sum', () => {
-  it('recycling_rate years use aggregation "average" and total equals the monthly average', () => {
+  it('recycling_rate years use aggregation "average" and total equals the monthly average when months exist', () => {
     const data = readGenerated('recycling_rate.json');
     for (const [yearStr, yearData] of Object.entries(data.years)) {
       assert.equal(yearData.aggregation, 'average', `recycling_rate ${yearStr} must use average aggregation`);
+      if (yearData.months.length === 0) {
+        // FY2569 pending: empty months, total 0 — do not divide by zero / invent averages
+        assert.equal(yearData.total, 0, `recycling_rate ${yearStr} pending year total must be 0`);
+        assert.equal(yearData.dataStatus, 'CURRENT_DATA_PENDING');
+        continue;
+      }
       const avg = Math.round((yearData.months.reduce((s, m) => s + m.value, 0) / yearData.months.length) * 100) / 100;
       assert.equal(yearData.total, avg, `recycling_rate ${yearStr} total must equal monthly average, not a sum`);
     }
   });
 
-  it('recycling_rate yoyChange is computed from average-to-average totals (not the old invalid +227% sum-based figure)', () => {
+  it('recycling_rate yoyChange is suppressed when current year is pending (not a false -100% drop)', () => {
     const data = readGenerated('recycling_rate.json');
-    const b = data.years[String(data.baselineYear)];
     const c = data.years[String(data.currentYear)];
+    if (c.dataStatus === 'CURRENT_DATA_PENDING' || c.months.length === 0) {
+      assert.equal(data.yoyChange.percent, 0);
+      assert.equal(data.yoyChange.direction, 'stable');
+      return;
+    }
+    const b = data.years[String(data.baselineYear)];
     const expectedPercent = Math.round(((c.total - b.total) / b.total) * 100);
     assert.equal(data.yoyChange.percent, expectedPercent);
   });
