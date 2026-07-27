@@ -80,6 +80,20 @@ Disposition: `docs/evidence/WS-B_PAPER_USAGE_ORPHAN_QA.md`
 
 ---
 
+## RC-1 Remediation (2026-07-27)
+
+**Branch:** `rapid/rc1-fix-evidence`  
+**Worker:** Subagent B — Evidence Truthfulness Fix
+
+| ID | realSourcePath | Disk check | Fix |
+|----|----------------|------------|-----|
+| `ev-energy-metering-2025` | `docs/1.2-elect.xlsx` | **Off-disk** (Test-Path false) | `realSourceAvailable` → `false`; verification.basis updated |
+| `ev-waste-monthly-2025` | `docs/1.5_Waste.xlsx` | **Off-disk** (Test-Path false) | `realSourceAvailable` → `false`; verification.basis updated |
+
+Registry entries `doc-electricity-usage-2025` and `doc-waste-data-2025` gained `fileOnDisk: false` to match `doc-paper-usage-2025` pattern. Resolves blockers D-B1 and D-B2 from `docs/releases/rc1/D_DASHBOARD_EVIDENCE_AUDIT.md`.
+
+---
+
 ## Validation
 
 Run: `node scripts/validate-evidence.mjs`

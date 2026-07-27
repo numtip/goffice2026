@@ -40,7 +40,7 @@
       "updated": "2026-07-19",
       "sourceId": "src-xlsx-electricity-usage",
       "realSourcePath": "docs/1.2-elect.xlsx",
-      "realSourceAvailable": true,
+      "realSourceAvailable": false,
       "publicationMode": "internal-metadata-only",
       "sharePointUrl": null,
       "sharePointUrlPending": true,
@@ -58,8 +58,8 @@
       },
       "verification": {
         "status": "pending",
-        "basis": "ET-1 traceability promotion: operational electricity consumption workbook directly supports indicator 3.2.2 (consumption data per unit vs targets). Source file existence is system-validated; human data-owner verification is still required before verified status.",
-        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์บันทึกการใช้ไฟฟ้าในการปฏิบัติงานสนับสนุนตัวชี้วัด 3.2.2 (ข้อมูลการใช้ไฟฟ้าต่อหน่วยเทียบกับเป้าหมาย) โดยตรง ระบบได้ตรวจสอบว่ามีไฟล์ต้นฉบับอยู่จริงแล้ว แต่ยังต้องรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนจึงจะเปลี่ยนเป็นสถานะตรวจสอบแล้ว",
+        "basis": "ET-1 traceability promotion: operational electricity consumption workbook directly supports indicator 3.2.2 (consumption data per unit vs targets). Source file docs/1.2-elect.xlsx is off-disk (Test-Path 2026-07-27); realSourceAvailable set false. Human data-owner verification and file restoration required before verified status.",
+        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์บันทึกการใช้ไฟฟ้าสนับสนุนตัวชี้วัด 3.2.2 โดยตรง ไฟล์ต้นฉบับ docs/1.2-elect.xlsx ไม่อยู่บนดิสก์ (ตรวจสอบ 2026-07-27) ตั้ง realSourceAvailable เป็น false ต้องกู้คืนไฟล์และรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนเปลี่ยนเป็นสถานะตรวจสอบแล้ว",
         "reviewPhase": "REL-1",
         "reviewedAt": "2026-07-19",
         "reviewOutcome": "pending-po-signoff"
@@ -252,7 +252,7 @@
       "updated": "2026-07-19",
       "sourceId": "src-xlsx-waste-data",
       "realSourcePath": "docs/1.5_Waste.xlsx",
-      "realSourceAvailable": true,
+      "realSourceAvailable": false,
       "publicationMode": "internal-metadata-only",
       "sharePointUrl": null,
       "sharePointUrlPending": true,
@@ -270,8 +270,8 @@
       },
       "verification": {
         "status": "pending",
-        "basis": "ET-1 traceability promotion: monthly waste tracking workbook (form 4.1(1)) directly supports indicator 4.1.2 (sorting, collection, and disposal implementation). Source file existence is system-validated; human data-owner verification is still required before verified status.",
-        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์บันทึกข้อมูลของเสียรายเดือน (แบบฟอร์ม 4.1(1)) สนับสนุนตัวชี้วัด 4.1.2 (การคัดแยก การเก็บรวบรวม และการกำจัดของเสีย) โดยตรง ระบบได้ตรวจสอบว่ามีไฟล์ต้นฉบับอยู่จริงแล้ว แต่ยังต้องรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนจึงจะเปลี่ยนเป็นสถานะตรวจสอบแล้ว",
+        "basis": "ET-1 traceability promotion: monthly waste tracking workbook (form 4.1(1)) directly supports indicator 4.1.2 (sorting, collection, and disposal implementation). Source file docs/1.5_Waste.xlsx is off-disk (Test-Path 2026-07-27); realSourceAvailable set false. Human data-owner verification and file restoration required before verified status.",
+        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์บันทึกข้อมูลของเสียรายเดือน (แบบฟอร์ม 4.1(1)) สนับสนุนตัวชี้วัด 4.1.2 โดยตรง ไฟล์ต้นฉบับ docs/1.5_Waste.xlsx ไม่อยู่บนดิสก์ (ตรวจสอบ 2026-07-27) ตั้ง realSourceAvailable เป็น false ต้องกู้คืนไฟล์และรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนเปลี่ยนเป็นสถานะตรวจสอบแล้ว",
         "reviewPhase": "REL-1",
         "reviewedAt": "2026-07-19",
         "reviewOutcome": "pending-po-signoff"
