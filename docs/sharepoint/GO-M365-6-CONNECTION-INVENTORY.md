@@ -13,7 +13,7 @@
 |---|---|---|---|---|---|---|
 | 1 | **SharePoint** | Standard | ✅ **Connected** | researchmju@mju.ac.th | 2026-07-21 | ✅ Yes — pre-existing |
 | 2 | **Office 365 Outlook** | Standard | ✅ **Connected** | researchmju@mju.ac.th | 2026-07-27 | ✅ Yes — created EPIC-01 |
-| 3 | **Standard approvals** | Standard | ✅ **Connected** | Standard approvals (system) | 2026-07-27 | ✅ Yes — created EPIC-01 |
+| 3 | **Standard approvals** | Standard | ✅ **Connected** | researchmju@mju.ac.th (connector credential); displayed as "Standard approvals" | 2026-07-27 | ✅ Yes — created EPIC-01 |
 
 ---
 
@@ -68,7 +68,7 @@
 | **Publisher** | Microsoft |
 | **Type** | Standard |
 | **Status** | ✅ Connected |
-| **Owner** | Standard approvals (system-level — no user prefix displayed) |
+| **Owner** | researchmju@mju.ac.th (connector uses delegated auth from session context; display name shows "Standard approvals" without user prefix, which is the normal display pattern for this connector type) |
 | **Created** | 2026-07-27 (during EPIC-01) |
 | **Last Modified** | 0 seconds ago (at inspection time) |
 | **Authentication** | OAuth 2.0 (system/embedded — no interactive prompt) |
