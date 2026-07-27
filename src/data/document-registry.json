@@ -1,7 +1,7 @@
 {
-  "version": "0.4.0",
+  "version": "0.4.1",
   "updated": "2026-07-27",
-  "note": "Document registry for real source files. WS-B: secondary evidence links for shared workbooks.",
+  "note": "Document registry for real source files. WS-B: secondary evidence links for shared workbooks. doc-paper-usage-2025 resolved as orphan (no evidence slot).",
   "documents": [
     {
       "id": "doc-water-usage-2025",
@@ -71,17 +71,19 @@
       "description": "Monthly paper consumption and procurement data across departments.",
       "storedPath": "docs/1.4_Paper.xlsx",
       "publicAccessible": false,
-      "publicationStatus": "internal",
+      "publicationStatus": "pending",
       "classification": "internal",
       "classificationReason": "Contains operational paper consumption data — internal resource usage metrics.",
       "evidenceId": null,
       "categoryCode": null,
       "potentialEvidenceMatch": null,
+      "registryLinkStatus": "orphan",
+      "orphanReason": "No matching evidence slot in evidence-index.json. Indicator 1.4.1 is covered by ev-about-committee-order (committee appointment PDF), not this operational workbook. Proposed indicators 3.3.1/3.3.2 (review-022) require Head decision before a new slot may be created.",
       "sha256": "CCE54E1A2DBAC5BC67F581891783A2DE866BC9E8061383FB7E410CD73D748924",
       "sizeBytes": 207178,
       "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "gitTracked": false,
-      "notes": "Untracked. No direct placeholder match in evidence-index.json. May relate to cat3 (waste reduction - paper recycling) or cat5 (green procurement). Category assignment requires Head review."
+      "notes": "ORPHAN — unpublished. Untracked operational data. Do NOT link to ev-about-committee-order. Pending review-022 / Head decision on new evidence slot or cat3 mapping."
     },
     {
       "id": "doc-waste-data-2025",
