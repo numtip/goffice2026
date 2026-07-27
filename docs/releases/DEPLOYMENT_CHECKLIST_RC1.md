@@ -1,177 +1,145 @@
 # Deployment Checklist — RC-1
 
-**Release candidate:** RC-1  
-**Baseline commit:** `61b5fa9`  
-**Do not deploy to production without Product Owner sign-off.**
+**Release candidate:** `1.2.0-rc.1`  
+**Target commit:** `ccb205d`  
+**RC status:** Accepted by Product Owner  
+**Push/deploy:** Blocked until PO push approval  
+**Production VPS:** Do **not** deploy RC-1 — preview only
 
 ---
 
 ## 1. Pre-flight
 
-- [ ] Working branch is `rapid/rc-release` (or tagged RC commit on `master`)
-- [ ] `git status` clean — no uncommitted changes
-- [ ] Release artifacts present under `docs/releases/*_RC1.md`
-- [ ] [KNOWN_LIMITATIONS_RC1.md](./KNOWN_LIMITATIONS_RC1.md) reviewed and accepted
-- [ ] Product Owner approval recorded (Section 8)
+- [ ] Branch `master` at `f95d4ac` or later (includes release pack)
+- [ ] `git status` clean for tracked files
+- [ ] [RELEASE_NOTES_RC1.md](./RELEASE_NOTES_RC1.md) reviewed
+- [ ] [KNOWN_LIMITATIONS_RC1.md](./KNOWN_LIMITATIONS_RC1.md) acknowledged
+- [ ] PO RC acceptance recorded
 
 ```powershell
-git.exe status
-git.exe log --oneline -1
+git.exe -C "G:/ProjectAI/goffice2026" log --oneline -1
+git.exe -C "G:/ProjectAI/goffice2026" status -sb
 ```
 
 ---
 
-## 2. Install & Type Check
-
-- [ ] Node.js ≥ 20 (CI uses 24)
-- [ ] Dependencies installed via `npm ci`
+## 2. Local quality gates
 
 ```powershell
-node --version
+$env:PATH = "G:\nodejs;" + $env:PATH
+cd G:/ProjectAI/goffice2026
 npm ci
 npm run check
-```
-
-**Expected:** 0 TypeScript / Astro errors.
-
----
-
-## 3. Unit Tests
-
-- [ ] All unit tests pass
-
-```powershell
 npm test
-```
-
-**Expected:** 13/13 PASS (data-status, i18n paths, pipeline quality, dashboard executive).
-
----
-
-## 4. Data Pipeline
-
-- [ ] Data check passes (warnings for CURRENT_DATA_PENDING are expected)
-
-```powershell
 npm run data:check
 npm run data:validate
-```
-
-**Expected:** 0 errors; FY2569 pending warnings documented in known limitations.
-
----
-
-## 5. Production Build
-
-- [ ] Build completes with exit code 0
-- [ ] `dist/` populated
-
-```powershell
 npm run build
-```
-
-**Expected:** ~240 pages (RC-1 Day 1 QA baseline).
-
-### GitHub Pages preview build (local simulation)
-
-```powershell
-$env:DEPLOY_TARGET='github-pages'
-$env:PUBLIC_PREVIEW_BADGE='true'
-npm run build
-```
-
-- [ ] Preview badge visible
-- [ ] Base paths use `/goffice2026/` prefix
-
----
-
-## 6. Platform Validation
-
-- [ ] Taxonomy validation passes (7 categories, 24 issues, 65 indicators)
-- [ ] Evidence schema validation passes
-- [ ] Route verification passes
-
-```powershell
-$env:DEPLOY_TARGET='github-pages'
 npm run validate
 npm run qa:seo
 ```
 
-**Note:** Evidence route count may be 24 vs legacy threshold 21 — documented known limitation.
+| Step | Expected |
+|------|----------|
+| `check` | 0 errors |
+| `test` | 13/13 PASS |
+| `data:check` | 0 errors (FY2569 warnings OK) |
+| `build` | ~250 pages |
+| `validate` | PASS |
+| `qa:seo` | PASS |
 
 ---
 
-## 7. Runtime QA
+## 3. GitHub Pages preview build (local)
 
-- [ ] Preview server starts
+```powershell
+$env:DEPLOY_TARGET = "github-pages"
+$env:PUBLIC_PREVIEW_BADGE = "true"
+$env:GITHUB_REPOSITORY = "numtip/goffice2026"
+npm run build
+```
+
+- [ ] Preview badge in output
+- [ ] Base path `/goffice2026/`
+
+---
+
+## 4. Runtime QA (optional, local)
 
 ```powershell
 npm run preview
 # Separate terminal:
-$env:PREVIEW_BASE_URL='http://localhost:4321'
+$env:PREVIEW_BASE_URL = "http://localhost:4321"
 npm run qa:routes
 npm run qa:links
 ```
 
-- [ ] Core routes return HTTP 200
-- [ ] TH and EN About routes load
-- [ ] Dashboard resource pages render with baseline 2568 data
-- [ ] No broken internal links in `dist/`
+- [ ] Core routes HTTP 200
+- [ ] TH/EN About and hub routes load
+- [ ] Dashboard shows FY2569 waiting state
 
 ---
 
-## 8. GitHub Pages Deploy (preview only)
+## 5. Tag (recommended — after PO push approval)
 
-Automated via `.github/workflows/deploy-pages.yml` on push to `master`.
+See [TAG_RC1.md](./TAG_RC1.md). **Do not tag until PO approves push.**
 
-| Step | Owner | Check |
-|------|-------|-------|
-| CI quality job | GitHub Actions | check, test, build, validate, qa:seo PASS |
-| Pages artifact upload | GitHub Actions | `dist/` uploaded |
-| Pages deploy | GitHub Actions | Environment `github-pages` succeeds |
+```powershell
+git.exe tag -a v1.2.0-rc.1 ccb205d -m "Green Office 2026 RC-1 — Rapid Completion preview candidate"
+```
+
+- [ ] Tag created locally (optional)
+- [ ] Tag **not** pushed until PO approval
+
+---
+
+## 6. Push & preview deploy (PO approval required)
+
+```powershell
+git.exe push origin master
+git.exe push origin v1.2.0-rc.1   # if tag created
+```
+
+- [ ] PO push approval obtained
+- [ ] GitHub Actions **Deploy GitHub Pages Preview** workflow green
+- [ ] Preview smoke test per [GITHUB_PAGES_PUBLISH_CHECKLIST_RC1.md](./GITHUB_PAGES_PUBLISH_CHECKLIST_RC1.md)
 
 **Preview URL:** https://numtip.github.io/goffice2026/
 
-- [ ] Workflow run green on target commit
-- [ ] Preview site loads with RC-1 content
-- [ ] Preview badge displayed
+---
 
-**Production VPS (`goffice.mju.ac.th`):** Do **not** deploy RC-1 until PO acceptance and formal tag. See [ROLLBACK_CHECKLIST_RC1.md](./ROLLBACK_CHECKLIST_RC1.md).
+## 7. Production VPS — NOT IN SCOPE
+
+| Target | Action |
+|--------|--------|
+| `goffice.mju.ac.th` | **No deploy** — remains v1.1.3 |
+| Stable `v1.2.0` | Separate PO gate after limitation remediation |
+
+See [ROLLBACK_CHECKLIST_RC1.md](./ROLLBACK_CHECKLIST_RC1.md).
 
 ---
 
-## 9. Post-deploy Verification (preview)
+## 8. Post-deploy verification (preview)
 
 - [ ] `/` and `/en/` — 200
-- [ ] `/about/` routes (policy, goals, committee, scope, action-plan) — 200 TH/EN
-- [ ] `/dashboard/` resource pages — 200
-- [ ] `/evidence/` index — 200
-- [ ] Favicon, manifest, OG image — 200
-- [ ] Logo (`LogoGreen2025.png`) — 200
+- [ ] `/about/policy/`, `/about/scope/`, `/about/action-plan/` — TH/EN 200
+- [ ] `/news/`, `/activities/`, `/knowledge/` — 200
+- [ ] `/dashboard/`, `/evidence/` — 200
+- [ ] Favicon, manifest, logo assets — 200
 
 ---
 
-## 10. Sign-off
+## 9. Sign-off
 
 | Role | Name | Date | Approved |
 |------|------|------|----------|
-| QA / Validation | | | |
-| Build Gate (CI) | | | |
-| Release Manager | Subagent E | 2026-07-27 | RC artifacts prepared |
-| Product Owner | | | |
+| Product Owner | | | RC accepted / push approved |
+| Release Manager | | | |
+| QA | | | Local gates PASS |
 
 ---
 
-## Quick Reference
+## Quick reference
 
 ```powershell
-npm ci
-npm run check
-npm test
-npm run data:check
-npm run build
-npm run validate
-npm run qa:seo
-npm run preview
-# then: npm run qa:routes && npm run qa:links
+npm ci && npm run check && npm test && npm run data:check && npm run build && npm run validate
 ```

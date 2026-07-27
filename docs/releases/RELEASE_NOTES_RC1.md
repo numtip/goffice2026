@@ -1,18 +1,19 @@
 # Green Office 2026 — Release Notes RC-1
 
-**Release candidate:** RC-1  
-**Baseline commit:** `61b5fa9` (`master`)  
-**Branch:** `rapid/rc-release`  
+**Release candidate:** `1.2.0-rc.1`  
+**Recommended tag:** `v1.2.0-rc.1`  
+**Target commit:** `ccb205d`  
 **Date:** 2026-07-27  
-**Status:** Release candidate — not deployed to production
+**Status:** **RC accepted by Product Owner** — preview publish pending push approval  
+**Production:** Remains **v1.1.3** at https://goffice.mju.ac.th/
 
 ---
 
 ## Overview
 
-RC-1 is the first release candidate from the **Rapid Completion** sprint (July 2026). It delivers bilingual About Center routes, improved navigation and evidence discoverability, SharePoint metadata foundations, and validated platform QA gates — while keeping the static-first, no-backend MVP architecture.
+RC-1 is the first release candidate from the **Rapid Completion** sprint (July 2026). It delivers a bilingual About Center, improved navigation and evidence discoverability, SharePoint metadata foundations, and validated QA gates — on the static-first Blueprint V4 architecture (no backend MVP).
 
-Production remains on **v1.1.3** (`https://goffice.mju.ac.th/`). Preview builds deploy automatically to GitHub Pages on push to `master`.
+Preview deploys automatically to **GitHub Pages** when `master` is pushed. Production VPS deploy is **out of scope** for RC-1.
 
 ---
 
@@ -20,35 +21,50 @@ Production remains on **v1.1.3** (`https://goffice.mju.ac.th/`). Preview builds 
 
 ### About Center (TH/EN)
 
-- Bilingual About foundation with policy, goals, committee, scope, action-plan, and feedback routes
-- Scope and action-plan pages with OCR-derived summaries and publication-state banners
-- English About content and summary rendering fixes
-- PDF publication readiness assessment documented
+- Policy, goals, committee, scope, and action-plan routes with OCR-derived summaries
+- English About summaries and locale-aware rendering on EN routes
+- PDF publication readiness assessment (0 files published — privacy review pending)
 
-### Evidence & Content
+### Navigation & Content Hubs
 
-- Evidence index expanded to 24 items; unpublished slots and SharePoint metadata mapped
-- Paper usage orphan (`doc-paper-usage-2025`) explicitly documented — not incorrectly linked
-- News, activities, and knowledge route foundations added
-- Navigation cleanup for improved content discoverability
+- Primary nav: About, News, Activities, Knowledge (TH/EN)
+- About subnav includes scope and action-plan
+- Hub pages use pending-only slots — no invented events or awards
 
-### Data & Dashboard
+### Evidence & Data
 
-- FY2568 baseline preserved; FY2569 operational placeholders cleared pending official data
-- Resource dataset reconciliation and provenance validation
-- Executive dashboard visual polish and environmental metric detail pages (prior sprint carry-over)
+- Evidence index: 24 items; SharePoint metadata contract documented
+- Paper usage orphan explicitly dispositioned (not linked to committee order)
+- FY2568 baselines preserved; FY2569 shows **Waiting for Official FY2569 Data**
+- Resource dataset reconciliation and publication-state copy unified
 
 ### Platform & QA
 
-- Day 1 rapid completion validation: build PASS (240 pages), data pipeline PASS
-- WS-E parallel workstreams integration report
-- Content and evidence completion QA gate at `61b5fa9`
-- Blueprint V4 repository reconciliation and M365 scope freeze (ADR-0001)
+- Build: 250 pages; platform validation and link check PASS
+- Parallel workstream QA reports (Day 1, navigation cleanup, content/evidence completion)
+- RC-1 gate audits consolidated in `docs/releases/rc1/`
 
-### Infrastructure (documentation / preview)
+---
 
-- GitHub Pages preview workflow with quality gates (check, test, build, validate, SEO QA)
-- SharePoint evidence library foundation (v1.2.0 scope — not bulk-migrated)
+## Validation Summary
+
+| Gate | Result |
+|------|--------|
+| `npm run build` | PASS — 250 pages |
+| `npm run data:check` | PASS — 0 errors (14 FY2569 pending warnings) |
+| `npm run validate` | PASS — taxonomy, evidence, routes, links |
+| Production link check | PASS — 0 broken links |
+
+---
+
+## Known Limitations (preview)
+
+See [KNOWN_LIMITATIONS_RC1.md](./KNOWN_LIMITATIONS_RC1.md):
+
+1. FY2569 operational data pending (5/6 workbooks off-disk)
+2. About PDFs require redaction before `public/` copy
+3. Evidence placeholders (14) and paper usage orphan documented
+4. OCR-derived About content requires human verification
 
 ---
 
@@ -56,37 +72,25 @@ Production remains on **v1.1.3** (`https://goffice.mju.ac.th/`). Preview builds 
 
 | Area | v1.1.3 | RC-1 |
 |------|--------|------|
-| About routes | Limited | 8+ bilingual About routes |
-| Evidence count | 21 | 24 (+ About PDFs) |
-| FY2569 dashboard data | Partial placeholders | Cleared — pending official sources |
-| EN About prose | N/A | Summaries live; full translation pass pending |
-| Production deploy | v1.1.3 live | **Not deployed** — preview only |
+| About routes | Limited | 8+ bilingual routes |
+| Content hubs | None | News / Activities / Knowledge foundations |
+| Evidence count | 21 | 24 |
+| EN About prose | N/A | Summaries live (OCR-derived) |
+| Production | Live on VPS | **Unchanged** — preview only |
 
 ---
 
-## Validation Summary (Day 1 QA)
+## Publish Steps (after PO push approval)
 
-| Gate | Result |
-|------|--------|
-| `npm run build` | PASS — 240 pages |
-| `npm run data:check` | PASS — 14 warnings (CURRENT_DATA_PENDING) |
-| `npm run validate` | PASS WITH NOTES — evidence route count 24 vs legacy threshold 21 |
-| Production link check | PASS — 7024 hrefs |
-
----
-
-## What's Next
-
-- Restore missing operational XLSX workbooks (5/6 absent from `docs/`)
-- Copy About PDFs to `public/` after redaction review
-- Update validator expected evidence count threshold
-- Product Owner preview acceptance before production tag and VPS deploy
+1. Review [DEPLOYMENT_CHECKLIST_RC1.md](./DEPLOYMENT_CHECKLIST_RC1.md)
+2. Review [GITHUB_PAGES_PUBLISH_CHECKLIST_RC1.md](./GITHUB_PAGES_PUBLISH_CHECKLIST_RC1.md)
+3. Create tag per [TAG_RC1.md](./TAG_RC1.md) (optional)
+4. Push `master` → GitHub Actions deploys preview
 
 ---
 
 ## References
 
 - [CHANGELOG_RC1.md](./CHANGELOG_RC1.md)
-- [KNOWN_LIMITATIONS_RC1.md](./KNOWN_LIMITATIONS_RC1.md)
-- [DEPLOYMENT_CHECKLIST_RC1.md](./DEPLOYMENT_CHECKLIST_RC1.md)
-- [VERSION_RECOMMENDATION_RC1.md](./VERSION_RECOMMENDATION_RC1.md)
+- [GOFFICE2026_RELEASE_READINESS_REPORT_RC1.md](./GOFFICE2026_RELEASE_READINESS_REPORT_RC1.md)
+- [ROLLBACK_CHECKLIST_RC1.md](./ROLLBACK_CHECKLIST_RC1.md)

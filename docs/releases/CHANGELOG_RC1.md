@@ -1,98 +1,76 @@
-# Changelog — RC-1
+# Changelog — RC-1 (`1.2.0-rc.1`)
 
-All notable changes on `master` since early July 2026, grouped by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) conventions.
-
-**Baseline:** `61b5fa9`  
-**Range:** 2026-07-01 → 2026-07-27 (Rapid Completion sprint + prior July work)
+Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).  
+**Target commit:** `ccb205d` · **Date:** 2026-07-27 · **Status:** RC accepted — push pending PO approval
 
 ---
 
-## [Unreleased → RC-1] — 2026-07-27
+## [1.2.0-rc.1] — 2026-07-27
 
 ### Added
 
-- Bilingual About foundation and routes: policy, goals, committee, scope, action-plan, feedback (TH/EN)
-- Scope and action-plan About routes with bilingual summaries
-- News, activities, and knowledge route foundations
-- Evidence metadata mapping for unpublished slots and SharePoint link contract
-- `data/reconciliation-status.json` — traceable FY2569 pending status per resource
-- WS-E parallel workstreams integration and Day 1 QA reports
-- Blueprint V4 repository reconciliation documentation
-- M365 SharePoint schema, infrastructure, and EPIC documentation (scope frozen per ADR-0001)
-- Executive dashboard visual upgrades, semantic resource cards, and metric detail pages
-- SharePoint Green Office evidence library on canonical RAE site (v1.2.0 foundation)
-- CI quality gates, Node 24 bump, bilingual 404 pages
+- Bilingual About Center: policy, goals, committee, scope, action-plan (TH/EN)
+- News, activities, and knowledge hub route foundations (pending content only)
+- Evidence index v0.7.0 — 24 items; SharePoint metadata mapping and link contract
+- Navigation: About + hub routes in primary header; scope/action-plan in About subnav
+- `data/reconciliation-status.json` and Day 1 resource reconciliation script
+- Publication-state utility (`src/utils/publication-states.ts`) for consistent FY2569 copy
+- RC-1 release artifacts, gate audits, and readiness report
+- GitHub Pages publish checklist for RC-1
 
 ### Changed
 
-- Navigation improved for content discoverability across About and evidence sections
-- Platform validation and publication states refined for Day 1 pages
-- Resource datasets reconciled; FY2569 placeholder values cleared for energy, water, fuel, paper, GHG, recycling
-- Evidence index v0.6.0 — 24 items (+3 About PDFs)
-- `ev-transport-fleet-2025` promoted from placeholder to available (indicator 3.2.5)
-- Landing page executive hero, dashboard showcase, and motion progressively enhanced
-- Canonical SharePoint site corrected to RAE `/sites/msteams_54adc4`
-- Removed unused Supabase/admin modules (backend deferred from MVP)
+- FY2569 generated metrics cleared of invented placeholders; baselines 2568 preserved
+- Schema-based evidence route validation (replaces fixed count threshold)
+- Document registry v0.4.x with orphan disposition for paper usage workbook
+- Executive dashboard and landing copy aligned to “Waiting for Official FY2569 Data”
 
 ### Fixed
 
-- English About summaries render correctly on EN routes
-- English About content completion for bilingual parity
-- Paper usage evidence orphan documented with explicit disposition (not linked to committee order)
-- i18n path and dashboard contrast improvements
-- Astro check diagnostics blocking CI deployment
-- Dashboard broken indicators link removed from closing banner
-- Production links, Thai landing, and header visibility (v1.1.x carry-over fixes)
-
-### Tested
-
-- `test(qa): validate rapid completion day 1`
-- `test(qa): validate navigation cleanup sprint`
-- `test(qa): WS-E parallel workstreams integration report`
-- `test(qa): validate content and evidence completion` — `61b5fa9`
+- English About summaries render on EN routes (scope, action-plan, policy, goals, committee)
+- Paper usage evidence orphan documented — not linked to committee appointment PDF
+- Navigation discoverability for About scope/action-plan and content hubs
 
 ### Documentation
 
-- About PDF publication readiness assessment
-- Paper usage orphan QA note (`WS-B_PAPER_USAGE_ORPHAN_QA.md`)
-- Rapid Completion Plan V1 and repository audit reports
-- Release notes v1.2.0, v1.1.3, v1.1.2 freeze documents
+- About PDF privacy readiness and publication manifest (0 PUBLIC_READY)
+- WS-B evidence mapping and paper usage orphan QA notes
+- Parallel workstream and completion sprint QA reports
+- RC-1 architecture, UX, content, and dashboard/evidence gate audits
+
+### Tested
+
+- Day 1 rapid completion QA
+- WS-E parallel workstreams integration QA
+- Navigation cleanup sprint QA
+- Content and evidence completion QA
+- RC-1 gate validation (build, data:check, validate — PASS)
 
 ---
 
-## Recent commits (source: `git log --oneline -20 master`)
+## Commit range (RC-1)
 
 ```
+f95d4ac docs(release): RC-1 gate readiness report and audit findings
+8fce1c1 docs(release): add RC-1 content audit (Subagent C)
+f1250a5 docs(release): prepare rc-1 release artifacts
 61b5fa9 test(qa): validate content and evidence completion
-8b267b5 Merge branch 'rapid/ws-evidence-orphan'
-34b3fe2 Merge branch 'rapid/ws-about-en'
-1921588 docs(content): assess about pdf publication readiness
-f444c82 fix(i18n): complete english about content
-da7b102 fix(evidence): document paper usage evidence disposition
+… Rapid Completion sprint (about, evidence, nav, i18n) …
 98f423e fix(i18n): render english about summaries correctly
-bee81b8 test(qa): validate navigation cleanup sprint
-47e8d0d fix(content): complete bilingual about summaries
-23cba4c fix(evidence): resolve paper usage orphan
-9b46130 fix(nav): improve content discoverability
 95d5718 test(qa): WS-E parallel workstreams integration report
-a549f1d Merge branch 'rapid/ws-landing'
-37af36b Merge branch 'rapid/ws-about'
-38ae3c5 feat(evidence): map unpublished slots and sharepoint metadata
-2233689 feat(content): add news activities knowledge route foundations
-f941919 feat(about): add scope and action-plan routes TH/EN
 6a3403c fix(platform): refine day1 validation and publication states
-d2e05fa test(qa): validate rapid completion day 1
 c74cd34 feat(about): add bilingual about foundation
+b171ab5 fix(data): reconcile resource datasets
 ```
+
+Prior production baseline: **v1.1.3**
 
 ---
 
-## Prior July commits (selected)
+## [Unreleased / post-RC-1]
 
-- `0394539` feat(evidence): improve evidence metadata foundation
-- `b171ab5` fix(data): reconcile resource datasets
-- `c703b92` docs(architecture): reconcile repository with blueprint v4
-- `e8dedb0` docs(m365): ADR-0001 remove approval engine from M365 scope
-- `f6f31a6` docs(release): publish v1.2.0 release notes
-- `df06179` feat(branding): replace official Green Office logo across site
-- `176399a` chore: add CI quality gates, Node engines, and dead code cleanup
+- Mobile nav locale injection fix (RC gate finding)
+- Evidence `realSourceAvailable` alignment for off-disk workbooks
+- `/about/feedback/` route implementation or metadata deferral
+- About PDF redaction and public copy
+- Official FY2569 XLSX import
