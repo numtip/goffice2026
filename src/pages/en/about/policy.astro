@@ -33,6 +33,7 @@ function docFor(key: string) {
   {content.sections.map((section) => {
     const summary = summaryFor(section.summaryKey ?? '');
     const doc = docFor(section.summaryKey ?? '');
+    const isOcr = summary?.reviewStatus === 'OCR_DERIVED_NEEDS_VERIFICATION';
     return (
       <section class="mb-8">
         <h2 class="text-xl font-semibold text-gray-900 mb-2">
@@ -43,8 +44,15 @@ function docFor(key: string) {
             {isTh ? '⏳ เนื้อหารอตรวจสอบ' : '⏳ Content pending review'}
           </p>
         )}
+        {isOcr && (
+          <p class="text-sm text-amber-700 mb-2">
+            {isTh ? '⚠️ สรุปจาก OCR — ต้องตรวจสอบโดยมนุษย์' : '⚠️ OCR-derived summary — human verification required'}
+          </p>
+        )}
         {summary && (
-          <p class="text-gray-700 leading-relaxed whitespace-pre-line">{summary.summaryTh}</p>
+          <p class="text-gray-700 leading-relaxed whitespace-pre-line">
+            {isTh ? summary.summaryTh : (summary.summaryEn ?? summary.summaryTh)}
+          </p>
         )}
         {doc && (
           <p class="mt-3 text-sm text-gray-500">
