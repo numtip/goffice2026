@@ -64,9 +64,11 @@ Both retain `verification.status: pending` (not verified).
 
 ## Registry Orphans
 
-| Registry ID | Source | Blocker |
-|-------------|--------|---------|
-| `doc-paper-usage-2025` | `docs/1.4_Paper.xlsx` | No matching evidence slot; review-022 pending Head decision |
+| Registry ID | Source | Source status | Blocker |
+|-------------|--------|---------------|---------|
+| `doc-paper-usage-2025` | `docs/1.4_Paper.xlsx` | **Off-disk, untracked** — never in git; SHA256 from prior inspection | No matching evidence slot; do not link to `ev-about-committee-order`; review-022 pending PO decision on 3.3.1/3.3.2 slot creation |
+
+Disposition: `docs/evidence/WS-B_PAPER_USAGE_ORPHAN_QA.md`
 
 ---
 
