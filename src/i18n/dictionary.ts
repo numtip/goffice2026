@@ -15,6 +15,9 @@ export interface SiteStrings {
   platform_version?: string;
   skip_to_content: string;
   language: string;
+  choose_language: string;
+  switch_to_thai: string;
+  switch_to_english: string;
 }
 
 export interface HomeHeroStrings {
@@ -163,6 +166,7 @@ export interface HomeNavStrings {
   about?: string;
   search: string;
   menu: string;
+  primary_navigation: string;
 }
 
 export interface HomeFooterStrings {

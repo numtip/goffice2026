@@ -1,12 +1,24 @@
 ---
 import { getLocale, getSwitcherHref } from '../../i18n/utils';
+import { getDictionary } from '../../i18n/dictionary';
+
+interface Props {
+  chooseLabel?: string;
+  switchToThaiLabel?: string;
+  switchToEnglishLabel?: string;
+}
 
 const locale = getLocale(Astro.url);
 const thHref = getSwitcherHref(Astro.url, 'th');
 const enHref = getSwitcherHref(Astro.url, 'en');
+
+const dict = await getDictionary(locale);
+const chooseLabel = Astro.props.chooseLabel ?? dict.site.choose_language;
+const switchToThaiLabel = Astro.props.switchToThaiLabel ?? dict.site.switch_to_thai;
+const switchToEnglishLabel = Astro.props.switchToEnglishLabel ?? dict.site.switch_to_english;
 ---
 
-<div class="inline-flex items-center gap-1 rounded-full border border-white/30 bg-white/10 p-0.5 text-label-sm shadow-sm" role="group" aria-label="Choose language">
+<div class="inline-flex items-center gap-1 rounded-full border border-white/30 bg-white/10 p-0.5 text-label-sm shadow-sm" role="group" aria-label={chooseLabel}>
   <a
     href={thHref}
     class:list={[
@@ -16,7 +28,7 @@ const enHref = getSwitcherHref(Astro.url, 'en');
         : 'text-white hover:bg-white/15 hover:text-white',
     ]}
     aria-current={locale === 'th' ? 'true' : undefined}
-    aria-label="Switch to Thai"
+    aria-label={switchToThaiLabel}
   >
     TH
   </a>
@@ -29,7 +41,7 @@ const enHref = getSwitcherHref(Astro.url, 'en');
         : 'text-white hover:bg-white/15 hover:text-white',
     ]}
     aria-current={locale === 'en' ? 'true' : undefined}
-    aria-label="Switch to English"
+    aria-label={switchToEnglishLabel}
   >
     EN
   </a>
