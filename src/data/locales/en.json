@@ -139,6 +139,9 @@
       "categories": "Categories",
       "evidence": "Evidence",
       "documents": "Documents",
+      "news": "News",
+      "activities": "Activities",
+      "knowledge": "Knowledge",
       "search": "Search",
       "menu": "Menu"
     },

@@ -157,6 +157,9 @@ export interface HomeNavStrings {
   categories: string;
   evidence: string;
   documents: string;
+  news?: string;
+  activities?: string;
+  knowledge?: string;
   search: string;
   menu: string;
 }

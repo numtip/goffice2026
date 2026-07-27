@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/global.css';
+import { getLocale, getLocalizedPath } from '../../i18n/utils';
+
+interface HubLink {
+  route: string;
+  labelTh: string;
+  labelEn: string;
+}
+
+interface HubSlot {
+  categoryTh: string;
+  categoryEn: string;
+  titleTh: string;
+  titleEn: string;
+  excerptTh: string;
+  excerptEn: string;
+}
+
+export interface HubContent {
+  titleTh: string;
+  titleEn: string;
+  descriptionTh: string;
+  descriptionEn: string;
+  pendingTitleTh: string;
+  pendingTitleEn: string;
+  pendingBodyTh: string;
+  pendingBodyEn: string;
+  relatedHeadingTh: string;
+  relatedHeadingEn: string;
+  relatedLinks: HubLink[];
+  slots: HubSlot[];
+}
+
+interface Props {
+  hub: HubContent;
+}
+
+const { hub } = Astro.props;
+const locale = getLocale(Astro.url);
+const isTh = locale === 'th';
+
+const pageTitle = isTh ? hub.titleTh : hub.titleEn;
+const pageDescription = isTh ? hub.descriptionTh : hub.descriptionEn;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} locale={locale}>
+  <div class="p-4 max-w-5xl mx-auto">
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900">{pageTitle}</h1>
+      <p class="text-gray-600 mt-2">{pageDescription}</p>
+    </div>
+
+    <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 mb-8 flex items-start gap-4 shadow-sm">
+      <div class="flex-shrink-0 mt-0.5">
+        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+        </svg>
+      </div>
+      <div>
+        <h2 class="text-lg font-bold text-amber-800">
+          {isTh ? hub.pendingTitleTh : hub.pendingTitleEn}
+        </h2>
+        <p class="text-sm text-amber-700 mt-1 leading-relaxed">
+          {isTh ? hub.pendingBodyTh : hub.pendingBodyEn}
+        </p>
+      </div>
+    </div>
+
+    <section class="mb-10" aria-labelledby="hub-slots-heading">
+      <h2 id="hub-slots-heading" class="text-xl font-semibold text-gray-900 mb-4">
+        {isTh ? 'รายการที่รอเนื้อหา' : 'Content awaiting publication'}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {hub.slots.map((slot) => (
+          <article class="bg-white rounded-xl border border-dashed border-gray-300 p-5">
+            <p class="text-xs font-mono uppercase tracking-wider text-gray-400 mb-2">
+              {isTh ? slot.categoryTh : slot.categoryEn}
+            </p>
+            <h3 class="font-semibold text-gray-900 mb-2">
+              {isTh ? slot.titleTh : slot.titleEn}
+            </h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              {isTh ? slot.excerptTh : slot.excerptEn}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section aria-labelledby="hub-related-heading">
+      <h2 id="hub-related-heading" class="text-xl font-semibold text-gray-900 mb-4">
+        {isTh ? hub.relatedHeadingTh : hub.relatedHeadingEn}
+      </h2>
+      <ul class="space-y-2">
+        {hub.relatedLinks.map((link) => (
+          <li>
+            <a
+              href={getLocalizedPath(locale, link.route.replace(/\/$/, ''))}
+              class="text-green-700 font-medium hover:underline"
+            >
+              {isTh ? link.labelTh : link.labelEn}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <p class="text-xs text-gray-400 mt-8 text-center">
+      {isTh ? 'อัปเดตโครงสร้างเส้นทาง: 2026-07-27' : 'Route foundation updated: 2026-07-27'}
+    </p>
+  </div>
+</BaseLayout>
