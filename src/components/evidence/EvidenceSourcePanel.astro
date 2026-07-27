@@ -1,0 +1,175 @@
+---
+import { withBase } from '../../utils/with-base';
+import {
+  NO_PUBLISHED_EVIDENCE,
+  PENDING_OFFICIAL_PUBLICATION,
+  SHAREPOINT_LINK_PENDING,
+  SOURCE_OFFLINE,
+  pubLabel,
+} from '../../utils/publication-states';
+
+interface Props {
+  status: string;
+  path: string;
+  fileType: string;
+  realSourceAvailable?: boolean;
+  realSourcePath?: string;
+  sharePointUrl?: string | null;
+  sharePointUrlPending?: boolean;
+  locale: 'th' | 'en';
+  /** EN pages use getLocalizedPath; TH pages use withBase. */
+  hrefFn?: (path: string) => string;
+}
+
+const {
+  status,
+  path,
+  fileType,
+  realSourceAvailable = true,
+  realSourcePath,
+  sharePointUrl = null,
+  sharePointUrlPending = false,
+  locale,
+  hrefFn = withBase,
+} = Astro.props;
+
+const isPlaceholder = status === 'placeholder';
+const sourceOffline = !isPlaceholder && realSourceAvailable === false;
+const hasStaticLink = !isPlaceholder && !sourceOffline && Boolean(path);
+const hasSharePointLink = Boolean(sharePointUrl);
+const showSharePointPending = sharePointUrlPending && !hasSharePointLink;
+
+function label(th: string, en: string): string {
+  return locale === 'th' ? th : en;
+}
+
+const fileName = path.split('/').pop() || path;
+const registryPath = realSourcePath || path;
+---
+
+{isPlaceholder ? (
+  <div class="flex items-center gap-3 p-4 rounded-lg bg-amber-50 border border-amber-200">
+    <svg class="w-6 h-6 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+    </svg>
+    <div>
+      <p class="text-sm font-medium text-amber-800">
+        {label(
+          'ยังไม่มีหลักฐานที่เผยแพร่สำหรับเปิดดู',
+          'No published evidence available for viewing',
+        )}
+      </p>
+      <p class="text-xs text-amber-600 mt-0.5">
+        {pubLabel(PENDING_OFFICIAL_PUBLICATION, locale)}
+      </p>
+    </div>
+  </div>
+) : sourceOffline ? (
+  <div class="space-y-3">
+    <div class="flex items-start gap-3 p-4 rounded-lg bg-amber-50 border border-amber-200">
+      <svg class="w-6 h-6 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <div>
+        <p class="text-sm font-medium text-amber-800">
+          {pubLabel(SOURCE_OFFLINE, locale)}
+        </p>
+        <p class="text-xs text-amber-700 mt-0.5">
+          {label(
+            'ไฟล์ต้นฉบับยังไม่ได้อยู่ในที่เก็บข้อมูลของระบบ ข้อมูลเมตาดาต้าด้านบนเป็นข้อมูลอ้างอิงเท่านั้น',
+            'The source workbook is not in the repository or static site bundle. Metadata above is for reference only.',
+          )}
+        </p>
+        {registryPath && (
+          <p class="text-xs text-amber-600 mt-1 font-mono">
+            {label('ที่อยู่ที่คาดหวัง', 'Expected location')}: {registryPath}
+          </p>
+        )}
+      </div>
+    </div>
+    {showSharePointPending && (
+      <div class="flex items-start gap-3 p-4 rounded-lg bg-blue-50 border border-blue-200">
+        <svg class="w-6 h-6 text-blue-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+        </svg>
+        <div>
+          <p class="text-sm font-medium text-blue-800">
+            {pubLabel(SHAREPOINT_LINK_PENDING, locale)}
+          </p>
+          <p class="text-xs text-blue-600 mt-0.5">
+            {label(
+              'ลิงก์เข้าถึงไฟล์บน SharePoint จะแสดงที่นี่เมื่อได้รับการกำหนดจากผู้ดูแลระบบ',
+              'An authenticated SharePoint access link will appear here once assigned by an administrator.',
+            )}
+          </p>
+        </div>
+      </div>
+    )}
+    {hasSharePointLink && (
+      <div class="flex items-start gap-3 p-4 rounded-lg bg-green-50 border border-green-200">
+        <svg class="w-6 h-6 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+        </svg>
+        <div>
+          <p class="text-sm font-medium text-green-800">
+            <a href={sharePointUrl!} class="underline decoration-green-400 underline-offset-2 hover:text-green-900" rel="noopener noreferrer">
+              {label('เปิดบน SharePoint', 'Open on SharePoint')}
+            </a>
+          </p>
+        </div>
+      </div>
+    )}
+  </div>
+) : (
+  <div class="space-y-3">
+    {hasStaticLink && (
+      <div class="flex items-center gap-3 p-4 rounded-lg bg-green-50 border border-green-200">
+        <svg class="w-6 h-6 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+        <div>
+          <p class="text-sm font-medium text-green-800">
+            <a href={hrefFn(path)} class="underline decoration-green-400 underline-offset-2 hover:text-green-900">
+              {fileName}
+            </a>
+          </p>
+          <p class="text-xs text-green-600 mt-0.5">
+            {label('ไฟล์ต้นฉบับ', 'Source file')} — {fileType}
+          </p>
+        </div>
+      </div>
+    )}
+    {showSharePointPending && (
+      <div class="flex items-start gap-3 p-4 rounded-lg bg-blue-50 border border-blue-200">
+        <svg class="w-6 h-6 text-blue-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+        </svg>
+        <div>
+          <p class="text-sm font-medium text-blue-800">
+            {pubLabel(SHAREPOINT_LINK_PENDING, locale)}
+          </p>
+          <p class="text-xs text-blue-600 mt-0.5">
+            {label(
+              'ลิงก์เข้าถึงไฟล์บน SharePoint จะแสดงที่นี่เมื่อได้รับการกำหนดจากผู้ดูแลระบบ',
+              'An authenticated SharePoint access link will appear here once assigned by an administrator.',
+            )}
+          </p>
+        </div>
+      </div>
+    )}
+    {hasSharePointLink && (
+      <div class="flex items-start gap-3 p-4 rounded-lg bg-indigo-50 border border-indigo-200">
+        <svg class="w-6 h-6 text-indigo-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+        </svg>
+        <div>
+          <p class="text-sm font-medium text-indigo-800">
+            <a href={sharePointUrl!} class="underline decoration-indigo-400 underline-offset-2 hover:text-indigo-900" rel="noopener noreferrer">
+              {label('เปิดบน SharePoint', 'Open on SharePoint')}
+            </a>
+          </p>
+        </div>
+      </div>
+    )}
+  </div>
+)}

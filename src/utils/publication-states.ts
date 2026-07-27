@@ -31,6 +31,18 @@ export const HISTORICAL_INFORMATION = {
   en: 'Historical information',
 } as const;
 
+/** Source workbook/file is not on disk or in the static site bundle. */
+export const SOURCE_OFFLINE = {
+  th: 'ไฟล์ต้นฉบับไม่อยู่ในระบบ',
+  en: 'Source file not available',
+} as const;
+
+/** Metadata is published; authenticated SharePoint link not yet assigned. */
+export const SHAREPOINT_LINK_PENDING = {
+  th: 'ลิงก์ SharePoint รอการกำหนด',
+  en: 'SharePoint link pending',
+} as const;
+
 export function pubLabel(
   state: { th: string; en: string },
   locale: 'th' | 'en',
