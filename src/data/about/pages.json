@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "updated": "2026-07-27",
-  "note": "About Center page metadata. Day 1 routes: index, policy, goals, committee (TH/EN).",
+  "note": "About Center page metadata. Routes: index, scope, policy, goals, committee, action-plan (TH/EN).",
   "pages": [
     {
       "id": "about-index",

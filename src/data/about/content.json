@@ -16,9 +16,11 @@
           "headingTh": "หัวข้อหลัก",
           "headingEn": "Key topics",
           "links": [
+            { "pageId": "about-scope", "labelTh": "ขอบเขตการดำเนินงาน", "labelEn": "Scope" },
             { "pageId": "about-policy", "labelTh": "นโยบายสิ่งแวดล้อม", "labelEn": "Environmental Policy" },
             { "pageId": "about-goals", "labelTh": "เป้าหมายและตัวชี้วัด", "labelEn": "Goals and Indicators" },
-            { "pageId": "about-committee", "labelTh": "คณะกรรมการและทีมงาน", "labelEn": "Committee and Team" }
+            { "pageId": "about-committee", "labelTh": "คณะกรรมการและทีมงาน", "labelEn": "Committee and Team" },
+            { "pageId": "about-action-plan", "labelTh": "แผนปฏิบัติการ", "labelEn": "Action Plan" }
           ]
         }
       ]
@@ -52,6 +54,41 @@
           "headingTh": "เป้าหมายสิ่งแวดล้อม",
           "headingEn": "Environmental targets",
           "summaryKey": "doc-goals",
+          "historical": true
+        }
+      ]
+    },
+    "about-scope": {
+      "noticeTh": "สรุปจากเอกสาร OCR — ตัวเลขพื้นที่และรายละเอียดห้องต้องตรวจสอบกับต้นฉบับ PDF ก่อนเผยแพร่เป็นหลักฐานอย่างเป็นทางการ",
+      "noticeEn": "Summary from OCR-derived document — area figures and room details require verification against original PDF before formal evidence publication.",
+      "documentId": "doc-scope",
+      "relatedIndicators": ["1.1.1", "1.1.2"],
+      "sections": [
+        {
+          "headingTh": "บริบทองค์กรและขอบเขตการจัดการสิ่งแวดล้อม",
+          "headingEn": "Organizational context and environmental management scope",
+          "summaryKey": "doc-scope",
+          "historical": true
+        },
+        {
+          "headingTh": "ผลการประเมินปัญหาสิ่งแวดล้อมจากกิจกรรมในสำนักงาน",
+          "headingEn": "Office activity environmental assessment results",
+          "pending": true,
+          "pendingNoteTh": "เอกสารยังไม่ได้รับในรอบ intake นี้ — เอกสารขอบเขตกำหนดพื้นที่/บุคลากรแต่ไม่มีการประเมินปัญหาจากกิจกรรม (ตัวชี้วัด 1.1.2)",
+          "pendingNoteEn": "Not supplied in this intake — scope document defines area/personnel but does not contain activity-level environmental issue assessment (indicator 1.1.2)."
+        }
+      ]
+    },
+    "about-action-plan": {
+      "noticeTh": "สรุปจากเอกสาร OCR 21 หน้า — วันที่ ชื่อผู้รับผิดชอบ และผลการดำเนินงานต้องตรวจสอบกับต้นฉบับ PDF",
+      "noticeEn": "Summary from 21-page OCR-derived document — dates, responsible persons, and performance results require verification against original PDF.",
+      "documentId": "doc-action-plan",
+      "relatedIndicators": ["1.5.1", "1.5.2"],
+      "sections": [
+        {
+          "headingTh": "แผนและผลการดำเนินโครงการ",
+          "headingEn": "Action plan and performance results",
+          "summaryKey": "doc-action-plan",
           "historical": true
         }
       ]
