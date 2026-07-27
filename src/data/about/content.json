@@ -93,6 +93,19 @@
         }
       ]
     },
+    "about-feedback": {
+      "noticeTh": "สรุปจากเอกสารต้นฉบับ (embedded text) — เนื้อหาช่องทางติดต่อส่วนบุคคลถูกปกปิดบนหน้านี้ตามนโยบายความเป็นส่วนตัว",
+      "noticeEn": "Summary from original document (embedded text) — personal contact details are withheld on this page per privacy policy.",
+      "documentId": "doc-feedback-channels",
+      "relatedIndicators": ["2.2.4"],
+      "sections": [
+        {
+          "headingTh": "ช่องทางรับข้อเสนอแนะและขั้นตอนการปรับปรุง",
+          "headingEn": "Feedback channels and improvement procedures",
+          "summaryKey": "doc-feedback-channels"
+        }
+      ]
+    },
     "about-committee": {
       "noticeTh": "เอกสารความเข้าใจบทบาทที่ส่งมาเป็นไฟล์ซ้ำกับรายงานการประชุม — รอ Product Owner ยืนยันเอกสารที่ถูกต้องสำหรับตัวชี้วัด 1.4.2",
       "noticeEn": "The supplied role-understanding file duplicates meeting minutes — Product Owner confirmation needed for indicator 1.4.2.",
