@@ -98,40 +98,39 @@ SharePoint Administrator / Flow Owner
 ## EPIC-03 — Approval Engine
 
 ### Goal
-Transform the placeholder flow into a fully functional approval workflow with schema validation, duplicate detection, approval routing, and conditional branching.
+Convert the recovered Flow skeleton into a working approval engine implementing the core path: Submission → Approval request → Approved/Rejected → Update SharePoint item.
 
 ### Owner
 Flow Developer
 
 ### Dependencies
-- EPIC-01 (connections, solution)
-- EPIC-02 (SharePoint columns)
+- ✅ EPIC-01 (connections established: SharePoint, O365 Outlook, Standard approvals)
+- ✅ EPIC-02 (SharePoint columns created)
 
-### Tasks
+### Implementation Status: ⚠️ PARTIAL
 
-| ID | Task | Description | Est. (h) | AC |
-|---|---|---|---|---|
-| **3.1** | Export current flow as backup | Export GO Metric Approval Workflow as .zip backup before any changes | 0.25 | Backup ZIP saved locally |
-| **3.2** | Update trigger schema | Replace `"properties": {}` with FR-1 schema; set `required` fields | 0.5 | Schema appears in Designer trigger settings |
-| **3.3** | Add Parse_Input action | Add Parse JSON action after trigger with FR-1 schema | 0.25 | Action configured |
-| **3.4** | Add Log_Triggered action | Add Compose action logging event EVT-001 | 0.25 | Action configured |
-| **3.5** | Add Lookup_Duplicate action | Add SharePoint Get Items with filter on Title = AssessmentId | 0.5 | Action returns items in test |
-| **3.6** | Add Check_Duplicate condition | Add Condition: `length(output) > 0` | 0.25 | Branches to correct paths |
-| **3.7** | Add duplicate handling | Send_Dup_Warning email + Terminate (Duplicate branch) | 0.5 | Email sent, flow terminates on dup |
-| **3.8** | Add Start_Approval action | Add Start and Wait for Approval; assign to ApproverEmail; timeout P7D | 1.0 | Approval request sent to test approver |
-| **3.9** | Add Check_Outcome condition | Add Condition checking approval outcome: Approve / Reject / Timeout | 0.5 | Condition branches correctly |
-| **3.10** | Add Create_SP_Item action | Add SharePoint Create Item with FR-4 field mapping; configure retry ×3 | 0.5 | Item appears in GO Approval Workflow list on approve |
-| **3.11** | Add Log_Approved action | Add Compose logging EVT-004 | 0.25 | Action configured |
-| **3.12** | Verify existing Compose | Preserve original Compose action (repurpose as Log_Triggered or rename) | 0.25 | Original action ID unchanged or repurposed |
+| ID | Task | Description | Est. (h) | Actual | Status |
+|---|---|---|---|---|---|
+| **3.1** | Backup flow before changes | Export flow as .zip backup | 0.25 | 0.25 | ✅ Done |
+| **3.2** | Configure trigger schema | Add 7 inputs: SharePointItemId, MetricName, MetricValue, SubmitterEmail, SubmitterName, ApproverEmail, ApproverName | 0.5 | 1.0 | ✅ Done |
+| **3.3** | Add Initialize variable | ApprovalStatus = "Pending" (String) | 0.25 | 0.5 | ✅ Done |
+| **3.4** | Add SharePoint Get items | Retrieve item by ID with filter query | 0.5 | 1.0 | ✅ Done |
+| **3.5** | Add Start and wait for approval | First to respond, assigned to ApproverEmail | 1.0 | 2.0 | ✅ Done |
+| **3.6** | Add Condition (Approve/Reject) | Check Responses Approver response = "Approve" | 0.5 | 1.0 | ⚠️ Partial |
+| **3.7** | Add Update item (IF TRUE) | Set ApprovalStatus = Approved, date, comments, run ID | 1.0 | 0.0 | ❌ Not done |
+| **3.8** | Add Update item (IF FALSE) | Set ApprovalStatus = Rejected, date, comments, run ID | 1.0 | 0.0 | ❌ Not done |
+| **3.9** | Add error handling scope | Configured failure scope with structured error result | 0.5 | 0.0 | ❌ Not done |
+| **3.10** | Update Compose for structured result | Return JSON to Power Apps caller | 0.25 | 0.0 | ❌ Not done |
+| **3.11** | Flow checker validation | Run checker, fix errors | 0.25 | 0.0 | ❌ Not done |
 
-### Acceptance Criteria
-- [ ] Flow accepts valid FR-1 schema payload and rejects invalid
-- [ ] Duplicate AssessmentId detected and submitter notified
-- [ ] Approval request sent to correct ApproverEmail
-- [ ] Approve branch creates SharePoint item with all fields mapped
-- [ ] Reject branch sends notification without creating item
-- [ ] Timeout after P7D triggers timeout notification
-- [ ] All 3 outcome branches independently functional
+### Acceptance Criteria (Updated)
+- [ ] ✅ Trigger accepts 7 input parameters
+- [ ] ✅ Approval request sent to ApproverEmail
+- [ ] ❌ Approve branch updates SharePoint item with correct values
+- [ ] ❌ Reject branch updates SharePoint item with correct values
+- [ ] ❌ Error handling returns structured result
+- [ ] ❌ Flow checker has no blocking errors
+- [ ] ❌ Test items cleaned up after validation
 
 ---
 
