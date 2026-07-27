@@ -1,6 +1,6 @@
 {
-  "version": "0.2.0",
-  "updated": "2026-07-16",
+  "version": "0.3.0",
+  "updated": "2026-07-27",
   "note": "Document registry for real source files. Evidence IDs linked for 4 high-confidence matches.",
   "documents": [
     {
@@ -54,7 +54,7 @@
       "publicationStatus": "internal",
       "classification": "internal",
       "classificationReason": "Contains operational fleet fuel consumption data — internal resource usage metrics.",
-      "evidenceId": null,
+      "evidenceId": "ev-transport-fleet-2025",
       "categoryCode": "cat6",
       "potentialEvidenceMatch": "ev-transport-fleet-2025",
       "sha256": "8FD700F2A491E0E95443DE4572A7DF7CCE6E350B72D7F6DEC2BE4CDF3F124085",
