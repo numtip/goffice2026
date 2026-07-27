@@ -49,7 +49,8 @@ export interface SourceRef {
 // ── Provenance metadata for each year entry ───────────────────────────────
 export interface Provenance {
   sourceWorkbook: string;
-  sourceSheet: string;
+  /** Present when sheet is known (e.g. FY2568 baseline); omitted for pending FY2569 rows. */
+  sourceSheet?: string;
   sourceColumn?: string;
   sourceRowRange?: string;
   extractionScript?: string;
@@ -57,6 +58,8 @@ export interface Provenance {
   normalizationScript?: string;
   normalizationTimestamp?: string;
   extractionStatus?: string;
+  /** Day-1 reconciliation stamp from reconcile-resource-data-day1.mjs */
+  reconciliationDay1?: string;
   validationStatus: DataStatus;
 }
 

@@ -3,24 +3,10 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import '../../../styles/global.css';
 import { dashboards, dashTitle, dashDescription } from '../../../data/dashboard-config';
 import type { DashboardMeta } from '../../../data/dashboard-config';
-import type { MultiYearMetric } from '../../../utils/multi-year-schema';
+import { generatedMetricMap } from '../../../utils/dashboard-generated-metrics';
 import MetricDashboard from '../../../components/dashboard/MetricDashboard.astro';
 
-import energyGen from '../../../data/generated/energy.json';
-import waterGen from '../../../data/generated/water.json';
-import fuelGen from '../../../data/generated/fuel.json';
-import paperGen from '../../../data/generated/paper.json';
-import recyclingRateGen from '../../../data/generated/recycling_rate.json';
-import ghgGen from '../../../data/generated/ghg.json';
-
-const genMap: Record<string, MultiYearMetric> = {
-  energy: energyGen as MultiYearMetric,
-  water: waterGen as MultiYearMetric,
-  fuel: fuelGen as MultiYearMetric,
-  paper: paperGen as MultiYearMetric,
-  waste: recyclingRateGen as MultiYearMetric,
-  ghg: ghgGen as MultiYearMetric,
-};
+const genMap = generatedMetricMap;
 
 export function getStaticPaths() {
   return dashboards.map((d) => ({
