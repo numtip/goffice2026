@@ -1,0 +1,166 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-07-27",
+  "note": "Route foundations for News, Activities, and Knowledge hubs. No invented events — pending slots only; related links point to verified about/evidence routes.",
+  "hubs": {
+    "news": {
+      "titleTh": "ข่าวสาร",
+      "titleEn": "News",
+      "descriptionTh": "ข่าวสารและประกาศจากทีมสำนักงานสีเขียว มหาวิทยาลัยแม่โจ้ — เนื้อหาจะเผยแพร่เมื่อได้รับการอนุมัติอย่างเป็นทางการ",
+      "descriptionEn": "News and announcements from the Maejo University Green Office team — content will be published once officially approved.",
+      "pendingTitleTh": "รอการเผยแพร่อย่างเป็นทางการ",
+      "pendingTitleEn": "Pending official publication",
+      "pendingBodyTh": "ยังไม่มีข่าวที่เผยแพร่ในขณะนี้ ทีม Green Office กำลังจัดทำเนื้อหาที่ผ่านการตรวจสอบแล้ว รายการจะปรากฏที่นี่เมื่อพร้อมเผยแพร่",
+      "pendingBodyEn": "No news items are published yet. The Green Office team is preparing verified content — items will appear here when ready for release.",
+      "relatedHeadingTh": "แหล่งข้อมูลที่เกี่ยวข้อง",
+      "relatedHeadingEn": "Related resources",
+      "relatedLinks": [
+        {
+          "route": "/about/",
+          "labelTh": "เกี่ยวกับสำนักงานสีเขียว",
+          "labelEn": "About Green Office"
+        },
+        {
+          "route": "/about/policy/",
+          "labelTh": "นโยบายสิ่งแวดล้อม",
+          "labelEn": "Environmental Policy"
+        },
+        {
+          "route": "/evidence/",
+          "labelTh": "คลังหลักฐาน",
+          "labelEn": "Evidence Library"
+        }
+      ],
+      "slots": [
+        {
+          "categoryTh": "ประกาศ",
+          "categoryEn": "Announcements",
+          "titleTh": "รอเนื้อหาประกาศที่อนุมัติแล้ว",
+          "titleEn": "Approved announcements awaiting publication",
+          "excerptTh": "ช่องนี้สำรองไว้สำหรับประกาศจากทีม Green Office เมื่อเอกสารต้นฉบับได้รับการอนุมัติ",
+          "excerptEn": "Reserved for Green Office announcements once source documents are approved."
+        },
+        {
+          "categoryTh": "อัปเดตแพลตฟอร์ม",
+          "categoryEn": "Platform updates",
+          "titleTh": "รอสรุปการอัปเดตแพลตฟอร์ม",
+          "titleEn": "Platform update summaries pending publication",
+          "excerptTh": "สรุปการเปลี่ยนแปลงแพลตฟอร์มจะแสดงเมื่อทีมงานเผยแพร่อย่างเป็นทางการ",
+          "excerptEn": "Platform change summaries will appear when officially released by the team."
+        }
+      ]
+    },
+    "activities": {
+      "titleTh": "กิจกรรม",
+      "titleEn": "Activities",
+      "descriptionTh": "กิจกรรม โครงการรณรงค์ และการฝึกอบรมด้านสิ่งแวดล้อม — อ้างอิงเกณฑ์การสื่อสารและการมีส่วนร่วม (หมวด 2) และเอกสารขอบเขตการดำเนินงาน",
+      "descriptionEn": "Environmental activities, campaigns, and training — aligned with communication and engagement criteria (Category 2) and scope documentation.",
+      "pendingTitleTh": "รอเนื้อหาจากทีม Green Office",
+      "pendingTitleEn": "Awaiting content from Green Office team",
+      "pendingBodyTh": "ยังไม่มีบันทึกกิจกรรมที่เผยแพร่ เอกสารขอบเขตการดำเนินงานและหลักฐานที่เชื่อมโยงจะเป็นฐานข้อมูลเมื่อเนื้อหาพร้อม",
+      "pendingBodyEn": "No activity records are published yet. Scope documentation and linked evidence will serve as the source base when content is ready.",
+      "relatedHeadingTh": "แหล่งข้อมูลที่เกี่ยวข้อง",
+      "relatedHeadingEn": "Related resources",
+      "relatedLinks": [
+        {
+          "route": "/about/goals/",
+          "labelTh": "เป้าหมายและตัวชี้วัด",
+          "labelEn": "Goals and Indicators"
+        },
+        {
+          "route": "/about/committee/",
+          "labelTh": "คณะกรรมการและทีมงาน",
+          "labelEn": "Committee and Team"
+        },
+        {
+          "route": "/documents/",
+          "labelTh": "ศูนย์เอกสาร",
+          "labelEn": "Document Center"
+        },
+        {
+          "route": "/evidence/",
+          "labelTh": "คลังหลักฐาน",
+          "labelEn": "Evidence Library"
+        }
+      ],
+      "slots": [
+        {
+          "categoryTh": "ข้อมูลย้อนหลัง",
+          "categoryEn": "Historical information",
+          "titleTh": "บันทึกกิจกรรมรอเนื้อหาอย่างเป็นทางการ",
+          "titleEn": "Activity records awaiting official content",
+          "excerptTh": "ช่องนี้สำรองไว้สำหรับหลักฐานกิจกรรมที่อนุมัติแล้ว เมื่อมีการเผยแพร่เอกสารต้นฉบับ",
+          "excerptEn": "Reserved for approved activity evidence once official records are published."
+        },
+        {
+          "categoryTh": "ข้อมูลย้อนหลัง",
+          "categoryEn": "Historical information",
+          "titleTh": "เนื้อหาโครงการรณรงค์รอการเผยแพร่",
+          "titleEn": "Campaign content pending publication",
+          "excerptTh": "สรุปโครงการรณรงค์และสื่อที่ตรวจสอบแล้วจะแสดงหลังการเผยแพร่อย่างเป็นทางการ",
+          "excerptEn": "Verified campaign summaries and media will appear after official publication."
+        },
+        {
+          "categoryTh": "ข้อมูลย้อนหลัง",
+          "categoryEn": "Historical information",
+          "titleTh": "ผลการฝึกอบรมรอการเชื่อมโยงหลักฐาน",
+          "titleEn": "Training milestones awaiting evidence links",
+          "excerptTh": "ผลลัพธ์การฝึกอบรมจะแสดงเมื่อมีเอกสารอย่างเป็นทางการเชื่อมโยงแล้ว",
+          "excerptEn": "Training outcomes will be listed when linked official documents are available."
+        }
+      ]
+    },
+    "knowledge": {
+      "titleTh": "ความรู้และการสื่อสาร",
+      "titleEn": "Knowledge & Awareness",
+      "descriptionTh": "แหล่งความรู้ด้านสิ่งแวดล้อม การสื่อสาร และการมีส่วนร่วม — สอดคล้องเกณฑ์หมวด 2 (การสื่อสารและการมีส่วนร่วม) และเอกสารเกี่ยวกับเรา",
+      "descriptionEn": "Environmental knowledge, communication, and engagement resources — aligned with Category 2 criteria and About Center documents.",
+      "pendingTitleTh": "รอการเผยแพร่อย่างเป็นทางการ",
+      "pendingTitleEn": "Pending official publication",
+      "pendingBodyTh": "ยังไม่มีเนื้อหาความรู้ที่เผยแพร่ ทีม Green Office กำลังจัดทำเนื้อหาการสื่อสารและการฝึกอบรมที่ผ่านการตรวจสอบ",
+      "pendingBodyEn": "No knowledge articles are published yet. The Green Office team is preparing verified communication and training content.",
+      "relatedHeadingTh": "แหล่งข้อมูลที่เกี่ยวข้อง",
+      "relatedHeadingEn": "Related resources",
+      "relatedLinks": [
+        {
+          "route": "/about/",
+          "labelTh": "เกี่ยวกับสำนักงานสีเขียว",
+          "labelEn": "About Green Office"
+        },
+        {
+          "route": "/about/policy/",
+          "labelTh": "นโยบายสิ่งแวดล้อม",
+          "labelEn": "Environmental Policy"
+        },
+        {
+          "route": "/categories/cat2/",
+          "labelTh": "หมวด 2 — การสื่อสารและการมีส่วนร่วม",
+          "labelEn": "Category 2 — Communication & Engagement"
+        },
+        {
+          "route": "/documents/",
+          "labelTh": "ศูนย์เอกสาร",
+          "labelEn": "Document Center"
+        }
+      ],
+      "slots": [
+        {
+          "categoryTh": "การสื่อสาร",
+          "categoryEn": "Communication",
+          "titleTh": "แนวทางการสื่อสารรอเนื้อหาอย่างเป็นทางการ",
+          "titleEn": "Communication guidelines awaiting official content",
+          "excerptTh": "อ้างอิงตัวชี้วัด 2.2.1 — เนื้อหาจะเผยแพร่เมื่อทีม Green Office ยืนยันเอกสารต้นฉบับ",
+          "excerptEn": "References indicator 2.2.1 — content will publish once the Green Office team confirms source documents."
+        },
+        {
+          "categoryTh": "การฝึกอบรม",
+          "categoryEn": "Training",
+          "titleTh": "เนื้อหาการฝึกอบรมรอการเผยแพร่",
+          "titleEn": "Training materials pending publication",
+          "excerptTh": "ช่องนี้สำรองไว้สำหรับเอกสารการฝึกอบรมและการประเมินความรู้ที่เชื่อมโยงกับหลักฐาน",
+          "excerptEn": "Reserved for training documents and knowledge assessments linked to evidence records."
+        }
+      ]
+    }
+  }
+}
