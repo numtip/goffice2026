@@ -1,6 +1,12 @@
 ---
 import type { MetricTheme } from '../../data/metric-theme';
-import type { Provenance, DataClassification } from '../../utils/multi-year-schema';
+import type { Provenance, DataClassification, DataStatus } from '../../utils/multi-year-schema';
+import {
+  WAITING_FY2569,
+  PENDING_SOURCE_SHEET,
+  isPendingSourceSheet,
+  pubLabel,
+} from '../../utils/publication-states';
 
 interface Props {
   /** Summary-level fields shown when collapsed */
@@ -17,6 +23,7 @@ interface Props {
   currentUpdated?: string;
   baselineProvenance?: Provenance;
   currentProvenance?: Provenance;
+  currentDataStatus?: DataStatus;
   dataModelPath?: string;
   sourceRefLabel?: string;
 
@@ -36,6 +43,7 @@ const {
   currentUpdated,
   baselineProvenance,
   currentProvenance,
+  currentDataStatus,
   dataModelPath,
   sourceRefLabel,
   theme,
@@ -48,7 +56,7 @@ const classificationLabels: Record<string, { th: string; en: string }> = {
   CONFIRMED_XLSX: { th: 'ยืนยันจากไฟล์ XLSX', en: 'Confirmed from XLSX' },
   DERIVED_FROM_CSV: { th: 'ดึงจาก CSV (ยังไม่ยืนยัน)', en: 'Derived from CSV (unverified)' },
   PRESERVED_LEGACY: { th: 'ข้อมูลคงไว้จากการดึงครั้งก่อน', en: 'Preserved legacy extraction' },
-  PLACEHOLDER: { th: 'รอข้อมูลอย่างเป็นทางการ ปีงบประมาณ 2569', en: 'Waiting for Official FY2569 Data' },
+  PLACEHOLDER: { th: WAITING_FY2569.th, en: WAITING_FY2569.en },
   MANUAL_ENTRY: { th: 'กรอกโดยเจ้าหน้าที่', en: 'Manual entry' },
   UNKNOWN: { th: 'ไม่ทราบที่มา', en: 'Unknown origin' },
 };
@@ -122,10 +130,12 @@ const classLabel = sourceClassification
               <p class="text-on-surface-variant">{th ? 'ไฟล์ต้นฉบับ' : 'Source Workbook'}</p>
               <p class="text-on-surface font-mono break-all">{baselineProvenance.sourceWorkbook}</p>
             </div>
-            <div class="space-y-0.5">
-              <p class="text-on-surface-variant">{th ? 'ชีตข้อมูล' : 'Source Sheet'}</p>
-              <p class="text-on-surface font-mono break-all">{baselineProvenance.sourceSheet}</p>
-            </div>
+            {baselineProvenance.sourceSheet && (
+              <div class="space-y-0.5">
+                <p class="text-on-surface-variant">{th ? 'ชีตข้อมูล' : 'Source Sheet'}</p>
+                <p class="text-on-surface font-mono break-all">{baselineProvenance.sourceSheet}</p>
+              </div>
+            )}
             {baselineProvenance.sourceColumn && (
               <div class="space-y-0.5">
                 <p class="text-on-surface-variant">{th ? 'คอลัมน์ข้อมูล' : 'Source Column'}</p>
@@ -166,10 +176,14 @@ const classLabel = sourceClassification
                 <p class="text-on-surface font-mono break-all">{currentProvenance.sourceWorkbook}</p>
               </div>
             )}
-            {currentProvenance.sourceSheet && (
+            {(currentProvenance.sourceSheet || isPendingSourceSheet(currentDataStatus, currentProvenance.sourceSheet)) && (
               <div class="space-y-0.5">
                 <p class="text-on-surface-variant">{th ? 'ชีตข้อมูล' : 'Source Sheet'}</p>
-                <p class="text-on-surface font-mono break-all">{currentProvenance.sourceSheet}</p>
+                {currentProvenance.sourceSheet ? (
+                  <p class="text-on-surface font-mono break-all">{currentProvenance.sourceSheet}</p>
+                ) : (
+                  <p class="text-on-surface-variant italic">{pubLabel(PENDING_SOURCE_SHEET, locale)}</p>
+                )}
               </div>
             )}
             {currentProvenance.extractionStatus && (

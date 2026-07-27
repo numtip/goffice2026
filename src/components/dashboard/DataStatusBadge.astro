@@ -1,5 +1,6 @@
 ---
 import type { DisplayStatus } from '../../utils/data-status';
+import { WAITING_FY2569, pubLabel } from '../../utils/publication-states';
 
 interface Props {
   status: DisplayStatus;
@@ -36,7 +37,7 @@ if (!verified) {
   classes = 'bg-yellow-50 text-yellow-800 border-yellow-200';
   dotClass = 'bg-yellow-500';
 } else if (status === 'pending') {
-  label = th ? 'รอข้อมูลอย่างเป็นทางการ ปีงบประมาณ 2569' : 'Waiting for Official FY2569 Data';
+  label = pubLabel(WAITING_FY2569, locale);
   classes = 'bg-gray-50 text-gray-600 border-gray-200';
   dotClass = 'bg-gray-400';
 } else {

@@ -257,6 +257,7 @@ const primaryIndicator = metric?.relatedIndicators?.[0];
         currentUpdated={currentYear?.updated}
         baselineProvenance={baselineYear.provenance}
         currentProvenance={currentYear?.provenance}
+        currentDataStatus={currentYear?.dataStatus}
         dataModelPath={`src/data/generated/${metric.metric}.json`}
         sourceRefLabel={dashSourceLabel(dashboard, locale)}
         theme={theme}
