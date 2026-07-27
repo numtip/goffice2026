@@ -1,18 +1,31 @@
 # RC-1 Gate Audit — Subagent D: Dashboard / Evidence
 
 **Date:** 2026-07-27  
-**Branch:** `rapid/rc-dashboard` (`master@61b5fa9`)  
+**Branch:** `rapid/rc1-revalidate` (`master@b94e802`)  
 **Auditor:** Subagent D (Dashboard/Evidence RC Audit)  
 **Scope:** Generated metrics JSON, reconciliation status, publication copy, evidence traceability, dashboard truthfulness, SharePoint metadata readiness  
 **Type:** Audit only — no application changes
 
 ---
 
+## Revalidation (2026-07-27)
+
+> **D-B1 / D-B2 REMEDIATED** — commit `3282854` (`fix(evidence): align source availability flags`)
+
+| Evidence ID | `realSourceAvailable` | Workbook on disk |
+|-------------|----------------------|------------------|
+| `ev-energy-metering-2025` | **false** | `docs/1.2-elect.xlsx` — No |
+| `ev-waste-monthly-2025` | **false** | `docs/1.5_Waste.xlsx` — No |
+
+Category verdict upgraded to **PASS (D-B1/D-B2 remediated)**.
+
+---
+
 ## Executive Verdict
 
-> **FAIL**
+> **PASS (D-B1/D-B2 remediated)**
 
-RC-1 dashboard data posture is correct: FY2569 is uniformly pending with zero invented current-year values, FY2568 baselines are preserved and aligned, and `node scripts/validate-evidence.mjs` exits 0. Two evidence records falsely assert on-disk source availability, which breaks traceability truthfulness and blocks RC-1.
+RC-1 dashboard data posture is correct: FY2569 is uniformly pending with zero invented current-year values, FY2568 baselines are preserved and aligned, and `node scripts/validate-evidence.mjs` exits 0. Evidence source-availability flags now truthfully reflect off-disk workbooks.
 
 ---
 
@@ -20,8 +33,8 @@ RC-1 dashboard data posture is correct: FY2569 is uniformly pending with zero in
 
 | ID | Severity | Finding |
 |---|---|---|
-| **D-B1** | **BLOCKER** | `ev-energy-metering-2025` has `realSourceAvailable: true` but `docs/1.2-elect.xlsx` is **not on disk**. |
-| **D-B2** | **BLOCKER** | `ev-waste-monthly-2025` has `realSourceAvailable: true` but `docs/1.5_Waste.xlsx` is **not on disk**. |
+| **D-B1** | ~~**BLOCKER**~~ **REMEDIATED** | ~~`ev-energy-metering-2025` has `realSourceAvailable: true`~~ Now **false** (`3282854`); `docs/1.2-elect.xlsx` off-disk — flag aligned. |
+| **D-B2** | ~~**BLOCKER**~~ **REMEDIATED** | ~~`ev-waste-monthly-2025` has `realSourceAvailable: true`~~ Now **false** (`3282854`); `docs/1.5_Waste.xlsx` off-disk — flag aligned. |
 
 ---
 
@@ -149,7 +162,7 @@ On-disk workbooks at audit time:
 | `docs/1.5_Waste.xlsx` | **No** |
 | `docs/1.6_GreenhouseGas.xlsx` | No |
 
-**Verdict:** FAIL — 2 `realSourceAvailable` flags contradict filesystem state (D-B1, D-B2).
+**Verdict:** PASS — flags aligned with filesystem state (`3282854`).
 
 ---
 
@@ -221,8 +234,8 @@ RESULT: PASS ✓ (exit code 0)
 
 ## Remediation Required Before RC-1 Pass
 
-1. **D-B1:** Set `ev-energy-metering-2025.realSourceAvailable` to `false` (or restore `docs/1.2-elect.xlsx` to disk and re-validate SHA256).
-2. **D-B2:** Set `ev-waste-monthly-2025.realSourceAvailable` to `false` (or restore `docs/1.5_Waste.xlsx` to disk and re-validate SHA256).
+1. ~~**D-B1:** Set `ev-energy-metering-2025.realSourceAvailable` to `false`~~ **Done (`3282854`)**
+2. ~~**D-B2:** Set `ev-waste-monthly-2025.realSourceAvailable` to `false`~~ **Done (`3282854`)**
 
 ---
 
@@ -235,12 +248,12 @@ RESULT: PASS ✓ (exit code 0)
 | `reconciliation-status.json` | PASS |
 | `publication-states.ts` | PASS |
 | Evidence structural validation | PASS |
-| Evidence source availability truthfulness | **FAIL** |
+| Evidence source availability truthfulness | **PASS** (D-B1/D-B2 remediated) |
 | `doc-paper-usage-2025` orphan handling | PASS |
 | Dashboard metric truthfulness | PASS |
 | FY2568 baseline preservation | PASS |
 | SharePoint metadata flags | PASS |
-| **Overall RC-1 Gate (Subagent D)** | **FAIL** |
+| **Overall RC-1 Gate (Subagent D)** | **PASS (D-B1/D-B2 remediated)** |
 
 ---
 

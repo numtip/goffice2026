@@ -2,19 +2,33 @@
 
 **Date:** 2026-07-27  
 **Auditor:** Subagent B (UX/Navigation)  
-**Branch:** `rapid/rc-ux` (`master@61b5fa9`)  
+**Branch:** `rapid/rc1-revalidate` (`master@b94e802`)  
 **Scope:** Navigation.astro, AboutPageShell.astro, BaseLayout.astro, footer (inline), header/footer breakpoints, hub discoverability, TH/EN parity, accessibility smoke, layout anti-patterns  
-**Method:** Source review + `npm run build` (PASS, 250 pages) + dist HTML/JS grep  
+**Method:** Source review + `npm run build` (PASS, 252 pages) + dist HTML/JS grep  
+
+---
+
+## Revalidation (2026-07-27)
+
+> **P0 REMEDIATED** — commit `210cad2` (`fix(nav): localize mobile navigation labels`)
+
+| Check | Result |
+|-------|--------|
+| dist grep `{navLabels.menu}` | **0 hits** |
+| Mobile nav toggle labels | Localized via `define:vars` |
+| Build | PASS (252 pages) |
+
+B-P0-01 closed. Category verdict upgraded to **PASS (P0 remediated)**; P1/P2 items remain open.
 
 ---
 
 ## Executive Verdict
 
-> **FAIL**
+> **PASS (P0 remediated)**
 
-**Reason:** Mobile navigation toggle script ships broken localized labels in production bundle (`dist/_astro/hoisted.BJwpUBTY.js`). When the menu opens, summary text and `aria-label` render literal `{navLabels.menu}` / `{locale === "th" ? "ปิด" : "Close"}` instead of localized strings — affects all viewports below `lg` (≤1023px). RC-1 cannot pass with a P0 navigation defect on primary mobile/tablet UX.
+**Original reason (pre-fix):** Mobile navigation toggle script shipped broken localized labels in production bundle. **Remediated in `210cad2`.**
 
-**P0 count:** 1  
+**P0 count:** 0 (was 1)  
 **P1 count:** 4  
 **P2 count:** 6  
 
@@ -38,7 +52,7 @@
 
 | ID | Issue | Evidence | Impact |
 |----|-------|----------|--------|
-| B-P0-01 | **Mobile nav toggle labels not interpolated** | `Navigation.astro` L163–164 uses literal strings in `<script>`; built `dist/_astro/hoisted.BJwpUBTY.js` contains `a="{navLabels.menu}"`, `l='{locale === "th" ? "ปิด" : "Close"}'` | On menu open, visible label and `aria-label` break for TH/EN; screen readers get garbage text |
+| B-P0-01 | **Mobile nav toggle labels not interpolated** | ~~`Navigation.astro` L163–164~~ **REMEDIATED `210cad2`** — `define:vars` injects localized open/close labels; dist grep 0 hits for `{navLabels.menu}` | ~~On menu open, visible label and `aria-label` break~~ **Fixed** |
 
 **Fix:** Pass labels via `define:vars={{ openLabel: navLabels.menu, closeLabel: ... }}` or data attributes on `#mobile-nav`.
 
@@ -75,7 +89,7 @@
 | Skip link → `#main-content` | ✅ PASS | Localized via `dict.site.skip_to_content`; focus styles present |
 | Viewport meta | ✅ PASS | `width=device-width, initial-scale=1.0` in dist |
 | `main` landmark | ✅ PASS | `<main id="main-content">` |
-| Mobile nav present | ⚠️ PARTIAL | `#mobile-nav` exists; toggle behavior broken (P0) |
+| Mobile nav present | ✅ PASS | `#mobile-nav` exists; toggle labels localized (`210cad2`) |
 | TH/EN nav labels | ✅ PASS | `th.json` / `en.json` `home.nav.*` parity |
 | TH/EN hub routes | ✅ PASS | `/news`, `/activities`, `/knowledge` + `/en/*` built |
 | About scope / action-plan discoverability | ✅ PASS | Primary nav → About; index links + breadcrumb include scope & action-plan |
@@ -104,7 +118,7 @@ Active-state: `/about/*` correctly highlights About via `isActive` prefix match.
 
 ## Recommended Gate Actions
 
-1. **Must fix before RC-1:** B-P0-01 (mobile nav `define:vars` or data-attribute injection).
+1. ~~**Must fix before RC-1:** B-P0-01 (mobile nav `define:vars` or data-attribute injection).~~ **Done (`210cad2`)**
 2. **Should fix:** B-P1-01 (i18n aria keys), B-P1-02 (footer hub links), B-P1-03 (nav overflow strategy — mega-menu, two-row, or `xl` breakpoint).
 3. **Defer post-RC1:** B-P2-* except breadcrumb markup if quick win.
 

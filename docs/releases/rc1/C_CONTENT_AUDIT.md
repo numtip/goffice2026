@@ -2,20 +2,32 @@
 
 **Date:** 2026-07-27  
 **Auditor:** Subagent C (Content)  
-**Branch:** `rapid/rc-release` (`ffb7749` — workspace at audit time; requested baseline `rapid/rc-content` @ `61b5fa9`)  
+**Branch:** `rapid/rc1-revalidate` (`master@b94e802`)  
 **Scope:** TH/EN route parity (`src/pages` vs `src/pages/en`), translation gaps, user-visible placeholders, hub routes (`/news`, `/activities`, `/knowledge`, `/about/*`), OCR warnings, About hub content consistency  
 **Method:** File-tree diff, grep (`summaryEn`, `Placeholder|TODO|Demo|Lorem`, `OCR`), source review of About pages + `document-summaries.json`, `content.json`, `hubs.json`, `pages.json`  
 **Constraint:** Audit only — no content invented.
 
 ---
 
+## Revalidation (2026-07-27)
+
+> **C-P0-01 REMEDIATED** — commit `4be0a02` (`fix(content): resolve about feedback route metadata`)
+
+| Route | TH | EN | dist |
+|-------|----|----|------|
+| `/about/feedback/` | `src/pages/about/feedback.astro` | `src/pages/en/about/feedback.astro` | ✅ built |
+
+Category verdict upgraded to **PASS (P0 remediated)**; P1 items (summaryEn, OCR banners, PII) remain.
+
+---
+
 ## Executive Verdict
 
-> **FAIL**
+> **PASS (P0 remediated)**
 
-**Reason:** Required About metadata routes are incomplete (`/about/feedback/` marked CREATED in `pages.json` but no page files exist). One document summary lacks English translation (`summaryEn: null`). TH About sub-pages omit per-section OCR banners present on EN equivalents for policy, committee, and goals. Intentional pending/placeholder copy is correctly labeled on hubs and landing but remains PO-visible.
+**Original reason (pre-fix):** Required About metadata routes incomplete (`/about/feedback/` marked CREATED without page files). **Remediated in `4be0a02`.** Remaining: `summaryEn: null` for feedback channels; TH OCR banner gaps; PII redaction.
 
-**P0 count:** 1  
+**P0 count:** 0 (was 1)  
 **P1 count:** 4  
 **P2 count:** 5  
 
@@ -36,7 +48,7 @@
 | `/about/goals/` | `src/pages/about/goals.astro` | `src/pages/en/about/goals.astro` | ✅ PASS |
 | `/about/committee/` | `src/pages/about/committee.astro` | `src/pages/en/about/committee.astro` | ✅ PASS |
 | `/about/action-plan/` | `src/pages/about/action-plan.astro` | `src/pages/en/about/action-plan.astro` | ✅ PASS |
-| `/about/feedback/` | **missing** | **missing** | ❌ FAIL |
+| `/about/feedback/` | `src/pages/about/feedback.astro` | `src/pages/en/about/feedback.astro` | ✅ PASS (`4be0a02`) |
 | `/about/certification/` | **missing** | **missing** | ⚠️ Expected (`NOT_CREATED` in `pages.json`) |
 
 All three hub routes share `_HubPage.astro` + `hubs.json` with full TH/EN strings — no invented events.
@@ -136,7 +148,7 @@ Global note in JSON: *"Summaries are based on OCR-derived content and require hu
 
 | ID | Issue | Evidence |
 |----|-------|----------|
-| C-P0-01 | **`/about/feedback/` route missing (TH+EN)** | `pages.json` L133–150 status `CREATED`; no `src/pages/about/feedback.astro` or `src/pages/en/about/feedback.astro`; `doc-feedback-channels` summary exists |
+| C-P0-01 | **`/about/feedback/` route missing (TH+EN)** | ~~No page files~~ **REMEDIATED `4be0a02`** — TH+EN routes built; `content.json` entry added |
 
 ### P1 — High (PO review before RC sign-off)
 
@@ -180,7 +192,7 @@ Global note in JSON: *"Summaries are based on OCR-derived content and require hu
 | Hub content uses pending slots only (no invented events) | ✅ PASS |
 | OCR data flagged in summaries JSON | ✅ PASS |
 | No Lorem/TODO/Demo in user-facing UI | ✅ PASS |
-| `/about/feedback/` TH+EN | ❌ FAIL |
+| `/about/feedback/` TH+EN | ✅ PASS (`4be0a02`) |
 | EN translation completeness (summaries) | ❌ FAIL (1 null) |
 | TH/EN OCR banner parity on About sub-pages | ❌ FAIL |
 
