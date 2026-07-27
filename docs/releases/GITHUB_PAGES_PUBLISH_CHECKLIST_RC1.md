@@ -1,7 +1,7 @@
 # GitHub Pages Publish Checklist — RC-1
 
 **Release candidate:** `1.2.0-rc.1`  
-**Target commit:** `ccb205d`  
+**Target commit:** `dbac61c`  
 **Preview URL:** https://numtip.github.io/goffice2026/  
 **Production URL (unchanged):** https://goffice.mju.ac.th/  
 **Workflow:** `.github/workflows/deploy-pages.yml`  
@@ -11,7 +11,7 @@
 
 ## 1. Pre-push (local)
 
-- [ ] On branch `master` at commit `ccb205d` (RC release pack)
+- [ ] On branch `master` at commit `dbac61c` (RC release pack)
 - [ ] `git status` — no unintended staged changes
 - [ ] PO recorded RC acceptance for **preview** (not production VPS)
 - [ ] [KNOWN_LIMITATIONS_RC1.md](./KNOWN_LIMITATIONS_RC1.md) acknowledged

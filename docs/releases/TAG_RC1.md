@@ -3,7 +3,7 @@
 **Status:** Recommended only — **do not create or push until Product Owner approval**  
 **Date:** 2026-07-27  
 **RC acceptance:** Product Owner accepted RC-1 for preview release  
-**Target commit:** `ccb205d` (`docs(release): finalize RC-1 accepted release pack for PO push gate`)
+**Target commit:** `dbac61c` (`docs(release): finalize RC-1 accepted release pack for PO push gate`)
 
 ---
 
@@ -22,10 +22,10 @@
 
 ```powershell
 # 1. Verify HEAD matches RC commit
-git.exe -C "G:/ProjectAI/goffice2026" log --oneline -1 ccb205d
+git.exe -C "G:/ProjectAI/goffice2026" log --oneline -1 dbac61c
 
 # 2. Create annotated tag (local)
-git.exe -C "G:/ProjectAI/goffice2026" tag -a v1.2.0-rc.1 ccb205d -m "Green Office 2026 RC-1 — Rapid Completion preview candidate"
+git.exe -C "G:/ProjectAI/goffice2026" tag -a v1.2.0-rc.1 HEAD -m "Green Office 2026 RC-1 — Rapid Completion preview candidate"
 
 # 3. Push master + tag (PO approval required)
 git.exe -C "G:/ProjectAI/goffice2026" push origin master

@@ -1,7 +1,7 @@
 # Changelog — RC-1 (`1.2.0-rc.1`)
 
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).  
-**Target commit:** `ccb205d` · **Date:** 2026-07-27 · **Status:** RC accepted — push pending PO approval
+**Target commit:** `dbac61c` · **Date:** 2026-07-27 · **Status:** RC accepted — push pending PO approval
 
 ---
 

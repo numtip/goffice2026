@@ -1,7 +1,7 @@
 # Deployment Checklist — RC-1
 
 **Release candidate:** `1.2.0-rc.1`  
-**Target commit:** `ccb205d`  
+**Target commit:** `dbac61c`  
 **RC status:** Accepted by Product Owner  
 **Push/deploy:** Blocked until PO push approval  
 **Production VPS:** Do **not** deploy RC-1 — preview only
@@ -10,7 +10,7 @@
 
 ## 1. Pre-flight
 
-- [ ] Branch `master` at commit `ccb205d` (RC release pack)
+- [ ] Branch `master` at commit `dbac61c` (RC release pack)
 - [ ] `git status` clean for tracked files
 - [ ] [RELEASE_NOTES_RC1.md](./RELEASE_NOTES_RC1.md) reviewed
 - [ ] [KNOWN_LIMITATIONS_RC1.md](./KNOWN_LIMITATIONS_RC1.md) acknowledged
@@ -84,7 +84,7 @@ npm run qa:links
 See [TAG_RC1.md](./TAG_RC1.md). **Do not tag until PO approves push.**
 
 ```powershell
-git.exe tag -a v1.2.0-rc.1 ccb205d -m "Green Office 2026 RC-1 — Rapid Completion preview candidate"
+git.exe tag -a v1.2.0-rc.1 HEAD -m "Green Office 2026 RC-1 — Rapid Completion preview candidate"
 ```
 
 - [ ] Tag created locally (optional)

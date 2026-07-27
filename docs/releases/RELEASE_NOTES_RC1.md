@@ -2,7 +2,7 @@
 
 **Release candidate:** `1.2.0-rc.1`  
 **Recommended tag:** `v1.2.0-rc.1`  
-**Target commit:** `ccb205d`  
+**Target commit:** `dbac61c`  
 **Date:** 2026-07-27  
 **Status:** **RC accepted by Product Owner** — preview publish pending push approval  
 **Production:** Remains **v1.1.3** at https://goffice.mju.ac.th/

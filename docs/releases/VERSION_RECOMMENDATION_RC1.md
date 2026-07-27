@@ -1,7 +1,7 @@
 # Version Recommendation — RC-1
 
 **Date:** 2026-07-27  
-**Baseline commit:** `ccb205d` (RC release pack)  
+**Baseline commit:** `dbac61c` (RC release pack)  
 **Prepared by:** Subagent E — Release Manager · updated Head Agent 2026-07-27  
 **RC status:** Accepted by Product Owner — push/tag pending approval
 
@@ -32,7 +32,7 @@
 
 ```powershell
 # FOR REFERENCE ONLY — RC-1 gate prohibits tagging and pushing
-git.exe tag -a v1.2.0-rc.1 ccb205d -m "Green Office 2026 RC-1 — Rapid Completion preview candidate"
+git.exe tag -a v1.2.0-rc.1 HEAD -m "Green Office 2026 RC-1 — Rapid Completion preview candidate"
 git.exe push origin master
 git.exe push origin v1.2.0-rc.1
 ```
