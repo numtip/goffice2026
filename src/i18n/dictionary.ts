@@ -160,6 +160,7 @@ export interface HomeNavStrings {
   news?: string;
   activities?: string;
   knowledge?: string;
+  about?: string;
   search: string;
   menu: string;
 }

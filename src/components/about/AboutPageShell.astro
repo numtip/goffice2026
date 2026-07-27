@@ -19,7 +19,14 @@ const pageDesc =
   description ?? (isTh ? pageMeta?.descriptionTh : pageMeta?.descriptionEn) ?? '';
 
 const navPages = pagesMeta.pages.filter((p) =>
-  ['about-index', 'about-policy', 'about-goals', 'about-committee'].includes(p.id),
+  [
+    'about-index',
+    'about-scope',
+    'about-policy',
+    'about-goals',
+    'about-committee',
+    'about-action-plan',
+  ].includes(p.id),
 );
 
 const pendingLabel = isTh ? 'เนื้อหารอตรวจสอบ' : 'Content pending review';

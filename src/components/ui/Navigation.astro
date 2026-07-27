@@ -18,6 +18,10 @@ const navLabels = Astro.props.t ?? {
   categories: 'Categories',
   evidence: 'Evidence',
   documents: 'Documents',
+  news: 'News',
+  activities: 'Activities',
+  knowledge: 'Knowledge',
+  about: 'About',
   search: 'Search',
   menu: 'Menu',
 } as HomeNavStrings;
@@ -30,8 +34,12 @@ const navItems = [
   { href: '/', label: navLabels.home },
   { href: '/dashboard', label: navLabels.dashboard },
   { href: '/categories', label: navLabels.categories },
+  { href: '/news', label: navLabels.news ?? 'News' },
+  { href: '/activities', label: navLabels.activities ?? 'Activities' },
+  { href: '/knowledge', label: navLabels.knowledge ?? 'Knowledge' },
   { href: '/evidence', label: navLabels.evidence },
   { href: '/documents', label: navLabels.documents },
+  { href: '/about', label: navLabels.about ?? 'About' },
   { href: '/search', label: navLabels.search },
 ];
 
