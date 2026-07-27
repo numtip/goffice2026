@@ -332,8 +332,8 @@ export function buildExecutiveInsight(
         ? `มีข้อมูล ${monthCount} จาก 12 เดือน แต่ชุดข้อมูลยังไม่ผ่านการยืนยัน`
         : `Data available for ${monthCount} of 12 months, but the dataset is unverified`,
       interpretation: th
-        ? 'จึงยังไม่ควรใช้สรุปแนวโน้มทั้งปี — ตัวเลขปีปัจจุบันเป็นข้อมูลตัวอย่าง/รอตรวจสอบ'
-        : 'Full-year trend conclusions should not be drawn — current-year figures are sample/pending verification',
+        ? 'จึงยังไม่ควรใช้สรุปแนวโน้มทั้งปี — รอข้อมูลอย่างเป็นทางการ ปีงบประมาณ 2569'
+        : 'Full-year trend conclusions should not be drawn — waiting for official FY2569 data',
       type: 'warning',
     };
   }

@@ -104,23 +104,18 @@
       "total": 0,
       "average": 0,
       "dataStatus": "CURRENT_DATA_PENDING",
-      "source": "Source workbook present but has no 2569 sheet (only 2567, 2568). Demo placeholder values removed.",
+      "source": "Waiting for Official FY2569 Data",
       "updated": "2026-07-27",
       "provenance": {
         "sourceWorkbook": "docs/1.1-Water.xlsx",
         "extractionStatus": "NO_2569_DATA",
         "validationStatus": "CURRENT_DATA_PENDING",
-        "reconciliationDay1": "2026-07-27",
-        "xlsxPresent": true,
-        "availableSheets": [
-          "2567",
-          "2568"
-        ]
+        "reconciliationDay1": "2026-07-27"
       },
       "quality": {
         "valid": false,
         "warnings": [
-          "Source workbook present but has no 2569 sheet (only 2567, 2568). Demo placeholder values removed."
+          "Waiting for Official FY2569 Data"
         ],
         "reconciliationDifference": null
       },

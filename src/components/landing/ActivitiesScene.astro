@@ -7,17 +7,17 @@ interface Props {
 
 const dict = Astro.props.t ?? {
   heading: 'The Environmental Journey',
-  description: 'Preview slots for activities, campaigns, awareness, and training milestones.',
-  status: 'Pending approved content',
+  description: 'Activities, campaigns, awareness, and training milestones.',
+  status: 'Pending official publication',
   preview_label: 'Preview',
-  placeholder_image: 'Image pending',
-  placeholder_category: 'Content slot',
-  activity_1_title: 'Activity records not yet integrated',
-  activity_1_excerpt: 'This space is reserved for approved local activity evidence once real records are added to the repository.',
-  activity_2_title: 'Campaign content pending source files',
-  activity_2_excerpt: 'Add verified campaign summaries, dates, and images before this card is promoted as real content.',
-  activity_3_title: 'Training milestones need evidence links',
-  activity_3_excerpt: 'This placeholder avoids inventing dates, attendance, or outcomes until approved documents exist locally.',
+  placeholder_image: 'Pending official publication',
+  placeholder_category: 'Historical information',
+  activity_1_title: 'Activity records awaiting official content',
+  activity_1_excerpt: 'This section is reserved for approved activity evidence once official records are published.',
+  activity_2_title: 'Campaign content pending publication',
+  activity_2_excerpt: 'Verified campaign summaries and media will appear after official publication.',
+  activity_3_title: 'Training milestones awaiting evidence links',
+  activity_3_excerpt: 'Training outcomes will be listed when linked official documents are available.',
 } as HomeActivitiesStrings;
 
 const activities = [

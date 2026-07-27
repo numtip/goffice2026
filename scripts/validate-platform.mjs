@@ -18,7 +18,7 @@
  */
 
 import { execSync } from 'node:child_process';
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -31,10 +31,16 @@ const EXPECTED = {
   categories: 7,
   issues: 24,
   indicators: 65,
-  evidenceDetails: 21,
   dashboardDetails: 6,    // energy, water, fuel, paper, waste, ghg
   documentCategories: 7,  // cat1–cat7
 };
+
+function loadEvidenceIndex() {
+  const path = resolve(ROOT, 'src', 'data', 'evidence-index.json');
+  const data = JSON.parse(readFileSync(path, 'utf8'));
+  const items = Array.isArray(data.items) ? data.items : [];
+  return { items, ids: items.map((item) => item.id).filter(Boolean) };
+}
 
 const VALID_DASHBOARDS = ['energy', 'water', 'fuel', 'paper', 'waste', 'ghg'];
 const VALID_CATEGORY_CODES = ['cat1', 'cat2', 'cat3', 'cat4', 'cat5', 'cat6', 'cat7'];
@@ -176,9 +182,24 @@ function phaseRoutes() {
     hardErrors.push(`Indicator detail pages: expected ${EXPECTED.indicators}, got ${indicatorCount}`);
   }
 
-  // Evidence details
-  if (evidenceDetailCount !== EXPECTED.evidenceDetails) {
-    hardErrors.push(`Evidence detail pages: expected ${EXPECTED.evidenceDetails}, got ${evidenceDetailCount}`);
+  // Evidence details — schema-based: one route per indexed item (growth-safe)
+  const { ids: evidenceIds } = loadEvidenceIndex();
+  const minEvidenceRoutes = evidenceIds.length;
+  if (evidenceDetailCount < minEvidenceRoutes) {
+    hardErrors.push(
+      `Evidence detail pages: expected at least ${minEvidenceRoutes} (evidence-index.json), got ${evidenceDetailCount}`,
+    );
+  }
+  const missingEvidenceRoutes = evidenceIds.filter((id) => !routes.includes(`/evidence/${id}/`));
+  if (missingEvidenceRoutes.length > 0) {
+    hardErrors.push(`Missing evidence routes for indexed items: ${missingEvidenceRoutes.join(', ')}`);
+  }
+  const builtEvidenceIds = routes
+    .filter((r) => r.startsWith('/evidence/') && r !== '/evidence/')
+    .map((r) => r.replace(/^\/evidence\//, '').replace(/\/$/, ''));
+  const orphanEvidenceRoutes = builtEvidenceIds.filter((id) => !evidenceIds.includes(id));
+  if (orphanEvidenceRoutes.length > 0) {
+    hardErrors.push(`Evidence routes without index entries: ${orphanEvidenceRoutes.join(', ')}`);
   }
 
   // Dashboard details
@@ -244,10 +265,15 @@ function phaseRoutes() {
     const enCategoryCount = countByPrefix(routes, '/en/categories');
     const enCategoryExpected = 8; // hub + 7 detail
 
+    const enMissingEvidence = evidenceIds.filter((id) => !routes.includes(`/en/evidence/${id}/`));
+    if (enMissingEvidence.length > 0) {
+      hardErrors.push(`Missing EN evidence routes for indexed items: ${enMissingEvidence.join(', ')}`);
+    }
+
     const enComplete = hasEnCategories
       && enCategoryCount === enCategoryExpected
       && enIndicatorCount === EXPECTED.indicators
-      && enEvidenceCount === EXPECTED.evidenceDetails;
+      && enEvidenceCount >= minEvidenceRoutes;
 
     if (enComplete) {
       console.log('\nEN Routes: COMPLETE ✓');
@@ -257,7 +283,7 @@ function phaseRoutes() {
       console.log(`  /en/ : present`);
       console.log(`  /en/categories/*: ${enCategoryCount} (full: ${enCategoryExpected})`);
       console.log(`  /en/indicators/*: ${enIndicatorCount} (full: ${EXPECTED.indicators})`);
-      console.log(`  /en/evidence/*: ${enEvidenceCount} (full: ${EXPECTED.evidenceDetails})`);
+      console.log(`  /en/evidence/*: ${enEvidenceCount} (minimum: ${minEvidenceRoutes})`);
     }
   }
 
@@ -348,7 +374,8 @@ function main() {
   console.log(`  Categories:     ${EXPECTED.categories}`);
   console.log(`  Issues:         ${EXPECTED.issues}`);
   console.log(`  Indicators:     ${EXPECTED.indicators}`);
-  console.log(`  Evidence Items: ${EXPECTED.evidenceDetails}`);
+  const { ids: summaryEvidenceIds } = loadEvidenceIndex();
+  console.log(`  Evidence Items: ${summaryEvidenceIds.length} (indexed)`);
   console.log(`  ${totalRoutes}`);
 
   if (allPassed) {

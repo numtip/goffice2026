@@ -22,9 +22,8 @@
       "currentStatus": "CURRENT_DATA_PENDING",
       "dataClassification": "PLACEHOLDER",
       "workbook": "docs/12-elect.xlsx",
-      "xlsxPresent": false,
       "verified": false,
-      "note": "Workbook missing from repository. Previous CSV/demo values removed — no 2569 data available."
+      "note": "Waiting for Official FY2569 Data"
     },
     {
       "metric": "water",
@@ -37,9 +36,8 @@
       "currentStatus": "CURRENT_DATA_PENDING",
       "dataClassification": "PLACEHOLDER",
       "workbook": "docs/1.1-Water.xlsx",
-      "xlsxPresent": true,
       "verified": false,
-      "note": "Source workbook present but has no 2569 sheet (only 2567, 2568). Demo placeholder values removed."
+      "note": "Waiting for Official FY2569 Data"
     },
     {
       "metric": "fuel",
@@ -52,9 +50,8 @@
       "currentStatus": "CURRENT_DATA_PENDING",
       "dataClassification": "PLACEHOLDER",
       "workbook": "docs/1.3_Gassolene.xlsx",
-      "xlsxPresent": false,
       "verified": false,
-      "note": "Workbook missing from repository. Implausible placeholder values (4667% YoY) removed."
+      "note": "Waiting for Official FY2569 Data"
     },
     {
       "metric": "paper",
@@ -67,9 +64,8 @@
       "currentStatus": "CURRENT_DATA_PENDING",
       "dataClassification": "PLACEHOLDER",
       "workbook": "docs/1.4_Paper.xlsx",
-      "xlsxPresent": false,
       "verified": false,
-      "note": "Workbook missing from repository. Placeholder current-year values removed."
+      "note": "Waiting for Official FY2569 Data"
     },
     {
       "metric": "waste",
@@ -82,9 +78,8 @@
       "currentStatus": "CURRENT_DATA_PENDING",
       "dataClassification": "PLACEHOLDER",
       "workbook": "docs/1.5_Waste.xlsx",
-      "xlsxPresent": false,
       "verified": false,
-      "note": "No 2569 waste mass data in source workbook."
+      "note": "Waiting for Official FY2569 Data"
     },
     {
       "metric": "recycling_rate",
@@ -97,9 +92,8 @@
       "currentStatus": "CURRENT_DATA_PENDING",
       "dataClassification": "PLACEHOLDER",
       "workbook": "docs/1.5_Waste.xlsx",
-      "xlsxPresent": false,
       "verified": false,
-      "note": "Workbook missing from repository. Placeholder recycling rate values removed."
+      "note": "Waiting for Official FY2569 Data"
     },
     {
       "metric": "ghg",
@@ -112,15 +106,13 @@
       "currentStatus": "CURRENT_DATA_PENDING",
       "dataClassification": "PLACEHOLDER",
       "workbook": "docs/1.5_GreenhouseGas.xlsx",
-      "xlsxPresent": false,
       "verified": false,
-      "note": "Workbook missing from repository. Placeholder current-year values removed."
+      "note": "Waiting for Official FY2569 Data"
     }
   ],
   "actionRequired": [
-    "Obtain missing XLSX workbooks from Green Office data owner (energy, fuel, paper, waste, GHG).",
-    "Add 2569 sheet/data to source workbooks when available.",
-    "Run extract-xlsx-to-csv.mjs → data:build after workbooks arrive.",
+    "Import official FY2569 operational data when provided by Green Office data owner.",
+    "Run extract-xlsx-to-csv.mjs → data:build after official FY2569 workbooks arrive.",
     "Do NOT populate dashboard targets until authorized staff sets them."
   ]
 }

@@ -7,6 +7,7 @@ import issuesData from '../../../data/criteria/issues.json';
 import indicatorsData from '../../../data/criteria/indicators.json';
 import { getLocalizedPath } from '../../../i18n/utils';
 import { publicSourceLabel } from '../../../utils/evidence-traceability';
+import { NO_PUBLISHED_EVIDENCE, PENDING_OFFICIAL_PUBLICATION, pubLabel } from '../../../utils/publication-states';
 
 const locale = 'en';
 
@@ -137,7 +138,7 @@ function localizedUrl(path: string): string {
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              Source Pending
+              {pubLabel(NO_PUBLISHED_EVIDENCE, 'en')}
             </span>
           ) : (
             <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
@@ -298,10 +299,10 @@ function localizedUrl(path: string): string {
             </svg>
             <div>
               <p class="text-sm font-medium text-amber-800">
-                No source file available for viewing
+                {pubLabel(NO_PUBLISHED_EVIDENCE, 'en')}
               </p>
               <p class="text-xs text-amber-600 mt-0.5">
-                Source documents will be added upon approval
+                {pubLabel(PENDING_OFFICIAL_PUBLICATION, 'en')}
               </p>
             </div>
           </div>

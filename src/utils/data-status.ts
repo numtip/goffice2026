@@ -72,7 +72,7 @@ export function displayStatusLabel(
     case 'in_progress':
       return th ? 'กำลังบันทึก' : 'In Progress';
     case 'pending':
-      return th ? 'รอข้อมูล' : 'Data Pending';
+      return th ? 'รอข้อมูลอย่างเป็นทางการ ปีงบประมาณ 2569' : 'Waiting for Official FY2569 Data';
     default:
       return th ? 'ไม่มีข้อมูล' : 'No data';
   }

@@ -127,12 +127,12 @@ const hasItems = items.length > 0;
         </div>
         <div>
           <h2 class="text-lg font-bold text-amber-800">
-            {isTh ? 'ยังไม่มีเอกสารจริง — กำลังรอไฟล์ที่ได้รับอนุมัติ' : 'Source Pending — Awaiting Approved Documents'}
+            {isTh ? 'ยังไม่มีหลักฐานที่เผยแพร่' : 'No Published Evidence Yet'}
           </h2>
           <p class="text-sm text-amber-700 mt-1 leading-relaxed">
             {isTh
-              ? `ขณะนี้รายการหลักฐานทั้งหมด ${totalItems} รายการยังเป็นเพียงตัวอย่างที่บอกว่าหลักฐานนี้เกี่ยวข้องกับตัวชี้วัดใด ควรใช้เอกสารประกอบแบบใด และมีรายละเอียดอย่างไร แต่ยังไม่มีไฟล์เอกสารจริงแนบอยู่ เมื่อหน่วยงานอัปโหลดเอกสารที่ได้รับอนุมัติแล้ว ไฟล์จริงจะเข้ามาแทนที่ตัวอย่างเหล่านี้ และจะสามารถเปิดดูหลักฐานทั้งหมดได้ครบถ้วน`
-              : `All ${totalItems} evidence items are currently placeholder records. These entries define the certification evidence structure — indicator mappings, expected document types, and descriptions — but no actual source documents have been uploaded yet. Once approved office documents are indexed, they will replace these placeholders and the evidence library will become fully navigable.`}
+              ? `รายการหลักฐาน ${totalItems} รายการกำหนดโครงสร้างการเชื่อมโยงกับตัวชี้วัดแล้ว แต่ยังไม่มีเอกสารต้นฉบับที่เผยแพร่ครบทุกรายการ เอกสารจะแสดงเมื่อได้รับการเผยแพร่อย่างเป็นทางการ`
+              : `${totalItems} evidence records define indicator traceability structure. Source documents are not yet fully published — items will appear when officially released.`}
           </p>
         </div>
       </div>

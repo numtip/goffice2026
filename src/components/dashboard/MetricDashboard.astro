@@ -96,7 +96,7 @@ const kpiCards = metric && baselineYear ? [
       : (th ? 'ยังไม่มีข้อมูล' : 'No data yet'),
     verified: currentVerified,
     dimmed: !currentVerified,
-    trendLabel: showYoy && yoyPctText && currentVerified ? yoyPctText : (!currentVerified ? (th ? 'ข้อมูลตัวอย่าง/รอตรวจสอบ' : 'Sample/Pending') : undefined),
+    trendLabel: showYoy && yoyPctText && currentVerified ? yoyPctText : (!currentVerified ? (th ? 'รอข้อมูลอย่างเป็นทางการ ปีงบประมาณ 2569' : 'Waiting for Official FY2569 Data') : undefined),
     trendColor: showYoy && yoy && currentVerified ? yoyColor(yoy.percent) : 'text-amber-600',
     status: currentDisplayStatus,
   },

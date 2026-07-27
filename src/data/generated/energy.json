@@ -104,19 +104,18 @@
       "total": 0,
       "average": 0,
       "dataStatus": "CURRENT_DATA_PENDING",
-      "source": "Workbook missing from repository. Previous CSV/demo values removed — no 2569 data available.",
+      "source": "Waiting for Official FY2569 Data",
       "updated": "2026-07-27",
       "provenance": {
         "sourceWorkbook": "docs/12-elect.xlsx",
         "extractionStatus": "NO_2569_DATA",
         "validationStatus": "CURRENT_DATA_PENDING",
-        "reconciliationDay1": "2026-07-27",
-        "xlsxPresent": false
+        "reconciliationDay1": "2026-07-27"
       },
       "quality": {
         "valid": false,
         "warnings": [
-          "Workbook missing from repository. Previous CSV/demo values removed — no 2569 data available."
+          "Waiting for Official FY2569 Data"
         ],
         "reconciliationDifference": null
       },

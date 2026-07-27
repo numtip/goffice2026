@@ -18,7 +18,7 @@
       "yearBE": 2569,
       "valid": false,
       "warnings": [
-        "Workbook missing from repository. Previous CSV/demo values removed — no 2569 data available."
+        "Waiting for Official FY2569 Data"
       ],
       "reconciliationDifference": null,
       "monthCount": 0,
@@ -38,7 +38,7 @@
       "yearBE": 2569,
       "valid": false,
       "warnings": [
-        "Source workbook present but has no 2569 sheet (only 2567, 2568). Demo placeholder values removed."
+        "Waiting for Official FY2569 Data"
       ],
       "reconciliationDifference": null,
       "monthCount": 0,
@@ -58,7 +58,7 @@
       "yearBE": 2569,
       "valid": false,
       "warnings": [
-        "Workbook missing from repository. Implausible placeholder values (4667% YoY) removed."
+        "Waiting for Official FY2569 Data"
       ],
       "reconciliationDifference": null,
       "monthCount": 0,
@@ -78,7 +78,7 @@
       "yearBE": 2569,
       "valid": false,
       "warnings": [
-        "Workbook missing from repository. Placeholder current-year values removed."
+        "Waiting for Official FY2569 Data"
       ],
       "reconciliationDifference": null,
       "monthCount": 0,
@@ -98,7 +98,7 @@
       "yearBE": 2569,
       "valid": false,
       "warnings": [
-        "No 2569 waste mass data in source workbook."
+        "Waiting for Official FY2569 Data"
       ],
       "reconciliationDifference": null,
       "monthCount": 0,
@@ -118,7 +118,7 @@
       "yearBE": 2569,
       "valid": false,
       "warnings": [
-        "Workbook missing from repository. Placeholder recycling rate values removed."
+        "Waiting for Official FY2569 Data"
       ],
       "reconciliationDifference": null,
       "monthCount": 0,
@@ -138,7 +138,7 @@
       "yearBE": 2569,
       "valid": false,
       "warnings": [
-        "Workbook missing from repository. Placeholder current-year values removed."
+        "Waiting for Official FY2569 Data"
       ],
       "reconciliationDifference": null,
       "monthCount": 0,

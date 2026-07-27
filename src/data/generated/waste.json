@@ -104,19 +104,18 @@
       "total": 0,
       "average": 0,
       "dataStatus": "CURRENT_DATA_PENDING",
-      "source": "No 2569 waste mass data in source workbook.",
+      "source": "Waiting for Official FY2569 Data",
       "updated": "2026-07-27",
       "provenance": {
         "sourceWorkbook": "docs/1.5_Waste.xlsx",
         "extractionStatus": "NO_2569_DATA",
         "validationStatus": "CURRENT_DATA_PENDING",
-        "reconciliationDay1": "2026-07-27",
-        "xlsxPresent": false
+        "reconciliationDay1": "2026-07-27"
       },
       "quality": {
         "valid": false,
         "warnings": [
-          "No 2569 waste mass data in source workbook."
+          "Waiting for Official FY2569 Data"
         ],
         "reconciliationDifference": null
       },

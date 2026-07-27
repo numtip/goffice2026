@@ -372,11 +372,11 @@ export const glossary: GlossaryEntry[] = [
     en: 'Document Center',
   },
   {
-    id: 'placeholder',
+    id: 'pending-publication',
     tier: 'working',
-    th: 'ตัวอย่าง',
-    en: 'Placeholder',
-    note: 'Content not yet approved/published; shown as preview only',
+    th: 'รอการเผยแพร่อย่างเป็นทางการ',
+    en: 'Pending official publication',
+    note: 'Metadata exists; source file not yet publicly released',
   },
 
   // ═══════════════════════════════════════════════════════════

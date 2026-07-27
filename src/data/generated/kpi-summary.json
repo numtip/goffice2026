@@ -19,11 +19,11 @@
       "dataQuality": {
         "valid": false,
         "warnings": [
-          "Workbook missing from repository. Previous CSV/demo values removed — no 2569 data available."
+          "Waiting for Official FY2569 Data"
         ],
         "reconciliationDifference": null
       },
-      "sourceFile": "Workbook missing from repository. Previous CSV/demo values removed — no 2569 data available.",
+      "sourceFile": "Waiting for Official FY2569 Data",
       "verified": false
     },
     {
@@ -44,11 +44,11 @@
       "dataQuality": {
         "valid": false,
         "warnings": [
-          "Source workbook present but has no 2569 sheet (only 2567, 2568). Demo placeholder values removed."
+          "Waiting for Official FY2569 Data"
         ],
         "reconciliationDifference": null
       },
-      "sourceFile": "Source workbook present but has no 2569 sheet (only 2567, 2568). Demo placeholder values removed.",
+      "sourceFile": "Waiting for Official FY2569 Data",
       "verified": false
     },
     {
@@ -69,11 +69,11 @@
       "dataQuality": {
         "valid": false,
         "warnings": [
-          "Workbook missing from repository. Implausible placeholder values (4667% YoY) removed."
+          "Waiting for Official FY2569 Data"
         ],
         "reconciliationDifference": null
       },
-      "sourceFile": "Workbook missing from repository. Implausible placeholder values (4667% YoY) removed.",
+      "sourceFile": "Waiting for Official FY2569 Data",
       "verified": false
     },
     {
@@ -94,11 +94,11 @@
       "dataQuality": {
         "valid": false,
         "warnings": [
-          "Workbook missing from repository. Placeholder current-year values removed."
+          "Waiting for Official FY2569 Data"
         ],
         "reconciliationDifference": null
       },
-      "sourceFile": "Workbook missing from repository. Placeholder current-year values removed.",
+      "sourceFile": "Waiting for Official FY2569 Data",
       "verified": false
     },
     {
@@ -119,11 +119,11 @@
       "dataQuality": {
         "valid": false,
         "warnings": [
-          "No 2569 waste mass data in source workbook."
+          "Waiting for Official FY2569 Data"
         ],
         "reconciliationDifference": null
       },
-      "sourceFile": "No 2569 waste mass data in source workbook.",
+      "sourceFile": "Waiting for Official FY2569 Data",
       "verified": false
     },
     {
@@ -144,11 +144,11 @@
       "dataQuality": {
         "valid": false,
         "warnings": [
-          "Workbook missing from repository. Placeholder recycling rate values removed."
+          "Waiting for Official FY2569 Data"
         ],
         "reconciliationDifference": null
       },
-      "sourceFile": "Workbook missing from repository. Placeholder recycling rate values removed.",
+      "sourceFile": "Waiting for Official FY2569 Data",
       "verified": false
     },
     {
@@ -169,11 +169,11 @@
       "dataQuality": {
         "valid": false,
         "warnings": [
-          "Workbook missing from repository. Placeholder current-year values removed."
+          "Waiting for Official FY2569 Data"
         ],
         "reconciliationDifference": null
       },
-      "sourceFile": "Workbook missing from repository. Placeholder current-year values removed.",
+      "sourceFile": "Waiting for Official FY2569 Data",
       "verified": false
     }
   ]
