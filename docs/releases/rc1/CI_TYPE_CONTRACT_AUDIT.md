@@ -173,3 +173,19 @@ export interface Provenance {
 - Data truthfulness audit: `docs/releases/rc1/D_DASHBOARD_EVIDENCE_AUDIT.md` (FY2569 pending posture PASS)  
 - Day-1 script: `scripts/reconcile-resource-data-day1.mjs`  
 - Canonical schema: `src/utils/multi-year-schema.ts`
+
+---
+
+## Remediation Status (2026-07-27 — Subagent D CI revalidation)
+
+**Verdict:** **REMEDIATED — CI green**
+
+| Step | Before | After |
+|------|--------|-------|
+| `npm run check` | 37 errors (required `sourceSheet`) | **0 errors** (8 hints) |
+| `npm run data:check` | — | PASS (0 errors, 14 warnings) |
+| `validate-provenance.mjs` | — | PASS (7 files, 14 years) |
+| `npm run build` | — | PASS (252 pages) |
+| `npm run validate` | — | PASS (251 routes, 0 broken links) |
+
+Integrated commits on `master@faeb302`: `6530a5d`, `37a53d2`, `faeb302`. Minor nav script fix (`instanceof Node` vs TS cast) applied during revalidation. **Recommend `v1.2.0-rc.2` tag after GitHub Pages green** — do not tag locally.

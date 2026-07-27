@@ -194,7 +194,8 @@ const isActive = (href: string) => {
         });
 
         document.addEventListener('click', (e) => {
-          if (details.open && !details.contains(e.target as Node)) {
+          const target = e.target;
+          if (details.open && target instanceof Node && !details.contains(target)) {
             details.open = false;
           }
         });

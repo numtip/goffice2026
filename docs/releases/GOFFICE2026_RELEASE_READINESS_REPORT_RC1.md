@@ -2,15 +2,15 @@
 
 **Date:** 2026-07-27  
 **Release Manager:** Head Agent  
-**Baseline:** `master@b94e802` (post-remediation) · gate docs through revalidation commit  
-**Tag recommendation:** `v1.2.0-rc.1` (not applied)  
+**Baseline:** `master@faeb302` (post type-contract remediation) · CI revalidation on `rapid/rc1-ci-revalidate`  
+**Tag recommendation:** `v1.2.0-rc.2` after GitHub Pages green (do **not** apply tag yet)  
 **Release decision:** **READY_WITH_MINOR_NOTES**
 
 ---
 
 ## Executive Summary
 
-RC-1 gate audits ran in parallel across architecture, UX, content, dashboard/evidence, and release management. **Revalidation on `rapid/rc1-revalidate@b94e802` confirms all P0 blockers remediated.** Build, data pipeline, platform validation, and link checks **PASS** (252 pages, 0 broken links). Runtime code aligns with Blueprint V4 static-first scope and ADR-0001 (no Approval Engine in `src/`). **RC-1 is READY_WITH_MINOR_NOTES** — P0 UX (mobile nav labels), evidence traceability (D-B1/D-B2), and content route (`/about/feedback/` TH+EN) fixes merged; P1 architecture/content/UX gaps remain documented for PO sign-off before tag.
+RC-1 gate audits ran in parallel across architecture, UX, content, dashboard/evidence, and release management. **Revalidation on `rapid/rc1-revalidate@b94e802` confirms all P0 blockers remediated.** **CI type-contract remediation (`6530a5d` → `faeb302`) clears 37 `npm run check` errors:** `Provenance.sourceSheet` and `reconciliationDay1` are optional; FY2569 pending JSON omits fabricated sheet names. Build, data pipeline, platform validation, and link checks **PASS** (252 pages, 0 broken links). Runtime code aligns with Blueprint V4 static-first scope and ADR-0001 (no Approval Engine in `src/`). **RC-1 is READY_WITH_MINOR_NOTES** — P0 UX (mobile nav labels), evidence traceability (D-B1/D-B2), content route (`/about/feedback/` TH+EN), and CI type contract fixes merged; P1 architecture/content/UX gaps remain documented for PO sign-off before tag.
 
 ---
 
@@ -22,7 +22,7 @@ RC-1 gate audits ran in parallel across architecture, UX, content, dashboard/evi
 | UX / Navigation | Subagent B | **PASS** (P0 remediated) | `docs/releases/rc1/B_UX_NAVIGATION_AUDIT.md` |
 | Content | Subagent C | **PASS** (P0 remediated) | `docs/releases/rc1/C_CONTENT_AUDIT.md` |
 | Dashboard / Evidence | Subagent D | **PASS** (D-B1/D-B2 remediated) | `docs/releases/rc1/D_DASHBOARD_EVIDENCE_AUDIT.md` |
-| QA (Head) | Head Agent | **PASS** | build + validate + data:check |
+| QA (Head) | Head Agent | **PASS** | check + build + validate + data:check + provenance |
 | Git | Head Agent | **PARTIAL** | 8 commits ahead of origin; untracked `doc/` PDFs |
 | Deployment | Subagent E | **PREPARED** | checklists in `docs/releases/` |
 
@@ -56,12 +56,24 @@ RC-1 gate audits ran in parallel across architecture, UX, content, dashboard/evi
 
 | Check | Result |
 |-------|--------|
+| `npm run check` | PASS (0 errors, 8 hints) |
 | `npm run data:check` | PASS (0 errors, 14 warnings) |
+| `node scripts/validate-provenance.mjs` | PASS (7 files, 14 years, 0 errors) |
 | `npm run validate` | PASS (251 routes, link check 0 broken) |
 | `npm run build` | PASS (252 pages) |
 | dist grep `{navLabels.menu}` | PASS (0 hits) |
 | feedback routes in dist | PASS (`/about/feedback/`, `/en/about/feedback/`) |
 | `git diff --check` | PASS (clean) |
+
+### CI type-contract remediation (Subagent D)
+
+| Commit | Scope |
+|--------|-------|
+| `6530a5d` | Audit: `Provenance.sourceSheet` required vs pending FY2569 JSON |
+| `37a53d2` | Test: `validate-provenance.mjs` + pipeline hook |
+| `faeb302` | Fix: optional `sourceSheet?`, `reconciliationDay1?`; dashboard cast helper |
+
+Canonical contract: pending years omit `sourceSheet` (no fabricated sheets); verified baselines retain sheet names. See `docs/releases/rc1/CI_TYPE_CONTRACT_AUDIT.md`.
 
 ---
 
@@ -93,4 +105,4 @@ FY2569 data (5/6 XLSX missing); PDF redaction (0 PUBLIC_READY); OCR human review
 
 ## Release Decision
 
-**READY_WITH_MINOR_NOTES** — all P0 blockers remediated and revalidated on `rapid/rc1-revalidate@b94e802`. RC preview may proceed; PO sign-off on P1 items and architecture doc drift before applying **`v1.2.0-rc.1`** tag.
+**READY_WITH_MINOR_NOTES** — all P0 blockers remediated; CI pipeline green on `rapid/rc1-ci-revalidate@faeb302` (`npm run check` 0 errors). RC preview may proceed; PO sign-off on P1 items and architecture doc drift before applying tag. **Recommend `v1.2.0-rc.2`** (not `rc.1`) after GitHub Pages deploy confirms green — do **not** create tag until Pages pass.
