@@ -1,0 +1,52 @@
+---
+import AboutPageShell from '../../components/about/AboutPageShell.astro';
+import aboutContent from '../../data/about/content.json';
+import pagesMeta from '../../data/about/pages.json';
+import { getLocale, getLocalizedPath } from '../../i18n/utils';
+
+const locale = getLocale(Astro.url);
+const isTh = locale === 'th';
+const content = aboutContent.pages['about-index'];
+const navPages = pagesMeta.pages.filter((p) =>
+  ['about-policy', 'about-goals', 'about-committee'].includes(p.id),
+);
+---
+
+<AboutPageShell pageId="about-index">
+  <div slot="notice" class="not-prose mb-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+    {isTh ? content.noticeTh : content.noticeEn}
+  </div>
+
+  {content.sections.map((section) => {
+    if (section.links) {
+      return (
+        <section class="mb-8">
+          <h2 class="text-xl font-semibold text-gray-900 mb-3">
+            {isTh ? section.headingTh : section.headingEn}
+          </h2>
+          <ul class="space-y-2">
+            {section.links.map((link) => {
+              const meta = pagesMeta.pages.find((p) => p.id === link.pageId);
+              const href = getLocalizedPath(locale, meta?.route.replace(/\/$/, '') ?? '/about');
+              return (
+                <li>
+                  <a href={href} class="text-green-700 font-medium hover:underline">
+                    {isTh ? link.labelTh : link.labelEn}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      );
+    }
+    return (
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-900 mb-3">
+          {isTh ? section.headingTh : section.headingEn}
+        </h2>
+        <p class="text-gray-700 leading-relaxed">{isTh ? section.bodyTh : section.bodyEn}</p>
+      </section>
+    );
+  })}
+</AboutPageShell>

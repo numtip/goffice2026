@@ -1,0 +1,57 @@
+---
+import AboutPageShell from '../../../components/about/AboutPageShell.astro';
+import aboutContent from '../../../data/about/content.json';
+import summaries from '../../../data/about/document-summaries.json';
+import documents from '../../../data/about/documents.json';
+import { getLocale, getLocalizedPath } from '../../../i18n/utils';
+
+const locale = getLocale(Astro.url);
+const isTh = locale === 'th';
+const content = aboutContent.pages['about-policy'];
+
+function summaryFor(key: string) {
+  return summaries.summaries.find((s) => s.documentId === key);
+}
+
+function docFor(key: string) {
+  return documents.documents.find((d) => d.id === key);
+}
+---
+
+<AboutPageShell pageId="about-policy">
+  <div slot="notice" class="not-prose mb-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+    {isTh ? content.noticeTh : content.noticeEn}
+  </div>
+
+  <p class="text-sm text-gray-500 mb-6">
+    {isTh ? 'ตัวชี้วัดที่เกี่ยวข้อง' : 'Related indicators'}:
+    {content.relatedIndicators.map((code) => (
+      <a href={getLocalizedPath(locale, `/indicators/${code}`)} class="ml-2 text-green-700 hover:underline">{code}</a>
+    ))}
+  </p>
+
+  {content.sections.map((section) => {
+    const summary = summaryFor(section.summaryKey ?? '');
+    const doc = docFor(section.summaryKey ?? '');
+    return (
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-900 mb-2">
+          {isTh ? section.headingTh : section.headingEn}
+        </h2>
+        {section.pending && (
+          <p class="text-sm text-amber-700 mb-2">
+            {isTh ? '⏳ เนื้อหารอตรวจสอบ' : '⏳ Content pending review'}
+          </p>
+        )}
+        {summary && (
+          <p class="text-gray-700 leading-relaxed whitespace-pre-line">{summary.summaryTh}</p>
+        )}
+        {doc && (
+          <p class="mt-3 text-sm text-gray-500">
+            {isTh ? 'เอกสารอ้างอิง' : 'Reference document'}: {doc.filename}
+          </p>
+        )}
+      </section>
+    );
+  })}
+</AboutPageShell>

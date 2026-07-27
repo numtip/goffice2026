@@ -1,0 +1,79 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-07-27",
+  "pages": {
+    "about-index": {
+      "noticeTh": "ศูนย์ข้อมูลเกี่ยวกับสำนักงานสีเขียว อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้ — เนื้อหาบางส่วนอ้างอิงจากเอกสารปี 2568 และรอการตรวจสอบจากทีม Green Office",
+      "noticeEn": "About the Green Office at Chalermprakiat Building, Maejo University. Some content references FY 2568 documents and awaits verification by the Green Office team.",
+      "sections": [
+        {
+          "headingTh": "วัตถุประสงค์",
+          "headingEn": "Purpose",
+          "bodyTh": "แพลตฟอร์มนี้นำเสนอข้อมูลการใช้ทรัพยากร หลักฐานการประเมิน และเรื่องราวด้านสิ่งแวดล้อมของสำนักงานสีเขียว อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา สำนักวิจัยและส่งเสริมวิชาการการเกษตร มหาวิทยาลัยแม่โจ้",
+          "bodyEn": "This platform presents resource data, assessment evidence, and environmental stories for the Green Office at Chalermprakiat Building, Agricultural Research and Extension Office, Maejo University."
+        },
+        {
+          "headingTh": "หัวข้อหลัก",
+          "headingEn": "Key topics",
+          "links": [
+            { "pageId": "about-policy", "labelTh": "นโยบายสิ่งแวดล้อม", "labelEn": "Environmental Policy" },
+            { "pageId": "about-goals", "labelTh": "เป้าหมายและตัวชี้วัด", "labelEn": "Goals and Indicators" },
+            { "pageId": "about-committee", "labelTh": "คณะกรรมการและทีมงาน", "labelEn": "Committee and Team" }
+          ]
+        }
+      ]
+    },
+    "about-policy": {
+      "noticeTh": "สรุปจากเอกสาร OCR — ต้องตรวจสอบวันที่และตัวเลขกับต้นฉบับ PDF ก่อนเผยแพร่เป็นหลักฐานอย่างเป็นทางการ",
+      "noticeEn": "Summary from OCR-derived documents — dates and figures require verification against original PDFs before formal evidence publication.",
+      "documentId": "doc-policy-signed",
+      "relatedIndicators": ["1.2.1", "1.2.2"],
+      "sections": [
+        {
+          "headingTh": "นโยบายที่ลงนาม",
+          "headingEn": "Signed policy",
+          "summaryKey": "doc-policy-signed"
+        },
+        {
+          "headingTh": "หลักฐานการทบทวนนโยบาย",
+          "headingEn": "Policy review evidence",
+          "summaryKey": "doc-policy-review",
+          "pending": true
+        }
+      ]
+    },
+    "about-goals": {
+      "noticeTh": "เป้าหมายต่อคนอ้างอิงจากประกาศปี 2568 — ค่าในแดชบอร์ดยังไม่ได้เชื่อมโยงเป้าหมายโดยอัตโนมัติ",
+      "noticeEn": "Per-person targets reference the FY 2568 announcement — dashboard targets are not yet linked automatically.",
+      "documentId": "doc-goals",
+      "relatedIndicators": ["1.3.1", "1.3.2", "1.3.3"],
+      "sections": [
+        {
+          "headingTh": "เป้าหมายสิ่งแวดล้อม",
+          "headingEn": "Environmental targets",
+          "summaryKey": "doc-goals",
+          "historical": true
+        }
+      ]
+    },
+    "about-committee": {
+      "noticeTh": "เอกสารความเข้าใจบทบาทที่ส่งมาเป็นไฟล์ซ้ำกับรายงานการประชุม — รอ Product Owner ยืนยันเอกสารที่ถูกต้องสำหรับตัวชี้วัด 1.4.2",
+      "noticeEn": "The supplied role-understanding file duplicates meeting minutes — Product Owner confirmation needed for indicator 1.4.2.",
+      "documentId": "doc-committee-order",
+      "relatedIndicators": ["1.4.1", "1.4.2"],
+      "sections": [
+        {
+          "headingTh": "คำสั่งแต่งตั้งคณะกรรมการ",
+          "headingEn": "Committee appointment order",
+          "summaryKey": "doc-committee-order"
+        },
+        {
+          "headingTh": "ความเข้าใจบทบาทและหน้าที่",
+          "headingEn": "Role understanding",
+          "summaryKey": "doc-committee-understanding",
+          "pending": true
+        }
+      ]
+    }
+  }
+}

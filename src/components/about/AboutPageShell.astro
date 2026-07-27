@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLocale, getLocalizedPath } from '../../i18n/utils';
+import pagesMeta from '../../data/about/pages.json';
+
+interface Props {
+  pageId: string;
+  title?: string;
+  description?: string;
+}
+
+const { pageId, title, description } = Astro.props;
+const locale = getLocale(Astro.url);
+const isTh = locale === 'th';
+
+const pageMeta = pagesMeta.pages.find((p) => p.id === pageId);
+const pageTitle = title ?? (isTh ? pageMeta?.titleTh : pageMeta?.titleEn) ?? 'About';
+const pageDesc =
+  description ?? (isTh ? pageMeta?.descriptionTh : pageMeta?.descriptionEn) ?? '';
+
+const navPages = pagesMeta.pages.filter((p) =>
+  ['about-index', 'about-policy', 'about-goals', 'about-committee'].includes(p.id),
+);
+
+const pendingLabel = isTh ? 'เนื้อหารอตรวจสอบ' : 'Content pending review';
+const historicalLabel = isTh ? 'ข้อมูลอ้างอิงจากเอกสารปี 2568' : 'Reference from FY 2568 documents';
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} locale={locale}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <nav class="mb-6 text-sm" aria-label={isTh ? 'เมนูเกี่ยวกับเรา' : 'About navigation'}>
+      <ol class="flex flex-wrap gap-2 text-gray-500">
+        {navPages.map((p, i) => {
+          const label = isTh ? p.titleTh : p.titleEn;
+          const href = getLocalizedPath(locale, p.route.replace(/\/$/, '') || '/about');
+          const active = p.id === pageId;
+          return (
+            <>
+              {i > 0 && <span aria-hidden="true">/</span>}
+              <li>
+                {active ? (
+                  <span class="text-green-700 font-medium" aria-current="page">{label}</span>
+                ) : (
+                  <a href={href} class="hover:text-green-700 underline-offset-2 hover:underline">{label}</a>
+                )}
+              </li>
+            </>
+          );
+        })}
+      </ol>
+    </nav>
+
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900">{pageTitle}</h1>
+      {pageDesc && <p class="mt-2 text-lg text-gray-600">{pageDesc}</p>}
+    </header>
+
+    <div class="prose prose-green max-w-none">
+      <slot name="notice" />
+      <slot />
+    </div>
+  </div>
+</BaseLayout>
