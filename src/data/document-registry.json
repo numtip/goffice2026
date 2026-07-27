@@ -1,7 +1,7 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "updated": "2026-07-27",
-  "note": "Document registry for real source files. Evidence IDs linked for 4 high-confidence matches.",
+  "note": "Document registry for real source files. WS-B: secondary evidence links for shared workbooks.",
   "documents": [
     {
       "id": "doc-water-usage-2025",
@@ -95,13 +95,14 @@
       "classification": "internal",
       "classificationReason": "Contains operational waste generation data — internal resource usage metrics.",
       "evidenceId": "ev-waste-monthly-2025",
+      "secondaryEvidenceIds": ["ev-waste-recycling-2025"],
       "categoryCode": "cat3",
       "potentialEvidenceMatch": "ev-waste-monthly-2025",
       "sha256": "5BC4605335C85C58BCC89EB1D32E9E15912257F1A9D71379CAB24310D493C333",
       "sizeBytes": 44014,
       "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "gitTracked": false,
-      "notes": "Untracked. Strong match for evidence ev-waste-monthly-2025 (path: /documents/cat3/waste-monthly-2025.xlsx). Direct replacement candidate."
+      "notes": "Untracked. Strong match for evidence ev-waste-monthly-2025 (path: /documents/cat3/waste-monthly-2025.xlsx). WS-B secondary link: ev-waste-recycling-2025 (partial, indicator 4.1.3 recycling sheets)."
     },
     {
       "id": "doc-ghg-inventory-2025",
@@ -115,13 +116,14 @@
       "classification": "internal",
       "classificationReason": "Contains operational GHG emissions data — internal environmental metrics. File exceeds 500KB; review before committing to Git.",
       "evidenceId": "ev-ghg-inventory-2025",
+      "secondaryEvidenceIds": ["ev-ghg-emission-factors"],
       "categoryCode": "cat4",
       "potentialEvidenceMatch": "ev-ghg-inventory-2025",
       "sha256": "8A0B9C0D100D26B7CDDEBE12315D145731AE06E1F9586A7A165084D80009EE12",
       "sizeBytes": 528383,
       "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "gitTracked": false,
-      "notes": "Untracked. 528KB — exceeds recommended 500KB threshold for Git binary files. Evaluate LFS or Head decision before committing. Candidate for evidence ev-ghg-inventory-2025 or ev-ghg-emission-factors."
+      "notes": "Untracked. 528KB — exceeds recommended 500KB threshold for Git binary files. Evaluate LFS or Head decision before committing. Primary: ev-ghg-inventory-2025 (1.5.1). WS-B secondary link: ev-ghg-emission-factors (partial, EF TGO AR5 sheet)."
     },
     {
       "id": "doc-assessment-criteria-2569",
