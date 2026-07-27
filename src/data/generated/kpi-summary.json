@@ -7,23 +7,23 @@
       "labelTh": "การใช้ไฟฟ้า",
       "unit": "kWh",
       "yearBE": 2569,
-      "value": 149100,
+      "value": 0,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 403036.80000000005,
       "yoyChange": {
-        "absolute": -253936.80000000005,
-        "percent": -63,
-        "direction": "down"
+        "absolute": 0,
+        "percent": 0,
+        "direction": "stable"
       },
       "dataQuality": {
         "valid": false,
         "warnings": [
-          "Current-year data imported from CSV only — no source workbook (XLSX) was available for reconciliation. Treat as unverified/demo until confirmed against the official source."
+          "Workbook missing from repository. Previous CSV/demo values removed — no 2569 data available."
         ],
         "reconciliationDifference": null
       },
-      "sourceFile": "12-elect.xlsx converted — partial, 8 of 12 months",
+      "sourceFile": "Workbook missing from repository. Previous CSV/demo values removed — no 2569 data available.",
       "verified": false
     },
     {
@@ -32,23 +32,23 @@
       "labelTh": "การใช้น้ำ",
       "unit": "m³",
       "yearBE": 2569,
-      "value": 31200,
+      "value": 0,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 8337.5,
       "yoyChange": {
-        "absolute": 22862.5,
-        "percent": 274,
-        "direction": "up"
+        "absolute": 0,
+        "percent": 0,
+        "direction": "stable"
       },
       "dataQuality": {
         "valid": false,
         "warnings": [
-          "Current-year data imported from CSV only — no source workbook (XLSX) was available for reconciliation. Treat as unverified/demo until confirmed against the official source."
+          "Source workbook present but has no 2569 sheet (only 2567, 2568). Demo placeholder values removed."
         ],
         "reconciliationDifference": null
       },
-      "sourceFile": "1.1-Water.xlsx converted — partial, 6 of 12 months",
+      "sourceFile": "Source workbook present but has no 2569 sheet (only 2567, 2568). Demo placeholder values removed.",
       "verified": false
     },
     {
@@ -57,23 +57,23 @@
       "labelTh": "การใช้เชื้อเพลิง",
       "unit": "L",
       "yearBE": 2569,
-      "value": 16200,
+      "value": 0,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 339.83000000000004,
       "yoyChange": {
-        "absolute": 15860.17,
-        "percent": 4667,
-        "direction": "up"
+        "absolute": 0,
+        "percent": 0,
+        "direction": "stable"
       },
       "dataQuality": {
         "valid": false,
         "warnings": [
-          "Data may contain placeholder values — verify against source workbook"
+          "Workbook missing from repository. Implausible placeholder values (4667% YoY) removed."
         ],
-        "reconciliationDifference": 0
+        "reconciliationDifference": null
       },
-      "sourceFile": "1.3_Gassolene.xlsx (placeholder data — no 2569 data in source XLSX)",
+      "sourceFile": "Workbook missing from repository. Implausible placeholder values (4667% YoY) removed.",
       "verified": false
     },
     {
@@ -82,23 +82,23 @@
       "labelTh": "การใช้กระดาษ",
       "unit": "kg",
       "yearBE": 2569,
-      "value": 916,
+      "value": 0,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 2197.7999999999997,
       "yoyChange": {
-        "absolute": -1281.8,
-        "percent": -58,
-        "direction": "down"
+        "absolute": 0,
+        "percent": 0,
+        "direction": "stable"
       },
       "dataQuality": {
         "valid": false,
         "warnings": [
-          "Data may contain placeholder values — verify against source workbook"
+          "Workbook missing from repository. Placeholder current-year values removed."
         ],
-        "reconciliationDifference": 0
+        "reconciliationDifference": null
       },
-      "sourceFile": "1.4_Paper.xlsx (placeholder data — no 2569 data in source XLSX)",
+      "sourceFile": "Workbook missing from repository. Placeholder current-year values removed.",
       "verified": false
     },
     {
@@ -119,11 +119,11 @@
       "dataQuality": {
         "valid": false,
         "warnings": [
-          "No waste mass data available for current year"
+          "No 2569 waste mass data in source workbook."
         ],
         "reconciliationDifference": null
       },
-      "sourceFile": "Waste mass (kg) current year pending — no 2569 mass data in source XLSX",
+      "sourceFile": "No 2569 waste mass data in source workbook.",
       "verified": false
     },
     {
@@ -132,23 +132,23 @@
       "labelTh": "อัตราการรีไซcle",
       "unit": "%",
       "yearBE": 2569,
-      "value": 84.6,
+      "value": 0,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 21.57,
       "yoyChange": {
-        "absolute": 63.03,
-        "percent": 292,
-        "direction": "up"
+        "absolute": 0,
+        "percent": 0,
+        "direction": "stable"
       },
       "dataQuality": {
         "valid": false,
         "warnings": [
-          "Data may contain placeholder values — verify against source workbook"
+          "Workbook missing from repository. Placeholder recycling rate values removed."
         ],
-        "reconciliationDifference": 0
+        "reconciliationDifference": null
       },
-      "sourceFile": "1.5_Waste.xlsx (placeholder data — no 2569 data in source XLSX)",
+      "sourceFile": "Workbook missing from repository. Placeholder recycling rate values removed.",
       "verified": false
     },
     {
@@ -157,23 +157,23 @@
       "labelTh": "ก๊าซเรือนกระจก",
       "unit": "tCO₂e",
       "yearBE": 2569,
-      "value": 349,
+      "value": 0,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 231.6,
       "yoyChange": {
-        "absolute": 117.4,
-        "percent": 51,
-        "direction": "up"
+        "absolute": 0,
+        "percent": 0,
+        "direction": "stable"
       },
       "dataQuality": {
         "valid": false,
         "warnings": [
-          "Data may contain placeholder values — verify against source workbook"
+          "Workbook missing from repository. Placeholder current-year values removed."
         ],
-        "reconciliationDifference": 0
+        "reconciliationDifference": null
       },
-      "sourceFile": "1.5_GreenhouseGas.xlsx (placeholder data — no 2569 data in source XLSX)",
+      "sourceFile": "Workbook missing from repository. Placeholder current-year values removed.",
       "verified": false
     }
   ]

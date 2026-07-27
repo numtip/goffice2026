@@ -3,7 +3,7 @@
   "label": "Electricity Consumption",
   "unit": "kWh",
   "kpiField": "kwh",
-  "status": "missing",
+  "status": "CURRENT_DATA_PENDING",
   "baselineYear": 2568,
   "currentYear": 2569,
   "targetYear": 2569,
@@ -100,62 +100,28 @@
     "2569": {
       "year": 2569,
       "isBaseline": false,
-      "months": [
-        {
-          "month": 1,
-          "value": 18200,
-          "label": "Jan"
-        },
-        {
-          "month": 2,
-          "value": 17500,
-          "label": "Feb"
-        },
-        {
-          "month": 3,
-          "value": 16800,
-          "label": "Mar"
-        },
-        {
-          "month": 4,
-          "value": 17800,
-          "label": "Apr"
-        },
-        {
-          "month": 5,
-          "value": 18500,
-          "label": "May"
-        },
-        {
-          "month": 6,
-          "value": 19800,
-          "label": "Jun"
-        },
-        {
-          "month": 7,
-          "value": 20500,
-          "label": "Jul"
-        },
-        {
-          "month": 8,
-          "value": 20000,
-          "label": "Aug"
-        }
-      ],
-      "total": 149100,
-      "average": 18637.5,
-      "aggregation": "sum",
-      "dataStatus": "in_progress",
-      "source": "12-elect.xlsx converted — partial, 8 of 12 months",
+      "months": [],
+      "total": 0,
+      "average": 0,
+      "dataStatus": "CURRENT_DATA_PENDING",
+      "source": "Workbook missing from repository. Previous CSV/demo values removed — no 2569 data available.",
+      "updated": "2026-07-27",
+      "provenance": {
+        "sourceWorkbook": "docs/12-elect.xlsx",
+        "extractionStatus": "NO_2569_DATA",
+        "validationStatus": "CURRENT_DATA_PENDING",
+        "reconciliationDay1": "2026-07-27",
+        "xlsxPresent": false
+      },
       "quality": {
         "valid": false,
         "warnings": [
-          "Current-year data imported from CSV only — no source workbook (XLSX) was available for reconciliation. Treat as unverified/demo until confirmed against the official source."
+          "Workbook missing from repository. Previous CSV/demo values removed — no 2569 data available."
         ],
         "reconciliationDifference": null
       },
-      "dataClassification": "DERIVED_FROM_CSV",
-      "updated": "2026-06-26"
+      "aggregation": "sum",
+      "dataClassification": "PLACEHOLDER"
     }
   },
   "target": {
@@ -170,9 +136,9 @@
     "months": []
   },
   "yoyChange": {
-    "absolute": -253936.80000000005,
-    "percent": -63,
-    "direction": "down"
+    "absolute": 0,
+    "percent": 0,
+    "direction": "stable"
   },
   "relatedIndicators": [
     {

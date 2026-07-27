@@ -18,11 +18,11 @@
       "yearBE": 2569,
       "valid": false,
       "warnings": [
-        "Current-year data imported from CSV only — no source workbook (XLSX) was available for reconciliation. Treat as unverified/demo until confirmed against the official source."
+        "Workbook missing from repository. Previous CSV/demo values removed — no 2569 data available."
       ],
       "reconciliationDifference": null,
-      "monthCount": 8,
-      "dataStatus": "in_progress"
+      "monthCount": 0,
+      "dataStatus": "CURRENT_DATA_PENDING"
     },
     {
       "metric": "water",
@@ -38,11 +38,11 @@
       "yearBE": 2569,
       "valid": false,
       "warnings": [
-        "Current-year data imported from CSV only — no source workbook (XLSX) was available for reconciliation. Treat as unverified/demo until confirmed against the official source."
+        "Source workbook present but has no 2569 sheet (only 2567, 2568). Demo placeholder values removed."
       ],
       "reconciliationDifference": null,
-      "monthCount": 6,
-      "dataStatus": "in_progress"
+      "monthCount": 0,
+      "dataStatus": "CURRENT_DATA_PENDING"
     },
     {
       "metric": "fuel",
@@ -58,10 +58,10 @@
       "yearBE": 2569,
       "valid": false,
       "warnings": [
-        "Data may contain placeholder values — verify against source workbook"
+        "Workbook missing from repository. Implausible placeholder values (4667% YoY) removed."
       ],
-      "reconciliationDifference": 0,
-      "monthCount": 9,
+      "reconciliationDifference": null,
+      "monthCount": 0,
       "dataStatus": "CURRENT_DATA_PENDING"
     },
     {
@@ -78,10 +78,10 @@
       "yearBE": 2569,
       "valid": false,
       "warnings": [
-        "Data may contain placeholder values — verify against source workbook"
+        "Workbook missing from repository. Placeholder current-year values removed."
       ],
-      "reconciliationDifference": 0,
-      "monthCount": 6,
+      "reconciliationDifference": null,
+      "monthCount": 0,
       "dataStatus": "CURRENT_DATA_PENDING"
     },
     {
@@ -98,7 +98,7 @@
       "yearBE": 2569,
       "valid": false,
       "warnings": [
-        "No waste mass data available for current year"
+        "No 2569 waste mass data in source workbook."
       ],
       "reconciliationDifference": null,
       "monthCount": 0,
@@ -118,10 +118,10 @@
       "yearBE": 2569,
       "valid": false,
       "warnings": [
-        "Data may contain placeholder values — verify against source workbook"
+        "Workbook missing from repository. Placeholder recycling rate values removed."
       ],
-      "reconciliationDifference": 0,
-      "monthCount": 10,
+      "reconciliationDifference": null,
+      "monthCount": 0,
       "dataStatus": "CURRENT_DATA_PENDING"
     },
     {
@@ -138,10 +138,10 @@
       "yearBE": 2569,
       "valid": false,
       "warnings": [
-        "Data may contain placeholder values — verify against source workbook"
+        "Workbook missing from repository. Placeholder current-year values removed."
       ],
-      "reconciliationDifference": 0,
-      "monthCount": 8,
+      "reconciliationDifference": null,
+      "monthCount": 0,
       "dataStatus": "CURRENT_DATA_PENDING"
     }
   ]

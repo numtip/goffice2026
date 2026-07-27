@@ -3,7 +3,7 @@
   "label": "Waste Mass",
   "unit": "kg",
   "kpiField": "total_kg",
-  "status": "VERIFIED_BASELINE",
+  "status": "CURRENT_DATA_PENDING",
   "baselineYear": 2568,
   "currentYear": 2569,
   "targetYear": 2569,
@@ -104,18 +104,19 @@
       "total": 0,
       "average": 0,
       "dataStatus": "CURRENT_DATA_PENDING",
-      "source": "Waste mass (kg) current year pending — no 2569 mass data in source XLSX",
-      "updated": "2026-07-26",
+      "source": "No 2569 waste mass data in source workbook.",
+      "updated": "2026-07-27",
       "provenance": {
         "sourceWorkbook": "docs/1.5_Waste.xlsx",
-        "sourceSheet": "PENDING",
-        "extractionStatus": "NO_2569_MASS_DATA",
-        "validationStatus": "CURRENT_DATA_PENDING"
+        "extractionStatus": "NO_2569_DATA",
+        "validationStatus": "CURRENT_DATA_PENDING",
+        "reconciliationDay1": "2026-07-27",
+        "xlsxPresent": false
       },
       "quality": {
         "valid": false,
         "warnings": [
-          "No waste mass data available for current year"
+          "No 2569 waste mass data in source workbook."
         ],
         "reconciliationDifference": null
       },

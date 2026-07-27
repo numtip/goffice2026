@@ -3,7 +3,7 @@
   "label": "Paper Consumption",
   "unit": "kg",
   "kpiField": "kg_estimated",
-  "status": "VERIFIED_BASELINE",
+  "status": "CURRENT_DATA_PENDING",
   "baselineYear": 2568,
   "currentYear": 2569,
   "targetYear": 2569,
@@ -100,55 +100,25 @@
     "2569": {
       "year": 2569,
       "isBaseline": false,
-      "months": [
-        {
-          "month": 1,
-          "value": 155,
-          "label": "Jan"
-        },
-        {
-          "month": 2,
-          "value": 145,
-          "label": "Feb"
-        },
-        {
-          "month": 3,
-          "value": 140,
-          "label": "Mar"
-        },
-        {
-          "month": 4,
-          "value": 148,
-          "label": "Apr"
-        },
-        {
-          "month": 5,
-          "value": 160,
-          "label": "May"
-        },
-        {
-          "month": 6,
-          "value": 168,
-          "label": "Jun"
-        }
-      ],
-      "total": 916,
-      "average": 152.67,
+      "months": [],
+      "total": 0,
+      "average": 0,
       "dataStatus": "CURRENT_DATA_PENDING",
-      "source": "1.4_Paper.xlsx (placeholder data — no 2569 data in source XLSX)",
-      "updated": "2026-06-12",
+      "source": "Workbook missing from repository. Placeholder current-year values removed.",
+      "updated": "2026-07-27",
       "provenance": {
         "sourceWorkbook": "docs/1.4_Paper.xlsx",
-        "sourceSheet": "2568",
-        "extractionStatus": "NO_2569_DATA — target year data not yet available in source XLSX",
-        "validationStatus": "CURRENT_DATA_PENDING"
+        "extractionStatus": "NO_2569_DATA",
+        "validationStatus": "CURRENT_DATA_PENDING",
+        "reconciliationDay1": "2026-07-27",
+        "xlsxPresent": false
       },
       "quality": {
         "valid": false,
         "warnings": [
-          "Data may contain placeholder values — verify against source workbook"
+          "Workbook missing from repository. Placeholder current-year values removed."
         ],
-        "reconciliationDifference": 0
+        "reconciliationDifference": null
       },
       "aggregation": "sum",
       "dataClassification": "PLACEHOLDER"
@@ -166,9 +136,9 @@
     "months": []
   },
   "yoyChange": {
-    "absolute": -1281.8,
-    "percent": -58,
-    "direction": "down"
+    "absolute": 0,
+    "percent": 0,
+    "direction": "stable"
   },
   "relatedIndicators": [
     {
