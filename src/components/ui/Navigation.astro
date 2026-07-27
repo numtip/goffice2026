@@ -43,6 +43,10 @@ const navItems = [
   { href: '/search', label: navLabels.search },
 ];
 
+const isTh = locale === 'th';
+const mobileOpenLabel = navLabels.menu ?? 'Menu';
+const mobileCloseLabel = isTh ? 'ปิด' : 'Close';
+
 const pathWithoutBase = stripLocalePrefix(stripBasePath(Astro.url.pathname));
 const currentPath = pathWithoutBase || '/';
 const isActive = (href: string) => {
@@ -154,23 +158,21 @@ const isActive = (href: string) => {
       details[open] .nav-icon-close { display: block; }
     </style>
 
-    <script>
-      const details = document.getElementById('mobile-nav') as HTMLDetailsElement | null;
+    <script define:vars={{ mobileOpenLabel, mobileCloseLabel }}>
+      const details = document.getElementById('mobile-nav');
       if (details) {
         const summary = details.querySelector('summary');
-        const label = details.querySelector('.nav-menu-label') as HTMLElement | null;
-        const closeBtn = details.querySelector('.nav-close-btn') as HTMLElement | null;
-        const openLabel = '{navLabels.menu}';
-        const closeLabel = '{locale === "th" ? "ปิด" : "Close"}';
+        const label = details.querySelector('.nav-menu-label');
+        const closeBtn = details.querySelector('.nav-close-btn');
 
         const updateState = () => {
           const isOpen = details.open;
           if (summary) {
             summary.setAttribute('aria-expanded', String(isOpen));
-            summary.setAttribute('aria-label', isOpen ? closeLabel + ' ' + openLabel : openLabel);
+            summary.setAttribute('aria-label', isOpen ? mobileCloseLabel + ' ' + mobileOpenLabel : mobileOpenLabel);
           }
           if (label) {
-            label.textContent = isOpen ? closeLabel : openLabel;
+            label.textContent = isOpen ? mobileCloseLabel : mobileOpenLabel;
           }
         };
 
