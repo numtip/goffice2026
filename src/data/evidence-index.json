@@ -619,7 +619,7 @@
       "updated": "2026-07-27",
       "sourceId": "src-pdf-policy-signed",
       "realSourcePath": "doc/GreenOfficePolicy2026.pdf",
-      "realSourceAvailable": true,
+      "realSourceAvailable": false,
       "publicationMode": "public-metadata-pending-copy",
       "sharePointUrl": null,
       "sharePointUrlPending": true,
@@ -629,8 +629,8 @@
       "categoryCodes": ["cat1"],
       "verification": {
         "status": "pending",
-        "basis": "About intake document mapped Day 1. OCR summary requires human verification before verified status.",
-        "basisTh": "เอกสาร About intake ที่เชื่อมโยงวัน Day 1 สรุป OCR ต้องตรวจสอบก่อนเปลี่ยนเป็นสถานะตรวจสอบแล้ว"
+        "basis": "ET-1 traceability promotion: signed policy PDF (doc/GreenOfficePolicy2026.pdf) is off-disk and not tracked in the repository (checked 2026-08-02); realSourceAvailable set false. Human data-owner verification and file restoration required before verified status.",
+        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์ PDF นโยบายที่ลงนาม (doc/GreenOfficePolicy2026.pdf) ไม่อยู่บนดิสก์และไม่ได้ถูก track ใน repository (ตรวจสอบ 2026-08-02) ตั้ง realSourceAvailable เป็น false ต้องกู้คืนไฟล์และรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนเปลี่ยนเป็นสถานะตรวจสอบแล้ว"
       }
     },
     {
@@ -648,7 +648,7 @@
       "updated": "2026-07-27",
       "sourceId": "src-pdf-goals-2568",
       "realSourcePath": "doc/Green Office Goals.pdf",
-      "realSourceAvailable": true,
+      "realSourceAvailable": false,
       "publicationMode": "public-metadata-pending-copy",
       "sharePointUrl": null,
       "sharePointUrlPending": true,
@@ -658,8 +658,8 @@
       "categoryCodes": ["cat1"],
       "verification": {
         "status": "pending",
-        "basis": "OCR-derived target numbers require verification against signed PDF.",
-        "basisTh": "ตัวเลขเป้าหมายจาก OCR ต้องตรวจสอบกับ PDF ที่ลงนาม"
+        "basis": "ET-1 traceability promotion: targets announcement PDF (doc/Green Office Goals.pdf) is off-disk and not tracked in the repository (checked 2026-08-02); realSourceAvailable set false. Human data-owner verification and file restoration required before verified status.",
+        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์ PDF ประกาศเป้าหมาย (doc/Green Office Goals.pdf) ไม่อยู่บนดิสก์และไม่ได้ถูก track ใน repository (ตรวจสอบ 2026-08-02) ตั้ง realSourceAvailable เป็น false ต้องกู้คืนไฟล์และรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนเปลี่ยนเป็นสถานะตรวจสอบแล้ว"
       }
     },
     {
@@ -677,7 +677,7 @@
       "updated": "2026-07-27",
       "sourceId": "src-pdf-committee-order",
       "realSourcePath": "doc/Order_appointing_the_committee.pdf",
-      "realSourceAvailable": true,
+      "realSourceAvailable": false,
       "publicationMode": "public-metadata-pending-copy",
       "sharePointUrl": null,
       "sharePointUrlPending": true,
@@ -687,8 +687,8 @@
       "categoryCodes": ["cat1"],
       "verification": {
         "status": "pending",
-        "basis": "Signed appointment order. Personal names require privacy review before public copy.",
-        "basisTh": "คำสั่งแต่งตั้งที่ลงนามแล้ว ชื่อบุคคลต้องตรวจสอบความเป็นส่วนตัวก่อนเผยแพร่"
+        "basis": "ET-1 traceability promotion: appointment order PDF (doc/Order_appointing_the_committee.pdf) is off-disk and not tracked in the repository (checked 2026-08-02); realSourceAvailable set false. Personal names require privacy review and file restoration before public copy.",
+        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์ PDF คำสั่งแต่งตั้ง (doc/Order_appointing_the_committee.pdf) ไม่อยู่บนดิสก์และไม่ได้ถูก track ใน repository (ตรวจสอบ 2026-08-02) ตั้ง realSourceAvailable เป็น false ชื่อบุคคลต้องตรวจสอบความเป็นส่วนตัวและกู้คืนไฟล์ก่อนเผยแพร่"
       }
     }
   ]
