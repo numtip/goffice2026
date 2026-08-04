@@ -18,6 +18,7 @@ const ROOT = join(__dirname, '..');
 const DATA_PATH = join(ROOT, 'src/data/generated/action-plan-2569.json');
 const PAGES_PATH = join(ROOT, 'src/data/about/pages.json');
 const CRITERIA_PATH = join(ROOT, 'src/data/criteria/categories.json');
+const INDICATORS_PATH = join(ROOT, 'src/data/criteria/indicators.json');
 
 const VALID_CATEGORY_IDS = new Set(['cat-1', 'cat-2', 'cat-3', 'cat-4', 'cat-5', 'cat-6', 'cat-7']);
 const VALID_MONTH_IDS = new Set([
@@ -83,11 +84,12 @@ export function validateActionPlan2569(data) {
 
 /**
  * Canonical-scope regression checks.
- * planData   — parsed action-plan-2569.json
- * pageMeta   — about/pages.json (must have about-action-plan entry)
- * criteria   — criteria/categories.json (canonical titles)
+ * planData            — parsed action-plan-2569.json
+ * pageMeta            — about/pages.json (must have about-action-plan entry)
+ * criteria            — criteria/categories.json (canonical titles)
+ * criteriaIndicators  — criteria/indicators.json .indicators (canonical counts)
  */
-export function validateActionPlanScope(planData, pageMeta, criteria) {
+export function validateActionPlanScope(planData, pageMeta, criteria, criteriaIndicators) {
   const errors = [];
   const categories = planData?.categories ?? [];
   const page = pageMeta?.pages?.find((p) => p.id === 'about-action-plan');
@@ -130,6 +132,26 @@ export function validateActionPlanScope(planData, pageMeta, criteria) {
     }
   }
 
+  // indicatorCount per category must match canonical counts (65 total across 7).
+  const canonicalIndicatorByCat = new Map(criteria?.categories?.map((c) => [String(c.id), 0]) ?? []);
+  for (const ind of criteriaIndicators ?? []) {
+    if (canonicalIndicatorByCat.has(String(ind.categoryId))) {
+      canonicalIndicatorByCat.set(String(ind.categoryId), canonicalIndicatorByCat.get(String(ind.categoryId)) + 1);
+    }
+  }
+  for (const cat of categories) {
+    const canonical = canonicalIndicatorByCat.get(String(cat.number));
+    if (canonical !== undefined && cat.indicatorCount !== canonical) {
+      errors.push(
+        `category ${cat.id} indicatorCount must be canonical ${canonical} (from criteria/indicators.json), got ${cat.indicatorCount}`,
+      );
+    }
+  }
+  const sumIndicators = categories.reduce((s, c) => s + (c.indicatorCount ?? 0), 0);
+  if (sumIndicators !== 65) {
+    errors.push(`sum of indicatorCount across 7 categories must be 65, got ${sumIndicators}`);
+  }
+
   return errors;
 }
 
@@ -148,7 +170,8 @@ function main() {
   }
   const pageMeta = JSON.parse(readFileSync(PAGES_PATH, 'utf8'));
   const criteria = JSON.parse(readFileSync(CRITERIA_PATH, 'utf8'));
-  const scopeErrors = validateActionPlanScope(data, pageMeta, criteria);
+  const indicators = JSON.parse(readFileSync(INDICATORS_PATH, 'utf8')).indicators;
+  const scopeErrors = validateActionPlanScope(data, pageMeta, criteria, indicators);
   if (scopeErrors.length) {
     console.error('action-plan-2569 canonical-scope validation FAIL');
     scopeErrors.forEach((e) => console.error('  ✗', e));

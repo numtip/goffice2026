@@ -22,6 +22,21 @@ const CANONICAL_CATEGORY_TITLES = new Map(
   criteriaCategories.map((c) => [String(c.id), c.title.th]),
 );
 
+// Canonical indicator counts per category (65 total across 7 categories —
+// เกณฑ์การประเมินสำนักงานสีเขียว-ปี-2569.pdf). Sourced from criteria/indicators.json.
+const criteriaIndicators = JSON.parse(
+  readFileSync(join(ROOT, 'src/data/criteria/indicators.json'), 'utf8'),
+).indicators;
+const CANONICAL_INDICATOR_COUNTS = new Map(
+  criteriaCategories.map((c) => [String(c.id), 0]),
+);
+for (const ind of criteriaIndicators) {
+  const key = String(ind.categoryId);
+  if (CANONICAL_INDICATOR_COUNTS.has(key)) {
+    CANONICAL_INDICATOR_COUNTS.set(key, CANONICAL_INDICATOR_COUNTS.get(key) + 1);
+  }
+}
+
 const SOURCE_INCOMING = join(
   ROOT,
   'incoming/about-2569/1.1.4 แผนการดำเนินงานสำนักงานสีเขียว 2569_6-5-69.xlsx',
@@ -219,6 +234,7 @@ function main() {
     categories: categories.map(({ activities, ...cat }) => ({
       ...cat,
       titleTh: CANONICAL_CATEGORY_TITLES.get(String(cat.number)) ?? cat.titleTh,
+      indicatorCount: CANONICAL_INDICATOR_COUNTS.get(String(cat.number)) ?? 0,
       activityCount: activities.length,
       activities,
     })),

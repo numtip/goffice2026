@@ -43,6 +43,7 @@ const labels = {
     : 'Same file used to generate this page — content unchanged.',
   downloadBtn: isTh ? 'ดาวน์โหลด green-office-action-plan-2569.xlsx' : 'Download green-office-action-plan-2569.xlsx',
   monthCount: isTh ? 'กิจกรรม' : 'activities',
+  indicatorCount: isTh ? 'ตัวชี้วัด' : 'indicators',
   filterLabel: isTh ? 'กรองหมวด' : 'Filter category',
   filterAll: isTh ? 'ทั้งหมด' : 'All',
   searchLabel: isTh ? 'ค้นหากิจกรรม' : 'Search activities',
@@ -267,7 +268,7 @@ const summaryCards = [
               <span>
                 {isTh ? `หมวด ${cat.number}` : `Category ${cat.number}`}: {cat.titleTh}
               </span>
-              <span class="text-sm font-normal text-gray-500">{cat.activityCount} {labels.monthCount}</span>
+              <span class="text-sm font-normal text-gray-500">{cat.indicatorCount} {labels.indicatorCount}</span>
             </span>
           </summary>
           <div class="border-t border-gray-100 px-4 py-4 space-y-4">

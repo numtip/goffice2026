@@ -87,6 +87,7 @@
       "id": "cat-1",
       "number": "1",
       "titleTh": "การกำหนดนโยบาย การวางแผนการดำเนินงานสำนักงานสีเขียว",
+      "indicatorCount": 18,
       "activityCount": 61,
       "activities": [
         {
@@ -903,6 +904,7 @@
       "id": "cat-2",
       "number": "2",
       "titleTh": "การสื่อสารและสร้างจิตสำนึก",
+      "indicatorCount": 6,
       "activityCount": 20,
       "activities": [
         {
@@ -1196,6 +1198,7 @@
       "id": "cat-3",
       "number": "3",
       "titleTh": "การใช้ทรัพยากรและพลังงาน",
+      "indicatorCount": 15,
       "activityCount": 6,
       "activities": [
         {
@@ -1311,6 +1314,7 @@
       "id": "cat-4",
       "number": "4",
       "titleTh": "การจัดการของเสีย",
+      "indicatorCount": 5,
       "activityCount": 25,
       "activities": [
         {
@@ -1799,6 +1803,7 @@
       "id": "cat-5",
       "number": "5",
       "titleTh": "สภาพแวดล้อมและความปลอดภัย",
+      "indicatorCount": 13,
       "activityCount": 17,
       "activities": [
         {
@@ -2092,6 +2097,7 @@
       "id": "cat-6",
       "number": "6",
       "titleTh": "การจัดซื้อและจัดจ้าง",
+      "indicatorCount": 6,
       "activityCount": 6,
       "activities": [
         {
@@ -2195,6 +2201,7 @@
       "id": "cat-7",
       "number": "7",
       "titleTh": "การดำเนินงานสำนักงานสีเขียวเพื่อความต่อเนื่อง",
+      "indicatorCount": 2,
       "activityCount": 12,
       "activities": [
         {

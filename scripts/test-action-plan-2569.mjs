@@ -9,6 +9,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = join(ROOT, 'src/data/generated/action-plan-2569.json');
 const PAGES = join(ROOT, 'src/data/about/pages.json');
 const CRITERIA = join(ROOT, 'src/data/criteria/categories.json');
+const INDICATORS = join(ROOT, 'src/data/criteria/indicators.json');
 const PUBLIC_XLSX = join(ROOT, 'public/documents/about/2569/green-office-action-plan-2569.xlsx');
 
 describe('action-plan-2569 generated data', () => {
@@ -29,8 +30,9 @@ describe('action-plan-2569 generated data', () => {
     const data = JSON.parse(readFileSync(DATA, 'utf8'));
     const pages = JSON.parse(readFileSync(PAGES, 'utf8'));
     const criteria = JSON.parse(readFileSync(CRITERIA, 'utf8'));
+    const indicators = JSON.parse(readFileSync(INDICATORS, 'utf8')).indicators;
     assert.equal(data.categories.length, 7);
-    const errors = validateActionPlanScope(data, pages, criteria);
+    const errors = validateActionPlanScope(data, pages, criteria, indicators);
     assert.deepEqual(errors, []);
 
     const page = pages.pages.find((p) => p.id === 'about-action-plan');
@@ -44,6 +46,7 @@ describe('action-plan-2569 generated data', () => {
     const data = JSON.parse(readFileSync(DATA, 'utf8'));
     const pages = JSON.parse(readFileSync(PAGES, 'utf8'));
     const criteria = JSON.parse(readFileSync(CRITERIA, 'utf8'));
+    const indicators = JSON.parse(readFileSync(INDICATORS, 'utf8')).indicators;
     const hasCat7 = data.categories.some((c) => String(c.number) === '7');
     assert.ok(hasCat7);
     // Inject a new-certification description and confirm the guard trips.
@@ -55,7 +58,7 @@ describe('action-plan-2569 generated data', () => {
           : p,
       ),
     };
-    const errors = validateActionPlanScope(data, badPages, criteria);
+    const errors = validateActionPlanScope(data, badPages, criteria, indicators);
     assert.ok(errors.some((e) => /new-certification/i.test(e)));
     assert.ok(errors.some((e) => /category 7/.test(e)));
   });
@@ -68,5 +71,25 @@ describe('action-plan-2569 generated data', () => {
     for (const cat of data.categories) {
       assert.equal(cat.titleTh, canonicalById.get(String(cat.number)), `cat ${cat.number} must be canonical`);
     }
+  });
+
+  test('category indicatorCount matches canonical criteria (sum 65)', () => {
+    const data = JSON.parse(readFileSync(DATA, 'utf8'));
+    const pages = JSON.parse(readFileSync(PAGES, 'utf8'));
+    const criteria = JSON.parse(readFileSync(CRITERIA, 'utf8'));
+    const indicators = JSON.parse(readFileSync(INDICATORS, 'utf8')).indicators;
+    const canonicalByCat = new Map(criteria.categories.map((c) => [String(c.id), 0]));
+    for (const ind of indicators) {
+      canonicalByCat.set(String(ind.categoryId), canonicalByCat.get(String(ind.categoryId)) + 1);
+    }
+    let sum = 0;
+    for (const cat of data.categories) {
+      assert.equal(cat.indicatorCount, canonicalByCat.get(String(cat.number)), `cat ${cat.number} indicatorCount`);
+      sum += cat.indicatorCount;
+    }
+    assert.equal(sum, 65, 'total indicators across 7 categories must be 65');
+    // Full scope validation must still pass with the canonical counts.
+    const errors = validateActionPlanScope(data, pages, criteria, indicators);
+    assert.deepEqual(errors, []);
   });
 });
