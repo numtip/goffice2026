@@ -15,12 +15,24 @@ interface Props {
   isTh: boolean;
 }
 
+type ContentSection = { headingTh: string; headingEn: string; [key: string]: unknown };
+
+type ContentPageMap = Record<string, {
+  noticeTh?: string;
+  noticeEn?: string;
+  documentId?: string;
+  relatedIndicators?: string[];
+  sections?: ContentSection[];
+} | undefined>;
+
+type PageDocMap = Record<string, { primaryDocumentId?: string | null; documents: string[]; targets?: { th: string; en: string }[] } | undefined>;
+
 const { pageId, isTh } = Astro.props;
 const locale = getLocale(Astro.url);
 
 const pageMeta = pagesMeta.pages.find((p) => p.id === pageId);
-const content = aboutContent.pages[pageId];
-const pageDocs = aboutDocuments.pages[pageId] ?? { primaryDocumentId: null, documents: [] };
+const content = (aboutContent.pages as ContentPageMap)[pageId];
+const pageDocs = (aboutDocuments.pages as PageDocMap)[pageId] ?? { primaryDocumentId: null, documents: [] };
 
 const allDocs = documentsData.documents;
 const allSummaries = summariesData.summaries;
@@ -28,7 +40,9 @@ const allSummaries = summariesData.summaries;
 const primaryDoc = allDocs.find((d) => d.id === pageDocs.primaryDocumentId);
 const downloadDocs = pageDocs.documents
   .map((id) => allDocs.find((d) => d.id === id))
-  .filter((d) => d?.pathPublic);
+  .filter((d): d is NonNullable<typeof d> => Boolean(d?.pathPublic));
+
+const relatedIndicators = content?.relatedIndicators ?? [];
 
 const primarySummary = allSummaries.find((s) => s.documentId === pageDocs.primaryDocumentId);
 
@@ -101,10 +115,10 @@ const indicatorLabel = isTh ? 'ตัวชี้วัดที่เกี่�
     </section>
   )}
 
-  {(content?.relatedIndicators?.length ?? 0) > 0 && (
+  {relatedIndicators.length > 0 && (
     <p class="text-sm text-gray-500">
       {indicatorLabel}:
-      {content.relatedIndicators.map((code) => (
+      {relatedIndicators.map((code) => (
         <a
           href={getLocalizedPath(locale, `/indicators/${code}`)}
           class="ml-2 text-green-700 hover:underline"

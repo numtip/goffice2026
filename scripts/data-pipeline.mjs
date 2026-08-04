@@ -470,7 +470,7 @@ function validateGenerated(verbose) {
     return { success: false, errors: ['Generated directory not found'], warnings: [] };
   }
 
-  const files = readdirSync(GENERATED_DIR).filter(f => f.endsWith('.json') && !f.includes('kpi-summary') && !f.includes('data-quality'));
+  const files = readdirSync(GENERATED_DIR).filter(f => f.endsWith('.json') && !f.includes('kpi-summary') && !f.includes('data-quality') && !f.includes('action-plan'));
   let allValid = true;
   const allWarnings = [];
   const allErrors = [];

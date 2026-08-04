@@ -9,6 +9,8 @@ interface Props {
   order?: string[];
 }
 
+type PageDocMap = Record<string, { primaryDocumentId?: string | null; documents: string[]; targets?: { th: string; en: string }[] } | undefined>;
+
 const { isTh } = Astro.props;
 const locale = getLocale(Astro.url);
 const allDocs = documentsData.documents;
@@ -18,7 +20,7 @@ const order = Astro.props.order ?? ['about-policy', 'about-goals', 'about-scope'
 const cards = order
   .map((pageId) => {
     const meta = pagesMeta.pages.find((p) => p.id === pageId);
-    const pageDocs = aboutDocuments.pages[pageId];
+    const pageDocs = (aboutDocuments.pages as PageDocMap)[pageId];
     const primaryId = pageDocs?.primaryDocumentId;
     const doc = primaryId ? allDocs.find((d) => d.id === primaryId) : null;
     if (!meta) return null;
