@@ -13,6 +13,7 @@ import ResourcePerformanceCard from '../components/dashboard/ResourcePerformance
 import NormalizedTrendChart from '../components/dashboard/NormalizedTrendChart.astro';
 import CategoryScoreChart from '../components/dashboard/CategoryScoreChart.astro';
 import DataReadinessMatrix from '../components/dashboard/DataReadinessMatrix.astro';
+import JourneyLinks from '../components/ui/JourneyLinks.astro';
 
 const genMap = generatedMetricMap;
 
@@ -548,6 +549,8 @@ const partialCount = insightIncomplete.length;
         <a href={getLocalizedPath(locale, '/documents')} class="text-primary underline hover:text-primary-container">{th ? 'ศูนย์เอกสาร' : 'Document Center'}</a>
         <a href={getLocalizedPath(locale, '/evidence')} class="text-primary underline hover:text-primary-container">{th ? 'คลังหลักฐาน' : 'Evidence Library'}</a>
         <a href="https://goffice.mju.ac.th/" class="text-primary underline hover:text-primary-container" target="_blank" rel="noopener">{th ? 'เว็บไซต์อ้างอิง' : 'Reference Site'}</a>
+        <a href={getLocalizedPath(locale, '/about/policy')} class="text-primary underline hover:text-primary-container">{th ? 'นโยบาย' : 'Policy'}</a>
+        <a href={getLocalizedPath(locale, '/about/goals')} class="text-primary underline hover:text-primary-container">{th ? 'เป้าหมาย' : 'Goals'}</a>
       </div>
       <p class="mt-2 text-outline/60">
         {th ? `อัปเดตล่าสุด: ${updatedDate} · ไฟล์ข้อมูลที่ประมวลผล: src/data/generated/` : `Last updated: ${updatedDate} · Generated data: src/data/generated/`}
@@ -594,6 +597,9 @@ const partialCount = insightIncomplete.length;
         </div>
       </div>
     </section>
+
+    <!-- Platform Journey -->
+    <JourneyLinks current="dashboard" locale={locale} />
 
   </div>
 <style>

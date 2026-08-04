@@ -18,9 +18,12 @@ import DataEvidencePanel from './DataEvidencePanel.astro';
 import MetricSwitcher from './MetricSwitcher.astro';
 import DashboardEmptyState from './DashboardEmptyState.astro';
 import LinkedEvidenceList from '../evidence/LinkedEvidenceList.astro';
+import JourneyLinks from '../ui/JourneyLinks.astro';
 
 import categoriesData from '../../data/criteria/categories.json';
 import indicatorsData from '../../data/criteria/indicators.json';
+import pagesMetaData from '../../data/about/pages.json';
+import evidenceLinksData from '../../data/evidence-links.json';
 
 interface Props {
   dashboard: DashboardMeta;
@@ -67,6 +70,15 @@ const relatedIndicators = indicatorsData.indicators.filter(
   (ind: { relatedDashboards: string[] }) => ind.relatedDashboards.includes(dashboard.id)
 );
 const linkedEvidence = getEvidenceForDashboard(dashboard.id);
+
+// Related About pages (policy / goals) for this dashboard
+const dashAboutLinks =
+  (evidenceLinksData as { dashboards?: Record<string, { aboutPageIds?: string[] }> }).dashboards?.[dashboard.id]?.aboutPageIds ?? [];
+const relatedAboutPages = dashAboutLinks
+  .map((pid: string) =>
+    (pagesMetaData as { pages: { id: string; route: string; titleTh: string; titleEn: string }[] }).pages.find((p) => p.id === pid)
+  )
+  .filter((p): p is { id: string; route: string; titleTh: string; titleEn: string } => Boolean(p));
 
 // Prev/next navigation
 const dashboards = (await import('../../data/dashboard-config')).dashboards;
@@ -289,12 +301,32 @@ const primaryIndicator = metric?.relatedIndicators?.[0];
         </div>
       )}
 
+      <!-- Related Policy & Goals -->
+      {relatedAboutPages.length > 0 && (
+        <div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm">
+          <h2 class="text-sm font-semibold text-on-surface mb-3">{th ? 'นโยบายและเป้าหมายที่เกี่ยวข้อง' : 'Related Policy & Goals'}</h2>
+          <div class="flex flex-wrap gap-2">
+            {relatedAboutPages.map((page) => (
+              <a
+                href={getLocalizedPath(locale, page.route.replace(/\/$/, '') || '/about')}
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/20 text-sm text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-colors"
+              >
+                <span>{th ? page.titleTh : page.titleEn}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
       <!-- Category link -->
       {category && (
         <div class="text-xs text-on-surface-variant">
           {th ? 'หมวด' : 'Category'}: <a href={getLocalizedPath(locale, `/categories/${category.code}`)} class="text-primary underline hover:text-primary-container">{th ? category.title.th : category.title.en}</a>
         </div>
       )}
+
+      <!-- Platform Journey -->
+      <JourneyLinks current="dashboard" locale={locale} />
 
       <!-- Prev / Next Navigation (de-emphasized) -->
       <nav class="flex items-center justify-between gap-4 pt-4 border-t border-outline-variant/20 text-sm" aria-label={th ? 'การนำทางแดชบอร์ด' : 'Dashboard navigation'}>

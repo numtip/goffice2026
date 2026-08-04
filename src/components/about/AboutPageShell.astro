@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import RelatedResources from '../ui/RelatedResources.astro';
+import JourneyLinks from '../ui/JourneyLinks.astro';
 import { getLocale, getLocalizedPath } from '../../i18n/utils';
 import pagesMeta from '../../data/about/pages.json';
 
@@ -66,6 +68,12 @@ const historicalLabel = isTh ? 'ข้อมูลอ้างอิงจาก
     <div class="prose prose-green max-w-none">
       <slot name="notice" />
       <slot />
+    </div>
+
+    <RelatedResources pageId={pageId} locale={locale} />
+
+    <div class="mt-10">
+      <JourneyLinks current="about" locale={locale} />
     </div>
   </div>
 </BaseLayout>

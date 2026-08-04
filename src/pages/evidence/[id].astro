@@ -10,6 +10,9 @@ import { withBase } from '../../utils/with-base';
 import { publicSourceLabel } from '../../utils/evidence-traceability';
 import { NO_PUBLISHED_EVIDENCE, SOURCE_OFFLINE, SHAREPOINT_LINK_PENDING, pubLabel } from '../../utils/publication-states';
 import EvidenceSourcePanel from '../../components/evidence/EvidenceSourcePanel.astro';
+import Breadcrumb from '../../components/ui/Breadcrumb.astro';
+import JourneyLinks from '../../components/ui/JourneyLinks.astro';
+import RelatedResources from '../../components/ui/RelatedResources.astro';
 
 export function getStaticPaths() {
   return evidenceIndex.items.map((item: Record<string, any>) => ({
@@ -106,33 +109,17 @@ const confidenceLabel = raw.provenance?.mappingConfidence
 <BaseLayout title={`${pageTitle} — ${label('คลังหลักฐาน', 'Evidence Library')}`} description={pageDescription || ''} locale={locale}>
   <div class="max-w-4xl mx-auto px-4 py-8">
     <!-- Breadcrumb -->
-    <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
-      <ol class="flex flex-wrap items-center gap-x-1.5 gap-y-1">
-        <li>
-          <a href={withBase('/')} class="text-green-600 hover:text-green-800 hover:underline transition-colors">
-            {label('หน้าหลัก', 'Home')}
-          </a>
-        </li>
-        <li class="text-gray-300 select-none" aria-hidden="true">/</li>
-        <li>
-          <a href={withBase('/evidence/')} class="text-green-600 hover:text-green-800 hover:underline transition-colors">
-            {label('หลักฐาน', 'Evidence')}
-          </a>
-        </li>
-        {categories.length > 0 && (
-          <>
-            <li class="text-gray-300 select-none" aria-hidden="true">/</li>
-            <li>
-              <a href={withBase(`/categories/${categories[0]!.code}/`)} class="text-green-600 hover:text-green-800 hover:underline transition-colors">
-                {label(categories[0]!.title.th, categories[0]!.title.en)}
-              </a>
-            </li>
-          </>
-        )}
-        <li class="text-gray-300 select-none" aria-hidden="true">/</li>
-        <li class="text-gray-700 font-medium truncate max-w-[200px]">{pageTitle}</li>
-      </ol>
-    </nav>
+    <Breadcrumb
+      locale={locale}
+      items={[
+        { label: label('หน้าหลัก', 'Home') },
+        { label: label('หลักฐาน', 'Evidence'), href: '/evidence/' },
+        ...(categories.length > 0
+          ? [{ label: label(categories[0]!.title.th, categories[0]!.title.en), href: `/categories/${categories[0]!.code}/` }]
+          : []),
+        { label: pageTitle },
+      ]}
+    />
 
     <!-- Main card -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
@@ -366,5 +353,11 @@ const confidenceLabel = raw.provenance?.mappingConfidence
         {label('กลับไปยังคลังหลักฐาน', 'Back to Evidence Library')}
       </a>
     </div>
+
+    <!-- Journey links -->
+    <JourneyLinks current="evidence" locale={locale} />
+
+    <!-- Related resources -->
+    <RelatedResources evidenceId={raw.id} locale={locale} />
   </div>
 </BaseLayout>

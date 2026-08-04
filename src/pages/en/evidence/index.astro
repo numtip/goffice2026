@@ -4,6 +4,7 @@ import '../../../styles/global.css';
 import evidenceIndex from '../../../data/evidence-index.json';
 import categoriesData from '../../../data/criteria/categories.json';
 import EvidenceCard from '../../../components/evidence/EvidenceCard.astro';
+import JourneyLinks from '../../../components/ui/JourneyLinks.astro';
 
 const locale = 'en';
 
@@ -190,6 +191,11 @@ const hasItems = items.length > 0;
         <p class="text-gray-400 text-sm mt-1">Evidence items will appear here once indexed.</p>
       </div>
     )}
+
+    <!-- Journey links -->
+    <div class="mt-10">
+      <JourneyLinks current="evidence" locale={locale} />
+    </div>
 
     <!-- Updated date -->
     <p class="text-xs text-gray-400 mt-6 text-center">

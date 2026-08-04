@@ -9,6 +9,9 @@ import { getLocalizedPath } from '../../../i18n/utils';
 import { publicSourceLabel } from '../../../utils/evidence-traceability';
 import { NO_PUBLISHED_EVIDENCE, SOURCE_OFFLINE, SHAREPOINT_LINK_PENDING, pubLabel } from '../../../utils/publication-states';
 import EvidenceSourcePanel from '../../../components/evidence/EvidenceSourcePanel.astro';
+import Breadcrumb from '../../../components/ui/Breadcrumb.astro';
+import JourneyLinks from '../../../components/ui/JourneyLinks.astro';
+import RelatedResources from '../../../components/ui/RelatedResources.astro';
 
 const locale = 'en';
 
@@ -96,23 +99,17 @@ function localizedUrl(path: string): string {
 <BaseLayout title={`${pageTitle} — Evidence Library`} locale={locale}>
   <div class="max-w-4xl mx-auto px-4 py-8">
     <!-- Breadcrumb -->
-    <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
-      <ol class="flex flex-wrap items-center gap-x-1.5 gap-y-1">
-        <li>
-          <a href={localizedUrl('/')} class="text-green-600 hover:text-green-800 hover:underline transition-colors">
-            Home
-          </a>
-        </li>
-        <li class="text-gray-300 select-none" aria-hidden="true">/</li>
-        <li>
-          <a href={localizedUrl('/evidence/')} class="text-green-600 hover:text-green-800 hover:underline transition-colors">
-            Evidence
-          </a>
-        </li>
-        <li class="text-gray-300 select-none" aria-hidden="true">/</li>
-        <li class="text-gray-700 font-medium truncate max-w-[200px]">{pageTitle}</li>
-      </ol>
-    </nav>
+    <Breadcrumb
+      locale={locale}
+      items={[
+        { label: 'Home' },
+        { label: 'Evidence', href: '/evidence/' },
+        ...(categories.length > 0
+          ? [{ label: categories[0]!.title.en, href: `/categories/${categories[0]!.code}/` }]
+          : []),
+        { label: pageTitle },
+      ]}
+    />
 
     <!-- Main card -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
@@ -333,5 +330,11 @@ function localizedUrl(path: string): string {
         Back to Evidence Library
       </a>
     </div>
+
+    <!-- Journey links -->
+    <JourneyLinks current="evidence" locale={locale} />
+
+    <!-- Related resources -->
+    <RelatedResources evidenceId={raw.id} locale={locale} />
   </div>
 </BaseLayout>

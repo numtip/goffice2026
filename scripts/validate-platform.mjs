@@ -124,6 +124,15 @@ function phaseResourceIndicatorMap() {
   return runScript('validate-resource-indicator-map.mjs');
 }
 
+// ── Phase 1.75: Evidence-Links Metadata Consistency ──────────
+
+function phaseEvidenceLinks() {
+  console.log('\n========================================');
+  console.log('PHASE 1.75: Evidence-Links Metadata Consistency');
+  console.log('========================================');
+  return runScript('validate-evidence-links.mjs');
+}
+
 // ── Phase 2: Evidence Validation ────────────────────────────
 
 function phaseEvidence() {
@@ -320,6 +329,7 @@ function main() {
 
   const taxonomyResult = phaseTaxonomy();
   const resourceMapResult = phaseResourceIndicatorMap();
+  const evidenceLinksResult = phaseEvidenceLinks();
   const evidenceResult = phaseEvidence();
   const routeResult = phaseRoutes();
   const linkResult = routeResult.skipped ? { ok: true, skipped: true } : phaseLinks();
@@ -334,6 +344,7 @@ function main() {
   const results = [
     { phase: 'Taxonomy Validation',    ok: taxonomyResult.ok },
     { phase: 'Resource-Indicator Map', ok: resourceMapResult.ok },
+    { phase: 'Evidence-Links Metadata', ok: evidenceLinksResult.ok },
     { phase: 'Evidence Validation',    ok: evidenceResult.ok },
     { phase: 'Route Verification',     ok: routeOk },
     { phase: 'Production Link Check',  ok: linkOk },
@@ -351,6 +362,9 @@ function main() {
   }
   if (!resourceMapResult.ok) {
     console.log('  ⚠  Resource-Indicator Map validator reported issues. Check output above.');
+  }
+  if (!evidenceLinksResult.ok) {
+    console.log('  ⚠  Evidence-Links metadata validator reported issues. Check output above.');
   }
   if (!evidenceResult.ok) {
     console.log('  ⚠  Evidence validator reported issues. Check output above.');
