@@ -1,0 +1,186 @@
+---
+import { getLocalizedPath } from '../../i18n/utils';
+import evidenceLinksData from '../../data/evidence-links.json';
+import evidenceIndexData from '../../data/evidence-index.json';
+import pagesMetaData from '../../data/about/pages.json';
+import aboutDocumentsData from '../../data/about/about-documents.json';
+import documentsData from '../../data/about/documents.json';
+import { dashboards, dashTitle, dashDescription } from '../../data/dashboard-config';
+import DocumentCard from './DocumentCard.astro';
+
+interface Props {
+  locale: 'th' | 'en';
+  /** About page id (e.g. 'about-policy'). Mutually exclusive with evidenceId. */
+  pageId?: string;
+  /** Evidence id (e.g. 'ev-about-policy-signed'). Mutually exclusive with pageId. */
+  evidenceId?: string;
+}
+
+const { locale, pageId, evidenceId } = Astro.props;
+const th = locale === 'th';
+const label = (thText: string, enText: string): string => (th ? thText : enText);
+
+type EvidenceLinks = {
+  aboutPages?: Record<string, { evidenceIds?: string[]; dashboardIds?: string[] }>;
+  evidenceToAbout?: Record<string, string[]>;
+};
+const links = evidenceLinksData as unknown as EvidenceLinks;
+
+// ── Resolve related items from canonical metadata only ────────
+const evidenceIds = new Set<string>();
+const dashboardIds = new Set<string>();
+const aboutPageIds = new Set<string>();
+const documentIds = new Set<string>();
+
+if (pageId) {
+  const pageLinks = links.aboutPages?.[pageId];
+  pageLinks?.evidenceIds?.forEach((id) => evidenceIds.add(id));
+  pageLinks?.dashboardIds?.forEach((id) => dashboardIds.add(id));
+  const pageDocs = (aboutDocumentsData as unknown as {
+    pages?: Record<string, { documents?: string[] }>;
+  }).pages?.[pageId];
+  pageDocs?.documents?.forEach((id) => documentIds.add(id));
+} else if (evidenceId) {
+  const aboutIds = links.evidenceToAbout?.[evidenceId] ?? [];
+  aboutIds.forEach((id) => aboutPageIds.add(id));
+  aboutIds.forEach((pid) => {
+    const pageDocs = (aboutDocumentsData as unknown as {
+      pages?: Record<string, { documents?: string[] }>;
+    }).pages?.[pid];
+    pageDocs?.documents?.forEach((id) => documentIds.add(id));
+  });
+}
+
+const pagesMeta = pagesMetaData as unknown as {
+  pages: { id: string; route: string; titleTh?: string; titleEn?: string }[];
+};
+const allDocs = (documentsData as unknown as { documents: any[] }).documents;
+
+// Resolve full records
+const evidenceItems = evidenceIndexData.items.filter((item: any) => evidenceIds.has(item.id));
+const dashList = dashboards.filter((d) => dashboardIds.has(d.id));
+const aboutPages = pagesMeta.pages.filter((p) => aboutPageIds.has(p.id));
+const relatedDocs = allDocs.filter((d: any) => documentIds.has(d.id) && d.pathPublic);
+
+const hasContent =
+  evidenceItems.length > 0 || dashList.length > 0 || aboutPages.length > 0 || relatedDocs.length > 0;
+
+// Localized titles
+const evidenceTitle = (item: any): string => (th ? (item.titleTh || item.title) : item.title);
+const aboutTitle = (p: any): string => (th ? (p.titleTh || p.titleEn) : p.titleEn || p.titleTh);
+---
+
+{hasContent && (
+  <section
+    class="not-prose mt-10 space-y-8"
+    aria-labelledby="related-resources-heading"
+  >
+    <div>
+      <h2 id="related-resources-heading" class="text-xl font-semibold text-gray-900">
+        {label('ทรัพยากรที่เกี่ยวข้อง', 'Related Resources')}
+      </h2>
+      <p class="mt-1 text-sm text-gray-500">
+        {label('เชื่อมโยงจากข้อมูลเมตาดาต้าหลักของแพลตฟอร์ม', 'Linked from the platform canonical metadata')}
+      </p>
+    </div>
+
+    <!-- Related Documents -->
+    {relatedDocs.length > 0 && (
+      <section aria-labelledby="related-resources-docs">
+        <h3 id="related-resources-docs" class="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wider">
+          {label('เอกสารที่เกี่ยวข้อง', 'Related Documents')}
+        </h3>
+        <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" role="list">
+          {relatedDocs.map((doc: any) => (
+            <li>
+              <DocumentCard document={doc} isTh={th} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <!-- Related Evidence -->
+    {evidenceItems.length > 0 && (
+      <section aria-labelledby="related-resources-evidence">
+        <h3 id="related-resources-evidence" class="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wider">
+          {label('หลักฐานที่เกี่ยวข้อง', 'Related Evidence')}
+        </h3>
+        <ul class="space-y-2" role="list">
+          {evidenceItems.map((item: any) => (
+            <li>
+              <a
+                href={getLocalizedPath(locale, `/evidence/${item.id}/`)}
+                class="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg border border-gray-100 bg-white px-4 py-3 shadow-sm transition hover:border-green-300 hover:shadow"
+              >
+                <span class="text-sm font-semibold text-green-700">{evidenceTitle(item)}</span>
+                <span class="text-xs text-gray-400">{item.id}</span>
+                {item.year && (
+                  <span class="ml-auto rounded-full bg-purple-100 px-2 py-0.5 text-xs font-medium text-purple-700">
+                    {item.year}
+                  </span>
+                )}
+                {item.fileType && (
+                  <span class="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700">
+                    {item.fileType}
+                  </span>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <!-- Related Dashboards -->
+    {dashList.length > 0 && (
+      <section aria-labelledby="related-resources-dashboards">
+        <h3 id="related-resources-dashboards" class="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wider">
+          {label('แดชบอร์ดที่เกี่ยวข้อง', 'Related Dashboards')}
+        </h3>
+        <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" role="list">
+          {dashList.map((d) => (
+            <li>
+              <a
+                href={getLocalizedPath(locale, `/dashboard/${d.id}/`)}
+                class="block h-full rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition hover:border-green-300 hover:shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+              >
+                <span class="flex items-center justify-between gap-2">
+                  <span class="text-sm font-semibold text-gray-900">{dashTitle(d, locale)}</span>
+                  <svg class="w-4 h-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+                <span class="mt-1 block text-xs text-gray-500">{dashDescription(d, locale)}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <!-- Related About Pages (evidence-mode) -->
+    {aboutPages.length > 0 && (
+      <section aria-labelledby="related-resources-about">
+        <h3 id="related-resources-about" class="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wider">
+          {label('หน้าที่เกี่ยวข้อง', 'Related Pages')}
+        </h3>
+        <ul class="grid gap-3 sm:grid-cols-2" role="list">
+          {aboutPages.map((p) => (
+            <li>
+              <a
+                href={getLocalizedPath(locale, p.route.replace(/\/$/, '') || '/about')}
+                class="flex items-center justify-between gap-2 rounded-lg border border-gray-200 bg-white px-4 py-3 shadow-sm transition hover:border-green-300 hover:shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+              >
+                <span class="text-sm font-semibold text-gray-900">{aboutTitle(p)}</span>
+                <svg class="w-4 h-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </section>
+)}

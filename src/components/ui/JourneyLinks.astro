@@ -1,0 +1,99 @@
+---
+import { getLocalizedPath } from '../../i18n/utils';
+
+type ModuleId = 'about' | 'dashboard' | 'evidence' | 'documents';
+
+interface Props {
+  current: ModuleId;
+  locale: 'th' | 'en';
+}
+
+const { current, locale } = Astro.props;
+const label = (th: string, en: string): string => (locale === 'th' ? th : en);
+
+const modules: {
+  id: ModuleId;
+  labelTh: string;
+  labelEn: string;
+  path: string;
+  descTh: string;
+  descEn: string;
+}[] = [
+  {
+    id: 'about',
+    labelTh: 'เกี่ยวกับเรา',
+    labelEn: 'About',
+    path: '/about/',
+    descTh: 'นโยบาย เป้าหมาย คณะกรรมการ แผนปฏิบัติการ',
+    descEn: 'Policy, goals, committee and action plan',
+  },
+  {
+    id: 'dashboard',
+    labelTh: 'แดชบอร์ด',
+    labelEn: 'Dashboard',
+    path: '/dashboard/',
+    descTh: 'ข้อมูลการใช้ทรัพยากร 6 ด้าน',
+    descEn: 'Six resource performance dashboards',
+  },
+  {
+    id: 'evidence',
+    labelTh: 'คลังหลักฐาน',
+    labelEn: 'Evidence',
+    path: '/evidence/',
+    descTh: 'หลักฐานการประเมินตามเกณฑ์ 7 หมวด',
+    descEn: 'Certification evidence records by category',
+  },
+  {
+    id: 'documents',
+    labelTh: 'ศูนย์เอกสาร',
+    labelEn: 'Documents',
+    path: '/documents/',
+    descTh: 'เอกสารอ้างอิงและเอกสารหลักฐาน',
+    descEn: 'Reference and evidence documents',
+  },
+];
+---
+
+<section
+  class="not-prose rounded-stitch-lg border border-gray-100 bg-white p-5 shadow-sm"
+  aria-labelledby="journey-links-heading"
+>
+  <h2 id="journey-links-heading" class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+    {label('เส้นทางการเชื่อมโยงแพลตฟอร์ม', 'Platform Journey')}
+  </h2>
+  <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4" role="list">
+    {modules.map((m) => {
+      const isActive = m.id === current;
+      return (
+        <li>
+          <a
+            href={getLocalizedPath(locale, m.path)}
+            aria-current={isActive ? 'page' : undefined}
+            class:list={[
+              'block h-full rounded-lg border p-4 transition',
+              isActive
+                ? 'border-green-300 bg-green-50 shadow-sm'
+                : 'border-gray-200 bg-white hover:border-green-300 hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600',
+            ]}
+          >
+            <span class="flex items-center justify-between gap-2">
+              <span class:list={['text-base font-semibold', isActive ? 'text-green-800' : 'text-gray-900']}>
+                {m.id === 'about' ? label(m.labelTh, m.labelEn) : label(m.labelTh, m.labelEn)}
+              </span>
+              {isActive ? (
+                <span class="rounded-full bg-green-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+                  {label('ปัจจุบัน', 'Here')}
+                </span>
+              ) : (
+                <svg class="w-4 h-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              )}
+            </span>
+            <span class="mt-1 block text-xs text-gray-500">{label(m.descTh, m.descEn)}</span>
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</section>

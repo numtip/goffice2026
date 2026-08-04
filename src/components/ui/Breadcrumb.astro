@@ -1,0 +1,56 @@
+---
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface Crumb {
+  /** Already-localized display label. */
+  label: string;
+  /** Canonical site-relative path (e.g. '/evidence/'). Omit for the current page. */
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+  locale: 'th' | 'en';
+}
+
+const { items, locale } = Astro.props;
+const label = (th: string, en: string): string => (locale === 'th' ? th : en);
+---
+
+<nav class="text-sm text-gray-500 mb-6" aria-label={label('เส้นทางนำทาง', 'Breadcrumb')}>
+  <ol class="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+    {items.map((item, i) => {
+      const isLast = i === items.length - 1;
+      const isLink = Boolean(item.href) && !isLast;
+      return (
+        <>
+          {i > 0 && (
+            <li class="text-gray-300 select-none" aria-hidden="true">
+              /
+            </li>
+          )}
+          <li>
+            {isLink ? (
+              <a
+                href={getLocalizedPath(locale, item.href!)}
+                class="text-green-600 hover:text-green-800 hover:underline transition-colors"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <span
+                class:list={[
+                  'truncate max-w-[200px]',
+                  isLast ? 'text-gray-700 font-medium' : 'text-gray-500',
+                ]}
+                aria-current={isLast ? 'page' : undefined}
+              >
+                {item.label}
+              </span>
+            )}
+          </li>
+        </>
+      );
+    })}
+  </ol>
+</nav>

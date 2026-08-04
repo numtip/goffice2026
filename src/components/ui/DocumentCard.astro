@@ -1,0 +1,88 @@
+---
+import { withBase } from '../../utils/with-base';
+
+interface DocumentData {
+  id: string;
+  titleTh?: string;
+  titleEn?: string;
+  documentYear?: number | null;
+  pageCount?: number | null;
+  signed?: boolean;
+  documentType?: string;
+  language?: string;
+  pathPublic?: string;
+  publicInternal?: string;
+}
+
+interface Props {
+  document: DocumentData;
+  isTh: boolean;
+  /** Override title label (defaults to localized title). */
+  title?: string;
+  /** Override target href (defaults to pathPublic with base). */
+  href?: string;
+}
+
+const { document: doc, isTh, title, href } = Astro.props;
+const th = isTh;
+const label = (thText: string, enText: string): string => (th ? thText : enText);
+
+const typeLabels: Record<string, { th: string; en: string }> = {
+  'signed-environmental-policy': { th: 'นโยบายสิ่งแวดล้อม (ลงนาม)', en: 'Signed environmental policy' },
+  'policy-review-evidence': { th: 'หลักฐานการทบทวนนโยบาย', en: 'Policy review evidence' },
+  'committee-appointment-order': { th: 'คำสั่งแต่งตั้งคณะกรรมการ', en: 'Committee appointment order' },
+  'committee-role-understanding-evidence': { th: 'หลักฐานความเข้าใจบทบาทคณะกรรมการ', en: 'Committee role understanding' },
+  'goals-and-targets': { th: 'เป้าหมายและตัวชี้วัด', en: 'Goals and targets' },
+  'scope-and-activities-definition': { th: 'ขอบเขตการจัดการสิ่งแวดล้อม', en: 'Scope of management' },
+  'action-plan-and-performance-results': { th: 'แผนและผลการดำเนินงาน', en: 'Action plan and results' },
+  'feedback-channels-and-procedures': { th: 'ช่องทางรับข้อเสนอแนะ', en: 'Feedback channels' },
+  'assessment-criteria': { th: 'เกณฑ์การประเมิน', en: 'Assessment criteria' },
+};
+
+const typeLabel = doc.documentType
+  ? typeLabels[doc.documentType]?.[th ? 'th' : 'en'] ?? doc.documentType
+  : '';
+
+const docTitle = title ?? (th ? (doc.titleTh || doc.titleEn || '') : (doc.titleEn || doc.titleTh || ''));
+const hasFile = Boolean(doc.pathPublic);
+const fileHref = hasFile ? (href ?? withBase(doc.pathPublic!)) : null;
+---
+
+<article class="flex h-full flex-col rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition hover:border-green-300 hover:shadow">
+  <div class="flex flex-wrap items-center gap-2 text-[11px]">
+    {doc.documentYear && (
+      <span class="rounded-full bg-blue-50 px-2 py-0.5 font-medium text-blue-900">พ.ศ. {doc.documentYear}</span>
+    )}
+    {doc.pageCount && (
+      <span class="rounded-full bg-gray-100 px-2 py-0.5 text-gray-700">
+        {doc.pageCount} {label('หน้า', 'pages')}
+      </span>
+    )}
+    {doc.signed && (
+      <span class="rounded-full bg-green-50 px-2 py-0.5 text-green-900">{label('ลงนาม', 'Signed')}</span>
+    )}
+    {doc.language && doc.language === 'en' && (
+      <span class="rounded-full bg-indigo-50 px-2 py-0.5 text-indigo-800">EN</span>
+    )}
+  </div>
+
+  <h3 class="mt-2 text-sm font-semibold leading-snug text-gray-900">{docTitle}</h3>
+
+  {typeLabel && <p class="mt-1 text-xs text-gray-500">{typeLabel}</p>}
+
+  <div class="mt-auto pt-3">
+    {fileHref ? (
+      <a
+        href={fileHref}
+        class="inline-flex items-center gap-1.5 text-sm font-medium text-green-700 underline decoration-green-300 underline-offset-2 hover:text-green-900"
+      >
+        {label('เปิดเอกสาร', 'Open document')}
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6v6m-11 5L21 3" />
+        </svg>
+      </a>
+    ) : (
+      <span class="text-xs text-gray-400 italic">{label('ยังไม่เผยแพร่', 'Not yet published')}</span>
+    )}
+  </div>
+</article>
