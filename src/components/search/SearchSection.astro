@@ -1,0 +1,32 @@
+---
+interface Props {
+  sectionId: string;
+  label: string;
+  locale: 'th' | 'en';
+  count: number;
+}
+
+const { sectionId, label, locale, count } = Astro.props;
+
+const countWord =
+  count === 1
+    ? locale === 'th'
+      ? 'รายการ'
+      : 'item'
+    : locale === 'th'
+      ? 'รายการ'
+      : 'items';
+const headingId = `search-section-${sectionId}`;
+---
+
+<section class="search-section mb-8" data-section={sectionId} aria-labelledby={headingId}>
+  <h2 id={headingId} class="mb-3 flex items-center gap-2 text-lg font-bold text-gray-900">
+    {label}
+    <span class="inline-flex items-center rounded-full bg-green-50 px-2.5 py-0.5 text-xs font-medium text-green-700">
+      {count} {countWord}
+    </span>
+  </h2>
+  <div class="space-y-3">
+    <slot />
+  </div>
+</section>

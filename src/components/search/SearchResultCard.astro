@@ -1,0 +1,110 @@
+---
+import SearchHighlight from './SearchHighlight.astro';
+
+export interface SearchItem {
+  id: string;
+  section: string;
+  type: string;
+  title: [string, string];
+  context: [string, string];
+  keywords: [string, string];
+  route: string;
+  routeKind?: 'page' | 'file';
+  category?: [string, string] | null;
+  year?: number | null;
+  fileType?: string | null;
+}
+
+interface Props {
+  item: SearchItem;
+  locale: 'th' | 'en';
+  /** Resolved, localized href (defaults to item.route). */
+  href?: string;
+}
+
+const { item, locale, href = item.route } = Astro.props;
+
+const typeColorMap: Record<string, string> = {
+  category: 'bg-purple-100 text-purple-700 border-purple-200',
+  issue: 'bg-blue-100 text-blue-700 border-blue-200',
+  indicator: 'bg-amber-100 text-amber-700 border-amber-200',
+  evidence: 'bg-green-100 text-green-700 border-green-200',
+  document: 'bg-rose-100 text-rose-700 border-rose-200',
+  'document-page': 'bg-rose-50 text-rose-600 border-rose-200',
+  about: 'bg-emerald-100 text-emerald-700 border-emerald-200',
+  dashboard: 'bg-teal-100 text-teal-700 border-teal-200',
+  news: 'bg-cyan-100 text-cyan-700 border-cyan-200',
+  activities: 'bg-orange-100 text-orange-700 border-orange-200',
+  knowledge: 'bg-indigo-100 text-indigo-700 border-indigo-200',
+};
+
+const typeLabels: Record<string, [string, string]> = {
+  category: ['หมวดหมู่', 'Category'],
+  issue: ['ประเด็น', 'Issue'],
+  indicator: ['ตัวชี้วัด', 'Indicator'],
+  evidence: ['หลักฐาน', 'Evidence'],
+  document: ['เอกสาร', 'Document'],
+  'document-page': ['เอกสารหมวด', 'Document page'],
+  about: ['เกี่ยวกับ', 'About'],
+  dashboard: ['แดชบอร์ด', 'Dashboard'],
+  news: ['ข่าวสาร', 'News'],
+  activities: ['กิจกรรม', 'Activities'],
+  knowledge: ['ความรู้', 'Knowledge'],
+};
+
+const color = typeColorMap[item.type] ?? 'bg-gray-100 text-gray-600 border-gray-200';
+const typeLabel = typeLabels[item.type]?.[locale === 'th' ? 0 : 1] ?? item.type;
+const title = locale === 'th' ? item.title[0] : item.title[1];
+const context = locale === 'th' ? item.context[0] : item.context[1];
+const category = item.category ? (locale === 'th' ? item.category[0] : item.category[1]) : '';
+const hasMeta = item.year != null || Boolean(item.fileType);
+---
+
+<article
+  class="search-result bg-white rounded-xl border border-gray-100 shadow-sm p-4 hover:shadow-md transition-shadow"
+  role="listitem"
+  data-type={item.type}
+  data-route-kind={item.routeKind ?? 'page'}
+  data-item-id={item.id}
+  data-section={item.section}
+>
+  <div class="flex items-start gap-3">
+    <div class="flex-1 min-w-0">
+      <!-- Badges row -->
+      <div class="mb-2 flex flex-wrap items-center gap-2">
+        <span
+          class:list={[
+            'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium',
+            color,
+          ]}
+        >
+          {typeLabel}
+        </span>
+        {category && (
+          <span class="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-500">
+            {category}
+          </span>
+        )}
+        <span class="ml-auto font-mono text-xs text-gray-400">{item.id}</span>
+      </div>
+
+      <!-- Title + context -->
+      <a href={href} class="group block">
+        <h3 class="line-clamp-2 text-base font-semibold text-gray-900 transition-colors group-hover:text-green-700">
+          <SearchHighlight text={title} />
+        </h3>
+        <p class="mt-1 line-clamp-2 text-sm leading-relaxed text-gray-600">
+          <SearchHighlight text={context} />
+        </p>
+      </a>
+
+      <!-- Meta row -->
+      {hasMeta && (
+        <div class="mt-2 flex flex-wrap items-center gap-2 text-xs text-gray-400">
+          {item.year != null && <span>{item.year}</span>}
+          {item.fileType && <span class="font-mono uppercase">{item.fileType}</span>}
+        </div>
+      )}
+    </div>
+  </div>
+</article>

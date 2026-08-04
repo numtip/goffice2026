@@ -10,6 +10,7 @@ This directory contains accepted architecture decisions for Green Office 2026.
 | [ADR-002](./ADR-002-DOCUMENT-CENTER-BOUNDARY.md) | Document Center M365-Backed, Evidence Separate | ACCEPTED |
 | [ADR-003](./ADR-003-SUPABASE-OPERATIONAL-BACKEND.md) | Supabase Operational Backend Only | ACCEPTED |
 | [ADR-004](./ADR-004-LIVE-DASHBOARD-WITH-STATIC-FALLBACK.md) | Live Approved Metrics with Static JSON Fallback | ACCEPTED |
+| [ADR-005](./ADR-005-METADATA-DRIVEN-KNOWLEDGE-GRAPH-NAVIGATION.md) | Metadata-Driven Knowledge Graph Navigation | ACCEPTED |
 
 ## Conventions
 

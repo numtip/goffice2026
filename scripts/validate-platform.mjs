@@ -9,6 +9,7 @@
  * Phases:
  *   1. Taxonomy validation (delegates to validate-criteria.mjs)
  *   1.5 Resource-Indicator Map validation (delegates to validate-resource-indicator-map.mjs)
+ *   1.9 Search-Index Metadata validation (delegates to validate-search-index.mjs)
  *   2. Evidence validation (delegates to validate-evidence.mjs)
  *   3. Route verification (dist/ inspection)
  *   4. Summary report
@@ -131,6 +132,15 @@ function phaseEvidenceLinks() {
   console.log('PHASE 1.75: Evidence-Links Metadata Consistency');
   console.log('========================================');
   return runScript('validate-evidence-links.mjs');
+}
+
+// ── Phase 1.9: Search-Index Metadata Validation ─────────────
+
+function phaseSearchIndex() {
+  console.log('\n========================================');
+  console.log('PHASE 1.9: Search-Index Metadata');
+  console.log('========================================');
+  return runScript('validate-search-index.mjs');
 }
 
 // ── Phase 2: Evidence Validation ────────────────────────────
@@ -330,6 +340,7 @@ function main() {
   const taxonomyResult = phaseTaxonomy();
   const resourceMapResult = phaseResourceIndicatorMap();
   const evidenceLinksResult = phaseEvidenceLinks();
+  const searchIndexResult = phaseSearchIndex();
   const evidenceResult = phaseEvidence();
   const routeResult = phaseRoutes();
   const linkResult = routeResult.skipped ? { ok: true, skipped: true } : phaseLinks();
@@ -345,6 +356,7 @@ function main() {
     { phase: 'Taxonomy Validation',    ok: taxonomyResult.ok },
     { phase: 'Resource-Indicator Map', ok: resourceMapResult.ok },
     { phase: 'Evidence-Links Metadata', ok: evidenceLinksResult.ok },
+    { phase: 'Search-Index Metadata',  ok: searchIndexResult.ok },
     { phase: 'Evidence Validation',    ok: evidenceResult.ok },
     { phase: 'Route Verification',     ok: routeOk },
     { phase: 'Production Link Check',  ok: linkOk },
@@ -365,6 +377,9 @@ function main() {
   }
   if (!evidenceLinksResult.ok) {
     console.log('  ⚠  Evidence-Links metadata validator reported issues. Check output above.');
+  }
+  if (!searchIndexResult.ok) {
+    console.log('  ⚠  Search-Index metadata validator reported issues. Check output above.');
   }
   if (!evidenceResult.ok) {
     console.log('  ⚠  Evidence validator reported issues. Check output above.');

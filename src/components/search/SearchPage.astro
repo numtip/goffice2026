@@ -1,0 +1,293 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/global.css';
+import SearchBox from './SearchBox.astro';
+import SearchCategoryChip from './SearchCategoryChip.astro';
+import SearchSection from './SearchSection.astro';
+import SearchResultCard from './SearchResultCard.astro';
+import { pick, SECTIONS } from '../../utils/search-engine';
+import type { SearchIndexItem } from '../../utils/search-engine';
+import { getLocalizedPath } from '../../i18n/utils';
+import { withBase } from '../../utils/with-base';
+import searchIndex from '../../data/search-index.json';
+
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const isTh = locale === 'th';
+
+const rawItems = searchIndex.items as SearchIndexItem[];
+
+// The canonical index (Worker C) emits `context: null` for some items —
+// a data-contract violation that would crash both SearchResultCard's SSR
+// render and the engine's itemSearchText during client search. Normalize
+// defensively here (page-level) so the frozen components never see nulls.
+const normalizeItem = (item: SearchIndexItem): SearchIndexItem => ({
+  ...item,
+  title: item.title ?? ['', ''],
+  context: item.context ?? ['', ''],
+  keywords: item.keywords ?? ['', ''],
+});
+
+const items = rawItems.map(normalizeItem);
+const total = items.length;
+
+// Localized strings (fixed contract)
+const heading = isTh ? 'ค้นหาทุกเนื้อหา' : 'Search All Content';
+const subtitle = isTh
+  ? `ค้นหาจาก ${total} รายการทั่วทั้งแพลตฟอร์ม`
+  : `Search ${total} items across the platform`;
+const allLabel = isTh ? 'ทั้งหมด' : 'All';
+const filterLabel = isTh ? 'กรองตามหมวดหมู่' : 'Filter by category';
+const resultsLabel = isTh ? 'ผลการค้นหา' : 'Search results';
+const emptyTitle = isTh ? 'ไม่พบรายการที่ค้นหา' : 'No results found';
+const emptyDesc = isTh
+  ? 'ลองเปลี่ยนคำค้นหาหรือตัวกรองหมวดหมู่'
+  : 'Try adjusting your search terms or category filter';
+const itemWord = isTh ? 'รายการ' : 'results';
+const pageTitle = `${heading} — Green Office 2026`;
+
+// Files must NOT get the /en/ locale prefix; pages get the localized path.
+const hrefFor = (item: SearchIndexItem): string =>
+  item.routeKind === 'file' ? withBase(item.route) : getLocalizedPath(locale, item.route);
+---
+
+<BaseLayout title={pageTitle} locale={locale}>
+  <div class="mx-auto max-w-5xl p-4">
+    <!-- Header -->
+    <header class="mb-6">
+      <h1 class="text-3xl font-bold text-gray-900">{heading}</h1>
+      <p class="mt-2 text-gray-600">{subtitle}</p>
+    </header>
+
+    <!-- Search controls -->
+    <div class="mb-6 rounded-xl border border-gray-100 bg-white p-4 shadow-sm">
+      <SearchBox locale={locale} />
+
+      <!-- Category chips (single-select) -->
+      <fieldset class="mt-4">
+        <legend class="sr-only">{filterLabel}</legend>
+        <div class="flex flex-wrap gap-2" role="group" aria-label={filterLabel}>
+          <SearchCategoryChip label={allLabel} active dataType="all" />
+          {SECTIONS.map((section) => (
+            <SearchCategoryChip label={pick(locale, section.label)} dataType={section.id} />
+          ))}
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Result count (aria-live region) -->
+    <div
+      id="search-count"
+      class="mb-4 text-sm text-gray-500"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      {total} {itemWord}
+    </div>
+
+    <!-- Server-rendered full grouped list (no-JS fallback) -->
+    <div id="search-results" role="list" aria-label={resultsLabel}>
+      {SECTIONS.map((section) => {
+        const sectionItems = items.filter((item) => item.section === section.id);
+        if (sectionItems.length === 0) return null;
+        return (
+          <SearchSection
+            sectionId={section.id}
+            label={pick(locale, section.label)}
+            locale={locale}
+            count={sectionItems.length}
+          >
+            {sectionItems.map((item) => (
+              <SearchResultCard item={item} locale={locale} href={hrefFor(item)} />
+            ))}
+          </SearchSection>
+        );
+      })}
+    </div>
+
+    <!-- Empty state (hidden by default) -->
+    <div
+      id="search-empty"
+      class="hidden rounded-xl border border-dashed border-gray-300 bg-white py-16 text-center"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <svg
+        class="mx-auto mb-4 h-16 w-16 text-gray-300"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        />
+      </svg>
+      <h2 class="text-lg font-medium text-gray-500">{emptyTitle}</h2>
+      <p class="mt-1 text-sm text-gray-400">{emptyDesc}</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<!-- Canonical index is imported directly by the bundled client script
+     (Vite JSON import) — no inline duplication needed. -->
+<script>
+  import { searchItems, normalizeQuery, highlightText, escapeHtml } from '../../utils/search-engine';
+  import type { SearchIndexItem } from '../../utils/search-engine';
+  import searchIndexData from '../../data/search-index.json';
+
+  const locale: 'th' | 'en' = document.documentElement.lang === 'en' ? 'en' : 'th';
+
+  const q = document.getElementById('search-q') as HTMLInputElement;
+  const results = document.getElementById('search-results') as HTMLElement;
+  const empty = document.getElementById('search-empty') as HTMLElement;
+  const count = document.getElementById('search-count') as HTMLElement;
+
+  // Same defensive normalization as the SSR path (null context/keywords in index).
+  const searchIndex: { items: SearchIndexItem[] } = {
+    items: (searchIndexData.items as SearchIndexItem[]).map((item) => ({
+      ...item,
+      title: item.title ?? ['', ''],
+      context: item.context ?? ['', ''],
+      keywords: item.keywords ?? ['', ''],
+    })),
+  };
+
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.search-chip'));
+  const sections = Array.from(document.querySelectorAll<HTMLElement>('.search-section'));
+
+  const ACTIVE_CHIP = ['bg-green-700', 'text-white', 'border-green-700'];
+  const INACTIVE_CHIP = ['bg-white', 'text-gray-600', 'border-gray-200'];
+
+  let activeSections = new Set<string>();
+  let debounceTimer: ReturnType<typeof setTimeout> | null = null;
+
+  /** Highlight [data-highlight] spans inside one card; cache original text. */
+  function highlightCard(card: HTMLElement, terms: string[]): void {
+    const targets = Array.from(card.querySelectorAll<HTMLElement>('[data-highlight]'));
+    for (const el of targets) {
+      if (!el.dataset.original) el.dataset.original = el.textContent ?? '';
+      const original = el.dataset.original;
+      el.innerHTML = terms.length > 0 ? highlightText(original, terms) : escapeHtml(original);
+    }
+  }
+
+  function render(): void {
+    const terms = normalizeQuery(q.value);
+    const hits = terms.length > 0 ? searchItems(searchIndex.items, terms, locale) : [];
+    const visibleIds = new Set(hits.map((h) => h.item.id));
+
+    let visibleTotal = 0;
+
+    for (const section of sections) {
+      const sectionId = section.dataset.section ?? '';
+      const cards = Array.from(section.querySelectorAll<HTMLElement>('.search-result'));
+      let visibleInSection = 0;
+
+      for (const card of cards) {
+        const itemId = card.dataset.itemId ?? '';
+        const hiddenByQuery = terms.length > 0 && !visibleIds.has(itemId);
+        const hiddenBySection = activeSections.size > 0 && !activeSections.has(sectionId);
+        const show = !hiddenByQuery && !hiddenBySection;
+
+        card.classList.toggle('hidden', !show);
+        if (show) {
+          visibleInSection += 1;
+          visibleTotal += 1;
+          highlightCard(card, terms);
+        }
+      }
+
+      section.classList.toggle('hidden', visibleInSection === 0);
+    }
+
+    const word = locale === 'th' ? 'รายการ' : visibleTotal === 1 ? 'result' : 'results';
+    count.textContent = `${visibleTotal} ${word}`;
+
+    const hasResults = visibleTotal > 0;
+    results.classList.toggle('hidden', !hasResults);
+    empty.classList.toggle('hidden', hasResults);
+  }
+
+  // Debounced search input
+  q.addEventListener('input', () => {
+    if (debounceTimer) clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(render, 150);
+  });
+
+  // Single-select chips: section chip → only that section; All → everything
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const type = chip.dataset.type ?? 'all';
+      activeSections = type === 'all' ? new Set() : new Set([type]);
+
+      for (const c of chips) {
+        const isActive = c === chip;
+        c.classList.remove(...ACTIVE_CHIP, ...INACTIVE_CHIP);
+        c.classList.add(...(isActive ? ACTIVE_CHIP : INACTIVE_CHIP));
+        c.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      }
+
+      render();
+    });
+  });
+
+  const getVisibleLinks = (): HTMLAnchorElement[] =>
+    Array.from(
+      document.querySelectorAll<HTMLAnchorElement>('#search-results article:not(.hidden) a[href]'),
+    );
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', (e: KeyboardEvent) => {
+    const target = e.target as HTMLElement;
+
+    // '/' focuses the search box (except when typing in a form control)
+    if (e.key === '/' && !['INPUT', 'SELECT', 'TEXTAREA'].includes(target.tagName)) {
+      e.preventDefault();
+      q.focus();
+      return;
+    }
+
+    // Escape clears + blurs when the search box is focused
+    if (e.key === 'Escape' && document.activeElement === q) {
+      e.preventDefault();
+      q.value = '';
+      render();
+      q.blur();
+      return;
+    }
+
+    // Arrow up/down moves focus among visible result links
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      const active = document.activeElement;
+      const isInSearch =
+        active === q ||
+        (active instanceof HTMLAnchorElement && active.closest('#search-results') !== null);
+      if (!isInSearch) return;
+
+      const links = getVisibleLinks();
+      if (links.length === 0) return;
+
+      e.preventDefault();
+      const currentIndex = links.indexOf(active as HTMLAnchorElement);
+      const nextIndex =
+        e.key === 'ArrowDown'
+          ? (currentIndex + 1) % links.length
+          : (currentIndex - 1 + links.length) % links.length;
+      const next = links[nextIndex];
+      next.focus();
+      next.scrollIntoView({ block: 'nearest' });
+    }
+  });
+
+  // Initial render
+  render();
+</script>
