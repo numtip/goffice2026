@@ -17,6 +17,18 @@ const checks = [
   ['print stylesheet', '@media print'],
 ];
 
+// Regression guard (GO-UX-5 follow-up): the 7-category heading must state the
+// canonical renewal/upgrade scope and must never regress to the new-certification
+// counts (6/22/63) or the old "7 หมวดตามแผนงาน" label.
+const scopeChecks = [
+  ['TH heading canonical', '/about/action-plan/', '7 หมวด 24 ประเด็น 65 ตัวชี้วัด', true],
+  ['TH heading old label absent', '/about/action-plan/', '7 หมวดตามแผนงาน', false],
+  ['TH new-cert counts absent', '/about/action-plan/', '6 หมวด 22 ประเด็น 63 ตัวชี้วัด', false],
+  ['EN heading canonical', '/en/about/action-plan/', '7 categories, 24 issues and 65 indicators', true],
+  ['EN heading old label absent', '/en/about/action-plan/', 'Seven plan categories', false],
+  ['EN new-cert counts absent', '/en/about/action-plan/', '6 categories, 22 issues and 63 indicators', false],
+];
+
 let ok = true;
 for (const route of routes) {
   const res = await fetch(`${base}${route}`);
@@ -31,6 +43,14 @@ for (const route of routes) {
   const detailsCount = (html.match(/<details/g) || []).length;
   console.log(`  details count: ${detailsCount} (expect ≥7)`);
   if (detailsCount < 7) ok = false;
+}
+
+for (const [name, route, needle, expectPresent] of scopeChecks) {
+  const html = await (await fetch(`${base}${route}`)).text();
+  const present = html.includes(needle);
+  const pass = expectPresent ? present : !present;
+  console.log(`  ${pass ? 'OK' : 'FAIL'} ${name} (${expectPresent ? 'expect present' : 'expect absent'})`);
+  if (!pass) ok = false;
 }
 
 const xlsx = await fetch(`${base}/documents/about/2569/green-office-action-plan-2569.xlsx`);
