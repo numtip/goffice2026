@@ -3,6 +3,7 @@
 > **Status:** FROZEN — canonical baseline as of GO-ABOUT-2 + GO-EVIDENCE-1 (commit `25c2cc9`).
 > **Sprint constraint (GO-SEARCH-1):** No architectural redesign. Only bug fixes.
 > **Companion record:** [ADR-005 — Metadata-Driven Knowledge Graph Navigation](./adr/ADR-005-METADATA-DRIVEN-KNOWLEDGE-GRAPH-NAVIGATION.md)
+> **Operational standard:** [GOFFICE2026_AI_AGENT_PLAYBOOK_V1](./GOFFICE2026_AI_AGENT_PLAYBOOK_V1.md) — all future AI agent work on this baseline MUST follow the Playbook.
 
 ---
 
