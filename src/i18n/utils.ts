@@ -45,6 +45,12 @@ export function getLocalizedPath(locale: 'th' | 'en', path: string): string {
   const base = import.meta.env.BASE_URL ? import.meta.env.BASE_URL.replace(/\/$/, '') : '';
   const normalized = normalizeInternalPath(path);
 
+  // Static file downloads (e.g. /documents/cat2/water-usage-2025.xlsx) are
+  // language-neutral and live at the site root — never prefix /en for them.
+  if (/\.[a-zA-Z0-9]+$/.test(path)) {
+    return base ? `${base}${normalized}` : normalized;
+  }
+
   if (locale === 'en') {
     if (normalized === '/') {
       return `${base}/en/`;

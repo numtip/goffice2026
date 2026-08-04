@@ -21,6 +21,10 @@ function stripBasePath(pathname, base = '') {
 
 function getLocalizedPath(locale, path, base = '') {
   const normalized = normalizeInternalPath(path);
+  // Static file downloads are language-neutral and live at the site root.
+  if (/\.[a-zA-Z0-9]+$/.test(path)) {
+    return `${base}${normalized}`;
+  }
   if (locale === 'en') {
     if (normalized === '/') return `${base}/en/`;
     return `${base}/en${normalized}`;
@@ -61,6 +65,12 @@ describe('getLocalizedPath', () => {
 
   it('handles GitHub Pages base', () => {
     assert.equal(getLocalizedPath('en', '/categories/', '/goffice2026'), '/goffice2026/en/categories/');
+  });
+
+  it('never localizes static file downloads', () => {
+    assert.equal(getLocalizedPath('en', '/documents/cat2/water-usage-2025.xlsx'), '/documents/cat2/water-usage-2025.xlsx');
+    assert.equal(getLocalizedPath('en', '/documents/about/policy/GreenOfficePolicy2026.pdf', '/goffice2026'), '/goffice2026/documents/about/policy/GreenOfficePolicy2026.pdf');
+    assert.equal(getLocalizedPath('th', '/documents/cat2/water-usage-2025.xlsx'), '/documents/cat2/water-usage-2025.xlsx');
   });
 });
 
