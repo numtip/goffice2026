@@ -1,0 +1,138 @@
+---
+interface Props {
+  locale?: 'th' | 'en';
+}
+
+const { locale = 'th' } = Astro.props;
+
+const label = locale === 'th' ? 'กลับด้านบน' : 'Back to top';
+const hasPreviewBadge =
+  import.meta.env.BASE_URL !== '/' || import.meta.env.PUBLIC_PREVIEW_BADGE === 'true';
+---
+
+<div id="back-to-top-root" class:list={[hasPreviewBadge ? 'has-preview-badge' : '']}>
+  <button
+    id="back-to-top"
+    type="button"
+    aria-label={label}
+    title={label}
+    aria-hidden="true"
+    tabindex="-1"
+    class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-green-700 text-white shadow-lg shadow-green-900/25 hover:bg-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+  >
+    <svg
+      class="h-5 w-5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 19V5" />
+      <path d="m5 12 7-7 7 7" />
+    </svg>
+  </button>
+</div>
+
+<style>
+  #back-to-top-root {
+    position: fixed;
+    right: 1rem;
+    bottom: calc(1rem + var(--footer-lift, 0px));
+    z-index: 40;
+    transition: bottom 0.3s ease;
+  }
+
+  #back-to-top-root.has-preview-badge {
+    bottom: calc(5.5rem + var(--footer-lift, 0px));
+  }
+
+  #back-to-top {
+    opacity: 0;
+    transform: translateY(0.75rem);
+    pointer-events: none;
+    transition:
+      opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.3s ease;
+  }
+
+  #back-to-top.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  @media (min-width: 640px) {
+    #back-to-top-root {
+      right: 1.5rem;
+      bottom: calc(1.5rem + var(--footer-lift, 0px));
+    }
+
+    #back-to-top-root.has-preview-badge {
+      bottom: calc(6rem + var(--footer-lift, 0px));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #back-to-top-root,
+    #back-to-top {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const button = document.getElementById('back-to-top');
+  const root = document.getElementById('back-to-top-root');
+  const footer = document.querySelector('footer');
+
+  if (button && root) {
+    const THRESHOLD = 600;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let ticking = false;
+
+    const update = () => {
+      const show = window.scrollY > THRESHOLD;
+      button.classList.toggle('is-visible', show);
+      button.setAttribute('aria-hidden', String(!show));
+      if (show) {
+        button.removeAttribute('tabindex');
+      } else {
+        button.setAttribute('tabindex', '-1');
+      }
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+
+    button.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+    });
+
+    if (footer) {
+      const lift = new IntersectionObserver(
+        ([entry]) => {
+          root.style.setProperty(
+            '--footer-lift',
+            entry.isIntersecting ? `${footer.offsetHeight + 16}px` : '0px'
+          );
+        },
+        { rootMargin: '0px 0px -1px 0px' }
+      );
+      lift.observe(footer);
+    }
+
+    update();
+  }
+</script>

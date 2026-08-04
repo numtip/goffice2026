@@ -31,9 +31,6 @@ const navPages = pagesMeta.pages.filter((p) =>
     'about-feedback',
   ].includes(p.id),
 );
-
-const pendingLabel = isTh ? 'เนื้อหารอตรวจสอบ' : 'Content pending review';
-const historicalLabel = isTh ? 'ข้อมูลอ้างอิงจากเอกสารปี 2568' : 'Reference from FY 2568 documents';
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc} locale={locale}>
@@ -61,8 +58,8 @@ const historicalLabel = isTh ? 'ข้อมูลอ้างอิงจาก
     </nav>
 
     <header class="mb-8">
-      <h1 class="text-3xl font-bold text-gray-900">{pageTitle}</h1>
-      {pageDesc && <p class="mt-2 text-lg text-gray-600">{pageDesc}</p>}
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900">{pageTitle}</h1>
+      {pageDesc && <p class="mt-2 max-w-3xl text-lg leading-relaxed text-gray-600">{pageDesc}</p>}
     </header>
 
     <div class="prose prose-green max-w-none">

@@ -42,15 +42,15 @@ const bullets = [
   <div class="landing-container py-2 sm:py-4">
     <div class="grid grid-cols-1 items-center gap-8 sm:gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16 xl:gap-20">
       <!-- Left: Content -->
-      <div>
-        <p class="landing-reveal mb-2 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-emerald-700 sm:mb-3">
+      <div class="landing-stagger">
+        <p class="landing-reveal mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-emerald-700 shadow-sm sm:mb-4">
           <span class="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true"></span>
           {t.subtitle}
         </p>
-        <h2 id="dashboard-showcase-title" class="landing-reveal mb-4 text-3xl font-semibold tracking-tight text-primary md:text-4xl">
+        <h2 id="dashboard-showcase-title" class="landing-reveal mb-4 text-3xl font-bold tracking-tight text-primary text-balance md:text-4xl">
           {t.heading}
         </h2>
-        <p class="landing-reveal mb-6 max-w-lg text-base leading-relaxed text-on-surface-variant sm:mb-8 sm:text-lg">
+        <p class="landing-reveal mb-6 max-w-xl text-base leading-relaxed text-on-surface-variant sm:mb-8 sm:text-lg">
           {t.body}
         </p>
 
@@ -70,7 +70,7 @@ const bullets = [
         <div class="landing-reveal landing-stagger flex flex-wrap gap-3">
           <a
             href={getLocalizedPath(locale, '/dashboard')}
-            class="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-emerald-500 hover:shadow-xl hover:shadow-emerald-600/25 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-emerald-500 hover:shadow-xl hover:shadow-emerald-600/25 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 motion-reduce:transform-none"
           >
             {t.cta_dashboard}
             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -79,7 +79,7 @@ const bullets = [
           </a>
           <a
             href={getLocalizedPath(locale, '/evidence')}
-            class="inline-flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-primary shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 hover:shadow-md focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
+            class="inline-flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-primary shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 hover:shadow-md focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 motion-reduce:transform-none"
           >
             {t.cta_evidence}
             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -92,7 +92,7 @@ const bullets = [
       <!-- Right: Dashboard Screenshot -->
       <div class="landing-reveal self-center">
         <div class="showcase-image-wrapper relative mx-auto max-w-xl lg:max-w-none">
-          <div class="rounded-2xl bg-gradient-to-br from-emerald-100/50 via-white to-emerald-50/30 p-2 shadow-2xl shadow-black/10 sm:p-3">
+          <div class="rounded-2xl bg-gradient-to-br from-emerald-100/60 via-white to-emerald-50/40 p-2 shadow-2xl shadow-black/10 ring-1 ring-emerald-100/70 sm:p-3">
             <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-inner">
               <img
                 src={dashboardScreenshotImageUrl}

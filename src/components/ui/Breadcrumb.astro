@@ -17,23 +17,33 @@ const { items, locale } = Astro.props;
 const label = (th: string, en: string): string => (locale === 'th' ? th : en);
 ---
 
-<nav class="text-sm text-gray-500 mb-6" aria-label={label('เส้นทางนำทาง', 'Breadcrumb')}>
-  <ol class="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+<nav class="mb-6 text-sm text-outline" aria-label={label('เส้นทางนำทาง', 'Breadcrumb')}>
+  <ol class="flex flex-wrap items-center gap-x-2 gap-y-1.5">
     {items.map((item, i) => {
       const isLast = i === items.length - 1;
       const isLink = Boolean(item.href) && !isLast;
       return (
         <>
           {i > 0 && (
-            <li class="text-gray-300 select-none" aria-hidden="true">
-              /
+            <li class="flex select-none items-center text-outline/40" aria-hidden="true">
+              <svg
+                class="h-3.5 w-3.5"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m6 4 4 4-4 4" />
+              </svg>
             </li>
           )}
           <li>
             {isLink ? (
               <a
                 href={getLocalizedPath(locale, item.href!)}
-                class="text-green-600 hover:text-green-800 hover:underline transition-colors"
+                class="rounded-sm text-primary-600 underline-offset-4 transition-colors hover:text-primary-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 {item.label}
               </a>
@@ -41,7 +51,7 @@ const label = (th: string, en: string): string => (locale === 'th' ? th : en);
               <span
                 class:list={[
                   'truncate max-w-[200px]',
-                  isLast ? 'text-gray-700 font-medium' : 'text-gray-500',
+                  isLast ? 'font-medium text-on-surface' : 'text-outline',
                 ]}
                 aria-current={isLast ? 'page' : undefined}
               >

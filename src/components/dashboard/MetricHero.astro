@@ -52,13 +52,13 @@ const indicatorBadgeLabel = th ? 'ตัวชี้วัด Green Office' : 'G
 
     <!-- Title + purpose -->
     <div class="flex-1 min-w-0">
-      <h1 id="metric-hero-title" class="text-xl md:text-2xl font-bold text-on-surface leading-tight">
+      <h1 id="metric-hero-title" class="text-xl md:text-2xl font-bold text-on-surface leading-tight tracking-tight">
         {title}
       </h1>
-      <p class="text-sm text-on-surface-variant mt-1 leading-relaxed">{purpose}</p>
+      <p class="text-sm text-on-surface-variant mt-1.5 leading-relaxed max-w-3xl">{purpose}</p>
 
       <!-- Badges row -->
-      <div class="flex flex-wrap items-center gap-2 mt-3">
+      <div class="flex flex-wrap items-center gap-2 mt-4">
         {indicatorCode && (
           <span
             class="inline-flex items-center gap-1.5 rounded-full border text-xs font-medium px-2.5 py-1"

@@ -73,8 +73,25 @@ const actualByMonth = new Map(activity.actualMonths.map((a) => [a.monthId, a.val
   </dl>
 
   <div class="mt-4">
-    <p class="text-xs font-medium uppercase tracking-wide text-gray-500 mb-2">
-      {isTh ? 'แผน / ผล (ม.ค.–ธ.ค.)' : 'Plan / result (Jan–Dec)'}
+    <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+      <p class="text-xs font-medium uppercase tracking-wide text-gray-500">
+        {isTh ? 'แผน / ผลรายเดือน (ม.ค.–ธ.ค.)' : 'Monthly plan / result (Jan–Dec)'}
+      </p>
+      <p class="flex items-center gap-3 text-[10px] text-gray-500">
+        <span class="flex items-center gap-1">
+          <span class="inline-block h-2.5 w-2.5 rounded-sm bg-green-500" aria-hidden="true"></span>
+          {isTh ? 'แผน' : 'Plan'}
+        </span>
+        <span class="flex items-center gap-1">
+          <span class="inline-block h-2.5 w-2.5 rounded-sm bg-white ring-2 ring-inset ring-blue-600" aria-hidden="true"></span>
+          {isTh ? 'ผล' : 'Result'}
+        </span>
+      </p>
+    </div>
+    <p class="sr-only">
+      {isTh
+        ? 'ตารางเดือนมกราคมถึงธันวาคม: เซลล์เขียว = มีแผนในเดือนนั้น กรอบน้ำเงิน = มีผลลัพธ์จากแฟ้มงาน'
+        : 'Month grid January to December: green = planned that month, blue outline = has a result from the workbook'}
     </p>
     <div
       class="ap-gantt-row grid grid-cols-12 gap-0.5 rounded border border-gray-100 bg-gray-50 p-1"
@@ -118,15 +135,23 @@ const actualByMonth = new Map(activity.actualMonths.map((a) => [a.monthId, a.val
   </div>
 
   {activity.actualMonths.length > 0 && (
-    <div class="mt-3 rounded-md bg-blue-50 px-3 py-2 text-sm text-blue-900">
-      <p class="font-medium">{isTh ? 'ผล/วันที่จากแฟ้มงาน' : 'Actual / result (workbook)'}</p>
-      <ul class="mt-1 list-disc pl-5">
+    <div class="mt-3 rounded-md border border-blue-100 bg-blue-50 px-3 py-2.5 text-sm text-blue-900">
+      <p class="flex items-center gap-1.5 font-medium">
+        <svg class="h-4 w-4 shrink-0 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2m-6 4h8m-8 4h8m-8 4h5" />
+        </svg>
+        {isTh ? 'ผล/วันที่จากแฟ้มงาน' : 'Actual / result (workbook)'}
+      </p>
+      <ul class="mt-1.5 list-disc space-y-1 pl-5">
         {activity.actualMonths.map((a) => (
           <li>
-            {monthLabel(a.monthId)}: {a.value}
+            <span class="font-semibold text-blue-950">{monthLabel(a.monthId)}</span>: {a.value}
           </li>
         ))}
       </ul>
+      <p class="mt-1.5 border-t border-blue-100 pt-1.5 text-xs text-blue-700">
+        {isTh ? 'ค่าจริงและวันที่ดึงมาจากแฟ้มงานต้นฉบับโดยตรง (ไม่มีการแก้ไข)' : 'Values and dates are taken directly from the source workbook, unchanged.'}
+      </p>
     </div>
   )}
 </article>

@@ -77,7 +77,7 @@ const isActive = (href: string) => {
   </div>
 </div>
 
-<nav class="border-b border-primary/10 bg-white/95 px-4 py-3 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/90" aria-label={primaryNavLabel}>
+<nav class="border-b border-primary/10 bg-white/95 px-4 py-3 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/85" aria-label={primaryNavLabel}>
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4">
     <a href={getLocalizedPath(locale, '/')} class="group inline-flex min-w-0 items-center gap-3 text-left">
       <SiteLogo class="h-9 w-auto max-w-[7.5rem] shrink-0 object-contain object-left" width={36} height={29} />
@@ -93,9 +93,9 @@ const isActive = (href: string) => {
           <a
             href={getLocalizedPath(locale, item.href)}
             class:list={[
-              'inline-flex min-h-10 items-center whitespace-nowrap rounded-md px-3 py-2 font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
+              'inline-flex min-h-10 items-center whitespace-nowrap rounded-md px-3 py-2 font-semibold transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
               isActive(item.href)
-                ? 'bg-primary text-white'
+                ? 'bg-primary text-white shadow-sm'
                 : 'text-on-surface hover:bg-primary-50 hover:text-primary',
             ]}
             aria-current={isActive(item.href) ? 'page' : undefined}
@@ -107,7 +107,7 @@ const isActive = (href: string) => {
     </ul>
 
     <details class="group relative lg:hidden" id="mobile-nav">
-      <summary class="flex min-h-10 cursor-pointer list-none items-center rounded-md border border-primary/20 px-3 py-2 text-sm font-semibold text-primary transition hover:bg-primary-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label={navLabels.menu}>
+      <summary class="flex min-h-10 cursor-pointer list-none items-center rounded-md border border-primary/20 px-3 py-2 text-sm font-semibold text-primary transition-colors duration-200 ease-out hover:bg-primary-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label={navLabels.menu}>
         <span class="nav-menu-label">{navLabels.menu}</span>
         <svg class="nav-icon-hamburger ml-2 h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M3 6h14M3 10h14M3 14h14" />
@@ -116,22 +116,22 @@ const isActive = (href: string) => {
           <path d="M6 6l8 8M14 6l-8 8" />
         </svg>
       </summary>
-      <div class="absolute right-0 z-[60] mt-2 w-64 rounded-lg border border-primary/15 bg-white p-3 shadow-xl" role="navigation" aria-label={navLabels.menu}>
-        <div class="flex items-center justify-between mb-2 pb-2 border-b border-gray-100">
+      <div class="absolute right-0 z-[60] mt-3 w-64 rounded-lg border border-primary/15 bg-white p-3.5 shadow-xl shadow-primary/5" role="navigation" aria-label={navLabels.menu}>
+        <div class="mb-2.5 flex items-center justify-between border-b border-gray-100 pb-2.5">
           <span class="nav-menu-heading text-xs font-semibold text-outline">{navLabels.menu}</span>
-          <button type="button" class="nav-close-btn flex items-center justify-center h-7 w-7 rounded-md text-outline hover:bg-gray-100 hover:text-on-surface transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label={`${locale === 'th' ? 'ปิด' : 'Close'} ${navLabels.menu}`}>
+          <button type="button" class="nav-close-btn flex items-center justify-center h-7 w-7 rounded-md text-outline transition-colors duration-200 ease-out hover:bg-gray-100 hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label={`${locale === 'th' ? 'ปิด' : 'Close'} ${navLabels.menu}`}>
             <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M6 6l8 8M14 6l-8 8" />
             </svg>
           </button>
         </div>
-        <ul class="space-y-0.5">
+        <ul class="space-y-1">
           {navItems.slice(0, 3).map((item) => (
             <li>
               <a
                 href={getLocalizedPath(locale, item.href)}
                 class:list={[
-                  'flex min-h-11 items-center rounded-md px-3 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1',
+                  'flex min-h-11 items-center rounded-md px-3 py-2 text-sm font-semibold transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
                   isActive(item.href)
                     ? 'bg-primary text-white'
                     : 'text-on-surface hover:bg-primary-50 hover:text-primary',
@@ -143,14 +143,14 @@ const isActive = (href: string) => {
             </li>
           ))}
         </ul>
-        <div class="my-1.5 border-t border-gray-100" aria-hidden="true"></div>
-        <ul class="space-y-0.5">
+        <div class="my-2 border-t border-gray-100" aria-hidden="true"></div>
+        <ul class="space-y-1">
           {navItems.slice(3).map((item) => (
             <li>
               <a
                 href={getLocalizedPath(locale, item.href)}
                 class:list={[
-                  'flex min-h-11 items-center rounded-md px-3 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1',
+                  'flex min-h-11 items-center rounded-md px-3 py-2 text-sm font-semibold transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
                   isActive(item.href)
                     ? 'bg-primary text-white'
                     : 'text-on-surface hover:bg-primary-50 hover:text-primary',

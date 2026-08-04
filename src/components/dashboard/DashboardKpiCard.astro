@@ -19,18 +19,18 @@ const trendColors: Record<string, string> = {
 };
 ---
 
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
-  <p class="text-sm text-gray-500 mb-1">{label}</p>
-  <p class="text-3xl font-bold text-green-600">
-    {value}{unit}
+<div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm">
+  <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-1.5">{label}</p>
+  <p class="text-3xl font-bold text-on-surface leading-none tracking-tight tabular-nums">
+    {value}<span class="text-base text-on-surface-variant font-medium ml-1">{unit}</span>
     {trend && (
-      <span class={"text-base ml-1 " + (trendColors[trend] || 'text-gray-400')} title={trendLabel || trend}>
+      <span class={"text-base font-semibold ml-1.5 " + (trendColors[trend] || 'text-gray-400')} title={trendLabel || trend} aria-label={trendLabel || trend}>
         {trendSymbol[trend] || ''}
       </span>
     )}
   </p>
   {href && (
-    <a href={href} class="text-xs text-green-600 underline mt-2 inline-block hover:text-green-800">
+    <a href={href} class="text-xs font-medium text-primary underline underline-offset-2 mt-2.5 inline-block hover:text-primary-container transition-colors">
       View details &rarr;
     </a>
   )}

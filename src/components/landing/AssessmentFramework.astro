@@ -52,19 +52,19 @@ const t = Astro.props.t ?? {
   <div class="absolute inset-0 z-0 landing-mesh-bg opacity-20" aria-hidden="true" />
 
   <div class="landing-container relative z-10">
-    <div class="landing-reveal mb-12 text-center sm:mb-16">
-      <h2 id="assessment-framework-title" class="landing-heading mb-3 sm:mb-4">{t.heading}</h2>
-      <p class="mx-auto max-w-2xl text-body-md text-on-surface-variant sm:text-body-lg">
+    <div class="landing-reveal mx-auto mb-12 max-w-3xl text-center sm:mb-16">
+      <h2 id="assessment-framework-title" class="landing-heading mb-3 font-bold text-balance sm:mb-4">{t.heading}</h2>
+      <p class="mx-auto max-w-2xl text-body-md leading-relaxed text-on-surface-variant sm:text-body-lg">
         {t.description}
       </p>
     </div>
 
-    <div class="relative mx-auto max-w-5xl">
+    <div class="landing-stagger relative mx-auto max-w-5xl">
       <div class="framework-connector absolute left-1/2 top-1/2 hidden h-px w-[78%] -translate-x-1/2 -translate-y-1/2 xl:block" aria-hidden="true" />
       <div class="framework-connector absolute left-1/2 top-1/2 hidden h-[68%] w-px -translate-x-1/2 -translate-y-1/2 xl:block" aria-hidden="true" />
 
       <div class="landing-reveal relative mb-8 flex justify-center sm:mb-10">
-        <div class="glass-panel landing-glass-hover rounded-full border border-primary-container/20 px-6 py-3 text-center shadow-lg sm:px-8 sm:py-4">
+        <div class="glass-panel landing-glass-hover rounded-full border border-primary-container/25 px-6 py-3 text-center shadow-lg shadow-primary/5 sm:px-8 sm:py-4">
           <p class="font-mono text-label-sm uppercase tracking-widest text-primary">{t.hub_label}</p>
           <p class="mt-1 text-lg font-semibold text-primary sm:text-headline-md">{t.hub_title}</p>
         </div>
@@ -79,7 +79,7 @@ const t = Astro.props.t ?? {
               role="listitem"
               class:list={[
                 'landing-reveal glass-panel landing-card-interactive group relative rounded-stitch-lg border p-4 sm:p-5',
-                isHighlight ? 'border-primary-container/30 bg-surface-container-low sm:col-span-2 lg:col-span-2' : 'border-outline-variant/20 landing-glass-hover',
+                isHighlight ? 'border-primary-container/30 bg-surface-container-low shadow-md sm:col-span-2 lg:col-span-2' : 'border-outline-variant/20 landing-glass-hover',
               ]}
               aria-label={`Category ${category.number}: ${category.title}, score ${category.score} percent`}
             >

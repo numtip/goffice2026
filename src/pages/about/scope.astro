@@ -1,6 +1,7 @@
 ---
 import AboutPageShell from '../../components/about/AboutPageShell.astro';
 import AboutDocExperience from '../../components/about/documents/AboutDocExperience.astro';
+import AboutNotice from '../../components/about/AboutNotice.astro';
 import aboutContent from '../../data/about/content.json';
 import { getLocale } from '../../i18n/utils';
 
@@ -10,9 +11,7 @@ const content = aboutContent.pages['about-scope'];
 ---
 
 <AboutPageShell pageId="about-scope">
-  <div slot="notice" class="not-prose mb-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-    {isTh ? content.noticeTh : content.noticeEn}
-  </div>
+  <AboutNotice noticeTh={content.noticeTh} noticeEn={content.noticeEn} isTh={isTh} />
 
   <AboutDocExperience pageId="about-scope" isTh={isTh} />
 </AboutPageShell>

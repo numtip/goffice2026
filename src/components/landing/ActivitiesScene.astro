@@ -33,8 +33,8 @@ const activities = [
   <div class="landing-container">
     <div class="landing-reveal mb-10 flex flex-col gap-3 sm:mb-12 sm:gap-4 md:flex-row md:items-end md:justify-between">
       <div>
-        <h2 id="activities-scene-title" class="landing-heading mb-2">{dict.heading}</h2>
-        <p class="text-body-md text-on-surface-variant sm:text-body-lg">
+        <h2 id="activities-scene-title" class="landing-heading mb-2 font-bold text-balance">{dict.heading}</h2>
+        <p class="text-body-md leading-relaxed text-on-surface-variant sm:text-body-lg">
           {dict.description}
         </p>
       </div>
@@ -44,7 +44,7 @@ const activities = [
     <div class="landing-stagger grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 xl:grid-cols-3" role="list" aria-label="Activity content placeholders">
       {activities.map((activity) => (
         <article class="landing-reveal group" role="listitem">
-          <div class="relative mb-5 flex aspect-[4/3] items-center justify-center overflow-hidden rounded-stitch-lg border border-dashed border-outline-variant/40 bg-surface-container-high sm:mb-6 sm:h-64 sm:aspect-auto">
+          <div class="relative mb-5 flex aspect-[4/3] items-center justify-center overflow-hidden rounded-stitch-lg border border-dashed border-outline-variant/40 bg-surface-container-high shadow-sm transition-shadow duration-300 group-hover:shadow-md sm:mb-6 sm:h-64 sm:aspect-auto">
             <div class="absolute inset-0 landing-mesh-bg opacity-50" aria-hidden="true" />
             <span class="relative rounded-full bg-surface-container-lowest/75 px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-outline">
               {dict.placeholder_image}

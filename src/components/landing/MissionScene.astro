@@ -25,8 +25,8 @@ const t = Astro.props.t ?? {
 
   <div class="landing-container">
     <div class="grid grid-cols-1 items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16">
-      <div>
-        <h2 id="mission-scene-title" class="landing-reveal landing-heading mb-5 sm:mb-6">
+      <div class="landing-stagger">
+        <h2 id="mission-scene-title" class="landing-reveal landing-heading mb-5 font-bold text-balance sm:mb-6">
           {t.heading}
         </h2>
         <p class="landing-reveal mb-5 text-body-md leading-relaxed text-on-surface-variant sm:mb-6 sm:text-body-lg">
@@ -46,7 +46,7 @@ const t = Astro.props.t ?? {
         </a>
       </div>
 
-      <div class="landing-reveal relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-stitch-lg shadow-2xl">
+      <div class="landing-reveal relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-stitch-lg shadow-2xl ring-1 ring-outline-variant/20">
         <img
           src={heroImageUrl}
           alt=""

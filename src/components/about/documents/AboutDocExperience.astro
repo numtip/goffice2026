@@ -44,10 +44,6 @@ const downloadDocs = pageDocs.documents
 
 const relatedIndicators = content?.relatedIndicators ?? [];
 
-const primarySummary = allSummaries.find((s) => s.documentId === pageDocs.primaryDocumentId);
-
-const isOcr = primarySummary?.reviewStatus === 'OCR_DERIVED_NEEDS_VERIFICATION';
-
 const badges = [
   ...(primaryDoc?.signed ? [{ label: isTh ? 'ลงนามแล้ว' : 'Signed', tone: 'green' as const }] : []),
   ...(primaryDoc?.documentYear
@@ -56,7 +52,6 @@ const badges = [
   ...(primaryDoc?.pageCount
     ? [{ label: `${primaryDoc.pageCount} ${isTh ? 'หน้า' : 'pages'}`, tone: 'gray' as const }]
     : []),
-  ...(isOcr ? [{ label: isTh ? 'รอตรวจสอบ OCR' : 'OCR verify pending', tone: 'amber' as const }] : []),
 ];
 
 const facts = [
@@ -107,11 +102,6 @@ const indicatorLabel = isTh ? 'ตัวชี้วัดที่เกี่�
           <li>{isTh ? t.th : t.en}</li>
         ))}
       </ul>
-      <p class="mt-2 text-xs text-amber-700">
-        {isTh
-          ? 'ค่าจากเอกสารปีฐาน 2568 (OCR) — ต้องตรวจสอบกับต้นฉบับ'
-          : 'Values from FY2568 baseline document (OCR) — verify against original.'}
-      </p>
     </section>
   )}
 

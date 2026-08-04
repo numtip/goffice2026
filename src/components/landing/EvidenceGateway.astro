@@ -42,7 +42,7 @@ const t = Astro.props.t ?? {
   <div class="pointer-events-none absolute inset-x-0 -top-16 h-16 landing-scene-bridge-light-top" aria-hidden="true" />
 
   <div class="landing-container grid grid-cols-1 items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16">
-    <div class="landing-reveal relative order-2 aspect-[4/3] overflow-hidden rounded-stitch-lg shadow-xl lg:order-1">
+    <div class="landing-reveal relative order-2 aspect-[4/3] overflow-hidden rounded-stitch-lg shadow-2xl shadow-primary/10 ring-1 ring-outline-variant/20 lg:order-1">
       <div class="absolute inset-0 landing-mesh-bg landing-mesh-bg-ambient bg-surface-container-high" aria-hidden="true" />
       <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/85 to-transparent p-4 sm:p-6">
         <div class="landing-stagger grid gap-2 sm:gap-3" role="list" aria-label="Highlighted document previews">
@@ -65,27 +65,27 @@ const t = Astro.props.t ?? {
       </div>
     </div>
 
-    <div class="order-1 lg:order-2">
-      <div class="landing-reveal mb-5 inline-flex items-center gap-2 rounded-stitch border border-outline-variant/30 bg-surface-container px-3 py-1.5 sm:mb-6">
+    <div class="landing-stagger order-1 lg:order-2">
+      <div class="landing-reveal mb-5 inline-flex items-center gap-2 rounded-full border border-outline-variant/30 bg-surface-container px-3.5 py-1.5 shadow-sm sm:mb-6">
         <span class="h-2 w-2 rounded-full bg-secondary" aria-hidden="true" />
         <span class="font-mono text-[11px] font-medium text-on-surface-variant sm:text-[12px]">{t.badge}</span>
       </div>
 
-      <h2 id="evidence-gateway-title" class="landing-reveal landing-heading mb-5 sm:mb-6">
+      <h2 id="evidence-gateway-title" class="landing-reveal landing-heading mb-5 font-bold text-balance sm:mb-6">
         {t.heading}
       </h2>
-      <p class="landing-reveal mb-5 text-body-md text-on-surface-variant sm:mb-6 sm:text-body-lg">
+      <p class="landing-reveal mb-5 max-w-2xl text-body-md leading-relaxed text-on-surface-variant sm:mb-6 sm:text-body-lg">
         {t.description}
       </p>
 
       <dl class="landing-reveal mb-7 grid grid-cols-2 gap-3 sm:mb-8 sm:gap-4">
-        <div class="rounded-stitch border border-outline-variant/20 bg-surface-container p-3 sm:p-4">
+        <div class="rounded-stitch border border-outline-variant/20 bg-surface-container p-3 shadow-sm sm:p-4">
           <dt class="text-label-sm text-outline">{t.total_records}</dt>
           <dd class="mt-1 text-xl font-semibold text-primary sm:text-headline-md">
             <span data-count-up={totalItems}>0</span>
           </dd>
         </div>
-        <div class="rounded-stitch border border-outline-variant/20 bg-surface-container p-3 sm:p-4">
+        <div class="rounded-stitch border border-outline-variant/20 bg-surface-container p-3 shadow-sm sm:p-4">
           <dt class="text-label-sm text-outline">{t.available}</dt>
           <dd class="mt-1 text-xl font-semibold text-primary sm:text-headline-md">
             <span data-count-up={availableItems}>0</span>

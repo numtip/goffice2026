@@ -60,6 +60,24 @@ const labels = {
   ganttResult: isTh ? 'ผล (รายการจากแฟ้มงานในเดือน)' : 'Result (workbook entries per month)',
   legendPlan: isTh ? 'แผน' : 'Plan',
   legendResult: isTh ? 'ผล' : 'Result',
+  legendTitle: isTh ? 'สัญลักษณ์ของแผนรายปี' : 'Annual plan legend',
+  legendPlanDetail: isTh ? 'กิจกรรมที่วางแผนไว้ในเดือนนั้น' : 'activities planned for that month',
+  legendResultDetail: isTh
+    ? 'ผล/วันที่จริงที่บันทึกจากแฟ้มงานในเดือนนั้น'
+    : 'actual results/dates recorded from the workbook that month',
+  legendNone: isTh ? 'ไม่มีกิจกรรมในเดือนนั้น' : 'no activity that month',
+  legendHint: isTh
+    ? 'แถบสีแสดงสถานะของแต่ละเดือน: เขียว = มีแผน น้ำเงิน = มีผลลัพธ์ในแฟ้มงาน เทา = ไม่มีกิจกรรมในเดือนนั้น'
+    : 'Bar colors show each month\u2019s status: green = planned, blue = result recorded in the workbook, gray = no activity that month.',
+  timelineExplain: isTh
+    ? 'ไทม์ไลน์นี้แสดงจำนวนกิจกรรมตลอด 12 เดือน: แถวบนคือจำนวนกิจกรรมที่วางแผนในแต่ละเดือน ส่วนแถวล่างคือจำนวนรายการผล/วันที่ที่บันทึกจริงจากแฟ้มงานของเดือนนั้น'
+    : 'This timeline shows activity counts across the 12 months: the top row is how many activities are planned each month, the bottom row is how many actual results/dates were recorded from the workbook that month.',
+  categoriesExplain: isTh
+    ? 'ทั้ง 7 หมวดอ้างอิงตามกรอบการประเมินสำนักงานสีเขียว (Green Office) ปี 2569 — ทุกกิจกรรมจัดอยู่ในหมวดใดหมวดหนึ่งตามโครงสร้างของแผน'
+    : 'The seven categories follow the Green Office 2569 assessment framework — every activity belongs to one of them.',
+  activitiesExplain: isTh
+    ? 'การ์ดกิจกรรมแต่ละใบแสดงรหัสตัวชี้วัด (ถ้ามี) หมายเลขงาน ความถี่ ผู้รับผิดชอบ และแถบแผน/ผลรายเดือน'
+    : 'Each activity card shows the indicator code (if any), task number, frequency, responsible person, and a monthly plan/result strip.',
 };
 
 const summaryCards = [
@@ -159,9 +177,29 @@ const summaryCards = [
 
   <section aria-labelledby="ap-timeline">
     <h2 id="ap-timeline" class="text-lg font-semibold text-gray-900 mb-2">{labels.timelineTitle}</h2>
-    <p class="mb-3 flex flex-wrap gap-4 text-xs text-gray-600">
-      <span><span class="inline-block h-3 w-3 rounded bg-green-600 align-middle" aria-hidden="true"></span> {labels.legendPlan}</span>
-      <span><span class="inline-block h-3 w-3 rounded bg-blue-600 align-middle" aria-hidden="true"></span> {labels.legendResult}</span>
+    <fieldset class="mb-3 rounded-md bg-gray-50 px-3 py-2">
+      <legend class="sr-only">{labels.legendTitle}</legend>
+      <ul class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-gray-600">
+        <li class="flex items-center gap-1.5">
+          <span class="inline-block h-3 w-3 shrink-0 rounded-sm bg-green-600" aria-hidden="true"></span>
+          <span><span class="font-medium text-gray-800">{labels.legendPlan}</span> — {labels.legendPlanDetail}</span>
+        </li>
+        <li class="flex items-center gap-1.5">
+          <span class="inline-block h-3 w-3 shrink-0 rounded-sm bg-blue-600" aria-hidden="true"></span>
+          <span><span class="font-medium text-gray-800">{labels.legendResult}</span> — {labels.legendResultDetail}</span>
+        </li>
+        <li class="flex items-center gap-1.5">
+          <span class="inline-block h-3 w-3 shrink-0 rounded-sm bg-gray-300" aria-hidden="true"></span>
+          <span>{labels.legendNone}</span>
+        </li>
+      </ul>
+      <p class="mt-1.5 text-xs text-gray-500">{labels.legendHint}</p>
+    </fieldset>
+    <p class="mb-3 flex items-start gap-2 text-sm text-gray-600">
+      <svg class="mt-0.5 h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span>{labels.timelineExplain}</span>
     </p>
     <div class="ap-gantt-summary overflow-x-auto print:overflow-visible">
       <div class="min-w-0 print:min-w-0" role="table" aria-label={labels.timelineTitle}>
@@ -208,7 +246,14 @@ const summaryCards = [
   </section>
 
   <section aria-labelledby="ap-categories">
-    <h2 id="ap-categories" class="text-lg font-semibold text-gray-900 mb-4">{labels.categoriesTitle}</h2>
+    <h2 id="ap-categories" class="text-lg font-semibold text-gray-900 mb-2">{labels.categoriesTitle}</h2>
+    <p class="mb-3 text-sm text-gray-600">{labels.categoriesExplain}</p>
+    <p class="mb-4 flex items-start gap-2 rounded-md bg-gray-50 px-3 py-2 text-sm text-gray-600">
+      <svg class="mt-0.5 h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span>{labels.activitiesExplain}</span>
+    </p>
     <div class="space-y-3">
       {categories.map((cat, idx) => (
         <details

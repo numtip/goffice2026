@@ -1,0 +1,28 @@
+---
+import { approvedNotice } from '../../utils/approved-notice';
+
+interface Props {
+  noticeTh?: string;
+  noticeEn?: string;
+  isTh: boolean;
+  /** Visual tone. Defaults to amber (informational warning). */
+  tone?: 'amber' | 'green';
+  extraClass?: string;
+}
+
+const { noticeTh, noticeEn, isTh, tone = 'amber', extraClass = '' } = Astro.props;
+const notice = approvedNotice(noticeTh, noticeEn);
+
+const toneClass =
+  tone === 'amber'
+    ? 'border-amber-200 bg-amber-50 text-amber-900'
+    : 'border-green-200 bg-green-50 text-green-900';
+---
+
+{
+  notice && (
+    <div slot="notice" class={`not-prose mb-6 rounded-lg border px-4 py-3 text-sm ${toneClass} ${extraClass}`}>
+      {isTh ? notice.th : notice.en}
+    </div>
+  )
+}

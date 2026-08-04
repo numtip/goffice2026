@@ -39,9 +39,9 @@ const t = Astro.props.t ?? {
   </div>
 
   <!-- Content -->
-  <div class="relative z-10 mx-auto w-full max-w-5xl px-4 pt-20 pb-16 text-center sm:px-6 sm:pt-24 sm:pb-20 md:px-8 lg:pt-28 lg:pb-24">
+  <div class="landing-stagger relative z-10 mx-auto w-full max-w-5xl px-4 pt-20 pb-16 text-center sm:px-6 sm:pt-24 sm:pb-20 md:px-8 lg:pt-28 lg:pb-24">
     <!-- Badge -->
-    <div class="landing-reveal mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm sm:mb-8">
+    <div class="landing-reveal mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 shadow-lg shadow-black/20 backdrop-blur-md sm:mb-8">
       <span class="h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true"></span>
       <span class="font-mono text-label-sm uppercase tracking-widest text-white">{t.badge}</span>
     </div>
@@ -49,14 +49,14 @@ const t = Astro.props.t ?? {
     <!-- Heading -->
     <h1
       id="landing-hero-title"
-      class="landing-reveal mx-auto mb-5 max-w-3xl text-4xl font-bold leading-[1.1] tracking-tight text-white sm:mb-6 sm:text-5xl sm:leading-[1.05] md:text-6xl md:leading-[1.05] lg:text-7xl"
+      class="landing-reveal mx-auto mb-6 max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight text-white text-balance sm:mb-7 sm:text-5xl sm:leading-[1.06] md:text-6xl md:leading-[1.05] lg:text-7xl lg:leading-[1.04]"
     >
       {t.title_line1}<br />
       <span class="text-emerald-300">{t.title_line2}</span>
     </h1>
 
     <!-- Description - premium glass panel -->
-    <p class="landing-reveal mx-auto mb-8 max-w-xl rounded-xl border border-white/15 bg-white/8 px-6 py-4 text-base leading-relaxed text-white/90 shadow-lg backdrop-blur-md sm:mb-10 sm:px-8 sm:py-5 sm:text-lg">
+    <p class="landing-reveal mx-auto mb-9 max-w-2xl rounded-2xl border border-white/15 bg-white/10 px-6 py-4 text-base leading-relaxed text-white/90 shadow-xl shadow-black/20 backdrop-blur-xl sm:mb-11 sm:px-8 sm:py-5 sm:text-lg">
       {t.description}
     </p>
 
@@ -64,7 +64,7 @@ const t = Astro.props.t ?? {
     <div class="landing-reveal landing-stagger flex flex-wrap items-center justify-center gap-3 sm:gap-4">
       <a
         href={getLocalizedPath(locale, '/dashboard')}
-        class="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-6 py-3.5 text-label-sm font-semibold uppercase tracking-wider text-white shadow-lg shadow-emerald-500/25 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-emerald-400 hover:shadow-xl hover:shadow-emerald-500/30 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 sm:px-8 sm:py-4"
+        class="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-6 py-3.5 text-label-sm font-semibold uppercase tracking-wider text-white shadow-lg shadow-emerald-500/25 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-emerald-400 hover:shadow-xl hover:shadow-emerald-500/30 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 motion-reduce:transform-none sm:px-8 sm:py-4"
       >
         {t.cta_dashboard}
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -73,7 +73,7 @@ const t = Astro.props.t ?? {
       </a>
       <a
         href={getLocalizedPath(locale, '/categories')}
-        class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/30 bg-transparent px-6 py-3.5 text-label-sm font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 sm:px-8 sm:py-4"
+        class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/30 bg-transparent px-6 py-3.5 text-label-sm font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 motion-reduce:transform-none sm:px-8 sm:py-4"
       >
         {t.cta_categories}
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

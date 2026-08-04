@@ -28,13 +28,13 @@ interface Props {
 const { cards, theme, locale } = Astro.props;
 ---
 
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
   {cards.map((card) => {
     const isTargetNoValue = card.id === 'target' && card.value === '__NONE__';
     const displayValue = isTargetNoValue ? '' : card.value;
     return (
       <div
-        class={`kpi-card relative rounded-stitch border bg-white p-4 shadow-sm transition hover:shadow-md ${card.dimmed ? 'border-amber-200 bg-amber-50/30' : 'border-outline-variant/20'}`}
+        class={`kpi-card relative rounded-stitch border bg-white p-4 md:p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:shadow-md ${card.dimmed ? 'border-amber-200 bg-amber-50/30' : 'border-outline-variant/20'}`}
       >
         <!-- Top accent strip -->
         <div
@@ -45,7 +45,7 @@ const { cards, theme, locale } = Astro.props;
         </div>
 
         <div class="flex items-start justify-between gap-2 mb-2">
-          <p class="text-[11px] font-semibold text-outline uppercase tracking-wide leading-tight">
+          <p class="text-[11px] font-semibold text-outline uppercase tracking-wider leading-snug">
             {card.label}
           </p>
           {card.verified === true && (
@@ -67,11 +67,11 @@ const { cards, theme, locale } = Astro.props;
             </p>
           ) : (
             <>
-              <p class={`text-2xl font-bold leading-none ${card.dimmed ? 'text-on-surface-variant' : 'text-on-surface'}`}>
+              <p class={`text-2xl font-bold leading-none tracking-tight tabular-nums ${card.dimmed ? 'text-on-surface-variant' : 'text-on-surface'}`}>
                 {displayValue}
               </p>
               {card.unit && (
-                <span class={`text-sm font-normal ${card.dimmed ? 'text-on-surface-variant' : 'text-outline'}`}>
+                <span class={`text-sm font-medium ${card.dimmed ? 'text-on-surface-variant' : 'text-outline'}`}>
                   {card.unit}
                 </span>
               )}
@@ -80,22 +80,22 @@ const { cards, theme, locale } = Astro.props;
         </div>
 
         {card.trendLabel && (
-          <p class={`text-xs font-semibold mt-1.5 ${card.trendColor ?? 'text-outline'}`}>
+          <p class={`text-xs font-semibold mt-2 tabular-nums ${card.trendColor ?? 'text-outline'}`}>
             {card.trendLabel}
           </p>
         )}
 
         {card.status && card.verified !== undefined && (
-          <div class="mt-1.5">
+          <div class="mt-2">
             <DataStatusBadge status={card.status} verified={card.verified} locale={locale} size="sm" />
           </div>
         )}
 
-        <p class="text-[11px] text-on-surface-variant mt-2 leading-tight">{card.contextLine}</p>
+        <p class="text-[11px] text-on-surface-variant mt-2 leading-relaxed">{card.contextLine}</p>
 
         {/* Progress bar for completeness card */}
         {card.progress !== undefined && (
-          <div class="mt-2.5" role="progressbar" aria-valuenow={card.progress} aria-valuemin="0" aria-valuemax="100" aria-label={card.label}>
+          <div class="mt-3" role="progressbar" aria-valuenow={card.progress} aria-valuemin="0" aria-valuemax="100" aria-label={card.label}>
             <div class="h-1.5 w-full rounded-full bg-gray-100 overflow-hidden">
               <div
                 class="h-full rounded-full transition-all duration-500"

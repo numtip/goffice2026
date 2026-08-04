@@ -1,5 +1,6 @@
 ---
 import AboutPageShell from '../../components/about/AboutPageShell.astro';
+import AboutNotice from '../../components/about/AboutNotice.astro';
 import aboutContent from '../../data/about/content.json';
 import summaries from '../../data/about/document-summaries.json';
 import documents from '../../data/about/documents.json';
@@ -32,9 +33,7 @@ function safeKeyPoints(points: string[] | undefined) {
         ? '🔒 เอกสารอ้างอิงมีข้อมูลติดต่อส่วนบุคคล — หน้านี้ไม่เผยแพร่อีเมลหรือเบอร์โทรศัพท์ รายละเอียดช่องทางติดต่อมีเอกสารภายในองค์กร'
         : '🔒 The reference document contains personal contact details — this page does not publish email or phone numbers. Contact channels are documented internally.'}
     </div>
-    <div class="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-      {isTh ? content.noticeTh : content.noticeEn}
-    </div>
+    <AboutNotice noticeTh={content.noticeTh} noticeEn={content.noticeEn} isTh={isTh} />
   </div>
 
   <p class="text-sm text-gray-500 mb-6">

@@ -3,6 +3,7 @@ import { stripLocalePrefix, stripBasePath, getLocalizedPath, getLocale } from '.
 import { getDictionary } from '../i18n/dictionary';
 import Navigation from '../components/ui/Navigation.astro';
 import PreviewBadge from '../components/ui/PreviewBadge.astro';
+import BackToTop from '../components/ui/BackToTop.astro';
 import {
   SITE_META,
   resolveSiteOrigin,
@@ -146,8 +147,8 @@ const robotsContent = noindex ? 'noindex, follow' : 'index, follow';
       <div class="mx-auto max-w-6xl px-4">
         <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <div class="max-w-md">
-            <p class="font-semibold text-white">{footerTitle}</p>
-            <p class="text-sm text-outline-variant mt-1">{footerDesc}</p>
+            <p class="font-semibold tracking-tight text-white">{footerTitle}</p>
+            <p class="mt-1 text-sm leading-relaxed text-outline-variant">{footerDesc}</p>
           </div>
           <nav class="grid grid-cols-2 gap-x-8 gap-y-2 text-sm" aria-label={footerLinks.label_nav}>
             <a href={getLocalizedPath(lang, '/about')} class="text-outline-variant hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface rounded-sm">{navLabels.about ?? 'About'}</a>
@@ -162,11 +163,12 @@ const robotsContent = noindex ? 'noindex, follow' : 'index, follow';
             <span class="text-outline/50 text-xs cursor-default" role="note">{footerLinks.links_accessibility} &mdash; {lang === 'th' ? 'อยู่ระหว่างดำเนินการ' : 'in progress'}</span>
           </nav>
         </div>
-        <div class="mt-6 border-t border-white/10 pt-4 text-xs text-outline/60">
+        <div class="mt-6 border-t border-white/10 pt-4 text-xs tracking-wide text-outline/60">
           <p>&copy; {new Date().getFullYear()} {footerCopy}</p>
         </div>
       </div>
     </footer>
     <PreviewBadge locale={lang} />
+    <BackToTop locale={lang} />
   </body>
 </html>

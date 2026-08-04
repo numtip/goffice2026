@@ -53,10 +53,10 @@ const stages = [
   <div class="pointer-events-none absolute inset-x-0 -top-16 h-16 bg-gradient-to-b from-surface to-transparent" aria-hidden="true" />
 
   <div class="landing-container">
-    <div class="landing-reveal mb-10 text-center sm:mb-14">
-      <p class="mb-3 font-mono text-label-sm uppercase tracking-widest text-secondary">{t.label}</p>
-      <h2 id="improvement-journey-title" class="landing-heading mb-3 sm:mb-4">{t.heading}</h2>
-      <p class="mx-auto max-w-2xl text-body-md text-on-surface-variant sm:text-body-lg">
+    <div class="landing-reveal mx-auto mb-10 max-w-3xl text-center sm:mb-14">
+      <p class="mb-3 font-mono text-label-sm font-semibold uppercase tracking-widest text-secondary">{t.label}</p>
+      <h2 id="improvement-journey-title" class="landing-heading mb-3 font-bold text-balance sm:mb-4">{t.heading}</h2>
+      <p class="mx-auto max-w-2xl text-body-md leading-relaxed text-on-surface-variant sm:text-body-lg">
         {t.description}
       </p>
     </div>
@@ -73,7 +73,7 @@ const stages = [
           )}
           <a
             href={getLocalizedPath(locale, stage.href)}
-            class="landing-card-interactive group flex h-full flex-col rounded-stitch-lg border border-outline-variant/20 bg-surface-container-lowest/80 p-4 shadow-sm backdrop-blur-sm hover:border-primary-container/30 sm:p-5"
+            class="landing-card-interactive group flex h-full flex-col rounded-stitch-lg border border-outline-variant/20 bg-surface-container-lowest/80 p-4 shadow-md backdrop-blur-sm hover:border-primary-container/40 sm:p-5"
           >
             <div class="mb-3 flex items-center gap-3 sm:mb-4">
               <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white transition-transform duration-300 group-hover:scale-105 motion-reduce:group-hover:scale-100 sm:h-10 sm:w-10" aria-hidden="true">

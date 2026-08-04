@@ -7,6 +7,32 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    font-feature-settings: "liga", "calt", "kern";
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  table {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  ::selection {
+    background: rgba(176, 240, 214, 0.6);
+    color: #003527;
   }
 
   :focus:not(:focus-visible) {
@@ -16,6 +42,7 @@
   :focus-visible {
     outline: 2px solid #064e3b;
     outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(6, 78, 59, 0.14);
   }
 }
 
@@ -62,6 +89,56 @@
 
   .landing-scene-bridge-light-top {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(239, 244, 255, 1) 100%);
+  }
+
+  /* === GO-UX-5 presentation layer (additive — do not remove) === */
+
+  .page-hero {
+    @apply relative overflow-hidden border-b border-primary/10 bg-gradient-to-b from-surface to-surface-container-lowest py-10 md:py-14;
+  }
+
+  .page-hero-inner {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .page-hero-kicker {
+    @apply mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary;
+  }
+
+  .page-hero-title {
+    @apply text-3xl font-semibold tracking-tight text-primary md:text-headline-lg;
+  }
+
+  .page-hero-lead {
+    @apply mt-3 max-w-3xl text-body-lg leading-relaxed text-on-surface-variant;
+  }
+
+  .section-heading-kicker {
+    @apply mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-primary;
+  }
+
+  .section-heading {
+    @apply text-headline-md font-semibold tracking-tight text-primary;
+  }
+
+  .section-heading-lead {
+    @apply mt-2 max-w-2xl text-body-md leading-relaxed text-on-surface-variant;
+  }
+
+  .card-surface {
+    @apply rounded-stitch border border-outline-variant/40 bg-white shadow-sm;
+  }
+
+  .card-surface-hover {
+    @apply rounded-stitch border border-outline-variant/40 bg-white shadow-sm transition duration-300 ease-out hover:-translate-y-1 hover:border-primary/25 hover:shadow-lg hover:shadow-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  .section-spacing {
+    @apply py-14 md:py-20;
+  }
+
+  .section-spacing-sm {
+    @apply py-10 md:py-14;
   }
 }
 
@@ -200,6 +277,24 @@
   .dashboard-metric-highlight:focus-visible {
     @apply bg-white/10 ring-primary-fixed/40 shadow-[0_0_24px_rgba(111,251,190,0.12)];
   }
+
+  /* === GO-UX-5 presentation utilities (additive) === */
+
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .ease-out-expo {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .num-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
 }
 
 @keyframes float-slow {
@@ -271,6 +366,7 @@
   .landing-btn-primary,
   .landing-btn-ghost,
   .landing-btn-glass,
+  .card-surface-hover,
   .dashboard-metric-highlight {
     transform: none !important;
   }

@@ -172,7 +172,7 @@ const verificationStatus = currentVerified
 const primaryIndicator = metric?.relatedIndicators?.[0];
 ---
 
-<div class="max-w-6xl mx-auto px-4 py-4 md:px-6 md:py-6 space-y-5 md:space-y-6">
+<div class="max-w-6xl mx-auto px-4 py-4 md:px-6 md:py-6 space-y-6 md:space-y-8">
 
   <!-- Breadcrumb -->
   <nav class="text-xs text-on-surface-variant" aria-label={th ? 'เส้นทาง' : 'Breadcrumb'}>
@@ -246,7 +246,7 @@ const primaryIndicator = metric?.relatedIndicators?.[0];
 
       <!-- Metric-specific Insights -->
       {metricInsights.length > 0 && (
-        <section class="space-y-3">
+        <section class="space-y-4">
           <MetricInsightGrid
             title={th ? 'ข้อมูลเชิงลึกเฉพาะตัวชี้วัด' : 'Metric-Specific Insights'}
             insights={metricInsights}
@@ -286,7 +286,7 @@ const primaryIndicator = metric?.relatedIndicators?.[0];
       <!-- Related Indicators -->
       {relatedIndicators.length > 0 && (
         <div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm">
-          <h2 class="text-sm font-semibold text-on-surface mb-3">{th ? 'ตัวชี้วัดที่เกี่ยวข้อง' : 'Related Indicators'}</h2>
+          <h2 class="text-sm font-semibold text-on-surface tracking-tight mb-3">{th ? 'ตัวชี้วัดที่เกี่ยวข้อง' : 'Related Indicators'}</h2>
           <div class="flex flex-wrap gap-2">
             {relatedIndicators.map((ind: any) => (
               <a
@@ -304,7 +304,7 @@ const primaryIndicator = metric?.relatedIndicators?.[0];
       <!-- Related Policy & Goals -->
       {relatedAboutPages.length > 0 && (
         <div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm">
-          <h2 class="text-sm font-semibold text-on-surface mb-3">{th ? 'นโยบายและเป้าหมายที่เกี่ยวข้อง' : 'Related Policy & Goals'}</h2>
+          <h2 class="text-sm font-semibold text-on-surface tracking-tight mb-3">{th ? 'นโยบายและเป้าหมายที่เกี่ยวข้อง' : 'Related Policy & Goals'}</h2>
           <div class="flex flex-wrap gap-2">
             {relatedAboutPages.map((page) => (
               <a
