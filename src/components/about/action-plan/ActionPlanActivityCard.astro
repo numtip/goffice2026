@@ -24,16 +24,25 @@ interface Props {
   activity: Activity;
   months: MonthEntry[];
   isTh: boolean;
+  categoryId: string;
+  categoryTitleTh: string;
+  searchBlob: string;
 }
 
-const { activity, months, isTh } = Astro.props;
+const { activity, months, isTh, categoryId, searchBlob } = Astro.props;
 const monthLabel = (id: string) => months.find((m) => m.id === id)?.labelTh ?? id;
 
 const plannedSet = new Set(activity.plannedMonths);
 const actualByMonth = new Map(activity.actualMonths.map((a) => [a.monthId, a.value]));
 ---
 
-<article class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm" aria-labelledby={`act-${activity.id}`}>
+<article
+  class="ap-activity rounded-lg border border-gray-200 bg-white p-4 shadow-sm"
+  data-ap-activity
+  data-ap-category={categoryId}
+  data-ap-search={searchBlob}
+  aria-labelledby={`act-${activity.id}`}
+>
   <header class="mb-3 space-y-1">
     <div class="flex flex-wrap items-center gap-2 text-xs text-gray-500">
       {activity.indicatorCode && (
@@ -65,24 +74,46 @@ const actualByMonth = new Map(activity.actualMonths.map((a) => [a.monthId, a.val
 
   <div class="mt-4">
     <p class="text-xs font-medium uppercase tracking-wide text-gray-500 mb-2">
-      {isTh ? 'แผน (ม.ค.–ธ.ค. 2569)' : 'Plan (Jan–Dec FY2569)'}
+      {isTh ? 'แผน / ผล (ม.ค.–ธ.ค.)' : 'Plan / result (Jan–Dec)'}
     </p>
-    <ul class="grid grid-cols-4 gap-1 sm:grid-cols-6 md:grid-cols-12" aria-label={isTh ? 'เดือนที่วางแผน' : 'Planned months'}>
+    <div
+      class="ap-gantt-row grid grid-cols-12 gap-0.5 rounded border border-gray-100 bg-gray-50 p-1"
+      role="img"
+      aria-label={isTh ? 'แผนและผลรายเดือน' : 'Monthly plan and result'}
+    >
       {months.map((m) => {
         const planned = plannedSet.has(m.id);
+        const actual = actualByMonth.get(m.id);
         return (
-          <li
+          <div
             class:list={[
-              'rounded px-1 py-1 text-center text-xs',
-              planned ? 'bg-green-100 font-semibold text-green-900' : 'bg-gray-50 text-gray-400',
+              'relative h-6 rounded-sm',
+              planned ? 'bg-green-500' : 'bg-gray-200',
+              actual ? 'ring-2 ring-blue-600 ring-inset' : '',
             ]}
-            title={planned ? (isTh ? 'วางแผนดำเนินการ' : 'Planned') : undefined}
+            title={
+              [
+                m.labelTh,
+                planned ? (isTh ? 'แผน' : 'Plan') : '',
+                actual ? `${isTh ? 'ผล' : 'Result'}: ${actual}` : '',
+              ]
+                .filter(Boolean)
+                .join(' — ')
+            }
           >
-            <span class="sr-only">{m.labelTh}</span>
-            <span aria-hidden="true">{m.labelTh}</span>
-          </li>
+            <span class="sr-only">
+              {m.labelTh}
+              {planned ? (isTh ? ' มีแผน' : ' planned') : ''}
+              {actual ? `: ${actual}` : ''}
+            </span>
+          </div>
         );
       })}
+    </div>
+    <ul class="mt-2 grid grid-cols-4 gap-1 sm:grid-cols-6 md:grid-cols-12 text-center text-[10px] text-gray-500" aria-hidden="true">
+      {months.map((m) => (
+        <li>{m.labelTh}</li>
+      ))}
     </ul>
   </div>
 

@@ -3,12 +3,18 @@ const base = (process.env.PREVIEW_BASE_URL ?? 'http://127.0.0.1:4321').replace(/
 const routes = ['/about/action-plan/', '/en/about/action-plan/'];
 const checks = [
   ['timeline section', 'id="ap-timeline"'],
-  ['timeline overflow', 'overflow-x-auto'],
+  ['gantt summary', 'ap-gantt-summary'],
+  ['search input', 'id="ap-search"'],
+  ['category filter', 'id="ap-category-filter"'],
+  ['print control', 'id="ap-print"'],
+  ['result count', 'id="ap-result-count"'],
+  ['category anchor', 'href="#cat-1"'],
   ['category accordions', 'id="ap-categories"'],
   ['details elements', '<details'],
   ['keyboard focus on summary', 'focus-visible:outline'],
   ['download link', 'green-office-action-plan-2569.xlsx'],
   ['summary cards grid', 'grid-cols-2'],
+  ['print stylesheet', '@media print'],
 ];
 
 let ok = true;
