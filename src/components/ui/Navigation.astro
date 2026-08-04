@@ -35,7 +35,6 @@ const navLabels = Astro.props.t ?? {
 const university = Astro.props.university ?? 'Maejo University';
 const platformLabel = Astro.props.platformLabel ?? 'Green Office Platform';
 const languageLabels = Astro.props.languageLabels;
-const siteName = 'Green Office 2026';
 const primaryNavLabel = navLabels.primary_navigation ?? 'Primary navigation';
 
 const navItems = [
@@ -80,10 +79,21 @@ const isActive = (href: string) => {
 <nav class="border-b border-primary/10 bg-white/95 px-4 py-3 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/85" aria-label={primaryNavLabel}>
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4">
     <a href={getLocalizedPath(locale, '/')} class="group inline-flex min-w-0 items-center gap-3 text-left">
-      <SiteLogo class="h-9 w-auto max-w-[7.5rem] shrink-0 object-contain object-left" width={36} height={29} />
+      <SiteLogo
+        alt={isTh ? 'สำนักงานสีเขียว (Green Office)' : 'Green Office'}
+        class="h-9 w-auto max-w-[7.5rem] shrink-0 object-contain object-left"
+        width={36}
+        height={29}
+      />
       <span class="min-w-0">
-        <span class="block text-sm font-semibold leading-tight text-primary">{siteName}</span>
-        <span class="block text-[11px] uppercase tracking-wide text-outline">{university}</span>
+        <span class="block text-sm font-semibold leading-tight text-primary">
+          {isTh ? 'สำนักงานสีเขียว (Green Office)' : 'Green Office'}
+        </span>
+        <span class="block text-[11px] uppercase tracking-wide text-outline">
+          {isTh
+            ? 'อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้'
+            : 'Chalermprakiat Building, Maejo University'}
+        </span>
       </span>
     </a>
 

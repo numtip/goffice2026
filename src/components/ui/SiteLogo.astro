@@ -4,16 +4,22 @@ interface Props {
   class?: string;
   width?: number;
   height?: number;
+  alt?: string;
 }
 
-const { class: className = 'h-9 w-auto max-w-[7.5rem] object-contain object-left', width = 36, height = 29 } = Astro.props;
+const {
+  class: className = 'h-9 w-auto max-w-[7.5rem] object-contain object-left',
+  width = 36,
+  height = 29,
+  alt = 'Green Office 2026',
+} = Astro.props;
 const base = import.meta.env.BASE_URL ?? '/';
 const src = `${base}images/LogoGreen2025.png`.replace(/\/{2,}/g, '/').replace(':/', '://');
 ---
 
 <img
   src={src}
-  alt="Green Office 2026"
+  alt={alt}
   class={className}
   width={width}
   height={height}
