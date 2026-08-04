@@ -35,6 +35,7 @@ const thRoutes = [
   '/documents/cat7/',
   '/search/',
   '/404/',
+  '/about/action-plan/',
 ];
 
 const enRoutes = [
@@ -45,6 +46,7 @@ const enRoutes = [
   '/en/evidence/',
   '/en/documents/',
   '/en/search/',
+  '/en/about/action-plan/',
 ];
 
 const routes = [...thRoutes, ...enRoutes];

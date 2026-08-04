@@ -1,0 +1,133 @@
+---
+import actionPlan from '../../../data/generated/action-plan-2569.json';
+import ActionPlanActivityCard from './ActionPlanActivityCard.astro';
+
+interface Props {
+  isTh: boolean;
+}
+
+const { isTh } = Astro.props;
+const { summary, categories, months, source, titleTh } = actionPlan;
+
+const labels = {
+  summaryTitle: isTh ? 'ภาพรวมแผนปฏิบัติการ 2569' : 'FY2569 action plan overview',
+  categories: isTh ? 'หมวด' : 'Categories',
+  activities: isTh ? 'กิจกรรม' : 'Activities',
+  plannedMarks: isTh ? 'จุดวางแผนรายเดือน (/)' : 'Monthly plan marks (/)',
+  withActual: isTh ? 'กิจกรรมที่มีผล/วันที่ในแฟ้ม' : 'Activities with actual/result in workbook',
+  timelineTitle: isTh ? 'ไทม์ไลน์รายปี (แผน)' : 'Annual timeline (planned)',
+  categoriesTitle: isTh ? '7 หมวดตามแผนงาน' : 'Seven plan categories',
+  downloadTitle: isTh ? 'ดาวน์โหลดไฟล์ Excel ต้นฉบับ' : 'Download original Excel workbook',
+  downloadHint: isTh
+    ? 'ไฟล์เดียวกับที่ใช้สร้างข้อมูลบนหน้านี้ — ไม่มีการแก้ไขเนื้อหา'
+    : 'Same file used to generate this page — content unchanged.',
+  downloadBtn: isTh ? 'ดาวน์โหลด green-office-action-plan-2569.xlsx' : 'Download green-office-action-plan-2569.xlsx',
+  openFirst: isTh ? 'เปิดหมวดแรก' : 'First category expanded by default',
+  monthCount: isTh ? 'กิจกรรม' : 'activities',
+};
+
+const summaryCards = [
+  { label: labels.categories, value: String(summary.categoryCount) },
+  { label: labels.activities, value: String(summary.activityCount) },
+  { label: labels.plannedMarks, value: String(summary.plannedMonthMarks) },
+  { label: labels.withActual, value: String(summary.activitiesWithActualMonths) },
+];
+
+const maxTimeline = Math.max(...Object.values(summary.timelinePlanned), 1);
+---
+
+<section class="not-prose space-y-10" aria-labelledby="action-plan-hero">
+  <div id="action-plan-hero" class="rounded-xl border border-green-100 bg-gradient-to-br from-green-50 to-white p-6">
+    <p class="text-sm font-medium text-green-800">{isTh ? 'ปีงบประมาณ' : 'Fiscal year'} {summary.fiscalYear}</p>
+    <h2 class="mt-1 text-2xl font-bold text-gray-900">{labels.summaryTitle}</h2>
+    <p class="mt-2 max-w-3xl text-gray-700 whitespace-pre-line">{titleTh}</p>
+  </div>
+
+  <section aria-labelledby="ap-summary-cards">
+    <h2 id="ap-summary-cards" class="sr-only">{labels.summaryTitle}</h2>
+    <ul class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      {summaryCards.map((card) => (
+        <li class="rounded-lg border border-gray-200 bg-white p-4 text-center shadow-sm">
+          <p class="text-2xl font-bold text-green-700">{card.value}</p>
+          <p class="mt-1 text-xs text-gray-600 sm:text-sm">{card.label}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="ap-timeline">
+    <h2 id="ap-timeline" class="text-lg font-semibold text-gray-900 mb-3">{labels.timelineTitle}</h2>
+    <div class="overflow-x-auto pb-2">
+      <ul class="flex min-w-[640px] gap-2">
+        {months.map((m) => {
+          const count = summary.timelinePlanned[m.id] ?? 0;
+          const heightPct = Math.round((count / maxTimeline) * 100);
+          return (
+            <li class="flex flex-1 flex-col items-center gap-1">
+              <div class="flex h-24 w-full items-end justify-center rounded-t bg-gray-100 px-1">
+                <div
+                  class="w-full max-w-[2.5rem] rounded-t bg-green-600 transition-all"
+                  style={`height: ${Math.max(heightPct, count > 0 ? 8 : 2)}%`}
+                  role="img"
+                  aria-label={`${m.labelTh}: ${count} ${labels.monthCount}`}
+                />
+              </div>
+              <span class="text-xs font-medium text-gray-700">{m.labelTh}</span>
+              <span class="text-xs text-gray-500">{count}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="ap-categories">
+    <h2 id="ap-categories" class="text-lg font-semibold text-gray-900 mb-4">{labels.categoriesTitle}</h2>
+    <div class="space-y-3">
+      {categories.map((cat, idx) => (
+        <details class="group rounded-lg border border-gray-200 bg-white open:shadow-sm" open={idx === 0}>
+          <summary class="cursor-pointer list-none px-4 py-3 font-semibold text-gray-900 marker:content-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
+            <span class="flex items-center justify-between gap-2">
+              <span>
+                {isTh ? `หมวด ${cat.number}` : `Category ${cat.number}`}: {cat.titleTh}
+              </span>
+              <span class="text-sm font-normal text-gray-500">{cat.activityCount} {labels.monthCount}</span>
+            </span>
+          </summary>
+          <div class="border-t border-gray-100 px-4 py-4 space-y-4">
+            {cat.activities.map((activity) => (
+              <ActionPlanActivityCard activity={activity} months={months} isTh={isTh} />
+            ))}
+          </div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section class="rounded-lg border border-gray-200 bg-gray-50 p-6" aria-labelledby="ap-download">
+    <h2 id="ap-download" class="text-lg font-semibold text-gray-900">{labels.downloadTitle}</h2>
+    <p class="mt-2 text-sm text-gray-600">{labels.downloadHint}</p>
+    <a
+      href={source.publicDownloadPath}
+      class="mt-4 inline-flex items-center justify-center rounded-md bg-green-700 px-4 py-2.5 text-sm font-medium text-white hover:bg-green-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
+      download
+    >
+      {labels.downloadBtn}
+    </a>
+  </section>
+</section>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  details summary::after {
+    content: '+';
+    float: right;
+    font-weight: 700;
+    color: rgb(21 128 61);
+  }
+  details[open] summary::after {
+    content: '−';
+  }
+</style>

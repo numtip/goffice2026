@@ -51,7 +51,8 @@ function runScript(scriptName) {
   const scriptPath = resolve(ROOT, 'scripts', scriptName);
   console.log(`\n--- Running ${scriptName} ---`);
   try {
-    const output = execSync(`node "${scriptPath}"`, {
+    const node = process.execPath;
+    const output = execSync(`"${node}" "${scriptPath}"`, {
       cwd: ROOT,
       encoding: 'utf-8',
       stdio: ['ignore', 'pipe', 'pipe'],
