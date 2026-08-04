@@ -1,0 +1,93 @@
+---
+interface Summary {
+  summaryTh?: string;
+  summaryEn?: string;
+  keyPoints?: string[];
+  reviewStatus?: string;
+  extractedFromPages?: string;
+}
+
+interface Doc {
+  id?: string;
+  filename?: string;
+  pageCount?: number;
+}
+
+interface Section {
+  headingTh: string;
+  headingEn: string;
+  summaryKey?: string;
+  pending?: boolean;
+  historical?: boolean;
+  pendingNoteTh?: string;
+  pendingNoteEn?: string;
+}
+
+interface Props {
+  sections: Section[];
+  isTh: boolean;
+  summaries: Summary[];
+  documents: Doc[];
+}
+
+const { sections, isTh, documents, summaries } = Astro.props;
+
+function summaryFor(key?: string) {
+  return summaries.find((s) => s.documentId === key);
+}
+
+function docFor(key?: string) {
+  return documents.find((d) => d.id === key);
+}
+
+const pendingLabel = isTh ? '⏳ เนื้อหารอตรวจสอบ / ต้องยืนยันกับทีม Green Office' : '⏳ Content pending review / Green Office team confirmation';
+const ocrLabel = isTh ? '⚠️ สรุปจาก OCR — ต้องตรวจสอบโดยมนุษย์' : '⚠️ OCR-derived summary — human verification required';
+const refLabel = isTh ? 'เอกสารอ้างอิง' : 'Reference document';
+const pagesLabel = isTh ? 'หน้า' : 'pages';
+---
+
+{sections.map((section) => {
+  const summary = summaryFor(section.summaryKey ?? '');
+  const doc = docFor(section.summaryKey ?? '');
+  const isOcr = summary?.reviewStatus === 'OCR_DERIVED_NEEDS_VERIFICATION';
+  return (
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-900 mb-2">
+        {isTh ? section.headingTh : section.headingEn}
+      </h2>
+      {section.pending && (
+        <p class="text-sm text-amber-700 mb-2">{pendingLabel}</p>
+      )}
+      {section.pending && section.pendingNoteTh && (
+        <p class="text-sm text-amber-800 mb-2">
+          {isTh ? section.pendingNoteTh : section.pendingNoteEn ?? section.pendingNoteTh}
+        </p>
+      )}
+      {isOcr && (
+        <p class="text-sm text-amber-700 mb-2">{ocrLabel}</p>
+      )}
+      {summary && (
+        <p class="text-gray-700 leading-relaxed whitespace-pre-line">
+          {isTh ? summary.summaryTh : (summary.summaryEn ?? summary.summaryTh)}
+        </p>
+      )}
+      {summary?.keyPoints && !isTh && summary.keyPoints.length > 0 && (
+        <ul class="mt-3 list-disc pl-5 space-y-1 text-gray-600 text-sm">
+          {summary.keyPoints.map((pt) => (
+            <li>{pt}</li>
+          ))}
+        </ul>
+      )}
+      {doc && (
+        <p class="mt-3 text-sm text-gray-500">
+          {refLabel}: {doc.filename}
+          {doc.pageCount && (
+            <span class="ml-2 inline-block rounded bg-gray-100 px-2 py-0.5 text-xs">
+              {doc.pageCount} {pagesLabel}
+            </span>
+          )}
+        </p>
+      )}
+    </section>
+  );
+})}

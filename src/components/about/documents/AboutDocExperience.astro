@@ -1,0 +1,130 @@
+---
+import pagesMeta from '../../../data/about/pages.json';
+import aboutContent from '../../../data/about/content.json';
+import documentsData from '../../../data/about/documents.json';
+import summariesData from '../../../data/about/document-summaries.json';
+import aboutDocuments from '../../../data/about/about-documents.json';
+import { getLocale, getLocalizedPath } from '../../../i18n/utils';
+import AboutDocHero from './AboutDocHero.astro';
+import AboutDocFactSheet from './AboutDocFactSheet.astro';
+import AboutDocSections from './AboutDocSections.astro';
+import AboutDocDownload from './AboutDocDownload.astro';
+
+interface Props {
+  pageId: string;
+  isTh: boolean;
+}
+
+const { pageId, isTh } = Astro.props;
+const locale = getLocale(Astro.url);
+
+const pageMeta = pagesMeta.pages.find((p) => p.id === pageId);
+const content = aboutContent.pages[pageId];
+const pageDocs = aboutDocuments.pages[pageId] ?? { primaryDocumentId: null, documents: [] };
+
+const allDocs = documentsData.documents;
+const allSummaries = summariesData.summaries;
+
+const primaryDoc = allDocs.find((d) => d.id === pageDocs.primaryDocumentId);
+const downloadDocs = pageDocs.documents
+  .map((id) => allDocs.find((d) => d.id === id))
+  .filter((d) => d?.pathPublic);
+
+const primarySummary = allSummaries.find((s) => s.documentId === pageDocs.primaryDocumentId);
+
+const isOcr = primarySummary?.reviewStatus === 'OCR_DERIVED_NEEDS_VERIFICATION';
+
+const badges = [
+  ...(primaryDoc?.signed ? [{ label: isTh ? 'ลงนามแล้ว' : 'Signed', tone: 'green' as const }] : []),
+  ...(primaryDoc?.documentYear
+    ? [{ label: `พ.ศ. ${primaryDoc.documentYear}`, tone: 'blue' as const }]
+    : []),
+  ...(primaryDoc?.pageCount
+    ? [{ label: `${primaryDoc.pageCount} ${isTh ? 'หน้า' : 'pages'}`, tone: 'gray' as const }]
+    : []),
+  ...(isOcr ? [{ label: isTh ? 'รอตรวจสอบ OCR' : 'OCR verify pending', tone: 'amber' as const }] : []),
+];
+
+const facts = [
+  {
+    label: isTh ? 'วันที่ออกเอกสาร' : 'Issued date',
+    value: primaryDoc?.issuedDate ?? '',
+  },
+  {
+    label: isTh ? 'ปีงบประมาณ' : 'Fiscal year',
+    value: primaryDoc?.documentYear ? `พ.ศ. ${primaryDoc.documentYear}` : '',
+  },
+  {
+    label: isTh ? 'หน่วยงานเจ้าของ' : 'Owner',
+    value: primaryDoc?.owner ?? '',
+  },
+  {
+    label: isTh ? 'ผู้อนุมัติ' : 'Issuing authority',
+    value: primaryDoc?.issuingAuthority ?? '',
+  },
+];
+
+const pageTitle = isTh ? pageMeta?.titleTh : pageMeta?.titleEn;
+const docTitle = primaryDoc
+  ? isTh
+    ? primaryDoc.titleTh
+    : (primaryDoc.titleEn ?? primaryDoc.titleTh)
+  : '';
+
+const indicatorLabel = isTh ? 'ตัวชี้วัดที่เกี่ยวข้อง' : 'Related indicators';
+---
+
+<section class="not-prose space-y-10" aria-labelledby="about-doc-experience">
+  <AboutDocHero
+    title={pageTitle ?? ''}
+    docTitle={docTitle}
+    badges={badges}
+  />
+
+  {primaryDoc && <AboutDocFactSheet facts={facts} />}
+
+  {pageDocs.targets && pageDocs.targets.length > 0 && (
+    <section class="rounded-lg border border-green-100 bg-green-50/50 p-4" aria-labelledby="about-doc-targets">
+      <h2 id="about-doc-targets" class="text-lg font-semibold text-gray-900">
+        {isTh ? 'เป้าหมายสิ่งแวดล้อม' : 'Environmental targets'}
+      </h2>
+      <ul class="mt-2 grid list-disc gap-1 pl-5 text-sm text-gray-700 sm:grid-cols-2">
+        {pageDocs.targets.map((t) => (
+          <li>{isTh ? t.th : t.en}</li>
+        ))}
+      </ul>
+      <p class="mt-2 text-xs text-amber-700">
+        {isTh
+          ? 'ค่าจากเอกสารปีฐาน 2568 (OCR) — ต้องตรวจสอบกับต้นฉบับ'
+          : 'Values from FY2568 baseline document (OCR) — verify against original.'}
+      </p>
+    </section>
+  )}
+
+  {(content?.relatedIndicators?.length ?? 0) > 0 && (
+    <p class="text-sm text-gray-500">
+      {indicatorLabel}:
+      {content.relatedIndicators.map((code) => (
+        <a
+          href={getLocalizedPath(locale, `/indicators/${code}`)}
+          class="ml-2 text-green-700 hover:underline"
+        >
+          {code}
+        </a>
+      ))}
+    </p>
+  )}
+
+  {content?.sections && (
+    <AboutDocSections
+      sections={content.sections}
+      isTh={isTh}
+      summaries={allSummaries}
+      documents={allDocs}
+    />
+  )}
+
+  {downloadDocs.length > 0 && (
+    <AboutDocDownload docs={downloadDocs} isTh={isTh} />
+  )}
+</section>

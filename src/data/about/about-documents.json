@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "note": "Single metadata source for About document pages (GO-ABOUT-2). Maps each About page to its document IDs. Detailed document metadata lives in documents.json; summaries in document-summaries.json. Committee page intentionally omits doc-committee-understanding from downloads (confirmed SHA-256 duplicate of doc-policy-review).",
+  "pages": {
+    "about-policy": {
+      "primaryDocumentId": "doc-policy-signed",
+      "documents": ["doc-policy-signed", "doc-policy-review"]
+    },
+    "about-goals": {
+      "primaryDocumentId": "doc-goals",
+      "documents": ["doc-goals"],
+      "targets": [
+        { "th": "ไฟฟ้า ≤ 5,252.55 หน่วย/คน", "en": "Electricity ≤ 5,252.55 units/person" },
+        { "th": "น้ำมันเชื้อเพลิง ≤ 255.52 ลิตร", "en": "Fuel ≤ 255.52 liters" },
+        { "th": "น้ำ ≤ 53.30 ลบ.ม./คน", "en": "Water ≤ 53.30 m³/person" },
+        { "th": "กระดาษ ≤ 23.13 กก./คน", "en": "Paper ≤ 23.13 kg/person" },
+        { "th": "ขยะทั่วไป ≤ 50 กก./คน", "en": "General waste ≤ 50 kg/person" },
+        { "th": "ก๊าซเรือนกระจก ≤ 203.15 kgCO₂e/คน", "en": "GHG ≤ 203.15 kgCO₂e/person" }
+      ]
+    },
+    "about-scope": {
+      "primaryDocumentId": "doc-scope",
+      "documents": ["doc-scope"]
+    },
+    "about-committee": {
+      "primaryDocumentId": "doc-committee-order",
+      "documents": ["doc-committee-order"]
+    }
+  }
+}

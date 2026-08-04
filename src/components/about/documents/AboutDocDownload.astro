@@ -1,0 +1,60 @@
+---
+interface DownloadDoc {
+  id: string;
+  pathPublic?: string;
+  titleTh?: string;
+  titleEn?: string;
+  filename?: string;
+  pageCount?: number;
+  documentYear?: number;
+  documentType?: string;
+  issuedDate?: string | null;
+}
+
+interface Props {
+  docs: DownloadDoc[];
+  isTh: boolean;
+  sourceNote?: string;
+}
+
+const { docs, isTh, sourceNote } = Astro.props;
+
+const labels = {
+  title: isTh ? 'ดาวน์โหลดเอกสารต้นฉบับ' : 'Download original documents',
+  hint:
+    sourceNote ??
+    (isTh
+      ? 'ไฟล์ต้นฉบับไม่มีการแก้ไข — ใช้สร้างข้อมูลบนหน้านี้'
+      : 'Unmodified original files — used to produce this page.'),
+  btn: isTh ? 'ดาวน์โหลด PDF' : 'Download PDF',
+  pages: isTh ? 'หน้า' : 'pages',
+};
+---
+
+<section class="rounded-lg border border-gray-200 bg-gray-50 p-6" aria-labelledby="about-doc-download">
+  <h2 id="about-doc-download" class="text-lg font-semibold text-gray-900">{labels.title}</h2>
+  <p class="mt-2 text-sm text-gray-600">{labels.hint}</p>
+  <ul class="mt-4 space-y-3">
+    {docs.map((doc) => (
+      <li class="flex flex-col gap-3 rounded-md border border-gray-200 bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-900">
+            {isTh ? doc.titleTh : doc.titleEn ?? doc.titleTh}
+          </p>
+          <p class="mt-0.5 text-xs text-gray-500">
+            {doc.filename}
+            {doc.pageCount && <span class="ml-2">· {doc.pageCount} {labels.pages}</span>}
+            {doc.documentYear && <span class="ml-2">· พ.ศ. {doc.documentYear}</span>}
+          </p>
+        </div>
+        <a
+          href={doc.pathPublic}
+          class="inline-flex shrink-0 items-center justify-center rounded-md bg-green-700 px-4 py-2 text-sm font-medium text-white hover:bg-green-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
+          download
+        >
+          {labels.btn}
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>

@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  docTitle: string;
+  badges: { label: string; tone: 'green' | 'amber' | 'blue' | 'gray' }[];
+}
+
+const { title, docTitle, badges } = Astro.props;
+
+const tones = {
+  green: 'bg-green-50 text-green-900 border-green-200',
+  amber: 'bg-amber-50 text-amber-900 border-amber-200',
+  blue: 'bg-blue-50 text-blue-900 border-blue-200',
+  gray: 'bg-gray-50 text-gray-800 border-gray-200',
+};
+---
+
+<div class="rounded-xl border border-green-100 bg-gradient-to-br from-green-50 to-white p-6">
+  <h2 class="text-2xl font-bold text-gray-900">{title}</h2>
+  <p class="mt-2 max-w-3xl text-gray-700">{docTitle}</p>
+  <ul class="mt-3 flex flex-wrap gap-2" aria-label="Document badges">
+    {badges.map((b) => (
+      <li class={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${tones[b.tone]}`}>
+        {b.label}
+      </li>
+    ))}
+  </ul>
+</div>
