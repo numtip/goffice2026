@@ -32,7 +32,6 @@ function searchBlob(catTitle: string, activity: (typeof categories)[0]['activiti
 const labels = {
   summaryTitle: isTh ? 'ภาพรวมแผนปฏิบัติการ 2569' : 'FY2569 action plan overview',
   categories: isTh ? 'หมวด' : 'Categories',
-  activities: isTh ? 'กิจกรรม' : 'Activities',
   plannedMarks: isTh ? 'จุดวางแผนรายเดือน (/)' : 'Monthly plan marks (/)',
   withActual: isTh ? 'กิจกรรมที่มีผล/วันที่ในแฟ้ม' : 'Activities with actual/result in workbook',
   timelineTitle: isTh ? 'ไทม์ไลน์รายปี (Gantt)' : 'Annual timeline (Gantt)',
@@ -83,7 +82,7 @@ const labels = {
 
 const summaryCards = [
   { label: labels.categories, value: String(summary.categoryCount) },
-  { label: labels.activities, value: String(summary.activityCount) },
+  { label: labels.indicatorCount, value: String(categories.reduce((s, c) => s + (c.indicatorCount ?? 0), 0)) },
   { label: labels.plannedMarks, value: String(summary.plannedMonthMarks) },
   { label: labels.withActual, value: String(summary.activitiesWithActualMonths) },
 ];
