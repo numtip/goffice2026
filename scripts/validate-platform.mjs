@@ -134,6 +134,15 @@ function phaseEvidenceLinks() {
   return runScript('validate-evidence-links.mjs');
 }
 
+// ── Phase 1.85: Action-Plan Canonical Scope ─────────────────
+
+function phaseActionPlan() {
+  console.log('\n========================================');
+  console.log('PHASE 1.85: Action-Plan Canonical Scope');
+  console.log('========================================');
+  return runScript('validate-action-plan-2569.mjs');
+}
+
 // ── Phase 1.9: Search-Index Metadata Validation ─────────────
 
 function phaseSearchIndex() {
@@ -340,6 +349,7 @@ function main() {
   const taxonomyResult = phaseTaxonomy();
   const resourceMapResult = phaseResourceIndicatorMap();
   const evidenceLinksResult = phaseEvidenceLinks();
+  const actionPlanResult = phaseActionPlan();
   const searchIndexResult = phaseSearchIndex();
   const evidenceResult = phaseEvidence();
   const routeResult = phaseRoutes();
@@ -356,6 +366,7 @@ function main() {
     { phase: 'Taxonomy Validation',    ok: taxonomyResult.ok },
     { phase: 'Resource-Indicator Map', ok: resourceMapResult.ok },
     { phase: 'Evidence-Links Metadata', ok: evidenceLinksResult.ok },
+    { phase: 'Action-Plan Canonical Scope', ok: actionPlanResult.ok },
     { phase: 'Search-Index Metadata',  ok: searchIndexResult.ok },
     { phase: 'Evidence Validation',    ok: evidenceResult.ok },
     { phase: 'Route Verification',     ok: routeOk },

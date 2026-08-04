@@ -13,6 +13,15 @@ import { writeJsonFile } from './lib/serialize-json.mjs';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 
+// Canonical category titles (authoritative — เกณฑ์การประเมินสำนักงานสีเขียว-ปี-2569.pdf)
+// sourced from src/data/criteria/categories.json so the generator never drifts.
+const criteriaCategories = JSON.parse(
+  readFileSync(join(ROOT, 'src/data/criteria/categories.json'), 'utf8'),
+).categories;
+const CANONICAL_CATEGORY_TITLES = new Map(
+  criteriaCategories.map((c) => [String(c.id), c.title.th]),
+);
+
 const SOURCE_INCOMING = join(
   ROOT,
   'incoming/about-2569/1.1.4 แผนการดำเนินงานสำนักงานสีเขียว 2569_6-5-69.xlsx',
@@ -209,6 +218,7 @@ function main() {
     summary,
     categories: categories.map(({ activities, ...cat }) => ({
       ...cat,
+      titleTh: CANONICAL_CATEGORY_TITLES.get(String(cat.number)) ?? cat.titleTh,
       activityCount: activities.length,
       activities,
     })),
