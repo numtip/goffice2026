@@ -17,6 +17,36 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [1.3.0] — 2026-08-05
+
+**Production release prep (approved by PO 2026-08-05)** — 18 commits ต่อจาก v1.2.0 (934e960). Built from `441de66`, QA ผ่านครบภายใต้ Node 20.19.5, 252 pages.
+
+### Added
+
+- **GO-SEARCH-1** — Global search platform (TH/EN): canonical `search-index.json`, search engine, shared components, dedicated search pages
+- **GO-EVIDENCE-1** — Evidence integration: canonical evidence-links metadata + shared UI components, interconnected About / Dashboard / Evidence / Documents
+- **GO-ABOUT-2** — Action Plan V2: filter, search, Gantt, print, FY2569 action plan จาก Excel pipeline
+- **GO-UX-5** — Presentation layer modernization (nav, breadcrumb, hero, cards, typography, motion, BackToTop, action-plan UX, dashboard KPI readability)
+- Site logo wording อัปเดตเป็น official Green Office identity (441de66)
+
+### Fixed
+
+- About pages: summary card แสดง total indicators (65) แทน activities; indicator counts ต่อ category บน Action Plan cards; canonical category heading; Green Office 2569 category/assessment scope; dead `monthCount` label
+- CI: unblock Pages deploy (validateGenerated non-metric artifacts + astro check type errors)
+
+### Changed
+
+- `package.json` / lockfile / locales → `1.3.0`
+- docs(playbook): GOFFICE2026_AI_AGENT_PLAYBOOK_V1 — consolidated operational constitution
+
+### Deployment status
+
+- **PREPARED_PENDING_DEPLOY** — pushed/tagged only; production remains `v1.2.0` (`934e960`)
+
+See [docs/releases/GOFFICE2026_RELEASE_PREP_2026-08-05.md](docs/releases/GOFFICE2026_RELEASE_PREP_2026-08-05.md).
+
+---
+
 ## [1.2.0] — 2026-07-20
 
 **Green Office Evidence Platform Foundation** — repository release (no VPS deploy).
@@ -116,5 +146,6 @@ See [docs/releases/GOFFICE2026_RELEASE_v1.1.3.md](docs/releases/GOFFICE2026_RELE
 ---
 
 [Unreleased]: https://github.com/numtip/goffice2026/compare/4c07989...HEAD
+[1.3.0]: https://github.com/numtip/goffice2026/compare/v1.2.0...v1.3.0
 [0.2.0]: https://github.com/numtip/goffice2026/compare/976b149...4c07989
 [0.1.0]: https://github.com/numtip/goffice2026/releases/tag/v0.1.0

@@ -1,0 +1,72 @@
+TIMESTAMP=20260726T075229Z
+ 07:52:29 up 43 days, 23:01,  0 users,  load average: 8.98, 8.08, 7.60
+               total        used        free      shared  buff/cache   available
+Mem:           7.6Gi       3.5Gi       803Mi        19Mi       3.3Gi       3.7Gi
+Swap:          4.0Gi       1.7Gi       2.3Gi
+NAME      TYPE SIZE USED PRIO
+/swap.img file   4G 1.7G   -2
+Filesystem                         Size  Used Avail Use% Mounted on
+/dev/mapper/ubuntu--vg-ubuntu--lv  490G  211G  258G  46% /
+--- docker ps -a ---
+NAMES                          STATUS                          PORTS
+goffice-static-v110            Exited (0) 6 days ago           
+learning-center-db             Up 5 weeks (healthy)            3306/tcp
+learning-center-scheduler      Up 5 weeks                      9000/tcp
+learning-center-web            Up 5 weeks (healthy)            127.0.0.1:8086->80/tcp
+learning-center-app            Up 5 weeks (healthy)            9000/tcp
+goffice-j6                     Exited (0) 3 weeks ago          
+goffice-j6-db                  Up 6 weeks (healthy)            3306/tcp
+rgreenoff-db                   Up 6 weeks                      3306/tcp
+rgreenoff-db-recovery-step1    Exited (0) 7 weeks ago          
+wordpress-greenoffice-web      Created                         
+wordpress-greenoffice-db       Restarting (1) 4 seconds ago    
+rgreenoff                      Exited (0) 7 weeks ago          
+rgreenoff-db-broken-20260602   Exited (1) 7 weeks ago          
+rae-landing                    Up 6 weeks                      127.0.0.1:8085->80/tcp
+litellm-automation             Up 6 weeks                      
+litellm                        Exited (127) 7 weeks ago        
+litellm-dashboard-api          Up 6 weeks                      
+nginx                          Up 6 weeks (unhealthy)          127.0.0.1:8082->80/tcp, 127.0.0.1:8443->443/tcp
+raenew2026-web                 Up 6 weeks (healthy)            127.0.0.1:8084->80/tcp
+litellm-smart-router           Exited (127) 7 weeks ago        
+raenew2026-app                 Up 6 weeks (healthy)            9000/tcp
+raenew2026-db                  Up 6 weeks (healthy)            3306/tcp
+raenew2026-redis               Up 6 weeks (healthy)            6379/tcp
+litellm-dashboard              Up 6 weeks                      
+litellm-stats-collector        Up 6 weeks                      
+n8n                            Restarting (1) 44 seconds ago   
+mariadb                        Up 6 weeks (healthy)            127.0.0.1:3306->3306/tcp
+metabase                       Up 6 weeks (healthy)            127.0.0.1:3100->3000/tcp
+canva-service                  Up 6 weeks (healthy)            127.0.0.1:3005->3005/tcp
+raemju-api                     Up 6 weeks                      127.0.0.1:3006->3006/tcp
+research-portal-backend        Exited (127) 7 weeks ago        
+rae-postgres                   Up 6 weeks (healthy)            5432/tcp
+phpmyadmin                     Up 6 weeks                      127.0.0.1:8080->80/tcp
+open-webui-new                 Up 6 weeks (healthy)            127.0.0.1:3001->8080/tcp
+--- docker stats ---
+CONTAINER ID   NAME                        CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+4b65db27f46f   learning-center-db          0.02%     78.75MiB / 7.565GiB   1.02%     21.7MB / 1.92GB   1.6GB / 861MB     10
+e7e53ed8a1aa   learning-center-scheduler   0.00%     11.24MiB / 7.565GiB   0.15%     18.9MB / 18.8MB   149MB / 27.9MB    2
+dc141e8ece1b   learning-center-web         0.00%     4.625MiB / 7.565GiB   0.06%     2GB / 2.03GB      20.3MB / 127MB    9
+77c0e5f10097   learning-center-app         0.00%     46.58MiB / 7.565GiB   0.60%     1.93GB / 2GB      609MB / 216MB     4
+529401fbfd03   goffice-j6-db               6.68%     68.76MiB / 7.565GiB   0.89%     454MB / 7.9GB     679MB / 1.56GB    5
+42549224b21c   rgreenoff-db                0.02%     13.83MiB / 7.565GiB   0.18%     14.4MB / 126B     130MB / 248MB     8
+bcf7d13b3c0a   wordpress-greenoffice-db    0.00%     0B / 0B               0.00%     0B / 0B           0B / 0B           0
+7fde1dbcc0d9   rae-landing                 0.00%     5.324MiB / 7.565GiB   0.07%     75.3kB / 1.45kB   15.4MB / 12MB     9
+c9ffb1cf3d2e   litellm-automation          0.00%     7.32MiB / 7.565GiB    0.09%     0B / 0B           292MB / 8.19MB    1
+61142e051560   litellm-dashboard-api       0.02%     4.668MiB / 7.565GiB   0.06%     0B / 0B           41.6MB / 25.1MB   1
+74d1cddb0e1a   nginx                       0.00%     1.863MiB / 256MiB     0.73%     137kB / 50.7kB    156kB / 11MB      9
+828ae7ac0f3a   raenew2026-web              0.00%     8.605MiB / 7.565GiB   0.11%     75.1kB / 1.17kB   81.4MB / 800MB    9
+2d89497ca1f7   raenew2026-app              0.01%     18.01MiB / 7.565GiB   0.23%     74.5kB / 126B     913MB / 25.9MB    7
+683bd119b326   raenew2026-db               0.01%     16.05MiB / 7.565GiB   0.21%     74.3kB / 126B     222MB / 214MB     10
+b70aa46dd24a   raenew2026-redis            0.86%     4.664MiB / 7.565GiB   0.06%     73.8kB / 126B     48.3MB / 4.29MB   6
+5648ac110e98   litellm-dashboard           0.31%     10.2MiB / 7.565GiB    0.13%     0B / 0B           91.1MB / 114MB    5
+9b20ae19f3ba   litellm-stats-collector     0.00%     6.43MiB / 7.565GiB    0.08%     74.1kB / 126B     99.5MB / 104MB    2
+d01deada96c0   n8n                         0.00%     0B / 0B               0.00%     0B / 0B           0B / 0B           0
+5fe8aebe5ece   mariadb                     0.01%     13.89MiB / 1.5GiB     0.90%     9.23MB / 2.71kB   253MB / 134MB     9
+c6e91ac53bee   metabase                    1.44%     824.7MiB / 7.565GiB   10.65%    8.57MB / 87.3MB   3.79GB / 21.5GB   111
+e2365cefdaae   canva-service               0.00%     78.75MiB / 1GiB       7.69%     18.5MB / 12.6kB   604MB / 86.9MB    11
+5bc9b3ac2067   raemju-api                  0.00%     6.789MiB / 512MiB     1.33%     18.5MB / 2.97kB   279MB / 45.6MB    11
+1f8782e9b2c9   rae-postgres                0.00%     16.46MiB / 7.565GiB   0.21%     74.1kB / 126B     122MB / 26.9MB    6
+11b2c72f14a6   phpmyadmin                  0.01%     6.328MiB / 256MiB     2.47%     18.5MB / 21.9kB   128MB / 54.1MB    7
+bb30740327c7   open-webui-new              0.28%     369.2MiB / 1GiB       36.05%    18.5MB / 2.59kB   5.93GB / 2.98GB   33
