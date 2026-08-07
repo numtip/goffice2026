@@ -4,6 +4,7 @@ dist/
 *.log
 .logs/
 logs/
+data/publish-gate/
 .env
 .env.*
 !.env.example

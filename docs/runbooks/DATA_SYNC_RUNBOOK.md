@@ -124,6 +124,20 @@ holds the lock), plus the log path.
 - Shortcuts: desktop (`E:\OneDrive\...\Desktop`) + Start menu — point at the launcher
 - No backend / no web-triggered execution; OneDrive stays read-only
 
+## Publish gate (GO-DATA-5)
+
+Before publishing data to production, make validated changes reviewable:
+
+```powershell
+node scripts/publish-gate.mjs        # sync → detect diff → summarize → build → validate
+node scripts/publish-gate.mjs --skip-sync   # evaluate the current working tree only
+```
+
+- Status: **PASS** (changes validated + buildable → publish manually after review) /
+  **NO_CHANGE** (nothing to publish) / **BLOCKED** (sync/build/validation failed — publish NOT permitted).
+- Report: `data/publish-gate/latest.json` (gitignored runtime artifact).
+- Reuses `sync-all.mjs`, `astro build`, and `validate-platform.mjs`. **No automatic deploy.**
+
 ## See also
 
 - `docs/data/GO-DATA-2-PHASE1-SYNC-AUDIT.md` — Phase 1 audit
