@@ -92,6 +92,27 @@ node scripts/sync-all.mjs --source=C:\tmp\src --out=C:\tmp\staging --manifest=C:
 | `❌ Validation failed … NOT publishable` | Generated data structurally invalid | Inspect warnings, fix source, re-run |
 | `npm run` → `'node' is not recognized` | PATH corrupt (stray `"`/non-ASCII entry) breaking cmd resolution — fixed 2026-08-07 (User+Machine PATH cleaned) | `cmd /c "node --version"`; if it still fails, check `$env:Path` for `"` or non-ASCII entries and clean |
 
+## Scheduled sync (Windows Task Scheduler)
+
+GO-DATA-4 wrapper — run the same pipeline unattended with logging + overlap lock:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "G:\ProjectAI\goffice2026\scripts\sync-scheduled.ps1"
+```
+
+- **Working directory:** `G:\ProjectAI\goffice2026` (set in the task action).
+- **Log:** `G:\ProjectAI\goffice2026\logs\data-sync.log` (append; timestamped lines for
+  START / RESULT `exit=` `change=YES|NO` `states=…` / FAILED / END).
+- **Overlap lock:** `logs\.sync.lock` (pid-based; stale locks from crashed runs are auto-cleared).
+- **Environment:** rebuilds PATH from the registry before invoking `npm run data:sync`, so it
+  works from a scheduled task and from already-open editor terminals.
+- **Exit codes:** `0` OK (synced / no-change / skipped-overlap) · `1` pipeline failure
+  (data NOT publishable) · `2` npm/node environment failure.
+- **OneDrive read-only** as always; only `data/staging/source` is written.
+
+> Task cadence/time is NOT registered yet — decide the schedule with the PO before creating
+> the scheduled task (`schtasks /Create`). Do not deploy production.
+
 ## See also
 
 - `docs/data/GO-DATA-2-PHASE1-SYNC-AUDIT.md` — Phase 1 audit
