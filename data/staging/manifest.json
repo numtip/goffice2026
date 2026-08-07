@@ -1,0 +1,180 @@
+{
+  "version": "3.0.0",
+  "phase": "PHASE2-SYNC",
+  "generated": "2026-08-07",
+  "sourceRoot": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\resource",
+  "stagingRoot": "G:\\ProjectAI\\goffice2026\\data\\staging\\source",
+  "readOnlyPolicy": "Source folder strictly read-only. Files copied to staging only when SHA-256 differs.",
+  "datasetStates": {
+    "WAITING_FOR_INPUT": "No FY2569 observations in canonical ranges (template untouched or formatting-only changes).",
+    "PUBLISHABLE_PARTIAL": "1-11 valid months observed in canonical ranges.",
+    "COMPLETE": "All 12 required months observed and valid.",
+    "INVALID_SOURCE_DATA": "Canonical range contains unparseable/inconsistent values."
+  },
+  "files": [
+    {
+      "fileName": "1.1Water.xlsx",
+      "metric": "water",
+      "yearBE": 2569,
+      "sha256": "1915c65bec732a8849233b14c7da990e6744c938367bc56258a655ae071326f7",
+      "sizeBytes": 81930,
+      "modifiedTime": "2026-08-07T03:41:14.000Z",
+      "canonicalFingerprint": "aff4929c37ed880b",
+      "templateBaselineFingerprint": null,
+      "observedMonths": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "monthCount": 7,
+      "datasetState": "PUBLISHABLE_PARTIAL",
+      "status": "STAGED"
+    },
+    {
+      "fileName": "1.2electric.xlsx",
+      "metric": "electricity",
+      "yearBE": 2569,
+      "sha256": "bb4b20d1442422307c1a7e079b8f4c49aafa7e5a45895f5a5a91e8d0ead737dc",
+      "sizeBytes": 74073,
+      "modifiedTime": "2026-08-07T03:48:28.000Z",
+      "canonicalFingerprint": "870aa06488d0c606",
+      "templateBaselineFingerprint": null,
+      "observedMonths": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "monthCount": 7,
+      "datasetState": "PUBLISHABLE_PARTIAL",
+      "status": "STAGED"
+    },
+    {
+      "fileName": "1.3Gassolene.xlsx",
+      "metric": "fuel",
+      "yearBE": 2569,
+      "sha256": "f50956618e436f6e46b363ee5c3e274d2c6e8bfe23c0c3306180e9566bf4fb13",
+      "sizeBytes": 244585,
+      "modifiedTime": "2026-08-07T02:52:51.219Z",
+      "canonicalFingerprint": "e0242765ac785a4e",
+      "templateBaselineFingerprint": null,
+      "observedMonths": [],
+      "monthCount": 0,
+      "datasetState": "WAITING_FOR_INPUT",
+      "status": "STAGED"
+    },
+    {
+      "fileName": "1.4paper.xlsx",
+      "metric": "paper",
+      "yearBE": 2569,
+      "sha256": "310a85f3236c02c9dd8c654da811e7c61c9e517deb4807e1a6b640d609b5833d",
+      "sizeBytes": 203467,
+      "modifiedTime": "2026-08-07T02:57:05.195Z",
+      "canonicalFingerprint": "e0242765ac785a4e",
+      "templateBaselineFingerprint": null,
+      "observedMonths": [],
+      "monthCount": 0,
+      "datasetState": "WAITING_FOR_INPUT",
+      "status": "STAGED"
+    },
+    {
+      "fileName": "1.5waste2025.xlsx",
+      "metric": "waste",
+      "yearBE": 2568,
+      "sha256": "5512418f9fa10a8baaf5c71601e8d5d47396254725babfae3a64fd413be23e5c",
+      "sizeBytes": 44028,
+      "modifiedTime": "2026-08-07T03:22:40.771Z",
+      "canonicalFingerprint": "4ef666baefab17b0",
+      "templateBaselineFingerprint": null,
+      "observedMonths": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "monthCount": 12,
+      "datasetState": "COMPLETE",
+      "status": "STAGED"
+    },
+    {
+      "fileName": "1.5waste2026.xlsx",
+      "metric": "waste",
+      "yearBE": 2569,
+      "sha256": "2f99f8a573e1d050716d074dc12c7000e6ea7b76c6ef465c74acde27dee50a44",
+      "sizeBytes": 44012,
+      "modifiedTime": "2026-08-07T03:23:01.174Z",
+      "canonicalFingerprint": "4ef666baefab17b0",
+      "templateBaselineFingerprint": "4ef666baefab17b0",
+      "observedMonths": [],
+      "monthCount": 0,
+      "datasetState": "WAITING_FOR_INPUT",
+      "status": "STAGED"
+    },
+    {
+      "fileName": "1.6GreenHouseGas2025.xlsx",
+      "metric": "ghg",
+      "yearBE": 2568,
+      "sha256": "ffbbdcb2be28990eeb4c5cdc69528bae33a23f7300d7d4ebbb82fdfc677b9ad5",
+      "sizeBytes": 515168,
+      "modifiedTime": "2026-08-07T03:25:19.961Z",
+      "canonicalFingerprint": "65df515d6694a9c5",
+      "templateBaselineFingerprint": null,
+      "observedMonths": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "monthCount": 12,
+      "datasetState": "COMPLETE",
+      "status": "STAGED"
+    },
+    {
+      "fileName": "1.6GreenHouseGas2026.xlsx",
+      "metric": "ghg",
+      "yearBE": 2569,
+      "sha256": "1fe6c3fcb026b2a5056d6e509fc225e90eb65f21c55fe81ca7e1fad9905d57fd",
+      "sizeBytes": 515231,
+      "modifiedTime": "2026-08-07T03:26:08.585Z",
+      "canonicalFingerprint": "65df515d6694a9c5",
+      "templateBaselineFingerprint": "65df515d6694a9c5",
+      "observedMonths": [],
+      "monthCount": 0,
+      "datasetState": "WAITING_FOR_INPUT",
+      "status": "STAGED"
+    }
+  ],
+  "summary": {
+    "totalFiles": 8,
+    "copiedNow": 0,
+    "allStaged": true,
+    "states": {
+      "PUBLISHABLE_PARTIAL": 2,
+      "WAITING_FOR_INPUT": 4,
+      "COMPLETE": 2
+    }
+  }
+}

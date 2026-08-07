@@ -20,7 +20,17 @@ export type DataClassification =
   | 'PRESERVED_LEGACY'    // Carried over from an earlier extraction; source XLSX is missing and cannot be re-verified
   | 'PLACEHOLDER'         // Known placeholder/demo values, not real measurements
   | 'MANUAL_ENTRY'        // Entered directly by staff, not derived from a workbook
+  | 'WAITING_FOR_INPUT'   // FY2569 workbook staged but canonical ranges hold no observations yet (template copy)
+  | 'INVALID_SOURCE_DATA' // Canonical range contains unparseable/inconsistent source values
   | 'UNKNOWN';            // Origin cannot be determined
+
+// ── Dataset State — Phase 2 sync lifecycle (GO-DATA-3) ────────────────────
+// Derived from canonical FY2569 input ranges. Missing months are never zero.
+export type DatasetState =
+  | 'WAITING_FOR_INPUT'      // 0 observations in canonical ranges
+  | 'PUBLISHABLE_PARTIAL'    // 1–11 valid months observed
+  | 'COMPLETE'               // 12/12 valid months observed + reconciled
+  | 'INVALID_SOURCE_DATA';   // unparseable/inconsistent source values
 
 // ── Monthly Value ─────────────────────────────────────────────────────────
 export interface MonthlyValue {
@@ -93,6 +103,33 @@ export interface YearData {
   quality?: DataQuality;
   /** Explicit provenance classification — see DataClassification. */
   dataClassification?: DataClassification;
+  /** Phase 2 sync lifecycle state (GO-DATA-3). */
+  datasetState?: DatasetState;
+  /** Highest month with an observation (1–12), or null when none. Missing months are never zero. */
+  latestDataMonth?: number | null;
+  /** Waste category breakdown (Phase 2, additive) — observed months only, no zeros. */
+  wasteBreakdown?: {
+    categories: {
+      key: string;            // 'general' | 'hazardous' | 'recyclable' (+ sub-rows preserved by key)
+      labelTh: string;
+      labelEn: string;
+      months: MonthlyValue[];
+      total: number;
+    }[];
+  };
+  /** GHG activity × EF traceability (Phase 2, additive) — preserved from source. */
+  ghgActivities?: {
+    items: {
+      key: string;
+      labelTh: string;
+      scope: 1 | 2 | 3;
+      activityUnit: string;
+      ef: number;
+      efUnit: string;
+      months: { month: number; activity: number; emissionKgCO2e: number }[];
+      annualEmissionKgCO2e: number;
+    }[];
+  };
   updated: string;
   provenance?: Provenance;
 }

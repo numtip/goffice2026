@@ -61,6 +61,18 @@ export function validateYearProvenance(metricName, yearStr, yearData) {
 
   const { dataStatus, dataClassification, provenance: prov } = yearData;
 
+  // GO-DATA-3: datasetState consistency with observed months (informational).
+  if (yearData.datasetState) {
+    const n = Array.isArray(yearData.months) ? yearData.months.length : 0;
+    if (yearData.datasetState === 'COMPLETE' && n < 12) {
+      warnings.push(`Year ${yearStr}: datasetState COMPLETE but ${n}/12 months observed`);
+    } else if (yearData.datasetState === 'PUBLISHABLE_PARTIAL' && n === 0) {
+      warnings.push(`Year ${yearStr}: datasetState PUBLISHABLE_PARTIAL but 0 months observed`);
+    } else if (yearData.datasetState === 'WAITING_FOR_INPUT' && n > 0) {
+      warnings.push(`Year ${yearStr}: datasetState WAITING_FOR_INPUT but ${n} months observed`);
+    }
+  }
+
   if (dataStatus === 'VERIFIED_BASELINE' && !prov) {
     errors.push(`Year ${yearStr}: VERIFIED_BASELINE requires provenance metadata`);
     return { errors, warnings };

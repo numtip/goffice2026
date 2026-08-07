@@ -1,0 +1,8 @@
+
+1.5waste2025.xlsx vs 1.5waste2026.xlsx: cellDiffs=0 formulaDiffs=0
+1.6GreenHouseGas2025.xlsx sheet only: สรุปการคำนวณ ปี 2568
+
+1.6GreenHouseGas2025.xlsx vs 1.6GreenHouseGas2026.xlsx: cellDiffs=0 formulaDiffs=0
+คำนวณ% r6 %รีไซเคิล raw: 21%, 20%, 26%, 22%, 26%, 20%, 22%, 21%, 20%, 25%, 16%, 21%
+คำนวณ% r6 avg = 21.67
+generated recycling_rate.json 2568 total = 21.57

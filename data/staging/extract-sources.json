@@ -1,0 +1,16 @@
+{
+  "water-2569": {
+    "workbookTotal": 5572.03,
+    "sourceWorkbook": "1.1Water.xlsx",
+    "sourceSheet": "2569",
+    "classification": "CONFIRMED_XLSX",
+    "extractionScript": "scripts/extract-workbook.mjs"
+  },
+  "energy-2569": {
+    "workbookTotal": 264594.4,
+    "sourceWorkbook": "1.2electric.xlsx",
+    "sourceSheet": "2569",
+    "classification": "CONFIRMED_XLSX",
+    "extractionScript": "scripts/extract-workbook.mjs"
+  }
+}

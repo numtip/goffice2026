@@ -7,24 +7,22 @@
       "labelTh": "การใช้ไฟฟ้า",
       "unit": "kWh",
       "yearBE": 2569,
-      "value": 0,
+      "value": 264594.4,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 403036.80000000005,
       "yoyChange": {
-        "absolute": 0,
-        "percent": 0,
-        "direction": "stable"
+        "absolute": -138442.40000000002,
+        "percent": -34,
+        "direction": "down"
       },
       "dataQuality": {
-        "valid": false,
-        "warnings": [
-          "Waiting for Official FY2569 Data"
-        ],
-        "reconciliationDifference": null
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": 0
       },
-      "sourceFile": "Waiting for Official FY2569 Data",
-      "verified": false
+      "sourceFile": "1.2electric.xlsx (energy-2569.csv) — partial, 7 of 12 months",
+      "verified": true
     },
     {
       "metric": "water",
@@ -32,24 +30,22 @@
       "labelTh": "การใช้น้ำ",
       "unit": "m³",
       "yearBE": 2569,
-      "value": 0,
+      "value": 5572.03,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 8337.5,
       "yoyChange": {
-        "absolute": 0,
-        "percent": 0,
-        "direction": "stable"
+        "absolute": -2765.4700000000003,
+        "percent": -33,
+        "direction": "down"
       },
       "dataQuality": {
-        "valid": false,
-        "warnings": [
-          "Waiting for Official FY2569 Data"
-        ],
-        "reconciliationDifference": null
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": 0
       },
-      "sourceFile": "Waiting for Official FY2569 Data",
-      "verified": false
+      "sourceFile": "1.1Water.xlsx (water-2569.csv) — partial, 7 of 12 months",
+      "verified": true
     },
     {
       "metric": "fuel",

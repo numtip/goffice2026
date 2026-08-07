@@ -125,3 +125,46 @@ export function formatValidationReport(errors) {
   errors.forEach((e, i) => lines.push(`  ${i + 1}. ${e}`));
   return lines.join('\n');
 }
+
+// ── Dataset State helpers (GO-DATA-3, Phase 2) ──────────────────────────────
+
+export const DATASET_STATES = ['WAITING_FOR_INPUT', 'PUBLISHABLE_PARTIAL', 'COMPLETE', 'INVALID_SOURCE_DATA'];
+
+/**
+ * Derive the canonical dataset state from an observed month count.
+ * 0 → WAITING_FOR_INPUT · 1–11 → PUBLISHABLE_PARTIAL · 12 → COMPLETE.
+ */
+export function deriveDatasetState(monthCount) {
+  if (monthCount <= 0) return 'WAITING_FOR_INPUT';
+  if (monthCount < 12) return 'PUBLISHABLE_PARTIAL';
+  return 'COMPLETE';
+}
+
+/** Highest month with an observation, or null when none. */
+export function latestDataMonthOf(months) {
+  if (!Array.isArray(months) || months.length === 0) return null;
+  return Math.max(...months.map((m) => Number(m.month)));
+}
+
+/**
+ * Validate a datasetState value + consistency with month count.
+ * Returns array of error strings (empty = valid).
+ */
+export function validateDatasetState(state, monthCount) {
+  const errors = [];
+  if (state === undefined || state === null) return errors; // optional field
+  if (!DATASET_STATES.includes(state)) {
+    errors.push(`Invalid datasetState '${state}' (expected ${DATASET_STATES.join(' | ')})`);
+    return errors;
+  }
+  if (state === 'COMPLETE' && monthCount < 12) {
+    errors.push(`datasetState COMPLETE but only ${monthCount}/12 months observed`);
+  }
+  if (state === 'PUBLISHABLE_PARTIAL' && monthCount === 0) {
+    errors.push('datasetState PUBLISHABLE_PARTIAL but 0 months observed');
+  }
+  if (state === 'WAITING_FOR_INPUT' && monthCount > 0) {
+    errors.push(`datasetState WAITING_FOR_INPUT but ${monthCount} months observed`);
+  }
+  return errors;
+}

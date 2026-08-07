@@ -3,7 +3,7 @@
   "label": "Water Consumption",
   "unit": "m³",
   "kpiField": "cubic_meters",
-  "status": "CURRENT_DATA_PENDING",
+  "status": "missing",
   "baselineYear": 2568,
   "currentYear": 2569,
   "targetYear": 2569,
@@ -95,32 +95,70 @@
         "reconciliationDifference": 0
       },
       "aggregation": "sum",
-      "dataClassification": "CONFIRMED_XLSX"
+      "dataClassification": "CONFIRMED_XLSX",
+      "datasetState": "COMPLETE",
+      "latestDataMonth": 12
     },
     "2569": {
       "year": 2569,
       "isBaseline": false,
-      "months": [],
-      "total": 0,
-      "average": 0,
-      "dataStatus": "CURRENT_DATA_PENDING",
-      "source": "Waiting for Official FY2569 Data",
-      "updated": "2026-07-27",
-      "provenance": {
-        "sourceWorkbook": "docs/1.1-Water.xlsx",
-        "extractionStatus": "NO_2569_DATA",
-        "validationStatus": "CURRENT_DATA_PENDING",
-        "reconciliationDay1": "2026-07-27"
-      },
-      "quality": {
-        "valid": false,
-        "warnings": [
-          "Waiting for Official FY2569 Data"
-        ],
-        "reconciliationDifference": null
-      },
+      "months": [
+        {
+          "month": 1,
+          "value": 1098.4,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 944.6,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 909.7,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 858.3,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 539.96,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 574.71,
+          "label": "Jun"
+        },
+        {
+          "month": 7,
+          "value": 646.36,
+          "label": "Jul"
+        }
+      ],
+      "total": 5572.03,
+      "average": 796,
       "aggregation": "sum",
-      "dataClassification": "PLACEHOLDER"
+      "dataStatus": "in_progress",
+      "source": "1.1Water.xlsx (water-2569.csv) — partial, 7 of 12 months",
+      "quality": {
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": 0
+      },
+      "dataClassification": "CONFIRMED_XLSX",
+      "datasetState": "PUBLISHABLE_PARTIAL",
+      "latestDataMonth": 7,
+      "updated": "2026-08-07",
+      "provenance": {
+        "sourceWorkbook": "1.1Water.xlsx",
+        "sourceSheet": "2569",
+        "extractionScript": "scripts/extract-workbook.mjs",
+        "validationStatus": "in_progress"
+      }
     }
   },
   "target": {
@@ -135,9 +173,9 @@
     "months": []
   },
   "yoyChange": {
-    "absolute": 0,
-    "percent": 0,
-    "direction": "stable"
+    "absolute": -2765.4700000000003,
+    "percent": -33,
+    "direction": "down"
   },
   "relatedIndicators": [
     {

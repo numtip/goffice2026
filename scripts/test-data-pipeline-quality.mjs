@@ -49,22 +49,49 @@ describe('reconcileTotal (pure helper)', () => {
   });
 });
 
-describe('RC-1: current-year FY2569 pending data must not be silently marked valid', () => {
-  it('energy 2569 is quality.valid=false and classified PLACEHOLDER while waiting for official FY2569 data', () => {
-    const data = readGenerated('energy.json');
-    const y2569 = data.years['2569'];
-    assert.equal(y2569.quality.valid, false);
-    assert.equal(y2569.dataStatus, 'CURRENT_DATA_PENDING');
-    assert.equal(y2569.dataClassification, 'PLACEHOLDER');
-    assert.equal(y2569.quality.warnings.length > 0, true);
-  });
-
-  it('water 2569 is quality.valid=false and classified PLACEHOLDER while waiting for official FY2569 data', () => {
+describe('RC-1: current-year FY2569 data provenance (GO-DATA-3 states)', () => {
+  it('water 2569 is PUBLISHABLE_PARTIAL, CONFIRMED_XLSX from the approved workbook, Jan–Jul', () => {
     const data = readGenerated('water.json');
     const y2569 = data.years['2569'];
-    assert.equal(y2569.quality.valid, false);
-    assert.equal(y2569.dataStatus, 'CURRENT_DATA_PENDING');
-    assert.equal(y2569.dataClassification, 'PLACEHOLDER');
+    assert.equal(y2569.datasetState, 'PUBLISHABLE_PARTIAL');
+    assert.equal(y2569.latestDataMonth, 7);
+    assert.equal(y2569.months.length, 7);
+    assert.equal(y2569.months[0].month, 1);
+    assert.equal(y2569.months[0].value, 1098.4); // verified against workbook 2569 col[6]
+    assert.equal(y2569.dataClassification, 'CONFIRMED_XLSX');
+    assert.equal(y2569.dataStatus, 'in_progress');
+    assert.equal(y2569.quality.valid, true);     // reconciled exactly (5,572.03 == workbook รวม)
+    assert.equal(y2569.quality.reconciliationDifference, 0);
+    // Missing Aug–Dec are ABSENT — never zero-filled
+    const months = y2569.months.map((m) => m.month);
+    assert.deepEqual(months, [1, 2, 3, 4, 5, 6, 7]);
+  });
+
+  it('energy 2569 is PUBLISHABLE_PARTIAL, CONFIRMED_XLSX from the approved workbook, Jan–Jul', () => {
+    const data = readGenerated('energy.json');
+    const y2569 = data.years['2569'];
+    assert.equal(y2569.datasetState, 'PUBLISHABLE_PARTIAL');
+    assert.equal(y2569.latestDataMonth, 7);
+    assert.equal(y2569.months.length, 7);
+    assert.equal(y2569.months[0].month, 1);
+    assert.equal(y2569.months[0].value, 28618.4); // verified against workbook 2569 col[6]
+    assert.equal(y2569.dataClassification, 'CONFIRMED_XLSX');
+    assert.equal(y2569.dataStatus, 'in_progress');
+    assert.equal(y2569.quality.valid, true);      // reconciled exactly (264,594.40 == workbook รวม)
+    assert.equal(y2569.quality.reconciliationDifference, 0);
+    const months = y2569.months.map((m) => m.month);
+    assert.deepEqual(months, [1, 2, 3, 4, 5, 6, 7]);
+  });
+
+  it('fuel/paper/waste/recycling_rate/ghg 2569 are WAITING_FOR_INPUT with empty months (template copies, never zero)', () => {
+    for (const metric of ['fuel', 'paper', 'waste', 'recycling_rate', 'ghg']) {
+      const data = readGenerated(`${metric}.json`);
+      const y2569 = data.years['2569'];
+      assert.equal(y2569.datasetState, 'WAITING_FOR_INPUT', `${metric} 2569 should be WAITING_FOR_INPUT`);
+      assert.equal(y2569.months.length, 0, `${metric} 2569 must have no months (never zero-filled)`);
+      assert.equal(y2569.latestDataMonth, null, `${metric} 2569 latestDataMonth must be null`);
+      assert.equal(y2569.quality.valid, false, `${metric} 2569 must remain unverified while waiting`);
+    }
   });
 
   it('confirmed baseline years (energy/water/ghg 2568) remain quality.valid=true and CONFIRMED_XLSX', () => {
@@ -73,6 +100,7 @@ describe('RC-1: current-year FY2569 pending data must not be silently marked val
       const baseline = data.years[String(data.baselineYear)];
       assert.equal(baseline.quality.valid, true, `${metric} baseline should remain valid`);
       assert.equal(baseline.dataClassification, 'CONFIRMED_XLSX', `${metric} baseline should be CONFIRMED_XLSX`);
+      assert.equal(baseline.datasetState, 'COMPLETE', `${metric} baseline should be COMPLETE`);
     }
   });
 });
@@ -126,8 +154,9 @@ describe('RC-3: validator must surface unverified/invalid quality states, not si
   it('validateGenerated warns for every metric-year whose quality.valid is false', () => {
     const result = validateGenerated(false);
     const invalidWarnings = result.warnings.filter((w) => w.includes('quality flagged INVALID'));
-    // energy, water, fuel, paper, waste (2569 only), recycling_rate, ghg = 7 invalid year entries
-    assert.equal(invalidWarnings.length, 7);
+    // fuel, paper, waste, recycling_rate, ghg (2569 only) = 5 invalid year entries.
+    // water/energy 2569 are CONFIRMED_XLSX + reconciled (valid) since GO-DATA-3.
+    assert.equal(invalidWarnings.length, 5);
   });
 
   it('validateGenerated raises an ERROR when a %-unit metric declares aggregation "sum"', () => {
@@ -186,18 +215,15 @@ describe('RC-3: validator must surface unverified/invalid quality states, not si
 });
 
 describe('RC-1/RC-4: executive KPI summary marks unverified data explicitly', () => {
-  it('kpi-summary.json flags verified:false for every current metric-year that is quality.valid=false', () => {
+  it('kpi-summary.json marks water/energy 2569 verified:true; other metrics verified:false', () => {
     const summary = readGenerated('kpi-summary.json');
     for (const entry of summary.metrics) {
       const expectedVerified = entry.dataQuality?.valid === true;
       assert.equal(entry.verified, expectedVerified, `${entry.metric} verified flag must mirror dataQuality.valid`);
     }
-  });
-
-  it('no metric in kpi-summary.json is verified:true for 2569 (all current-year data is currently unverified)', () => {
-    const summary = readGenerated('kpi-summary.json');
-    const anyVerified = summary.metrics.some((e) => e.verified === true);
-    assert.equal(anyVerified, false);
+    const verified = summary.metrics.filter((e) => e.verified === true).map((e) => e.metric);
+    // GO-DATA-3: only the two CONFIRMED_XLSX workbook-backed partial years are verified.
+    assert.deepEqual(verified.sort(), ['energy', 'water']);
   });
 });
 

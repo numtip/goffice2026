@@ -1,8 +1,8 @@
 {
   "generatedFrom": "canonical-metrics",
   "totalMetrics": 7,
-  "metricsWithWarnings": 7,
-  "metricsWithErrors": 7,
+  "metricsWithWarnings": 5,
+  "metricsWithErrors": 5,
   "entries": [
     {
       "metric": "energy",
@@ -16,13 +16,11 @@
     {
       "metric": "energy",
       "yearBE": 2569,
-      "valid": false,
-      "warnings": [
-        "Waiting for Official FY2569 Data"
-      ],
-      "reconciliationDifference": null,
-      "monthCount": 0,
-      "dataStatus": "CURRENT_DATA_PENDING"
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 7,
+      "dataStatus": "in_progress"
     },
     {
       "metric": "water",
@@ -36,13 +34,11 @@
     {
       "metric": "water",
       "yearBE": 2569,
-      "valid": false,
-      "warnings": [
-        "Waiting for Official FY2569 Data"
-      ],
-      "reconciliationDifference": null,
-      "monthCount": 0,
-      "dataStatus": "CURRENT_DATA_PENDING"
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 7,
+      "dataStatus": "in_progress"
     },
     {
       "metric": "fuel",

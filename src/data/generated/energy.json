@@ -3,7 +3,7 @@
   "label": "Electricity Consumption",
   "unit": "kWh",
   "kpiField": "kwh",
-  "status": "CURRENT_DATA_PENDING",
+  "status": "missing",
   "baselineYear": 2568,
   "currentYear": 2569,
   "targetYear": 2569,
@@ -95,32 +95,70 @@
         "reconciliationDifference": 0
       },
       "aggregation": "sum",
-      "dataClassification": "CONFIRMED_XLSX"
+      "dataClassification": "CONFIRMED_XLSX",
+      "datasetState": "COMPLETE",
+      "latestDataMonth": 12
     },
     "2569": {
       "year": 2569,
       "isBaseline": false,
-      "months": [],
-      "total": 0,
-      "average": 0,
-      "dataStatus": "CURRENT_DATA_PENDING",
-      "source": "Waiting for Official FY2569 Data",
-      "updated": "2026-07-27",
-      "provenance": {
-        "sourceWorkbook": "docs/12-elect.xlsx",
-        "extractionStatus": "NO_2569_DATA",
-        "validationStatus": "CURRENT_DATA_PENDING",
-        "reconciliationDay1": "2026-07-27"
-      },
-      "quality": {
-        "valid": false,
-        "warnings": [
-          "Waiting for Official FY2569 Data"
-        ],
-        "reconciliationDifference": null
-      },
+      "months": [
+        {
+          "month": 1,
+          "value": 28618.4,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 30300,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 33001.8,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 43295.8,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 40012.8,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 45390.4,
+          "label": "Jun"
+        },
+        {
+          "month": 7,
+          "value": 43975.2,
+          "label": "Jul"
+        }
+      ],
+      "total": 264594.4,
+      "average": 37799.2,
       "aggregation": "sum",
-      "dataClassification": "PLACEHOLDER"
+      "dataStatus": "in_progress",
+      "source": "1.2electric.xlsx (energy-2569.csv) — partial, 7 of 12 months",
+      "quality": {
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": 0
+      },
+      "dataClassification": "CONFIRMED_XLSX",
+      "datasetState": "PUBLISHABLE_PARTIAL",
+      "latestDataMonth": 7,
+      "updated": "2026-08-07",
+      "provenance": {
+        "sourceWorkbook": "1.2electric.xlsx",
+        "sourceSheet": "2569",
+        "extractionScript": "scripts/extract-workbook.mjs",
+        "validationStatus": "in_progress"
+      }
     }
   },
   "target": {
@@ -135,9 +173,9 @@
     "months": []
   },
   "yoyChange": {
-    "absolute": 0,
-    "percent": 0,
-    "direction": "stable"
+    "absolute": -138442.40000000002,
+    "percent": -34,
+    "direction": "down"
   },
   "relatedIndicators": [
     {

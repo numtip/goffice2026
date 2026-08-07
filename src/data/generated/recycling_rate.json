@@ -95,7 +95,9 @@
         "reconciliationDifference": 0
       },
       "aggregation": "average",
-      "dataClassification": "PRESERVED_LEGACY"
+      "dataClassification": "PRESERVED_LEGACY",
+      "datasetState": "COMPLETE",
+      "latestDataMonth": 12
     },
     "2569": {
       "year": 2569,
@@ -120,7 +122,9 @@
         "reconciliationDifference": null
       },
       "aggregation": "average",
-      "dataClassification": "PLACEHOLDER"
+      "dataClassification": "PLACEHOLDER",
+      "datasetState": "WAITING_FOR_INPUT",
+      "latestDataMonth": null
     }
   },
   "target": {

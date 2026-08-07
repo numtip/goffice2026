@@ -37,10 +37,10 @@
  */
 
 import { readFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
-import { join, dirname, relative } from 'node:path';
+import { join, dirname, relative, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { validateMonthData, monthLabel, formatValidationReport } from './data-validator.mjs';
+import { validateMonthData, monthLabel, formatValidationReport, deriveDatasetState, latestDataMonthOf, validateDatasetState } from './data-validator.mjs';
 import { validateMetricProvenance } from './validate-provenance.mjs';
 import { writeJsonFile } from './lib/serialize-json.mjs';
 
@@ -50,6 +50,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
 const GENERATED_DIR = join(PROJECT_ROOT, 'src', 'data', 'generated');
 const IMPORT_DIR = join(PROJECT_ROOT, 'data', 'import');
+const SOURCE_REGISTRY = join(PROJECT_ROOT, 'data', 'staging', 'extract-sources.json');
 // Reconciliation tolerance by unit
 const RECONCILIATION_TOLERANCE = {
   'kWh': 5,
@@ -225,7 +226,14 @@ function reconcileTotal(calculated, workbookTotal, unit) {
 
 // ── Import ─────────────────────────────────────────────────────────────────────
 
-function importMetric(metric, year, csvPath, _verbose) {
+function importMetric(metric, year, csvPath, _verbose, opts = {}) {
+  const {
+    workbookTotal = null,
+    sourceWorkbook = null,
+    sourceSheet = null,
+    classification = null,
+    extractionScript = null,
+  } = opts;
   const cfg = METRIC_CONFIG[metric];
   if (!cfg) {
     console.error(`❌ Unknown metric: '${metric}'. Valid: ${VALID_METRICS.join(', ')}`);
@@ -283,17 +291,23 @@ function importMetric(metric, year, csvPath, _verbose) {
   }));
 
   const monthStatus = monthCount >= 12 ? 'complete' : `partial, ${monthCount} of 12 months`;
-  const sourceDesc = `${cfg.excelSource} converted — ${monthStatus}`;
+  const sourceDesc = sourceWorkbook
+    ? `${sourceWorkbook} (${basename(csvPath)}) — ${monthStatus}`
+    : `${cfg.excelSource} converted — ${monthStatus}`;
 
   // Reconcile with workbook total (if available via --workbook-total).
-  // This pipeline only parses CSV — it has no way to reconcile against the source
-  // XLSX workbook. Any current-year (non-baseline) import is therefore unverified
-  // by construction and must never be silently reported as valid.
+  // Baseline data has no live workbook total here (reconciled at extraction).
+  // Current-year data imported from the official workbook (extract-workbook.mjs
+  // passes workbookTotal + sourceWorkbook) is CONFIRMED_XLSX and reconciled.
+  // CSV-only imports with no workbook remain unverified (DERIVED_FROM_CSV).
   let quality;
   let dataClassification;
   if (isBaseline) {
     quality = reconcileTotal(totalValue, null, cfg.unit);
     dataClassification = 'PRESERVED_LEGACY';
+  } else if (workbookTotal !== null && workbookTotal !== undefined) {
+    quality = reconcileTotal(totalValue, workbookTotal, cfg.unit);
+    dataClassification = classification || 'CONFIRMED_XLSX';
   } else {
     quality = {
       valid: false,
@@ -316,8 +330,20 @@ function importMetric(metric, year, csvPath, _verbose) {
     source: sourceDesc,
     quality,
     dataClassification,
+    datasetState: deriveDatasetState(monthCount),
+    latestDataMonth: latestDataMonthOf(normalizedMonths),
     updated: statSync(csvPath).mtime.toISOString().slice(0, 10),
   };
+
+  // Traceability: provenance block when the import is backed by a source workbook.
+  if (sourceWorkbook) {
+    yearData.provenance = {
+      sourceWorkbook,
+      ...(sourceSheet ? { sourceSheet } : {}),
+      ...(extractionScript ? { extractionScript } : {}),
+      validationStatus: monthCount >= 12 ? 'complete' : 'in_progress',
+    };
+  }
 
   // 5. Read existing JSON and merge
   const outPath = join(GENERATED_DIR, `${metric}.json`);
@@ -431,6 +457,11 @@ function importAll(verbose) {
     return { success: false, errors: ['Import directory not found'] };
   }
 
+  // Source registry (written by extract-workbook.mjs): maps "{metric}-{year}" to
+  // { workbookTotal, sourceWorkbook, sourceSheet, classification } so verified
+  // workbook-backed imports take the CONFIRMED_XLSX + reconciliation path.
+  const registry = readJSON(SOURCE_REGISTRY) || {};
+
   const files = readdirSync(IMPORT_DIR).filter(f => f.endsWith('.csv') && !f.includes('template'));
   if (files.length === 0) {
     console.log('ℹ️  No CSV files found in data/import/.');
@@ -454,7 +485,7 @@ function importAll(verbose) {
 
     const csvPath = join(IMPORT_DIR, file);
     console.log(`\n── ${file} ──`);
-    const result = importMetric(metric, year, csvPath, verbose);
+    const result = importMetric(metric, year, csvPath, verbose, registry[baseName] || {});
     if (result.success) successCount++; else failCount++;
   }
 
@@ -567,6 +598,14 @@ function validateGenerated(verbose) {
         if (!yearData.dataClassification) {
           fileWarnings.push(`Year ${yearStr}: no dataClassification set — provenance is unknown`);
         }
+
+        // GO-DATA-3: datasetState must be consistent with the observed month count.
+        // WAITING_FOR_INPUT years must have empty months (never zero-filled).
+        if (yearData.datasetState) {
+          for (const e of validateDatasetState(yearData.datasetState, yearData.months?.length || 0)) {
+            fileWarnings.push(`Year ${yearStr}: ${e}`);
+          }
+        }
       }
     }
 
@@ -628,6 +667,20 @@ function generateOutputs(_verbose) {
     const filePath = join(GENERATED_DIR, `${metric}.json`);
     const data = readJSON(filePath);
     if (data) metrics.push(data);
+  }
+
+  // Stamp datasetState + latestDataMonth on any year missing them (GO-DATA-3).
+  // Deterministic: derived solely from observed month count. Missing months are
+  // never zero — WAITING_FOR_INPUT years keep empty months arrays.
+  for (const m of metrics) {
+    if (!m.years) continue;
+    for (const yearData of Object.values(m.years)) {
+      const n = Array.isArray(yearData.months) ? yearData.months.length : 0;
+      if (!yearData.datasetState) yearData.datasetState = deriveDatasetState(n);
+      if (yearData.latestDataMonth === undefined) yearData.latestDataMonth = latestDataMonthOf(yearData.months);
+    }
+    // Persist the stamped state back to the canonical metric JSON (deterministic).
+    writeJSON(join(GENERATED_DIR, `${m.metric}.json`), m);
   }
 
   // 1. Executive KPI Summary
@@ -761,9 +814,10 @@ function main() {
 
   switch (cmd) {
     case 'import': {
+      const registry = readJSON(SOURCE_REGISTRY) || {};
       if (args.metric && args.year) {
         const csvPath = args.input || join(IMPORT_DIR, `${args.metric}-${args.year}.csv`);
-        result = importMetric(args.metric, args.year, csvPath, verbose);
+        result = importMetric(args.metric, args.year, csvPath, verbose, registry[`${args.metric}-${args.year}`] || {});
       } else {
         result = importAll(verbose);
       }
