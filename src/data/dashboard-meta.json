@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-08-07",
+  "note": "Canonical dashboard metadata for the search index. Mirrors src/data/dashboard-config.ts (search-facing fields only). No scores — assessment values are never stored here. Keep in sync with dashboard-config.ts.",
+  "dashboards": [
+    {
+      "id": "energy",
+      "title": "Electricity Consumption Dashboard",
+      "titleTh": "แดชบอร์ดการใช้ไฟฟ้า",
+      "description": "Monitor electricity consumption (kWh), peak demand, and cost trends — aligned to Green Office หมวดที่ 3 การใช้ทรัพยากรและพลังงาน.",
+      "descriptionTh": "ติดตามการใช้ไฟฟ้า (kWh) ความต้องการไฟฟ้าสูงสุด และแนวโน้มค่าใช้จ่าย ตามเกณฑ์ Green Office หมวดที่ 3 การใช้ทรัพยากรและพลังงาน",
+      "categoryId": "cat3"
+    },
+    {
+      "id": "water",
+      "title": "Water Consumption Dashboard",
+      "titleTh": "แดชบอร์ดการใช้น้ำ",
+      "description": "Track water usage volume (cubic meters) and conservation progress — aligned to Green Office หมวดที่ 3 การใช้ทรัพยากรและพลังงาน.",
+      "descriptionTh": "ติดตามปริมาณการใช้น้ำ (ลูกบาศก์เมตร) และความคืบหน้าการอนุรักษ์น้ำ ตามเกณฑ์ Green Office หมวดที่ 3 การใช้ทรัพยากรและพลังงาน",
+      "categoryId": "cat3"
+    },
+    {
+      "id": "fuel",
+      "title": "Fuel Consumption Dashboard",
+      "titleTh": "แดชบอร์ดการใช้เชื้อเพลิง",
+      "description": "Monitor fuel consumption (liters) for fleet vehicles — aligned to Green Office หมวดที่ 3 การใช้ทรัพยากรและพลังงาน.",
+      "descriptionTh": "ติดตามการใช้เชื้อเพลิง (ลิตร) ของยานพาหนะของหน่วยงาน ตามเกณฑ์ Green Office หมวดที่ 3 การใช้ทรัพยากรและพลังงาน",
+      "categoryId": "cat3"
+    },
+    {
+      "id": "paper",
+      "title": "Paper Consumption Dashboard",
+      "titleTh": "แดชบอร์ดการใช้กระดาษ",
+      "description": "Track paper usage (kg, reams) and reduction initiatives — aligned to Green Office หมวดที่ 3 การใช้ทรัพยากรและพลังงาน.",
+      "descriptionTh": "ติดตามการใช้กระดาษ (กิโลกรัม, รีม) และมาตรการลดการใช้กระดาษ ตามเกณฑ์ Green Office หมวดที่ 3 การใช้ทรัพยากรและพลังงาน",
+      "categoryId": "cat3"
+    },
+    {
+      "id": "waste",
+      "title": "Waste Management Dashboard",
+      "titleTh": "แดชบอร์ดการจัดการของเสีย",
+      "description": "Review waste segregation, recycling rates, and landfill diversion — aligned to Green Office หมวดที่ 4 การจัดการของเสีย.",
+      "descriptionTh": "ติดตามการคัดแยกของเสีย อัตราการรีไซเคิล และการลดปริมาณของเสียที่นำไปฝังกลบ ตามเกณฑ์ Green Office หมวดที่ 4 การจัดการของเสีย",
+      "categoryId": "cat4"
+    },
+    {
+      "id": "ghg",
+      "title": "GHG Emissions Dashboard",
+      "titleTh": "แดชบอร์ดการปล่อยก๊าซเรือนกระจก",
+      "description": "Track Scope 1 and Scope 2 greenhouse gas emissions (tCO₂e) and reduction progress — aligned to Green Office หมวดที่ 5 สภาพแวดล้อมและความปลอดภัย.",
+      "descriptionTh": "ติดตามการปล่อยก๊าซเรือนกระจกขอบเขตที่ 1 และ 2 (tCO₂e) และความคืบหน้าการลดการปล่อยก๊าซ ตามเกณฑ์ Green Office หมวดที่ 5 สภาพแวดล้อมและความปลอดภัย",
+      "categoryId": "cat1"
+    }
+  ]
+}

@@ -208,7 +208,10 @@ const partialCount = insightIncomplete.length;
                 <span class="text-4xl md:text-5xl font-light text-primary-fixed/30">%</span>
               </div>
               <p class="text-primary-fixed/50 text-[12px] mt-1 tracking-[0.15em] uppercase font-semibold">
-                {th ? 'ความพร้อมของข้อมูล ปี 2569' : 'Data Readiness 2569'}
+                {th ? 'ความพร้อมของข้อมูลรายเดือน ปี 2569' : 'Monthly Data Coverage 2569'}
+              </p>
+              <p class="text-primary-fixed/40 text-[10px] mt-0.5">
+                {th ? `${coveredMonthSlots}/${totalMonthSlots} เดือน (${dataReadinessPct}%)` : `${coveredMonthSlots}/${totalMonthSlots} months (${dataReadinessPct}%)`}
               </p>
 
               <!-- Category Framework Pills (max 2 rows, indicator counts) -->

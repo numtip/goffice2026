@@ -94,7 +94,7 @@ const aboutPagesData = readJson(path.join('about', 'pages.json'));
 const documentsData = readJson(path.join('about', 'documents.json'));
 const summariesData = readJson(path.join('about', 'document-summaries.json'));
 const aboutDocsData = readJson(path.join('about', 'about-documents.json'));
-const kpisData = readJson('dashboard-kpi.json');
+const kpisData = readJson('dashboard-meta.json');
 const hubsData = readJson(path.join('content', 'hubs.json'));
 
 // Indexes over canonical data (lookups only — no invented relationships).
@@ -289,12 +289,10 @@ for (const c of categories) {
 }
 
 // --- 8. Dashboards (dashboard / dashboard) -----------------------------------
-// dashboard-kpi.json → kpis[] {id, label, labelTh, description, descriptionTh, categoryId}
-// Deduplicate by id; only ids in the frozen valid set are canonical.
-const VALID_DASHBOARD_IDS = new Set(['energy', 'water', 'fuel', 'paper', 'waste', 'ghg']);
+// dashboard-meta.json → dashboards[] {id, title, titleTh, description, descriptionTh, categoryId}
+// Canonical metadata mirror of dashboard-config.ts — no scores.
 const seenDashboardIds = new Set();
-for (const k of kpisData.kpis) {
-  if (!VALID_DASHBOARD_IDS.has(k.id)) continue;
+for (const k of kpisData.dashboards) {
   if (seenDashboardIds.has(k.id)) continue;
   seenDashboardIds.add(k.id);
   const parent = categoryTitleFor(k.categoryId);
@@ -302,11 +300,11 @@ for (const k of kpisData.kpis) {
     id: k.id,
     section: 'dashboard',
     type: 'dashboard',
-    title: [k.labelTh, k.label],
+    title: [k.titleTh, k.title],
     context: [k.descriptionTh, k.description],
     keywords: [
-      cat([k.labelTh, k.descriptionTh, parent ? parent[0] : null, k.id]),
-      cat([k.label, k.description, parent ? parent[1] : null, k.id]),
+      cat([k.titleTh, k.descriptionTh, parent ? parent[0] : null, k.id]),
+      cat([k.title, k.description, parent ? parent[1] : null, k.id]),
     ],
     route: `/dashboard/${k.id}/`,
     routeKind: 'page',

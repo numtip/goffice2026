@@ -96,10 +96,10 @@ const resourceCards = resourceIds.map((id) => {
           {t.score_environmental}
         </span>
         <span class="text-4xl font-bold tracking-tight text-emerald-700">
-          {dataReadinessPct}<span class="text-xl text-emerald-500">%</span>
+          {coveredMonthSlots}<span class="text-xl text-emerald-500">/{totalMonthSlots} {locale === 'th' ? 'เดือน' : 'months'}</span>
         </span>
         <span class="mt-1 text-xs text-slate-700">
-          {locale === 'th' ? 'เดือนที่มีข้อมูล ปี 2569' : 'months with data · 2569'}
+          ({dataReadinessPct}%) {locale === 'th' ? 'ปีงบประมาณ 2569' : 'FY 2569'}
         </span>
       </div>
 

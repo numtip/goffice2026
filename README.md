@@ -76,6 +76,9 @@ The platform serves four core capabilities:
 
 ```
 goffice2026/
+├── archive/
+│   └── demo-data/             # Quarantined DEMO/UNVERIFIED files — DO NOT USE FOR PRODUCTION
+│
 ├── src/
 │   ├── pages/                 # Route pages (dashboard, evidence, documents, search)
 │   │   ├── dashboard.astro    # Main metrics dashboard
@@ -94,8 +97,7 @@ goffice2026/
 │   │
 │   ├── data/                  # Configuration and static data
 │   │   ├── dashboard-config.ts
-│   │   ├── dashboard-kpi.json
-│   │   ├── categories.json
+│   │   ├── dashboard-meta.json
 │   │   ├── csv/               # Raw CSV data files
 │   │   └── generated/         # Build-time JSON output
 │   │
