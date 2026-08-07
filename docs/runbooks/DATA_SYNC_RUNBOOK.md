@@ -64,6 +64,25 @@ node scripts/sync-all.mjs --source=C:\tmp\src --out=C:\tmp\staging --manifest=C:
 | fuel/paper   | `WAITING_FOR_INPUT`   | 0 observations in canonical col6 range |
 | waste/ghg    | `WAITING_FOR_INPUT`   | FY2026 = FY2025 template copy (fingerprint == baseline) |
 
+## Runtime requirements
+
+- **Node.js ≥ 20** installed at `G:\nodejs` (`node --version` → v24.x), **npm 11.x**.
+- `G:\nodejs` must be on the **system or user PATH**.
+- PATH must be free of stray quotes/corrupt entries (a stray `"` or non-ASCII
+  entry breaks **cmd**-based command resolution even when PowerShell works).
+  Quick check:
+  ```powershell
+  cmd /c "node --version"
+  ```
+- After editing PATH (user/system), **new processes** pick it up. A process
+  already running (e.g. Cursor) keeps its old PATH until restarted — or run:
+  ```powershell
+  $env:Path = [Environment]::GetEnvironmentVariable('Path','Machine') + ';' +
+              [Environment]::GetEnvironmentVariable('Path','User')
+  ```
+- npm shims: `npm.ps1`/`npm.cmd` in `%APPDATA%\Roaming\npm` are fine; the real
+  `npm-cli.js` lives in `G:\nodejs\node_modules\npm`.
+
 ## Failures
 
 | Symptom | Meaning | Action |
@@ -71,7 +90,7 @@ node scripts/sync-all.mjs --source=C:\tmp\src --out=C:\tmp\staging --manifest=C:
 | `❌ Source directory not found` | OneDrive path unavailable | Verify `E:\OneDrive\...\07-GreenOffice\resource` |
 | `❌ Import failed … NOT publishable` | CSV unreadable/invalid | Fix workbook or CSV, re-run |
 | `❌ Validation failed … NOT publishable` | Generated data structurally invalid | Inspect warnings, fix source, re-run |
-| `npm run` → `'node' is not recognized` | Environment npm shim PATH issue (known in this shell) | Use `node scripts/sync-all.mjs` directly |
+| `npm run` → `'node' is not recognized` | PATH corrupt (stray `"`/non-ASCII entry) breaking cmd resolution — fixed 2026-08-07 (User+Machine PATH cleaned) | `cmd /c "node --version"`; if it still fails, check `$env:Path` for `"` or non-ASCII entries and clean |
 
 ## See also
 
