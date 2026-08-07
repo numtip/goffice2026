@@ -44,7 +44,7 @@ const confidenceIcon = {
 }[confidenceLevel];
 
 /**
- * Localize the two confidence reason strings that the engine emits in English.
+ * Localize the confidence reason strings that the engine emits in English.
  * The engine itself stays English-only (EN output + tests unchanged); this
  * maps only the known patterns for TH display.
  */
@@ -53,6 +53,9 @@ const localizeReason = (reason: string): string => {
   const coverage = reason.match(/^Partial coverage \((\d+)\/12 months\)$/);
   if (coverage) return `ความครอบคลุมบางส่วน (${coverage[1]}/12 เดือน)`;
   if (reason === 'Less than 6 months of data') return 'มีข้อมูลน้อยกว่า 6 เดือน';
+  if (reason === 'Data verified and quality-checked') return 'ข้อมูลผ่านการยืนยันและตรวจสอบคุณภาพแล้ว';
+  if (reason === 'High-quality data source') return 'แหล่งข้อมูลคุณภาพสูง';
+  if (reason === 'Recent data (within 90 days)') return 'ข้อมูลล่าสุด (ภายใน 90 วัน)';
   return reason;
 };
 ---
