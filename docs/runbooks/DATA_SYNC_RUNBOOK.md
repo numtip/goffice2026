@@ -113,6 +113,17 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "G:\ProjectAI\goffice2026\sc
 > Task cadence/time is NOT registered yet — decide the schedule with the PO before creating
 > the scheduled task (`schtasks /Create`). Do not deploy production.
 
+## Manual one-click sync (desktop / Start menu)
+
+Double-click **"Green Office Data Sync"** on the desktop or Start menu — runs the same
+`scripts\sync-scheduled.ps1` wrapper and shows the final status
+**SUCCESS / NO CHANGE / FAILED** (or **ALREADY RUNNING** if the 18:30 task or another run
+holds the lock), plus the log path.
+
+- Launcher: `scripts\sync-launcher.cmd` (hardcoded one-click; no arguments)
+- Shortcuts: desktop (`E:\OneDrive\...\Desktop`) + Start menu — point at the launcher
+- No backend / no web-triggered execution; OneDrive stays read-only
+
 ## See also
 
 - `docs/data/GO-DATA-2-PHASE1-SYNC-AUDIT.md` — Phase 1 audit
