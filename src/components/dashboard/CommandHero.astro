@@ -1,0 +1,104 @@
+---
+/**
+ * CommandHero.astro
+ * =================
+ * Premium executive "Environmental Command Center" hero (GO-DASH-V2-B).
+ *
+ * - Dark green gradient over the heroImageUrl background, reusing the
+ *   existing dashboard hero overlay pattern (bg image + gradient + grid).
+ * - Responsive 3-zone layout (radial | headline+coverage | evidence/taxonomy
+ *   context) that collapses to a column on mobile (<1024px).
+ * - The radial is the shared MonthlyCoverageRadial (ECharts donut).
+ * - 14/72 + 19% is DATA COVERAGE only — never a score; no badges, no score
+ *   semantics anywhere (see copy.neverScoreNote).
+ * - A11y: single H1 (the coverage title), localized aria on the chart, real
+ *   <time datetime>, focus-visible rings on the evidence link, and no CSS
+ *   animation (ECharts motion is governed by echarts-init's own
+ *   prefers-reduced-motion policy).
+ */
+import { heroImageUrl } from '../../utils/wow2-images';
+import { getLocalizedPath } from '../../i18n/utils';
+import type { PhaseAVM } from '../../utils/dashboard-phase-a-vm';
+import MonthlyCoverageRadial from './MonthlyCoverageRadial.astro';
+
+interface Props {
+  locale: 'th' | 'en';
+  vm: PhaseAVM;
+}
+
+const { locale, vm } = Astro.props as Props;
+const copy = vm.copy;
+const evidenceHref = getLocalizedPath(locale, '/evidence');
+---
+
+<section class="relative overflow-hidden rounded-stitch-lg text-white" aria-labelledby="command-hero-title">
+  <!-- Background image + dark green gradient + subtle grid overlay (reused pattern) -->
+  <div class="absolute inset-0" aria-hidden="true">
+    <img
+      src={heroImageUrl}
+      alt=""
+      class="h-full w-full object-cover"
+      loading="eager"
+      decoding="async"
+      width="2048"
+      height="1152"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-[#001a12]/95 via-[#002b1e]/80 to-[#003527]/65"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#00120c]/70 via-transparent to-transparent"></div>
+    <div
+      class="absolute inset-0"
+      style="background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 24px), repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 24px);"
+    ></div>
+  </div>
+
+  <div class="relative z-10 flex min-h-[340px] flex-col justify-center p-6 md:p-8 lg:p-10">
+    <!-- 3-Zone layout: radial | headline+coverage | evidence/taxonomy context -->
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12">
+
+      <!-- ZONE A: Monthly data coverage radial -->
+      <div class="relative w-full max-w-[240px] shrink-0 self-center rounded-3xl border border-white/10 bg-white/[0.05] p-4 sm:p-5">
+        <MonthlyCoverageRadial locale={locale} vm={vm} />
+      </div>
+
+      <!-- ZONE B: Headline + coverage -->
+      <div class="min-w-0 flex-1">
+        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-primary-fixed/70 sm:text-[11px]">
+          {copy.heroKicker}
+        </p>
+        <h1
+          id="command-hero-title"
+          class="mt-2 text-balance text-2xl font-bold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl"
+        >
+          {copy.coverageTitle}
+        </h1>
+        <div class="mt-4 flex items-baseline gap-1.5">
+          <span class="text-6xl font-bold leading-none tracking-tight text-white sm:text-7xl">{vm.coverage.percent}</span>
+          <span class="text-3xl font-light leading-none text-primary-fixed/50 sm:text-4xl">{copy.coverageUnit}</span>
+        </div>
+        <p class="mt-2 text-sm font-medium text-primary-fixed/70 sm:text-base">{copy.coverageCaption}</p>
+      </div>
+
+      <!-- ZONE C: Evidence + taxonomy context -->
+      <div class="flex shrink-0 flex-col gap-4 lg:items-end lg:text-right">
+        <a
+          href={evidenceHref}
+          class="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/[0.08] px-4 py-2 text-xs font-semibold text-primary-fixed/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-fixed focus-visible:ring-offset-2 focus-visible:ring-offset-[#001a12]"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true"></span>
+          <span>{copy.evidenceLabel}</span>
+          <span class="tabular-nums text-primary-fixed/60">{copy.evidenceCountLabel}</span>
+        </a>
+        <p class="text-xs leading-relaxed text-primary-fixed/60 sm:text-sm">{copy.taxonomyCaption}</p>
+        <div>
+          <p class="text-[10px] font-semibold uppercase tracking-[0.15em] text-primary-fixed/40">{copy.updatedLabel}</p>
+          <time datetime={vm.lastUpdated} class="tabular-nums text-sm font-bold text-primary-fixed/80">{vm.lastUpdated}</time>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer note: data coverage, never a score -->
+    <div class="mt-8 border-t border-white/10 pt-4">
+      <p class="max-w-3xl text-[11px] leading-relaxed text-primary-fixed/40 sm:text-xs">{copy.neverScoreNote}</p>
+    </div>
+  </div>
+</section>

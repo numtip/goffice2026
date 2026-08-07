@@ -1,0 +1,97 @@
+---
+/**
+ * MonthlyCoverageRadial.astro
+ * ===========================
+ * ECharts donut radial for the Command Hero (GO-DASH-V2-B).
+ *
+ * - Reuses the shared EChart.astro wrapper + echarts-init bundle.
+ * - Option comes from the pure builder `buildCoverageRadialOption`
+ *   (src/utils/chart-option.ts) — JSON only, no functions.
+ * - Center title: '19%' (big) + '14/72' (subtext) — locale-neutral numbers.
+ * - `noTable` disables EChart's light-theme <details> fallback; this
+ *   component renders its own dark-theme table so it stays readable on the
+ *   hero's dark green background.
+ */
+import EChart from './EChart.astro';
+import type { TableColumn, TableCell } from './EChart.astro';
+import { buildCoverageRadialOption } from '../../utils/chart-option';
+import type { PhaseAVM } from '../../utils/dashboard-phase-a-vm';
+
+interface Props {
+  locale: 'th' | 'en';
+  vm: PhaseAVM;
+}
+
+const { locale, vm }: Props = Astro.props;
+const th = locale === 'th';
+
+const { coveredMonths, totalSlots, percent } = vm.coverage;
+
+const option = buildCoverageRadialOption({
+  percent,
+  covered: coveredMonths,
+  total: totalSlots,
+  locale,
+});
+
+const ariaLabel = th
+  ? `ความครอบคลุมข้อมูลรายเดือน: ${coveredMonths} จาก ${totalSlots} เดือน, ${percent} เปอร์เซ็นต์`
+  : `Monthly data coverage: ${coveredMonths} of ${totalSlots} months, ${percent} percent`;
+
+const tableSummary = th
+  ? `ความครอบคลุมข้อมูลรายเดือน: ${coveredMonths} จาก ${totalSlots} ช่อง (${percent}%) · ความครอบคลุมของข้อมูล ไม่ใช่คะแนนประเมิน`
+  : `Monthly data coverage: ${coveredMonths} of ${totalSlots} slots (${percent}%) · data coverage, not an assessment score`;
+
+const columns: TableColumn[] = [
+  { label: th ? 'ทรัพยากร' : 'Resource' },
+  { label: th ? 'เดือนที่ครอบคลุม' : 'Months covered', align: 'right' },
+];
+
+const rows: TableCell[][] = [
+  ...vm.resources.map((r) => [r.name, r.monthsCount]),
+  [th ? 'รวม' : 'Total', `${coveredMonths}/${totalSlots}`],
+];
+---
+
+<EChart
+  option={option}
+  tooltipMeta={{ unit: '%', locale }}
+  ariaLabel={ariaLabel}
+  height={200}
+  noTable
+  columns={columns}
+  rows={rows}
+  tableSummary={tableSummary}
+/>
+
+<!-- Dark-theme accessible table fallback (EChart's light-theme table would fail contrast on the dark hero) -->
+<details class="mt-2">
+  <summary class="cursor-pointer select-none text-[11px] font-medium text-primary-fixed/60 hover:text-primary-fixed">
+    {th ? 'ตารางข้อมูล' : 'Data table'}
+  </summary>
+  <p class="mt-2 mb-1 text-[10px] leading-relaxed text-primary-fixed/40">{tableSummary}</p>
+  <div class="mt-2 overflow-x-auto">
+    <table class="w-full border-collapse text-left text-xs">
+      <thead class="border-b border-white/10">
+        <tr>
+          {columns.map((col) => (
+            <th scope="col" class={`py-1.5 px-2 font-semibold text-primary-fixed/70 ${col.align === 'right' ? 'text-right' : ''}`}>
+              {col.label}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr class="border-b border-white/5 last:border-0 hover:bg-white/[0.04]">
+            {row.map((cell, ci) => (
+              <td class={`py-1.5 px-2 text-primary-fixed/60 ${columns[ci]?.align === 'right' ? 'text-right tabular-nums' : ''}`}>
+                {typeof cell === 'object' && cell !== null ? cell.text : cell}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</details>

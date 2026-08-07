@@ -1,0 +1,58 @@
+---
+import type { PhaseAVM } from '../../utils/dashboard-phase-a-vm';
+import ResourcePulseCard from './ResourcePulseCard.astro';
+
+interface Props {
+  locale: 'th' | 'en';
+  vm: PhaseAVM;
+}
+
+const { locale, vm } = Astro.props;
+const th = locale === 'th';
+
+const inProgressCount = vm.resources.filter((r) => r.displayStatus === 'in_progress').length;
+const pendingCount = vm.resources.length - inProgressCount;
+const kicker = th ? 'สถานะข้อมูล ปี 2569' : 'FY2569 DATA STATUS';
+---
+
+<section class="resource-pulse-section mb-8" aria-labelledby="resource-pulse-heading">
+  <!-- Section header: kicker + heading + subheading + summary legend -->
+  <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <div class="min-w-0">
+      <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-primary">{kicker}</p>
+      <h2
+        id="resource-pulse-heading"
+        class="mt-1 text-lg font-bold tracking-tight text-on-surface md:text-xl"
+      >
+        {vm.copy.pulseHeading}
+      </h2>
+      <p class="mt-1 text-xs text-on-surface-variant">{vm.copy.pulseSubheading}</p>
+    </div>
+
+    <!-- Summary legend: in progress vs pending (derived from vm.resources) -->
+    <div class="flex shrink-0 flex-wrap items-center gap-2 text-[11px] text-on-surface-variant">
+      <span
+        class="inline-flex items-center gap-1.5 rounded-full border border-amber-200/70 bg-amber-50/60 px-2.5 py-1 font-medium text-amber-700"
+      >
+        <span class="h-2 w-2 rounded-full bg-amber-500" aria-hidden="true"></span>
+        <span class="font-bold tabular-nums">{inProgressCount}</span>
+        {vm.copy.statusInProgress}
+      </span>
+      <span
+        class="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-neutral-50 px-2.5 py-1 font-medium text-neutral-500"
+      >
+        <span class="h-2 w-2 rounded-full bg-neutral-400" aria-hidden="true"></span>
+        <span class="font-bold tabular-nums">{pendingCount}</span>
+        {vm.copy.statusPending}
+      </span>
+    </div>
+  </div>
+
+  <!-- Responsive 6-card grid: 1x (mobile) → 2x (tablet 640–1279) → 3x2 (desktop ≥1280) -->
+  <!-- xl (not lg) keeps 2x3 at the 1024 tablet viewport; 3 columns only from 1280 up -->
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+    {vm.resources.map((card) => (
+      <ResourcePulseCard card={card} locale={locale} copy={vm.copy} />
+    ))}
+  </div>
+</section>

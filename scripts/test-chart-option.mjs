@@ -25,6 +25,7 @@ import {
   buildNormalizedSeries,
   buildNormalizedOption,
   buildCategoryScoreOption,
+  buildCoverageRadialOption,
   categoryStatusTexts,
   rollingAverage,
   monthLabel,
@@ -187,5 +188,30 @@ describe('buildCategoryScoreOption — labels, statuses, serializability', () =>
   it('maxScore defaults to at least 100', () => {
     const option = buildCategoryScoreOption({ categories, locale: 'en', ariaDescription: 'x' });
     assert.equal(option.xAxis.max >= 100, true);
+  });
+});
+
+describe('buildCoverageRadialOption — coverage donut, never a score', () => {
+  it('produces a serializable donut with covered/remaining segments and center title', () => {
+    const option = buildCoverageRadialOption({ covered: 14, total: 72, percent: 19, locale: 'en' });
+    const rt = JSON.parse(JSON.stringify(option));
+    assert.equal(rt.series[0].type, 'pie');
+    assert.equal(rt.series[0].data[0].value, 14, 'covered slice value');
+    assert.equal(rt.series[0].data[0].itemStyle.color, '#10b981', 'covered segment is emerald');
+    assert.equal(rt.series[0].data[1].value, 58, 'remaining = total - covered');
+    assert.equal(rt.title.text, '19%', 'center title shows percent');
+    assert.equal(rt.title.subtext, '14/72', 'center subtext shows covered/total');
+    assert.equal(rt.aria.enabled, true, 'aria enabled with description');
+    assert.match(rt.aria.label.description, /14 of 72 months, 19 percent/);
+  });
+
+  it('localizes the aria description for th', () => {
+    const option = buildCoverageRadialOption({ covered: 14, total: 72, percent: 19, locale: 'th' });
+    assert.match(option.aria.label.description, /14 จาก 72 เดือน, 19 เปอร์เซ็นต์/);
+  });
+
+  it('keeps remaining non-negative when coverage is complete', () => {
+    const option = buildCoverageRadialOption({ covered: 72, total: 72, percent: 100, locale: 'en' });
+    assert.equal(option.series[0].data[1].value, 0);
   });
 });

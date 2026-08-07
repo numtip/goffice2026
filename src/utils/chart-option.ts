@@ -409,3 +409,73 @@ export function buildCategoryScoreOption(input: CategoryScoreOptionInput): Recor
 export function categoryStatusTexts(categories: CategoryScoreItem[]): string[] {
   return categories.map((c) => c.statusText ?? '');
 }
+
+// ── Coverage radial (Command Hero donut) ────────────────────────────────────
+
+export interface CoverageRadialInput {
+  /** Covered month slots (0..total). */
+  covered: number;
+  /** Total month slots (resources × 12). */
+  total: number;
+  /** Rounded percent = round(covered / total × 100) — coverage, never a score. */
+  percent: number;
+  locale: 'th' | 'en';
+}
+
+/**
+ * Donut option for the Command Hero monthly-coverage radial.
+ *
+ * The covered segment renders emerald (#10b981), the remainder a muted dark
+ * ring; the center `title` shows percent + covered/total (locale-neutral
+ * numbers). The aria description is derived from the numbers only, so the
+ * builder stays pure, JSON-serializable and locale-driven.
+ *
+ * NOTE: tooltip is disabled (`show: false`) — the shared echarts-init tooltip
+ * formatter is axis-oriented (`trigger: 'axis'`) and not compatible with pie
+ * `trigger: 'item'` params; the center title already carries the key figures
+ * and the accessible table fallback covers the underlying data.
+ */
+export function buildCoverageRadialOption(input: CoverageRadialInput): Record<string, unknown> {
+  const { covered, total, locale } = input;
+  const remaining = Math.max(0, total - covered);
+  const description =
+    locale === 'th'
+      ? `ความครอบคลุมข้อมูลรายเดือน: ${covered} จาก ${total} เดือน, ${input.percent} เปอร์เซ็นต์`
+      : `Monthly data coverage: ${covered} of ${total} months, ${input.percent} percent`;
+
+  return {
+    tooltip: { show: false },
+    aria: {
+      enabled: true,
+      decal: { show: false },
+      label: { description },
+    },
+    title: {
+      text: `${input.percent}%`,
+      subtext: `${covered}/${total}`,
+      left: 'center',
+      top: 'center',
+      textStyle: { fontSize: 30, fontWeight: 700, color: '#ffffff', lineHeight: 34 },
+      subtextStyle: { fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 18 },
+    },
+    series: [
+      {
+        name: locale === 'th' ? 'ความครอบคลุมข้อมูลรายเดือน' : 'Monthly data coverage',
+        type: 'pie',
+        radius: ['62%', '84%'],
+        center: ['50%', '50%'],
+        startAngle: 90,
+        silent: true,
+        avoidLabelOverlap: false,
+        itemStyle: { borderRadius: 11, borderColor: 'transparent', borderWidth: 0 },
+        label: { show: false },
+        labelLine: { show: false },
+        emphasis: { scale: false },
+        data: [
+          { value: covered, name: locale === 'th' ? 'ครอบคลุม' : 'Covered', itemStyle: { color: '#10b981' } },
+          { value: remaining, name: locale === 'th' ? 'คงเหลือ' : 'Remaining', itemStyle: { color: '#1d4a3b' } },
+        ],
+      },
+    ],
+  };
+}

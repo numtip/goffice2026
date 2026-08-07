@@ -7,10 +7,11 @@ import criteriaIndicators from '../data/criteria/indicators.json';
 import { generatedMetricMap } from '../utils/dashboard-generated-metrics';
 import { getLocale, getLocalizedPath } from '../i18n/utils';
 import { getDictionary } from '../i18n/dictionary';
-import { resolveDisplayStatus, shouldShowYoy } from '../utils/data-status';
-import { heroImageUrl, closingBannerImageUrl, resourceIconMap, resourceAccentMap } from '../utils/wow2-images';
+import { closingBannerImageUrl } from '../utils/wow2-images';
+import { buildPhaseAVM } from '../utils/dashboard-phase-a-vm';
 
-import ResourcePerformanceCard from '../components/dashboard/ResourcePerformanceCard.astro';
+import CommandHero from '../components/dashboard/CommandHero.astro';
+import ResourcePulseGrid from '../components/dashboard/ResourcePulseGrid.astro';
 import NormalizedTrendChart from '../components/dashboard/NormalizedTrendChart.astro';
 import DataReadinessMatrix from '../components/dashboard/DataReadinessMatrix.astro';
 import JourneyLinks from '../components/ui/JourneyLinks.astro';
@@ -18,6 +19,7 @@ import JourneyLinks from '../components/ui/JourneyLinks.astro';
 const genMap = generatedMetricMap;
 
 const locale = getLocale(Astro.url);
+const vm = buildPhaseAVM(locale);
 const dict = await getDictionary(locale);
 const t = dict.dashboardPage;
 
@@ -26,8 +28,6 @@ const monthAbbrEn = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
 const monthAbbr = locale === 'th' ? monthAbbrTh : monthAbbrEn;
 
 const th = locale === 'th';
-
-const fmtCompact = (v: number) => Intl.NumberFormat('th', { notation: 'compact', maximumFractionDigits: 1 }).format(v);
 
 const resourceLabels: Record<string, string> = {
   energy: th ? 'ไฟฟ้า' : 'Energy',
@@ -85,11 +85,6 @@ const readinessResources = dashboards.map((d) => {
   };
 });
 
-// Real readiness stats derived from generated month coverage (no fabricated scores).
-const totalMonthSlots = dashboards.length * 12;
-const coveredMonthSlots = readinessResources.reduce((s, r) => s + r.monthsPresent.filter(Boolean).length, 0);
-const dataReadinessPct = totalMonthSlots > 0 ? Math.round((coveredMonthSlots / totalMonthSlots) * 100) : 0;
-
 const updatedDate = Object.values(genMap).reduce((acc: string, m) => {
   Object.values(m.years).forEach((y) => {
     if (y.updated && y.updated > acc) acc = y.updated;
@@ -131,212 +126,16 @@ if (riskCandidates.length > 0) {
   const maxRisk = riskCandidates.reduce((prev, curr) => (curr.yoyPct > prev.yoyPct ? curr : prev));
   insightHighestRisk.push(maxRisk);
 }
-
-// ── Category framework chips for hero (indicator counts only, no invented scores) ──
-const categoryChips = categoryReadiness.map((c) => ({
-  code: c.code,
-  label: c.title,
-  indicatorCount: c.indicatorCount,
-}));
-
-const totalImproving = insightImproved.length;
-const totalAttention = insightAttention.length;
-const partialCount = insightIncomplete.length;
 ---
 
 <BaseLayout title={th ? 'แดชบอร์ด | Dashboard' : 'Dashboard | แดชบอร์ด'} description={t.subtitle} locale={locale}>
   <div class="p-4 max-w-6xl mx-auto">
 
-    <!-- 1. Executive Score Hero -->
-    <section class="dashboard-section mb-8">
-      <div class="relative rounded-stitch-lg overflow-hidden text-white min-h-[320px] md:min-h-[380px] flex items-stretch">
-        <!-- Hero Background Image -->
-        <div class="absolute inset-0">
-          <img
-            src={heroImageUrl}
-            alt=""
-            class="w-full h-full object-cover"
-            loading="eager"
-            decoding="async"
-            aria-hidden="true"
-            width="2048"
-            height="1152"
-          />
-          <!-- Dark overlay for text readability -->
-          <div class="absolute inset-0 bg-gradient-to-r from-[#001a12]/90 via-[#002b1e]/75 to-[#003527]/60" aria-hidden="true"></div>
-          <!-- Subtle grid pattern overlay -->
-          <div class="absolute inset-0" style="background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 24px), repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 24px);" aria-hidden="true"></div>
-        </div>
+    <!-- 1. Command Hero (GO-DASH-V2-B) -->
+    <CommandHero locale={locale} vm={vm} />
 
-        <div class="relative z-10 p-6 md:p-8 w-full">
-          <!-- Top label -->
-          <p class="text-primary-fixed/40 text-[10px] uppercase tracking-[0.25em] font-bold mb-6">
-            {th ? 'GREEN COMMAND CENTER' : 'GREEN COMMAND CENTER'}
-          </p>
-
-          <!-- 3-Zone Layout: Gauge | Score | Context -->
-          <div class="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10">
-
-            <!-- ZONE 1: Gauge (left, ~140px) -->
-            <div class="shrink-0 flex flex-col items-center gap-2 w-[140px]">
-              <svg viewBox="0 0 150 150" width="140" height="140" class="drop-shadow-lg">
-                <defs>
-                  <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#6ffbbe"/>
-                    <stop offset="100%" stop-color="#2dd4bf"/>
-                  </linearGradient>
-                </defs>
-                <!-- Track -->
-                <circle cx="75" cy="75" r="64" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="12"/>
-                <!-- Progress -->
-                <circle cx="75" cy="75" r="64" fill="none" stroke="url(#gaugeGrad)" stroke-width="12"
-                  stroke-dasharray="402.12" stroke-dashoffset={402.12 * (1 - dataReadinessPct / 100)}
-                  stroke-linecap="round" transform="rotate(-90 75 75)"
-                  class="gauge-progress-ring"
-                  style={`--gauge-target-offset: ${402.12 * (1 - dataReadinessPct / 100)}; transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1);`}/>
-              </svg>
-              <!-- Score badge below gauge -->
-              <span class="px-3 py-0.5 rounded-full bg-emerald-400/20 border border-emerald-400/20 text-[10px] font-bold text-emerald-300 tracking-wide whitespace-nowrap">
-                {dataReadinessPct >= 80 ? (th ? 'ดีเยี่ยม' : 'EXCELLENT') : dataReadinessPct >= 60 ? (th ? 'ดี' : 'GOOD') : (th ? 'พอใช้' : 'FAIR')}
-              </span>
-            </div>
-
-            <!-- ZONE 2: Score (center, flex-1) -->
-            <div class="flex-1 flex flex-col items-center md:items-start min-w-0">
-              <div class="flex items-baseline gap-1.5">
-                <span class="text-7xl md:text-8xl font-bold tracking-tight text-white leading-none">{dataReadinessPct}</span>
-                <span class="text-4xl md:text-5xl font-light text-primary-fixed/30">%</span>
-              </div>
-              <p class="text-primary-fixed/50 text-[12px] mt-1 tracking-[0.15em] uppercase font-semibold">
-                {th ? 'ความพร้อมของข้อมูลรายเดือน ปี 2569' : 'Monthly Data Coverage 2569'}
-              </p>
-              <p class="text-primary-fixed/40 text-[10px] mt-0.5">
-                {th ? `${coveredMonthSlots}/${totalMonthSlots} เดือน (${dataReadinessPct}%)` : `${coveredMonthSlots}/${totalMonthSlots} months (${dataReadinessPct}%)`}
-              </p>
-
-              <!-- Category Framework Pills (max 2 rows, indicator counts) -->
-              <div class="flex flex-wrap gap-1.5 mt-4 max-h-[3.25rem] overflow-hidden">
-                {categoryChips.map((cat) => (
-                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/8 text-primary-fixed/60 border border-white/5 transition-colors hover:bg-white/12 hover:text-primary-fixed/80" title={`${cat.label} · ${cat.indicatorCount} ${th ? 'ตัวชี้วัด' : 'indicators'}`}>
-                    <span class="max-w-[80px] truncate">{cat.label}</span>
-                    <span class="text-primary-fixed/40">{cat.indicatorCount}</span>
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <!-- ZONE 3: Context (right) -->
-            <div class="shrink-0 flex flex-col items-end gap-3 text-right min-w-[180px]">
-              <!-- Updated date -->
-              <div>
-                <p class="text-[10px] uppercase tracking-[0.15em] text-primary-fixed/30 font-semibold mb-0.5">
-                  {th ? 'อัปเดตล่าสุด' : 'Last Updated'}
-                </p>
-                <time datetime={updatedDate} class="text-sm font-bold text-primary-fixed/70 tabular-nums">{updatedDate}</time>
-              </div>
-
-              <!-- Taxonomy summary -->
-              <p class="text-[11px] text-primary-fixed/40 leading-relaxed max-w-[200px]">{t.taxonomy_summary}</p>
-
-              <!-- Quick Facts (compact row) -->
-              <div class="flex flex-wrap gap-1.5 justify-end">
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/8 text-emerald-300 border border-white/5">
-                  <span class="w-1 h-1 rounded-full bg-emerald-400 shrink-0"></span>
-                  {th ? `${totalImproving} ดีขึ้น` : `${totalImproving} Improving`}
-                </span>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/8 text-amber-300 border border-white/5">
-                  <span class="w-1 h-1 rounded-full bg-amber-400 shrink-0"></span>
-                  {th ? `${totalAttention} ต้องระวัง` : `${totalAttention} Attention`}
-                </span>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/8 text-sky-300 border border-white/5">
-                  <span class="w-1 h-1 rounded-full bg-sky-300 shrink-0"></span>
-                  {th ? `${partialCount}/6 ไม่ครบปี` : `${partialCount}/6 Partial`}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Footer caveat -->
-          <p class="text-primary-fixed/30 text-[10px] mt-6 max-w-3xl leading-relaxed border-t border-white/5 pt-4">
-            {th
-              ? 'การให้คะแนนแสดงภาพรวมความพร้อมของ Green Office ในระดับผู้บริหาร ตัวเลขจริงสำหรับปี 2569 จะปรับเปลี่ยนตามข้อมูลที่บันทึกเพิ่ม'
-              : 'Executive-level Green Office readiness overview. Actual 2569 figures are partial-year and will adjust as data entry continues.'}
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. Six Resource KPI Cards -->
-    <section class="dashboard-section mb-8">
-      <div class="relative overflow-hidden rounded-stitch-lg bg-surface-container/60 border border-outline-variant/10 mb-4">
-        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 p-4 md:p-5">
-          <div class="relative z-10">
-            <h2 class="text-lg font-bold text-on-surface tracking-tight">{th ? 'ภาพรวมการใช้ทรัพยากร 6 ด้าน' : '6-Resource Overview'}</h2>
-            <p class="text-xs text-on-surface-variant mt-0.5">{th ? 'เปรียบเทียบปีปัจจุบัน (2569) กับปีฐาน (2568) พร้อมแนวโน้มรายเดือน' : 'Current year (2569) vs baseline (2568) with monthly trends'}</p>
-          </div>
-        <!-- Resource Icons decorative row -->
-        <!-- Quick summary badges -->
-        <div class="flex items-center gap-3 text-[11px] text-on-surface-variant shrink-0">
-          <span class="flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-            {th ? `${totalImproving} ดีขึ้น` : `${totalImproving} improved`}
-          </span>
-          <span class="flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-            {th ? `${totalAttention} ต้องระวัง` : `${totalAttention} attention`}
-          </span>
-          <span class="flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-sky-400"></span>
-            {th ? `${partialCount}/6 ยังไม่ครบปี` : `${partialCount}/6 partial`}
-          </span>
-        </div>
-      </div>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {dashboards.map((d) => {
-          const m = genMap[d.id];
-          const yoy = m?.yoyChange;
-          const baseline = m ? m.years[m.baselineYear.toString()] : null;
-          const current = m ? m.years[m.currentYear.toString()] : null;
-          const displayStatus = resolveDisplayStatus(current ?? undefined);
-          const showYoy = shouldShowYoy(current ?? undefined);
-          const monthsCount = current?.months.length ?? 0;
-          const statusLabel = monthsCount > 0
-            ? (th ? `${monthsCount} จาก 12 เดือน` : `${monthsCount} of 12 months`)
-            : (th ? 'ยังไม่มีข้อมูล' : 'Data pending');
-          const partialYear = displayStatus === 'in_progress' && monthsCount < 12;
-
-          const currentVal = current && displayStatus !== 'pending'
-            ? fmtCompact(current.total)
-            : (th ? 'รอข้อมูล' : 'Pending');
-          const baselineVal = baseline ? fmtCompact(baseline.total) : '-';
-
-          const trendPct = showYoy && yoy ? yoy.percent : null;
-          const trendDir = yoy?.direction ?? 'stable';
-
-          const monthlyVals = current?.months.map((mo) => mo.value);
-
-          return (
-            <ResourcePerformanceCard
-              title={resourceLabels[d.id] ?? dashTitle(d, locale)}
-              href={getLocalizedPath(locale, `/dashboard/${d.id}`)}
-              currentValue={currentVal}
-              baselineValue={baselineVal}
-              unit={m?.unit ?? ''}
-              trendPct={trendPct}
-              trendDir={trendDir}
-              monthsCompleted={monthsCount}
-              color={d.color}
-              monthlyValues={monthlyVals && monthlyVals.length >= 2 ? monthlyVals : undefined}
-              statusLabel={statusLabel}
-              partialYear={partialYear}
-              iconUrl={resourceIconMap[d.id]}
-              accentColor={resourceAccentMap[d.id]}
-            />
-          );
-        })}
-      </div>
-    </section>
+    <!-- 2. Resource Pulse (GO-DASH-V2-C) -->
+    <ResourcePulseGrid locale={locale} vm={vm} />
 
     <!-- 3. Key Insights Panel -->
     <section class="dashboard-section mb-8">
@@ -624,17 +423,6 @@ const partialCount = insightIncomplete.length;
 
   </div>
 <style>
-  /* --- Card hover --- */
-  .resource-card {
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .resource-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    }
-  }
-
   /* --- Section fade-in --- */
   @media (prefers-reduced-motion: no-preference) {
     .dashboard-section {
@@ -655,18 +443,6 @@ const partialCount = insightIncomplete.length;
         opacity: 1;
         transform: translateY(0);
       }
-    }
-  }
-
-  /* --- Ring gauge fill animation --- */
-  @media (prefers-reduced-motion: no-preference) {
-    .gauge-progress-ring {
-      animation: gauge-fill 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    @keyframes gauge-fill {
-      from { stroke-dashoffset: 402.12; }
-      to { stroke-dashoffset: var(--gauge-target-offset); }
     }
   }
 </style>

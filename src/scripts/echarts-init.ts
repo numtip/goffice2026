@@ -24,13 +24,14 @@
  *   - No persistent/decorative animation.
  */
 import { init, use } from 'echarts/core';
-import { BarChart, LineChart } from 'echarts/charts';
+import { BarChart, LineChart, PieChart } from 'echarts/charts';
 import {
   AriaComponent,
   GridComponent,
   LegendComponent,
   MarkLineComponent,
   MarkPointComponent,
+  TitleComponent,
   TooltipComponent,
 } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
@@ -38,11 +39,13 @@ import { CanvasRenderer } from 'echarts/renderers';
 use([
   BarChart,
   LineChart,
+  PieChart,
   GridComponent,
   TooltipComponent,
   LegendComponent,
   MarkLineComponent,
   MarkPointComponent,
+  TitleComponent,
   AriaComponent,
   CanvasRenderer,
 ]);
