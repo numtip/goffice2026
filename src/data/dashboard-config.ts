@@ -1,5 +1,3 @@
-import dashboardKpi from './dashboard-kpi.json';
-
 export interface DashboardMeta {
   id: string;
   title: string;
@@ -9,27 +7,11 @@ export interface DashboardMeta {
   categoryId?: string;
   csvFile: string;
   kpiField: string;
-  kpiLabel: string;
-  kpiLabelTh?: string;
-  kpiScore?: number;
   kpiUnit?: string;
-  trend?: 'up' | 'down' | 'stable';
   color: string;
   sourceLabel: string;
   sourceLabelTh?: string;
 }
-
-interface KpiEntry {
-  id: string;
-  label: string;
-  value?: number;
-  unit?: string;
-  categoryId?: string;
-  trend?: 'up' | 'down' | 'stable';
-  description?: string;
-}
-
-const kpiMap = new Map<string, KpiEntry>(dashboardKpi.kpis.map((k) => [k.id, k as KpiEntry]));
 
 const dashboards: DashboardMeta[] = [
   {
@@ -41,11 +23,7 @@ const dashboards: DashboardMeta[] = [
     categoryId: 'cat3',
     csvFile: 'energy.csv',
     kpiField: 'kwh',
-    kpiLabel: 'Energy Score',
-    kpiLabelTh: 'คะแนนพลังงาน',
-    kpiScore: kpiMap.get('energy')?.value ?? 0,
     kpiUnit: 'kWh',
-    trend: kpiMap.get('energy')?.trend ?? 'stable',
     color: '#059669',
     sourceLabel: 'Energy monitoring records — goffice.mju.ac.th',
     sourceLabelTh: 'บันทึกการติดตามพลังงาน — goffice.mju.ac.th',
@@ -59,11 +37,7 @@ const dashboards: DashboardMeta[] = [
     categoryId: 'cat3',
     csvFile: 'water.csv',
     kpiField: 'cubic_meters',
-    kpiLabel: 'Water Score',
-    kpiLabelTh: 'คะแนนน้ำ',
-    kpiScore: kpiMap.get('water')?.value ?? 0,
     kpiUnit: 'm³',
-    trend: kpiMap.get('water')?.trend ?? 'stable',
     color: '#0284c7',
     sourceLabel: 'Water meter records — goffice.mju.ac.th',
     sourceLabelTh: 'บันทึกมิเตอร์น้ำ — goffice.mju.ac.th',
@@ -77,11 +51,7 @@ const dashboards: DashboardMeta[] = [
     categoryId: 'cat3',
     csvFile: 'fuel.csv',
     kpiField: 'liters',
-    kpiLabel: 'Fuel Consumption',
-    kpiLabelTh: 'การใช้เชื้อเพลิง',
-    kpiScore: kpiMap.get('fuel')?.value ?? 22928,
     kpiUnit: 'L',
-    trend: kpiMap.get('fuel')?.trend ?? 'down',
     color: '#d97706',
     sourceLabel: 'Fuel consumption records — 1.3_Gassolene.xlsx',
     sourceLabelTh: 'บันทึกการใช้เชื้อเพลิง — 1.3_Gassolene.xlsx',
@@ -95,11 +65,7 @@ const dashboards: DashboardMeta[] = [
     categoryId: 'cat3',
     csvFile: 'paper.csv',
     kpiField: 'kg_estimated',
-    kpiLabel: 'Paper Consumption',
-    kpiLabelTh: 'การใช้กระดาษ',
-    kpiScore: kpiMap.get('paper')?.value ?? 2198,
     kpiUnit: 'kg',
-    trend: kpiMap.get('paper')?.trend ?? 'up',
     color: '#6366f1',
     sourceLabel: 'Paper consumption records — 1.4_Paper.xlsx',
     sourceLabelTh: 'บันทึกการใช้กระดาษ — 1.4_Paper.xlsx',
@@ -113,11 +79,7 @@ const dashboards: DashboardMeta[] = [
     categoryId: 'cat4',
     csvFile: 'waste.csv',
     kpiField: 'recycle_pct',
-    kpiLabel: 'Waste Score',
-    kpiLabelTh: 'คะแนนของเสีย',
-    kpiScore: kpiMap.get('waste')?.value ?? 0,
     kpiUnit: '%',
-    trend: kpiMap.get('waste')?.trend ?? 'stable',
     color: '#7c3aed',
     sourceLabel: 'Waste management records — goffice.mju.ac.th',
     sourceLabelTh: 'บันทึกการจัดการของเสีย — goffice.mju.ac.th',
@@ -131,11 +93,7 @@ const dashboards: DashboardMeta[] = [
     categoryId: 'cat1',
     csvFile: 'ghg.csv',
     kpiField: 'total_tco2e',
-    kpiLabel: 'Emissions Score',
-    kpiLabelTh: 'คะแนนการปล่อยก๊าซเรือนกระจก',
-    kpiScore: kpiMap.get('emissions')?.value ?? 0,
     kpiUnit: 'tCO₂e',
-    trend: kpiMap.get('emissions')?.trend ?? 'stable',
     color: '#dc2626',
     sourceLabel: 'GHG inventory records — goffice.mju.ac.th',
     sourceLabelTh: 'บันทึกบัญชีก๊าซเรือนกระจก — goffice.mju.ac.th',

@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import '../../../styles/global.css';
-import dashboardKpi from '../../../data/dashboard-kpi.json';
 import { dashboards } from '../../../data/dashboard-config';
+import criteriaCategories from '../../../data/criteria/categories.json';
+import criteriaIndicators from '../../../data/criteria/indicators.json';
 import { generatedMetricMap } from '../../../utils/dashboard-generated-metrics';
 import { getLocalizedPath } from '../../../i18n/utils';
 import { getDictionary } from '../../../i18n/dictionary';
@@ -11,7 +12,6 @@ import { heroImageUrl, closingBannerImageUrl, resourceIconMap, resourceAccentMap
 
 import ResourcePerformanceCard from '../../../components/dashboard/ResourcePerformanceCard.astro';
 import NormalizedTrendChart from '../../../components/dashboard/NormalizedTrendChart.astro';
-import CategoryScoreChart from '../../../components/dashboard/CategoryScoreChart.astro';
 import DataReadinessMatrix from '../../../components/dashboard/DataReadinessMatrix.astro';
 
 const genMap = generatedMetricMap;
@@ -43,17 +43,21 @@ dashboards.forEach((d) => {
   }
 });
 
-// Cat scores
-const catScores = dashboardKpi.kpis
-  .filter((k) => k.categoryId)
-  .map((kpi) => ({
-    code: kpi.categoryId!,
-    label: kpi.label,
-    score: kpi.value ?? 0,
-    trend: kpi.trend as 'up' | 'down' | 'stable' | undefined,
-    href: getLocalizedPath(locale, `/categories/${kpi.categoryId!}`),
-    statusText: '',
-  }));
+// ── Green Office Category Framework (canonical 7 categories; no invented assessment scores) ──
+const indicatorCounts: Record<string, number> = {};
+criteriaIndicators.indicators.forEach((ind) => {
+  const key = ind.categoryCode ?? ind.categoryId;
+  if (key) indicatorCounts[key] = (indicatorCounts[key] ?? 0) + 1;
+});
+
+const categoryReadiness = criteriaCategories.categories.map((c) => ({
+  code: c.code,
+  number: Number(c.id),
+  title: c.title.en,
+  summary: c.summary.en,
+  indicatorCount: indicatorCounts[c.code] ?? 0,
+  href: getLocalizedPath(locale, `/categories/${c.code}`),
+}));
 
 // Data readiness
 const readinessResources = dashboards.map((d) => {
@@ -66,7 +70,17 @@ const readinessResources = dashboards.map((d) => {
   };
 });
 
-const updatedDate = dashboardKpi.updated ?? '2026-06-12';
+// Real readiness stats derived from generated month coverage (no fabricated scores).
+const totalMonthSlots = dashboards.length * 12;
+const coveredMonthSlots = readinessResources.reduce((s, r) => s + r.monthsPresent.filter(Boolean).length, 0);
+const dataReadinessPct = totalMonthSlots > 0 ? Math.round((coveredMonthSlots / totalMonthSlots) * 100) : 0;
+
+const updatedDate = Object.values(genMap).reduce((acc: string, m) => {
+  Object.values(m.years).forEach((y) => {
+    if (y.updated && y.updated > acc) acc = y.updated;
+  });
+  return acc;
+}, '');
 
 // ── Key Insights derived from YoY data ──────────────────────────
 const insightImproved: { label: string; yoyPct: number; monthsCount: number; color: string }[] = [];
@@ -103,15 +117,12 @@ if (riskCandidates.length > 0) {
   insightHighestRisk.push(maxRisk);
 }
 
-// ── Category score mini-pills for hero ──────────────────────────
-const catScoreMini = dashboardKpi.kpis
-  .filter((k) => k.categoryId)
-  .map((kpi) => ({
-    code: kpi.categoryId!,
-    label: kpi.label,
-    score: kpi.value ?? 0,
-    trend: kpi.trend as 'up' | 'down' | 'stable' | undefined,
-  }));
+// ── Category framework chips for hero (indicator counts only, no invented scores) ──
+const categoryChips = categoryReadiness.map((c) => ({
+  code: c.code,
+  label: c.title,
+  indicatorCount: c.indicatorCount,
+}));
 
 const totalImproving = insightImproved.length;
 const totalAttention = insightAttention.length;
@@ -160,37 +171,32 @@ const partialCount = insightIncomplete.length;
                 <circle cx="75" cy="75" r="64" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="12"/>
                 <!-- Progress -->
                 <circle cx="75" cy="75" r="64" fill="none" stroke="url(#gaugeGrad)" stroke-width="12"
-                  stroke-dasharray="402.12" stroke-dashoffset={402.12 * (1 - dashboardKpi.overallScore / 100)}
+                  stroke-dasharray="402.12" stroke-dashoffset={402.12 * (1 - dataReadinessPct / 100)}
                   stroke-linecap="round" transform="rotate(-90 75 75)"
-                  style="transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1);"/>
+                  style={`--gauge-target-offset: ${402.12 * (1 - dataReadinessPct / 100)}; transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1);`}/>
               </svg>
               <!-- Score badge below gauge -->
               <span class="px-3 py-0.5 rounded-full bg-emerald-400/20 border border-emerald-400/20 text-[10px] font-bold text-emerald-300 tracking-wide whitespace-nowrap">
-                {dashboardKpi.overallScore >= 80 ? 'EXCELLENT' : dashboardKpi.overallScore >= 60 ? 'GOOD' : 'FAIR'}
+                {dataReadinessPct >= 80 ? 'EXCELLENT' : dataReadinessPct >= 60 ? 'GOOD' : 'FAIR'}
               </span>
             </div>
 
             <!-- ZONE 2: Score (center, flex-1) -->
             <div class="flex-1 flex flex-col items-center md:items-start min-w-0">
               <div class="flex items-baseline gap-1.5">
-                <span class="text-7xl md:text-8xl font-bold tracking-tight text-white leading-none">{dashboardKpi.overallScore}</span>
+                <span class="text-7xl md:text-8xl font-bold tracking-tight text-white leading-none">{dataReadinessPct}</span>
                 <span class="text-4xl md:text-5xl font-light text-primary-fixed/30">%</span>
               </div>
-              <p class="text-primary-fixed/50 text-[12px] mt-1 tracking-[0.15em] uppercase font-semibold">Overall Certification Score</p>
+              <p class="text-primary-fixed/50 text-[12px] mt-1 tracking-[0.15em] uppercase font-semibold">Data Readiness 2569</p>
 
-              <!-- Category Score Pills (max 2 rows) -->
+              <!-- Category Framework Pills (max 2 rows, indicator counts) -->
               <div class="flex flex-wrap gap-1.5 mt-4 max-h-[3.25rem] overflow-hidden">
-                {catScoreMini.map((cat) => {
-                  const trendIcon = cat.trend === 'up' ? '\u2191' : cat.trend === 'down' ? '\u2193' : '\u2192';
-                  const trendCls = cat.trend === 'up' ? 'text-emerald-300' : cat.trend === 'down' ? 'text-red-300' : 'text-primary-fixed/30';
-                  return (
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/8 text-primary-fixed/60 border border-white/5 transition-colors hover:bg-white/12 hover:text-primary-fixed/80">
-                      <span class="max-w-[60px] truncate">{cat.label}</span>
-                      <span class="text-primary-fixed/40">{cat.score}</span>
-                      <span class={trendCls}>{trendIcon}</span>
-                    </span>
-                  );
-                })}
+                {categoryChips.map((cat) => (
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/8 text-primary-fixed/60 border border-white/5 transition-colors hover:bg-white/12 hover:text-primary-fixed/80" title={`${cat.label} · ${cat.indicatorCount} indicators`}>
+                    <span class="max-w-[80px] truncate">{cat.label}</span>
+                    <span class="text-primary-fixed/40">{cat.indicatorCount}</span>
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -447,23 +453,37 @@ const partialCount = insightIncomplete.length;
       </section>
     )}
 
-    <!-- 5. Category Score Visualization -->
-    {catScores.length > 0 && (
-      <section class="mb-8">
-        <div class="mb-3">
-          <h2 class="text-lg font-bold text-on-surface tracking-tight mb-1">Green Office Category Scores</h2>
-          <p class="text-xs text-on-surface-variant">
-            {catScores.length} category scores from reference system · Average {Math.round(catScores.reduce((s, c) => s + c.score, 0) / catScores.length)}%
-          </p>
-        </div>
-      <CategoryScoreChart
-        title="Green Office Certification Category Scores"
-        description="Green Office certification scores by category from the reference system"
-        categories={catScores}
-        locale={locale}
-      />
-      </section>
-    )}
+    <!-- 5. Green Office Category Framework (readiness; no invented assessment scores) -->
+    <section class="mb-8">
+      <div class="mb-3">
+        <h2 class="text-lg font-bold text-on-surface tracking-tight mb-1">Green Office Category Framework</h2>
+        <p class="text-xs text-on-surface-variant">
+          7 canonical Green Office categories (24 issues · 65 indicators) · No official 2569 assessment scores yet
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {categoryReadiness.map((cat) => (
+          <a
+            href={cat.href}
+            class="group rounded-stitch-lg border border-outline-variant/20 bg-surface-container/60 p-4 transition-colors hover:border-primary/40 hover:bg-surface-container"
+          >
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-primary">
+                Category {cat.number}
+              </span>
+              <span class="text-[10px] font-semibold text-on-surface-variant">
+                {cat.indicatorCount} indicators
+              </span>
+            </div>
+            <h3 class="mt-1 text-sm font-bold text-on-surface leading-snug">{cat.title}</h3>
+            <p class="mt-1 text-[11px] leading-relaxed text-on-surface-variant line-clamp-2">{cat.summary}</p>
+            <p class="mt-2 text-[10px] font-medium text-amber-700">
+              Awaiting official assessment
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
 
     <!-- 6. Data Readiness Matrix -->
     <section class="mb-8">

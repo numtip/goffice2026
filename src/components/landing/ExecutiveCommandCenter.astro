@@ -1,6 +1,7 @@
 ---
 import { getLocalizedPath } from '../../i18n/utils';
 import { dashboards } from '../../data/dashboard-config';
+import { hasDisplayableTotal } from '../../utils/data-status';
 import type { MultiYearMetric } from '../../utils/multi-year-schema';
 import type { HomeExecutiveStrings, HomeHeroStrings } from '../../i18n/dictionary';
 
@@ -70,14 +71,15 @@ const metricDisplays: MetricDisplay[] = dashboards.map((d) => {
   const metric = genMap[d.id];
   const current = metric?.years[metric.currentYear.toString()];
   const monthCount = current?.months.length ?? 0;
-  const displayValue = current
-    ? Intl.NumberFormat('en', { maximumFractionDigits: 1 }).format(current.total)
+  const hasData = hasDisplayableTotal(current);
+  const displayValue = hasData
+    ? Intl.NumberFormat('en', { maximumFractionDigits: 1 }).format(current!.total)
     : t.data_pending;
   const displayUnit = metric?.unit ?? d.kpiUnit ?? '';
-  const status = current
-    ? t.months_format.replace('{year}', String(metric.currentYear)).replace('{months}', String(monthCount))
+  const status = hasData
+    ? t.months_format.replace('{year}', String(metric!.currentYear)).replace('{months}', String(monthCount))
     : t.data_pending;
-  const barWidth = `${Math.min(95, Math.max(20, Math.round((monthCount / 12) * 100)))}%`;
+  const barWidth = hasData ? `${Math.min(95, Math.max(20, Math.round((monthCount / 12) * 100)))}%` : '8%';
   const barColor = d.id === 'water' || d.id === 'paper' || d.id === 'ghg' ? 'bg-primary-fixed' : 'bg-secondary-fixed';
 
   return {

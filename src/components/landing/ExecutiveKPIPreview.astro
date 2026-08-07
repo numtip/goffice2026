@@ -5,24 +5,36 @@ import type { HomeExecutiveKpiStrings } from '../../i18n/dictionary';
 import { resourceIconMap, resourceAccentMap } from '../../utils/wow2-images';
 import { resolveDisplayStatus, shouldShowYoy } from '../../utils/data-status';
 import { dashboards, dashTitle } from '../../data/dashboard-config';
+import criteriaCategories from '../../data/criteria/categories.json';
+import criteriaIndicators from '../../data/criteria/indicators.json';
 import type { MultiYearMetric } from '../../utils/multi-year-schema';
 
 interface Props {
   locale: 'th' | 'en';
   t: HomeExecutiveKpiStrings;
-  overallScore: number;
-  categoryAvg: number;
   evidenceAvailable: number;
   evidenceTotal: number;
   genMap: Record<string, MultiYearMetric>;
 }
 
-const { locale, t, overallScore, categoryAvg, evidenceAvailable, evidenceTotal, genMap } = Astro.props;
+const { locale, t, evidenceAvailable, evidenceTotal, genMap } = Astro.props;
 
 const fmtCompact = (v: number) =>
   Intl.NumberFormat(locale === 'th' ? 'th' : 'en', { notation: 'compact', maximumFractionDigits: 1 }).format(v);
 
 const resourceIds = ['energy', 'water', 'fuel', 'paper', 'waste', 'ghg'] as const;
+
+// Real readiness stats derived from canonical/generated data (no invented scores).
+const totalMonthSlots = resourceIds.length * 12;
+const coveredMonthSlots = resourceIds.reduce((sum, id) => {
+  const m = genMap[id] as MultiYearMetric | undefined;
+  const cy = m ? m.years[m.currentYear.toString()] : undefined;
+  return sum + (cy ? cy.months.length : 0);
+}, 0);
+const dataReadinessPct = totalMonthSlots > 0 ? Math.round((coveredMonthSlots / totalMonthSlots) * 100) : 0;
+const categoryCount = criteriaCategories.categories.length;
+const issueCount = new Set(criteriaIndicators.indicators.map((i) => i.issueCode)).size;
+const indicatorTotal = criteriaIndicators.indicators.length;
 
 const resourceCards = resourceIds.map((id) => {
   const d = dashboards.find((dd) => dd.id === id)!;
@@ -78,27 +90,33 @@ const resourceCards = resourceIds.map((id) => {
 
     <!-- Summary stat cards -->
     <div class="mx-auto mb-12 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
-      <!-- Overall Environmental Score -->
+      <!-- Data Readiness (2569 month coverage, derived from generated metrics) -->
       <div class="flex flex-col items-center rounded-2xl border border-emerald-200/60 bg-gradient-to-b from-emerald-50/50 to-white p-6 text-center shadow-sm">
         <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">
           {t.score_environmental}
         </span>
         <span class="text-4xl font-bold tracking-tight text-emerald-700">
-          {overallScore}<span class="text-xl text-emerald-500">%</span>
+          {dataReadinessPct}<span class="text-xl text-emerald-500">%</span>
+        </span>
+        <span class="mt-1 text-xs text-slate-700">
+          {locale === 'th' ? 'เดือนที่มีข้อมูล ปี 2569' : 'months with data · 2569'}
         </span>
       </div>
 
-      <!-- Category Readiness -->
+      <!-- Category Framework (canonical taxonomy, no assessment scores) -->
       <div class="flex flex-col items-center rounded-2xl border border-sky-200/60 bg-gradient-to-b from-sky-50/50 to-white p-6 text-center shadow-sm">
         <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">
           {t.score_categories}
         </span>
         <span class="text-4xl font-bold tracking-tight text-sky-700">
-          {Math.round(categoryAvg)}<span class="text-xl text-sky-500">%</span>
+          {categoryCount}<span class="text-xl text-sky-500">{locale === 'th' ? ' หมวด' : ' categories'}</span>
+        </span>
+        <span class="mt-1 text-xs text-slate-700">
+          {issueCount} {locale === 'th' ? 'ประเด็น' : 'issues'} · {indicatorTotal} {locale === 'th' ? 'ตัวชี้วัด' : 'indicators'}
         </span>
       </div>
 
-      <!-- Evidence Readiness -->
+      <!-- Evidence Readiness (from evidence index) -->
       <div class="flex flex-col items-center rounded-2xl border border-violet-200/60 bg-gradient-to-b from-violet-50/50 to-white p-6 text-center shadow-sm">
         <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">
           {t.score_evidence}

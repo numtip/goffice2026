@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/global.css';
-import dashboardKpi from '../../data/dashboard-kpi.json';
 import evidenceIndex from '../../data/evidence-index.json';
 import { getDictionary } from '../../i18n/dictionary';
 import type { MultiYearMetric } from '../../utils/multi-year-schema';
@@ -44,11 +43,6 @@ const genMap: Record<string, MultiYearMetric> = {
   waste: recyclingRateGen as MultiYearMetric,
   ghg: ghgGen as MultiYearMetric,
 };
-
-const kpiScores = dashboardKpi.kpis.filter((k) => k.value != null && k.categoryId && k.unit === '%');
-const categoryAvg = kpiScores.length > 0
-  ? kpiScores.reduce((sum, k) => sum + (k.value ?? 0), 0) / kpiScores.length
-  : 0;
 ---
 
 
@@ -58,8 +52,6 @@ const categoryAvg = kpiScores.length > 0
     <ExecutiveKPIPreview
       locale={locale}
       t={home.executiveKpi}
-      overallScore={dashboardKpi.overallScore}
-      categoryAvg={categoryAvg}
       evidenceAvailable={availableItems}
       evidenceTotal={evidenceIndex.items.length}
       genMap={genMap}
