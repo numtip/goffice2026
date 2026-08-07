@@ -24,6 +24,7 @@
     "data:generate": "node scripts/data-pipeline.mjs generate",
     "data:check": "node scripts/data-pipeline.mjs check",
     "data:build": "node scripts/data-pipeline.mjs build",
+    "data:sync": "node scripts/sync-all.mjs",
     "action-plan:generate": "node scripts/generate-action-plan-2569.mjs",
     "action-plan:validate": "node scripts/validate-action-plan-2569.mjs",
     "bootstrap:local-auth": "node scripts/bootstrap-local-auth.mjs",

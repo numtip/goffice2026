@@ -38,6 +38,9 @@ npm run build
 
 See also: [BUILD_VERIFICATION.md](BUILD_VERIFICATION.md), [RUNTIME_QA.md](RUNTIME_QA.md).
 
+**Dashboard data sync** (approved OneDrive workbooks → generated JSON): `npm run data:sync`
+— see [DATA_SYNC_RUNBOOK.md](DATA_SYNC_RUNBOOK.md).
+
 ---
 
 ## Production Release Build (VPS)

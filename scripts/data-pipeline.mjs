@@ -838,10 +838,18 @@ function main() {
     case 'build':
     default: {
       console.log('📥 1/4 — Importing...\n');
-      importAll(verbose);
+      const importResult = importAll(verbose);
+      if (!importResult.success) {
+        console.error('❌ Import failed — aborting before validation/generation. Generated data is NOT publishable.');
+        process.exit(1);
+      }
 
       console.log('\n🔍 2/4 — Validating...\n');
       const vResult = validateGenerated(verbose);
+      if (!vResult.success) {
+        console.error('❌ Validation failed — aborting before generation. Generated data is NOT publishable.');
+        process.exit(1);
+      }
 
       console.log('\n📦 3/4 — Generating outputs...\n');
       generateOutputs(verbose);
