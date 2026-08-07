@@ -1,0 +1,191 @@
+/**
+ * test-chart-option.mjs
+ * =====================
+ * Contract tests for src/utils/chart-option.ts — the server-side builders
+ * that turn canonical generated JSON into ECharts options.
+ *
+ * Enforced rules:
+ *   - Missing 2569 months are ALWAYS null — never converted to 0.
+ *   - Values originate from generated JSON only (no hardcoded KPI numbers).
+ *   - Units + year labels propagate from the metric schema.
+ *   - Options are JSON-serializable (no functions), so they can be embedded
+ *     as data attributes and hydrated client-side.
+ *
+ * Run with: node --test scripts/test-chart-option.mjs  (Node ≥ 24 type stripping)
+ */
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import {
+  buildMonthlySeries,
+  buildMonthlyOption,
+  buildNormalizedSeries,
+  buildNormalizedOption,
+  buildCategoryScoreOption,
+  categoryStatusTexts,
+  rollingAverage,
+  monthLabel,
+} from '../src/utils/chart-option.ts';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const GENERATED_DIR = join(__dirname, '..', 'src', 'data', 'generated');
+
+function readMetric(name) {
+  return JSON.parse(readFileSync(join(GENERATED_DIR, `${name}.json`), 'utf-8'));
+}
+
+describe('buildMonthlySeries — missing months are null, never zero', () => {
+  it('energy 2569: 7 populated months + 5 nulls; baseline 12 values', () => {
+    const metric = readMetric('energy');
+    const series = buildMonthlySeries(metric, 'en');
+    assert.equal(series.labels.length, 12);
+    assert.equal(series.baseline.length, 12);
+    assert.equal(series.baseline.filter((v) => v !== null).length, 12, 'baseline 2568 is complete');
+    assert.equal(series.current.length, 12);
+    assert.equal(series.current.filter((v) => v !== null).length, 7, 'energy 2569 has Jan–Jul');
+    assert.equal(series.current.filter((v) => v === null).length, 5, 'Aug–Dec must be null, NOT 0');
+    assert.equal(series.current.includes(0), false, 'missing months must never be 0');
+    assert.equal(series.unit, 'kWh');
+    assert.equal(series.baselineYear, 2568);
+    assert.equal(series.currentYear, 2569);
+  });
+
+  it('ghg 2569 (pending): all 12 current values are null, never 0', () => {
+    const metric = readMetric('ghg');
+    const series = buildMonthlySeries(metric, 'en');
+    assert.equal(series.baseline.filter((v) => v !== null).length, 12);
+    assert.equal(series.current.filter((v) => v === null).length, 12);
+    assert.equal(series.current.filter((v) => v === 0).length, 0);
+    assert.equal(series.currentUnverified, true, 'pending year is unverified');
+    assert.equal(series.unit, 'tCO₂e');
+  });
+
+  it('recycling_rate (percentage metric) keeps baseline values as-is', () => {
+    const metric = readMetric('recycling_rate');
+    const series = buildMonthlySeries(metric, 'en');
+    assert.equal(series.baseline[0], 20.83, 'first baseline month preserved verbatim');
+    assert.equal(series.current.every((v) => v === null), true);
+    assert.equal(series.unit, '%');
+  });
+
+  it('TH month labels are Thai abbreviations', () => {
+    const metric = readMetric('energy');
+    const series = buildMonthlySeries(metric, 'th');
+    assert.equal(series.labels[0], 'ม.ค.');
+    assert.equal(series.labels[11], 'ธ.ค.');
+  });
+
+  it('monthLabel helper is 1-indexed', () => {
+    assert.equal(monthLabel(1, 'en'), 'Jan');
+    assert.equal(monthLabel(12, 'en'), 'Dec');
+    assert.equal(monthLabel(3, 'th'), 'มี.ค.');
+  });
+});
+
+describe('rollingAverage — nulls preserved', () => {
+  it('computes 3-month windows only from consecutive valid values', () => {
+    const out = rollingAverage([10, 20, 30, null, 50, 60, 70], 3);
+    assert.deepEqual(out, [null, null, 20, null, null, null, 60]);
+  });
+  it('returns all nulls for a fully missing series', () => {
+    const out = rollingAverage([null, null, null, null], 3);
+    assert.deepEqual(out, [null, null, null, null]);
+  });
+});
+
+describe('buildMonthlyOption — serializable + data contract', () => {
+  it('energy option round-trips through JSON with nulls intact', () => {
+    const metric = readMetric('energy');
+    const series = buildMonthlySeries(metric, 'en');
+    const option = buildMonthlyOption({
+      series,
+      theme: { baseline: '#78350f', current: '#b45309', target: '#d97706' },
+      locale: 'en',
+      names: { baseline: '2568 Baseline', current: '2569 Current', target: '2569 Target' },
+      ariaDescription: 'Monthly comparison',
+    });
+    const roundTripped = JSON.parse(JSON.stringify(option));
+    assert.equal(roundTripped.series.length >= 2, true);
+    const barSeries = roundTripped.series.filter((s) => s.type === 'bar');
+    const currentBar = barSeries.find((s) => s.name === '2569 Current');
+    assert.ok(currentBar, 'current series present');
+    assert.equal(currentBar.data.length, 12);
+    assert.equal(currentBar.data.filter((v) => v === null).length, 5);
+    assert.equal(currentBar.data.includes(0), false);
+    assert.equal(roundTripped.yAxis.name, 'kWh', 'unit propagated to axis');
+    assert.equal(roundTripped.aria.enabled, true);
+  });
+
+  it('target series is omitted when all target values are null', () => {
+    const metric = readMetric('ghg'); // target.months is empty
+    const series = buildMonthlySeries(metric, 'en', { showTarget: true });
+    const option = buildMonthlyOption({
+      series,
+      theme: { baseline: '#134e4a', current: '#0f766e', target: '#d97706' },
+      locale: 'en',
+      names: { baseline: '2568', current: '2569' },
+      ariaDescription: 'x',
+    });
+    const targets = option.series.filter((s) => s.name === 'Target');
+    assert.equal(targets.length, 0);
+  });
+
+  it('rolling-average line included for partially populated current data', () => {
+    const metric = readMetric('energy');
+    const series = buildMonthlySeries(metric, 'en');
+    const option = buildMonthlyOption({
+      series,
+      theme: { baseline: '#78350f', current: '#b45309', target: '#d97706' },
+      locale: 'en',
+      names: { baseline: '2568', current: '2569' },
+      ariaDescription: 'x',
+    });
+    const lineSeries = option.series.filter((s) => s.type === 'line');
+    assert.equal(lineSeries.length, 1, '3-mo rolling avg line present');
+  });
+});
+
+describe('buildNormalizedSeries/Option — baseline index = 100', () => {
+  const resources = [
+    { id: 'energy', label: 'Energy', color: '#059669', baselineTotal: 400, currentTotal: 300 },
+    { id: 'water', label: 'Water', color: '#0284c7', baselineTotal: 200, currentTotal: 250 },
+    { id: 'ghg', label: 'GHG', color: '#dc2626', baselineTotal: 0, currentTotal: 0 },
+  ];
+
+  it('computes index = round(current / baseline × 100); zero baseline → 0', () => {
+    const s = buildNormalizedSeries(resources);
+    assert.deepEqual(s.values, [75, 125, 0]);
+    assert.deepEqual(s.labels, ['Energy', 'Water', 'GHG']);
+  });
+
+  it('option is JSON-serializable with baseline markLine at x=100', () => {
+    const s = buildNormalizedSeries(resources);
+    const option = buildNormalizedOption({ series: s, locale: 'en', baselineLabel: 'Baseline 2568', currentLabel: 'Current 2569', ariaDescription: 'x' });
+    const rt = JSON.parse(JSON.stringify(option));
+    const markLine = rt.series[0].markLine;
+    assert.equal(markLine.data[0].xAxis, 100);
+    assert.equal(markLine.label.formatter, 'Baseline 2568 = 100');
+  });
+});
+
+describe('buildCategoryScoreOption — labels, statuses, serializability', () => {
+  const categories = [
+    { code: 'cat1', label: 'Category One', score: 85, trend: 'up', href: '/categories/cat1/' },
+    { code: 'cat2', label: 'Category Two', score: 60, trend: 'down', href: '/categories/cat2/', statusText: 'Needs attention' },
+  ];
+
+  it('appends trend arrows to category labels and keeps status text separate', () => {
+    const option = buildCategoryScoreOption({ categories, locale: 'en', ariaDescription: 'x' });
+    const rt = JSON.parse(JSON.stringify(option));
+    assert.deepEqual(rt.yAxis.data, ['Category One \u2191', 'Category Two \u2193']);
+    assert.deepEqual(categoryStatusTexts(categories), ['', 'Needs attention']);
+  });
+
+  it('maxScore defaults to at least 100', () => {
+    const option = buildCategoryScoreOption({ categories, locale: 'en', ariaDescription: 'x' });
+    assert.equal(option.xAxis.max >= 100, true);
+  });
+});

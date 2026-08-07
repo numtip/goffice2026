@@ -1,0 +1,120 @@
+---
+/**
+ * EChart.astro
+ * ============
+ * Reusable Astro wrapper for Apache ECharts 6 dashboards.
+ *
+ * - Server-side: builds a serializable ECharts option + tooltip metadata,
+ *   embeds them as data attributes, and renders an accessible HTML table
+ *   fallback (no JS required to read the data).
+ * - Client-side: one shared bundle (`../scripts/echarts-init`) scans all
+ *   [data-echart] containers, applies the locale-aware tooltip formatter and
+ *   prefers-reduced-motion policy, and keeps charts responsive via
+ *   ResizeObserver.
+ *
+ * No metric-specific logic lives here — pass options built from
+ * src/utils/chart-option.ts (or any JSON option).
+ */
+
+export interface TableColumn {
+  label: string;
+  align?: 'left' | 'right';
+}
+
+/** Cell value — plain text/number, or a linked cell for navigation. */
+export type TableCell = string | number | { text: string; href?: string };
+
+interface Props {
+  /** ECharts option (JSON-serializable, no functions). */
+  option: Record<string, unknown>;
+  /** Locale + unit metadata used by the client tooltip formatter. */
+  tooltipMeta?: {
+    unit?: string;
+    locale?: 'th' | 'en';
+    emptyLabel?: string;
+    statusTexts?: string[];
+    compactAxis?: boolean;
+  };
+  /** Accessible name for the chart region. */
+  ariaLabel: string;
+  /** Height in px (default 340). Responsive width via ResizeObserver. */
+  height?: number;
+  /** Accessible table fallback — rendered inside a <details>. */
+  columns?: TableColumn[];
+  rows?: TableCell[][];
+  tableSummary?: string;
+  /** Hide the <details> table fallback (e.g. when a tabbed table already exists). */
+  noTable?: boolean;
+  /** Extra class names for the chart container. */
+  class?: string;
+}
+
+const {
+  option,
+  tooltipMeta = {},
+  ariaLabel,
+  height = 340,
+  columns = [],
+  rows = [],
+  tableSummary,
+  noTable = false,
+} = Astro.props;
+
+const optionJson = JSON.stringify(option);
+const tooltipJson = JSON.stringify(tooltipMeta);
+const locale = tooltipMeta.locale ?? 'th';
+const th = locale === 'th';
+---
+
+<div class="relative w-full">
+  <div
+    data-echart
+    data-option={optionJson}
+    data-tooltip={tooltipJson}
+    style={`width:100%;height:${height}px;`}
+    role="img"
+    aria-label={ariaLabel}
+  ></div>
+
+  {!noTable && columns.length > 0 && rows.length > 0 && (
+    <details class="mt-3">
+      <summary class="text-xs text-outline cursor-pointer hover:text-primary select-none">
+        {th ? 'ตารางข้อมูล' : 'Data table'}
+      </summary>
+      {tableSummary && <p class="text-[10px] text-on-surface-variant mt-2 mb-1">{tableSummary}</p>}
+      <div class="mt-2 overflow-x-auto">
+        <table class="w-full text-xs text-left border-collapse">
+          <thead class="border-b border-outline-variant/30">
+            <tr>
+              {columns.map((col) => (
+                <th scope="col" class={`py-1.5 px-2 font-semibold text-on-surface ${col.align === 'right' ? 'text-right' : ''}`}>{col.label}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr class="border-b border-outline-variant/10 hover:bg-surface-container/50">
+                {row.map((cell, ci) => (
+                  <td class={`py-1.5 px-2 text-on-surface-variant ${columns[ci]?.align === 'right' ? 'text-right tabular-nums' : ''}`}>
+                    {typeof cell === 'object' && cell !== null && 'href' in cell && cell.href ? (
+                      <a href={cell.href} class="text-primary hover:underline">{cell.text}</a>
+                    ) : typeof cell === 'object' && cell !== null ? (
+                      cell.text
+                    ) : (
+                      cell
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </details>
+  )}
+</div>
+
+<script>
+  import { initAllCharts } from '../../scripts/echarts-init';
+  initAllCharts();
+</script>
