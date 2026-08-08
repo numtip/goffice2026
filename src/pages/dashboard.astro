@@ -12,6 +12,7 @@ import { buildPhaseAVM } from '../utils/dashboard-phase-a-vm';
 
 import CommandHero from '../components/dashboard/CommandHero.astro';
 import ResourcePulseGrid from '../components/dashboard/ResourcePulseGrid.astro';
+import PerformanceExplorer from '../components/dashboard/PerformanceExplorer.astro';
 import NormalizedTrendChart from '../components/dashboard/NormalizedTrendChart.astro';
 import DataReadinessMatrix from '../components/dashboard/DataReadinessMatrix.astro';
 import JourneyLinks from '../components/ui/JourneyLinks.astro';
@@ -56,9 +57,26 @@ dashboards.forEach((d) => {
   }
 });
 
+// ── Performance Explorer resources (genuine FY-current monthly values) ──────
+const explorerResources: { id: string; label: string; color: string; months: (number | null)[]; unit: string }[] = [];
+dashboards.forEach((d) => {
+  const m = genMap[d.id];
+  if (!m) return;
+  const cy = m.years[m.currentYear.toString()];
+  if (!cy) return;
+  const monthMap = new Map((cy.months ?? []).map((mo) => [mo.month, mo.value]));
+  const months: (number | null)[] = Array.from({ length: 12 }, (_, i) => monthMap.has(i + 1) ? (monthMap.get(i + 1) ?? null) : null);
+  explorerResources.push({
+    id: d.id,
+    label: resourceLabels[d.id] ?? dashTitle(d, locale),
+    color: d.color,
+    months,
+    unit: m.unit,
+  });
+});
+
 // ── Green Office Category Framework (canonical 7 categories; no invented assessment scores) ──
-const indicatorCounts: Record<string, number> = {};
-criteriaIndicators.indicators.forEach((ind) => {
+const indicatorCounts: Record<string, number> = {};criteriaIndicators.indicators.forEach((ind) => {
   const key = ind.categoryCode ?? ind.categoryId;
   if (key) indicatorCounts[key] = (indicatorCounts[key] ?? 0) + 1;
 });
@@ -136,6 +154,21 @@ if (riskCandidates.length > 0) {
 
     <!-- 2. Resource Pulse (GO-DASH-V2-C) -->
     <ResourcePulseGrid locale={locale} vm={vm} />
+
+    <!-- 2b. Performance Explorer (GO-DASH-V2-B-A) -->
+    {explorerResources.length > 0 && (
+      <section class="dashboard-section mb-8">
+        <PerformanceExplorer
+          title={th ? 'สำรวจแนวโน้มรายเดือน (ทุกทรัพยากร)' : 'Monthly Performance Explorer (All Resources)'}
+          description={th
+            ? 'เปรียบเทียบการใช้ทรัพยากรจริงรายเดือน ปี 2569 ของทุกด้านในกราฟเดียว ช่องว่าง = เดือนที่ยังไม่มีข้อมูล (ไม่นับเป็น 0)'
+            : 'Compare genuine monthly consumption across all resources for 2569 on one chart. Gaps = months with no data yet (never treated as 0).'}
+          resources={explorerResources}
+          yearLabel={th ? 'ปี 2569' : 'FY2569'}
+          locale={locale}
+        />
+      </section>
+    )}
 
     <!-- 3. Key Insights Panel -->
     <section class="dashboard-section mb-8">

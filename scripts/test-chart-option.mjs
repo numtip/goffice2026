@@ -26,6 +26,7 @@ import {
   buildNormalizedOption,
   buildCategoryScoreOption,
   buildCoverageRadialOption,
+  buildExplorerOption,
   categoryStatusTexts,
   rollingAverage,
   monthLabel,
@@ -213,5 +214,50 @@ describe('buildCoverageRadialOption — coverage donut, never a score', () => {
   it('keeps remaining non-negative when coverage is complete', () => {
     const option = buildCoverageRadialOption({ covered: 72, total: 72, percent: 100, locale: 'en' });
     assert.equal(option.series[0].data[1].value, 0);
+  });
+});
+
+describe('buildExplorerOption — multi-metric monthly explorer (GO-DASH-V2-B-A)', () => {
+  const resources = [
+    { id: 'energy', label: 'Energy', color: '#006c49', months: [100, 110, null, 130, null, null, null, null, null, null, null, null], unit: 'kWh' },
+    { id: 'water', label: 'Water', color: '#0ea5e9', months: [50, null, 60, null, null, null, null, null, null, null, null, null], unit: 'm³' },
+  ];
+
+  it('builds one line series per resource with 12 month slots', () => {
+    const option = buildExplorerOption({ resources, locale: 'en', yearLabel: 'FY2569', ariaDescription: 'test' });
+    assert.equal(option.series.length, 2, 'one series per resource');
+    assert.equal(option.series[0].type, 'line');
+    assert.equal(option.series[0].data.length, 12, '12 month slots');
+    assert.equal(option.series[0].name, 'Energy');
+    assert.equal(option.series[1].name, 'Water');
+  });
+
+  it('preserves nulls for missing months — never converts to 0', () => {
+    const option = buildExplorerOption({ resources, locale: 'en', yearLabel: 'FY2569', ariaDescription: 'test' });
+    const energy = option.series[0].data;
+    assert.equal(energy[0], 100);
+    assert.equal(energy[2], null, 'missing month stays null');
+    assert.equal(energy.includes(0), false, 'no fabricated zeros');
+  });
+
+  it('uses localized month labels on the x-axis', () => {
+    const th = buildExplorerOption({ resources, locale: 'th', yearLabel: 'ปี 2569', ariaDescription: 'test' });
+    assert.equal(th.xAxis.data[0], 'ม.ค.');
+    assert.equal(th.xAxis.data[11], 'ธ.ค.');
+    const en = buildExplorerOption({ resources, locale: 'en', yearLabel: 'FY2569', ariaDescription: 'test' });
+    assert.equal(en.xAxis.data[0], 'Jan');
+    assert.equal(en.xAxis.data[11], 'Dec');
+  });
+
+  it('is JSON-serializable (no functions) and sets aria description', () => {
+    const option = buildExplorerOption({ resources, locale: 'en', yearLabel: 'FY2569', ariaDescription: 'Monthly explorer' });
+    assert.doesNotThrow(() => JSON.stringify(option));
+    assert.equal(option.aria.enabled, true);
+    assert.equal(option.aria.label.description, 'Monthly explorer');
+  });
+
+  it('keeps connectNulls false so gaps are not bridged', () => {
+    const option = buildExplorerOption({ resources, locale: 'en', yearLabel: 'FY2569', ariaDescription: 'test' });
+    assert.equal(option.series[0].connectNulls, false);
   });
 });

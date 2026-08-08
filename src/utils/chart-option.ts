@@ -479,3 +479,85 @@ export function buildCoverageRadialOption(input: CoverageRadialInput): Record<st
     ],
   };
 }
+
+// ── Performance Explorer (GO-DASH-V2-B-A) ────────────────────────────────────
+// Additive multi-metric monthly explorer. Each resource contributes a line
+// series of its genuine FY-current monthly values (nulls preserved — never 0).
+// Missing months stay null so the line simply gaps; the accessible table
+// fallback carries the raw values. No invented scores — raw consumption only.
+
+export interface ExplorerResource {
+  id: string;
+  label: string;
+  color: string;
+  /** Genuine monthly values (index 0..11 = Jan..Dec); null = missing month. */
+  months: (number | null)[];
+  unit: string;
+}
+
+export interface ExplorerOptionInput {
+  resources: ExplorerResource[];
+  locale: 'th' | 'en';
+  /** e.g. '2569' or 'FY2569' — shown in the legend/axis title. */
+  yearLabel: string;
+  ariaDescription: string;
+}
+
+/**
+ * Multi-line option comparing genuine monthly consumption across resources.
+ * Values are raw (not normalized) so each resource keeps its own unit; the
+ * tooltip shows the resource label + month + value + unit.
+ */
+export function buildExplorerOption(input: ExplorerOptionInput): Record<string, unknown> {
+  const { resources, locale, yearLabel, ariaDescription } = input;
+  const monthNames = MONTH_LABELS[locale].slice(1); // Jan..Dec (12)
+
+  const series = resources.map((r) => ({
+    name: r.label,
+    type: 'line' as const,
+    data: r.months,
+    smooth: false,
+    connectNulls: false,
+    symbol: 'circle',
+    symbolSize: 5,
+    lineStyle: { width: 2, color: r.color },
+    itemStyle: { color: r.color },
+    emphasis: { focus: 'series' as const },
+  }));
+
+  return {
+    grid: { left: 16, right: 24, top: 24, bottom: 16, containLabel: true },
+    legend: {
+      type: 'scroll',
+      top: 0,
+      left: 'center',
+      textStyle: { fontSize: 10 },
+      itemWidth: 14,
+      itemHeight: 8,
+    },
+    tooltip: {
+      trigger: 'axis',
+      confine: true,
+      axisPointer: { type: 'line' },
+    },
+    xAxis: {
+      type: 'category',
+      data: monthNames,
+      boundaryGap: false,
+      axisLabel: { fontSize: 10 },
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: '#d1d5db' } },
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: { fontSize: 10 },
+      splitLine: { lineStyle: { color: '#e5e7eb', width: 0.5 } },
+    },
+    aria: {
+      enabled: true,
+      decal: { show: false },
+      label: { description: ariaDescription },
+    },
+    series,
+  };
+}

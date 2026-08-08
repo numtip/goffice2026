@@ -1,0 +1,77 @@
+---
+/**
+ * PerformanceExplorer.astro (GO-DASH-V2-B-A)
+ * ==========================================
+ * Multi-metric monthly explorer. Compares genuine FY-current monthly
+ * consumption across all resources on one ECharts line chart, with an
+ * accessible HTML table fallback.
+ *
+ * Data contract:
+ *   - Values come from generated JSON only (via the Phase-A VM / metric map).
+ *   - Missing months are `null` — never converted to 0.
+ *   - Raw consumption values (not normalized) — each resource keeps its unit.
+ */
+import EChart from './EChart.astro';
+import { buildExplorerOption } from '../../utils/chart-option';
+
+interface Props {
+  title: string;
+  description?: string;
+  resources: {
+    id: string;
+    label: string;
+    color: string;
+    months: (number | null)[];
+    unit: string;
+  }[];
+  yearLabel: string;
+  locale?: 'th' | 'en';
+}
+
+const {
+  title,
+  description,
+  resources,
+  yearLabel,
+  locale = 'th',
+} = Astro.props;
+
+const th = locale === 'th';
+
+const option = buildExplorerOption({
+  resources,
+  locale,
+  yearLabel,
+  ariaDescription: description ?? `${title}. ${yearLabel}.`,
+});
+
+// Accessible table fallback: rows = resources, columns = months.
+const monthAbbr = th
+  ? ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.']
+  : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+const columns = [
+  { label: th ? 'ทรัพยากร' : 'Resource' },
+  ...monthAbbr.map((m) => ({ label: m, align: 'right' as const })),
+];
+
+const rows = resources.map((r) => [
+  r.label,
+  ...r.months.map((v) => (v === null ? '—' : String(v))),
+]);
+---
+
+<div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm mb-6">
+  <h3 class="text-sm font-semibold text-on-surface mb-1">{title}</h3>
+  {description && <p class="text-xs text-outline-variant mb-3">{description}</p>}
+
+  <EChart
+    option={option}
+    tooltipMeta={{ locale, unit: '', emptyLabel: th ? 'ไม่มีข้อมูล' : 'Missing' }}
+    ariaLabel={title}
+    height={Math.max(280, resources.length * 40 + 80)}
+    columns={columns}
+    rows={rows}
+    tableSummary={th ? `ตารางข้อมูลรายเดือน ${yearLabel} จำแนกตามทรัพยากร` : `Monthly data table ${yearLabel} by resource`}
+  />
+</div>
