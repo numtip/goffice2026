@@ -22,6 +22,7 @@ const echart = read('src/components/dashboard/EChart.astro');
 const pulseCard = read('src/components/dashboard/ResourcePulseCard.astro');
 const pulseGrid = read('src/components/dashboard/ResourcePulseGrid.astro');
 const explorer = read('src/components/dashboard/PerformanceExplorer.astro');
+const partialYoyExplorer = read('src/components/dashboard/PartialYoyExplorer.astro');
 const metricDash = read('src/components/dashboard/MetricDashboard.astro');
 const metricChart = read('src/components/dashboard/MetricChartCard.astro');
 const metricHero = read('src/components/dashboard/MetricHero.astro');
@@ -36,6 +37,7 @@ describe('B-C TH/EN structural parity — main dashboard', () => {
     'CommandHero',
     'ResourcePulseGrid',
     'PerformanceExplorer',
+    'PartialYoyExplorer',
     'NormalizedTrendChart',
     'DataReadinessMatrix',
     'JourneyLinks',
@@ -143,5 +145,37 @@ describe('B-C frozen FY2569 display contracts (regression guards)', () => {
   it('pulse card pending totals render via totalDisplay (never hardcode 0 unit)', () => {
     assert.match(pulseCard, /card\.totalDisplay/);
     assert.match(pulseCard, /showUnit = card\.total !== null/);
+  });
+});
+
+describe('Phase C — Partial YoY Explorer markers (additive)', () => {
+  it('TH and EN pages wire PartialYoyExplorer + buildExplorerVM', () => {
+    assert.match(thDash, /PartialYoyExplorer/);
+    assert.match(enDash, /PartialYoyExplorer/);
+    assert.match(thDash, /buildExplorerVM/);
+    assert.match(enDash, /buildExplorerVM/);
+    assert.match(thDash, /2c\. Partial YoY Explorer/);
+    assert.match(enDash, /2c\. Partial YoY Explorer/);
+  });
+
+  it('PartialYoyExplorer exposes partial-yoy markers, tablist keyboard, and data payload', () => {
+    assert.match(partialYoyExplorer, /data-partial-yoy/);
+    assert.match(partialYoyExplorer, /data-yoy-resources/);
+    assert.match(partialYoyExplorer, /partial-yoy-explorer/);
+    assert.match(partialYoyExplorer, /role="tablist"/);
+    assert.match(partialYoyExplorer, /ArrowRight/);
+    assert.match(partialYoyExplorer, /ArrowLeft/);
+    assert.match(partialYoyExplorer, /Home/);
+    assert.match(partialYoyExplorer, /End/);
+    assert.match(partialYoyExplorer, /focus-visible:ring-2/);
+    assert.match(partialYoyExplorer, /motion-reduce:transition-none/);
+    assert.match(partialYoyExplorer, /searchParams\.get\('resource'\)/);
+    assert.match(partialYoyExplorer, /buildPartialYoyOption/);
+  });
+
+  it('PartialYoyExplorer does not introduce horizontal-overflow utility class', () => {
+    assert.doesNotMatch(partialYoyExplorer, /horizontal-overflow/);
+    assert.doesNotMatch(thDash, /horizontal-overflow/);
+    assert.doesNotMatch(enDash, /horizontal-overflow/);
   });
 });

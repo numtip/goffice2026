@@ -1,0 +1,446 @@
+---
+/**
+ * PartialYoyExplorer.astro (GO-DASH-V2 Phase C)
+ * =============================================
+ * Section 2c — overlap YoY explorer with resource tabs.
+ *
+ * SSR renders the default resource (first non-pending). Client script swaps
+ * chart option / table / captions from a prebuilt JSON map (no full navigation).
+ * Missing months stay null / "—" — never coerced to 0.
+ */
+import EChart from './EChart.astro';
+import {
+  buildExplorerVM,
+  resolveOverlapCaption,
+  type ExplorerVM,
+} from '../../utils/dashboard-explorer-vm';
+import { buildPartialYoyOption } from '../../utils/chart-option';
+
+interface Props {
+  locale?: 'th' | 'en';
+  /** Optional prebuilt VM; built from locale when omitted. */
+  vm?: ExplorerVM;
+}
+
+const locale = Astro.props.locale ?? 'th';
+const vm = Astro.props.vm ?? buildExplorerVM(locale);
+const { copy, resources, defaultResourceId, drillRows } = vm;
+
+const defaultResource = resources.find((r) => r.id === defaultResourceId) ?? resources[0];
+const th = locale === 'th';
+
+function seriesLabels() {
+  return { baseline: copy.baselineLabel, current: copy.currentLabel };
+}
+
+function buildOptionFor(resourceId: string) {
+  const r = resources.find((x) => x.id === resourceId) ?? defaultResource;
+  const mutedBaseline = '#94a3b8';
+  return buildPartialYoyOption({
+    result: r.yoy,
+    locale,
+    label: seriesLabels(),
+    colors: { baseline: mutedBaseline, current: r.color },
+    ariaDescription: `${copy.sectionTitle}. ${r.label}. ${copy.baselineLabel} vs ${copy.currentLabel}.`,
+  });
+}
+
+function deltaDisplay(r: (typeof resources)[0]): string {
+  if (r.yoy.status === 'pending' || r.yoy.percent == null) return '—';
+  const sign = r.yoy.percent > 0 ? '+' : '';
+  return `${sign}${r.yoy.percent}%`;
+}
+
+function deltaTone(r: (typeof resources)[0]): string {
+  if (r.yoy.direction === 'up') return 'text-amber-700';
+  if (r.yoy.direction === 'down') return 'text-emerald-700';
+  if (r.yoy.direction === 'stable') return 'text-on-surface-variant';
+  return 'text-on-surface-variant';
+}
+
+/** Client payload map — options + rows + summary fields per resource. */
+const resourcePayload: Record<
+  string,
+  {
+    id: string;
+    label: string;
+    unit: string;
+    ctaHref: string;
+    status: string;
+    percentDisplay: string;
+    deltaTone: string;
+    overlapCaption: string;
+    pending: boolean;
+    option: Record<string, unknown>;
+    rows: string[][];
+    ariaLabel: string;
+  }
+> = {};
+
+for (const r of resources) {
+  resourcePayload[r.id] = {
+    id: r.id,
+    label: r.label,
+    unit: r.unit,
+    ctaHref: r.ctaHref,
+    status: r.yoy.status,
+    percentDisplay: deltaDisplay(r),
+    deltaTone: deltaTone(r),
+    overlapCaption: resolveOverlapCaption(r.yoy, copy, locale),
+    pending: r.yoy.status === 'pending',
+    option: buildOptionFor(r.id),
+    rows: drillRows[r.id] ?? [],
+    ariaLabel: `${r.label} — ${copy.sectionTitle}`,
+  };
+}
+
+const defaultPayload = resourcePayload[defaultResource.id];
+const defaultOption = defaultPayload.option;
+const defaultRows = defaultPayload.rows;
+const defaultCaption = defaultPayload.overlapCaption;
+const defaultPending = defaultPayload.pending;
+const defaultDelta = defaultPayload.percentDisplay;
+const defaultDeltaTone = defaultPayload.deltaTone;
+
+const tableHeaders = copy.tableHeaders;
+const uid = `pyoy-${locale}`;
+const chartHostId = `${uid}-chart`;
+const tablistId = `${uid}-tabs`;
+---
+
+<section
+  class="dashboard-section partial-yoy-explorer mb-8"
+  data-partial-yoy
+  data-default-resource={defaultResourceId}
+  data-yoy-resources={JSON.stringify(resourcePayload)}
+  aria-labelledby={`${uid}-title`}
+>
+  <div class="mb-4">
+    <h2 id={`${uid}-title`} class="text-lg font-bold text-on-surface tracking-tight">
+      {copy.sectionTitle}
+    </h2>
+    <p class="text-xs text-on-surface-variant mt-1 max-w-3xl">{copy.sectionDescription}</p>
+  </div>
+
+  <!-- Resource tablist -->
+  <div
+    id={tablistId}
+    class="flex flex-wrap gap-1.5 mb-4"
+    role="tablist"
+    aria-label={copy.resourceTablistLabel}
+  >
+    {resources.map((r) => {
+      const selected = r.id === defaultResourceId;
+      return (
+        <button
+          type="button"
+          role="tab"
+          id={`${uid}-tab-${r.id}`}
+          class:list={[
+            'partial-yoy-tab px-3 py-1.5 text-xs font-medium rounded-md border transition motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1',
+            selected
+              ? 'bg-white text-on-surface border-outline-variant/40 shadow-sm'
+              : 'bg-surface-container text-on-surface-variant border-transparent hover:border-outline-variant/30',
+          ]}
+          aria-selected={selected ? 'true' : 'false'}
+          aria-controls={`${uid}-panel`}
+          tabindex={selected ? 0 : -1}
+          data-resource={r.id}
+        >
+          <span class="inline-flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full shrink-0" style={`background-color:${r.color}`} aria-hidden="true"></span>
+            {r.label}
+          </span>
+        </button>
+      );
+    })}
+  </div>
+
+  <div
+    id={`${uid}-panel`}
+    role="tabpanel"
+    aria-labelledby={`${uid}-tab-${defaultResourceId}`}
+    class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm"
+    data-yoy-panel
+  >
+    <!-- Summary row -->
+    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
+      <div class="min-w-0">
+        <h3 class="text-sm font-semibold text-on-surface" data-yoy-resource-label>
+          {defaultResource.label}
+        </h3>
+        <p
+          class:list={['text-xs mt-0.5', defaultPending ? 'text-on-surface-variant' : 'text-on-surface-variant']}
+          data-yoy-caption
+          hidden={defaultPending || !defaultCaption}
+        >
+          {defaultCaption}
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3 shrink-0">
+        <div class="text-right" data-yoy-delta-wrap>
+          <p class="text-[10px] uppercase tracking-wide text-on-surface-variant">{copy.deltaLabel}</p>
+          <p class:list={['text-lg font-bold tabular-nums', defaultDeltaTone]} data-yoy-delta>
+            {defaultDelta}
+          </p>
+        </div>
+        <a
+          href={defaultResource.ctaHref}
+          class="text-xs font-medium text-primary underline hover:text-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
+          data-yoy-cta
+        >
+          {copy.viewFullDashboard}
+        </a>
+      </div>
+    </div>
+
+    <!-- Pending panel -->
+    <div
+      class="rounded-md border border-outline-variant/25 bg-surface-container/60 px-4 py-6 text-center"
+      data-yoy-pending
+      hidden={!defaultPending}
+    >
+      <p class="text-sm font-semibold text-on-surface">{copy.pendingTitle}</p>
+      <p class="text-xs text-on-surface-variant mt-1 max-w-md mx-auto">{copy.pendingBody}</p>
+      <p class="text-xs text-on-surface-variant mt-3" data-yoy-pending-note>{copy.pendingNote}</p>
+      <dl class="mt-4 grid grid-cols-2 gap-3 max-w-xs mx-auto text-xs">
+        <div>
+          <dt class="text-on-surface-variant">{copy.baselineLabel}</dt>
+          <dd class="font-semibold text-on-surface tabular-nums">—</dd>
+        </div>
+        <div>
+          <dt class="text-on-surface-variant">{copy.currentLabel}</dt>
+          <dd class="font-semibold text-on-surface tabular-nums">—</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Chart (hidden when pending) -->
+    <div data-yoy-chart-wrap hidden={defaultPending}>
+      <div id={chartHostId}>
+        <EChart
+          option={defaultOption}
+          tooltipMeta={{
+            locale,
+            unit: defaultResource.unit,
+            emptyLabel: th ? 'ไม่มีข้อมูล' : 'Missing',
+            compactAxis: true,
+          }}
+          ariaLabel={`${defaultResource.label} — ${copy.sectionTitle}`}
+          height={320}
+          noTable
+        />
+      </div>
+    </div>
+
+    <!-- Accessible details table (always available) -->
+    <details class="mt-3" data-yoy-details>
+      <summary class="text-xs text-outline cursor-pointer hover:text-primary select-none rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+        {th ? 'ตารางข้อมูล' : 'Data table'}
+      </summary>
+      <div class="mt-2 overflow-x-auto">
+        <table class="w-full text-xs text-left border-collapse" data-yoy-table>
+          <thead class="border-b border-outline-variant/30">
+            <tr>
+              {tableHeaders.map((h, i) => (
+                <th
+                  scope="col"
+                  class:list={['py-1.5 px-2 font-semibold text-on-surface', i > 0 ? 'text-right' : '']}
+                >
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody data-yoy-tbody>
+            {defaultRows.map((row) => (
+              <tr class="border-b border-outline-variant/10 hover:bg-surface-container/50">
+                {row.map((cell, ci) => (
+                  <td class:list={['py-1.5 px-2 text-on-surface-variant', ci > 0 ? 'text-right tabular-nums' : 'font-medium text-on-surface']}>
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+</section>
+
+<script>
+  import { getInstanceByDom, init } from 'echarts/core';
+
+  type Payload = {
+    id: string;
+    label: string;
+    unit: string;
+    ctaHref: string;
+    status: string;
+    percentDisplay: string;
+    deltaTone: string;
+    overlapCaption: string;
+    pending: boolean;
+    option: Record<string, unknown>;
+    rows: string[][];
+    ariaLabel: string;
+  };
+
+  function applyChartOption(el: HTMLElement, option: Record<string, unknown>, attempts = 0) {
+    // Wait for shared echarts-init to own the instance (registers chart types).
+    // Fall back to init() only after several frames if the host was never hydrated.
+    let chart = getInstanceByDom(el);
+    if (!chart) {
+      if (attempts < 20) {
+        requestAnimationFrame(() => applyChartOption(el, option, attempts + 1));
+        return;
+      }
+      chart = init(el);
+    }
+    chart.setOption(option, { notMerge: true });
+  }
+
+  function boot(root: HTMLElement) {
+    let map: Record<string, Payload>;
+    try {
+      map = JSON.parse(root.getAttribute('data-yoy-resources') || '{}') as Record<string, Payload>;
+    } catch {
+      return;
+    }
+
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[role="tab"][data-resource]'));
+    const panel = root.querySelector<HTMLElement>('[data-yoy-panel]');
+    const labelEl = root.querySelector<HTMLElement>('[data-yoy-resource-label]');
+    const captionEl = root.querySelector<HTMLElement>('[data-yoy-caption]');
+    const deltaEl = root.querySelector<HTMLElement>('[data-yoy-delta]');
+    const ctaEl = root.querySelector<HTMLAnchorElement>('[data-yoy-cta]');
+    const pendingEl = root.querySelector<HTMLElement>('[data-yoy-pending]');
+    const chartWrap = root.querySelector<HTMLElement>('[data-yoy-chart-wrap]');
+    const tbody = root.querySelector<HTMLElement>('[data-yoy-tbody]');
+    const chartEl = root.querySelector<HTMLElement>('[data-echart]');
+
+    const toneClasses = ['text-amber-700', 'text-emerald-700', 'text-on-surface-variant'];
+
+    function selectResource(id: string, { pushUrl }: { pushUrl: boolean }) {
+      const payload = map[id];
+      if (!payload) return;
+
+      tabs.forEach((tab) => {
+        const on = tab.dataset.resource === id;
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.tabIndex = on ? 0 : -1;
+        tab.classList.toggle('bg-white', on);
+        tab.classList.toggle('text-on-surface', on);
+        tab.classList.toggle('border-outline-variant/40', on);
+        tab.classList.toggle('shadow-sm', on);
+        tab.classList.toggle('bg-surface-container', !on);
+        tab.classList.toggle('text-on-surface-variant', !on);
+        tab.classList.toggle('border-transparent', !on);
+      });
+
+      if (panel) {
+        panel.setAttribute('aria-labelledby', tabs.find((t) => t.dataset.resource === id)?.id ?? '');
+      }
+      if (labelEl) labelEl.textContent = payload.label;
+      if (captionEl) {
+        captionEl.textContent = payload.overlapCaption;
+        captionEl.hidden = payload.pending || !payload.overlapCaption;
+      }
+      if (deltaEl) {
+        deltaEl.textContent = payload.percentDisplay;
+        toneClasses.forEach((c) => deltaEl.classList.remove(c));
+        deltaEl.classList.add(payload.deltaTone || 'text-on-surface-variant');
+      }
+      if (ctaEl) ctaEl.href = payload.ctaHref;
+      if (pendingEl) pendingEl.hidden = !payload.pending;
+      if (chartWrap) chartWrap.hidden = payload.pending;
+
+      if (tbody) {
+        tbody.replaceChildren();
+        for (const row of payload.rows) {
+          const tr = document.createElement('tr');
+          tr.className = 'border-b border-outline-variant/10 hover:bg-surface-container/50';
+          row.forEach((cell, ci) => {
+            const td = document.createElement('td');
+            td.className =
+              ci > 0
+                ? 'py-1.5 px-2 text-on-surface-variant text-right tabular-nums'
+                : 'py-1.5 px-2 font-medium text-on-surface';
+            td.textContent = cell;
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        }
+      }
+
+      if (chartEl && !payload.pending) {
+        chartEl.setAttribute('data-option', JSON.stringify(payload.option));
+        chartEl.setAttribute('aria-label', payload.ariaLabel);
+        applyChartOption(chartEl, payload.option);
+      }
+
+      if (pushUrl) {
+        try {
+          const url = new URL(window.location.href);
+          url.searchParams.set('resource', id);
+          history.replaceState(null, '', url.toString());
+        } catch {
+          /* ignore */
+        }
+      }
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const id = tab.dataset.resource;
+        if (id) selectResource(id, { pushUrl: true });
+      });
+
+      tab.addEventListener('keydown', (event) => {
+        const key = event.key;
+        const idx = tabs.indexOf(tab);
+        if (key === 'ArrowRight' || key === 'ArrowLeft') {
+          event.preventDefault();
+          const next =
+            key === 'ArrowRight'
+              ? (idx + 1) % tabs.length
+              : (idx - 1 + tabs.length) % tabs.length;
+          const nextTab = tabs[next];
+          const id = nextTab?.dataset.resource;
+          if (id) {
+            selectResource(id, { pushUrl: true });
+            nextTab.focus();
+          }
+        } else if (key === 'Home') {
+          event.preventDefault();
+          const id = tabs[0]?.dataset.resource;
+          if (id) {
+            selectResource(id, { pushUrl: true });
+            tabs[0].focus();
+          }
+        } else if (key === 'End') {
+          event.preventDefault();
+          const last = tabs[tabs.length - 1];
+          const id = last?.dataset.resource;
+          if (id) {
+            selectResource(id, { pushUrl: true });
+            last.focus();
+          }
+        }
+      });
+    });
+
+    // Progressive enhancement: honour ?resource= on load
+    try {
+      const param = new URL(window.location.href).searchParams.get('resource');
+      if (param && map[param] && param !== root.getAttribute('data-default-resource')) {
+        selectResource(param, { pushUrl: false });
+      }
+    } catch {
+      /* ignore */
+    }
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-partial-yoy]').forEach(boot);
+</script>

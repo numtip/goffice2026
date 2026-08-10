@@ -13,6 +13,8 @@ import { buildPhaseAVM } from '../utils/dashboard-phase-a-vm';
 import CommandHero from '../components/dashboard/CommandHero.astro';
 import ResourcePulseGrid from '../components/dashboard/ResourcePulseGrid.astro';
 import PerformanceExplorer from '../components/dashboard/PerformanceExplorer.astro';
+import PartialYoyExplorer from '../components/dashboard/PartialYoyExplorer.astro';
+import { buildExplorerVM } from '../utils/dashboard-explorer-vm';
 import NormalizedTrendChart from '../components/dashboard/NormalizedTrendChart.astro';
 import DataReadinessMatrix from '../components/dashboard/DataReadinessMatrix.astro';
 import JourneyLinks from '../components/ui/JourneyLinks.astro';
@@ -21,6 +23,7 @@ const genMap = generatedMetricMap;
 
 const locale = getLocale(Astro.url);
 const vm = buildPhaseAVM(locale);
+const explorerVm = buildExplorerVM(locale);
 const dict = await getDictionary(locale);
 const t = dict.dashboardPage;
 
@@ -169,6 +172,9 @@ if (riskCandidates.length > 0) {
         />
       </section>
     )}
+
+    <!-- 2c. Partial YoY Explorer (GO-DASH-V2 Phase C) -->
+    <PartialYoyExplorer locale={locale} vm={explorerVm} />
 
     <!-- 3. Key Insights Panel -->
     <section class="dashboard-section mb-8">

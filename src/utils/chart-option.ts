@@ -561,3 +561,98 @@ export function buildExplorerOption(input: ExplorerOptionInput): Record<string, 
     series,
   };
 }
+
+// ── Partial YoY dual-line chart (GO-DASH-V2 Phase C) ─────────────────────────
+// Additive only. Overlap YoY series from computePartialYoy — never metric.yoyChange.
+// 12 month slots; connectNulls:false so missing months gap (null ≠ 0).
+// Structural input type (no runtime import from dashboard-partial-yoy) so Node
+// --test can load this module via type-stripping without extension resolution.
+
+export interface PartialYoyOptionResult {
+  unit: string;
+  status: 'pending' | 'partial' | 'complete';
+  baselineSeries: (number | null)[];
+  currentSeries: (number | null)[];
+}
+
+export interface PartialYoyOptionInput {
+  result: PartialYoyOptionResult;
+  locale: 'th' | 'en';
+  /** Series display names, e.g. { baseline: 'FY2568', current: 'FY2569' }. */
+  label: { baseline: string; current: string };
+  colors: { baseline: string; current: string };
+  ariaDescription: string;
+}
+
+/** Dual-line baseline vs current option; pending still returns a valid empty/null series. */
+export function buildPartialYoyOption(input: PartialYoyOptionInput): Record<string, unknown> {
+  const { result, locale, label, colors, ariaDescription } = input;
+  const labels = Array.from({ length: 12 }, (_, i) => monthLabel(i + 1, locale));
+
+  const baselineData = result.baselineSeries;
+  const currentData =
+    result.status === 'pending'
+      ? Array.from({ length: 12 }, () => null as number | null)
+      : result.currentSeries;
+
+  return {
+    grid: { left: 16, right: 24, top: 36, bottom: 16, containLabel: true },
+    legend: {
+      top: 0,
+      left: 'center',
+      textStyle: { fontSize: 11 },
+      data: [label.baseline, label.current],
+    },
+    tooltip: {
+      trigger: 'axis',
+      confine: true,
+      axisPointer: { type: 'line' },
+    },
+    xAxis: {
+      type: 'category',
+      data: labels,
+      boundaryGap: false,
+      axisLabel: { fontSize: 10, interval: 0, rotate: 35 },
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: '#d1d5db' } },
+    },
+    yAxis: {
+      type: 'value',
+      name: result.unit,
+      nameTextStyle: { fontSize: 11 },
+      axisLabel: { fontSize: 10 },
+      splitLine: { lineStyle: { color: '#e5e7eb', width: 0.5 } },
+    },
+    aria: {
+      enabled: true,
+      decal: { show: false },
+      label: { description: ariaDescription },
+    },
+    series: [
+      {
+        name: label.baseline,
+        type: 'line',
+        data: baselineData,
+        smooth: false,
+        connectNulls: false,
+        symbol: 'circle',
+        symbolSize: 5,
+        lineStyle: { width: 2, color: colors.baseline, opacity: 0.55 },
+        itemStyle: { color: colors.baseline },
+        emphasis: { focus: 'series' },
+      },
+      {
+        name: label.current,
+        type: 'line',
+        data: currentData,
+        smooth: false,
+        connectNulls: false,
+        symbol: 'circle',
+        symbolSize: 5,
+        lineStyle: { width: 2.5, color: colors.current },
+        itemStyle: { color: colors.current },
+        emphasis: { focus: 'series' },
+      },
+    ],
+  };
+}
