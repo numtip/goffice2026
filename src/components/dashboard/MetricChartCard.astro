@@ -106,23 +106,25 @@ const comparableId = `comparable-${chartId}`;
     >
       <button
         type="button"
-        class="chart-tab px-3 py-1.5 text-xs font-medium rounded-md transition"
+        class="chart-tab px-3 py-1.5 text-xs font-medium rounded-md transition motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1"
         role="tab"
         aria-selected="true"
         aria-controls={chartId}
         data-target={chartId}
         id={`${chartId}-tab`}
+        tabindex="0"
       >
         {th ? 'กราฟ' : 'Chart'}
       </button>
       <button
         type="button"
-        class="table-tab px-3 py-1.5 text-xs font-medium rounded-md transition text-on-surface-variant"
+        class="table-tab px-3 py-1.5 text-xs font-medium rounded-md transition motion-reduce:transition-none text-on-surface-variant focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1"
         role="tab"
         aria-selected="false"
         aria-controls={tableId}
         data-target={tableId}
         id={`${tableId}-tab`}
+        tabindex="-1"
       >
         {th ? 'ตาราง' : 'Table'}
       </button>
@@ -233,15 +235,25 @@ const comparableId = `comparable-${chartId}`;
     var tablePanel = document.getElementById(tableId);
     if (!chartTab || !tableTab || !chartPanel || !tablePanel) return;
 
+    var tabs = [chartTab, tableTab];
+
     function activate(tab, panel, otherTab, otherPanel) {
       tab.setAttribute('aria-selected', 'true');
+      tab.setAttribute('tabindex', '0');
       tab.classList.add('bg-white', 'text-on-surface', 'shadow-sm');
       tab.classList.remove('text-on-surface-variant');
       panel.classList.remove('hidden');
       otherTab.setAttribute('aria-selected', 'false');
+      otherTab.setAttribute('tabindex', '-1');
       otherTab.classList.remove('bg-white', 'text-on-surface', 'shadow-sm');
       otherTab.classList.add('text-on-surface-variant');
       otherPanel.classList.add('hidden');
+    }
+
+    function selectTab(tab) {
+      if (tab === chartTab) activate(chartTab, chartPanel, tableTab, tablePanel);
+      else activate(tableTab, tablePanel, chartTab, chartPanel);
+      tab.focus();
     }
 
     chartTab.addEventListener('click', function () {
@@ -249,6 +261,25 @@ const comparableId = `comparable-${chartId}`;
     });
     tableTab.addEventListener('click', function () {
       activate(tableTab, tablePanel, chartTab, chartPanel);
+    });
+
+    // Keyboard: Left/Right/Home/End within the chart/table tablist.
+    tabs.forEach(function (tab) {
+      tab.addEventListener('keydown', function (event) {
+        var key = event.key;
+        var idx = tabs.indexOf(tab);
+        if (key === 'ArrowRight' || key === 'ArrowLeft') {
+          event.preventDefault();
+          var next = key === 'ArrowRight' ? (idx + 1) % tabs.length : (idx - 1 + tabs.length) % tabs.length;
+          selectTab(tabs[next]);
+        } else if (key === 'Home') {
+          event.preventDefault();
+          selectTab(tabs[0]);
+        } else if (key === 'End') {
+          event.preventDefault();
+          selectTab(tabs[tabs.length - 1]);
+        }
+      });
     });
   })();
 </script>
