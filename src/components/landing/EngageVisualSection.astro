@@ -17,17 +17,8 @@ const t = Astro.props.t ?? {
   cta: 'Learn more',
 } as HomeEngageStrings;
 
-/** Editorial grid spans (12-col): feature tall card + pair, then row of three, then row of two. */
-const spanClasses = [
-  'lg:col-span-7 lg:row-span-2',
-  'lg:col-span-5',
-  'lg:col-span-5',
-  'lg:col-span-4',
-  'lg:col-span-4',
-  'lg:col-span-4',
-  'lg:col-span-6',
-  'lg:col-span-6',
-];
+/** Uniform grid (12-col): 8 equal cards → 4 columns × 2 rows on desktop, 2 cols tablet, 1 col mobile. */
+const spanClasses = Array.from({ length: 8 }, () => 'lg:col-span-3');
 
 const visuals = engageVisuals.map((v: EngageVisual, index: number) => ({
   ...v,
@@ -37,7 +28,8 @@ const visuals = engageVisuals.map((v: EngageVisual, index: number) => ({
   href: getLocalizedPath(locale, engageHref(v)),
   tag: v.relatedMetric ?? (v.relatedCategory ?? ''),
   spanClass: spanClasses[index] ?? 'lg:col-span-3',
-  aspectClass: index === 0 ? 'aspect-[16/10]' : 'aspect-[4/3]',
+  /** 16:9 matches the 2048×1152 source exactly — no crop, no letterboxing. */
+  aspectClass: 'aspect-[16/9]',
   available: engageImageAvailable(v.file),
 }));
 ---
@@ -98,7 +90,7 @@ const visuals = engageVisuals.map((v: EngageVisual, index: number) => ({
             </div>
 
             <!-- Copy -->
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
+            <div class="flex flex-1 flex-col p-4 sm:p-5">
               <p class="mb-2 font-mono text-[10px] uppercase tracking-wider" style={`color: ${v.accent}`}>
                 {t.related_label} · {v.tag}
               </p>
