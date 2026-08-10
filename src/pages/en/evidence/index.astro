@@ -28,6 +28,7 @@ const verLabels: Record<string, { th: string; en: string }> = {
 };
 
 // Normalize evidence items (handle old schema gracefully, target new schema)
+// Always emit full list for static hosting; URL filters apply client-side.
 const items = evidenceIndex.items.map((raw: Record<string, any>) => {
   const categoryCodes: string[] = Array.isArray(raw.categoryCodes)
     ? raw.categoryCodes
@@ -61,6 +62,8 @@ const items = evidenceIndex.items.map((raw: Record<string, any>) => {
     traceabilityLevel,
     verificationStatus: verification.status || 'unresolved',
     categoryTitle: firstCat?.title?.en,
+    indicatorCodes: Array.isArray(raw.indicatorCodes) ? raw.indicatorCodes : [],
+    categoryCodes,
     realSourceAvailable: raw.realSourceAvailable,
     sharePointUrlPending: raw.sharePointUrlPending,
   };
@@ -116,6 +119,17 @@ const hasItems = items.length > 0;
       </p>
     </div>
 
+    <div
+      id="evidence-filter-banner"
+      class="mb-6 hidden rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-900"
+      role="status"
+      data-label-indicator="Showing evidence linked to indicator"
+      data-label-category="Showing evidence in category"
+      data-label-items="items"
+    >
+      <p id="evidence-filter-banner-text"></p>
+    </div>
+
     <!-- Source Pending banner -->
     {allPlaceholder && (
       <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 mb-6 flex items-start gap-4 shadow-sm">
@@ -161,24 +175,31 @@ const hasItems = items.length > 0;
 
     <!-- Evidence items -->
     {hasItems ? (
-      <div class="space-y-4">
+      <div class="space-y-4" id="evidence-card-list" data-go-evidence-1="evidence-filter-list">
         {items.map((item: any) => {
           const catTitle = item.categoryTitle;
           return (
-            <EvidenceCard
-              id={item.id}
-              title={item.title}
-              description={item.description}
-              year={item.year}
-              fileType={item.fileType}
-              status={item.status}
-              traceabilityLevel={item.traceabilityLevel}
-              verificationStatus={item.verificationStatus}
-              categoryTitle={catTitle}
-              realSourceAvailable={item.realSourceAvailable}
-              sharePointUrlPending={item.sharePointUrlPending}
-              locale={locale}
-            />
+            <div
+              class="evidence-filter-row"
+              data-indicator-codes={(item.indicatorCodes || []).join(',')}
+              data-category-codes={(item.categoryCodes || []).join(',')}
+              data-traceability={item.traceabilityLevel}
+            >
+              <EvidenceCard
+                id={item.id}
+                title={item.title}
+                description={item.description}
+                year={item.year}
+                fileType={item.fileType}
+                status={item.status}
+                traceabilityLevel={item.traceabilityLevel}
+                verificationStatus={item.verificationStatus}
+                categoryTitle={catTitle}
+                realSourceAvailable={item.realSourceAvailable}
+                sharePointUrlPending={item.sharePointUrlPending}
+                locale={locale}
+              />
+            </div>
           );
         })}
       </div>
@@ -202,4 +223,39 @@ const hasItems = items.length > 0;
       Last updated: {evidenceIndex.updated} · Schema: v{evidenceIndex.version}
     </p>
   </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const filterIndicator = (params.get('indicator') || '').trim();
+    const filterCategory = (params.get('category') || '').trim();
+    const rows = Array.from(document.querySelectorAll('.evidence-filter-row'));
+    const banner = document.getElementById('evidence-filter-banner');
+    const bannerText = document.getElementById('evidence-filter-banner-text');
+
+    if (filterIndicator || filterCategory) {
+      let visible = 0;
+      for (const row of rows) {
+        const codes = (row.getAttribute('data-indicator-codes') || '').split(',').filter(Boolean);
+        const cats = (row.getAttribute('data-category-codes') || '').split(',').filter(Boolean);
+        const level = row.getAttribute('data-traceability') || '';
+        let match = true;
+        if (filterIndicator) {
+          match = level === 'indicator' && codes.includes(filterIndicator);
+        } else if (filterCategory) {
+          match = cats.includes(filterCategory);
+        }
+        row.classList.toggle('hidden', !match);
+        if (match) visible += 1;
+      }
+      if (banner && bannerText) {
+        const label = filterIndicator
+          ? banner.getAttribute('data-label-indicator')
+          : banner.getAttribute('data-label-category');
+        const itemsLabel = banner.getAttribute('data-label-items') || 'items';
+        const value = filterIndicator || filterCategory;
+        bannerText.textContent = `${label} ${value} (${visible} ${itemsLabel})`;
+        banner.classList.remove('hidden');
+      }
+    }
+  </script>
 </BaseLayout>
