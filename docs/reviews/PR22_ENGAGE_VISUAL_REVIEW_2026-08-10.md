@@ -43,8 +43,10 @@ Section count 7 → 8; TH heading updated to "8 วิถีปฏิบัต�
 ## Final Verdict
 
 ```
-TECHNICAL_PREVIEW_PASS_PO_VISUAL_PENDING
+PO_VISUAL_ACCEPTANCE_PASS
 ```
+
+**2026-08-10 (final acceptance)** — Product Owner approved the 8-asset visual set. Verified TH + EN on desktop/mobile: all 8 visuals render, crop/focal point acceptable, consistent rhythm, heading does not imply assessment categories, alt text accurate, no old references, no placeholders. PR marked Ready for review — not merged, not deployed.
 
 ---
 
