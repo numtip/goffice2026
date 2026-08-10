@@ -78,6 +78,20 @@ describe('indicator static routes', () => {
   });
 });
 
+describe('evidence index TH/EN parity', () => {
+  it('forwards source availability fields to EvidenceCard in both locales', () => {
+    const thPage = readFileSync(join(ROOT, 'src/pages/evidence.astro'), 'utf8');
+    const enPage = readFileSync(join(ROOT, 'src/pages/en/evidence/index.astro'), 'utf8');
+
+    for (const page of [thPage, enPage]) {
+      assert.match(page, /realSourceAvailable:\s*raw\.realSourceAvailable/);
+      assert.match(page, /sharePointUrlPending:\s*raw\.sharePointUrlPending/);
+      assert.match(page, /realSourceAvailable=\{item\.realSourceAvailable\}/);
+      assert.match(page, /sharePointUrlPending=\{item\.sharePointUrlPending\}/);
+    }
+  });
+});
+
 describe('evidence link contract', () => {
   const items = JSON.parse(readFileSync(EVIDENCE, 'utf8')).items;
 
