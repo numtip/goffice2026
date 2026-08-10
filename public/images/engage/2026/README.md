@@ -2,6 +2,8 @@
 
 7 **approved Magnific-generated master assets**, optimized to local WebP.
 
+Full creative/source metadata: [`docs/design/ENGAGE_VISUAL_ASSETS_2026.md`](../../../docs/design/ENGAGE_VISUAL_ASSETS_2026.md)
+
 ## Files (naming contract)
 
 | # | Asset | Filename | Size |
@@ -20,6 +22,7 @@
 - **No text embedded in image** — all labels/alt text are rendered in HTML.
 - Source master PNGs (1344×768, ~1–1.7 MB each) are **not committed** — WebP derivatives only.
 - Do **not** rename files — `src/data/engageVisuals.ts` resolves paths from this contract.
+- Future generated visuals must register metadata in `docs/design/ENGAGE_VISUAL_ASSETS_2026.md` before integration.
 
 ## Status
 
