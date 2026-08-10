@@ -17,6 +17,20 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [1.5.1] — 2026-08-11
+
+**Production VPS deploy** — promotes `origin/master` @ `2bfd7ca` (2 commits after live `v1.5.0` / `c796611`). Immutable release `/var/www/goffice/releases/v1.5.1`; rollback `v1.5.0`.
+
+### Added
+
+- **Engage visual system (production)** — 8 PO-approved local WebP visuals (2048×1152, native 16:9) with bilingual TH/EN copy on the landing page
+
+### Fixed
+
+- Engage card grid — uniform 4-column desktop layout (`lg:col-span-3` × 8), 16:9 visuals with no crop/letterboxing
+
+---
+
 ## [1.5.0] — 2026-08-10
 
 **Production VPS deploy** — promotes `origin/master` @ `c796611` (16 commits after live `v1.4.0` / `075866b`). Immutable release `/var/www/goffice/releases/v1.5.0`; rollback `v1.4.0`.
