@@ -1,0 +1,119 @@
+---
+import { getLocalizedPath } from '../../i18n/utils';
+import { engageVisuals, engageHref, engageImageAvailable, type EngageVisual } from '../../data/engageVisuals';
+import type { HomeEngageStrings } from '../../i18n/dictionary';
+
+interface Props {
+  locale?: 'th' | 'en';
+  t?: HomeEngageStrings;
+}
+
+const { locale = 'th' } = Astro.props;
+const t = Astro.props.t ?? {
+  label: 'Engage & Act',
+  heading: 'Eight Green Practices in the Office',
+  description: 'How every staff member contributes to Green Office operations — from energy saving to green procurement.',
+  related_label: 'Related to',
+  cta: 'Learn more',
+} as HomeEngageStrings;
+
+/** Editorial grid spans (12-col): feature tall card + pair, then row of three, then row of two. */
+const spanClasses = [
+  'lg:col-span-7 lg:row-span-2',
+  'lg:col-span-5',
+  'lg:col-span-5',
+  'lg:col-span-4',
+  'lg:col-span-4',
+  'lg:col-span-4',
+  'lg:col-span-6',
+  'lg:col-span-6',
+];
+
+const visuals = engageVisuals.map((v: EngageVisual, index: number) => ({
+  ...v,
+  title: locale === 'th' ? v.titleTh : v.titleEn,
+  description: locale === 'th' ? v.descriptionTh : v.descriptionEn,
+  alt: locale === 'th' ? v.altTh : v.altEn,
+  href: getLocalizedPath(locale, engageHref(v)),
+  tag: v.relatedMetric ?? (v.relatedCategory ?? ''),
+  spanClass: spanClasses[index] ?? 'lg:col-span-3',
+  aspectClass: index === 0 ? 'aspect-[16/10]' : 'aspect-[4/3]',
+  available: engageImageAvailable(v.file),
+}));
+---
+
+<section class="landing-section relative" aria-labelledby="engage-visuals-title">
+  <div class="landing-container">
+    <div class="landing-reveal mx-auto mb-10 max-w-3xl text-center sm:mb-14">
+      <p class="mb-3 font-mono text-label-sm font-semibold uppercase tracking-widest text-secondary">{t.label}</p>
+      <h2 id="engage-visuals-title" class="landing-heading mb-3 font-bold text-balance sm:mb-4">{t.heading}</h2>
+      <p class="mx-auto max-w-2xl text-body-md leading-relaxed text-on-surface-variant sm:text-body-lg">
+        {t.description}
+      </p>
+    </div>
+
+    <ul
+      class="landing-stagger grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-12"
+      aria-label={t.heading}
+    >
+      {visuals.map((v) => (
+        <li class={`landing-reveal list-none ${v.spanClass}`}>
+          <a
+            href={v.href}
+            class="landing-card-interactive group flex h-full flex-col overflow-hidden rounded-stitch-lg border border-outline-variant/20 bg-surface-container-lowest/80 shadow-md backdrop-blur-sm hover:border-primary-container/40"
+          >
+            <!-- Visual media (lazy local asset, or accent placeholder while pending) -->
+            <div class={`relative overflow-hidden ${v.aspectClass}`}>
+              {v.available ? (
+                <img
+                  src={v.image}
+                  alt={v.alt}
+                  loading="lazy"
+                  decoding="async"
+                  class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:group-hover:scale-100"
+                />
+              ) : (
+                <div
+                  class="flex h-full w-full items-center justify-center"
+                  style={`background: linear-gradient(135deg, ${v.accentLight} 0%, #ffffff 100%)`}
+                  aria-hidden="true"
+                >
+                  <svg
+                    class="h-10 w-10 sm:h-12 sm:w-12"
+                    style={`color: ${v.accent}`}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M12 22c0-5 3.5-9 9-10 0 5.5-3.5 10-9 10z" />
+                    <path d="M12 22c0-5-3.5-9-9-10 0 5.5 3.5 10 9 10z" />
+                    <path d="M12 22V10" />
+                  </svg>
+                </div>
+              )}
+              <div class="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/35 to-transparent" aria-hidden="true" />
+            </div>
+
+            <!-- Copy -->
+            <div class="flex flex-1 flex-col p-5 sm:p-6">
+              <p class="mb-2 font-mono text-[10px] uppercase tracking-wider" style={`color: ${v.accent}`}>
+                {t.related_label} · {v.tag}
+              </p>
+              <h3 class="mb-2 text-lg font-semibold text-primary">{v.title}</h3>
+              <p class="flex-1 text-sm leading-relaxed text-on-surface-variant">{v.description}</p>
+              <span class="mt-4 inline-flex items-center gap-1.5 text-label-sm font-medium uppercase tracking-wider text-secondary transition-colors duration-300 group-hover:text-primary">
+                {t.cta}
+                <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

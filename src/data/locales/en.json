@@ -113,6 +113,13 @@
       "stage_7_subtitle": "Audit & Refinement",
       "stage_7_description": "Management review, target refinement, and certification readiness cycles."
     },
+    "engage": {
+      "label": "Engage & Act",
+      "heading": "Eight Green Practices in the Office",
+      "description": "How every staff member contributes to Green Office operations — save energy, conserve water, sort waste, go paperless, track GHG, run green meetings, practice 5S, and buy green.",
+      "related_label": "Related to",
+      "cta": "Learn more"
+    },
     "showcase": {
       "heading": "Environmental Intelligence Center",
       "subtitle": "Green Office 2026 Platform",

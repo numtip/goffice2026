@@ -120,6 +120,14 @@ export interface HomeImprovementStrings {
   stage_7_description: string;
 }
 
+export interface HomeEngageStrings {
+  label: string;
+  heading: string;
+  description: string;
+  related_label: string;
+  cta: string;
+}
+
 export interface HomeShowcaseStrings {
   heading: string;
   subtitle: string;
@@ -191,6 +199,7 @@ export interface HomeStrings {
   evidence: HomeEvidenceStrings;
   activities: HomeActivitiesStrings;
   improvement: HomeImprovementStrings;
+  engage: HomeEngageStrings;
   cta: HomeCtaStrings;
   nav: HomeNavStrings;
   footer: HomeFooterStrings;
