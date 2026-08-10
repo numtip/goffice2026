@@ -291,7 +291,7 @@ const primaryIndicator = metric?.relatedIndicators?.[0];
             {relatedIndicators.map((ind: any) => (
               <a
                 href={getLocalizedPath(locale, `/indicators/${ind.code}/`)}
-                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/20 text-sm text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-colors"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/20 text-sm text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1"
               >
                 <span class="text-[10px] font-mono text-outline">{ind.code}</span>
                 <span>{th ? ind.title?.th ?? ind.title : ind.title?.en ?? ind.title}</span>
@@ -309,7 +309,7 @@ const primaryIndicator = metric?.relatedIndicators?.[0];
             {relatedAboutPages.map((page) => (
               <a
                 href={getLocalizedPath(locale, page.route.replace(/\/$/, '') || '/about')}
-                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/20 text-sm text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-colors"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/20 text-sm text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1"
               >
                 <span>{th ? page.titleTh : page.titleEn}</span>
               </a>
@@ -331,14 +331,14 @@ const primaryIndicator = metric?.relatedIndicators?.[0];
       <!-- Prev / Next Navigation (de-emphasized) -->
       <nav class="flex items-center justify-between gap-4 pt-4 border-t border-outline-variant/20 text-sm" aria-label={th ? 'การนำทางแดชบอร์ด' : 'Dashboard navigation'}>
         {prevDash ? (
-          <a href={getLocalizedPath(locale, `/dashboard/${prevDash.id}`)} class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors">
+          <a href={getLocalizedPath(locale, `/dashboard/${prevDash.id}`)} class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1 rounded">
             <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             <span class="hidden sm:inline">{dashTitle(prevDash, locale)}</span>
             <span class="sm:hidden">{th ? 'ก่อนหน้า' : 'Prev'}</span>
           </a>
         ) : <div />}
         {nextDash ? (
-          <a href={getLocalizedPath(locale, `/dashboard/${nextDash.id}`)} class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors">
+          <a href={getLocalizedPath(locale, `/dashboard/${nextDash.id}`)} class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1 rounded">
             <span class="hidden sm:inline">{dashTitle(nextDash, locale)}</span>
             <span class="sm:hidden">{th ? 'ถัดไป' : 'Next'}</span>
             <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>

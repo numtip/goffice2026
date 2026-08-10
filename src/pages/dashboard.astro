@@ -344,7 +344,7 @@ if (riskCandidates.length > 0) {
         {categoryReadiness.map((cat) => (
           <a
             href={cat.href}
-            class="group rounded-stitch-lg border border-outline-variant/20 bg-surface-container/60 p-4 transition-colors hover:border-primary/40 hover:bg-surface-container"
+            class="group rounded-stitch-lg border border-outline-variant/20 bg-surface-container/60 p-4 transition-colors hover:border-primary/40 hover:bg-surface-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
             <div class="flex items-center justify-between gap-2">
               <span class="text-[10px] font-bold uppercase tracking-wider text-primary">
@@ -399,11 +399,11 @@ if (riskCandidates.length > 0) {
         </div>
       </div>
       <div class="mt-3 pt-3 border-t border-outline-variant/10 flex flex-wrap gap-3">
-        <a href={getLocalizedPath(locale, '/documents')} class="text-primary underline hover:text-primary-container">{th ? 'ศูนย์เอกสาร' : 'Document Center'}</a>
-        <a href={getLocalizedPath(locale, '/evidence')} class="text-primary underline hover:text-primary-container">{th ? 'คลังหลักฐาน' : 'Evidence Library'}</a>
-        <a href="https://goffice.mju.ac.th/" class="text-primary underline hover:text-primary-container" target="_blank" rel="noopener">{th ? 'เว็บไซต์อ้างอิง' : 'Reference Site'}</a>
-        <a href={getLocalizedPath(locale, '/about/policy')} class="text-primary underline hover:text-primary-container">{th ? 'นโยบาย' : 'Policy'}</a>
-        <a href={getLocalizedPath(locale, '/about/goals')} class="text-primary underline hover:text-primary-container">{th ? 'เป้าหมาย' : 'Goals'}</a>
+        <a href={getLocalizedPath(locale, '/documents')} class="text-primary underline hover:text-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded">{th ? 'ศูนย์เอกสาร' : 'Document Center'}</a>
+        <a href={getLocalizedPath(locale, '/evidence')} class="text-primary underline hover:text-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded">{th ? 'คลังหลักฐาน' : 'Evidence Library'}</a>
+        <a href="https://goffice.mju.ac.th/" class="text-primary underline hover:text-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded" target="_blank" rel="noopener">{th ? 'เว็บไซต์อ้างอิง' : 'Reference Site'}</a>
+        <a href={getLocalizedPath(locale, '/about/policy')} class="text-primary underline hover:text-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded">{th ? 'นโยบาย' : 'Policy'}</a>
+        <a href={getLocalizedPath(locale, '/about/goals')} class="text-primary underline hover:text-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded">{th ? 'เป้าหมาย' : 'Goals'}</a>
       </div>
       <p class="mt-2 text-outline/60">
         {th ? `อัปเดตล่าสุด: ${updatedDate} · ไฟล์ข้อมูลที่ประมวลผล: src/data/generated/` : `Last updated: ${updatedDate} · Generated data: src/data/generated/`}
@@ -438,12 +438,12 @@ if (riskCandidates.length > 0) {
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
           <a href={getLocalizedPath(locale, '/evidence')}
-             class="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/15 px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-white shadow-lg backdrop-blur-sm hover:bg-white/25 hover:-translate-y-0.5 transition"
+             class="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/15 px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-white shadow-lg backdrop-blur-sm hover:bg-white/25 hover:-translate-y-0.5 transition motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-fixed focus-visible:ring-offset-2 focus-visible:ring-offset-[#001a12]"
              aria-label={th ? 'ไปยังคลังหลักฐาน' : 'Go to Evidence Library'}>
             {th ? 'คลังหลักฐาน' : 'Evidence Library'}
           </a>
           <a href={getLocalizedPath(locale, '/categories/')}
-             class="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-white/90 hover:text-white hover:bg-white/15 hover:-translate-y-0.5 transition"
+             class="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-6 py-3 text-label-sm font-medium uppercase tracking-wider text-white/90 hover:text-white hover:bg-white/15 hover:-translate-y-0.5 transition motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-fixed focus-visible:ring-offset-2 focus-visible:ring-offset-[#001a12]"
              aria-label={th ? 'ไปยังหมวดหมู่' : 'Explore Categories'}>
             {th ? 'สำรวจหมวดหมู่' : 'Categories'}
           </a>

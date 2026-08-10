@@ -78,7 +78,7 @@ const th = locale === 'th';
 
   {!noTable && columns.length > 0 && rows.length > 0 && (
     <details class="mt-3">
-      <summary class="text-xs text-outline cursor-pointer hover:text-primary select-none">
+      <summary class="text-xs text-outline cursor-pointer hover:text-primary select-none rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
         {th ? 'ตารางข้อมูล' : 'Data table'}
       </summary>
       {tableSummary && <p class="text-[10px] text-on-surface-variant mt-2 mb-1">{tableSummary}</p>}

@@ -98,7 +98,7 @@ const { cards, theme, locale } = Astro.props;
           <div class="mt-3" role="progressbar" aria-valuenow={card.progress} aria-valuemin="0" aria-valuemax="100" aria-label={card.label}>
             <div class="h-1.5 w-full rounded-full bg-gray-100 overflow-hidden">
               <div
-                class="h-full rounded-full transition-all duration-500"
+                class="h-full rounded-full transition-all duration-500 motion-reduce:transition-none"
                 style={`width: ${card.progress}%; background-color: ${card.dimmed ? '#d4d4d4' : theme.accent};`}
               >
               </div>
