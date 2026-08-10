@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/global.css';
+import indicatorsData from '../../../data/criteria/indicators.json';
+import categoriesData from '../../../data/criteria/categories.json';
+import issuesData from '../../../data/criteria/issues.json';
+import { getLocalizedPath } from '../../../i18n/utils';
+
+const locale = 'en';
+const path = (p: string) => getLocalizedPath('en', p);
+
+const categories = categoriesData.categories;
+const issues = issuesData.issues;
+const indicators = indicatorsData.indicators;
+
+const issueTitleById = new Map(issues.map((i) => [i.id, i.title]));
+
+const grouped = categories.map((cat) => ({
+  cat,
+  indicators: indicators.filter((ind) => ind.categoryCode === cat.code),
+}));
+
+const qParam = Astro.url.searchParams.get('q')?.trim() || '';
+const qLower = qParam.toLowerCase();
+
+function indicatorMatchesSearch(ind, catTitle, issue) {
+  if (!qLower) return true;
+  const blob = [
+    ind.code,
+    ind.title.th,
+    ind.title.en,
+    ind.requirementSummary.th,
+    ind.requirementSummary.en,
+    catTitle,
+    issue?.en,
+    issue?.th,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+  const code = ind.code.toLowerCase();
+  return blob.includes(qLower) || code === qLower || code.startsWith(qLower);
+}
+const pageTitle = 'Indicators | Green Office';
+const heading = 'Assessment indicators';
+const subtitle =
+  'Browse all 65 Green Office indicators by code, title, or category. Use search to jump to a specific indicator.';
+---
+
+<BaseLayout title={pageTitle} description={subtitle} locale={locale}>
+  <div class="mx-auto max-w-5xl px-4 py-8 sm:px-6" data-go-evidence-1="indicators-hub">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900">{heading}</h1>
+      <p class="mt-2 text-gray-600 max-w-2xl">{subtitle}</p>
+    </header>
+
+    <form method="get" action={path('/indicators/')} class="mb-8" role="search">
+      <label for="indicator-q" class="sr-only">Search indicators</label>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input
+          id="indicator-q"
+          name="q"
+          type="search"
+          value={qParam}
+          autocomplete="off"
+          placeholder="Code or title (e.g. 3.2.2)"
+          class="flex-1 rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+        />
+        <button
+          type="submit"
+          class="rounded-lg bg-green-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+        >
+          Search
+        </button>
+      </div>
+      <p class="mt-2 text-xs text-gray-500">
+        Works without JavaScript via form submit; optional live filter when scripts are enabled.
+      </p>
+    </form>
+
+    <div id="indicator-hub-list">
+      {grouped.map(({ cat, indicators: catIndicators }) => {
+        const catTitle = cat.title.en;
+        const visible = catIndicators.filter((ind) => {
+          const issue = issueTitleById.get(ind.issueCode);
+          return indicatorMatchesSearch(ind, catTitle, issue);
+        });
+        if (visible.length === 0) return null;
+        return (
+          <section class="mb-10" aria-labelledby={`cat-${cat.code}`}>
+            <h2 id={`cat-${cat.code}`} class="text-lg font-semibold text-gray-800 mb-4">
+              <a
+                href={path(`/categories/${cat.code}`)}
+                class="text-green-800 hover:text-green-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded"
+              >
+                {catTitle}
+              </a>
+            </h2>
+            <ul class="space-y-2" role="list">
+              {visible.map((ind) => {
+                const issue = issueTitleById.get(ind.issueCode);
+                const searchBlob = [
+                  ind.code,
+                  ind.title.th,
+                  ind.title.en,
+                  ind.requirementSummary.th,
+                  ind.requirementSummary.en,
+                  catTitle,
+                  issue?.en,
+                  issue?.th,
+                ]
+                  .filter(Boolean)
+                  .join(' ')
+                  .toLowerCase();
+                const title = ind.title.en || ind.title.th;
+                return (
+                  <li
+                    class="indicator-hub-row rounded-lg border border-gray-100 bg-white px-4 py-3 shadow-sm"
+                    data-search={searchBlob}
+                    data-code={ind.code}
+                  >
+                    <a
+                      href={path(`/indicators/${ind.code}/`)}
+                      class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded"
+                    >
+                      <span class="font-mono text-sm font-semibold text-green-800">{ind.code}</span>
+                      <span class="text-sm text-gray-800">{title}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        );
+      })}
+    </div>
+
+    <p id="indicator-hub-empty" class="hidden text-center text-gray-500 py-8" role="status">
+      No indicators match your search.
+    </p>
+  </div>
+
+  <script define:vars={{ initialQuery: qParam }}>
+    const input = document.getElementById('indicator-q');
+    const rows = Array.from(document.querySelectorAll('.indicator-hub-row'));
+    const empty = document.getElementById('indicator-hub-empty');
+    const sections = Array.from(document.querySelectorAll('#indicator-hub-list section'));
+
+    function applyFilter(raw) {
+      const q = (raw || '').trim().toLowerCase();
+      let visible = 0;
+      for (const row of rows) {
+        const blob = row.getAttribute('data-search') || '';
+        const code = (row.getAttribute('data-code') || '').toLowerCase();
+        const match = !q || blob.includes(q) || code === q || code.startsWith(q);
+        row.classList.toggle('hidden', !match);
+        if (match) visible += 1;
+      }
+      for (const section of sections) {
+        const any = section.querySelector('.indicator-hub-row:not(.hidden)');
+        section.classList.toggle('hidden', !any);
+      }
+      empty?.classList.toggle('hidden', visible > 0);
+    }
+
+    applyFilter(initialQuery);
+    input?.addEventListener('input', () => applyFilter(input.value));
+  </script>
+</BaseLayout>

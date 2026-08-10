@@ -111,6 +111,10 @@ export function searchItems(
       if (context.includes(term)) score += 3;
       if (item.id.toLowerCase().includes(term)) score += 1;
       if (title.startsWith(term) || title.split(/\s+/).some((t) => t.startsWith(term))) score += 2;
+      if (item.section === 'assessment' && item.type === 'indicator') {
+        const code = fold(item.id);
+        if (code === term || code.startsWith(term)) score += 25;
+      }
     }
     hits.push({ item, score });
   }

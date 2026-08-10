@@ -10,6 +10,9 @@ import { getLocale } from '../i18n/utils';
 const locale = getLocale(Astro.url);
 const isTh = locale === 'th';
 
+const filterIndicator = Astro.url.searchParams.get('indicator')?.trim() || '';
+const filterCategory = Astro.url.searchParams.get('category')?.trim() || '';
+
 // Build canonical category lookup
 const categoryMap = new Map(categoriesData.categories.map((c: any) => [c.code, c]));
 
@@ -30,7 +33,7 @@ const verLabels: Record<string, { th: string; en: string }> = {
 };
 
 // Normalize evidence items (handle old schema gracefully, target new schema)
-const items = evidenceIndex.items.map((raw: Record<string, any>) => {
+const allItems = evidenceIndex.items.map((raw: Record<string, any>) => {
   const categoryCodes: string[] = Array.isArray(raw.categoryCodes)
     ? raw.categoryCodes
     : raw.categoryId
@@ -63,8 +66,19 @@ const items = evidenceIndex.items.map((raw: Record<string, any>) => {
     traceabilityLevel,
     verificationStatus: verification.status || 'unresolved',
     categoryTitle: isTh ? firstCat?.title?.th : firstCat?.title?.en,
+    indicatorCodes: Array.isArray(raw.indicatorCodes) ? raw.indicatorCodes : [],
+    categoryCodes,
   };
 });
+
+let items = allItems;
+if (filterIndicator) {
+  items = items.filter(
+    (i) => i.traceabilityLevel === 'indicator' && i.indicatorCodes.includes(filterIndicator),
+  );
+} else if (filterCategory) {
+  items = items.filter((i) => i.categoryCodes.includes(filterCategory));
+}
 
 const totalItems = items.length;
 const placeholderItems = items.filter((i: any) => i.status === 'placeholder').length;
@@ -117,6 +131,24 @@ const hasItems = items.length > 0;
           : 'Browse certification evidence records organized by Green Office category, issue, and indicator.'}
       </p>
     </div>
+
+    {(filterIndicator || filterCategory) && (
+      <div class="mb-6 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-900" role="status">
+        {filterIndicator ? (
+          <p>
+            {isTh
+              ? `กำลังแสดงหลักฐานที่เชื่อมโยงตัวชี้วัด ${filterIndicator} (${totalItems} รายการ)`
+              : `Showing evidence linked to indicator ${filterIndicator} (${totalItems} items)`}
+          </p>
+        ) : (
+          <p>
+            {isTh
+              ? `กำลังแสดงหลักฐานในหมวด ${filterCategory} (${totalItems} รายการ)`
+              : `Showing evidence in category ${filterCategory} (${totalItems} items)`}
+          </p>
+        )}
+      </div>
+    )}
 
     <!-- Source Pending banner -->
     {allPlaceholder && (

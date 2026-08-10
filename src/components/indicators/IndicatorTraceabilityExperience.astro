@@ -1,0 +1,330 @@
+---
+import evidenceIndex from '../../data/evidence-index.json';
+import {
+  getEvidenceForIndicator,
+  implementationNotesForIndicator,
+} from '../../utils/evidence-traceability';
+import IndicatorLinkedEvidence from './IndicatorLinkedEvidence.astro';
+import { withBase } from '../../utils/with-base';
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface IndicatorShape {
+  code: string;
+  categoryCode: string;
+  issueCode: string;
+  title: { th: string; en: string };
+  requirementSummary: { th: string; en: string };
+  relatedDashboards?: string[];
+}
+
+interface CategoryShape {
+  code: string;
+  title?: { th: string; en: string };
+  weight?: number | null;
+}
+
+interface IssueShape {
+  id: string;
+  title?: { th: string; en: string };
+}
+
+interface Props {
+  indicator: IndicatorShape;
+  issue: IssueShape | null | undefined;
+  category: CategoryShape | null | undefined;
+  index: number;
+  total: number;
+  prevIndicator: IndicatorShape | null;
+  nextIndicator: IndicatorShape | null;
+  locale: 'th' | 'en';
+}
+
+const {
+  indicator,
+  issue,
+  category,
+  index,
+  total,
+  prevIndicator,
+  nextIndicator,
+  locale,
+} = Astro.props;
+
+const isEn = locale === 'en';
+const path = (p: string) => (isEn ? getLocalizedPath('en', p) : withBase(p));
+
+const dashboardRoutes: Record<string, string> = {
+  energy: '/dashboard/energy',
+  water: '/dashboard/water',
+  fuel: '/dashboard/fuel',
+  paper: '/dashboard/paper',
+  waste: '/dashboard/waste',
+  ghg: '/dashboard/ghg',
+};
+
+const dashboardLabels: Record<string, { th: string; en: string }> = {
+  energy: { th: 'พลังงาน', en: 'Energy' },
+  water: { th: 'น้ำ', en: 'Water' },
+  fuel: { th: 'น้ำมันเชื้อเพลิง', en: 'Fuel' },
+  paper: { th: 'กระดาษ', en: 'Paper' },
+  waste: { th: 'ขยะ', en: 'Waste' },
+  ghg: { th: 'ก๊าซเรือนกระจก', en: 'GHG' },
+};
+
+const dashboardLinks = (indicator.relatedDashboards || []).map((id: string) => ({
+  id,
+  route: dashboardRoutes[id] || null,
+  label: isEn ? dashboardLabels[id]?.en || id : dashboardLabels[id]?.th || id,
+}));
+
+const exactEvidence = getEvidenceForIndicator(indicator.code);
+const hasExactEvidence = exactEvidence.length > 0;
+const implementationNotes = implementationNotesForIndicator(indicator.code, undefined, locale);
+
+const categoryEvidence = evidenceIndex.items.filter((e: Record<string, unknown>) => {
+  if (hasExactEvidence) return false;
+  const codes: string[] = Array.isArray(e.categoryCodes)
+    ? (e.categoryCodes as string[])
+    : e.categoryId
+      ? [e.categoryId as string]
+      : [];
+  return codes.includes(indicator.categoryCode);
+});
+const hasCategoryEvidence = categoryEvidence.length > 0;
+
+function label(th: string, en: string): string {
+  return isEn ? en : th;
+}
+
+function primaryTitle(): string {
+  return isEn ? indicator.title.en || indicator.title.th : indicator.title.th || indicator.title.en;
+}
+
+function alternateTitle(): string {
+  return isEn ? indicator.title.th : indicator.title.en;
+}
+---
+
+<div
+  class="max-w-4xl mx-auto px-4 py-8"
+  data-go-evidence-1="indicator-traceability"
+  data-indicator-code={indicator.code}
+>
+  <nav class="text-sm text-gray-500 mb-6" aria-label={label('เส้นทางนำทาง', 'Breadcrumb')}>
+    <ol class="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+      <li>
+        <a href={path('/')} class="text-green-600 hover:text-green-800 hover:underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+          {label('หน้าหลัก', 'Home')}
+        </a>
+      </li>
+      <li class="text-gray-300 select-none" aria-hidden="true">/</li>
+      <li>
+        <a href={path('/categories/')} class="text-green-600 hover:text-green-800 hover:underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+          {label('หมวดหมู่', 'Categories')}
+        </a>
+      </li>
+      <li class="text-gray-300 select-none" aria-hidden="true">/</li>
+      <li>
+        <a
+          href={path(`/categories/${category?.code || indicator.categoryCode}`)}
+          class="text-green-600 hover:text-green-800 hover:underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded"
+        >
+          {isEn ? category?.title?.en || indicator.categoryCode : category?.title?.th || indicator.categoryCode}
+        </a>
+      </li>
+      <li class="text-gray-300 select-none" aria-hidden="true">/</li>
+      <li>
+        <a
+          href={path('/indicators/')}
+          class="text-green-600 hover:text-green-800 hover:underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded"
+        >
+          {label('ตัวชี้วัด', 'Indicators')}
+        </a>
+      </li>
+      <li class="text-gray-300 select-none" aria-hidden="true">/</li>
+      <li class="text-gray-700 font-medium">{indicator.code}</li>
+    </ol>
+  </nav>
+
+  <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+    <div class="flex flex-wrap items-start gap-3 mb-3">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 shrink-0">
+        {label('ตัวชี้วัด', 'Indicator')} {indicator.code}
+      </span>
+    </div>
+    <h1 class="text-2xl font-bold text-gray-900 mb-2">{primaryTitle()}</h1>
+    {alternateTitle() && alternateTitle() !== primaryTitle() && (
+      <p class="text-sm text-gray-500" lang={isEn ? 'th' : 'en'}>{alternateTitle()}</p>
+    )}
+  </div>
+
+  <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+      {label('ข้อกำหนด', 'Requirement')}
+    </h2>
+    <p class="text-gray-800 leading-relaxed">
+      {isEn
+        ? indicator.requirementSummary.en || indicator.requirementSummary.th
+        : indicator.requirementSummary.th || indicator.requirementSummary.en}
+    </p>
+  </div>
+
+  {implementationNotes.length > 0 && (
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+      <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+        {label('สรุปการดำเนินงานจากหลักฐาน', 'Implementation notes from evidence')}
+      </h2>
+      <ul class="list-disc pl-5 space-y-3 text-gray-800 text-sm leading-relaxed" role="list">
+        {implementationNotes.map((note) => (
+          <li>{note}</li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+      <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+        {label('หมวดหมู่', 'Category')}
+      </h2>
+      {category ? (
+        <>
+          <a
+            href={path(`/categories/${category.code}`)}
+            class="text-green-600 hover:text-green-800 hover:underline font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded"
+          >
+            {isEn ? category.title?.en : category.title?.th}
+          </a>
+          {category.weight != null && category.weight !== undefined && (
+            <p class="text-sm text-gray-500 mt-1">
+              {label('น้ำหนัก', 'Weight')}: {category.weight}%
+            </p>
+          )}
+        </>
+      ) : (
+        <span class="text-gray-400">{indicator.categoryCode}</span>
+      )}
+    </div>
+
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+      <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+        {label('ประเด็น', 'Issue')}
+      </h2>
+      {issue ? (
+        <p class="text-gray-800 font-medium">{isEn ? issue.title?.en : issue.title?.th}</p>
+      ) : (
+        <span class="text-gray-400">{indicator.issueCode}</span>
+      )}
+      <p class="text-xs text-gray-400 mt-1">{label('รหัส', 'Code')}: {indicator.issueCode}</p>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+      {label('แดชบอร์ดที่เกี่ยวข้อง', 'Related dashboards')}
+    </h2>
+    {
+      dashboardLinks.length > 0 ? (
+        <ul class="space-y-2" role="list">
+          {dashboardLinks.map((link) => (
+            <li>
+              {link.route ? (
+                <a
+                  href={path(link.route)}
+                  class="inline-flex items-center gap-2 text-green-600 hover:text-green-800 hover:underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded"
+                >
+                  <span>{link.label}</span>
+                </a>
+              ) : (
+                <span class="text-gray-400 italic">{link.id}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-gray-400 italic">
+          {label('ไม่มีการเชื่อมโยงโดยตรงกับแดชบอร์ด', 'No direct dashboard mapping')}
+        </p>
+      )
+    }
+  </div>
+
+  <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+    {
+      hasExactEvidence ? (
+        <IndicatorLinkedEvidence items={exactEvidence} locale={locale} />
+      ) : (
+        <>
+          <h2 id="indicator-linked-evidence" class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+            {label('หลักฐานที่เชื่อมโยงกับตัวชี้วัดนี้', 'Evidence linked to this indicator')}
+          </h2>
+          <p class="text-gray-400 italic">
+            {label(
+              'ยังไม่มีหลักฐานที่เชื่อมโยงกับตัวชี้วัดนี้โดยตรง',
+              'No indicator-level evidence is linked yet',
+            )}
+          </p>
+        </>
+      )
+    }
+  </div>
+
+  {
+    hasCategoryEvidence && (
+      <div class="bg-white rounded-xl shadow-sm border border-amber-100 bg-amber-50/30 p-6 mb-6">
+        <h2 class="text-sm font-semibold text-amber-700 uppercase tracking-wider mb-3">
+          {label('หลักฐานที่เกี่ยวข้องในหมวดนี้', 'Category-level evidence')}
+        </h2>
+        <p class="text-xs text-amber-600 mb-3">
+          {label(
+            'หลักฐานระดับหมวดหมู่ — อาจไม่เชื่อมโยงกับตัวชี้วัดนี้โดยตรง',
+            'Category-level records may not map directly to this indicator',
+          )}
+        </p>
+        <a
+          href={path(`/evidence/?category=${encodeURIComponent(indicator.categoryCode)}`)}
+          class="inline-flex items-center gap-2 text-amber-700 hover:text-amber-900 hover:underline transition-colors text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:ring-offset-2 rounded"
+        >
+          <span>
+            {label(
+              `ดูหลักฐานในหมวดนี้ (${categoryEvidence.length} รายการ)`,
+              `Browse category evidence (${categoryEvidence.length} items)`,
+            )}
+          </span>
+        </a>
+      </div>
+    )
+  }
+
+  <div class="flex items-center justify-between gap-4 pt-4 border-t border-gray-200">
+    {
+      prevIndicator ? (
+        <a
+          href={path(`/indicators/${prevIndicator.code}/`)}
+          class="group flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-green-800 transition-colors hover:bg-green-100 hover:text-green-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 active:bg-green-200"
+        >
+          <span class="hidden sm:inline">{label('ก่อนหน้า', 'Previous')}:</span>
+          <span class="text-green-700 group-hover:text-green-950">{prevIndicator.code}</span>
+        </a>
+      ) : (
+        <div />
+      )
+    }
+    <span class="text-xs text-gray-400 select-none shrink-0">
+      {index + 1} / {total}
+    </span>
+    {
+      nextIndicator ? (
+        <a
+          href={path(`/indicators/${nextIndicator.code}/`)}
+          class="group flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-green-800 transition-colors hover:bg-green-100 hover:text-green-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 active:bg-green-200"
+        >
+          <span class="text-green-700 group-hover:text-green-950">{nextIndicator.code}</span>
+          <span class="hidden sm:inline">{label('ถัดไป', 'Next')}</span>
+        </a>
+      ) : (
+        <div />
+      )
+    }
+  </div>
+</div>
