@@ -2,7 +2,7 @@
 
 Date: 2026-08-10
 Branch: `feat/engage-visual-system`
-Head: `cd48690` — `fix(engage): render span layout classes on engage cards`
+Head: `3a386bd` — `docs(engage): add PR22 visual review package` (before PO visual replacement)
 PR: [numtip/goffice2026#22 — feat(engage): add visual system section](https://github.com/numtip/goffice2026/pull/22)
 Status: **DRAFT** (not ready for review)
 
@@ -19,6 +19,27 @@ Status: **DRAFT** (not ready for review)
 
 ---
 
+## PO Decision: Full Visual Replacement Requested
+
+**2026-08-10** — Product Owner requested a **full visual replacement** of all Engage assets with a new approved image set (8 visuals incl. green procurement, 2048×1152 masters).
+
+Replacement executed in commit `feat(engage): replace visuals with PO-approved assets`:
+
+| Old asset | New asset |
+|-----------|-----------|
+| `energy.webp` | `energy2.webp` |
+| `water.webp` | `water2.webp` |
+| `waste.webp` | `waste2.webp` |
+| `paper.webp` | `paper2.webp` |
+| `ghg.webp` | `ghg2.webp` |
+| `green-meeting.webp` | `green-meeting2.webp` |
+| `5s.webp` | `5s2.webp` |
+| — | `procurement2.webp` (new: Green Procurement, cat6) |
+
+Section count 7 → 8; TH heading updated to "8 วิถีปฏิบัติ Green Office ในสำนักงาน"; grid extended to 8-card editorial layout.
+
+---
+
 ## Final Verdict
 
 ```
@@ -30,8 +51,8 @@ TECHNICAL_PREVIEW_PASS_PO_VISUAL_PENDING
 ## What Changed
 
 - Engage visual section added between Evidence and Improvement on TH/EN landing
-- 7 optimized WebP assets integrated (`public/images/engage/2026/`), 28–45 KB each, lazy-loaded
-- TH/EN copy and alt text included for all 7 visuals
+- **8 PO-approved WebP assets** integrated (`public/images/engage/2026/`), 93–149 KB each, lazy-loaded
+- TH/EN copy and alt text included for all 8 visuals (incl. Green Procurement)
 - Creative/source metadata documented (`docs/design/ENGAGE_VISUAL_ASSETS_2026.md`)
 - Central manifest `src/data/engageVisuals.ts` as single source of truth
 
@@ -47,10 +68,10 @@ TECHNICAL_PREVIEW_PASS_PO_VISUAL_PENDING
 
 | # | Check | Notes |
 |---|-------|-------|
-| 1 | Desktop visual mood | Editorial grid: feature card + pair + row of four |
-| 2 | Mobile crop | Cards stack 1-col; `object-cover` crops 1344×768 source — verify center crop on small screens |
+| 1 | Desktop visual mood | Editorial grid: feature card + pair + row of three + row of two (8 cards) |
+| 2 | Mobile crop | Cards stack 1-col; `object-cover` crops 2048×1152 source — verify center crop on small screens |
 | 3 | Premium/WOW but institutional | Confirm tone balances visual impact with institutional trust |
-| 4 | Category meaning clear | Energy/Water/Waste/Paper/GHG/Green Meeting/5S mapping to metrics & categories |
+| 4 | Category meaning clear | Energy/Water/Waste/Paper/GHG/Green Meeting/5S/Green Procurement mapping to metrics & categories |
 | 5 | No misleading text/logo/building | Images must contain no embedded text, logos, or recognizable buildings |
 | 6 | Section rhythm | Engage sits between Evidence and Improvement; check flow |
 
@@ -64,9 +85,11 @@ TECHNICAL_PREVIEW_PASS_PO_VISUAL_PENDING
 
 ---
 
-## QA (at head `cd48690`)
+## QA (at head `3a386bd` / before visual replacement)
 
 - `npm run check` — PASS (0 errors, 0 warnings)
 - `npm run build` — PASS (254 pages)
 - `npm run validate` — PASS (8 phases, 4,616 links)
 - `git diff --check` — PASS
+
+> QA re-run after PO-approved visual replacement recorded in the replacement commit report.

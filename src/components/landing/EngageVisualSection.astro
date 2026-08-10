@@ -11,21 +11,22 @@ interface Props {
 const { locale = 'th' } = Astro.props;
 const t = Astro.props.t ?? {
   label: 'Engage & Act',
-  heading: 'Seven Green Practices in the Office',
-  description: 'How every staff member contributes to Green Office operations — from energy saving to 5S.',
+  heading: 'Eight Green Practices in the Office',
+  description: 'How every staff member contributes to Green Office operations — from energy saving to green procurement.',
   related_label: 'Related to',
   cta: 'Learn more',
 } as HomeEngageStrings;
 
-/** Editorial grid spans: first card is a tall feature, then a column pair, then a row of four. */
+/** Editorial grid spans (12-col): feature tall card + pair, then row of three, then row of two. */
 const spanClasses = [
   'lg:col-span-7 lg:row-span-2',
   'lg:col-span-5',
   'lg:col-span-5',
-  'lg:col-span-3',
-  'lg:col-span-3',
-  'lg:col-span-3',
-  'lg:col-span-3',
+  'lg:col-span-4',
+  'lg:col-span-4',
+  'lg:col-span-4',
+  'lg:col-span-6',
+  'lg:col-span-6',
 ];
 
 const visuals = engageVisuals.map((v: EngageVisual, index: number) => ({
