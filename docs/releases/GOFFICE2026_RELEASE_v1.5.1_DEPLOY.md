@@ -55,6 +55,15 @@
 
 ---
 
+## Pull requests (deployed)
+
+| PR | Title | Merged |
+|----|-------|--------|
+| [#22](https://github.com/numtip/goffice2026/pull/22) | `feat(engage): add visual system section` | 2026-08-10 |
+| [#23](https://github.com/numtip/goffice2026/pull/23) | `fix(engage): uniform card grid and 16:9 visuals` | 2026-08-10 |
+
+---
+
 ## Commit range deployed (`c796611..2bfd7ca`)
 
 | SHA | Summary |
@@ -97,8 +106,8 @@ Not executed during this release. Rollback target verified present (316 files, c
 
 | Location | SHA / path |
 |----------|------------|
-| GitHub `origin/master` (at deploy) | `2bfd7cadebe5c7472205c6316a94ab6e56f547bd` |
-| Local `master` HEAD (at deploy) | `2bfd7cadebe5c7472205c6316a94ab6e56f547bd` |
+| Production artifact source (deployed) | `2bfd7cadebe5c7472205c6316a94ab6e56f547bd` |
+| Repository `master` HEAD (after closeout docs) | `5507223f45f9eacb8fffe61c333d210533d11c35` |
 | Deployed (`.release-meta`) | `2bfd7cadebe5c7472205c6316a94ab6e56f547bd` |
 | Active symlink | `/var/www/goffice/current` → `v1.5.1` |
 

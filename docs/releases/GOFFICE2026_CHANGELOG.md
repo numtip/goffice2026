@@ -7,6 +7,34 @@ For day-to-day development changes see also [CHANGELOG.md](../../CHANGELOG.md) a
 
 ---
 
+## [1.5.1] — 2026-08-11
+
+**Release title:** Engage visual system (VPS)
+**Branch:** `master`
+**Deployed commit:** `2bfd7cadebe5c7472205c6316a94ab6e56f547bd`
+**Pull requests:** [#22](https://github.com/numtip/goffice2026/pull/22) `feat(engage): add visual system section` · [#23](https://github.com/numtip/goffice2026/pull/23) `fix(engage): uniform card grid and 16:9 visuals`
+**Previous production:** `v1.5.0` / `c796611`
+**Status:** `PRODUCTION_SUCCESS` · `RELEASE_CLOSED`
+
+### Added
+
+- Engage visual system on landing: 8 PO-approved local WebP visuals (2048×1152, native 16:9) with bilingual TH/EN copy
+- Central asset manifest `src/data/engageVisuals.ts` — components never hardcode image paths
+
+### Fixed
+
+- Engage card grid — uniform 4-column desktop layout (`lg:col-span-3` × 8), 16:9 visuals with no crop/letterboxing
+
+### Deployment
+
+- Live: `/var/www/goffice/current` → `/var/www/goffice/releases/v1.5.1`
+- Rollback: `/var/www/goffice/releases/v1.5.0`
+- Record: [GOFFICE2026_RELEASE_v1.5.1_DEPLOY.md](./GOFFICE2026_RELEASE_v1.5.1_DEPLOY.md)
+
+> **Next priorities (Blueprint V5):** verified indicator-level evidence onboarding · FY2569 data maintenance · P2 maintenance (GitHub Actions Node 20 deprecation + Astro check hints). No new UI work.
+
+---
+
 ## [1.5.0] — 2026-08-10
 
 **Release title:** Production traceability + dashboard v2 (VPS)  

@@ -4,9 +4,39 @@
 **Repository:** `numtip/goffice2026`  
 **Status:** ACTIVE — CANONICAL REFERENCE  
 **Version:** 4.0  
-**Updated:** 2026-07-27  
+**Updated:** 2026-07-27 (status addendum 2026-08-11)
 **Supersedes:** `GREENOFFICE2026_PLATFORM_BLUEPRINT_V3.md` where inconsistent  
 **Architecture Decision:** ADR-0001 — Approval Engine removed from scope
+
+---
+
+## 0. Release Status & Next Priorities (addendum 2026-08-11)
+
+### Current production state
+
+| Item | Value |
+|------|-------|
+| Release | **v1.5.1** — `RELEASE_CLOSED` / `PRODUCTION_DEPLOYED` |
+| Production source SHA | `2bfd7ca` (Engage visual system) |
+| Repository `master` HEAD | `5507223` (after closeout docs) |
+| Production URL | https://goffice.mju.ac.th/ |
+| Release path | `/var/www/goffice/releases/v1.5.1` |
+| Rollback | `v1.5.0` / `c796611` — `/var/www/goffice/releases/v1.5.0` (preserved) |
+| Smoke | Production routes + Engage TH/EN 8/8 images, uniform 4-col cards, native 16:9 — PASS |
+| P0/P1 | none |
+| P2 | GitHub Actions Node 20 deprecation · Astro check hints (11, 0 errors) |
+
+> **Not implied:** This status does **not** claim complete evidence coverage or complete FY2569 datasets. Evidence onboarding and FY2569 data remain workstreams below.
+
+### Next priorities (Blueprint V5 direction — PO-confirmed, 2026-08-11)
+
+1. **Verified indicator-level evidence onboarding** — progress GO-EVIDENCE-1 from structure to verified, auditor-ready evidence at indicator level (SharePoint sources, stable links).
+2. **FY2569 data maintenance** — maintain/refresh dashboard datasets through the validated Excel → CSV → JSON pipeline; keep partial-year caveats until data is complete.
+3. **P2 maintenance (separately)** — GitHub Actions Node 20 deprecation upgrade and Astro check hint cleanup; tracked separately from feature work.
+
+> **Scope guard:** no new UI work. Do not start new landing/dashboard/visual features without PO approval; reuse existing components and the Engage visual system already shipped.
+
+---
 
 ---
 
