@@ -18,6 +18,7 @@ import DashboardShowcase from './DashboardShowcase.astro';
 import ExecutiveCommandCenter from './ExecutiveCommandCenter.astro';
 import AssessmentFramework from './AssessmentFramework.astro';
 import EvidenceGateway from './EvidenceGateway.astro';
+import EngageVisualSection from './EngageVisualSection.astro';
 import ImprovementJourney from './ImprovementJourney.astro';
 import LandingCTA from './LandingCTA.astro';
 
@@ -66,6 +67,7 @@ const genMap: Record<string, MultiYearMetric> = {
       availableItems={availableItems}
       t={home.evidence}
     />
+    <EngageVisualSection locale={locale} t={home.engage} />
     <ImprovementJourney locale={locale} t={home.improvement} />
     <LandingCTA locale={locale} t={home.cta} />
   </div>
