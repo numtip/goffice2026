@@ -68,6 +68,8 @@ const allItems = evidenceIndex.items.map((raw: Record<string, any>) => {
     categoryTitle: isTh ? firstCat?.title?.th : firstCat?.title?.en,
     indicatorCodes: Array.isArray(raw.indicatorCodes) ? raw.indicatorCodes : [],
     categoryCodes,
+    realSourceAvailable: raw.realSourceAvailable,
+    sharePointUrlPending: raw.sharePointUrlPending,
   };
 });
 
@@ -211,6 +213,8 @@ const hasItems = items.length > 0;
               traceabilityLevel={item.traceabilityLevel}
               verificationStatus={item.verificationStatus}
               categoryTitle={catTitle}
+              realSourceAvailable={item.realSourceAvailable}
+              sharePointUrlPending={item.sharePointUrlPending}
               locale={locale}
             />
           );
