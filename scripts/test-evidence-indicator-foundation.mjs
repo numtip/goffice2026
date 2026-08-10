@@ -92,6 +92,31 @@ describe('evidence index TH/EN parity', () => {
   });
 });
 
+describe('static query filters (client runtime)', () => {
+  it('indicators hub reads window.location.search for q', () => {
+    const th = readFileSync(join(ROOT, 'src/pages/indicators/index.astro'), 'utf8');
+    const en = readFileSync(join(ROOT, 'src/pages/en/indicators/index.astro'), 'utf8');
+    for (const page of [th, en]) {
+      assert.match(page, /URLSearchParams\(window\.location\.search\)/);
+      assert.match(page, /\.get\(['"]q['"]\)/);
+      assert.match(page, /indicator-hub-row/);
+      assert.doesNotMatch(page, /Astro\.url\.searchParams\.get\(['"]q['"]\)/);
+    }
+  });
+
+  it('evidence index filters via location.search and data attributes', () => {
+    const th = readFileSync(join(ROOT, 'src/pages/evidence.astro'), 'utf8');
+    const en = readFileSync(join(ROOT, 'src/pages/en/evidence/index.astro'), 'utf8');
+    for (const page of [th, en]) {
+      assert.match(page, /URLSearchParams\(window\.location\.search\)/);
+      assert.match(page, /data-indicator-codes/);
+      assert.match(page, /data-category-codes/);
+      assert.match(page, /evidence-filter-row/);
+      assert.doesNotMatch(page, /Astro\.url\.searchParams\.get\(['"]indicator['"]\)/);
+    }
+  });
+});
+
 describe('evidence link contract', () => {
   const items = JSON.parse(readFileSync(EVIDENCE, 'utf8')).items;
 
