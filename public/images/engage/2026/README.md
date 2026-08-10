@@ -1,34 +1,34 @@
 # Engage Visual System — Asset Destination (2026)
 
-Place the 7 **approved Magnific-generated master assets** (WebP, locally optimized) here.
+7 **approved Magnific-generated master assets**, optimized to local WebP.
 
-## Naming contract
+## Files (naming contract)
 
-| # | Asset | Required filename |
-|---|-------|-------------------|
-| 1 | Energy | `energy.webp` |
-| 2 | Water | `water.webp` |
-| 3 | Waste | `waste.webp` |
-| 4 | Paper | `paper.webp` |
-| 5 | GHG | `ghg.webp` |
-| 6 | Green Meeting | `green-meeting.webp` |
-| 7 | 5S | `5s.webp` |
+| # | Asset | Filename | Size |
+|---|-------|----------|------|
+| 1 | Energy | `energy.webp` | ~45 KB |
+| 2 | Water | `water.webp` | ~43 KB |
+| 3 | Waste | `waste.webp` | ~38 KB |
+| 4 | Paper | `paper.webp` | ~36 KB |
+| 5 | GHG | `ghg.webp` | ~35 KB |
+| 6 | Green Meeting | `green-meeting.webp` | ~35 KB |
+| 7 | 5S | `5s.webp` | ~29 KB |
 
 ## Rules
 
 - **Local WebP only.** Never hotlink remote Magnific URLs in code.
 - **No text embedded in image** — all labels/alt text are rendered in HTML.
-- Optimize for web (target < 150 KB per asset, aspect-ratio 4:3 or 16:10).
-- Do **not** rename files after drop-in — `src/data/engageVisuals.ts` resolves paths from this contract.
+- Source master PNGs (1344×768, ~1–1.7 MB each) are **not committed** — WebP derivatives only.
+- Do **not** rename files — `src/data/engageVisuals.ts` resolves paths from this contract.
 
 ## Status
 
-- [ ] `energy.webp`
-- [ ] `water.webp`
-- [ ] `waste.webp`
-- [ ] `paper.webp`
-- [ ] `ghg.webp`
-- [ ] `green-meeting.webp`
-- [ ] `5s.webp`
+- [x] `energy.webp`
+- [x] `water.webp`
+- [x] `waste.webp`
+- [x] `paper.webp`
+- [x] `ghg.webp`
+- [x] `green-meeting.webp`
+- [x] `5s.webp`
 
-While assets are pending, `EngageVisualSection.astro` renders a styled accent placeholder automatically (no broken images).
+All assets present — `EngageVisualSection.astro` renders real lazy-loaded WebP images.
