@@ -56,7 +56,7 @@ const visuals = engageVisuals.map((v: EngageVisual, index: number) => ({
       aria-label={t.heading}
     >
       {visuals.map((v) => (
-        <li class="landing-reveal list-none {v.spanClass}">
+        <li class={`landing-reveal list-none ${v.spanClass}`}>
           <a
             href={v.href}
             class="landing-card-interactive group flex h-full flex-col overflow-hidden rounded-stitch-lg border border-outline-variant/20 bg-surface-container-lowest/80 shadow-md backdrop-blur-sm hover:border-primary-container/40"
