@@ -327,10 +327,10 @@ npm run validate:data
 | SharePoint central library | ✅ `GreenOfficeEvidence` on `/sites/msteams_54adc4` |
 | Full evidence migration | ⏳ Next phase (GO-SP-3) |
 
-**Production URL:** https://goffice.mju.ac.th/ (VPS v1.1.3 — frontend unchanged in v1.2.0)  
+**Production URL:** https://goffice.mju.ac.th/ (VPS **v1.5.0** @ `c796611`)  
 **Preview URL:** https://numtip.github.io/goffice2026/
 
-Release notes: [v1.2.0](docs/releases/GOFFICE2026_RELEASE_v1.2.0.md) · [v1.1.3](docs/releases/GOFFICE2026_RELEASE_v1.1.3.md) · [Changelog](docs/releases/GOFFICE2026_CHANGELOG.md)
+Release notes: [v1.5.0 deploy](docs/releases/GOFFICE2026_RELEASE_v1.5.0_DEPLOY.md) · [v1.2.0](docs/releases/GOFFICE2026_RELEASE_v1.2.0.md) · [Changelog](docs/releases/GOFFICE2026_CHANGELOG.md)
 
 ---
 

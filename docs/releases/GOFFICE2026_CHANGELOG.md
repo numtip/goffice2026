@@ -7,6 +7,34 @@ For day-to-day development changes see also [CHANGELOG.md](../../CHANGELOG.md) a
 
 ---
 
+## [1.5.0] — 2026-08-10
+
+**Release title:** Production traceability + dashboard v2 (VPS)  
+**Branch:** `master`  
+**Deployed commit:** `c7966115c4540bf060e19800b3016119d2fa03f4`  
+**Previous production:** `v1.4.0` / `075866b`  
+**Status:** `PRODUCTION_SUCCESS` · `RELEASE_CLOSED`
+
+### Added
+
+- GO-EVIDENCE-1 indicator/evidence traceability experience (TH/EN indicator pages, linked evidence, static-hosting query filters)
+- GO-DASH-V2 dashboard phases (command hero, resource pulse, performance explorer, partial YoY)
+- Apache ECharts 6 chart pipeline and indicator index routes
+
+### Fixed
+
+- Evidence metadata/offline-source presentation (no fabricated document links)
+- Preview/demo score hardening and FY2569 readiness copy
+- Astro check compatibility for inline evidence filter scripts
+
+### Deployment
+
+- Live: `/var/www/goffice/current` → `/var/www/goffice/releases/v1.5.0`
+- Rollback: `/var/www/goffice/releases/v1.4.0`
+- Record: [GOFFICE2026_RELEASE_v1.5.0_DEPLOY.md](./GOFFICE2026_RELEASE_v1.5.0_DEPLOY.md)
+
+---
+
 ## [1.2.0] — 2026-07-20
 
 **Release title:** Green Office Evidence Platform Foundation  

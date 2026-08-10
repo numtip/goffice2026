@@ -17,6 +17,38 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [1.5.0] — 2026-08-10
+
+**Production VPS deploy** — promotes `origin/master` @ `c796611` (16 commits after live `v1.4.0` / `075866b`). Immutable release `/var/www/goffice/releases/v1.5.0`; rollback `v1.4.0`.
+
+### Added
+
+- **GO-EVIDENCE-1 (production)** — indicator index/detail traceability UI, linked evidence, client-side evidence list filters (`?indicator=` / `?category=`) for static hosting
+- **GO-DASH-V2** — command hero, resource pulse, performance explorer, partial YoY explorer; Apache ECharts 6 with localized TH insights
+- Indicator listing pages (`/indicators/`, `/en/indicators/`)
+
+### Fixed
+
+- Evidence Thai source availability metadata parity; unavailable sources without fake file download links
+- Preview hardening — demo KPI data quarantined; explicit FY2569 pending/readiness wording
+- Dashboard GO-DASH-V2 Phase B–C QA/i18n; exec summary TH confidence strings
+- Astro check — evidence filter scripts marked inline
+
+### Changed
+
+- Dashboard composition cleanup (legacy chart/sparkline components removed in favor of ECharts pipeline)
+- Demo dashboard JSON moved under `archive/demo-data/` (not served as live KPI source)
+
+### Deployment status
+
+- **PRODUCTION_SUCCESS** — 2026-08-10 (Asia/Bangkok) · https://goffice.mju.ac.th/
+- **Preview:** https://numtip.github.io/goffice2026/ (unchanged workflow; not used as production artifact)
+- **No Git tag `v1.5.0`** at documentation time — VPS release label only
+
+See [docs/releases/GOFFICE2026_RELEASE_v1.5.0_DEPLOY.md](docs/releases/GOFFICE2026_RELEASE_v1.5.0_DEPLOY.md).
+
+---
+
 ## [1.3.0] — 2026-08-05
 
 **Production release prep (approved by PO 2026-08-05)** — 18 commits ต่อจาก v1.2.0 (934e960). Built from `441de66`, QA ผ่านครบภายใต้ Node 20.19.5, 252 pages.
