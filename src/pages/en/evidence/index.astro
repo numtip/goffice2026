@@ -224,7 +224,7 @@ const hasItems = items.length > 0;
     </p>
   </div>
 
-  <script>
+  <script is:inline>
     const params = new URLSearchParams(window.location.search);
     const filterIndicator = (params.get('indicator') || '').trim();
     const filterCategory = (params.get('category') || '').trim();
