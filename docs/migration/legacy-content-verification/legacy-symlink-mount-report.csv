@@ -1,0 +1,3 @@
+link_path,target_path,target_exists,target_readable,probable_purpose,recommended_audit_action
+/home/rae_admin/joomla-greenoffice/joomlagreenv2/backups-before-restore/goffice.mju.ac.th.conf.enabled-before-switch.20260602_125632,/etc/nginx/sites-available/goffice.mju.ac.th.conf,True,True,apache_config_backup,skip_unless_content_related
+/home/rae_admin/joomla-greenoffice/joomlagreenv2/backups-before-restore/goffice.mju.ac.th.conf.enabled-symlink.pre-restore,/etc/nginx/sites-available/goffice.mju.ac.th.conf,True,True,apache_config_backup,skip_unless_content_related

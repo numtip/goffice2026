@@ -1,0 +1,7 @@
+archive_relative_path,document_entry_count,pdf_entry_count,office_document_count,encryption_status,recommended_action
+backups/backup2026/05_DOCUMENTS/documents_data_20260702.tar.gz,0,0,0,no,list_only_no_extract
+backups/backup2026/05_DOCUMENTS/dashboard_evidence_20260702.tar.gz,1,0,1,no,list_only_no_extract
+backups/backup2026/02_WEBSITE/joomla_website_20260702.tar.gz,1,0,1,no,list_only_no_extract
+backups/backup2026/04_DASHBOARD/dashboards_20260702.tar.gz,1,0,1,no,list_only_no_extract
+backups/backup2026/06_LOGS/logs_20260702.tar.gz,0,0,0,no,list_only_no_extract
+backups/backup2026/06_LOGS/joomla_admin_logs.tar.gz,0,0,0,no,list_only_no_extract
