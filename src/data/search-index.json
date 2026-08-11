@@ -3843,31 +3843,6 @@
       "fileType": null
     },
     {
-      "id": "practice-green-office-mindset",
-      "section": "knowledge",
-      "type": "practice",
-      "title": [
-        "รู้ก่อนเขียว",
-        "Green Office Mindset"
-      ],
-      "context": [
-        "ทำความรู้จัก Green Office ว่าคืออะไร เชื่อมโยงพฤติกรรมในสำนักงานกับผลกระทบต่อสิ่งแวดล้อมและก๊าซเรือนกระจกอย่างไร",
-        "Understand what Green Office means and how everyday office behaviour connects to environmental impact and greenhouse gas."
-      ],
-      "keywords": [
-        "เข้าใจก่อนลงมือทำ สำนักงานสีเขียวเริ่มจากความคิดของเรา ทำความรู้จัก Green Office ว่าคืออะไร เชื่อมโยงพฤติกรรมในสำนักงานกับผลกระทบต่อสิ่งแวดล้อมและก๊าซเรือนกระจกอย่างไร สำนักงานสีเขียว green office ก๊าซเรือนกระจก ภาวะโลกร้อน จิตสำนึก รู้ก่อนเขียว เรียนรู้ว่าสำนักงานสีเขียวคืออะไรและเกณฑ์การประเมินมีกี่หมวด ทำความเข้าใจความเชื่อมโยงระหว่างพฤติกรรมในสำนักงานกับก๊าซเรือนกระจก นำความรู้ที่ได้ไปบอกต่อเพื่อนร่วมงานและครอบครัว เข้าร่วมการอบรมหรือกิจกรรมด้านสิ่งแวดล้อมของหน่วยงาน ติดตามผลการดำเนินงานของสำนักงานจากแดชบอร์ดสิ่งแวดล้อม",
-        "Understanding comes first — a Green Office starts with how we think. Understand what Green Office means and how everyday office behaviour connects to environmental impact and greenhouse gas. green office greenhouse gas global warming awareness mindset Learn what a Green Office is and how the assessment categories work Understand how office behaviour connects to greenhouse gas Share what you learn with colleagues and family Join your unit's environmental training and activities Follow the office's environmental performance on the dashboard"
-      ],
-      "route": "/knowledge/green-office-mindset/",
-      "routeKind": "page",
-      "category": [
-        "8 วิถี Green Office",
-        "8 Green Office Practices"
-      ],
-      "year": null,
-      "fileType": null
-    },
-    {
       "id": "practice-green-workplace",
       "section": "knowledge",
       "type": "practice",
@@ -3934,6 +3909,31 @@
         "Every drop counts — close tight, use wisely. Save water at the office — from checking leaks and using taps sensibly to reusing water where possible. save water conservation leak faucet reuse Check taps and toilets for leaks and report any for repair immediately Always close the tap after use and don't leave water running while washing hands Use low-flow or aerated taps when installing new fixtures Reuse used water — such as fruit and vegetable rinse water — for watering plants Wipe food scraps off dishes before washing to reduce water use Report unusual water usage to the responsible person"
       ],
       "route": "/knowledge/water-wise/",
+      "routeKind": "page",
+      "category": [
+        "8 วิถี Green Office",
+        "8 Green Office Practices"
+      ],
+      "year": null,
+      "fileType": null
+    },
+    {
+      "id": "practice-green-office-mindset",
+      "section": "knowledge",
+      "type": "practice",
+      "title": [
+        "รู้จัก Green Office",
+        "What is Green Office?"
+      ],
+      "context": [
+        "ทำความรู้จัก Green Office ว่าคืออะไร เชื่อมโยงพฤติกรรมในสำนักงานกับผลกระทบต่อสิ่งแวดล้อมและก๊าซเรือนกระจกอย่างไร",
+        "Understand what Green Office means and how everyday office behaviour connects to environmental impact and greenhouse gas."
+      ],
+      "keywords": [
+        "เข้าใจก่อนลงมือทำ สำนักงานสีเขียวเริ่มจากความคิดของเรา ทำความรู้จัก Green Office ว่าคืออะไร เชื่อมโยงพฤติกรรมในสำนักงานกับผลกระทบต่อสิ่งแวดล้อมและก๊าซเรือนกระจกอย่างไร สำนักงานสีเขียว green office ก๊าซเรือนกระจก ภาวะโลกร้อน จิตสำนึก รู้จัก Green Office เรียนรู้ว่าสำนักงานสีเขียวคืออะไรและเกณฑ์การประเมินมีกี่หมวด ทำความเข้าใจความเชื่อมโยงระหว่างพฤติกรรมในสำนักงานกับก๊าซเรือนกระจก นำความรู้ที่ได้ไปบอกต่อเพื่อนร่วมงานและครอบครัว เข้าร่วมการอบรมหรือกิจกรรมด้านสิ่งแวดล้อมของหน่วยงาน ติดตามผลการดำเนินงานของสำนักงานจากแดชบอร์ดสิ่งแวดล้อม",
+        "Understanding comes first — a Green Office starts with how we think. Understand what Green Office means and how everyday office behaviour connects to environmental impact and greenhouse gas. green office greenhouse gas global warming awareness mindset Learn what a Green Office is and how the assessment categories work Understand how office behaviour connects to greenhouse gas Share what you learn with colleagues and family Join your unit's environmental training and activities Follow the office's environmental performance on the dashboard"
+      ],
+      "route": "/knowledge/green-office-mindset/",
       "routeKind": "page",
       "category": [
         "8 วิถี Green Office",

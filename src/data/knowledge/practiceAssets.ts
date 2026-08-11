@@ -129,13 +129,13 @@ const makeSlots = (
 export const practiceAssetContracts: PracticeAssetContract[] = [
   {
     slug: 'green-office-mindset',
-    titleTh: 'รู้ก่อนเขียว',
-    titleEn: 'Green Office Mindset',
+    titleTh: 'รู้จัก Green Office',
+    titleEn: 'What is Green Office?',
     slots: makeSlots('green-office-mindset', {
       heroTh: 'ภาพประกอบแนวคิด Green Office สำนักงานสีเขียวเริ่มต้นจากความคิดของทุกคน',
       heroEn: 'Illustration of the Green Office mindset — a green office starts with how we think',
-      campaignTh: 'ภาพรณรงค์ รู้ก่อนเขียว — ทำความรู้จัก Green Office ก่อนลงมือทำ',
-      campaignEn: 'Green Office Mindset campaign image — understand Green Office before acting',
+      campaignTh: 'ภาพรณรงค์ รู้จัก Green Office — ทำความรู้จัก Green Office ก่อนลงมือทำ',
+      campaignEn: 'What is Green Office? campaign image — understand Green Office before acting',
       socialTh: 'ภาพแนวตั้งสำหรับโซเชียล — เริ่มต้นด้วยความคิดสีเขียว',
       socialEn: 'Vertical social graphic — start with a green mindset',
     }),
