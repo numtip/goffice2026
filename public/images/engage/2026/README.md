@@ -46,6 +46,12 @@ Metadata (TH/EN titles, descriptions, alt text, related metric/category) is regi
 - Do **not** delete or rename any `*2.webp` until the runtime manifest has been migrated to the new folder contract.
 - The new PNG folders are asset-only today — no code references them yet.
 
+## Runtime migration status (2026-08-11)
+
+- Optimized web assets do **not** exist yet (no `web/` folder) → the `procurement → mindset` runtime swap is **gated** on optimized assets + PO approval. Runtime manifest remains on legacy `*2.webp`; TH/EN parity and placeholder fallback are preserved.
+- Planned canonical web mapping + prepared `mindset` manifest entry (copy, alt, `cat2`, accent proposal) are staged in `docs/design/ENGAGE_VISUAL_ASSETS_2026.md` → "Runtime Migration Prep".
+- See the swap checklist in that doc before re-wiring `src/data/engageVisuals.ts`.
+
 ## Visual production policy
 
 - Creative media (masters and derived PNG ratios) is created manually by the Product Owner in Magnific. Repository workflows must never generate creative media.
