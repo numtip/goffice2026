@@ -6,8 +6,9 @@
  * never hardcode image paths; always import from this manifest.
  *
  * Naming contract (files under public/images/engage/2026/):
- *   energy2.webp · water2.webp · waste2.webp · paper2.webp
- *   ghg2.webp · green-meeting2.webp · 5s2.webp · procurement2.webp
+ *   web/<id>-master.webp — runtime card assets (16:9, optimized from master PNGs)
+ *   web/<id>-4x5.webp · web/<id>-9x16.webp · web/<id>-1x1.webp — ratio derivatives
+ *   legacy root *2.webp files (energy2.webp, …) retained for compatibility
  *
  * Images are local optimized WebP only (never hotlink remote Magnific URLs).
  * While an asset file is pending, EngageVisualSection renders an accent-colored
@@ -35,9 +36,9 @@ export function engageImageAvailable(file: string): boolean {
 }
 
 export interface EngageVisual {
-  /** Stable identifier — also the asset filename stem (except green-meeting / 5s). */
+  /** Stable identifier — also the asset filename stem. */
   id: string;
-  /** Local asset filename per the naming contract (energy2.webp, water2.webp, …). */
+  /** Local asset filename per the naming contract (web/<id>-master.webp). */
   file: string;
   titleTh: string;
   titleEn: string;
@@ -58,6 +59,22 @@ export interface EngageVisual {
 
 export const engageVisuals: EngageVisual[] = [
   {
+    id: 'mindset',
+    titleTh: 'รู้ก่อนเขียว',
+    titleEn: 'Green Office Mindset',
+    descriptionTh:
+      'ทำความรู้จัก Green Office ว่าคืออะไร เชื่อมโยงพฤติกรรมในสำนักงานกับผลกระทบต่อสิ่งแวดล้อมและก๊าซเรือนกระจกอย่างไร',
+    descriptionEn:
+      'Understand what Green Office means and how everyday office behaviour connects to environmental impact and greenhouse gas.',
+    file: 'web/mindset-master.webp',
+    image: engageAssetUrl('web/mindset-master.webp'),
+    altTh: 'ภาพประกอบแนวคิด Green Office สำนักงานสีเขียวเริ่มต้นจากความคิดของทุกคน',
+    altEn: 'Illustration of the Green Office mindset — a green office starts with how we think',
+    relatedCategory: 'cat2',
+    accent: '#0891b2',
+    accentLight: '#cffafe',
+  },
+  {
     id: 'energy',
     titleTh: 'พลังงาน',
     titleEn: 'Energy',
@@ -65,8 +82,8 @@ export const engageVisuals: EngageVisual[] = [
       'ปิดไฟและถอดปลั๊กอุปกรณ์เมื่อไม่ใช้งาน เลือกใช้เครื่องใช้ไฟฟ้าประหยัดพลังงานเบอร์ 5 เพื่อลดการใช้ไฟฟ้าขององค์กร',
     descriptionEn:
       'Turn off lights and unplug devices when idle. Choose high-efficiency appliances to cut organizational electricity use.',
-    file: 'energy2.webp',
-    image: engageAssetUrl('energy2.webp'),
+    file: 'web/energy-master.webp',
+    image: engageAssetUrl('web/energy-master.webp'),
     altTh: 'ภาพประกอบการประหยัดพลังงานไฟฟ้าในสำนักงาน',
     altEn: 'Illustration of saving electricity in the office',
     relatedMetric: 'energy',
@@ -82,8 +99,8 @@ export const engageVisuals: EngageVisual[] = [
       'ปิดก๊อกน้ำให้สนิททุกครั้ง ตรวจสอบการรั่วซึมของท่อและสุขภัณฑ์ เพื่อการอนุรักษ์น้ำอย่างเป็นระบบ',
     descriptionEn:
       'Close taps fully every time and monitor leaks in pipes and fixtures for systematic water conservation.',
-    file: 'water2.webp',
-    image: engageAssetUrl('water2.webp'),
+    file: 'web/water-master.webp',
+    image: engageAssetUrl('web/water-master.webp'),
     altTh: 'ภาพประกอบการอนุรักษ์น้ำในสำนักงาน',
     altEn: 'Illustration of water conservation in the office',
     relatedMetric: 'water',
@@ -99,8 +116,8 @@ export const engageVisuals: EngageVisual[] = [
       'คัดแยกขยะตามประเภท ทั้งขยะย่อยสลาย รีไซเคิล และอันตราย พร้อมสนับสนุนการนำกลับมาใช้ซ้ำ',
     descriptionEn:
       'Sort waste by type — compostable, recyclable, and hazardous — and support reuse across operations.',
-    file: 'waste2.webp',
-    image: engageAssetUrl('waste2.webp'),
+    file: 'web/waste-master.webp',
+    image: engageAssetUrl('web/waste-master.webp'),
     altTh: 'ภาพประกอบการคัดแยกขยะและนำกลับมาใช้ใหม่',
     altEn: 'Illustration of waste sorting and reuse',
     relatedMetric: 'waste',
@@ -116,8 +133,8 @@ export const engageVisuals: EngageVisual[] = [
       'เปลี่ยนสู่การทำงานไร้กระดาษ พิมพ์สองหน้าทั้งสองด้าน และใช้กระดาษรีไซเคิลเพื่อลดการใช้ทรัพยากร',
     descriptionEn:
       'Go paperless with digital workflows; print double-sided and choose recycled paper to reduce resource use.',
-    file: 'paper2.webp',
-    image: engageAssetUrl('paper2.webp'),
+    file: 'web/paper-master.webp',
+    image: engageAssetUrl('web/paper-master.webp'),
     altTh: 'ภาพประกอบการทำงานไร้กระดาษ',
     altEn: 'Illustration of a paperless workflow',
     relatedMetric: 'paper',
@@ -133,8 +150,8 @@ export const engageVisuals: EngageVisual[] = [
       'ติดตามและรายงานการปล่อยก๊าซเรือนกระจก พร้อมส่งเสริมกิจกรรมลดคาร์บอนในชีวิตประจำวันของบุคลากร',
     descriptionEn:
       'Measure and report GHG emissions while promoting low-carbon habits in daily staff activities.',
-    file: 'ghg2.webp',
-    image: engageAssetUrl('ghg2.webp'),
+    file: 'web/ghg-master.webp',
+    image: engageAssetUrl('web/ghg-master.webp'),
     altTh: 'ภาพประกอบการวัดและลดก๊าซเรือนกระจก',
     altEn: 'Illustration of GHG measurement and low-carbon awareness',
     relatedMetric: 'ghg',
@@ -150,8 +167,8 @@ export const engageVisuals: EngageVisual[] = [
       'จัดการประชุมแบบผสมและไร้กระดาษ ลดการเดินทาง และให้เอกสารอิเล็กทรอนิกส์แทนเอกสารพิมพ์',
     descriptionEn:
       'Run hybrid, paperless meetings — reduce travel and share documents electronically instead of printing.',
-    file: 'green-meeting2.webp',
-    image: engageAssetUrl('green-meeting2.webp'),
+    file: 'web/green-meeting-master.webp',
+    image: engageAssetUrl('web/green-meeting-master.webp'),
     altTh: 'ภาพประกอบการประชุมสีเขียวแบบไร้กระดาษ',
     altEn: 'Illustration of a sustainable green meeting',
     relatedCategory: 'cat2',
@@ -166,29 +183,13 @@ export const engageVisuals: EngageVisual[] = [
       'จัดระเบียบพื้นที่ทำงานให้สะอาด ปลอดภัย และเป็นระบบด้วยหลัก 5ส — สะสาง สะดวก สะอาด สุขลักษณะ สร้างนิสัย',
     descriptionEn:
       'Keep the workplace clean, safe, and organized with 5S — Sort, Set, Shine, Standardize, Sustain.',
-    file: '5s2.webp',
-    image: engageAssetUrl('5s2.webp'),
+    file: 'web/5s-master.webp',
+    image: engageAssetUrl('web/5s-master.webp'),
     altTh: 'ภาพประกอบการจัดระเบียบสำนักงานด้วยหลัก 5ส',
     altEn: 'Illustration of an organized office following 5S',
     relatedCategory: 'cat5',
     accent: '#334155',
     accentLight: '#e2e8f0',
-  },
-  {
-    id: 'procurement',
-    titleTh: 'การจัดซื้อสีเขียว',
-    titleEn: 'Green Procurement',
-    descriptionTh:
-      'เลือกซื้อสินค้าและบริการที่เป็นมิตรต่อสิ่งแวดล้อม พิจารณาผู้ขายที่ผ่านเกณฑ์ด้านสิ่งแวดล้อมอย่างโปร่งใส',
-    descriptionEn:
-      'Purchase environmentally preferred products and services, and evaluate suppliers against transparent green criteria.',
-    file: 'procurement2.webp',
-    image: engageAssetUrl('procurement2.webp'),
-    altTh: 'ภาพประกอบการจัดซื้อจัดจ้างสีเขียว',
-    altEn: 'Illustration of green procurement',
-    relatedCategory: 'cat6',
-    accent: '#7c3aed',
-    accentLight: '#ede9fe',
   },
 ];
 
