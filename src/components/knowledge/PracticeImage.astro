@@ -1,0 +1,37 @@
+---
+import type { PracticeAssetType } from '../../data/knowledge/practiceAssets';
+import { resolvePracticeAsset } from '../../data/knowledge/practiceAssets';
+
+interface Props {
+  /** Practice slug — must match practices.json / practiceAssets.ts. */
+  slug: string;
+  /** Asset slot to render. */
+  type: PracticeAssetType;
+  locale: 'th' | 'en';
+  /** Above-the-fold asset loads eagerly; everything else lazy. */
+  loading?: 'lazy' | 'eager';
+  /** Aspect-ratio wrapper class (defaults to the slot's recommended ratio). */
+  aspectClass?: string;
+  /** Extra classes for the <img> element. */
+  imgClass?: string;
+  /** Classes for the wrapper <div>. */
+  wrapperClass?: string;
+  /** Aria-hidden decorative images (alt="") — text must carry the meaning. */
+  decorative?: boolean;
+}
+
+const { slug, type, locale, loading = 'lazy', aspectClass, imgClass, wrapperClass = '', decorative = false } = Astro.props;
+const isTh = locale === 'th';
+
+// No asset file → render nothing; the caller keeps its clean accent/icon fallback.
+const resolved = resolvePracticeAsset(slug, type);
+if (!resolved) return;
+
+const ratio = aspectClass ?? `aspect-[${resolved.slot.ratio.replace(':', '/')}]`;
+const alt = decorative ? '' : isTh ? resolved.slot.altTh : resolved.slot.altEn;
+const fitClass = imgClass ?? 'h-full w-full object-cover';
+---
+
+<div class={`overflow-hidden ${ratio} ${wrapperClass}`}>
+  <img src={resolved.url} alt={alt} width={resolved.slot.width} height={resolved.slot.height} loading={loading} decoding="async" class={fitClass} />
+</div>

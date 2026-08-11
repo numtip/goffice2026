@@ -4,6 +4,7 @@ import '../../styles/global.css';
 import { getLocalizedPath } from '../../i18n/utils';
 import MediaCard from './MediaCard.astro';
 import PracticeCard from './PracticeCard.astro';
+import PracticeImage from './PracticeImage.astro';
 import practicesData from '../../data/knowledge/practices.json';
 import categoryData from '../../data/criteria/categories.json';
 import indicatorData from '../../data/criteria/indicators.json';
@@ -67,6 +68,16 @@ const videos = (practice.media ?? []).filter((m: any) => m.type === 'video');
           <span class="mx-2 text-white/50" aria-hidden="true">/</span>
           <span class="font-semibold text-white">{isTh ? practice.titleTh : practice.titleEn}</span>
         </nav>
+        <!-- Optional hero media (16:9 banner; auto-detected, accent fallback while pending) -->
+        <PracticeImage
+          slug={practice.slug}
+          type="hero"
+          locale={locale}
+          loading="eager"
+          wrapperClass="mb-8 overflow-hidden rounded-2xl ring-1 ring-white/20 shadow-xl"
+          aspectClass="aspect-[16/9] max-h-[26rem]"
+          imgClass="h-full w-full object-cover"
+        />
         <div class="flex items-center gap-4">
           <span class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-4xl" aria-hidden="true">
             {practice.visual?.icon ?? '🌿'}
