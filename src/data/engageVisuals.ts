@@ -52,6 +52,8 @@ export interface EngageVisual {
   relatedMetric?: string;
   /** Linked Green Office assessment category id (cat1–cat7). */
   relatedCategory?: string;
+  /** Knowledge hub slug (practices.json) when this practice has a detailed hub page. */
+  knowledgeSlug?: string;
   /** Accent color used for the placeholder while the asset is pending. */
   accent: string;
   accentLight: string;
@@ -60,8 +62,8 @@ export interface EngageVisual {
 export const engageVisuals: EngageVisual[] = [
   {
     id: 'mindset',
-    titleTh: 'รู้ก่อนเขียว',
-    titleEn: 'Green Office Mindset',
+    titleTh: 'รู้จัก Green Office',
+    titleEn: 'What is Green Office?',
     descriptionTh:
       'ทำความรู้จัก Green Office ว่าคืออะไร เชื่อมโยงพฤติกรรมในสำนักงานกับผลกระทบต่อสิ่งแวดล้อมและก๊าซเรือนกระจกอย่างไร',
     descriptionEn:
@@ -71,6 +73,7 @@ export const engageVisuals: EngageVisual[] = [
     altTh: 'ภาพประกอบแนวคิด Green Office สำนักงานสีเขียวเริ่มต้นจากความคิดของทุกคน',
     altEn: 'Illustration of the Green Office mindset — a green office starts with how we think',
     relatedCategory: 'cat2',
+    knowledgeSlug: 'green-office-mindset',
     accent: '#0891b2',
     accentLight: '#cffafe',
   },
@@ -88,6 +91,7 @@ export const engageVisuals: EngageVisual[] = [
     altEn: 'Illustration of saving electricity in the office',
     relatedMetric: 'energy',
     relatedCategory: 'cat3',
+    knowledgeSlug: 'energy-smart',
     accent: '#b45309',
     accentLight: '#fef3c7',
   },
@@ -105,6 +109,7 @@ export const engageVisuals: EngageVisual[] = [
     altEn: 'Illustration of water conservation in the office',
     relatedMetric: 'water',
     relatedCategory: 'cat3',
+    knowledgeSlug: 'water-wise',
     accent: '#0369a1',
     accentLight: '#e0f2fe',
   },
@@ -122,6 +127,7 @@ export const engageVisuals: EngageVisual[] = [
     altEn: 'Illustration of waste sorting and reuse',
     relatedMetric: 'waste',
     relatedCategory: 'cat4',
+    knowledgeSlug: 'zero-waste',
     accent: '#15803d',
     accentLight: '#dcfce7',
   },
@@ -139,6 +145,7 @@ export const engageVisuals: EngageVisual[] = [
     altEn: 'Illustration of a paperless workflow',
     relatedMetric: 'paper',
     relatedCategory: 'cat3',
+    knowledgeSlug: 'paper-smart',
     accent: '#a16207',
     accentLight: '#fefce8',
   },
@@ -172,6 +179,7 @@ export const engageVisuals: EngageVisual[] = [
     altTh: 'ภาพประกอบการประชุมสีเขียวแบบไร้กระดาษ',
     altEn: 'Illustration of a sustainable green meeting',
     relatedCategory: 'cat2',
+    knowledgeSlug: 'green-meeting',
     accent: '#4338ca',
     accentLight: '#e0e7ff',
   },
@@ -188,6 +196,7 @@ export const engageVisuals: EngageVisual[] = [
     altTh: 'ภาพประกอบการจัดระเบียบสำนักงานด้วยหลัก 5ส',
     altEn: 'Illustration of an organized office following 5S',
     relatedCategory: 'cat5',
+    knowledgeSlug: 'green-workplace',
     accent: '#334155',
     accentLight: '#e2e8f0',
   },
@@ -198,7 +207,8 @@ export function engageVisualById(id: string): EngageVisual | undefined {
   return engageVisuals.find((v) => v.id === id);
 }
 
-/** Resolve the related page href for a visual (dashboard metric or assessment category). */
+/** Resolve the related page href for a visual — Knowledge hub page when available, else dashboard metric or assessment category. */
 export function engageHref(visual: EngageVisual): string {
+  if (visual.knowledgeSlug) return `/knowledge/${visual.knowledgeSlug}`;
   return visual.relatedMetric ? `/dashboard/${visual.relatedMetric}` : `/categories/${visual.relatedCategory}`;
 }

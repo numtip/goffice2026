@@ -2,9 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/global.css';
 import { getLocalizedPath } from '../../i18n/utils';
-import PracticeCard from './PracticeCard.astro';
+import EngagePracticeCard from './EngagePracticeCard.astro';
 import MediaCard from './MediaCard.astro';
 import practicesData from '../../data/knowledge/practices.json';
+import { engageVisuals } from '../../data/engageVisuals';
 import { dashboards, dashTitle, dashDescription } from '../../data/dashboard-config';
 
 interface Props {
@@ -105,9 +106,9 @@ const dashList = (hub.relatedDashboards ?? [])
             : 'Each practice includes why it matters, what you can do today, learning media, and links to office criteria and performance.'}
         </p>
       </div>
-      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {practices.map((practice) => (
-          <PracticeCard practice={practice} locale={locale} />
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+        {engageVisuals.map((v) => (
+          <EngagePracticeCard visual={v} locale={locale} />
         ))}
       </div>
     </section>
