@@ -5,7 +5,7 @@
 **Version:** 2.0\
 **Status:** ACTIVE REFERENCE\
 **Updated:** 2026-07-27\
-**Parent Reference:** `GREENOFFICE2026_PLATFORM_BLUEPRINT_V4.md`\
+**Parent Reference:** `GREENOFFICE2026_PLATFORM_BLUEPRINT_V5.md`\
 **Architecture Decision:** ADR-0001 — Approval Engine removed from scope
 
 ------------------------------------------------------------------------
@@ -760,7 +760,7 @@ Content Architecture V2 ถือว่า implement ขั้นพื้นฐ
 ## 19. Reference Relationship
 
 ``` text
-GREENOFFICE2026_PLATFORM_BLUEPRINT_V4  (V3: SUPERSEDED)
+GREENOFFICE2026_PLATFORM_BLUEPRINT_V5  (V4: SUPERSEDED where inconsistent; V3: SUPERSEDED)
         ↓
 GOFFICE2026_CONTENT_ARCHITECTURE_V2
         ↓

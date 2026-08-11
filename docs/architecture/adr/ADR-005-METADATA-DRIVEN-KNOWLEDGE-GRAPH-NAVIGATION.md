@@ -30,7 +30,7 @@ Specifically:
 
 ## Rationale
 
-- **Static-first / no backend (Constitution §4, Blueprint V4 §7):** search must work on GitHub Pages and the static VPS bundle with zero server dependency.
+- **Static-first / no backend (Constitution §4, Blueprint V5 §2):** search must work on GitHub Pages and the static VPS bundle with zero server dependency.
 - **No duplicated data:** a single generated index guarantees every search result is derived from exactly one canonical source. The pre-existing inline index in `search.astro` (duplicated across TH/EN) is the duplication this decision removes.
 - **No duplicated UI:** one component library + one page component eliminates the TH/EN duplication of the current search page.
 - **Reuse before build (Constitution §8 Rule 1):** search reuses `EvidenceCard` patterns, `getLocalizedPath`/`withBase` routing, and the GO-EVIDENCE-1 component conventions.
@@ -71,6 +71,6 @@ Specifically:
 - [ADR-001](./ADR-001-ASTRO-STATIC-FIRST.md)
 - [ADR-002](./ADR-002-DOCUMENT-CENTER-BOUNDARY.md)
 - [Project Constitution](../../00-GREENOFFICE_PROJECT_CONSTITUTION.MD)
-- [Platform Blueprint V4](../../GREENOFFICE2026_PLATFORM_BLUEPRINT_V4.md)
+- [Platform Blueprint V5](../../GREENOFFICE2026_PLATFORM_BLUEPRINT_V5.md)
 - [Architecture Freeze V1](../ARCHITECTURE_FREEZE_V1.md)
 - [GO-EVIDENCE-1 integration commits](https://github.com/numtip/goffice2026) — `evidence-links.json`, shared UI components

@@ -2,10 +2,10 @@
 
 **Project:** Green Office 2026 --- Environmental Communication & Assessment Evidence Platform\
 **Repository:** `numtip/goffice2026`\
-**Status:** SUPERSEDED BY V4\
+**Status:** SUPERSEDED BY V4, THEN V5\
 **Version:** 3.0 (Historical)\
 **Updated:** 2026-07-15\
-**Superseded by:** `GREENOFFICE2026_PLATFORM_BLUEPRINT_V4.md`\
+**Superseded by:** `GREENOFFICE2026_PLATFORM_BLUEPRINT_V5.md` (active canonical; V4 operational reference)\
 **Architecture Decision:** ADR-0001 — Approval Engine removed from scope\
 **Supersedes:** Earlier Green Office website-oriented blueprint where
 inconsistent with this document

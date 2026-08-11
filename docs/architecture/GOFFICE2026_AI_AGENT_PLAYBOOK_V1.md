@@ -39,12 +39,12 @@
 
 ## 1. Purpose and Authority
 
-This Playbook is the **operational constitution** for every AI agent working on Green Office 2026. It consolidates guidance from the Project Constitution, Platform Blueprint V4, Architecture Decision Records (ADR-001–005), the Architecture Freeze V1, the repository's QA workflow, and the subagent orchestration patterns proven in GO-EVIDENCE-1 and GO-SEARCH-1.
+This Playbook is the **operational constitution** for every AI agent working on Green Office 2026. It consolidates guidance from the Project Constitution, Platform Blueprint V5 (canonical; V4 remains the operational reference), Architecture Decision Records (ADR-001–005), the Architecture Freeze V1, the repository's QA workflow, and the subagent orchestration patterns proven in GO-EVIDENCE-1 and GO-SEARCH-1.
 
 **Authority:** In case of conflict, precedence is:
 
 1. `docs/00-GREENOFFICE_PROJECT_CONSTITUTION.MD` (project constitution)
-2. `docs/GREENOFFICE2026_PLATFORM_BLUEPRINT_V4.md` (product/architecture blueprint)
+2. `docs/GREENOFFICE2026_PLATFORM_BLUEPRINT_V5.md` (product/architecture blueprint; supersedes V4 where inconsistent)
 3. Architecture Decision Records (`docs/architecture/adr/`)
 4. **This Playbook** (agent operations)
 5. `docs/architecture/ARCHITECTURE_FREEZE_V1.md` (frozen implementation baseline)
@@ -56,7 +56,8 @@ This document **documents canonical operational standards only**. It does not de
 | Ref | Document | Role |
 |---|---|---|
 | CONST | `docs/00-GREENOFFICE_PROJECT_CONSTITUTION.MD` v2.0 | Governance, mission, MVP scope, forbidden architecture |
-| BP-V4 | `docs/GREENOFFICE2026_PLATFORM_BLUEPRINT_V4.md` v4.0 | Product definition, information architecture, quality gates (§12), governance (§13), Definition of Done (§14) |
+| BP-V5 | `docs/GREENOFFICE2026_PLATFORM_BLUEPRINT_V5.md` v5.0 | Product definition, information architecture, quality gates (§6), governance (§8), Definition of Done (§9) |
+| BP-V4 | `docs/GREENOFFICE2026_PLATFORM_BLUEPRINT_V4.md` v4.0 | Operational reference; superseded by V5 where inconsistent |
 | ADR-001 | `docs/architecture/adr/ADR-001-ASTRO-STATIC-FIRST.md` | Astro static-first public platform |
 | ADR-002 | `docs/architecture/adr/ADR-002-DOCUMENT-CENTER-BOUNDARY.md` | Document Center M365-backed; repo is discovery only |
 | ADR-003 | `docs/architecture/adr/ADR-003-SUPABASE-OPERATIONAL-BACKEND.md` | Operational backend scope boundary |

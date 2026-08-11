@@ -12,6 +12,8 @@
 
 ## 0. Release Status & Next Priorities (addendum 2026-08-11)
 
+> **Canonical pointer (2026-08-11):** Platform Blueprint **V5** is now the ACTIVE canonical operational baseline — `GREENOFFICE2026_PLATFORM_BLUEPRINT_V5.md` (committed). V4 remains the operational reference for baseline capabilities; V5 supersedes it where inconsistent.
+
 ### Current production state
 
 | Item | Value |

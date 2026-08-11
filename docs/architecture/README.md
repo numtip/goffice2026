@@ -31,9 +31,10 @@ See [adr/README.md](./adr/README.md) for ADR conventions (append-only, sequentia
 ## Related Documents
 
 - [Project Constitution](../../00-GREENOFFICE_PROJECT_CONSTITUTION.MD)
-- [Platform Blueprint V4](../../GREENOFFICE2026_PLATFORM_BLUEPRINT_V4.md)
+- [Platform Blueprint V5](../../GREENOFFICE2026_PLATFORM_BLUEPRINT_V5.md)
+- [Platform Blueprint V4 (operational reference)](../../GREENOFFICE2026_PLATFORM_BLUEPRINT_V4.md)
 - [Supabase Backend Blueprint V1](../../GREENOFFICE2026_SUPABASE_BACKEND_BLUEPRINT_V1.md)
 
 ## Reading Order for New Agents
 
-1. Project Constitution → 2. Platform Blueprint V4 → 3. **AI Agent Playbook V1** → 4. Architecture Freeze V1 → 5. ADR-001..005 as needed.
+1. Project Constitution → 2. Platform Blueprint V5 → 3. **AI Agent Playbook V1** → 4. Architecture Freeze V1 → 5. ADR-001..005 as needed.

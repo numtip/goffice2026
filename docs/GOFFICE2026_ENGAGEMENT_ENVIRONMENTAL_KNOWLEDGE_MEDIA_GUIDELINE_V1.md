@@ -6,7 +6,7 @@
 **Version:** 1.0  
 **Date:** 2026-08-11  
 **Target Repository:** `numtip/goffice2026`  
-**Canonical Architecture Basis:** `GREENOFFICE2026_PLATFORM_BLUEPRINT_V4` (V5 not found in repo — see Reconciliation Note in References)  
+**Canonical Architecture Basis:** `GREENOFFICE2026_PLATFORM_BLUEPRINT_V5`
 **Primary Area:** `ENGAGEMENT → Environmental Knowledge Media`
 
 ---
@@ -936,7 +936,7 @@ Environmental Knowledge Media คือ **content experience** ไม่ใช�
 
 # 35. Implementation Phases
 
-> **Reconciliation Note:** This guideline originally referenced `GREENOFFICE2026_PLATFORM_BLUEPRINT_V5`. Repository verification (2026-08-11) confirms **V5 does not exist** in tracked content or git history. The active canonical blueprint is `GREENOFFICE2026_PLATFORM_BLUEPRINT_V4` (per `GOFFICE2026_NEW_PROJECT_MASTER_REFERENCE.md`). All V5 references herein resolve to V4 sections; the engagement architecture implemented follows V4 + `GOFFICE2026_CONTENT_ARCHITECTURE_V2`.
+> **Reconciliation Note:** This guideline's canonical basis is `GREENOFFICE2026_PLATFORM_BLUEPRINT_V5` (ACTIVE — canonical operational baseline, updated 2026-08-10, supersedes V4 where inconsistent). The V5 file is committed at `docs/GREENOFFICE2026_PLATFORM_BLUEPRINT_V5.md`; it was previously present on disk but untracked, which is why an early git-tracked search reported it missing. The engagement architecture implemented follows V5 + `GOFFICE2026_CONTENT_ARCHITECTURE_V2`.
 
 ## Phase A — Audit & Mapping
 
@@ -955,7 +955,7 @@ YouTube media source list
 Green Office 2569 criteria
 existing dashboard routes
 existing indicator routes
-Blueprint V4 relevant sections (V5 absent — see Reconciliation Note)
+Blueprint V5 relevant sections
 ```
 
 ### Deliverable
@@ -1123,7 +1123,7 @@ Canonical practices:
 8 Green Workplace
 
 Phase A first:
-Read only the current knowledge routes/components/data/search/i18n structure, legacy j2xmllearning source, YouTube media list, current Green Office 2569 criteria mapping, existing dashboard/indicator routes, and relevant Blueprint V4/content-architecture sections (V5 absent — see Reconciliation Note).
+Read only the current knowledge routes/components/data/search/i18n structure, legacy j2xmllearning source, YouTube media list, current Green Office 2569 criteria mapping, existing dashboard/indicator routes, and relevant Blueprint V5/content-architecture sections.
 
 Produce a concise:
 Existing / Reuse / Rewrite / Missing / Mapping / Risks matrix.
@@ -1265,7 +1265,7 @@ P2 ต้องไม่ block release candidate
 
 # References
 
-- `GREENOFFICE2026_PLATFORM_BLUEPRINT_V4` (active canonical; V5 not found in repo)
+- `GREENOFFICE2026_PLATFORM_BLUEPRINT_V5` (active canonical)
 - `GOFFICE2026_CONTENT_ARCHITECTURE_V2`
 - `เกณฑ์การประเมินสำนักงานสีเขียว ปี 2569`
 - Legacy Joomla knowledge export (`j2xmllearning`)

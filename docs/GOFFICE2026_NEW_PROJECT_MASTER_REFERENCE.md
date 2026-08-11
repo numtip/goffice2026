@@ -18,7 +18,7 @@
 ## Agent Reading Order
 
 1. **SECTION A — Project Entry Context**
-2. **SECTION B — Platform Blueprint V4** — `GREENOFFICE2026_PLATFORM_BLUEPRINT_V4.md`
+2. **SECTION B — Platform Blueprint V5** — `GREENOFFICE2026_PLATFORM_BLUEPRINT_V5.md`
 3. **SECTION C — Content Architecture V2**
 4. **SECTION D — Green Office 2569 Criteria**
 5. **SECTION E — Governance / Constitution**
@@ -28,12 +28,13 @@
 
 ## Authority Order
 
-### Architecture / Product (per Blueprint V4)
-1. `GREENOFFICE2026_PLATFORM_BLUEPRINT_V4` — **CANONICAL**
+### Architecture / Product (per Blueprint V5)
+1. `GREENOFFICE2026_PLATFORM_BLUEPRINT_V5` — **CANONICAL**
 2. `GOFFICE2026_CONTENT_ARCHITECTURE_V2`
 3. `PROJECT CONSTITUTION`
-4. `GREENOFFICE2026_PLATFORM_BLUEPRINT_V3` — Superseded by V4; historical reference only
-5. ADR-0001 — Approval Engine removed from scope
+4. `GREENOFFICE2026_PLATFORM_BLUEPRINT_V4` — Superseded by V5 where inconsistent; operational reference
+5. `GREENOFFICE2026_PLATFORM_BLUEPRINT_V3` — Superseded by V4/V5; historical reference only
+6. ADR-0001 — Approval Engine removed from scope
 
 ### Green Office Criteria
 1. Official Green Office 2569 PDF
@@ -158,22 +159,23 @@ Do not directly modify Production.
 
 ---
 
-# SECTION B — GREENOFFICE2026 PLATFORM BLUEPRINT V4
+# SECTION B — GREENOFFICE2026 PLATFORM BLUEPRINT V5
 
 > **This section is replaced by the canonical reference:**
-> `GREENOFFICE2026_PLATFORM_BLUEPRINT_V4.md`
+> `GREENOFFICE2026_PLATFORM_BLUEPRINT_V5.md`
 >
 > Read that file directly instead of this embedded extract.
 >
-> **Status:** V4 is ACTIVE — CANONICAL REFERENCE
-> **Blueprint V3:** SUPERSEDED BY V4 — kept only as historical reference
+> **Status:** V5 is ACTIVE — CANONICAL OPERATIONAL BASELINE
+> **Supersedes:** Blueprint V4 where inconsistent (V4 remains the operational reference for baseline capabilities)
+> **Blueprint V3:** SUPERSEDED — kept only as historical reference
 > **Architecture Decision:** ADR-0001 — Approval Engine removed from scope
 
-## Canonical Product Definition (from V4)
+## Canonical Product Definition (from V5)
 
 > **Green Office 2026 คือแพลตฟอร์มสื่อสารข้อมูลสิ่งแวดล้อมและศูนย์รวมหลักฐานการประเมิน ไม่ใช่ระบบธุรกรรมหรือระบบอนุมัติองค์กร**
 
-## Four Pillars (from V4)
+## Four Pillars (from V5)
 
 1. **Present** — นำเสนอข้อมูลการใช้ทรัพยากรและผลการดำเนินงานให้ผู้บริหารเข้าใจได้รวดเร็ว
 2. **Evidence** — จัดหมวดหมู่และเชื่อมโยงหลักฐาน 7 หมวดให้ผู้ตรวจประเมินค้นพบได้ง่าย
