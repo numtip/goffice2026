@@ -1,8 +1,8 @@
 # Engage Visual Assets 2026 — Asset Metadata
 
-Status: ACTIVE
-Branch: `feat/engage-visual-system`
-Last Updated: 2026-08-10
+Status: MIGRATING (legacy WebP active in runtime; new PNG folder contract staged)
+Branch: `master`
+Last Updated: 2026-08-11
 
 ---
 
@@ -16,13 +16,15 @@ Document the creative and production provenance of the 8 PO-approved Engage visu
 
 | Stage | Location | Role |
 |-------|----------|------|
-| **Creative master (source)** | Magnific MCP (external, not in repo) | Original generation output — 2048×1152 PNG masters |
-| **Production derivative** | `public/images/engage/2026/*.webp` (this repo, GitHub) | Optimized WebP served by the static site |
+| **Creative master (source)** | Magnific MCP (external) → exported to `public/images/engage/2026/master/*.png` | Original generation output — 2048×1152 PNG masters (16:9) |
+| **Derived PNG ratios** | `public/images/engage/2026/{campaign,social,cards}/` | 4:5 / 9:16 / 1:1 derivatives from the master |
+| **Production derivative (legacy, active)** | `public/images/engage/2026/*.webp` | Optimized WebP served by the static site today (compatibility layer) |
+| **Optimized web (planned)** | `public/images/engage/2026/web/` | WebP/AVIF generated from approved PNG by the integration workflow |
 
 Rules of the model:
 
-- Magnific holds the creative/source master. GitHub holds only optimized production derivatives.
-- Do **not** commit the large PNG masters (~2.6–4.5 MB each) — WebP derivatives only.
+- Magnific holds the creative/source master. Approved PNG masters and derived ratios are committed under `public/images/engage/2026/{master,campaign,social,cards}/` (migration state 2026-08-11).
+- Legacy `*2.webp` derivatives remain committed and are the active runtime set referenced by `src/data/engageVisuals.ts`; do not delete/rename them until the runtime manifest is migrated.
 - The naming contract below is referenced by `src/data/engageVisuals.ts`; do not rename files.
 
 ---
@@ -48,18 +50,47 @@ Rules of the model:
 2. **No hotlinking Magnific URLs.** Assets are served exclusively from local optimized WebP under `public/images/engage/2026/`. Remote Magnific URLs must never appear in code.
 3. **Alt text parity.** Every asset has TH/EN alt text defined in `src/data/engageVisuals.ts` (`altTh` / `altEn`).
 4. **Metadata before integration.** Any future generated visual must be registered in this document's asset table **before** code integration, and committed in the same change set.
-5. **Optimization target.** Production derivatives should target ≤ 150 KB each; regenerate via sharp/WebP tooling, never commit source PNG masters.
+5. **Optimization target.** Production derivatives should target ≤ 150 KB each; regenerate via sharp/WebP/AVIF tooling from the approved PNG sources.
+
+---
+
+## Migration State (2026-08-11)
+
+The runtime (`src/data/engageVisuals.ts`) still resolves the legacy `*2.webp` set (asset table above). The new folder contract is staged and asset-only — the PNG folders below are committed but not yet referenced by any code. Legacy WebP is retained as the compatibility layer; do not delete/rename it until runtime migration.
+
+### Canonical 8 vs legacy 8
+
+- Canonical practice set: `mindset`, `energy`, `water`, `waste`, `paper`, `ghg`, `green-meeting`, `5s`.
+- Legacy set adds `procurement` (`procurement2.webp`, cat6) and lacks `mindset`. `procurement` is retained for runtime compatibility but is **not** part of the canonical 8 — the canonical set replaces it with `mindset`.
+
+### Canonical naming + metadata mapping
+
+Files are lowercase English with hyphens (`<practice>-<ratio>.png`). Titles, descriptions, and alt text continue to live in `src/data/engageVisuals.ts`.
+
+| id | master (16:9) | campaign (4:5) | social (9:16) | cards (1:1) | TH semantic | EN semantic | related metric | related category | manifest entry |
+|----|---------------|----------------|---------------|-------------|-------------|-------------|----------------|------------------|----------------|
+| mindset | `master/mindset-master.png` | `campaign/mindset-4x5.png` | `social/mindset-9x16.png` | `cards/mindset-1x1.png` | TBD (register with manifest) | TBD (register with manifest) | — | — | PENDING |
+| energy | `master/energy-master.png` | `campaign/energy-4x5.png` | `social/energy-9x16.png` | `cards/energy-1x1.png` | ประหยัดพลังงานไฟฟ้าในสำนักงาน | Saving office electricity | `energy` | cat3 | legacy webp (`energy2.webp`) |
+| water | `master/water-master.png` | `campaign/water-4x5.png` | `social/water-9x16.png` | `cards/water-1x1.png` | การอนุรักษ์น้ำอย่างเป็นระบบ | Systematic water conservation | `water` | cat3 | legacy webp (`water2.webp`) |
+| waste | `master/waste-master.png` | `campaign/waste-4x5.png` | `social/waste-9x16.png` | `cards/waste-1x1.png` | การคัดแยกขยะและนำกลับมาใช้ใหม่ | Waste sorting and reuse | `waste` | cat4 | legacy webp (`waste2.webp`) |
+| paper | `master/paper-master.png` | `campaign/paper-4x5.png` | `social/paper-9x16.png` | `cards/paper-1x1.png` | การทำงานไร้กระดาษ | Paperless workflow | `paper` | cat3 | legacy webp (`paper2.webp`) |
+| ghg | `master/ghg-master.png` | `campaign/ghg-4x5.png` | `social/ghg-9x16.png` | `cards/ghg-1x1.png` | การวัดและลดก๊าซเรือนกระจก | GHG measurement and low-carbon awareness | `ghg` | cat3 | legacy webp (`ghg2.webp`) |
+| green-meeting | `master/green-meeting-master.png` | `campaign/green-meeting-4x5.png` | `social/green-meeting-9x16.png` | `cards/green-meeting-1x1.png` | การประชุมสีเขียวแบบไร้กระดาษ | Sustainable green meetings | — | cat2 | legacy webp (`green-meeting2.webp`) |
+| 5s | `master/5s-master.png` | `campaign/5s-4x5.png` | `social/5s-9x16.png` | `cards/5s-1x1.png` | การจัดระเบียบสำนักงานด้วยหลัก 5ส | Organized office following 5S | — | cat5 | legacy webp (`5s2.webp`) |
+
+Known deviation: `social/mindset9x16.png` is missing its contract hyphen (should be `social/mindset-9x16.png`) — Product Owner to rename on the next asset pass.
 
 ---
 
 ## Generation Workflow (for future assets)
 
 1. Generate creative master in Magnific MCP (target 2048×1152).
-2. Export PNG master (keep external — do not commit).
-3. Optimize to WebP (`sharp.webp({ quality: 80, effort: 6 })`, reduce quality while > 150 KB).
-4. Register metadata in this document.
-5. Add/reuse entry in `src/data/engageVisuals.ts`.
-6. Verify TH/EN render via build + HTML inspection.
+2. Export PNG master and commit to `public/images/engage/2026/master/<practice>-master.png`.
+3. Create derived ratios: `campaign/<practice>-4x5.png`, `social/<practice>-9x16.png`, `cards/<practice>-1x1.png`.
+4. Register metadata in this document (canonical mapping table above).
+5. On runtime migration, add/reuse entry in `src/data/engageVisuals.ts` pointing at optimized web assets.
+6. Generate optimized WebP/AVIF (`sharp.webp({ quality: 80, effort: 6 })`, reduce quality while > 150 KB).
+7. Verify TH/EN render via build + HTML inspection.
 
 ---
 
