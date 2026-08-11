@@ -1,0 +1,15 @@
+---
+import PracticePage from '../../../components/knowledge/PracticePage.astro';
+import practicesData from '../../../data/knowledge/practices.json';
+
+export function getStaticPaths() {
+  return practicesData.practices.map((practice) => ({
+    params: { slug: practice.slug },
+    props: { practice },
+  }));
+}
+
+const { practice } = Astro.props;
+---
+
+<PracticePage practice={practice} locale="en" />

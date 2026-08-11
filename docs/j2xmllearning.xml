@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<j2xml version="21.12.0">
+  <base>https://researchex.mju.ac.th/goffice/</base>
+  <category>
+    <id>18</id>
+    <path><![CDATA[greenstudy]]></path>
+    <extension><![CDATA[com_content]]></extension>
+    <title><![CDATA[แหล่งเรียนรู้สำนักงานสีเขียว]]></title>
+    <alias><![CDATA[greenstudy]]></alias>
+    <note/>
+    <description/>
+    <published>1</published>
+    <params><![CDATA[{"category_layout":"","image":"","image_alt":""}]]></params>
+    <metadesc/>
+    <metakey/>
+    <metadata><![CDATA[{"author":"","robots":""}]]></metadata>
+    <created_time><![CDATA[2022-09-07 07:26:17]]></created_time>
+    <modified_time><![CDATA[2022-09-07 07:26:17]]></modified_time>
+    <hits>0</hits>
+    <language><![CDATA[*]]></language>
+    <version>1</version>
+    <created_user_id><![CDATA[admin]]></created_user_id>
+    <access>1</access>
+  </category>
+  <content>
+    <id>53</id>
+    <title><![CDATA[วางแผนการเดินทาง]]></title>
+    <alias><![CDATA[plantravel]]></alias>
+    <introtext><![CDATA[&lt;p&gt;&lt;img src="images/Img3/Sw2.jpg" alt="sw4" width="800" height="565" /&gt;&lt;/p&gt;]]></introtext>
+    <fulltext/>
+    <state>1</state>
+    <created><![CDATA[2024-06-24 06:17:36]]></created>
+    <created_by_alias/>
+    <modified><![CDATA[2024-06-26 09:22:56]]></modified>
+    <publish_up><![CDATA[2024-06-24 06:17:36]]></publish_up>
+    <publish_down><![CDATA[0000-00-00 00:00:00]]></publish_down>
+    <images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
+    <urls><![CDATA[{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}]]></urls>
+    <attribs><![CDATA[{"article_layout":"","show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}]]></attribs>
+    <version>2</version>
+    <metakey/>
+    <metadesc/>
+    <hits>485</hits>
+    <metadata><![CDATA[{"robots":"","author":"","rights":"","xreference":""}]]></metadata>
+    <language><![CDATA[*]]></language>
+    <xreference/>
+    <note/>
+    <created_by><![CDATA[admin]]></created_by>
+    <modified_by><![CDATA[admin]]></modified_by>
+    <catid><![CDATA[greenstudy]]></catid>
+    <access>1</access>
+    <featured>0</featured>
+    <rating_sum>0</rating_sum>
+    <rating_count>0</rating_count>
+    <canonical><![CDATA[/goffice/index.php/content1/53-plantravel]]></canonical>
+  </content>
+  <content>
+    <id>52</id>
+    <title><![CDATA[รณรงค์ประหยัดหมึกพิมพ์เครื่องพริ้นเตอร์]]></title>
+    <alias><![CDATA[printer]]></alias>
+    <introtext><![CDATA[&lt;p&gt;&lt;img src="images/Img3/sw4.jpg" alt="sw4" width="800" height="565" /&gt;&lt;/p&gt;]]></introtext>
+    <fulltext/>
+    <state>1</state>
+    <created><![CDATA[2024-06-24 06:17:36]]></created>
+    <created_by_alias/>
+    <modified><![CDATA[2024-06-26 09:18:58]]></modified>
+    <publish_up><![CDATA[2024-06-24 06:17:36]]></publish_up>
+    <publish_down><![CDATA[0000-00-00 00:00:00]]></publish_down>
+    <images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
+    <urls><![CDATA[{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}]]></urls>
+    <attribs><![CDATA[{"article_layout":"","show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}]]></attribs>
+    <version>2</version>
+    <metakey/>
+    <metadesc/>
+    <hits>728</hits>
+    <metadata><![CDATA[{"robots":"","author":"","rights":"","xreference":""}]]></metadata>
+    <language><![CDATA[*]]></language>
+    <xreference/>
+    <note/>
+    <created_by><![CDATA[admin]]></created_by>
+    <modified_by><![CDATA[admin]]></modified_by>
+    <catid><![CDATA[greenstudy]]></catid>
+    <access>1</access>
+    <featured>0</featured>
+    <rating_sum>0</rating_sum>
+    <rating_count>0</rating_count>
+    <canonical><![CDATA[/goffice/index.php/content1/52-printer]]></canonical>
+  </content>
+  <content>
+    <id>51</id>
+    <title><![CDATA[รณรงค์เดินทางโดยใช้รถจักรยาน]]></title>
+    <alias><![CDATA[bicycle]]></alias>
+    <introtext><![CDATA[&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/Sw3.jpg" alt="Sw3" width="450" height="318" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/sw5.jpg" alt="sw5" width="450" height="256" /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;]]></introtext>
+    <fulltext/>
+    <state>1</state>
+    <created><![CDATA[2024-06-24 06:17:36]]></created>
+    <created_by_alias/>
+    <modified><![CDATA[2024-06-26 09:15:59]]></modified>
+    <publish_up><![CDATA[2024-06-24 06:17:36]]></publish_up>
+    <publish_down><![CDATA[0000-00-00 00:00:00]]></publish_down>
+    <images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
+    <urls><![CDATA[{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}]]></urls>
+    <attribs><![CDATA[{"article_layout":"","show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}]]></attribs>
+    <version>2</version>
+    <metakey/>
+    <metadesc/>
+    <hits>707</hits>
+    <metadata><![CDATA[{"robots":"","author":"","rights":"","xreference":""}]]></metadata>
+    <language><![CDATA[*]]></language>
+    <xreference/>
+    <note/>
+    <created_by><![CDATA[admin]]></created_by>
+    <modified_by><![CDATA[admin]]></modified_by>
+    <catid><![CDATA[greenstudy]]></catid>
+    <access>1</access>
+    <featured>0</featured>
+    <rating_sum>0</rating_sum>
+    <rating_count>0</rating_count>
+    <canonical><![CDATA[/goffice/index.php/content1/51-bicycle]]></canonical>
+  </content>
+  <content>
+    <id>50</id>
+    <title><![CDATA[การประหยัดพลังงานที่ออฟฟิศด้วยตนเอง]]></title>
+    <alias><![CDATA[saveenergy]]></alias>
+    <introtext><![CDATA[&lt;p&gt;&lt;strong&gt;6 เคล็ด (ไม่) ลับ ประหยัดพลังงานที่ออฟฟิศได้ด้วยตัวเอง&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/Img3/Swite.png" alt="Swite" width="500" height="353" style="margin: 8px; float: left;" /&gt;&lt;/p&gt;
+&lt;p&gt;6 วิธี ที่เป็นเรื่องง่ายๆ ใกล้ตัวที่เราสามารถทำได้ แถมยังช่วยสำนักงานประหยัดค่าใช้จ่าย รวมถึงได้ช่วยประหยัดพลังงานอย่างถูกวิธีและยังช่วยยืดอายุการ&lt;img src="images/Img3/officeEnegy.png" alt="officeEnegy" width="450" height="440" style="margin: 8px; float: right;" /&gt;ใช้งานของอุปกรณ์ในสำนักงานของเราได้อีกด้วย&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;ปิดไฟทุกพักเที่ยง อย่างน้อยวันละ 1 ชั่วโมง&lt;/li&gt;
+&lt;li&gt;ตั้งอุณหภูมิเครื่องปรับอากาศ 25-26 องศา สามารถประหยัดค่าไฟได้ถึง 10%&lt;/li&gt;
+&lt;li&gt;ปิดสวิทช์ไฟทุกครั้งหลังเลิกงาน&lt;/li&gt;
+&lt;li&gt;ถอดปลั๊กเครื่องถ่ายเอกสาร หรือปลั๊กไฟเครื่องใช้ไฟฟ้าภายในสำนักงานเมื่อเลิกใช้&lt;/li&gt;
+&lt;li&gt;ใช้กระดาษรีไซเคิลปริ้นเอกสารหรือใช้กระดาษให้ครบทั้ง 2 หน้า เพื่อการใช้ทรัพยากรอย่างคุ้มค่า&lt;/li&gt;
+&lt;li&gt;เดินขึ้นบันได 1 &ndash; 2 ชั้น แทนการใช้ลิฟท์โดยสาร เพราะการใช้ลิฟท์แต่ละครั้งต้องเสียค่าไฟถึง 5 &ndash; 7 บาท แน่นอนว่าการทำงานของทุกสำนักงานมีความจำเป็นที่จะต้องใช้ไฟฟ้ามากมาย ซึ่งเข้ามาเกี่ยวข้องแต่จริง ๆแล้วเราก็สามารถประหยัดไฟได้ ตามวิธีที่แนะนำเพียงเท่านี้ก็สามารถลดค่าไฟฟ้าของสำนักงานไปได้เท่านึงเลย&lt;/li&gt;
+&lt;/ol&gt;]]></introtext>
+    <fulltext/>
+    <state>1</state>
+    <created><![CDATA[2024-06-24 06:17:36]]></created>
+    <created_by_alias/>
+    <modified><![CDATA[2024-06-26 09:24:59]]></modified>
+    <publish_up><![CDATA[2024-06-24 06:17:36]]></publish_up>
+    <publish_down><![CDATA[0000-00-00 00:00:00]]></publish_down>
+    <images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
+    <urls><![CDATA[{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}]]></urls>
+    <attribs><![CDATA[{"article_layout":"","show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}]]></attribs>
+    <version>3</version>
+    <metakey/>
+    <metadesc/>
+    <hits>8847</hits>
+    <metadata><![CDATA[{"robots":"","author":"","rights":"","xreference":""}]]></metadata>
+    <language><![CDATA[*]]></language>
+    <xreference/>
+    <note/>
+    <created_by><![CDATA[admin]]></created_by>
+    <modified_by><![CDATA[admin]]></modified_by>
+    <catid><![CDATA[greenstudy]]></catid>
+    <access>1</access>
+    <featured>0</featured>
+    <rating_sum>0</rating_sum>
+    <rating_count>0</rating_count>
+    <canonical><![CDATA[/goffice/index.php/content1/50-saveenergy]]></canonical>
+  </content>
+  <content>
+    <id>49</id>
+    <title><![CDATA[รณรงค์ลดการใช้กระดาษ]]></title>
+    <alias><![CDATA[recyclepaper]]></alias>
+    <introtext><![CDATA[&lt;p&gt;&lt;strong&gt;รณรงค์ลดการใช้กระดาษ&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; การรณรงค์ลดการใช้กระดาษ มักจะมีนโยบายจากองค์กรให้ช่วยกัน รณรงค์ลดการใช้กระดาษ หรือใช้กระดาษให้คุมค่ามากที่สุด ซึ่งพนักงานเองก็&lt;img src="images/Img3/Sw1.jpg" alt="Sw1" width="450" height="636" style="margin: 8px; float: right;" /&gt;อาจจะใส่ใจบ้างหรือละเลยไปบ้าง การใช้กระดาษในองค์กร หากคิดเล่นๆ ดูว่า กระดาษ A4 1 รีมราคา 80 &ndash; 120 บาท เดือนหนึ่งองค์กรเล็กๆใช้ไป 10 รีม ก็เป็นเงินขึ้นต่ำ 800 บาท ซึ่งหากเรานำมาเงินที่เสียไปมาซื้อข้าวจานละ 50 บาท เราก็จะซื้อข้าวได้ 16 จาน และหากคำนวณเป็นรายปี เท่ากับเราเสียเงินไปเท่ากับการจ่ายเงินเดือนสำหรับพนักงานหนึ่งเดือนเลย&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; การรณรงค์ลดการใช้กระดาษ ส่วนหนึ่งเป็นการกระทำเพื่อช่วยลดค่าใช้จ่ายสำหรับองค์กร แต่จริงๆ วัตถุประสงค์หลักในการ รณรงค์ลดการใช้กระดาษ นั้นคือการช่วยกันลดปริมาณการลดการใช้ทรัพยากรธรรมชาติ ซึ่งในปัจจุบันประเทศไทยต้องนำเข้ากระดาษและวัตถุดิบสำหรับผลิตกระดาษ ในกระดาษ 1 ตัน เราต้องใช้ต้นไม้เป็นปริมาณ 1-2 ตัน นอกจากนี้ในขั้นตอนการผลิตมีการใช้ทรัพยากรอย่างอื่นเช่น ไฟฟ้า และน้ำ เป็นจำนวนมาก&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;วิธีการลดการใช้กระดาษ&lt;/strong&gt; มีดังนี้&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;การนำระบบ Document Management Software เป็นระบบบริหารจัดการเอกสารเป็นการแปรรูปจากเอกสารที่เป็นกระดาษให้อยู่ในรูปแบบของสื่ออิเล็กทรอนิกส์ เพื่อสะดวกในการใช้งานมากขึ้น ลดปริมาณการใช้กระดาษ สามารถเก็บรักษาเอกสารได้นานขึ้น และมีความปลอดภัยกว่าการใช้เอกสารที่เป็นกระดาษ&lt;/li&gt;
+&lt;li&gt;การใช้กระดาษสองหน้า เป็นการลดการใช้กระดาษที่หลายๆ องค์กรเริ่มต้นในการลดต้นทุน&lt;/li&gt;
+&lt;li&gt;การใช้กระดาษหน้าที่สาม เป็นการรวบรวมกระดาษที่เหลือใช้แล้ว บริจาคให้สำหรับผู้ที่พิการทางสายได้ได้นำไปใช้พิมพ์อักษรเบรลล์ สำหรับผู้พิการทางสายตาได้เรียนรู้ต่อไป&lt;/li&gt;
+&lt;li&gt;การแยกกระดาษเพื่อนำกลับไปรีไซเคิล&lt;/li&gt;
+&lt;li&gt;การเปลี่ยนพฤติกรรมการใช้เอกสารให้อยู่ในรูปแบบที่ทันสมัย เช่น การใช้ e-book e-document e-mail หรือเว็บไซต์ เป็นต้น&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; นอกจากการ รณรงค์ลดการใช้กระดาษ แล้วยังมีการส่งเสริมให้มีการลดการใช้พลังานไฟฟ้า น้ำ และคืนชีวิตป่าไม้ เพื่อที่ให้ลูกหลานได้มีทรัพยากรไว้ใช้ได้อย่างยาวนานมากยิ่งขึ้น หากเรายังคงตัดไม้ทำลายสิ่งแวดล้อมทางธรรมชาติลงเรื่อยๆ เราก็จะพบกับภาวะทางธรรมชาติที่จะหันกลับมาทำลายเราที่ผ่านมาประเทศไทย เกิดภาวะน้ำท่วมน้ำแล้ง และมลภาวะทางอากาศที่มีฝุ่นละอองและมลภาวะต่างๆ อีกมากมาย ก็คงหวังว่าในฐานะเพื่อนมนุษย์ด้วยกันควร รณรงค์ลดการใช้กระดาษ เป็นการเริ่มต้นที่จะช่วยเหลือทรัพยากรทางธรรมชาติบนโลกใบนี้&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;]]></introtext>
+    <fulltext/>
+    <state>1</state>
+    <created><![CDATA[2024-06-24 06:17:36]]></created>
+    <created_by_alias/>
+    <modified><![CDATA[2024-06-24 07:07:15]]></modified>
+    <publish_up><![CDATA[2024-06-24 06:17:36]]></publish_up>
+    <publish_down><![CDATA[0000-00-00 00:00:00]]></publish_down>
+    <images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
+    <urls><![CDATA[{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}]]></urls>
+    <attribs><![CDATA[{"article_layout":"","show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}]]></attribs>
+    <version>3</version>
+    <metakey/>
+    <metadesc/>
+    <hits>9894</hits>
+    <metadata><![CDATA[{"robots":"","author":"","rights":"","xreference":""}]]></metadata>
+    <language><![CDATA[*]]></language>
+    <xreference/>
+    <note/>
+    <created_by><![CDATA[admin]]></created_by>
+    <modified_by><![CDATA[admin]]></modified_by>
+    <catid><![CDATA[greenstudy]]></catid>
+    <access>1</access>
+    <featured>0</featured>
+    <rating_sum>0</rating_sum>
+    <rating_count>0</rating_count>
+    <canonical><![CDATA[/goffice/index.php/content1/49-recyclepaper]]></canonical>
+  </content>
+  <content>
+    <id>48</id>
+    <title><![CDATA[5ส เครื่องมือสร้างความเป็นระเบียบเรียบร้อยของสำนักงาน]]></title>
+    <alias><![CDATA[5s]]></alias>
+    <introtext><![CDATA[&lt;p&gt;&lt;strong&gt;&lt;img src="images/Img3/5s1.png" alt="5S" width="450" height="600" style="margin: 6px; float: left;" /&gt;ความหมาย 5ส&lt;/strong&gt;&lt;br /&gt;5 ส&amp;nbsp; คือเครื่องมือสร้างความเป็นระเบียบเรียบร้อย ประกอบด้วย สะสาง-สะดวก-สะอาด-สุขลักษณะ-สร้างนิสัย มีวัตถุประสงค์หลัก ๆ เพื่อลดต้นทุนและการเพิ่มประสิทธิภาพในการทำงาน&lt;br /&gt; 5 ส เป็นเครื่องมือพื้นฐานที่สามารถประยุกต์ใช้ได้กับทุกสถานที่ ไม่ว่าจะเป็นออฟฟิศ โรงงาน หน่วยงานราชการ โรงพยาบาล หรือแม้กระทั่งห้องนอนของตัวเอง&lt;br /&gt; 5 ส ไม่ใช่แค่เรื่องของการทำความสะอาด แต่เป้าหมายที่แท้จริงคือการเพิ่มศักยภาพของพื้นที่ให้เกิดประสิทธิภาพสูงสุด เพราะเมื่อสถานที่เป็นระเบียบเรียบร้อย ก็จะเพิ่มประสิทธิภาพในการทำงานให้กับพนักงานเช่นกัน&lt;/p&gt;
+&lt;p&gt;5 ส. หรือ 5S เป็นหลักการคุ้นเคยที่ทุกองค์กรนำมาประยุกต์ใช้เป็นเรื่องปกติ สังเกตง่าย ๆ ว่าองค์กรไหนมีวัน Big Cleaning Day ก็เท่ากับเริ่มต้นใช้งานเครื่องมือนี้กันบ้างแล้วทว่าสิ่งหนึ่งที่ทุกคนเข้าใจผิดก็คือ 5 ส. ไม่ได้มีประโยชน์แค่การทำความสะอาดเพียงอย่างเดียว แต่เป็นกระบวนการสร้างพื้นฐานที่ความเป็นระเบียบเรียบร้อยในองค์กร เพื่อเพิ่มประสิทธิภาพการทำงาน และประสบความสำเร็จตามเป้าหมายต่อไป&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;องค์ประกอบ 5 ส.&lt;/strong&gt; มีรายละเอียดที่แตกต่างกันไป จึงมีความจำเป็นต้องเข้าใจแต่ละตัวอย่างลึกซึ้งเพื่อนำมาใช้ให้เกิดประโยชน์สูงสุด ดังนี้&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ส &ndash; สะสาง (Seiri หรือ Sort)&lt;/strong&gt; เริ่มต้นแยกสิ่งที่ต้องการจัดระเบียบให้ชัดเจนระหว่าง &ldquo;สิ่งจำเป็น&rdquo; และ &ldquo;สิ่งไม่จำเป็น&rdquo; หรือแยกสิ่งต่าง ๆ ให้อยู่เป็นหมวดหมู่ชัดเจนว่าเกี่ยวข้องกับการปฏิบัติงานหรือไม่ นับเป็นขั้นตอนที่ต้องใช้เวลาและความตั้งใจเป็นอย่างมาก เพราะเราต้องกล้าตัดสินใจอย่างเด็ดขาดว่าอะไรคือสิ่งที่มีประโยชน์ หรือสปาร์คจอยจริง ๆ ฉะนั้นความรู้สึกเสียดายจึงเป็นอุปสรรคใหญ่ของขั้นตอนนี้&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ส &ndash; สะดวก (Seiton หรือ Set in Order)&lt;/strong&gt; คือการนำสิ่งที่สะสางมาจัดวางอย่างเป็นระเบียบ โดยคำนึงถึงกระบวนการใช้งานและความปลอดภัย พูดง่าย ๆ ก็คือการนำมาวางในพื้นที่ที่หยิบใช้งานง่าย อาจทำป้ายระบุว่าคืออะไร อยู่หมวดหมู่ไหน หรือเก็บไว้ตรงไหน&lt;/p&gt;
+&lt;p&gt;ส. 2 จึงเป็นขั้นตอนที่ทำให้เราไม่ต้องเสียเวลากับเรื่องเล็ก ๆ น้อยๆ อีกต่อไป&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ส &ndash; สะอาด (Seiso หรือ Shine)&lt;/strong&gt; คือการทำความสะอาด ปัดกวาด เช็ดถูตามที่เราเข้าใจนั่นแหละ เป็นการสร้างสภาพแวดล้อมการทำงานให้น่ารื่นรมย์และน่าทำงาน สิ่งนี้มีผลอย่างมากต่อจิตใจพนักงานในรู้สึกดียิ่งไปกว่านั้นหากเป็นการทำความสะอาดเครื่องจักรโรงงาน ก็จะเพิ่มประสิทธิภาพและยืดอายุการใช้งานให้นานกว่าเดิม&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ส &ndash; สุขลักษณะ (Seiketsu หรือ Standardize)&lt;/strong&gt; สุขลักษณะเป็นผลลัพธ์ที่เกิดจากการปฏิบัติ 3 ส. แรก เราจึงควรปรึกษาหารือว่าอะไรคือมาตรฐานสุขลักษณะที่พนักงานต้องการ เพื่อที่ว่าทุกคนจะได้ปฏิบัติรักษาความเป็นระเบียบเรียบร้อยตามมาตรฐานนั้น ๆ และเมื่อองค์กรมีสุขลักษณะที่ดีเกิดขึ้น ประสิทธิภาพของพนักงานก็จะดีตามไปด้วย&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ส &ndash; สร้างนิสัย (Shitsuke หรือ Sustain)&lt;/strong&gt; ส.​ ตัวสุดท้ายมุ่งไปที่การสร้างระเบียบวินัย หรือสร้างให้เกิดนิสัยขึ้นมาจริง ๆ นับเป็นขั้นตอนที่สำคัญมากและยากที่สุด เพราะคำว่า &ldquo;นิสัย&rdquo; ไม่ได้ขึ้นเกิดแค่การทำเพียงครั้งเดียว แต่เกิดจากการหมั่นปฏิบัติซ้ำ ๆ เป็นประจำจนกลายเป็นเรื่องปกติ&lt;img src="images/Img3/5S-2.jpg" alt="5S 2" width="450" height="139" style="margin: 6px; float: right;" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ประโยชน์ และความสำคัญของการใช้ 5 ส.&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;เพิ่มพื้นที่การทำงาน ลดพื้นที่จัดเก็บ&lt;/li&gt;
+&lt;li&gt;เพิ่มขวัญกำลังใจให้แก่พนักงานจากสภาพแวดล้อมที่เป็นมิตร&lt;/li&gt;
+&lt;li&gt;เพิ่มความสะดวกและรวดเร็วในการทำงาน&lt;/li&gt;
+&lt;li&gt;ลดอุบัติเหตุและความเสี่ยงในการทำงาน&lt;/li&gt;
+&lt;li&gt;ลดความสิ้นเปลืองในการจัดซื้ออุปกรณ์เกินความจำเป็น&lt;/li&gt;
+&lt;li&gt;ลดการสูญหายของอุปกรณ์และเอกสารต่าง ๆ&lt;/li&gt;
+&lt;li&gt;สร้างความสามัคคีแก่พนักงานในการทำงานเป็นทีม&lt;/li&gt;
+&lt;li&gt;สร้างความรู้สึกร่วมในการเป็นเจ้าขององค์กรกับพนักงาน&lt;/li&gt;
+&lt;li&gt;สร้างความประทับใจให้แก่คนอื่นที่เข้ามาในพื้นที่&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img src="images/Img3/5S-3.png" alt="5S 3" width="450" height="192" style="margin: 6px; float: left;" /&gt;สรุปการทำ 5 ส.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;จึงเป็นหน้าที่ของทุกคนที่จะต้องช่วยกัน เพื่อสร้างบรรยากาศที่ดีในการทำงาน พัฒนาคุณภาพ และเพิ่มประสิทธิภาพของพนักงานโดยรวมให้ดียิ่งขึ้น&lt;/p&gt;
+&lt;p&gt;บทสรุป &ldquo;A place for everything , and everything in its place&rdquo; &ldquo;มีพื้นที่สำหรับทุกสิ่ง และมีทุกสิ่งภายในพื้นที่&rdquo;&lt;/p&gt;
+&lt;p&gt;คือสรุปหลักการของ 5 ส. / 5 S ที่ชัดเจนมากในฐานะเครื่องมือที่ใช้พื้นที่ในองค์กรให้เกิดประโยชน์สูงสุดยิ่งในปัจจุบันที่การแข่งขันทางธุรกิจรุนแรงมากขึ้น สิ่งที่จะทำให้องค์กรอยู่รอดได้ก็คือการใช้ศักยภาพที่มีอยู่อย่างเต็มประสิทธิภาพ หลักการ 5 ส. จึงเป็นก้าวแรกที่จะวางรากฐานให้องค์กรของคุณมีระบบระเบียบที่ชัดเจน ฉะนั้นสิ่งที่องค์กรทุกประเภทต้องถามตัวเองในวันนี้ก็คือ &ldquo;เราเริ่มดำเนินการตาม 5 ส. แล้วหรือยัง?&rdquo;&lt;/p&gt;
+&lt;p&gt;ที่มา : Sahatorn Petvirojchai Online,&lt;a href="https://th.hrnote.asia/orgdevelopment/5s-methodology-210614"&gt;https://th.hrnote.asia/orgdevelopment/5s-methodology-210614&lt;/a&gt;&lt;/p&gt;]]></introtext>
+    <fulltext/>
+    <state>1</state>
+    <created><![CDATA[2024-06-24 06:17:36]]></created>
+    <created_by_alias/>
+    <modified><![CDATA[2024-06-24 06:31:12]]></modified>
+    <publish_up><![CDATA[2024-06-24 06:17:36]]></publish_up>
+    <publish_down><![CDATA[0000-00-00 00:00:00]]></publish_down>
+    <images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
+    <urls><![CDATA[{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}]]></urls>
+    <attribs><![CDATA[{"article_layout":"","show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}]]></attribs>
+    <version>4</version>
+    <metakey/>
+    <metadesc/>
+    <hits>60315</hits>
+    <metadata><![CDATA[{"robots":"","author":"","rights":"","xreference":""}]]></metadata>
+    <language><![CDATA[*]]></language>
+    <xreference/>
+    <note/>
+    <created_by><![CDATA[admin]]></created_by>
+    <modified_by><![CDATA[admin]]></modified_by>
+    <catid><![CDATA[greenstudy]]></catid>
+    <access>1</access>
+    <featured>0</featured>
+    <rating_sum>0</rating_sum>
+    <rating_count>0</rating_count>
+    <canonical><![CDATA[/goffice/index.php/content1/48-5s]]></canonical>
+  </content>
+  <content>
+    <id>46</id>
+    <title><![CDATA[การจัดซื้อจัดจ้างที่เป็นมิตรกับสิ่งแวดล้อม]]></title>
+    <alias><![CDATA[purchasing]]></alias>
+    <introtext><![CDATA[&lt;p style="text-align: center;"&gt;การจัดซื้อจัดจ้างที่เป็นมิตรกับสิ่งแวดล้อม&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_01.jpg" alt="purchasing Page 01" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_02.jpg" alt="purchasing Page 02" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_03.jpg" alt="purchasing Page 03" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_04.jpg" alt="purchasing Page 04" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_05.jpg" alt="purchasing Page 05" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_06.jpg" alt="purchasing Page 06" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_07.jpg" alt="purchasing Page 07" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_08.jpg" alt="purchasing Page 08" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_09.jpg" alt="purchasing Page 09" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_10.jpg" alt="purchasing Page 10" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_11.jpg" alt="purchasing Page 11" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_12.jpg" alt="purchasing Page 12" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_13.jpg" alt="purchasing Page 13" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_14.jpg" alt="purchasing Page 14" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_15.jpg" alt="purchasing Page 15" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_16.jpg" alt="purchasing Page 16" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_17.jpg" alt="purchasing Page 17" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_18.jpg" alt="purchasing Page 18" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_19.jpg" alt="purchasing Page 19" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_20.jpg" alt="purchasing Page 20" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_21.jpg" alt="purchasing Page 21" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_22.jpg" alt="purchasing Page 22" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_23.jpg" alt="purchasing Page 23" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_24.jpg" alt="purchasing Page 24" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_25.jpg" alt="purchasing Page 25" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_26.jpg" alt="purchasing Page 26" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_27.jpg" alt="purchasing Page 27" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_28.jpg" alt="purchasing Page 28" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_29.jpg" alt="purchasing Page 29" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_30.jpg" alt="purchasing Page 30" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_31.jpg" alt="purchasing Page 31" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_32.jpg" alt="purchasing Page 32" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_33.jpg" alt="purchasing Page 33" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_34.jpg" alt="purchasing Page 34" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_35.jpg" alt="purchasing Page 35" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;img src="images/Img3/purchasing_Page_36.jpg" alt="purchasing Page 36" width="600" height="450" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;]]></introtext>
+    <fulltext/>
+    <state>1</state>
+    <created><![CDATA[2022-09-07 07:32:34]]></created>
+    <created_by_alias/>
+    <modified><![CDATA[2024-06-14 09:16:08]]></modified>
+    <publish_up><![CDATA[2022-09-07 07:32:34]]></publish_up>
+    <publish_down><![CDATA[0000-00-00 00:00:00]]></publish_down>
+    <images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
+    <urls><![CDATA[{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}]]></urls>
+    <attribs><![CDATA[{"article_layout":"","show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}]]></attribs>
+    <version>7</version>
+    <metakey/>
+    <metadesc/>
+    <hits>457</hits>
+    <metadata><![CDATA[{"robots":"","author":"","rights":"","xreference":""}]]></metadata>
+    <language><![CDATA[*]]></language>
+    <xreference/>
+    <note/>
+    <created_by><![CDATA[admin]]></created_by>
+    <modified_by><![CDATA[admin]]></modified_by>
+    <catid><![CDATA[greenstudy]]></catid>
+    <access>1</access>
+    <featured>0</featured>
+    <rating_sum>0</rating_sum>
+    <rating_count>0</rating_count>
+    <canonical><![CDATA[/goffice/index.php/content1/46-purchasing]]></canonical>
+  </content>
+  <content>
+    <id>45</id>
+    <title><![CDATA[รณรงค์การเลิกสูบบุหรี่]]></title>
+    <alias><![CDATA[no-smoking]]></alias>
+    <introtext><![CDATA[&lt;p style="text-align: center;"&gt;&lt;strong&gt;รณรงค์การเลิกสูบบุหรี่&lt;/strong&gt;&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/smoke3-1.jpg" alt="smoke3 1" width="1024" height="1434" /&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src="images/Img3/smoke1-1.jpg" alt="smoke1 1" width="1024" height="1452" /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p style="text-align: left;"&gt;&lt;/p&gt;]]></introtext>
+    <fulltext/>
+    <state>1</state>
+    <created><![CDATA[2022-09-07 07:32:34]]></created>
+    <created_by_alias/>
+    <modified><![CDATA[2024-06-14 08:11:28]]></modified>
+    <publish_up><![CDATA[2022-09-07 07:32:34]]></publish_up>
+    <publish_down><![CDATA[0000-00-00 00:00:00]]></publish_down>
+    <images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
+    <urls><![CDATA[{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}]]></urls>
+    <attribs><![CDATA[{"article_layout":"","show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}]]></attribs>
+    <version>4</version>
+    <metakey/>
+    <metadesc/>
+    <hits>738</hits>
+    <metadata><![CDATA[{"robots":"","author":"","rights":"","xreference":""}]]></metadata>
+    <language><![CDATA[*]]></language>
+    <xreference/>
+    <note/>
+    <created_by><![CDATA[admin]]></created_by>
+    <modified_by><![CDATA[admin]]></modified_by>
+    <catid><![CDATA[greenstudy]]></catid>
+    <access>1</access>
+    <featured>0</featured>
+    <rating_sum>0</rating_sum>
+    <rating_count>0</rating_count>
+    <canonical><![CDATA[/goffice/index.php/content1/45-no-smoking]]></canonical>
+  </content>
+  <content>
+    <id>27</id>
+    <title><![CDATA[ก๊าซเรือนกระจกคืออะไร]]></title>
+    <alias><![CDATA[greenhousegass]]></alias>
+    <introtext><![CDATA[&lt;p&gt;&lt;img src="images/Img3/1.png" alt="1" width="1080" height="1350" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/Img3/3.png" alt="1" width="1080" height="1350" /&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;a href="https://youtu.be/SQajrLvhlBA?si=nYYu1iGsqdhwEn_K" target="_blank" rel="noopener"&gt;&lt;img src="images/Img3/Yu3.png" alt="" /&gt;&lt;/a&gt;สาระความรู้ ก๊าซเรือนกระจกคืออะไร?&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://youtu.be/s9T17_sBLDc?si=uOGt7fMILUIwlSSu" target="_blank" rel="noopener"&gt;&lt;img src="images/Img3/Yu3.png" alt="" /&gt;&lt;/a&gt;สาระความรู้ ภาวะโลกร้อนเกิดขึ้นได้อย่างไร?&lt;/p&gt;]]></introtext>
+    <fulltext/>
+    <state>1</state>
+    <created><![CDATA[2024-02-14 07:07:29]]></created>
+    <created_by_alias/>
+    <modified><![CDATA[2024-02-14 07:12:24]]></modified>
+    <publish_up><![CDATA[2024-02-14 07:07:29]]></publish_up>
+    <publish_down><![CDATA[0000-00-00 00:00:00]]></publish_down>
+    <images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
+    <urls><![CDATA[{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}]]></urls>
+    <attribs><![CDATA[{"article_layout":"","show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}]]></attribs>
+    <version>3</version>
+    <metakey/>
+    <metadesc/>
+    <hits>2006</hits>
+    <metadata><![CDATA[{"robots":"","author":"","rights":"","xreference":""}]]></metadata>
+    <language><![CDATA[*]]></language>
+    <xreference/>
+    <note/>
+    <created_by><![CDATA[admin]]></created_by>
+    <modified_by><![CDATA[admin]]></modified_by>
+    <catid><![CDATA[greenstudy]]></catid>
+    <access>1</access>
+    <featured>0</featured>
+    <rating_sum>0</rating_sum>
+    <rating_count>0</rating_count>
+    <canonical><![CDATA[/goffice/index.php/content1/27-greenhousegass]]></canonical>
+  </content>
+  <content>
+    <id>22</id>
+    <title><![CDATA[การบริหารจัดการก๊าซเรือนกระจกในองค์กร]]></title>
+    <alias><![CDATA[greenhouseeffect]]></alias>
+    <introtext><![CDATA[&lt;p style="text-align: right;"&gt;การบริหารจัดการก๊าซเรือนกระจกในองค์กร&lt;br /&gt;โดย ดร.พงษ์วิภา หล่อสมบูรณ์ &lt;br /&gt;เลขาธิการสมาคมส่งเสริมการผลิตและการบริโภคที่ยั่งยืน&lt;br /&gt;สัมมนา ณ สำนักหอสมุด มหาวิทยาแม่โจ้ เมื่อวันที่ 20 พฤษภาคม 2565&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-003.jpg" alt="01 GreenhouseEffect page 003width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-004.jpg" alt="01 GreenhouseEffect page 004width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-005.jpg" alt="01 GreenhouseEffect page 005width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-006.jpg" alt="01 GreenhouseEffect page 006width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-007.jpg" alt="01 GreenhouseEffect page 007width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-008.jpg" alt="01 GreenhouseEffect page 008width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-009.jpg" alt="2 GreenhouseEffect page 009width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-010.jpg" alt="3 GreenhouseEffect page 010width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-011.jpg" alt="4 GreenhouseEffect page 011width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-012.jpg" alt="5 GreenhouseEffect page 012width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-013.jpg" alt="6 GreenhouseEffect page 013width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-014.jpg" alt="7 GreenhouseEffect page 014width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-015.jpg" alt="8 GreenhouseEffect page 015width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-016.jpg" alt="9 GreenhouseEffect page 016width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-017.jpg" alt="10 GreenhouseEffect page 017width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-018.jpg" alt="11 GreenhouseEffect page 018width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-019.jpg" alt="12 GreenhouseEffect page 019width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-020.jpg" alt="13 GreenhouseEffect page 020width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-021.jpg" alt="14 GreenhouseEffect page 021width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-022.jpg" alt="15 GreenhouseEffect page 022width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-023.jpg" alt="16 GreenhouseEffect page 023width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-024.jpg" alt="17 GreenhouseEffect page 024width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-025.jpg" alt="18 GreenhouseEffect page 025width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-026.jpg" alt="19 GreenhouseEffect page 026width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-027.jpg" alt="20 GreenhouseEffect page 027width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-028.jpg" alt="21 GreenhouseEffect page 028width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-029.jpg" alt="22 GreenhouseEffect page 029width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-030.jpg" alt="23 GreenhouseEffect page 030width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-031.jpg" alt="24 GreenhouseEffect page 031width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-032.jpg" alt="25 GreenhouseEffect page 032width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-033.jpg" alt="26 GreenhouseEffect page 033width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-034.jpg" alt="27 GreenhouseEffect page 034width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-035.jpg" alt="28 GreenhouseEffect page 035width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-036.jpg" alt="29 GreenhouseEffect page 036width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-037.jpg" alt="30 GreenhouseEffect page 037width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-038.jpg" alt="31 GreenhouseEffect page 038width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-039.jpg" alt="32 GreenhouseEffect page 039width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-040.jpg" alt="33 GreenhouseEffect page 040width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-041.jpg" alt="34 GreenhouseEffect page 041width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-042.jpg" alt="35 GreenhouseEffect page 042width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-043.jpg" alt="36 GreenhouseEffect page 043width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-044.jpg" alt="37 GreenhouseEffect page 044width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-045.jpg" alt="38 GreenhouseEffect page 045width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-046.jpg" alt="39 GreenhouseEffect page 046width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-047.jpg" alt="40 GreenhouseEffect page 047width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-048.jpg" alt="41 GreenhouseEffect page 048width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-049.jpg" alt="42 GreenhouseEffect page 049width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-050.jpg" alt="43 GreenhouseEffect page 050width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-051.jpg" alt="44 GreenhouseEffect page 051width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-052.jpg" alt="45 GreenhouseEffect page 052width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-053.jpg" alt="46 GreenhouseEffect page 053width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-054.jpg" alt="47 GreenhouseEffect page 054width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-055.jpg" alt="48 GreenhouseEffect page 055width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-056.jpg" alt="49 GreenhouseEffect page 056width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-057.jpg" alt="50 GreenhouseEffect page 057width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-058.jpg" alt="51 GreenhouseEffect page 058width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-059.jpg" alt="52 GreenhouseEffect page 059width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-060.jpg" alt="53 GreenhouseEffect page 060width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-061.jpg" alt="54 GreenhouseEffect page 061width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-062.jpg" alt="55 GreenhouseEffect page 062width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-063.jpg" alt="56 GreenhouseEffect page 063width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-064.jpg" alt="57 GreenhouseEffect page 064width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-065.jpg" alt="58 GreenhouseEffect page 065width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-066.jpg" alt="59 GreenhouseEffect page 066width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-067.jpg" alt="60 GreenhouseEffect page 067width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-068.jpg" alt="61 GreenhouseEffect page 068width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-069.jpg" alt="62 GreenhouseEffect page 069width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-070.jpg" alt="63 GreenhouseEffect page 070width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-071.jpg" alt="64 GreenhouseEffect page 071width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-072.jpg" alt="65 GreenhouseEffect page 072width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-073.jpg" alt="66 GreenhouseEffect page 073width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-074.jpg" alt="67 GreenhouseEffect page 074width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-075.jpg" alt="68 GreenhouseEffect page 075width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-076.jpg" alt="69 GreenhouseEffect page 076width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-077.jpg" alt="70 GreenhouseEffect page 077width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-078.jpg" alt="71 GreenhouseEffect page 078width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p&gt;&lt;img src="images/img2/01-GreenhouseEffect-page-079.jpg" alt="72 GreenhouseEffect page 079width=" height="449" /&gt;&lt;/p&gt;
+&lt;div class="notranslate" style="all: initial;"&gt;&amp;nbsp;&lt;/div&gt;]]></introtext>
+    <fulltext/>
+    <state>1</state>
+    <created><![CDATA[2022-09-29 04:07:46]]></created>
+    <created_by_alias/>
+    <modified><![CDATA[2022-09-29 09:10:50]]></modified>
+    <publish_up><![CDATA[2022-09-29 04:07:46]]></publish_up>
+    <publish_down><![CDATA[0000-00-00 00:00:00]]></publish_down>
+    <images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
+    <urls><![CDATA[{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}]]></urls>
+    <attribs><![CDATA[{"article_layout":"","show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}]]></attribs>
+    <version>12</version>
+    <metakey/>
+    <metadesc/>
+    <hits>1118</hits>
+    <metadata><![CDATA[{"robots":"","author":"","rights":"","xreference":""}]]></metadata>
+    <language><![CDATA[*]]></language>
+    <xreference/>
+    <note/>
+    <created_by><![CDATA[admin]]></created_by>
+    <modified_by><![CDATA[admin]]></modified_by>
+    <catid><![CDATA[greenstudy]]></catid>
+    <access>1</access>
+    <featured>0</featured>
+    <rating_sum>0</rating_sum>
+    <rating_count>0</rating_count>
+    <canonical><![CDATA[/goffice/index.php/content1/22-greenhouseeffect]]></canonical>
+  </content>
+  <content>
+    <id>20</id>
+    <title><![CDATA[มาตราการอนุรักษ์พลังงาน]]></title>
+    <alias><![CDATA[energy]]></alias>
+    <introtext><![CDATA[&lt;h3&gt;&lt;img src="images/Img3/Infomtion1.png" alt="353554" width="250" height="349" style="margin: 8px; float: left;" /&gt;มาตรการอนุรักษ์พลังงาน&lt;/h3&gt;
+]]></introtext>
+    <fulltext><![CDATA[
+&lt;h4&gt;&amp;nbsp;&lt;/h4&gt;
+&lt;h4&gt;1. มาตรการประหยัดพลังงาน *เป้าหมายลดการใช้ไฟฟ้า ร้อยละ 5&lt;/h4&gt;
+&lt;p style="text-align: center;"&gt;&lt;strong&gt;คลิปวิดีโอ รณรงค์ปลุกจิตสำนึกการอนุรักษ์พลังงานของสำนักวิจัยฯ&lt;br /&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://youtu.be/VxSX2EeFUeg" target="_blank" rel="noopener"&gt;&lt;img src="images/img1/th/2022-09-29_11-00-58.png" alt="2022 09 29 11 00 58" width="250" height="142" style="display: block; margin: 8px auto;" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.มาตรการประหยัดพลังงานไฟฟ้า&lt;/strong&gt;&lt;br /&gt;&lt;strong&gt;1.1 เครื่องปรับอากาศ&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1) ตั้งอุณหภูมิไว้ที่ 25 องศาเซลเซียส&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2) เครื่องปรับอากาศ ควรเป็นเครื่องปรับอากาศแบบประเหยัดไฟเบอร์ 5&lt;img src="images/img1/th/20220920_1612261.jpg" alt="20220920 1612261" width="250" height="188" style="margin: 8px; float: right;" /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 3) ช่วงเวลาเปิด&ndash;ปิดเครื่องปรับอากาศ ดังนี้&lt;br /&gt;1.1.2 พื้นที่สํานักงาน เปิดและปิดตามความเหมาะสมในการเข้าทํางาน โดยพิจารณาจากจํานวนบุคลากรที่ทํางานอยู่ในขณะนั้นหากสามารถใช้พัดลมแทนเครื่องปรับอากาศได้ให้เปิดพัดลมแทน&lt;br /&gt;1.1.3 หากไม่มีบุคลากรอยู่ในห้องทํางานเกิน 1 ชั่วโมง ปิดเครื่องปรับอากาศทุกครั้ง&lt;br /&gt;1.1.4 การบํารุงรักษาเครื่องปรับอากาศ ดังนี้&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1) มีแผนการบํารุงรักษาเครื่องปรับอากาศประจําปี&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2) ทําความสะอาดแผ่นกรองอากาศ 1 ครั้ง/เดือน และล้างเครื่องปรับอากาศทุก ๆ 6 เดือน&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 3) การลดภาระการทํางานของเครื่องปรับอากาศ ดังนี้&lt;br /&gt;&lt;img src="images/img1/th/20220907_125153.jpg" alt="20220907 125153" width="200" height="150" style="margin: 8px; float: left;" /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; - ปลูกต้นไม้บริเวณรอบอาคารเพื่อป้องกันความร้อนเข้าสู่ตัวอาคาร&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; - ใช้ผ้าม่าน หรือมูลี่ป้องกันแสงแดดส่องกระทบตัวอาคาร เพื่อไม่ให้เครื่องปรับอากาศทํางานหนักมากเกินไป&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; - ไม่วางสิ่งของใดๆ ขวางกันทางลม เข้า &ndash; ออก ของเครื่องปรับอากาศ&lt;br /&gt;&lt;strong&gt;1.2 เครื่องฟอกอากาศ&lt;/strong&gt;&lt;br /&gt;&lt;img src="images/img1/th/20220920_1614071.jpg" alt="20220920 1614071" width="200" height="150" style="margin: 8px; float: left;" /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1) เปิดเครื่องฟอกอากาศทุกวัน&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2) ทําความสะอาดแผ่นกรองอากาศ 1 ครั้ง/เดือน&lt;br /&gt;&lt;strong&gt;1.3 การใช้ไฟฟ้าและแสงสว่าง&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1) เปิดไฟฟ้าห้องทำงานเฉพาะเท่าที่ปฏิบัติงานเท่านั้น&lt;img src="images/img1/th/353554.jpg" alt="353554" width="200" height="150" style="margin: 8px; float: right;" /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2) ปิดสวิตซ์ไฟฟ้าทุกครั้งหากไม่ใช้งาน และปิดไฟทุกดวงที่ไม่จำเป็น&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 3) ปิดไฟฟ้าระหว่างหยุดพักกลางวัน (12.00-13.00 น.) ยกเว้นมีผู้ปฏิบัติงานในเวลาหยุดพักกลางวัน เปิดไฟฟ้าเท่าที่จำเป็น&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 4) เปลี่ยนหลอดไฟฟ้าเป็นชนิด LED &lt;br /&gt;&lt;strong&gt;1.4 เครื่องคอมพิวเตอร์และเครื่องพิมพ์&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1) เครื่องคอมพิวเตอร์ให้ตั้งโปรแกรมพักเครื่องคอมพิวเตอร์ เป็น&lt;a href="index.php/content1/19-sleep"&gt;โหมด Sleep หรือ Hibernate&lt;/a&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2) ปิดเครื่องคอมพิวเตอร์และถอดปลั๊กเมื่อเลิกใช้งาน&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 3) ใช้เครื่องพิมพ์ร่วมกันกรณีอยู่ในสถานที่ใกล้เคียงกัน&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 4) ปิดเครื่องพิมพ์(Printer) เมื่อเลิกใช้งาน&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 5) ปิดจอคอมพิวเตอร์เวลาพักกลางวัน (เวลา 12.00 น. &ndash; 13.00 น.) &lt;br /&gt;&lt;strong&gt;1.5 เครื่องถ่ายเอกสาร (เครื่อง Printer ชนิด All in One) &lt;img src="images/img1/th/printerall1.png" alt="printerall1" width="250" height="233" style="margin: 8px; float: right;" /&gt;&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1) ปิดเครื่องและถอดปลั๊กเมื่อเลิกใช้งาน&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2) ใช้ที่กรองฝุ่นผงที่ช่องระบายฝุ่นหมึกพิมพ์&lt;br /&gt;&lt;strong&gt;1.6 ตู้เย็น&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1) ลดการนําอาหารที่ร้อนหรือยังอุ่นแช่ในตู้เย็น&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2) ลดการเปิดตู้เย็นโดยไม่จําเป็น เพราะค่าไฟฟ้าจะเพิ่มตามจํานวนครั้งของการเปิดตู้เย็น&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 3) เลิกเปิดประตูตู้เย็นค้างไว้เป็นเวลานานๆ&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 4) ไม่แช่ของจนแน่นเกินไป เพราะความเย็นจะไหลเวียนไม่สะดวก&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 5) อย่าตั้งตู้เย็นใกล้เตาไฟหรือหม้อหุงข้าว หรือถูกแสงอาทิตย์โดยตรง เพราะจะทําให้ตู้เย็นระบายความร้อนไม่ดี สิ้นเปลืองไฟ&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;img src="images/img1/th/20220922_152856.jpg" alt="20220922 152856" width="200" height="150" style="margin: 8px; float: left;" /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 6) ควรตั้งสวิตช์ควบคุมอุณหภูมิของตู้เย็นให้เหมาะสม ควรตั้งอุณหภูมิในตู้เย็น 3-6 องศาเซลเซียส และในช่องแช่แข็งระหว่าง ลบ 15-18 องศาเซลเซียส ถ้าตั้งไว้เย็นกว่าที่กําหนด 1 องศาเซลเซียส จะสิ้นเปลืองไฟเพิ่มขึ้นร้อยละ 25&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 7) หมั่นละลายน้ําแข็งอย่าให่้น้ําแข็งเกาะในช่องน้ําแข็งมากเกินไป โดยกดปุ่มละลายน้ำแข็งหรือดึงปลั๊กออกจนน้ําแข็งละลายหมด&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 8) ควรตั้งตู้เย็นห่างจากผนังทั้งด้านหลัง และด้านข้างอย่างน้อย 15 เซนติเมตร เพื่อให้การระบายความร้อนดีขึ้น ประหยัดไฟได้ร้อยละ 3&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 9) ตรวจสอบยางขอบประตูอย่างสม่ำเสมอ&lt;br /&gt;&lt;strong&gt;1.7 กระติกน้ำร้อน&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1) ไม่ควรใส่น้ำเกินกว่าที่ต้องใช้&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2) ถอดปลั๊กทันทีเมื่อเลิกใช้&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 3) ไม่ควรนำน้ำเย็นไปต้มทันที&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 4) อย่าให้มีตะกันเกาะด้านในของตัวกระติก เพราะสิ้นเปลืองไฟฟ้า&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 5) หมั่นตรวจดูสายไฟและขั้วปลั๊กอยู่เสมอ&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 6) เลือกซื้อกระติกชนิดที่มีฉนวนกันความร้อน&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img src="images/img1/th/w5.jpg" alt="w5" width="250" height="321" style="margin: 8px; float: left;" /&gt;2. มาตรการประหยัดน้ำ&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2.1 ตรวจสอบการรั่วของโถสุขภัณฑ์ หากมีการรั่วซึมรีบซ่อมแซมทันที วิธีทดสอบง่ายๆ เช่น โถสุขภัณฑ์ในห้องน้ำ ให้หยดสีผสมอาหารสีฟ้าลงไปด้านหลังโถตรงที่เก็บน้ำสำหรับกดชักโครก ทิ้งไว้สักพัก หากกลับมาดูแล้วพบว่ามีน้ำสีฟ้าหยดออกมาจากตัวโถ แปลว่ามีการรั่วซึม&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2.2 ใช้น้ำเหลือจากการใช้งานอื่นๆ เช่น น้ำล้างจาน น้ำซักผ้า นำมาใช้รดน้ำต้นไม้แทนการเปิดน้ำสะอาดจากก๊อกมารดต้นไม้ ทำให้ช่วย &ldquo;ประหยัดน้ำ&rdquo;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2.3 รินน้ำให้พอดี เวลารินน้ำดื่มใส่แก้ว ให้รินน้ำแต่พอดีและดื่มให้หมดแก้ว แต่ถ้าหากดื่มน้ำไม่หมด ก็อย่าทิ้ง ให้นำไปรดน้ำต้นไม้ต่อได้ หรือนำไปใช้ประโยชน์อย่างอื่น เช่น ใช้ผ้าชุบน้ำมาเช็ดฝุ่นตามจุดต่างๆ ในบ้าน เป็นต้น&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2.4 เช็ดคราบอาหารก่อนล้างจาน&amp;nbsp; เวลาล้างจานมีเทคนิคการประหยัดน้ำ นั่นคือ ให้เช็ดคราบอาหารก่อนล้างจาน เพื่อลดปริมาณน้ำในขณะล้างจานไม่ให้สิ้นเปลือง วิธีนี้ช่วยให้ล้างจานได้สะอาดกว่าเดิม และใช้น้ำน้อยกว่าเดิมด้วย และอย่าใช้น้ำยาล้างจานมากเกินไป เพราะยิ่งน้ำยาล้างจานมีความเข้มข้นมากก็ยิ่งต้องใช้น้ำมากขึ้นในการล้างให้สะอาดหมดจด&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2.5 ใช้ก๊อกน้ำแบบไหลเอื่อย ติดตั้งหัวก๊อกน้ำแบบประหยัดน้ำหรือไหลเอื่อย (Low-flow) เพื่อลดปริมาณการไหลของน้ำให้น้อยลงเวลาใช้ ซึ่งสามารถเปิดน้ำชะล้างทำความสะอาดได้ดีเหมือนเดิม&lt;/p&gt;]]></fulltext>
+    <state>1</state>
+    <created><![CDATA[2022-09-20 08:45:46]]></created>
+    <created_by_alias/>
+    <modified><![CDATA[2024-03-05 08:43:04]]></modified>
+    <publish_up><![CDATA[2022-09-20 08:45:46]]></publish_up>
+    <publish_down><![CDATA[0000-00-00 00:00:00]]></publish_down>
+    <images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
+    <urls><![CDATA[{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}]]></urls>
+    <attribs><![CDATA[{"article_layout":"","show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}]]></attribs>
+    <version>33</version>
+    <metakey/>
+    <metadesc/>
+    <hits>4196</hits>
+    <metadata><![CDATA[{"robots":"","author":"","rights":"","xreference":""}]]></metadata>
+    <language><![CDATA[*]]></language>
+    <xreference/>
+    <note/>
+    <created_by><![CDATA[admin]]></created_by>
+    <modified_by><![CDATA[admin]]></modified_by>
+    <catid><![CDATA[greenstudy]]></catid>
+    <access>1</access>
+    <featured>0</featured>
+    <rating_sum>0</rating_sum>
+    <rating_count>0</rating_count>
+    <canonical><![CDATA[/goffice/index.php/content1/20-energy]]></canonical>
+  </content>
+  <content>
+    <id>19</id>
+    <title><![CDATA[พักเครื่องคอมพิวเตอร์ ระหว่างโหมด Sleep กับ Hibernate ต่างกันยังไง ?]]></title>
+    <alias><![CDATA[sleep]]></alias>
+    <introtext><![CDATA[&lt;h3&gt;&lt;img src="images/img1/th/0_St0ojXwuNJgIke4P.jpg" alt="0 St0ojXwuNJgIke4P" width="250" height="167" style="margin: 8px; float: left;" /&gt;พักเครื่องคอมพิวเตอร์ Sleep mode กับ Hibernate mode ต่างกันยังไง ?&lt;/h3&gt;
+]]></introtext>
+    <fulltext><![CDATA[
+&lt;p&gt;สำหรับใครหลายๆ คนที่ใช้งานคอมพิวเตอร์ หรือ โน๊ตบุ๊ค อยู่เป็นประจำ ก็คงจะรู้จักเจ้าโหมด Sleep หรือ Hibernate กันดีใช่ไหมล่ะ เมื่อกดเข้าทั้งสองโหมดนี้ เครื่องคอมพิวเตอร์ ก็จะหยุดทำงานไปชั่วขณะ ในเวลาที่เราไม่ต้องการใช้งานคอมพิวเตอร์ ช่วงพักกลางวัน หรือ ต้องหยุดใช้งาน เราก็อาจจะกดเข้าโหมด Sleep เพื่อพักเครื่อง หรือ ปิดหน้าจอลงไปสำหรับเครื่องโน๊ตบุ๊ค&lt;img src="images/img1/th/Mode_sleep_Hibernate-7.png" alt="Mode sleep Hibernate 7" width="250" height="142" style="margin: 8px; float: right;" /&gt;&lt;/p&gt;
+&lt;p&gt;โหมด Sleep กับ โหมด Hibernate ทั้งสองตัวนี้ก็ใช้งานได้เหมือนกัน โดยการทำงานของมัน ก็คือการเข้าโหมดประหยัดพลังงาน เมื่อไม่ใช้งานเครื่องคอมพิวเตอร์ นั่นเอง เครื่องคอมพิวเตอร์ จะหยุดพักการทำงาน อุปกรณ์ส่วนต่างๆ ภายในเครื่อง ไปตั้งแต่ การจ่ายไฟ CPU หยุดการทำงาน RAM หน้าจอ และ Harddisk ทั้งหมดเพื่อให้จ่ายไฟน้อยลง เวลาที่เราไม่ได้ใช้งานเครื่องคอมพิวเตอร์ แต่มันต่างกันยังไง ควรใช้งานแบบไหน ? งั้นเรามาดูไปด้วยกันเลย&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sleep Mode&lt;/strong&gt;&lt;br /&gt; สำหรับโหมด Sleep ตัวนี้ หลายๆ คนคงจะได้ใช้กันบ่อยๆ เป็นประจำเวลาที่เราไปพักกลางวัน หรือไม่ได้ใช้เครื่องคอมพิวเตอร์ สักพัก แต่ต้องการจะกลับมาใช้งานใหม่อีกทีนึง สำหรับการทำงานของโหมดนี้ ก็เปรียบเสมือน การกดปุ่มหยุดเครื่องเล่น DVD ที่บ้าน เวลาที่เราเบรคไปเข้าห้องน้ำ หาขนมมากิน แล้วจะกลับมาดูกัน โดยไม่พลาดหนังที่ดูไปนั่นเอง &lt;/p&gt;
+&lt;p&gt;โดยการทำงานของโหมดนี้ จะหยุดทุกๆ การทำงานของเครื่องคอมพิวเตอร์ ทั้งหมด หากเปิดใช้งานโปรแกรมใดๆ อยู่ก็ตาม โปรแกรมจะพักการทำงาน และเครื่องจะเข้าสู่&lt;img src="images/img1/th/Mode_sleep_Hibernate-3.png" alt="Mode sleep Hibernate 3" width="250" height="142" style="margin: 8px; float: right;" /&gt;โหมดประหยัดพลังงาน โดยจะจ่ายไฟให้อุปกรณ์ส่วนต่างๆ ภายในเครื่องน้อยลง โดยที่คุณจะสามารถกลับมาใช้งาน เปิดเครื่องทำงานต่อ ได้อย่างรวดเร็ว ภายในเวลาไม่กี่วินาที&lt;/p&gt;
+&lt;p&gt;โหมด Sleep นี้ เหมาะสำหรับคนที่ต้องการพักการทำงานของเครื่องคอม ในระยะเวลาสั้นๆ และจะกลับมาใช้งานต่อแบบทันที โดยไม่ต้องรอเปิดเครื่องนาน ตัวเครื่องคอมพิวเตอร์ จะใช้พลังงานไม่มากในโหมดนี้ แต่ถ้าใช้งานโน๊ตบุ๊ค และเปิดใช้งานโหมดนี้เป็นระยะเวลานาน ก็อาจจะทำให้แบตหมดได้เหมือนกัน&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Hibernate&lt;/strong&gt;&lt;br /&gt; ทีนี้มาพูดถึง โหมด Hibernate นี้กันบ้าง สำหรับผู้ใช้งานบางคนก็อาจจะเลือกใช้งานโหมดนี้ เพราะว่า โหมดนี้สามารถพักการใช้งานเครื่องคอมพิวเตอร์ ได้เหมือนกันทุกประการ แต่ที่แตกต่างกัน นั่นก็คือ เจ้าโหมด Hibernate นี้ จะหยุดการทำงานต่างๆ ของเครื่องทั้งหมด โดยไม่ใช้พลังงานของเครื่องแม้แต่นิดเดียว ไม่ว่าจะพักเครื่องนานแค่ไหน เครื่องคอมพิวเตอร์ก็จะไม่กินไฟ เลยแม้แต่น้อย&lt;img src="images/img1/th/Mode_sleep_Hibernate-4.png" alt="Mode sleep Hibernate 4" width="250" height="141" style="margin: 8px; float: right;" /&gt;&lt;/p&gt;
+&lt;p&gt;การทำงานของโหมดนี้ จะบันทึกการใช้งานของโปรแกรมที่คุณเปิดใช้งานอยู่ อย่างงานเอกสาร หน้าเว็บเบราว์เซอร์ ที่ทำงานและเก็บอยู่ภายใน RAM (หน่วยความจำชั่วคราว) ทั้งหมดจะถูกย้ายมาบันทึกลง Harddisk หลังจากนั้น เครื่องจะทำการ Shutdown ทันที เมื่อคุณต้องการกลับมาใช้งาน พอเปิดเครื่อง เจ้าเครื่องคอมพิวเตอร์ของคุณ ก็จะทำการดึงข้อมูลส่วนต่างๆ ที่คุณได้ทำค้างไว้ ก่อนที่จะปิดเครื่อง ดึงข้อมูลกลับมาจาก Harddisk และกลับมาใช้งานได้เหมือนเดิมทุกอย่าง เพียงแต่ว่าจะเสียเวลาเปิดเครื่องนานกว่าโหมด Sleep สักหน่อย&lt;/p&gt;
+&lt;p&gt;แนะนำให้ใช้งานโหมด Hibernate นี้ หากคุณต้องการพักเครื่องเป็นเวลานานๆ แต่คุณไม่อยากจะทำการ Shutdown เครื่อง เพราะกลัวว่าจะลืมว่าก่อนปิดเครื่องได้เปิดโปรแกรม หรือทำงานอะไรค้างไว้บ้าง นั่นเอง เมื่อเปิดเครื่องขึ้นมา ทุกอย่างที่ค้างไว้ ก็จะกลับมาปกติ เหมือนโหมด Sleep ทุกอย่าง แต่โหมดนี้จะไม่กินไฟแม้แต่นิดเดียว&lt;/p&gt;]]></fulltext>
+    <state>1</state>
+    <created><![CDATA[2022-09-20 07:48:58]]></created>
+    <created_by_alias/>
+    <modified><![CDATA[2022-09-20 08:03:04]]></modified>
+    <publish_up><![CDATA[2022-09-20 07:48:58]]></publish_up>
+    <publish_down><![CDATA[0000-00-00 00:00:00]]></publish_down>
+    <images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
+    <urls><![CDATA[{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}]]></urls>
+    <attribs><![CDATA[{"article_layout":"","show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}]]></attribs>
+    <version>6</version>
+    <metakey/>
+    <metadesc/>
+    <hits>26303</hits>
+    <metadata><![CDATA[{"robots":"","author":"","rights":"","xreference":""}]]></metadata>
+    <language><![CDATA[*]]></language>
+    <xreference/>
+    <note/>
+    <created_by><![CDATA[admin]]></created_by>
+    <modified_by><![CDATA[admin]]></modified_by>
+    <catid><![CDATA[greenstudy]]></catid>
+    <access>1</access>
+    <featured>0</featured>
+    <rating_sum>0</rating_sum>
+    <rating_count>0</rating_count>
+    <canonical><![CDATA[/goffice/index.php/content1/19-sleep]]></canonical>
+  </content>
+  <content>
+    <id>18</id>
+    <title><![CDATA[10 วิธีการประหยัดน้ำ]]></title>
+    <alias><![CDATA[save-water10]]></alias>
+    <introtext><![CDATA[&lt;p&gt;&lt;img src="images/img1/th/w1.jpg" alt="w1" width="300" height="533" /&gt;&lt;/p&gt;
+]]></introtext>
+    <fulltext><![CDATA[
+&lt;p&gt;&lt;strong&gt;1. ทดสอบการรั่วซึมจากอุปกรณ์ใช้น้ำในบ้าน&lt;img src="images/img1/th/w5.jpg" alt="w5" width="200" height="257" style="margin: 8px; float: right;" /&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;รู้หรือไม่? หนึ่งในสาเหตุที่ทำให้สิ้นเปลืองน้ำมากที่สุดคือเกิดการรั่วซึมของอุปกรณ์ต่างๆ ในบ้าน เช่น ในครัวครัว ห้องน้ำ ห้องซักล้าง ฯลฯ สิ่งที่ควรทำเพื่อ &ldquo;ประหยัดนำ้&rdquo; (และประหยัดค่าน้ำประปาด้วย) คือ หมั่นตรวจสอบการรั่วขอโถสุขภัณฑ์ หากมีการรั่วซึมรีบซ่อมแซมทันที วิธีทดสอบง่ายๆ เช่น โถสุขภัณฑ์ในห้องน้ำ ให้หยดสีผสมอาหารสีฟ้าลงไปด้านหลังโถตรงที่เก็บน้ำสำหรับกดชักโครก ทิ้งไว้สักพัก หากกลับมาดูแล้วพบว่ามีน้ำสีฟ้าหยดออกมาจากตัวโถ แปลว่ามีการรั่วซึม เพื่อ&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. ใช้ฝักบัว "ประหยัดน้ำ" ได้มากกว่า&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;เปลี่ยนมาอาบน้ำด้วยฝักบัวรูเล็ก และปิดน้ำระหว่างถูสบู่หรือสระผม การใช้ฝักบัวอาบน้ำจะประหยัดน้ำได้มากที่สุด และยิ่งรูฝักบัวเล็กก็ยิ่งประหยัดได้มากขึ้น&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. ใช้แก้วรองน้ำเวลาแปรงฟัน&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;อีกอย่างที่บางคนมักเผลอลืมตัวคือ ขณะแปรงฟันไม่ชอบใช้แก้วรองน้ำซึ่งแบบนั้นจะทำให้เปลืองน้ำมาก ดังนั้นวิธี "ประหยัดน้ำ" คือขณะแปรงฟันจึงควรใช้แก้วน้ำรองน้ำสำหรับไว้บ้วนปากขณะแปรงฟัน อย่าเปิดก๊อกน้ำทิ้งไว้ระหว่างแปรงฟัน ช่วย &ldquo;ประหยัดน้ำ&rdquo; ได้ถึง 20-30 ลิตรต่อครั้ง&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. รดน้ำต้นไม้ด้วยน้ำซักล้าง&lt;img src="images/img1/th/w6.jpg" alt="w6" width="200" height="112" style="margin: 8px; float: right;" /&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;สำหรับบ้านไหนกที่ปลูกต้นไม้หรือพืชผักสวนครัว และต้องหมั่นรดน้ำเป็นประจำ แนะนำให้ใช้นำเหลือจากการใช้งานอื่นๆ เช่น น้ำล้างจาน น้ำซักผ้า นำมาใช้รดน้ำผักแทนการเปิดน้ำสะอาดจากก๊อกมารดต้นไม้ ทำให้ช่วย &ldquo;ประหยัดน้ำ&rdquo; ได้มากกว่า และควรใช้ฝักบัวรดน้ำแทนสายยาง อีกทั้งไม่ควรรดน้ำต้นไม่ตอนแดดจัดเพราะจะทำให้น้ำระเหยไว ยกตัวอย่างเช่น การล้างผักและผลไม้ให้รองน้ำใส่กะละมังเท่าที่จำเป็น หลังจากล้างเสร็จแล้ว ให้นำน้ำที่ล้างผลไม้เหล่านั้นไปรดน้ำต้นไม้ต่อได้&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5. รองน้ำใส่ถังเสมอ&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;สำหรับกิจกรรมการใช้น้ำเพื่อชำระล้างสิ่งต่างๆ ไม่ว่าจะเป็นการล้างจาน ล้างผักผลไม้ ถูพื้น หรือล้างรถด้วยตัวเอง แนะนำว่าไม่ควรเปิดน้ำจากก๊อกเพื่อฉีดล้างโดยตรง ซึ่งจะทำให้สิ้นเปลืองน้ำมาก ควรเปลี่ยนมาใช้วิธีรองน้ำใส่ถังในการชำระล้างสิ่งต่างๆ แทน และโดยเฉพาะการล้างรถให้ล้างจากด้านบนลงด้านล่าง เพื่อที่น้ำจากด้านบนจะได้ไหลลงมาชะล้างด้านล่างไปพร้อมกัน ล้างได้สะอาดเร็วขึ้น และใช้น้ำน้อยลง&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;6. รินน้ำดื่มให้พอดี&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;เวลารินน้ำดื่มใส่แก้ว ให้รินน้ำแต่พอดีและดื่มให้หมดแก้ว แต่ถ้าหากดื่มน้ำไม่หมด ก็อย่าทิ้ง ให้นำไปรดน้ำต้นไม้ต่อได้ หรือนำไปใช้ประโยชน์อย่างอื่น เช่น ใช้ผ้าชุบน้ำมาเช็ดฝุ่นตามจุดต่างๆ ในบ้าน เป็นต้น&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;7. ซักผ้าครั้งละมากๆ&lt;img src="images/img1/th/w7.jpg" alt="w7" width="200" height="150" style="margin: 8px; float: right;" /&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;เวลาจะซักผ้าต้องรวบซักในครั้งเดียว เพราะการซักผ้าต้องใช้น้ำเยอะในการซักต่อครั้ง หากซักบ่อยๆ ก็จะเป็นการสิ้นเปลืองน้ำ แนะนำให้ซักผ้าประมาณ 5-7 วันต่อครั้งก็พอ และหากใช้เครื่องซักผ้าแบบอัตโนมัติก็ปรับโหมด ECO ด้วย เพื่อเป็นการ "ประหยัดน้ำ"&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;8. เช็ดคราบอาหารก่อนล้างจาน&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;เวลาล้างจานมีเทคนิคการประหยัดน้ำ นั่นคือ ให้เช็ดคราบอาหารก่อนล้างจาน เพื่อลดปริมาณน้ำในขณะล้างจานไม่ให้สิ้นเปลือง วิธีนี้ช่วยให้ล้างจานได้สะอาดกว่าเดิม และใช้น้ำน้อยกว่าเดิมด้วย และอย่าใช้น้ำยาล้างจานมากเกินไป เพราะยิ่งน้ำยาล้างจานมีความเข้มข้นมากก็ยิ่งต้องใช้น้ำมากขึ้นในการล้างให้สะอาดหมดจด&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;9. ใช้ก๊อกน้ำแบบไหลเอื่อย&lt;img src="images/img1/th/w3.jpg" alt="w3" width="200" height="112" style="margin: 8px; float: right;" /&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;อีกหนึ่งวิธีที่ช่วย "ประหยัดน้ำ" ได้ดี ก็คือติดตั้งหัวก๊อกน้ำแบบประหยัดน้ำหรือไหลเอื่อย (Low-flow) เพื่อลดปริมาณการไหลของน้ำให้น้อยลงเวลาใช้ ซึ่งสามารถเปิดน้ำชะล้างทำความสะอาดได้ดีเหมือนเดิม&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;10. อาบน้ำให้รวดเร็ว&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;เปลี่ยนวิธีอาบน้ำ บางคนอาจจะชอบเปิดน้ำใส่อ่างอาบน้ำเพื่อแช่ตัวนานๆ ขณะอาบน้ำ หรือชอบเปิดน้ำฝักบัวแช่ไว้ระหว่างอาบน้ำ และชอบอาบน้ำช้า แบบนี้ก็จะยิ่งเปลืองน้ำมากไปอีก ควรปรับเปลี่ยนมาอาบน้ำให้เสร็จอย่างรวดเร็วไม่เกิน 5 นาที แต่ถ้าสระผมด้วยก็ควรใช้เวลาไม่เกิน 10 นาที ก็จะช่วย "ประหยัดน้ำ" ได้อีกทางหนึ่ง&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;ที่มา: การประปาส่วนภูมิภาค, &lt;a href="https://www.pwa.co.th/"&gt;https://www.pwa.co.th/&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;]]></fulltext>
+    <state>1</state>
+    <created><![CDATA[2022-09-20 04:17:53]]></created>
+    <created_by_alias/>
+    <modified><![CDATA[2022-09-20 04:33:56]]></modified>
+    <publish_up><![CDATA[2022-09-20 04:17:53]]></publish_up>
+    <publish_down><![CDATA[0000-00-00 00:00:00]]></publish_down>
+    <images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
+    <urls><![CDATA[{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}]]></urls>
+    <attribs><![CDATA[{"article_layout":"","show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}]]></attribs>
+    <version>7</version>
+    <metakey/>
+    <metadesc/>
+    <hits>60112</hits>
+    <metadata><![CDATA[{"robots":"","author":"","rights":"","xreference":""}]]></metadata>
+    <language><![CDATA[*]]></language>
+    <xreference/>
+    <note/>
+    <created_by><![CDATA[admin]]></created_by>
+    <modified_by><![CDATA[admin]]></modified_by>
+    <catid><![CDATA[greenstudy]]></catid>
+    <access>1</access>
+    <featured>0</featured>
+    <rating_sum>0</rating_sum>
+    <rating_count>0</rating_count>
+    <canonical><![CDATA[/goffice/index.php/content1/18-save-water10]]></canonical>
+  </content>
+  <content>
+    <id>17</id>
+    <title><![CDATA[การลดขยะด้วยแนวคิด 3Rs]]></title>
+    <alias><![CDATA[3rs]]></alias>
+    <introtext><![CDATA[&lt;h3 style="text-align: justify;"&gt;&lt;strong&gt;การลดขยะ ด้วยแนวคิด 3Rs&lt;img src="https://lh5.googleusercontent.com/ngAHu7nBujHIdeCDZzaVofJr9dwURoMxr9TdSbygje9MyWYeo2I5u2o7kEkXyRQzx7g-KFZ7EedRa1tQa3YAGfDnyEKXKnpOUy6K9NbMIVwjZ89kIq16h798jJkVdBrIjyUbgvC0jy0id9gqqsGEUGf3EkHtq1T9K_8FMvDABlH57HEWbOB1SDAHGw" alt="" width="244" height="161" /&gt;&lt;/strong&gt;&lt;/h3&gt;
+]]></introtext>
+    <fulltext><![CDATA[
+&lt;p style="text-align: justify;"&gt;&lt;img src="images/img1/3Rs2.jpg" alt="3Rs2" width="250" height="350" style="margin: 8px; float: left;" /&gt;3R เป็นแนวคิดและแนวทางในการปฏิบัติเพื่อการใช้ทรัพยากรที่มีอยู่อย่างคุ้มค่า สามารถช่วยลดปริมาณขยะให้น้อยลง ด้วยการลดการใช้ การนำกลับมาใช้ซ้ำ และการนำขยะกลับมาใช้ใหม่ (Reduce Reuse and Recycle: 3Rs) โดยเริ่มต้นที่การใช้ให้น้อยลง ลดการใช้วัสดุ ผลิตภัณฑ์ ที่ก่อให้เกิดขยะเพื่อลดปริมาณขยะที่เกิดขึ้น (Reduce) การนำวัสดุ ผลิตภัณฑ์ที่ยังสามารถใช้งานได้ กลับมาใช้ซ้ำ (Reuse) และการนำวัสดุ ผลิตภัณฑ์ที่ใช้งานแล้วมาแปรรูป เพื่อนำกลับมาใช้ประโยชน์ใหม่ หรือ รีไซเคิล (Recycle)&lt;br /&gt;Reduce &ndash; ลดการใช้ (คิดก่อนใช้)&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;strong&gt;ลดระดับการใช้ปัจจุบัน&lt;/strong&gt; ควบคุมปริมาณการใช้ให้อยู่ในสัดส่วนที่พอเหมาะ โดยลดการใช้ การบริโภคทรัพยากรที่ไม่จำเป็นลง เพราะการลดการบริโภคของเรา จะช่วยให้เราลดปริมาณขยะที่สร้างขึ้นได้ ในขั้นตอนนี้เริ่มต้นโดยการสำรวจว่าเราจะลดการบริโภคที่ไม่จำเป็นตรงไหนได้บ้าง ตัวอย่าง เช่น&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;strong&gt;ลดการสร้างขยะในที่ทำงาน&lt;/strong&gt;&lt;br /&gt;แก้ไขบนหน้าจอไม่ใช่บนกระดาษ เพื่อลดการใช้กระดาษ&lt;br /&gt; ใช้อีเมลเพื่อลดการใช้กระดาษ&lt;br /&gt; คิดก่อนพิมพ์หรือถ่ายสำเนา พิมพ์และทำสำเนาให้น้อยที่สุด&lt;br /&gt; ส่งและจัดเก็บเอกสาร เช่น เอกสารที่จำเป็นและข้อเสนอทางธุรกิจทางอิเล็กทรอนิกส์แทนที่จะเป็นกระดาษ&lt;br /&gt; เมื่อต้องพิมพ์หรือทำสำเนาให้ทำสองด้าน&lt;br /&gt; หมุนเวียนเอกสารแทนการทำสำเนาเฉพาะสำหรับทุกคน&lt;br /&gt; เปลี่ยนระยะขอบบนเอกสาร Word ระยะขอบเริ่มต้นของเอกสารที่พิมพ์คือ 1.25 นิ้วทุกด้าน เพียงเปลี่ยนระยะขอบเป็น 0.75 นิ้วจะช่วยลดปริมาณกระดาษที่ใช้ลงเกือบ 5 เปอร์เซ็นต์&lt;/p&gt;
+&lt;h4 style="text-align: justify;"&gt;&lt;strong&gt;Reduce - ลดการสร้างขยะในชีวิตประจำวัน&lt;img src="images/img1/th/r1.jpg" alt="r1" width="250" height="313" style="margin: 8px; float: right;" /&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;p style="text-align: justify;"&gt;ใช้ถุงผ้า ตระกร้า เพื่อลดการใช้ถุงพลาสติก&lt;br /&gt; ใช้ผ้าเช็ดหน้าแทนการใช้กระดาษทิชชู่&lt;br /&gt; ใช้ปิ่นโต หรือกล่องข้าวใส่อาหาร แทนการใส่กล่องโฟม&lt;br /&gt; ปฏิเสธการรับถุงพลาสติก เมื่อซื้อของชิ้นเล็กหรือน้อยชิ้น&lt;br /&gt; เลือกซื้อบรรจุภัณฑ์ที่เป็นมิตรกับสิ่งแวดล้อม เลือกทานอาหารที่ร้านแทนการใส่กล่องกลับ&lt;br /&gt; หลีกเลี่ยงใช้วัสดุสิ้นเปลืองแบบใช้ครั้งเดียวทิ้ง&lt;/p&gt;
+&lt;h4 style="text-align: justify;"&gt;&lt;strong&gt;Reuse &ndash; นำกลับมาใช้ซ้ำ (ใช้แล้วใช้อีก)&lt;/strong&gt;&lt;/h4&gt;
+&lt;p style="text-align: justify;"&gt;การใช้ซ้ำ เป็นการใช้ทรัพยากรให้คุ้มค่าที่สุด โดยการนำสิ่งของเครื่องใช้มาใช้ซ้ำ ซึ่งบางอย่างอาจใช้ซ้ำได้หลาย ๆ ครั้ง เช่น ใช้บรรจุภัณฑ์ซ้ำหลายครั้งก่อนทิ้ง ใช้ภาชนะที่สามารถใช้ซ้ำได้ เลือกซื้อสินค้าที่สามารถใช้ซ้ำได้ ซึ่งนอกจากช่วยลดการเกิดขยะแล้ว ยังช่วยลดปริมาณการตัดต้นไม้ได้เป็นจำนวนมาก&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;เลือกใช้ถ่านไฟฉายแบบชาร์ตได้&lt;br /&gt; ดัดแปลงของเหลือใช้เพื่อใช้ประโยชน์&lt;br /&gt; เสื้อผ้าเก่านำไปบริจาค หรือถูพื้น&lt;br /&gt; ซ่อมแซมอุปกรณ์ต่างๆ ไม่ทิ้งเป็นขยะ &lt;img src="images/img1/th/r2.jpg" alt="r2" width="250" height="283" style="margin: 8px; float: right;" /&gt;&lt;br /&gt; การใช้กระดาษ 2 หน้า&lt;br /&gt; การนำกระดาษรายงานที่เขียนแล้ว 1 หน้า มาใช้ในหน้าที่เหลือหรืออาจนำมาทำเป็นกระดาษโน๊ต&lt;/p&gt;
+&lt;h4 style="text-align: justify;"&gt;&lt;strong&gt;Recycle &ndash; นำกลับมาใช้ใหม่&lt;/strong&gt;&lt;/h4&gt;
+&lt;p style="text-align: justify;"&gt;คัดแยกขยะมูลฝอยแต่ละประเภท ที่สามารถนำกลับมาใช้ใหม่หมุนเวียนกลับเข้าสู่กระบวนการผลิตของแต่ละประเภทได้&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;ขวดแก้ว กระดาษ พลาสติก โลหะ&lt;br /&gt; เลือกซื้อสินค้าที่นำกลับมารีไซเคิลได้หรือที่ผลิตจากวัสดุรีไซเคิล&lt;br /&gt; นำขยะอินทรีย์กลับมาใช้ประโยชน์ เช่น ทำปุ๋ยหมัก&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;หากเราทุกคน สามารถทำได้ครบทั้ง 3Rs ก็จะสามารถลดปริมาณขยะที่เกิดขึ้นได้ในทุกๆ วัน ลดการสร้างมลพิษเเก่โลก และยังนำกลับมาใช้ประโยชน์ได้อย่างคุ้มค่า แทนที่จะถูกทิ้งแล้วนำไปกำจัด และนอกจากช่วยลดปริมาณขยะลงได้แล้ว ยังช่วยลดปริมาณการใช้ทรัพยากร ใช้ทรัพยากรอย่างคุมค่า ช่วยอนุรักษ์สิ่งแวดล้อมได้ด้วย&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Clip VDO แนะนำการจัดการของเสียตามหลัก 3Rs&lt;img src="images/img1/th/r3.jpg" alt="r3" width="250" height="200" style="margin: 8px; float: right;" /&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://youtu.be/-EUGxOiXhhQ" target="_blank" rel="noopener"&gt;&lt;img src="images/img1/2022-09-19_15-41-56.png" alt="2022 09 19 15 41 56" width="225" height="128" style="margin: 8px; float: left;" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&amp;nbsp;&lt;/p&gt;]]></fulltext>
+    <state>1</state>
+    <created><![CDATA[2022-09-07 07:32:34]]></created>
+    <created_by_alias/>
+    <modified><![CDATA[2022-09-20 04:50:52]]></modified>
+    <publish_up><![CDATA[2022-09-07 07:32:34]]></publish_up>
+    <publish_down><![CDATA[0000-00-00 00:00:00]]></publish_down>
+    <images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
+    <urls><![CDATA[{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}]]></urls>
+    <attribs><![CDATA[{"article_layout":"","show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}]]></attribs>
+    <version>8</version>
+    <metakey/>
+    <metadesc/>
+    <hits>20008</hits>
+    <metadata><![CDATA[{"robots":"","author":"","rights":"","xreference":""}]]></metadata>
+    <language><![CDATA[*]]></language>
+    <xreference/>
+    <note/>
+    <created_by><![CDATA[admin]]></created_by>
+    <modified_by><![CDATA[admin]]></modified_by>
+    <catid><![CDATA[greenstudy]]></catid>
+    <access>1</access>
+    <featured>0</featured>
+    <rating_sum>0</rating_sum>
+    <rating_count>0</rating_count>
+    <canonical><![CDATA[/goffice/index.php/content1/17-3rs]]></canonical>
+  </content>
+</j2xml>

@@ -96,6 +96,7 @@ const summariesData = readJson(path.join('about', 'document-summaries.json'));
 const aboutDocsData = readJson(path.join('about', 'about-documents.json'));
 const kpisData = readJson('dashboard-meta.json');
 const hubsData = readJson(path.join('content', 'hubs.json'));
+const practicesData = readJson(path.join('knowledge', 'practices.json'));
 
 // Indexes over canonical data (lookups only — no invented relationships).
 const categories = categoriesData.categories;
@@ -352,6 +353,29 @@ for (const [hubKey, hub] of Object.entries(hubsData.hubs)) {
       year: null,
       fileType: null,
     });
+  });
+}
+
+// --- 10. Knowledge practices (knowledge / practice) -------------------------
+// knowledge/practices.json → practices[] {id, slug, titleTh, titleEn, taglineTh,
+// taglineEn, summaryTh, summaryEn, keywordsTh, keywordsEn, actionsTh, actionsEn}
+for (const p of practicesData.practices) {
+  const titleTh = p.titleTh;
+  const titleEn = p.titleEn;
+  const keywordsTh = cat([p.taglineTh, p.summaryTh, p.keywordsTh, ...(p.actionsTh || [])]);
+  const keywordsEn = cat([p.taglineEn, p.summaryEn, p.keywordsEn, ...(p.actionsEn || [])]);
+  items.push({
+    id: `practice-${p.slug}`,
+    section: 'knowledge',
+    type: 'practice',
+    title: [titleTh, titleEn],
+    context: [p.summaryTh, p.summaryEn],
+    keywords: [keywordsTh, keywordsEn],
+    route: `/knowledge/${p.slug}/`,
+    routeKind: 'page',
+    category: ['8 วิถี Green Office', '8 Green Office Practices'],
+    year: null,
+    fileType: null,
   });
 }
 

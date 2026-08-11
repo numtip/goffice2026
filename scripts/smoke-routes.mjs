@@ -36,6 +36,15 @@ const thRoutes = [
   '/search/',
   '/404/',
   '/about/action-plan/',
+  '/knowledge/',
+  '/knowledge/green-office-mindset/',
+  '/knowledge/energy-smart/',
+  '/knowledge/water-wise/',
+  '/knowledge/paper-smart/',
+  '/knowledge/zero-waste/',
+  '/knowledge/green-mobility/',
+  '/knowledge/green-meeting/',
+  '/knowledge/green-workplace/',
 ];
 
 const enRoutes = [
@@ -53,6 +62,15 @@ const enRoutes = [
   '/en/documents/',
   '/en/search/',
   '/en/about/action-plan/',
+  '/en/knowledge/',
+  '/en/knowledge/green-office-mindset/',
+  '/en/knowledge/energy-smart/',
+  '/en/knowledge/water-wise/',
+  '/en/knowledge/paper-smart/',
+  '/en/knowledge/zero-waste/',
+  '/en/knowledge/green-mobility/',
+  '/en/knowledge/green-meeting/',
+  '/en/knowledge/green-workplace/',
 ];
 
 const routes = [...thRoutes, ...enRoutes];

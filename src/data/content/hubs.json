@@ -111,14 +111,14 @@
       ]
     },
     "knowledge": {
-      "titleTh": "ความรู้และการสื่อสาร",
-      "titleEn": "Knowledge & Awareness",
-      "descriptionTh": "แหล่งความรู้ด้านสิ่งแวดล้อม การสื่อสาร และการมีส่วนร่วม — สอดคล้องเกณฑ์หมวด 2 (การสื่อสารและการมีส่วนร่วม) และเอกสารเกี่ยวกับเรา",
-      "descriptionEn": "Environmental knowledge, communication, and engagement resources — aligned with Category 2 criteria and About Center documents.",
+      "titleTh": "ความรู้และสื่อสิ่งแวดล้อม",
+      "titleEn": "Environmental Knowledge & Media",
+      "descriptionTh": "8 วิถี Green Office — ความรู้ สื่อ และแนวทางปฏิบัติที่ช่วยให้ทุกคนเข้าใจ ลงมือทำ และเห็นผลกระทบต่อสิ่งแวดล้อมของสำนักงาน",
+      "descriptionEn": "8 Green Office Practices — knowledge, media, and everyday actions to understand, act, and see the environmental impact of the office.",
       "pendingTitleTh": "รอการเผยแพร่อย่างเป็นทางการ",
       "pendingTitleEn": "Pending official publication",
-      "pendingBodyTh": "ยังไม่มีเนื้อหาความรู้ที่เผยแพร่ ทีม Green Office กำลังจัดทำเนื้อหาการสื่อสารและการฝึกอบรมที่ผ่านการตรวจสอบ",
-      "pendingBodyEn": "No knowledge articles are published yet. The Green Office team is preparing verified communication and training content.",
+      "pendingBodyTh": "เนื้อหาความรู้กำลังอยู่ในระหว่างการจัดทำและตรวจสอบโดยทีม Green Office",
+      "pendingBodyEn": "Knowledge content is being prepared and reviewed by the Green Office team.",
       "relatedHeadingTh": "แหล่งข้อมูลที่เกี่ยวข้อง",
       "relatedHeadingEn": "Related resources",
       "relatedLinks": [
@@ -133,9 +133,9 @@
           "labelEn": "Environmental Policy"
         },
         {
-          "route": "/categories/cat2/",
-          "labelTh": "หมวด 2 — การสื่อสารและการมีส่วนร่วม",
-          "labelEn": "Category 2 — Communication & Engagement"
+          "route": "/categories/",
+          "labelTh": "เกณฑ์ Green Office",
+          "labelEn": "Green Office Criteria"
         },
         {
           "route": "/documents/",
@@ -143,24 +143,7 @@
           "labelEn": "Document Center"
         }
       ],
-      "slots": [
-        {
-          "categoryTh": "การสื่อสาร",
-          "categoryEn": "Communication",
-          "titleTh": "แนวทางการสื่อสารรอเนื้อหาอย่างเป็นทางการ",
-          "titleEn": "Communication guidelines awaiting official content",
-          "excerptTh": "อ้างอิงตัวชี้วัด 2.2.1 — เนื้อหาจะเผยแพร่เมื่อทีม Green Office ยืนยันเอกสารต้นฉบับ",
-          "excerptEn": "References indicator 2.2.1 — content will publish once the Green Office team confirms source documents."
-        },
-        {
-          "categoryTh": "การฝึกอบรม",
-          "categoryEn": "Training",
-          "titleTh": "เนื้อหาการฝึกอบรมรอการเผยแพร่",
-          "titleEn": "Training materials pending publication",
-          "excerptTh": "ช่องนี้สำรองไว้สำหรับเอกสารการฝึกอบรมและการประเมินความรู้ที่เชื่อมโยงกับหลักฐาน",
-          "excerptEn": "Reserved for training documents and knowledge assessments linked to evidence records."
-        }
-      ]
+      "slots": []
     }
   }
 }

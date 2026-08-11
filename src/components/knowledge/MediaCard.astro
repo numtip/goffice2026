@@ -1,0 +1,49 @@
+---
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface Props {
+  media: any;
+  locale: 'th' | 'en';
+}
+
+const { media, locale } = Astro.props;
+const isTh = locale === 'th';
+
+const title = isTh ? media.titleTh : media.titleEn;
+const sourceLabel = isTh ? media.sourceLabelTh : media.sourceLabelEn;
+
+function embedUrl(videoId: string): string {
+  return `https://www.youtube-nocookie.com/embed/${videoId}?rel=0`;
+}
+---
+
+<div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+  <div class="aspect-video w-full bg-gray-100">
+    <iframe
+      class="h-full w-full"
+      src={embedUrl(media.videoId)}
+      title={title}
+      loading="lazy"
+      frameborder="0"
+      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <div class="p-4">
+    <h3 class="text-sm font-semibold text-gray-900">{title}</h3>
+    {sourceLabel && (
+      <p class="mt-1 text-xs text-gray-500">{isTh ? 'แหล่งที่มา' : 'Source'} · {sourceLabel}</p>
+    )}
+    <a
+      href={media.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-green-700 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+    >
+      {isTh ? 'เปิดวิดีโอบน YouTube' : 'Watch on YouTube'}
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+    </a>
+  </div>
+</div>
