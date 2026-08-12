@@ -106,9 +106,11 @@ const dashList = (hub.relatedDashboards ?? [])
             : 'Each practice includes why it matters, what you can do today, learning media, and links to office criteria and performance.'}
         </p>
       </div>
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+      <div class="landing-stagger grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
         {engageVisuals.map((v) => (
-          <EngagePracticeCard visual={v} locale={locale} />
+          <div class="landing-reveal h-full">
+            <EngagePracticeCard visual={v} locale={locale} />
+          </div>
         ))}
       </div>
     </section>
@@ -283,3 +285,7 @@ const dashList = (hub.relatedDashboards ?? [])
     </section>
   </div>
 </BaseLayout>
+
+<script>
+  import '../../scripts/landing-motion.ts';
+</script>
