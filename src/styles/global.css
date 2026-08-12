@@ -367,7 +367,8 @@
   .landing-btn-ghost,
   .landing-btn-glass,
   .card-surface-hover,
-  .dashboard-metric-highlight {
+  .dashboard-metric-highlight,
+  .hero-bg-zoom {
     transform: none !important;
   }
 }
