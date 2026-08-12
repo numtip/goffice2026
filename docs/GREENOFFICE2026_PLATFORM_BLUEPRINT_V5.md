@@ -78,7 +78,7 @@ Thai is the default public experience and English lives under `/en/`. Any featur
 
 Every production promotion must have a known commit SHA, a clean tracked tree, and a documented rollback target. The required gates are:
 
-- dependency install consistent with the supported runtime (Node 22 for the current TypeScript toolchain);
+- dependency install consistent with the supported runtime (`engines: node >=20` compatibility floor; canonical CI runtime = Node 24 per `.github/workflows/deploy-pages.yml`);
 - unit tests, build, repository validation, and `git diff --check` pass;
 - GitHub Pages preview successfully deploys from the same source lineage;
 - smoke tests cover home, dashboard, evidence, indicators, core about/documents routes, and both locales where a changed feature applies;
@@ -96,7 +96,7 @@ The platform is **production-operational**, not evidence-complete. The next work
 | P0 | Expand verified indicator-level evidence mapping from 10/65 | Explicit indicator IDs, ownership, year, visibility, and verified source state |
 | P0 | Maintain monthly FY2569 data integrity | Validate updated source files; clearly distinguish partial, missing, and published data |
 | P1 | Continue dashboard/evidence UX refinement | Preserve ECharts fallback tables, mobile accessibility, and TH/EN parity |
-| P1 | Release hygiene | Release notes, rollback evidence, reproducible Node 22 quality gates |
+| P1 | Release hygiene | Release notes, rollback evidence, reproducible quality gates on the canonical CI runtime (Node 24; floor `>=20`) |
 | P2 | Add content and awareness materials | Public-safe, bilingual, linked to relevant categories/indicators |
 
 ## 8. Governance
@@ -141,7 +141,7 @@ Microsoft 365 / Document Center
 | Data truthfulness | Animation never changes data or evidence meaning. Count-up ends exactly at the source value; KPI values, status, and evidence availability are never animated or rounded misleadingly. |
 | Reduced motion by default | `prefers-reduced-motion: reduce` must disable every new effect via the global CSS media block (`src/styles/global.css`) and a JS `matchMedia` short-circuit. Mandatory gate. |
 | Compositor-only | Animate `opacity` and `transform` only. No layout-triggering properties, no scroll-jacking, no parallax beyond the existing ambient mesh. |
-| Duration / easing | Reveals 200–400ms, hovers 150–300ms, single canonical easing `cubic-bezier(0.16, 1, 0.3, 1)` (`.ease-out-expo`). |
+| Duration / easing | Reveals 750ms, hovers 150–300ms, single canonical easing `cubic-bezier(0.16, 1, 0.3, 1)` (`.ease-out-expo`). |
 | No feedback on data | Charts use ECharts built-in animation only, disabled under reduced motion in `src/scripts/echarts-init.ts`. |
 
 Performance budget (additive):
@@ -158,7 +158,7 @@ Performance budget (additive):
 
 - **Reuse:** `.landing-reveal` + `src/scripts/landing-motion.ts` (IntersectionObserver threshold 0.12, rootMargin −5%, `motion-ready` gate, `.is-visible`). Canonical; do not rebuild.
 - Hero markup is fully visible static (SEO + no-JS); reveal activates only after `html.motion-ready` is set.
-- Stagger: `.landing-stagger` cascade (0–480ms, 80ms steps) is the contract; cap at 6 visible elements.
+- Stagger: `.landing-stagger` cascade (0–560ms, 80ms steps) is the contract; cap at 8 visible elements.
 - Reveal distance ≤ `translateY(1.25rem)`; no scale/blur reveals on readable content.
 - New sections register through existing classes — no per-section motion script.
 
@@ -212,7 +212,7 @@ Accessibility contract: keyboard reachable, visible focus, no motion conveying m
 | Capability | Reuse (existing) | New contract (only if needed) |
 |---|---|---|
 | Reveal | `.landing-reveal`, `.is-visible`, `html.motion-ready`, IO script | none — extend existing |
-| Stagger | `.landing-stagger` (7-step, 80ms) | cap 6 items |
+| Stagger | `.landing-stagger` (8-step, 80ms) | cap 8 items |
 | Count-up | `[data-count-up]` + suffix/prefix/duration | `data-count-format` only if Intl grouping needed |
 | Hover/focus | `.landing-card-interactive`, `.landing-btn-*`, `.card-surface-hover`, `.focus-ring`, global `:focus-visible` | none |
 | Motion tokens | `.ease-out-expo`, `duration-300`, `transition` utilities | centralize under `global.css` §GO-MOTION-V1 |
