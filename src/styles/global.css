@@ -253,6 +253,7 @@
   .landing-stagger > .landing-reveal:nth-child(5) { transition-delay: 320ms; }
   .landing-stagger > .landing-reveal:nth-child(6) { transition-delay: 400ms; }
   .landing-stagger > .landing-reveal:nth-child(7) { transition-delay: 480ms; }
+  .landing-stagger > .landing-reveal:nth-child(8) { transition-delay: 560ms; }
 
   .landing-metric-bar {
     transform-origin: left center;

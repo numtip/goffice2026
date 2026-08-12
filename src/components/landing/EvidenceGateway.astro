@@ -82,13 +82,13 @@ const t = Astro.props.t ?? {
         <div class="rounded-stitch border border-outline-variant/20 bg-surface-container p-3 shadow-sm sm:p-4">
           <dt class="text-label-sm text-outline">{t.total_records}</dt>
           <dd class="mt-1 text-xl font-semibold text-primary sm:text-headline-md">
-            <span data-count-up={totalItems}>0</span>
+            <span data-count-up={totalItems}>{totalItems}</span>
           </dd>
         </div>
         <div class="rounded-stitch border border-outline-variant/20 bg-surface-container p-3 shadow-sm sm:p-4">
           <dt class="text-label-sm text-outline">{t.available}</dt>
           <dd class="mt-1 text-xl font-semibold text-primary sm:text-headline-md">
-            <span data-count-up={availableItems}>0</span>
+            <span data-count-up={availableItems}>{availableItems}</span>
           </dd>
         </div>
       </dl>
