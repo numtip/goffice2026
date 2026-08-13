@@ -12,14 +12,12 @@ import type { MultiYearMetric } from '../../utils/multi-year-schema';
 interface Props {
   locale: 'th' | 'en';
   t: HomeExecutiveKpiStrings;
-  evidenceAvailable: number;
-  evidenceTotal: number;
   coveredMonthSlots: number;
   totalMonthSlots: number;
   genMap: Record<string, MultiYearMetric>;
 }
 
-const { locale, t, evidenceAvailable, evidenceTotal, coveredMonthSlots, totalMonthSlots, genMap } = Astro.props;
+const { locale, t, coveredMonthSlots, totalMonthSlots, genMap } = Astro.props;
 
 const fmtCompact = (v: number) =>
   Intl.NumberFormat(locale === 'th' ? 'th' : 'en', { notation: 'compact', maximumFractionDigits: 1 }).format(v);
@@ -67,64 +65,49 @@ const resourceCards = resourceIds.map((id) => {
 
 <section
   id="executive-kpi-preview"
-  class="relative bg-white py-16 sm:py-20 lg:py-24"
+  class="landing-section relative bg-surface"
   aria-labelledby="executive-kpi-heading"
 >
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <!-- Section header -->
-    <div class="landing-reveal mx-auto mb-10 max-w-2xl text-center sm:mb-14">
+  <div class="landing-container">
+    <div class="landing-reveal mx-auto mb-8 max-w-2xl text-center sm:mb-10">
       <h2
         id="executive-kpi-heading"
-        class="text-3xl font-bold tracking-tight text-on-surface sm:text-4xl"
+        class="landing-heading font-bold text-balance"
       >
         {t.heading}
       </h2>
-      <p class="mt-4 text-base leading-relaxed text-slate-700 sm:text-lg">
+      <p class="mt-3 text-body-md leading-relaxed text-on-surface-variant sm:mt-4 sm:text-body-lg">
         {t.subtitle}
       </p>
     </div>
 
-    <!-- Summary stat cards -->
-    <div class="landing-stagger mx-auto mb-12 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
-      <!-- Data Readiness (2569 month coverage, derived from generated metrics) -->
-      <div class="landing-reveal flex flex-col items-center rounded-2xl border border-emerald-200/60 bg-gradient-to-b from-emerald-50/50 to-white p-6 text-center shadow-sm">
-        <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">
+    <dl class="landing-stagger mx-auto mb-10 grid max-w-3xl grid-cols-1 gap-3 sm:mb-12 sm:grid-cols-2 sm:gap-4">
+      <div class="landing-reveal rounded-stitch border border-outline-variant/20 bg-surface-container p-4 text-left shadow-sm sm:p-5">
+        <dt class="text-label-sm text-outline">
           {t.score_environmental}
-        </span>
-        <span class="text-4xl font-bold tracking-tight text-emerald-700">
-          {coveredMonthSlots}<span class="text-xl text-emerald-500">/{totalMonthSlots} {locale === 'th' ? 'เดือน' : 'months'}</span>
-        </span>
-        <span class="mt-1 text-xs text-slate-700">
+        </dt>
+        <dd class="mt-1 font-semibold text-primary">
+          <span class="num-tabular text-2xl tracking-tight sm:text-3xl">{coveredMonthSlots}</span>
+          <span class="text-base text-on-surface-variant">/{totalMonthSlots} {locale === 'th' ? 'เดือน' : 'months'}</span>
+        </dd>
+        <p class="mt-1 text-xs text-on-surface-variant">
           ({dataReadinessPct}%) {locale === 'th' ? 'ปีงบประมาณ 2569' : 'FY 2569'}
-        </span>
+        </p>
       </div>
 
-      <!-- Category Framework (canonical taxonomy, no assessment scores) -->
-      <div class="landing-reveal flex flex-col items-center rounded-2xl border border-sky-200/60 bg-gradient-to-b from-sky-50/50 to-white p-6 text-center shadow-sm">
-        <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">
+      <div class="landing-reveal rounded-stitch border border-outline-variant/20 bg-surface-container p-4 text-left shadow-sm sm:p-5">
+        <dt class="text-label-sm text-outline">
           {t.score_categories}
-        </span>
-        <span class="text-4xl font-bold tracking-tight text-sky-700">
-          {categoryCount}<span class="text-xl text-sky-500">{locale === 'th' ? ' หมวด' : ' categories'}</span>
-        </span>
-        <span class="mt-1 text-xs text-slate-700">
+        </dt>
+        <dd class="mt-1 font-semibold text-primary">
+          <span class="num-tabular text-2xl tracking-tight sm:text-3xl">{categoryCount}</span>
+          <span class="text-base text-on-surface-variant">{locale === 'th' ? ' หมวด' : ' categories'}</span>
+        </dd>
+        <p class="mt-1 text-xs text-on-surface-variant">
           {issueCount} {locale === 'th' ? 'ประเด็น' : 'issues'} · {indicatorTotal} {locale === 'th' ? 'ตัวชี้วัด' : 'indicators'}
-        </span>
+        </p>
       </div>
-
-      <!-- Evidence Readiness (from evidence index) -->
-      <div class="landing-reveal flex flex-col items-center rounded-2xl border border-violet-200/60 bg-gradient-to-b from-violet-50/50 to-white p-6 text-center shadow-sm">
-        <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">
-          {t.score_evidence}
-        </span>
-        <span class="text-4xl font-bold tracking-tight text-violet-700">
-          {evidenceAvailable}<span class="text-xl text-violet-500">/{evidenceTotal}</span>
-        </span>
-        <span class="mt-1 text-xs text-slate-700">
-          {Math.round((evidenceAvailable / evidenceTotal) * 100)}% {locale === 'th' ? 'พร้อมใช้งาน' : 'ready'}
-        </span>
-      </div>
-    </div>
+    </dl>
 
     <!-- Resource KPI cards -->
     <div class="landing-stagger grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -151,10 +134,10 @@ const resourceCards = resourceIds.map((id) => {
     </div>
 
     <!-- CTA -->
-    <div class="landing-reveal mt-10 text-center sm:mt-14">
+    <div class="landing-reveal mt-8 text-center sm:mt-12">
       <a
         href={getLocalizedPath(locale, '/dashboard')}
-        class="inline-flex min-h-11 items-center gap-2 rounded-full bg-emerald-600 px-8 py-3.5 text-label-sm font-semibold uppercase tracking-wider text-white shadow-md shadow-emerald-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-600/25 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 motion-reduce:transform-none"
+        class="landing-btn-ghost min-h-11 text-primary hover:bg-surface-container-high"
       >
         {t.cta_dashboard}
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

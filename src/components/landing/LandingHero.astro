@@ -29,7 +29,7 @@ const t = Astro.props.t ?? {
 ---
 
 <header
-  class="group relative flex min-h-[65vh] items-center justify-center overflow-hidden sm:min-h-[75vh] lg:min-h-[85vh]"
+  class="group relative flex min-h-[52vh] items-center justify-center overflow-hidden sm:min-h-[68vh] lg:min-h-[80vh]"
   aria-labelledby="landing-hero-title"
 >
   <div class="absolute inset-0 z-0" aria-hidden="true">
@@ -46,36 +46,36 @@ const t = Astro.props.t ?? {
     <div class="absolute inset-0 bg-gradient-to-b from-[#001a12]/50 via-[#001a12]/45 to-[#001a12]/70" aria-hidden="true"></div>
   </div>
 
-  <div class="landing-stagger relative z-10 mx-auto w-full max-w-5xl px-4 pt-20 pb-16 text-center sm:px-6 sm:pt-24 sm:pb-20 md:px-8 lg:pt-28 lg:pb-24">
+  <div class="landing-stagger relative z-10 mx-auto w-full max-w-5xl px-4 pt-20 pb-12 text-center sm:px-6 sm:pt-24 sm:pb-16 md:px-8 lg:pt-28 lg:pb-20">
     <h1
       id="landing-hero-title"
-      class="landing-reveal mx-auto mb-6 max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight text-white text-balance sm:mb-7 sm:text-5xl sm:leading-[1.06] md:text-6xl md:leading-[1.05] lg:text-7xl lg:leading-[1.04]"
+      class="landing-reveal mx-auto mb-5 max-w-4xl tracking-tight text-white text-balance sm:mb-6"
     >
-      {t.title_line1}<br />
-      <span class="text-emerald-300">{t.title_line2}</span>
+      <span class="mb-2 block text-lg font-medium text-white/85 sm:text-xl md:text-2xl">{t.title_line1}</span>
+      <span class="block text-3xl font-bold leading-[1.08] text-emerald-300 sm:text-4xl sm:leading-[1.06] md:text-5xl lg:text-6xl lg:leading-[1.04]">{t.title_line2}</span>
     </h1>
 
-    <p class="landing-reveal mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/90 sm:mb-10 sm:text-lg">
+    <p class="landing-reveal mx-auto mb-6 max-w-xl text-sm leading-relaxed text-white/80 sm:mb-7 sm:text-base">
       {t.description}
     </p>
 
     <dl
-      class="landing-reveal mx-auto mb-9 grid max-w-xl grid-cols-1 gap-4 text-left sm:mb-11 sm:grid-cols-2 sm:gap-6"
+      class="landing-reveal mx-auto mb-6 grid max-w-xl grid-cols-2 gap-3 text-left sm:mb-8 sm:gap-4"
       aria-label={locale === 'th' ? 'สถานะข้อมูลสำนักงานสีเขียว' : 'Green Office data status'}
     >
-      <div class="rounded-stitch border border-white/20 px-4 py-3 sm:px-5 sm:py-4">
-        <dt class="text-sm text-white/80">{t.coverage_label}</dt>
+      <div class="rounded-stitch border border-white/20 px-3 py-2.5 sm:px-4 sm:py-3">
+        <dt class="text-xs text-white/80 sm:text-sm">{t.coverage_label}</dt>
         <dd class="mt-1 font-semibold text-white">
-          <span class="num-tabular text-3xl tracking-tight sm:text-4xl">{coveredMonthSlots}</span>
-          <span class="text-lg text-white/70">/{totalMonthSlots} {t.coverage_unit}</span>
+          <span class="num-tabular text-2xl tracking-tight sm:text-3xl">{coveredMonthSlots}</span>
+          <span class="text-sm text-white/70 sm:text-base">/{totalMonthSlots} {t.coverage_unit}</span>
         </dd>
-        <p class="mt-1 text-xs text-white/70">{t.coverage_caption}</p>
+        <p class="mt-1 text-[11px] leading-snug text-white/70 sm:text-xs">{t.coverage_caption}</p>
       </div>
-      <div class="rounded-stitch border border-white/20 px-4 py-3 sm:px-5 sm:py-4">
-        <dt class="text-sm text-white/80">{t.evidence_label}</dt>
+      <div class="rounded-stitch border border-white/20 px-3 py-2.5 sm:px-4 sm:py-3">
+        <dt class="text-xs text-white/80 sm:text-sm">{t.evidence_label}</dt>
         <dd class="mt-1 font-semibold text-white">
-          <span class="num-tabular text-3xl tracking-tight sm:text-4xl">{evidenceAvailable}</span>
-          <span class="text-lg text-white/70">/{evidenceTotal}</span>
+          <span class="num-tabular text-2xl tracking-tight sm:text-3xl">{evidenceAvailable}</span>
+          <span class="text-sm text-white/70 sm:text-base">/{evidenceTotal}</span>
         </dd>
       </div>
     </dl>
@@ -92,7 +92,7 @@ const t = Astro.props.t ?? {
       </a>
       <a
         href={getLocalizedPath(locale, '/evidence')}
-        class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border-2 border-white/30 bg-transparent px-6 py-3.5 text-label-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 motion-reduce:transform-none sm:px-8 sm:py-4"
+        class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/30 bg-transparent px-6 py-3.5 text-label-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 motion-reduce:transform-none sm:px-8 sm:py-4"
       >
         {t.cta_evidence}
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

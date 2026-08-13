@@ -17,20 +17,23 @@ const stops = [
 ] as const;
 ---
 
-<nav class="border-b border-outline-variant/30 bg-surface-container-lowest" aria-label={t.aria}>
-  <ol class="landing-stagger mx-auto grid max-w-7xl grid-cols-1 gap-1 px-4 py-3 sm:grid-cols-3 sm:gap-2 sm:px-6 sm:py-4 lg:px-8">
-    {stops.map((stop) => (
-      <li class="landing-reveal list-none">
+<nav class="border-t-2 border-primary/40 border-b border-outline-variant/30 bg-surface-container-lowest shadow-sm" aria-label={t.aria}>
+  <ol class="landing-stagger mx-auto grid max-w-5xl grid-cols-1 gap-2 px-4 py-4 sm:grid-cols-3 sm:divide-x sm:divide-outline-variant/30 sm:gap-0 sm:px-6 sm:py-5">
+    {stops.map((stop, index) => (
+      <li class="landing-reveal list-none sm:px-3 first:sm:pl-0 last:sm:pr-0">
         <a
           href={getLocalizedPath(locale, stop.href)}
-          class="focus-ring flex min-h-11 items-center gap-3 rounded-stitch px-3 py-2 text-left transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-white motion-reduce:transform-none"
+          class:list={[
+            'focus-ring flex min-h-11 items-center gap-3 rounded-stitch px-3 py-2 text-left transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-white motion-reduce:transform-none',
+            index === 0 && 'bg-white ring-1 ring-primary/15',
+          ]}
         >
-          <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-white" aria-hidden="true">
+          <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white" aria-hidden="true">
             {stop.step}
           </span>
           <span class="min-w-0">
-            <span class="block font-semibold text-primary">{stop.title}</span>
-            <span class="block text-sm text-on-surface-variant">{stop.desc}</span>
+            <span class="block text-base font-bold tracking-tight text-on-surface sm:text-lg">{stop.title}</span>
+            <span class="block text-xs leading-snug text-on-surface-variant sm:text-sm">{stop.desc}</span>
           </span>
         </a>
       </li>
