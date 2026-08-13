@@ -1,6 +1,7 @@
 /**
- * Optimize WOW2 category images to WebP.
- * Preserves original PNGs — creates WebP derivatives alongside them.
+ * Optimize WOW2 images to WebP.
+ * Preserves originals — creates WebP derivatives alongside them.
+ * Covers category PNGs and the landing/dashboard hero JPG.
  *
  * Usage: node scripts/optimize-wow2-images.mjs
  */
@@ -18,22 +19,32 @@ if (!existsSync(WOW2_DIR)) {
   process.exit(1);
 }
 
-const files = readdirSync(WOW2_DIR).filter(f => /^catagory\d+\.png$/i.test(f));
+const HERO_JPG = 'Executive Dashboard Hero.jpg';
+const categoryFiles = readdirSync(WOW2_DIR).filter(f => /^catagory\d+\.png$/i.test(f));
+const files = [
+  ...categoryFiles,
+  ...(existsSync(join(WOW2_DIR, HERO_JPG)) ? [HERO_JPG] : []),
+];
 
 if (files.length === 0) {
-  console.log('No catagory PNG files found.');
+  console.log('No WOW2 sources found to optimize.');
   process.exit(0);
 }
 
-console.log(`Found ${files.length} category PNGs to optimize.`);
+console.log(`Found ${files.length} WOW2 image(s) to optimize.`);
 console.log('');
 
 const results = [];
 
 for (const file of files) {
   const inputPath = join(WOW2_DIR, file);
-  const outputName = file.replace(/\.png$/i, '.webp');
+  const outputName = file.replace(/\.(png|jpe?g)$/i, '.webp');
   const outputPath = join(WOW2_DIR, outputName);
+
+  if (existsSync(outputPath) && file !== HERO_JPG) {
+    console.log(`  · ${file} → ${outputName} already exists, skip`);
+    continue;
+  }
 
   const inputSize = statSync(inputPath).size;
 

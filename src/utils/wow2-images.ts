@@ -36,8 +36,8 @@ export function categoryImageUrl(code: string): string | undefined {
   return filename ? assetUrl(filename) : undefined;
 }
 
-/** Executive Dashboard Hero image URL. */
-export const heroImageUrl: string = assetUrl('Executive Dashboard Hero.jpg');
+/** Executive Dashboard Hero image URL (WebP derivative; original JPG preserved). */
+export const heroImageUrl: string = assetUrl('Executive Dashboard Hero.webp');
 
 /** Resource Icons decorative image URL. */
 export const resourceIconsImageUrl: string = assetUrl('Resource Icons.jpg');

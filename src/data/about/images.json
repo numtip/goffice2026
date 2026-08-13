@@ -18,12 +18,12 @@
       "id": "img-hero-dashboard",
       "filename": "Executive Dashboard Hero.jpg",
       "path": "public/images/dashboard/wow2/Executive Dashboard Hero.jpg",
-      "pathPublic": "/images/dashboard/wow2/Executive Dashboard Hero.jpg",
+      "pathPublic": "/images/dashboard/wow2/Executive Dashboard Hero.webp",
       "currentUsage": "landing-hero-background",
       "suggestedAboutPage": null,
       "aboutRelevance": "none",
       "optimizationRequired": false,
-      "notes": "Landing page hero background. Not suitable for About pages."
+      "notes": "Landing/dashboard hero background. Original JPG preserved; site serves same-dimension WebP."
     },
     {
       "id": "img-dashboard-screens",

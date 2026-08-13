@@ -21,6 +21,11 @@ interface Props {
 }
 
 const { items, totalItems, availableItems, locale = 'th' } = Astro.props;
+
+const statusLabel: Record<string, { th: string; en: string }> = {
+  available: { th: 'พร้อมใช้งาน', en: 'Available' },
+  placeholder: { th: 'ยังไม่เผยแพร่', en: 'Unpublished' },
+};
 const t = Astro.props.t ?? {
   badge: 'Evidence system',
   heading: 'Evidence Library',
@@ -55,7 +60,7 @@ const t = Astro.props.t ?? {
                 </span>
               </div>
               <p class="mt-1.5 flex items-center justify-between gap-2 font-mono text-[10px] uppercase tracking-wide text-on-surface-variant">
-                <span>{item.status}</span>
+                <span>{statusLabel[item.status]?.[locale] ?? item.status}</span>
                 <time datetime={item.updated}>{item.updated}</time>
               </p>
             </div>
