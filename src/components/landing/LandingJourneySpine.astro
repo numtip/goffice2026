@@ -1,0 +1,39 @@
+---
+import { getLocalizedPath } from '../../i18n/utils';
+import type { HomeNavStrings, HomeSpineStrings } from '../../i18n/dictionary';
+
+interface Props {
+  locale: 'th' | 'en';
+  nav: HomeNavStrings;
+  t: HomeSpineStrings;
+}
+
+const { locale, nav, t } = Astro.props;
+
+const stops = [
+  { step: '1', href: '/dashboard', title: nav.dashboard, desc: t.performance_desc },
+  { step: '2', href: '/evidence', title: nav.evidence, desc: t.evidence_desc },
+  { step: '3', href: '/knowledge', title: nav.knowledge ?? (locale === 'th' ? 'ความรู้' : 'Knowledge'), desc: t.knowledge_desc },
+] as const;
+---
+
+<nav class="border-b border-outline-variant/30 bg-surface-container-lowest" aria-label={t.aria}>
+  <ol class="landing-stagger mx-auto grid max-w-7xl grid-cols-1 gap-1 px-4 py-3 sm:grid-cols-3 sm:gap-2 sm:px-6 sm:py-4 lg:px-8">
+    {stops.map((stop) => (
+      <li class="landing-reveal list-none">
+        <a
+          href={getLocalizedPath(locale, stop.href)}
+          class="focus-ring flex min-h-11 items-center gap-3 rounded-stitch px-3 py-2 text-left transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-white motion-reduce:transform-none"
+        >
+          <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-white" aria-hidden="true">
+            {stop.step}
+          </span>
+          <span class="min-w-0">
+            <span class="block font-semibold text-primary">{stop.title}</span>
+            <span class="block text-sm text-on-surface-variant">{stop.desc}</span>
+          </span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</nav>

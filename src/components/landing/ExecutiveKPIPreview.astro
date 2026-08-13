@@ -14,10 +14,12 @@ interface Props {
   t: HomeExecutiveKpiStrings;
   evidenceAvailable: number;
   evidenceTotal: number;
+  coveredMonthSlots: number;
+  totalMonthSlots: number;
   genMap: Record<string, MultiYearMetric>;
 }
 
-const { locale, t, evidenceAvailable, evidenceTotal, genMap } = Astro.props;
+const { locale, t, evidenceAvailable, evidenceTotal, coveredMonthSlots, totalMonthSlots, genMap } = Astro.props;
 
 const fmtCompact = (v: number) =>
   Intl.NumberFormat(locale === 'th' ? 'th' : 'en', { notation: 'compact', maximumFractionDigits: 1 }).format(v);
@@ -25,12 +27,6 @@ const fmtCompact = (v: number) =>
 const resourceIds = ['energy', 'water', 'fuel', 'paper', 'waste', 'ghg'] as const;
 
 // Real readiness stats derived from canonical/generated data (no invented scores).
-const totalMonthSlots = resourceIds.length * 12;
-const coveredMonthSlots = resourceIds.reduce((sum, id) => {
-  const m = genMap[id] as MultiYearMetric | undefined;
-  const cy = m ? m.years[m.currentYear.toString()] : undefined;
-  return sum + (cy ? cy.months.length : 0);
-}, 0);
 const dataReadinessPct = totalMonthSlots > 0 ? Math.round((coveredMonthSlots / totalMonthSlots) * 100) : 0;
 const categoryCount = criteriaCategories.categories.length;
 const issueCount = new Set(criteriaIndicators.indicators.map((i) => i.issueCode)).size;
@@ -76,7 +72,7 @@ const resourceCards = resourceIds.map((id) => {
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Section header -->
-    <div class="mx-auto mb-10 max-w-2xl text-center sm:mb-14">
+    <div class="landing-reveal mx-auto mb-10 max-w-2xl text-center sm:mb-14">
       <h2
         id="executive-kpi-heading"
         class="text-3xl font-bold tracking-tight text-on-surface sm:text-4xl"
@@ -89,9 +85,9 @@ const resourceCards = resourceIds.map((id) => {
     </div>
 
     <!-- Summary stat cards -->
-    <div class="mx-auto mb-12 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
+    <div class="landing-stagger mx-auto mb-12 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
       <!-- Data Readiness (2569 month coverage, derived from generated metrics) -->
-      <div class="flex flex-col items-center rounded-2xl border border-emerald-200/60 bg-gradient-to-b from-emerald-50/50 to-white p-6 text-center shadow-sm">
+      <div class="landing-reveal flex flex-col items-center rounded-2xl border border-emerald-200/60 bg-gradient-to-b from-emerald-50/50 to-white p-6 text-center shadow-sm">
         <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">
           {t.score_environmental}
         </span>
@@ -104,7 +100,7 @@ const resourceCards = resourceIds.map((id) => {
       </div>
 
       <!-- Category Framework (canonical taxonomy, no assessment scores) -->
-      <div class="flex flex-col items-center rounded-2xl border border-sky-200/60 bg-gradient-to-b from-sky-50/50 to-white p-6 text-center shadow-sm">
+      <div class="landing-reveal flex flex-col items-center rounded-2xl border border-sky-200/60 bg-gradient-to-b from-sky-50/50 to-white p-6 text-center shadow-sm">
         <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">
           {t.score_categories}
         </span>
@@ -117,7 +113,7 @@ const resourceCards = resourceIds.map((id) => {
       </div>
 
       <!-- Evidence Readiness (from evidence index) -->
-      <div class="flex flex-col items-center rounded-2xl border border-violet-200/60 bg-gradient-to-b from-violet-50/50 to-white p-6 text-center shadow-sm">
+      <div class="landing-reveal flex flex-col items-center rounded-2xl border border-violet-200/60 bg-gradient-to-b from-violet-50/50 to-white p-6 text-center shadow-sm">
         <span class="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">
           {t.score_evidence}
         </span>
@@ -131,9 +127,10 @@ const resourceCards = resourceIds.map((id) => {
     </div>
 
     <!-- Resource KPI cards -->
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="landing-stagger grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {resourceCards.map((card) => (
-        <ResourcePerformanceCard
+        <div class="landing-reveal">
+          <ResourcePerformanceCard
           title={card.title}
           href={card.href}
           currentValue={card.currentValue}
@@ -149,14 +146,15 @@ const resourceCards = resourceIds.map((id) => {
           accentColor={card.accentColor}
           color={card.color}
         />
+        </div>
       ))}
     </div>
 
     <!-- CTA -->
-    <div class="mt-10 text-center sm:mt-14">
+    <div class="landing-reveal mt-10 text-center sm:mt-14">
       <a
         href={getLocalizedPath(locale, '/dashboard')}
-        class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-8 py-3.5 text-label-sm font-semibold uppercase tracking-wider text-white shadow-md shadow-emerald-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-600/25 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+        class="inline-flex min-h-11 items-center gap-2 rounded-full bg-emerald-600 px-8 py-3.5 text-label-sm font-semibold uppercase tracking-wider text-white shadow-md shadow-emerald-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-600/25 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 motion-reduce:transform-none"
       >
         {t.cta_dashboard}
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

@@ -19,6 +19,11 @@
       "description": "Monitor, measure and report environmental performance for Green Office certification. Explore resource dashboards, assessment categories, and evidence library.",
       "cta_dashboard": "Explore Dashboard",
       "cta_categories": "Explore Categories",
+      "cta_evidence": "Browse Evidence Library",
+      "coverage_label": "FY 2569 monthly data coverage",
+      "coverage_caption": "Month slots with data — not a certification score",
+      "coverage_unit": "months",
+      "evidence_label": "Evidence ready",
       "executive_preview": "Executive Overview",
       "preview_only": "Latest update",
       "metric_energy": "Energy",
@@ -27,6 +32,12 @@
       "metric_paper": "Paper",
       "metric_waste": "Waste",
       "metric_ghg": "GHG"
+    },
+    "spine": {
+      "aria": "Platform journey",
+      "performance_desc": "Six resource dashboards",
+      "evidence_desc": "Certification evidence library",
+      "knowledge_desc": "Eight Green Office practices"
     },
     "mission": {
       "heading": "Green Office 2026 Platform",

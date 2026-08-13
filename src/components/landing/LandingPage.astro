@@ -13,9 +13,9 @@ import recyclingRateGen from '../../data/generated/recycling_rate.json';
 import ghgGen from '../../data/generated/ghg.json';
 
 import LandingHero from './LandingHero.astro';
+import LandingJourneySpine from './LandingJourneySpine.astro';
 import ExecutiveKPIPreview from './ExecutiveKPIPreview.astro';
 import DashboardShowcase from './DashboardShowcase.astro';
-import ExecutiveCommandCenter from './ExecutiveCommandCenter.astro';
 import AssessmentFramework from './AssessmentFramework.astro';
 import EvidenceGateway from './EvidenceGateway.astro';
 import EngageVisualSection from './EngageVisualSection.astro';
@@ -34,7 +34,8 @@ const previewEvidence = evidenceIndex.items.slice(0, 3).map((item) => ({
   ...item,
   title: locale === 'th' ? (item.titleTh || item.title) : item.title,
 }));
-const availableItems = evidenceIndex.items.filter((i: { status: string }) => i.status === 'available').length;
+const evidenceTotal = evidenceIndex.items.length;
+const evidenceAvailable = evidenceIndex.items.filter((i: { status: string }) => i.status === 'available').length;
 
 const genMap: Record<string, MultiYearMetric> = {
   energy: energyGen as MultiYearMetric,
@@ -44,30 +45,47 @@ const genMap: Record<string, MultiYearMetric> = {
   waste: recyclingRateGen as MultiYearMetric,
   ghg: ghgGen as MultiYearMetric,
 };
+
+const resourceIds = ['energy', 'water', 'fuel', 'paper', 'waste', 'ghg'] as const;
+const totalMonthSlots = resourceIds.length * 12;
+const coveredMonthSlots = resourceIds.reduce((sum, id) => {
+  const m = genMap[id];
+  const cy = m ? m.years[m.currentYear.toString()] : undefined;
+  return sum + (cy ? cy.months.length : 0);
+}, 0);
 ---
 
 
 <BaseLayout locale={locale} dict={dict}>
   <div class="landing-page overflow-x-clip bg-surface text-on-surface selection:bg-primary-container/40">
-    <LandingHero locale={locale} t={home.hero} />
+    <LandingHero
+      locale={locale}
+      t={home.hero}
+      coveredMonthSlots={coveredMonthSlots}
+      totalMonthSlots={totalMonthSlots}
+      evidenceAvailable={evidenceAvailable}
+      evidenceTotal={evidenceTotal}
+    />
+    <LandingJourneySpine locale={locale} nav={home.nav} t={home.spine} />
     <ExecutiveKPIPreview
       locale={locale}
       t={home.executiveKpi}
-      evidenceAvailable={availableItems}
-      evidenceTotal={evidenceIndex.items.length}
+      evidenceAvailable={evidenceAvailable}
+      evidenceTotal={evidenceTotal}
+      coveredMonthSlots={coveredMonthSlots}
+      totalMonthSlots={totalMonthSlots}
       genMap={genMap}
     />
     <DashboardShowcase locale={locale} t={home.showcase} />
-    <ExecutiveCommandCenter locale={locale} t={home.executive} metrics={home.hero} />
-    <AssessmentFramework locale={locale} t={home.assessment} />
     <EvidenceGateway
       locale={locale}
       items={previewEvidence}
-      totalItems={evidenceIndex.items.length}
-      availableItems={availableItems}
+      totalItems={evidenceTotal}
+      availableItems={evidenceAvailable}
       t={home.evidence}
     />
     <EngageVisualSection locale={locale} t={home.engage} />
+    <AssessmentFramework locale={locale} t={home.assessment} />
     <ImprovementJourney locale={locale} t={home.improvement} />
     <LandingCTA locale={locale} t={home.cta} />
   </div>

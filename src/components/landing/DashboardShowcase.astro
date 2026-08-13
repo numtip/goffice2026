@@ -91,7 +91,7 @@ const bullets = [
 
       <!-- Right: Dashboard Screenshot -->
       <div class="landing-reveal self-center">
-        <div class="showcase-image-wrapper relative mx-auto max-w-xl lg:max-w-none">
+        <div class="relative mx-auto max-w-xl lg:max-w-none">
           <div class="rounded-2xl bg-gradient-to-br from-emerald-100/60 via-white to-emerald-50/40 p-2 shadow-2xl shadow-black/10 ring-1 ring-emerald-100/70 sm:p-3">
             <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-inner">
               <img
@@ -110,20 +110,3 @@ const bullets = [
     </div>
   </div>
 </section>
-
-<style>
-  .showcase-image-wrapper {
-    animation: showcase-float 6s ease-in-out infinite;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .showcase-image-wrapper {
-      animation: none;
-    }
-  }
-
-  @keyframes showcase-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
-</style>

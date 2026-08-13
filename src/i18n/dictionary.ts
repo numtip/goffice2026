@@ -27,6 +27,11 @@ export interface HomeHeroStrings {
   description: string;
   cta_dashboard: string;
   cta_categories: string;
+  cta_evidence: string;
+  coverage_label: string;
+  coverage_caption: string;
+  coverage_unit: string;
+  evidence_label: string;
   executive_preview: string;
   preview_only: string;
   metric_energy: string;
@@ -35,6 +40,13 @@ export interface HomeHeroStrings {
   metric_paper: string;
   metric_waste: string;
   metric_ghg: string;
+}
+
+export interface HomeSpineStrings {
+  aria: string;
+  performance_desc: string;
+  evidence_desc: string;
+  knowledge_desc: string;
 }
 
 export interface HomeMissionStrings {
@@ -191,6 +203,7 @@ export interface HomeFooterStrings {
 
 export interface HomeStrings {
   hero: HomeHeroStrings;
+  spine: HomeSpineStrings;
   mission: HomeMissionStrings;
   showcase: HomeShowcaseStrings;
   executiveKpi: HomeExecutiveKpiStrings;
