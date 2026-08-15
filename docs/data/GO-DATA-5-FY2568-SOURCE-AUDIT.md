@@ -76,3 +76,15 @@ Coverage is inferred from **explicit source structure only** (sub-folder granula
 - Publish the duplicate-group and unreadable counts **only** as aggregate status, with the explicit caveat that neither implies content validation.
 - Do **not** publish individual source titles, paths, or content excerpts.
 - Label all 2568 figures as **category-level baseline**, distinct from 2569 comparison/current data and from direct indicator mapping.
+
+### Public-document decision and comparison workflow (2026-08-15)
+
+- **FY2568 is a frozen public baseline.** Source documents are physically published inside the Astro site (Document Center) with no authentication and no access restrictions. All prior Microsoft 365 / OneDrive / SharePoint access-restriction wording is removed from the public pages.
+- Every category detail page presents a paired comparison panel: **FY2568 (ปีฐาน / Year Base)** with the audited record count, safe document-type aggregate, and a public link to the category Document Center; and **FY2569 (ปีประเมิน / Assessment Year)** with status **รอการอัปเดต / Awaiting update**.
+- The committee reviews the FY2568 baseline together with the FY2569 assessment; no FY2569 counts, evidence, results, or indicator mappings are invented in this release.
+
+### Evidence publication (physically in Astro)
+
+- **All 209 audited FY2568 documents are published** byte-identically under `public/documents/fy2568/cat1..cat7` (original titles, relative structure, and content preserved; source tree never modified). This closes the prior gap where the Document Center listed route shells without the actual documents.
+- Document Center pages enumerate and directly link each published document with its **original title, type, and file size**.
+- `src/data/fy2568-publication.json` is the deterministic manifest (path, title, type, size, SHA-256, percent-encoded URL); regenerate via `scripts/publish-fy2568-documents.mjs`. `scripts/test-fy2568-publication.mjs` proves all 209 files and category totals.

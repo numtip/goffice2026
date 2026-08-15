@@ -1,2 +1,13 @@
 # Generated dashboard JSON must stay LF for cross-platform determinism.
 src/data/generated/*.json text eol=lf
+
+# Published source documents are immutable binary assets.  Prevent Git's text
+# checks and line-ending normalization from altering or misreading them.
+*.pdf binary
+*.docx binary
+*.xlsx binary
+*.xls binary
+
+# These FY2568 text documents are source records; retain their original
+# whitespace exactly rather than treating it as a formatting defect.
+public/documents/fy2568/**/*.txt binary

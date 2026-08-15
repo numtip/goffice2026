@@ -10,7 +10,7 @@ import {
   getBaselineCategoryCoverage,
   getSourceTypeCounts,
 } from '../src/data/criteria/baseline-2568.ts';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert';
@@ -91,6 +91,34 @@ test('lookup returns matching entry and undefined for unknown code', () => {
 
 test('frozen baseline year is 2568', () => {
   assert.strictEqual(FY2568_BASELINE_YEAR, 2568);
+});
+
+test('source access is public for all seven categories', () => {
+  for (const entry of BASELINE_2568_CATEGORY_COUNTS) {
+    assert.strictEqual(entry.sourceAccess, 'public', `${entry.categoryCode} must be public`);
+  }
+});
+
+test('data layer contains no Microsoft 365 or authentication wording', () => {
+  const src = readFileSync(join(PROJECT_ROOT, 'src/data/criteria/baseline-2568.ts'), 'utf8');
+  for (const marker of ['Microsoft 365', 'OneDrive', 'SharePoint', 'authenticated', 'authentication']) {
+    assert.ok(!src.includes(marker), `data layer leaks auth wording: ${marker}`);
+  }
+});
+
+test('data layer contains no FY2569 baseline or comparison counts', () => {
+  const src = readFileSync(join(PROJECT_ROOT, 'src/data/criteria/baseline-2568.ts'), 'utf8');
+  // The header comment may mention the frozen FY2569 snapshot, but the module
+  // must never fabricate FY2569 numeric counts or fields.
+  assert.ok(
+    !/FY2569[^\n]*\d/.test(src),
+    'data layer must not fabricate FY2569 numeric counts',
+  );
+  assert.ok(
+    !/sourceTypeTotals[^\n]*2569/.test(src) &&
+      !/recordedBaselineCount[^\n]*2569/.test(src),
+    'data layer must not fabricate FY2569 fields',
+  );
 });
 
 test('module exposes no path/filename/URL-bearing fields', () => {
@@ -236,18 +264,87 @@ test('TH and EN detail routes render comparison-baseline title and document type
   }
 });
 
-test('TH and EN detail routes state no FY2569 update is added in this release', () => {
+test('TH and EN detail routes state FY2569 assessment is awaiting update', () => {
   for (const route of DETAIL_ROUTES) {
     const src = readFileSync(join(PROJECT_ROOT, route), 'utf8');
     if (route.includes('/en/')) {
       assert.ok(
-        src.includes('No FY2569 update or result is added in this release.'),
-        `${route} must state no FY2569 update is added (EN)`,
+        src.includes('Awaiting update'),
+        `${route} must state FY2569 status is Awaiting update (EN)`,
       );
     } else {
       assert.ok(
-        src.includes('ไม่มีการเพิ่มข้อมูลหรือผลลัพธ์ปี 2569'),
-        `${route} must state no FY2569 update is added (TH)`,
+        src.includes('รอการอัปเดต'),
+        `${route} must state FY2569 status is awaiting update (TH)`,
+      );
+    }
+  }
+});
+
+test('TH and EN detail routes explicitly negate fabricated FY2569 data', () => {
+  for (const route of DETAIL_ROUTES) {
+    const src = readFileSync(join(PROJECT_ROOT, route), 'utf8');
+    if (route.includes('/en/')) {
+      assert.ok(
+        /adds no FY2569 counts, evidence, results, or indicator mappings/i.test(src),
+        `${route} must explicitly state no fabricated FY2569 data (EN)`,
+      );
+    } else {
+      assert.ok(
+        src.includes('ไม่มีจำนวนข้อมูล') && src.includes('ของปี 2569'),
+        `${route} must explicitly state no fabricated FY2569 data (TH)`,
+      );
+    }
+  }
+});
+
+test('TH and EN detail routes link to the public source-document area', () => {
+  for (const route of DETAIL_ROUTES) {
+    const src = readFileSync(join(PROJECT_ROOT, route), 'utf8');
+    assert.ok(src.includes('publicSourceHref'), `${route} must build a public source href`);
+    assert.ok(
+      src.includes('/documents/${category.code}'),
+      `${route} must link to the category document center`,
+    );
+  }
+});
+
+test('public source-document area exists for all seven categories', () => {
+  for (const entry of BASELINE_2568_CATEGORY_COUNTS) {
+    const dir = join(PROJECT_ROOT, 'public', 'documents', entry.categoryCode);
+    assert.ok(existsSync(dir), `missing public documents folder: ${entry.categoryCode}`);
+  }
+});
+
+test('detail routes state the committee comparison purpose (TH/EN parity)', () => {
+  for (const route of DETAIL_ROUTES) {
+    const src = readFileSync(join(PROJECT_ROOT, route), 'utf8');
+    if (route.includes('/en/')) {
+      assert.ok(
+        /committee reviews the FY2568 baseline \(year base\) and the FY2569 assessment \(assessment year\) together/i.test(src),
+        `${route} must state the committee comparison purpose (EN)`,
+      );
+    } else {
+      assert.ok(
+        src.includes('ปีฐาน') && src.includes('ปีประเมิน') && src.includes('ร่วมกัน'),
+        `${route} must state the committee comparison purpose (TH)`,
+      );
+    }
+  }
+});
+
+test('detail routes present the paired FY2568/FY2569 columns (TH/EN parity)', () => {
+  for (const route of DETAIL_ROUTES) {
+    const src = readFileSync(join(PROJECT_ROOT, route), 'utf8');
+    if (route.includes('/en/')) {
+      assert.ok(
+        src.includes('Year Base') && src.includes('Assessment Year'),
+        `${route} must present paired FY2568/FY2569 columns (EN)`,
+      );
+    } else {
+      assert.ok(
+        src.includes('ปีฐาน') && src.includes('ปีประเมิน'),
+        `${route} must present paired FY2568/FY2569 columns (TH)`,
       );
     }
   }
@@ -284,12 +381,24 @@ test('cat2 and cat7 source-structure notes are present in both locales', () => {
   }
 });
 
-test('route sources expose no source-root, filename, or URL markers', () => {
-  const forbidden = ['GreenData_Res', 'Data2568', 'OneDrive', 'Maejo', '.pdf', '.docx', '.xlsx', '.xls', '.txt', 'http://', 'https://'];
+test('route sources expose no source-root, filename, URL, or authentication markers', () => {
+  const forbidden = ['GreenData_Res', 'Data2568', 'OneDrive', 'Maejo', '.pdf', '.docx', '.xlsx', '.xls', '.txt', 'http://', 'https://', 'Microsoft 365', 'SharePoint', 'authenticated', 'authentication'];
   for (const route of CATEGORY_ROUTES) {
     const src = readFileSync(join(PROJECT_ROOT, route), 'utf8');
     for (const marker of forbidden) {
       assert.ok(!src.includes(marker), `${route} leaks forbidden marker: ${marker}`);
+    }
+  }
+});
+
+test('detail routes contain no authentication-only wording (TH/EN)', () => {
+  for (const route of DETAIL_ROUTES) {
+    const src = readFileSync(join(PROJECT_ROOT, route), 'utf8');
+    const authMarkers = route.includes('/en/')
+      ? ['Microsoft 365', 'OneDrive', 'SharePoint', 'authenticated', 'authentication', 'sign in', 'restricted access']
+      : ['Microsoft 365', 'OneDrive', 'ยืนยันตัวตน', 'จำกัดการเข้าถึง'];
+    for (const marker of authMarkers) {
+      assert.ok(!src.includes(marker), `${route} must not restrict or authenticate source access: ${marker}`);
     }
   }
 });

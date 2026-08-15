@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import '../../../styles/global.css';
 import categoriesData from '../../../data/criteria/categories.json';
 import evidenceIndex from '../../../data/evidence-index.json';
+import fy2568Publication from '../../../data/fy2568-publication.json';
 import EvidenceCard from '../../../components/evidence/EvidenceCard.astro';
 import { getLocale, getLocalizedPath } from '../../../i18n/utils';
 import { getDictionary } from '../../../i18n/dictionary';
@@ -10,6 +11,24 @@ import { getDictionary } from '../../../i18n/dictionary';
 const locale = getLocale(Astro.url);
 const dict = await getDictionary(locale);
 const t = dict.documentsPage;
+
+interface PublicationDoc {
+  path: string;
+  title: string;
+  type: string;
+  sizeBytes: number;
+  sha256: string;
+  url: string;
+}
+const publication = fy2568Publication as unknown as {
+  categories: Record<string, { count: number; bytes: number; documents: PublicationDoc[] }>;
+};
+
+function formatBytes(bytes: number): string {
+  if (bytes >= 1048576) return `${(bytes / 1048576).toFixed(1)} MB`;
+  if (bytes >= 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${bytes} B`;
+}
 
 export function getStaticPaths() {
   return categoriesData.categories.map((category) => ({
@@ -29,6 +48,7 @@ const catTitle = locale === 'th' ? (category.title.th || category.title.en) : ca
 const catSummary = locale === 'th' ? (category.summary.th || category.summary.en) : category.summary.en;
 const availableCount = documents.filter((d) => d.status === 'available').length;
 const placeholderCount = documents.filter((d) => d.status === 'placeholder').length;
+const publishedCategory = publication.categories[category.code];
 ---
 
 <BaseLayout title={`${locale === 'th' ? 'เอกสาร' : 'Documents'}: ${catTitle}`} description={catSummary} locale={locale}>
@@ -82,6 +102,33 @@ const placeholderCount = documents.filter((d) => d.status === 'placeholder').len
         <p class="text-gray-500 text-lg">{t.empty_title}</p>
         <p class="text-gray-400 text-sm mt-1">{t.empty_body}</p>
       </div>
+    )}
+
+    <!-- FY2568 Published Documents -->
+    {publishedCategory && publishedCategory.documents.length > 0 && (
+      <section class="mt-8">
+        <h2 class="text-xl font-semibold text-gray-800">
+          FY2568 Year Base — Published Documents
+        </h2>
+        <p class="mt-1 text-sm text-gray-600">
+          All {publishedCategory.count} FY2568 year-base source documents ({formatBytes(publishedCategory.bytes)}) are published openly on this site.
+        </p>
+        <ul class="mt-4 divide-y divide-gray-100 rounded-xl border border-gray-200 bg-white">
+          {publishedCategory.documents.map((doc) => (
+            <li class="flex items-center justify-between gap-3 px-4 py-3">
+              <a
+                href={getLocalizedPath(locale, doc.url)}
+                class="min-w-0 flex-1 truncate text-sm font-medium text-green-700 hover:text-green-900 hover:underline"
+              >
+                {doc.title}
+              </a>
+              <span class="shrink-0 rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-600">
+                {doc.type.toUpperCase()} · {formatBytes(doc.sizeBytes)}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
     )}
 
     <!-- Back link -->

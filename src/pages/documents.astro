@@ -3,12 +3,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 import categoriesData from '../data/criteria/categories.json';
 import evidenceIndex from '../data/evidence-index.json';
+import fy2568Publication from '../data/fy2568-publication.json';
 import { getLocale, getLocalizedPath } from '../i18n/utils';
 import { getDictionary } from '../i18n/dictionary';
 
 const locale = getLocale(Astro.url);
 const dict = await getDictionary(locale);
 const t = dict.documentsPage;
+
+const publication = fy2568Publication as unknown as {
+  categories: Record<string, { count: number; bytes: number }>;
+};
 
 function getDocumentCounts(categoryCode: string) {
   const items = evidenceIndex.items.filter((item) => {
@@ -38,6 +43,7 @@ function getDocumentCounts(categoryCode: string) {
         const { total, available } = getDocumentCounts(category.code);
         const allAvailable = total > 0 && total === available;
         const badgeBg = allAvailable ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-600';
+        const published = publication.categories[category.code];
         const catTitle = locale === 'th' ? (category.title.th || category.title.en) : category.title.en;
         const catDesc = locale === 'th' ? (category.summary.th || category.summary.en) : category.summary.en;
         return (
@@ -52,9 +58,18 @@ function getDocumentCounts(categoryCode: string) {
                 </h2>
                 <p class="text-sm text-gray-600 mt-1">{catDesc}</p>
               </div>
-              <span class={"inline-flex items-center px-3 py-1 rounded-full text-sm font-medium shrink-0 ml-3 " + badgeBg}>
-                {available}/{total} {t.files_unit}
-              </span>
+              <div class="shrink-0 ml-3 flex flex-col items-end gap-1">
+                <span class={"inline-flex items-center px-3 py-1 rounded-full text-sm font-medium " + badgeBg}>
+                  {available}/{total} {t.files_unit}
+                </span>
+                {published && (
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                    {locale === 'th'
+                      ? `ปีฐาน 2568: ${published.count} ไฟล์`
+                      : `FY2568: ${published.count} files`}
+                  </span>
+                )}
+              </div>
             </div>
           </a>
         );
