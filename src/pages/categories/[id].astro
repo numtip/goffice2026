@@ -6,6 +6,7 @@ import { dashboards, dashTitle, dashDescription } from '../../data/dashboard-con
 import categoryData from '../../data/criteria/categories.json';
 import issueData from '../../data/criteria/issues.json';
 import indicatorData from '../../data/criteria/indicators.json';
+import { getBaselineCategoryCoverage, getSourceTypeCounts, FY2568_BASELINE_YEAR } from '../../data/criteria/baseline-2568';
 import { categoryImageUrl, categoryImageDimensions } from '../../utils/wow2-images';
 
 export function getStaticPaths() {
@@ -115,6 +116,10 @@ function t(field: { th: string; en: string }): string {
 const title = t(category.title);
 const summary = t(category.summary);
 const isCat7 = category.code === 'cat7';
+const baselineCoverage = getBaselineCategoryCoverage(category.code);
+const sourceTypeLabel = getSourceTypeCounts(category.code)
+  .map((s) => `${s.ext.toUpperCase()} ${s.count}`)
+  .join(' · ');
 
 const pageTitle = locale === 'th'
   ? `${title} | หมวดหมู่`
@@ -224,6 +229,63 @@ const weightLabel = isCat7
           </div>
         )}
       </div>
+    )}
+
+    <!-- FY2568 Baseline Coverage Panel -->
+    {baselineCoverage && (
+      <section class={`mb-8 rounded-xl border p-5 ${isCat7 ? 'border-amber-200 bg-amber-50/50' : 'border-green-100 bg-green-50/50'}`}>
+        <div class="flex items-start gap-3">
+          <svg class={`mt-0.5 h-5 w-5 shrink-0 ${isCat7 ? 'text-amber-700' : 'text-green-700'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+          <div>
+            <h2 class="text-sm font-semibold text-gray-900">
+              {locale === 'th'
+                ? `ข้อมูลพื้นฐาน ปี ${FY2568_BASELINE_YEAR} สำหรับการเปรียบเทียบปี 2569`
+                : `FY${FY2568_BASELINE_YEAR} baseline for FY2569 comparison`}
+            </h2>
+            <p class="mt-1 text-sm text-gray-700">
+              {locale === 'th'
+                ? `บันทึกข้อมูลระดับหมวดหมู่แล้ว ${baselineCoverage.recordedBaselineCount} รายการ`
+                : `Category-level baseline recorded: ${baselineCoverage.recordedBaselineCount} records`}
+            </p>
+            <p class="mt-1 text-sm text-gray-700">
+              {locale === 'th'
+                ? `ประเภทเอกสารต้นทาง: ${sourceTypeLabel}`
+                : `Source document types: ${sourceTypeLabel}`}
+            </p>
+            <p class="mt-2 text-xs leading-relaxed text-gray-600">
+              {locale === 'th'
+                ? 'ค่าพื้นฐาน ปี 2568 ถูกตรึงไว้แล้ว เอกสารต้นทางเข้าถึงได้ผ่าน Microsoft 365 (ต้องยืนยันตัวตน) เท่านั้น'
+                : 'FY2568 baseline values are frozen. Source documents are accessed via authenticated Microsoft 365 only.'}
+            </p>
+            <p class="mt-1 text-xs leading-relaxed text-gray-600">
+              {locale === 'th'
+                ? 'ไม่มีการเพิ่มข้อมูลหรือผลลัพธ์ปี 2569 ในการเผยแพร่ครั้งนี้'
+                : 'No FY2569 update or result is added in this release.'}
+            </p>
+            <p class="mt-1 text-xs leading-relaxed text-gray-600">
+              {locale === 'th'
+                ? 'บันทึกระดับหมวดหมู่เท่านั้น ยังไม่มีการยืนยันการเชื่อมโยงระดับตัวชี้วัด'
+                : 'Category-level baseline only; no verified indicator mapping.'}
+            </p>
+            {category.code === 'cat2' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                {locale === 'th'
+                  ? 'หมายเหตุโครงสร้างต้นทาง: พบรายการที่ยังไม่ได้รับการแก้ไขในหมวด 2'
+                  : 'Source-structure note: an unresolved item exists for category 2.'}
+              </p>
+            )}
+            {category.code === 'cat7' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                {locale === 'th'
+                  ? 'หมายเหตุโครงสร้างต้นทาง: ยังไม่มีการยืนยันการเชื่อมโยงรายตัวชี้วัดสำหรับหมวด 7'
+                  : 'Source-structure note: no verified individual-indicator mapping for category 7.'}
+              </p>
+            )}
+          </div>
+        </div>
+      </section>
     )}
 
     <!-- Issues and Indicators -->

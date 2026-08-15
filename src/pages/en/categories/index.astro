@@ -6,6 +6,7 @@ import issueData from '../../../data/criteria/issues.json';
 import indicatorData from '../../../data/criteria/indicators.json';
 import CategoryCard from '../../../components/categories/CategoryCard.astro';
 import { categoryImageUrl } from '../../../utils/wow2-images';
+import { getBaselineCategoryCoverage, FY2568_BASELINE_YEAR } from '../../../data/criteria/baseline-2568';
 
 const locale = 'en';
 const categories = categoryData.categories;
@@ -55,14 +56,26 @@ const separateCategory = categories.find((c) => c.code === 'cat7');
           weightedCategories.map((cat) => {
             const issueCount = (issuesByCategory.get(cat.code) || []).length;
             const indicatorCount = (indicatorsByCategory.get(cat.code) || []).length;
+            const baseline = getBaselineCategoryCoverage(cat.code);
             return (
-              <CategoryCard
-                category={cat}
-                issueCount={issueCount}
-                indicatorCount={indicatorCount}
-                locale={locale}
-                imageUrl={categoryImageUrl(cat.code)}
-              />
+              <div class="flex flex-col gap-2">
+                <CategoryCard
+                  category={cat}
+                  issueCount={issueCount}
+                  indicatorCount={indicatorCount}
+                  locale={locale}
+                  imageUrl={categoryImageUrl(cat.code)}
+                />
+                {baseline && (
+                  <p class="px-1 text-xs text-gray-500">
+                    <span class="font-semibold text-green-700">
+                      {`FY${FY2568_BASELINE_YEAR} baseline: ${baseline.recordedBaselineCount} records`}
+                    </span>
+                    {' · '}
+                    category-level (indicator mapping not verified)
+                  </p>
+                )}
+              </div>
             );
           })
         }
@@ -74,20 +87,32 @@ const separateCategory = categories.find((c) => c.code === 'cat7');
       separateCategory && (() => {
         const issueCount = (issuesByCategory.get(separateCategory.code) || []).length;
         const indicatorCount = (indicatorsByCategory.get(separateCategory.code) || []).length;
+        const baseline = getBaselineCategoryCoverage(separateCategory.code);
         return (
           <section>
             <h2 class="mb-6 text-lg font-semibold text-gray-700">
               Continuity Assessment (Separate)
             </h2>
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <CategoryCard
-                category={separateCategory}
-                issueCount={issueCount}
-                indicatorCount={indicatorCount}
-                locale={locale}
-                isSeparate={true}
-                imageUrl={categoryImageUrl(separateCategory.code)}
-              />
+              <div class="flex flex-col gap-2">
+                <CategoryCard
+                  category={separateCategory}
+                  issueCount={issueCount}
+                  indicatorCount={indicatorCount}
+                  locale={locale}
+                  isSeparate={true}
+                  imageUrl={categoryImageUrl(separateCategory.code)}
+                />
+                {baseline && (
+                  <p class="px-1 text-xs text-gray-500">
+                    <span class="font-semibold text-amber-700">
+                      {`FY${FY2568_BASELINE_YEAR} baseline: ${baseline.recordedBaselineCount} records`}
+                    </span>
+                    {' · '}
+                    category-level (indicator mapping not verified)
+                  </p>
+                )}
+              </div>
               <div class="rounded-xl border border-dashed border-amber-200 bg-amber-50/30 p-5 text-sm text-amber-800">
                 <p class="font-semibold mb-2">
                   For renewal or upgrade certification only
