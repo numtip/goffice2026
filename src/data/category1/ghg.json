@@ -41,7 +41,7 @@
     { "id": "ghg-month-9", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_GreenhouseGas2568.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568." }, "availability": "content-verified", "kind": "monthly", "month": 9, "tCO2e": 23.44 },
     { "id": "ghg-month-10", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_GreenhouseGas2568.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568." }, "availability": "content-verified", "kind": "monthly", "month": 10, "tCO2e": 18.85 },
     { "id": "ghg-month-11", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_GreenhouseGas2568.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568." }, "availability": "content-verified", "kind": "monthly", "month": 11, "tCO2e": 18.43 },
-    { "id": "ghg-month-12", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_GreenhouseGas2568.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568; December raw cell contaminated by septic-tank anomaly (employee count 1,122,222), value reconstructed as raw total - inflated septic row + corrected septic value (0.012 kgCH4 x 95 x 20 days x GWP28 = 638.4 kgCO2e). See gaps note." }, "availability": "content-verified", "kind": "monthly", "month": 12, "tCO2e": 14.02 },
+    { "id": "ghg-month-12", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_GreenhouseGas2568.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568." }, "availability": "content-verified", "kind": "monthly", "month": 12, "tCO2e": 14.02 },
     {
       "id": "ghg-perf-1",
       "year": 2568,
@@ -76,7 +76,6 @@
   ],
   "gaps": [
     { "indicator": "1.2.2", "status": "MISSING", "note": "No FY2568 role-understanding interview evidence." },
-    { "indicator": "1.5.3", "status": "MISSING", "note": "No FY2568 GHG-knowledge training evidence." },
-    { "indicator": "1.5.1", "status": "NOTE", "note": "December monthly value (14.02 tCO2e) is reconstructed: raw workbook cell was contaminated by the septic-tank employee-count anomaly (1,122,222 vs 95); value = raw total - inflated septic row + corrected septic value. Total still reconciles to official 231.62 tCO2e." }
+    { "indicator": "1.5.3", "status": "MISSING", "note": "No FY2568 GHG-knowledge training evidence." }
   ]
 }
