@@ -1,0 +1,94 @@
+---
+import {
+  buildCat1DomainSnapshot,
+  type Cat1Domain,
+  CAT1_YEAR,
+} from '../../utils/category1-presentation';
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const isEn = locale === 'en';
+const path = (p: string) => getLocalizedPath(locale, p);
+
+const DOMAIN_META: Record<Cat1Domain, { label: { th: string; en: string }; route: string }> = {
+  'activities-aspects': { label: { th: 'ขอบเขตและประเด็น', en: 'Scope & aspects' }, route: '/indicators/1.3.1/' },
+  laws: { label: { th: 'กฎหมาย', en: 'Laws' }, route: '/indicators/1.4.1/' },
+  compliance: { label: { th: 'ความสอดคล้อง', en: 'Compliance' }, route: '/indicators/1.4.2/' },
+  targets: { label: { th: 'เป้าหมาย', en: 'Targets' }, route: '/indicators/1.1.3/' },
+  ghg: { label: { th: 'ก๊าซเรือนกระจก', en: 'GHG' }, route: '/indicators/1.5.1/' },
+  projects: { label: { th: 'โครงการ/การลด', en: 'Projects / reduction' }, route: '/indicators/1.6.1/' },
+  'management-review': { label: { th: 'การทบทวนฝ่ายบริหาร', en: 'Management review' }, route: '/indicators/1.7.1/' },
+};
+
+const DOMAINS: Cat1Domain[] = [
+  'activities-aspects',
+  'laws',
+  'compliance',
+  'targets',
+  'ghg',
+  'projects',
+  'management-review',
+];
+
+function t(field: { th: string; en: string }): string {
+  return isEn ? field.en : field.th;
+}
+
+const snapshots = DOMAINS.map((d) => ({ domain: d, meta: DOMAIN_META[d], snapshot: buildCat1DomainSnapshot(d) }));
+---
+
+<section
+  class="mb-8"
+  aria-labelledby="cat1-domain-snapshot"
+  data-cat1-domain-snapshot
+>
+  <div class="mb-4">
+    <h2 id="cat1-domain-snapshot" class="text-base font-semibold text-gray-900">
+      {isEn ? `FY${CAT1_YEAR} domain snapshot` : `ภาพรวมข้อมูลรายโดเมน ปี ${CAT1_YEAR}`}
+    </h2>
+    <p class="mt-1 text-sm leading-relaxed text-gray-600">
+      {isEn
+        ? 'Verified FY2568 facts from the normalized Category 1 contracts. Shown as coverage context, never as an official score.'
+        : 'ข้อมูลปี 2568 ที่ตรวจสอบแล้วจากสัญญาข้อมูลหมวด 1 แสดงเป็นบริบทความพร้อมใช้งานเท่านั้น ไม่ใช่คะแนนอย่างเป็นทางการ'}
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      snapshots.map(({ meta, snapshot }) => (
+        <div class="flex flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+          <div class="mb-2 flex items-center justify-between gap-2">
+            <a
+              href={path(meta.route)}
+              class="text-sm font-semibold text-green-700 hover:text-green-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded"
+            >
+              {t(meta.label)}
+            </a>
+            <span class="rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-medium text-gray-600" data-cat1-domain-status>
+              {isEn ? 'FY2568' : 'ปี 2568'}
+            </span>
+          </div>
+          <ul class="space-y-1.5" role="list">
+            {
+              snapshot.facts.map((fact) => (
+                <li class="flex items-baseline justify-between gap-2 text-xs">
+                  <span class="text-gray-500">{t(fact.label)}</span>
+                  <span
+                    class={`font-medium ${fact.kind === 'unavailable' ? 'text-gray-400' : fact.kind === 'status' ? 'text-amber-700' : 'text-gray-800'}`}
+                    data-cat1-domain-fact={fact.kind}
+                  >
+                    {fact.value}
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>

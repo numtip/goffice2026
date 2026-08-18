@@ -1,0 +1,367 @@
+/**
+ * category1-presentation.ts
+ * =========================
+ * Read-only view-model for the Category 1 management presentation
+ * (GOFFICE2026 Phase E/F). Builds presentation facts exclusively from the
+ * canonical static contracts in src/data/category1/*.json plus canonical
+ * criteria metadata. Never invents values, never reports the septic-tank
+ * anomaly as a value, never fabricates FY2569, never scores.
+ *
+ * The contracts are the single source of truth for FY2568 facts; this module
+ * only reshapes them for the Astro views (cycle, domain snapshot, indicator
+ * context, cross-links).
+ */
+
+import activitiesAspectsData from '../data/category1/activities-aspects.json';
+import lawsData from '../data/category1/laws.json';
+import complianceData from '../data/category1/compliance.json';
+import targetsData from '../data/category1/targets.json';
+import ghgData from '../data/category1/ghg.json';
+import projectsData from '../data/category1/projects.json';
+import managementReviewData from '../data/category1/management-review.json';
+import indicatorsData from '../data/criteria/indicators.json';
+
+export const CAT1_YEAR = 2568 as const;
+
+export type Cat1Domain =
+  | 'activities-aspects'
+  | 'laws'
+  | 'compliance'
+  | 'targets'
+  | 'ghg'
+  | 'projects'
+  | 'management-review';
+
+export interface Bilingual {
+  th: string;
+  en: string;
+}
+
+export interface DomainFact {
+  label: Bilingual;
+  value: string;
+  kind: 'number' | 'status' | 'text' | 'unavailable';
+}
+
+export interface DomainSnapshot {
+  domain: Cat1Domain;
+  status: string;
+  facts: DomainFact[];
+}
+
+export interface ContractRecord {
+  id: string;
+  year: number;
+  indicatorCodes: string[];
+  issueCodes: string[];
+  categoryCode: string;
+  evidenceIds?: string[];
+  sourceRef?: string;
+  verification?: { status?: string; basis?: string };
+  availability?: string;
+  kind?: string;
+  [key: string]: unknown;
+}
+
+interface IndicatorShape {
+  code: string;
+  title: { th: string; en: string };
+}
+
+const CONTRACTS: Record<Cat1Domain, { records: ContractRecord[] }> = {
+  'activities-aspects': activitiesAspectsData as { records: ContractRecord[] },
+  laws: lawsData as { records: ContractRecord[] },
+  compliance: complianceData as { records: ContractRecord[] },
+  targets: targetsData as { records: ContractRecord[] },
+  ghg: ghgData as { records: ContractRecord[] },
+  projects: projectsData as { records: ContractRecord[] },
+  'management-review': managementReviewData as { records: ContractRecord[] },
+};
+
+/** Indicator code → contract domain that holds its FY2568 facts. */
+export const INDICATOR_DOMAIN: Record<string, Cat1Domain> = {
+  '1.1.1': 'activities-aspects',
+  '1.3.1': 'activities-aspects',
+  '1.4.1': 'laws',
+  '1.4.2': 'compliance',
+  '1.1.3': 'targets',
+  '1.5.1': 'ghg',
+  '1.5.2': 'ghg',
+  '1.3.3': 'projects',
+  '1.6.1': 'projects',
+  '1.6.2': 'projects',
+  '1.7.1': 'management-review',
+  '1.7.2': 'management-review',
+};
+
+/** Indicators declared MISSING in the contracts — always shown as unavailable. */
+export const MISSING_CAT1_INDICATORS = ['1.2.2', '1.5.3'] as const;
+
+export function contractForDomain(domain: Cat1Domain): { records: ContractRecord[] } {
+  return CONTRACTS[domain];
+}
+
+export function domainForIndicator(code: string): Cat1Domain | null {
+  return INDICATOR_DOMAIN[code] || null;
+}
+
+/**
+ * Build the presentation snapshot for a contract domain. Every fact derives
+ * from the contract records; no value is invented.
+ */
+export function buildCat1DomainSnapshot(domain: Cat1Domain): DomainSnapshot {
+  const records = CONTRACTS[domain].records;
+
+  switch (domain) {
+    case 'activities-aspects': {
+      const scope = records.find((r) => r.kind === 'scope');
+      const activities = records.filter((r) => r.kind === 'activity');
+      const aspects = records.filter((r) => r.kind === 'aspect');
+      const significant = aspects.filter(
+        (r) => r.significance === 'M' || r.significance === 'H',
+      );
+      return {
+        domain,
+        status: 'normalized-partial',
+        facts: [
+          scope && typeof scope.officeAreaSqm === 'number'
+            ? { label: { th: 'พื้นที่ในขอบเขต', en: 'Scope area' }, value: `${scope.officeAreaSqm} ตร.ม.`, kind: 'number' }
+            : { label: { th: 'พื้นที่ในขอบเขต', en: 'Scope area' }, value: '—', kind: 'unavailable' },
+          { label: { th: 'กิจกรรมในขอบเขต', en: 'Activities' }, value: String(activities.length), kind: 'number' },
+          { label: { th: 'ประเด็นปัญหาสิ่งแวดล้อม', en: 'Environmental aspects' }, value: String(aspects.length), kind: 'number' },
+          { label: { th: 'ประเด็นนัยสำคัญ (M/H)', en: 'Significant (M/H)' }, value: String(significant.length), kind: 'number' },
+        ],
+      };
+    }
+    case 'laws': {
+      const items = records.filter((r) => r.kind === 'legal-item');
+      const latestReview = items
+        .map((r) => String(r.reviewDate || ''))
+        .filter(Boolean)
+        .sort()
+        .at(-1);
+      return {
+        domain,
+        status: 'normalized-verified',
+        facts: [
+          { label: { th: 'รายการกฎหมาย', en: 'Legal items' }, value: String(items.length), kind: 'number' },
+          latestReview
+            ? { label: { th: 'ทบทวนล่าสุด', en: 'Latest review' }, value: latestReview, kind: 'text' }
+            : { label: { th: 'ทบทวนล่าสุด', en: 'Latest review' }, value: '—', kind: 'unavailable' },
+        ],
+      };
+    }
+    case 'compliance': {
+      const evalRec = records.find((r) => r.kind === 'evaluation');
+      return {
+        domain,
+        status: 'normalized-partial',
+        facts: [
+          {
+            label: { th: 'ผลการประเมิน', en: 'Evaluation result' },
+            value: evalRec?.result === 'partial' ? 'บางส่วน (ข้อมูลสัมภาษณ์ยังไม่พร้อม)' : String(evalRec?.result || '—'),
+            kind: evalRec?.result ? 'status' : 'unavailable',
+          },
+          evalRec?.reviewer
+            ? { label: { th: 'ผู้ตรวจสอบ', en: 'Reviewer' }, value: String(evalRec.reviewer), kind: 'text' }
+            : { label: { th: 'ผู้ตรวจสอบ', en: 'Reviewer' }, value: '—', kind: 'unavailable' },
+        ],
+      };
+    }
+    case 'targets': {
+      const targets = records.filter((r) => r.kind === 'target');
+      return {
+        domain,
+        status: 'normalized-partial',
+        facts: [
+          { label: { th: 'เป้าหมาย', en: 'Targets' }, value: String(targets.length), kind: 'number' },
+          {
+            label: { th: 'อ้างอิงปีฐาน', en: 'Comparison basis' },
+            value: targets[0]?.comparisonBasis ? String(targets[0].comparisonBasis) : '—',
+            kind: 'text',
+          },
+        ],
+      };
+    }
+    case 'ghg': {
+      const inv = records.find((r) => r.kind === 'inventory');
+      const perf = records.find((r) => r.kind === 'performance');
+      const exclusions = records.filter((r) => r.kind === 'exclusion');
+      const facts: DomainFact[] = [];
+      if (inv && typeof inv.totalTCO2e === 'number') {
+        facts.push({ label: { th: 'ปริมาณ GHG รวม (ปี 2568)', en: 'Total GHG (FY2568)' }, value: `${inv.totalTCO2e} tCO₂e`, kind: 'number' });
+      }
+      if (perf && typeof perf.met === 'boolean') {
+        facts.push({
+          label: { th: 'บรรลุเป้าหมาย', en: 'Target met' },
+          value: perf.met ? 'บรรลุ' : 'ยังไม่บรรลุ',
+          kind: 'status',
+        });
+      }
+      facts.push({
+        label: { th: 'รายการยกเว้น (ข้อมูลที่ยังไม่ถูกต้อง)', en: 'Excluded records' },
+        value: String(exclusions.length),
+        kind: 'number',
+      });
+      return { domain, status: 'normalized-verified', facts };
+    }
+    case 'projects': {
+      const projects = records.filter((r) => r.kind === 'project');
+      const plans = records.filter((r) => r.kind === 'plan');
+      return {
+        domain,
+        status: 'normalized-partial',
+        facts: [
+          { label: { th: 'โครงการ', en: 'Projects' }, value: String(projects.length), kind: 'number' },
+          { label: { th: 'แผนลดก๊าซเรือนกระจก', en: 'Reduction plans' }, value: String(plans.length), kind: 'number' },
+        ],
+      };
+    }
+    case 'management-review': {
+      const quorum = records.find((r) => r.kind === 'quorum');
+      const meetings = records.filter((r) => r.kind === 'meeting');
+      return {
+        domain,
+        status: 'normalized-verified',
+        facts: [
+          quorum && typeof quorum.attendancePct === 'number'
+            ? { label: { th: 'องค์ประชุมเข้าร่วม', en: 'Quorum attendance' }, value: `${quorum.attendancePct}%`, kind: 'number' }
+            : { label: { th: 'องค์ประชุมเข้าร่วม', en: 'Quorum attendance' }, value: '—', kind: 'unavailable' },
+          { label: { th: 'การประชุมทบทวน', en: 'Review meetings' }, value: String(meetings.length), kind: 'number' },
+        ],
+      };
+    }
+  }
+}
+
+export interface RelationLink {
+  to: string;
+  label: Bilingual;
+  reason: Bilingual;
+}
+
+/**
+ * Cross-indicator journey map (Phase F). Explicit, curated relationships
+ * grounded in the Blueprint §5 canonical relationship model and the contract
+ * coverage; no invented relations.
+ */
+export const INDICATOR_RELATIONS: Record<string, RelationLink[]> = {
+  '1.1.1': [
+    { to: '1.3.1', label: { th: 'ขอบเขต → การประเมินกิจกรรม', en: 'Scope → Activity assessment' }, reason: { th: 'กิจกรรมในขอบเขตถูกระบุและประเมินใน 1.3.1', en: 'In-scope activities are assessed under 1.3.1' } },
+  ],
+  '1.3.1': [
+    { to: '1.4.1', label: { th: 'ประเด็น → กฎหมายที่เกี่ยวข้อง', en: 'Aspects → Applicable laws' }, reason: { th: 'กฎหมายที่เกี่ยวข้องกับประเด็นปัญหาอยู่ใน 1.4.1', en: 'Laws applicable to aspects are registered in 1.4.1' } },
+    { to: '1.4.2', label: { th: 'ประเด็น → การประเมินความสอดคล้อง', en: 'Aspects → Compliance evaluation' }, reason: { th: 'ความสอดคล้องของกฎหมายประเมินใน 1.4.2', en: 'Legal compliance is evaluated in 1.4.2' } },
+  ],
+  '1.1.3': [
+    { to: '1.5.2', label: { th: 'เป้าหมาย → วิเคราะห์ผล GHG', en: 'Targets → GHG analysis' }, reason: { th: 'ผล GHG เทียบเป้าหมายใน 1.5.2', en: 'GHG performance vs target is analysed in 1.5.2' } },
+  ],
+  '1.5.1': [
+    { to: '1.5.2', label: { th: 'ข้อมูล GHG → สรุป/วิเคราะห์ผล', en: 'GHG data → Summary/analysis' }, reason: { th: 'ข้อมูลจาก 1.5.1 ใช้วิเคราะห์ผลใน 1.5.2', en: '1.5.1 data feeds the 1.5.2 analysis' } },
+    { to: '1.6.1', label: { th: 'ข้อมูล GHG → แผนลด', en: 'GHG data → Reduction plan' }, reason: { th: 'แผนขับเคลื่อนลด GHG ใน 1.6.1', en: 'Reduction planning in 1.6.1' } },
+  ],
+  '1.5.2': [
+    { to: '1.6.2', label: { th: 'ผลวิเคราะห์ → โครงการลด GHG', en: 'Analysis → Reduction projects' }, reason: { th: 'โครงการลด GHG ดำเนินการใน 1.6.2', en: 'Reduction projects run under 1.6.2' } },
+  ],
+  '1.3.3': [
+    { to: '1.6.2', label: { th: 'โครงการ 1.3.3 ↔ โครงการ 1.6.2', en: '1.3.3 ↔ 1.6.2 projects' }, reason: { th: 'ไม่สร้างบันทึกโครงการซ้ำ (Blueprint §4.3/§4.6)', en: 'One canonical project record across indicators' } },
+  ],
+  '1.6.2': [
+    { to: '1.3.3', label: { th: 'โครงการ 1.6.2 ↔ โครงการ 1.3.3', en: '1.6.2 ↔ 1.3.3 projects' }, reason: { th: 'โครงการร่วมใช้บันทึกเดียว', en: 'Shared canonical project record' } },
+    { to: '1.7.2', label: { th: 'โครงการ → การทบทวนฝ่ายบริหาร', en: 'Projects → Management review' }, reason: { th: 'ผลโครงการนำเข้าสู่การทบทวนใน 1.7.2', en: 'Project results feed the 1.7.2 review' } },
+  ],
+  '1.7.2': [
+    { to: '1.1.2', label: { th: 'ทบทวน → นโยบาย', en: 'Review → Policy' }, reason: { th: 'ผลทบทวนนำไปสู่การปรับนโยบายรอบถัดไป', en: 'Review feeds next-cycle policy' } },
+    { to: '1.1.3', label: { th: 'ทบทวน → เป้าหมาย', en: 'Review → Targets' }, reason: { th: 'ผลทบทวนนำไปสู่การปรับเป้าหมาย', en: 'Review feeds target revision' } },
+    { to: '1.1.4', label: { th: 'ทบทวน → แผนปีถัดไป', en: 'Review → Next plan' }, reason: { th: 'การตัดสินใจใน 1.7.2 นำไปสู่แผนรอบถัดไป', en: 'Review decisions roll into the next plan' } },
+  ],
+};
+
+export function relatedIndicatorsFor(code: string): RelationLink[] {
+  return INDICATOR_RELATIONS[code] || [];
+}
+
+export function indicatorTitle(code: string, locale: 'th' | 'en'): string {
+  const ind = (indicatorsData as { indicators: IndicatorShape[] }).indicators.find(
+    (i) => i.code === code,
+  );
+  if (!ind) return code;
+  return ind.title[locale] || ind.title.th;
+}
+
+export interface CycleStep {
+  issue: string;
+  code: string;
+  label: Bilingual;
+  summary: Bilingual;
+  targetCode: string;
+}
+
+/** Management cycle steps (Blueprint §3) — each links to its first indicator. */
+export const CAT1_MANAGEMENT_CYCLE: CycleStep[] = [
+  {
+    issue: '1.1',
+    code: 'define',
+    label: { th: 'กำหนด (Define)', en: 'Define' },
+    summary: { th: 'บริบท/ขอบเขต นโยบาย เป้าหมาย และแผน', en: 'Context, policy, targets and plan' },
+    targetCode: '1.1.1',
+  },
+  {
+    issue: '1.2',
+    code: 'govern',
+    label: { th: 'ธรรมาภิบาล (Govern)', en: 'Govern' },
+    summary: { th: 'คณะกรรมการและความเข้าใจบทบาทหน้าที่', en: 'Committee and role understanding' },
+    targetCode: '1.2.1',
+  },
+  {
+    issue: '1.3',
+    code: 'identify',
+    label: { th: 'ระบุ (Identify)', en: 'Identify' },
+    summary: { th: 'กิจกรรม → ประเด็นปัญหา → ความสำคัญ', en: 'Activities → aspects → significance' },
+    targetCode: '1.3.1',
+  },
+  {
+    issue: '1.4',
+    code: 'comply',
+    label: { th: 'ปฏิบัติตาม (Comply)', en: 'Comply' },
+    summary: { th: 'ทะเบียนกฎหมายและการประเมินความสอดคล้อง', en: 'Legal register and compliance evaluation' },
+    targetCode: '1.4.1',
+  },
+  {
+    issue: '1.5',
+    code: 'measure',
+    label: { th: 'วัดผล (Measure)', en: 'Measure' },
+    summary: { th: 'ข้อมูล GHG และผลเทียบเป้าหมาย', en: 'GHG inventory and target performance' },
+    targetCode: '1.5.1',
+  },
+  {
+    issue: '1.6',
+    code: 'improve',
+    label: { th: 'ปรับปรุง (Improve)', en: 'Improve' },
+    summary: { th: 'แผนและโครงการลดก๊าซเรือนกระจก', en: 'Reduction plan and projects' },
+    targetCode: '1.6.1',
+  },
+  {
+    issue: '1.7',
+    code: 'review',
+    label: { th: 'ทบทวน (Review)', en: 'Review' },
+    summary: { th: 'การทบทวนฝ่ายบริหารและข้อตัดสินใจ', en: 'Management review and decisions' },
+    targetCode: '1.7.1',
+  },
+];
+
+export interface JourneyLink {
+  from: string;
+  to: string;
+  label: Bilingual;
+}
+
+/** Explicit Phase F journeys shown on the category page. */
+export const CAT1_JOURNEYS: JourneyLink[] = [
+  { from: '1.1.1', to: '1.3.1', label: { th: 'ขอบเขต → การประเมินประเด็น', en: 'Scope → Aspect assessment' } },
+  { from: '1.3.1', to: '1.4.1', label: { th: 'ประเด็น ↔ กฎหมาย', en: 'Aspects ↔ Laws' } },
+  { from: '1.1.3', to: '1.5.2', label: { th: 'เป้าหมาย → ผล GHG', en: 'Targets → GHG analysis' } },
+  { from: '1.3.3', to: '1.6.2', label: { th: 'โครงการ 1.3.3 ↔ 1.6.2', en: 'Projects 1.3.3 ↔ 1.6.2' } },
+  { from: '1.5.1', to: '1.6.1', label: { th: 'ข้อมูล GHG → แผนลด', en: 'GHG data → Reduction plan' } },
+  { from: '1.7.2', to: '1.1.4', label: { th: 'ทบทวน → แผนรอบถัดไป', en: 'Review → Next-cycle plan' } },
+];

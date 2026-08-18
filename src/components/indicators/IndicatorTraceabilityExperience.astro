@@ -5,6 +5,7 @@ import {
   implementationNotesForIndicator,
 } from '../../utils/evidence-traceability';
 import IndicatorLinkedEvidence from './IndicatorLinkedEvidence.astro';
+import Cat1ContractContext from './Cat1ContractContext.astro';
 import { withBase } from '../../utils/with-base';
 import { getLocalizedPath } from '../../i18n/utils';
 
@@ -168,6 +169,12 @@ function alternateTitle(): string {
         : indicator.requirementSummary.th || indicator.requirementSummary.en}
     </p>
   </div>
+
+  {indicator.categoryCode === 'cat1' && (
+    <div class="mb-6">
+      <Cat1ContractContext indicatorCode={indicator.code} locale={locale} />
+    </div>
+  )}
 
   {implementationNotes.length > 0 && (
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">

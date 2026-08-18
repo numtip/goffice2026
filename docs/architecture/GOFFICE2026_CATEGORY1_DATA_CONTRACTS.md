@@ -94,3 +94,34 @@ Validator checks: required keys, valid domain set, `year === 2568`, valid indica
 ## 6. Coverage / gaps (Phase D result)
 
 See `category1-manifest.json` and the `gaps` array of each contract. Summary: all six Blueprint domains normalized from verified FY2568 sources (priority 1.3 → 1.5 → legal/compliance → projects → management review); static evidence and numeric target values marked with their true verification state; 1.2.2 and 1.5.3 remain MISSING.
+
+---
+
+## 7. Phase E/F — Category 1 management presentation (plan + implementation)
+
+### 7.1 Visual / content / interaction plan
+
+- **Route scope:** only the existing stable routes are extended — `/categories/cat1/` (TH + EN) and all 18 `/indicators/1.x.x/` (TH + EN via the shared `IndicatorTraceabilityExperience`). No new top-level routes; no redesign of `/about/` or other categories.
+- **Category page (`/categories/cat1/`):**
+  1. **Management cycle panel** (`Cat1ManagementCycle`) — a 7-step ordered flow (Define → Govern → Identify → Comply → Measure → Improve → Review) rendered as semantic `<ol>` cards (grid on ≥sm, single column on mobile). Each step links to its leading indicator. No JS; static; no animation beyond CSS hover states already gated by the global `prefers-reduced-motion` rule.
+  2. **Domain snapshot panel** (`Cat1DomainSnapshot`) — a grid of seven domain cards (scope/aspects, laws, compliance, targets, GHG, projects, management review) showing FY2568 facts derived **only** from the contracts (counts, totals, statuses). Each card links to its primary indicator. Explicitly labeled as coverage context, never a score.
+  3. **Journeys** — explicit cross-links (Scope→1.3.1, Aspects↔Laws, Targets→1.5.2, Projects 1.3.3↔1.6.2, GHG→Reduction, Review→next-cycle) rendered as pill links in the cycle panel.
+- **Indicator pages (cat1 only):** `Cat1ContractContext` panel placed after the requirement — shows the matching contract domain's FY2568 facts, source-file count, verification status and contract status, plus related-indicator links. For **1.2.2 and 1.5.3** the panel renders a calm amber "not available" notice sourced from the contracts' gaps — never filled.
+- **Interaction/a11y:** no pointer-only interactions; all links have `focus-visible` rings; cycle and lists are semantic (`ol`/`ul` with `role="list"`); reduced-motion respected by the global stylesheet; TH/EN strings are inline bilingual labels chosen by locale, matching the existing pattern.
+- **Honesty:** no FY2569 values, no official scoring, no local paths, septic anomaly only ever displayed as an excluded-record count (from the contract), never as a reported value.
+
+### 7.2 Implementation artifacts
+
+| File | Purpose |
+|---|---|
+| `src/utils/category1-presentation.ts` | Read-only view-model: cycle steps, journeys, indicator→domain map, domain snapshots, relations. Single source of presentation facts over the contracts. |
+| `src/components/categories/Cat1ManagementCycle.astro` | Cycle + journey links (category page). |
+| `src/components/categories/Cat1DomainSnapshot.astro` | FY2568 domain snapshot grid (category page). |
+| `src/components/indicators/Cat1ContractContext.astro` | FY2568 contract context + missing notice + relations (indicator pages). |
+| `src/pages/categories/[id].astro` + `src/pages/en/categories/[id].astro` | Wire the two panels for `cat1` only. |
+| `src/components/indicators/IndicatorTraceabilityExperience.astro` | Wire `Cat1ContractContext` for cat1 indicators (shared TH/EN). |
+| `scripts/test-category1-presentation.mjs` | Structural TH/EN parity, a11y focus/reduced-motion markers, missing-notice honesty, view-model assertions. |
+
+### 7.3 Validation for this phase
+
+`git diff --check`, `npm test` (includes the new presentation tests), `npm run check`, `npm run build`, `npm run validate`.

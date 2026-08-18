@@ -8,6 +8,8 @@ import issueData from '../../../data/criteria/issues.json';
 import indicatorData from '../../../data/criteria/indicators.json';
 import { categoryImageUrl, categoryImageDimensions } from '../../../utils/wow2-images';
 import { getBaselineCategoryCoverage, getSourceTypeCounts, FY2568_BASELINE_YEAR } from '../../../data/criteria/baseline-2568';
+import Cat1ManagementCycle from '../../../components/categories/Cat1ManagementCycle.astro';
+import Cat1DomainSnapshot from '../../../components/categories/Cat1DomainSnapshot.astro';
 
 const locale = 'en';
 
@@ -278,6 +280,13 @@ function localizedUrl(path: string): string {
           </div>
         </div>
       </section>
+    )}
+
+    {category.code === 'cat1' && (
+      <>
+        <Cat1ManagementCycle locale={locale} />
+        <Cat1DomainSnapshot locale={locale} />
+      </>
     )}
 
     <!-- Issues and Indicators -->
