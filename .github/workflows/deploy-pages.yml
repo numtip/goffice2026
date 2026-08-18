@@ -1,8 +1,4 @@
 # Preview deployment only — production remains on goffice.mju.ac.th (manual VPS).
-# windows-latest: NTFS supports long paths; the FY2568 published evidence tree
-# contains 4 filenames/path components > 255 bytes that cannot be checked out
-# on Linux (ext4) runners, and Git-for-Windows GNU tar rejects them at archive
-# time, so the Pages artifact is created with Windows bsdtar (libarchive).
 name: Deploy GitHub Pages Preview
 
 on:
@@ -21,7 +17,7 @@ concurrency:
 
 jobs:
   quality:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -58,7 +54,7 @@ jobs:
         run: npm run qa:seo
 
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: quality
     steps:
       - name: Checkout
@@ -82,26 +78,16 @@ jobs:
           DEPLOY_TARGET: github-pages
           PUBLIC_PREVIEW_BADGE: "true"
 
-      - name: Archive artifact
-        shell: pwsh
-        run: |
-          # Windows bsdtar (libarchive) handles the >255-byte FY2568 paths that
-          # Git-for-Windows GNU tar rejects ("File removed before we read it").
-          & "$env:SystemRoot\System32\tar.exe" -L -cf "$env:RUNNER_TEMP\artifact.tar" -C dist .
-
       - name: Upload Pages artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
-          path: ${{ runner.temp }}/artifact.tar
-          retention-days: 1
-          if-no-files-found: error
+          path: dist
 
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Deploy to GitHub Pages
