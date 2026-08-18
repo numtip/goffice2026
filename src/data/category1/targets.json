@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "targets",
+  "updated": "2026-08-19",
+  "year": 2568,
+  "status": "normalized-partial",
+  "governance": "GOFFICE2026_CATEGORY1_MANAGEMENT_BLUEPRINT_V1",
+  "sources": [
+    { "ref": "1.1/1.1.3 (9-3-69).pdf", "role": "primary", "inspection": "content-verified" },
+    { "ref": "1.1/1.1.2 (9-3-69).pdf", "role": "supporting", "inspection": "filename-only" }
+  ],
+  "records": [
+    {
+      "id": "target-electricity",
+      "year": 2568,
+      "indicatorCodes": ["1.1.3"],
+      "issueCodes": ["1.1"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-goals-2568"],
+      "sourceRef": "1.1/1.1.3 (9-3-69).pdf",
+      "verification": {
+        "status": "pending",
+        "basis": "Value from 1.1.3 announcement as copied into repo about-documents.json (doc-goals); OCR-derived, requires human verification against the signed original."
+      },
+      "availability": "source-available",
+      "kind": "target",
+      "domain": "electricity",
+      "labelTh": "ไฟฟ้า",
+      "labelEn": "Electricity",
+      "unit": "kWh/person",
+      "value": 5252.55,
+      "operator": "lte",
+      "comparisonBasis": "FY2567"
+    },
+    {
+      "id": "target-fuel",
+      "year": 2568,
+      "indicatorCodes": ["1.1.3"],
+      "issueCodes": ["1.1"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-goals-2568"],
+      "sourceRef": "1.1/1.1.3 (9-3-69).pdf",
+      "verification": {
+        "status": "pending",
+        "basis": "Value from 1.1.3 announcement as copied into repo about-documents.json (doc-goals); OCR-derived, requires human verification against the signed original."
+      },
+      "availability": "source-available",
+      "kind": "target",
+      "domain": "fuel",
+      "labelTh": "น้ำมันเชื้อเพลิง",
+      "labelEn": "Fuel",
+      "unit": "liters",
+      "value": 255.52,
+      "operator": "lte",
+      "comparisonBasis": "FY2567"
+    },
+    {
+      "id": "target-water",
+      "year": 2568,
+      "indicatorCodes": ["1.1.3"],
+      "issueCodes": ["1.1"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-goals-2568"],
+      "sourceRef": "1.1/1.1.3 (9-3-69).pdf",
+      "verification": {
+        "status": "pending",
+        "basis": "Value from 1.1.3 announcement as copied into repo about-documents.json (doc-goals); OCR-derived, requires human verification against the signed original."
+      },
+      "availability": "source-available",
+      "kind": "target",
+      "domain": "water",
+      "labelTh": "น้ำ",
+      "labelEn": "Water",
+      "unit": "m³/person",
+      "value": 53.3,
+      "operator": "lte",
+      "comparisonBasis": "FY2567"
+    },
+    {
+      "id": "target-paper",
+      "year": 2568,
+      "indicatorCodes": ["1.1.3"],
+      "issueCodes": ["1.1"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-goals-2568"],
+      "sourceRef": "1.1/1.1.3 (9-3-69).pdf",
+      "verification": {
+        "status": "pending",
+        "basis": "Value from 1.1.3 announcement as copied into repo about-documents.json (doc-goals); OCR-derived, requires human verification against the signed original."
+      },
+      "availability": "source-available",
+      "kind": "target",
+      "domain": "paper",
+      "labelTh": "กระดาษ",
+      "labelEn": "Paper",
+      "unit": "kg/person",
+      "value": 23.13,
+      "operator": "lte",
+      "comparisonBasis": "FY2567"
+    },
+    {
+      "id": "target-waste",
+      "year": 2568,
+      "indicatorCodes": ["1.1.3"],
+      "issueCodes": ["1.1"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-goals-2568"],
+      "sourceRef": "1.1/1.1.3 (9-3-69).pdf",
+      "verification": {
+        "status": "pending",
+        "basis": "Value from 1.1.3 announcement as copied into repo about-documents.json (doc-goals); OCR-derived, requires human verification against the signed original."
+      },
+      "availability": "source-available",
+      "kind": "target",
+      "domain": "general_waste",
+      "labelTh": "ขยะทั่วไป",
+      "labelEn": "General waste",
+      "unit": "kg/person",
+      "value": 50,
+      "operator": "lte",
+      "comparisonBasis": "FY2567"
+    },
+    {
+      "id": "target-ghg",
+      "year": 2568,
+      "indicatorCodes": ["1.1.3"],
+      "issueCodes": ["1.1"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-goals-2568"],
+      "sourceRef": "1.1/1.1.3 (9-3-69).pdf",
+      "verification": {
+        "status": "pending",
+        "basis": "Value from 1.1.3 announcement as copied into repo about-documents.json (doc-goals); OCR-derived, requires human verification against the signed original. Discrepancy with 1.5.2 per-capita (2,440 kgCO2e/person) flagged for data-owner review."
+      },
+      "availability": "source-available",
+      "kind": "target",
+      "domain": "ghg",
+      "labelTh": "ก๊าซเรือนกระจก",
+      "labelEn": "Greenhouse gas",
+      "unit": "kgCO2e/person",
+      "value": 203.15,
+      "operator": "lte",
+      "comparisonBasis": "FY2567"
+    }
+  ],
+  "summary": {
+    "targetCount": 6,
+    "domains": ["electricity", "fuel", "water", "paper", "general_waste", "ghg"],
+    "basis": "ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อมประจำปี 2568 เปรียบเทียบจากปี 2567 (ปีฐาน)"
+  },
+  "gaps": [
+    { "indicator": "1.2.2", "status": "MISSING", "note": "No FY2568 role-understanding interview evidence." },
+    { "indicator": "1.5.3", "status": "MISSING", "note": "No FY2568 GHG-knowledge training evidence." }
+  ]
+}

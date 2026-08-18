@@ -1,0 +1,3189 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "activities-aspects",
+  "updated": "2026-08-19",
+  "year": 2568,
+  "status": "normalized-partial",
+  "governance": "GOFFICE2026_CATEGORY1_MANAGEMENT_BLUEPRINT_V1",
+  "sources": [
+    {
+      "ref": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "role": "primary",
+      "inspection": "content-verified"
+    },
+    {
+      "ref": "1.3/รายงาน_1.3 การระบุประเด็นปัญหาทรัพยากรและสิ่งแวดล้อม_ปี 2568.docx",
+      "role": "supporting",
+      "inspection": "content-verified"
+    },
+    {
+      "ref": "1.1/1.1.1 (9-3-69).pdf",
+      "role": "primary",
+      "inspection": "content-verified"
+    }
+  ],
+  "records": [
+    {
+      "id": "scope-1",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.1.1"
+      ],
+      "issueCodes": [
+        "1.1"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.1/1.1.1 (9-3-69).pdf",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Scope 9,873 ตร.ม. per 1.1.1 declaration (2026-08-19)."
+      },
+      "availability": "content-verified",
+      "kind": "scope",
+      "officeAreaSqm": 9873,
+      "basis": "1.1.1 (9-3-69).pdf"
+    },
+    {
+      "id": "act-1",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การพิมพ์เอกสาร (เครื่องปริ้นเตอร์,เครื่องคอมพิวเตอร์)"
+    },
+    {
+      "id": "act-2",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การสแกนเอกสาร"
+    },
+    {
+      "id": "act-3",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การจัดเตรียมเอกสาร งานสารบรรณ"
+    },
+    {
+      "id": "act-4",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การจัดประชุมภายใน"
+    },
+    {
+      "id": "act-5",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การจัดประชุมภายนอก (Indirect)"
+    },
+    {
+      "id": "act-6",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การจัดเก็บเอกสาร"
+    },
+    {
+      "id": "act-7",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การจัดเก็บพัสดุ เบิกจ่ายพัสดุ"
+    },
+    {
+      "id": "act-8",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การทำความสะอาดสำนักงาน"
+    },
+    {
+      "id": "act-9",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การรับประทานอาหาร"
+    },
+    {
+      "id": "act-10",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การวิเคราะห์ทดสอบในห้องปฏิบัติการ"
+    },
+    {
+      "id": "act-11",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การทำความสะอาดห้องน้ำ"
+    },
+    {
+      "id": "act-12",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การบำรุงรักษาอุปกรณ์ให้แสงสว่าง"
+    },
+    {
+      "id": "act-13",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การบำรุงรักษาเครื่องปรับอากาศ (Direct)"
+    },
+    {
+      "id": "act-14",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การบำรุงรักษาเครื่องปรับอากาศ (Indirect)"
+    },
+    {
+      "id": "act-15",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การดูแลยานพาหนะ"
+    },
+    {
+      "id": "act-16",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การบำรุงรักษาระบบน้ำ"
+    },
+    {
+      "id": "act-17",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From ตารางวิเคราะห์กระบวนการ sheet."
+      },
+      "availability": "content-verified",
+      "kind": "activity",
+      "name": "การดูแลภายในอาคาร"
+    },
+    {
+      "id": "aspect-1",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การพิมพ์เอกสาร (เครื่องปริ้นเตอร์,เครื่องคอมพิวเตอร์)",
+      "inputOutput": "input",
+      "aspect": "กระดาษ",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-2",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การพิมพ์เอกสาร (เครื่องปริ้นเตอร์,เครื่องคอมพิวเตอร์)",
+      "inputOutput": "input",
+      "aspect": "หมึกพิมพ์",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-3",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การพิมพ์เอกสาร (เครื่องปริ้นเตอร์,เครื่องคอมพิวเตอร์)",
+      "inputOutput": "input",
+      "aspect": "ไฟฟ้า",
+      "impact": "EL",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-4",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การสแกนเอกสาร",
+      "inputOutput": "input",
+      "aspect": "กระดาษ",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-5",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การสแกนเอกสาร",
+      "inputOutput": "input",
+      "aspect": "ไฟฟ้า",
+      "impact": "EL",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-6",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดเตรียมเอกสาร งานสารบรรณ",
+      "inputOutput": "input",
+      "aspect": "กระดาษ",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-7",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดเตรียมเอกสาร งานสารบรรณ",
+      "inputOutput": "input",
+      "aspect": "อุปกรณ์เครื่องเขียน",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-8",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายใน",
+      "inputOutput": "input",
+      "aspect": "กระดาษ",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-9",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายใน",
+      "inputOutput": "input",
+      "aspect": "อุปกรณ์เครื่องเขียน",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-10",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายใน",
+      "inputOutput": "input",
+      "aspect": "อาหารว่างและเครื่องดื่ม",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-11",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายใน",
+      "inputOutput": "input",
+      "aspect": "ไฟฟ้า",
+      "impact": "EL",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-12",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายนอก (Indirect)",
+      "inputOutput": "input",
+      "aspect": "กระดาษ",
+      "impact": "RM",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-13",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายนอก (Indirect)",
+      "inputOutput": "input",
+      "aspect": "อุปกรณ์เครื่องเขียน",
+      "impact": "RM",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-14",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายนอก (Indirect)",
+      "inputOutput": "input",
+      "aspect": "อาหารว่างและเครื่องดื่ม",
+      "impact": "RM",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-15",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายนอก (Indirect)",
+      "inputOutput": "input",
+      "aspect": "ไฟฟ้า",
+      "impact": "EL",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-16",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดเก็บเอกสาร",
+      "inputOutput": "input",
+      "aspect": "กระดาษ",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-17",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดเก็บพัสดุ เบิกจ่ายพัสดุ",
+      "inputOutput": "input",
+      "aspect": "พัสดุสำนักงาน",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-18",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดสำนักงาน",
+      "inputOutput": "input",
+      "aspect": "น้ำ",
+      "impact": "W",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-19",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดสำนักงาน",
+      "inputOutput": "input",
+      "aspect": "น้ำยาทำความสะอาด/น้ำยาขัดพื้น ลงแว็กซ์",
+      "impact": "RM",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-20",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดสำนักงาน",
+      "inputOutput": "input",
+      "aspect": "อุปกรณ์ทำความสะอาด เช่น ไม้กวาด ไม้ขนไก่ ไม้ม็อบ",
+      "impact": "RM",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-21",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดสำนักงาน",
+      "inputOutput": "input",
+      "aspect": "ไฟฟ้า",
+      "impact": "EL",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-22",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การรับประทานอาหาร",
+      "inputOutput": "input",
+      "aspect": "อาหาร/เครื่องดื่ม",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-23",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การรับประทานอาหาร",
+      "inputOutput": "input",
+      "aspect": "ไฟฟ้า",
+      "impact": "EL",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-24",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การวิเคราะห์ทดสอบในห้องปฏิบัติการ",
+      "inputOutput": "input",
+      "aspect": "สารเคมีและวัสดุวิทยาศาสตร์",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "abnormal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-25",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การวิเคราะห์ทดสอบในห้องปฏิบัติการ",
+      "inputOutput": "input",
+      "aspect": "น้ำ",
+      "impact": "W",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-26",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การวิเคราะห์ทดสอบในห้องปฏิบัติการ",
+      "inputOutput": "input",
+      "aspect": "ไฟฟ้า",
+      "impact": "EL",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-27",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การวิเคราะห์ทดสอบในห้องปฏิบัติการ",
+      "inputOutput": "input",
+      "aspect": "อุปกรณ์ทำความสะอาด",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-28",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การวิเคราะห์ทดสอบในห้องปฏิบัติการ",
+      "inputOutput": "input",
+      "aspect": "น้ำยาล้างจาน",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-29",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดห้องน้ำ",
+      "inputOutput": "input",
+      "aspect": "น้ำ",
+      "impact": "W",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-30",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดห้องน้ำ",
+      "inputOutput": "input",
+      "aspect": "น้ำยาทำความสะอาด",
+      "impact": "RM",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-31",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดห้องน้ำ",
+      "inputOutput": "input",
+      "aspect": "อุปกรณ์ทำความสะอาด เช่นไม้กวาด แปรงขัดห้องน้ำ ถุงมือ",
+      "impact": "RM",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-32",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาอุปกรณ์ให้แสงสว่าง",
+      "inputOutput": "input",
+      "aspect": "หลอดไฟ/อุปกรณ์ไฟฟ้า",
+      "impact": "EL",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-33",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาเครื่องปรับอากาศ (Direct)",
+      "inputOutput": "input",
+      "aspect": "น้ำ",
+      "impact": "W",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-34",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาเครื่องปรับอากาศ (Direct)",
+      "inputOutput": "input",
+      "aspect": "อุปกรณ์ทำความสะอาด",
+      "impact": "RM",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-35",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาเครื่องปรับอากาศ (Direct)",
+      "inputOutput": "input",
+      "aspect": "ไฟฟ้า",
+      "impact": "EL",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-36",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาเครื่องปรับอากาศ (Indirect)",
+      "inputOutput": "input",
+      "aspect": "น้ำ",
+      "impact": "W",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-37",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาเครื่องปรับอากาศ (Indirect)",
+      "inputOutput": "input",
+      "aspect": "น้ำยาแอร์",
+      "impact": "RM",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-38",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาเครื่องปรับอากาศ (Indirect)",
+      "inputOutput": "input",
+      "aspect": "อุปกรณ์ทำความสะอาด",
+      "impact": "RM",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-39",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาเครื่องปรับอากาศ (Indirect)",
+      "inputOutput": "input",
+      "aspect": "ไฟฟ้า",
+      "impact": "EL",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-40",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การดูแลยานพาหนะ",
+      "inputOutput": "input",
+      "aspect": "น้ำมันเชื้อเพลิง",
+      "impact": "F/G",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-41",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การดูแลยานพาหนะ",
+      "inputOutput": "input",
+      "aspect": "น้ำ",
+      "impact": "W",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-42",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การดูแลยานพาหนะ",
+      "inputOutput": "input",
+      "aspect": "น้ำยาล้างรถ",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-43",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาระบบน้ำ",
+      "inputOutput": "input",
+      "aspect": "ท่อน้ำ",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-44",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาระบบน้ำ",
+      "inputOutput": "input",
+      "aspect": "ก๊อกน้ำ",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-45",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาระบบน้ำ",
+      "inputOutput": "input",
+      "aspect": "อุปกรณ์ซ่อมบำรุง",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-46",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาระบบน้ำ",
+      "inputOutput": "input",
+      "aspect": "น้ำ",
+      "impact": "W",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-47",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การดูแลภายในอาคาร",
+      "inputOutput": "input",
+      "aspect": "สัตว์พาหะนำโรค เช่น หนู",
+      "impact": "RM",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "H",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-48",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การพิมพ์เอกสาร (เครื่องปริ้นเตอร์,เครื่องคอมพิวเตอร์)",
+      "inputOutput": "output",
+      "aspect": "กระดาษที่พิมพ์เสีย",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-49",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การพิมพ์เอกสาร (เครื่องปริ้นเตอร์,เครื่องคอมพิวเตอร์)",
+      "inputOutput": "output",
+      "aspect": "ตลับหมึกพิมพ์ที่ใช้แล้ว",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-50",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การพิมพ์เอกสาร (เครื่องปริ้นเตอร์,เครื่องคอมพิวเตอร์)",
+      "inputOutput": "output",
+      "aspect": "กลิ่นจากหมึกพิมพ์",
+      "impact": "AP",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-51",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การพิมพ์เอกสาร (เครื่องปริ้นเตอร์,เครื่องคอมพิวเตอร์)",
+      "inputOutput": "output",
+      "aspect": "ฝุ่นผงหมึกพิมพ์",
+      "impact": "AP",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "M",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-52",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การพิมพ์เอกสาร (เครื่องปริ้นเตอร์,เครื่องคอมพิวเตอร์)",
+      "inputOutput": "output",
+      "aspect": "เสียงดังจากการพิมพ์",
+      "impact": "NP",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-53",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การพิมพ์เอกสาร (เครื่องปริ้นเตอร์,เครื่องคอมพิวเตอร์)",
+      "inputOutput": "output",
+      "aspect": "กล่องหมึกพิมพ์",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-54",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การสแกนเอกสาร",
+      "inputOutput": "output",
+      "aspect": "เสียงดัง",
+      "impact": "NP",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-55",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การสแกนเอกสาร",
+      "inputOutput": "output",
+      "aspect": "ความร้อน",
+      "impact": "AP",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-56",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การสแกนเอกสาร",
+      "inputOutput": "output",
+      "aspect": "ฝุ่นละออง",
+      "impact": "AP",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-57",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดเตรียมเอกสาร งานสารบรรณ",
+      "inputOutput": "output",
+      "aspect": "กระดาษที่ใช้แล้ว",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-58",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดเตรียมเอกสาร งานสารบรรณ",
+      "inputOutput": "output",
+      "aspect": "ขยะจากอุปกรณ์เครื่องเขียน",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-59",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายใน",
+      "inputOutput": "output",
+      "aspect": "กระดาษต้นฉบับที่ใช้แล้ว",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-60",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายใน",
+      "inputOutput": "output",
+      "aspect": "ขยะจากอุปกรณ์เครื่องเขียน",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-61",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายใน",
+      "inputOutput": "output",
+      "aspect": "เศษอาหาร",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-62",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายใน",
+      "inputOutput": "output",
+      "aspect": "ขยะจากล่องบรรจุอาหาร",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-63",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายนอก (Indirect)",
+      "inputOutput": "output",
+      "aspect": "กระดาษต้นฉบับที่ใช้แล้ว",
+      "impact": "WA",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-64",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายนอก (Indirect)",
+      "inputOutput": "output",
+      "aspect": "ขยะจากอุปกรณ์เครื่องเขียน",
+      "impact": "WA",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-65",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายนอก (Indirect)",
+      "inputOutput": "output",
+      "aspect": "เศษอาหาร",
+      "impact": "WA",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-66",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดประชุมภายนอก (Indirect)",
+      "inputOutput": "output",
+      "aspect": "ขยะจากล่องบรรจุอาหาร",
+      "impact": "WA",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-67",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดเก็บเอกสาร",
+      "inputOutput": "output",
+      "aspect": "กระดาษที่ใช้แล้ว",
+      "impact": "WA",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-68",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดเก็บพัสดุ เบิกจ่ายพัสดุ",
+      "inputOutput": "output",
+      "aspect": "ขยะจากพัสดุสำนักงาน",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-69",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การจัดเก็บพัสดุ เบิกจ่ายพัสดุ",
+      "inputOutput": "output",
+      "aspect": "ขยะจากบรรจุภัณฑ์",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-70",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดสำนักงาน",
+      "inputOutput": "output",
+      "aspect": "น้ำเสียจากการทำความสะอาด",
+      "impact": "WP",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-71",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดสำนักงาน",
+      "inputOutput": "output",
+      "aspect": "ขยะจากขวดบรรจุภัณฑ์น้ำยาทำความสะอาด",
+      "impact": "WA",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-72",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดสำนักงาน",
+      "inputOutput": "output",
+      "aspect": "กลิ่นจากน้ำยาทำความสะอาด",
+      "impact": "AP",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-73",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดสำนักงาน",
+      "inputOutput": "output",
+      "aspect": "ฝุ่นละอองจากการทำความสะอาด",
+      "impact": "AP",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-74",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดสำนักงาน",
+      "inputOutput": "output",
+      "aspect": "เศษขยะในห้อง",
+      "impact": "WA",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-75",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การรับประทานอาหาร (ถังดักไขมัน)",
+      "inputOutput": "output",
+      "aspect": "เศษอาหาร",
+      "impact": "WA",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-76",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การรับประทานอาหาร (ถังดักไขมัน)",
+      "inputOutput": "output",
+      "aspect": "ขยะจากกล่องบรรจุอาหาร/เครื่องดื่ม",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-77",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การรับประทานอาหาร (ถังดักไขมัน)",
+      "inputOutput": "output",
+      "aspect": "กลิ่นอาหาร",
+      "impact": "AP",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-78",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การรับประทานอาหาร (ถังดักไขมัน)",
+      "inputOutput": "output",
+      "aspect": "เศษขยะทั่วไป",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-79",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การวิเคราะห์ทดสอบในห้องปฏิบัติการ",
+      "inputOutput": "output",
+      "aspect": "ของเสียจากห้องปฏิบัติการ",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "abnormal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-80",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การวิเคราะห์ทดสอบในห้องปฏิบัติการ",
+      "inputOutput": "output",
+      "aspect": "น้ำเสีย",
+      "impact": "WP",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-81",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การวิเคราะห์ทดสอบในห้องปฏิบัติการ",
+      "inputOutput": "output",
+      "aspect": "ขยะจากบรรจุภัณฑ์น้ำยาล้างจาน",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-82",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดห้องน้ำ",
+      "inputOutput": "output",
+      "aspect": "น้ำเสีย",
+      "impact": "WP",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-83",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดห้องน้ำ",
+      "inputOutput": "output",
+      "aspect": "กลิ่นจากน้ำยาทำความสะอาด",
+      "impact": "AP",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-84",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดห้องน้ำ",
+      "inputOutput": "output",
+      "aspect": "ฝุ่นละอองจากการทำความสะอาด",
+      "impact": "AP",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-85",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดห้องน้ำ",
+      "inputOutput": "output",
+      "aspect": "ขยะจากบรรจุภัณฑ์น้ำยาทำความสะอาด",
+      "impact": "WA",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-86",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การทำความสะอาดห้องน้ำ",
+      "inputOutput": "output",
+      "aspect": "ขยะในห้องน้ำ เช่น กระดาษชำระ ผ้าอนามัย",
+      "impact": "WA",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-87",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาอุปกรณ์ให้แสงสว่าง",
+      "inputOutput": "output",
+      "aspect": "หลอดที่ใช้แล้ว",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-88",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาอุปกรณ์ให้แสงสว่าง",
+      "inputOutput": "output",
+      "aspect": "ขยะจากกล่องใส่หลอดไฟ",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-89",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาอุปกรณ์ให้แสงสว่าง",
+      "inputOutput": "output",
+      "aspect": "เศษขยะจากอุปกรณ์ชำรุด เทปพันสายไฟ",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-90",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาเครื่องปรับอากาศ (Direct)",
+      "inputOutput": "output",
+      "aspect": "น้ำเสีย",
+      "impact": "WP",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-91",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาเครื่องปรับอากาศ (Direct)",
+      "inputOutput": "output",
+      "aspect": "ฝุ่นละอองที่ติดอยู่บนแผนกรอง",
+      "impact": "AP",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-92",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาเครื่องปรับอากาศ (Direct)",
+      "inputOutput": "output",
+      "aspect": "ขยะจากอุปกรณ์ทำความสะอาด",
+      "impact": "WA",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-93",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาเครื่องปรับอากาศ (Direct)",
+      "inputOutput": "output",
+      "aspect": "น้ำยาแอร์ที่รั่วไหลออกจากระบบ",
+      "impact": "WA",
+      "directIndirect": "indirect",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-94",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การดูแลยานพาหนะ (รถยนต์ รถจักรยานยนต์)",
+      "inputOutput": "output",
+      "aspect": "ควัน/ไอระเหยน้ำมัน",
+      "impact": "AP",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-95",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การดูแลยานพาหนะ (รถยนต์ รถจักรยานยนต์)",
+      "inputOutput": "output",
+      "aspect": "น้ำเสีย",
+      "impact": "WP",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-96",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาระบบน้ำ",
+      "inputOutput": "output",
+      "aspect": "เศษท่อ",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-97",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาระบบน้ำ",
+      "inputOutput": "output",
+      "aspect": "ขยะจากกล่อง",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-98",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาระบบน้ำ",
+      "inputOutput": "output",
+      "aspect": "เศษขยะจากอุปกรณ์ชำรุด เทปพันท่อน้ำ",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-99",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาระบบน้ำ",
+      "inputOutput": "output",
+      "aspect": "ขยะในท่อ",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-100",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การบำรุงรักษาระบบน้ำ",
+      "inputOutput": "output",
+      "aspect": "น้ำทิ้ง",
+      "impact": "WP + WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "L",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-101",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การดูแลภายในอาคาร",
+      "inputOutput": "output",
+      "aspect": "ฉี่หรือขี้หนู",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "H",
+      "applicableLaw": null
+    },
+    {
+      "id": "aspect-102",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.3.1"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From Input/Output sheets."
+      },
+      "availability": "content-verified",
+      "kind": "aspect",
+      "activity": "การดูแลภายในอาคาร",
+      "inputOutput": "output",
+      "aspect": "ซากหนูที่ตาย",
+      "impact": "WA",
+      "directIndirect": "direct",
+      "condition": "normal",
+      "significance": "H",
+      "applicableLaw": null
+    }
+  ],
+  "summary": {
+    "activityCount": 17,
+    "aspectCount": 102,
+    "significantCount": 35
+  },
+  "gaps": [
+    {
+      "indicator": "1.2.2",
+      "status": "MISSING",
+      "note": "No FY2568 role-understanding interview evidence."
+    },
+    {
+      "indicator": "1.5.3",
+      "status": "MISSING",
+      "note": "No FY2568 GHG-knowledge training evidence."
+    },
+    {
+      "indicator": "1.3.1",
+      "status": "ANOMALY",
+      "note": "Report DOCX lists 1.3.1(1)-(9); brief expects 7 sub-items. Report prose cites '(1)-(7)' but (8) review-cycle and (9) plan-change items also present."
+    },
+    {
+      "indicator": "1.3.1",
+      "status": "ANOMALY",
+      "note": "Output register row กระดาษที่พิมพ์เสีย: LxC=36 with both L and M marked, while prioritization sheets (จัดลำดับ(Output) and (29 สค68)) score it 60 and rank M. Recorded significance M per prioritization."
+    },
+    {
+      "indicator": "1.3.1",
+      "status": "ANOMALY",
+      "note": "Input register row การดูแลยานพาหนะ/น้ำ (score 48) marked M in register but L in จัดลำดับ(Input)."
+    },
+    {
+      "indicator": "1.3.1",
+      "status": "ANOMALY",
+      "note": "Input sheet row 18 activity cell contains stray value 'เครื่องคอมพิวเตอร์'; normalized to block activity การจัดประชุมภายนอก (Indirect)."
+    },
+    {
+      "indicator": "1.3.2",
+      "status": "NOTE",
+      "note": "Prioritization result (จัดลำดับ sheets): significant H=3 (Input สัตว์พาหะนำโรค เช่น หนู score 63; Output ฉี่หรือขี้หนู 104, ซากหนูที่ตาย 104), M=32 (Input 30, Output 2). Latest จัดลำดับ(Output) (29 สค68) ranks all 55 output aspects 1-55."
+    },
+    {
+      "indicator": "1.3.2",
+      "status": "ANOMALY",
+      "note": "Report 1.3.2(4)/(5) states no abnormal/emergency problems, yet register marks Input สารเคมีและวัสดุวิทยาศาสตร์ and Output ของเสียจากห้องปฏิบัติการ as condition A (abnormal)."
+    }
+  ]
+}

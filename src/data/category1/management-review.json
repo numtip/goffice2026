@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "management-review",
+  "updated": "2026-08-19",
+  "year": 2568,
+  "status": "normalized-verified",
+  "governance": "GOFFICE2026_CATEGORY1_MANAGEMENT_BLUEPRINT_V1",
+  "sources": [
+    { "ref": "1.7 การทบทวนฝ่ายบริหาร/1.7.1 การกำหนดองค์ประชุมทบทวนฝ่ายบริหาร.docx", "role": "primary", "inspection": "content-verified" },
+    { "ref": "1.7 การทบทวนฝ่ายบริหาร/1.7.2 มีการกำหนดวาระการประชุมและทำการประชุมทบทวนฝ่ายบริหาร.docx", "role": "primary", "inspection": "content-verified" }
+  ],
+  "records": [
+    {
+      "id": "mr-quorum-1",
+      "year": 2568,
+      "indicatorCodes": ["1.7.1"],
+      "issueCodes": ["1.7"],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.7 การทบทวนฝ่ายบริหาร/1.7.1 การกำหนดองค์ประชุมทบทวนฝ่ายบริหาร.docx",
+      "verification": { "status": "reviewed", "basis": "Meeting 7 มี.ค. 2568; คำสั่ง 345/2568." },
+      "availability": "content-verified",
+      "kind": "quorum",
+      "documented": true,
+      "totalMembers": 23,
+      "attended": 20,
+      "attendancePct": 86.96,
+      "basis": "20/23 = 86.96%"
+    },
+    {
+      "id": "mr-meeting-1",
+      "year": 2568,
+      "indicatorCodes": ["1.7.2"],
+      "issueCodes": ["1.7"],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.7 การทบทวนฝ่ายบริหาร/1.7.2 มีการกำหนดวาระการประชุมและทำการประชุมทบทวนฝ่ายบริหาร.docx",
+      "verification": { "status": "reviewed", "basis": "Agenda defined; planned 2x/yr มี.ค. and ก.ย. 2568." },
+      "availability": "content-verified",
+      "kind": "meeting",
+      "date": "2025-03-07",
+      "agenda": [
+        "วาระที่ 1 เรื่องแจ้งเพื่อทราบ: ผลการประเมินสำนักงานสีเขียว ปี 2567 (ระดับดีเยี่ยม / G ทอง) และเกณฑ์การประเมินสำนักงานสีเขียว ปี 2568",
+        "วาระที่ 2 รับรองรายงานการประชุม",
+        "วาระที่ 3 เรื่องสืบเนื่อง",
+        "วาระที่ 4 เรื่องเพื่อพิจารณา: การติดตามผลการประชุมทบทวนฝ่ายบริหารที่ผ่านมา (คำสั่งแต่งตั้งคณะกรรมการฯ, นโยบายสิ่งแวดล้อม, บริบทและขอบเขต, ประสิทธิภาพคณะกรรมการ, แผนการดำเนินงาน 2568, เป้าหมายสิ่งแวดล้อม 2568, ข้อเสนอแนะและวิสัยทัศน์ของผู้บริหาร)"
+      ],
+      "participantsCount": 20,
+      "outcome": "ประชุมคณะกรรมการอำนวยการ (ฝ่ายบริหาร) ครั้งที่ 1/2568 เมื่อ 7 มี.ค. 2568 เวลา 10.00-12.00 น. ห้อง 304; รับทราบผลการประเมินและมีมติในวาระที่ 4 (ดู mr-decision-1)",
+      "plannedPerYear": 2
+    },
+    {
+      "id": "mr-decision-1",
+      "year": 2568,
+      "indicatorCodes": ["1.7.2"],
+      "issueCodes": ["1.7"],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.7 การทบทวนฝ่ายบริหาร/1.7.2 มีการกำหนดวาระการประชุมและทำการประชุมทบทวนฝ่ายบริหาร.docx",
+      "verification": { "status": "reviewed", "basis": "Decisions/มติ extractable from the 1.7.2 minutes of the 7 มี.ค. 2568 meeting." },
+      "availability": "content-verified",
+      "kind": "decision",
+      "text": "รับทราบผลการประเมินสำนักงานสีเขียว ปี 2567 ระดับดีเยี่ยม (G ทอง) (ร่วมงานประกาศเกียรติคุณ 26 มี.ค. 2568); เห็นชอบร่างคำสั่งแต่งตั้งคณะกรรมการดำเนินงานสำนักงานสีเขียว (เพิ่มกรรมการหมวดอำนวยการ, เปลี่ยนประธานหมวด 3); มีมติคงนโยบายสิ่งแวดล้อมตามปี 2567; เห็นชอบขอบเขตพื้นที่ขอรับการรับรอง 9,873 ตร.ม. (4 หน่วยงาน); มอบหมาย น.ส.ชณันภัสร์ กีรติอำนวยศรี เป็นผู้รับผิดชอบด้านกฎหมาย Green Office; เห็นชอบแผนการดำเนินงาน 2568 (จัด Big Cleaning เป็นประจำทุกเดือน, เพิ่มการตรวจร่องรอยสัตว์พาหะ, เพิ่มการตรวจความเข้มแสงสว่าง); ปรับเพิ่มเป้าหมายการใช้กระดาษจากลดลง 1% เป็น 3%; เห็นชอบแนวทาง E-meeting, Line OA, Line group และ website"
+    }
+  ],
+  "gaps": [
+    { "indicator": "1.2.2", "status": "MISSING", "note": "No FY2568 role-understanding interview evidence." },
+    { "indicator": "1.5.3", "status": "MISSING", "note": "No FY2568 GHG-knowledge training evidence." }
+  ]
+}
