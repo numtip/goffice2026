@@ -1,7 +1,7 @@
 {
   "version": "0.4.2",
-  "updated": "2026-07-27",
-  "note": "Document registry for real source files. WS-B: secondary evidence links for shared workbooks. doc-paper-usage-2025 resolved as orphan (no evidence slot).",
+  "updated": "2026-08-18",
+  "note": "Document registry for real source files. WS-B: secondary evidence links for shared workbooks. doc-paper-usage-2025 resolved as orphan (no evidence slot). Phase B (2026-08-18): corrected categoryCode cat1→cat3 for electricity usage (evidence 3.2.2) and cat4→cat1 for GHG inventory (evidence 1.5.1).",
   "documents": [
     {
       "id": "doc-water-usage-2025",
@@ -35,14 +35,14 @@
       "classification": "internal",
       "classificationReason": "Contains operational monthly electricity consumption data — internal resource usage metrics.",
       "evidenceId": "ev-energy-metering-2025",
-      "categoryCode": "cat1",
+      "categoryCode": "cat3",
       "potentialEvidenceMatch": "ev-energy-metering-2025",
       "sha256": "576B2E3EC202447B90F7A1E0599ABC906B31B0E33CEA2C38CC6ACF671116021D",
       "sizeBytes": 93921,
       "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "gitTracked": false,
       "fileOnDisk": false,
-      "notes": "Off-disk, untracked. Strong match for evidence ev-energy-metering-2025 (path: /documents/cat1/metering-data-2025.xlsx). RC-1: realSourceAvailable aligned false in evidence-index.json."
+      "notes": "Off-disk, untracked. Strong match for evidence ev-energy-metering-2025 (path: /documents/cat3/metering-data-2025.xlsx). RC-1: realSourceAvailable aligned false in evidence-index.json. Phase B (2026-08-18): categoryCode corrected cat1 → cat3 (electricity usage supports 3.2.2)."
     },
     {
       "id": "doc-gasoline-fuel-2025",
@@ -124,7 +124,7 @@
       "classificationReason": "Contains operational GHG emissions data — internal environmental metrics. File exceeds 500KB; review before committing to Git.",
       "evidenceId": "ev-ghg-inventory-2025",
       "secondaryEvidenceIds": ["ev-ghg-emission-factors"],
-      "categoryCode": "cat4",
+      "categoryCode": "cat1",
       "potentialEvidenceMatch": "ev-ghg-inventory-2025",
       "sha256": "8A0B9C0D100D26B7CDDEBE12315D145731AE06E1F9586A7A165084D80009EE12",
       "sizeBytes": 528383,

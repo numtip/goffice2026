@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated": "2026-07-27",
+  "updated": "2026-08-18",
   "note": "About Center page metadata. Routes: index, scope, policy, goals, committee, action-plan (TH/EN).",
   "pages": [
     {
@@ -26,15 +26,15 @@
       "descriptionEn": "Scope of environmental management for the office under Green Office certification",
       "status": "CREATED",
       "classification": "PARTIALLY_READY",
-      "contentSources": ["criteria-indicators-1.1.1", "criteria-indicators-1.1.2"],
-      "relatedIndicators": ["1.1.1", "1.1.2"],
+      "contentSources": ["criteria-indicators-1.1.1"],
+      "relatedIndicators": ["1.1.1"],
       "relatedCriteriaCategory": "cat1",
       "documents": ["doc-scope"],
       "sourceReferences": ["doc/Scope of Work and Activities.pdf"],
       "contentReadiness": "scope_definition_ready",
       "migrationAction": "DOCUMENTS_READY",
       "lastReviewed": "2026-07-24",
-      "notes": "Scope document validated and mapped. Indicator 1.1.1 satisfied. Indicator 1.1.2 (activity assessment) still missing."
+      "notes": "Scope document validated and mapped. Indicator 1.1.1 satisfied. Indicator 1.3.1 (activity environmental assessment) still missing."
     },
     {
       "id": "about-policy",
@@ -46,8 +46,8 @@
       "descriptionEn": "Senior management environmental policy aligned with Green Office criteria",
       "status": "CREATED",
       "classification": "PARTIALLY_READY",
-      "contentSources": ["criteria-indicators-1.2.1", "criteria-indicators-1.2.2"],
-      "relatedIndicators": ["1.2.1", "1.2.2"],
+      "contentSources": ["criteria-indicators-1.1.2"],
+      "relatedIndicators": ["1.1.2"],
       "relatedCriteriaCategory": "cat1",
       "documents": ["doc-policy-signed", "doc-policy-review"],
       "sourceReferences": ["doc/GreenOfficePolicy2026.pdf", "doc/Evidenceofpolicyreview.pdf"],
@@ -66,15 +66,15 @@
       "descriptionEn": "Targets and indicators for resource use, energy, waste and greenhouse gas emissions",
       "status": "CREATED",
       "classification": "PARTIALLY_READY",
-      "contentSources": ["criteria-indicators-1.3.1", "criteria-indicators-1.3.2", "criteria-indicators-1.3.3"],
-      "relatedIndicators": ["1.3.1", "1.3.2", "1.3.3"],
+      "contentSources": ["criteria-indicators-1.1.3"],
+      "relatedIndicators": ["1.1.3"],
       "relatedCriteriaCategory": "cat1",
       "documents": ["doc-goals"],
       "sourceReferences": ["doc/Green Office Goals.pdf"],
       "contentReadiness": "goals_document_ready",
       "migrationAction": "DOCUMENTS_READY",
       "lastReviewed": "2026-07-24",
-      "notes": "Goals document validated. Indicator 1.3.1 satisfied. Indicators 1.3.2 (achievement evidence) and 1.3.3 (communication evidence) still missing."
+      "notes": "Goals document validated and mapped to indicator 1.1.3 (targets)."
     },
     {
       "id": "about-committee",
@@ -86,8 +86,8 @@
       "descriptionEn": "Environmental committee and working team for the Green Office",
       "status": "CREATED",
       "classification": "PARTIALLY_READY",
-      "contentSources": ["criteria-indicators-1.4.1", "criteria-indicators-1.4.2"],
-      "relatedIndicators": ["1.4.1", "1.4.2"],
+      "contentSources": ["criteria-indicators-1.2.1"],
+      "relatedIndicators": ["1.2.1"],
       "relatedCriteriaCategory": "cat1",
       "documents": ["doc-committee-order", "doc-committee-understanding"],
       "sourceReferences": ["doc/Order_appointing_the_committee.pdf", "doc/Evidence clarifying the role and understanding of the committee.pdf"],

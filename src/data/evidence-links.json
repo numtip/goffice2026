@@ -1,17 +1,17 @@
 {
   "version": "1.0.0",
-  "updated": "2026-08-04",
+  "updated": "2026-08-18",
   "note": "Canonical cross-module link registry (About ↔ Dashboard ↔ Evidence ↔ Documents) for the Connected Environmental Knowledge Platform. Every entry derives from existing canonical metadata only: about/content.json relatedIndicators, criteria/indicators.json relatedDashboards, evidence-index.json indicatorCodes, about-documents.json page→documents, about/pages.json, dashboard-config.ts. Code-derivable entries list their indicator basis. Dashboard↔policy/goals entries are editorial (curated: true) because the signed policy (doc-policy-signed) and the FY targets announcement (doc-goals) cover the six resource domains by name in about-documents.json targets — recorded once here, never inferred silently. Do not add relationships absent from canonical sources.",
   "aboutPages": {
     "about-policy": {
       "evidenceIds": ["ev-about-policy-signed"],
       "dashboardIds": [],
-      "basis": "indicator-1.2.1 (evidence-index ∩ about relatedIndicators)"
+      "basis": "indicator-1.1.2 (evidence-index ∩ about relatedIndicators)"
     },
     "about-goals": {
       "evidenceIds": ["ev-about-goals-2568"],
       "dashboardIds": ["energy", "water", "fuel", "paper", "waste", "ghg"],
-      "basis": "indicator-1.3.1 (evidence); curated targets↔resource-domain 1:1 via about-documents.json targets"
+      "basis": "indicator-1.1.3 (evidence); curated targets↔resource-domain 1:1 via about-documents.json targets"
     },
     "about-scope": {
       "evidenceIds": [],
@@ -21,7 +21,7 @@
     "about-committee": {
       "evidenceIds": ["ev-about-committee-order"],
       "dashboardIds": [],
-      "basis": "indicator-1.4.1 (evidence-index ∩ about relatedIndicators)"
+      "basis": "indicator-1.2.1 (evidence-index ∩ about relatedIndicators)"
     },
     "about-action-plan": {
       "evidenceIds": ["ev-ghg-inventory-2025"],
