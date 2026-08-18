@@ -1,4 +1,7 @@
 # Preview deployment only — production remains on goffice.mju.ac.th (manual VPS).
+# windows-latest: NTFS supports long paths; the FY2568 published evidence tree
+# contains 4 filenames/path components > 255 bytes that cannot be checked out
+# on Linux (ext4) runners.
 name: Deploy GitHub Pages Preview
 
 on:
@@ -17,7 +20,7 @@ concurrency:
 
 jobs:
   quality:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -54,7 +57,7 @@ jobs:
         run: npm run qa:seo
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: quality
     steps:
       - name: Checkout
@@ -87,7 +90,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: build
     steps:
       - name: Deploy to GitHub Pages
