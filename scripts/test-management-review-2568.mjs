@@ -95,6 +95,16 @@ describe('CAT1-1.7 — decision traceability', () => {
     assert.equal(d.pdcaLink.target, '1.1.3');
   });
 
+  it('PDCA links stay within explicit allow-list (1.1.1–1.1.4, 1.2.1)', () => {
+    const allowed = new Set(['1.1.1', '1.1.2', '1.1.3', '1.1.4', '1.2.1']);
+    const pdcaTargets = MR.records
+      .filter((r) => r.kind === 'decision' && r.pdcaLink?.target)
+      .map((r) => r.pdcaLink.target);
+    assert.deepEqual(new Set(pdcaTargets), new Set(['1.1.1', '1.1.2', '1.1.3', '1.1.4', '1.2.1']));
+    for (const t of pdcaTargets) assert.ok(allowed.has(t), `unexpected PDCA target ${t}`);
+    assert.equal(byId.get('mr-decision-m1-05').pdcaLink, null);
+  });
+
   it('Meeting #2 has zero decisions (no fabrication)', () => {
     const m2Decisions = MR.records.filter((r) => r.kind === 'decision' && r.meetingId === 'mr-meeting-2');
     assert.equal(m2Decisions.length, 0);

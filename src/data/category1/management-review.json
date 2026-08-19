@@ -284,7 +284,7 @@
       "decisionType": "assign",
       "text": "มอบหมาย น.ส.ชณันภัสร์ กีรติอำนวยศรี เป็นผู้รับผิดชอบด้านกฎหมาย Green Office (7 เรื่อง)",
       "owner": "น.ส.ชณันภัสร์ กีรติอำนวยศรี",
-      "pdcaLink": { "target": "1.4.1", "note": "legal responsibility assignment" }
+      "pdcaLink": null
     },
     {
       "id": "mr-decision-m1-06",
