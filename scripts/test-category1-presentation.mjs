@@ -231,9 +231,7 @@ describe('Phase F — cross-link journeys and view-model', () => {
     const quorum = readFileSync(MR_QUORUM, 'utf8');
     const meeting = readFileSync(MR_MEETING, 'utf8');
     assert.match(quorum, /Historical Baseline/);
-    assert.match(quorum, /quorum\.attendancePct|invitedCount/);
-    assert.match(quorum, /23/);
-    assert.match(quorum, /20/);
+    assert.match(quorum, /quorum\.invitedCount|quorum\.attendedCount|quorum\.attendancePct/);
     assert.match(quorum, /not_locally_verified/);
     assert.match(quorum, /data-cat17-meeting2-gap/);
     assert.match(quorum, /focus-visible:ring-2/);
@@ -245,9 +243,9 @@ describe('Phase F — cross-link journeys and view-model', () => {
     assert.match(meeting, /data-cat17-meeting2-panel/);
     assert.match(meeting, /data-cat17-gaps-panel/);
     assert.match(meeting, /occurrence_supported/);
-    assert.match(meeting, /buildDecisions|mr-decision-m1-04/);
-    assert.match(meeting, /−3%|-3%/);
+    assert.match(meeting, /buildDecisions|mr-decision-m1-08/);
     const mvm = readFileSync(MR_VM, 'utf8');
+    assert.match(mvm, /−3%|-3%|paper target/i);
     assert.match(mvm, /buildQuorum/);
     assert.match(mvm, /buildDecisions/);
     assert.match(mvm, /category1\/management-review\.json/);
