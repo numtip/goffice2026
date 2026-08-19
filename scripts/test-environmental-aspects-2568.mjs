@@ -285,3 +285,51 @@ describe('CAT1-1.3 closeout — one canonical runtime, legacy retained', () => {
     assert.match(snap, /route: '\/indicators\/1\.3\.1\/'/);
   });
 });
+
+describe('CAT1-1.3.1 live runtime presentation', () => {
+  const explorer = readFileSync(
+    join(ROOT, 'src', 'components', 'indicators', 'Cat1EnvironmentalAssessment.astro'),
+    'utf8',
+  );
+  const trace = readFileSync(
+    join(ROOT, 'src', 'components', 'indicators', 'IndicatorTraceabilityExperience.astro'),
+    'utf8',
+  );
+  const evidence = JSON.parse(readFileSync(join(ROOT, 'src', 'data', 'evidence-index.json'), 'utf8'));
+  const missing = JSON.parse(readFileSync(join(ROOT, 'src', 'data', 'about', 'missing-content.json'), 'utf8'));
+
+  it('1.3.1 explorer renders FY2568 canonical summary 20 / 102 / 68 L · 31 M · 3 H / 34 M/H', () => {
+    assert.match(explorer, /data-cat1-canonical-summary/);
+    assert.match(explorer, /data-cat1-summary="activities"/);
+    assert.match(explorer, /data-cat1-summary="aspects"/);
+    assert.match(explorer, /data-cat1-summary="lmh"/);
+    assert.match(explorer, /data-cat1-summary="significant"/);
+    assert.match(explorer, /`\$\{summary\.activityCount\} \$\{t\('กิจกรรม', 'activities'\)\}`/);
+    assert.match(explorer, /`\$\{summary\.aspectCount\} \$\{t\('ประเด็น', 'aspects'\)\}`/);
+    assert.match(explorer, /`\$\{summary\.bySignificance\.L\} L · \$\{summary\.bySignificance\.M\} M · \$\{summary\.bySignificance\.H\} H`/);
+    assert.match(explorer, /`\$\{summary\.significantCount\} \$\{t\('นัยสำคัญ \(M\/H\)', 'significant \(M\/H\)'\)\}`/);
+    assert.match(explorer, /ปี \$\{CAT1_YEAR\}/);
+    assert.match(explorer, /ฐานประวัติสำหรับเปรียบเทียบปีถัดไป/);
+  });
+
+  it('1.3.1 assessment chain includes Activity → Input/Output → Aspect → Direct/Indirect → N/A/E → Assessment → L/M/H', () => {
+    assert.match(explorer, /Activity → Input\/Output → Aspect → Direct\/Indirect → N\/A\/E → Assessment → L\/M\/H/);
+    assert.match(explorer, /กิจกรรม → Input \/ Output → ประเด็น → ทางตรง\/อ้อม → ปกติ\/ผิดปกติ\/ฉุกเฉิน → การประเมิน → L\/M\/H/);
+  });
+
+  it('1.3.x pages do not dump category-level evidence fallback', () => {
+    assert.match(trace, /const cat13Canonical = \['1\.3\.1', '1\.3\.2', '1\.3\.3'\]/);
+    assert.match(trace, /if \(cat13Canonical\) return false;/);
+  });
+
+  it('environmental targets are not mapped to 1.3.1', () => {
+    const goals = evidence.items.find((e) => e.id === 'ev-about-goals-2568');
+    assert.ok(goals, 'ev-about-goals-2568 exists');
+    assert.deepEqual(goals.indicatorCodes, ['1.1.3']);
+    assert.ok(!goals.indicatorCodes.includes('1.3.1'));
+    const on131 = evidence.items.filter((e) => (e.indicatorCodes || []).includes('1.3.1'));
+    assert.equal(on131.length, 0, 'no evidence-index item should claim 1.3.1');
+    const goalsMissing = missing.missing.goals.items.find((i) => i.id === 'missing-goals-document');
+    assert.equal(goalsMissing.requiredByIndicator, '1.1.3');
+  });
+});
