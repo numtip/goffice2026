@@ -288,4 +288,24 @@ describe('Phase F — cross-link journeys and view-model', () => {
     assert.match(mvm, /buildDecisions/);
     assert.match(mvm, /category1\/management-review\.json/);
   });
+
+  it('1.2 presentation is wired with governance journey and truthful 1.2.2 gap', () => {
+    const trace = readFileSync(TRACE, 'utf8');
+    assert.match(trace, /cat12Canonical/);
+    assert.match(trace, /Cat1GovernancePresentation/);
+    const gov = readFileSync(join(ROOT, 'src/components/indicators/Cat1CommitteeGovernanceJourney.astro'), 'utf8');
+    const role = readFileSync(join(ROOT, 'src/components/indicators/Cat1RoleUnderstandingJourney.astro'), 'utf8');
+    const cvm = readFileSync(join(ROOT, 'src/utils/category1-committee-presentation.ts'), 'utf8');
+    assert.match(gov, /Historical Baseline/);
+    assert.match(gov, /buildOrganizationCoverage/);
+    assert.match(gov, /personnelCoverageTotal|97/);
+    assert.match(gov, /\/about\/committee\//);
+    assert.match(gov, /focus-visible:ring-2/);
+    assert.doesNotMatch(gov, /official Green Office score achieved/i);
+    assert.match(role, /MISSING/);
+    assert.match(role, /does NOT satisfy|ไม่ใช่หลักฐาน/);
+    assert.doesNotMatch(role, /understandingPercent|86\.|100%/);
+    assert.match(cvm, /category1\/environmental-committee\.json/);
+    assert.match(cvm, /buildCommitteeFoundation/);
+  });
 });

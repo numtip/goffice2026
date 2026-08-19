@@ -1,0 +1,242 @@
+---
+/**
+ * AboutCanonicalFacts — FY2568 foundation facts from CAT1 canonical contracts.
+ * About pages show organizational views; indicator pages show assessment journeys.
+ */
+import {
+  buildScopeView,
+  buildPolicyApproval,
+  buildPolicyCommitments,
+  buildPolicyInterviewGap,
+  buildTargetBoard,
+  buildAnnualPlanView,
+  CAT1_YEAR,
+  CAT11_DOCS,
+} from '../../utils/category1-foundation-presentation';
+import {
+  buildCommitteeFoundation,
+  buildAppointmentAuthority,
+  buildOrganizationCoverage,
+  buildCommitteeGroups,
+  buildRoleUnderstandingGap,
+  COMMITTEE_EVIDENCE,
+} from '../../utils/category1-committee-presentation';
+import { getLocalizedPath } from '../../i18n/utils';
+import { withBase } from '../../utils/with-base';
+
+interface Props {
+  pageId: string;
+  isTh: boolean;
+}
+
+const { pageId, isTh } = Astro.props;
+const locale = isTh ? 'th' : 'en';
+const path = (p: string) => getLocalizedPath(locale, p);
+const doc = (p: string) => withBase(p);
+
+function t(th: string, en: string): string {
+  return isTh ? th : en;
+}
+---
+
+{pageId === 'about-index' && (
+  <section
+    class="not-prose mb-8 rounded-xl border border-green-100 bg-green-50/40 p-5"
+    aria-labelledby="about-foundation-flow"
+    data-about-foundation-hub
+  >
+    <p class="text-xs font-semibold uppercase tracking-wide text-green-800">
+      {t(`ศูนย์รากฐานการบริหาร · FY${CAT1_YEAR}`, `Management foundation hub · FY${CAT1_YEAR}`)}
+    </p>
+    <h2 id="about-foundation-flow" class="mt-1 text-lg font-bold text-gray-900">
+      {t('Scope → Policy → Goals → Plan → Governance', 'Scope → Policy → Goals → Plan → Governance')}
+    </h2>
+    <p class="mt-2 text-sm leading-relaxed text-gray-700">
+      {t(
+        'หน้า About แสดงมุมมององค์กรจากสัญญาข้อมูล CAT1 เดียวกับหน้าตัวชี้วัด — ไม่สร้างชุดข้อมูลแยก',
+        'About pages present organizational views from the same CAT1 contracts as indicator pages — no duplicate datasets',
+      )}
+    </p>
+    <ol class="mt-4 grid gap-2 sm:grid-cols-2" role="list">
+      {[
+        { route: '/about/scope/', code: '1.1.1', th: 'ขอบเขต', en: 'Scope' },
+        { route: '/about/policy/', code: '1.1.2', th: 'นโยบาย', en: 'Policy' },
+        { route: '/about/goals/', code: '1.1.3', th: 'เป้าหมาย', en: 'Goals' },
+        { route: '/about/action-plan/', code: '1.1.4', th: 'แผนปฏิบัติการ', en: 'Action plan' },
+        { route: '/about/committee/', code: '1.2.1', th: 'ธรรมาภิบาล', en: 'Governance' },
+      ].map((item) => (
+        <li class="list-none rounded-lg border border-white/80 bg-white/70 px-3 py-2 text-sm">
+          <a href={path(item.route)} class="font-medium text-green-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+            {t(item.th, item.en)}
+          </a>
+          <span class="text-gray-500"> · {item.code}</span>
+        </li>
+      ))}
+    </ol>
+    <p class="mt-3 text-xs text-amber-800">
+      {t(
+        'ตัวชี้วัด 1.2.2 (ความเข้าใจบทบาท) — หลักฐานสัมภาษณ์ FY2568 ยัง MISSING',
+        'Indicator 1.2.2 (role understanding) — FY2568 interview evidence still MISSING',
+      )}
+    </p>
+  </section>
+)}
+
+{pageId === 'about-scope' && (() => {
+  const scope = buildScopeView();
+  return (
+    <section class="not-prose mb-8 space-y-4" data-about-canonical-facts="1.1.1" data-cat1-year={CAT1_YEAR}>
+      <div class="rounded-xl border border-green-100 bg-green-50/40 p-5">
+        <p class="text-xs font-semibold text-green-800">{t(`FY${CAT1_YEAR} Historical Baseline`, `FY${CAT1_YEAR} Historical Baseline`)}</p>
+        <ul class="mt-3 grid gap-2 text-sm text-gray-800 sm:grid-cols-2" role="list">
+          <li><strong>{t('พื้นที่รวม', 'Total area')}:</strong> {scope.totalSqm.toLocaleString()} m²</li>
+          <li><strong>{t('หน่วยงาน', 'Organizations')}:</strong> {scope.organizationCount}</li>
+        </ul>
+        <ul class="mt-3 space-y-1 text-sm text-gray-700" role="list">
+          {scope.organizations.map((o) => (
+            <li>{isTh ? o.nameTh : o.nameEn}</li>
+          ))}
+        </ul>
+        <p class="mt-3 text-xs text-gray-600">{isTh ? scope.roomInventoryNoteTh : scope.roomInventoryNoteEn}</p>
+        <p class="mt-2 text-xs">
+          <a href={path('/indicators/1.1.1/')} class="text-green-700 hover:underline">{t('ดูตัวชี้วัด 1.1.1', 'View indicator 1.1.1')}</a>
+          {' · '}
+          <a href={doc(CAT11_DOCS.scopePdf)} class="text-green-700 hover:underline">{t('PDF ต้นฉบับ', 'Source PDF')}</a>
+        </p>
+      </div>
+    </section>
+  );
+})()}
+
+{pageId === 'about-policy' && (() => {
+  const approval = buildPolicyApproval();
+  const commitments = buildPolicyCommitments();
+  const gap = buildPolicyInterviewGap();
+  return (
+    <section class="not-prose mb-8" data-about-canonical-facts="1.1.2" data-cat1-year={CAT1_YEAR}>
+      <div class="rounded-xl border border-green-100 bg-green-50/40 p-5">
+        <p class="text-xs font-semibold text-green-800">{t(`FY${CAT1_YEAR} Historical Baseline`, `FY${CAT1_YEAR} Historical Baseline`)}</p>
+        <ul class="mt-3 space-y-2 text-sm text-gray-800" role="list">
+          <li><strong>{t('ข้อนโยบาย', 'Commitments')}:</strong> {commitments.length}</li>
+          <li><strong>{t('ทบทวน', 'Reviewed')}:</strong> {isTh ? approval.reviewDateBE.split(' / ')[0] : approval.reviewDateBE.split(' / ')[1]}</li>
+          <li><strong>{t('ลงนาม/ประกาศ', 'Signed/announced')}:</strong> {isTh ? approval.announcementDateBE.split(' / ')[0] : approval.announcementDateBE.split(' / ')[1]}</li>
+        </ul>
+        <p class="mt-3 text-xs text-amber-800">{isTh ? gap.noteTh : gap.noteEn}</p>
+        <p class="mt-2 text-xs">
+          <a href={path('/indicators/1.1.2/')} class="text-green-700 hover:underline">{t('ดูตัวชี้วัด 1.1.2', 'View indicator 1.1.2')}</a>
+        </p>
+      </div>
+    </section>
+  );
+})()}
+
+{pageId === 'about-goals' && (() => {
+  const targets = buildTargetBoard();
+  return (
+    <section class="not-prose mb-8" data-about-canonical-facts="1.1.3" data-cat1-year={CAT1_YEAR}>
+      <div class="rounded-xl border border-green-100 bg-green-50/40 p-5">
+        <p class="text-xs font-semibold text-green-800">{t(`FY${CAT1_YEAR} Historical Baseline · เปรียบเทียบปี 2567`, `FY${CAT1_YEAR} Historical Baseline · vs FY2567`)}</p>
+        <p class="mt-2 text-xs text-gray-600">
+          {t(
+            'เป้าหมายเป็น % การเปลี่ยนแปลงต่อปี — ไม่ใช่เป้าหมายต่อคนสำหรับทุกโดเมน (ยกเว้น GHG มีครอบครัวตัวชี้วัดแยก)',
+            'Targets are year-over-year % change — not per-person for every domain (GHG uses a separate metric family)',
+          )}
+        </p>
+        <ul class="mt-3 grid gap-2 sm:grid-cols-2" role="list">
+          {targets.map((tg) => (
+            <li class="list-none rounded-lg border border-white bg-white/80 px-3 py-2 text-sm">
+              <span class="font-medium">{isTh ? tg.labelTh : tg.labelEn}</span>
+              <span class="ml-2 num-tabular text-green-800">{tg.targetPercent}%</span>
+              {tg.amendmentNoteTh && (
+                <p class="mt-1 text-xs text-amber-800">{isTh ? tg.amendmentNoteTh : tg.amendmentNoteEn}</p>
+              )}
+            </li>
+          ))}
+        </ul>
+        <p class="mt-3 text-xs">
+          <a href={path('/indicators/1.1.3/')} class="text-green-700 hover:underline">{t('ดูตัวชี้วัด 1.1.3', 'View indicator 1.1.3')}</a>
+        </p>
+      </div>
+    </section>
+  );
+})()}
+
+{pageId === 'about-action-plan' && (() => {
+  const plan = buildAnnualPlanView();
+  return (
+    <section class="not-prose mb-8" data-about-canonical-facts="1.1.4" data-cat1-year={CAT1_YEAR} data-proj-plan-id={plan.id}>
+      <div class="rounded-xl border border-blue-100 bg-blue-50/40 p-5">
+        <p class="text-xs font-semibold text-blue-900">{t(`FY${CAT1_YEAR} Historical Baseline · ${plan.id}`, `FY${CAT1_YEAR} Historical Baseline · ${plan.id}`)}</p>
+        <p class="mt-2 text-sm font-medium text-gray-900">{plan.title}</p>
+        <ul class="mt-3 space-y-1 text-sm text-gray-800" role="list">
+          <li>{t('แผนลายลักษณ์อักษร', 'Written plan')}: {plan.writtenPlan ? '✓' : '—'}</li>
+          <li>{t('อนุมัติผู้บริหาร', 'Executive approved')}: {plan.executiveApproved ? '✓' : '—'} ({plan.approvingOrganizationCount} {t('หน่วยงาน', 'orgs')})</li>
+          <li>{t('ครอบคลุมหมวด', 'Category coverage')}: {plan.categoryCoverage}</li>
+          <li>{t('แผน/ผลแยกคอลัมน์', 'Plan/actual columns')}: {plan.plannedVsActualSeparate ? '✓' : '—'}</li>
+        </ul>
+        <p class="mt-3 text-xs text-gray-600">{isTh ? plan.planTableNoteTh : plan.planTableNoteEn}</p>
+        {plan.sharedWith161 && (
+          <p class="mt-2 text-xs text-gray-600">{t('บันทึกร่วมกับ 1.6.1', 'Shared record with 1.6.1')}</p>
+        )}
+        <p class="mt-2 text-xs">
+          <a href={path('/indicators/1.1.4/')} class="text-blue-800 hover:underline">{t('ดูตัวชี้วัด 1.1.4', 'View indicator 1.1.4')}</a>
+          {' · '}
+          <a href={doc(CAT11_DOCS.planPdf)} class="text-blue-800 hover:underline">{t('PDF 2568', 'FY2568 PDF')}</a>
+        </p>
+      </div>
+    </section>
+  );
+})()}
+
+{pageId === 'about-committee' && (() => {
+  const foundation = buildCommitteeFoundation();
+  const authority = buildAppointmentAuthority();
+  const orgs = buildOrganizationCoverage();
+  const groups = buildCommitteeGroups();
+  const gap = buildRoleUnderstandingGap();
+  return (
+    <section class="not-prose mb-8 space-y-4" data-about-canonical-facts="1.2.1" data-cat1-year={CAT1_YEAR}>
+      <div class="rounded-xl border border-green-100 bg-green-50/40 p-5">
+        <p class="text-xs font-semibold text-green-800">{t(`FY${CAT1_YEAR} Historical Baseline`, `FY${CAT1_YEAR} Historical Baseline`)}</p>
+        <ul class="mt-3 space-y-1 text-sm text-gray-800" role="list">
+          <li><strong>{t('ลงนาม', 'Signed by')}:</strong> {isTh ? authority.signedByRoleTh : authority.signedByRoleEn}</li>
+          <li><strong>{t('วันที่', 'Date')}:</strong> {authority.dateBE}</li>
+          <li><strong>{t('หน่วยงาน', 'Organizations')}:</strong> {foundation.organizationCount}</li>
+          <li><strong>{t('ครอบคลุมบุคลากร', 'Personnel coverage')}:</strong> {foundation.personnelCoverageTotal} ({isTh ? foundation.personnelCoverageNoteTh : foundation.personnelCoverageNoteEn})</li>
+        </ul>
+        <ul class="mt-3 grid gap-2 sm:grid-cols-2 text-sm" role="list">
+          {orgs.map((o) => (
+            <li class="list-none rounded border border-white bg-white/80 px-2 py-1">
+              {isTh ? o.nameTh : o.nameEn}: <span class="num-tabular font-medium">{o.personnelCount}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-3 text-xs text-gray-600">{isTh ? authority.orderRefNoteTh : authority.orderRefNoteEn}</p>
+        <p class="mt-2 text-xs">
+          <a href={path('/indicators/1.2.1/')} class="text-green-700 hover:underline">{t('ดูตัวชี้วัด 1.2.1', 'View indicator 1.2.1')}</a>
+          {' · '}
+          <a href={doc(COMMITTEE_EVIDENCE.orderPdf)} class="text-green-700 hover:underline">{t('คำสั่งแต่งตั้ง', 'Appointment order')}</a>
+        </p>
+      </div>
+      <div class="rounded-xl border border-gray-100 bg-white p-5">
+        <h3 class="text-sm font-bold text-gray-900">{t('โครงสร้างคณะกรรมการ', 'Governance structure')}</h3>
+        <ul class="mt-3 space-y-2 text-sm" role="list">
+          {groups.map((g) => (
+            <li class="list-none rounded-lg border border-gray-100 bg-gray-50/50 px-3 py-2">
+              <span class="font-medium">{isTh ? g.labelTh : g.labelEn}</span>
+              {g.combinedGroup && <span class="ml-2 text-xs text-green-700">{t('(รวมกลุ่ม)', '(combined)')}</span>}
+              <span class="mt-1 block text-xs text-gray-600">{g.categoryCodes.join(', ')}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="rounded-xl border border-dashed border-amber-200 bg-amber-50/50 p-4" data-cat1-status="MISSING">
+        <p class="text-sm font-medium text-amber-900">{t('1.2.2 ความเข้าใจบทบาท', '1.2.2 Role understanding')}</p>
+        <p class="mt-1 text-xs text-amber-800">{isTh ? gap.noteTh : gap.noteEn}</p>
+        <p class="mt-2 text-xs">
+          <a href={path('/indicators/1.2.2/')} class="text-amber-900 hover:underline">{t('ดูช่องหลักฐาน 1.2.2', 'View 1.2.2 evidence gap')}</a>
+        </p>
+      </div>
+    </section>
+  );
+})()}

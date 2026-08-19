@@ -39,6 +39,7 @@ const ALLOWED_DOMAINS = new Set([
   'ghg',
   'projects',
   'management-review',
+  'environmental-committee',
   'environmental-aspects-2568',
 ]);
 const VALID_VERIFICATION = new Set(['verified', 'reviewed', 'pending', 'unavailable']);
@@ -76,8 +77,8 @@ function main() {
     process.exit(1);
   }
   if (manifest.schemaVersion !== '1.0.0') errors.push('manifest schemaVersion must be 1.0.0');
-  if (!Array.isArray(manifest.contracts) || manifest.contracts.length !== 8) {
-    errors.push('manifest.contracts must list 8 domains');
+  if (!Array.isArray(manifest.contracts) || manifest.contracts.length !== 9) {
+    errors.push('manifest.contracts must list 9 domains');
   }
 
   const manifestDomains = new Set((manifest.contracts || []).map((c) => c.domain));
@@ -333,6 +334,51 @@ function main() {
     }
     if (plan?.sourceRef && !String(plan.sourceRef).includes('1.1.4')) {
       errors.push('projects: proj-plan-1 primary sourceRef must be 1.1.4 PDF');
+    }
+  }
+
+  // ── environmental-committee invariants (1.2) ───────────────────
+  let ec;
+  try {
+    ec = readJSON(resolve(CONTRACT_DIR, 'environmental-committee.json'));
+  } catch (e) {
+    errors.push(`environmental-committee.json unreadable: ${e.message}`);
+  }
+  if (ec) {
+    const foundation = (ec.records || []).find((r) => r.kind === 'environmentalCommittee');
+    const auth = (ec.records || []).find((r) => r.kind === 'appointmentAuthority');
+    const orgCov = (ec.records || []).filter((r) => r.kind === 'organizationCoverage');
+    const groups = (ec.records || []).filter((r) => r.kind === 'committeeGroup');
+    if (!foundation || foundation.organizationCount !== 4) {
+      errors.push('environmental-committee: must have 4 organizations');
+    }
+    if (!foundation || foundation.personnelCoverageTotal !== 97) {
+      errors.push('environmental-committee: personnelCoverageTotal must be 97 (organizational sum)');
+    }
+    if (foundation?.personnelCoverageSemantics !== 'organizational_staffing_not_unique_committee_members') {
+      errors.push('environmental-committee: must label 97 as organizational staffing, not unique members');
+    }
+    if (orgCov.length !== 4) {
+      errors.push(`environmental-committee: expected 4 organizationCoverage records, got ${orgCov.length}`);
+    } else {
+      const sum = orgCov.reduce((s, r) => s + (r.personnelCount || 0), 0);
+      if (sum !== 97) errors.push(`environmental-committee: org personnel sum must be 97, got ${sum}`);
+    }
+    if (!auth || auth.dateISO !== '2025-03-25') {
+      errors.push('environmental-committee: appointment must be signed 2025-03-25');
+    }
+    if (auth?.orderRef != null) {
+      errors.push('environmental-committee: orderRef must remain null until OCR confirms (do not use 345/2568 MR order)');
+    }
+    const combined = groups.find((g) => g.combinedGroup === true && g.categoryCodes?.includes('cat1') && g.categoryCodes?.includes('cat7'));
+    if (!combined) errors.push('environmental-committee: must preserve combined Cat1+Cat7 working group');
+    const gap122 = (ec.gaps || []).find((g) => g.indicator === '1.2.2' && g.status === 'MISSING');
+    if (!gap122) errors.push('environmental-committee: gaps must declare 1.2.2 MISSING');
+    if (gap122?.understandingPercent != null || gap122?.sampleSize != null) {
+      errors.push('environmental-committee: 1.2.2 gap must have null sample and percentage');
+    }
+    if (gap122?.sourceStub !== '-สัมภาษณ์-') {
+      errors.push('environmental-committee: 1.2.2 gap sourceStub must be -สัมภาษณ์-');
     }
   }
 

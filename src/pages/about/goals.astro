@@ -2,6 +2,7 @@
 import AboutPageShell from '../../components/about/AboutPageShell.astro';
 import AboutDocExperience from '../../components/about/documents/AboutDocExperience.astro';
 import AboutNotice from '../../components/about/AboutNotice.astro';
+import AboutCanonicalFacts from '../../components/about/AboutCanonicalFacts.astro';
 import aboutContent from '../../data/about/content.json';
 import { getLocale } from '../../i18n/utils';
 
@@ -12,6 +13,8 @@ const content = aboutContent.pages['about-goals'];
 
 <AboutPageShell pageId="about-goals">
   <AboutNotice noticeTh={content.noticeTh} noticeEn={content.noticeEn} isTh={isTh} />
+
+  <AboutCanonicalFacts pageId="about-goals" isTh={isTh} />
 
   <AboutDocExperience pageId="about-goals" isTh={isTh} />
 </AboutPageShell>

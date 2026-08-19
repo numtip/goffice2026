@@ -1,0 +1,17 @@
+---
+/**
+ * Cat1GovernancePresentation.astro — FY2568 CAT1-1.2 committee governance journeys.
+ */
+import Cat1CommitteeGovernanceJourney from './Cat1CommitteeGovernanceJourney.astro';
+import Cat1RoleUnderstandingJourney from './Cat1RoleUnderstandingJourney.astro';
+
+interface Props {
+  indicatorCode: string;
+  locale: 'th' | 'en';
+}
+
+const { indicatorCode, locale } = Astro.props;
+---
+
+{indicatorCode === '1.2.1' && <Cat1CommitteeGovernanceJourney locale={locale} />}
+{indicatorCode === '1.2.2' && <Cat1RoleUnderstandingJourney locale={locale} />}

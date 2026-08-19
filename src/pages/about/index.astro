@@ -2,6 +2,7 @@
 import AboutPageShell from '../../components/about/AboutPageShell.astro';
 import AboutHubDocs from '../../components/about/AboutHubDocs.astro';
 import AboutNotice from '../../components/about/AboutNotice.astro';
+import AboutCanonicalFacts from '../../components/about/AboutCanonicalFacts.astro';
 import aboutContent from '../../data/about/content.json';
 import { getLocale } from '../../i18n/utils';
 
@@ -12,6 +13,8 @@ const content = aboutContent.pages['about-index'];
 
 <AboutPageShell pageId="about-index">
   <AboutNotice noticeTh={content.noticeTh} noticeEn={content.noticeEn} isTh={isTh} />
+
+  <AboutCanonicalFacts pageId="about-index" isTh={isTh} />
 
   {content.sections
     .filter((section) => !section.links)

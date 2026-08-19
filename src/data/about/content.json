@@ -1,33 +1,33 @@
 {
   "version": "1.0.0",
-  "updated": "2026-08-18",
+  "updated": "2026-08-19",
   "pages": {
     "about-index": {
-      "noticeTh": "ศูนย์ข้อมูลเกี่ยวกับสำนักงานสีเขียว อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้ — เนื้อหาบางส่วนอ้างอิงจากเอกสารปี 2568 และรอการตรวจสอบจากทีม Green Office",
-      "noticeEn": "About the Green Office at Chalermprakiat Building, Maejo University. Some content references FY 2568 documents and awaits verification by the Green Office team.",
+      "noticeTh": "ศูนย์รากฐานการบริหารสำนักงานสีเขียว — ข้อมูล FY2568 เป็นฐานประวัติจากสัญญา CAT1 เดียวกับหน้าตัวชี้วัด",
+      "noticeEn": "Green Office management foundation hub — FY2568 facts are historical baselines from the same CAT1 contracts as indicator pages.",
       "sections": [
         {
           "headingTh": "วัตถุประสงค์",
           "headingEn": "Purpose",
-          "bodyTh": "แพลตฟอร์มนี้นำเสนอข้อมูลการใช้ทรัพยากร หลักฐานการประเมิน และเรื่องราวด้านสิ่งแวดล้อมของสำนักงานสีเขียว อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา สำนักวิจัยและส่งเสริมวิชาการการเกษตร มหาวิทยาลัยแม่โจ้",
-          "bodyEn": "This platform presents resource data, assessment evidence, and environmental stories for the Green Office at Chalermprakiat Building, Agricultural Research and Extension Office, Maejo University."
+          "bodyTh": "ศูนย์ About แสดงมุมมององค์กร: ขอบเขต → นโยบาย → เป้าหมาย → แผน → ธรรมาภิบาล โดยอ้างอิงสัญญาข้อมูล CAT1 เดียวกับหน้าตัวชี้วัด — ไม่สร้างชุดข้อมูลแยก",
+          "bodyEn": "The About center presents organizational views: Scope → Policy → Goals → Plan → Governance, referencing the same CAT1 contracts as indicator pages — no duplicate datasets."
         },
         {
-          "headingTh": "หัวข้อหลัก",
-          "headingEn": "Key topics",
+          "headingTh": "เส้นทางรากฐาน",
+          "headingEn": "Foundation path",
           "links": [
-            { "pageId": "about-scope", "labelTh": "ขอบเขตการดำเนินงาน", "labelEn": "Scope" },
-            { "pageId": "about-policy", "labelTh": "นโยบายสิ่งแวดล้อม", "labelEn": "Environmental Policy" },
-            { "pageId": "about-goals", "labelTh": "เป้าหมายและตัวชี้วัด", "labelEn": "Goals and Indicators" },
-            { "pageId": "about-committee", "labelTh": "คณะกรรมการและทีมงาน", "labelEn": "Committee and Team" },
-            { "pageId": "about-action-plan", "labelTh": "แผนปฏิบัติการ", "labelEn": "Action Plan" }
+            { "pageId": "about-scope", "labelTh": "ขอบเขตการดำเนินงาน (1.1.1)", "labelEn": "Scope (1.1.1)" },
+            { "pageId": "about-policy", "labelTh": "นโยบายสิ่งแวดล้อม (1.1.2)", "labelEn": "Environmental Policy (1.1.2)" },
+            { "pageId": "about-goals", "labelTh": "เป้าหมายและตัวชี้วัด (1.1.3)", "labelEn": "Goals and Indicators (1.1.3)" },
+            { "pageId": "about-action-plan", "labelTh": "แผนปฏิบัติการ (1.1.4 / 2569)", "labelEn": "Action Plan (1.1.4 / 2569)" },
+            { "pageId": "about-committee", "labelTh": "คณะกรรมการและทีมงาน (1.2.1)", "labelEn": "Committee and Team (1.2.1)" }
           ]
         }
       ]
     },
     "about-policy": {
-      "noticeTh": "สรุปจากเอกสาร OCR — ต้องตรวจสอบวันที่และตัวเลขกับต้นฉบับ PDF ก่อนเผยแพร่เป็นหลักฐานอย่างเป็นทางการ",
-      "noticeEn": "Summary from OCR-derived documents — dates and figures require verification against original PDFs before formal evidence publication.",
+      "noticeTh": "FY2568 Historical Baseline — 10 ข้อนโยบาย · ทบทวน 7 มี.ค. 2568 · ลงนาม/ประกาศ 25 มี.ค. 2568 (ตรวจสอบจากสัญญา CAT1)",
+      "noticeEn": "FY2568 Historical Baseline — 10 policy commitments · reviewed 7 Mar 2568 · signed/announced 25 Mar 2568 (verified via CAT1 contract).",
       "documentId": "doc-policy-signed",
       "relatedIndicators": ["1.1.2"],
       "sections": [
@@ -40,13 +40,15 @@
           "headingTh": "หลักฐานการทบทวนนโยบาย",
           "headingEn": "Policy review evidence",
           "summaryKey": "doc-policy-review",
-          "pending": true
+          "pending": true,
+          "pendingNoteTh": "รายงานประชุม FY2569 — ไม่ใช่หลักฐานสัมภาษณ์ผู้บริหาร 1.1.2(4) ที่ยัง PARTIAL",
+          "pendingNoteEn": "FY2569 meeting minutes — not the 1.1.2(4) executive interview evidence (still PARTIAL)."
         }
       ]
     },
     "about-goals": {
-      "noticeTh": "เป้าหมายต่อคนอ้างอิงจากประกาศปี 2568 — ค่าในแดชบอร์ดยังไม่ได้เชื่อมโยงเป้าหมายโดยอัตโนมัติ",
-      "noticeEn": "Per-person targets reference the FY 2568 announcement — dashboard targets are not yet linked automatically.",
+      "noticeTh": "FY2568 Historical Baseline — เป้าหมาย 6 โดเมน เทียบปี 2567 (−1/−3/−1/−3/−3/−1) · กระดาษแก้เป็น −3% หลังทบทวนฝ่ายบริหาร",
+      "noticeEn": "FY2568 Historical Baseline — six domain targets vs FY2567 (−1/−3/−1/−3/−3/−1) · paper amended to −3% post management review.",
       "documentId": "doc-goals",
       "relatedIndicators": ["1.1.3"],
       "sections": [
@@ -59,8 +61,8 @@
       ]
     },
     "about-scope": {
-      "noticeTh": "สรุปจากเอกสาร OCR — ตัวเลขพื้นที่และรายละเอียดห้องต้องตรวจสอบกับต้นฉบับ PDF ก่อนเผยแพร่เป็นหลักฐานอย่างเป็นทางการ",
-      "noticeEn": "Summary from OCR-derived document — area figures and room details require verification against original PDF before formal evidence publication.",
+      "noticeTh": "FY2568 Historical Baseline — 9,873 m² · 4 หน่วยงาน (ตรวจสอบจากสัญญา CAT1 1.1.1)",
+      "noticeEn": "FY2568 Historical Baseline — 9,873 m² · 4 organizations (verified via CAT1 1.1.1 contract).",
       "documentId": "doc-scope",
       "relatedIndicators": ["1.1.1"],
       "sections": [
@@ -74,22 +76,28 @@
           "headingTh": "ผลการประเมินปัญหาสิ่งแวดล้อมจากกิจกรรมในสำนักงาน",
           "headingEn": "Office activity environmental assessment results",
           "pending": true,
-          "pendingNoteTh": "เอกสารยังไม่ได้รับในรอบ intake นี้ — เอกสารขอบเขตกำหนดพื้นที่/บุคลากรแต่ไม่มีการประเมินปัญหาจากกิจกรรม (ตัวชี้วัด 1.3.1)",
-          "pendingNoteEn": "Not supplied in this intake — scope document defines area/personnel but does not contain activity-level environmental issue assessment (indicator 1.3.1)."
+          "pendingNoteTh": "การประเมินกิจกรรม (1.3.1) อยู่ที่ทะเบียนประเด็นสิ่งแวดล้อม — ไม่ใช่เอกสารขอบเขต 1.1.1",
+          "pendingNoteEn": "Activity assessment (1.3.1) lives in the environmental aspects register — not the 1.1.1 scope document."
         }
       ]
     },
     "about-action-plan": {
-      "noticeTh": "ข้อมูลกิจกรรมและแผนรายเดือนดึงจากไฟล์ Excel 2569 อย่างเป็นทางการ — ชื่อผู้รับผิดชอบและผลการดำเนินงานแสดงตามต้นฉบับในแฟ้มงาน",
-      "noticeEn": "Activity and monthly plan data is sourced from the official FY2569 Excel workbook — responsible persons and results appear exactly as recorded in the file.",
+      "noticeTh": "แยกปีชัดเจน: ด้านบน = FY2568 Historical Baseline (1.1.4 / proj-plan-1) · ด้านล่าง = แผนปฏิบัติการ FY2569 จาก Excel ปัจจุบัน (ไม่ผสมเป็นชุดเดียว)",
+      "noticeEn": "Explicit year separation: top = FY2568 Historical Baseline (1.1.4 / proj-plan-1) · below = current FY2569 operational plan from Excel (not merged into one dataset).",
       "documentId": "doc-action-plan",
-      "relatedIndicators": ["1.5.1", "1.5.2"],
+      "relatedIndicators": ["1.1.4", "1.6.1"],
       "sections": [
         {
-          "headingTh": "แผนและผลการดำเนินโครงการ",
-          "headingEn": "Action plan and performance results",
+          "headingTh": "แผนปี 2568 (Historical Baseline)",
+          "headingEn": "FY2568 plan (Historical Baseline)",
           "summaryKey": "doc-action-plan",
           "historical": true
+        },
+        {
+          "headingTh": "แผนปฏิบัติการ 2569 (ปีปัจจุบัน)",
+          "headingEn": "FY2569 action plan (current year)",
+          "summaryKey": "fy2569-excel",
+          "historical": false
         }
       ]
     },
@@ -107,10 +115,10 @@
       ]
     },
     "about-committee": {
-      "noticeTh": "เอกสารความเข้าใจบทบาทที่ส่งมาเป็นไฟล์ซ้ำกับรายงานการประชุม — รอ Product Owner ยืนยันเอกสารที่ถูกต้องสำหรับตัวชี้วัด 1.2.2",
-      "noticeEn": "The supplied role-understanding file duplicates meeting minutes — Product Owner confirmation needed for indicator 1.2.2.",
+      "noticeTh": "FY2568 Historical Baseline — คำสั่งลงนาม 25 มี.ค. 2568 · 4 หน่วยงาน · โครงสร้างคณะกรรมการจากสัญญา CAT1 เดียวกับ 1.2.1",
+      "noticeEn": "FY2568 Historical Baseline — order signed 25 Mar 2568 · 4 organizations · committee structure from the same CAT1 contract as 1.2.1.",
       "documentId": "doc-committee-order",
-      "relatedIndicators": ["1.2.1"],
+      "relatedIndicators": ["1.2.1", "1.2.2"],
       "sections": [
         {
           "headingTh": "คำสั่งแต่งตั้งคณะกรรมการ",
@@ -118,10 +126,12 @@
           "summaryKey": "doc-committee-order"
         },
         {
-          "headingTh": "ความเข้าใจบทบาทและหน้าที่",
-          "headingEn": "Role understanding",
+          "headingTh": "ความเข้าใจบทบาทและหน้าที่ (1.2.2)",
+          "headingEn": "Role understanding (1.2.2)",
           "summaryKey": "doc-committee-understanding",
-          "pending": true
+          "pending": true,
+          "pendingNoteTh": "MISSING — ไม่มีหลักฐานสัมภาษณ์ FY2568; ไฟล์ที่ส่งมาเป็นรายงานประชุมซ้ำ (FY2569) ไม่ใช่เครื่องมือประเมินความเข้าใจ",
+          "pendingNoteEn": "MISSING — no FY2568 interview evidence; supplied file is duplicate meeting minutes (FY2569), not a role-understanding instrument."
         }
       ]
     }

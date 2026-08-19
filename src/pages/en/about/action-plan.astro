@@ -2,6 +2,7 @@
 import AboutPageShell from '../../../components/about/AboutPageShell.astro';
 import ActionPlanExperience from '../../../components/about/action-plan/ActionPlanExperience.astro';
 import AboutNotice from '../../../components/about/AboutNotice.astro';
+import AboutCanonicalFacts from '../../../components/about/AboutCanonicalFacts.astro';
 import aboutContent from '../../../data/about/content.json';
 import { getLocale, getLocalizedPath } from '../../../i18n/utils';
 
@@ -12,6 +13,19 @@ const content = aboutContent.pages['about-action-plan'];
 
 <AboutPageShell pageId="about-action-plan">
   <AboutNotice noticeTh={content.noticeTh} noticeEn={content.noticeEn} isTh={isTh} tone="green" />
+
+  <AboutCanonicalFacts pageId="about-action-plan" isTh={isTh} />
+
+  <section class="not-prose mb-6 rounded-lg border border-green-200 bg-green-50/30 p-4" data-about-fy2569-section>
+    <h2 class="text-base font-bold text-gray-900">
+      {isTh ? 'แผนปฏิบัติการ FY2569 (ปีปัจจุบัน)' : 'FY2569 action plan (current year)'}
+    </h2>
+    <p class="mt-1 text-sm text-gray-600">
+      {isTh
+        ? 'ส่วนนี้ดึงจาก Excel 2569 — แยกจากฐานประวัติ FY2568 ด้านบน'
+        : 'This section is sourced from the FY2569 Excel workbook — separate from the FY2568 baseline above.'}
+    </p>
+  </section>
 
   <p class="text-sm text-gray-500 mb-6 not-prose">
     {isTh ? 'ตัวชี้วัดที่เกี่ยวข้อง' : 'Related indicators'}:

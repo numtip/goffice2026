@@ -19,6 +19,7 @@ import targetsData from '../data/category1/targets.json';
 import ghgData from '../data/category1/ghg.json';
 import projectsData from '../data/category1/projects.json';
 import managementReviewData from '../data/category1/management-review.json';
+import environmentalCommitteeData from '../data/category1/environmental-committee.json';
 import environmentalAspectsData from '../data/category1/environmental-aspects-2568.json';
 import indicatorsData from '../data/criteria/indicators.json';
 
@@ -32,6 +33,7 @@ export type Cat1Domain =
   | 'ghg'
   | 'projects'
   | 'management-review'
+  | 'environmental-committee'
   | 'environmental-aspects-2568';
 
 export interface Bilingual {
@@ -82,6 +84,7 @@ const CONTRACTS: Record<Cat1Domain, { records: ContractRecord[] }> = {
   ghg: ghgData as { records: ContractRecord[] },
   projects: projectsData as { records: ContractRecord[] },
   'management-review': managementReviewData as { records: ContractRecord[] },
+  'environmental-committee': environmentalCommitteeData as { records: ContractRecord[] },
   'environmental-aspects-2568': environmentalAspectsData as unknown as { records: ContractRecord[] },
 };
 
@@ -91,6 +94,7 @@ export const INDICATOR_DOMAIN: Record<string, Cat1Domain> = {
   '1.1.2': 'activities-aspects',
   '1.1.3': 'targets',
   '1.1.4': 'projects',
+  '1.2.1': 'environmental-committee',
   '1.3.1': 'environmental-aspects-2568',
   '1.3.2': 'environmental-aspects-2568',
   '1.3.3': 'environmental-aspects-2568',
@@ -257,6 +261,38 @@ export function buildCat1DomainSnapshot(domain: Cat1Domain): DomainSnapshot {
             ? { label: { th: 'องค์ประชุมเข้าร่วม', en: 'Quorum attendance' }, value: `${quorum.attendancePct}%`, kind: 'number' }
             : { label: { th: 'องค์ประชุมเข้าร่วม', en: 'Quorum attendance' }, value: '—', kind: 'unavailable' },
           { label: { th: 'การประชุมทบทวน', en: 'Review meetings' }, value: String(meetings.length), kind: 'number' },
+        ],
+      };
+    }
+    case 'environmental-committee': {
+      const ec = records.find((r) => r.kind === 'environmentalCommittee');
+      const auth = records.find((r) => r.kind === 'appointmentAuthority');
+      const groups = records.filter((r) => r.kind === 'committeeGroup');
+      return {
+        domain,
+        status: 'historical-baseline',
+        facts: [
+          ec
+            ? {
+                label: { th: 'หน่วยงานในขอบเขต', en: 'Organizations' },
+                value: String(ec.organizationCount),
+                kind: 'number',
+              }
+            : { label: { th: 'หน่วยงานในขอบเขต', en: 'Organizations' }, value: '—', kind: 'unavailable' },
+          ec
+            ? {
+                label: { th: 'ครอบคลุมบุคลากร (รวม)', en: 'Personnel coverage (sum)' },
+                value: {
+                  th: `${ec.personnelCoverageTotal} (ไม่ใช่กรรมการไม่ซ้ำ)`,
+                  en: `${ec.personnelCoverageTotal} (not deduplicated members)`,
+                },
+                kind: 'text',
+              }
+            : { label: { th: 'ครอบคลุมบุคลากร', en: 'Personnel coverage' }, value: '—', kind: 'unavailable' },
+          auth?.dateBE
+            ? { label: { th: 'ลงนามแต่งตั้ง', en: 'Appointment signed' }, value: String(auth.dateBE), kind: 'text' }
+            : { label: { th: 'ลงนามแต่งตั้ง', en: 'Appointment signed' }, value: '—', kind: 'unavailable' },
+          { label: { th: 'กลุ่มคณะกรรมการ', en: 'Committee groups' }, value: String(groups.length), kind: 'number' },
         ],
       };
     }
@@ -446,6 +482,13 @@ export interface RelationLink {
  * coverage; no invented relations.
  */
 export const INDICATOR_RELATIONS: Record<string, RelationLink[]> = {
+  '1.1.4': [
+    { to: '1.6.1', label: { th: 'แผน 2568 ↔ แผนลด GHG', en: 'FY2568 plan ↔ GHG reduction plan' }, reason: { th: 'บันทึก proj-plan-1 ใช้ร่วมกัน', en: 'Shared proj-plan-1 record' } },
+  ],
+  '1.2.1': [
+    { to: '1.1.4', label: { th: 'ธรรมาภิบาล → แผนประจำปี', en: 'Governance → Annual plan' }, reason: { th: 'คณะกรรมการรับผิดชอบการดำเนินงานตามแผน', en: 'Committee accountable for plan execution' } },
+    { to: '1.7.2', label: { th: 'ธรรมาภิบาล → ทบทวนฝ่ายบริหาร', en: 'Governance → Management review' }, reason: { th: 'การเปลี่ยนแปลงคณะกรรมการทบทวนใน MR #1', en: 'Committee changes reviewed at MR #1' } },
+  ],
   '1.1.1': [
     { to: '1.3.1', label: { th: 'ขอบเขต → การประเมินกิจกรรม', en: 'Scope → Activity assessment' }, reason: { th: 'กิจกรรมในขอบเขตถูกระบุและประเมินใน 1.3.1', en: 'In-scope activities are assessed under 1.3.1' } },
   ],

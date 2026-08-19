@@ -1,0 +1,303 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "environmental-committee",
+  "updated": "2026-08-19",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CATEGORY1_MANAGEMENT_BLUEPRINT_V1",
+  "sources": [
+    {
+      "ref": "1.2/1.2.1-คณะทำงานด้านสิ่งแวดล้อมปี2568.pdf",
+      "role": "primary",
+      "inspection": "content-verified",
+      "disposition": "canonical",
+      "note": "Page 1 narrative + scanned order attachment pages 2–7; page 8 holds 1.2.2 stub only."
+    },
+    {
+      "ref": "doc/Order_appointing_the_committee.pdf",
+      "role": "supporting",
+      "inspection": "metadata-verified",
+      "disposition": "public-copy",
+      "note": "RAE operational appointment order (6 pp scanned); published at /documents/about/committee/."
+    }
+  ],
+  "records": [
+    {
+      "id": "ec-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["1.2.1"],
+      "issueCodes": ["1.2"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-committee-order"],
+      "sourceRef": "1.2/1.2.1-คณะทำงานด้านสิ่งแวดล้อมปี2568.pdf",
+      "verification": {
+        "status": "reviewed",
+        "basis": "§1.2.1(1)-(2): written appointment; 4 orgs; all-category coverage; roles defined in order attachment."
+      },
+      "availability": "content-verified",
+      "kind": "environmentalCommittee",
+      "buildingTh": "อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา",
+      "buildingEn": "Chalermprakiat Building",
+      "programTh": "สำนักงานสีเขียว (Green Office)",
+      "programEn": "Green Office program",
+      "organizationCount": 4,
+      "categoryCoverage": "all-seven",
+      "personnelCoverageTotal": 97,
+      "personnelCoverageSemantics": "organizational_staffing_not_unique_committee_members",
+      "personnelCoverageNoteTh": "97 = ผลรวมบุคลากร/ผู้แทนจาก 4 หน่วยงานในอาคาร — ไม่ใช่จำนวนกรรมการไม่ซ้ำที่ dedup แล้ว",
+      "personnelCoverageNoteEn": "97 = summed organizational personnel/representatives across 4 units — not deduplicated unique committee members"
+    },
+    {
+      "id": "appt-auth-1",
+      "year": 2568,
+      "indicatorCodes": ["1.2.1"],
+      "issueCodes": ["1.2"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-committee-order"],
+      "sourceRef": "1.2/1.2.1-คณะทำงานด้านสิ่งแวดล้อมปี2568.pdf",
+      "verification": {
+        "status": "reviewed",
+        "basis": "§1.2.1(1): written appointment signed by university president on 25 มี.ค. 2568."
+      },
+      "availability": "content-verified",
+      "kind": "appointmentAuthority",
+      "writtenAppointment": true,
+      "signedByRoleTh": "อธิการบดีมหาวิทยาลัยแม่โจ้",
+      "signedByRoleEn": "President of Maejo University",
+      "dateBE": "25 มี.ค. 2568",
+      "dateISO": "2025-03-25",
+      "orderRef": null,
+      "orderRefStatus": "not_on_extracted_page1",
+      "orderRefNoteTh": "เลขที่คำสั่งอยู่ในเอกสารสแกนแนบ (หน้า 2–7) — ยังไม่ OCR; 345/2568 เป็นคำสั่งองค์ประชุมทบทวนฝ่ายบริหาร (1.7.1) ไม่ใช่คำสั่งแต่งตั้งคณะ GO",
+      "orderRefNoteEn": "Order number is in scanned attachment pages 2–7 — not yet OCR'd; 345/2568 is the management-review body order (1.7.1), not the GO committee appointment",
+      "supersedesPriorOrder": null,
+      "operationalOrderDocumentId": "doc-committee-order"
+    },
+    {
+      "id": "org-cov-1",
+      "year": 2568,
+      "indicatorCodes": ["1.2.1"],
+      "issueCodes": ["1.2"],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.2/1.2.1-คณะทำงานด้านสิ่งแวดล้อมปี2568.pdf",
+      "verification": { "status": "reviewed", "basis": "§1.2.1(1) org list — RAE 63 personnel." },
+      "availability": "content-verified",
+      "kind": "organizationCoverage",
+      "organizationId": "scope-org-1",
+      "personnelCount": 63
+    },
+    {
+      "id": "org-cov-2",
+      "year": 2568,
+      "indicatorCodes": ["1.2.1"],
+      "issueCodes": ["1.2"],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.2/1.2.1-คณะทำงานด้านสิ่งแวดล้อมปี2568.pdf",
+      "verification": { "status": "reviewed", "basis": "§1.2.1(1) — IQS 25 personnel." },
+      "availability": "content-verified",
+      "kind": "organizationCoverage",
+      "organizationId": "scope-org-2",
+      "personnelCount": 25
+    },
+    {
+      "id": "org-cov-3",
+      "year": 2568,
+      "indicatorCodes": ["1.2.1"],
+      "issueCodes": ["1.2"],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.2/1.2.1-คณะทำงานด้านสิ่งแวดล้อมปี2568.pdf",
+      "verification": { "status": "reviewed", "basis": "§1.2.1(1) — ICAP 5 personnel." },
+      "availability": "content-verified",
+      "kind": "organizationCoverage",
+      "organizationId": "scope-org-3",
+      "personnelCount": 5
+    },
+    {
+      "id": "org-cov-4",
+      "year": 2568,
+      "indicatorCodes": ["1.2.1"],
+      "issueCodes": ["1.2"],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.2/1.2.1-คณะทำงานด้านสิ่งแวดล้อมปี2568.pdf",
+      "verification": { "status": "reviewed", "basis": "§1.2.1(1) — rice research/improvement unit 4 personnel." },
+      "availability": "content-verified",
+      "kind": "organizationCoverage",
+      "organizationId": "scope-org-4",
+      "personnelCount": 4
+    },
+    {
+      "id": "grp-steering-1",
+      "year": 2568,
+      "indicatorCodes": ["1.2.1"],
+      "issueCodes": ["1.2"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-committee-order"],
+      "sourceRef": "doc/Order_appointing_the_committee.pdf",
+      "verification": {
+        "status": "reviewed",
+        "basis": "OCR-derived summary: Oversight Committee chaired by university Vice President."
+      },
+      "availability": "metadata-verified",
+      "kind": "committeeGroup",
+      "groupLayer": "executive_steering",
+      "groupId": "oversight",
+      "labelTh": "คณะกรรมการอำนวยการ",
+      "labelEn": "Oversight / steering committee",
+      "chairRoleTh": "รองอธิการบดี (ประธาน)",
+      "chairRoleEn": "Vice President (chair)",
+      "categoryCodes": ["cat1", "cat2", "cat3", "cat4", "cat5", "cat6", "cat7"]
+    },
+    {
+      "id": "grp-wg-cat1-cat7",
+      "year": 2568,
+      "indicatorCodes": ["1.2.1"],
+      "issueCodes": ["1.2"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-committee-order"],
+      "sourceRef": "doc/Order_appointing_the_committee.pdf",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Order structure: combined working group for Categories 1 and 7."
+      },
+      "availability": "metadata-verified",
+      "kind": "committeeGroup",
+      "groupLayer": "category_working_group",
+      "groupId": "wg-cat1-cat7",
+      "labelTh": "คณะทำงานหมวด 1 และ 7 (รวมกลุ่ม)",
+      "labelEn": "Category 1 + 7 working group (combined)",
+      "categoryCodes": ["cat1", "cat7"],
+      "combinedGroup": true
+    },
+    {
+      "id": "grp-wg-cat2",
+      "year": 2568,
+      "indicatorCodes": ["1.2.1"],
+      "issueCodes": ["1.2"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-committee-order"],
+      "sourceRef": "doc/Order_appointing_the_committee.pdf",
+      "verification": { "status": "reviewed", "basis": "Order structure: Category 2 operations committee." },
+      "availability": "metadata-verified",
+      "kind": "committeeGroup",
+      "groupLayer": "category_working_group",
+      "groupId": "wg-cat2",
+      "labelTh": "คณะทำงานหมวด 2",
+      "labelEn": "Category 2 working group",
+      "categoryCodes": ["cat2"]
+    },
+    {
+      "id": "grp-wg-cat3",
+      "year": 2568,
+      "indicatorCodes": ["1.2.1"],
+      "issueCodes": ["1.2"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-committee-order"],
+      "sourceRef": "doc/Order_appointing_the_committee.pdf",
+      "verification": { "status": "reviewed", "basis": "Order structure: Category 3 operations committee." },
+      "availability": "metadata-verified",
+      "kind": "committeeGroup",
+      "groupLayer": "category_working_group",
+      "groupId": "wg-cat3",
+      "labelTh": "คณะทำงานหมวด 3",
+      "labelEn": "Category 3 working group",
+      "categoryCodes": ["cat3"]
+    },
+    {
+      "id": "grp-wg-cat4",
+      "year": 2568,
+      "indicatorCodes": ["1.2.1"],
+      "issueCodes": ["1.2"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-committee-order"],
+      "sourceRef": "doc/Order_appointing_the_committee.pdf",
+      "verification": { "status": "reviewed", "basis": "Order structure: Category 4 operations committee." },
+      "availability": "metadata-verified",
+      "kind": "committeeGroup",
+      "groupLayer": "category_working_group",
+      "groupId": "wg-cat4",
+      "labelTh": "คณะทำงานหมวด 4",
+      "labelEn": "Category 4 working group",
+      "categoryCodes": ["cat4"]
+    },
+    {
+      "id": "grp-wg-cat5",
+      "year": 2568,
+      "indicatorCodes": ["1.2.1"],
+      "issueCodes": ["1.2"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-committee-order"],
+      "sourceRef": "doc/Order_appointing_the_committee.pdf",
+      "verification": { "status": "reviewed", "basis": "Order structure: Category 5 operations committee." },
+      "availability": "metadata-verified",
+      "kind": "committeeGroup",
+      "groupLayer": "category_working_group",
+      "groupId": "wg-cat5",
+      "labelTh": "คณะทำงานหมวด 5",
+      "labelEn": "Category 5 working group",
+      "categoryCodes": ["cat5"]
+    },
+    {
+      "id": "grp-wg-cat6",
+      "year": 2568,
+      "indicatorCodes": ["1.2.1"],
+      "issueCodes": ["1.2"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-committee-order"],
+      "sourceRef": "doc/Order_appointing_the_committee.pdf",
+      "verification": { "status": "reviewed", "basis": "Order structure: Category 6 operations committee." },
+      "availability": "metadata-verified",
+      "kind": "committeeGroup",
+      "groupLayer": "category_working_group",
+      "groupId": "wg-cat6",
+      "labelTh": "คณะทำงานหมวด 6",
+      "labelEn": "Category 6 working group",
+      "categoryCodes": ["cat6"]
+    },
+    {
+      "id": "resp-all-categories",
+      "year": 2568,
+      "indicatorCodes": ["1.2.1"],
+      "issueCodes": ["1.2"],
+      "categoryCode": "cat1",
+      "evidenceIds": ["ev-about-committee-order"],
+      "sourceRef": "1.2/1.2.1-คณะทำงานด้านสิ่งแวดล้อมปี2568.pdf",
+      "verification": {
+        "status": "reviewed",
+        "basis": "§1.2.1(1)-(2): committee must cover all categories; roles/responsibilities defined in order."
+      },
+      "availability": "content-verified",
+      "kind": "responsibilityAssignment",
+      "scope": "all_categories",
+      "summaryTh": "คณะกรรมการ/ทีมงานครอบคลุมทุกหมวด มีอำนาจ บทบาท และหน้าที่ชัดเจนตามคำสั่ง",
+      "summaryEn": "Committee/working team covers all categories with defined authority, roles, and duties per the order"
+    }
+  ],
+  "gaps": [
+    {
+      "indicator": "1.2.2",
+      "status": "MISSING",
+      "sourceStub": "-สัมภาษณ์-",
+      "sampleSize": null,
+      "understandingPercent": null,
+      "note": "No FY2568 random-interview record; wrapper PDF p.8 stub '-สัมภาษณ์-' only. doc-committee-understanding is duplicate meeting minutes (FY2569), not a role-understanding instrument."
+    },
+    {
+      "indicator": "1.5.3",
+      "status": "MISSING",
+      "note": "No FY2568 GHG-knowledge training evidence (manifest cross-reference; primary gap in ghg contract)."
+    },
+    {
+      "indicator": "1.2.1",
+      "status": "PARTIAL",
+      "note": "Member roster and exact order number remain in scanned attachment (pages 2–7) pending OCR; structure and appointment authority verified from page 1 + metadata."
+    }
+  ],
+  "crossLinks": [
+    { "from": "1.2.1", "to": "1.1.4", "reason": "Annual plan responsibility under shared governance" },
+    { "from": "1.2.1", "to": "1.7.2", "reason": "MR Meeting #1 decision 4.1.1 approved committee structure changes" }
+  ]
+}

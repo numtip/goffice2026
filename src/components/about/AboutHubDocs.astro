@@ -15,7 +15,7 @@ const { isTh } = Astro.props;
 const locale = getLocale(Astro.url);
 const allDocs = documentsData.documents;
 
-const order = Astro.props.order ?? ['about-policy', 'about-goals', 'about-scope', 'about-committee', 'about-action-plan', 'about-feedback'];
+const order = Astro.props.order ?? ['about-scope', 'about-policy', 'about-goals', 'about-action-plan', 'about-committee', 'about-feedback'];
 
 const cards = order
   .map((pageId) => {
