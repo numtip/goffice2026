@@ -130,17 +130,24 @@ export function buildCat1DomainSnapshot(domain: Cat1Domain): DomainSnapshot {
       };
     }
     case 'laws': {
-      const items = records.filter((r) => r.kind === 'legal-item');
-      const latestReview = items
-        .map((r) => String(r.reviewDate || ''))
+      const topics = records.filter((r) => r.kind === 'legal-item');
+      const requirements = records.filter((r) => r.kind === 'legal-requirement');
+      const mappings = records.filter((r) => r.kind === 'aspect-legal-mapping');
+      const latestReview = topics
+        .flatMap((r) => (Array.isArray(r.reviewDates) ? r.reviewDates : [r.reviewDate]))
+        .map(String)
         .filter(Boolean)
         .sort()
         .at(-1);
       return {
         domain,
-        status: 'normalized-verified',
+        status: 'historical-baseline',
         facts: [
-          { label: { th: 'รายการกฎหมาย', en: 'Legal items' }, value: String(items.length), kind: 'number' },
+          { label: { th: 'หัวข้อกฎหมาย', en: 'Legal topics' }, value: String(topics.length), kind: 'number' },
+          { label: { th: 'ข้อกำหนด (ทะเบียน)', en: 'Register requirements' }, value: String(requirements.length), kind: 'number' },
+          mappings.length
+            ? { label: { th: 'การเชื่อมประเด็น (1.3↔1.4)', en: 'Aspect↔law links' }, value: String(mappings.length), kind: 'number' }
+            : { label: { th: 'การเชื่อมประเด็น (1.3↔1.4)', en: 'Aspect↔law links' }, value: '—', kind: 'unavailable' },
           latestReview
             ? { label: { th: 'ทบทวนล่าสุด', en: 'Latest review' }, value: latestReview, kind: 'text' }
             : { label: { th: 'ทบทวนล่าสุด', en: 'Latest review' }, value: '—', kind: 'unavailable' },
@@ -149,15 +156,23 @@ export function buildCat1DomainSnapshot(domain: Cat1Domain): DomainSnapshot {
     }
     case 'compliance': {
       const evalRec = records.find((r) => r.kind === 'evaluation');
+      const assessments = records.filter((r) => r.kind === 'legal-compliance-assessment');
+      const needsReview = assessments.filter((r) => r.status === 'needs_review').length;
       return {
         domain,
-        status: 'normalized-partial',
+        status: 'historical-baseline',
         facts: [
           {
             label: { th: 'ผลการประเมิน', en: 'Evaluation result' },
             value: evalRec?.result === 'partial' ? 'บางส่วน (ข้อมูลสัมภาษณ์ยังไม่พร้อม)' : String(evalRec?.result || '—'),
             kind: evalRec?.result ? 'status' : 'unavailable',
           },
+          assessments.length
+            ? { label: { th: 'การประเมินรายข้อ', en: 'Row assessments' }, value: String(assessments.length), kind: 'number' }
+            : { label: { th: 'การประเมินรายข้อ', en: 'Row assessments' }, value: '—', kind: 'unavailable' },
+          needsReview
+            ? { label: { th: 'ต้องทบทวน', en: 'Needs review' }, value: String(needsReview), kind: 'status' }
+            : { label: { th: 'ต้องทบทวน', en: 'Needs review' }, value: '0', kind: 'number' },
           evalRec?.reviewer
             ? { label: { th: 'ผู้ตรวจสอบ', en: 'Reviewer' }, value: String(evalRec.reviewer), kind: 'text' }
             : { label: { th: 'ผู้ตรวจสอบ', en: 'Reviewer' }, value: '—', kind: 'unavailable' },
@@ -419,6 +434,14 @@ export const INDICATOR_RELATIONS: Record<string, RelationLink[]> = {
   '1.3.1': [
     { to: '1.4.1', label: { th: 'ประเด็น → กฎหมายที่เกี่ยวข้อง', en: 'Aspects → Applicable laws' }, reason: { th: 'กฎหมายที่เกี่ยวข้องกับประเด็นปัญหาอยู่ใน 1.4.1', en: 'Laws applicable to aspects are registered in 1.4.1' } },
     { to: '1.4.2', label: { th: 'ประเด็น → การประเมินความสอดคล้อง', en: 'Aspects → Compliance evaluation' }, reason: { th: 'ความสอดคล้องของกฎหมายประเมินใน 1.4.2', en: 'Legal compliance is evaluated in 1.4.2' } },
+  ],
+  '1.4.1': [
+    { to: '1.4.2', label: { th: 'ทะเบียน → การประเมินความสอดคล้อง', en: 'Register → Compliance evaluation' }, reason: { th: 'แถว √ ในทะเบียนถูกประเมินใน 1.4.2', en: 'Register √ marks are assessed under 1.4.2' } },
+    { to: '1.3.1', label: { th: 'กฎหมาย ↔ ประเด็น 1.3', en: 'Laws ↔ 1.3 aspects' }, reason: { th: 'มีการเชื่อม 1 รายการจากแหล่งเท่านั้น (ea-79)', en: 'Only one source-explicit link (ea-79)' } },
+  ],
+  '1.4.2': [
+    { to: '1.4.1', label: { th: 'การประเมิน → ทะเบียนกฎหมาย', en: 'Evaluation → Legal register' }, reason: { th: 'การประเมินรายข้ออ้างอิงทะเบียน 1.4', en: 'Row assessments reference the 1.4 register' } },
+    { to: '1.3.1', label: { th: 'ความสอดคล้อง → ประเด็น', en: 'Compliance → Aspects' }, reason: { th: 'ประเด็นที่เชื่อมชัดในแหล่งอยู่ที่ 1.3.1 / 1.4.1', en: 'Explicitly linked aspects live under 1.3.1 / 1.4.1' } },
   ],
   '1.1.3': [
     { to: '1.5.2', label: { th: 'เป้าหมาย → วิเคราะห์ผล GHG', en: 'Targets → GHG analysis' }, reason: { th: 'ผล GHG เทียบเป้าหมายใน 1.5.2', en: 'GHG performance vs target is analysed in 1.5.2' } },

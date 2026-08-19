@@ -134,6 +134,26 @@ describe('category1 contracts — truthfulness guards', () => {
     assert.deepEqual(domains, ['electricity', 'fuel', 'general_waste', 'ghg', 'paper', 'water']);
   });
 
+  it('laws contract has 9 topics, 47 requirements, and 1 explicit aspect mapping', () => {
+    const laws = readContract('laws');
+    assert.equal(laws.status, 'historical-baseline');
+    assert.equal(laws.records.filter((r) => r.kind === 'legal-item').length, 9);
+    assert.equal(laws.records.filter((r) => r.kind === 'legal-requirement').length, 47);
+    assert.equal(laws.records.filter((r) => r.kind === 'aspect-legal-mapping').length, 1);
+    const mapping = laws.records.find((r) => r.id === 'alm-ea79-lr32');
+    assert.equal(mapping.aspectId, 'ea-79');
+    assert.equal(mapping.legalRequirementId, 'lr-3.2');
+  });
+
+  it('compliance contract has narrative evaluation and 47 register assessments', () => {
+    const c = readContract('compliance');
+    assert.equal(c.status, 'historical-baseline');
+    assert.equal(c.records.filter((r) => r.kind === 'evaluation').length, 1);
+    assert.equal(c.records.filter((r) => r.kind === 'legal-compliance-assessment').length, 47);
+    const tds = c.records.find((r) => r.id === 'lca-1.3');
+    assert.equal(tds.status, 'needs_review');
+  });
+
   it('management-review quorum is documented at 20/23 = 86.96%', () => {
     const mr = readContract('management-review');
     const quorum = mr.records.find((r) => r.kind === 'quorum');

@@ -20,6 +20,9 @@ const CYCLE = join(ROOT, 'src/components/categories/Cat1ManagementCycle.astro');
 const SNAPSHOT = join(ROOT, 'src/components/categories/Cat1DomainSnapshot.astro');
 const CONTEXT = join(ROOT, 'src/components/indicators/Cat1ContractContext.astro');
 const TRACE = join(ROOT, 'src/components/indicators/IndicatorTraceabilityExperience.astro');
+const LEGAL_REG = join(ROOT, 'src/components/indicators/Cat1LegalRegisterJourney.astro');
+const LEGAL_COMP = join(ROOT, 'src/components/indicators/Cat1LegalComplianceJourney.astro');
+const LEGAL_VM = join(ROOT, 'src/utils/category1-legal-presentation.ts');
 const VM = join(ROOT, 'src/utils/category1-presentation.ts');
 
 describe('Phase E — TH/EN structural parity', () => {
@@ -47,6 +50,7 @@ describe('Phase E — TH/EN structural parity', () => {
   it('indicator traceability wires the contract context for cat1 only', () => {
     const trace = readFileSync(TRACE, 'utf8');
     assert.match(trace, /Cat1ContractContext/);
+    assert.match(trace, /Cat1LegalPresentation/);
     assert.match(trace, /indicator\.categoryCode === 'cat1'/);
   });
 });
@@ -80,7 +84,7 @@ describe('Phase E — a11y / motion', () => {
   });
 
   it('no local filesystem paths or secrets in the presentation artifacts', () => {
-    for (const p of [CYCLE, SNAPSHOT, CONTEXT, VM]) {
+    for (const p of [CYCLE, SNAPSHOT, CONTEXT, VM, LEGAL_VM, LEGAL_REG, LEGAL_COMP]) {
       const raw = readFileSync(p, 'utf8');
       assert.ok(!/F:\\/i.test(raw), `${p} leaks F:\\ path`);
       assert.ok(!/OneDrive - Maejo/i.test(raw), `${p} leaks OneDrive path`);
@@ -120,5 +124,24 @@ describe('Phase F — cross-link journeys and view-model', () => {
     const snap = readFileSync(SNAPSHOT, 'utf8');
     assert.match(snap, /route: '\/indicators\/1\.1\.1\/'/);
     assert.doesNotMatch(snap, /'activities-aspects': \{ label: \{ th: 'ขอบเขตและประเด็น'/);
+  });
+
+  it('1.4 presentation is wired with historical-baseline honesty markers', () => {
+    const trace = readFileSync(TRACE, 'utf8');
+    assert.match(trace, /cat14Canonical/);
+    const reg = readFileSync(LEGAL_REG, 'utf8');
+    const comp = readFileSync(LEGAL_COMP, 'utf8');
+    assert.match(reg, /Historical Baseline/);
+    assert.match(reg, /data-cat14-register-table/);
+    assert.match(reg, /data-cat14-aspect-mapping/);
+    assert.match(reg, /m\.aspectId/);
+    assert.match(reg, /focus-visible:ring-2/);
+    assert.match(comp, /Needs review/);
+    assert.match(comp, /Do not interpret|ห้ามตีความ/);
+    assert.match(comp, /Partial/);
+    assert.doesNotMatch(reg, /100% compliant/i);
+    const vm = readFileSync(LEGAL_VM, 'utf8');
+    assert.match(vm, /buildLegalSummary/);
+    assert.match(vm, /buildAspectLegalMappings/);
   });
 });

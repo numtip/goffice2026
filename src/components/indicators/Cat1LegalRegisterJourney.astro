@@ -1,0 +1,452 @@
+---
+/**
+ * 1.4.1 Legal Register Journey — FY2568 historical baseline.
+ * Chain: Aspect → Law → Requirement → Compliance → Evidence (mapping layer honest).
+ */
+import {
+  buildLegalSummary,
+  buildLegalTopics,
+  buildLegalRegisterExplorer,
+  buildAspectLegalMappings,
+  buildLegalAnomalies,
+  buildReviewTimeline,
+  truncateLegalText,
+  formatBeDate,
+  CAT1_YEAR,
+} from '../../utils/category1-legal-presentation';
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const isEn = locale === 'en';
+const path = (p: string) => getLocalizedPath(locale, p);
+
+function t(th: string, en: string): string {
+  return isEn ? en : th;
+}
+
+const summary = buildLegalSummary();
+const topics = buildLegalTopics();
+const rows = buildLegalRegisterExplorer();
+const mappings = buildAspectLegalMappings();
+const anomalies = buildLegalAnomalies();
+const timeline = buildReviewTimeline();
+
+const chainTh = 'ประเด็น → กฎหมาย → ข้อกำหนด → ความสอดคล้อง → หลักฐาน';
+const chainEn = 'Aspect → Law → Requirement → Compliance → Evidence';
+
+const registerPdf = '/documents/fy2568/cat1/1.4/1.4. ทะเบียนกฎหมาย ปี 2568.pdf';
+const registerDocx = '/documents/fy2568/cat1/1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx';
+const summaryPdf = '/documents/fy2568/cat1/1.4/1.4.1 กฎหมายและข้อกำหนดอื่น ๆ ด้านสิ่งแวดล้อม.pdf';
+
+const statusLabel = (row: (typeof rows)[0]) => {
+  if (row.isNeedsReview) return t('ต้องทบทวน', 'Needs review');
+  if (row.registerMark === 'compliant') return t('ทะเบียน √', 'Register √');
+  return t('ไม่ระบุ', 'Unmarked');
+};
+const statusClass = (row: (typeof rows)[0]) => {
+  if (row.isNeedsReview) return 'bg-amber-100 text-amber-900 ring-1 ring-amber-300';
+  if (row.registerMark === 'compliant') return 'bg-emerald-50 text-emerald-900 ring-1 ring-emerald-200';
+  return 'bg-gray-100 text-gray-700 ring-1 ring-gray-200';
+};
+---
+
+<div class="cat14-journey space-y-6" data-cat1-legal-register data-view="1.4.1">
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat14-hero-title">
+    <p class="text-xs font-semibold text-primary">
+      {t(`ตัวชี้วัด 1.4.1 · FY${CAT1_YEAR} Historical Baseline`, `Indicator 1.4.1 · FY${CAT1_YEAR} Historical Baseline`)}
+    </p>
+    <h2 id="cat14-hero-title" class="mt-1 text-lg font-bold text-balance text-on-surface sm:text-xl">
+      {t('ทะเบียนกฎหมายและข้อกำหนด', 'Legal register & requirements')}
+    </h2>
+    <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+      {t(
+        `ข้อมูลปี ${CAT1_YEAR} เป็นฐานประวัติ — ไม่ใช่ผลประเมินปีปัจจุบัน และไม่ใช่คะแนนสำนักงานสีเขียว`,
+        `FY${CAT1_YEAR} is the historical baseline — not a current-year result and not an official Green Office score`,
+      )}
+    </p>
+    <p class="mt-2 text-xs text-on-surface-variant">{t(chainTh, chainEn)}</p>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat14-pulse-title">
+    <h2 id="cat14-pulse-title" class="text-base font-bold text-on-surface">{t('ภาพรวมความครอบคลุม', 'Coverage snapshot')}</h2>
+    <ol class="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4" role="list">
+      {
+        [
+          { v: summary.topicCount, th: 'หัวข้อกฎหมาย', en: 'Legal topics' },
+          { v: summary.requirementCount, th: 'ข้อกำหนดในทะเบียน', en: 'Register requirements' },
+          { v: summary.requirementsWithEvidence, th: 'มีข้อความหลักฐาน', en: 'With evidence text' },
+          { v: summary.explicitAspectMappings, th: 'เชื่อมประเด็น 1.3 (ชัดในแหล่ง)', en: 'Explicit 1.3 links' },
+        ].map((item) => (
+          <li class="list-none rounded-stitch border border-outline-variant/20 bg-surface-container-lowest p-4">
+            <p class="text-xs text-on-surface-variant">{t(item.th, item.en)}</p>
+            <p class="mt-1 font-bold num-tabular text-3xl text-primary">{item.v}</p>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="mt-3 text-[11px] text-on-surface-variant">
+      {t(
+        `${summary.requirementCount - summary.requirementsWithEvidence} ข้อยังไม่มีข้อความหลักฐานในแหล่ง · ${summary.unmappedAspectCount} จาก ${summary.aspectCount} ประเด็น 1.3 ไม่มีการเชื่อมในแหล่ง 1.4`,
+        `${summary.requirementCount - summary.requirementsWithEvidence} rows lack evidence text in source · ${summary.unmappedAspectCount} of ${summary.aspectCount} aspects 1.3 have no explicit 1.4 link`,
+      )}
+    </p>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat14-timeline-title">
+    <h2 id="cat14-timeline-title" class="text-base font-bold text-on-surface">{t('ไทม์ไลน์การทบทวน', 'Review timeline')}</h2>
+    <ol class="mt-4 space-y-3 border-l-2 border-green-200 pl-4" role="list">
+      {
+        timeline.map((entry) => (
+          <li class="relative list-none">
+            <span class="absolute -left-[1.35rem] top-1.5 h-2.5 w-2.5 rounded-full bg-primary" aria-hidden="true"></span>
+            <p class="text-xs font-semibold text-primary">{formatBeDate(entry.date)}</p>
+            <p class="text-sm font-medium text-on-surface">{t(entry.labelTh, entry.labelEn)}</p>
+            <p class="text-[11px] text-on-surface-variant">{entry.source}</p>
+          </li>
+        ))
+      }
+    </ol>
+    {
+      anomalies.some((a) => a.id === 'ANOM-REVIEW-DATES') && (
+        <p class="mt-3 rounded-lg border border-amber-200 bg-amber-50/60 p-3 text-xs text-amber-950" role="note">
+          {t(
+            'ข้อขัดแย้งในแหล่ง: 1.4.2 §(4) ระบุเฉพาะ 9 ก.ค. 2568 แต่ทะเบียน 1.4 ระบุทั้ง 9 ก.ค. และ 18 ก.ย. 2568 — ยังไม่ได้สรุปความสอดคล้อง',
+            'Source conflict: 1.4.2 §(4) lists 9 Jul 2568 only; the 1.4 register cites both 9 Jul and 18 Sep 2568 — not reconciled',
+          )}
+        </p>
+      )
+    }
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat14-people-title">
+    <h2 id="cat14-people-title" class="text-base font-bold text-on-surface">{t('ผู้รับผิดชอบ / ผู้ตรวจสอบ', 'Responsible persons')}</h2>
+    <dl class="mt-3 grid gap-3 sm:grid-cols-2 text-sm">
+      <div>
+        <dt class="text-xs font-semibold text-on-surface-variant">{t('ผู้จัดทำ (คำสั่ง 344/2568)', 'Compiler (Order 344/2568)')}</dt>
+        <dd class="mt-0.5 text-on-surface">นางสาวชณันภัสร์ กีรติอำนวยศรี</dd>
+      </div>
+      <div>
+        <dt class="text-xs font-semibold text-on-surface-variant">{t('ผู้ตรวจสอบ', 'Reviewer')}</dt>
+        <dd class="mt-0.5 text-on-surface">ผศ.ภานุวัฒน์ เมฆะ</dd>
+      </div>
+      <div>
+        <dt class="text-xs font-semibold text-on-surface-variant">{t('ผู้อนุมัติ (ลงนาม 18 ก.ย. 2568)', 'Approver (signed 18 Sep 2568)')}</dt>
+        <dd class="mt-0.5 text-on-surface">ผศ.ดร.ณัฐพล เลาห์รอดพันธุ์</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat14-topics-title">
+    <h2 id="cat14-topics-title" class="text-base font-bold text-on-surface">{t('9 หัวข้อกฎหมาย', 'Nine legal topics')}</h2>
+    <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        topics.map((topic) => (
+          <article class="rounded-lg border border-gray-100 bg-gray-50/50 p-4" data-cat14-topic-card data-topic-id={topic.id}>
+            <h3 class="text-sm font-semibold text-on-surface">{topic.title}</h3>
+            <p class="mt-1 text-[11px] text-on-surface-variant">{topic.requirementCount} {t('ข้อกำหนด', 'requirements')}</p>
+            <ul class="mt-2 flex flex-wrap gap-1 text-[10px]" role="list">
+              {topic.counts.compliant > 0 && (
+                <li class="list-none rounded-full bg-emerald-100 px-2 py-0.5 font-medium text-emerald-900">
+                  {t('สรุป 1.4.1 สอดคล้อง', '1.4.1 summary OK')}: {topic.counts.compliant}
+                </li>
+              )}
+              {topic.counts.nonCompliant > 0 && (
+                <li class="list-none rounded-full bg-rose-100 px-2 py-0.5 font-medium text-rose-900">
+                  {t('สรุป 1.4.1 ไม่สอดคล้อง', '1.4.1 summary NOK')}: {topic.counts.nonCompliant}
+                </li>
+              )}
+              {topic.counts.forInformation > 0 && (
+                <li class="list-none rounded-full bg-slate-100 px-2 py-0.5 font-medium text-slate-800">
+                  {t('เพื่อทราบ', 'For info')}: {topic.counts.forInformation}
+                </li>
+              )}
+            </ul>
+            {
+              topic.hasSummaryConflict && (
+                <p class="mt-2 text-[11px] font-medium text-amber-900" role="note">
+                  {t(
+                    'ข้อขัดแย้ง: สรุป 1.4.1 ขัดกับเครื่องหมาย √ ในแถวทะเบียน',
+                    'Unresolved: 1.4.1 topic summary conflicts with register √ marks',
+                  )}
+                </p>
+              )
+            }
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat14-mapping-title">
+    <h2 id="cat14-mapping-title" class="text-base font-bold text-on-surface">{t('ประเด็น 1.3 ↔ กฎหมาย (จากแหล่งเท่านั้น)', 'Aspect 1.3 ↔ law (source-explicit only)')}</h2>
+    {
+      mappings.length > 0 ? (
+        <ul class="mt-3 space-y-3" role="list">
+          {
+            mappings.map((m) => (
+              <li class="rounded-lg border border-green-100 bg-green-50/40 p-4" data-cat14-aspect-mapping>
+                <p class="text-sm font-semibold text-on-surface">
+                  <a href={path('/indicators/1.3.1/')} class="text-green-800 underline decoration-green-300 underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">{m.aspectId}</a>
+                  <span class="mx-1.5 text-on-surface-variant" aria-hidden="true">→</span>
+                  <span class="font-mono text-xs">{m.legalRequirementId}</span>
+                  <span class="text-on-surface-variant"> ({m.registerId})</span>
+                </p>
+                <p class="mt-1 text-xs text-on-surface-variant">{m.activity} · {m.aspectLabel}</p>
+                <p class="mt-1 text-xs text-on-surface">{truncateLegalText(m.sourceLaw, 160)}</p>
+                {m.evidenceRef && (
+                  <p class="mt-2 text-[11px] text-on-surface-variant">
+                    {t('หลักฐานในแหล่ง', 'Source evidence')}: {m.evidenceRef}
+                  </p>
+                )}
+              </li>
+            ))
+          }
+        </ul>
+      ) : (
+        <p class="mt-2 text-sm italic text-on-surface-variant">{t('ไม่มีการเชื่อมในแหล่ง', 'No explicit mapping in source')}</p>
+      )
+    }
+    <p class="mt-3 text-xs text-on-surface-variant">
+      {t(
+        `${summary.unmappedAspectCount} ประเด็น (ea-*) ไม่มีการอ้างอิงในเอกสาร 1.4 — ไม่สร้างการเชื่อมจากการเดา`,
+        `${summary.unmappedAspectCount} aspects (ea-*) are not referenced in 1.4 sources — no inferred links`,
+      )}
+    </p>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat14-explorer-title">
+    <h2 id="cat14-explorer-title" class="text-base font-bold text-on-surface">{t('สำรวจทะเบียนกฎหมาย', 'Legal register explorer')}</h2>
+    <div class="mt-4 space-y-3" data-cat14-filters>
+      <label class="block">
+        <span class="mb-1 block text-[11px] font-semibold text-on-surface-variant">{t('ค้นหา', 'Search')}</span>
+        <input
+          type="search"
+          id="cat14-search"
+          class="w-full rounded-stitch border border-outline-variant/40 px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          placeholder={t('รหัส หัวข้อ ชื่อกฎหมาย…', 'ID, topic, law title…')}
+          autocomplete="off"
+        />
+      </label>
+      <fieldset class="min-w-0">
+        <legend class="mb-1.5 text-[11px] font-semibold text-on-surface-variant">{t('หัวข้อ', 'Topic')}</legend>
+        <div class="flex flex-wrap gap-1.5">
+          <label class="cat14-chip"><input type="radio" name="cat14-topic" id="cat14-topic-all" value="all" checked class="sr-only" /><span>{t('ทั้งหมด', 'All')}</span></label>
+          {topics.map((topic) => (
+            <label class="cat14-chip">
+              <input type="radio" name="cat14-topic" id={`cat14-topic-${topic.id}`} value={topic.id} class="sr-only" />
+              <span>{topic.topic}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+      <fieldset class="min-w-0">
+        <legend class="mb-1.5 text-[11px] font-semibold text-on-surface-variant">{t('หลักฐาน / สถานะ', 'Evidence / status')}</legend>
+        <div class="flex flex-wrap gap-1.5">
+          <label class="cat14-chip"><input type="radio" name="cat14-ev" id="cat14-ev-all" value="all" checked class="sr-only" /><span>{t('ทั้งหมด', 'All')}</span></label>
+          <label class="cat14-chip"><input type="radio" name="cat14-ev" id="cat14-ev-yes" value="yes" class="sr-only" /><span>{t('มีข้อความหลักฐาน', 'Has evidence text')}</span></label>
+          <label class="cat14-chip"><input type="radio" name="cat14-ev" id="cat14-ev-no" value="no" class="sr-only" /><span>{t('ไม่มีข้อความหลักฐาน', 'No evidence text')}</span></label>
+          <label class="cat14-chip"><input type="radio" name="cat14-ev" id="cat14-ev-review" value="review" class="sr-only" /><span>{t('ต้องทบทวน', 'Needs review')}</span></label>
+        </div>
+      </fieldset>
+    </div>
+    <p class="mt-2 text-[11px] text-on-surface-variant" data-cat14-filter-status aria-live="polite">
+      {t(`แสดง ${rows.length} จาก ${rows.length} ข้อ`, `Showing ${rows.length} of ${rows.length} requirements`)}
+    </p>
+    <p class="cat14-empty mt-2 hidden text-sm text-on-surface-variant" data-cat14-empty>
+      {t('ไม่มีรายการที่ตรงกับตัวกรอง', 'No requirements match this filter')}
+    </p>
+
+    <div class="mt-4 overflow-x-auto">
+      <table class="min-w-full text-left text-sm" data-cat14-register-table>
+        <caption class="sr-only">{t('ทะเบียนกฎหมาย FY2568', 'FY2568 legal register')}</caption>
+        <thead class="border-b border-gray-200 text-xs uppercase tracking-wide text-on-surface-variant">
+          <tr>
+            <th scope="col" class="px-2 py-2">{t('รหัส', 'ID')}</th>
+            <th scope="col" class="px-2 py-2">{t('หัวข้อ', 'Topic')}</th>
+            <th scope="col" class="px-2 py-2">{t('กฎหมาย / ข้อกำหนด', 'Law / requirement')}</th>
+            <th scope="col" class="px-2 py-2">{t('สถานะ', 'Status')}</th>
+            <th scope="col" class="px-2 py-2">{t('หลักฐาน', 'Evidence')}</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          {
+            rows.map((row) => (
+              <tr
+                class="cat14-row align-top"
+                data-cat14-row
+                data-topic-id={row.topicId}
+                data-has-evidence={row.hasEvidence ? 'yes' : 'no'}
+                data-needs-review={row.isNeedsReview ? 'yes' : 'no'}
+                data-search={`${row.registerId} ${row.topic} ${row.topicTitle} ${row.sourceLaw}`.toLowerCase()}
+              >
+                <td class="px-2 py-3 font-mono text-xs whitespace-nowrap">{row.registerId}</td>
+                <td class="px-2 py-3 text-xs whitespace-nowrap">{row.topic}</td>
+                <td class="px-2 py-3 min-w-[14rem]">
+                  <p class="font-medium text-on-surface">{truncateLegalText(row.sourceLaw, 120)}</p>
+                  {
+                    row.requirementSummary && (
+                      <details class="mt-1">
+                        <summary class="cursor-pointer text-[11px] font-medium text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+                          {t('รายละเอียดข้อกำหนด', 'Requirement detail')}
+                        </summary>
+                        <p class="mt-1 text-[11px] leading-relaxed text-on-surface-variant">{truncateLegalText(row.requirementSummary, 480)}</p>
+                      </details>
+                    )
+                  }
+                  {row.isLocalLaw && (
+                    <p class="mt-1 text-[10px] font-medium text-indigo-800">{t('กฎหมายท้องถิ่น (เทศบัญญัติเมืองแม่โจ้)', 'Local law (Maejo municipality)')}</p>
+                  )}
+                  {
+                    row.linkedAspectIds.length > 0 && (
+                      <p class="mt-1 text-[10px] text-green-800">
+                        {t('เชื่อมประเด็น', 'Linked aspect')}: {row.linkedAspectIds.join(', ')}
+                      </p>
+                    )
+                  }
+                </td>
+                <td class="px-2 py-3 whitespace-nowrap">
+                  <span class={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold ${statusClass(row)}`}>
+                    {statusLabel(row)}
+                  </span>
+                </td>
+                <td class="px-2 py-3 text-xs max-w-xs">
+                  {
+                    row.hasEvidence && row.evidenceNote ? (
+                      <details>
+                        <summary class="cursor-pointer font-medium text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+                          {t('มีในแหล่ง', 'In source')}
+                        </summary>
+                        <p class="mt-1 leading-relaxed text-on-surface-variant">{truncateLegalText(row.evidenceNote, 320)}</p>
+                      </details>
+                    ) : (
+                      <span class="text-on-surface-variant italic">{t('ไม่มีข้อความหลักฐานในแหล่ง', 'No evidence text in source')}</span>
+                    )
+                  }
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat14-evidence-title">
+    <h2 id="cat14-evidence-title" class="text-base font-bold text-on-surface">{t('เอกสารต้นฉบับ / หลักฐานทางการ', 'Formal source documents')}</h2>
+    <ul class="mt-3 space-y-2 text-sm" role="list">
+      <li class="list-none">
+        <a href={path(registerPdf)} class="font-medium text-green-800 underline decoration-green-300 underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded" download>
+          {t('1.4 ทะเบียนกฎหมาย ปี 2568 (PDF)', '1.4 Legal register FY2568 (PDF)')}
+        </a>
+      </li>
+      <li class="list-none">
+        <a href={path(registerDocx)} class="font-medium text-green-800 underline decoration-green-300 underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded" download>
+          {t('1.4 ทะเบียนกฎหมาย ปี 2568 (DOCX)', '1.4 Legal register FY2568 (DOCX)')}
+        </a>
+      </li>
+      <li class="list-none">
+        <a href={path(summaryPdf)} class="font-medium text-green-800 underline decoration-green-300 underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded" download>
+          {t('1.4.1 สรุปหัวข้อกฎหมาย (PDF)', '1.4.1 Topic summary (PDF)')}
+        </a>
+      </li>
+    </ul>
+    <p class="mt-2 text-[11px] text-on-surface-variant">
+      {t('ไม่มีลิงก์หลักฐานระดับตัวชี้วัดใน evidence-index — ใช้เอกสารต้นฉบับด้านบน', 'No indicator-level evidence-index slot — use formal source documents above')}
+    </p>
+  </section>
+
+  <section class="rounded-xl border border-green-100 bg-green-50/40 p-5 sm:p-6">
+    <h2 class="text-base font-bold text-green-950">{t('ขั้นถัดไป', 'Next step')}</h2>
+    <p class="mt-1 text-sm text-green-900/90">
+      {t('ประเมินความสอดคล้องรายข้อและข้อขัดแย้งที่ยังไม่สรุป', 'Review row-level compliance assessments and unresolved conflicts')}
+    </p>
+    <a
+      href={path('/indicators/1.4.2/')}
+      class="mt-3 inline-flex min-h-11 items-center justify-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+    >
+      {t('ไปที่ 1.4.2 การประเมินความสอดคล้อง', 'Continue to 1.4.2 compliance evaluation')}
+    </a>
+  </section>
+</div>
+
+<style>
+  .cat14-chip {
+    display: inline-flex;
+    cursor: pointer;
+    border-radius: 9999px;
+    border: 1px solid rgb(191 201 195 / 0.6);
+    background: #f3f4f6;
+    padding: 0.25rem 0.7rem;
+    font-size: 11px;
+    font-weight: 600;
+    color: #374151;
+  }
+  .cat14-chip:has(:focus-visible) {
+    outline: 2px solid #003527;
+    outline-offset: 2px;
+  }
+  .cat14-chip:has(:checked) {
+    background: #003527;
+    border-color: #003527;
+    color: #fff;
+  }
+  .cat14-journey:has(#cat14-ev-yes:checked) [data-cat14-row]:not([data-has-evidence='yes']),
+  .cat14-journey:has(#cat14-ev-no:checked) [data-cat14-row]:not([data-has-evidence='no']),
+  .cat14-journey:has(#cat14-ev-review:checked) [data-cat14-row]:not([data-needs-review='yes']) {
+    display: none;
+  }
+  .cat14-journey:has(#cat14-topic-law-1:checked) [data-cat14-row]:not([data-topic-id='law-1']),
+  .cat14-journey:has(#cat14-topic-law-2:checked) [data-cat14-row]:not([data-topic-id='law-2']),
+  .cat14-journey:has(#cat14-topic-law-3:checked) [data-cat14-row]:not([data-topic-id='law-3']),
+  .cat14-journey:has(#cat14-topic-law-4:checked) [data-cat14-row]:not([data-topic-id='law-4']),
+  .cat14-journey:has(#cat14-topic-law-5:checked) [data-cat14-row]:not([data-topic-id='law-5']),
+  .cat14-journey:has(#cat14-topic-law-6:checked) [data-cat14-row]:not([data-topic-id='law-6']),
+  .cat14-journey:has(#cat14-topic-law-7:checked) [data-cat14-row]:not([data-topic-id='law-7']),
+  .cat14-journey:has(#cat14-topic-law-8:checked) [data-cat14-row]:not([data-topic-id='law-8']),
+  .cat14-journey:has(#cat14-topic-law-9:checked) [data-cat14-row]:not([data-topic-id='law-9']) {
+    display: none;
+  }
+  .cat14-row.cat14-hidden {
+    display: none !important;
+  }
+</style>
+
+<script>
+  const root = document.querySelector('[data-cat1-legal-register]');
+  if (root instanceof HTMLElement) {
+    const host = root;
+    const search = host.querySelector('#cat14-search');
+    const rows = [...host.querySelectorAll('[data-cat14-row]')];
+    const status = host.querySelector('[data-cat14-filter-status]');
+    const empty = host.querySelector('[data-cat14-empty]');
+    const filters = host.querySelector('[data-cat14-filters]');
+    const total = rows.length;
+    const isEn = document.documentElement.lang === 'en';
+
+    function syncStatus() {
+      const visible = rows.filter((el) => getComputedStyle(el).display !== 'none' && !el.classList.contains('cat14-hidden')).length;
+      if (status) {
+        status.textContent = isEn
+          ? `Showing ${visible} of ${total} requirements`
+          : `แสดง ${visible} จาก ${total} ข้อ`;
+      }
+      empty?.classList.toggle('hidden', visible !== 0);
+    }
+
+    function applySearch() {
+      const q = (search instanceof HTMLInputElement ? search.value : '').trim().toLowerCase();
+      for (const row of rows) {
+        const hay = row.getAttribute('data-search') || '';
+        row.classList.toggle('cat14-hidden', q.length > 0 && !hay.includes(q));
+      }
+      syncStatus();
+    }
+
+    search?.addEventListener('input', applySearch);
+    filters?.addEventListener('change', () => requestAnimationFrame(syncStatus));
+  }
+</script>

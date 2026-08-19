@@ -3,32 +3,1482 @@
   "domain": "compliance",
   "updated": "2026-08-19",
   "year": 2568,
-  "status": "normalized-partial",
+  "status": "historical-baseline",
   "governance": "GOFFICE2026_CATEGORY1_MANAGEMENT_BLUEPRINT_V1",
   "sources": [
-    { "ref": "1.4/1.4.2 ประเมินความสอดคล้องของกฎหมายกับการดำเ.docx", "role": "primary", "inspection": "content-verified" }
+    {
+      "ref": "1.4/1.4.2 ประเมินความสอดคล้องของกฎหมายกับการดำเ.docx",
+      "role": "primary",
+      "inspection": "content-verified"
+    },
+    {
+      "ref": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "role": "supporting",
+      "inspection": "content-verified"
+    }
   ],
   "records": [
     {
       "id": "comp-1",
       "year": 2568,
-      "indicatorCodes": ["1.4.2"],
-      "issueCodes": ["1.4"],
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
       "categoryCode": "cat1",
       "evidenceIds": [],
       "sourceRef": "1.4/1.4.2 ประเมินความสอดคล้องของกฎหมายกับการดำเ.docx",
-      "verification": { "status": "reviewed", "basis": "Evaluated by ผศ.ภานุวัฒน์ เมฆะ; reviewed 9 ก.ค. 2568. Sub-item 1.4.2(1) interview is a '-สัมภาษณ์-' placeholder, unavailable." },
+      "verification": {
+        "status": "reviewed",
+        "basis": "Evaluated by ผศ.ภานุวัฒน์ เมฆะ; reviewed 9 ก.ค. 2568. Sub-item 1.4.2(1) interview is a '-สัมภาษณ์-' placeholder, unavailable."
+      },
       "availability": "content-verified",
       "kind": "evaluation",
       "date": "2025-07-09",
       "reviewer": "ผศ.ภานุวัฒน์ เมฆะ",
       "scope": "Legal compliance of office environmental management operations",
       "result": "partial",
-      "basis": "Compliance counts per register; interview sub-item unavailable."
+      "basis": "Compliance counts per register; interview sub-item unavailable.",
+      "baseline": "historical-baseline",
+      "reviewDates": [
+        "2025-07-09"
+      ],
+      "reviewDatesNote": "1.4.2 §(4) cites 9 Jul 2568 only; register header also cites 18 Sep 2568.",
+      "orderRef": "มจ. 344/2568 (25 มี.ค. 2568)",
+      "compiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "signatureDate": "2025-09-18"
+    },
+    {
+      "id": "lca-1.1",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-1.1",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "ประเภทการบำบัดน้ำเสียของสำนักงานเป็นระบบบำบัดน้ำเสียรวมของมหาวิทยาลัย ด้วยระบบเอสบีอาร์ (Sequencing Batch Reactor, SBR) รับผิดชอบโดยกองกายภาพและสิ่งแวดล้อม",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-1.2",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-1.2",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "ประเภทการบำบัดน้ำเสียของสำนักงานใช้ระบบบำบัดน้ำเสียรวมของ\nมหาวิทยาลัยแม่โจ้ เป็นระบบ SBR (Sequencing Batch Reactor, SBR) รับผิดชอบโดย กองกายภาพและสิ่งแวดล้อม\n\n\n\n\n\n \n\n 👉 ระบบบำบัดน้ำเสีย",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-1.3",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "pending",
+        "basis": "Register marks √ but TDS measurement 702 mg/l vs standard ≤500 mg/l (28 Aug 2568); unresolved in source."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-1.3",
+      "registerStatus": "compliant",
+      "status": "needs_review",
+      "evidenceNote": "1.3ประกาศกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม เรื่อง กำหนดมาตรฐานควบคุมการระบายน้ำทิ้ง จากอาคารบางประเภทและบางขนาด 2548“อาคาร” หมายความว่า อาคารที่ก่อสร้างขึ้น ไม่ว่าจะมีลักษณะเป็นอาคารหลังเดียวหรือเป็นกลุ่มของอาคารซึ่งตั้งอยู่ภายในพื้นที่ซึ่งเป็นบริเวณเดียวกัน และไม่ว่าจะมีท่อระบายน้ำเดียวหรือมีหลายท่อ       ที่เชื่อมต่อกันระหว่างอาคารหรือไม่ก็ตาม“น้ำทิ้ง” หมายความว่า น้ำเสียที่ผ่านระบบบำบัดน้ำเสียแล้วจนเป็นไปตามมาตรฐานควบคุมการระบายน้ำทิ้งตามที่กำหนดไว้ในประกาศนี้เอกสารแนบ 1 ประเภทของอาคารอ้างอิงไว้ที่ ท้ายทะเบียนกฎหมายฉบับนี้** เอกสารแนบ 2 มาตรฐานควบคุมการระบายน้ำทิ้งจากอาคารตามประเภทอาคารอ้างอิงไว้ที่ท้ายทะเบียนกฎหมายฉบับนี้**√กรณีสำนักงานอยู่ในข่ายที่ต้องตรวจวัดการระบายน้ำทิ้งหน่วยงานตรวจวัด กองกายภาพและสิ่งแวดล้อม งานสาธารณูปโภค ม.แม่โจ้วันที่ตรวจวัด 28 สิงหาคม 2568ผลการตรวจวัด อาคา",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-1.4",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-1.4",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-1.5",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-1.5",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "1. แบบบันทึกรายละเอียดของสถิติและข้อมูลซึ่งแสดงผลการทำงานของระบบบำบัดน้ำเสียของแหล่งกำเนิดมลพิษ แบบ ทส.1\n\nhttps://building.mju.ac.th/wtms_document.aspx?bID=17881&lang=th-TH. \n2.รายงานสรุปผลการทำงานของระบบบำบัดน้ำเสียแบบ ทส.2\nhttps://building.mju.ac.th/wtms_document.aspx?bID=17882&lang=th-TH",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-1.6",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-1.6",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "ประเภทการบำบัดน้ำเสียของมหาวิทยาลัยเป็นแบบ SBR มีการนำน้ำทิ้งจากระบบไปใช้ประโยชน์ในการรดน้ำต้นไม้ในมหาวิทยาลัย\n\nรูปการนำน้ำไปใช้รดต้นไม้ในมหาวิทยาลัย",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-2.1",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-2.1",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "1. ภาพถ่ายป้าย อุปกรณ์ดับเพลิง และวิธีการใช้งานถังดับเพลิง\n\n\n\n\n\n2. หลักฐานทางเอกสารอื่นๆที่เกี่ยวข้อง กับกฎหมายฉบับนี้ เช่น ใบตรวจสอบอุปกรณ์ดับเพลิง เป็นต้น\n\n\n3. หลักฐานทางเอกสารอื่นๆที่เกี่ยวข้องกับกฎหมายฉบับนี้ \n    เช่น ใบรับรองการฝึกซ้อม \n\n\n4. สัญญานเตือนไฟไหม้\n\n\n5. แผนผังเส้นทางหนีไฟและอุปกรณ์ดับเพลิงในแต่ละชั้น \n\n\n\n\n\n\n\n6. ป้ายทางออกและบันไดหนีไฟ\n\n\n7. มีการอบรมเชิงปฏิบัติการ “การเตรียมความพร้อมการอพยพหนีภัย กรณีเกิดเหตุเพลิงไหม้และแผ่นดินไหว” แก่เจ้าหน้าที่และบุคลากร หน่วยงานภายในอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดาฯ ในวันที่            29 พฤษภาคม 2568  \n\n\n\n\n\n\n\n8. มีจุดรวมพลสำหรับอัคคีภัย",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-2.2",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-2.2",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-2.3",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-2.3",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "👉 ผลการตรวจสอบความแสงสว่าง",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-2.4",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-2.4",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-2.5",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-2.5",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "ผลการตรวจสอบความแสงสว่าง",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-2.6",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-2.6",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-2.7",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-2.7",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-2.8",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-2.8",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-2.9",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-2.9",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-3.1",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-3.1",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "1. หลักฐานจ้างเหมากำจัดขยะ ประจำปีงบประมาณ พ.ศ. 2567                  ระหว่างมหาวิทยาลัยแม่โจ้ และบริษัทเชียงใหม่-เมืองสะอาด จำกัด \nสัญญาจ้างเลขที่ มจ. (กค.) 9/2568  (รด.) ลงวันที่ 24 ตุลาคม 2567\nhttps://drive.google.com/file/d/13hwwg63dTyvZCeA9qnHR5wsiqWWbcSDV/view\n\n2. มีการเก็บรวบรวมขยะอันตราย จากห้องปฏิบัติการต่างๆ และส่งต่อให้มหาวิทยาลัยเพื่อนำไปกำจัด ตามหนังสือที่ อว 69.2.6/ว 69 ลงวันที่ 13 มิถุนายน 2568 เพื่อสำรวจและรวบรวมข้อมูลปริมาณของเสียจากห้องปฏิบัติการ (Lab Waste) ของหน่วยงานภายในมหาวิทยาลัย เพื่อวางแผนการนำไปกำจัดอย่างถูกวิธีต่อไป\n\n\n\n\n\n\n\n2. มีการรณรงค์การคัดแยกขยะในหน่วยงาน\n\n\n\n3. มีการคัดแยกขยะในหน่วยงาน",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-3.2",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-3.2",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "1. มีการเก็บรวบรวมขยะอันตราย จากห้องปฏิบัติการต่างๆ และส่งต่อให้มหาวิทยาลัยเพื่อนำไปกำจัด ตามหนังสือที่ อว 69.2.6/ว 69 ลงวันที่ 13 มิถุนายน 2568 เพื่อสำรวจและรวบรวมข้อมูลปริมาณของเสียจากห้องปฏิบัติการ (Lab Waste) ของหน่วยงานภายในมหาวิทยาลัย เพื่อวางแผนการนำไปกำจัดอย่างถูกวิธีต่อไป",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-3.3",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-3.3",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "จุดที่พักรวมขยะมูลฝอย",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-3.4",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-3.4",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-3.5",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-3.5",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-3.6",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-3.6",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-3.7",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-3.7",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "1. มีจุดพักขยะที่เหมาะสม\n\n\n\n2. มีถังขยะสำหรับขยะอันตราย",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-3.8",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-3.8",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-4.1",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-4.1",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "ภาพถ่ายแสดงการห้ามสูบบุหรี่\n1. บริเวณในอาคาร\n\nภาพถ่ายแสดงที่สูบบุหรี่\n1. ป้ายแสดงทางไปพื้นที่สูบบุหรี่ที่ชัดเจน\n\n\n\n\n\n\n\n2. ภาพถ่ายแสดงเครื่องหมายชัดเจนว่าเป็นเขตสูบบุหรี่\n\n3. ภาพถ่ายแสดงพื้นที่สูบบุหรี่ภายนอกตัวอาคาร\n(ห่างจากตัวอาคาร 6 เมตร)",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-4.2",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-4.2",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "ภาพ สัญลักษณ์เขตปลอดบุหรี่\n\n\nภาพสัญลักษณ์เขตสูบบุหรี่ ภายนอกอาคาร",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-4.3",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-4.3",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "รูปถ่ายแสดงบริเวณห้ามสูบบุหรี่",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-4.4",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-4.4",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-4.5",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-4.5",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-5.1",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-5.1",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "1. มาตรการอนุรักษ์พลังงานของสำนักงาน\n\n2. เอกสารการใช้หลอดไฟประหยัดพลังงานของมหาวิทยาลัย\n\n3. มีการประชาสัมพันธ์การประหยัดพลังงาน ในบริเวณต่างๆ ของอาคารพระเทพฯ",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-5.2",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-5.2",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "1. มีการนำระบบห้องน้ำอัจฉริยะที่ปิดไฟได้เองถ้าไม่มีผู้ใช้ห้องน้ำมาใช้\n\n\n\n2. มีการใช้หลอดประหยัดไฟในอาคาร (T8 LED)",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-5.3",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-5.3",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "1. รายงานการจัดการพลังงานสำหรับอาคารควบคุม\n2. หลักฐานการส่งรายงานผลการตรวจสอบและรับรองการจัดการพลังงานตามที่กำหนดในกฎกระทรวงนี้ของปีที่ล่วงมาให้แก่อธิบดีภายในเดือนมีนาคมของทุกปี",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-5.4",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-5.4",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "การปฏิบัติตามแนวทาง/มาตรการในหมวดการใช้ทรัพยากรและพลังงาน",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-5.5",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-5.5",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "การปฏิบัติตามแนวทาง/มาตรการในหมวดการใช้ทรัพยากรและพลังงาน",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-6.1",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-6.1",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "ประกาศกระทรวงการอุดมศึกษาวิทยาศาสตร์ วิจัยและนวัตกรรม เรื่อง มาตรการและเฝ้าระวังการระบาดของโรคติดเชื้อไวรัสโคโรน่า 2019\n(COVID-19)\n\n\n\n\n\n\n\n\nประกาศคณะกรรมการโรคติดต่อจังหวัดเชียงใหม่ ฉบับที่ 41_2565 \n(โรคโควิด-19) เรื่อง มาตรการควบคุมและเฝ้าระวังการแพร่บาดของโรค         โควิด-19",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-6.2",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-6.2",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": "มีจุดบริการเจลแอลกอฮอล์ล้างมือ\n\n\n\n\n\nจุดเครื่องวัดอุณหภูมิร่างกาย\n\n\n\n\n\n\n\nจุดล้างมือ",
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-6.3",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-6.3",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-7.1",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-7.1",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-7.2",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-7.2",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-7.3",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-7.3",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-7.4",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-7.4",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-7.5",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-7.5",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-8.1",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-8.1",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-8.2",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-8.2",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-8.3",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-8.3",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-9.1",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-9.1",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-9.2",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-9.2",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
+    },
+    {
+      "id": "lca-9.3",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.4.2"
+      ],
+      "issueCodes": [
+        "1.4"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from 1.4 register √ marks; 1.4.2 DOCX has no row-level table."
+      },
+      "availability": "content-verified",
+      "kind": "legal-compliance-assessment",
+      "legalRequirementId": "lr-9.3",
+      "registerStatus": "compliant",
+      "status": "compliant",
+      "evidenceNote": null,
+      "reviewDates": [
+        "2025-07-09",
+        "2025-09-18"
+      ],
+      "responsibleCompiler": "นางสาวชณันภัสร์ กีรติอำนวยศรี",
+      "responsibleReviewer": "ผศ.ภานุวัฒน์ เมฆะ",
+      "baseline": "historical-baseline"
     }
   ],
   "gaps": [
-    { "indicator": "1.2.2", "status": "MISSING", "note": "No FY2568 role-understanding interview evidence." },
-    { "indicator": "1.5.3", "status": "MISSING", "note": "No FY2568 GHG-knowledge training evidence." }
-  ]
+    {
+      "indicator": "1.2.2",
+      "status": "MISSING",
+      "note": "No FY2568 role-understanding interview evidence."
+    },
+    {
+      "indicator": "1.5.3",
+      "status": "MISSING",
+      "note": "No FY2568 GHG-knowledge training evidence."
+    }
+  ],
+  "summary": {
+    "registerAssessments": 47,
+    "statusCounts": {
+      "needs_review": 1,
+      "compliant": 46
+    },
+    "narrativeOnly": true
+  }
 }

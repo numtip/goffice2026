@@ -1,0 +1,17 @@
+---
+/**
+ * Cat1LegalPresentation.astro — FY2568 CAT1-1.4 legal register + compliance views.
+ */
+import Cat1LegalRegisterJourney from './Cat1LegalRegisterJourney.astro';
+import Cat1LegalComplianceJourney from './Cat1LegalComplianceJourney.astro';
+
+interface Props {
+  indicatorCode: string;
+  locale: 'th' | 'en';
+}
+
+const { indicatorCode, locale } = Astro.props;
+---
+
+{indicatorCode === '1.4.1' && <Cat1LegalRegisterJourney locale={locale} />}
+{indicatorCode === '1.4.2' && <Cat1LegalComplianceJourney locale={locale} />}
