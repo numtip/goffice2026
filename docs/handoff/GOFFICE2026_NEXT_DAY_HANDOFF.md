@@ -1,100 +1,80 @@
 # Next-Day Handoff
 
-**Generated:** 2026-07-24
-**Prepared for:** Next working session
+**Generated:** 2026-08-19 (daily close)  
+**Prepared for:** Next working session (2026-08-20+)
 
 ---
 
-## Current HEAD
+## Where We Stopped
 
-`9f551ed1e6c00d533abd4b1b835a823eb24dca6e`
+**CAT1 FY2568 is complete, reconciled, and frozen.** All 18 indicator runtime journeys exist on GitHub Pages. Category 1 contract work is **closed** until new source evidence or an approved FY2569 overlay.
 
-## Current Status
+| Item | Value |
+|------|-------|
+| **Authority SHA** | `0ea8371` |
+| Branch | `master` (= `origin/master` after daily close push) |
+| Status | **`CAT1 FY2568 = FROZEN READ-ONLY BASELINE`** |
+| Preview | https://numtip.github.io/goffice2026/ |
+| Production | **NOT deployed** — no VPS changes |
 
-- **Branch:** `master`
-- **Origin parity:** ✅ In sync (`origin/master` = `HEAD`)
-- **Working tree:** ✅ Clean (only untracked source PDFs in `doc/`)
+Read first: `docs/releases/GOFFICE2026_CAT1_FY2568_FREEZE.md`
 
-## Completed Sprints
+---
 
-| Sprint | Description | Commit |
-|---|---|---|
-| GO-UX-4 | Landing motion progressive enhancement | `a02c355` |
-| GO-ABOUT-1A | About Center content inventory & migration structure | `11a1826` |
-| GO-ABOUT-1B | Priority document intake, validation & metadata update | `9f551ed` |
+## CAT1 Final State (< 2 min)
+
+| Layer | Count |
+|-------|-------|
+| Runtime journeys | **18 / 18** |
+| Evidence complete | **16 / 18** |
+| Evidence gaps | **1.2.2**, **1.5.3** — MISSING, not fabricated |
+
+**About hub:** scope→1.1.1 · policy→1.1.2 · goals→1.1.3 · action-plan→1.1.4 · committee→1.2.1  
+**Manifest:** 9 domains in `src/data/category1/`  
+**FY2569:** overlay only — separate year-qualified records; never overwrite FY2568 JSON
+
+---
 
 ## Do Not Repeat
 
-1. ❌ Do not commit source PDFs to Git — repository policy excludes large binaries
-2. ❌ Do not create About pages yet — wait for all content to be available
-3. ❌ Do not modify navigation, CSS, dashboard, or score logic
-4. ❌ Do not invent dates, names, goals, or approval status — use only verifiable document metadata
-5. ❌ Do not use full-document OCR unless necessary — use embedded text if available
-6. ❌ Do not report builds/tests as passed if they did not execute
+1. Do **not** modify frozen CAT1 FY2568 facts without freeze mutation policy compliance.
+2. Do **not** start Category 2 or FY2569 overlay without explicit PO/task scope.
+3. Do **not** fabricate 1.2.2 / 1.5.3 evidence or merge FY2569 into FY2568 contracts.
+4. Do **not** deploy to VPS/production without PO approval.
+5. Do **not** commit temp OCR files (`.tmp_*` in repo root).
 
-## Known Issues
+---
 
-| ID | Issue | Severity | Status |
-|---|---|---|---|
-| K001 | Committee role-understanding PDF is duplicate of policy review (identical SHA-256) | MEDIUM | Needs confirmation with Green Office team |
-| K002 | Feedback channels PDF contains personal email and phone | MEDIUM | Needs redaction before public publishing |
-| K003 | OCR-derived Thai numerals and dates need human verification for 7 scanned PDFs | MEDIUM | Pending — manual review required |
-| K004 | No Green Office certificate PDF supplied | LOW | Blocked on TGO |
-| K005 | Data pipeline has 15 pre-existing warnings (not sprint-related) | LOW | Pre-existing — acknowledged |
+## Known Gaps (unchanged)
 
-## Next Recommended Sprint
+1.2.2 interview · 1.5.3 GHG training · committee roster OCR · MR #2 occurrence-only · GHG +4.81% not at MR #1 · proj names in MR minutes · Dec GHG derived · lr-1.3 TDS · 1.6.1 ERP schedule external
 
-### Option A: GO-ABOUT-1C — OCR Verification & Document Sanitization
+---
 
-**Priority:** HIGH
-**Depends on:** GO-ABOUT-1B ✅
+## Next Session — Pick One
 
-Tasks:
-- Human-verify OCR-extracted Thai text for all 7 scanned PDFs
-- Verify numeric values in goals document (6 environmental targets)
-- Verify dates, names, and official titles in policy and order documents
-- Redact personal email and phone from feedback channels PDF
-- Copy sanitized PUBLIC_READY PDFs to `public/documents/about/` directories
-- Update document summaries with verified metadata
+### A. Category 2 FY2568 baseline (recommended if continuing Green Office domains)
 
-### Option B: GO-ABOUT-2 — About Page Creation
+Reconcile and present Category 2 indicators using same static-first / contract pattern. CAT1 remains frozen reference.
 
-**Priority:** MEDIUM
-**Depends on:** GO-ABOUT-1C (OCR verification complete)
+### B. CAT1 FY2569 overlay
 
-Tasks:
-- Create Astro page components for 6 About routes
-- Generate page content from verified document summaries
-- Integrate document download links
-- Wire bilingual TH/EN routing
-
-### Option C: GO-CERT-1 — Certification Sprint
-
-**Priority:** LOW
-**Depends on:** Certificate PDF from TGO
-
-Tasks:
-- Obtain latest Green Office certificate
-- Process certification badge image
-- Populate about-certification page
+Import verified FY2569 records as **new year-qualified entries**. Reuse schema and journeys. Do not mutate frozen FY2568 contracts in place.
 
 ---
 
 ## Quick Commands
 
 ```bash
-# Validate About JSON
-node scripts/validate-about-json.mjs
-
-# Run tests
-node --test scripts/test-data-status.mjs scripts/test-i18n-paths.mjs scripts/test-data-pipeline-quality.mjs
-
-# Build
-npx astro build
-
-# Git push
-& 'G:\Git\cmd\git.exe' push origin master
+node scripts/validate-category1-contracts.mjs
+node --test scripts/test-category1-fy2568-freeze.mjs
+npm test
+npm run build
+git status
 ```
 
+Daily report: `docs/reports/GOFFICE2026_DAILY_REPORT_2026-08-19.md`
+
 ---
-*Generated 2026-07-24*
+
+*Updated at GOFFICE2026 DAILY_CLOSE_2026-08-19*

@@ -1,128 +1,138 @@
-# GOFFICE2026 — Daily Close Report 2026-08-19
+# GOFFICE2026 Daily Close — 2026-08-19
 
 **Date:** 19 August 2026 (Asia/Bangkok)  
 **Branch:** `master`  
 **Repository:** https://github.com/numtip/goffice2026  
-**Production URL:** https://goffice.mju.ac.th/ — **NOT deployed**  
 **Preview URL:** https://numtip.github.io/goffice2026/  
-**Starting SHA:** `a96d982` (Phase C/D contracts) · **Final SHA:** `d3e5e1c` (HEAD = origin/master, in sync)
+**Production:** https://goffice.mju.ac.th/ — **NOT deployed**
 
 ---
 
-## 1. Executive Summary
+## Executive Summary
 
-วันนี้ดำเนินงาน **Category 1 FY2568** ครบวงจรตั้งแต่ canonical data contracts → management presentation shell →
-**1.3 / 1.4 / 1.5 / 1.6** indicator journeys บน GitHub Pages พร้อม live visual acceptance ทุกเฟสที่ปิดในวันนี้
-
-| ช่วง | ผลลัพธ์ |
-|------|---------|
-| Phase C/D | Canonical contracts 8 โดเมน + GHG December/septic documentation |
-| Phase E/F | Category 1 management cycle + domain snapshot + contract context |
-| CAT1-1.3 | Pipeline ทะเบียนประเด็นสิ่งแวดล้อม FY2568 + journey 1.3.1/1.3.2/1.3.3 |
-| CAT1-1.4 | Legal/compliance reconciliation + journeys 1.4.1/1.4.2 · live PASS |
-| CAT1-1.5 | GHG workbook↔dashboard reconciliation + journeys 1.5.1/1.5.2/1.5.3 · checkpoint closed |
-| CAT1-1.6 | Plan/project reconciliation + journeys 1.6.1/1.6.2 · live PASS |
-
-**Verdict:** `DAILY_CLOSE` · CAT1 FY2568 baseline 1.3–1.6 live on GitHub Pages · Production untouched
+- **CAT1 FY2568** completed, reconciled, re-closed, and **frozen** as read-only baseline authority.
+- **18/18** runtime indicator journeys (TH + EN); **16/18** evidence-complete; **1.2.2** and **1.5.3** remain honest evidence gaps.
+- `/about/` reconciled as canonical **management foundation hub** (Scope → Policy → Goals → Plan → Governance).
+- **No production / VPS changes.**
 
 ---
 
-## 2. Commits today (21 commits, master)
+## Starting State
+
+| Item | Value |
+|------|-------|
+| Day-open SHA | `a96d982` — Phase C/D canonical contracts |
+| Pre–1.1/1.2 checkpoint | `78cabdb` — 1.7 closeout + PDCA allow-list (after 1.3–1.7 work) |
+| Mid-day report (superseded) | `d3e5e1c` / `6c82991` — 1.3–1.6 journeys only |
+
+---
+
+## Work Completed (chronological)
+
+1. **Phase C/D → 1.3–1.7** — contracts, environmental aspects, legal, GHG, projects, management review journeys (earlier today).
+2. **1.1 FY2568 reconciliation** — scope, policy, targets, annual plan (`e0c2610`).
+3. **1.1 dedicated journeys** — Cat1FoundationPresentation wired for 1.1.1–1.1.4.
+4. **About hub reconciliation** — canonical CAT1 mapping, FY2568/FY2569 year separation on action-plan (`74fe4f9`).
+5. **1.2 reconciliation** — `environmental-committee.json`, governance journey 1.2.1, evidence-gap journey 1.2.2 (`74fe4f9`).
+6. **CI fixes** — `cat12Canonical` traceability test, 9-contract manifest test (`59f714b`, `f3f4941`).
+7. **CAT1 re-close** — closeout authority updated (`ac1ecac`, `68e29eb`).
+8. **CAT1 freeze** — `GOFFICE2026_CAT1_FY2568_FREEZE.md`, manifest freeze metadata, regression guard (`0ea8371`).
+
+---
+
+## Final CAT1 Authority
+
+| Item | Value |
+|------|-------|
+| **Freeze SHA** | `0ea8371` |
+| Re-close SHA | `ac1ecac` |
+| Status | **`CAT1 FY2568 = FROZEN READ-ONLY BASELINE`** |
+| Runtime | **18 / 18** journeys |
+| Evidence | **16 / 18** complete |
+| Evidence gaps | **1.2.2**, **1.5.3** (not fabricated) |
+| Manifest | **9 domains** — `src/data/category1/category1-manifest.json` |
+| Freeze doc | `docs/releases/GOFFICE2026_CAT1_FY2568_FREEZE.md` |
+| Closeout doc | `docs/releases/GOFFICE2026_CAT1_FY2568_CLOSEOUT_2026-08-19.md` |
+
+### `/about/` mapping
+
+| Route | CAT1 |
+|-------|------|
+| `/about/scope/` | 1.1.1 |
+| `/about/policy/` | 1.1.2 |
+| `/about/goals/` | 1.1.3 |
+| `/about/action-plan/` | 1.1.4 (+ FY2569 Excel section, year-separated) |
+| `/about/committee/` | 1.2.1 (+ 1.2.2 gap) |
+
+---
+
+## Important Commits
 
 | SHA | Summary |
 |-----|---------|
-| `a96d982` | feat(cat1): Phase C canonical data contracts + Phase D FY2568 normalization |
-| `0cc5fbe` | fix(cat1): document December GHG reconstruction from septic anomaly |
-| `26eecf1` | revert(cat1): restore ghg.json exactly to a96d982 per guardrail |
-| `e107102` | feat(cat1): Phase E/F Category 1 management presentation |
-| `eb93c64`–`12bae72` | ci(pages): Windows runner + bsdtar + shorten paths for FY2568 evidence deploy |
-| `067e402` | fix(cat1): correct GHG dashboard wording Category 5 → Category 1 |
-| `c69fa28` | feat(cat1): CAT1-1.3 canonical environmental aspects pipeline |
-| `2d3dbc3` | docs(cat1): close CAT1-1.3 baseline onto one canonical FY2568 dataset |
-| `6aa6ee6`–`52f141a` | feat/fix(cat1): 1.3.1 environmental assessment journey + workbook publish |
-| `9a9eb48` | feat(cat1): FY2568 1.4 legal baseline, presentation, and Pages preview |
-| `e6b3677` | feat(cat1): FY2568 1.5 GHG reconciliation, presentation, and Pages preview |
-| `5104767` | fix(search): regenerate search-index after GHG evidence metadata update |
-| `8b8f8c3` | fix(cat1): localize EN GHG snapshot and align dashboard scope copy |
-| `d8d9f8a` | docs(cat1): finalize 1.5 checkpoint record with deploy SHA and live smoke |
-| `d3e5e1c` | feat(cat1): FY2568 1.6 reconciliation, plan/project journeys, and Pages preview |
+| `a96d982` | Phase C/D canonical contracts |
+| `e107102` | Phase E/F management presentation shell |
+| `c69fa28`–`d3e5e1c` | 1.3–1.6 reconciliation and journeys |
+| `bcb926e` | 1.7 management review reconciliation |
+| `78cabdb` | FY2568 baseline closeout + 1.7 PDCA fix |
+| `e0c2610` | 1.1 foundation reconciliation and journeys |
+| `74fe4f9` | 1.2 governance + About hub reconciliation |
+| `59f714b` | fix: cat12Canonical traceability test |
+| `f3f4941` | fix: 9-contract manifest test |
+| `ac1ecac` | re-close after 1.1+1.2 |
+| `68e29eb` | record Pages workflow in closeout |
+| `0ea8371` | **freeze FY2568 baseline authority** |
 
 ---
 
-## 3. Live Preview — Indicator Journeys (FY2568 Historical Baseline)
+## GitHub Pages
 
-| Indicator | Status | Live route |
-|-----------|--------|------------|
-| 1.3.1 / 1.3.2 / 1.3.3 | Accepted | `/indicators/1.3.{1,2,3}/` |
-| 1.4.1 / 1.4.2 | Accepted | `/indicators/1.4.{1,2}/` |
-| 1.5.1 / 1.5.2 / 1.5.3 | Accepted (1.5.3 = MISSING) | `/indicators/1.5.{1,2,3}/` |
-| 1.6.1 / 1.6.2 | Accepted | `/indicators/1.6.{1,2}/` |
-| Dashboard GHG | Verified ~231.6 tCO₂e | `/dashboard/ghg/` |
-
-EN equivalents under `/en/indicators/...`
+| Item | Value |
+|------|-------|
+| Latest SUCCESS workflow | **32274332531** (@ `0ea8371`) |
+| Prior key run | **32273509983** (re-close @ `acb7961`) |
 
 ---
 
-## 4. Key Canonical Facts Established (ไม่เปลี่ยนแปลงวันนี้หลัง reconcile)
+## Known Gaps (accepted — do not infer)
 
-| หัวข้อ | ค่าที่ยืนยัน |
-|--------|-------------|
-| GHG FY2568 (1.5) | **231.62** tCO₂e (narrative) · dashboard **231.6** · scopes **10.85 / 201.48 / 19.29** |
-| GHG performance | Target **−1%** · actual **+4.81%** · **ไม่บรรลุเป้า** |
-| 1.5.3 understanding | **MISSING** (by design) |
-| 1.6.1 plan | **PARTIAL** — ERP activity attachment ไม่อยู่ใน repo |
-| 1.6.2 projects | **2 โครงการ** — 5S (supporting GHG) + Rat/IPM (environmental); **ไม่มี tCO₂e ที่วัดได้** |
-
----
-
-## 5. Documentation / Checkpoints Created Today
-
-| Document | Purpose |
-|----------|---------|
-| `docs/data/GO-CAT1-1.5-FY2568-GHG-RECONCILIATION.md` | GHG workbook ↔ dashboard reconciliation |
-| `docs/releases/GOFFICE2026_CAT1-1.5_CHECKPOINT_2026-08-19.md` | 1.5 checkpoint closed |
-| `docs/data/GO-CAT1-1.6-FY2568-RECONCILIATION.md` | 1.6 plan/project source reconciliation |
-| `docs/data/GO-CAT1-ENV-ASPECTS-2568-DISPOSITION.md` | 1.3 source disposition (earlier session) |
+- **1.2.2** role-understanding interview evidence
+- **1.5.3** GHG knowledge/training evidence
+- Committee roster + order number — scanned pages 2–7 OCR pending
+- **1.7.2** MR #2 occurrence-only (18 ก.ย. 2568)
+- GHG **+4.81%** not reviewed at MR #1
+- Project names absent from MR minutes
+- December GHG derived (septic O68 excluded)
+- **lr-1.3** TDS 702 vs ≤500 (`needs_review`)
+- **1.6.1** ERP activity schedule external to repo
 
 ---
 
-## 6. GitHub Pages / CI
+## Freeze / Mutation Policy
 
-- Latest successful deploy: workflow **`32236249823`** @ HEAD **`d3e5e1c`**
-- Earlier key runs: `32232997701` (1.5), `32228452796` (1.4), `32233832266` (1.5 cleanup)
-- One failed run (`32232855311`) — search-index drift; fixed in `5104767`
-- Pages CI migrated to **windows-latest** + **bsdtar** for long Thai FY2568 evidence paths
-- **`npm test`**: 202 pass · **`npm run build`**: 272 pages · contract validator PASS
+FY2568 CAT1 is **read-only** except: new source evidence, verified factual correction, broken link/runtime defect, contract inconsistency, security/a11y defect.
+
+**Must not** change for: style preference, inference, FY2569 data in FY2568 contracts, score fabrication, duplicate registries, gap removal without proof.
 
 ---
 
-## 7. Guardrails Honored
+## Validation (final close)
 
-- **VPS / production ไม่ถูกแตะต้อง** ตลอดทั้งวัน
-- **ไม่เริ่ม 1.7** — มีเพียง navigation/disclaimer ใน 1.6
-- **ไม่แก้ source workbook/PDF** — reconcile จากแหล่งเท่านั้น
-- **ไม่สร้าง FY2569 operational data**
-- **ไม่ให้คะแนน Green Office อย่างเป็นทางการ** บน indicator journeys
-
----
-
-## 8. Remaining Non-blocking Gaps
-
-- **1.2.2** / **1.5.3** — MISSING evidence (declared in contracts)
-- ERP plan attachment `NzY5NTQz` — 1.6.1 activities not locally auditable
-- Septic-tank workbook anomaly — documented, not inferred away
-- Dashboard scope chart still suppressed; scopes on **1.5.1** only
-- Evidence cards many still **pending** review vs contract `reviewed`
+| Gate | Result |
+|------|--------|
+| `validate-category1-contracts.mjs` | PASS (9 domains) |
+| `test-category1-fy2568-freeze.mjs` | PASS |
+| `npm test` | PASS |
+| `npm run check` | PASS |
+| `npm run build` | PASS (272 pages) |
 
 ---
 
-## 9. Next Session (suggested)
+## Next Session (choose one — do not start in this close)
 
-1. **CAT1-1.6 checkpoint doc** (mirror 1.5 closeout record)
-2. **1.7 management review** — only after PO approval (not started)
-3. Optional: EN contract snapshot polish; `document-registry.json` Scope 1/2 wording
-4. PO review of live preview before any VPS promotion
+**A.** Category 2 FY2568 baseline  
+**B.** CAT1 FY2569 overlay (separate year-qualified records; do not mutate frozen FY2568 contracts)
 
 ---
 
-**Close:** `DAILY_CLOSE` 2026-08-19 · HEAD **`d3e5e1c`** = origin/master · Preview deployed · Production not deployed.
+**Verdict:** `GOFFICE2026 DAILY_CLOSE_2026-08-19`

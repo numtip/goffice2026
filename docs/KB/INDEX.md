@@ -87,10 +87,12 @@ Curated map for agents and contributors. Prefer links over copying content.
 
 ## Reports
 
-| Template | Purpose |
+| Template / Report | Purpose |
 |----------|---------|
+| `docs/reports/GOFFICE2026_DAILY_REPORT_2026-08-19.md` | **Daily close** — CAT1 FY2568 frozen @ `0ea8371` |
 | `docs/reports/AGENT_HANDOFF_TEMPLATE.md` | Session handoff |
 | `docs/reports/SPRINT_SUMMARY_TEMPLATE.md` | Sprint close-out |
+| `docs/handoff/GOFFICE2026_NEXT_DAY_HANDOFF.md` | Next-session entry point |
 
 ## Releases (Category 1 FY2568)
 
