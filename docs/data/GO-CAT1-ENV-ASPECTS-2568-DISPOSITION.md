@@ -1,7 +1,7 @@
 # GO-CAT1-ENV-ASPECTS-2568 — Phase A/B Source Disposition & Contract
 
 **Date:** 2026-08-19
-**Status:** COMPLETE — pipeline implemented
+**Status:** COMPLETE — pipeline implemented; 1.3 runtime closeout in `GO-CAT1-1.3-SOURCE-RECONCILIATION.md`
 **Scope:** CAT1-1.3 Canonical Data Pipeline — source audit, version disposition, contract design
 **Read-only source:** `docs/ผลประเมินปัญหา2568.xlsx` (primary structured FY2568 source) + `docs/เกณฑ์การประเมินสำนักงานสีเขียว ปี 2568_1-3.pdf` (historical criteria)
 **Governance:** `GOFFICE2026_CATEGORY1_MANAGEMENT_BLUEPRINT_V1`; FY2569 criteria = `2026 Green Office Assessment Criteria.MD`

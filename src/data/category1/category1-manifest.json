@@ -8,14 +8,14 @@
   "status": "PHASE_C_D_CONTRACTS",
   "note": "Static-only canonical data contracts for Category 1 (no backend/database). Each contract normalizes verified FY2568 sources; every record retains year, indicator/issue/category codes, source reference, and verification/availability truth. No invented data, no official scoring. Indicators 1.2.2 and 1.5.3 remain MISSING and appear only in the gaps arrays.",
   "contracts": [
-    { "domain": "activities-aspects", "file": "src/data/category1/activities-aspects.json", "indicators": ["1.1.1", "1.3.1"], "status": "normalized" },
+    { "domain": "activities-aspects", "file": "src/data/category1/activities-aspects.json", "indicators": ["1.1.1"], "status": "normalized-partial", "note": "Canonical 1.1.1 scope. 1.3 records retained as legacy/supporting; runtime 1.3 is environmental-aspects-2568.json" },
     { "domain": "laws", "file": "src/data/category1/laws.json", "indicators": ["1.4.1"], "status": "normalized" },
     { "domain": "compliance", "file": "src/data/category1/compliance.json", "indicators": ["1.4.2"], "status": "normalized" },
     { "domain": "targets", "file": "src/data/category1/targets.json", "indicators": ["1.1.3"], "status": "normalized" },
     { "domain": "ghg", "file": "src/data/category1/ghg.json", "indicators": ["1.5.1", "1.5.2"], "status": "normalized" },
-    { "domain": "projects", "file": "src/data/category1/projects.json", "indicators": ["1.3.3", "1.6.1", "1.6.2"], "status": "normalized" },
+    { "domain": "projects", "file": "src/data/category1/projects.json", "indicators": ["1.6.1", "1.6.2"], "status": "normalized" },
     { "domain": "management-review", "file": "src/data/category1/management-review.json", "indicators": ["1.7.1", "1.7.2"], "status": "normalized" },
-    { "domain": "environmental-aspects-2568", "file": "src/data/category1/environmental-aspects-2568.json", "indicators": ["1.3.1", "1.3.2", "1.3.3"], "status": "normalized-verified" }
+    { "domain": "environmental-aspects-2568", "file": "src/data/category1/environmental-aspects-2568.json", "indicators": ["1.3.1", "1.3.2", "1.3.3"], "status": "canonical" }
   ],
   "missingIndicators": [
     { "indicator": "1.2.2", "status": "MISSING", "note": "Role-understanding interview/sampling evidence not found in FY2568 source; only a '-สัมภาษณ์-' stub in 1.2.1 order PDF." },

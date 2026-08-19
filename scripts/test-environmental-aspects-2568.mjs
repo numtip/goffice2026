@@ -205,3 +205,83 @@ describe('environmental-aspects-2568 — source traceability & references', () =
     assert.doesNotMatch(raw, /2569/);
   });
 });
+
+describe('CAT1-1.3 closeout — one canonical runtime, legacy retained', () => {
+  const legacy = JSON.parse(
+    readFileSync(join(ROOT, 'src', 'data', 'category1', 'activities-aspects.json'), 'utf8'),
+  );
+  const vm = readFileSync(join(ROOT, 'src', 'utils', 'category1-presentation.ts'), 'utf8');
+  const snap = readFileSync(join(ROOT, 'src', 'components', 'categories', 'Cat1DomainSnapshot.astro'), 'utf8');
+  const manifest = JSON.parse(
+    readFileSync(join(ROOT, 'src', 'data', 'category1', 'category1-manifest.json'), 'utf8'),
+  );
+
+  it('legacy activities-aspects.json is retained (not deleted) with 17 activities / 102 aspects / 35 M/H', () => {
+    assert.equal(legacy.domain, 'activities-aspects');
+    assert.equal(legacy.year, 2568);
+    assert.match(legacy.note, /LEGACY\/SUPPORTING/);
+    const activities = legacy.records.filter((r) => r.kind === 'activity');
+    const aspects = legacy.records.filter((r) => r.kind === 'aspect');
+    const mh = aspects.filter((r) => r.significance === 'M' || r.significance === 'H');
+    assert.equal(activities.length, 17);
+    assert.equal(aspects.length, 102);
+    assert.equal(mh.length, 35);
+    assert.equal(legacy.summary.significantCount, 35);
+  });
+
+  it('canonical environmental-aspects-2568.json is 20 activities / 102 aspects / 34 M/H', () => {
+    assert.equal(DATA.summary.activityCount, 20);
+    assert.equal(DATA.summary.aspectCount, 102);
+    assert.equal(DATA.summary.significantCount, 34);
+    assert.equal(DATA.summary.bySignificance.L, 68);
+    assert.equal(DATA.summary.bySignificance.M, 31);
+    assert.equal(DATA.summary.bySignificance.H, 3);
+  });
+
+  it('35→34 is the vehicle/water row: register M preserved, priority L canonical', () => {
+    const row = records.find(
+      (r) => r.activity === 'การดูแลยานพาหนะ' && r.aspect === 'น้ำ' && r.inputOutput === 'input',
+    );
+    assert.ok(row, 'vehicle/water input row exists');
+    assert.equal(row.assessment.registerSignificance, 'M');
+    assert.equal(row.assessment.prioritySignificance, 'L');
+    assert.equal(row.assessment.significance, 'L');
+    assert.equal(row.assessment.significanceSource, 'priority');
+    assert.equal(row.sourceTrace.sheet, 'Input');
+    assert.equal(row.sourceTrace.sourceRow, 46);
+    assert.equal(row.sourceTrace.prioritySheet, 'จัดลำดับ (Input)');
+    assert.equal(row.sourceTrace.priorityRow, 45);
+    const legacyRow = legacy.records.find(
+      (r) => r.kind === 'aspect' && r.activity === 'การดูแลยานพาหนะ' && r.aspect === 'น้ำ' && r.inputOutput === 'input',
+    );
+    assert.equal(legacyRow.significance, 'M');
+  });
+
+  it('17→20 extras are register labels, not extra processes', () => {
+    const extra = ['เครื่องคอมพิวเตอร์', 'การรับประทานอาหาร (ถังดักไขมัน)', 'การดูแลยานพาหนะ (รถยนต์ รถจักรยานยนต์)'];
+    const newNames = DATA.activities.map((a) => a.name);
+    for (const name of extra) assert.ok(newNames.includes(name), `missing extra label ${name}`);
+    const stray = DATA.activities.find((a) => a.name === 'เครื่องคอมพิวเตอร์');
+    assert.equal(stray.sourceTrace.sheet, 'Input');
+    assert.equal(stray.sourceTrace.sourceRow, 18);
+  });
+
+  it('1.3.1, 1.3.2 and 1.3.3 runtime map to environmental-aspects-2568 only', () => {
+    assert.match(vm, /'1\.3\.1': 'environmental-aspects-2568'/);
+    assert.match(vm, /'1\.3\.2': 'environmental-aspects-2568'/);
+    assert.match(vm, /'1\.3\.3': 'environmental-aspects-2568'/);
+    assert.doesNotMatch(vm, /'1\.3\.1': 'activities-aspects'/);
+    const env = manifest.contracts.find((c) => c.domain === 'environmental-aspects-2568');
+    assert.deepEqual(env.indicators, ['1.3.1', '1.3.2', '1.3.3']);
+    const aa = manifest.contracts.find((c) => c.domain === 'activities-aspects');
+    assert.deepEqual(aa.indicators, ['1.1.1']);
+  });
+
+  it('Cat1 snapshot does not present competing 1.3 counts from the legacy file', () => {
+    assert.match(snap, /'activities-aspects': \{ label: \{ th: 'ขอบเขต'/);
+    assert.match(snap, /route: '\/indicators\/1\.1\.1\/'/);
+    assert.doesNotMatch(snap, /'activities-aspects': \{ label: \{ th: 'ขอบเขตและประเด็น'/);
+    assert.match(snap, /'environmental-aspects-2568'/);
+    assert.match(snap, /route: '\/indicators\/1\.3\.1\/'/);
+  });
+});

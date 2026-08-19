@@ -84,14 +84,14 @@ const CONTRACTS: Record<Cat1Domain, { records: ContractRecord[] }> = {
 /** Indicator code → contract domain that holds its FY2568 facts. */
 export const INDICATOR_DOMAIN: Record<string, Cat1Domain> = {
   '1.1.1': 'activities-aspects',
-  '1.3.1': 'activities-aspects',
+  '1.3.1': 'environmental-aspects-2568',
   '1.3.2': 'environmental-aspects-2568',
   '1.4.1': 'laws',
   '1.4.2': 'compliance',
   '1.1.3': 'targets',
   '1.5.1': 'ghg',
   '1.5.2': 'ghg',
-  '1.3.3': 'projects',
+  '1.3.3': 'environmental-aspects-2568',
   '1.6.1': 'projects',
   '1.6.2': 'projects',
   '1.7.1': 'management-review',
@@ -119,11 +119,6 @@ export function buildCat1DomainSnapshot(domain: Cat1Domain): DomainSnapshot {
   switch (domain) {
     case 'activities-aspects': {
       const scope = records.find((r) => r.kind === 'scope');
-      const activities = records.filter((r) => r.kind === 'activity');
-      const aspects = records.filter((r) => r.kind === 'aspect');
-      const significant = aspects.filter(
-        (r) => r.significance === 'M' || r.significance === 'H',
-      );
       return {
         domain,
         status: 'normalized-partial',
@@ -131,9 +126,6 @@ export function buildCat1DomainSnapshot(domain: Cat1Domain): DomainSnapshot {
           scope && typeof scope.officeAreaSqm === 'number'
             ? { label: { th: 'พื้นที่ในขอบเขต', en: 'Scope area' }, value: `${scope.officeAreaSqm} ตร.ม.`, kind: 'number' }
             : { label: { th: 'พื้นที่ในขอบเขต', en: 'Scope area' }, value: '—', kind: 'unavailable' },
-          { label: { th: 'กิจกรรมในขอบเขต', en: 'Activities' }, value: String(activities.length), kind: 'number' },
-          { label: { th: 'ประเด็นปัญหาสิ่งแวดล้อม', en: 'Environmental aspects' }, value: String(aspects.length), kind: 'number' },
-          { label: { th: 'ประเด็นนัยสำคัญ (M/H)', en: 'Significant (M/H)' }, value: String(significant.length), kind: 'number' },
         ],
       };
     }

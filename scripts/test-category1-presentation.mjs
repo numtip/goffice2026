@@ -102,11 +102,23 @@ describe('Phase F — cross-link journeys and view-model', () => {
     const src = readFileSync(VM, 'utf8');
     assert.match(src, /category1\/activities-aspects\.json/);
     assert.match(src, /category1\/ghg\.json/);
+    assert.match(src, /category1\/environmental-aspects-2568\.json/);
   });
 
   it('snapshot and context state explicitly that facts are coverage, not scores', () => {
     const snap = readFileSync(SNAPSHOT, 'utf8');
     assert.match(snap, /official score|คะแนนอย่างเป็นทางการ/);
     assert.ok(!/data-score|data-official-score/.test(snap), 'snapshot must not emit scoring markers');
+  });
+
+  it('1.3.x runtime uses environmental-aspects-2568; scope card is 1.1.1 only', () => {
+    const src = readFileSync(VM, 'utf8');
+    assert.match(src, /'1\.3\.1': 'environmental-aspects-2568'/);
+    assert.match(src, /'1\.3\.2': 'environmental-aspects-2568'/);
+    assert.match(src, /'1\.3\.3': 'environmental-aspects-2568'/);
+    assert.match(src, /'1\.1\.1': 'activities-aspects'/);
+    const snap = readFileSync(SNAPSHOT, 'utf8');
+    assert.match(snap, /route: '\/indicators\/1\.1\.1\/'/);
+    assert.doesNotMatch(snap, /'activities-aspects': \{ label: \{ th: 'ขอบเขตและประเด็น'/);
   });
 });

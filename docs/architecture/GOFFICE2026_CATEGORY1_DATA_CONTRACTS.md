@@ -18,13 +18,14 @@ Operational principle from the Blueprint: FY2568 = historical working baseline; 
 ```
 src/data/category1/
 ├── category1-manifest.json      # index of contracts + statuses + missing indicators
-├── activities-aspects.json      # 1.1.1 scope · 1.3.1 activities/aspects
+├── activities-aspects.json      # 1.1.1 scope (canonical); 1.3 activity/aspect records LEGACY/SUPPORTING
 ├── laws.json                    # 1.4.1 legal register
 ├── compliance.json              # 1.4.2 legal compliance evaluation
 ├── targets.json                 # 1.1.3 targets (6 domains)
 ├── ghg.json                     # 1.5.1 inventory · 1.5.2 performance
-├── projects.json                # 1.3.3 / 1.6.1 / 1.6.2 projects & reduction
-└── management-review.json       # 1.7.1 quorum · 1.7.2 agenda/meetings/decisions
+├── projects.json                # 1.6.1 / 1.6.2 projects & reduction
+├── management-review.json       # 1.7.1 quorum · 1.7.2 agenda/meetings/decisions
+└── environmental-aspects-2568.json  # Canonical FY2568 CAT1-1.3 runtime (1.3.1 / 1.3.2 / 1.3.3)
 ```
 
 ## 3. Contract Schema (all files)
@@ -64,12 +65,13 @@ src/data/category1/
 
 ### Per-domain record fields
 
-- **activities-aspects** — `scope {officeAreaSqm, basis}`; `activities [{id, name}]`; `aspects [{id, activity, inputOutput: input|output, aspect, impact, directIndirect, condition: normal|abnormal|emergency, significance: L|M|H|unknown, applicableLaw?}]`; `summary {activityCount, aspectCount, significantCount}`
+- **activities-aspects** — `scope {officeAreaSqm, basis}` (canonical 1.1.1). Activity/aspect rows are retained as legacy/supporting; runtime 1.3 is `environmental-aspects-2568.json`.
+- **environmental-aspects-2568** — canonical FY2568 1.3.1/1.3.2/1.3.3: activities, aspects with nested assessment (priority-sheet L/M/H canonical; register values preserved), derived significant issues, documentary project links.
 - **laws** — `items [{id, topic, title, counts {compliant, nonCompliant, forInformation}, reviewDate}]`; `summary {totalItems}`
 - **compliance** — `evaluations [{id, date, reviewer, scope, result: compliant|partial|unverified, basis}]`
 - **targets** — `targets [{id, domain, unit, value, operator: lte, comparisonBasis: "FY2567", sourceType: ocr-derived|confirmed, verification}]`
 - **ghg** — `inventory {totalTCO2e, scope1TCO2e, scope2TCO2e, scope3TCO2e, perCapitaKgCO2e, methodology, septicAnomalyExcluded: true}`; `monthly [{month, tCO2e}]`; `performance [{targetReductionPct, actualChangePct, met, note}]`; `exclusions [{item, reason, status}]`
-- **projects** — `projects [{id, title, indicatorCodes, period, objectives, results, sourceRef}]`
+- **projects** — `projects [{id, title, indicatorCodes, period, objectives, results, sourceRef}]` (1.6.1 / 1.6.2; 1.3.3 documentary links resolve here)
 - **management-review** — `quorum {documented, totalMembers, attended, attendancePct, basis}`; `meetings [{id, date, agenda[], participantsCount?, outcome, plannedPerYear}]`; `decisions [{id, text}]`
 
 ## 4. Truthfulness rules (enforced)
@@ -104,7 +106,7 @@ See `category1-manifest.json` and the `gaps` array of each contract. Summary: al
 - **Route scope:** only the existing stable routes are extended — `/categories/cat1/` (TH + EN) and all 18 `/indicators/1.x.x/` (TH + EN via the shared `IndicatorTraceabilityExperience`). No new top-level routes; no redesign of `/about/` or other categories.
 - **Category page (`/categories/cat1/`):**
   1. **Management cycle panel** (`Cat1ManagementCycle`) — a 7-step ordered flow (Define → Govern → Identify → Comply → Measure → Improve → Review) rendered as semantic `<ol>` cards (grid on ≥sm, single column on mobile). Each step links to its leading indicator. No JS; static; no animation beyond CSS hover states already gated by the global `prefers-reduced-motion` rule.
-  2. **Domain snapshot panel** (`Cat1DomainSnapshot`) — a grid of seven domain cards (scope/aspects, laws, compliance, targets, GHG, projects, management review) showing FY2568 facts derived **only** from the contracts (counts, totals, statuses). Each card links to its primary indicator. Explicitly labeled as coverage context, never a score.
+  2. **Domain snapshot panel** (`Cat1DomainSnapshot`) — a grid of domain cards (scope, laws, compliance, targets, GHG, projects, management review, **FY2568 aspects register**) showing FY2568 facts derived **only** from the contracts. The scope card is 1.1.1 only; 1.3 counts come solely from `environmental-aspects-2568.json`. Each card links to its primary indicator. Explicitly labeled as coverage context, never a score.
   3. **Journeys** — explicit cross-links (Scope→1.3.1, Aspects↔Laws, Targets→1.5.2, Projects 1.3.3↔1.6.2, GHG→Reduction, Review→next-cycle) rendered as pill links in the cycle panel.
 - **Indicator pages (cat1 only):** `Cat1ContractContext` panel placed after the requirement — shows the matching contract domain's FY2568 facts, source-file count, verification status and contract status, plus related-indicator links. For **1.2.2 and 1.5.3** the panel renders a calm amber "not available" notice sourced from the contracts' gaps — never filled.
 - **Interaction/a11y:** no pointer-only interactions; all links have `focus-visible` rings; cycle and lists are semantic (`ol`/`ul` with `role="list"`); reduced-motion respected by the global stylesheet; TH/EN strings are inline bilingual labels chosen by locale, matching the existing pattern.
