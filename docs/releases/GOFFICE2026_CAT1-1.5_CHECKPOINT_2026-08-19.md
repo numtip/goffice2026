@@ -15,8 +15,8 @@
 | Item | Value |
 |------|-------|
 | Branch | `master` |
-| Final SHA | *(filled after push)* |
-| Pages workflow | *(filled after deploy)* |
+| Final SHA | `8b8f8c3` — `fix(cat1): localize EN GHG snapshot and align dashboard scope copy` |
+| Pages workflow | **32233832266** — success (quality / build / deploy) |
 | Prior baseline | `5104767` — initial 1.5 presentation + live acceptance |
 
 ---
@@ -36,7 +36,7 @@
 | `npm run check` | PASS |
 | `npm run build` | PASS |
 | `git diff --check` | PASS |
-| Live smoke 1.5.1/1.5.2/1.5.3 TH+EN + `/dashboard/ghg/` | *(filled after deploy)* |
+| Live smoke 1.5.1/1.5.2/1.5.3 TH+EN + `/dashboard/ghg/` | PASS — EN `Not met` (no Thai fragment); dashboard Scope 1, 2, and 3 |
 
 ---
 
