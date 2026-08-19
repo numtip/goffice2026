@@ -1,0 +1,17 @@
+---
+/**
+ * Cat1ProjectsPresentation.astro — FY2568 CAT1-1.6 reduction plan & project journeys.
+ */
+import Cat1ProjectsPlanJourney from './Cat1ProjectsPlanJourney.astro';
+import Cat1ProjectsImprovementJourney from './Cat1ProjectsImprovementJourney.astro';
+
+interface Props {
+  indicatorCode: string;
+  locale: 'th' | 'en';
+}
+
+const { indicatorCode, locale } = Astro.props;
+---
+
+{indicatorCode === '1.6.1' && <Cat1ProjectsPlanJourney locale={locale} />}
+{indicatorCode === '1.6.2' && <Cat1ProjectsImprovementJourney locale={locale} />}

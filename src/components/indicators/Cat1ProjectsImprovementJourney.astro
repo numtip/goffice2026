@@ -1,0 +1,247 @@
+---
+/**
+ * 1.6.2 Project Improvement Journey — canonical proj-1/proj-2; no duplicate registry.
+ */
+import {
+  buildProjectPortfolio,
+  buildPerformanceGapDisclaimer,
+  ghgImpactPresentation,
+  CAT1_YEAR,
+  CAT16_DOCS,
+  type ProjectView,
+} from '../../utils/category1-projects-presentation';
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const isEn = locale === 'en';
+const path = (p: string) => getLocalizedPath(locale, p);
+
+function t(th: string, en: string): string {
+  return isEn ? en : th;
+}
+
+const projects = buildProjectPortfolio();
+const gapDisclaimer = buildPerformanceGapDisclaimer();
+
+function reportUrl(p: ProjectView): string {
+  if (p.id === 'proj-1') return CAT16_DOCS.report5s;
+  if (p.id === 'proj-2') return CAT16_DOCS.reportRat;
+  return CAT16_DOCS.plan162;
+}
+---
+
+<div class="cat16-journey space-y-6" data-cat1-projects-improvement data-view="1.6.2">
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat162-hero-title">
+    <p class="text-xs font-semibold text-primary">
+      {t(`ตัวชี้วัด 1.6.2 · FY${CAT1_YEAR} Historical Baseline`, `Indicator 1.6.2 · FY${CAT1_YEAR} Historical Baseline`)}
+    </p>
+    <h2 id="cat162-hero-title" class="mt-1 text-lg font-bold text-balance text-on-surface sm:text-xl">
+      {t('โครงการปรับปรุงสู่การลดก๊าซเรือนกระจก', 'Improvement projects toward GHG reduction')}
+    </h2>
+    <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+      {t(
+        `${projects.length} โครงการจากบันทึกเดียวกับ 1.3.3 (proj-2) — ไม่ใช่คะแนนสำนักงานสีเขียว`,
+        `${projects.length} projects from the same canonical record as 1.3.3 (proj-2) — not an official Green Office score`,
+      )}
+    </p>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat162-summary-title">
+    <h2 id="cat162-summary-title" class="text-base font-bold text-on-surface">{t('ภาพรวมพอร์ตโฟลิโอ', 'Portfolio summary')}</h2>
+    <dl class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <div class="rounded-lg border border-gray-100 bg-gray-50/80 p-3">
+        <dt class="text-xs text-on-surface-variant">{t('จำนวนโครงการ', 'Project count')}</dt>
+        <dd class="mt-1 text-xl font-bold text-on-surface">{projects.length}</dd>
+      </div>
+      <div class="rounded-lg border border-gray-100 bg-gray-50/80 p-3">
+        <dt class="text-xs text-on-surface-variant">{t('ลด GHG ที่วัดได้', 'Measured GHG reduction')}</dt>
+        <dd class="mt-1 text-sm font-semibold text-on-surface">{t('ไม่มี', 'None reported')}</dd>
+      </div>
+      <div class="rounded-lg border border-gray-100 bg-gray-50/80 p-3">
+        <dt class="text-xs text-on-surface-variant">{t('บันทึกร่วม 1.3.3', 'Shared with 1.3.3')}</dt>
+        <dd class="mt-1 text-sm font-semibold text-on-surface">proj-2</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="rounded-xl border border-rose-100 bg-rose-50/40 p-5 sm:p-6" aria-labelledby="cat162-gap-title" data-cat16-gap-disclaimer>
+    <h2 id="cat162-gap-title" class="text-base font-bold text-rose-950">{t('ข้อจำกัดความจริง (1.5.2)', 'Truthfulness note (1.5.2)')}</h2>
+    <p class="mt-2 text-sm leading-relaxed text-rose-900">{isEn ? gapDisclaimer.en : gapDisclaimer.th}</p>
+  </section>
+
+  {
+    projects.map((project) => {
+      const impact = ghgImpactPresentation(project.ghgImpactStatus, locale);
+      const has133 = project.linkedIndicators.includes('1.3.3');
+      return (
+        <article
+          class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6"
+          aria-labelledby={`cat162-${project.id}-title`}
+          data-cat16-project={project.id}
+        >
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div class="min-w-0 flex-1">
+              <p class="text-[11px] font-semibold uppercase tracking-wide text-on-surface-variant">{project.id}</p>
+              <h2 id={`cat162-${project.id}-title`} class="mt-0.5 text-base font-bold text-balance text-on-surface sm:text-lg">
+                {project.title}
+              </h2>
+              <p class="mt-1 text-xs text-on-surface-variant">{project.period}</p>
+            </div>
+            <div class="flex flex-col items-end gap-1.5">
+              <span class={`inline-flex max-w-[14rem] items-center rounded-full px-2.5 py-1 text-center text-[11px] font-semibold ring-1 ${impact.badgeClass}`}>
+                {impact.label}
+              </span>
+              <span class="text-[10px] text-on-surface-variant">{impact.description}</span>
+            </div>
+          </div>
+
+          {
+            project.owners.length > 0 && (
+              <p class="mt-3 text-xs text-on-surface-variant">
+                {t('ผู้รับผิดชอบ', 'Owners')}: {project.owners.join(' · ')}
+              </p>
+            )
+          }
+
+          {
+            project.budgetTHB != null && (
+              <p class="mt-2 text-xs text-on-surface">
+                {t(
+                  `งบประมาณ ${project.budgetTHB.toLocaleString()} บาท · ใช้จ่ายจริง ${project.actualSpendTHB?.toLocaleString() ?? '—'} บาท`,
+                  `Budget ${project.budgetTHB.toLocaleString()} THB · spent ${project.actualSpendTHB?.toLocaleString() ?? '—'} THB`,
+                )}
+              </p>
+            )
+          }
+
+          <details class="mt-4 rounded-lg border border-gray-100 bg-gray-50/50 p-3">
+            <summary class="cursor-pointer text-sm font-medium text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+              {t('วัตถุประสงค์', 'Objectives')}
+            </summary>
+            <ul class="mt-2 list-disc space-y-1 pl-5 text-xs leading-relaxed text-on-surface" role="list">
+              {project.objectives.map((obj) => (
+                <li>{obj}</li>
+              ))}
+            </ul>
+          </details>
+
+          <h3 class="mt-4 text-sm font-bold text-on-surface">{t('KPI: เป้าหมาย → ผลจริง', 'KPI: Target → Actual')}</h3>
+          <div class="mt-2 overflow-x-auto" data-cat16-kpi-table>
+            <table class="min-w-full text-left text-sm">
+              <thead>
+                <tr class="border-b border-gray-200 text-xs text-on-surface-variant">
+                  <th class="py-2 pr-3 font-semibold">{t('ตัวชี้วัด', 'Indicator')}</th>
+                  <th class="py-2 pr-3 font-semibold">{t('เป้าหมาย', 'Target')}</th>
+                  <th class="py-2 pr-3 font-semibold">{t('ผลจริง', 'Actual')}</th>
+                  <th class="py-2 font-semibold">{t('สถานะ', 'Status')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  project.kpis.map((kpi) => (
+                    <tr class="border-b border-gray-100">
+                      <td class="py-2 pr-3 align-top text-xs">{isEn ? kpi.labelEn : kpi.labelTh}</td>
+                      <td class="py-2 pr-3 align-top num-tabular text-xs">{kpi.target}</td>
+                      <td class="py-2 pr-3 align-top num-tabular text-xs font-medium">{kpi.actual}</td>
+                      <td class="py-2 align-top">
+                        <span class={`inline-flex rounded-full px-2 py-0.5 text-[10px] font-semibold ring-1 ${kpi.targetMet ? 'bg-green-100 text-green-900 ring-green-300' : 'bg-red-100 text-red-900 ring-red-300'}`}>
+                          {kpi.targetMet ? t('บรรลุ', 'Met') : t('ไม่บรรลุ', 'Not met')}
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-4 rounded-lg border border-dashed border-gray-300 bg-gray-50/80 p-3">
+            <p class="text-xs font-semibold text-on-surface">{t('การลด GHG ที่วัดได้', 'Measured GHG reduction')}</p>
+            <p class="mt-1 text-xs text-on-surface-variant">
+              {t('ไม่มี — ไม่มี kWh หรือ tCO₂e จากแหล่ง', 'Unavailable — no kWh or tCO₂e reported in sources')}
+            </p>
+          </div>
+
+          {
+            project.continuityAction && (
+              <p class="mt-3 text-xs leading-relaxed text-on-surface-variant">
+                <span class="font-semibold text-on-surface">{t('ข้อเสนอต่อเนื่อง', 'Continuity')}:</span> {project.continuityAction}
+              </p>
+            )
+          }
+
+          {
+            has133 && (
+              <div class="mt-4 rounded-lg border border-green-100 bg-green-50/40 p-3">
+                <p class="text-xs font-semibold text-green-900">{t('บันทึกร่วม 1.3.3', 'Shared 1.3.3 record')}</p>
+                <p class="mt-1 text-xs text-green-800">
+                  {t(
+                    'โครงการนี้ใช้ proj-2 เดียวกับตัวชี้วัด 1.3.3 — ไม่สร้างบันทึกซ้ำ',
+                    'This project uses the same proj-2 record as indicator 1.3.3 — no duplicate registry',
+                  )}
+                </p>
+                <a
+                  href={path('/indicators/1.3.3/')}
+                  class="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-green-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded"
+                >
+                  {t('เปิด 1.3.3 โครงการสิ่งแวดล้อม', 'Open 1.3.3 environmental projects')} →
+                </a>
+              </div>
+            )
+          }
+
+          <ul class="mt-4 space-y-1 text-sm" role="list">
+            <li>
+              <a
+                href={reportUrl(project)}
+                class="break-all text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded"
+              >
+                {t('รายงานโครงการ FY2568 (PDF)', 'FY2568 project report (PDF)')}
+              </a>
+            </li>
+          </ul>
+        </article>
+      );
+    })
+  }
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6">
+    <h2 class="text-base font-bold text-on-surface">{t('แหล่งอ้างอิงเพิ่มเติม', 'Additional sources')}</h2>
+    <ul class="mt-3 space-y-1 text-sm" role="list">
+      <li>
+        <a href={CAT16_DOCS.plan162} class="break-all text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+          {t('1.6.2 หลักฐานตัวชี้วัด (PDF)', '1.6.2 Indicator evidence (PDF)')}
+        </a>
+      </li>
+      <li>
+        <a href={CAT16_DOCS.master} class="break-all text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+          {t('ประกอบข้อ 1.6 (DOCX)', 'ประกอบข้อ 1.6 master (DOCX)')}
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="rounded-xl border border-green-100 bg-green-50/40 p-5 sm:p-6">
+    <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+      <a
+        href={path('/indicators/1.6.1/')}
+        class="inline-flex min-h-11 items-center rounded-stitch border border-green-700/30 bg-white px-4 py-2.5 text-sm font-semibold text-green-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+      >
+        {t('← 1.6.1 แผนลด GHG', '← 1.6.1 reduction plan')}
+      </a>
+      <a
+        href={path('/indicators/1.5.2/')}
+        class="inline-flex min-h-11 items-center rounded-stitch border border-green-700/30 bg-white px-4 py-2.5 text-sm font-semibold text-green-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+      >
+        {t('← 1.5.2 ผล GHG', '← 1.5.2 GHG performance')}
+      </a>
+    </div>
+    <p class="mt-2 text-[10px] text-on-surface-variant">
+      {t('1.7 ยังไม่ได้ implement — ไม่มีลิงก์ไปการทบทวนฝ่ายบริหาร', '1.7 not implemented — no management review link')}
+    </p>
+  </section>
+</div>

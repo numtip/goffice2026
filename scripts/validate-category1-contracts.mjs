@@ -169,6 +169,52 @@ function main() {
     if (exclusions.length === 0) errors.push('ghg: exclusions must document the septic-tank anomaly');
   }
 
+  // ── projects invariants (1.6) ────────────────────────────────
+  const ALLOWED_GHG_IMPACT = new Set(['ghg_measured', 'ghg_supporting_action', 'environmental_improvement']);
+  let projects;
+  try {
+    projects = readJSON(resolve(CONTRACT_DIR, 'projects.json'));
+  } catch (e) {
+    errors.push(`projects.json unreadable: ${e.message}`);
+  }
+  if (projects) {
+    const projectRecords = (projects.records || []).filter((r) => r.kind === 'project');
+    const planRecords = (projects.records || []).filter((r) => r.kind === 'plan');
+    const projectIds = projectRecords.map((r) => r.id);
+    if (projectRecords.length !== 2) {
+      errors.push(`projects: expected exactly 2 FY2568 project records, got ${projectRecords.length}`);
+    }
+    if (new Set(projectIds).size !== projectIds.length) {
+      errors.push('projects: duplicate project IDs detected');
+    }
+    const p2 = projectRecords.find((r) => r.id === 'proj-2');
+    if (!p2 || !p2.indicatorCodes.includes('1.3.3') || !p2.indicatorCodes.includes('1.6.2')) {
+      errors.push('projects: proj-2 must be shared by 1.3.3 and 1.6.2');
+    }
+    const p1 = projectRecords.find((r) => r.id === 'proj-1');
+    if (p1 && p1.indicatorCodes.includes('1.3.3')) {
+      errors.push('projects: proj-1 must not be duplicated under 1.3.3');
+    }
+    for (const rec of [...projectRecords, ...planRecords]) {
+      if (rec.ghgImpactStatus && !ALLOWED_GHG_IMPACT.has(rec.ghgImpactStatus)) {
+        errors.push(`projects: ${rec.id} has invalid ghgImpactStatus "${rec.ghgImpactStatus}"`);
+      }
+      if (rec.ghgImpactStatus === 'ghg_measured' && rec.measuredReduction == null) {
+        errors.push(`projects: ${rec.id} claims ghg_measured without measuredReduction`);
+      }
+      if (rec.measuredReduction != null && typeof rec.measuredReduction !== 'number') {
+        errors.push(`projects: ${rec.id} measuredReduction must be numeric or null`);
+      }
+      if (rec.performanceGapLink != null) {
+        errors.push(`projects: ${rec.id} performanceGapLink must be null unless source explicitly links to 1.5.2`);
+      }
+    }
+    const plan = planRecords.find((r) => r.id === 'proj-plan-1');
+    if (!plan || !plan.indicatorCodes.includes('1.6.1')) {
+      errors.push('projects: proj-plan-1 must exist for 1.6.1');
+    }
+  }
+
   // ── Report ───────────────────────────────────────────────────
   console.log('=== CATEGORY 1 DATA CONTRACTS VALIDATION ===');
   console.log(`Domains checked : ${[...ALLOWED_DOMAINS].length}`);

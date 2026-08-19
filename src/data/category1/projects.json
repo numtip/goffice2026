@@ -9,11 +9,11 @@
     { "ref": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/ประกอบข้อ 1.6.docx", "role": "primary", "inspection": "content-verified" },
     { "ref": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/1.6.1 (9-3-69).pdf", "role": "primary", "inspection": "content-verified" },
     { "ref": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/1.6.2 (9-3-69).pdf", "role": "primary", "inspection": "content-verified" },
-    { "ref": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/ย.002 โครงการ 5ส.pdf", "role": "primary", "inspection": "content-verified" },
-    { "ref": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/ย.002 โครงการลดหนู.pdf", "role": "primary", "inspection": "content-verified" },
+    { "ref": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/ย.002 โครงการ 5ส.pdf", "role": "supporting", "inspection": "content-verified" },
+    { "ref": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/ย.002 โครงการลดหนู.pdf", "role": "supporting", "inspection": "content-verified" },
     { "ref": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/รายงานโครงการลดปัญหาหนูในพื้นที่ทำงาน เพื่อสิ่งแวดล้อมปลอดภัยตามแนวทาง Green Office.pdf", "role": "primary", "inspection": "content-verified" },
     { "ref": "1.3/1.3.3 (9-3-69).pdf", "role": "primary", "inspection": "content-verified" },
-    { "ref": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/รายงานโครงการ 5ส Green Office 2568.pdf", "role": "supporting", "inspection": "filename-only" }
+    { "ref": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/รายงานโครงการ 5ส Green Office 2568.pdf", "role": "primary", "inspection": "content-verified" }
   ],
   "records": [
     {
@@ -23,10 +23,10 @@
       "issueCodes": ["1.6"],
       "categoryCode": "cat1",
       "evidenceIds": [],
-      "sourceRef": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/1.6.2 (9-3-69).pdf",
+      "sourceRef": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/รายงานโครงการ 5ส Green Office 2568.pdf",
       "verification": {
         "status": "reviewed",
-        "basis": "Project documented in 1.6.2 (9-3-69).pdf and ประกอบข้อ 1.6.docx; ย.002 form (pid 23342) approved 19/05/2568; KPI: participation not less than 85%."
+        "basis": "Project documented in 1.6.2 (9-3-69).pdf, ประกอบข้อ 1.6.docx, ย.002 form (pid 23342) approved 19/05/2568; KPIs verified from FY2568 project report. No measured kWh/tCO2e reduction reported."
       },
       "availability": "content-verified",
       "kind": "project",
@@ -38,7 +38,38 @@
         "เพื่อรักษามาตรฐานสำนักงานสีเขียว (Green Office)",
         "เพื่อลดการใช้พลังงานและทรัพยากร ลดปริมาณการปล่อยก๊าซเรือนกระจก และลดปริมาณของเสีย และส่งเสริมการบริโภคที่เป็นมิตรกับสิ่งแวดล้อม"
       ],
-      "results": null
+      "owners": ["ศ.ดร.สุรชัย ชำนาญวงศ์"],
+      "approvalDate": "19/05/2568",
+      "budgetTHB": 11000,
+      "actualSpendTHB": 10725,
+      "ghgImpactStatus": "ghg_supporting_action",
+      "measuredReduction": null,
+      "expectedReduction": null,
+      "measurementMethod": null,
+      "targetStatus": "met",
+      "performanceGapLink": null,
+      "continuityAction": "รายงานโครงการ §5.2 แนะนำเพิ่มตัวชี้วัดเชิงปริมาณ เช่น ปริมาณไฟฟ้าที่ลดลง (kWh) หรือปริมาณ CO₂ ที่ลดได้ ในรอบถัดไป",
+      "kpis": [
+        {
+          "id": "participation-owning-unit",
+          "label": { "th": "การมีส่วนร่วม (หน่วยงานเจ้าของโครงการ)", "en": "Participation (project-owning unit)" },
+          "target": "≥ 85%",
+          "actual": "97.78% (44/45)",
+          "targetMet": true
+        },
+        {
+          "id": "participation-building",
+          "label": { "th": "การมีส่วนร่วม (อาคาร 4 หน่วยงาน)", "en": "Participation (building — 4 units)" },
+          "target": "≥ 85%",
+          "actual": "91.80% (112/122)",
+          "targetMet": true
+        }
+      ],
+      "results": [
+        "การมีส่วนร่วมของหน่วยงานเจ้าของโครงการ 97.78% (44/45) — เป้าหมายไม่น้อยกว่า 85%",
+        "การมีส่วนร่วมรวมอาคาร 4 หน่วยงาน 91.80% (112/122) — เป้าหมายไม่น้อยกว่า 85%",
+        "ไม่มีการรายงาน kWh หรือ tCO₂e ที่ลดได้จากโครงการ — วัตถุประสงค์ GHG เป็นเชิงสนับสนุนเท่านั้น"
+      ]
     },
     {
       "id": "proj-2",
@@ -47,10 +78,10 @@
       "issueCodes": ["1.3", "1.6"],
       "categoryCode": "cat1",
       "evidenceIds": [],
-      "sourceRef": "1.3/1.3.3 (9-3-69).pdf",
+      "sourceRef": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/รายงานโครงการลดปัญหาหนูในพื้นที่ทำงาน เพื่อสิ่งแวดล้อมปลอดภัยตามแนวทาง Green Office.pdf",
       "verification": {
         "status": "reviewed",
-        "basis": "Project documented in 1.3.3 (9-3-69).pdf, ประกอบข้อ 1.6.docx, ย.002 form (pid 24099) and the FY2568 project report; IPM approach; owners ริมฤทัย พุทธวงค์ / สุปราณี แก้วเทียน / จุมพล ศรีอุดมสุวรรณ."
+        "basis": "Project documented in 1.3.3 (9-3-69).pdf, ประกอบข้อ 1.6.docx, ย.002 form (pid 24099) and the FY2568 project report; IPM approach; owners ริมฤทัย พุทธวงค์ / สุปราณี แก้วเทียน / จุมพล ศรีอุดมสุวรรณ. No measured tCO2e reduction reported."
       },
       "availability": "content-verified",
       "kind": "project",
@@ -61,10 +92,49 @@
         "เพื่อส่งเสริมการจัดการสิ่งแวดล้อมและสุขาภิบาลในสำนักงานให้สะอาด เป็นระเบียบ และปลอดภัยต่อบุคลากร",
         "เพื่อสนับสนุนการดำเนินงานตามเกณฑ์สำนักงานสีเขียว (Green Office) ในด้านการจัดการของเสียและการลดการใช้สารเคมีอันตราย"
       ],
+      "owners": ["ริมฤทัย พุทธวงค์", "สุปราณี แก้วเทียน", "จุมพล ศรีอุดมสุวรรณ"],
+      "ghgImpactStatus": "environmental_improvement",
+      "measuredReduction": null,
+      "expectedReduction": null,
+      "measurementMethod": null,
+      "targetStatus": "met",
+      "performanceGapLink": null,
+      "continuityAction": "รายงานโครงการแนะนำปรับปรุงจุดเสี่ยงที่เหลือ และบูรณาการมาตรการสุขาภิบาลกับกิจกรรมลดพลังงาน/GHG ในอนาคต — ไม่ใช่การลด tCO₂e ที่วัดได้แล้ว",
+      "linkedAspectIds": ["ea-101", "ea-102"],
+      "kpis": [
+        {
+          "id": "trap-installation",
+          "label": { "th": "ติดตั้งอุปกรณ์ดัก/ป้องกันหนูครบจุดเสี่ยง", "en": "Trap/prevention points installed vs plan" },
+          "target": "≥ 80%",
+          "actual": "100% (6/6 จุดเสี่ยง)",
+          "targetMet": true
+        },
+        {
+          "id": "staff-satisfaction",
+          "label": { "th": "ความพึงพอใจของบุคลากร", "en": "Staff satisfaction with workplace environment" },
+          "target": "≥ 80%",
+          "actual": "88.60% (4.43/5)",
+          "targetMet": true
+        },
+        {
+          "id": "access-points-sealed",
+          "label": { "th": "อุดช่องทางหนูเข้าสำนักงาน", "en": "Access points sealed/improved" },
+          "target": "≥ 10 จุด",
+          "actual": "11 จุด (จาก 35 จุดเสี่ยงที่สำรวจ)",
+          "targetMet": true
+        }
+      ],
       "results": [
         "การติดตั้งอุปกรณ์ดักหนูหรือป้องกันหนูครบทุกจุดเสี่ยงตามแผน คิดเป็นร้อยละ 100 (เป้าหมายไม่น้อยกว่าร้อยละ 80)",
         "ความพึงพอใจของบุคลากรต่อสภาพแวดล้อมสำนักงาน มีค่าเฉลี่ยรวม 4.43/5 คะแนน คิดเป็นร้อยละ 88.60 (เป้าหมายไม่น้อยกว่าร้อยละ 80)",
-        "การปรับปรุงและอุดช่องทางที่หนูสามารถเข้ามาในสำนักงาน ดำเนินการได้จำนวน 11 จุดเสี่ยง (เป้าหมายไม่น้อยกว่า 10 จุด)"
+        "การปรับปรุงและอุดช่องทางที่หนูสามารถเข้ามาในสำนักงาน ดำเนินการได้จำนวน 11 จุดเสี่ยง (เป้าหมายไม่น้อยกว่า 10 จุด)",
+        "สำรวจพบ 35 จุดเสี่ยง — ไม่มีการรายงาน tCO₂e ที่ลดได้จากโครงการ"
+      ],
+      "anomalies": [
+        {
+          "type": "kpi-table-vs-narrative",
+          "note": "ตารางสรุป KPI ในรายงานแสดง 10 จุดเสี่ยงที่ปรับปรุง แต่ §2.3 และบทสรุประบุ 11 จุด — ใช้ 11 จุดตามรายละเอียด/บทสรุป"
+        }
       ]
     },
     {
@@ -77,18 +147,28 @@
       "sourceRef": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/1.6.1 (9-3-69).pdf",
       "verification": {
         "status": "reviewed",
-        "basis": "Annual Green Office action plan 2568 documented as written and approved by the executive (1-year duration); carbon-neutrality intent per policy announcement signed 25 มี.ค. 2568 (ข้อ 8) and the environmental targets 2568 announcement (base year 2567)."
+        "basis": "Annual Green Office action plan FY2568 documented as written and executive-approved (1-year duration). Policy §8 GHG reduction campaign (signed 25 มี.ค. 2568) and 1.1.3 environmental targets announcement (base FY2567) cited. Carbon Neutrality/Net Zero criterion text appears in 1.6.1 evidence paragraph but is not separately evidenced beyond policy §8 wording. Detailed activity schedule in ERP attachment NzY5NTQz (not in repo)."
       },
       "availability": "content-verified",
       "kind": "plan",
       "title": "แผนการดำเนินงานหรือกิจกรรมประจำปีของนโยบายสำนักงานสีเขียว (Green Office) อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา ประจำปี 2568",
       "period": "ปี 2568 (การดำเนินงาน 1 ปี)",
+      "durationYears": 1,
+      "writtenPlan": true,
+      "executiveApproved": true,
+      "carbonNeutralityDocumented": false,
+      "netZeroDocumented": false,
+      "linksToIndicators": ["1.1.3"],
+      "performanceGapLink": null,
+      "activitiesSourceRef": "https://erp.mju.ac.th/openFile.aspx?id=NzY5NTQz",
+      "activitiesSourceStatus": "external-not-in-repo",
       "objectives": null,
       "results": null
     }
   ],
   "gaps": [
     { "indicator": "1.2.2", "status": "MISSING", "note": "No FY2568 role-understanding interview evidence." },
-    { "indicator": "1.5.3", "status": "MISSING", "note": "No FY2568 GHG-knowledge training evidence." }
+    { "indicator": "1.5.3", "status": "MISSING", "note": "No FY2568 GHG-knowledge training evidence." },
+    { "indicator": "1.6.1", "status": "PARTIAL", "note": "Plan narrative and approval supported; detailed activity list only in external ERP attachment (not in repo)." }
   ]
 }

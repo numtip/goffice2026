@@ -27,6 +27,9 @@ const GHG_INV = join(ROOT, 'src/components/indicators/Cat1GhgInventoryJourney.as
 const GHG_PERF = join(ROOT, 'src/components/indicators/Cat1GhgPerformanceJourney.astro');
 const GHG_UNDR = join(ROOT, 'src/components/indicators/Cat1GhgUnderstandingJourney.astro');
 const GHG_VM = join(ROOT, 'src/utils/category1-ghg-presentation.ts');
+const PROJ_PLAN = join(ROOT, 'src/components/indicators/Cat1ProjectsPlanJourney.astro');
+const PROJ_IMP = join(ROOT, 'src/components/indicators/Cat1ProjectsImprovementJourney.astro');
+const PROJ_VM = join(ROOT, 'src/utils/category1-projects-presentation.ts');
 const VM = join(ROOT, 'src/utils/category1-presentation.ts');
 
 describe('Phase E — TH/EN structural parity', () => {
@@ -56,6 +59,7 @@ describe('Phase E — TH/EN structural parity', () => {
     assert.match(trace, /Cat1ContractContext/);
     assert.match(trace, /Cat1LegalPresentation/);
     assert.match(trace, /Cat1GhgPresentation/);
+    assert.match(trace, /Cat1ProjectsPresentation/);
     assert.match(trace, /indicator\.categoryCode === 'cat1'/);
   });
 });
@@ -89,7 +93,7 @@ describe('Phase E — a11y / motion', () => {
   });
 
   it('no local filesystem paths or secrets in the presentation artifacts', () => {
-    for (const p of [CYCLE, SNAPSHOT, CONTEXT, VM, LEGAL_VM, LEGAL_REG, LEGAL_COMP, GHG_VM, GHG_INV, GHG_PERF, GHG_UNDR]) {
+    for (const p of [CYCLE, SNAPSHOT, CONTEXT, VM, LEGAL_VM, LEGAL_REG, LEGAL_COMP, GHG_VM, GHG_INV, GHG_PERF, GHG_UNDR, PROJ_VM, PROJ_PLAN, PROJ_IMP]) {
       const raw = readFileSync(p, 'utf8');
       assert.ok(!/F:\\/i.test(raw), `${p} leaks F:\\ path`);
       assert.ok(!/OneDrive - Maejo/i.test(raw), `${p} leaks OneDrive path`);
@@ -185,5 +189,35 @@ describe('Phase F — cross-link journeys and view-model', () => {
     assert.match(vm, /en: 'Not met'/);
     assert.match(ctx, /resolveDomainFactValue\(fact\.value, locale\)/);
     assert.match(snap, /resolveDomainFactValue\(fact\.value, locale\)/);
+  });
+
+  it('1.6 presentation is wired with PARTIAL plan honesty and project KPI truthfulness', () => {
+    const trace = readFileSync(TRACE, 'utf8');
+    assert.match(trace, /cat16Canonical/);
+    const plan = readFileSync(PROJ_PLAN, 'utf8');
+    const imp = readFileSync(PROJ_IMP, 'utf8');
+    assert.match(plan, /Historical Baseline/);
+    assert.match(plan, /PARTIAL/);
+    assert.match(plan, /external-not-in-repo|ไม่พร้อมใน repo/);
+    assert.match(plan, /data-cat16-gap-disclaimer/);
+    assert.match(plan, /1\.6\.2/);
+    assert.match(plan, /focus-visible:ring-2/);
+    assert.match(imp, /Historical Baseline/);
+    assert.match(imp, /buildProjectPortfolio/);
+    assert.match(imp, /data-cat16-kpi-table/);
+    assert.match(imp, /data-cat16-project=\{project\.id\}/);
+    assert.match(imp, /1\.3\.3/);
+    assert.match(imp, /ไม่มี kWh|no kWh/i);
+    assert.match(imp, /data-cat16-gap-disclaimer/);
+    assert.doesNotMatch(plan, /official Green Office score achieved/i);
+    assert.doesNotMatch(imp, /ghg_measured|tCO2e reduction achieved/i);
+    const pvm = readFileSync(PROJ_VM, 'utf8');
+    assert.match(pvm, /buildReductionPlan/);
+    assert.match(pvm, /buildProjectPortfolio/);
+    assert.match(pvm, /category1\/projects\.json/);
+    const projectsJson = readFileSync(join(ROOT, 'src/data/category1/projects.json'), 'utf8');
+    assert.match(projectsJson, /97\.78/);
+    assert.match(projectsJson, /91\.80/);
+    assert.match(projectsJson, /88\.60/);
   });
 });
