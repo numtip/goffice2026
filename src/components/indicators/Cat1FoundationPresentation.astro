@@ -1,0 +1,21 @@
+---
+/**
+ * Cat1FoundationPresentation.astro — FY2568 CAT1-1.1 management foundation journeys.
+ */
+import Cat1ScopeExplorerJourney from './Cat1ScopeExplorerJourney.astro';
+import Cat1PolicyJourney from './Cat1PolicyJourney.astro';
+import Cat1TargetBoardJourney from './Cat1TargetBoardJourney.astro';
+import Cat1AnnualPlanJourney from './Cat1AnnualPlanJourney.astro';
+
+interface Props {
+  indicatorCode: string;
+  locale: 'th' | 'en';
+}
+
+const { indicatorCode, locale } = Astro.props;
+---
+
+{indicatorCode === '1.1.1' && <Cat1ScopeExplorerJourney locale={locale} />}
+{indicatorCode === '1.1.2' && <Cat1PolicyJourney locale={locale} />}
+{indicatorCode === '1.1.3' && <Cat1TargetBoardJourney locale={locale} />}
+{indicatorCode === '1.1.4' && <Cat1AnnualPlanJourney locale={locale} />}

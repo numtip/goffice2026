@@ -108,14 +108,14 @@ describe('CAT1-1.6 — GHG measurement truthfulness', () => {
 });
 
 describe('CAT1-1.6 — plan record (1.6.1)', () => {
-  it('proj-plan-1 exists with 1-year duration and 1.1.3 link only', () => {
+  it('proj-plan-1 exists with 1-year duration and links 1.1.3 + 1.1.4', () => {
     const plan = byId.get('proj-plan-1');
     assert.equal(plan.kind, 'plan');
-    assert.deepEqual(plan.indicatorCodes, ['1.6.1']);
+    assert.deepEqual(plan.indicatorCodes.sort(), ['1.1.4', '1.6.1']);
     assert.equal(plan.durationYears, 1);
     assert.equal(plan.writtenPlan, true);
     assert.equal(plan.executiveApproved, true);
-    assert.deepEqual(plan.linksToIndicators, ['1.1.3']);
+    assert.deepEqual(plan.linksToIndicators.sort(), ['1.1.3', '1.1.4']);
     assert.equal(plan.performanceGapLink, null);
   });
 
@@ -123,6 +123,6 @@ describe('CAT1-1.6 — plan record (1.6.1)', () => {
     const plan = byId.get('proj-plan-1');
     assert.equal(plan.carbonNeutralityDocumented, false);
     assert.equal(plan.netZeroDocumented, false);
-    assert.match(plan.verification.basis, /not separately evidenced/i);
+    assert.match(plan.verification.basis, /1\.1\.4|1\.6\.1/i);
   });
 });

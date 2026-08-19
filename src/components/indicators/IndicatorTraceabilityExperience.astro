@@ -11,6 +11,7 @@ import Cat1LegalPresentation from './Cat1LegalPresentation.astro';
 import Cat1GhgPresentation from './Cat1GhgPresentation.astro';
 import Cat1ProjectsPresentation from './Cat1ProjectsPresentation.astro';
 import Cat1ManagementReviewPresentation from './Cat1ManagementReviewPresentation.astro';
+import Cat1FoundationPresentation from './Cat1FoundationPresentation.astro';
 import { withBase } from '../../utils/with-base';
 import { getLocalizedPath } from '../../i18n/utils';
 
@@ -86,6 +87,7 @@ const dashboardLinks = (indicator.relatedDashboards || []).map((id: string) => (
 const exactEvidence = getEvidenceForIndicator(indicator.code);
 const hasExactEvidence = exactEvidence.length > 0;
 const implementationNotes = implementationNotesForIndicator(indicator.code, undefined, locale);
+const cat11Canonical = ['1.1.1', '1.1.2', '1.1.3', '1.1.4'].includes(indicator.code);
 const cat13Canonical = ['1.3.1', '1.3.2', '1.3.3'].includes(indicator.code);
 const cat14Canonical = ['1.4.1', '1.4.2'].includes(indicator.code);
 const cat15Canonical = ['1.5.1', '1.5.2', '1.5.3'].includes(indicator.code);
@@ -94,7 +96,7 @@ const cat17Canonical = ['1.7.1', '1.7.2'].includes(indicator.code);
 
 const categoryEvidence = evidenceIndex.items.filter((e: Record<string, unknown>) => {
   if (hasExactEvidence) return false;
-  if (cat13Canonical || cat14Canonical || cat15Canonical || cat16Canonical || cat17Canonical) return false;
+  if (cat11Canonical || cat13Canonical || cat14Canonical || cat15Canonical || cat16Canonical || cat17Canonical) return false;
   const codes: string[] = Array.isArray(e.categoryCodes)
     ? (e.categoryCodes as string[])
     : e.categoryId
@@ -194,7 +196,13 @@ function alternateTitle(): string {
     </div>
   )}
 
-  {indicator.categoryCode === 'cat1' && ['1.3.1'].includes(indicator.code) && (
+  {indicator.categoryCode === 'cat1' && cat11Canonical && (
+    <div class="mb-6">
+      <Cat1FoundationPresentation indicatorCode={indicator.code} locale={locale} />
+    </div>
+  )}
+
+  {indicator.categoryCode === 'cat1' && cat13Canonical && ['1.3.1'].includes(indicator.code) && (
     <div class="mb-6">
       <Cat1EnvironmentalAssessment indicatorCode={indicator.code} locale={locale} />
     </div>

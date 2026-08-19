@@ -140,14 +140,17 @@
     {
       "id": "proj-plan-1",
       "year": 2568,
-      "indicatorCodes": ["1.6.1"],
-      "issueCodes": ["1.6"],
+      "indicatorCodes": ["1.1.4", "1.6.1"],
+      "issueCodes": ["1.1", "1.6"],
       "categoryCode": "cat1",
       "evidenceIds": [],
-      "sourceRef": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/1.6.1 (9-3-69).pdf",
+      "sourceRef": "1.1/1.1.4 (9-3-69).pdf",
+      "coSourceRefs": [
+        "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/1.6.1 (9-3-69).pdf"
+      ],
       "verification": {
         "status": "reviewed",
-        "basis": "Annual Green Office action plan FY2568 documented as written and executive-approved (1-year duration). Policy §8 GHG reduction campaign (signed 25 มี.ค. 2568) and 1.1.3 environmental targets announcement (base FY2567) cited. Carbon Neutrality/Net Zero criterion text appears in 1.6.1 evidence paragraph but is not separately evidenced beyond policy §8 wording. Detailed activity schedule in ERP attachment NzY5NTQz (not in repo)."
+        "basis": "Same FY2568 annual Green Office plan: 1.1.4 (9-3-69).pdf §1.1.4 written plan, 7 categories, plan/actual columns, 4-org executive approval; 1.6.1 packaging cites GHG criterion. Detailed activity schedule in ERP NzY5NTQz (not in repo)."
       },
       "availability": "content-verified",
       "kind": "plan",
@@ -156,9 +159,12 @@
       "durationYears": 1,
       "writtenPlan": true,
       "executiveApproved": true,
+      "approvingOrganizationCount": 4,
+      "categoryCoverage": 7,
+      "plannedVsActualSeparate": true,
       "carbonNeutralityDocumented": false,
       "netZeroDocumented": false,
-      "linksToIndicators": ["1.1.3"],
+      "linksToIndicators": ["1.1.3", "1.1.4"],
       "performanceGapLink": null,
       "activitiesSourceRef": "https://erp.mju.ac.th/openFile.aspx?id=NzY5NTQz",
       "activitiesSourceStatus": "external-not-in-repo",
@@ -169,6 +175,7 @@
   "gaps": [
     { "indicator": "1.2.2", "status": "MISSING", "note": "No FY2568 role-understanding interview evidence." },
     { "indicator": "1.5.3", "status": "MISSING", "note": "No FY2568 GHG-knowledge training evidence." },
-    { "indicator": "1.6.1", "status": "PARTIAL", "note": "Plan narrative and approval supported; detailed activity list only in external ERP attachment (not in repo)." }
+    { "indicator": "1.6.1", "status": "PARTIAL", "note": "Plan narrative and approval supported via shared 1.1.4/1.6.1 document; detailed activity list only in external ERP attachment (not in repo)." },
+    { "indicator": "1.1.4", "status": "PARTIAL", "note": "Written plan and 4-org approval supported; plan/actual table rows (pp.3–8) image-only — no annualPlanItem records ingested." }
   ]
 }

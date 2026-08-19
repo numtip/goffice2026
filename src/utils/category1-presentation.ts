@@ -88,14 +88,16 @@ const CONTRACTS: Record<Cat1Domain, { records: ContractRecord[] }> = {
 /** Indicator code → contract domain that holds its FY2568 facts. */
 export const INDICATOR_DOMAIN: Record<string, Cat1Domain> = {
   '1.1.1': 'activities-aspects',
+  '1.1.2': 'activities-aspects',
+  '1.1.3': 'targets',
+  '1.1.4': 'projects',
   '1.3.1': 'environmental-aspects-2568',
   '1.3.2': 'environmental-aspects-2568',
+  '1.3.3': 'environmental-aspects-2568',
   '1.4.1': 'laws',
   '1.4.2': 'compliance',
-  '1.1.3': 'targets',
   '1.5.1': 'ghg',
   '1.5.2': 'ghg',
-  '1.3.3': 'environmental-aspects-2568',
   '1.6.1': 'projects',
   '1.6.2': 'projects',
   '1.7.1': 'management-review',
@@ -123,13 +125,25 @@ export function buildCat1DomainSnapshot(domain: Cat1Domain): DomainSnapshot {
   switch (domain) {
     case 'activities-aspects': {
       const scope = records.find((r) => r.kind === 'scope');
+      const orgs = records.filter((r) => r.kind === 'scopeOrganization');
+      const policies = records.filter((r) => r.kind === 'policyCommitment');
+      const approval = records.find((r) => r.kind === 'policyApproval');
       return {
         domain,
-        status: 'normalized-partial',
+        status: 'historical-baseline',
         facts: [
           scope && typeof scope.officeAreaSqm === 'number'
             ? { label: { th: 'พื้นที่ในขอบเขต', en: 'Scope area' }, value: `${scope.officeAreaSqm} ตร.ม.`, kind: 'number' }
             : { label: { th: 'พื้นที่ในขอบเขต', en: 'Scope area' }, value: '—', kind: 'unavailable' },
+          orgs.length
+            ? { label: { th: 'หน่วยงานในขอบเขต', en: 'Organizations in scope' }, value: String(orgs.length), kind: 'number' }
+            : { label: { th: 'หน่วยงานในขอบเขต', en: 'Organizations in scope' }, value: '—', kind: 'unavailable' },
+          policies.length
+            ? { label: { th: 'ข้อนโยบาย', en: 'Policy statements' }, value: String(policies.length), kind: 'number' }
+            : { label: { th: 'ข้อนโยบาย', en: 'Policy statements' }, value: '—', kind: 'unavailable' },
+          approval?.announcementDateISO
+            ? { label: { th: 'ประกาศใช้นโยบาย', en: 'Policy announcement' }, value: String(approval.announcementDateISO), kind: 'text' }
+            : { label: { th: 'ประกาศใช้นโยบาย', en: 'Policy announcement' }, value: '—', kind: 'unavailable' },
         ],
       };
     }
@@ -187,7 +201,7 @@ export function buildCat1DomainSnapshot(domain: Cat1Domain): DomainSnapshot {
       const targets = records.filter((r) => r.kind === 'target');
       return {
         domain,
-        status: 'normalized-partial',
+        status: 'historical-baseline',
         facts: [
           { label: { th: 'เป้าหมาย', en: 'Targets' }, value: String(targets.length), kind: 'number' },
           {

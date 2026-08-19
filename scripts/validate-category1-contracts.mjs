@@ -278,6 +278,64 @@ function main() {
     }
   }
 
+  // ── 1.1 scope/policy/targets/plan invariants ───────────────────
+  let aa;
+  try {
+    aa = readJSON(resolve(CONTRACT_DIR, 'activities-aspects.json'));
+  } catch (e) {
+    errors.push(`activities-aspects.json unreadable: ${e.message}`);
+  }
+  if (aa) {
+    const scope = (aa.records || []).find((r) => r.id === 'scope-1');
+    const scopeAreas = (aa.records || []).filter((r) => r.kind === 'scopeArea');
+    const policies = (aa.records || []).filter((r) => r.kind === 'policyCommitment');
+    const approval = (aa.records || []).find((r) => r.id === 'policy-approval-1');
+    if (!scope || scope.officeAreaSqm !== 9873) {
+      errors.push('activities-aspects: scope-1 officeAreaSqm must be 9873');
+    }
+    if (scopeAreas.length !== 4) {
+      errors.push(`activities-aspects: expected 4 scopeArea records, got ${scopeAreas.length}`);
+    } else {
+      const sum = scopeAreas.reduce((s, r) => s + (r.areaSqm || 0), 0);
+      if (sum !== 9873) errors.push(`activities-aspects: scopeArea sum must be 9873, got ${sum}`);
+    }
+    if (policies.length !== 10) {
+      errors.push(`activities-aspects: expected 10 policyCommitment records, got ${policies.length}`);
+    }
+    if (!approval || approval.reviewDateISO !== '2025-03-07' || approval.announcementDateISO !== '2025-03-25') {
+      errors.push('activities-aspects: policy-approval-1 must distinguish review 2025-03-07 and announcement 2025-03-25');
+    }
+  }
+  let targets;
+  try {
+    targets = readJSON(resolve(CONTRACT_DIR, 'targets.json'));
+  } catch (e) {
+    errors.push(`targets.json unreadable: ${e.message}`);
+  }
+  if (targets) {
+    const targetRecs = (targets.records || []).filter((r) => r.kind === 'target');
+    const expectedPct = { electricity: -1, fuel: -3, water: -1, paper: -3, general_waste: -3, ghg: -1 };
+    if (targetRecs.length !== 6) errors.push(`targets: expected 6 target records, got ${targetRecs.length}`);
+    for (const t of targetRecs) {
+      if (expectedPct[t.domain] !== t.targetPercent) {
+        errors.push(`targets: ${t.id} targetPercent must be ${expectedPct[t.domain]}, got ${t.targetPercent}`);
+      }
+    }
+    const paper = targetRecs.find((r) => r.id === 'target-paper');
+    if (!paper?.supersedes || paper.supersedes.priorTargetPercent !== -1) {
+      errors.push('targets: target-paper must document −1% → −3% MR amendment via supersedes');
+    }
+  }
+  if (projects) {
+    const plan = (projects.records || []).find((r) => r.id === 'proj-plan-1');
+    if (!plan?.indicatorCodes?.includes('1.1.4')) {
+      errors.push('projects: proj-plan-1 must include indicator 1.1.4');
+    }
+    if (plan?.sourceRef && !String(plan.sourceRef).includes('1.1.4')) {
+      errors.push('projects: proj-plan-1 primary sourceRef must be 1.1.4 PDF');
+    }
+  }
+
   // ── Report ───────────────────────────────────────────────────
   console.log('=== CATEGORY 1 DATA CONTRACTS VALIDATION ===');
   console.log(`Domains checked : ${[...ALLOWED_DOMAINS].length}`);

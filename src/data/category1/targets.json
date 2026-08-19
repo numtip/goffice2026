@@ -3,11 +3,12 @@
   "domain": "targets",
   "updated": "2026-08-19",
   "year": 2568,
-  "status": "normalized-partial",
+  "status": "historical-baseline",
   "governance": "GOFFICE2026_CATEGORY1_MANAGEMENT_BLUEPRINT_V1",
   "sources": [
-    { "ref": "1.1/1.1.3 (9-3-69).pdf", "role": "primary", "inspection": "content-verified" },
-    { "ref": "1.1/1.1.2 (9-3-69).pdf", "role": "supporting", "inspection": "filename-only" }
+    { "ref": "1.1/1.1.3 (9-3-69).pdf", "role": "indicator-wrapper", "inspection": "filename-only" },
+    { "ref": "about/Green_Office_Goals.pdf", "role": "primary-numeric", "inspection": "OCR_REQUIRED" },
+    { "ref": "1.7 การทบทวนฝ่ายบริหาร/1.7.2 มีการกำหนดวาระการประชุมและทำการประชุมทบทวนฝ่ายบริหาร.docx", "role": "amendment", "inspection": "content-verified" }
   ],
   "records": [
     {
@@ -17,10 +18,10 @@
       "issueCodes": ["1.1"],
       "categoryCode": "cat1",
       "evidenceIds": ["ev-about-goals-2568"],
-      "sourceRef": "1.1/1.1.3 (9-3-69).pdf",
+      "sourceRef": "about/Green_Office_Goals.pdf",
       "verification": {
         "status": "pending",
-        "basis": "Value from 1.1.3 announcement as copied into repo about-documents.json (doc-goals); OCR-derived, requires human verification against the signed original."
+        "basis": "Numeric from Green_Office_Goals.pdf (OCR_REQUIRED); −1% vs FY2567 baseline implied by absolute 5,252.55 kWh/person."
       },
       "availability": "source-available",
       "kind": "target",
@@ -29,8 +30,13 @@
       "labelEn": "Electricity",
       "unit": "kWh/person",
       "value": 5252.55,
+      "targetPercent": -1,
+      "targetDirection": "reduction",
+      "baselineYear": 2567,
+      "targetYear": 2568,
       "operator": "lte",
-      "comparisonBasis": "FY2567"
+      "comparisonBasis": "FY2567",
+      "approvalSource": "ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อมประจำปี 2568"
     },
     {
       "id": "target-fuel",
@@ -39,10 +45,10 @@
       "issueCodes": ["1.1"],
       "categoryCode": "cat1",
       "evidenceIds": ["ev-about-goals-2568"],
-      "sourceRef": "1.1/1.1.3 (9-3-69).pdf",
+      "sourceRef": "about/Green_Office_Goals.pdf",
       "verification": {
         "status": "pending",
-        "basis": "Value from 1.1.3 announcement as copied into repo about-documents.json (doc-goals); OCR-derived, requires human verification against the signed original."
+        "basis": "Numeric from Green_Office_Goals.pdf (OCR_REQUIRED); −3% vs FY2567; unit is total liters (not per-capita)."
       },
       "availability": "source-available",
       "kind": "target",
@@ -51,8 +57,13 @@
       "labelEn": "Fuel",
       "unit": "liters",
       "value": 255.52,
+      "targetPercent": -3,
+      "targetDirection": "reduction",
+      "baselineYear": 2567,
+      "targetYear": 2568,
       "operator": "lte",
-      "comparisonBasis": "FY2567"
+      "comparisonBasis": "FY2567",
+      "approvalSource": "ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อมประจำปี 2568"
     },
     {
       "id": "target-water",
@@ -61,10 +72,10 @@
       "issueCodes": ["1.1"],
       "categoryCode": "cat1",
       "evidenceIds": ["ev-about-goals-2568"],
-      "sourceRef": "1.1/1.1.3 (9-3-69).pdf",
+      "sourceRef": "about/Green_Office_Goals.pdf",
       "verification": {
         "status": "pending",
-        "basis": "Value from 1.1.3 announcement as copied into repo about-documents.json (doc-goals); OCR-derived, requires human verification against the signed original."
+        "basis": "Numeric from Green_Office_Goals.pdf (OCR_REQUIRED); −1% vs FY2567 baseline."
       },
       "availability": "source-available",
       "kind": "target",
@@ -73,8 +84,13 @@
       "labelEn": "Water",
       "unit": "m³/person",
       "value": 53.3,
+      "targetPercent": -1,
+      "targetDirection": "reduction",
+      "baselineYear": 2567,
+      "targetYear": 2568,
       "operator": "lte",
-      "comparisonBasis": "FY2567"
+      "comparisonBasis": "FY2567",
+      "approvalSource": "ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อมประจำปี 2568"
     },
     {
       "id": "target-paper",
@@ -83,10 +99,10 @@
       "issueCodes": ["1.1"],
       "categoryCode": "cat1",
       "evidenceIds": ["ev-about-goals-2568"],
-      "sourceRef": "1.1/1.1.3 (9-3-69).pdf",
+      "sourceRef": "about/Green_Office_Goals.pdf",
       "verification": {
         "status": "pending",
-        "basis": "Value from 1.1.3 announcement as copied into repo about-documents.json (doc-goals); OCR-derived, requires human verification against the signed original."
+        "basis": "Post-MR effective target: paper −3% (MR #1 7 Mar 2568 amended from −1%); absolute 23.13 kg/person matches −3% vs baseline 23.85."
       },
       "availability": "source-available",
       "kind": "target",
@@ -95,8 +111,19 @@
       "labelEn": "Paper",
       "unit": "kg/person",
       "value": 23.13,
+      "targetPercent": -3,
+      "targetDirection": "reduction",
+      "baselineYear": 2567,
+      "targetYear": 2568,
       "operator": "lte",
-      "comparisonBasis": "FY2567"
+      "comparisonBasis": "FY2567",
+      "approvalSource": "ประกาศมหาวิทยาลัยแม่โจ้ + MR #1 amendment (7 มี.ค. 2568)",
+      "supersedes": {
+        "priorTargetPercent": -1,
+        "amendedAtISO": "2025-03-07",
+        "amendedByDecisionId": "mr-decision-m1-08",
+        "amendmentSourceRef": "1.7 การทบทวนฝ่ายบริหาร/1.7.2 มีการกำหนดวาระการประชุมและทำการประชุมทบทวนฝ่ายบริหาร.docx"
+      }
     },
     {
       "id": "target-waste",
@@ -105,10 +132,10 @@
       "issueCodes": ["1.1"],
       "categoryCode": "cat1",
       "evidenceIds": ["ev-about-goals-2568"],
-      "sourceRef": "1.1/1.1.3 (9-3-69).pdf",
+      "sourceRef": "about/Green_Office_Goals.pdf",
       "verification": {
         "status": "pending",
-        "basis": "Value from 1.1.3 announcement as copied into repo about-documents.json (doc-goals); OCR-derived, requires human verification against the signed original."
+        "basis": "Numeric from Green_Office_Goals.pdf (OCR_REQUIRED); −3% vs FY2567 baseline."
       },
       "availability": "source-available",
       "kind": "target",
@@ -117,8 +144,13 @@
       "labelEn": "General waste",
       "unit": "kg/person",
       "value": 50,
+      "targetPercent": -3,
+      "targetDirection": "reduction",
+      "baselineYear": 2567,
+      "targetYear": 2568,
       "operator": "lte",
-      "comparisonBasis": "FY2567"
+      "comparisonBasis": "FY2567",
+      "approvalSource": "ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อมประจำปี 2568"
     },
     {
       "id": "target-ghg",
@@ -127,10 +159,10 @@
       "issueCodes": ["1.1"],
       "categoryCode": "cat1",
       "evidenceIds": ["ev-about-goals-2568"],
-      "sourceRef": "1.1/1.1.3 (9-3-69).pdf",
+      "sourceRef": "about/Green_Office_Goals.pdf",
       "verification": {
         "status": "pending",
-        "basis": "Value from 1.1.3 announcement as copied into repo about-documents.json (doc-goals); OCR-derived, requires human verification against the signed original. Discrepancy with 1.5.2 per-capita (2,440 kgCO2e/person) flagged for data-owner review."
+        "basis": "Numeric from Green_Office_Goals.pdf (OCR_REQUIRED); −1% vs FY2567. Separate metric family from 1.5.2 inventory (2440 kg/person actual) — flagged for data-owner review."
       },
       "availability": "source-available",
       "kind": "target",
@@ -139,17 +171,27 @@
       "labelEn": "Greenhouse gas",
       "unit": "kgCO2e/person",
       "value": 203.15,
+      "targetPercent": -1,
+      "targetDirection": "reduction",
+      "baselineYear": 2567,
+      "targetYear": 2568,
       "operator": "lte",
-      "comparisonBasis": "FY2567"
+      "comparisonBasis": "FY2567",
+      "approvalSource": "ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อมประจำปี 2568",
+      "crossDomainNote": "203.15 kgCO2e/person is not reconcilable to ghg.json inventory per-capita (2440); treat as announcement proxy until data-owner clarifies."
     }
   ],
   "summary": {
     "targetCount": 6,
     "domains": ["electricity", "fuel", "water", "paper", "general_waste", "ghg"],
-    "basis": "ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อมประจำปี 2568 เปรียบเทียบจากปี 2567 (ปีฐาน)"
+    "baselineYear": 2567,
+    "targetYear": 2568,
+    "basis": "ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อมประจำปี 2568 เปรียบเทียบจากปี 2567 (ปีฐาน)",
+    "paperAmendment": "MR #1 (7 Mar 2568) amended paper from −1% to −3%; repo reflects post-MR effective target."
   },
   "gaps": [
     { "indicator": "1.2.2", "status": "MISSING", "note": "No FY2568 role-understanding interview evidence." },
-    { "indicator": "1.5.3", "status": "MISSING", "note": "No FY2568 GHG-knowledge training evidence." }
+    { "indicator": "1.5.3", "status": "MISSING", "note": "No FY2568 GHG-knowledge training evidence." },
+    { "indicator": "1.1.3", "status": "PARTIAL", "note": "Numeric targets OCR_REQUIRED on Green_Office_Goals.pdf; GHG per-capita target not reconciled to 1.5 inventory metric." }
   ]
 }

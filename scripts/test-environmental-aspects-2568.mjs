@@ -274,7 +274,7 @@ describe('CAT1-1.3 closeout — one canonical runtime, legacy retained', () => {
     const env = manifest.contracts.find((c) => c.domain === 'environmental-aspects-2568');
     assert.deepEqual(env.indicators, ['1.3.1', '1.3.2', '1.3.3']);
     const aa = manifest.contracts.find((c) => c.domain === 'activities-aspects');
-    assert.deepEqual(aa.indicators, ['1.1.1']);
+    assert.deepEqual(aa.indicators, ['1.1.1', '1.1.2']);
   });
 
   it('Cat1 snapshot does not present competing 1.3 counts from the legacy file', () => {
@@ -383,7 +383,7 @@ describe('CAT1-1.3.1 live runtime presentation', () => {
 
   it('1.3.x pages do not dump category-level evidence fallback', () => {
     assert.match(trace, /const cat13Canonical = \['1\.3\.1', '1\.3\.2', '1\.3\.3'\]/);
-    assert.match(trace, /if \(cat13Canonical \|\| cat14Canonical \|\| cat15Canonical \|\| cat16Canonical \|\| cat17Canonical\) return false;/);
+    assert.match(trace, /if \(cat11Canonical \|\| cat13Canonical \|\| cat14Canonical \|\| cat15Canonical \|\| cat16Canonical \|\| cat17Canonical\) return false;/);
   });
 
   it('environmental targets are not mapped to 1.3.1', () => {

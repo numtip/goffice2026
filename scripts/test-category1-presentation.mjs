@@ -33,6 +33,11 @@ const PROJ_VM = join(ROOT, 'src/utils/category1-projects-presentation.ts');
 const MR_QUORUM = join(ROOT, 'src/components/indicators/Cat1ManagementReviewQuorumJourney.astro');
 const MR_MEETING = join(ROOT, 'src/components/indicators/Cat1ManagementReviewMeetingJourney.astro');
 const MR_VM = join(ROOT, 'src/utils/category1-management-review-presentation.ts');
+const CAT11_SCOPE = join(ROOT, 'src/components/indicators/Cat1ScopeExplorerJourney.astro');
+const CAT11_POLICY = join(ROOT, 'src/components/indicators/Cat1PolicyJourney.astro');
+const CAT11_TARGETS = join(ROOT, 'src/components/indicators/Cat1TargetBoardJourney.astro');
+const CAT11_PLAN = join(ROOT, 'src/components/indicators/Cat1AnnualPlanJourney.astro');
+const CAT11_VM = join(ROOT, 'src/utils/category1-foundation-presentation.ts');
 const VM = join(ROOT, 'src/utils/category1-presentation.ts');
 
 describe('Phase E — TH/EN structural parity', () => {
@@ -223,6 +228,35 @@ describe('Phase F — cross-link journeys and view-model', () => {
     assert.match(projectsJson, /97\.78/);
     assert.match(projectsJson, /91\.80/);
     assert.match(projectsJson, /88\.60/);
+  });
+
+  it('1.1 presentation is wired with scope, policy, targets, and shared plan journeys', () => {
+    const trace = readFileSync(TRACE, 'utf8');
+    assert.match(trace, /cat11Canonical/);
+    assert.match(trace, /Cat1FoundationPresentation/);
+    const scope = readFileSync(CAT11_SCOPE, 'utf8');
+    const policy = readFileSync(CAT11_POLICY, 'utf8');
+    const targets = readFileSync(CAT11_TARGETS, 'utf8');
+    const plan = readFileSync(CAT11_PLAN, 'utf8');
+    const fvm = readFileSync(CAT11_VM, 'utf8');
+    assert.match(scope, /Historical Baseline/);
+    assert.match(scope, /data-cat11-scope/);
+    assert.match(scope, /scope\.totalSqm|buildScopeView/);
+    assert.match(scope, /9873|scope\.totalSqm/);
+    assert.match(scope, /focus-visible:ring-2/);
+    assert.match(policy, /data-cat11-policy/);
+    assert.match(policy, /NOT COMPLETED/);
+    assert.match(policy, /buildPolicyCommitments/);
+    assert.match(targets, /data-cat11-targets/);
+    assert.match(targets, /−1% → −3%|-1% → -3%/);
+    assert.match(targets, /metric famil/i);
+    assert.match(plan, /data-cat11-plan/);
+    assert.match(plan, /proj-plan-1/);
+    assert.match(plan, /plannedVsActualSeparate|planTableStatus/);
+    assert.match(fvm, /buildScopeView/);
+    assert.match(fvm, /buildTargetBoard/);
+    assert.match(fvm, /buildAnnualPlanView/);
+    assert.match(fvm, /category1\/activities-aspects\.json/);
   });
 
   it('1.7 presentation is wired with quorum truthfulness and Meeting #2 gap honesty', () => {
