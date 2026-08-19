@@ -230,8 +230,12 @@ describe('Phase F — cross-link journeys and view-model', () => {
     assert.match(trace, /cat17Canonical/);
     const quorum = readFileSync(MR_QUORUM, 'utf8');
     const meeting = readFileSync(MR_MEETING, 'utf8');
+    assert.match(quorum, /buildQuorum/);
     assert.match(quorum, /Historical Baseline/);
-    assert.match(quorum, /quorum\.invitedCount|quorum\.attendedCount|quorum\.attendancePct/);
+    assert.match(quorum, /quorum\.invitedCount/);
+    assert.match(quorum, /quorum\.attendedCount/);
+    assert.match(quorum, /quorum\.attendancePct/);
+    assert.match(quorum, /quorum\.thresholdPct/);
     assert.match(quorum, /not_locally_verified/);
     assert.match(quorum, /data-cat17-meeting2-gap/);
     assert.match(quorum, /focus-visible:ring-2/);
