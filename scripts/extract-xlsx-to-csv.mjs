@@ -255,7 +255,16 @@ function extractWaste() {
 
 function extractGhg() {
   console.log('\n📊 GHG — 1.5_GreenhouseGas.xlsx');
-  const path = join(DOCS, '1.5_GreenhouseGas.xlsx');
+  const candidates = [
+    join(DOCS, '1.5_GreenhouseGas.xlsx'),
+    join(ROOT, 'public', 'documents', 'fy2568', 'cat1', '1.5Green house gass', '1.5_GreenhouseGas2568.xlsx'),
+  ];
+  const path = candidates.find((p) => existsSync(p));
+  if (!path) {
+    console.error('  ✗ GHG workbook not found. Tried:\n    ' + candidates.join('\n    '));
+    return;
+  }
+  console.log('  Using: ' + path);
   const wb = readXlsx(path);
   const sheetName = 'สรุปการคำนวณ ปี 2568';
   const rows = sheetToRows(wb, sheetName);

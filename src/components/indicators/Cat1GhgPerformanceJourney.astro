@@ -1,0 +1,172 @@
+---
+/**
+ * 1.5.2 GHG Performance Journey — FY2568 target vs actual analysis.
+ * Source-supported facts only; no invented causes or corrective actions.
+ */
+import {
+  buildGhgPerformance,
+  buildGhgInventory,
+  formatTco2e,
+  GHG_PREVIOUS_YEAR,
+  CAT1_YEAR,
+} from '../../utils/category1-ghg-presentation';
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const isEn = locale === 'en';
+const path = (p: string) => getLocalizedPath(locale, p);
+
+function t(th: string, en: string): string {
+  return isEn ? en : th;
+}
+
+const perf = buildGhgPerformance();
+const inventory = buildGhgInventory();
+
+const perfPdf = '/documents/fy2568/cat1/1.5Green house gass/1.5.2 (9-3-69).pdf';
+---
+
+<div class="cat15-journey space-y-6" data-cat1-ghg-performance data-view="1.5.2">
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat152-hero-title">
+    <p class="text-xs font-semibold text-primary">
+      {t(`ตัวชี้วัด 1.5.2 · FY${CAT1_YEAR} Historical Baseline`, `Indicator 1.5.2 · FY${CAT1_YEAR} Historical Baseline`)}
+    </p>
+    <h2 id="cat152-hero-title" class="mt-1 text-lg font-bold text-balance text-on-surface sm:text-xl">
+      {t('วิเคราะห์ผลก๊าซเรือนกระจกเทียบเป้าหมาย', 'GHG performance vs target analysis')}
+    </h2>
+    <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+      {t(
+        'สรุปจากแหล่ง 1.5.2 และข้อความในไฟล์คำนวณ (A140/A166) — ไม่ใช่คะแนนสำนักงานสีเขียว',
+        'Summary from 1.5.2 source and workbook narrative (A140/A166) — not an official Green Office score',
+      )}
+    </p>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat152-target-title">
+    <h2 id="cat152-target-title" class="text-base font-bold text-on-surface">{t('เป้าหมายปี 2568', 'FY2568 target')}</h2>
+    <p class="mt-2 text-sm text-on-surface">
+      {t(
+        `ลดการปล่อยก๊าซเรือนกระจก ${perf.targetReductionPct.toFixed(2)}% เทียบปี ${GHG_PREVIOUS_YEAR} (A140)`,
+        `Reduce GHG emissions by ${perf.targetReductionPct.toFixed(2)}% vs FY${GHG_PREVIOUS_YEAR} (A140)`,
+      )}
+    </p>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat152-result-title">
+    <h2 id="cat152-result-title" class="text-base font-bold text-on-surface">{t('ผลการดำเนินงาน', 'Actual results')}</h2>
+    <div class="mt-4 overflow-x-auto">
+      <table class="min-w-full text-left text-sm">
+        <thead>
+          <tr class="border-b border-gray-200 text-xs text-on-surface-variant">
+            <th class="py-2 pr-4 font-semibold">{t('รายการ', 'Item')}</th>
+            <th class="py-2 pr-4 font-semibold">tCO₂e</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-100">
+            <td class="py-2 pr-4">{t(`ปี ${GHG_PREVIOUS_YEAR} (D42)`, `FY${GHG_PREVIOUS_YEAR} (D42)`)}</td>
+            <td class="py-2 pr-4 num-tabular font-medium">{formatTco2e(perf.previousYearTotalTCO2e)}</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="py-2 pr-4">{t(`ปี ${CAT1_YEAR} (A166 / 1.5.2)`, `FY${CAT1_YEAR} (A166 / 1.5.2)`)}</td>
+            <td class="py-2 pr-4 num-tabular font-medium">{formatTco2e(perf.currentYearTotalTCO2e)}</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="py-2 pr-4">{t('เปลี่ยนแปลงสัมบูรณ์', 'Absolute change')}</td>
+            <td class="py-2 pr-4 num-tabular font-medium text-red-800">+{formatTco2e(perf.absoluteChangeTCO2e)}</td>
+          </tr>
+          <tr>
+            <td class="py-2 pr-4">{t('เปลี่ยนแปลง (%)', 'Percent change')}</td>
+            <td class="py-2 pr-4 num-tabular font-medium text-red-800">+{formatTco2e(perf.actualChangePct)}%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-4 flex flex-wrap items-center gap-2">
+      <span class="inline-flex items-center rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-900 ring-1 ring-red-300">
+        {t('ไม่บรรลุเป้าหมาย', 'Target not met')}
+      </span>
+      <span class="text-xs text-on-surface-variant">
+        {t(
+          `เป้าหมาย −${perf.targetReductionPct}% · ผลจริง +${formatTco2e(perf.actualChangePct)}%`,
+          `Target −${perf.targetReductionPct}% · Actual +${formatTco2e(perf.actualChangePct)}%`,
+        )}
+      </span>
+    </div>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat152-interp-title">
+    <h2 id="cat152-interp-title" class="text-base font-bold text-on-surface">{t('การตีความ (จากแหล่งเท่านั้น)', 'Interpretation (source-supported only)')}</h2>
+    <ul class="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-on-surface" role="list">
+      <li>
+        {t(
+          `ปี ${CAT1_YEAR} ปริมาณรวม ${formatTco2e(inventory.totalTCO2e)} tCO₂e สูงกว่าปี ${GHG_PREVIOUS_YEAR} ${formatTco2e(perf.absoluteChangeTCO2e)} tCO₂e (+${formatTco2e(perf.actualChangePct)}%) ตาม A166`,
+          `FY${CAT1_YEAR} total ${formatTco2e(inventory.totalTCO2e)} tCO₂e exceeds FY${GHG_PREVIOUS_YEAR} by ${formatTco2e(perf.absoluteChangeTCO2e)} tCO₂e (+${formatTco2e(perf.actualChangePct)}%) per A166`,
+        )}
+      </li>
+      <li>
+        {t(
+          'เป้าหมายในแหล่งคือการลด 1.00% — ผลจริงเป็นการเพิ่มขึ้น จึงไม่บรรลุเป้า',
+          'Source target is a 1.00% reduction — actual result is an increase, so the target was not met',
+        )}
+      </li>
+      <li>
+        {t(
+          'ไม่สรุปสาเหตุหรือมาตรการแก้ไขที่ไม่มีในแหล่ง FY2568 — ดู 1.6 เมื่อมีหลักฐานโครงการปรับปรุง',
+          'No causes or corrective actions are stated beyond FY2568 sources — see 1.6 when improvement project evidence exists',
+        )}
+      </li>
+    </ul>
+    <p class="mt-3 text-[11px] text-on-surface-variant">{perf.note}</p>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat152-dash-title">
+    <h2 id="cat152-dash-title" class="text-base font-bold text-on-surface">{t('แดชบอร์ดที่เกี่ยวข้อง', 'Related dashboard')}</h2>
+    <p class="mt-2 text-sm text-on-surface-variant">
+      {t(
+        'แนวโน้มรายเดือนและสถานะชุดข้อมูลอยู่ที่แดชบอร์ด GHG — ไม่ทำซ้ำที่นี่',
+        'Monthly trends and dataset status live on the GHG dashboard — not duplicated here',
+      )}
+    </p>
+    <a
+      href={path('/dashboard/ghg/')}
+      class="mt-3 inline-flex min-h-11 items-center rounded-stitch border border-green-700/30 bg-white px-4 py-2.5 text-sm font-semibold text-green-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+    >
+      {t('เปิดแดชบอร์ด GHG', 'Open GHG dashboard')}
+    </a>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6">
+    <ul class="space-y-1 text-sm" role="list">
+      <li>
+        <a href={perfPdf} class="text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+          {t('1.5.2 สรุปและวิเคราะห์ผล (PDF)', '1.5.2 Summary & analysis (PDF)')}
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="rounded-xl border border-green-100 bg-green-50/40 p-5 sm:p-6">
+    <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+      <a
+        href={path('/indicators/1.5.1/')}
+        class="inline-flex min-h-11 items-center rounded-stitch border border-green-700/30 bg-white px-4 py-2.5 text-sm font-semibold text-green-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+      >
+        {t('← 1.5.1 บัญชี GHG', '← 1.5.1 GHG inventory')}
+      </a>
+      <a
+        href={path('/indicators/1.6.1/')}
+        class="inline-flex min-h-11 items-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-on-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+      >
+        {t('ไปที่ 1.6.1 แผน/โครงการลด GHG', 'Continue to 1.6.1 reduction projects')}
+      </a>
+    </div>
+    <p class="mt-2 text-[10px] text-on-surface-variant">
+      {t('1.6 ยังไม่ได้ implement ในเฟสนี้ — ลิงก์เพื่อความต่อเนื่องของหมวด 1', '1.6 not implemented this phase — link preserves Category 1 chain')}
+    </p>
+  </section>
+</div>

@@ -128,6 +128,28 @@ describe('category1 contracts — truthfulness guards', () => {
     assert.deepEqual(months.map((m) => m.month).sort((a, b) => a - b), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
   });
 
+  it('ghg dashboard baseline months match category1 monthly records', () => {
+    const ghg = readContract('ghg');
+    const metric = JSON.parse(readFileSync(join(ROOT, 'src', 'data', 'generated', 'ghg.json'), 'utf8'));
+    const contractMonths = ghg.records
+      .filter((r) => r.kind === 'monthly')
+      .sort((a, b) => a.month - b.month);
+    const dashMonths = metric.years['2568'].months.sort((a, b) => a.month - b.month);
+    assert.equal(contractMonths.length, dashMonths.length);
+    for (let i = 0; i < contractMonths.length; i++) {
+      assert.equal(contractMonths[i].month, dashMonths[i].month, `month index ${i}`);
+      assert.equal(contractMonths[i].tCO2e, dashMonths[i].value, `month ${contractMonths[i].month} tCO2e`);
+    }
+    const inv = ghg.records.find((r) => r.kind === 'inventory');
+    const dashTotal = metric.years['2568'].total;
+    const monthSum = dashMonths.reduce((s, m) => s + m.value, 0);
+    assert.ok(Math.abs(monthSum - dashTotal) < 0.01, 'dashboard total equals monthly sum');
+    assert.ok(
+      Math.abs(inv.totalTCO2e - dashTotal) <= 0.021,
+      'inventory vs dashboard within documented 0.02 tCO2e narrative delta',
+    );
+  });
+
   it('targets contract covers the six official domains', () => {
     const t = readContract('targets');
     const domains = t.records.map((r) => r.domain).sort();

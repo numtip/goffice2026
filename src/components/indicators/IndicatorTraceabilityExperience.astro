@@ -8,6 +8,7 @@ import IndicatorLinkedEvidence from './IndicatorLinkedEvidence.astro';
 import Cat1ContractContext from './Cat1ContractContext.astro';
 import Cat1EnvironmentalAssessment from './Cat1EnvironmentalAssessment.astro';
 import Cat1LegalPresentation from './Cat1LegalPresentation.astro';
+import Cat1GhgPresentation from './Cat1GhgPresentation.astro';
 import { withBase } from '../../utils/with-base';
 import { getLocalizedPath } from '../../i18n/utils';
 
@@ -85,10 +86,11 @@ const hasExactEvidence = exactEvidence.length > 0;
 const implementationNotes = implementationNotesForIndicator(indicator.code, undefined, locale);
 const cat13Canonical = ['1.3.1', '1.3.2', '1.3.3'].includes(indicator.code);
 const cat14Canonical = ['1.4.1', '1.4.2'].includes(indicator.code);
+const cat15Canonical = ['1.5.1', '1.5.2', '1.5.3'].includes(indicator.code);
 
 const categoryEvidence = evidenceIndex.items.filter((e: Record<string, unknown>) => {
   if (hasExactEvidence) return false;
-  if (cat13Canonical || cat14Canonical) return false;
+  if (cat13Canonical || cat14Canonical || cat15Canonical) return false;
   const codes: string[] = Array.isArray(e.categoryCodes)
     ? (e.categoryCodes as string[])
     : e.categoryId
@@ -164,7 +166,7 @@ function alternateTitle(): string {
     )}
   </div>
 
-  {['1.3.1', '1.4.1', '1.4.2'].includes(indicator.code) ? (
+  {['1.3.1', '1.4.1', '1.4.2', '1.5.1', '1.5.2', '1.5.3'].includes(indicator.code) ? (
     <details class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-6">
       <summary class="cursor-pointer text-sm font-medium text-gray-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
         {label('ข้อกำหนด', 'Requirement')}
@@ -197,6 +199,12 @@ function alternateTitle(): string {
   {indicator.categoryCode === 'cat1' && cat14Canonical && (
     <div class="mb-6">
       <Cat1LegalPresentation indicatorCode={indicator.code} locale={locale} />
+    </div>
+  )}
+
+  {indicator.categoryCode === 'cat1' && cat15Canonical && (
+    <div class="mb-6">
+      <Cat1GhgPresentation indicatorCode={indicator.code} locale={locale} />
     </div>
   )}
 

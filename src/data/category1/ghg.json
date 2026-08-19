@@ -54,9 +54,39 @@
       "availability": "content-verified",
       "kind": "performance",
       "targetReductionPct": 1,
-      "actualChangePct": 3.81,
+      "actualChangePct": 4.81,
       "met": false,
-      "note": "FY2568 GHG increased +3.81% vs 1% reduction target; not met."
+      "note": "FY2568 GHG increased +4.81% vs 1% reduction target (A166 vs 220.99 tCO2e FY2567); not met."
+    },
+    {
+      "id": "ghg-anom-dec-derived",
+      "year": 2568,
+      "indicatorCodes": ["1.5.1"],
+      "issueCodes": ["1.5"],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.5Green house gass/1.5_GreenhouseGas2568.xlsx",
+      "verification": { "status": "reviewed", "basis": "Reconciliation audit 2026-08-19." },
+      "availability": "content-verified",
+      "kind": "anomaly",
+      "code": "ANOM-DEC-O68",
+      "reason": "Workbook O68 (Dec row 68) = 7,554,708.77 kgCO2e (septic-driven). Reported Dec 14.02 tCO2e = narrative 231.62 − sum(Jan–Nov row 68).",
+      "status": "derived-not-from-cell"
+    },
+    {
+      "id": "ghg-anom-total-delta",
+      "year": 2568,
+      "indicatorCodes": ["1.5.1"],
+      "issueCodes": ["1.5"],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.5Green house gass/1.5_GreenhouseGas2568.xlsx",
+      "verification": { "status": "reviewed", "basis": "Reconciliation audit 2026-08-19." },
+      "availability": "content-verified",
+      "kind": "anomaly",
+      "code": "ANOM-TOTAL-0.02",
+      "reason": "Monthly sum = 231.60 tCO2e; narrative A166 / inventory = 231.62 tCO2e. Dashboard shows 231.6 (one-decimal sum).",
+      "status": "documented"
     },
     {
       "id": "ghg-excl-septic",

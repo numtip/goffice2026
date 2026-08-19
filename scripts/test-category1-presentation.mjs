@@ -23,6 +23,10 @@ const TRACE = join(ROOT, 'src/components/indicators/IndicatorTraceabilityExperie
 const LEGAL_REG = join(ROOT, 'src/components/indicators/Cat1LegalRegisterJourney.astro');
 const LEGAL_COMP = join(ROOT, 'src/components/indicators/Cat1LegalComplianceJourney.astro');
 const LEGAL_VM = join(ROOT, 'src/utils/category1-legal-presentation.ts');
+const GHG_INV = join(ROOT, 'src/components/indicators/Cat1GhgInventoryJourney.astro');
+const GHG_PERF = join(ROOT, 'src/components/indicators/Cat1GhgPerformanceJourney.astro');
+const GHG_UNDR = join(ROOT, 'src/components/indicators/Cat1GhgUnderstandingJourney.astro');
+const GHG_VM = join(ROOT, 'src/utils/category1-ghg-presentation.ts');
 const VM = join(ROOT, 'src/utils/category1-presentation.ts');
 
 describe('Phase E — TH/EN structural parity', () => {
@@ -51,6 +55,7 @@ describe('Phase E — TH/EN structural parity', () => {
     const trace = readFileSync(TRACE, 'utf8');
     assert.match(trace, /Cat1ContractContext/);
     assert.match(trace, /Cat1LegalPresentation/);
+    assert.match(trace, /Cat1GhgPresentation/);
     assert.match(trace, /indicator\.categoryCode === 'cat1'/);
   });
 });
@@ -84,7 +89,7 @@ describe('Phase E — a11y / motion', () => {
   });
 
   it('no local filesystem paths or secrets in the presentation artifacts', () => {
-    for (const p of [CYCLE, SNAPSHOT, CONTEXT, VM, LEGAL_VM, LEGAL_REG, LEGAL_COMP]) {
+    for (const p of [CYCLE, SNAPSHOT, CONTEXT, VM, LEGAL_VM, LEGAL_REG, LEGAL_COMP, GHG_VM, GHG_INV, GHG_PERF, GHG_UNDR]) {
       const raw = readFileSync(p, 'utf8');
       assert.ok(!/F:\\/i.test(raw), `${p} leaks F:\\ path`);
       assert.ok(!/OneDrive - Maejo/i.test(raw), `${p} leaks OneDrive path`);
@@ -143,5 +148,32 @@ describe('Phase F — cross-link journeys and view-model', () => {
     const vm = readFileSync(LEGAL_VM, 'utf8');
     assert.match(vm, /buildLegalSummary/);
     assert.match(vm, /buildAspectLegalMappings/);
+  });
+
+  it('1.5 presentation is wired with historical-baseline honesty and dashboard reuse', () => {
+    const trace = readFileSync(TRACE, 'utf8');
+    assert.match(trace, /cat15Canonical/);
+    const inv = readFileSync(GHG_INV, 'utf8');
+    const perf = readFileSync(GHG_PERF, 'utf8');
+    const undr = readFileSync(GHG_UNDR, 'utf8');
+    assert.match(inv, /Historical Baseline/);
+    assert.match(inv, /231\.62|buildGhgInventory/);
+    assert.match(inv, /Derived: annual|คำนวณจากผลรวม/);
+    assert.match(inv, /dashboard\/ghg/);
+    assert.match(inv, /7,772|E42/);
+    assert.match(inv, /data-cat15-monthly-table/);
+    assert.match(inv, /focus-visible:ring-2/);
+    assert.match(perf, /Target not met|ไม่บรรลุเป้าหมาย/);
+    assert.match(perf, /actualChangePct|Target not met/);
+    assert.match(perf, /1\.6\.1/);
+    assert.doesNotMatch(inv, /100% compliant|official Green Office score achieved/i);
+    assert.doesNotMatch(perf, /100% compliant/i);
+    assert.match(undr, /MISSING/);
+    assert.match(undr, /does NOT satisfy|ไม่ใช่หลักฐาน/);
+    assert.match(undr, /dashboard\/ghg/);
+    const gvm = readFileSync(GHG_VM, 'utf8');
+    assert.match(gvm, /buildGhgInventory/);
+    assert.match(gvm, /generatedMetricMap/);
+    assert.match(gvm, /category1\/ghg\.json/);
   });
 });

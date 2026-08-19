@@ -1,0 +1,259 @@
+---
+/**
+ * 1.5.1 GHG Inventory Journey — FY2568 historical baseline.
+ * Chain: 1.1.3 Target → 1.5.1 Inventory → 1.5.2 Analysis → 1.6 Improvement
+ */
+import {
+  buildGhgInventory,
+  buildGhgMonthlySeries,
+  buildGhgAnomalies,
+  buildGhgDashboardReconcile,
+  buildGhgProvenance,
+  buildGhgPerformance,
+  ghgContractSources,
+  formatTco2e,
+  GHG_PREVIOUS_YEAR,
+  CAT1_YEAR,
+} from '../../utils/category1-ghg-presentation';
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const isEn = locale === 'en';
+const path = (p: string) => getLocalizedPath(locale, p);
+
+function t(th: string, en: string): string {
+  return isEn ? en : th;
+}
+
+const inventory = buildGhgInventory();
+const months = buildGhgMonthlySeries();
+const anomalies = buildGhgAnomalies();
+const reconcile = buildGhgDashboardReconcile();
+const provenance = buildGhgProvenance();
+const performance = buildGhgPerformance();
+const sources = ghgContractSources();
+
+const maxMonth = Math.max(...months.map((m) => m.tCO2e));
+
+const workbookXlsx = '/documents/fy2568/cat1/1.5Green house gass/1.5_GreenhouseGas2568.xlsx';
+const invPdf = '/documents/fy2568/cat1/1.5Green house gass/1.5.1 (9-3-69).pdf';
+
+const chainTh = '1.1.3 เป้าหมาย → 1.5.1 บัญชี GHG → 1.5.2 วิเคราะห์ผล → 1.6 ปรับปรุง';
+const chainEn = '1.1.3 Target → 1.5.1 GHG inventory → 1.5.2 Analysis → 1.6 Improvement';
+---
+
+<div class="cat15-journey space-y-6" data-cat1-ghg-inventory data-view="1.5.1">
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat15-hero-title">
+    <p class="text-xs font-semibold text-primary">
+      {t(`ตัวชี้วัด 1.5.1 · FY${CAT1_YEAR} Historical Baseline`, `Indicator 1.5.1 · FY${CAT1_YEAR} Historical Baseline`)}
+    </p>
+    <h2 id="cat15-hero-title" class="mt-1 text-lg font-bold text-balance text-on-surface sm:text-xl">
+      {t('บัญชีก๊าซเรือนกระจก (GHG Inventory)', 'Greenhouse gas inventory')}
+    </h2>
+    <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+      {t(
+        `ข้อมูลปี ${CAT1_YEAR} เป็นฐานประวัติ — ไม่ใช่ผลประเมินปีปัจจุบัน และไม่ใช่คะแนนสำนักงานสีเขียว`,
+        `FY${CAT1_YEAR} is the historical baseline — not a current-year result and not an official Green Office score`,
+      )}
+    </p>
+    <p class="mt-2 text-xs text-on-surface-variant">{t(chainTh, chainEn)}</p>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat15-pulse-title">
+    <h2 id="cat15-pulse-title" class="text-base font-bold text-on-surface">{t('ภาพรวมปี 2568', 'FY2568 overview')}</h2>
+    <ol class="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4" role="list">
+      {
+        [
+          { v: formatTco2e(inventory.totalTCO2e), th: 'รวมปี 2568 (tCO₂e)', en: 'FY2568 total (tCO₂e)', sub: t('ค่ารายงานจาก 1.5.2 / A166', 'Reporting total from 1.5.2 / A166') },
+          { v: '12/12', th: 'ครบ 12 เดือน', en: '12/12 months', sub: t('Jan–Nov จากแถว 68', 'Jan–Nov from row 68') },
+          { v: formatTco2e(performance.previousYearTotalTCO2e), th: `ปี ${GHG_PREVIOUS_YEAR} (tCO₂e)`, en: `FY${GHG_PREVIOUS_YEAR} (tCO₂e)`, sub: t('เปรียบเทียบ D42', 'Workbook D42 comparison') },
+          { v: formatTco2e(inventory.perCapitaKgCO2e, 0), th: 'kgCO₂e/คน', en: 'kgCO₂e/person', sub: t('จากบัญชี 1.5', 'From 1.5 inventory') },
+        ].map((item) => (
+          <li class="list-none rounded-stitch border border-outline-variant/20 bg-surface-container-lowest p-4">
+            <p class="text-xs text-on-surface-variant">{t(item.th, item.en)}</p>
+            <p class="mt-1 font-bold num-tabular text-3xl text-primary">{item.v}</p>
+            {item.sub && <p class="mt-1 text-[10px] text-on-surface-variant">{item.sub}</p>}
+          </li>
+        ))
+      }
+    </ol>
+    <p class="mt-3 text-[11px] text-on-surface-variant">
+      {t(
+        `แดชบอร์ดแสดง ${formatTco2e(reconcile.dashboardTotalTCO2e, 1)} tCO₂e (ปัดจากผลรวมรายเดือน) · ส่วนต่างกับค่ารายงาน ${formatTco2e(reconcile.deltaTCO2e)} tCO₂e ถูกบันทึกไว้`,
+        `Dashboard shows ${formatTco2e(reconcile.dashboardTotalTCO2e, 1)} tCO₂e (rounded monthly sum) · ${formatTco2e(reconcile.deltaTCO2e)} tCO₂e delta from reporting total is documented`,
+      )}
+    </p>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat15-scope-title">
+    <h2 id="cat15-scope-title" class="text-base font-bold text-on-surface">{t('แยกตามขอบเขต (Scope 1 / 2 / 3)', 'Scope 1 / 2 / 3 breakdown')}</h2>
+    <p class="mt-1 text-xs text-on-surface-variant">
+      {t(
+        `ค่าจากบัญชีที่แก้ไขแล้ว (ไม่รวมความผิดปกติ Septic tank) · ${inventory.methodology}`,
+        `Corrected inventory values (septic anomaly excluded) · ${inventory.methodology}`,
+      )}
+    </p>
+    <ol class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3" role="list">
+      {
+        [
+          { label: 'Scope 1', v: inventory.scope1TCO2e },
+          { label: 'Scope 2', v: inventory.scope2TCO2e },
+          { label: 'Scope 3', v: inventory.scope3TCO2e },
+        ].map((s) => (
+          <li class="list-none rounded-lg border border-green-100 bg-green-50/40 p-4">
+            <p class="text-xs font-semibold text-green-900">{s.label}</p>
+            <p class="mt-1 num-tabular text-2xl font-bold text-green-950">
+              {formatTco2e(s.v)} <span class="text-sm font-normal">tCO₂e</span>
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="mt-3 text-[11px] text-on-surface-variant">
+      {t(
+        'สูตร E42 ในไฟล์ต้นฉบับ (~7,772 tCO₂e) ถูกปฏิเสธ — เกิดจากข้อมูล Septic tank ที่ผิดปกติ',
+        'Workbook formula E42 (~7,772 tCO₂e) is rejected — caused by septic-tank data-entry anomaly',
+      )}
+    </p>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat15-monthly-title">
+    <h2 id="cat15-monthly-title" class="text-base font-bold text-on-surface">{t('สรุปรายเดือน', 'Monthly summary')}</h2>
+    <p class="mt-1 text-xs text-on-surface-variant">
+      {t(
+        'ค่ารายเดือนสอดคล้องกับแดชบอร์ด /dashboard/ghg/ — ไม่สร้างแดชบอร์ดซ้ำ',
+        'Monthly values match /dashboard/ghg/ — no duplicate dashboard here',
+      )}
+    </p>
+    <div class="mt-4 overflow-x-auto" data-cat15-monthly-table>
+      <table class="min-w-full text-left text-sm">
+        <thead>
+          <tr class="border-b border-gray-200 text-xs text-on-surface-variant">
+            <th class="py-2 pr-3 font-semibold">{t('เดือน', 'Month')}</th>
+            <th class="py-2 pr-3 font-semibold">tCO₂e</th>
+            <th class="py-2 font-semibold">{t('แหล่ง', 'Source')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            months.map((m) => (
+              <tr class="border-b border-gray-100" data-month={m.month}>
+                <td class="py-2 pr-3 font-medium">{t(m.labelTh, m.labelEn)}</td>
+                <td class="py-2 pr-3 num-tabular">{formatTco2e(m.tCO2e)}</td>
+                <td class="py-2 text-xs text-on-surface-variant">
+                  {
+                    m.sourceKind === 'derived-dec' ? (
+                      <span class="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold text-amber-900 ring-1 ring-amber-300">
+                        {t('คำนวณจากผลรวม − Jan–Nov', 'Derived: annual − Jan–Nov')}
+                      </span>
+                    ) : (
+                      t('แถว 68', 'Row 68')
+                    )
+                  }
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-4 space-y-1" aria-hidden="true">
+      {
+        months.map((m) => (
+          <div class="flex items-center gap-2 text-xs">
+            <span class="w-8 shrink-0 text-on-surface-variant">{t(m.labelTh, m.labelEn)}</span>
+            <div class="h-3 flex-1 rounded-full bg-gray-100">
+              <div
+                class="h-3 rounded-full bg-primary/70"
+                style={`width: ${Math.max(4, (m.tCO2e / maxMonth) * 100)}%`}
+              />
+            </div>
+            <span class="w-12 shrink-0 num-tabular text-right">{formatTco2e(m.tCO2e)}</span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {
+    anomalies.length > 0 && (
+      <section class="rounded-xl border border-amber-200 bg-amber-50/40 p-5 sm:p-6" aria-labelledby="cat15-anomaly-title">
+        <h2 id="cat15-anomaly-title" class="text-base font-bold text-amber-950">
+          {t('ข้อผิดปกติ / ข้อจำกัดที่เปิดเผย', 'Disclosed anomalies / limits')}
+        </h2>
+        <ul class="mt-3 space-y-2" role="list">
+          {
+            anomalies.map((a) => (
+              <li class="rounded-lg border border-amber-200/80 bg-white/70 p-3 text-xs text-amber-950">
+                <p class="font-semibold">{a.code}</p>
+                <p class="mt-1 leading-relaxed">{a.reason}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    )
+  }
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat15-prov-title">
+    <h2 id="cat15-prov-title" class="text-base font-bold text-on-surface">{t('วิธีการและแหล่งข้อมูล', 'Methodology & provenance')}</h2>
+    <dl class="mt-3 grid gap-2 text-sm sm:grid-cols-2">
+      <div>
+        <dt class="text-xs text-on-surface-variant">{t('ไฟล์ต้นฉบับ', 'Source workbook')}</dt>
+        <dd class="font-medium">1.5_GreenhouseGas2568.xlsx</dd>
+      </div>
+      <div>
+        <dt class="text-xs text-on-surface-variant">{t('แผ่นงาน', 'Sheet')}</dt>
+        <dd class="font-medium">{provenance.sourceSheet}</dd>
+      </div>
+      <div>
+        <dt class="text-xs text-on-surface-variant">{t('สถานะชุดข้อมูล', 'Dataset status')}</dt>
+        <dd class="font-medium">{provenance.datasetStatus}</dd>
+      </div>
+      <div>
+        <dt class="text-xs text-on-surface-variant">{t('การตรวจหลักฐาน', 'Evidence verification')}</dt>
+        <dd class="font-medium">{provenance.evidenceVerification}</dd>
+      </div>
+    </dl>
+    <p class="mt-3 text-[11px] text-on-surface-variant">
+      {t(
+        'การตรวจสอบชุดข้อมูล (dataset) ≠ การอนุมัติหลักฐาน (evidence) — หลักฐานยังรอผู้รับผิดชอบลงนาม',
+        'Dataset validation ≠ evidence approval — evidence awaits data-owner sign-off',
+      )}
+    </p>
+    <ul class="mt-3 space-y-1 text-sm" role="list">
+      <li>
+        <a href={workbookXlsx} class="text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+          {t('1.5(1) ไฟล์คำนวณ GHG (XLSX)', '1.5(1) GHG workbook (XLSX)')}
+        </a>
+      </li>
+      <li>
+        <a href={invPdf} class="text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+          {t('1.5.1 เอกสารสนับสนุน (PDF)', '1.5.1 Supporting document (PDF)')}
+        </a>
+      </li>
+    </ul>
+    <p class="mt-2 text-[10px] text-on-surface-variant">{sources.join(' · ')}</p>
+  </section>
+
+  <section class="rounded-xl border border-green-100 bg-green-50/40 p-5 sm:p-6">
+    <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+      <a
+        href={path('/dashboard/ghg/')}
+        class="inline-flex min-h-11 flex-1 items-center justify-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-on-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 sm:flex-none"
+      >
+        {t('เปิดแดชบอร์ด GHG', 'Open GHG dashboard')}
+      </a>
+      <a
+        href={path('/indicators/1.5.2/')}
+        class="inline-flex min-h-11 flex-1 items-center justify-center rounded-stitch border border-green-700/30 bg-white px-4 py-2.5 text-sm font-semibold text-green-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 sm:flex-none"
+      >
+        {t('ไปที่ 1.5.2 วิเคราะห์ผลเทียบเป้าหมาย', 'Continue to 1.5.2 target analysis')}
+      </a>
+    </div>
+  </section>
+</div>

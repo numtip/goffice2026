@@ -76,22 +76,28 @@
       "total": 231.6,
       "average": 19.3,
       "dataStatus": "VERIFIED_BASELINE",
-      "source": "1.5_GreenhouseGas.xlsx (ghg-2568.csv) — complete",
-      "updated": "2026-07-15",
+      "source": "1.5_GreenhouseGas2568.xlsx — FY2568 baseline (Jan–Nov row 68; Dec derived)",
+      "updated": "2026-08-19",
       "provenance": {
-        "sourceWorkbook": "docs/1.5_GreenhouseGas.xlsx",
+        "sourceWorkbook": "public/documents/fy2568/cat1/1.5Green house gass/1.5_GreenhouseGas2568.xlsx",
+        "sourceWorkbookFallback": "docs/1.5_GreenhouseGas.xlsx",
         "sourceSheet": "สรุปการคำนวณ ปี 2568",
-        "sourceColumn": "col[3]-col[14]",
-        "sourceRowRange": "row 67 \"GHG ปี 2568 (kgCO2e)\" — kg values converted to tCO₂e",
+        "sourceColumn": "D68–O68 (kgCO2e)",
+        "sourceRowRange": "row 68 monthly GHG totals — Jan–Nov from cells; Dec 14.02 tCO2e derived (O68 septic anomaly excluded)",
+        "narrativeAnnualTotalTCO2e": 231.62,
         "extractionScript": "scripts/extract-xlsx-to-csv.mjs",
-        "extractionTimestamp": "2026-07-15T03:48:00+07:00",
+        "extractionTimestamp": "2026-08-19T00:00:00+07:00",
         "normalizationScript": "scripts/import-dashboard-data.mjs",
-        "normalizationTimestamp": "2026-07-15T03:50:00+07:00",
-        "validationStatus": "VERIFIED_BASELINE"
+        "normalizationTimestamp": "2026-08-19T00:00:00+07:00",
+        "validationStatus": "VERIFIED_BASELINE",
+        "reconciliationRef": "docs/data/GO-CAT1-1.5-FY2568-GHG-RECONCILIATION.md"
       },
       "quality": {
         "valid": true,
-        "warnings": [],
+        "warnings": [
+          "Monthly sum 231.60 tCO2e vs narrative/inventory 231.62 tCO2e (0.02 delta)",
+          "December not from workbook O68 — derived from narrative minus Jan–Nov"
+        ],
         "reconciliationDifference": 0
       },
       "aggregation": "sum",
@@ -152,8 +158,8 @@
     },
     {
       "indicatorId": "1.5.2",
-      "label": "GHG reduction target",
-      "labelTh": "เป้าหมายลดก๊าซเรือนกระจก",
+      "label": "Greenhouse gas emissions meeting targets with summary and analysis",
+      "labelTh": "ปริมาณก๊าซเรือนกระจกเป็นไปตามเป้าหมาย พร้อมสรุปและวิเคราะห์",
       "relevance": "supporting"
     }
   ],

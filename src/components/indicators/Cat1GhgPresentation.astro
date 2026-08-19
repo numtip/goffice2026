@@ -1,0 +1,19 @@
+---
+/**
+ * Cat1GhgPresentation.astro — FY2568 CAT1-1.5 GHG inventory, performance, understanding views.
+ */
+import Cat1GhgInventoryJourney from './Cat1GhgInventoryJourney.astro';
+import Cat1GhgPerformanceJourney from './Cat1GhgPerformanceJourney.astro';
+import Cat1GhgUnderstandingJourney from './Cat1GhgUnderstandingJourney.astro';
+
+interface Props {
+  indicatorCode: string;
+  locale: 'th' | 'en';
+}
+
+const { indicatorCode, locale } = Astro.props;
+---
+
+{indicatorCode === '1.5.1' && <Cat1GhgInventoryJourney locale={locale} />}
+{indicatorCode === '1.5.2' && <Cat1GhgPerformanceJourney locale={locale} />}
+{indicatorCode === '1.5.3' && <Cat1GhgUnderstandingJourney locale={locale} />}
