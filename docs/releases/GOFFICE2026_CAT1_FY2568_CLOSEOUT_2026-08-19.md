@@ -1,6 +1,6 @@
-# GOFFICE2026 — Category 1 FY2568 Baseline Closeout
+# GOFFICE2026 — Category 1 FY2568 Baseline Closeout (Re-close)
 
-**Status:** `CAT1 FY2568 BASELINE_CLOSED`  
+**Status:** `CAT1 FY2568 BASELINE_RE-CLOSED`
 **Date:** 2026-08-19 (Asia/Bangkok)  
 **Preview URL:** https://numtip.github.io/goffice2026/  
 **Production URL:** https://goffice.mju.ac.th/ — **NOT deployed. No VPS changes.**
@@ -15,9 +15,21 @@
 | Item | Value |
 |------|-------|
 | Branch | `master` |
-| Closeout SHA | `6b9e491` — `docs(cat1): close FY2568 baseline and tighten 1.7 PDCA allow-list` |
-| Prior live SHA | `e5d6102` — 1.7 CI drift fix + live acceptance |
-| Pages workflow | See push run after `6b9e491` |
+| Re-close SHA | `1b9903d` — `docs(cat1): re-close FY2568 baseline after 1.1+1.2 completion` |
+| Prior feature SHA | `f3f4941` — 1.2 governance + About hub + CI fixes |
+| Feature bundle | `74fe4f9` — 1.2 contract, journeys, About hub reconciliation |
+| Pages workflow | *(set after push)* |
+
+---
+
+## Runtime vs evidence coverage
+
+| Layer | Count | Detail |
+|-------|-------|--------|
+| **Runtime presentation** | **18 / 18** | Every CAT1 indicator has a dedicated journey or explicit evidence-gap journey (TH + EN) |
+| **Evidence completeness** | **16 / 18** | **2 indicators remain evidence-incomplete: 1.2.2, 1.5.3** — not fabricated |
+
+Do **not** call 1.2.2 or 1.5.3 “implemented evidence.” They have honest MISSING / evidence-gap journeys only.
 
 ---
 
@@ -29,47 +41,53 @@ Category 1 operates as one coherent FY2568 **historical-baseline** management sy
 
 | Stage | Domain | Indicators | Contract / journey | Status |
 |-------|--------|------------|-------------------|--------|
-| Define | 1.1 Policy & plan | 1.1.1–1.1.4 | activities-aspects (scope), targets | Implemented |
-| Govern | 1.2 Committee | 1.2.1, **1.2.2** | activities-aspects + context | 1.2.1 ✓ · **1.2.2 MISSING** |
-| Identify | 1.3 Aspects | 1.3.1–1.3.3 | environmental-aspects-2568 (canonical) | Implemented |
-| Comply | 1.4 Legal | 1.4.1–1.4.2 | laws + compliance | historical-baseline |
-| Measure | 1.5 GHG | 1.5.1–1.5.2, **1.5.3** | ghg.json + dashboard | 1.5.1/1.5.2 ✓ · **1.5.3 MISSING** |
-| Improve | 1.6 Projects | 1.6.1–1.6.2 | projects.json | Implemented |
-| Review | 1.7 Management review | 1.7.1–1.7.2 | management-review.json | historical-baseline |
-
-**Coverage:** 16 / 18 indicators with verified or partial FY2568 presentation · 2 / 18 explicitly MISSING (not fabricated).
+| Define | 1.1 Policy & plan | 1.1.1–1.1.4 | activities-aspects, targets, projects | Dedicated journeys ✓ |
+| Govern | 1.2 Committee | 1.2.1, **1.2.2** | environmental-committee | 1.2.1 ✓ · **1.2.2 evidence gap** |
+| Identify | 1.3 Aspects | 1.3.1–1.3.3 | environmental-aspects-2568 | Dedicated views ✓ |
+| Comply | 1.4 Legal | 1.4.1–1.4.2 | laws + compliance | historical-baseline ✓ |
+| Measure | 1.5 GHG | 1.5.1–1.5.2, **1.5.3** | ghg.json + dashboard | 1.5.1/1.5.2 ✓ · **1.5.3 evidence gap** |
+| Improve | 1.6 Projects | 1.6.1–1.6.2 | projects.json | Dedicated journeys ✓ |
+| Review | 1.7 Management review | 1.7.1–1.7.2 | management-review.json | historical-baseline ✓ |
 
 ---
 
-## Closeout fix applied
+## About hub foundation mapping
 
-| Issue | Fix |
-|-------|-----|
-| `mr-decision-m1-05` PDCA pointed to **1.4.1** (outside explicit allow-list) | Set `pdcaLink: null`; decision text retained |
-| Regression guard | Added PDCA allow-list test in `test-management-review-2568.mjs` |
+`/about/` = Green Office Management Foundation Hub — organizational views consuming the same CAT1 contracts as indicator pages.
 
-Allow-list (unchanged): **1.1.1, 1.1.2, 1.1.3, 1.1.4, 1.2.1** only.
+| About route | CAT1 | Contract |
+|-------------|------|----------|
+| `/about/scope/` | 1.1.1 | activities-aspects |
+| `/about/policy/` | 1.1.2 | activities-aspects |
+| `/about/goals/` | 1.1.3 | targets |
+| `/about/action-plan/` | 1.1.4 (+ FY2569 Excel section) | projects (`proj-plan-1`) |
+| `/about/committee/` | 1.2.1 (+ 1.2.2 gap) | environmental-committee |
+| `/about/feedback/` | — | Own domain |
+
+No duplicate committee / target / plan registries. Action-plan `relatedIndicators`: **1.1.4, 1.6.1** (not stale 1.5.1/1.5.2).
 
 ---
 
-## Reconciliation checks (14/14)
+## Reconciliation checks (16/16)
 
 | # | Check | Result |
 |---|-------|--------|
 | 1 | 18 CAT1 indicator routes (TH + EN dynamic) | PASS |
-| 2 | FY2568 labeled `historical-baseline` on journeys/contracts | PASS |
-| 3 | 1.2.2 / 1.5.3 remain MISSING | PASS |
-| 4 | No FY2569 operational facts in CAT1 contracts | PASS |
-| 5 | No duplicate proj-1/proj-2 entities | PASS |
-| 6 | 1.3.3 ↔ 1.6.2 proj-2 reuse | PASS |
-| 7 | 1.3 ↔ 1.4 law mapping source-only (ea-79→lr-3.2) | PASS |
-| 8 | 1.5 ghg.json ↔ dashboard (231.62 / 231.6 Δ disclosed) | PASS |
-| 9 | 1.7 PDCA allow-list only | PASS (after fix) |
-| 10 | Cross-links 1.1–1.7 resolve | PASS |
-| 11 | TH/EN route parity | PASS |
-| 12 | No official Green Office score claims | PASS |
-| 13 | Known gaps/anomalies disclosed, not silently fixed | PASS |
-| 14 | Management cycle on `/categories/cat1/` | PASS |
+| 2 | 18/18 dedicated runtime or evidence-gap journeys | PASS |
+| 3 | FY2568 `historical-baseline` labeling on contracts/journeys | PASS |
+| 4 | 1.2.2 / 1.5.3 remain evidence gaps (not fabricated) | PASS |
+| 5 | No FY2569 operational facts in CAT1 contracts | PASS |
+| 6 | 9-contract manifest (incl. environmental-committee) | PASS |
+| 7 | `cat12Canonical` traceability path | PASS |
+| 8 | About ↔ CAT1 foundation mapping | PASS |
+| 9 | No duplicate proj-1/proj-2 / committee registries | PASS |
+| 10 | 1.3 ↔ 1.4 law mapping source-only (ea-79→lr-3.2) | PASS |
+| 11 | 1.5 ghg.json ↔ dashboard (231.62 / 231.6 Δ disclosed) | PASS |
+| 12 | 1.7 PDCA allow-list only | PASS |
+| 13 | TH/EN route parity | PASS |
+| 14 | No official Green Office score claims | PASS |
+| 15 | Known gaps/anomalies disclosed | PASS |
+| 16 | Management cycle on `/categories/cat1/` | PASS |
 
 ---
 
@@ -77,8 +95,9 @@ Allow-list (unchanged): **1.1.1, 1.1.2, 1.1.3, 1.1.4, 1.2.1** only.
 
 | Gap | Indicators | Disclosure |
 |-----|------------|------------|
-| Role-understanding interview | **1.2.2** | MISSING in manifest, contract gaps, unavailable UI |
-| GHG knowledge/training | **1.5.3** | MISSING journey + contract gaps |
+| Role-understanding interview | **1.2.2** | MISSING in manifest, contract gaps, evidence-gap journey |
+| GHG knowledge/training | **1.5.3** | MISSING in manifest, contract gaps, evidence-gap journey |
+| Committee member roster + order number | 1.2.1 | Scanned attachment pages 2–7 — OCR pending |
 | MR #2 minutes/quorum | **1.7.2** | occurrence_supported only (18 ก.ย. 2568) |
 | GHG +4.81% not reviewed at MR #1 | 1.5.2 / 1.7 | gaps panel + ghg contract |
 | proj-1/proj-2 not named in MR minutes | 1.6 / 1.7 | gaps panel |
@@ -98,16 +117,17 @@ Allow-list (unchanged): **1.1.1, 1.1.2, 1.1.3, 1.1.4, 1.2.1** only.
 
 ---
 
-## Live routes smoke (GitHub Pages @ `e5d6102`)
+## Live routes smoke (targeted re-close)
 
-| Route group | Result |
-|-------------|--------|
-| `/categories/cat1/` + EN | HTTP 200 |
-| All 18 × `/indicators/1.x.x/` TH + EN (36 URLs) | HTTP 200 |
-| `/dashboard/ghg/` + EN | HTTP 200 |
-| `/evidence/` + EN | HTTP 200 |
-
-Sampled content: Historical Baseline markers, 1.2.2/1.5.3 unavailable notices, 1.7 MR #2 `not_locally_verified`, dashboard 231.6 tCO₂e, no official score claims.
+| Route | Result |
+|-------|--------|
+| `/about/` + `/en/about/` | HTTP 200 · foundation hub |
+| `/about/committee/` + EN | HTTP 200 · shared 1.2.1 contract |
+| `/indicators/1.1.1/` + EN | HTTP 200 · scope journey |
+| `/indicators/1.2.1/` + EN | HTTP 200 · governance journey |
+| `/indicators/1.2.2/` + EN | HTTP 200 · evidence-gap journey |
+| `/indicators/1.5.3/` + EN | HTTP 200 · evidence-gap journey |
+| `/indicators/1.7.2/` + EN | HTTP 200 · MR #2 occurrence-only |
 
 ---
 
@@ -115,10 +135,12 @@ Sampled content: Historical Baseline markers, 1.2.2/1.5.3 unavailable notices, 1
 
 | Gate | Result |
 |------|--------|
-| `validate-category1-contracts.mjs` | PASS (8 domains) |
-| `test-management-review-2568.mjs` | PASS (13 tests) |
+| `validate-category1-contracts.mjs` | PASS (9 domains) |
+| `test-about-cat1-reconciliation.mjs` | PASS |
+| `test-category1-committee-2568.mjs` | PASS |
+| `test-management-review-2568.mjs` | PASS |
 | `test-category1-presentation.mjs` | PASS |
-| `npm test` | PASS (216 tests) |
+| `npm test` | PASS (251 tests) |
 | `npm run check` | PASS |
 | `npm run build` | PASS (272 pages) |
 | `git diff --check` | PASS |
@@ -131,6 +153,8 @@ Sampled content: Historical Baseline markers, 1.2.2/1.5.3 unavailable notices, 1
 |----------|------|
 | Blueprint | `docs/GOFFICE2026_CATEGORY1_MANAGEMENT_BLUEPRINT_V1.md` |
 | Phase A disposition | `docs/data/GO-CAT1-PHASE-A-SOURCE-DISPOSITION.md` |
+| 1.1 reconciliation | `docs/data/GO-CAT1-1.1-FY2568-RECONCILIATION.md` |
+| 1.2 reconciliation | `docs/data/GO-CAT1-1.2-FY2568-RECONCILIATION.md` |
 | 1.3 reconciliation | `docs/data/GO-CAT1-1.3-SOURCE-RECONCILIATION.md` |
 | 1.4 reconciliation | `docs/data/GO-CAT1-1.4-FY2568-LEGAL-RECONCILIATION.md` |
 | 1.5 reconciliation | `docs/data/GO-CAT1-1.5-FY2568-GHG-RECONCILIATION.md` |
@@ -141,15 +165,15 @@ Sampled content: Historical Baseline markers, 1.2.2/1.5.3 unavailable notices, 1
 
 ## Next state — FY2569
 
-FY2569 may **reuse the same contract schema and presentation journeys**. Import verified current-year records into existing domains (`targets`, `ghg`, `projects`, `management-review`, etc.) without architectural refactor. Until verified:
+FY2569 may **reuse the same contract schema and presentation journeys**. Import verified current-year records into existing domains without architectural refactor. Until verified:
 
 - Do not fabricate FY2569 CAT1 facts
 - Keep FY2568 as read-only historical baseline
 - Fill 1.2.2 / 1.5.3 only when dedicated sources appear
-- Category 2 / 7 implementation remains out of scope for this closeout
+- Category 2 / 7 implementation remains out of scope
 
 ---
 
 ## Verdict
 
-**`CAT1 FY2568 BASELINE_CLOSED`** — Category 1 is a coherent, truthful FY2568 management system on GitHub Pages with 16 implemented indicators, 2 honest MISSING gaps, and all known anomalies disclosed. No VPS/production changes.
+**`CAT1 FY2568 BASELINE_RE-CLOSED`** — Category 1 is a coherent, truthful FY2568 management system on GitHub Pages: **18/18 runtime journeys**, **2 evidence-incomplete indicators (1.2.2, 1.5.3)**, About hub aligned to canonical CAT1 contracts, all known anomalies disclosed. No VPS/production changes.
