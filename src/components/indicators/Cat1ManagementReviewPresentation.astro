@@ -1,0 +1,17 @@
+---
+/**
+ * Cat1ManagementReviewPresentation.astro — FY2568 CAT1-1.7 quorum + meeting review journeys.
+ */
+import Cat1ManagementReviewQuorumJourney from './Cat1ManagementReviewQuorumJourney.astro';
+import Cat1ManagementReviewMeetingJourney from './Cat1ManagementReviewMeetingJourney.astro';
+
+interface Props {
+  indicatorCode: string;
+  locale: 'th' | 'en';
+}
+
+const { indicatorCode, locale } = Astro.props;
+---
+
+{indicatorCode === '1.7.1' && <Cat1ManagementReviewQuorumJourney locale={locale} />}
+{indicatorCode === '1.7.2' && <Cat1ManagementReviewMeetingJourney locale={locale} />}

@@ -215,6 +215,69 @@ function main() {
     }
   }
 
+  // ── management-review invariants (1.7) ───────────────────────
+  let mr;
+  try {
+    mr = readJSON(resolve(CONTRACT_DIR, 'management-review.json'));
+  } catch (e) {
+    errors.push(`management-review.json unreadable: ${e.message}`);
+  }
+  if (mr) {
+    const meetings = (mr.records || []).filter((r) => r.kind === 'meeting');
+    const quorums = (mr.records || []).filter((r) => r.kind === 'quorum');
+    const decisions = (mr.records || []).filter((r) => r.kind === 'decision');
+    const m1 = meetings.find((r) => r.id === 'mr-meeting-1');
+    const m2 = meetings.find((r) => r.id === 'mr-meeting-2');
+    if (meetings.length !== 2) {
+      errors.push(`management-review: expected exactly 2 meeting records, got ${meetings.length}`);
+    }
+    if (quorums.length !== 1) {
+      errors.push(`management-review: expected exactly 1 quorum record (Meeting #1), got ${quorums.length}`);
+    }
+    const q1 = quorums[0];
+    if (q1) {
+      if (q1.meetingId !== 'mr-meeting-1') {
+        errors.push('management-review: quorum must reference mr-meeting-1 only');
+      }
+      if (q1.invitedCount !== 23 || q1.attendedCount !== 20) {
+        errors.push('management-review: quorum counts must be 23 invited / 20 attended');
+      }
+      const calc = Math.round((q1.attendedCount / q1.invitedCount) * 10000) / 100;
+      if (calc !== q1.attendancePct) {
+        errors.push(`management-review: attendancePct must equal calculated ${calc}, got ${q1.attendancePct}`);
+      }
+      if (q1.quorumMet !== true || q1.thresholdPct !== 75) {
+        errors.push('management-review: quorum must be met at >75% threshold');
+      }
+    }
+    if (m2) {
+      if (m2.reviewStatus !== 'occurrence_supported') {
+        errors.push('management-review: mr-meeting-2 must be occurrence_supported only');
+      }
+      if (m2.participantsCount != null) {
+        errors.push('management-review: mr-meeting-2 must not infer participantsCount');
+      }
+      const m2Decisions = decisions.filter((d) => d.meetingId === 'mr-meeting-2');
+      if (m2Decisions.length > 0) {
+        errors.push('management-review: mr-meeting-2 must not have fabricated decisions');
+      }
+    }
+    if (decisions.length !== 9) {
+      errors.push(`management-review: expected 9 Meeting #1 decisions, got ${decisions.length}`);
+    }
+    for (const d of decisions) {
+      if (d.meetingId !== 'mr-meeting-1') {
+        errors.push(`management-review: decision ${d.id} must belong to mr-meeting-1 only`);
+      }
+    }
+    if (m1 && m1.dateISO !== '2025-03-07') {
+      errors.push('management-review: mr-meeting-1 dateISO must be 2025-03-07');
+    }
+    if (m2 && m2.dateISO !== '2025-09-18') {
+      errors.push('management-review: mr-meeting-2 dateISO must be 2025-09-18');
+    }
+  }
+
   // ── Report ───────────────────────────────────────────────────
   console.log('=== CATEGORY 1 DATA CONTRACTS VALIDATION ===');
   console.log(`Domains checked : ${[...ALLOWED_DOMAINS].length}`);

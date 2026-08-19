@@ -14,7 +14,7 @@
     { "domain": "targets", "file": "src/data/category1/targets.json", "indicators": ["1.1.3"], "status": "normalized" },
     { "domain": "ghg", "file": "src/data/category1/ghg.json", "indicators": ["1.5.1", "1.5.2"], "status": "normalized" },
     { "domain": "projects", "file": "src/data/category1/projects.json", "indicators": ["1.6.1", "1.6.2"], "status": "normalized" },
-    { "domain": "management-review", "file": "src/data/category1/management-review.json", "indicators": ["1.7.1", "1.7.2"], "status": "normalized" },
+    { "domain": "management-review", "file": "src/data/category1/management-review.json", "indicators": ["1.7.1", "1.7.2"], "status": "historical-baseline", "note": "MR #1 content-verified (quorum 20/23, 9 decisions); MR #2 occurrence-only (18 ก.ย. 2568 photo)" },
     { "domain": "environmental-aspects-2568", "file": "src/data/category1/environmental-aspects-2568.json", "indicators": ["1.3.1", "1.3.2", "1.3.3"], "status": "canonical" }
   ],
   "missingIndicators": [

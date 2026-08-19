@@ -237,7 +237,7 @@ export function buildCat1DomainSnapshot(domain: Cat1Domain): DomainSnapshot {
       const meetings = records.filter((r) => r.kind === 'meeting');
       return {
         domain,
-        status: 'normalized-verified',
+        status: 'historical-baseline',
         facts: [
           quorum && typeof quorum.attendancePct === 'number'
             ? { label: { th: 'องค์ประชุมเข้าร่วม', en: 'Quorum attendance' }, value: `${quorum.attendancePct}%`, kind: 'number' }

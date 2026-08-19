@@ -10,6 +10,7 @@ import Cat1EnvironmentalAssessment from './Cat1EnvironmentalAssessment.astro';
 import Cat1LegalPresentation from './Cat1LegalPresentation.astro';
 import Cat1GhgPresentation from './Cat1GhgPresentation.astro';
 import Cat1ProjectsPresentation from './Cat1ProjectsPresentation.astro';
+import Cat1ManagementReviewPresentation from './Cat1ManagementReviewPresentation.astro';
 import { withBase } from '../../utils/with-base';
 import { getLocalizedPath } from '../../i18n/utils';
 
@@ -89,10 +90,11 @@ const cat13Canonical = ['1.3.1', '1.3.2', '1.3.3'].includes(indicator.code);
 const cat14Canonical = ['1.4.1', '1.4.2'].includes(indicator.code);
 const cat15Canonical = ['1.5.1', '1.5.2', '1.5.3'].includes(indicator.code);
 const cat16Canonical = ['1.6.1', '1.6.2'].includes(indicator.code);
+const cat17Canonical = ['1.7.1', '1.7.2'].includes(indicator.code);
 
 const categoryEvidence = evidenceIndex.items.filter((e: Record<string, unknown>) => {
   if (hasExactEvidence) return false;
-  if (cat13Canonical || cat14Canonical || cat15Canonical || cat16Canonical) return false;
+  if (cat13Canonical || cat14Canonical || cat15Canonical || cat16Canonical || cat17Canonical) return false;
   const codes: string[] = Array.isArray(e.categoryCodes)
     ? (e.categoryCodes as string[])
     : e.categoryId
@@ -213,6 +215,12 @@ function alternateTitle(): string {
   {indicator.categoryCode === 'cat1' && cat16Canonical && (
     <div class="mb-6">
       <Cat1ProjectsPresentation indicatorCode={indicator.code} locale={locale} />
+    </div>
+  )}
+
+  {indicator.categoryCode === 'cat1' && cat17Canonical && (
+    <div class="mb-6">
+      <Cat1ManagementReviewPresentation indicatorCode={indicator.code} locale={locale} />
     </div>
   )}
 

@@ -176,11 +176,16 @@ describe('category1 contracts — truthfulness guards', () => {
     assert.equal(tds.status, 'needs_review');
   });
 
-  it('management-review quorum is documented at 20/23 = 86.96%', () => {
+  it('management-review quorum is documented at 20/23 = 86.96% for Meeting #1 only', () => {
     const mr = readContract('management-review');
+    assert.equal(mr.status, 'historical-baseline');
     const quorum = mr.records.find((r) => r.kind === 'quorum');
     assert.ok(quorum);
     assert.equal(quorum.documented, true);
+    assert.equal(quorum.meetingId, 'mr-meeting-1');
     assert.equal(quorum.attendancePct, 86.96);
+    const meetings = mr.records.filter((r) => r.kind === 'meeting');
+    assert.equal(meetings.length, 2);
+    assert.equal(meetings.find((m) => m.id === 'mr-meeting-2').reviewStatus, 'occurrence_supported');
   });
 });

@@ -1,0 +1,190 @@
+---
+/**
+ * 1.7.1 Management Review Quorum Journey — FY2568 Meeting #1 quorum; Meeting #2 occurrence only.
+ */
+import {
+  buildQuorum,
+  buildMeeting,
+  buildParticipants,
+  CAT1_YEAR,
+  MR_EVIDENCE,
+} from '../../utils/category1-management-review-presentation';
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const isEn = locale === 'en';
+const path = (p: string) => getLocalizedPath(locale, p);
+
+function t(th: string, en: string): string {
+  return isEn ? en : th;
+}
+
+const quorum = buildQuorum();
+const meeting1 = buildMeeting('mr-meeting-1');
+const meeting2 = buildMeeting('mr-meeting-2');
+const participants = buildParticipants('mr-meeting-1');
+const mgmt = participants.find((p) => p.roleGroup === 'management');
+const catReps = participants.find((p) => p.roleGroup === 'category_representative');
+---
+
+<div class="cat17-journey space-y-6" data-cat1-management-review-quorum data-view="1.7.1">
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat171-hero-title">
+    <p class="text-xs font-semibold text-primary">
+      {t(`ตัวชี้วัด 1.7.1 · FY${CAT1_YEAR} Historical Baseline`, `Indicator 1.7.1 · FY${CAT1_YEAR} Historical Baseline`)}
+    </p>
+    <h2 id="cat171-hero-title" class="mt-1 text-lg font-bold text-balance text-on-surface sm:text-xl">
+      {t('องค์ประชุมทบทวนฝ่ายบริหาร', 'Management review quorum')}
+    </h2>
+    <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+      {t(
+        'ข้อมูลองค์ประชุมจากแหล่ง 1.7.1 — ไม่ใช่คะแนนสำนักงานสีเขียว',
+        'Quorum facts from source 1.7.1 — not an official Green Office score',
+      )}
+    </p>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat171-pulse-title">
+    <h2 id="cat171-pulse-title" class="text-base font-bold text-on-surface">
+      {t(`การประชุม ${meeting1.meetingNumber} · ${meeting1.dateBE}`, `Meeting ${meeting1.meetingNumber} · ${meeting1.dateBE}`)}
+    </h2>
+    <p class="mt-1 text-xs text-on-surface-variant">
+      {t(
+        `${meeting1.startTime}–${meeting1.endTime} น. ห้อง ${meeting1.room}`,
+        `${meeting1.startTime}–${meeting1.endTime}, Room ${meeting1.room}`,
+      )}
+    </p>
+    <dl class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-lg border border-gray-100 bg-gray-50/80 p-3">
+        <dt class="text-xs font-semibold text-on-surface-variant">{t('เชิญ', 'Invited')}</dt>
+        <dd class="mt-1 num-tabular text-2xl font-bold text-on-surface">{quorum.invitedCount}</dd>
+      </div>
+      <div class="rounded-lg border border-gray-100 bg-gray-50/80 p-3">
+        <dt class="text-xs font-semibold text-on-surface-variant">{t('เข้าร่วม', 'Attended')}</dt>
+        <dd class="mt-1 num-tabular text-2xl font-bold text-on-surface">{quorum.attendedCount}</dd>
+      </div>
+      <div class="rounded-lg border border-gray-100 bg-gray-50/80 p-3">
+        <dt class="text-xs font-semibold text-on-surface-variant">{t('องค์ประชุม', 'Quorum')}</dt>
+        <dd class="mt-1 num-tabular text-2xl font-bold text-on-surface">{quorum.attendancePct}%</dd>
+      </div>
+      <div class="rounded-lg border border-gray-100 bg-gray-50/80 p-3">
+        <dt class="text-xs font-semibold text-on-surface-variant">{t('เกณฑ์', 'Threshold')}</dt>
+        <dd class="mt-1 text-sm font-semibold text-on-surface">
+          {t(`> ${quorum.thresholdPct}%`, `> ${quorum.thresholdPct}%`)}
+        </dd>
+        <dd class="mt-1 text-xs text-on-surface-variant">
+          {quorum.quorumMet
+            ? t('ครบองค์ประชุม', 'Quorum met')
+            : t('ไม่ครบองค์ประชุม', 'Quorum not met')}
+        </dd>
+      </div>
+    </dl>
+    <p class="mt-3 text-xs text-on-surface-variant">
+      {t(`ฐานคำนวณ: ${quorum.basis} · คำสั่ง ${quorum.orderRef}`, `Basis: ${quorum.basis} · Order ${quorum.orderRef}`)}
+    </p>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat171-rep-title">
+    <h2 id="cat171-rep-title" class="text-base font-bold text-on-surface">{t('การเป็นตัวแทน', 'Representation')}</h2>
+    <ul class="mt-3 space-y-2 text-sm leading-relaxed text-on-surface" role="list">
+      {mgmt && (
+        <li>
+          {t(
+            `ฝ่ายบริหาร: ${mgmt.attendedCount} คน`,
+            `Management committee: ${mgmt.attendedCount} attended`,
+          )}
+          {mgmt.positionsVacant && mgmt.positionsVacant.length > 0 && (
+            <span class="block text-xs text-amber-900 mt-1">
+              {t('ตำแหน่งว่าง: ', 'Vacant posts: ')}
+              {isEn
+                ? 'Research administration director; Academic services administration director'
+                : mgmt.positionsVacant.join('; ')}
+            </span>
+          )}
+        </li>
+      )}
+      {catReps && (
+        <li>
+          {t(
+            `ตัวแทนหมวด ${catReps.categoryRange}: ${catReps.attendedCount} คน`,
+            `Category ${catReps.categoryRange} representatives: ${catReps.attendedCount} attended`,
+          )}
+        </li>
+      )}
+    </ul>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat171-attendance-title">
+    <h2 id="cat171-attendance-title" class="text-base font-bold text-on-surface">
+      {t('หลักฐานการเข้าร่วม / ลงนาม', 'Attendance / signature evidence')}
+    </h2>
+    <p class="mt-2 text-sm text-on-surface-variant">{quorum.signatureEvidenceNote}</p>
+    <details class="mt-3 rounded-lg border border-gray-100 bg-gray-50/50 p-3">
+      <summary class="cursor-pointer text-sm font-semibold text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+        {t('ไฟล์แหล่ง 1.7.1', 'Source files 1.7.1')}
+      </summary>
+      <ul class="mt-2 space-y-1 text-sm" role="list">
+        <li>
+          <a href={MR_EVIDENCE.quorumDocx} class="text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+            {t('1.7.1 องค์ประชุม (DOCX)', '1.7.1 Quorum (DOCX)')}
+          </a>
+        </li>
+        <li>
+          <a href={MR_EVIDENCE.quorumPdf} class="text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+            {t('1.7.1 องค์ประชุม (PDF)', '1.7.1 Quorum (PDF)')}
+          </a>
+        </li>
+      </ul>
+    </details>
+  </section>
+
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat171-absence-title">
+    <h2 id="cat171-absence-title" class="text-base font-bold text-on-surface">
+      {t('การแจ้งผู้ลาประชุม', 'Absent-member handling')}
+    </h2>
+    {catReps?.absentNotes && (
+      <p class="mt-2 text-sm text-on-surface">{isEn ? 'Category 6 committee member and secretary were absent.' : catReps.absentNotes}</p>
+    )}
+    {catReps?.absentReportSentDateBE && (
+      <p class="mt-2 text-sm text-on-surface-variant">
+        {t(
+          `รายงานส่งถึงผู้ลาประชุม วันที่ ${catReps.absentReportSentDateBE}`,
+          `Report sent to absent members on ${catReps.absentReportSentDateBE}`,
+        )}
+      </p>
+    )}
+  </section>
+
+  <section class="rounded-xl border border-amber-100 bg-amber-50/40 p-5 shadow-sm sm:p-6" aria-labelledby="cat171-m2-title" data-cat17-meeting2-gap>
+    <h2 id="cat171-m2-title" class="text-base font-bold text-amber-950">
+      {t(`การประชุม ${meeting2.meetingNumber} · ${meeting2.dateBE}`, `Meeting ${meeting2.meetingNumber} · ${meeting2.dateBE}`)}
+    </h2>
+    <p class="mt-1 text-xs text-amber-900">
+      {t(
+        `${meeting2.startTime}–${meeting2.endTime} น. ห้อง ${meeting2.room} · occurrence_supported`,
+        `${meeting2.startTime}–${meeting2.endTime}, Room ${meeting2.room} · occurrence supported`,
+      )}
+    </p>
+    <p class="mt-3 text-sm leading-relaxed text-amber-950">
+      {t(
+        'มีหลักฐานภาพถ่ายและคำบรรยายวัน/เวลา/ห้อง — ไม่มีตัวเลขเชิญ/เข้าร่วม/องค์ประชุมในแหล่ง local',
+        'Photo caption confirms date/time/room — no invite/attendance/quorum numbers in local sources',
+      )}
+    </p>
+    <span class="mt-3 inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-950 ring-1 ring-amber-300">
+      {t('quorum: not_locally_verified', 'Quorum: not locally verified')}
+    </span>
+  </section>
+
+  <section class="rounded-xl border border-green-100 bg-green-50/40 p-5 sm:p-6">
+    <a
+      href={path('/indicators/1.7.2/')}
+      class="inline-flex min-h-11 items-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-on-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+    >
+      {t('ไปที่ 1.7.2 วาระและมติการประชุม', 'Continue to 1.7.2 agenda & decisions')}
+    </a>
+  </section>
+</div>

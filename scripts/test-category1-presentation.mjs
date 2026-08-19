@@ -30,6 +30,9 @@ const GHG_VM = join(ROOT, 'src/utils/category1-ghg-presentation.ts');
 const PROJ_PLAN = join(ROOT, 'src/components/indicators/Cat1ProjectsPlanJourney.astro');
 const PROJ_IMP = join(ROOT, 'src/components/indicators/Cat1ProjectsImprovementJourney.astro');
 const PROJ_VM = join(ROOT, 'src/utils/category1-projects-presentation.ts');
+const MR_QUORUM = join(ROOT, 'src/components/indicators/Cat1ManagementReviewQuorumJourney.astro');
+const MR_MEETING = join(ROOT, 'src/components/indicators/Cat1ManagementReviewMeetingJourney.astro');
+const MR_VM = join(ROOT, 'src/utils/category1-management-review-presentation.ts');
 const VM = join(ROOT, 'src/utils/category1-presentation.ts');
 
 describe('Phase E — TH/EN structural parity', () => {
@@ -60,6 +63,7 @@ describe('Phase E — TH/EN structural parity', () => {
     assert.match(trace, /Cat1LegalPresentation/);
     assert.match(trace, /Cat1GhgPresentation/);
     assert.match(trace, /Cat1ProjectsPresentation/);
+    assert.match(trace, /Cat1ManagementReviewPresentation/);
     assert.match(trace, /indicator\.categoryCode === 'cat1'/);
   });
 });
@@ -93,7 +97,7 @@ describe('Phase E — a11y / motion', () => {
   });
 
   it('no local filesystem paths or secrets in the presentation artifacts', () => {
-    for (const p of [CYCLE, SNAPSHOT, CONTEXT, VM, LEGAL_VM, LEGAL_REG, LEGAL_COMP, GHG_VM, GHG_INV, GHG_PERF, GHG_UNDR, PROJ_VM, PROJ_PLAN, PROJ_IMP]) {
+    for (const p of [CYCLE, SNAPSHOT, CONTEXT, VM, LEGAL_VM, LEGAL_REG, LEGAL_COMP, GHG_VM, GHG_INV, GHG_PERF, GHG_UNDR, PROJ_VM, PROJ_PLAN, PROJ_IMP, MR_VM, MR_QUORUM, MR_MEETING]) {
       const raw = readFileSync(p, 'utf8');
       assert.ok(!/F:\\/i.test(raw), `${p} leaks F:\\ path`);
       assert.ok(!/OneDrive - Maejo/i.test(raw), `${p} leaks OneDrive path`);
@@ -200,7 +204,7 @@ describe('Phase F — cross-link journeys and view-model', () => {
     assert.match(plan, /PARTIAL/);
     assert.match(plan, /external-not-in-repo|ไม่พร้อมใน repo/);
     assert.match(plan, /data-cat16-gap-disclaimer/);
-    assert.match(plan, /1\.6\.2/);
+    assert.match(plan, /1\.7\.1/);
     assert.match(plan, /focus-visible:ring-2/);
     assert.match(imp, /Historical Baseline/);
     assert.match(imp, /buildProjectPortfolio/);
@@ -219,5 +223,33 @@ describe('Phase F — cross-link journeys and view-model', () => {
     assert.match(projectsJson, /97\.78/);
     assert.match(projectsJson, /91\.80/);
     assert.match(projectsJson, /88\.60/);
+  });
+
+  it('1.7 presentation is wired with quorum truthfulness and Meeting #2 gap honesty', () => {
+    const trace = readFileSync(TRACE, 'utf8');
+    assert.match(trace, /cat17Canonical/);
+    const quorum = readFileSync(MR_QUORUM, 'utf8');
+    const meeting = readFileSync(MR_MEETING, 'utf8');
+    assert.match(quorum, /Historical Baseline/);
+    assert.match(quorum, /quorum\.attendancePct|invitedCount/);
+    assert.match(quorum, /23/);
+    assert.match(quorum, /20/);
+    assert.match(quorum, /not_locally_verified/);
+    assert.match(quorum, /data-cat17-meeting2-gap/);
+    assert.match(quorum, /focus-visible:ring-2/);
+    assert.doesNotMatch(quorum, /official Green Office score achieved/i);
+    assert.match(meeting, /Historical Baseline/);
+    assert.match(meeting, /data-cat17-decision-timeline/);
+    assert.match(meeting, /data-cat17-coverage-matrix/);
+    assert.match(meeting, /data-cat17-pdca-links/);
+    assert.match(meeting, /data-cat17-meeting2-panel/);
+    assert.match(meeting, /data-cat17-gaps-panel/);
+    assert.match(meeting, /occurrence_supported/);
+    assert.match(meeting, /buildDecisions|mr-decision-m1-04/);
+    assert.match(meeting, /−3%|-3%/);
+    const mvm = readFileSync(MR_VM, 'utf8');
+    assert.match(mvm, /buildQuorum/);
+    assert.match(mvm, /buildDecisions/);
+    assert.match(mvm, /category1\/management-review\.json/);
   });
 });

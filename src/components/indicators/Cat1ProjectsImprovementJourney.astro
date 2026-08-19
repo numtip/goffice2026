@@ -239,9 +239,18 @@ function reportUrl(p: ProjectView): string {
       >
         {t('← 1.5.2 ผล GHG', '← 1.5.2 GHG performance')}
       </a>
+      <a
+        href={path('/indicators/1.7.1/')}
+        class="inline-flex min-h-11 items-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-on-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+      >
+        {t('ไปที่ 1.7.1 การทบทวนฝ่ายบริหาร', 'Continue to 1.7.1 management review')}
+      </a>
     </div>
     <p class="mt-2 text-[10px] text-on-surface-variant">
-      {t('1.7 ยังไม่ได้ implement — ไม่มีลิงก์ไปการทบทวนฝ่ายบริหาร', '1.7 not implemented — no management review link')}
+      {t(
+        'โครงการไม่ถูกอ้างชื่อในรายงานการทบทวน FY2568',
+        'Projects are not named in FY2568 management review minutes',
+      )}
     </p>
   </section>
 </div>
