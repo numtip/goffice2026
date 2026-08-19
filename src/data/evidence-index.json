@@ -1,6 +1,6 @@
 {
   "version": "0.7.0",
-  "updated": "2026-08-18",
+  "updated": "2026-08-19",
   "items": [
     {
       "id": "ev-energy-audit-2025",
@@ -689,6 +689,42 @@
         "status": "pending",
         "basis": "ET-1 traceability promotion: appointment order PDF (doc/Order_appointing_the_committee.pdf) is off-disk and not tracked in the repository (checked 2026-08-02); realSourceAvailable set false. Personal names require privacy review and file restoration before public copy. Phase B (2026-08-18): indicator remapped 1.4.1 → 1.2.1 per official 2569 taxonomy.",
         "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์ PDF คำสั่งแต่งตั้ง (doc/Order_appointing_the_committee.pdf) ไม่อยู่บนดิสก์และไม่ได้ถูก track ใน repository (ตรวจสอบ 2026-08-02) ตั้ง realSourceAvailable เป็น false ชื่อบุคคลต้องตรวจสอบความเป็นส่วนตัวและกู้คืนไฟล์ก่อนเผยแพร่"
+      }
+    },
+    {
+      "id": "ev-cat1-env-aspects-2568-workbook",
+      "categoryId": "cat1",
+      "indicator": "Environmental aspects identification and assessment",
+      "title": "FY2568 environmental aspect identification workbook",
+      "titleTh": "แบบฟอร์มต้นฉบับ 1.3 ปี 2568",
+      "description": "Original FY2568 workbook used for environmental aspect identification and prioritisation. Historical baseline for comparison with FY2569; not a current-year result.",
+      "descriptionTh": "สมุดงานต้นฉบับปี 2568 สำหรับการระบุและจัดลำดับประเด็นสิ่งแวดล้อม เป็นฐานประวัติสำหรับเปรียบเทียบกับปี 2569 ไม่ใช่ผลการประเมินปีปัจจุบัน",
+      "year": 2568,
+      "path": "/documents/fy2568/cat1/1.3/ผลประเมินปัญหา2568.xlsx",
+      "fileType": "XLSX",
+      "status": "available",
+      "updated": "2026-08-19",
+      "sourceId": "src-xlsx-env-aspects-2568",
+      "realSourcePath": "docs/ผลประเมินปัญหา2568.xlsx",
+      "realSourceAvailable": true,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": ["1.3.1", "1.3.2", "1.3.3"],
+      "issueCodes": ["1.3"],
+      "categoryCodes": ["cat1"],
+      "provenance": {
+        "sourceType": "assessment-xlsx",
+        "sourceLabel": "Original FY2568 1.3 workbook (ผลประเมินปัญหา2568.xlsx)",
+        "sourceLabelTh": "สมุดงานต้นฉบับ 1.3 ปี 2568 (ผลประเมินปัญหา2568.xlsx)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": false
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "Public copy of docs/ผลประเมินปัญหา2568.xlsx for reviewer access on 1.3.1/1.3.2/1.3.3. FY2568 historical baseline for later-year comparison; workbook contents were not modified.",
+        "basisTh": "สำเนาเผยแพร่ของ docs/ผลประเมินปัญหา2568.xlsx สำหรับผู้ตรวจในตัวชี้วัด 1.3.1/1.3.2/1.3.3 เป็นฐานประวัติปี 2568 สำหรับเปรียบเทียบปีถัดไป ไม่ได้แก้ไขเนื้อหาสมุดงาน"
       }
     }
   ]

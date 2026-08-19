@@ -16,7 +16,7 @@
  */
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -359,6 +359,28 @@ describe('CAT1-1.3.1 live runtime presentation', () => {
     assert.equal(DATA.summary.projectLinkCount, 2);
   });
 
+  it('1.3.1 surfaces the original FY2568 workbook after pulse and before the control map', () => {
+    const pulse = explorer.indexOf('cat13-pulse-title');
+    const source = explorer.indexOf('data-cat13-original-source');
+    const map = explorer.indexOf('cat13-map-title');
+    assert.ok(pulse > -1 && source > pulse && map > source);
+    assert.match(explorer, /ผลประเมินปัญหา2568\.xlsx/);
+    assert.match(explorer, /\/documents\/fy2568\/cat1\/1\.3\/ผลประเมินปัญหา2568\.xlsx/);
+    assert.match(explorer, /เอกสารต้นฉบับสำหรับการตรวจสอบ/);
+    assert.match(explorer, /แบบฟอร์มต้นฉบับ 1\.3 ปี 2568/);
+    assert.match(explorer, /เปิด\/ดาวน์โหลดไฟล์ Excel ต้นฉบับ/);
+    assert.match(explorer, /download=\{sourceFileName\}/);
+    const workbook = evidence.items.find((e) => e.id === 'ev-cat1-env-aspects-2568-workbook');
+    assert.ok(workbook, 'workbook is registered in evidence-index');
+    assert.equal(workbook.fileType, 'XLSX');
+    assert.equal(workbook.realSourceAvailable, true);
+    assert.equal(workbook.realSourcePath, 'docs/ผลประเมินปัญหา2568.xlsx');
+    assert.equal(workbook.path, '/documents/fy2568/cat1/1.3/ผลประเมินปัญหา2568.xlsx');
+    assert.deepEqual(workbook.indicatorCodes, ['1.3.1', '1.3.2', '1.3.3']);
+    assert.ok(existsSync(join(ROOT, 'public', 'documents', 'fy2568', 'cat1', '1.3', 'ผลประเมินปัญหา2568.xlsx')));
+    assert.ok(existsSync(join(ROOT, 'docs', 'ผลประเมินปัญหา2568.xlsx')));
+  });
+
   it('1.3.x pages do not dump category-level evidence fallback', () => {
     assert.match(trace, /const cat13Canonical = \['1\.3\.1', '1\.3\.2', '1\.3\.3'\]/);
     assert.match(trace, /if \(cat13Canonical\) return false;/);
@@ -370,7 +392,10 @@ describe('CAT1-1.3.1 live runtime presentation', () => {
     assert.deepEqual(goals.indicatorCodes, ['1.1.3']);
     assert.ok(!goals.indicatorCodes.includes('1.3.1'));
     const on131 = evidence.items.filter((e) => (e.indicatorCodes || []).includes('1.3.1'));
-    assert.equal(on131.length, 0, 'no evidence-index item should claim 1.3.1');
+    assert.deepEqual(
+      on131.map((e) => e.id),
+      ['ev-cat1-env-aspects-2568-workbook'],
+    );
     const goalsMissing = missing.missing.goals.items.find((i) => i.id === 'missing-goals-document');
     assert.equal(goalsMissing.requiredByIndicator, '1.1.3');
   });
