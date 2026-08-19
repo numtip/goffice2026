@@ -21,6 +21,7 @@ const DOMAINS = [
   'projects',
   'management-review',
   'environmental-aspects-2568',
+  'environmental-committee',
 ];
 
 function readContract(domain) {
@@ -28,10 +29,10 @@ function readContract(domain) {
 }
 
 describe('category1 contracts — presence and shape', () => {
-  it('manifest exists with 8 contracts and declares the missing indicators', () => {
+  it('manifest exists with 9 contracts and declares the missing indicators', () => {
     const m = JSON.parse(readFileSync(join(CONTRACT_DIR, 'category1-manifest.json'), 'utf8'));
     assert.equal(m.schemaVersion, '1.0.0');
-    assert.equal(m.contracts.length, 8);
+    assert.equal(m.contracts.length, 9);
     const missing = m.missingIndicators.map((x) => x.indicator).sort();
     assert.deepEqual(missing, ['1.2.2', '1.5.3']);
   });
