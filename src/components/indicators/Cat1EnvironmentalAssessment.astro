@@ -1,0 +1,295 @@
+---
+/**
+ * Cat1EnvironmentalAssessment.astro
+ * ==================================
+ * Phase D views for the CAT1-1.3 canonical data pipeline, driven entirely by
+ * the canonical dataset src/data/category1/environmental-aspects-2568.json
+ * through the read-only view-model (category1-presentation.ts).
+ *
+ * Views:
+ *   - 1.3.1  Environmental Assessment Explorer (activity/process → aspect →
+ *            direct/indirect → condition → law → assessment → L/M/H)
+ *   - 1.3.2  Significant issues DERIVED from the same dataset (M/H → control)
+ *   - 1.3.3  Project linkage only where the source documents a canonical project
+ *
+ * No values are invented; no official scores; FY2568 only.
+ */
+import {
+  buildAspectExplorer,
+  buildSignificantIssueView,
+  buildProjectLinkageView,
+  environmentalAspectsDataset,
+  CAT1_YEAR,
+} from '../../utils/category1-presentation';
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface Props {
+  indicatorCode: string;
+  locale: 'th' | 'en';
+}
+
+const { indicatorCode, locale } = Astro.props;
+const isEn = locale === 'en';
+const path = (p: string) => getLocalizedPath(locale, p);
+
+function t(th: string, en: string): string {
+  return isEn ? en : th;
+}
+
+const dataset = environmentalAspectsDataset();
+const summary = dataset.summary;
+
+const ioLabel: Record<string, { th: string; en: string }> = {
+  input: { th: 'ทรัพยากร (Input)', en: 'Input (resource)' },
+  output: { th: 'มลพิษ (Output)', en: 'Output (pollution)' },
+};
+const condLabel: Record<string, { th: string; en: string }> = {
+  normal: { th: 'ปกติ', en: 'Normal' },
+  abnormal: { th: 'ผิดปกติ', en: 'Abnormal' },
+  emergency: { th: 'ฉุกเฉิน', en: 'Emergency' },
+};
+const dirLabel: Record<string, { th: string; en: string }> = {
+  direct: { th: 'ทางตรง', en: 'Direct' },
+  indirect: { th: 'ทางอ้อม', en: 'Indirect' },
+};
+const sigLabel: Record<string, { th: string; en: string }> = {
+  L: { th: 'ต่ำ', en: 'Low' },
+  M: { th: 'ปานกลาง', en: 'Moderate' },
+  H: { th: 'สูง', en: 'High' },
+};
+const sigBadge: Record<string, string> = {
+  L: 'bg-gray-100 text-gray-600',
+  M: 'bg-amber-100 text-amber-800',
+  H: 'bg-red-100 text-red-800',
+};
+const lawLabel: Record<string, { th: string; en: string }> = {
+  Y: { th: 'มี', en: 'Yes' },
+  N: { th: 'ไม่มี', en: 'No' },
+};
+
+const explorer = indicatorCode === '1.3.1' ? buildAspectExplorer() : [];
+const significant = indicatorCode === '1.3.2' ? buildSignificantIssueView() : [];
+const projectLinks = indicatorCode === '1.3.3' ? buildProjectLinkageView() : [];
+
+const sourceNote = t(
+  `แหล่งข้อมูล: docs/ผลประเมินปัญหา2568.xlsx (ทะเบียน 1.3(2)/1.3(3) + ลำดับความสำคัญ 1.3(4) ฉบับ 29 สค68) — ปี ${CAT1_YEAR}`,
+  `Source: docs/ผลประเมินปัญหา2568.xlsx (registers 1.3(2)/1.3(3) + priority 1.3(4) as of 29 สค68) — FY${CAT1_YEAR}`,
+);
+const derivedNote = t(
+  'ประเด็นนัยสำคัญได้จากการอนุมานจากชุดข้อมูลหลักเดียวกัน (ระดับ M/H ตามแหล่งข้อมูล)',
+  'Significant issues are derived from the same canonical dataset (source-defined M/H classification)',
+);
+const projectNote = t(
+  'เชื่อมโยงเฉพาะเมื่อแหล่งข้อมูลระบุโครงการ และโครงการมีอยู่ใน projects.json (ไม่สร้างโครงการจากข้อความควบคุม)',
+  'Linked only where the source names a project and the project exists in projects.json (no projects auto-created from control text)',
+);
+---
+
+{
+  indicatorCode === '1.3.1' && (
+    <div class="rounded-xl border border-gray-100 bg-white shadow-sm p-5 sm:p-6" data-cat1-env-assessment data-view="1.3.1">
+      <div class="mb-4 flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h2 class="text-base font-bold text-gray-900">
+            {t('เครื่องมือสำรวจการประเมินสิ่งแวดล้อม', 'Environmental Assessment Explorer')}
+          </h2>
+          <p class="mt-1 text-xs text-gray-500">
+            {t(
+              `กิจกรรม → ประเด็น → ทางตรง/อ้อม → สภาวะ → กฎหมาย → การประเมิน → ระดับนัยสำคัญ`,
+              'Activity → aspect → direct/indirect → condition → law → assessment → significance',
+            )}
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-1.5 text-[11px]">
+          <span class="rounded-full bg-green-100 px-2.5 py-1 font-medium text-green-800">
+            {summary.byInputOutput.input} {t('Input', 'Input')}
+          </span>
+          <span class="rounded-full bg-emerald-100 px-2.5 py-1 font-medium text-emerald-800">
+            {summary.byInputOutput.output} {t('Output', 'Output')}
+          </span>
+          <span class="rounded-full bg-amber-100 px-2.5 py-1 font-medium text-amber-800">
+            {summary.significantCount} {t('นัยสำคัญ (M/H)', 'significant (M/H)')}
+          </span>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto -mx-5 px-5 sm:-mx-6 sm:px-6" role="region" aria-label={t('ตารางการประเมินสิ่งแวดล้อม', 'Environmental assessment table')} tabindex="0">
+        <table class="w-full min-w-[720px] text-left text-xs">
+          <thead>
+            <tr class="border-b border-gray-200 text-[11px] uppercase tracking-wider text-gray-500">
+              <th scope="col" class="py-2 pr-3 font-semibold">{t('ประเด็นปัญหา', 'Aspect')}</th>
+              <th scope="col" class="py-2 pr-3 font-semibold">{t('ผลกระทบ', 'Impact')}</th>
+              <th scope="col" class="py-2 pr-3 font-semibold">{t('ทางตรง/อ้อม', 'Dir.')}</th>
+              <th scope="col" class="py-2 pr-3 font-semibold">{t('สภาวะ', 'Cond.')}</th>
+              <th scope="col" class="py-2 pr-3 font-semibold">{t('กฎหมาย', 'Law')}</th>
+              <th scope="col" class="py-2 pr-3 font-semibold text-right">{t('คะแนน', 'Score')}</th>
+              <th scope="col" class="py-2 pr-3 font-semibold">{t('นัยสำคัญ', 'Sig.')}</th>
+              <th scope="col" class="py-2 font-semibold">{t('การควบคุม/ป้องกัน', 'Control / prevention')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              explorer.map((group) => (
+                <>
+                  <tr class="border-b border-green-100 bg-green-50/60">
+                    <td colspan="8" class="px-0 py-1.5">
+                      <span class="flex items-center gap-2">
+                        <span class="h-1.5 w-1.5 rounded-full bg-green-600" aria-hidden="true" />
+                        <span class="font-semibold text-green-900">{group.activity}</span>
+                        <span class="text-[11px] text-gray-400">{group.aspects.length} {t('ประเด็น', 'aspects')}</span>
+                      </span>
+                    </td>
+                  </tr>
+                  {
+                    group.aspects.map((a) => (
+                      <tr class="border-b border-gray-100 align-top">
+                        <td class="py-2 pr-3">
+                          <div class="font-medium text-gray-800">{a.aspect}</div>
+                          <div class="text-[11px] text-gray-400">{t(ioLabel[a.inputOutput].th, ioLabel[a.inputOutput].en)}</div>
+                        </td>
+                        <td class="py-2 pr-3">
+                          <span class="inline-flex rounded bg-gray-100 px-1.5 py-0.5 text-[11px] font-semibold text-gray-700">{a.impact}</span>
+                          <span class="mt-0.5 block text-[11px] leading-tight text-gray-500">{a.impactMeaning}</span>
+                        </td>
+                        <td class="py-2 pr-3 text-gray-600">{t(dirLabel[a.directIndirect].th, dirLabel[a.directIndirect].en)}</td>
+                        <td class="py-2 pr-3 text-gray-600">{t(condLabel[a.condition].th, condLabel[a.condition].en)}</td>
+                        <td class="py-2 pr-3 text-gray-600">{t(lawLabel[a.applicableLaw].th, lawLabel[a.applicableLaw].en)}</td>
+                        <td class="py-2 pr-3 text-right font-medium text-gray-700">{a.assessment.riskScore ?? '—'}</td>
+                        <td class="py-2 pr-3">
+                          <span class={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold ${sigBadge[a.assessment.significance]}`}>
+                            {a.assessment.significance} · {t(sigLabel[a.assessment.significance].th, sigLabel[a.assessment.significance].en)}
+                          </span>
+                        </td>
+                        <td class="py-2 text-gray-600">
+                          {a.controlMeasure ? (
+                            <span class="text-[11px] leading-snug">{a.controlMeasure.text}</span>
+                          ) : (
+                            <span class="text-gray-300">—</span>
+                          )}
+                        </td>
+                      </tr>
+                    ))
+                  }
+                </>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-[11px] text-gray-400">{sourceNote}</p>
+    </div>
+  )
+}
+
+{
+  indicatorCode === '1.3.2' && (
+    <div class="rounded-xl border border-gray-100 bg-white shadow-sm p-5 sm:p-6" data-cat1-env-assessment data-view="1.3.2">
+      <div class="mb-4 flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h2 class="text-base font-bold text-gray-900">
+            {t('ประเด็นปัญหาสิ่งแวดล้อมที่มีนัยสำคัญ', 'Significant Environmental Issues')}
+          </h2>
+          <p class="mt-1 text-xs text-gray-500">{derivedNote}</p>
+        </div>
+        <span class="inline-flex items-center rounded-full bg-amber-100 px-2.5 py-1 text-[11px] font-semibold text-amber-800">
+          {summary.significantCount} / {summary.aspectCount}
+        </span>
+      </div>
+
+      <ul class="space-y-3" role="list">
+        {
+          significant.map((si) => (
+            <li class="rounded-lg border border-gray-100 bg-gray-50/50 p-4" data-cat1-significant-issue>
+              <div class="flex flex-wrap items-start justify-between gap-2">
+                <div class="min-w-0">
+                  <p class="text-sm font-semibold text-gray-900">{si.aspect}</p>
+                  <p class="mt-0.5 text-xs text-gray-500">
+                    {si.activity}
+                    {si.priorityRank != null && <span class="ml-1 text-gray-400">· {t('ลำดับ', 'rank')} {si.priorityRank}</span>}
+                  </p>
+                </div>
+                <span class={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold ${sigBadge[si.significance]}`}>
+                  {si.significance} · {t(sigLabel[si.significance].th, sigLabel[si.significance].en)}
+                </span>
+              </div>
+              {
+                si.control && (
+                  <p class="mt-2 text-xs leading-relaxed text-gray-600">
+                    <span class="font-semibold text-gray-500">{t('การควบคุม/ป้องกัน:', 'Control/prevention:')}</span> {si.control}
+                  </p>
+                )
+              }
+              {
+                si.project && (
+                  <p class="mt-2 inline-flex flex-wrap items-center gap-1.5 text-xs font-medium text-green-800">
+                    <span aria-hidden="true">→</span>
+                    <span>{t('โครงการ', 'Project')}:</span>
+                    <a
+                      href={path('/indicators/1.3.3/')}
+                      class="underline decoration-green-300 underline-offset-2 hover:text-green-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded"
+                    >
+                      {si.project.projectTitle}
+                    </a>
+                  </p>
+                )
+              }
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-3 text-[11px] text-gray-400">{sourceNote}</p>
+    </div>
+  )
+}
+
+{
+  indicatorCode === '1.3.3' && (
+    <div class="rounded-xl border border-gray-100 bg-white shadow-sm p-5 sm:p-6" data-cat1-env-assessment data-view="1.3.3">
+      <div class="mb-4">
+        <h2 class="text-base font-bold text-gray-900">
+          {t('โครงการด้านสิ่งแวดล้อม (เชื่อมโยงจากประเด็นนัยสำคัญ)', 'Environmental projects (linked from significant issues)')}
+        </h2>
+        <p class="mt-1 text-xs text-gray-500">{projectNote}</p>
+      </div>
+
+      {
+        projectLinks.length > 0 ? (
+          <ul class="space-y-3" role="list">
+            {
+              projectLinks.map((pl) => (
+                <li class="rounded-lg border border-gray-100 bg-gray-50/50 p-4" data-cat1-project-link>
+                  <div class="flex flex-wrap items-start justify-between gap-2">
+                    <div class="min-w-0">
+                      <p class="text-sm font-semibold text-green-900">{pl.projectTitle}</p>
+                      <p class="mt-0.5 text-xs text-gray-500">
+                        {t('ประเด็นที่เชื่อมโยง', 'Linked aspect')}: {pl.aspect} · {pl.activity}
+                      </p>
+                    </div>
+                    <a
+                      href={path('/indicators/1.3.3/')}
+                      class="inline-flex items-center gap-1 text-xs font-medium text-green-700 hover:text-green-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded"
+                    >
+                      {t('ดูตัวชี้วัด', 'View indicator')}
+                    </a>
+                  </div>
+                  {
+                    pl.controlText && (
+                      <p class="mt-2 text-xs leading-relaxed text-gray-600">
+                        <span class="font-semibold text-gray-500">{t('ข้อความควบคุมในแหล่งข้อมูล:', 'Control text in source:')}</span> {pl.controlText}
+                      </p>
+                    )
+                  }
+                </li>
+              ))
+            }
+          </ul>
+        ) : (
+          <p class="text-xs italic text-gray-400">
+            {t('ยังไม่มีโครงการที่เชื่อมโยงโดยตรงจากแหล่งข้อมูล 1.3', 'No project is directly linked from the 1.3 source data')}
+          </p>
+        )
+      }
+      <p class="mt-3 text-[11px] text-gray-400">{sourceNote}</p>
+    </div>
+  )
+}

@@ -19,6 +19,7 @@ import targetsData from '../data/category1/targets.json';
 import ghgData from '../data/category1/ghg.json';
 import projectsData from '../data/category1/projects.json';
 import managementReviewData from '../data/category1/management-review.json';
+import environmentalAspectsData from '../data/category1/environmental-aspects-2568.json';
 import indicatorsData from '../data/criteria/indicators.json';
 
 export const CAT1_YEAR = 2568 as const;
@@ -30,7 +31,8 @@ export type Cat1Domain =
   | 'targets'
   | 'ghg'
   | 'projects'
-  | 'management-review';
+  | 'management-review'
+  | 'environmental-aspects-2568';
 
 export interface Bilingual {
   th: string;
@@ -76,12 +78,14 @@ const CONTRACTS: Record<Cat1Domain, { records: ContractRecord[] }> = {
   ghg: ghgData as { records: ContractRecord[] },
   projects: projectsData as { records: ContractRecord[] },
   'management-review': managementReviewData as { records: ContractRecord[] },
+  'environmental-aspects-2568': environmentalAspectsData as unknown as { records: ContractRecord[] },
 };
 
 /** Indicator code → contract domain that holds its FY2568 facts. */
 export const INDICATOR_DOMAIN: Record<string, Cat1Domain> = {
   '1.1.1': 'activities-aspects',
   '1.3.1': 'activities-aspects',
+  '1.3.2': 'environmental-aspects-2568',
   '1.4.1': 'laws',
   '1.4.2': 'compliance',
   '1.1.3': 'targets',
@@ -231,7 +235,178 @@ export function buildCat1DomainSnapshot(domain: Cat1Domain): DomainSnapshot {
         ],
       };
     }
+    case 'environmental-aspects-2568': {
+      const aspects = records.filter((r) => r.kind === 'aspect');
+      const significant = (environmentalAspectsData as EnvAspectsDataset).significantIssues?.length ?? 0;
+      const projectLinks = (environmentalAspectsData as EnvAspectsDataset).projectLinks?.length ?? 0;
+      return {
+        domain,
+        status: 'normalized-verified',
+        facts: [
+          { label: { th: 'กิจกรรมในขอบเขต', en: 'Activities' }, value: String(aspects.length ? (environmentalAspectsData as EnvAspectsDataset).activities?.length ?? 0 : 0), kind: 'number' },
+          { label: { th: 'ประเด็นปัญหาสิ่งแวดล้อม', en: 'Environmental aspects' }, value: String(aspects.length), kind: 'number' },
+          { label: { th: 'ประเด็นนัยสำคัญ (M/H)', en: 'Significant (M/H)' }, value: String(significant), kind: 'number' },
+          { label: { th: 'โครงการที่เชื่อมโยง', en: 'Linked projects' }, value: String(projectLinks), kind: 'number' },
+        ],
+      };
+    }
   }
+}
+
+export interface EnvAspectAssessment {
+  likelihoodFactors: number[];
+  likelihoodTotal: number | null;
+  severityFactors: number[];
+  severityTotal: number | null;
+  riskScore: number | null;
+  registerSignificance: 'L' | 'M' | 'H' | null;
+  prioritySignificance: 'L' | 'M' | 'H' | null;
+  priorityScore: number | null;
+  significance: 'L' | 'M' | 'H';
+  significanceSource: 'register' | 'priority';
+  reclassified: boolean;
+}
+
+export interface EnvironmentalAspect2568 {
+  id: string;
+  year: number;
+  kind: string;
+  activityId: string;
+  activity: string;
+  inputOutput: 'input' | 'output';
+  aspect: string;
+  impact: string | null;
+  impactMeaning: string | null;
+  directIndirect: 'direct' | 'indirect';
+  condition: 'normal' | 'abnormal' | 'emergency';
+  applicableLaw: 'Y' | 'N';
+  assessment: EnvAspectAssessment;
+  controlMeasure: { text: string; source: 'register' | 'priority' } | null;
+  projectReference: { projectId: string; projectTitle: string } | null;
+  sourceTrace: {
+    sourceFile: string;
+    sheet: string;
+    sourceRow: number;
+    prioritySheet: string | null;
+    priorityRow: number | null;
+    priorityRank: number | null;
+  };
+}
+
+export interface SignificantIssueView {
+  id: string;
+  aspectId: string;
+  activity: string;
+  aspect: string;
+  significance: 'L' | 'M' | 'H';
+  riskScore: number | null;
+  priorityRank: number | null;
+  control: string | null;
+  project: { projectId: string; projectTitle: string } | null;
+}
+
+export interface ProjectLinkageView {
+  id: string;
+  aspectId: string;
+  activity: string;
+  aspect: string;
+  projectId: string;
+  projectTitle: string;
+  controlText: string | null;
+}
+
+interface EnvAspectsDataset {
+  activities: { id: string; name: string }[];
+  records: EnvironmentalAspect2568[];
+  significantIssues: {
+    id: string;
+    aspectId: string;
+    activity: string;
+    aspect: string;
+    significance: 'L' | 'M' | 'H';
+    riskScore: number | null;
+    priorityRank: number | null;
+    controlMeasure: { text: string; source: string } | null;
+    projectReference: { projectId: string; projectTitle: string } | null;
+  }[];
+  projectLinks: {
+    id: string;
+    aspectId: string;
+    activity: string;
+    aspect: string;
+    projectId: string;
+    projectTitle: string;
+    controlText: string | null;
+  }[];
+  summary: {
+    activityCount: number;
+    aspectCount: number;
+    significantCount: number;
+    projectLinkCount: number;
+    byInputOutput: Record<string, number>;
+    byDirectIndirect: Record<string, number>;
+    byCondition: Record<string, number>;
+    bySignificance: Record<string, number>;
+  };
+}
+
+/** Raw canonical FY2568 environmental aspect dataset (read-only). */
+export function environmentalAspectsDataset(): EnvAspectsDataset {
+  return environmentalAspectsData as unknown as EnvAspectsDataset;
+}
+
+/**
+ * 1.3.1 — Environmental Assessment Explorer: activities grouped with their
+ * aspects, preserving register order. Read-only reshaping of the canonical
+ * dataset; no values are invented.
+ */
+export function buildAspectExplorer(): { activityId: string; activity: string; aspects: EnvironmentalAspect2568[] }[] {
+  const data = environmentalAspectsDataset();
+  const groups = new Map<string, { activityId: string; activity: string; aspects: EnvironmentalAspect2568[] }>();
+  for (const a of data.records) {
+    if (!groups.has(a.activityId)) {
+      groups.set(a.activityId, { activityId: a.activityId, activity: a.activity, aspects: [] });
+    }
+    groups.get(a.activityId)!.aspects.push(a);
+  }
+  const order = new Map(data.activities.map((act, i) => [act.id, i]));
+  return [...groups.values()].sort(
+    (x, y) => (order.get(x.activityId) ?? 0) - (order.get(y.activityId) ?? 0),
+  );
+}
+
+/**
+ * 1.3.2 — Significant issues DERIVED from the canonical aspect dataset
+ * (source-defined M/H classification). Never a second manual issue registry.
+ */
+export function buildSignificantIssueView(): SignificantIssueView[] {
+  return environmentalAspectsDataset().significantIssues.map((si) => ({
+    id: si.id,
+    aspectId: si.aspectId,
+    activity: si.activity,
+    aspect: si.aspect,
+    significance: si.significance,
+    riskScore: si.riskScore,
+    priorityRank: si.priorityRank,
+    control: si.controlMeasure ? si.controlMeasure.text : null,
+    project: si.projectReference,
+  }));
+}
+
+/**
+ * 1.3.3 — Project linkage: only documentary links (control text → canonical
+ * projects.json). No project is auto-created from M/H records or control text.
+ */
+export function buildProjectLinkageView(): ProjectLinkageView[] {
+  return environmentalAspectsDataset().projectLinks.map((pl) => ({
+    id: pl.id,
+    aspectId: pl.aspectId,
+    activity: pl.activity,
+    aspect: pl.aspect,
+    projectId: pl.projectId,
+    projectTitle: pl.projectTitle,
+    controlText: pl.controlText,
+  }));
 }
 
 export interface RelationLink {

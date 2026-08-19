@@ -7,7 +7,7 @@
  * (src/data/category1/*.json), introduced by GOFFICE2026 Phase C/D.
  *
  * Checks:
- *   1. manifest + all 7 contract files parse and have required top-level keys
+ *   1. manifest + all 8 contract files parse and have required top-level keys
  *   2. every contract is year 2568 (no FY2569 leakage as record values)
  *   3. per-record reference integrity: indicator/issue/category codes exist in
  *      the canonical taxonomy and match the indicator→issue→category hierarchy
@@ -39,6 +39,7 @@ const ALLOWED_DOMAINS = new Set([
   'ghg',
   'projects',
   'management-review',
+  'environmental-aspects-2568',
 ]);
 const VALID_VERIFICATION = new Set(['verified', 'reviewed', 'pending', 'unavailable']);
 const MISSING_INDICATORS = ['1.2.2', '1.5.3'];
@@ -75,8 +76,8 @@ function main() {
     process.exit(1);
   }
   if (manifest.schemaVersion !== '1.0.0') errors.push('manifest schemaVersion must be 1.0.0');
-  if (!Array.isArray(manifest.contracts) || manifest.contracts.length !== 7) {
-    errors.push('manifest.contracts must list 7 domains');
+  if (!Array.isArray(manifest.contracts) || manifest.contracts.length !== 8) {
+    errors.push('manifest.contracts must list 8 domains');
   }
 
   const manifestDomains = new Set((manifest.contracts || []).map((c) => c.domain));

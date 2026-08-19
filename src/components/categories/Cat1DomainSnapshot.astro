@@ -22,6 +22,10 @@ const DOMAIN_META: Record<Cat1Domain, { label: { th: string; en: string }; route
   ghg: { label: { th: 'ก๊าซเรือนกระจก', en: 'GHG' }, route: '/indicators/1.5.1/' },
   projects: { label: { th: 'โครงการ/การลด', en: 'Projects / reduction' }, route: '/indicators/1.6.1/' },
   'management-review': { label: { th: 'การทบทวนฝ่ายบริหาร', en: 'Management review' }, route: '/indicators/1.7.1/' },
+  'environmental-aspects-2568': {
+    label: { th: 'ทะเบียนประเด็นสิ่งแวดล้อม 2568', en: 'Aspects register 2568' },
+    route: '/indicators/1.3.1/',
+  },
 };
 
 const DOMAINS: Cat1Domain[] = [
@@ -32,6 +36,7 @@ const DOMAINS: Cat1Domain[] = [
   'ghg',
   'projects',
   'management-review',
+  'environmental-aspects-2568',
 ];
 
 function t(field: { th: string; en: string }): string {

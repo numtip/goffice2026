@@ -143,6 +143,17 @@ function phaseActionPlan() {
   return runScript('validate-action-plan-2569.mjs');
 }
 
+// ── Phase 1.86: Category 1 Canonical Contracts + 1.3 Pipeline ──
+
+function phaseCategory1() {
+  console.log('\n========================================');
+  console.log('PHASE 1.86: Category 1 Contracts + 1.3 Environmental Aspects');
+  console.log('========================================');
+  const shared = runScript('validate-category1-contracts.mjs');
+  const aspects = runScript('validate-environmental-aspects-2568.mjs');
+  return { ok: shared.ok && aspects.ok };
+}
+
 // ── Phase 1.9: Search-Index Metadata Validation ─────────────
 
 function phaseSearchIndex() {
@@ -350,6 +361,7 @@ function main() {
   const resourceMapResult = phaseResourceIndicatorMap();
   const evidenceLinksResult = phaseEvidenceLinks();
   const actionPlanResult = phaseActionPlan();
+  const category1Result = phaseCategory1();
   const searchIndexResult = phaseSearchIndex();
   const evidenceResult = phaseEvidence();
   const routeResult = phaseRoutes();
@@ -367,6 +379,7 @@ function main() {
     { phase: 'Resource-Indicator Map', ok: resourceMapResult.ok },
     { phase: 'Evidence-Links Metadata', ok: evidenceLinksResult.ok },
     { phase: 'Action-Plan Canonical Scope', ok: actionPlanResult.ok },
+    { phase: 'Category 1 Contracts + 1.3 Aspects', ok: category1Result.ok },
     { phase: 'Search-Index Metadata',  ok: searchIndexResult.ok },
     { phase: 'Evidence Validation',    ok: evidenceResult.ok },
     { phase: 'Route Verification',     ok: routeOk },
@@ -388,6 +401,9 @@ function main() {
   }
   if (!evidenceLinksResult.ok) {
     console.log('  ⚠  Evidence-Links metadata validator reported issues. Check output above.');
+  }
+  if (!category1Result.ok) {
+    console.log('  ⚠  Category 1 contracts / 1.3 aspects validator reported issues. Check output above.');
   }
   if (!searchIndexResult.ok) {
     console.log('  ⚠  Search-Index metadata validator reported issues. Check output above.');

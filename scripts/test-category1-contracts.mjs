@@ -20,6 +20,7 @@ const DOMAINS = [
   'ghg',
   'projects',
   'management-review',
+  'environmental-aspects-2568',
 ];
 
 function readContract(domain) {
@@ -27,10 +28,10 @@ function readContract(domain) {
 }
 
 describe('category1 contracts — presence and shape', () => {
-  it('manifest exists with 7 contracts and declares the missing indicators', () => {
+  it('manifest exists with 8 contracts and declares the missing indicators', () => {
     const m = JSON.parse(readFileSync(join(CONTRACT_DIR, 'category1-manifest.json'), 'utf8'));
     assert.equal(m.schemaVersion, '1.0.0');
-    assert.equal(m.contracts.length, 7);
+    assert.equal(m.contracts.length, 8);
     const missing = m.missingIndicators.map((x) => x.indicator).sort();
     assert.deepEqual(missing, ['1.2.2', '1.5.3']);
   });

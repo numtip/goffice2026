@@ -175,6 +175,35 @@ for (const ind of indicatorsData.indicators) {
   });
 }
 
+// --- 3.5 Environmental aspects register (assessment / assessment-dataset) -----
+// category1/environmental-aspects-2568.json → aggregate FY2568 register entry.
+// Reuses the canonical dataset's own counts + the 1.3.1 indicator metadata;
+// no aspect-level rows are duplicated into the index.
+const envAspectsData = readJson(path.join('category1', 'environmental-aspects-2568.json'));
+const a131 = indicatorsData.indicators.find((i) => i.id === '1.3.1');
+items.push({
+  id: 'env-aspects-2568',
+  section: 'assessment',
+  type: 'assessment-dataset',
+  title: [
+    a131 ? a131.title.th : 'ทะเบียนประเด็นปัญหาสิ่งแวดล้อม 2568',
+    a131 ? a131.title.en : 'Environmental aspects register 2568',
+  ],
+  context: [
+    `ทะเบียนประเด็นปัญหาสิ่งแวดล้อม ปี 2568 (${envAspectsData.summary.aspectCount} ประเด็น · ${envAspectsData.summary.significantCount} นัยสำคัญ)`,
+    `FY2568 environmental aspects register (${envAspectsData.summary.aspectCount} aspects · ${envAspectsData.summary.significantCount} significant)`,
+  ],
+  keywords: [
+    cat(['ทะเบียนประเด็นสิ่งแวดล้อม', 'ประเมินปัญหา', '2568', a131 ? a131.title.th : null, '1.3.1', envAspectsData.summary.aspectCount]),
+    cat(['environmental aspects', 'assessment', 'register', 'FY2568', a131 ? a131.title.en : null, '1.3.1', envAspectsData.summary.aspectCount]),
+  ],
+  route: '/indicators/1.3.1/',
+  routeKind: 'page',
+  category: categoryTitleFor('cat1'),
+  year: 2568,
+  fileType: null,
+});
+
 // --- 4. Evidence (evidence / evidence) ---------------------------------------
 // evidence-index.json → items[] {id, title, titleTh, description, descriptionTh, categoryId, year, fileType, indicatorCodes}
 for (const e of evidenceData.items) {
