@@ -383,7 +383,7 @@ describe('CAT1-1.3.1 live runtime presentation', () => {
 
   it('1.3.x pages do not dump category-level evidence fallback', () => {
     assert.match(trace, /const cat13Canonical = \['1\.3\.1', '1\.3\.2', '1\.3\.3'\]/);
-    assert.match(trace, /if \(cat11Canonical \|\| cat13Canonical \|\| cat14Canonical \|\| cat15Canonical \|\| cat16Canonical \|\| cat17Canonical\) return false;/);
+    assert.match(trace, /if \(cat11Canonical \|\| cat12Canonical \|\| cat13Canonical \|\| cat14Canonical \|\| cat15Canonical \|\| cat16Canonical \|\| cat17Canonical\) return false;/);
   });
 
   it('environmental targets are not mapped to 1.3.1', () => {
