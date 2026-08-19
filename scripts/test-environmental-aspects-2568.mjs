@@ -288,6 +288,10 @@ describe('CAT1-1.3 closeout — one canonical runtime, legacy retained', () => {
 
 describe('CAT1-1.3.1 live runtime presentation', () => {
   const explorer = readFileSync(
+    join(ROOT, 'src', 'components', 'indicators', 'Cat1EnvironmentalAssessmentJourney.astro'),
+    'utf8',
+  );
+  const parent = readFileSync(
     join(ROOT, 'src', 'components', 'indicators', 'Cat1EnvironmentalAssessment.astro'),
     'utf8',
   );
@@ -300,21 +304,45 @@ describe('CAT1-1.3.1 live runtime presentation', () => {
 
   it('1.3.1 explorer renders FY2568 canonical summary 20 / 102 / 68 L · 31 M · 3 H / 34 M/H', () => {
     assert.match(explorer, /data-cat1-canonical-summary/);
-    assert.match(explorer, /data-cat1-summary="activities"/);
-    assert.match(explorer, /data-cat1-summary="aspects"/);
+    assert.match(explorer, /key: 'activities'/);
+    assert.match(explorer, /key: 'aspects'/);
+    assert.match(explorer, /data-cat1-summary=\{step\.key\}/);
     assert.match(explorer, /data-cat1-summary="lmh"/);
     assert.match(explorer, /data-cat1-summary="significant"/);
-    assert.match(explorer, /`\$\{summary\.activityCount\} \$\{t\('กิจกรรม', 'activities'\)\}`/);
-    assert.match(explorer, /`\$\{summary\.aspectCount\} \$\{t\('ประเด็น', 'aspects'\)\}`/);
-    assert.match(explorer, /`\$\{summary\.bySignificance\.L\} L · \$\{summary\.bySignificance\.M\} M · \$\{summary\.bySignificance\.H\} H`/);
-    assert.match(explorer, /`\$\{summary\.significantCount\} \$\{t\('นัยสำคัญ \(M\/H\)', 'significant \(M\/H\)'\)\}`/);
-    assert.match(explorer, /ปี \$\{CAT1_YEAR\}/);
+    assert.match(explorer, /summary\.activityCount/);
+    assert.match(explorer, /summary\.aspectCount/);
+    assert.match(explorer, /summary\.bySignificance\.L/);
+    assert.match(explorer, /summary\.bySignificance\.M/);
+    assert.match(explorer, /summary\.bySignificance\.H/);
+    assert.match(explorer, /summary\.significantCount/);
+    assert.match(explorer, /FY\$\{CAT1_YEAR\} Historical Baseline/);
     assert.match(explorer, /ฐานประวัติสำหรับเปรียบเทียบปีถัดไป/);
   });
 
   it('1.3.1 assessment chain includes Activity → Input/Output → Aspect → Direct/Indirect → N/A/E → Assessment → L/M/H', () => {
     assert.match(explorer, /Activity → Input\/Output → Aspect → Direct\/Indirect → N\/A\/E → Assessment → L\/M\/H/);
     assert.match(explorer, /กิจกรรม → Input \/ Output → ประเด็น → ทางตรง\/อ้อม → ปกติ\/ผิดปกติ\/ฉุกเฉิน → การประเมิน → L\/M\/H/);
+  });
+
+  it('1.3.1 journey uses pulse, filters, disclosure explorer, High callout, and 1.3.2/1.3.3 CTAs', () => {
+    assert.match(parent, /Cat1EnvironmentalAssessmentJourney/);
+    assert.match(explorer, /data-cat1-assessment-pulse/);
+    assert.match(explorer, /data-aspect-card/);
+    assert.match(explorer, /data-cat13-filters/);
+    assert.match(explorer, /name="cat13-io"/);
+    assert.match(explorer, /name="cat13-dir"/);
+    assert.match(explorer, /name="cat13-cond"/);
+    assert.match(explorer, /name="cat13-sig"/);
+    assert.match(explorer, /data-cat13-high-issues/);
+    assert.match(explorer, /\/indicators\/1\.3\.2\//);
+    assert.match(explorer, /\/indicators\/1\.3\.3\//);
+    assert.match(explorer, /landing-reveal/);
+    assert.match(explorer, /data-count-up/);
+    assert.equal(DATA.summary.activityCount, 20);
+    assert.equal(DATA.summary.aspectCount, 102);
+    assert.equal(DATA.summary.significantCount, 34);
+    assert.equal(DATA.summary.bySignificance.H, 3);
+    assert.equal(DATA.summary.projectLinkCount, 2);
   });
 
   it('1.3.x pages do not dump category-level evidence fallback', () => {
