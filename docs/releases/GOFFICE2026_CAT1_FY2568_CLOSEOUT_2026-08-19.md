@@ -18,7 +18,7 @@
 | Re-close SHA | `ac1ecac` — `docs(cat1): re-close FY2568 baseline after 1.1+1.2 completion` |
 | Prior feature SHA | `f3f4941` — 1.2 governance + About hub + CI fixes |
 | Feature bundle | `74fe4f9` — 1.2 contract, journeys, About hub reconciliation |
-| Pages workflow | *(set after push)* |
+| Pages workflow | **32273509983** — SUCCESS (deploy @ `acb7961`) |
 
 ---
 
