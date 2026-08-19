@@ -92,6 +92,14 @@ Curated map for agents and contributors. Prefer links over copying content.
 | `docs/reports/AGENT_HANDOFF_TEMPLATE.md` | Session handoff |
 | `docs/reports/SPRINT_SUMMARY_TEMPLATE.md` | Sprint close-out |
 
+## Releases (Category 1 FY2568)
+
+| Document | Purpose |
+|----------|---------|
+| `docs/releases/GOFFICE2026_CAT1_FY2568_FREEZE.md` | **CAT1 FY2568 = FROZEN READ-ONLY BASELINE** — mutation policy, canonical mapping |
+| `docs/releases/GOFFICE2026_CAT1_FY2568_CLOSEOUT_2026-08-19.md` | Re-close authority (18/18 journeys, 16/18 evidence) |
+| `docs/GOFFICE2026_CATEGORY1_MANAGEMENT_BLUEPRINT_V1.md` | Category 1 domain blueprint |
+
 ## Static Data (runtime)
 
 | Path | Purpose |

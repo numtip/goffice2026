@@ -19,6 +19,7 @@ Use before first GitHub push, tag, or any deploy discussion.
 4. `npm run preview` + route smoke test pass
 5. Runbooks: BUILD_VERIFICATION, RUNTIME_QA, RELEASE_SAFETY_CHECK
 6. Confirm **no production** edited or deployed
+7. **CAT1 FY2568:** frozen read-only baseline — see `docs/releases/GOFFICE2026_CAT1_FY2568_FREEZE.md` before any Category 1 contract changes
 
 ## Explicit Non-Goals (MVP)
 

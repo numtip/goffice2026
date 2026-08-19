@@ -1,12 +1,13 @@
 # GOFFICE2026 — Category 1 FY2568 Baseline Closeout (Re-close)
 
-**Status:** `CAT1 FY2568 BASELINE_RE-CLOSED`
+**Status:** `CAT1 FY2568 BASELINE_RE-CLOSED` · **`CAT1 FY2568 = FROZEN READ-ONLY BASELINE`**
 **Date:** 2026-08-19 (Asia/Bangkok)  
 **Preview URL:** https://numtip.github.io/goffice2026/  
 **Production URL:** https://goffice.mju.ac.th/ — **NOT deployed. No VPS changes.**
 
-> Final reconciliation for Category 1 indicators **1.1.1–1.7.2** (18 indicators).  
+> Final reconciliation for Category 1 indicators **1.1.1–1.7.2** (18 indicators).
 > Authority: `docs/GOFFICE2026_CATEGORY1_MANAGEMENT_BLUEPRINT_V1.md`, reconciliation reports under `docs/data/`, canonical contracts in `src/data/category1/`.
+> **Freeze contract:** `docs/releases/GOFFICE2026_CAT1_FY2568_FREEZE.md`
 
 ---
 
@@ -176,4 +177,4 @@ FY2569 may **reuse the same contract schema and presentation journeys**. Import 
 
 ## Verdict
 
-**`CAT1 FY2568 BASELINE_RE-CLOSED`** — Category 1 is a coherent, truthful FY2568 management system on GitHub Pages: **18/18 runtime journeys**, **2 evidence-incomplete indicators (1.2.2, 1.5.3)**, About hub aligned to canonical CAT1 contracts, all known anomalies disclosed. No VPS/production changes.
+**`CAT1 FY2568 BASELINE_RE-CLOSED`** — superseded for mutation policy by **`CAT1 FY2568 AUTHORITY_FROZEN`** (`docs/releases/GOFFICE2026_CAT1_FY2568_FREEZE.md`). Category 1 is a coherent, truthful FY2568 management system on GitHub Pages: **18/18 runtime journeys**, **2 evidence-incomplete indicators (1.2.2, 1.5.3)**, About hub aligned to canonical CAT1 contracts, all known anomalies disclosed. No VPS/production changes.
