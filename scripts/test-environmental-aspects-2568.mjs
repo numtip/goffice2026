@@ -338,6 +338,20 @@ describe('CAT1-1.3.1 live runtime presentation', () => {
     assert.match(explorer, /\/indicators\/1\.3\.3\//);
     assert.match(explorer, /landing-reveal/);
     assert.match(explorer, /data-count-up/);
+    assert.match(explorer, /data-cat13-sig-visual/);
+    assert.ok(
+      explorer.indexOf('data-cat13-sig-visual') < explorer.indexOf('cat13-explorer-title'),
+      'significance visual must appear before the 102-card explorer',
+    );
+    assert.doesNotMatch(explorer, /class="[^"]*landing-metric-bar/);
+    assert.doesNotMatch(
+      explorer,
+      /class="landing-reveal rounded-xl[^"]*" aria-labelledby="cat13-explorer-title"/,
+    );
+    assert.doesNotMatch(
+      explorer,
+      /class="landing-reveal rounded-xl[^"]*" aria-labelledby="cat13-sig-title"/,
+    );
     assert.equal(DATA.summary.activityCount, 20);
     assert.equal(DATA.summary.aspectCount, 102);
     assert.equal(DATA.summary.significantCount, 34);
