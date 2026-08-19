@@ -130,7 +130,7 @@ FY2568 CAT1 is **read-only** except: new source evidence, verified factual corre
 
 ## Next Session (choose one — do not start in this close)
 
-**A.** Category 2 FY2568 baseline  
+**A.** Category 2 FY2568 baseline
 **B.** CAT1 FY2569 overlay (separate year-qualified records; do not mutate frozen FY2568 contracts)
 
 ---

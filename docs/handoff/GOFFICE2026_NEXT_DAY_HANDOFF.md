@@ -1,6 +1,6 @@
 # Next-Day Handoff
 
-**Generated:** 2026-08-19 (daily close)  
+**Generated:** 2026-08-19 (daily close)
 **Prepared for:** Next working session (2026-08-20+)
 
 ---
@@ -29,8 +29,8 @@ Read first: `docs/releases/GOFFICE2026_CAT1_FY2568_FREEZE.md`
 | Evidence complete | **16 / 18** |
 | Evidence gaps | **1.2.2**, **1.5.3** — MISSING, not fabricated |
 
-**About hub:** scope→1.1.1 · policy→1.1.2 · goals→1.1.3 · action-plan→1.1.4 · committee→1.2.1  
-**Manifest:** 9 domains in `src/data/category1/`  
+**About hub:** scope→1.1.1 · policy→1.1.2 · goals→1.1.3 · action-plan→1.1.4 · committee→1.2.1
+**Manifest:** 9 domains in `src/data/category1/`
 **FY2569:** overlay only — separate year-qualified records; never overwrite FY2568 JSON
 
 ---
