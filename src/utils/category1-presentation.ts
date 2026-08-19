@@ -41,8 +41,12 @@ export interface Bilingual {
 
 export interface DomainFact {
   label: Bilingual;
-  value: string;
+  value: string | Bilingual;
   kind: 'number' | 'status' | 'text' | 'unavailable';
+}
+
+export function resolveDomainFactValue(value: string | Bilingual, locale: 'th' | 'en'): string {
+  return typeof value === 'string' ? value : locale === 'en' ? value.en : value.th;
 }
 
 export interface DomainSnapshot {
@@ -205,7 +209,7 @@ export function buildCat1DomainSnapshot(domain: Cat1Domain): DomainSnapshot {
       if (perf && typeof perf.met === 'boolean') {
         facts.push({
           label: { th: 'บรรลุเป้าหมาย', en: 'Target met' },
-          value: perf.met ? 'บรรลุ' : 'ยังไม่บรรลุ',
+          value: perf.met ? { th: 'บรรลุ', en: 'Met' } : { th: 'ยังไม่บรรลุ', en: 'Not met' },
           kind: 'status',
         });
       }

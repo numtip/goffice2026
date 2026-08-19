@@ -5,6 +5,7 @@ import {
   domainForIndicator,
   MISSING_CAT1_INDICATORS,
   relatedIndicatorsFor,
+  resolveDomainFactValue,
   type Cat1Domain,
   CAT1_YEAR,
 } from '../../utils/category1-presentation';
@@ -88,7 +89,7 @@ const verificationStatus = domain
               <li class="flex items-baseline justify-between gap-3 text-xs">
                 <span class="text-gray-500">{t(fact.label)}</span>
                 <span class={`font-medium ${fact.kind === 'unavailable' ? 'text-gray-400' : fact.kind === 'status' ? 'text-amber-700' : 'text-gray-800'}`} data-cat1-domain-fact={fact.kind}>
-                  {fact.value}
+                  {resolveDomainFactValue(fact.value, locale)}
                 </span>
               </li>
             ))

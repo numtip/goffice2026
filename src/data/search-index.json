@@ -2729,12 +2729,12 @@
         "GHG Emissions Dashboard"
       ],
       "context": [
-        "ติดตามการปล่อยก๊าซเรือนกระจกขอบเขตที่ 1 และ 2 (tCO₂e) และความคืบหน้าการลดการปล่อยก๊าซ ตามเกณฑ์ Green Office หมวดที่ 1 การกำหนดนโยบาย การวางแผนการดำเนินงาน: 1.1.3 เป้าหมาย → 1.5.1 เก็บข้อมูล GHG → 1.5.2 วิเคราะห์ → 1.6 ปรับปรุง → 1.7 ทบทวน",
-        "Track Scope 1 and Scope 2 greenhouse gas emissions (tCO₂e) and reduction progress — aligned to Green Office Category 1 (Environmental Policy and Planning): 1.1.3 target → 1.5.1 GHG inventory → 1.5.2 analysis → 1.6 improvement → 1.7 review."
+        "ติดตามการปล่อยก๊าซเรือนกระจกขอบเขตที่ 1, 2 และ 3 (tCO₂e) และความคืบหน้าการลดการปล่อยก๊าซ ตามเกณฑ์ Green Office หมวดที่ 1 การกำหนดนโยบาย การวางแผนการดำเนินงาน: 1.1.3 เป้าหมาย → 1.5.1 เก็บข้อมูล GHG → 1.5.2 วิเคราะห์ → 1.6 ปรับปรุง → 1.7 ทบทวน",
+        "Track Scope 1, 2, and 3 greenhouse gas emissions (tCO₂e) and reduction progress — aligned to Green Office Category 1 (Environmental Policy and Planning): 1.1.3 target → 1.5.1 GHG inventory → 1.5.2 analysis → 1.6 improvement → 1.7 review."
       ],
       "keywords": [
-        "แดชบอร์ดการปล่อยก๊าซเรือนกระจก ติดตามการปล่อยก๊าซเรือนกระจกขอบเขตที่ 1 และ 2 (tCO₂e) และความคืบหน้าการลดการปล่อยก๊าซ ตามเกณฑ์ Green Office หมวดที่ 1 การกำหนดนโยบาย การวางแผนการดำเนินงาน: 1.1.3 เป้าหมาย → 1.5.1 เก็บข้อมูล GHG → 1.5.2 วิเคราะห์ → 1.6 ปรับปรุง → 1.7 ทบทวน การกำหนดนโยบาย การวางแผนการดำเนินงานสำนักงานสีเขียว ghg",
-        "GHG Emissions Dashboard Track Scope 1 and Scope 2 greenhouse gas emissions (tCO₂e) and reduction progress — aligned to Green Office Category 1 (Environmental Policy and Planning): 1.1.3 target → 1.5.1 GHG inventory → 1.5.2 analysis → 1.6 improvement → 1.7 review. Environmental Policy and Green Office Planning ghg"
+        "แดชบอร์ดการปล่อยก๊าซเรือนกระจก ติดตามการปล่อยก๊าซเรือนกระจกขอบเขตที่ 1, 2 และ 3 (tCO₂e) และความคืบหน้าการลดการปล่อยก๊าซ ตามเกณฑ์ Green Office หมวดที่ 1 การกำหนดนโยบาย การวางแผนการดำเนินงาน: 1.1.3 เป้าหมาย → 1.5.1 เก็บข้อมูล GHG → 1.5.2 วิเคราะห์ → 1.6 ปรับปรุง → 1.7 ทบทวน การกำหนดนโยบาย การวางแผนการดำเนินงานสำนักงานสีเขียว ghg",
+        "GHG Emissions Dashboard Track Scope 1, 2, and 3 greenhouse gas emissions (tCO₂e) and reduction progress — aligned to Green Office Category 1 (Environmental Policy and Planning): 1.1.3 target → 1.5.1 GHG inventory → 1.5.2 analysis → 1.6 improvement → 1.7 review. Environmental Policy and Green Office Planning ghg"
       ],
       "route": "/dashboard/ghg/",
       "routeKind": "page",

@@ -1,6 +1,7 @@
 ---
 import {
   buildCat1DomainSnapshot,
+  resolveDomainFactValue,
   type Cat1Domain,
   CAT1_YEAR,
 } from '../../utils/category1-presentation';
@@ -86,7 +87,7 @@ const snapshots = DOMAINS.map((d) => ({ domain: d, meta: DOMAIN_META[d], snapsho
                     class={`font-medium ${fact.kind === 'unavailable' ? 'text-gray-400' : fact.kind === 'status' ? 'text-amber-700' : 'text-gray-800'}`}
                     data-cat1-domain-fact={fact.kind}
                   >
-                    {fact.value}
+                    {resolveDomainFactValue(fact.value, locale)}
                   </span>
                 </li>
               ))

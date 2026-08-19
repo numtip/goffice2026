@@ -176,4 +176,14 @@ describe('Phase F — cross-link journeys and view-model', () => {
     assert.match(gvm, /generatedMetricMap/);
     assert.match(gvm, /category1\/ghg\.json/);
   });
+
+  it('GHG contract snapshot localizes target-met status for EN pages', () => {
+    const ctx = readFileSync(CONTEXT, 'utf8');
+    const snap = readFileSync(SNAPSHOT, 'utf8');
+    const vm = readFileSync(VM, 'utf8');
+    assert.match(vm, /resolveDomainFactValue/);
+    assert.match(vm, /en: 'Not met'/);
+    assert.match(ctx, /resolveDomainFactValue\(fact\.value, locale\)/);
+    assert.match(snap, /resolveDomainFactValue\(fact\.value, locale\)/);
+  });
 });
