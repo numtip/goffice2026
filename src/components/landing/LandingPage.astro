@@ -58,14 +58,7 @@ const coveredMonthSlots = resourceIds.reduce((sum, id) => {
 
 <BaseLayout locale={locale} dict={dict}>
   <div class="landing-page overflow-x-clip bg-surface text-on-surface selection:bg-primary-container/40">
-    <LandingHero
-      locale={locale}
-      t={home.hero}
-      coveredMonthSlots={coveredMonthSlots}
-      totalMonthSlots={totalMonthSlots}
-      evidenceAvailable={evidenceAvailable}
-      evidenceTotal={evidenceTotal}
-    />
+    <LandingHero locale={locale} t={home.hero} />
     <LandingJourneySpine locale={locale} nav={home.nav} t={home.spine} />
     <ExecutiveKPIPreview
       locale={locale}

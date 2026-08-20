@@ -1,23 +1,24 @@
 ---
 import { getLocalizedPath } from '../../i18n/utils';
 import type { HomeHeroStrings } from '../../i18n/dictionary';
-import { heroImageUrl, heroDimensions } from '../../utils/wow2-images';
+import {
+  heroCinematicVideoUrl,
+  landingHeroPosterDimensions,
+  landingHeroPosterSrcSet,
+  landingHeroPosterUrl,
+} from '../../utils/wow2-images';
 
 interface Props {
   locale?: 'th' | 'en';
   t?: HomeHeroStrings;
-  coveredMonthSlots: number;
-  totalMonthSlots: number;
-  evidenceAvailable: number;
-  evidenceTotal: number;
 }
 
-const { locale = 'th', coveredMonthSlots, totalMonthSlots, evidenceAvailable, evidenceTotal } = Astro.props;
+const { locale = 'th' } = Astro.props;
 const t = Astro.props.t ?? {
   badge: 'Environmental Intelligence Platform',
-  title_line1: 'Green Office 2026:',
-  title_line2: 'Environmental Intelligence Platform',
-  description: 'Monitor, measure and report environmental performance for Green Office certification. Explore resource dashboards, assessment categories, and evidence library.',
+  title_line1: 'Green Office 2026',
+  title_line2: 'A Green Office driven by data, action, and verifiable evidence',
+  description: 'Monitor, measure, and report environmental performance for certification.',
   cta_dashboard: 'Explore Dashboard',
   cta_categories: 'Explore Categories',
   cta_evidence: 'Browse Evidence Library',
@@ -33,53 +34,47 @@ const t = Astro.props.t ?? {
   aria-labelledby="landing-hero-title"
 >
   <div class="absolute inset-0 z-0" aria-hidden="true">
-    <img
-      src={heroImageUrl}
-      alt=""
-      class="hero-bg-zoom h-full w-full object-cover object-[center_30%] transition-transform duration-[2s] ease-out group-hover:scale-105"
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
+    <picture class="absolute inset-0 block h-full w-full">
+      <source type="image/webp" srcset={landingHeroPosterSrcSet} sizes="100vw" />
+      <img
+        src={landingHeroPosterUrl}
+        alt=""
+        class="hero-bg-zoom h-full w-full object-cover object-[center_42%] transition-transform duration-[2s] ease-out group-hover:scale-105"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        width={landingHeroPosterDimensions.w}
+        height={landingHeroPosterDimensions.h}
+      />
+    </picture>
+    <video
+      class="hero-bg-cinematic absolute inset-0 h-full w-full object-cover object-[center_42%]"
+      data-hero-cinematic
+      data-src={heroCinematicVideoUrl}
+      muted
+      loop
+      playsinline
+      preload="none"
+      disablepictureinpicture
+      tabindex="-1"
       aria-hidden="true"
-      width={heroDimensions.w}
-      height={heroDimensions.h}
-    />
-    <div class="absolute inset-0 bg-gradient-to-b from-[#001a12]/50 via-[#001a12]/45 to-[#001a12]/70" aria-hidden="true"></div>
+    ></video>
+    <div class="absolute inset-0 z-[2] bg-gradient-to-b from-[#001a12]/70 via-[#001a12]/60 to-[#001a12]/82"></div>
   </div>
 
-  <div class="landing-stagger relative z-10 mx-auto w-full max-w-5xl px-4 pt-20 pb-12 text-center sm:px-6 sm:pt-24 sm:pb-16 md:px-8 lg:pt-28 lg:pb-20">
+  <div class="landing-stagger relative z-10 mx-auto w-full max-w-4xl px-4 pt-20 pb-12 text-center sm:px-6 sm:pt-24 sm:pb-16 md:px-8 lg:pt-28 lg:pb-20">
+    <p class="landing-reveal mb-3 text-sm font-medium text-white/85 sm:mb-4 sm:text-base md:text-lg">
+      {t.title_line1}
+    </p>
     <h1
       id="landing-hero-title"
-      class="landing-reveal mx-auto mb-5 max-w-4xl tracking-tight text-white text-balance sm:mb-6"
+      class="landing-reveal mx-auto mb-4 max-w-3xl text-balance text-2xl font-bold leading-[1.2] tracking-tight text-emerald-300 sm:mb-5 sm:text-3xl sm:leading-[1.18] md:text-4xl lg:text-[2.75rem] lg:leading-[1.16]"
     >
-      <span class="mb-2 block text-lg font-medium text-white/85 sm:text-xl md:text-2xl">{t.title_line1}</span>
-      <span class="block text-3xl font-bold leading-[1.08] text-emerald-300 sm:text-4xl sm:leading-[1.06] md:text-5xl lg:text-6xl lg:leading-[1.04]">{t.title_line2}</span>
+      {t.title_line2}
     </h1>
-
-    <p class="landing-reveal mx-auto mb-6 max-w-xl text-sm leading-relaxed text-white/80 sm:mb-7 sm:text-base">
+    <p class="landing-reveal mx-auto mb-8 max-w-xl text-sm leading-relaxed text-white/80 sm:mb-10 sm:text-base">
       {t.description}
     </p>
-
-    <dl
-      class="landing-reveal mx-auto mb-6 grid max-w-xl grid-cols-2 gap-3 text-left sm:mb-8 sm:gap-4"
-      aria-label={locale === 'th' ? 'สถานะข้อมูลสำนักงานสีเขียว' : 'Green Office data status'}
-    >
-      <div class="rounded-stitch border border-white/20 px-3 py-2.5 sm:px-4 sm:py-3">
-        <dt class="text-xs text-white/80 sm:text-sm">{t.coverage_label}</dt>
-        <dd class="mt-1 font-semibold text-white">
-          <span class="num-tabular text-2xl tracking-tight sm:text-3xl">{coveredMonthSlots}</span>
-          <span class="text-sm text-white/70 sm:text-base">/{totalMonthSlots} {t.coverage_unit}</span>
-        </dd>
-        <p class="mt-1 text-[11px] leading-snug text-white/70 sm:text-xs">{t.coverage_caption}</p>
-      </div>
-      <div class="rounded-stitch border border-white/20 px-3 py-2.5 sm:px-4 sm:py-3">
-        <dt class="text-xs text-white/80 sm:text-sm">{t.evidence_label}</dt>
-        <dd class="mt-1 font-semibold text-white">
-          <span class="num-tabular text-2xl tracking-tight sm:text-3xl">{evidenceAvailable}</span>
-          <span class="text-sm text-white/70 sm:text-base">/{evidenceTotal}</span>
-        </dd>
-      </div>
-    </dl>
 
     <div class="landing-reveal flex flex-wrap items-center justify-center gap-3 sm:gap-4">
       <a
@@ -103,3 +98,52 @@ const t = Astro.props.t ?? {
     </div>
   </div>
 </header>
+
+<script>
+  const DESKTOP_MQ = '(min-width: 768px)';
+  const REDUCE_MQ = '(prefers-reduced-motion: reduce)';
+
+  function canLoadHeroVideo(): boolean {
+    if (window.matchMedia(REDUCE_MQ).matches) return false;
+    if (!window.matchMedia(DESKTOP_MQ).matches) return false;
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (connection?.saveData) return false;
+    return true;
+  }
+
+  function initHeroCinematic() {
+    const video = document.querySelector<HTMLVideoElement>('[data-hero-cinematic]');
+    if (!video || video.dataset.heroBound === 'true') return;
+    if (!canLoadHeroVideo()) return;
+
+    const src = video.dataset.src;
+    if (!src) return;
+
+    video.dataset.heroBound = 'true';
+
+    const reveal = () => {
+      video.classList.add('is-ready');
+    };
+
+    video.addEventListener('playing', reveal, { once: true });
+    video.addEventListener('canplay', () => {
+      video.play().then(reveal).catch(() => {
+        /* autoplay blocked — poster remains */
+      });
+    }, { once: true });
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.loop = true;
+    video.preload = 'metadata';
+    video.setAttribute('playsinline', '');
+    video.src = src;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroCinematic);
+  } else {
+    initHeroCinematic();
+  }
+</script>

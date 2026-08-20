@@ -4,6 +4,8 @@ dist/
 *.log
 .logs/
 logs/
+.tmp-h15-frames/
+public/media/hero/ffmpeg2pass*
 data/publish-gate/
 .env
 .env.*

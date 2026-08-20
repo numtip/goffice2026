@@ -1,20 +1,30 @@
 /**
  * WOW2 image asset paths for the Green Office 2026 visual upgrade.
  *
- * All images live under public/images/dashboard/wow2/ and are served
- * via the Astro BASE_URL so GitHub Pages base paths work correctly.
+ * WOW2 stills live under public/images/dashboard/wow2/.
+ * Landing Hero cinematic media lives under public/media/hero/.
+ * All public URLs are resolved via Astro BASE_URL so GitHub Pages works.
  *
  * The "catagory" spelling (with 'a') matches the actual filenames;
  * do not rename to "category" unless the files are renamed too.
  */
 
 const WOW2_DIR = 'images/dashboard/wow2/';
+const LANDING_HERO_DIR = 'media/hero/';
 
-/** Resolve a public asset path relative to the Astro base URL. */
-function assetUrl(filename: string): string {
+/** Resolve a public asset path relative to the Astro BASE_URL. */
+function publicAssetUrl(relativePath: string): string {
   const base = import.meta.env.BASE_URL ?? '/';
-  const src = `${base}${WOW2_DIR}${filename}`.replace(/\/{2,}/g, '/').replace(':/', '://');
-  return src;
+  return `${base}${relativePath.replace(/^\//, '')}`.replace(/\/{2,}/g, '/').replace(':/', '://');
+}
+
+/** Resolve a WOW2 filename relative to the Astro BASE_URL. */
+function assetUrl(filename: string): string {
+  return publicAssetUrl(`${WOW2_DIR}${filename}`);
+}
+
+function landingHeroAssetUrl(filename: string): string {
+  return publicAssetUrl(`${LANDING_HERO_DIR}${filename}`);
 }
 
 /** Map a category code (cat1–cat7) to its wow2 image path.
@@ -64,6 +74,18 @@ export const dashboardScreenshotDimensions = { w: 1280, h: 720 };
 
 /** Hero image dimensions. */
 export const heroDimensions = { w: 2048, h: 1152 };
+
+/**
+ * Landing Hero cinematic media (H1.5).
+ * Poster stills match the opening frame of the production MP4.
+ * Master clip stays in data/clips/ and is never served.
+ */
+export const landingHeroPosterUrl = landingHeroAssetUrl('green-office-building-hero-1920.webp');
+export const landingHeroPoster768Url = landingHeroAssetUrl('green-office-building-hero-768.webp');
+export const landingHeroPoster1280Url = landingHeroAssetUrl('green-office-building-hero-1280.webp');
+export const landingHeroPosterSrcSet = `${landingHeroPoster768Url} 768w, ${landingHeroPoster1280Url} 1280w, ${landingHeroPosterUrl} 1920w`;
+export const landingHeroPosterDimensions = { w: 1920, h: 1080 };
+export const heroCinematicVideoUrl = landingHeroAssetUrl('green-office-building-hero-cinematic.mp4');
 
 /** Closing banner image dimensions. */
 export const closingBannerDimensions = { w: 2048, h: 1152 };
