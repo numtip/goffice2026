@@ -17,6 +17,12 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [1.7.0] — 2026-08-20
+
+**Production VPS deploy** — promotes `origin/master` @ `380bf3b` (42 commits after live `v1.6.0` / `011c9fe`). Immutable release `/var/www/goffice/releases/v1.7.0`; rollback `v1.6.0`. CAT1 FY2568 freeze (1.1–1.7) is now live.
+
+---
+
 ## [1.5.1] — 2026-08-11
 
 **Production VPS deploy** — promotes `origin/master` @ `2bfd7ca` (2 commits after live `v1.5.0` / `c796611`). Immutable release `/var/www/goffice/releases/v1.5.1`; rollback `v1.5.0`.

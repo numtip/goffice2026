@@ -315,7 +315,7 @@ npm run validate:data
 
 ## 🎯 Current Project Status
 
-**Last updated:** 2026-08-11 · **Version:** 1.5.1 (Engage visual system — live on VPS)
+**Last updated:** 2026-08-20 · **Version:** 1.7.0 (CAT1 FY2568 freeze — live on VPS)
 
 | Milestone | Status |
 |-----------|--------|
@@ -323,18 +323,18 @@ npm run validate:data
 | EP-1 Experience Polish | ✅ Complete |
 | GitHub Pages Preview | ✅ Operational |
 | Engage visual system (8 PO-approved assets, TH/EN) | ✅ Live (v1.5.1) |
-| PROD v1.5.1 (goffice.mju.ac.th) | ✅ Live on VPS (`2bfd7ca`) |
+| PROD v1.7.0 (goffice.mju.ac.th) | ✅ Live on VPS (`380bf3b`) |
 | GO-EVIDENCE-1 indicator/evidence traceability | ✅ Live (v1.5.0) |
 | GO-DASH-V2 dashboard phases | ✅ Live (v1.5.0) |
 | SharePoint central library | ✅ `GreenOfficeEvidence` on `/sites/msteams_54adc4` |
 | Verified indicator-level evidence onboarding | ⏳ Next priority (Blueprint V5) |
 | FY2569 data maintenance | ⏳ Next priority (Blueprint V5) |
 
-**Production URL:** https://goffice.mju.ac.th/ (VPS **v1.5.1** @ `2bfd7ca` — rollback `v1.5.0` / `c796611`)
+**Production URL:** https://goffice.mju.ac.th/ (VPS **v1.7.0** @ `380bf3b` — rollback `v1.6.0` / `011c9fe`)
 
 **Preview URL:** https://numtip.github.io/goffice2026/
 
-Release notes: [v1.5.1 deploy](docs/releases/GOFFICE2026_RELEASE_v1.5.1_DEPLOY.md) · [v1.5.0 deploy](docs/releases/GOFFICE2026_RELEASE_v1.5.0_DEPLOY.md) · [v1.2.0](docs/releases/GOFFICE2026_RELEASE_v1.2.0.md) · [Changelog](docs/releases/GOFFICE2026_CHANGELOG.md)
+Release notes: [v1.7.0 deploy](docs/releases/GOFFICE2026_RELEASE_v1.7.0_DEPLOY.md) · [v1.5.1 deploy](docs/releases/GOFFICE2026_RELEASE_v1.5.1_DEPLOY.md) · [v1.5.0 deploy](docs/releases/GOFFICE2026_RELEASE_v1.5.0_DEPLOY.md) · [Changelog](docs/releases/GOFFICE2026_CHANGELOG.md)
 
 ---
 

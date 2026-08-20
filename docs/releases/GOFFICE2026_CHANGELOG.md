@@ -7,6 +7,18 @@ For day-to-day development changes see also [CHANGELOG.md](../../CHANGELOG.md) a
 
 ---
 
+## [1.7.0] — 2026-08-20
+
+**Release title:** CAT1 FY2568 freeze (VPS)  
+**Branch:** `master`  
+**Deployed commit:** `380bf3bd7060585555d5ac7104693a84f0176f70`  
+**Previous production:** `v1.6.0` / `011c9fe`  
+**Status:** `PRODUCTION_SUCCESS` · `CAT1_FY2568_PRODUCTION_DEPLOYED`
+
+Promotes 42 commits after GO-MOTION-V2 (`011c9fe` → `380bf3b`): Category 1 FY2568 frozen baseline (1.1–1.7), nine canonical contracts, About hub reconciliation, and FY2568 evidence. See [v1.7.0 deploy record](GOFFICE2026_RELEASE_v1.7.0_DEPLOY.md).
+
+---
+
 ## [1.5.1] — 2026-08-11
 
 **Release title:** Engage visual system (VPS)

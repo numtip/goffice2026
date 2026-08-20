@@ -17,7 +17,7 @@
 | Live HEAD at freeze | `68e29eb` |
 | Pages workflow | **32273509983** — SUCCESS |
 | Preview URL | https://numtip.github.io/goffice2026/ |
-| Production | https://goffice.mju.ac.th/ — **NOT deployed** |
+| Production | https://goffice.mju.ac.th/ — **deployed v1.7.0** @ `380bf3b` (2026-08-20) |
 
 ---
 
