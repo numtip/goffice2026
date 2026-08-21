@@ -22,8 +22,8 @@
         },
         {
           "route": "/about/policy/",
-          "labelTh": "นโยบายสิ่งแวดล้อม",
-          "labelEn": "Environmental Policy"
+          "labelTh": "1.1.2 การกำหนดนโยบายด้านสิ่งแวดล้อม",
+          "labelEn": "1.1.2 Environmental policy development"
         },
         {
           "route": "/evidence/",
@@ -64,13 +64,13 @@
       "relatedLinks": [
         {
           "route": "/about/goals/",
-          "labelTh": "เป้าหมายและตัวชี้วัด",
-          "labelEn": "Goals and Indicators"
+          "labelTh": "1.1.3 การกำหนดเป้าหมาย และตัวชี้วัดที่ชัดเจนด้านการใช้ทรัพยากร",
+          "labelEn": "1.1.3 Clear targets and indicators for resource use, energy, waste and greenhouse gas emissions"
         },
         {
           "route": "/about/committee/",
-          "labelTh": "คณะกรรมการและทีมงาน",
-          "labelEn": "Committee and Team"
+          "labelTh": "1.2.1 การแต่งตั้งคณะกรรมการหรือทีมงานด้านสิ่งแวดล้อม",
+          "labelEn": "1.2.1 Appointment of environmental committee or working team"
         },
         {
           "route": "/documents/",
@@ -129,8 +129,8 @@
         },
         {
           "route": "/about/policy/",
-          "labelTh": "นโยบายสิ่งแวดล้อม",
-          "labelEn": "Environmental Policy"
+          "labelTh": "1.1.2 การกำหนดนโยบายด้านสิ่งแวดล้อม",
+          "labelEn": "1.1.2 Environmental policy development"
         },
         {
           "route": "/categories/",

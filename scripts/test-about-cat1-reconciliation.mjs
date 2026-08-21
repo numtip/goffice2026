@@ -34,7 +34,7 @@ describe('About hub — canonical CAT1 mapping', () => {
   it('about-index explains foundation hub flow', () => {
     const idx = content.pages['about-index'];
     assert.match(idx.noticeEn, /foundation hub/i);
-    assert.match(idx.sections[0].bodyEn, /Scope → Policy → Goals → Plan → Governance/);
+    assert.match(idx.sections[0].bodyEn, /1\.1\.1.*1\.1\.2.*1\.1\.3.*1\.1\.4.*1\.2\.1/);
     assert.match(facts, /data-about-foundation-hub/);
   });
 

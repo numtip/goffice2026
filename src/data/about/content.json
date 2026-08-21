@@ -9,18 +9,18 @@
         {
           "headingTh": "วัตถุประสงค์",
           "headingEn": "Purpose",
-          "bodyTh": "ศูนย์ About แสดงมุมมององค์กร: ขอบเขต → นโยบาย → เป้าหมาย → แผน → ธรรมาภิบาล โดยปี 2569 เป็นหลัก และปี 2568 เป็นฐานประวัติ อ้างอิงสัญญาข้อมูล CAT1 เดียวกับหน้าตัวชี้วัด — ไม่สร้างชุดข้อมูลแยก",
-          "bodyEn": "The About center presents organizational views: Scope → Policy → Goals → Plan → Governance, with FY2569 primary and FY2568 as historical baseline, referencing the same CAT1 contracts as indicator pages — no duplicate datasets."
+          "bodyTh": "ศูนย์ About แสดงมุมมององค์กรตามตัวชี้วัด: 1.1.1 บริบทองค์กรและขอบเขตของการจัดการสิ่งแวดล้อมในสำนักงาน → 1.1.2 การกำหนดนโยบายด้านสิ่งแวดล้อม → 1.1.3 การกำหนดเป้าหมายและตัวชี้วัดที่ชัดเจนด้านการใช้ทรัพยากร → 1.1.4 การกำหนดแผนการดำเนินงานสำนักงานสีเขียวประจำปี → 1.2.1 การแต่งตั้งคณะกรรมการหรือทีมงานด้านสิ่งแวดล้อม โดยปี 2569 เป็นหลัก และปี 2568 เป็นฐานประวัติ อ้างอิงสัญญาข้อมูล CAT1 เดียวกับหน้าตัวชี้วัด — ไม่สร้างชุดข้อมูลแยก",
+          "bodyEn": "The About center presents organizational views by indicator: 1.1.1 Organizational context and scope of environmental management in the office → 1.1.2 Environmental policy development → 1.1.3 Clear targets and indicators for resource use, energy, waste and greenhouse gas emissions → 1.1.4 Annual green office operational plan → 1.2.1 Appointment of environmental committee or working team, with FY2569 primary and FY2568 as historical baseline, referencing the same CAT1 contracts as indicator pages — no duplicate datasets."
         },
         {
           "headingTh": "เส้นทางรากฐาน",
           "headingEn": "Foundation path",
           "links": [
-            { "pageId": "about-scope", "labelTh": "ขอบเขตการดำเนินงาน (1.1.1)", "labelEn": "Scope (1.1.1)" },
-            { "pageId": "about-policy", "labelTh": "นโยบายสิ่งแวดล้อม (1.1.2)", "labelEn": "Environmental Policy (1.1.2)" },
-            { "pageId": "about-goals", "labelTh": "เป้าหมายและตัวชี้วัด (1.1.3)", "labelEn": "Goals and Indicators (1.1.3)" },
-            { "pageId": "about-action-plan", "labelTh": "แผนปฏิบัติการ (1.1.4 / 2569)", "labelEn": "Action Plan (1.1.4 / 2569)" },
-            { "pageId": "about-committee", "labelTh": "คณะกรรมการและทีมงาน (1.2.1)", "labelEn": "Committee and Team (1.2.1)" }
+            { "pageId": "about-scope", "labelTh": "1.1.1 บริบทองค์กรและขอบเขตของการจัดการสิ่งแวดล้อมในสำนักงาน", "labelEn": "1.1.1 Organizational context and scope of environmental management in the office" },
+            { "pageId": "about-policy", "labelTh": "1.1.2 การกำหนดนโยบายด้านสิ่งแวดล้อม", "labelEn": "1.1.2 Environmental policy development" },
+            { "pageId": "about-goals", "labelTh": "1.1.3 การกำหนดเป้าหมาย และตัวชี้วัดที่ชัดเจนด้านการใช้ทรัพยากร", "labelEn": "1.1.3 Clear targets and indicators for resource use, energy, waste and greenhouse gas emissions" },
+            { "pageId": "about-action-plan", "labelTh": "1.1.4 การกำหนดแผนการดำเนินงานสำนักงานสีเขียวประจำปี", "labelEn": "1.1.4 Annual green office operational plan" },
+            { "pageId": "about-committee", "labelTh": "1.2.1 การแต่งตั้งคณะกรรมการหรือทีมงานด้านสิ่งแวดล้อม", "labelEn": "1.2.1 Appointment of environmental committee or working team" }
           ]
         }
       ]
