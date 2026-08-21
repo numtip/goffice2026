@@ -1,0 +1,51 @@
+# PR-only CI — quality gates. No deployment permissions or deployment actions.
+# Preview deployment remains exclusively push-to-master/main (see deploy-pages.yml).
+name: PR CI
+
+on:
+  pull_request:
+    branches: [master, main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality-gates:
+    name: Quality gates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run check
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Build site
+        run: npm run build
+        env:
+          DEPLOY_TARGET: github-pages
+          PUBLIC_PREVIEW_BADGE: "true"
+
+      - name: Validate platform
+        run: npm run validate
+        env:
+          DEPLOY_TARGET: github-pages
+
+      - name: SEO QA
+        run: npm run qa:seo
