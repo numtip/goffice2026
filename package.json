@@ -39,7 +39,7 @@
     "@astrojs/sitemap": "3.2.1",
     "@astrojs/tailwind": "^6.0.2",
     "@supabase/supabase-js": "^2.110.8",
-    "astro": "^4.0.0",
+    "astro": "^7.2.4",
     "autoprefixer": "^10.4.0",
     "echarts": "^6.1.0",
     "postcss": "^8.4.0",
