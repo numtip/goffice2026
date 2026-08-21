@@ -7,6 +7,24 @@ For day-to-day development changes see also [CHANGELOG.md](../../CHANGELOG.md) a
 
 ---
 
+## [1.8.0] — 2026-08-21
+
+**Release title:** Cinematic hero + CAT1 presentation polish (VPS)
+**Branch:** `master`
+**Deployed commit:** `1b11c48b5297fe9ac798a16a6a5c760539b48d34`
+**Previous production:** `v1.7.0` / `380bf3b`
+**Status:** `PRODUCTION_SUCCESS` · `V1.8.0_PRODUCTION_DEPLOYED`
+
+Promotes 2 commits after v1.7.0 (`380bf3b` → `1b11c48`): cinematic Green Office hero (H1.5 — JS-gated MP4 loop + eager WebP posters, 6.6 MB under the 10 MB cap) and Category 1 presentation polish (domain snapshot, source documents, projects plan, indicator journeys) with a playbook for categories 2–7. See [v1.8.0 deploy record](GOFFICE2026_RELEASE_v1.8.0_DEPLOY.md).
+
+### Deployment
+
+- Live: `/var/www/goffice/current` → `/var/www/goffice/releases/v1.8.0`
+- Rollback: `/var/www/goffice/releases/v1.7.0`
+- Record: [GOFFICE2026_RELEASE_v1.8.0_DEPLOY.md](./GOFFICE2026_RELEASE_v1.8.0_DEPLOY.md)
+
+---
+
 ## [1.7.0] — 2026-08-20
 
 **Release title:** CAT1 FY2568 freeze (VPS)  

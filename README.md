@@ -315,7 +315,7 @@ npm run validate:data
 
 ## 🎯 Current Project Status
 
-**Last updated:** 2026-08-20 · **Version:** 1.7.0 (CAT1 FY2568 freeze — live on VPS)
+**Last updated:** 2026-08-21 · **Version:** 1.8.0 (Cinematic hero + CAT1 presentation — live on VPS)
 
 | Milestone | Status |
 |-----------|--------|
@@ -323,18 +323,19 @@ npm run validate:data
 | EP-1 Experience Polish | ✅ Complete |
 | GitHub Pages Preview | ✅ Operational |
 | Engage visual system (8 PO-approved assets, TH/EN) | ✅ Live (v1.5.1) |
-| PROD v1.7.0 (goffice.mju.ac.th) | ✅ Live on VPS (`380bf3b`) |
+| PROD v1.8.0 (goffice.mju.ac.th) | ✅ Live on VPS (`1b11c48`) |
+| Cinematic hero (H1.5) + CAT1 presentation polish | ✅ Live (v1.8.0) |
 | GO-EVIDENCE-1 indicator/evidence traceability | ✅ Live (v1.5.0) |
 | GO-DASH-V2 dashboard phases | ✅ Live (v1.5.0) |
 | SharePoint central library | ✅ `GreenOfficeEvidence` on `/sites/msteams_54adc4` |
 | Verified indicator-level evidence onboarding | ⏳ Next priority (Blueprint V5) |
 | FY2569 data maintenance | ⏳ Next priority (Blueprint V5) |
 
-**Production URL:** https://goffice.mju.ac.th/ (VPS **v1.7.0** @ `380bf3b` — rollback `v1.6.0` / `011c9fe`)
+**Production URL:** https://goffice.mju.ac.th/ (VPS **v1.8.0** @ `1b11c48` — rollback `v1.7.0` / `380bf3b`)
 
 **Preview URL:** https://numtip.github.io/goffice2026/
 
-Release notes: [v1.7.0 deploy](docs/releases/GOFFICE2026_RELEASE_v1.7.0_DEPLOY.md) · [v1.5.1 deploy](docs/releases/GOFFICE2026_RELEASE_v1.5.1_DEPLOY.md) · [v1.5.0 deploy](docs/releases/GOFFICE2026_RELEASE_v1.5.0_DEPLOY.md) · [Changelog](docs/releases/GOFFICE2026_CHANGELOG.md)
+Release notes: [v1.8.0 deploy](docs/releases/GOFFICE2026_RELEASE_v1.8.0_DEPLOY.md) · [v1.7.0 deploy](docs/releases/GOFFICE2026_RELEASE_v1.7.0_DEPLOY.md) · [v1.5.1 deploy](docs/releases/GOFFICE2026_RELEASE_v1.5.1_DEPLOY.md) · [Changelog](docs/releases/GOFFICE2026_CHANGELOG.md)
 
 ---
 
@@ -480,8 +481,8 @@ For questions or issues:
 
 ---
 
-**Last Updated:** 2026-08-11
+**Last Updated:** 2026-08-21
 
-**Platform Version:** 1.5.1 (Engage visual system — VPS live at `2bfd7ca`)
+**Platform Version:** 1.8.0 (Cinematic hero + CAT1 presentation — VPS live at `1b11c48`)
 
 **Made with 🌱 for sustainable operations**

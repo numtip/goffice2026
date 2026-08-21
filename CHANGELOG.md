@@ -17,6 +17,14 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [1.8.0] — 2026-08-21
+
+**Production VPS deploy** — promotes `origin/master` @ `1b11c48` (2 commits after live `v1.7.0` / `380bf3b`). Immutable release `/var/www/goffice/releases/v1.8.0`; rollback `v1.7.0`. Cinematic hero (H1.5) and CAT1 presentation polish are now live.
+
+See [deploy record](docs/releases/GOFFICE2026_RELEASE_v1.8.0_DEPLOY.md).
+
+---
+
 ## [1.7.0] — 2026-08-20
 
 **Production VPS deploy** — promotes `origin/master` @ `380bf3b` (42 commits after live `v1.6.0` / `011c9fe`). Immutable release `/var/www/goffice/releases/v1.7.0`; rollback `v1.6.0`. CAT1 FY2568 freeze (1.1–1.7) is now live.
