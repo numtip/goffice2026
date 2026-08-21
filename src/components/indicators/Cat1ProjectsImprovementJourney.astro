@@ -10,6 +10,7 @@ import {
   CAT16_DOCS,
   type ProjectView,
 } from '../../utils/category1-projects-presentation';
+import { buildGhgPerformance } from '../../utils/category1-ghg-presentation';
 import { getLocalizedPath } from '../../i18n/utils';
 
 interface Props {
@@ -26,6 +27,7 @@ function t(th: string, en: string): string {
 
 const projects = buildProjectPortfolio();
 const gapDisclaimer = buildPerformanceGapDisclaimer();
+const perf = buildGhgPerformance();
 
 function reportUrl(p: ProjectView): string {
   if (p.id === 'proj-1') return CAT16_DOCS.report5s;
@@ -70,7 +72,27 @@ function reportUrl(p: ProjectView): string {
 
   <section class="rounded-xl border border-rose-100 bg-rose-50/40 p-5 sm:p-6" aria-labelledby="cat162-gap-title" data-cat16-gap-disclaimer>
     <h2 id="cat162-gap-title" class="text-base font-bold text-rose-950">{t('ข้อจำกัดความจริง (1.5.2)', 'Truthfulness note (1.5.2)')}</h2>
-    <p class="mt-2 text-sm leading-relaxed text-rose-900">{isEn ? gapDisclaimer.en : gapDisclaimer.th}</p>
+    <dl class="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
+      <div class="rounded-lg border border-rose-200 bg-white/70 p-3">
+        <dt class="text-xs text-rose-800">{t('เป้าหมายลด GHG ปี 2568', 'FY2568 GHG reduction target')}</dt>
+        <dd class="mt-1 text-lg font-bold text-rose-950">−{perf.targetReductionPct}%</dd>
+      </div>
+      <div class="rounded-lg border border-rose-200 bg-white/70 p-3">
+        <dt class="text-xs text-rose-800">{t('ผลจริง FY2568', 'FY2568 actual')}</dt>
+        <dd class="mt-1 text-lg font-bold text-rose-950">+{perf.actualChangePct}% <span class="text-xs font-normal text-rose-700">{t('(เพิ่มขึ้น)', '(increase)')}</span></dd>
+      </div>
+      <div class="rounded-lg border border-rose-200 bg-white/70 p-3">
+        <dt class="text-xs text-rose-800">{t('สถานะ', 'Status')}</dt>
+        <dd class="mt-1 text-lg font-bold text-rose-950">{t('ยังไม่บรรลุ', 'Not met')}</dd>
+      </div>
+    </dl>
+    <p class="mt-3 text-sm leading-relaxed text-rose-900">{isEn ? gapDisclaimer.en : gapDisclaimer.th}</p>
+    <p class="mt-2 text-xs leading-relaxed text-rose-900">
+      {t(
+        'รายงานการทบทวนฝ่ายบริหาร (1.7.2, ครั้งที่ 1/2568) เห็นชอบแผนการดำเนินงาน 2568 แต่ไม่ได้อ้างชื่อโครงการ 1.6 และไม่ได้ทบทวนผล GHG +4.81% อย่างชัดเจน',
+        'The management review (1.7.2, MR#1) approved the FY2568 plan but does not name 1.6 projects nor explicitly review the +4.81% GHG result',
+      )}
+    </p>
   </section>
 
   {
@@ -241,7 +263,7 @@ function reportUrl(p: ProjectView): string {
       </a>
       <a
         href={path('/indicators/1.7.1/')}
-        class="inline-flex min-h-11 items-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-on-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+        class="inline-flex min-h-11 items-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
       >
         {t('ไปที่ 1.7.1 การทบทวนฝ่ายบริหาร', 'Continue to 1.7.1 management review')}
       </a>

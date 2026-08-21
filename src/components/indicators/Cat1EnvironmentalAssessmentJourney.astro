@@ -172,10 +172,11 @@ const sourceHref = path(sourcePublicPath);
       </span>
       <a
         href={sourceHref}
-        download={sourceFileName}
+        target="_blank"
+        rel="noopener noreferrer"
         class="inline-flex min-h-11 items-center justify-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-white transition duration-300 ease-out hover:-translate-y-0.5 focus-ring motion-reduce:transform-none"
       >
-        {t('เปิด/ดาวน์โหลดไฟล์ Excel ต้นฉบับ', 'Open / download original Excel file')}
+        {t('เปิดไฟล์ Excel ต้นฉบับ', 'Open original Excel file')}
       </a>
     </div>
   </section>

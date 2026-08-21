@@ -1,0 +1,270 @@
+---
+/**
+ * Cat1SourceDocuments.astro — "เอกสารต้นฉบับสำหรับการตรวจสอบ" (Original document for review)
+ * Shared source-document section for every CAT1 indicator group (1.1–1.7).
+ * Format matches the 1.3.1 journey section exactly: label → title → file list
+ * with type badge and open/download button. Data comes only from the deterministic
+ * FY2568 publication manifest — no invented filenames.
+ */
+import fy2568Publication from '../../data/fy2568-publication.json';
+import { withBase } from '../../utils/with-base';
+
+interface Props {
+  issueCode: string; // '1.1' | '1.2' | ... | '1.7'
+  locale: 'th' | 'en';
+}
+
+const { issueCode, locale } = Astro.props;
+const isEn = locale === 'en';
+
+function t(th: string, en: string): string {
+  return isEn ? en : th;
+}
+
+interface PublicationDoc {
+  path: string;
+  title: string;
+  type: string;
+  sizeBytes: number;
+  sha256: string;
+  url: string;
+}
+
+const publication = fy2568Publication as unknown as {
+  categories: Record<string, { count: number; bytes: number; documents: PublicationDoc[] }>;
+};
+
+const GROUP_FOLDER: Record<string, string> = {
+  '1.1': '1.1/',
+  '1.2': '1.2/',
+  '1.3': '1.3/',
+  '1.4': '1.4/',
+  '1.5': '1.5Green house gass/',
+  '1.6': '1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/',
+  '1.7': '1.7 การทบทวนฝ่ายบริหาร/',
+};
+
+const folderPrefix = GROUP_FOLDER[issueCode];
+const docs = folderPrefix
+  ? (publication.categories.cat1?.documents ?? []).filter((d) => d.path.startsWith(folderPrefix))
+  : [];
+
+const typeLabel: Record<string, string> = {
+  pdf: 'PDF',
+  xlsx: 'Excel / XLSX',
+  docx: 'Word / DOCX',
+};
+
+// Editorial per-document description (th/en). Keyed by manifest path; grounded in
+// the canonical category-1 contracts and the indicator titles — never invented.
+const DOC_DESCRIPTIONS: Record<string, { th: string; en: string }> = {
+  '1.1/1.1.1 (9-3-69).pdf': {
+    th: 'เอกสารตัวชี้วัด 1.1.1 — บริบทองค์กรและขอบเขตการจัดการสิ่งแวดล้อม (9,873 ตร.ม. 4 หน่วยงาน)',
+    en: 'Indicator 1.1.1 document — organizational context and environmental management scope (9,873 m², 4 units)',
+  },
+  '1.1/1.1.2 (9-3-69).pdf': {
+    th: 'เอกสารตัวชี้วัด 1.1.2 — นโยบายสิ่งแวดล้อมและความมุ่งมั่นของผู้บริหาร',
+    en: 'Indicator 1.1.2 document — environmental policy and management commitment',
+  },
+  '1.1/1.1.3 (9-3-69).pdf': {
+    th: 'เอกสารตัวชี้วัด 1.1.3 — เป้าหมายสิ่งแวดล้อมของหน่วยงาน',
+    en: 'Indicator 1.1.3 document — organizational environmental targets',
+  },
+  '1.1/1.1.4 (9-3-69).pdf': {
+    th: 'เอกสารตัวชี้วัด 1.1.4 — แผนการดำเนินงานประจำปี (7 หมวด พร้อมคอลัมน์แผน/ผล)',
+    en: 'Indicator 1.1.4 document — annual action plan (7 categories, plan/actual columns)',
+  },
+  '1.2/1.2.1-คณะทำงานด้านสิ่งแวดล้อมปี2568.pdf': {
+    th: 'คำสั่งแต่งตั้งคณะทำงานด้านสิ่งแวดล้อม ปี 2568 (ตัวชี้วัด 1.2.1)',
+    en: 'FY2568 environmental working team appointment order (indicator 1.2.1)',
+  },
+  '1.3/1.3(1) ตารางวิเคราะห์กระบวนการทำงาน.pdf': {
+    th: 'ตารางวิเคราะห์กระบวนการทำงาน — ระบุกิจกรรมและขั้นตอนภายในขอบเขต',
+    en: 'Work process analysis table — identifies in-scope activities and steps',
+  },
+  '1.3/1.3(2) ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม.pdf': {
+    th: 'ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม (ทรัพยากร/ของเสีย)',
+    en: 'Environmental aspect identification and assessment register (resource/waste)',
+  },
+  '1.3/1.3(3) ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม.pdf': {
+    th: 'ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม — กิจกรรมและผลลัพธ์',
+    en: 'Environmental aspect identification and assessment register — activities and outputs',
+  },
+  '1.3/1.3(4) ทะเบียนจัดลำดับปัญหาสิ่งแวดล้อมด้านทร.pdf': {
+    th: 'ทะเบียนจัดลำดับปัญหาสิ่งแวดล้อมด้านทรัพยากร',
+    en: 'Environmental issue ranking register — resource aspects',
+  },
+  '1.3/1.3(4) ทะเบียนจัดลำดับปัญหาสิ่งแวดล้อมด้านมล.pdf': {
+    th: 'ทะเบียนจัดลำดับปัญหาสิ่งแวดล้อมด้านมลพิษ',
+    en: 'Environmental issue ranking register — pollution aspects',
+  },
+  '1.3/1.3.1 (9-3-69).pdf': {
+    th: 'เอกสารตัวชี้วัด 1.3.1 — การระบุและประเมินปัญหาสิ่งแวดล้อม',
+    en: 'Indicator 1.3.1 document — environmental aspect identification and assessment',
+  },
+  '1.3/1.3.2 (9-3-69).pdf': {
+    th: 'เอกสารตัวชี้วัด 1.3.2 — การประเมินความสำคัญของประเด็นสิ่งแวดล้อม',
+    en: 'Indicator 1.3.2 document — environmental aspect significance evaluation',
+  },
+  '1.3/1.3.3 (9-3-69).pdf': {
+    th: 'เอกสารตัวชี้วัด 1.3.3 — การจัดการปัญหาสิ่งแวดล้อมที่สำคัญ',
+    en: 'Indicator 1.3.3 document — significant environmental issue management',
+  },
+  '1.3/ทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อม_1.3(1) - 1.3(4).xlsx': {
+    th: 'สมุดงานทะเบียน 1.3(1)–1.3(4) — การระบุและประเมินปัญหาสิ่งแวดล้อม',
+    en: 'Workbook of registers 1.3(1)–1.3(4) — aspect identification and assessment',
+  },
+  '1.3/รายงาน_1.3 การระบุประเด็นปัญหาทรัพยากรและสิ่งแวดล้อม_ปี 2568.docx': {
+    th: 'รายงานการระบุประเด็นปัญหาทรัพยากรและสิ่งแวดล้อม ปี 2568',
+    en: 'FY2568 report on resource and environmental issue identification',
+  },
+  '1.3/รายงาน_1.3 การระบุประเด็นปัญหาทรัพยากรและสิ่งแวดล้อม_ปี 2568.pdf': {
+    th: 'รายงานการระบุประเด็นปัญหาทรัพยากรและสิ่งแวดล้อม ปี 2568 (PDF)',
+    en: 'FY2568 report on resource and environmental issue identification (PDF)',
+  },
+  '1.4/1.4. ทะเบียนกฎหมาย ปี 2568.docx': {
+    th: 'ทะเบียนกฎหมายและข้อกำหนด ปี 2568 (DOCX)',
+    en: 'FY2568 legal register and requirements (DOCX)',
+  },
+  '1.4/1.4. ทะเบียนกฎหมาย ปี 2568.pdf': {
+    th: 'ทะเบียนกฎหมายและข้อกำหนด ปี 2568',
+    en: 'FY2568 legal register and requirements',
+  },
+  '1.4/1.4.1 กฎหมายและข้อกำหนดอื่น ๆ ด้านสิ่งแวดล้อม.pdf': {
+    th: 'กฎหมายและข้อกำหนดอื่น ๆ ด้านสิ่งแวดล้อม (ตัวชี้วัด 1.4.1)',
+    en: 'Environmental laws and other requirements (indicator 1.4.1)',
+  },
+  '1.4/1.4.1 กฎหมายและข้อกำหนดอื่นๆ68 รวม (06.03.2569).docx': {
+    th: 'กฎหมายและข้อกำหนดอื่น ๆ ฉบับรวม 68 (06.03.2569)',
+    en: 'Environmental laws and requirements — consolidated 68 (06.03.2569)',
+  },
+  '1.4/1.4.2 ประเมินความสอดคล้องของกฎหมายกับการดำเ.docx': {
+    th: 'การประเมินความสอดคล้องของกฎหมายกับการดำเนินงาน (ตัวชี้วัด 1.4.2, DOCX)',
+    en: 'Legal compliance evaluation with operations (indicator 1.4.2, DOCX)',
+  },
+  '1.4/1.4.2 ประเมินความสอดคล้องของกฎหมายกับการดำเ.pdf': {
+    th: 'การประเมินความสอดคล้องของกฎหมายกับการดำเนินงาน (ตัวชี้วัด 1.4.2)',
+    en: 'Legal compliance evaluation with operations (indicator 1.4.2)',
+  },
+  '1.5Green house gass/1.5.1 (9-3-69).pdf': {
+    th: 'เอกสารตัวชี้วัด 1.5.1 — ข้อมูลก๊าซเรือนกระจกของหน่วยงาน',
+    en: 'Indicator 1.5.1 document — organizational GHG data',
+  },
+  '1.5Green house gass/1.5.2 (9-3-69).pdf': {
+    th: 'เอกสารตัวชี้วัด 1.5.2 — ผลการปล่อยก๊าซเรือนกระจกเทียบเป้าหมาย',
+    en: 'Indicator 1.5.2 document — GHG emissions vs targets',
+  },
+  '1.5Green house gass/1.5_GreenhouseGas2568.xlsx': {
+    th: 'สมุดงานข้อมูลก๊าซเรือนกระจก ปี 2568',
+    en: 'FY2568 GHG data workbook',
+  },
+  '1.5Green house gass/1.5_greenhousegass_update.xlsx': {
+    th: 'สมุดงานข้อมูลก๊าซเรือนกระจก ปี 2568 (ฉบับปรับปรุง)',
+    en: 'FY2568 GHG data workbook (updated)',
+  },
+  '1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/1.6.1 (9-3-69).pdf': {
+    th: 'เอกสารตัวชี้วัด 1.6.1 — แผนการดำเนินงานลดก๊าซเรือนกระจกของหน่วยงาน',
+    en: 'Indicator 1.6.1 document — organizational GHG reduction action plan',
+  },
+  '1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/1.6.2 (9-3-69).pdf': {
+    th: 'เอกสารตัวชี้วัด 1.6.2 — แผน/โครงการลดก๊าซเรือนกระจก',
+    en: 'Indicator 1.6.2 document — GHG reduction plan/projects',
+  },
+  '1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/ประกอบข้อ 1.6.docx': {
+    th: 'เอกสารประกอบข้อ 1.6 — แผนการดำเนินงานและโครงการ',
+    en: 'Annex to item 1.6 — action plan and projects',
+  },
+  '1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/ประกอบข้อ 1.6.pdf': {
+    th: 'เอกสารประกอบข้อ 1.6 (PDF)',
+    en: 'Annex to item 1.6 (PDF)',
+  },
+  '1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/ย.002 โครงการ 5ส.pdf': {
+    th: 'แบบฟอร์ม ย.002 โครงการ 5ส',
+    en: 'Form ย.002 — 5S project',
+  },
+  '1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/ย.002 โครงการลดหนู.pdf': {
+    th: 'แบบฟอร์ม ย.002 โครงการลดปัญหาหนูในพื้นที่ทำงาน',
+    en: 'Form ย.002 — rodent reduction project',
+  },
+  '1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/รายงานโครงการ 5ส Green Office 2568.pdf': {
+    th: 'รายงานโครงการ 5ส Green Office ปี 2568',
+    en: 'FY2568 5S Green Office project report',
+  },
+  '1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/รายงานโครงการลดปัญหาหนูในพื้นที่ทำงาน เพื่อสิ่งแวดล้อมปลอดภัยตามแนวทาง Green Office.pdf': {
+    th: 'รายงานโครงการลดปัญหาหนูในพื้นที่ทำงาน เพื่อสิ่งแวดล้อมปลอดภัยตามแนวทาง Green Office',
+    en: 'Rodent reduction project report — safe environment per Green Office approach',
+  },
+  '1.7 การทบทวนฝ่ายบริหาร/1.7.1 การกำหนดองค์ประชุมทบทวนฝ่ายบริหาร.docx': {
+    th: 'การกำหนดองค์ประชุมทบทวนฝ่ายบริหาร (ตัวชี้วัด 1.7.1, DOCX)',
+    en: 'Management review quorum definition (indicator 1.7.1, DOCX)',
+  },
+  '1.7 การทบทวนฝ่ายบริหาร/1.7.1 การกำหนดองค์ประชุมทบทวนฝ่ายบริหาร.pdf': {
+    th: 'การกำหนดองค์ประชุมทบทวนฝ่ายบริหาร (ตัวชี้วัด 1.7.1)',
+    en: 'Management review quorum definition (indicator 1.7.1)',
+  },
+  '1.7 การทบทวนฝ่ายบริหาร/1.7.2 มีการกำหนดวาระการประชุมและทำการประชุมทบทวนฝ่ายบริหาร.docx': {
+    th: 'วาระการประชุมและการประชุมทบทวนฝ่ายบริหาร (ตัวชี้วัด 1.7.2, DOCX)',
+    en: 'Meeting agenda and management review meetings (indicator 1.7.2, DOCX)',
+  },
+  '1.7 การทบทวนฝ่ายบริหาร/1.7.2 มีการกำหนดวาระการประชุมและทำการประชุมทบทวนฝ่ายบริหาร.pdf': {
+    th: 'วาระการประชุมและการประชุมทบทวนฝ่ายบริหาร (ตัวชี้วัด 1.7.2)',
+    en: 'Meeting agenda and management review meetings (indicator 1.7.2)',
+  },
+};
+---
+
+{
+  docs.length > 0 && (
+    <section
+      class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6"
+      aria-labelledby={`cat1-source-title-${issueCode}`}
+      data-cat1-source-documents
+      data-group={issueCode}
+    >
+      <p class="text-xs font-semibold text-primary">
+        {t('เอกสารต้นฉบับสำหรับการตรวจสอบ', 'Original document for review')}
+      </p>
+      <h2 id={`cat1-source-title-${issueCode}`} class="mt-1 text-base font-bold text-on-surface">
+        {t(`เอกสารต้นฉบับ ${issueCode} ปี 2568`, `Original ${issueCode} FY2568 documents`)}
+      </h2>
+      <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+        {t(
+          `ไฟล์ต้นฉบับปี 2568 ของกลุ่ม ${issueCode} ที่เผยแพร่แบบเปิดจากเว็บไซต์นี้ — สำหรับการตรวจสอบเอกสารต้นทาง`,
+          `Openly published FY2568 source files for group ${issueCode} — for original-document review`,
+        )}
+      </p>
+      <ul class="mt-4 space-y-3" role="list">
+        {docs.map((doc) => {
+          const description = DOC_DESCRIPTIONS[doc.path];
+          return (
+            <li
+              class="rounded-lg border border-gray-100 bg-white p-4"
+              data-cat1-source-doc
+              data-path={doc.path}
+            >
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-1 text-[11px] font-semibold text-emerald-800">
+                  {typeLabel[doc.type] ?? doc.type.toUpperCase()}
+                </span>
+                <p class="min-w-0 flex-1 font-medium num-tabular text-sm text-on-surface">{doc.title}</p>
+                <a
+                  href={withBase(doc.url)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex min-h-11 items-center justify-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-white transition duration-300 ease-out hover:-translate-y-0.5 focus-ring motion-reduce:transform-none"
+                >
+                  {t('เปิดเอกสารต้นฉบับ', 'Open original document')}
+                </a>
+              </div>
+              {description && (
+                <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+                  {t(description.th, description.en)}
+                </p>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )
+}

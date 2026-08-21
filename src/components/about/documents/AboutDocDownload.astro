@@ -28,13 +28,13 @@ const availableDocs = docs
   .filter((entry): entry is { doc: DownloadDoc; href: string } => entry.href !== null);
 
 const labels = {
-  title: isTh ? 'ดาวน์โหลดเอกสารต้นฉบับ' : 'Download original documents',
+  title: isTh ? 'เปิดเอกสารต้นฉบับ' : 'Open original documents',
   hint:
     sourceNote ??
     (isTh
       ? 'ไฟล์ต้นฉบับไม่มีการแก้ไข — ใช้สร้างข้อมูลบนหน้านี้'
       : 'Unmodified original files — used to produce this page.'),
-  btn: isTh ? 'ดาวน์โหลด PDF' : 'Download PDF',
+  btn: isTh ? 'เปิด PDF' : 'Open PDF',
   pages: isTh ? 'หน้า' : 'pages',
 };
 ---
@@ -58,8 +58,9 @@ const labels = {
         </div>
         <a
           href={href}
+          target="_blank"
+          rel="noopener noreferrer"
           class="inline-flex shrink-0 items-center justify-center rounded-md bg-green-700 px-4 py-2 text-sm font-medium text-white hover:bg-green-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
-          download
         >
           {labels.btn}
         </a>

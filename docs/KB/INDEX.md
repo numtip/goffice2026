@@ -94,6 +94,12 @@ Curated map for agents and contributors. Prefer links over copying content.
 | `docs/reports/SPRINT_SUMMARY_TEMPLATE.md` | Sprint close-out |
 | `docs/handoff/GOFFICE2026_NEXT_DAY_HANDOFF.md` | Next-session entry point |
 
+## Category 1 → Categories 2–7 (playbook)
+
+| Document | Purpose |
+|----------|---------|
+| `docs/GOFFICE2026_CATEGORY1_PLAYBOOK_FOR_CATEGORIES_2-7.md` | **Working template** — all Category 1 work + step-by-step recipe to replicate for Categories 2–7 |
+
 ## Releases (Category 1 FY2568)
 
 | Document | Purpose |

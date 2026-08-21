@@ -278,10 +278,12 @@ describe('CAT1-1.3 closeout — one canonical runtime, legacy retained', () => {
   });
 
   it('Cat1 snapshot does not present competing 1.3 counts from the legacy file', () => {
-    assert.match(snap, /'activities-aspects': \{ label: \{ th: 'ขอบเขต'/);
+    assert.match(snap, /issue: '1\.1'/);
     assert.match(snap, /route: '\/indicators\/1\.1\.1\/'/);
+    assert.match(snap, /domains: \['activities-aspects', 'targets'\]/);
+    assert.match(snap, /issue: '1\.3'/);
+    assert.match(snap, /domains: \['environmental-aspects-2568'\]/);
     assert.doesNotMatch(snap, /'activities-aspects': \{ label: \{ th: 'ขอบเขตและประเด็น'/);
-    assert.match(snap, /'environmental-aspects-2568'/);
     assert.match(snap, /route: '\/indicators\/1\.3\.1\/'/);
   });
 });
@@ -368,8 +370,10 @@ describe('CAT1-1.3.1 live runtime presentation', () => {
     assert.match(explorer, /\/documents\/fy2568\/cat1\/1\.3\/ผลประเมินปัญหา2568\.xlsx/);
     assert.match(explorer, /เอกสารต้นฉบับสำหรับการตรวจสอบ/);
     assert.match(explorer, /แบบฟอร์มต้นฉบับ 1\.3 ปี 2568/);
-    assert.match(explorer, /เปิด\/ดาวน์โหลดไฟล์ Excel ต้นฉบับ/);
-    assert.match(explorer, /download=\{sourceFileName\}/);
+    assert.match(explorer, /เปิดไฟล์ Excel ต้นฉบับ/);
+    assert.match(explorer, /target="_blank"/);
+    assert.match(explorer, /rel="noopener noreferrer"/);
+    assert.doesNotMatch(explorer, /download=\{sourceFileName\}/);
     const workbook = evidence.items.find((e) => e.id === 'ev-cat1-env-aspects-2568-workbook');
     assert.ok(workbook, 'workbook is registered in evidence-index');
     assert.equal(workbook.fileType, 'XLSX');
