@@ -48,7 +48,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "tsx": "^4.23.1",
-    "typescript": "^5.4.0",
+    "typescript": "^7.0.2",
     "xlsx": "^0.18.5"
   }
 }
