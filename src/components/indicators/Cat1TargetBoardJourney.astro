@@ -1,12 +1,15 @@
 ---
 /**
  * 1.1.3 Environmental Target Board — What we aim to reduce.
+ * FY2569 = current year (primary, base FY2568). FY2568 baseline shown below.
  */
 import {
-  buildTargetBoard,
-  CAT1_YEAR,
-  CAT11_DOCS,
-} from '../../utils/category1-foundation-presentation';
+  buildTargetBoard2569,
+  CAT1_FY2569_YEAR,
+  CAT1_FY2568_YEAR,
+  CAT11_DOCS_2569,
+} from '../../utils/category1-fy2569-presentation';
+import { CAT11_DOCS } from '../../utils/category1-foundation-presentation';
 import { getLocalizedPath } from '../../i18n/utils';
 import { withBase } from '../../utils/with-base';
 
@@ -22,25 +25,25 @@ function t(th: string, en: string): string {
   return isEn ? en : th;
 }
 
-const targets = buildTargetBoard();
+const targets = buildTargetBoard2569();
 
 function formatPct(p: number): string {
   return p > 0 ? `+${p}%` : `${p}%`;
 }
 ---
 
-<div class="cat11-journey space-y-6" data-cat11-targets data-view="1.1.3">
+<div class="cat11-journey space-y-6" data-cat11-targets data-view="1.1.3" data-year={CAT1_FY2569_YEAR}>
   <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat113-hero-title">
     <p class="text-xs font-semibold text-primary">
-      {t(`ตัวชี้วัด 1.1.3 · FY${CAT1_YEAR} Historical Baseline`, `Indicator 1.1.3 · FY${CAT1_YEAR} Historical Baseline`)}
+      {t(`ตัวชี้วัด 1.1.3 · FY${CAT1_FY2569_YEAR} (ปีปัจจุบัน)`, `Indicator 1.1.3 · FY${CAT1_FY2569_YEAR} (current year)`)}
     </p>
     <h2 id="cat113-hero-title" class="mt-1 text-lg font-bold text-balance text-on-surface sm:text-xl">
       {t('เป้าหมายสิ่งแวดล้อม — What we aim to reduce', 'Environmental targets — What we aim to reduce')}
     </h2>
     <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
       {t(
-        'เป้าหมายสุดท้ายที่มีผลเทียบปีฐาน 2567 — ไม่ใช่คะแนนสำนักงานสีเขียว',
-        'Final effective targets vs FY2567 baseline — not an official Green Office score',
+        `เป้าหมายปี 2569 เทียบปีฐาน 2568 (ประกาศ 5 เม.ย. 2569 + มติกรรมการอำนวยการ 1/2569) — ไม่ใช่คะแนนสำนักงานสีเขียว`,
+        `FY2569 targets vs FY2568 baseline (announced 5 Apr 2026 + steering resolution 1/2569) — not an official Green Office score`,
       )}
     </p>
   </section>
@@ -53,8 +56,9 @@ function formatPct(p: number): string {
           <tr class="border-b border-gray-200 text-xs uppercase tracking-wide text-on-surface-variant">
             <th scope="col" class="px-3 py-2">{t('ด้าน', 'Domain')}</th>
             <th scope="col" class="px-3 py-2 text-right">{t('เป้าหมาย', 'Target')}</th>
-            <th scope="col" class="px-3 py-2 text-right">{t('ค่า (สัญญา)', 'Contract value')}</th>
+            <th scope="col" class="px-3 py-2 text-right">{t('ค่า (ประกาศ)', 'Announcement value')}</th>
             <th scope="col" class="px-3 py-2">{t('หน่วย', 'Unit')}</th>
+            <th scope="col" class="px-3 py-2">{t('ปีฐาน', 'Baseline')}</th>
           </tr>
         </thead>
         <tbody>
@@ -65,6 +69,7 @@ function formatPct(p: number): string {
                 <td class="px-3 py-2.5 text-right num-tabular font-bold text-primary">{formatPct(row.targetPercent)}</td>
                 <td class="px-3 py-2.5 text-right num-tabular">{row.value.toLocaleString(undefined, { maximumFractionDigits: 2 })}</td>
                 <td class="px-3 py-2.5 text-xs text-on-surface-variant">{row.unit}</td>
+                <td class="px-3 py-2.5 text-xs text-on-surface-variant">FY{row.baselineYear}</td>
               </tr>
             ))
           }
@@ -72,42 +77,52 @@ function formatPct(p: number): string {
       </table>
     </div>
     <p class="mt-3 text-[11px] text-on-surface-variant">
-      {t(`อ้างอิงปีฐาน: ${targets[0]?.comparisonBasis ?? 'FY2567'}`, `Comparison basis: ${targets[0]?.comparisonBasis ?? 'FY2567'}`)}
+      {t(`อ้างอิงปีฐาน: FY${targets[0]?.baselineYear ?? 2568}`, `Comparison basis: FY${targets[0]?.baselineYear ?? 2568}`)}
     </p>
   </section>
 
   {
-    targets.filter((t) => t.amendmentNoteTh).map((row) => (
-      <section class="rounded-xl border border-amber-200 bg-amber-50/50 p-5 shadow-sm sm:p-6" aria-labelledby="cat113-paper-amend" data-cat11-paper-amendment>
-        <h2 id="cat113-paper-amend" class="text-base font-bold text-amber-950">{t('การแก้ไขเป้าหมายกระดาษ', 'Paper target amendment')}</h2>
-        <p class="mt-2 text-sm font-semibold text-amber-950 num-tabular">−1% → −3%</p>
-        <p class="mt-1 text-sm leading-relaxed text-amber-900">{isEn ? row.amendmentNoteEn : row.amendmentNoteTh}</p>
-        <p class="mt-2 text-sm">
-          <a href={path('/indicators/1.7.2/')} class="font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
-            {t('ดูมติใน 1.7.2', 'See decision in 1.7.2')}
-          </a>
-        </p>
+    targets.filter((row) => row.ocrNote).map((row) => (
+      <section class="rounded-xl border border-amber-200 bg-amber-50/50 p-5 shadow-sm sm:p-6" aria-labelledby="cat113-ocr-note">
+        <h2 id="cat113-ocr-note" class="text-base font-bold text-amber-950">{t('ตรวจสอบค่า OCR', 'OCR verification needed')}</h2>
+        <p class="mt-2 text-sm leading-relaxed text-amber-900">{t(row.ocrNote ?? '', row.ocrNote ?? '')}</p>
       </section>
     ))
   }
 
-  {
-    targets.filter((t) => t.metricFamilyNoteTh).map((row) => (
-      <section class="rounded-xl border border-gray-200 bg-gray-50/80 p-5 shadow-sm sm:p-6" aria-labelledby="cat113-ghg-metric" data-cat11-ghg-metric-family>
-        <h2 id="cat113-ghg-metric" class="text-base font-bold text-on-surface">{t('GHG — ครอบครัวตัวชี้วัด', 'GHG — metric families')}</h2>
-        <p class="mt-2 text-sm leading-relaxed text-on-surface-variant">{isEn ? row.metricFamilyNoteEn : row.metricFamilyNoteTh}</p>
-        <p class="mt-2 text-sm">
-          <a href={path('/indicators/1.5.1/')} class="font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
-            {t('1.5.1 บัญชี GHG (ตัวชี้วัดแยก)', '1.5.1 GHG inventory (separate metric)')}
-          </a>
-          {' · '}
-          <a href={path('/dashboard/ghg/')} class="font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
-            {t('แดชบอร์ด GHG', 'GHG dashboard')}
-          </a>
-        </p>
-      </section>
-    ))
-  }
+  <section class="rounded-xl border border-gray-200 bg-gray-50/80 p-5 shadow-sm sm:p-6" aria-labelledby="cat113-ghg-metric">
+    <h2 id="cat113-ghg-metric" class="text-base font-bold text-on-surface">{t('GHG — ครอบครัวตัวชี้วัด', 'GHG — metric families')}</h2>
+    <p class="mt-2 text-sm leading-relaxed text-on-surface-variant">
+      {t(
+        'เป้าหมายประกาศ 203.15 kgCO₂e/คน เป็นชุดตัวชี้วัดแยกจากบัญชี GHG 1.5 — ยังไม่รวมเป็นค่าเดียว',
+        'Announcement target 203.15 kgCO₂e/person is a separate metric family from the 1.5 GHG inventory — not merged',
+      )}
+    </p>
+    <p class="mt-2 text-sm">
+      <a href={path('/indicators/1.5.1/')} class="font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+        {t('1.5.1 บัญชี GHG (ตัวชี้วัดแยก)', '1.5.1 GHG inventory (separate metric)')}
+      </a>
+      {' · '}
+      <a href={path('/dashboard/ghg/')} class="font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+        {t('แดชบอร์ด GHG', 'GHG dashboard')}
+      </a>
+    </p>
+  </section>
+
+  <details class="rounded-xl border border-dashed border-gray-300 bg-gray-50/80 p-5">
+    <summary class="cursor-pointer text-sm font-medium text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+      {t(`ฐานประวัติ FY${CAT1_FY2568_YEAR}`, `FY${CAT1_FY2568_YEAR} historical baseline`)}
+    </summary>
+    <p class="mt-3 text-xs leading-relaxed text-on-surface-variant">
+      {t(
+        'เป้าหมายรอบ 2568 เทียบปีฐาน 2567 (ไฟฟ้า −1% น้ำมัน −3% น้ำ −1% กระดาษ −3% ขยะ −3% GHG −1%) โดยกระดาษแก้ไขจาก −1% เป็น −3% ที่ทบทวนฝ่ายบริหารครั้งที่ 1/2568',
+        'FY2568 targets vs FY2567 baseline (electricity −1%, fuel −3%, water −1%, paper −3%, waste −3%, GHG −1%); paper amended −1% → −3% at management review 1/2568',
+      )}
+    </p>
+    <a href={withBase(CAT11_DOCS.targetsPdf)} class="mt-2 inline-block text-xs text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+      {t('1.1.3 (9-3-69).pdf — ฐานปี 2568', '1.1.3 (9-3-69).pdf — FY2568 baseline')}
+    </a>
+  </details>
 
   <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat113-cross-title">
     <h2 id="cat113-cross-title" class="text-base font-bold text-on-surface">{t('เชื่อมโยง', 'Cross-links')}</h2>
@@ -127,11 +142,18 @@ function formatPct(p: number): string {
       <summary class="cursor-pointer text-sm font-medium text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
         {t('แหล่งอ้างอิง', 'Source evidence')}
       </summary>
-      <p class="mt-2 text-xs">
-        <a href={withBase(CAT11_DOCS.targetsPdf)} class="text-primary hover:underline focus-visible:ring-2 focus-visible:ring-green-700 rounded" target="_blank" rel="noopener noreferrer">
-          1.1.3 (9-3-69).pdf
-        </a>
-      </p>
+      <ul class="mt-2 space-y-1 text-xs" role="list">
+        <li>
+          <a href={withBase(CAT11_DOCS_2569.targetsPdf)} class="text-primary hover:underline focus-visible:ring-2 focus-visible:ring-green-700 rounded" target="_blank" rel="noopener noreferrer">
+            {t('1.1.3 เป้าหมายสิ่งแวดล้อม 2569 (PDF)', '1.1.3 Environmental targets 2569 (PDF)')}
+          </a>
+        </li>
+        <li>
+          <a href={withBase(CAT11_DOCS_2569.targetsMinutesPdf)} class="text-primary hover:underline focus-visible:ring-2 focus-visible:ring-green-700 rounded" target="_blank" rel="noopener noreferrer">
+            {t('1.1.3 มติที่ประชุมกำหนดเป้าหมาย 2569 (PDF)', '1.1.3 Target-setting meeting resolution 2569 (PDF)')}
+          </a>
+        </li>
+      </ul>
     </details>
   </section>
 </div>

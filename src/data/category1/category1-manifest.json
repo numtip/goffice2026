@@ -31,5 +31,19 @@
     { "indicator": "1.2.2", "status": "MISSING", "note": "Role-understanding interview/sampling evidence not found in FY2568 source; only a '-สัมภาษณ์-' stub in 1.2.1 order PDF." },
     { "indicator": "1.5.3", "status": "MISSING", "note": "GHG knowledge/training evidence not found in FY2568 source; no training sheet in any workbook." }
   ],
+  "fy2569Overlay": {
+    "status": "CURRENT_YEAR_OVERLAY",
+    "date": "2026-08-21",
+    "principle": "FY2569 is the current assessment year (presented as primary); frozen FY2568 contracts remain the historical baseline. Overlay records are separate year-qualified files — no FY2568 contract was mutated.",
+    "contracts": [
+      { "domain": "activities-aspects-2569", "file": "src/data/category1/activities-aspects-2569.json", "indicators": ["1.1.1", "1.1.2"], "status": "current-year-overlay", "note": "Scope 9,873 m² / 97 personnel / 4 orgs (announced 5 Apr 2569); 10 policy commitments (announced 1 Apr 2569, signed by RAE Director)" },
+      { "domain": "targets-2569", "file": "src/data/category1/targets-2569.json", "indicators": ["1.1.3"], "status": "current-year-overlay", "note": "6 domains vs FY2568 base (−1/−3/−1/−3/−1/−1); announcement 5 Apr 2569 + steering resolution 1/2569" },
+      { "domain": "projects-2569", "file": "src/data/category1/projects-2569.json", "indicators": ["1.1.4", "1.6.1"], "status": "current-year-overlay", "note": "Annual plan workbook 147 activities / 65 indicators / approved 20 Apr 2569" },
+      { "domain": "environmental-committee-2569", "file": "src/data/category1/environmental-committee-2569.json", "indicators": ["1.2.1"], "status": "current-year-overlay", "note": "Appointment 31 Mar 2569 signed by RAE Director; advisors + steering + 6 WGs (Cat1+7 combined)" }
+    ],
+    "sourceEvidence": "public/documents/fy2569/cat1/ (Data2569/Cat1 sources)",
+    "validation": "scripts/validate-category1-fy2569.mjs",
+    "test": "scripts/test-category1-fy2569-overlay.mjs"
+  },
   "validation": "scripts/validate-category1-contracts.mjs"
 }

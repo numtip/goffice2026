@@ -1,12 +1,15 @@
 ---
 /**
- * 1.1.4 Annual Action Plan Journey — How we execute (shared proj-plan-1 with 1.6.1).
+ * 1.1.4 Annual Action Plan Journey — How we execute.
+ * FY2569 = current year (primary, Excel workbook). FY2568 baseline shown below.
  */
 import {
-  buildAnnualPlanView,
-  CAT1_YEAR,
-  CAT11_DOCS,
-} from '../../utils/category1-foundation-presentation';
+  buildAnnualPlanView2569,
+  CAT1_FY2569_YEAR,
+  CAT1_FY2568_YEAR,
+  CAT11_DOCS_2569,
+} from '../../utils/category1-fy2569-presentation';
+import { CAT11_DOCS } from '../../utils/category1-foundation-presentation';
 import { getLocalizedPath } from '../../i18n/utils';
 import { withBase } from '../../utils/with-base';
 
@@ -22,7 +25,7 @@ function t(th: string, en: string): string {
   return isEn ? en : th;
 }
 
-const plan = buildAnnualPlanView();
+const plan = buildAnnualPlanView2569();
 
 const readinessItems = [
   {
@@ -39,8 +42,8 @@ const readinessItems = [
   },
   {
     id: 'approval',
-    labelTh: `อนุมัติผู้บริหาร ${plan.approvingOrganizationCount} หน่วยงาน`,
-    labelEn: `Approved by ${plan.approvingOrganizationCount} organizations' management`,
+    labelTh: 'อนุมัติผู้บริหาร (ผู้อำนวยการสำนักวิจัยฯ)',
+    labelEn: 'Approved by RAE Director',
     ok: plan.executiveApproved,
   },
   {
@@ -52,18 +55,29 @@ const readinessItems = [
 ];
 ---
 
-<div class="cat11-journey space-y-6" data-cat11-plan data-view="1.1.4" data-proj-plan-id={plan.id}>
+<div class="cat11-journey space-y-6" data-cat11-plan data-view="1.1.4" data-year={CAT1_FY2569_YEAR} data-proj-plan-id={plan.id}>
   <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat114-hero-title">
     <p class="text-xs font-semibold text-primary">
-      {t(`ตัวชี้วัด 1.1.4 · FY${CAT1_YEAR} Historical Baseline`, `Indicator 1.1.4 · FY${CAT1_YEAR} Historical Baseline`)}
+      {t(`ตัวชี้วัด 1.1.4 · FY${CAT1_FY2569_YEAR} (ปีปัจจุบัน)`, `Indicator 1.1.4 · FY${CAT1_FY2569_YEAR} (current year)`)}
     </p>
     <h2 id="cat114-hero-title" class="mt-1 text-lg font-bold text-balance text-on-surface sm:text-xl">
       {t('แผนดำเนินงานประจำปี — How we execute', 'Annual action plan — How we execute')}
     </h2>
     <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
       {t(
-        `เอกสารแผนเดียวกับ 1.6.1 (${plan.id}) — ไม่ใช่คะแนนสำนักงานสีเขียว`,
-        `Same plan document as 1.6.1 (${plan.id}) — not an official Green Office score`,
+        `แผนประจำปี 2569 จากไฟล์ Excel (${plan.activityCount} กิจกรรม ${plan.indicatorCoverage} ตัวชี้วัด) — ไม่ใช่คะแนนสำนักงานสีเขียว`,
+        `FY2569 annual plan from the Excel workbook (${plan.activityCount} activities, ${plan.indicatorCoverage} indicators) — not an official Green Office score`,
+      )}
+    </p>
+  </section>
+
+  <section class="rounded-xl border border-green-100 bg-green-50/40 p-5 sm:p-6" aria-labelledby="cat114-approval-title" data-cat11-plan-approval>
+    <h2 id="cat114-approval-title" class="text-base font-bold text-on-surface">{t('การอนุมัติ 2569', 'FY2569 approval')}</h2>
+    <p class="mt-2 text-sm text-on-surface">{plan.title}</p>
+    <p class="mt-2 text-xs text-on-surface-variant">
+      {t(
+        `อนุมัติ ${plan.approvalDateBE} โดย ${plan.approvedByTh}`,
+        `Approved ${plan.approvalDateBE} by ${plan.approvedByEn}`,
       )}
     </p>
   </section>
@@ -89,30 +103,10 @@ const readinessItems = [
     <h2 id="cat114-coverage-title" class="text-base font-bold text-on-surface">{t('ครอบคลุม 7 หมวด', 'Seven-category coverage')}</h2>
     <p class="mt-2 text-sm leading-relaxed text-on-surface-variant">
       {t(
-        'แผนประจำปี FY2568 ครอบคลุมกิจกรรมทุกหมวดตามเกณฑ์ — รายละเอียดตารางใน PDF เป็นภาพ',
-        'FY2568 annual plan covers all Green Office categories — table detail is image-only in PDF',
+        `แผนประจำปี 2569 ครอบคลุม 7 หมวด ${plan.activityCount} กิจกรรม ${plan.indicatorCoverage} ตัวชี้วัด — ข้อมูลจากสมุดงาน Excel ต้นฉบับ`,
+        `FY2569 annual plan covers 7 categories with ${plan.activityCount} activities across ${plan.indicatorCoverage} indicators — sourced from the original Excel workbook`,
       )}
     </p>
-  </section>
-
-  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat114-schedule-title" data-cat11-plan-schedule>
-    <h2 id="cat114-schedule-title" class="text-base font-bold text-on-surface">{t('กำหนดเวลา / ความถี่', 'Timing & frequency')}</h2>
-    <p class="mt-2 text-sm leading-relaxed text-on-surface-variant">
-      {t(
-        `ระยะเวลาดำเนินงาน ${plan.durationYears} ปี — คอลัมน์แผนและผลแยกกันในแหล่ง (ไม่แสดงรายการที่สร้างขึ้นเอง)`,
-        `${plan.durationYears}-year execution scope — planned and actual columns are separate in source (rows not invented here)`,
-      )}
-    </p>
-    {
-      plan.activitiesSourceStatus === 'external-not-in-repo' && (
-        <details class="mt-4 rounded-lg border border-dashed border-gray-300 bg-gray-50/80 p-3">
-          <summary class="cursor-pointer text-sm font-medium text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
-            {t('ตารางกิจกรรม ERP — ไม่พร้อมใน repo', 'ERP activity schedule — not in repo')}
-          </summary>
-          <p class="mt-2 text-xs leading-relaxed text-on-surface-variant">{plan.activitiesSourceRef}</p>
-        </details>
-      )
-    }
   </section>
 
   <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat114-truth-title" data-cat11-plan-truthfulness>
@@ -127,7 +121,7 @@ const readinessItems = [
     <h2 id="cat114-cta-title" class="text-base font-bold text-on-surface">{t('ขั้นถัดไป', 'Next step')}</h2>
     <p class="mt-2 text-sm">
       <a href={path('/indicators/1.6.1/')} class="inline-flex items-center font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
-        {t('→ 1.6.1 แผนลด GHG (เอกสารเดียวกัน)', '→ 1.6.1 GHG reduction plan (same document)')}
+        {t('→ 1.6.1 แผนลด GHG', '→ 1.6.1 GHG reduction plan')}
       </a>
     </p>
     <p class="mt-2 text-sm">
@@ -139,14 +133,34 @@ const readinessItems = [
 
   <details class="rounded-xl border border-dashed border-gray-300 bg-gray-50/80 p-5">
     <summary class="cursor-pointer text-sm font-medium text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+      {t(`ฐานประวัติ FY${CAT1_FY2568_YEAR}`, `FY${CAT1_FY2568_YEAR} historical baseline`)}
+    </summary>
+    <p class="mt-3 text-xs leading-relaxed text-on-surface-variant">
+      {t(
+        'แผนรอบ 2568 (proj-plan-1) เป็นไฟล์ PDF (9-3-69) ใช้ร่วมกับ 1.6.1 ตารางแผน/ผลเป็นภาพ และกำหนดการกิจกรรม ERP อยู่นอก repo',
+        'FY2568 plan (proj-plan-1) is the PDF (9-3-69), shared with 1.6.1; plan/actual tables are image-only and the ERP schedule is external to the repo',
+      )}
+    </p>
+    <a href={withBase(CAT11_DOCS.planPdf)} class="mt-2 inline-block text-xs text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+      {t('1.1.4 (9-3-69).pdf — ฐานปี 2568', '1.1.4 (9-3-69).pdf — FY2568 baseline')}
+    </a>
+  </details>
+
+  <details class="rounded-xl border border-dashed border-gray-300 bg-gray-50/80 p-5">
+    <summary class="cursor-pointer text-sm font-medium text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
       {t('แหล่งอ้างอิง', 'Source evidence')}
     </summary>
     <ul class="mt-3 space-y-1 text-xs text-on-surface-variant" role="list">
       <li>{plan.sourceRef}</li>
-      {plan.coSourceRef && <li>{plan.coSourceRef}</li>
+      {plan.coSourceRef && <li>{plan.coSourceRef}</li>}
       <li>
-        <a href={withBase(CAT11_DOCS.planPdf)} class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-          1.1.4 (9-3-69).pdf
+        <a href={withBase(CAT11_DOCS_2569.planXlsx)} class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+          {t('1.1.4 แผนดำเนินงานสำนักงานสีเขียว 2569 (Excel)', '1.1.4 Green Office action plan 2569 (Excel)')}
+        </a>
+      </li>
+      <li>
+        <a href={withBase(CAT11_DOCS_2569.planPdf)} class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+          {t('04-แผนการดำเนินงานGreen2569.pdf (ฉบับพิมพ์)', '04-แผนการดำเนินงานGreen2569.pdf (printed copy)')}
         </a>
       </li>
     </ul>

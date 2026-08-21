@@ -1,16 +1,17 @@
 ---
 /**
  * 1.1.2 Policy & Leadership Commitment — What we commit to.
+ * FY2569 = current year (primary). FY2568 historical baseline shown below.
  */
 import {
-  buildPolicyApproval,
-  buildPolicyCommitments,
-  buildPolicyInterviewGap,
-  POLICY_PRINCIPLE_LABELS,
-  CAT1_YEAR,
-  CAT11_DOCS,
-  type PolicyPrinciple,
-} from '../../utils/category1-foundation-presentation';
+  buildPolicyApproval2569,
+  buildPolicyCommitments2569,
+  commitmentPrinciple2569,
+  CAT1_FY2569_YEAR,
+  CAT1_FY2568_YEAR,
+  CAT11_DOCS_2569,
+} from '../../utils/category1-fy2569-presentation';
+import { buildPolicyInterviewGap, CAT11_DOCS } from '../../utils/category1-foundation-presentation';
 import { getLocalizedPath } from '../../i18n/utils';
 import { withBase } from '../../utils/with-base';
 
@@ -26,70 +27,55 @@ function t(th: string, en: string): string {
   return isEn ? en : th;
 }
 
-const approval = buildPolicyApproval();
-const commitments = buildPolicyCommitments();
+const approval = buildPolicyApproval2569();
+const commitments = buildPolicyCommitments2569();
 const interviewGap = buildPolicyInterviewGap();
 
-const principles: PolicyPrinciple[] = [
-  'continual_improvement',
-  'resource_energy_waste',
-  'legal_compliance',
-  'awareness_participation',
+const principles: { id: string; th: string; en: string }[] = [
+  { id: 'continual_improvement', th: 'การปรับปรุงอย่างต่อเนื่อง', en: 'Continual improvement' },
+  { id: 'resource_energy_waste', th: 'ทรัพยากร / พลังงาน / ของเสีย / จัดซื้อ / GHG', en: 'Resources / energy / waste / procurement / GHG' },
+  { id: 'legal_compliance', th: 'การปฏิบัติตามกฎหมายและเกณฑ์', en: 'Legal & criteria compliance' },
+  { id: 'awareness_participation', th: 'การรับรู้และการมีส่วนร่วม', en: 'Awareness & participation' },
 ];
 
-function commitmentsForPrinciple(p: PolicyPrinciple) {
-  return commitments.filter((c) => c.principle === p);
+function commitmentsForPrinciple(principleId: string) {
+  return commitments.filter((c) => commitmentPrinciple2569(c.statementNumber) === principleId);
 }
 ---
 
-<div class="cat11-journey space-y-6" data-cat11-policy data-view="1.1.2">
+<div class="cat11-journey space-y-6" data-cat11-policy data-view="1.1.2" data-year={CAT1_FY2569_YEAR}>
   <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat112-hero-title">
     <p class="text-xs font-semibold text-primary">
-      {t(`ตัวชี้วัด 1.1.2 · FY${CAT1_YEAR} Historical Baseline`, `Indicator 1.1.2 · FY${CAT1_YEAR} Historical Baseline`)}
+      {t(`ตัวชี้วัด 1.1.2 · FY${CAT1_FY2569_YEAR} (ปีปัจจุบัน)`, `Indicator 1.1.2 · FY${CAT1_FY2569_YEAR} (current year)`)}
     </p>
     <h2 id="cat112-hero-title" class="mt-1 text-lg font-bold text-balance text-on-surface sm:text-xl">
       {t('นโยบายสิ่งแวดล้อม — What we commit to', 'Environmental policy — What we commit to')}
     </h2>
     <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
       {t(
-        `${commitments.length} ข้อนโยบายที่ตรวจสอบจากแหล่ง — ไม่ใช่คะแนนสำนักงานสีเขียว`,
-        `${commitments.length} source-verified policy commitments — not an official Green Office score`,
+        `${commitments.length} ข้อนโยบายที่ตรวจสอบจากแหล่ง (ประกาศ 1 เม.ย. 2569) — ไม่ใช่คะแนนสำนักงานสีเขียว`,
+        `${commitments.length} source-verified policy commitments (announced 1 Apr 2026) — not an official Green Office score`,
       )}
     </p>
   </section>
 
-  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat112-chrono-title" data-cat11-policy-chronology>
-    <h2 id="cat112-chrono-title" class="text-base font-bold text-on-surface">
-      {t('ลำดับการนำนโยบาย', 'Policy leadership chronology')}
+  <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat112-approval-title" data-cat11-policy-approval>
+    <h2 id="cat112-approval-title" class="text-base font-bold text-on-surface">
+      {t('ประกาศนโยบาย 2569', 'FY2569 policy announcement')}
     </h2>
-    <ol class="mt-4 space-y-4" role="list">
-      <li class="list-none rounded-lg border border-green-200 bg-green-50/50 p-4">
-        <p class="text-xs font-semibold uppercase tracking-wide text-green-800">{t('ทบทวน (Reviewed)', 'Reviewed')}</p>
-        <p class="mt-1 text-sm font-medium text-on-surface">
-          {approval.reviewCommittee} · {t('ครั้งที่', 'Meeting')} {approval.reviewMeetingNumber}
-        </p>
-        <p class="mt-1 text-sm num-tabular text-on-surface-variant">{isEn ? approval.reviewDateBE.split(' / ')[1] : approval.reviewDateBE.split(' / ')[0]}</p>
-        {approval.policyRetainedFromFY2567 && (
-          <p class="mt-1 text-xs text-on-surface-variant">{t('มติคงนโยบายตามรอบ 2567', 'Policy retained from FY2567 cycle')}</p>
-        )}
-      </li>
-      <li class="list-none flex justify-center text-on-surface-variant" aria-hidden="true">↓</li>
-      <li class="list-none rounded-lg border border-primary/30 bg-primary/5 p-4">
-        <p class="text-xs font-semibold uppercase tracking-wide text-primary">{t('อนุมัติ/ประกาศ (Approved/Signed)', 'Approved/Signed')}</p>
-        <p class="mt-1 text-sm font-medium text-on-surface">{t(approval.signedByRoleTh, approval.signedByRoleEn)}</p>
-        <p class="mt-1 text-sm num-tabular text-on-surface-variant">{isEn ? approval.announcementDateBE.split(' / ')[1] : approval.announcementDateBE.split(' / ')[0]}</p>
-      </li>
-      <li class="list-none flex justify-center text-on-surface-variant" aria-hidden="true">↓</li>
-      <li class="list-none rounded-lg border border-gray-200 bg-gray-50/80 p-4">
-        <p class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant">{t('ดำเนินการ/ติดตาม (Implemented/Monitored)', 'Implemented/Monitored')}</p>
-        <p class="mt-1 text-sm text-on-surface-variant">
-          {t(
-            'เอกสารการประชุมและภาพถ่ายคณะกรรมการ — ไม่ใช่หลักฐานสัมภาษณ์',
-            'Committee minutes and photos — not interview evidence',
-          )}
-        </p>
-      </li>
-    </ol>
+    <dl class="mt-3 space-y-2 text-sm">
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <dt class="text-on-surface-variant">{t('ประกาศ ณ', 'Announced')}</dt>
+        <dd class="num-tabular font-semibold text-on-surface">{approval.announcementDateBE}</dd>
+      </div>
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <dt class="text-on-surface-variant">{t('ลงนามโดย', 'Signed by')}</dt>
+        <dd class="font-medium text-on-surface">{t(approval.signedByRoleTh, approval.signedByRoleEn)}</dd>
+      </div>
+    </dl>
+    <p class="mt-3 rounded-lg border border-blue-200 bg-blue-50/50 p-3 text-xs leading-relaxed text-blue-900">
+      {t(approval.authorityNoteTh, approval.authorityNoteEn)}
+    </p>
   </section>
 
   <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat112-commitments-title" data-cat11-policy-commitments>
@@ -98,12 +84,11 @@ function commitmentsForPrinciple(p: PolicyPrinciple) {
     </h2>
     {
       principles.map((p) => {
-        const items = commitmentsForPrinciple(p);
+        const items = commitmentsForPrinciple(p.id);
         if (items.length === 0) return null;
-        const label = POLICY_PRINCIPLE_LABELS[p];
         return (
           <div class="mt-5 first:mt-4">
-            <h3 class="text-sm font-semibold text-primary">{t(label.th, label.en)}</h3>
+            <h3 class="text-sm font-semibold text-primary">{t(p.th, p.en)}</h3>
             <ol class="mt-2 space-y-2" role="list">
               {items.map((c) => (
                 <li class="flex gap-2 text-sm leading-relaxed text-on-surface">
@@ -121,10 +106,6 @@ function commitmentsForPrinciple(p: PolicyPrinciple) {
   <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat112-participation-title" data-cat11-policy-participation>
     <h2 id="cat112-participation-title" class="text-base font-bold text-on-surface">1.1.2 (4)</h2>
     <dl class="mt-3 space-y-3">
-      <div class="rounded-lg border border-green-200 bg-green-50/40 p-3">
-        <dt class="text-xs font-semibold text-green-900">{t('การมีส่วนร่วมเอกสาร (Documentary participation)', 'Documentary participation')}</dt>
-        <dd class="mt-1 text-sm text-green-950">{t('รองรับ — รายงาน/ภาพการประชุมคณะกรรมการ', 'Supported — committee meeting records/photos')}</dd>
-      </div>
       <div class="rounded-lg border border-amber-200 bg-amber-50/50 p-3">
         <dt class="text-xs font-semibold text-amber-950">{t('สัมภาษณ์ผู้บริหาร (Management interview)', 'Management interview')}</dt>
         <dd class="mt-1 text-sm font-semibold text-amber-950">{t('NOT COMPLETED — ไม่มีหลักฐาน', 'NOT COMPLETED — evidence unavailable')}</dd>
@@ -133,11 +114,26 @@ function commitmentsForPrinciple(p: PolicyPrinciple) {
     </dl>
   </section>
 
+  <details class="rounded-xl border border-dashed border-gray-300 bg-gray-50/80 p-5">
+    <summary class="cursor-pointer text-sm font-medium text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
+      {t(`ฐานประวัติ FY${CAT1_FY2568_YEAR}`, `FY${CAT1_FY2568_YEAR} historical baseline`)}
+    </summary>
+    <p class="mt-3 text-xs leading-relaxed text-on-surface-variant">
+      {t(
+        'นโยบายรอบ 2568 ทบทวนโดยคณะกรรมการอำนวยการ ครั้งที่ 1/2568 (7 มี.ค. 2568) และประกาศ 25 มี.ค. 2568 ลงนามโดยอธิการบดี — โครงสร้าง 10 ข้อเดียวกัน',
+        'FY2568 policy reviewed by the executive committee 1/2568 (7 Mar 2025) and announced 25 Mar 2025, signed by the University President — same 10-statement structure',
+      )}
+    </p>
+    <a href={withBase(CAT11_DOCS.policyPdf)} class="mt-2 inline-block text-xs text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+      {t('1.1.2 (9-3-69).pdf — ฐานปี 2568', '1.1.2 (9-3-69).pdf — FY2568 baseline')}
+    </a>
+  </details>
+
   <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat112-cross-title">
     <h2 id="cat112-cross-title" class="text-base font-bold text-on-surface">{t('เชื่อมโยง', 'Cross-links')}</h2>
     <p class="mt-2 text-sm">
       <a href={path('/indicators/1.7.2/')} class="font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
-        {t('1.7.2 — ทบทวนนโยบาย (มติคงนโยบาย)', '1.7.2 — Policy review (retention decision)')}
+        {t('1.7.2 — ทบทวนนโยบาย', '1.7.2 — Policy review')}
       </a>
     </p>
     <details class="mt-4 rounded-lg border border-dashed border-gray-300 bg-gray-50/80 p-3">
@@ -145,8 +141,8 @@ function commitmentsForPrinciple(p: PolicyPrinciple) {
         {t('แหล่งอ้างอิง', 'Source evidence')}
       </summary>
       <p class="mt-2 text-xs">
-        <a href={withBase(CAT11_DOCS.policyPdf)} class="text-primary hover:underline focus-visible:ring-2 focus-visible:ring-green-700 rounded" target="_blank" rel="noopener noreferrer">
-          1.1.2 (9-3-69).pdf
+        <a href={withBase(CAT11_DOCS_2569.policyPdf)} class="text-primary hover:underline focus-visible:ring-2 focus-visible:ring-green-700 rounded" target="_blank" rel="noopener noreferrer">
+          {t('1.1.2 นโยบายสำนักงานสีเขียว 2569 (PDF)', '1.1.2 Green Office Policy 2569 (PDF)')}
         </a>
       </p>
     </details>

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "projects-2569",
+  "updated": "2026-08-21",
+  "year": 2569,
+  "status": "current-year-overlay",
+  "governance": "GOFFICE2026_CATEGORY1_MANAGEMENT_BLUEPRINT_V1",
+  "note": "FY2569 overlay contract for 1.1.4 annual action plan (and shared 1.6.1 GHG reduction plan), separate from the frozen FY2568 baseline. The plan workbook (1.1.4 มีการกำหนดแผนการดำเนินงานสำนักงานสีเขียว2569.xlsx) is already parsed to src/data/generated/action-plan-2569.json (147 activities, 7 categories, 65 indicators). The printed plan PDF (04-แผนการดำเนินงานGreen2569.pdf) is the signed evidence copy.",
+  "sources": [
+    { "ref": "1.1/1.1.4 มีการกำหนดแผนการดำเนินงานสำนักงานสีเขียว2569.xlsx", "role": "primary-workbook", "inspection": "content-verified" },
+    { "ref": "04-แผนการดำเนินงานGreen2569.pdf", "role": "primary-printed", "inspection": "content-verified" },
+    { "ref": "src/data/generated/action-plan-2569.json", "role": "generated", "inspection": "content-verified" }
+  ],
+  "records": [
+    {
+      "id": "proj-2569-plan-1",
+      "year": 2569,
+      "indicatorCodes": ["1.1.4", "1.6.1"],
+      "issueCodes": ["1.1", "1.6"],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "sourceRef": "1.1/1.1.4 มีการกำหนดแผนการดำเนินงานสำนักงานสีเขียว2569.xlsx",
+      "coSourceRefs": [
+        "04-แผนการดำเนินงานGreen2569.pdf"
+      ],
+      "verification": {
+        "status": "reviewed",
+        "basis": "FY2569 annual plan workbook (147 activities, 7 categories, 65 indicators) + printed signed copy dated 20 เม.ย. 2569; planned/actual columns separate; plan/actual marked with '/' and recorded dates."
+      },
+      "availability": "content-verified",
+      "kind": "plan",
+      "title": "แผน/ผลการดำเนินโครงการสำนักงานสีเขียว (Green Office) อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา ประจำปี พ.ศ. 2569",
+      "period": "ปี 2569 (การดำเนินงาน 1 ปี)",
+      "durationYears": 1,
+      "writtenPlan": true,
+      "executiveApproved": true,
+      "approvingOrganizationCount": 1,
+      "categoryCoverage": 7,
+      "plannedVsActualSeparate": true,
+      "carbonNeutralityDocumented": false,
+      "netZeroDocumented": false,
+      "linksToIndicators": ["1.1.3", "1.1.4"],
+      "activityCount": 147,
+      "indicatorCoverage": 65,
+      "generatedDataRef": "src/data/generated/action-plan-2569.json",
+      "activitiesSourceStatus": "in-repo-generated",
+      "approvalDateBE": "20 เมษายน 2569",
+      "approvalDateISO": "2026-04-20",
+      "approvedByTh": "ผู้ช่วยศาสตราจารย์ ดร.ณัฐพล เลาห์รอดพันธุ์ ผู้อำนวยการสำนักวิจัยฯ (ผู้อนุมัติ)",
+      "approvedByEn": "Asst.Prof.Dr. Nattapon Laoharodphan, RAE Director (approver)"
+    }
+  ],
+  "summary": {
+    "planCount": 1,
+    "activityCount": 147,
+    "categoryCoverage": 7,
+    "fiscalYear": 2569
+  },
+  "gaps": [
+    { "indicator": "1.2.2", "status": "MISSING", "note": "No FY2569 role-understanding interview evidence; plan lists it as a planned evaluation activity." },
+    { "indicator": "1.5.3", "status": "MISSING", "note": "No FY2569 GHG-knowledge training evidence; plan lists it as a planned activity." },
+    { "indicator": "1.1.4", "status": "PARTIAL", "note": "Planned marks are source '/' entries; actual results recorded in the workbook require per-activity verification before treated as completed." }
+  ]
+}
