@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validateActionPlan2569, validateActionPlanScope, validateActionPlanCat2Canonical, validateActionPlanCat3Canonical } from './validate-action-plan-2569.mjs';
+import { validateActionPlan2569, validateActionPlanScope, validateActionPlanCat2Canonical, validateActionPlanCat3Canonical, validateActionPlanCat4Canonical } from './validate-action-plan-2569.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = join(ROOT, 'src/data/generated/action-plan-2569.json');
@@ -151,5 +151,46 @@ describe('action-plan-2569 generated data', () => {
     const errors = validateActionPlanCat3Canonical(clone);
     assert.ok(errors.some((e) => /3\.1\.1/.test(e)), 'must flag 3.1.1 count drift');
     assert.ok(errors.some((e) => /3\.2\.1/.test(e)), 'must flag 3.2.1 count drift');
+  });
+
+  test('cat4 canonical indicator mapping matches the frozen C4 counts (25 activities, 1 disclosed)', () => {
+    const data = JSON.parse(readFileSync(DATA, 'utf8'));
+    const errors = validateActionPlanCat4Canonical(data);
+    assert.deepEqual(errors, []);
+    const cat4 = data.categories.find((c) => c.id === 'cat-4');
+    assert.equal(cat4.activities.length, 25);
+    const counts = {};
+    let disclosed = 0;
+    for (const act of cat4.activities) {
+      assert.ok(act.indicatorCode, `${act.id} must retain legacy indicatorCode`);
+      assert.deepEqual(act.actualMonths, [], `${act.id} must have no executed FY2569 actualMonths`);
+      if (act.canonicalIndicatorCode) {
+        assert.match(act.canonicalIndicatorCode, /^4\.\d+\.\d+$/, `${act.id} must map to a canonical 4.x.x code`);
+        counts[act.canonicalIndicatorCode] = (counts[act.canonicalIndicatorCode] || 0) + 1;
+      } else {
+        disclosed += 1;
+        assert.equal(act.id, 'cat-4-4.1.3-16-16', 'only the 5S activity may be unmapped');
+        assert.ok(/DISCLOSED/i.test(act.canonicalMappingNote || ''), 'disclosed activity must carry a DISCLOSED note');
+      }
+    }
+    assert.deepEqual(counts, { '4.1.1': 5, '4.1.2': 8, '4.1.3': 3, '4.2.1': 4, '4.2.2': 4 });
+    assert.equal(disclosed, 1, 'exactly one disclosed (unmapped) activity');
+  });
+
+  test('cat4 canonical mapping guard trips when a count drifts or the disclosure is removed', () => {
+    const data = JSON.parse(readFileSync(DATA, 'utf8'));
+    const clone = structuredClone(data);
+    const cat4 = clone.categories.find((c) => c.id === 'cat-4');
+    const bigClean = cat4.activities.find((a) => a.id === 'cat-4-4.1.3-17-17');
+    bigClean.canonicalIndicatorCode = '4.1.3'; // would make 4.1.3=4 / 4.1.2=7
+    const errors = validateActionPlanCat4Canonical(clone);
+    assert.ok(errors.some((e) => /4\.1\.3/.test(e)), 'must flag 4.1.3 count drift');
+    assert.ok(errors.some((e) => /4\.1\.2/.test(e)), 'must flag 4.1.2 count drift');
+
+    const clone2 = structuredClone(data);
+    const fiveS = clone2.categories.find((c) => c.id === 'cat-4').activities.find((a) => a.id === 'cat-4-4.1.3-16-16');
+    delete fiveS.canonicalMappingNote;
+    const errors2 = validateActionPlanCat4Canonical(clone2);
+    assert.ok(errors2.some((e) => /DISCLOSED/i.test(e)), 'must flag a missing disclosure note');
   });
 });

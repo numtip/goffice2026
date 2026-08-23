@@ -26,15 +26,15 @@ const TEST_SCRIPT = fileURLToPath(import.meta.url);
 const SOURCE_ROOT = process.env.GOFFICE_FY2568_SOURCE_ROOT;
 
 const EXPECTED_COUNTS = {
-  cat1: 38,
-  cat2: 29,
-  cat3: 32,
-  cat4: 28,
+  cat1: 141,
+  cat2: 30,
+  cat3: 33,
+  cat4: 44,
   cat5: 47,
-  cat6: 32,
-  cat7: 3,
+  cat6: 34,
+  cat7: 4,
 };
-const EXPECTED_TOTAL = 209;
+const EXPECTED_TOTAL = 333;
 
 // Private source-location markers assembled from fragments so their raw
 // combined forms never appear in this committed file.
@@ -116,7 +116,7 @@ describe('audit-fy2568-baseline', () => {
     }
   });
 
-  it('total equals 209', () => {
+  it('total equals 333', () => {
     assert.strictEqual(json.total, EXPECTED_TOTAL);
   });
 

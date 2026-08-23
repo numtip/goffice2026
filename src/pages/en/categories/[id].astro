@@ -14,6 +14,8 @@ import Cat2ManagementCycle from '../../../components/categories/Cat2ManagementCy
 import Cat2DomainSnapshot from '../../../components/categories/Cat2DomainSnapshot.astro';
 import Cat3ManagementCycle from '../../../components/categories/Cat3ManagementCycle.astro';
 import Cat3DomainSnapshot from '../../../components/categories/Cat3DomainSnapshot.astro';
+import Cat4ManagementCycle from '../../../components/categories/Cat4ManagementCycle.astro';
+import Cat4DomainSnapshot from '../../../components/categories/Cat4DomainSnapshot.astro';
 
 const locale = 'en';
 
@@ -269,6 +271,11 @@ function localizedUrl(path: string): string {
                 Source-structure note: all 15 indicators have dedicated FY2568 evidence, but 3.2.2 is MEDIUM (image-only per-unit tables), 2 scans and the garbled measures PDF are unverified, 3.2.4/3.2.5/3.4.2 files have limitations, and no signed copy exists.
               </p>
             )}
+            {category.code === 'cat4' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                Source-structure note: all 5 indicators have dedicated FY2568 evidence, but foam-free 4.1.1(3) was not implemented, the reuse &gt;50% numeric threshold is not met (31.93% — innovation/composting branch), the general-waste −3% target is not met (+1.68%), 10 scan paths (8 unique contents) and the garbled measures PDF (cross-reference only) are unverified, the canonical report is the 10-03-69 DOCX (no signed copy), and ทส.1/ทส.2 records are external references.
+              </p>
+            )}
             {category.code === 'cat7' && (
               <p class="mt-1 text-xs leading-relaxed text-gray-600">
                 Source-structure note: no verified individual-indicator mapping for category 7.
@@ -309,6 +316,13 @@ function localizedUrl(path: string): string {
       <>
         <Cat3ManagementCycle locale={locale} />
         <Cat3DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat4' && (
+      <>
+        <Cat4ManagementCycle locale={locale} />
+        <Cat4DomainSnapshot locale={locale} />
       </>
     )}
 

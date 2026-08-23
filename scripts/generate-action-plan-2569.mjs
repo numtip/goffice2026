@@ -113,6 +113,55 @@ const CAT3_CANONICAL_INDICATOR = new Map([
   ['cat-3-3.6-3.6-6', '3.4.1'], // การประชุมและการจัดนิทรรศการ (green meetings)
 ]);
 
+/**
+ * Cat4 FY2569 action-plan canonical indicator mapping (GO-CAT4 §6, C4).
+ * Keyed by the deterministic generated activity id; legacy indicatorCode retained
+ * (the FY2569 workbook already uses the canonical 4.x.x codes for most rows).
+ * Frozen counts: 4.1.1=5 · 4.1.2=8 · 4.1.3=3 · 4.2.1=4 · 4.2.2=4 · disclosed=1 (total 25).
+ * Meaning-based mapping (by activityTh, not blind renumbering):
+ *   - 4.1.1 measures/Zero-waste/foam-free/intent/campaign → 4.1.1
+ *   - 4.1.2 sorting/collection/disposal operations → 4.1.2
+ *   - 4.1.3 waste-data/reuse/disposal-trend → 4.1.3
+ *   - Big Clean Day (cleaning/sorting/collection campaign) → 4.1.2
+ *   - 4.2.1 wastewater control → 4.2.1 · 4.2.2 treatment care → 4.2.2
+ * DISCLOSED (no canonical indicator): 5ส (5S workplace-organization activity)
+ *   cannot be supported by a single canonical Cat4 indicator — left null and
+ *   disclosed (canonicalMappingNote), never invented.
+ * No new activities and no FY2569 facts are added.
+ */
+const CAT4_CANONICAL_INDICATOR = new Map([
+  ['cat-4-4.1.1-1-1', '4.1.1'],
+  ['cat-4-4.1.1-2-2', '4.1.1'],
+  ['cat-4-4.1.1-3-3', '4.1.1'],
+  ['cat-4-4.1.1-4-4', '4.1.1'],
+  ['cat-4-4.1.1-5-5', '4.1.1'],
+  ['cat-4-4.1.2-6-6', '4.1.2'],
+  ['cat-4-4.1.2-7-7', '4.1.2'],
+  ['cat-4-4.1.2-8-8', '4.1.2'],
+  ['cat-4-4.1.2-9-9', '4.1.2'],
+  ['cat-4-4.1.2-10-10', '4.1.2'],
+  ['cat-4-4.1.2-11-11', '4.1.2'],
+  ['cat-4-4.1.2-12-12', '4.1.2'],
+  ['cat-4-4.1.3-13-13', '4.1.3'],
+  ['cat-4-4.1.3-14-14', '4.1.3'],
+  ['cat-4-4.1.3-15-15', '4.1.3'],
+  // cat-4-4.1.3-16-16 (5ส) → DISCLOSED, no canonical indicator
+  ['cat-4-4.1.3-17-17', '4.1.2'], // Big Clean Day → cleaning/sorting/collection supports 4.1.2
+  ['cat-4-4.2.1-18-18', '4.2.1'],
+  ['cat-4-4.2.1-19-19', '4.2.1'],
+  ['cat-4-4.2.1-20-20', '4.2.1'],
+  ['cat-4-4.2.1-21-21', '4.2.1'],
+  ['cat-4-4.2.2-22-22', '4.2.2'],
+  ['cat-4-4.2.2-23-23', '4.2.2'],
+  ['cat-4-4.2.2-24-24', '4.2.2'],
+  ['cat-4-4.2.2-25-25', '4.2.2'],
+]);
+
+/** Disclosure note for Cat4 activities without a canonical indicator (GO-CAT4 C4). */
+const CAT4_CANONICAL_MAPPING_NOTE = new Map([
+  ['cat-4-4.1.3-16-16', 'DISCLOSED: กิจกรรม 5 ส (5S workplace-organization) cannot be supported by a single canonical Cat4 indicator; left unmapped rather than invented.'],
+]);
+
 function cell(v) {
   return String(v ?? '')
     .replace(/\r\n/g, '\n')
@@ -217,12 +266,17 @@ function parseWorkbook(rows) {
     const activityId = `${currentCategory.id}-${slugPart(indicatorCode || 'item')}-${slugPart(taskNumber || String(activitySeq))}-${activitySeq}`;
 
     const canonicalIndicatorCode =
-      CAT3_CANONICAL_INDICATOR.get(activityId) ?? CAT2_CANONICAL_INDICATOR.get(activityId) ?? null;
+      CAT4_CANONICAL_INDICATOR.get(activityId) ??
+      CAT3_CANONICAL_INDICATOR.get(activityId) ??
+      CAT2_CANONICAL_INDICATOR.get(activityId) ??
+      null;
+    const canonicalMappingNote = CAT4_CANONICAL_MAPPING_NOTE.get(activityId) ?? null;
 
     currentCategory.activities.push({
       id: activityId,
       indicatorCode: indicatorCode || null,
       canonicalIndicatorCode,
+      ...(canonicalMappingNote ? { canonicalMappingNote } : {}),
       taskNumber,
       activityTh: titleParts.map((p) => p.trim()).filter(Boolean).join('\n'),
       frequency: cell(row[3]) || null,

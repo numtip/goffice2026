@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "sorting",
+  "updated": "2026-08-23",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CATEGORY4_WASTE_BLUEPRINT_V1",
+  "note": "FY2568 historical-baseline contract for 4.1.2 (waste sorting, collection and disposal implementation). Narrative items (bin layout, color labels, covered holding point, contractor monitoring, no burning) are content-verified from the txt evidence notes and the canonical report. The random-check form (24p) and the waste-contractor contract (1p) are image scans — pending OCR; the contract number (มจ.(กค.) 9/2568) is cross-verified via the report text. No invented content.",
+  "sources": [
+    { "ref": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (1) .txt", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #13 — bin layout: 2 dining-area points (2 bins each), 4 indoor points (floors 1–3), 1 outdoor 3-bay holding point." },
+    { "ref": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (2).txt", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #14 — color-coded labels on every bin (blue general, yellow recyclable, green wet, red hazardous)." },
+    { "ref": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (3) .txt", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #15 — covered, gated holding point (roof, rain/dust protection) + university central holding point." },
+    { "ref": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (4) แบบฟอร์มบันทึกการสุ่มตรวจการทิ้งขยะ.pdf", "role": "random-check-form", "inspection": "filename_folder_only", "disposition": "canonical-pending-verification", "note": "C1 #16 — 24-page image scan of monthly random-check records (2 days/month, first and last week). Content pending OCR." },
+    { "ref": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (5) สัญญาจ้าง.pdf", "role": "contract", "inspection": "filename_folder_only", "disposition": "canonical-pending-verification", "note": "C1 #17 — 1-page image scan of the waste-contractor contract (บริษัทเชียงใหม่เมืองสะอาด, เลขที่ มจ.(กค.) 9/2568). Content pending OCR; contract number cross-verified via report text." },
+    { "ref": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (6) .txt", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #18 — contractor-disposal monitoring/tracing for each waste category." },
+    { "ref": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (7) .txt", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #19 — no waste burning on site; categories sorted and handled by the licensed contractor." },
+    { "ref": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (10-03-69).docx", "role": "category-report", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #33 — canonical annual report containing the full 4.1.2 narrative and the contract reference." }
+  ],
+  "records": [
+    {
+      "id": "sorting-bin-layout-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.1.2"],
+      "issueCodes": ["4.1"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-sorting-bin-layout-fy2568"],
+      "sourceRef": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (1) .txt",
+      "manifestSha256": "adce045c6d7211771b684ff7e113dbee00cc4c20e203f25bdcfe80ddf50fffaa",
+      "verification": {
+        "status": "pending",
+        "basis": "4.1.2(1) bin-layout and sorting by waste category: 2 dining-area points (floor 3), 4 indoor points (floors 1–3), 1 outdoor 3-bay holding point — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "sortingImplementation",
+      "labelTh": "การจัดวางถังขยะและการคัดแยก 4.1.2(1)",
+      "labelEn": "Bin layout and waste sorting 4.1.2(1)"
+    },
+    {
+      "id": "sorting-labels-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.1.2"],
+      "issueCodes": ["4.1"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-sorting-labels-fy2568"],
+      "sourceRef": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (2).txt",
+      "manifestSha256": "96c7139f1d9c0adae83fea885f37a2264bba1547bb129aa9e6befba6b12e6df0",
+      "verification": {
+        "status": "pending",
+        "basis": "4.1.2(2) color-coded waste labels on every bin (blue general / yellow recyclable / green wet / red hazardous) — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "sortingImplementation",
+      "labelTh": "ป้ายบ่งชี้ประเภทขยะ 4.1.2(2)",
+      "labelEn": "Waste-type labels 4.1.2(2)"
+    },
+    {
+      "id": "sorting-holding-point-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.1.2"],
+      "issueCodes": ["4.1"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-sorting-holding-point-fy2568"],
+      "sourceRef": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (3) .txt",
+      "manifestSha256": "03aaba1ac7ccbb7688da511da1fabf7b226f81544f054aaa0278079502002980",
+      "verification": {
+        "status": "pending",
+        "basis": "4.1.2(3) covered/gated holding point + university central holding point (beside อาคารเรียนรวม 80 ปี) — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "sortingImplementation",
+      "labelTh": "จุดพักขยะ 4.1.2(3)",
+      "labelEn": "Waste holding point 4.1.2(3)"
+    },
+    {
+      "id": "sorting-random-check-scan-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.1.2"],
+      "issueCodes": ["4.1"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-sorting-random-check-scan-fy2568"],
+      "sourceRef": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (4) แบบฟอร์มบันทึกการสุ่มตรวจการทิ้งขยะ.pdf",
+      "manifestSha256": "53250412855edb6d6e13ac1d321efd02f4197dc9e8634f571a9e5246c6acf023",
+      "verification": {
+        "status": "pending",
+        "basis": "4.1.2(4) monthly random-check records (2 days/month, first and last week; 24-page image scan). 0 text chars — content unverifiable without OCR. NOT semantically verified."
+      },
+      "availability": "filename_folder_only",
+      "kind": "randomCheckScan",
+      "labelTh": "แบบฟอร์มสุ่มตรวจการทิ้งขยะ (สแกน, ไม่ยืนยันเนื้อหา)",
+      "labelEn": "Random waste-check form (scan, content unverified)",
+      "promoted": false
+    },
+    {
+      "id": "sorting-contractor-scan-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.1.2"],
+      "issueCodes": ["4.1"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-sorting-contractor-scan-fy2568"],
+      "sourceRef": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (5) สัญญาจ้าง.pdf",
+      "manifestSha256": "b3fd6fbc7954156c0894cf6429957f8e552acc82175a60d592a866a5dd0d64db",
+      "verification": {
+        "status": "pending",
+        "basis": "4.1.2(5) waste-contractor contract (บริษัทเชียงใหม่เมืองสะอาด จำกัด, เลขที่ มจ.(กค.) 9/2568; 1-page image scan). 0 text chars — content unverifiable without OCR. Contract number cross-verified via the report text; NOT semantically verified."
+      },
+      "availability": "filename_folder_only",
+      "kind": "contractScan",
+      "labelTh": "สัญญาจ้างกำจัดขยะ (สแกน, ไม่ยืนยันเนื้อหา)",
+      "labelEn": "Waste-contractor contract (scan, content unverified)",
+      "promoted": false
+    },
+    {
+      "id": "sorting-monitor-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.1.2"],
+      "issueCodes": ["4.1"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-sorting-monitor-fy2568"],
+      "sourceRef": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (6) .txt",
+      "manifestSha256": "397aeebc01b4aa5c0826a11208887f280a0a588a3c38eddf7be31da54baad102",
+      "verification": {
+        "status": "pending",
+        "basis": "4.1.2(6) contractor-disposal monitoring for each waste category — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "sortingImplementation",
+      "labelTh": "การติดตามการกำจัดขยะของผู้รับจ้าง 4.1.2(6)",
+      "labelEn": "Contractor-disposal monitoring 4.1.2(6)"
+    },
+    {
+      "id": "sorting-no-burning-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.1.2"],
+      "issueCodes": ["4.1"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-sorting-no-burning-fy2568"],
+      "sourceRef": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (7) .txt",
+      "manifestSha256": "713dcb524f5d1f062b93255534f42dc02723e8c0e5ff32a708eeb22ca0d2c8ea",
+      "verification": {
+        "status": "pending",
+        "basis": "4.1.2(7) no waste burning on site; each category sorted and handled by the licensed contractor — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "sortingImplementation",
+      "labelTh": "ไม่มีการเผาขยะ 4.1.2(7)",
+      "labelEn": "No waste burning 4.1.2(7)"
+    }
+  ],
+  "gaps": [],
+  "forwardRequirements": [],
+  "crossLinks": [
+    { "from": "4.1.2", "to": "4.1.1", "reason": "Sorting/collection/disposal operations (4.1.2) implement the 4.1.1 waste measures" },
+    { "from": "4.1.2", "to": "4.1.3", "reason": "Sorted/collected waste feeds the monthly waste data and reuse accounting (4.1.3)" }
+  ]
+}

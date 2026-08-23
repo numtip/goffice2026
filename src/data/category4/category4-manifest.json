@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0.0",
+  "updated": "2026-08-23",
+  "titleTh": "หมวด 4 — สัญญาข้อมูลตามหลักการ (Canonical Data Contracts)",
+  "titleEn": "Category 4 — Canonical Data Contracts",
+  "governance": "GOFFICE2026_CATEGORY4_WASTE_BLUEPRINT_V1",
+  "year": 2568,
+  "status": "PHASE_C_CONTRACTS",
+  "freeze": {
+    "status": "FROZEN_READ_ONLY_BASELINE",
+    "date": "2026-08-23",
+    "authorityDoc": "docs/GOFFICE2026_CATEGORY4_WASTE_BLUEPRINT_V1.md",
+    "dispositionDoc": "docs/data/GO-CAT4-PHASE-A-SOURCE-DISPOSITION.md"
+  },
+  "note": "Static-only canonical data contracts for Category 4 (การจัดการของเสีย). Each contract models the frozen FY2568 historical baseline only, using only C1-approved mappings and fy2568-publication.json manifest references/hashes. All 5 indicators (4.1.1, 4.1.2, 4.1.3, 4.2.1, 4.2.2) have dedicated evidence — no GAP/MISSING indicator. Annual waste scope is canonical: general waste 4,380.10 kg (target −3% vs 2567 → +1.68% NOT met), total 6,434.70 kg, reuse 31.93% (numeric >50% NOT met — claimed via innovation/compost branch). Monthly-form scope 5,625.7 kg is recorded separately (never conflated). The canonical annual report is the 10-03-69 DOCX (revision 129); the 02-03-69 DOCX is superseded; the 10-03-69 PDF is a reader export. 8 unique scan contents across 10 scan path instances and the garbled 4.1.1(1) measures PDF (cross-reference-only) are honestly disclosed. No invented OCR, signature, approval, score, or FY2569 data. evidenceIds reference the C3 evidence-index entries with matching manifest path/hash/availability.",
+  "contracts": [
+    { "domain": "targets", "file": "src/data/category4/targets.json", "indicators": [], "status": "historical-baseline", "note": "Cross-indicator FY2568 target clause (general waste reduce 3% vs 2567) from the canonical 10-03-69 annual report. Category-level evidence by design (spans the 4.1.3 data + 4.1.1 measures)." },
+    { "domain": "measures", "file": "src/data/category4/measures.json", "indicators": ["4.1.1"], "status": "historical-baseline", "note": "Waste management measures + awareness/participation. The 4.1.1(1) measures PDF is garbled (cross-reference-only); ประกาศเป้าหมาย/บริบท are scans (pending); 4.1.1(3) ปลอดโฟม gap is disclosed." },
+    { "domain": "sorting", "file": "src/data/category4/sorting.json", "indicators": ["4.1.2"], "status": "historical-baseline", "note": "Waste sorting/collection/disposal implementation (bin layout, labels, holding points, random checks, contractor routing, monitoring, no burning). Two scans pending." },
+    { "domain": "data", "file": "src/data/category4/data.json", "indicators": ["4.1.3"], "status": "historical-baseline", "note": "Waste measurement + target analysis + reuse/recycling. Annual scope (6,434.70 total / 4,380.10 general / 31.93% reuse) is canonical; monthly-form scope 5,625.7 recorded separately. Verified year tables 2566/67/68 promoted." },
+    { "domain": "wastewater", "file": "src/data/category4/wastewater.json", "indicators": ["4.2.1"], "status": "historical-baseline", "note": "Office wastewater management + effluent quality vs legal standard. Monthly FY2568 effluent statistics verified; skimming record scan pending." },
+    { "domain": "treatment-care", "file": "src/data/category4/treatment-care.json", "indicators": ["4.2.2"], "status": "historical-baseline", "note": "Wastewater treatment care/maintenance (weekly skimming, grease disposal, repair, leak inspection). Skimming scan = byte-identical duplicate of the 4.2.1 record." }
+  ],
+  "missingIndicators": [],
+  "forwardRequirements": [
+    { "code": "FOAM_FREE_FY2569_PLAN", "year": 2569, "note": "4.1.1(3) ปลอดโฟม: FY2568 source states no foam-free declaration was made in FY2568; the FY2569 plan exists only as a forward statement in the source note (4.1.1 (3) .txt). Not a verified FY2569 fact." }
+  ],
+  "sourceLimitations": [
+    { "code": "SCAN_TARGET_ANNOUNCE", "note": "4.1.1. (2) ประกาศการกำหนดเป้าหมายสิ่งแวดล้อม 2568.pdf — 1-page image scan, content unverifiable without OCR (target clause cross-verified via the report text)." },
+    { "code": "SCAN_CONTEXT_ANNOUNCE", "note": "4.1.1 (4) ประกาศบริบทองค์กรและขอบเขตฯ 2568.pdf — 8-page image scan, content unverifiable without OCR (scope 9,873 m² cross-verified via the report text)." },
+    { "code": "SCAN_RANDOM_CHECK_FORM", "note": "4.1.2 (4) แบบฟอร์มบันทึกการสุ่มตรวจการทิ้งขยะ.pdf — 24-page image scan (monthly random-check records), content unverifiable without OCR." },
+    { "code": "SCAN_CONTRACT", "note": "4.1.2 (5) สัญญาจ้าง.pdf — 1-page image scan (waste-contractor contract), content unverifiable without OCR (contract number cross-verified via the report text)." },
+    { "code": "SCAN_WASTE_LOG", "note": "4.1.3 (1) แบบบันทึกข้อมูลปริมาณขยะ.pdf — 12-page image scan (FY2568 monthly waste log), content unverifiable without OCR (monthly values verified via the promoted year-2568 table and the form XLSX)." },
+    { "code": "SCAN_SKIMMING_RECORD", "note": "บันทึกการตักคราบน้ำมัน และไขมัน.pdf — 4-page image scan present under both 4.2.1(1) and 4.2.2(3) (byte-identical duplicate, G2); content unverifiable without OCR." },
+    { "code": "GARBLED_MEASURES_PDF", "note": "4.1.1 (1) มาตรการควบคุมพลังงานและทรัพยากร อาคารเฉลิมพระเกียรติฯ 2568.pdf — Thai text layer present but glyph mapping broken; verified by cross-reference to the section narrative only, glyph layer pending OCR." },
+    { "code": "NO_SIGNED_COPY", "note": "No file in the FY2568 Cat4 set contains a signature/approval block. The canonical 10-03-69 report is a historical baseline — no signed/approved submission copy is claimed." },
+    { "code": "REUSE_NUMERIC_NOT_MET", "note": "4.1.3(3) numeric threshold '>50% reuse' is NOT met (31.93%). The criterion's alternative branch (innovation/composting) is the honest claim basis — never present 31.93% as meeting >50%." },
+    { "code": "GENERAL_WASTE_TARGET_NOT_MET", "note": "4.1.3(2)/(4): FY2568 general waste 4,380.10 kg is +72.40 kg (+1.68%) vs 2567 — target reduce 3% NOT met. The 'declining trend' claim is only valid on the 3-year window vs 2566." },
+    { "code": "MONTHLY_VS_ANNUAL_SCOPE", "note": "The monthly form (XLSX คำนวณ% sheet) totals 5,625.7 kg; the annual report scope totals 6,434.70 kg (adds เศษอาหาร + เศษกิ่งไม้/ใบไม้). Two legitimately different aggregation scopes — both recorded, never conflated." },
+    { "code": "WTMS_EXTERNAL_RECORDS", "note": "แบบ ทส.1/ทส.2 monthly wastewater discharge records are external online evidence (building.mju.ac.th bID 18845/18846) — recorded as reference links only, not in the repo." }
+  ],
+  "annualReport": {
+    "status": "category-level-historical-baseline",
+    "canonical": { "path": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (10-03-69).docx", "sizeBytes": 49759555, "sha256": "52c5bb3cee45013f0b78b2e06800dc9acb29e61eb72921d746e3685336ebbbb8" },
+    "superseded": { "path": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (02-03-69).docx", "sizeBytes": 49821367, "sha256": "5c5d582bf6747f8bcdbe8b481ba35d0dd0aeea9b93d63983f4ecf7d78797d979" },
+    "export": { "path": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (10-03-69).pdf", "sizeBytes": 3491167, "sha256": "1577e4a438076d6264a14955dd69e4a4e22979616ab40e6a318728e274a307c9" },
+    "note": "The 10-03-69 DOCX (revision 129, modified 2026-03-11) is the canonical category-level historical baseline only — no signed/approved submission copy exists or is claimed. The 02-03-69 DOCX (revision 106) is superseded; the 10-03-69 PDF is the reader-friendly export."
+  },
+  "validation": "scripts/validate-category4-contracts.mjs"
+}

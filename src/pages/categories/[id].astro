@@ -14,6 +14,8 @@ import Cat2ManagementCycle from '../../components/categories/Cat2ManagementCycle
 import Cat2DomainSnapshot from '../../components/categories/Cat2DomainSnapshot.astro';
 import Cat3ManagementCycle from '../../components/categories/Cat3ManagementCycle.astro';
 import Cat3DomainSnapshot from '../../components/categories/Cat3DomainSnapshot.astro';
+import Cat4ManagementCycle from '../../components/categories/Cat4ManagementCycle.astro';
+import Cat4DomainSnapshot from '../../components/categories/Cat4DomainSnapshot.astro';
 
 export function getStaticPaths() {
   const issues = issueData.issues;
@@ -281,6 +283,11 @@ const weightLabel = isCat7
                 หมายเหตุโครงสร้างต้นทาง: ทั้ง 15 ตัวชี้วัดมีหลักฐานเฉพาะปี 2568 แต่ 3.2.2 มีระดับ MEDIUM (ตารางต่อหน่วยเป็นรูปภาพ) มีสแกน 2 ไฟล์ เอกสารมาตรการ PDF ข้อความเพี้ยน ไฟล์ 3.2.4/3.2.5/3.4.2 มีข้อจำกัด และไม่มีฉบับลงนาม
               </p>
             )}
+            {category.code === 'cat4' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                หมายเหตุโครงสร้างต้นทาง: ทั้ง 5 ตัวชี้วัดมีหลักฐานเฉพาะปี 2568 แต่ปลอดโฟม 4.1.1(3) ยังไม่ได้ดำเนินการ เกณฑ์นำกลับมาใช้ใหม่ >50% ไม่บรรลุ (31.93% — สาขานวัตกรรม/ปุ๋ยหมัก) เป้าหมายขยะทั่วไปลด 3% ไม่บรรลุ (+1.68%) มีสแกน 10 รายการ (เนื้อหาไม่ซ้ำ 8) PDF มาตรการข้อความเพี้ยน (อ้างอิงข้ามเท่านั้น) รายงานหลักคือฉบับ 10-03-69 (ไม่มีฉบับลงนาม) และบันทึก ทส.1/ทส.2 เป็นข้อมูลอ้างอิงภายนอก
+              </p>
+            )}
             {category.code === 'cat7' && (
               <p class="mt-1 text-xs leading-relaxed text-gray-600">
                 หมายเหตุโครงสร้างต้นทาง: ยังไม่มีการยืนยันการเชื่อมโยงรายตัวชี้วัดสำหรับหมวด 7
@@ -321,6 +328,13 @@ const weightLabel = isCat7
       <>
         <Cat3ManagementCycle locale={locale} />
         <Cat3DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat4' && (
+      <>
+        <Cat4ManagementCycle locale={locale} />
+        <Cat4DomainSnapshot locale={locale} />
       </>
     )}
 
