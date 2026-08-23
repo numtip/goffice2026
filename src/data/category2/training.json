@@ -1,0 +1,185 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "training",
+  "updated": "2026-08-23",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CATEGORY2_COMMUNICATION_BLUEPRINT_V1",
+  "note": "FY2568 historical-baseline contract for Cat2 issue 2.1 (การอบรมให้ความรู้และประเมินความเข้าใจ). Records model only frozen FY2568 source evidence per GO-CAT2-PHASE-A-SOURCE-DISPOSITION. evidenceIds intentionally empty until C3 maps evidence-index. 2.2.3 appears only in gaps as MISSING_DEDICATED_EVIDENCE.",
+  "sources": [
+    { "ref": "2.1/2.1.1/68-2.1(1) แผน.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical" },
+    { "ref": "2.1/2.1.1/68-2.1(1) ผล.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical" },
+    { "ref": "2.1/2.1.1/68-2.1(3) ประวัติการอบรมบุคลากร.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical" },
+    { "ref": "2.1/2.1.1/2.1.1.pdf", "role": "indicator-wrapper", "inspection": "content-verified", "disposition": "canonical" },
+    { "ref": "2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1(2) ใบลงทะเบียน (การฝึกซ้อมการดับเพลิงและซ้อมอพยพหนีไฟ).pdf", "role": "registration-scan", "inspection": "filename_folder_only", "disposition": "canonical-pending-verification" },
+    { "ref": "2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1(2) ใบลงทะเบียน (ให้ความรู้และทบทวนกฎหมายสิ่งแวดล้อม GO) สี.pdf", "role": "registration-scan", "inspection": "filename_folder_only", "disposition": "canonical-pending-verification" },
+    { "ref": "2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1.2(1)-ใบลงทบความสำคัญสำนักงานสีเขียว.PDF", "role": "registration-scan", "inspection": "filename_folder_only", "disposition": "ambiguous-pending" },
+    { "ref": "หมวด 2 ข้อ 2.1(1-3) การฝึกอบรม.xlsx", "role": "form-template", "inspection": "structural-only", "disposition": "blank-form" },
+    { "ref": "2.1/2.1.2/2.1.2.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical" },
+    { "ref": "2.1/2.1.2/วิทยากร/ประวัติ รศ.ดร.สยาม อรุณศรีมรกต.pdf", "role": "trainer-cv", "inspection": "content-verified", "disposition": "canonical" },
+    { "ref": "2.1/2.1.2/วิทยากร/ประวัติวิทยากร (งานป้องกันและบรรเทาสาธารณภัย เทศบาลเมืองแม่โจ้).pdf", "role": "trainer-cv", "inspection": "content-verified", "disposition": "canonical" }
+  ],
+  "records": [
+    {
+      "id": "tr-plan-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.1.1"],
+      "issueCodes": ["2.1"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-tr-plan-fy2568"],
+      "sourceRef": "2.1/2.1.1/68-2.1(1) แผน.pdf",
+      "manifestSha256": "cec5f1841a4d3a2cf2d2d5e5e25d15f42f941fbaf0aaab23e565e14b50cd5d2e",
+      "verification": {
+        "status": "pending",
+        "basis": "Form 2.1(1) annual training plan (หลักสูตร/กลุ่มเป้าหมาย/เดือน/วิทยากร) — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "trainingPlan",
+      "labelTh": "แผนการฝึกอบรม 2.1(1)",
+      "labelEn": "Training plan form 2.1(1)"
+    },
+    {
+      "id": "tr-delivery-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.1.1"],
+      "issueCodes": ["2.1"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-tr-delivery-fy2568"],
+      "sourceRef": "2.1/2.1.1/2.1.1.pdf",
+      "manifestSha256": "2d54f9e33ed91e2a74a7c261f06e3b1f2e248353265bab2d5210c0eaebc12611",
+      "verification": {
+        "status": "pending",
+        "basis": "2.1.1 narrative: ให้ความรู้/ความเข้าใจ/ความตระหนักด้านสิ่งแวดล้อมแก่บุคลากร (อบรม 5 หลักสูตร, 26 พ.ค. 2568, 30 พ.ค. 2568) — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "trainingDelivery",
+      "labelTh": "การดำเนินการอบรม 2.1.1",
+      "labelEn": "Training delivery 2.1.1"
+    },
+    {
+      "id": "tr-evaluation-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.1.1"],
+      "issueCodes": ["2.1"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-tr-evaluation-fy2568"],
+      "sourceRef": "2.1/2.1.1/68-2.1(1) ผล.pdf",
+      "manifestSha256": "4ced80333d37b38da8d25dd08a9abc07dc63d9569c5dee0049801d3e5cc0f527",
+      "verification": {
+        "status": "pending",
+        "basis": "Form 2.1(1) evaluation results (หลักสูตร/ผล) — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "trainingEvaluation",
+      "labelTh": "ผลการประเมินการอบรม 2.1(1)",
+      "labelEn": "Training evaluation results form 2.1(1)"
+    },
+    {
+      "id": "tr-history-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.1.1"],
+      "issueCodes": ["2.1"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-tr-history-fy2568"],
+      "sourceRef": "2.1/2.1.1/68-2.1(3) ประวัติการอบรมบุคลากร.pdf",
+      "manifestSha256": "ff1c899616fe6300759fda61312758810031273ead84d5a4efbac2b8861c2c48",
+      "verification": {
+        "status": "pending",
+        "basis": "Form 2.1(3) per-person training history (104 pages) — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "trainingHistory",
+      "labelTh": "ประวัติการอบรมบุคลากร 2.1(3)",
+      "labelEn": "Personnel training history form 2.1(3)"
+    },
+    {
+      "id": "tr-registration-scans-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.1.1"],
+      "issueCodes": ["2.1"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-tr-registration-scans-fy2568"],
+      "sourceRef": "2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1(2) ใบลงทะเบียน (การฝึกซ้อมการดับเพลิงและซ้อมอพยพหนีไฟ).pdf",
+      "manifestSha256": "2df5e32413f5e8e8410b83b496ca41a7e3ef8260c0ebc022f9e3a000fcb03618",
+      "verification": {
+        "status": "pending",
+        "basis": "Sign-in sheets (form 2.1(2)) for training sessions — 4 scanned PDFs under 2.1(2); all filename_folder_only (0 text chars), content not readable without OCR. Not semantically verified."
+      },
+      "availability": "filename_folder_only",
+      "kind": "trainingRegistration",
+      "labelTh": "ใบลงทะเบียนและประเมินผลบุคลากร 2.1(2) (สแกน)",
+      "labelEn": "Training sign-in sheets form 2.1(2) (scans)",
+      "relatedSources": [
+        "2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1(2) ใบลงทะเบียน (กิจกรรมBigCleaningDay2025).pdf",
+        "2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1(2) ใบลงทะเบียน (ให้ความรู้และทบทวนกฎหมายสิ่งแวดล้อม GO) สี.pdf",
+        "2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1.2(1)-ใบลงทบความสำคัญสำนักงานสีเขียว.PDF"
+      ],
+      "promoted": false
+    },
+    {
+      "id": "tr-course-responsibility-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.1.2"],
+      "issueCodes": ["2.1"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-tr-course-responsibility-fy2568"],
+      "sourceRef": "2.1/2.1.2/2.1.2.pdf",
+      "manifestSha256": "7a254af392e0af28a14c8bcc4eca7f5ce16d3e90b7abad72d9a4899fd82ba6bb",
+      "verification": {
+        "status": "pending",
+        "basis": "2.1.2 narrative: กำหนดผู้รับผิดชอบการอบรมแต่ละหลักสูตร + วิทยากร; เป้าหมาย 75 / ผล 60 — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "courseResponsibility",
+      "labelTh": "ผู้รับผิดชอบการอบรม 2.1.2",
+      "labelEn": "Course responsibility 2.1.2"
+    },
+    {
+      "id": "tr-trainer-1-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.1.2"],
+      "issueCodes": ["2.1"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-tr-trainer-1-fy2568"],
+      "sourceRef": "2.1/2.1.2/วิทยากร/ประวัติ รศ.ดร.สยาม อรุณศรีมรกต.pdf",
+      "manifestSha256": "524d4a1926b36bdc92e9cde308d7fb43696e7a74390c14919683d22cc1417cb1",
+      "verification": {
+        "status": "pending",
+        "basis": "Trainer CV (รองศาสตราจารย์, มหาวิทยาลัยมหิดล) — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "trainerQualification",
+      "labelTh": "ประวัติวิทยากร รศ.ดร.สยาม อรุณศรีมรกต",
+      "labelEn": "Trainer CV — Assoc. Prof. Dr. Siam Arunsrimorakot"
+    },
+    {
+      "id": "tr-trainer-2-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.1.2"],
+      "issueCodes": ["2.1"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-tr-trainer-2-fy2568"],
+      "sourceRef": "2.1/2.1.2/วิทยากร/ประวัติวิทยากร (งานป้องกันและบรรเทาสาธารณภัย เทศบาลเมืองแม่โจ้).pdf",
+      "manifestSha256": "afad8682285be153ea83c6900ffeaad468205ff5286e086e8a12c2448771a25e",
+      "verification": {
+        "status": "pending",
+        "basis": "Trainer CV (งานป้องกันและบรรเทาสาธารณภัย เทศบาลเมืองแม่โจ้) — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "trainerQualification",
+      "labelTh": "ประวัติวิทยากร (งานป้องกันและบรรเทาสาธารณภัย)",
+      "labelEn": "Trainer CV (Maejo municipality disaster prevention)"
+    }
+  ],
+  "gaps": [
+    { "indicator": "2.2.3", "status": "MISSING_DEDICATED_EVIDENCE", "note": "Cross-category gap declared per Cat1 convention: no questionnaire/respondent/percentage evidence anywhere in the FY2568 Cat2 source set; 2.2.3.pdf is narrative-only." },
+    { "indicator": "2.1.1", "status": "PARTIAL", "note": "4 sign-in scans (form 2.1(2)) are filename_folder_only — content pending OCR/human verification. Blank form xlsx is structural-only and does not evidence delivered training." }
+  ],
+  "forwardRequirements": [
+    { "indicator": "2.1.2", "year": 2569, "status": "FORWARD_REQUIREMENT", "note": "PO B2 (2026-08-23): no new FY2569 activity added. FY2569 committee minutes must record per-course trainer assignment and serve as the required 2.1.2 cross-evidence. Forward requirement only — not verified FY2569 evidence and not a historical claim." }
+  ],
+  "crossLinks": [
+    { "from": "2.1.1", "to": "2.2.2", "reason": "BigCleaningDay sign-in filed under 2.1(2) is a candidate 2.2.2 campaign record (unverified, not promoted)" },
+    { "from": "2.1.2", "to": "2.1.1", "reason": "Course responsibility (2.1.2) references the same training plan/courses as 2.1.1" }
+  ]
+}

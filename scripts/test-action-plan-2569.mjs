@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validateActionPlan2569, validateActionPlanScope } from './validate-action-plan-2569.mjs';
+import { validateActionPlan2569, validateActionPlanScope, validateActionPlanCat2Canonical } from './validate-action-plan-2569.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = join(ROOT, 'src/data/generated/action-plan-2569.json');
@@ -65,7 +65,6 @@ describe('action-plan-2569 generated data', () => {
 
   test('category titles match canonical criteria titles', () => {
     const data = JSON.parse(readFileSync(DATA, 'utf8'));
-    const pages = JSON.parse(readFileSync(PAGES, 'utf8'));
     const criteria = JSON.parse(readFileSync(CRITERIA, 'utf8'));
     const canonicalById = new Map(criteria.categories.map((c) => [String(c.id), c.title.th]));
     for (const cat of data.categories) {
@@ -91,5 +90,36 @@ describe('action-plan-2569 generated data', () => {
     // Full scope validation must still pass with the canonical counts.
     const errors = validateActionPlanScope(data, pages, criteria, indicators);
     assert.deepEqual(errors, []);
+  });
+
+  test('cat2 canonical indicator mapping matches the frozen C4 counts', () => {
+    const data = JSON.parse(readFileSync(DATA, 'utf8'));
+    const errors = validateActionPlanCat2Canonical(data);
+    assert.deepEqual(errors, []);
+    const cat2 = data.categories.find((c) => c.id === 'cat-2');
+    assert.equal(cat2.activities.length, 20);
+    const counts = {};
+    for (const act of cat2.activities) {
+      assert.ok(act.canonicalIndicatorCode, `${act.id} must carry canonicalIndicatorCode`);
+      assert.ok(act.indicatorCode, `${act.id} must retain legacy indicatorCode`);
+      counts[act.canonicalIndicatorCode] = (counts[act.canonicalIndicatorCode] || 0) + 1;
+    }
+    assert.deepEqual(counts, { '2.1.1': 8, '2.2.1': 1, '2.2.2': 9, '2.2.4': 2 });
+    assert.equal(counts['2.1.2'], undefined, '2.1.2 must have 0 plan activities');
+    assert.equal(counts['2.2.3'], undefined, '2.2.3 must have 0 plan activities');
+    // Legacy codes must not be canonical codes for the 2.3–2.7 series.
+    const legacy223 = cat2.activities.filter((a) => a.canonicalIndicatorCode === '2.2.3');
+    assert.equal(legacy223.length, 0);
+  });
+
+  test('cat2 canonical mapping guard trips when a count drifts', () => {
+    const data = JSON.parse(readFileSync(DATA, 'utf8'));
+    const clone = structuredClone(data);
+    const cat2 = clone.categories.find((c) => c.id === 'cat-2');
+    const act = cat2.activities.find((a) => a.id === 'cat-2-2.1-2.1-1');
+    act.canonicalIndicatorCode = '2.1.1'; // would make 2.1.1=9 / 2.2.1=0
+    const errors = validateActionPlanCat2Canonical(clone);
+    assert.ok(errors.some((e) => /2\.2\.1/.test(e)), 'must flag 2.2.1 count drift');
+    assert.ok(errors.some((e) => /2\.1\.1/.test(e)), 'must flag 2.1.1 count drift');
   });
 });

@@ -371,8 +371,8 @@ test('cat2 and cat7 source-structure notes are present in both locales', () => {
   for (const route of DETAIL_ROUTES) {
     const src = readFileSync(join(PROJECT_ROOT, route), 'utf8');
     const cat2Note = route.includes('/en/')
-      ? 'an unresolved item exists for category 2.'
-      : 'พบรายการที่ยังไม่ได้รับการแก้ไขในหมวด 2';
+      ? '2.2.3 still lacks dedicated evidence'
+      : 'ตัวชี้วัด 2.2.3 ยังไม่มีหลักฐานเฉพาะ';
     const cat7Note = route.includes('/en/')
       ? 'no verified individual-indicator mapping for category 7.'
       : 'ยังไม่มีการยืนยันการเชื่อมโยงรายตัวชี้วัดสำหรับหมวด 7';

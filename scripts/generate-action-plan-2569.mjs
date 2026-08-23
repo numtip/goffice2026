@@ -61,6 +61,36 @@ const MONTHS = [
 
 const MONTH_LABELS = new Set(MONTHS.map((m) => m.labelTh));
 
+/**
+ * Cat2 FY2569 action-plan canonical indicator mapping (GO-CAT2-PHASE-A §2, C4).
+ * Keyed by the deterministic generated activity id; legacy indicatorCode retained.
+ * Frozen counts: 2.1.1=8 · 2.2.1=1 · 2.2.2=9 · 2.2.4=2 · 2.1.2=0 · 2.2.3=0.
+ * The workbook keeps its legacy 2.1–2.7 numbering (binary Excel edit is not
+ * safely reproducible); the canonical code lives in the generated JSON + docs.
+ */
+const CAT2_CANONICAL_INDICATOR = new Map([
+  ['cat-2-2.1-2.1-1', '2.2.1'], // ประชุมคณะกรรมการหมวด 2 → comms responsibility/guidelines
+  ['cat-2-2.1.1-2.1.1-2', '2.2.2'], // ดำเนินการตามแผนการสื่อสารสิ่งแวดล้อม → campaign execution
+  ['cat-2-2.2-3-3', '2.1.1'], // module trainings (formal training delivery)
+  ['cat-2-2.2-4-4', '2.1.1'],
+  ['cat-2-2.2-5-5', '2.1.1'],
+  ['cat-2-2.2-6-6', '2.1.1'],
+  ['cat-2-2.2-7-7', '2.1.1'],
+  ['cat-2-2.2-8-8', '2.1.1'],
+  ['cat-2-2.3-2.3-9', '2.1.1'], // registration + pre/post evaluation → 2.1.1 evaluation/records
+  ['cat-2-2.4-2.4-10', '2.1.1'], // training history/records → 2.1.1 records
+  ['cat-2-2.5-11-11', '2.2.2'], // recurring awareness campaign series ครั้งที่ 1–8
+  ['cat-2-2.5-12-12', '2.2.2'],
+  ['cat-2-2.5-13-13', '2.2.2'],
+  ['cat-2-2.5-14-14', '2.2.2'],
+  ['cat-2-2.5-15-15', '2.2.2'],
+  ['cat-2-2.5-16-16', '2.2.2'],
+  ['cat-2-2.5-17-17', '2.2.2'],
+  ['cat-2-2.5-18-18', '2.2.2'],
+  ['cat-2-2.6-2.6-19', '2.2.4'], // systematic feedback channel → 2.2.4
+  ['cat-2-2.7-2.7-20', '2.2.4'], // summarize/analyze/report to management → 2.2.4
+]);
+
 function cell(v) {
   return String(v ?? '')
     .replace(/\r\n/g, '\n')
@@ -162,9 +192,12 @@ function parseWorkbook(rows) {
     const indicatorCode =
       /^\d+\.\d+(\.\d+)?$/.test(taskNumber ?? '') ? taskNumber : currentIndicator || null;
 
+    const activityId = `${currentCategory.id}-${slugPart(indicatorCode || 'item')}-${slugPart(taskNumber || String(activitySeq))}-${activitySeq}`;
+
     currentCategory.activities.push({
-      id: `${currentCategory.id}-${slugPart(indicatorCode || 'item')}-${slugPart(taskNumber || String(activitySeq))}-${activitySeq}`,
+      id: activityId,
       indicatorCode: indicatorCode || null,
+      canonicalIndicatorCode: CAT2_CANONICAL_INDICATOR.get(activityId) || null,
       taskNumber,
       activityTh: titleParts.map((p) => p.trim()).filter(Boolean).join('\n'),
       frequency: cell(row[3]) || null,
