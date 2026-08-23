@@ -1,7 +1,7 @@
 {
   "version": "0.8.0",
   "updated": "2026-08-23",
-  "note": "C3 (2026-08-23): added Category 2 FY2568 indicator-level evidence entries from C2 contracts + C1 disposition + fy2568-publication manifest. Scans/candidates remain pending/filename_folder_only; 2.2.3 has no evidence record (MISSING_DEDICATED_EVIDENCE); D1 duplicate, misplaced 1.3(4), superseded docx, report export, and blank templates excluded. Stale water placeholders (ev-water-audit-2025, ev-water-conservation) left untouched pending explicit Cat3 target per C3 rule.",
+  "note": "C3 (2026-08-23): added Category 3 FY2568 indicator-level evidence entries for all 15 cat3 indicators from the C2 contracts + C1 disposition + fy2568-publication manifest (17 indicator-level + targets/measures + annual report category-level). Scans and image-only tables honestly flagged; 3.2.2 MEDIUM; misbounded #19 / incomplete #21 / partial #32 disclosed; no signed-copy claim. Legacy cat3 placeholders reconciled: ev-energy-audit-2025, ev-energy-metering-2025, ev-energy-led-project, ev-water-meter-q1, ev-waste-audit-2025, ev-transport-fleet-2025 marked superseded; off-manifest operational-workbook claims (energy metering, water meter q1, fleet fuel) downgraded to category-level. Stale cat2 water placeholders (ev-water-audit-2025, ev-water-conservation) left untouched.",
   "items": [
     {
       "id": "ev-energy-audit-2025",
@@ -19,12 +19,16 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat3"],
+      "categoryCodes": [
+        "cat3"
+      ],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. Phase B (2026-08-18): energy-domain record reclassified cat1 → cat3 (not Category 1 evidence). No exact indicator or issue mapping established.",
-        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น Phase B (2026-08-18): ย้ายหมวดหลักฐานด้านพลังงาน cat1 → cat3 (ไม่ใช่หลักฐานหมวด 1) ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
-      }
+        "basis": "Pre-Round-3 data — category-level association only. Phase B (2026-08-18): energy-domain record reclassified cat1 → cat3 (not Category 1 evidence). No exact indicator or issue mapping established. [C3 2026-08-23 reconciled: Pre-Round-3 category placeholder — no file exists in the FY2568 cat3 manifest. Superseded by the canonical Cat3 C3 indicator-level mapping (energy measures).]",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น Phase B (2026-08-18): ย้ายหมวดหลักฐานด้านพลังงาน cat1 → cat3 (ไม่ใช่หลักฐานหมวด 1) ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน [C3 2026-08-23 ตรวจสอบ: Pre-Round-3 category placeholder — no file exists in the FY2568 cat3 manifest. Superseded by the canonical Cat3 C3 indicator-level mapping (energy measures).]"
+      },
+      "superseded": true,
+      "supersededBy": "ev-cat3-measures-electricity-fy2568"
     },
     {
       "id": "ev-energy-metering-2025",
@@ -45,10 +49,12 @@
       "publicationMode": "internal-metadata-only",
       "sharePointUrl": null,
       "sharePointUrlPending": true,
-      "traceabilityLevel": "indicator",
-      "indicatorCodes": ["3.2.2"],
-      "issueCodes": ["3.2"],
-      "categoryCodes": ["cat3"],
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": [
+        "cat3"
+      ],
       "provenance": {
         "sourceType": "operational-xlsx",
         "sourceLabel": "Electricity usage monitoring workbook (Green Office form 3.2(1))",
@@ -59,12 +65,14 @@
       },
       "verification": {
         "status": "pending",
-        "basis": "ET-1 traceability promotion: operational electricity consumption workbook directly supports indicator 3.2.2 (consumption data per unit vs targets). Source file docs/1.2-elect.xlsx is off-disk (Test-Path 2026-07-27); realSourceAvailable set false. Human data-owner verification and file restoration required before verified status.",
-        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์บันทึกการใช้ไฟฟ้าสนับสนุนตัวชี้วัด 3.2.2 โดยตรง ไฟล์ต้นฉบับ docs/1.2-elect.xlsx ไม่อยู่บนดิสก์ (ตรวจสอบ 2026-07-27) ตั้ง realSourceAvailable เป็น false ต้องกู้คืนไฟล์และรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนเปลี่ยนเป็นสถานะตรวจสอบแล้ว",
+        "basis": "ET-1 traceability promotion: operational electricity consumption workbook directly supports indicator 3.2.2 (consumption data per unit vs targets). Source file docs/1.2-elect.xlsx is off-disk (Test-Path 2026-07-27); realSourceAvailable set false. Human data-owner verification and file restoration required before verified status. [C3 2026-08-23 reconciled: Legacy operational-workbook claim (docs/1.2-elect.xlsx, off-disk) — not part of the FY2568 published cat3 manifest. Downgraded to category-level and superseded by the canonical Cat3 C3 3.2.2 entry.]",
+        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์บันทึกการใช้ไฟฟ้าสนับสนุนตัวชี้วัด 3.2.2 โดยตรง ไฟล์ต้นฉบับ docs/1.2-elect.xlsx ไม่อยู่บนดิสก์ (ตรวจสอบ 2026-07-27) ตั้ง realSourceAvailable เป็น false ต้องกู้คืนไฟล์และรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนเปลี่ยนเป็นสถานะตรวจสอบแล้ว [C3 2026-08-23 ตรวจสอบ: Legacy operational-workbook claim (docs/1.2-elect.xlsx, off-disk) — not part of the FY2568 published cat3 manifest. Downgraded to category-level and superseded by the canonical Cat3 C3 3.2.2 entry.]",
         "reviewPhase": "REL-1",
         "reviewedAt": "2026-07-19",
         "reviewOutcome": "pending-po-signoff"
-      }
+      },
+      "superseded": true,
+      "supersededBy": "ev-cat3-data-electricity-fy2568"
     },
     {
       "id": "ev-energy-led-project",
@@ -82,12 +90,16 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat3"],
+      "categoryCodes": [
+        "cat3"
+      ],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. Phase B (2026-08-18): energy-domain record reclassified cat1 → cat3 (not Category 1 evidence). No exact indicator or issue mapping established.",
-        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น Phase B (2026-08-18): ย้ายหมวดหลักฐานด้านพลังงาน cat1 → cat3 (ไม่ใช่หลักฐานหมวด 1) ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
-      }
+        "basis": "Pre-Round-3 data — category-level association only. Phase B (2026-08-18): energy-domain record reclassified cat1 → cat3 (not Category 1 evidence). No exact indicator or issue mapping established. [C3 2026-08-23 reconciled: Pre-Round-3 category placeholder — no file exists in the FY2568 cat3 manifest. Superseded by the canonical Cat3 C3 indicator-level mapping (electricity measures).]",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น Phase B (2026-08-18): ย้ายหมวดหลักฐานด้านพลังงาน cat1 → cat3 (ไม่ใช่หลักฐานหมวด 1) ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน [C3 2026-08-23 ตรวจสอบ: Pre-Round-3 category placeholder — no file exists in the FY2568 cat3 manifest. Superseded by the canonical Cat3 C3 indicator-level mapping (electricity measures).]"
+      },
+      "superseded": true,
+      "supersededBy": "ev-cat3-measures-electricity-fy2568"
     },
     {
       "id": "ev-water-meter-q1",
@@ -104,14 +116,16 @@
       "updated": "2026-07-27",
       "sourceId": "src-xlsx-water-usage",
       "realSourcePath": "docs/1.1-Water.xlsx",
-      "realSourceAvailable": true,
+      "realSourceAvailable": false,
       "publicationMode": "internal-metadata-only",
       "sharePointUrl": null,
       "sharePointUrlPending": true,
-      "traceabilityLevel": "indicator",
-      "indicatorCodes": ["3.1.2"],
-      "issueCodes": ["3.1"],
-      "categoryCodes": ["cat3"],
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": [
+        "cat3"
+      ],
       "provenance": {
         "sourceType": "operational-xlsx",
         "sourceLabel": "Water usage monitoring workbook (Green Office form 3.1(1))",
@@ -122,12 +136,14 @@
       },
       "verification": {
         "status": "pending",
-        "basis": "ET-1 traceability promotion: water consumption monitoring workbook directly supports indicator 3.1.2 (water consumption data per unit vs targets). Source file existence is system-validated; human data-owner verification is still required before verified status.",
-        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์บันทึกการใช้น้ำสนับสนุนตัวชี้วัด 3.1.2 (ข้อมูลการใช้น้ำต่อหน่วยเทียบกับเป้าหมาย) โดยตรง ระบบได้ตรวจสอบว่ามีไฟล์ต้นฉบับอยู่จริงแล้ว แต่ยังต้องรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนจึงจะเปลี่ยนเป็นสถานะตรวจสอบแล้ว",
+        "basis": "ET-1 traceability promotion: water consumption monitoring workbook directly supports indicator 3.1.2 (water consumption data per unit vs targets). Source file existence is system-validated; human data-owner verification is still required before verified status. [C3 2026-08-23 reconciled: Legacy operational-workbook claim (docs/1.1-Water.xlsx) with a path mislocated under /documents/cat2/. Workbook is not part of the FY2568 published cat3 manifest. Downgraded to category-level and superseded by the canonical Cat3 C3 3.1.2 entry.]",
+        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์บันทึกการใช้น้ำสนับสนุนตัวชี้วัด 3.1.2 (ข้อมูลการใช้น้ำต่อหน่วยเทียบกับเป้าหมาย) โดยตรง ระบบได้ตรวจสอบว่ามีไฟล์ต้นฉบับอยู่จริงแล้ว แต่ยังต้องรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนจึงจะเปลี่ยนเป็นสถานะตรวจสอบแล้ว [C3 2026-08-23 ตรวจสอบ: Legacy operational-workbook claim (docs/1.1-Water.xlsx) with a path mislocated under /documents/cat2/. Workbook is not part of the FY2568 published cat3 manifest. Downgraded to category-level and superseded by the canonical Cat3 C3 3.1.2 entry.]",
         "reviewPhase": "REL-1",
         "reviewedAt": "2026-07-19",
         "reviewOutcome": "pending-po-signoff"
-      }
+      },
+      "superseded": true,
+      "supersededBy": "ev-cat3-data-water-fy2568"
     },
     {
       "id": "ev-water-audit-2025",
@@ -145,7 +161,9 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat2"],
+      "categoryCodes": [
+        "cat2"
+      ],
       "verification": {
         "status": "unresolved",
         "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
@@ -168,7 +186,9 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat2"],
+      "categoryCodes": [
+        "cat2"
+      ],
       "verification": {
         "status": "unresolved",
         "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
@@ -195,9 +215,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": true,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["4.1.3"],
-      "issueCodes": ["4.1"],
-      "categoryCodes": ["cat4"],
+      "indicatorCodes": [
+        "4.1.3"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
       "provenance": {
         "sourceType": "operational-xlsx",
         "sourceLabel": "Waste management workbook — recycling calculation sheets (Green Office form 4.1(1))",
@@ -231,12 +257,16 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat3"],
+      "categoryCodes": [
+        "cat3"
+      ],
       "verification": {
         "status": "unresolved",
-        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
-        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน"
-      }
+        "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established. [C3 2026-08-23 reconciled: Legacy misassociation: waste audit is a Cat4 record, not a Cat3 resource/energy record, and no file exists in the FY2568 cat3 manifest. Marked superseded; Cat4 owns waste evidence.]",
+        "basisTh": "ข้อมูลจากรอบก่อนรอบที่ 3 เชื่อมโยงในระดับหมวดหมู่เท่านั้น ยังไม่มีการเชื่อมโยงกับตัวชี้วัดหรือประเด็นที่ชัดเจน [C3 2026-08-23 ตรวจสอบ: Legacy misassociation: waste audit is a Cat4 record, not a Cat3 resource/energy record, and no file exists in the FY2568 cat3 manifest. Marked superseded; Cat4 owns waste evidence.]"
+      },
+      "superseded": true,
+      "supersededBy": null
     },
     {
       "id": "ev-waste-monthly-2025",
@@ -258,9 +288,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": true,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["4.1.2"],
-      "issueCodes": ["4.1"],
-      "categoryCodes": ["cat4"],
+      "indicatorCodes": [
+        "4.1.2"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
       "provenance": {
         "sourceType": "operational-xlsx",
         "sourceLabel": "Waste management reporting workbook (Green Office form 4.1(1))",
@@ -298,9 +334,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": true,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["1.5.1"],
-      "issueCodes": ["1.5"],
-      "categoryCodes": ["cat1"],
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCodes": [
+        "cat1"
+      ],
       "provenance": {
         "sourceType": "operational-xlsx",
         "sourceLabel": "Greenhouse gas inventory workbook (Green Office form 1.5(1))",
@@ -334,7 +376,9 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat4"],
+      "categoryCodes": [
+        "cat4"
+      ],
       "verification": {
         "status": "unresolved",
         "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
@@ -361,9 +405,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": true,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["1.5.1"],
-      "issueCodes": ["1.5"],
-      "categoryCodes": ["cat1"],
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCodes": [
+        "cat1"
+      ],
       "provenance": {
         "sourceType": "operational-xlsx",
         "sourceLabel": "GHG workbook EF TGO AR5 sheet — emission factor references",
@@ -397,7 +447,9 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat5"],
+      "categoryCodes": [
+        "cat5"
+      ],
       "verification": {
         "status": "unresolved",
         "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
@@ -420,7 +472,9 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat5"],
+      "categoryCodes": [
+        "cat5"
+      ],
       "verification": {
         "status": "unresolved",
         "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
@@ -443,7 +497,9 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat5"],
+      "categoryCodes": [
+        "cat5"
+      ],
       "verification": {
         "status": "unresolved",
         "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
@@ -466,7 +522,9 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat6"],
+      "categoryCodes": [
+        "cat6"
+      ],
       "verification": {
         "status": "unresolved",
         "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
@@ -492,10 +550,13 @@
       "publicationMode": "internal-metadata-only",
       "sharePointUrl": null,
       "sharePointUrlPending": true,
-      "traceabilityLevel": "indicator",
-      "indicatorCodes": ["3.2.5"],
-      "issueCodes": ["3.2"],
-      "categoryCodes": ["cat3", "cat6"],
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": [
+        "cat3",
+        "cat6"
+      ],
       "provenance": {
         "sourceType": "operational-xlsx",
         "sourceLabel": "Gasoline/fuel consumption workbook (Green Office form 3.2(5))",
@@ -506,12 +567,14 @@
       },
       "verification": {
         "status": "pending",
-        "basis": "Day 1 metadata promotion from document-registry. Source workbook not on disk; human data-owner verification required.",
-        "basisTh": "การยกระดับ metadata วัน Day 1 จาก document-registry ไฟล์ต้นฉบับไม่อยู่ใน repository ต้องรอผู้รับผิดชอบข้อมูลตรวจสอบ",
+        "basis": "Day 1 metadata promotion from document-registry. Source workbook not on disk; human data-owner verification required. [C3 2026-08-23 reconciled: Legacy operational-workbook claim (docs/1.3_Gassolene.xlsx, off-disk) — not part of the FY2568 published cat3 manifest. Downgraded to category-level and superseded by the canonical Cat3 C3 3.2.5 entry.]",
+        "basisTh": "การยกระดับ metadata วัน Day 1 จาก document-registry ไฟล์ต้นฉบับไม่อยู่ใน repository ต้องรอผู้รับผิดชอบข้อมูลตรวจสอบ [C3 2026-08-23 ตรวจสอบ: Legacy operational-workbook claim (docs/1.3_Gassolene.xlsx, off-disk) — not part of the FY2568 published cat3 manifest. Downgraded to category-level and superseded by the canonical Cat3 C3 3.2.5 entry.]",
         "reviewPhase": "DAY1",
         "reviewedAt": "2026-07-27",
         "reviewOutcome": "pending-po-signoff"
-      }
+      },
+      "superseded": true,
+      "supersededBy": "ev-cat3-data-fuel-fy2568"
     },
     {
       "id": "ev-transport-policy",
@@ -529,7 +592,9 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat6"],
+      "categoryCodes": [
+        "cat6"
+      ],
       "verification": {
         "status": "unresolved",
         "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
@@ -552,7 +617,9 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat7"],
+      "categoryCodes": [
+        "cat7"
+      ],
       "verification": {
         "status": "unresolved",
         "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
@@ -575,7 +642,9 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat7"],
+      "categoryCodes": [
+        "cat7"
+      ],
       "verification": {
         "status": "unresolved",
         "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
@@ -598,7 +667,9 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat7"],
+      "categoryCodes": [
+        "cat7"
+      ],
       "verification": {
         "status": "unresolved",
         "basis": "Pre-Round-3 data — category-level association only. No exact indicator or issue mapping established.",
@@ -625,9 +696,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": true,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["1.1.2"],
-      "issueCodes": ["1.1"],
-      "categoryCodes": ["cat1"],
+      "indicatorCodes": [
+        "1.1.2"
+      ],
+      "issueCodes": [
+        "1.1"
+      ],
+      "categoryCodes": [
+        "cat1"
+      ],
       "verification": {
         "status": "pending",
         "basis": "ET-1 traceability promotion: signed policy PDF (doc/GreenOfficePolicy2026.pdf) is off-disk and not tracked in the repository (checked 2026-08-02); realSourceAvailable set false. Human data-owner verification and file restoration required before verified status. Phase B (2026-08-18): indicator remapped 1.2.1 → 1.1.2 per official 2569 taxonomy.",
@@ -654,9 +731,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": true,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["1.1.3"],
-      "issueCodes": ["1.1"],
-      "categoryCodes": ["cat1"],
+      "indicatorCodes": [
+        "1.1.3"
+      ],
+      "issueCodes": [
+        "1.1"
+      ],
+      "categoryCodes": [
+        "cat1"
+      ],
       "verification": {
         "status": "pending",
         "basis": "ET-1 traceability promotion: targets announcement PDF (doc/Green Office Goals.pdf) is off-disk and not tracked in the repository (checked 2026-08-02); realSourceAvailable set false. Human data-owner verification and file restoration required before verified status. Phase B (2026-08-18): indicator remapped 1.3.1 → 1.1.3 per official 2569 taxonomy.",
@@ -683,9 +766,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": true,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["1.2.1"],
-      "issueCodes": ["1.2"],
-      "categoryCodes": ["cat1"],
+      "indicatorCodes": [
+        "1.2.1"
+      ],
+      "issueCodes": [
+        "1.2"
+      ],
+      "categoryCodes": [
+        "cat1"
+      ],
       "verification": {
         "status": "pending",
         "basis": "ET-1 traceability promotion: appointment order PDF (doc/Order_appointing_the_committee.pdf) is off-disk and not tracked in the repository (checked 2026-08-02); realSourceAvailable set false. Personal names require privacy review and file restoration before public copy. Phase B (2026-08-18): indicator remapped 1.4.1 → 1.2.1 per official 2569 taxonomy.",
@@ -712,9 +801,17 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["1.3.1", "1.3.2", "1.3.3"],
-      "issueCodes": ["1.3"],
-      "categoryCodes": ["cat1"],
+      "indicatorCodes": [
+        "1.3.1",
+        "1.3.2",
+        "1.3.3"
+      ],
+      "issueCodes": [
+        "1.3"
+      ],
+      "categoryCodes": [
+        "cat1"
+      ],
       "provenance": {
         "sourceType": "assessment-xlsx",
         "sourceLabel": "Original FY2568 1.3 workbook (ผลประเมินปัญหา2568.xlsx)",
@@ -747,9 +844,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.1.1"],
-      "issueCodes": ["2.1"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.1.1"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -783,9 +886,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.1.1"],
-      "issueCodes": ["2.1"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.1.1"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -819,9 +928,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.1.1"],
-      "issueCodes": ["2.1"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.1.1"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -855,9 +970,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.1.1"],
-      "issueCodes": ["2.1"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.1.1"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -896,9 +1017,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.1.1"],
-      "issueCodes": ["2.1"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.1.1"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "filename_folder_only",
       "promoted": false,
       "provenance": {
@@ -933,9 +1060,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.1.2"],
-      "issueCodes": ["2.1"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.1.2"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -969,9 +1102,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.1.2"],
-      "issueCodes": ["2.1"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.1.2"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -1005,9 +1144,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.1.2"],
-      "issueCodes": ["2.1"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.1.2"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -1041,9 +1186,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.2.1"],
-      "issueCodes": ["2.2"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.2.1"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -1077,9 +1228,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.2.1"],
-      "issueCodes": ["2.2"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.2.1"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "filename_folder_only",
       "promoted": false,
       "provenance": {
@@ -1114,9 +1271,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.2.1"],
-      "issueCodes": ["2.2"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.2.1"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -1150,9 +1313,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.2.1"],
-      "issueCodes": ["2.2"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.2.1"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -1186,9 +1355,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.2.2"],
-      "issueCodes": ["2.2"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.2.2"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "evidenceStrength": "THIN",
       "provenance": {
@@ -1223,9 +1398,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.2.2"],
-      "issueCodes": ["2.2"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.2.2"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "filename_folder_only",
       "promoted": false,
       "provenance": {
@@ -1260,9 +1441,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.2.2"],
-      "issueCodes": ["2.2"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.2.2"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "filename_folder_only",
       "promoted": false,
       "provenance": {
@@ -1297,9 +1484,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.2.4"],
-      "issueCodes": ["2.2"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.2.4"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -1333,9 +1526,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.2.4"],
-      "issueCodes": ["2.2"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.2.4"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -1369,9 +1568,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.2.4"],
-      "issueCodes": ["2.2"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.2.4"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -1405,9 +1610,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["2.2.4"],
-      "issueCodes": ["2.2"],
-      "categoryCodes": ["cat2"],
+      "indicatorCodes": [
+        "2.2.4"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -1443,7 +1654,9 @@
       "traceabilityLevel": "category",
       "indicatorCodes": [],
       "issueCodes": [],
-      "categoryCodes": ["cat2"],
+      "categoryCodes": [
+        "cat2"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2568",
@@ -1456,6 +1669,799 @@
         "status": "pending",
         "basis": "C1 D2 disposition: canonical revision (rev 60). Category-level historical baseline only; no signed/approved submission claim (PO B1). Export PDF and superseded 2.3 docx excluded from indicator evidence.",
         "basisTh": "C1 D2: ฉบับหลัก (rev 60) เป็นฐานประวัติระดับหมวดหมู่เท่านั้น ไม่มีการอ้างฉบับลงนาม/อนุมัติ (PO B1) ไฟล์ PDF export และ docx 2.3 ที่ถูกแทนที่ไม่นับเป็นหลักฐานตัวชี้วัด"
+      }
+    },
+    {
+      "id": "ev-cat3-targets-measures-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Category 3 targets and measures",
+      "title": "Cat3 FY2568 Targets and Measures (หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68)",
+      "titleTh": "เป้าหมาย ตัวชี้วัด และมาตรการหมวด 3 ปี 2568",
+      "description": "FY2568 Cat3 target table (electricity/water/fuel/paper each reduce 1% vs 2024) plus the full 9-section resource conservation measures. Frozen historical baseline for comparison with FY2569; not a current-year result.",
+      "descriptionTh": "ตารางเป้าหมายหมวด 3 ปี 2568 (ไฟฟ้า/น้ำ/น้ำมัน/กระดาษ ลด 1% เทียบปี 2567) และมาตรการควบคุมการใช้พลังงานและทรัพยากร 9 หัวข้อ เป็นฐานประวัติสำหรับเปรียบเทียบปี 2569 ไม่ใช่ผลปีปัจจุบัน",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/%E0%B8%AB%E0%B8%A1%E0%B8%A7%E0%B8%94%E0%B8%97%E0%B8%B5%E0%B9%88%203%20%E0%B9%80%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%95%E0%B8%B1%E0%B8%A7%E0%B8%8A%E0%B8%B5%E0%B9%89%E0%B8%A7%E0%B8%B1%E0%B8%94%20%E0%B9%81%E0%B8%A5%E0%B8%B0%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%2068.docx",
+      "fileType": "DOCX",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68.docx",
+      "manifestSha256": "1581620c4deef11e0976ef64b3d061ae4e23c473370cacac2191e71d881df4e8",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 targets and measures (Green Office form หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68.docx)",
+        "sourceLabelTh": "เป้าหมาย ตัวชี้วัด และมาตรการหมวด 3 ปี 2568 (หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68.docx)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Target table + 9-section measures. Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ตารางเป้าหมายและมาตรการ 9 หัวข้อ ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-measures-water-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Water conservation measures",
+      "title": "Cat3 FY2568 Water Conservation Measures (3.1.1)",
+      "titleTh": "มาตรการประหยัดน้ำหมวด 3 ปี 2568 (3.1.1)",
+      "description": "FY2568 water conservation measures: awareness stickers, 08:00–09:00 watering schedule, timer-app watering, AC-condensate reuse, sensor faucets. Frozen historical baseline.",
+      "descriptionTh": "มาตรการประหยัดน้ำ ปี 2568: สติ๊กเกอร์รณรงค์ กำหนดเวลารดน้ำ 08.00–09.00 แอปตั้งเวลา นำน้ำทิ้งเครื่องปรับอากาศมารดน้ำ ก๊อกเซนเซอร์ เป็นฐานประวัติปี 2568",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%99%E0%B9%89%E0%B8%B3/3.1.1.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.1 การใช้น้ำ/3.1.1.pdf",
+      "manifestSha256": "e588f03c81bc9a1004eb25d0a83ecef20f81ce7225ece4fd64d9c07763a0e64c",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.1.1"
+      ],
+      "issueCodes": [
+        "3.1"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 water conservation measures (3.1.1)",
+        "sourceLabelTh": "มาตรการประหยัดน้ำหมวด 3 ปี 2568 (3.1.1)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-ac-condensate-scan-fy2568",
+      "categoryId": "cat3",
+      "indicator": "AC-condensate water capture photos",
+      "title": "Cat3 FY2568 AC-condensate Water Capture Photos (3.1.1, scan)",
+      "titleTh": "ภาพถ่ายน้ำทิ้งเครื่องปรับอากาศหมวด 3 ปี 2568 (3.1.1, สแกน)",
+      "description": "12-page image-only scan of AC-condensate water capture. Content not machine-readable; filename/folder only. Supports the 3.1.1 AC-water reuse measure but is NOT semantically verified.",
+      "descriptionTh": "สแกนภาพถ่ายน้ำทิ้งเครื่องปรับอากาศ 12 หน้า อ่านเนื้อหาไม่ได้ ระบุจากชื่อไฟล์/โฟลเดอร์เท่านั้น สนับสนุนมาตรการนำน้ำทิ้งเครื่องปรับอากาศกลับมาใช้ (3.1.1) แต่ยังไม่ยืนยันเนื้อหา",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%99%E0%B9%89%E0%B8%B3/3.1.1%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%99%E0%B9%89%E0%B8%B3/%E0%B8%9B%E0%B8%A3%E0%B8%B4%E0%B8%A1%E0%B8%B2%E0%B8%93%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%97%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%AD%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A8.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.1 การใช้น้ำ/3.1.1 มาตรการหรือแนวทางใช้น้ำ/ปริมาณน้ำทั้งเครื่องปรับอากาศ.pdf",
+      "manifestSha256": "67c366e0ab38ea8173184be1d0cf4cd50c3dd2d4af5b1f6326fe6763dc4d606c",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.1.1"
+      ],
+      "issueCodes": [
+        "3.1"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "filename_folder_only",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 AC-condensate photos (scan, content not machine-readable)",
+        "sourceLabelTh": "ภาพถ่ายน้ำทิ้งเครื่องปรับอากาศหมวด 3 ปี 2568 (สแกน ยังอ่านเนื้อหาไม่ได้)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 classification: filename_folder_only (pure image scan, 0 text chars). Content not verified — requires OCR/human verification. Not semantically verified.",
+        "basisTh": "C1 จัดชั้น: filename_folder_only (สแกน 0 ตัวอักษร) ยังไม่ยืนยันเนื้อหา ต้องใช้ OCR/ตรวจสอบโดยมนุษย์"
+      },
+      "promoted": false
+    },
+    {
+      "id": "ev-cat3-data-water-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Water consumption data per unit",
+      "title": "Cat3 FY2568 Water Consumption Data per Unit (3.1.2)",
+      "titleTh": "ข้อมูลการใช้น้ำต่อหน่วยหมวด 3 ปี 2568 (3.1.2)",
+      "description": "FY2568 water data: 8,337.50 units (+47.1% vs 2024), 87.76 units/person (+47.71%) → NOT met (target reduce 1%). Frozen historical baseline.",
+      "descriptionTh": "ข้อมูลการใช้น้ำปี 2568: 8,337.50 หน่วย (+47.1% เทียบปี 2567), 87.76 หน่วย/คน (+47.71%) → ไม่บรรลุเป้าหมาย (ลด 1%) เป็นฐานประวัติปี 2568",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%99%E0%B9%89%E0%B8%B3/3.1.2.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.1 การใช้น้ำ/3.1.2.pdf",
+      "manifestSha256": "a1a81b1385f768295017211d30b95f1327a405353a72dde427867b5c7cca9a72",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.1.2"
+      ],
+      "issueCodes": [
+        "3.1"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 water consumption data per unit (3.1.2)",
+        "sourceLabelTh": "ข้อมูลการใช้น้ำต่อหน่วยหมวด 3 ปี 2568 (3.1.2)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). 8,337.50 u (+47.1%), 87.76 u/person (+47.71%), NOT met. Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) 8,337.50 หน่วย (+47.1%), 87.76 หน่วย/คน (+47.71%), ไม่บรรลุเป้าหมาย ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-compliance-water-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Water conservation compliance",
+      "title": "Cat3 FY2568 Water Compliance Survey (3.1.3)",
+      "titleTh": "การสำรวจการปฏิบัติตามมาตรการประหยัดน้ำหมวด 3 ปี 2568 (3.1.3)",
+      "description": "FY2568 behavioral compliance survey: no leaks/drips found at faucets in work areas. No numeric score.",
+      "descriptionTh": "การสำรวจพฤติกรรมปี 2568: ไม่พบจุดรั่ว/หยดน้ำที่ก๊อกน้ำในพื้นที่ทำงาน ไม่มีคะแนนตัวเลข",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%99%E0%B9%89%E0%B8%B3/3.1.3.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.1 การใช้น้ำ/3.1.3.pdf",
+      "manifestSha256": "96dc30d3f6a558252fdcdc0ded706142611bac8ca457539aa21768169e93b40c",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.1.3"
+      ],
+      "issueCodes": [
+        "3.1"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 water compliance survey (3.1.3)",
+        "sourceLabelTh": "การสำรวจการปฏิบัติตามมาตรการประหยัดน้ำหมวด 3 ปี 2568 (3.1.3)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). No leaks/drips found. Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ไม่พบจุดรั่ว/หยดน้ำ ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-measures-electricity-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Electricity conservation measures",
+      "title": "Cat3 FY2568 Electricity Conservation Measures (3.2.1)",
+      "titleTh": "มาตรการประหยัดไฟฟ้าหมวด 3 ปี 2568 (3.2.1)",
+      "description": "FY2568 electricity measures: LED T8 ×150, solar cells ×4, motion sensors. Frozen historical baseline.",
+      "descriptionTh": "มาตรการประหยัดไฟฟ้า ปี 2568: หลอด LED T8 ×150, โซล่าร์เซล ×4, เซนเซอร์ตรวจจับความเคลื่อนไหว เป็นฐานประวัติปี 2568",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%9E%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%87%E0%B8%B2%E0%B8%99/3.2.1%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B9%84%E0%B8%9F%E0%B8%9F%E0%B9%89%E0%B8%B2%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/3.2.1%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B9%84%E0%B8%9F%E0%B8%9F%E0%B9%89%E0%B8%B2%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.2 การใช้พลังงาน/3.2.1 มาตรการหรือแนวทางใช้ไฟฟ้ากับสำนักงาน/3.2.1 มาตรการหรือแนวทางใช้ไฟฟ้ากับสำนักงาน.pdf",
+      "manifestSha256": "7aef62a4cea6f224505394210fbe5e4504712e5566bf193230ddf8b16de0121b",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.2.1"
+      ],
+      "issueCodes": [
+        "3.2"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 electricity conservation measures (3.2.1)",
+        "sourceLabelTh": "มาตรการประหยัดไฟฟ้าหมวด 3 ปี 2568 (3.2.1)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-data-electricity-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Electricity consumption data per unit",
+      "title": "Cat3 FY2568 Electricity Consumption Data per Unit (3.2.2)",
+      "titleTh": "ข้อมูลการใช้ไฟฟ้าต่อหน่วยหมวด 3 ปี 2568 (3.2.2)",
+      "description": "FY2568 electricity data: 403,036.80 units (+4.6% vs 2024) → NOT met (target reduce 1%). Per-unit electricity tables are image-only — MEDIUM evidence strength.",
+      "descriptionTh": "ข้อมูลการใช้ไฟฟ้าปี 2568: 403,036.80 หน่วย (+4.6% เทียบปี 2567) → ไม่บรรลุเป้าหมาย (ลด 1%) ตารางการใช้ต่อหน่วยเป็นรูปภาพ — หลักฐานระดับ MEDIUM",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%9E%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%87%E0%B8%B2%E0%B8%99/3.2.2%20%E0%B8%A1%E0%B8%B5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%97%E0%B8%B3%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B9%84%E0%B8%9F%E0%B8%9F%E0%B9%89%E0%B8%B2%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%A7%E0%B8%A2%E0%B9%80%E0%B8%9B%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%9A%E0%B9%80%E0%B8%97%E0%B8%B5%E0%B8%A2%E0%B8%9A%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B9%80%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2/3.2.2%20%E0%B8%A1%E0%B8%B5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%97%E0%B8%B3%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B9%84%E0%B8%9F%E0%B8%9F%E0%B9%89%E0%B8%B2%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%A7%E0%B8%A2%E0%B9%80%E0%B8%9B%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%9A%E0%B9%80%E0%B8%97%E0%B8%B5%E0%B8%A2%E0%B8%9A%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B9%80%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.2 การใช้พลังงาน/3.2.2 มีการจัดทำข้อมูลการใช้ไฟฟ้าต่อหน่วยเปรียบเทียบกับเป้าหมาย/3.2.2 มีการจัดทำข้อมูลการใช้ไฟฟ้าต่อหน่วยเปรียบเทียบกับเป้าหมาย.pdf",
+      "manifestSha256": "96c97dbda160bf13d34e75274db49510a93a9ad48831d098f41d92c9be74f81d",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.2.2"
+      ],
+      "issueCodes": [
+        "3.2"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 electricity consumption data per unit (3.2.2) — MEDIUM",
+        "sourceLabelTh": "ข้อมูลการใช้ไฟฟ้าต่อหน่วยหมวด 3 ปี 2568 (3.2.2) — MEDIUM",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification for 3.2.2: text extracted (content-verified). Summary 403,036.80 u (+4.6%), NOT met. Per-unit tables image-only — per-unit numbers not text-extractable (MEDIUM). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) สำหรับ 3.2.2 สรุป 403,036.80 หน่วย (+4.6%), ไม่บรรลุเป้าหมาย ตารางต่อหน่วยเป็นรูปภาพ — ตัวเลขต่อหน่วยอ่านไม่ได้ (MEDIUM) ยังต้องรอการตรวจยืนยัน"
+      },
+      "evidenceStrength": "MEDIUM"
+    },
+    {
+      "id": "ev-cat3-compliance-electricity-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Electricity conservation compliance",
+      "title": "Cat3 FY2568 Electricity Compliance Survey (3.2.3)",
+      "titleTh": "การสำรวจการปฏิบัติตามมาตรการประหยัดไฟฟ้าหมวด 3 ปี 2568 (3.2.3)",
+      "description": "FY2568 behavioral compliance survey: no lights left on in unused areas. No numeric score.",
+      "descriptionTh": "การสำรวจพฤติกรรมปี 2568: ไม่พบการเปิดไฟทิ้งในพื้นที่ที่ไม่ได้ใช้งาน ไม่มีคะแนนตัวเลข",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%9E%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%87%E0%B8%B2%E0%B8%99/3.2.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%9A%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A2%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%9F%E0%B8%9F%E0%B9%89%E0%B8%B2%E0%B9%83%E0%B8%99%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%97%E0%B8%B3%E0%B8%87%E0%B8%B2%E0%B8%99/3.2.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%9A%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A2%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%9F%E0%B8%9F%E0%B9%89%E0%B8%B2%E0%B9%83%E0%B8%99%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%97%E0%B8%B3%E0%B8%87%E0%B8%B2%E0%B8%99.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.2 การใช้พลังงาน/3.2.3 การปฏิบัติตามมาตรการประหยัดไฟฟ้าในพื้นที่ทำงาน/3.2.3 การปฏิบัติตามมาตรการประหยัดไฟฟ้าในพื้นที่ทำงาน.pdf",
+      "manifestSha256": "03a312b3b7f730386cc755d09ad41601f3ab387f733f421cb0d8d969a018ba0d",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.2.3"
+      ],
+      "issueCodes": [
+        "3.2"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 electricity compliance survey (3.2.3)",
+        "sourceLabelTh": "การสำรวจการปฏิบัติตามมาตรการประหยัดไฟฟ้าหมวด 3 ปี 2568 (3.2.3)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). No lights left on. Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ไม่พบการเปิดไฟทิ้ง ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-measures-fuel-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Fuel conservation measures",
+      "title": "Cat3 FY2568 Fuel Conservation Measures (3.2.4)",
+      "titleTh": "มาตรการประหยัดน้ำมันเชื้อเพลิงหมวด 3 ปี 2568 (3.2.4)",
+      "description": "FY2568 fuel conservation measures for office travel (pages 2–9). C1 anomaly: the file is misbounded — starts with a 3.2.3 page and ends with 3.2.5 pages. Frozen historical baseline.",
+      "descriptionTh": "มาตรการประหยัดน้ำมันเชื้อเพลิง ปี 2568 (หน้า 2–9) ความผิดปกติ C1: ไฟล์คลุมขอบเขต — เริ่มด้วยหน้า 3.2.3 และจบด้วยหน้า 3.2.5 เป็นฐานประวัติปี 2568",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%9E%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%87%E0%B8%B2%E0%B8%99/3.2.4%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%A1%E0%B8%B1%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B8%B7%E0%B9%89%E0%B8%AD%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%B4%E0%B8%87%E0%B9%83%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/3.2.4.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.2 การใช้พลังงาน/3.2.4 มาตรการหรือแนวทางการใช้น้ำมันเชื้อเพลิงในการเดินทางที่เหมาะสมกับสำนักงาน/3.2.4.pdf",
+      "manifestSha256": "a57aa5d4e80b8c63402b41b715fa3bfe697cbe2c00efacd13863654d638df785",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.2.4"
+      ],
+      "issueCodes": [
+        "3.2"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 fuel conservation measures (3.2.4)",
+        "sourceLabelTh": "มาตรการประหยัดน้ำมันเชื้อเพลิงหมวด 3 ปี 2568 (3.2.4)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). C1 anomaly #19: misbounded file. Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ความผิดปกติ C1 ข้อ 19: ไฟล์คลุมขอบเขต ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-vehicle-log-scan-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Vehicle-use log",
+      "title": "Cat3 FY2568 Vehicle-Use Log (3.2.4, scan)",
+      "titleTh": "รายงานการใช้รถยนต์หมวด 3 ปี 2568 (3.2.4, สแกน)",
+      "description": "22-page image-only scanned vehicle-use log. Content not machine-readable; filename/folder only. Supports 3.2.4 fuel measures but is NOT semantically verified.",
+      "descriptionTh": "สแกนรายงานการใช้รถยนต์ 22 หน้า อ่านเนื้อหาไม่ได้ ระบุจากชื่อไฟล์/โฟลเดอร์เท่านั้น สนับสนุนมาตรการ 3.2.4 แต่ยังไม่ยืนยันเนื้อหา",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%9E%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%87%E0%B8%B2%E0%B8%99/3.2.4%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%A1%E0%B8%B1%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B8%B7%E0%B9%89%E0%B8%AD%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%B4%E0%B8%87%E0%B9%83%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%A3%E0%B8%96%E0%B8%A2%E0%B8%99%E0%B8%95%E0%B9%8C.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.2 การใช้พลังงาน/3.2.4 มาตรการหรือแนวทางการใช้น้ำมันเชื้อเพลิงในการเดินทางที่เหมาะสมกับสำนักงาน/รายงานการใช้รถยนต์.pdf",
+      "manifestSha256": "22690d5b05ad0a03464740b15f17f36b9654585237981ac8ae4568a4836f7b07",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.2.4"
+      ],
+      "issueCodes": [
+        "3.2"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "filename_folder_only",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 vehicle-use log (scan, content not machine-readable)",
+        "sourceLabelTh": "รายงานการใช้รถยนต์หมวด 3 ปี 2568 (สแกน ยังอ่านเนื้อหาไม่ได้)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 classification: filename_folder_only (pure image scan, 0 text chars). Content not verified — requires OCR/human verification. Not semantically verified.",
+        "basisTh": "C1 จัดชั้น: filename_folder_only (สแกน 0 ตัวอักษร) ยังไม่ยืนยันเนื้อหา ต้องใช้ OCR/ตรวจสอบโดยมนุษย์"
+      },
+      "promoted": false
+    },
+    {
+      "id": "ev-cat3-data-fuel-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Fuel consumption data per distance",
+      "title": "Cat3 FY2568 Fuel Consumption Data per Distance (3.2.5)",
+      "titleTh": "ข้อมูลการใช้น้ำมันเชื้อเพลิงต่อระยะทางหมวด 3 ปี 2568 (3.2.5)",
+      "description": "FY2568 fuel data: 695.82 L (−205 L, −22.7% vs 2024) → MET (target reduce 1%). C1 anomaly: standalone file starts at item (2); item (1) exists only in the compiled reports. Frozen historical baseline.",
+      "descriptionTh": "ข้อมูลการใช้น้ำมันปี 2568: 695.82 ลิตร (−205 ลิตร, −22.7% เทียบปี 2567) → บรรลุเป้าหมาย (ลด 1%) ความผิดปกติ C1: ไฟล์เริ่มจากข้อ (2); ข้อ (1) อยู่ในรายงานรวมเท่านั้น เป็นฐานประวัติปี 2568",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%9E%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%87%E0%B8%B2%E0%B8%99/3.2.5%20%E0%B8%A1%E0%B8%B5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%97%E0%B8%B3%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%A1%E0%B8%B1%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B8%B7%E0%B9%89%E0%B8%AD%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%B4%E0%B8%87%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%A7%E0%B8%A2%E0%B9%80%E0%B8%9B%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%9A%E0%B9%80%E0%B8%97%E0%B8%B5%E0%B8%A2%E0%B8%9A%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B9%80%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%A7%E0%B8%B4%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B2%E0%B8%B0%E0%B8%AB%E0%B9%8C%E0%B8%9C%E0%B8%A5/3.2.5.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.2 การใช้พลังงาน/3.2.5 มีการจัดทำข้อมูลการใช้น้ำมันเชื้อเพลิงต่อหน่วยเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล/3.2.5.pdf",
+      "manifestSha256": "658078f073b64030f391fa5e07e7d042a4daea6b7736c4c16937bfe53ae052bd",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.2.5"
+      ],
+      "issueCodes": [
+        "3.2"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 fuel consumption data per distance (3.2.5)",
+        "sourceLabelTh": "ข้อมูลการใช้น้ำมันเชื้อเพลิงต่อระยะทางหมวด 3 ปี 2568 (3.2.5)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). 695.82 L (−205 L, −22.7%), MET. C1 anomaly #21: incomplete standalone (starts at item (2)). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) 695.82 ลิตร (−205 ลิตร, −22.7%), บรรลุเป้าหมาย ความผิดปกติ C1 ข้อ 21: ไฟล์ไม่สมบูรณ์ (เริ่มจากข้อ (2)) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-measures-paper-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Paper conservation measures",
+      "title": "Cat3 FY2568 Paper Conservation Measures (3.3.1)",
+      "titleTh": "มาตรการประหยัดกระดาษหมวด 3 ปี 2568 (3.3.1)",
+      "description": "FY2568 paper measures: reuse, double-side printing, e-documents. Frozen historical baseline.",
+      "descriptionTh": "มาตรการประหยัดกระดาษ ปี 2568: นำกระดาษกลับมาใช้ พิมพ์สองหน้า ใช้เอกสารอิเล็กทรอนิกส์ เป็นฐานประวัติปี 2568",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%AD%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%86/3.3.1%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B2%E0%B8%A9%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/3.3.1%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B2%E0%B8%A9%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.3 การทรัพยากรอื่นๆ/3.3.1 มาตรการหรือแนวทางการใช้กระดาษที่เหมาะสมกับสำนักงาน/3.3.1 มาตรการหรือแนวทางการใช้กระดาษที่เหมาะสมกับสำนักงาน.pdf",
+      "manifestSha256": "5010e706951cfafd303a88e0daaaa084124e9033c966f9fd33af57bfc2633652",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.3.1"
+      ],
+      "issueCodes": [
+        "3.3"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 paper conservation measures (3.3.1)",
+        "sourceLabelTh": "มาตรการประหยัดกระดาษหมวด 3 ปี 2568 (3.3.1)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-data-paper-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Paper consumption data per unit",
+      "title": "Cat3 FY2568 Paper Consumption Data per Unit (3.3.2)",
+      "titleTh": "ข้อมูลการใช้กระดาษต่อหน่วยหมวด 3 ปี 2568 (3.3.2)",
+      "description": "FY2568 paper data: 2,197.80 kg (+117 kg), 23.13 kg/unit (+5.6% vs 2024) → NOT met (target reduce 1%). Frozen historical baseline.",
+      "descriptionTh": "ข้อมูลการใช้กระดาษปี 2568: 2,197.80 กก. (+117 กก.), 23.13 กก./หน่วย (+5.6% เทียบปี 2567) → ไม่บรรลุเป้าหมาย (ลด 1%) เป็นฐานประวัติปี 2568",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%AD%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%86/3.3.2%20%E0%B8%A1%E0%B8%B5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%97%E0%B8%B3%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B2%E0%B8%A9%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%A7%E0%B8%A2%E0%B9%80%E0%B8%9B%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%9A%E0%B9%80%E0%B8%97%E0%B8%B5%E0%B8%A2%E0%B8%9A%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B9%80%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2/3.3.2.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.3 การทรัพยากรอื่นๆ/3.3.2 มีการจัดทำข้อมูลการใช้กระดาษต่อหน่วยเปรียบเทียบกับเป้าหมาย/3.3.2.pdf",
+      "manifestSha256": "c55106396e32acb345029b3bb2e1e223bb2ff9e50b6887c5e2fbfcff06def801",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.3.2"
+      ],
+      "issueCodes": [
+        "3.3"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 paper consumption data per unit (3.3.2)",
+        "sourceLabelTh": "ข้อมูลการใช้กระดาษต่อหน่วยหมวด 3 ปี 2568 (3.3.2)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). 2,197.80 kg (+117), 23.13 kg/unit (+5.6%), NOT met. Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) 2,197.80 กก. (+117), 23.13 กก./หน่วย (+5.6%), ไม่บรรลุเป้าหมาย ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-compliance-paper-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Paper conservation compliance",
+      "title": "Cat3 FY2568 Paper Compliance Survey (3.3.3)",
+      "titleTh": "การสำรวจการปฏิบัติตามมาตรการประหยัดกระดาษหมวด 3 ปี 2568 (3.3.3)",
+      "description": "FY2568 behavioral compliance survey: no wasteful paper use found. No numeric score.",
+      "descriptionTh": "การสำรวจพฤติกรรมปี 2568: ไม่พบการใช้กระดาษสิ้นเปลือง ไม่มีคะแนนตัวเลข",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%AD%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%86/3.3.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%9A%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A2%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B2%E0%B8%A9%E0%B9%83%E0%B8%99%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%97%E0%B8%B3%E0%B8%87%E0%B8%B2%E0%B8%99/3.3.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%9A%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A2%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B2%E0%B8%A9%E0%B9%83%E0%B8%99%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%97%E0%B8%B3%E0%B8%87%E0%B8%B2%E0%B8%99.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.3 การทรัพยากรอื่นๆ/3.3.3 การปฏิบัติตามมาตรการการประหยัดกระดาษในพื้นที่ทำงาน/3.3.3 การปฏิบัติตามมาตรการการประหยัดกระดาษในพื้นที่ทำงาน.pdf",
+      "manifestSha256": "12fc9e8a9df8016d60847c55b591a4c5a17113634d743c52ab753390ff6d6679",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.3.3"
+      ],
+      "issueCodes": [
+        "3.3"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 paper compliance survey (3.3.3)",
+        "sourceLabelTh": "การสำรวจการปฏิบัติตามมาตรการประหยัดกระดาษหมวด 3 ปี 2568 (3.3.3)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). No wasteful paper use. Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ไม่พบการใช้กระดาษสิ้นเปลือง ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-measures-ink-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Ink and office-supplies measures",
+      "title": "Cat3 FY2568 Ink and Office-Supplies Measures (3.3.4)",
+      "titleTh": "มาตรการประหยัดหมึก/วัสดุสำนักงานหมวด 3 ปี 2568 (3.3.4)",
+      "description": "FY2568 ink/stationery measures: shared printers and pooled office supplies. Frozen historical baseline.",
+      "descriptionTh": "มาตรการหมึก/วัสดุสำนักงาน ปี 2568: ใช้เครื่องพิมพ์ร่วมกันและเบิกวัสดุสำนักงานส่วนกลาง เป็นฐานประวัติปี 2568",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%AD%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%86/3.3.4%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%AB%E0%B8%A1%E0%B8%B6%E0%B8%81%E0%B8%9E%E0%B8%B4%E0%B8%A1%E0%B8%9E%E0%B9%8C%20%E0%B8%AD%E0%B8%B8%E0%B8%9B%E0%B8%81%E0%B8%A3%E0%B8%93%E0%B9%8C%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%82%E0%B8%B5%E0%B8%A2%E0%B8%99%20%E0%B8%A7%E0%B8%B1%E0%B8%AA%E0%B8%94%E0%B8%B8%E0%B8%AD%E0%B8%B8%E0%B8%9B%E0%B8%81%E0%B8%A3%E0%B8%93%E0%B9%8C%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/3.3.4.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.3 การทรัพยากรอื่นๆ/3.3.4 มาตรการหรือแนวทางการใช้หมึกพิมพ์ อุปกรณ์เครื่องเขียน วัสดุอุปกรณ์เหมาะสมกับสำนักงาน/3.3.4.pdf",
+      "manifestSha256": "ad55261fb9c24b454a613d54d5abffd0b4654843274da6264d10dd7e788b0386",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.3.4"
+      ],
+      "issueCodes": [
+        "3.3"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 ink and office-supplies measures (3.3.4)",
+        "sourceLabelTh": "มาตรการประหยัดหมึก/วัสดุสำนักงานหมวด 3 ปี 2568 (3.3.4)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-compliance-ink-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Ink and stationery compliance",
+      "title": "Cat3 FY2568 Ink and Stationery Compliance Survey (3.3.5)",
+      "titleTh": "การสำรวจการปฏิบัติตามมาตรการประหยัดหมึก/วัสดุหมวด 3 ปี 2568 (3.3.5)",
+      "description": "FY2568 compliance survey: no wasteful ink/stationery use found. No numeric score.",
+      "descriptionTh": "การสำรวจปี 2568: ไม่พบการใช้หมึก/วัสดุสำนักงานสิ้นเปลือง ไม่มีคะแนนตัวเลข",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%AD%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%86/3.3.5%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B9%80%E0%B8%99%E0%B8%B4%E0%B8%99%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A2%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%AB%E0%B8%A1%E0%B8%B6%E0%B8%81%E0%B8%9E%E0%B8%B4%E0%B8%A1%E0%B8%9E%E0%B9%8C%20%20%E0%B8%AD%E0%B8%B8%E0%B8%9B%E0%B8%81%E0%B8%A3%E0%B8%93%E0%B9%8C%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%82%E0%B8%B5%E0%B8%A2%E0%B8%99%20%E0%B8%A7%E0%B8%B1%E0%B8%AA%E0%B8%94%E0%B8%B8%E0%B8%AD%E0%B8%B8%E0%B8%9B%E0%B8%81%E0%B8%A3%E0%B8%93%E0%B9%8C%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/3.3.5.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.3 การทรัพยากรอื่นๆ/3.3.5 การดำเนินตามมาตรการประหยัดการใช้หมึกพิมพ์  อุปกรณ์เครื่องเขียน วัสดุอุปกรณ์สำนักงาน/3.3.5.pdf",
+      "manifestSha256": "f196dd07a4d1c5dec1cbe0c15d804736b064cb75e61dc2b32b7f6f822056265d",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.3.5"
+      ],
+      "issueCodes": [
+        "3.3"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 ink and stationery compliance survey (3.3.5)",
+        "sourceLabelTh": "การสำรวจการปฏิบัติตามมาตรการประหยัดหมึก/วัสดุหมวด 3 ปี 2568 (3.3.5)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). No wasteful ink/stationery use. Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ไม่พบการใช้หมึก/วัสดุสิ้นเปลือง ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-measures-meetings-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Green meeting and exhibition measures",
+      "title": "Cat3 FY2568 Green Meeting and Exhibition Measures (3.4.1)",
+      "titleTh": "มาตรการจัดประชุม/นิทรรศการสีเขียวหมวด 3 ปี 2568 (3.4.1)",
+      "description": "FY2568 green-meeting measures: e-meeting, QR-Code, online invitation. Frozen historical baseline.",
+      "descriptionTh": "มาตรการประชุมสีเขียว ปี 2568: ประชุมอิเล็กทรอนิกส์, QR-Code, เชิญประชุมออนไลน์ เป็นฐานประวัติปี 2568",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.4%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%99%E0%B8%B4%E0%B8%97%E0%B8%A3%E0%B8%A3%E0%B8%A8%E0%B8%81%E0%B8%B2%E0%B8%A3/3.4.1%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%99%E0%B8%B4%E0%B8%97%E0%B8%A3%E0%B8%A3%E0%B8%A8%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B8%A1%E0%B8%B4%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B9%81%E0%B8%A7%E0%B8%94%E0%B8%A5%E0%B9%89%E0%B8%AD%E0%B8%A1/3.4.1.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.4 การประชุมและการจัดนิทรรศการ/3.4.1 มาตรการหรือแนวทางการจัดการประชุมและนิทรรศการที่เป็นมิตรกับสิ่งแวดล้อม/3.4.1.pdf",
+      "manifestSha256": "6c5dee9a0abbfa0c30eed9b7352aa2464f46674900e50ef924aa4fd21a55a905",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.4.1"
+      ],
+      "issueCodes": [
+        "3.4"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 green meeting and exhibition measures (3.4.1)",
+        "sourceLabelTh": "มาตรการจัดประชุม/นิทรรศการสีเขียวหมวด 3 ปี 2568 (3.4.1)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-meetings-eco-materials-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Eco-material meeting/exhibition implementation",
+      "title": "Cat3 FY2568 Eco-Material Meeting/Exhibition Implementation (3.4.2)",
+      "titleTh": "การจัดประชุม/นิทรรศการด้วยวัสดุสีเขียวหมวด 3 ปี 2568 (3.4.2)",
+      "description": "FY2568 eco-material implementation: standalone file starts at item (3) (energy in rooms + food/drink); items (1)/(2) are present only in the 3.4 issue report DOCX. Frozen historical baseline.",
+      "descriptionTh": "การจัดประชุมด้วยวัสดุสีเขียว ปี 2568: ไฟล์เดี่ยวเริ่มจากข้อ (3) (พลังงานในห้อง + อาหาร/เครื่องดื่ม); ข้อ (1)/(2) อยู่ในรายงานหมวด 3.4 เท่านั้น เป็นฐานประวัติปี 2568",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/3.4%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%99%E0%B8%B4%E0%B8%97%E0%B8%A3%E0%B8%A3%E0%B8%A8%E0%B8%81%E0%B8%B2%E0%B8%A3/3.4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%99%E0%B8%B4%E0%B8%97%E0%B8%A3%E0%B8%A3%E0%B8%A8%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B8%A1%E0%B8%B4%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B9%81%E0%B8%A7%E0%B8%94%E0%B8%A5%E0%B9%89%E0%B8%AD%E0%B8%A1/3.4.2.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "3.4 การประชุมและการจัดนิทรรศการ/3.4.2 การจัดประชุมและนิทรรศการที่เป็นมิตรกับสิ่งแวดล้อม/3.4.2.pdf",
+      "manifestSha256": "83eea050a2f01232010b9c71b402e37fca1d06a858f981cbe9817d58d5f9125d",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.4.2"
+      ],
+      "issueCodes": [
+        "3.4"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 eco-material meeting/exhibition implementation (3.4.2)",
+        "sourceLabelTh": "การจัดประชุม/นิทรรศการด้วยวัสดุสีเขียวหมวด 3 ปี 2568 (3.4.2)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). C1 anomaly #5: standalone starts at item (3); complete items (1)–(5) in the 3.4 issue report DOCX. Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ความผิดปกติ C1 ข้อ 5: ไฟล์เดี่ยวเริ่มจากข้อ (3); ข้อ (1)–(5) ครบในรายงานหมวด 3.4 ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat3-annual-report-fy2568",
+      "categoryId": "cat3",
+      "indicator": "Category 3 annual report",
+      "title": "Cat3 FY2568 Annual Report (historical baseline)",
+      "titleTh": "รายงานการประเมินหมวด 3 ปี 2568 (ฐานประวัติ)",
+      "description": "FY2568 GO หมวด 3 master report (canonical DOCX) covering all 3.1–3.4 issues. Category-level historical baseline only — no signed/approved submission claim.",
+      "descriptionTh": "รายงานหลักหมวด 3 ปี 2568 ครอบคลุมประเด็น 3.1–3.4 เป็นฐานประวัติระดับหมวดหมู่เท่านั้น ไม่มีการอ้างฉบับลงนาม/อนุมัติ",
+      "year": 2568,
+      "path": "/documents/fy2568/cat3/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%A1%E0%B8%B4%E0%B8%99%E0%B8%AA%E0%B8%B2%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%AA%E0%B8%B5%E0%B9%80%E0%B8%82%E0%B8%B5%E0%B8%A2%E0%B8%A7%20(Green%20Office)%20%E0%B8%AB%E0%B8%A1%E0%B8%A7%E0%B8%94%203.docx",
+      "fileType": "DOCX",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "การประเมินสานักงานสีเขียว (Green Office) หมวด 3.docx",
+      "manifestSha256": "5af63ace319cf11b0d67935ba0257c3c2111e5521af9c897d993760656b9d2f3",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat3 FY2568 annual report (canonical GO หมวด 3 DOCX, category-level baseline)",
+        "sourceLabelTh": "รายงานการประเมินหมวด 3 ปี 2568 (DOCX หลัก, ฐานประวัติระดับหมวดหมู่)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Category-level historical baseline only; no signed/approved submission claim. PDF export excluded from indicator evidence.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) เป็นฐานประวัติระดับหมวดหมู่เท่านั้น ไม่มีการอ้างฉบับลงนาม/อนุมัติ ไม่นับ PDF export เป็นหลักฐานตัวชี้วัด"
       }
     }
   ]

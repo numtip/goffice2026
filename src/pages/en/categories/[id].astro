@@ -12,6 +12,8 @@ import Cat1ManagementCycle from '../../../components/categories/Cat1ManagementCy
 import Cat1DomainSnapshot from '../../../components/categories/Cat1DomainSnapshot.astro';
 import Cat2ManagementCycle from '../../../components/categories/Cat2ManagementCycle.astro';
 import Cat2DomainSnapshot from '../../../components/categories/Cat2DomainSnapshot.astro';
+import Cat3ManagementCycle from '../../../components/categories/Cat3ManagementCycle.astro';
+import Cat3DomainSnapshot from '../../../components/categories/Cat3DomainSnapshot.astro';
 
 const locale = 'en';
 
@@ -262,6 +264,11 @@ function localizedUrl(path: string): string {
                 Source-structure note: 2.2.3 still lacks dedicated evidence; legacy cat2 water records remain unresolved pending an explicit category-3 target.
               </p>
             )}
+            {category.code === 'cat3' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                Source-structure note: all 15 indicators have dedicated FY2568 evidence, but 3.2.2 is MEDIUM (image-only per-unit tables), 2 scans and the garbled measures PDF are unverified, 3.2.4/3.2.5/3.4.2 files have limitations, and no signed copy exists.
+              </p>
+            )}
             {category.code === 'cat7' && (
               <p class="mt-1 text-xs leading-relaxed text-gray-600">
                 Source-structure note: no verified individual-indicator mapping for category 7.
@@ -295,6 +302,13 @@ function localizedUrl(path: string): string {
       <>
         <Cat2ManagementCycle locale={locale} />
         <Cat2DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat3' && (
+      <>
+        <Cat3ManagementCycle locale={locale} />
+        <Cat3DomainSnapshot locale={locale} />
       </>
     )}
 

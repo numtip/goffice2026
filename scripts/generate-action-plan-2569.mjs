@@ -91,6 +91,28 @@ const CAT2_CANONICAL_INDICATOR = new Map([
   ['cat-2-2.7-2.7-20', '2.2.4'], // summarize/analyze/report to management → 2.2.4
 ]);
 
+/**
+ * Cat3 FY2569 action-plan canonical indicator mapping (GO-CAT3 §6, C4).
+ * Keyed by the deterministic generated activity id; legacy indicatorCode retained.
+ * Frozen counts: 3.1.1=2 · 3.2.1=1 · 3.2.2=1 · 3.1.2=1 · 3.4.1=1 (total 6).
+ * Meaning-based mapping (by activityTh, not blind renumbering):
+ *   - cross-domain Plan (มาตรการ/ค่าเป้าหมาย/แนวทางปฏิบัติ, น้ำ first) → 3.1.1
+ *   - solar + energy-saving lighting plan → 3.2.1 (matches FY2568 3.2.1 evidence)
+ *   - AC-condensate water refinement plan → 3.1.1 (AC-water reuse is a 3.1.1 measure)
+ *   - monthly consumption data collection + analysis → 3.2.2 (covers 3.1.2/3.2.2/3.2.5/3.3.2)
+ *   - report consumption results → 3.1.2 (water listed first in the activity domain list)
+ *   - green meetings/exhibitions → 3.4.1
+ * No new activities and no FY2569 facts are added.
+ */
+const CAT3_CANONICAL_INDICATOR = new Map([
+  ['cat-3-3.1-3.1-1', '3.1.1'], // กำหนดมาตรการ/ค่าเป้าหมาย/แนวทางปฏิบัติ (cross-domain Plan; น้ำ first)
+  ['cat-3-3.2-3.2-2', '3.2.1'], // แผนติดตั้งโซล่าร์เซล + ระบบแสงสว่างประหยัดพลังงาน
+  ['cat-3-3.3-3.3-3', '3.1.1'], // แผนปรุงปรับน้ำทิ้งเครื่องปรับอากาศ (AC-water reuse measure)
+  ['cat-3-3.4-3.4-4', '3.2.2'], // เก็บข้อมูลการใช้พลังงาน/ทรัพยากรรายเดือน + วิเคราะห์ (น้ำ/ไฟฟ้า/น้ำมัน/กระดาษ)
+  ['cat-3-3.5-3.5-5', '3.1.2'], // รายงานผลการใช้พลังงาน/ทรัพยากรให้ผู้เกี่ยวข้องทราบ (น้ำ listed first)
+  ['cat-3-3.6-3.6-6', '3.4.1'], // การประชุมและการจัดนิทรรศการ (green meetings)
+]);
+
 function cell(v) {
   return String(v ?? '')
     .replace(/\r\n/g, '\n')
@@ -194,10 +216,13 @@ function parseWorkbook(rows) {
 
     const activityId = `${currentCategory.id}-${slugPart(indicatorCode || 'item')}-${slugPart(taskNumber || String(activitySeq))}-${activitySeq}`;
 
+    const canonicalIndicatorCode =
+      CAT3_CANONICAL_INDICATOR.get(activityId) ?? CAT2_CANONICAL_INDICATOR.get(activityId) ?? null;
+
     currentCategory.activities.push({
       id: activityId,
       indicatorCode: indicatorCode || null,
-      canonicalIndicatorCode: CAT2_CANONICAL_INDICATOR.get(activityId) || null,
+      canonicalIndicatorCode,
       taskNumber,
       activityTh: titleParts.map((p) => p.trim()).filter(Boolean).join('\n'),
       frequency: cell(row[3]) || null,
