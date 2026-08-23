@@ -10,6 +10,8 @@ import { categoryImageUrl, categoryImageDimensions } from '../../../utils/wow2-i
 import { getBaselineCategoryCoverage, getSourceTypeCounts, FY2568_BASELINE_YEAR } from '../../../data/criteria/baseline-2568';
 import Cat1ManagementCycle from '../../../components/categories/Cat1ManagementCycle.astro';
 import Cat1DomainSnapshot from '../../../components/categories/Cat1DomainSnapshot.astro';
+import Cat2ManagementCycle from '../../../components/categories/Cat2ManagementCycle.astro';
+import Cat2DomainSnapshot from '../../../components/categories/Cat2DomainSnapshot.astro';
 
 const locale = 'en';
 
@@ -257,7 +259,7 @@ function localizedUrl(path: string): string {
             </p>
             {category.code === 'cat2' && (
               <p class="mt-1 text-xs leading-relaxed text-gray-600">
-                Source-structure note: an unresolved item exists for category 2.
+                Source-structure note: 2.2.3 still lacks dedicated evidence; legacy cat2 water records remain unresolved pending an explicit category-3 target.
               </p>
             )}
             {category.code === 'cat7' && (
@@ -286,6 +288,13 @@ function localizedUrl(path: string): string {
       <>
         <Cat1ManagementCycle locale={locale} />
         <Cat1DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat2' && (
+      <>
+        <Cat2ManagementCycle locale={locale} />
+        <Cat2DomainSnapshot locale={locale} />
       </>
     )}
 

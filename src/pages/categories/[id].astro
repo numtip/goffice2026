@@ -10,6 +10,8 @@ import { getBaselineCategoryCoverage, getSourceTypeCounts, FY2568_BASELINE_YEAR 
 import { categoryImageUrl, categoryImageDimensions } from '../../utils/wow2-images';
 import Cat1ManagementCycle from '../../components/categories/Cat1ManagementCycle.astro';
 import Cat1DomainSnapshot from '../../components/categories/Cat1DomainSnapshot.astro';
+import Cat2ManagementCycle from '../../components/categories/Cat2ManagementCycle.astro';
+import Cat2DomainSnapshot from '../../components/categories/Cat2DomainSnapshot.astro';
 
 export function getStaticPaths() {
   const issues = issueData.issues;
@@ -269,7 +271,7 @@ const weightLabel = isCat7
             </p>
             {category.code === 'cat2' && (
               <p class="mt-1 text-xs leading-relaxed text-gray-600">
-                หมายเหตุโครงสร้างต้นทาง: พบรายการที่ยังไม่ได้รับการแก้ไขในหมวด 2
+                หมายเหตุโครงสร้างต้นทาง: ตัวชี้วัด 2.2.3 ยังไม่มีหลักฐานเฉพาะ และรายการหลักฐานน้ำเก่าของหมวด 2 ยังรอการเชื่อมโยงหมวด 3 ที่ชัดเจน
               </p>
             )}
             {category.code === 'cat7' && (
@@ -298,6 +300,13 @@ const weightLabel = isCat7
       <>
         <Cat1ManagementCycle locale={locale} />
         <Cat1DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat2' && (
+      <>
+        <Cat2ManagementCycle locale={locale} />
+        <Cat2DomainSnapshot locale={locale} />
       </>
     )}
 

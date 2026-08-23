@@ -83,6 +83,59 @@ export function validateActionPlan2569(data) {
 }
 
 /**
+ * Cat2 canonical-indicator mapping checks (GO-CAT2 C4).
+ * Every cat2 activity must carry a canonicalIndicatorCode; the frozen mapping
+ * counts must hold exactly: 2.1.1=8 · 2.2.1=1 · 2.2.2=9 · 2.2.4=2 · 2.1.2=0 · 2.2.3=0.
+ * Legacy indicatorCode is retained. No activity may map to MISSING 2.2.3 or the
+ * zero-activity 2.1.2 (2.1.2 is a forward committee-minutes requirement, not a plan activity).
+ */
+const CAT2_FROZEN_CANONICAL_COUNTS = {
+  '2.1.1': 8,
+  '2.1.2': 0,
+  '2.2.1': 1,
+  '2.2.2': 9,
+  '2.2.3': 0,
+  '2.2.4': 2,
+};
+const VALID_CAT2_CANONICAL = new Set(Object.keys(CAT2_FROZEN_CANONICAL_COUNTS));
+
+export function validateActionPlanCat2Canonical(data) {
+  const errors = [];
+  const cat2 = (data?.categories ?? []).find((c) => c.id === 'cat-2');
+  if (!cat2) return ['action-plan must contain cat-2'];
+  if (!Array.isArray(cat2.activities)) return ['cat-2 activities must be array'];
+
+  const counts = {};
+  for (const act of cat2.activities) {
+    const code = act.canonicalIndicatorCode;
+    if (!code || typeof code !== 'string') {
+      errors.push(`${act.id}: missing canonicalIndicatorCode`);
+      continue;
+    }
+    if (!VALID_CAT2_CANONICAL.has(code)) {
+      errors.push(`${act.id}: invalid canonicalIndicatorCode "${code}"`);
+      continue;
+    }
+    if (code === '2.2.3') errors.push(`${act.id}: must never map to MISSING 2.2.3`);
+    if (code === '2.1.2') errors.push(`${act.id}: 2.1.2 has 0 plan activities (forward committee-minutes requirement only)`);
+    if (!act.indicatorCode) errors.push(`${act.id}: legacy indicatorCode must be retained`);
+    counts[code] = (counts[code] ?? 0) + 1;
+  }
+
+  for (const [code, expected] of Object.entries(CAT2_FROZEN_CANONICAL_COUNTS)) {
+    const actual = counts[code] ?? 0;
+    if (actual !== expected) {
+      errors.push(`cat2 canonicalIndicatorCode count for ${code} must be ${expected}, got ${actual}`);
+    }
+  }
+  const total = Object.values(counts).reduce((s, n) => s + n, 0);
+  if (total !== cat2.activities.length) {
+    errors.push(`cat2 canonical mapping total must equal activity count ${cat2.activities.length}, got ${total}`);
+  }
+  return errors;
+}
+
+/**
  * Canonical-scope regression checks.
  * planData            — parsed action-plan-2569.json
  * pageMeta            — about/pages.json (must have about-action-plan entry)
@@ -177,8 +230,14 @@ function main() {
     scopeErrors.forEach((e) => console.error('  ✗', e));
     process.exit(1);
   }
+  const cat2Errors = validateActionPlanCat2Canonical(data);
+  if (cat2Errors.length) {
+    console.error('action-plan-2569 cat2 canonical mapping FAIL');
+    cat2Errors.forEach((e) => console.error('  ✗', e));
+    process.exit(1);
+  }
   console.log(
-    `action-plan-2569 validation PASS (${data.summary.activityCount} activities, ${data.categories.length} categories, renewal scope 7/24/65)`,
+    `action-plan-2569 validation PASS (${data.summary.activityCount} activities, ${data.categories.length} categories, renewal scope 7/24/65, cat2 canonical 2.1.1=8/2.2.1=1/2.2.2=9/2.2.4=2)`,
   );
 }
 
