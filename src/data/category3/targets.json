@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "targets",
+  "updated": "2026-08-23",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CATEGORY3_RESOURCE_BLUEPRINT_V1",
+  "note": "FY2568 historical-baseline target contract for Category 3. The FY2568 KPI/target table (ในหมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68.docx) sets a 1% year-over-year reduction target vs 2024 for electricity, fuel, water, and paper (green procurement >60% belongs to Cat6). These target clauses are cross-indicator by nature (they feed every 3.x.x data indicator), so records reference the category-level evidence entry ev-cat3-targets-measures-fy2568 and declare empty indicatorCodes. Target outcomes are shown as met/not-met context in data.json — never as a score. No FY2569 facts.",
+  "sources": [
+    { "ref": "หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68.docx", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "CRITERIA_TARGETS_MEASURES — KPI/target table + full 9-section มาตรการ (C1 #4)." },
+    { "ref": "มาตรการควบคุมการใช้พลังงานและทรัพยากร ปี 68.pdf", "role": "measures-export", "inspection": "filename_folder_only", "disposition": "canonical-pending-verification", "note": "C1 #3 — PDF export of the มาตรการ section; Thai text garbled in extraction (broken font cmap), details pending OCR. Verified only as 'measures PDF'." },
+    { "ref": "การประเมินสานักงานสีเขียว (Green Office) หมวด 3.docx", "role": "category-report", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #1 — GO หมวด 3 master report embedding the targets and measures." }
+  ],
+  "records": [
+    {
+      "id": "target-electricity-fy2568",
+      "year": 2568,
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-targets-measures-fy2568"],
+      "sourceRef": "หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68.docx",
+      "manifestSha256": "1581620c4deef11e0976ef64b3d061ae4e23c473370cacac2191e71d881df4e8",
+      "verification": {
+        "status": "pending",
+        "basis": "FY2568 target table (หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68.docx): electricity reduce 1% vs 2024. Human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "target",
+      "domain": "electricity",
+      "labelTh": "ไฟฟ้า",
+      "labelEn": "Electricity",
+      "unit": "kWh",
+      "targetPercent": -1,
+      "targetDirection": "reduction",
+      "comparisonBasis": "2024",
+      "targetYear": 2568
+    },
+    {
+      "id": "target-water-fy2568",
+      "year": 2568,
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-targets-measures-fy2568"],
+      "sourceRef": "หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68.docx",
+      "manifestSha256": "1581620c4deef11e0976ef64b3d061ae4e23c473370cacac2191e71d881df4e8",
+      "verification": {
+        "status": "pending",
+        "basis": "FY2568 target table (หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68.docx): water reduce 1% vs 2024. Human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "target",
+      "domain": "water",
+      "labelTh": "น้ำ",
+      "labelEn": "Water",
+      "unit": "m³",
+      "targetPercent": -1,
+      "targetDirection": "reduction",
+      "comparisonBasis": "2024",
+      "targetYear": 2568
+    },
+    {
+      "id": "target-fuel-fy2568",
+      "year": 2568,
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-targets-measures-fy2568"],
+      "sourceRef": "หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68.docx",
+      "manifestSha256": "1581620c4deef11e0976ef64b3d061ae4e23c473370cacac2191e71d881df4e8",
+      "verification": {
+        "status": "pending",
+        "basis": "FY2568 target table (หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68.docx): fuel reduce 1% vs 2024. Human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "target",
+      "domain": "fuel",
+      "labelTh": "น้ำมันเชื้อเพลิง",
+      "labelEn": "Fuel",
+      "unit": "L",
+      "targetPercent": -1,
+      "targetDirection": "reduction",
+      "comparisonBasis": "2024",
+      "targetYear": 2568
+    },
+    {
+      "id": "target-paper-fy2568",
+      "year": 2568,
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-targets-measures-fy2568"],
+      "sourceRef": "หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68.docx",
+      "manifestSha256": "1581620c4deef11e0976ef64b3d061ae4e23c473370cacac2191e71d881df4e8",
+      "verification": {
+        "status": "pending",
+        "basis": "FY2568 target table (หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68.docx): paper reduce 1% vs 2024. Human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "target",
+      "domain": "paper",
+      "labelTh": "กระดาษ",
+      "labelEn": "Paper",
+      "unit": "kg",
+      "targetPercent": -1,
+      "targetDirection": "reduction",
+      "comparisonBasis": "2024",
+      "targetYear": 2568
+    }
+  ],
+  "gaps": [],
+  "forwardRequirements": [],
+  "crossLinks": [
+    { "from": "targets", "to": "3.1.2", "reason": "The water target clause is compared in 3.1.2 data (8,337.50 u, +47.1% → NOT met)" },
+    { "from": "targets", "to": "3.2.2", "reason": "The electricity target clause is compared in 3.2.2 data (403,036.80 u, +4.6% → NOT met)" },
+    { "from": "targets", "to": "3.2.5", "reason": "The fuel target clause is compared in 3.2.5 data (695.82 L, −22.7% → MET)" },
+    { "from": "targets", "to": "3.3.2", "reason": "The paper target clause is compared in 3.3.2 data (2,197.80 kg, +5.6% → NOT met)" }
+  ]
+}

@@ -136,6 +136,78 @@ export function validateActionPlanCat2Canonical(data) {
 }
 
 /**
+ * Cat3 canonical-indicator mapping checks (GO-CAT3 C4).
+ * Every cat3 activity must carry a canonicalIndicatorCode; the frozen mapping
+ * counts must hold exactly: 3.1.1=2 · 3.2.1=1 · 3.2.2=1 · 3.1.2=1 · 3.4.1=1.
+ * Legacy indicatorCode (3.1–3.6) is retained. Codes must be canonical 3.x.x
+ * codes; no new activities and no FY2569 facts are introduced.
+ */
+const CAT3_FROZEN_CANONICAL_COUNTS = {
+  '3.1.1': 2,
+  '3.1.2': 1,
+  '3.2.1': 1,
+  '3.2.2': 1,
+  '3.2.5': 0,
+  '3.2.4': 0,
+  '3.3.1': 0,
+  '3.3.2': 0,
+  '3.3.3': 0,
+  '3.3.4': 0,
+  '3.3.5': 0,
+  '3.4.1': 1,
+  '3.4.2': 0,
+};
+const VALID_CAT3_CANONICAL = new Set([
+  '3.1.1', '3.1.2', '3.1.3',
+  '3.2.1', '3.2.2', '3.2.3', '3.2.4', '3.2.5',
+  '3.3.1', '3.3.2', '3.3.3', '3.3.4', '3.3.5',
+  '3.4.1', '3.4.2',
+]);
+
+export function validateActionPlanCat3Canonical(data) {
+  const errors = [];
+  const cat3 = (data?.categories ?? []).find((c) => c.id === 'cat-3');
+  if (!cat3) return ['action-plan must contain cat-3'];
+  if (!Array.isArray(cat3.activities)) return ['cat-3 activities must be array'];
+  if (cat3.activities.length !== 6) {
+    errors.push(`cat-3 must have exactly 6 activities (no new activities added), got ${cat3.activities.length}`);
+  }
+
+  const counts = {};
+  for (const act of cat3.activities) {
+    const code = act.canonicalIndicatorCode;
+    if (!code || typeof code !== 'string') {
+      errors.push(`${act.id}: missing canonicalIndicatorCode`);
+      continue;
+    }
+    if (!VALID_CAT3_CANONICAL.has(code)) {
+      errors.push(`${act.id}: invalid canonicalIndicatorCode "${code}"`);
+      continue;
+    }
+    if (!/^3\.\d+\.\d+$/.test(code)) {
+      errors.push(`${act.id}: canonicalIndicatorCode must be a canonical 3.x.x code, got "${code}"`);
+    }
+    if (!act.indicatorCode) errors.push(`${act.id}: legacy indicatorCode must be retained`);
+    if (act.actualMonths && act.actualMonths.length > 0) {
+      errors.push(`${act.id}: FY2569 activity must not carry executed actualMonths (no FY2569 facts)`);
+    }
+    counts[code] = (counts[code] ?? 0) + 1;
+  }
+
+  for (const [code, expected] of Object.entries(CAT3_FROZEN_CANONICAL_COUNTS)) {
+    const actual = counts[code] ?? 0;
+    if (actual !== expected) {
+      errors.push(`cat3 canonicalIndicatorCode count for ${code} must be ${expected}, got ${actual}`);
+    }
+  }
+  const total = Object.values(counts).reduce((s, n) => s + n, 0);
+  if (total !== cat3.activities.length) {
+    errors.push(`cat3 canonical mapping total must equal activity count ${cat3.activities.length}, got ${total}`);
+  }
+  return errors;
+}
+
+/**
  * Canonical-scope regression checks.
  * planData            — parsed action-plan-2569.json
  * pageMeta            — about/pages.json (must have about-action-plan entry)
@@ -236,8 +308,14 @@ function main() {
     cat2Errors.forEach((e) => console.error('  ✗', e));
     process.exit(1);
   }
+  const cat3Errors = validateActionPlanCat3Canonical(data);
+  if (cat3Errors.length) {
+    console.error('action-plan-2569 cat3 canonical mapping FAIL');
+    cat3Errors.forEach((e) => console.error('  ✗', e));
+    process.exit(1);
+  }
   console.log(
-    `action-plan-2569 validation PASS (${data.summary.activityCount} activities, ${data.categories.length} categories, renewal scope 7/24/65, cat2 canonical 2.1.1=8/2.2.1=1/2.2.2=9/2.2.4=2)`,
+    `action-plan-2569 validation PASS (${data.summary.activityCount} activities, ${data.categories.length} categories, renewal scope 7/24/65, cat2 canonical 2.1.1=8/2.2.1=1/2.2.2=9/2.2.4=2, cat3 canonical 3.1.1=2/3.1.2=1/3.2.1=1/3.2.2=1/3.4.1=1)`,
   );
 }
 

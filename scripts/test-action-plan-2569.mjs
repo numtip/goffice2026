@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validateActionPlan2569, validateActionPlanScope, validateActionPlanCat2Canonical } from './validate-action-plan-2569.mjs';
+import { validateActionPlan2569, validateActionPlanScope, validateActionPlanCat2Canonical, validateActionPlanCat3Canonical } from './validate-action-plan-2569.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = join(ROOT, 'src/data/generated/action-plan-2569.json');
@@ -121,5 +121,35 @@ describe('action-plan-2569 generated data', () => {
     const errors = validateActionPlanCat2Canonical(clone);
     assert.ok(errors.some((e) => /2\.2\.1/.test(e)), 'must flag 2.2.1 count drift');
     assert.ok(errors.some((e) => /2\.1\.1/.test(e)), 'must flag 2.1.1 count drift');
+  });
+
+  test('cat3 canonical indicator mapping matches the frozen C4 counts (6 activities)', () => {
+    const data = JSON.parse(readFileSync(DATA, 'utf8'));
+    const errors = validateActionPlanCat3Canonical(data);
+    assert.deepEqual(errors, []);
+    const cat3 = data.categories.find((c) => c.id === 'cat-3');
+    assert.equal(cat3.activities.length, 6);
+    const counts = {};
+    for (const act of cat3.activities) {
+      assert.ok(act.canonicalIndicatorCode, `${act.id} must carry canonicalIndicatorCode`);
+      assert.ok(act.indicatorCode, `${act.id} must retain legacy indicatorCode`);
+      assert.match(act.canonicalIndicatorCode, /^3\.\d+\.\d+$/, `${act.id} must map to a canonical 3.x.x code`);
+      assert.deepEqual(act.actualMonths, [], `${act.id} must have no executed FY2569 actualMonths`);
+      counts[act.canonicalIndicatorCode] = (counts[act.canonicalIndicatorCode] || 0) + 1;
+    }
+    assert.deepEqual(counts, { '3.1.1': 2, '3.1.2': 1, '3.2.1': 1, '3.2.2': 1, '3.4.1': 1 });
+    // No activity may claim a data/compliance indicator with 0 activities.
+    assert.equal(counts['3.2.5'], undefined, '3.2.5 must have 0 plan activities');
+    assert.equal(counts['3.4.2'], undefined, '3.4.2 must have 0 plan activities');
+  });
+
+  test('cat3 canonical mapping guard trips when a mapping drifts', () => {
+    const data = JSON.parse(readFileSync(DATA, 'utf8'));
+    const clone = structuredClone(data);
+    const cat3 = clone.categories.find((c) => c.id === 'cat-3');
+    cat3.activities[0].canonicalIndicatorCode = '3.2.1'; // would make 3.2.1=2 / 3.1.1=1
+    const errors = validateActionPlanCat3Canonical(clone);
+    assert.ok(errors.some((e) => /3\.1\.1/.test(e)), 'must flag 3.1.1 count drift');
+    assert.ok(errors.some((e) => /3\.2\.1/.test(e)), 'must flag 3.2.1 count drift');
   });
 });

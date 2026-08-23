@@ -1285,7 +1285,7 @@
         {
           "id": "cat-3-3.1-3.1-1",
           "indicatorCode": "3.1",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "3.1.1",
           "taskNumber": "3.1",
           "activityTh": "กำหนดมาตรการ กำหนดค่าเป้าหมายและแนวทางการปฏิบัติ : การใช้น้ำ การใช้พลังงาน การใช้ทรัพยากรอื่นๆ และการจัดประชุมที่เป็นมิตรกับสิ่งแวดล้อม",
           "frequency": "1 ครั้ง",
@@ -1298,7 +1298,7 @@
         {
           "id": "cat-3-3.2-3.2-2",
           "indicatorCode": "3.2",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "3.2.1",
           "taskNumber": "3.2",
           "activityTh": "มีแผนงานการติดตั้งระบบแสงสว่างแบบโซล่าร์เซล  และแบบประหยัดพลังงาน",
           "frequency": "3 ครั้ง",
@@ -1313,7 +1313,7 @@
         {
           "id": "cat-3-3.3-3.3-3",
           "indicatorCode": "3.3",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "3.1.1",
           "taskNumber": "3.3",
           "activityTh": "มีแผนงานการปรุงปรับน้ำทิ้งเครื่องปรับอากาศ",
           "frequency": "1 ครั้ง",
@@ -1326,7 +1326,7 @@
         {
           "id": "cat-3-3.4-3.4-4",
           "indicatorCode": "3.4",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "3.2.2",
           "taskNumber": "3.4",
           "activityTh": "เก็บข้อมูลปริมาณการใช้พลังงานและทรัพยากรแต่ละเดือนพร้อมวิเคราะห์ข้อมูล\n- น้ำและไฟฟ้า\n- น้ำมัน\n- กระดาษ",
           "frequency": "12 ครั้ง",
@@ -1350,7 +1350,7 @@
         {
           "id": "cat-3-3.5-3.5-5",
           "indicatorCode": "3.5",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "3.1.2",
           "taskNumber": "3.5",
           "activityTh": "รายงานผลปริมาณการใช้พลังงานและทรัพยากรให้ผู้ที่เกี่ยวข้องทราบ\n- น้ำและไฟฟ้า\n- น้ำมัน\n- กระดาษ",
           "frequency": "12 ครั้ง",
@@ -1374,7 +1374,7 @@
         {
           "id": "cat-3-3.6-3.6-6",
           "indicatorCode": "3.6",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "3.4.1",
           "taskNumber": "3.6",
           "activityTh": "การประชุมและการจัดนิทรรศการ",
           "frequency": "12 ครั้ง",

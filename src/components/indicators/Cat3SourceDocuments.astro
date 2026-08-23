@@ -1,0 +1,226 @@
+---
+/**
+ * Cat3SourceDocuments.astro — "เอกสารต้นฉบับสำหรับการตรวจสอบ" (Original document for review)
+ * Shared source-document section for Category 3 indicator groups (3.1–3.4).
+ * Data comes only from the deterministic FY2568 publication manifest, filtered to
+ * the C1-approved file set defined by the Category 3 contracts (targets, measures,
+ * data, compliance, meetings) plus the canonical issue-report DOCX per group.
+ * Near-duplicates (G1/G2/G3), DOCX→PDF exports, and the garbled measures PDF are
+ * honestly excluded from the per-issue lists (the garbled PDF is disclosed in
+ * Cat3ContractContext and the manifest source limitations).
+ */
+import fy2568Publication from '../../data/fy2568-publication.json';
+import targetsContract from '../../data/category3/targets.json';
+import measuresContract from '../../data/category3/measures.json';
+import dataContract from '../../data/category3/data.json';
+import complianceContract from '../../data/category3/compliance.json';
+import meetingsContract from '../../data/category3/meetings.json';
+import { withBase } from '../../utils/with-base';
+
+interface Props {
+  issueCode: string; // '3.1' | '3.2' | '3.3' | '3.4'
+  locale: 'th' | 'en';
+}
+
+const { issueCode, locale } = Astro.props;
+const isEn = locale === 'en';
+
+function t(th: string, en: string): string {
+  return isEn ? en : th;
+}
+
+interface PublicationDoc {
+  path: string;
+  title: string;
+  type: string;
+  sizeBytes: number;
+  sha256: string;
+  url: string;
+}
+
+const publication = fy2568Publication as unknown as {
+  categories: Record<string, { count: number; bytes: number; documents: PublicationDoc[] }>;
+};
+
+// C1-approved source paths derived from the C3 contracts (records) + canonical
+// issue-report DOCX per group.
+const APPROVED_PATHS = new Set<string>();
+for (const contract of [targetsContract, measuresContract, dataContract, complianceContract, meetingsContract]) {
+  for (const rec of (contract as { records: { sourceRef?: string; relatedSources?: string[] }[] }).records ?? []) {
+    if (rec.sourceRef) APPROVED_PATHS.add(rec.sourceRef);
+    for (const rs of rec.relatedSources ?? []) APPROVED_PATHS.add(rs);
+  }
+}
+
+const ISSUE_REPORTS: Record<string, string> = {
+  '3.1': '3.1 การใช้น้ำ/การใช้น้ำ.docx',
+  '3.2': '3.2 การใช้พลังงาน/การใช้พลังงาน.docx',
+  '3.3': '3.3 การทรัพยากรอื่นๆ/การใช้ทรัพยากรอื่นๆ.docx',
+  '3.4': '3.4 การประชุมและการจัดนิทรรศการ/การประชุมและการจัดนิทรรศการ.docx',
+};
+
+const GROUP_PREFIX: Record<string, string> = {
+  '3.1': '3.1 การใช้น้ำ/',
+  '3.2': '3.2 การใช้พลังงาน/',
+  '3.3': '3.3 การทรัพยากรอื่นๆ/',
+  '3.4': '3.4 การประชุมและการจัดนิทรรศการ/',
+};
+
+const prefix = GROUP_PREFIX[issueCode];
+const docs = prefix
+  ? (publication.categories.cat3?.documents ?? [])
+      .filter((d) => d.path.startsWith(prefix) && (APPROVED_PATHS.has(d.path) || d.path === ISSUE_REPORTS[issueCode]))
+      .sort((a, b) => a.path.localeCompare(b.path))
+  : [];
+
+const typeLabel: Record<string, string> = {
+  pdf: 'PDF',
+  xlsx: 'Excel / XLSX',
+  docx: 'Word / DOCX',
+};
+
+// Editorial per-document description (th/en). Keyed by manifest path; grounded in
+// the C3 contracts and the C1 disposition — never invented.
+const DOC_DESCRIPTIONS: Record<string, { th: string; en: string }> = {
+  '3.1 การใช้น้ำ/3.1.1.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.1.1 — มาตรการประหยัดน้ำ (สติ๊กเกอร์ กำหนดเวลารดน้ำ 08.00–09.00 น้ำทิ้งเครื่องปรับอากาศ ก๊อกเซนเซอร์)',
+    en: 'Indicator 3.1.1 document — water conservation measures (stickers, 08:00–09:00 schedule, AC-water reuse, sensor faucets)',
+  },
+  '3.1 การใช้น้ำ/3.1.1 มาตรการหรือแนวทางใช้น้ำ/ปริมาณน้ำทั้งเครื่องปรับอากาศ.pdf': {
+    th: 'ภาพถ่ายน้ำทิ้งเครื่องปรับอากาศ (สแกน 12 หน้า — ยังไม่ยืนยันเนื้อหา)',
+    en: 'AC-condensate water capture photos (12-page scan — content unverified)',
+  },
+  '3.1 การใช้น้ำ/3.1.2.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.1.2 — ข้อมูลการใช้น้ำต่อหน่วย 8,337.50 หน่วย (+47.1%) ไม่บรรลุเป้าหมาย',
+    en: 'Indicator 3.1.2 document — water data per unit 8,337.50 units (+47.1%), target not met',
+  },
+  '3.1 การใช้น้ำ/3.1.3.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.1.3 — การสำรวจการปฏิบัติตามมาตรการประหยัดน้ำ (ไม่พบจุดรั่ว/หยดน้ำ)',
+    en: 'Indicator 3.1.3 document — water conservation compliance survey (no leaks/drips found)',
+  },
+  '3.1 การใช้น้ำ/การใช้น้ำ.docx': {
+    th: 'รายงานประเด็น 3.1 การใช้น้ำ ปี 2568 (DOCX หลัก)',
+    en: 'FY2568 issue 3.1 water report (canonical DOCX)',
+  },
+  '3.2 การใช้พลังงาน/3.2.1 มาตรการหรือแนวทางใช้ไฟฟ้ากับสำนักงาน/3.2.1 มาตรการหรือแนวทางใช้ไฟฟ้ากับสำนักงาน.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.2.1 — มาตรการประหยัดไฟฟ้า (LED T8 ×150, โซล่าร์เซล ×4, เซนเซอร์)',
+    en: 'Indicator 3.2.1 document — electricity conservation measures (LED T8 ×150, solar ×4, motion sensors)',
+  },
+  '3.2 การใช้พลังงาน/3.2.2 มีการจัดทำข้อมูลการใช้ไฟฟ้าต่อหน่วยเปรียบเทียบกับเป้าหมาย/3.2.2 มีการจัดทำข้อมูลการใช้ไฟฟ้าต่อหน่วยเปรียบเทียบกับเป้าหมาย.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.2.2 — ข้อมูลการใช้ไฟฟ้า 403,036.80 หน่วย (+4.6%) ไม่บรรลุเป้าหมาย (ตารางต่อหน่วยเป็นรูปภาพ — MEDIUM)',
+    en: 'Indicator 3.2.2 document — electricity data 403,036.80 units (+4.6%), target not met (per-unit tables image-only — MEDIUM)',
+  },
+  '3.2 การใช้พลังงาน/3.2.3 การปฏิบัติตามมาตรการประหยัดไฟฟ้าในพื้นที่ทำงาน/3.2.3 การปฏิบัติตามมาตรการประหยัดไฟฟ้าในพื้นที่ทำงาน.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.2.3 — การสำรวจการปฏิบัติตามมาตรการประหยัดไฟฟ้า (ไม่พบไฟเปิดทิ้ง)',
+    en: 'Indicator 3.2.3 document — electricity compliance survey (no lights left on)',
+  },
+  '3.2 การใช้พลังงาน/3.2.4 มาตรการหรือแนวทางการใช้น้ำมันเชื้อเพลิงในการเดินทางที่เหมาะสมกับสำนักงาน/3.2.4.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.2.4 — มาตรการประหยัดน้ำมันเชื้อเพลิง (ไฟล์คลุมขอบเขต: หน้า 1 เป็น 3.2.3, หน้า 10–13 เป็น 3.2.5)',
+    en: 'Indicator 3.2.4 document — fuel conservation measures (misbounded file: p1 = 3.2.3, p10–13 = 3.2.5)',
+  },
+  '3.2 การใช้พลังงาน/3.2.4 มาตรการหรือแนวทางการใช้น้ำมันเชื้อเพลิงในการเดินทางที่เหมาะสมกับสำนักงาน/รายงานการใช้รถยนต์.pdf': {
+    th: 'รายงานการใช้รถยนต์ (สแกน 22 หน้า — ยังไม่ยืนยันเนื้อหา)',
+    en: 'Vehicle-use log (22-page scan — content unverified)',
+  },
+  '3.2 การใช้พลังงาน/3.2.5 มีการจัดทำข้อมูลการใช้น้ำมันเชื้อเพลิงต่อหน่วยเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล/3.2.5.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.2.5 — ข้อมูลการใช้น้ำมัน 695.82 ลิตร (−22.7%) บรรลุเป้าหมาย (ไฟล์เริ่มจากข้อ (2))',
+    en: 'Indicator 3.2.5 document — fuel data 695.82 L (−22.7%), target met (file starts at item (2))',
+  },
+  '3.2 การใช้พลังงาน/การใช้พลังงาน.docx': {
+    th: 'รายงานประเด็น 3.2 การใช้พลังงาน ปี 2568 (DOCX หลัก)',
+    en: 'FY2568 issue 3.2 energy report (canonical DOCX)',
+  },
+  '3.3 การทรัพยากรอื่นๆ/3.3.1 มาตรการหรือแนวทางการใช้กระดาษที่เหมาะสมกับสำนักงาน/3.3.1 มาตรการหรือแนวทางการใช้กระดาษที่เหมาะสมกับสำนักงาน.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.3.1 — มาตรการประหยัดกระดาษ (นำกลับมาใช้ พิมพ์สองหน้า เอกสารอิเล็กทรอนิกส์)',
+    en: 'Indicator 3.3.1 document — paper conservation measures (reuse, double-side, e-documents)',
+  },
+  '3.3 การทรัพยากรอื่นๆ/3.3.2 มีการจัดทำข้อมูลการใช้กระดาษต่อหน่วยเปรียบเทียบกับเป้าหมาย/3.3.2.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.3.2 — ข้อมูลการใช้กระดาษ 2,197.80 กก. (+5.6%) ไม่บรรลุเป้าหมาย',
+    en: 'Indicator 3.3.2 document — paper data 2,197.80 kg (+5.6%), target not met',
+  },
+  '3.3 การทรัพยากรอื่นๆ/3.3.3 การปฏิบัติตามมาตรการการประหยัดกระดาษในพื้นที่ทำงาน/3.3.3 การปฏิบัติตามมาตรการการประหยัดกระดาษในพื้นที่ทำงาน.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.3.3 — การสำรวจการปฏิบัติตามมาตรการประหยัดกระดาษ (ไม่พบการใช้สิ้นเปลือง)',
+    en: 'Indicator 3.3.3 document — paper compliance survey (no wasteful use found)',
+  },
+  '3.3 การทรัพยากรอื่นๆ/3.3.4 มาตรการหรือแนวทางการใช้หมึกพิมพ์ อุปกรณ์เครื่องเขียน วัสดุอุปกรณ์เหมาะสมกับสำนักงาน/3.3.4.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.3.4 — มาตรการหมึก/วัสดุสำนักงาน (เครื่องพิมพ์ร่วม วัสดุส่วนกลาง)',
+    en: 'Indicator 3.3.4 document — ink/stationery measures (shared printers, pooled supplies)',
+  },
+  '3.3 การทรัพยากรอื่นๆ/3.3.5 การดำเนินตามมาตรการประหยัดการใช้หมึกพิมพ์  อุปกรณ์เครื่องเขียน วัสดุอุปกรณ์สำนักงาน/3.3.5.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.3.5 — การสำรวจการปฏิบัติตามมาตรการหมึก/วัสดุ (ไม่พบการใช้สิ้นเปลือง)',
+    en: 'Indicator 3.3.5 document — ink/stationery compliance survey (no wasteful use found)',
+  },
+  '3.3 การทรัพยากรอื่นๆ/การใช้ทรัพยากรอื่นๆ.docx': {
+    th: 'รายงานประเด็น 3.3 การใช้ทรัพยากรอื่นๆ ปี 2568 (DOCX หลัก)',
+    en: 'FY2568 issue 3.3 other-resources report (canonical DOCX)',
+  },
+  '3.4 การประชุมและการจัดนิทรรศการ/3.4.1 มาตรการหรือแนวทางการจัดการประชุมและนิทรรศการที่เป็นมิตรกับสิ่งแวดล้อม/3.4.1.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.4.1 — มาตรการจัดประชุม/นิทรรศการสีเขียว (ประชุมอิเล็กทรอนิกส์ QR-Code เชิญออนไลน์)',
+    en: 'Indicator 3.4.1 document — green meeting/exhibition measures (e-meeting, QR-Code, online invite)',
+  },
+  '3.4 การประชุมและการจัดนิทรรศการ/3.4.2 การจัดประชุมและนิทรรศการที่เป็นมิตรกับสิ่งแวดล้อม/3.4.2.pdf': {
+    th: 'เอกสารตัวชี้วัด 3.4.2 — การจัดประชุมด้วยวัสดุสีเขียว (ไฟล์เริ่มจากข้อ (3); ข้อ (1)/(2) อยู่ในรายงาน 3.4)',
+    en: 'Indicator 3.4.2 document — eco-material meetings (file starts at item (3); items (1)/(2) in the 3.4 report)',
+  },
+  '3.4 การประชุมและการจัดนิทรรศการ/การประชุมและการจัดนิทรรศการ.docx': {
+    th: 'รายงานประเด็น 3.4 การประชุมและการจัดนิทรรศการ ปี 2568 (DOCX หลัก — มีเนื้อหา 3.4.2 ครบ)',
+    en: 'FY2568 issue 3.4 meetings/exhibitions report (canonical DOCX — complete 3.4.2 content)',
+  },
+};
+---
+
+{
+  docs.length > 0 && (
+    <section
+      class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6"
+      aria-labelledby={`cat3-source-title-${issueCode}`}
+      data-cat3-source-documents
+      data-group={issueCode}
+    >
+      <p class="text-xs font-semibold text-primary">
+        {t('เอกสารต้นฉบับสำหรับการตรวจสอบ', 'Original document for review')}
+      </p>
+      <h2 id={`cat3-source-title-${issueCode}`} class="mt-1 text-base font-bold text-on-surface">
+        {t(`เอกสารต้นฉบับ ${issueCode} ปี 2568`, `Original ${issueCode} FY2568 documents`)}
+      </h2>
+      <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+        {t(
+          `ไฟล์ต้นฉบับปี 2568 ของกลุ่ม ${issueCode} ที่เผยแพร่แบบเปิดจากเว็บไซต์นี้ — สำหรับการตรวจสอบเอกสารต้นทาง (เฉพาะรายการที่ได้รับอนุมัติ C1; ไม่รวมสำเนาซ้ำและไฟล์ export)`,
+          `Openly published FY2568 source files for group ${issueCode} — for original-document review (C1-approved set only; near-duplicates and PDF exports excluded)`,
+        )}
+      </p>
+      <ul class="mt-4 space-y-3" role="list">
+        {docs.map((doc) => {
+          const description = DOC_DESCRIPTIONS[doc.path];
+          return (
+            <li
+              class="rounded-lg border border-gray-100 bg-white p-4"
+              data-cat3-source-doc
+              data-path={doc.path}
+            >
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-1 text-[11px] font-semibold text-emerald-800">
+                  {typeLabel[doc.type] ?? doc.type.toUpperCase()}
+                </span>
+                <p class="min-w-0 flex-1 font-medium num-tabular text-sm text-on-surface">{doc.title}</p>
+                <a
+                  href={withBase(doc.url)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex min-h-11 items-center justify-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-white transition duration-300 ease-out hover:-translate-y-0.5 focus-ring motion-reduce:transform-none"
+                >
+                  {t('เปิดเอกสารต้นฉบับ', 'Open original document')}
+                </a>
+              </div>
+              {description && (
+                <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+                  {t(description.th, description.en)}
+                </p>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )
+}

@@ -3696,6 +3696,481 @@
       "fileType": "PDF"
     },
     {
+      "id": "ev-cat3-ac-condensate-scan-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "ภาพถ่ายน้ำทิ้งเครื่องปรับอากาศหมวด 3 ปี 2568 (3.1.1, สแกน)",
+        "Cat3 FY2568 AC-condensate Water Capture Photos (3.1.1, scan)"
+      ],
+      "context": [
+        "สแกนภาพถ่ายน้ำทิ้งเครื่องปรับอากาศ 12 หน้า อ่านเนื้อหาไม่ได้ ระบุจากชื่อไฟล์/โฟลเดอร์เท่านั้น สนับสนุนมาตรการนำน้ำทิ้งเครื่องปรับอากาศกลับมาใช้ (3.1.1) แต่ยังไม่ยืนยันเนื้อหา",
+        "12-page image-only scan of AC-condensate water capture. Content not machine-readable; filename/folder only. Supports the 3.1.1 AC-water reuse measure but is NOT semantically verified."
+      ],
+      "keywords": [
+        "ภาพถ่ายน้ำทิ้งเครื่องปรับอากาศหมวด 3 ปี 2568 (3.1.1, สแกน) สแกนภาพถ่ายน้ำทิ้งเครื่องปรับอากาศ 12 หน้า อ่านเนื้อหาไม่ได้ ระบุจากชื่อไฟล์/โฟลเดอร์เท่านั้น สนับสนุนมาตรการนำน้ำทิ้งเครื่องปรับอากาศกลับมาใช้ (3.1.1) แต่ยังไม่ยืนยันเนื้อหา การใช้ทรัพยากรและพลังงาน ev-cat3-ac-condensate-scan-fy2568 3.1.1 2568",
+        "Cat3 FY2568 AC-condensate Water Capture Photos (3.1.1, scan) 12-page image-only scan of AC-condensate water capture. Content not machine-readable; filename/folder only. Supports the 3.1.1 AC-water reuse measure but is NOT semantically verified. Resource and Energy Utilization ev-cat3-ac-condensate-scan-fy2568 3.1.1 2568"
+      ],
+      "route": "/evidence/ev-cat3-ac-condensate-scan-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-annual-report-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "รายงานการประเมินหมวด 3 ปี 2568 (ฐานประวัติ)",
+        "Cat3 FY2568 Annual Report (historical baseline)"
+      ],
+      "context": [
+        "รายงานหลักหมวด 3 ปี 2568 ครอบคลุมประเด็น 3.1–3.4 เป็นฐานประวัติระดับหมวดหมู่เท่านั้น ไม่มีการอ้างฉบับลงนาม/อนุมัติ",
+        "FY2568 GO หมวด 3 master report (canonical DOCX) covering all 3.1–3.4 issues. Category-level historical baseline only — no signed/approved submission claim."
+      ],
+      "keywords": [
+        "รายงานการประเมินหมวด 3 ปี 2568 (ฐานประวัติ) รายงานหลักหมวด 3 ปี 2568 ครอบคลุมประเด็น 3.1–3.4 เป็นฐานประวัติระดับหมวดหมู่เท่านั้น ไม่มีการอ้างฉบับลงนาม/อนุมัติ การใช้ทรัพยากรและพลังงาน ev-cat3-annual-report-fy2568 2568",
+        "Cat3 FY2568 Annual Report (historical baseline) FY2568 GO หมวด 3 master report (canonical DOCX) covering all 3.1–3.4 issues. Category-level historical baseline only — no signed/approved submission claim. Resource and Energy Utilization ev-cat3-annual-report-fy2568 2568"
+      ],
+      "route": "/evidence/ev-cat3-annual-report-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": null
+    },
+    {
+      "id": "ev-cat3-meetings-eco-materials-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "การจัดประชุม/นิทรรศการด้วยวัสดุสีเขียวหมวด 3 ปี 2568 (3.4.2)",
+        "Cat3 FY2568 Eco-Material Meeting/Exhibition Implementation (3.4.2)"
+      ],
+      "context": [
+        "การจัดประชุมด้วยวัสดุสีเขียว ปี 2568: ไฟล์เดี่ยวเริ่มจากข้อ (3) (พลังงานในห้อง + อาหาร/เครื่องดื่ม); ข้อ (1)/(2) อยู่ในรายงานหมวด 3.4 เท่านั้น เป็นฐานประวัติปี 2568",
+        "FY2568 eco-material implementation: standalone file starts at item (3) (energy in rooms + food/drink); items (1)/(2) are present only in the 3.4 issue report DOCX. Frozen historical baseline."
+      ],
+      "keywords": [
+        "การจัดประชุม/นิทรรศการด้วยวัสดุสีเขียวหมวด 3 ปี 2568 (3.4.2) การจัดประชุมด้วยวัสดุสีเขียว ปี 2568: ไฟล์เดี่ยวเริ่มจากข้อ (3) (พลังงานในห้อง + อาหาร/เครื่องดื่ม); ข้อ (1)/(2) อยู่ในรายงานหมวด 3.4 เท่านั้น เป็นฐานประวัติปี 2568 การใช้ทรัพยากรและพลังงาน ev-cat3-meetings-eco-materials-fy2568 3.4.2 2568",
+        "Cat3 FY2568 Eco-Material Meeting/Exhibition Implementation (3.4.2) FY2568 eco-material implementation: standalone file starts at item (3) (energy in rooms + food/drink); items (1)/(2) are present only in the 3.4 issue report DOCX. Frozen historical baseline. Resource and Energy Utilization ev-cat3-meetings-eco-materials-fy2568 3.4.2 2568"
+      ],
+      "route": "/evidence/ev-cat3-meetings-eco-materials-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-compliance-electricity-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "การสำรวจการปฏิบัติตามมาตรการประหยัดไฟฟ้าหมวด 3 ปี 2568 (3.2.3)",
+        "Cat3 FY2568 Electricity Compliance Survey (3.2.3)"
+      ],
+      "context": [
+        "การสำรวจพฤติกรรมปี 2568: ไม่พบการเปิดไฟทิ้งในพื้นที่ที่ไม่ได้ใช้งาน ไม่มีคะแนนตัวเลข",
+        "FY2568 behavioral compliance survey: no lights left on in unused areas. No numeric score."
+      ],
+      "keywords": [
+        "การสำรวจการปฏิบัติตามมาตรการประหยัดไฟฟ้าหมวด 3 ปี 2568 (3.2.3) การสำรวจพฤติกรรมปี 2568: ไม่พบการเปิดไฟทิ้งในพื้นที่ที่ไม่ได้ใช้งาน ไม่มีคะแนนตัวเลข การใช้ทรัพยากรและพลังงาน ev-cat3-compliance-electricity-fy2568 3.2.3 2568",
+        "Cat3 FY2568 Electricity Compliance Survey (3.2.3) FY2568 behavioral compliance survey: no lights left on in unused areas. No numeric score. Resource and Energy Utilization ev-cat3-compliance-electricity-fy2568 3.2.3 2568"
+      ],
+      "route": "/evidence/ev-cat3-compliance-electricity-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-measures-electricity-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "มาตรการประหยัดไฟฟ้าหมวด 3 ปี 2568 (3.2.1)",
+        "Cat3 FY2568 Electricity Conservation Measures (3.2.1)"
+      ],
+      "context": [
+        "มาตรการประหยัดไฟฟ้า ปี 2568: หลอด LED T8 ×150, โซล่าร์เซล ×4, เซนเซอร์ตรวจจับความเคลื่อนไหว เป็นฐานประวัติปี 2568",
+        "FY2568 electricity measures: LED T8 ×150, solar cells ×4, motion sensors. Frozen historical baseline."
+      ],
+      "keywords": [
+        "มาตรการประหยัดไฟฟ้าหมวด 3 ปี 2568 (3.2.1) มาตรการประหยัดไฟฟ้า ปี 2568: หลอด LED T8 ×150, โซล่าร์เซล ×4, เซนเซอร์ตรวจจับความเคลื่อนไหว เป็นฐานประวัติปี 2568 การใช้ทรัพยากรและพลังงาน ev-cat3-measures-electricity-fy2568 3.2.1 2568",
+        "Cat3 FY2568 Electricity Conservation Measures (3.2.1) FY2568 electricity measures: LED T8 ×150, solar cells ×4, motion sensors. Frozen historical baseline. Resource and Energy Utilization ev-cat3-measures-electricity-fy2568 3.2.1 2568"
+      ],
+      "route": "/evidence/ev-cat3-measures-electricity-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-data-electricity-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "ข้อมูลการใช้ไฟฟ้าต่อหน่วยหมวด 3 ปี 2568 (3.2.2)",
+        "Cat3 FY2568 Electricity Consumption Data per Unit (3.2.2)"
+      ],
+      "context": [
+        "ข้อมูลการใช้ไฟฟ้าปี 2568: 403,036.80 หน่วย (+4.6% เทียบปี 2567) → ไม่บรรลุเป้าหมาย (ลด 1%) ตารางการใช้ต่อหน่วยเป็นรูปภาพ — หลักฐานระดับ MEDIUM",
+        "FY2568 electricity data: 403,036.80 units (+4.6% vs 2024) → NOT met (target reduce 1%). Per-unit electricity tables are image-only — MEDIUM evidence strength."
+      ],
+      "keywords": [
+        "ข้อมูลการใช้ไฟฟ้าต่อหน่วยหมวด 3 ปี 2568 (3.2.2) ข้อมูลการใช้ไฟฟ้าปี 2568: 403,036.80 หน่วย (+4.6% เทียบปี 2567) → ไม่บรรลุเป้าหมาย (ลด 1%) ตารางการใช้ต่อหน่วยเป็นรูปภาพ — หลักฐานระดับ MEDIUM การใช้ทรัพยากรและพลังงาน ev-cat3-data-electricity-fy2568 3.2.2 2568",
+        "Cat3 FY2568 Electricity Consumption Data per Unit (3.2.2) FY2568 electricity data: 403,036.80 units (+4.6% vs 2024) → NOT met (target reduce 1%). Per-unit electricity tables are image-only — MEDIUM evidence strength. Resource and Energy Utilization ev-cat3-data-electricity-fy2568 3.2.2 2568"
+      ],
+      "route": "/evidence/ev-cat3-data-electricity-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-measures-fuel-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "มาตรการประหยัดน้ำมันเชื้อเพลิงหมวด 3 ปี 2568 (3.2.4)",
+        "Cat3 FY2568 Fuel Conservation Measures (3.2.4)"
+      ],
+      "context": [
+        "มาตรการประหยัดน้ำมันเชื้อเพลิง ปี 2568 (หน้า 2–9) ความผิดปกติ C1: ไฟล์คลุมขอบเขต — เริ่มด้วยหน้า 3.2.3 และจบด้วยหน้า 3.2.5 เป็นฐานประวัติปี 2568",
+        "FY2568 fuel conservation measures for office travel (pages 2–9). C1 anomaly: the file is misbounded — starts with a 3.2.3 page and ends with 3.2.5 pages. Frozen historical baseline."
+      ],
+      "keywords": [
+        "มาตรการประหยัดน้ำมันเชื้อเพลิงหมวด 3 ปี 2568 (3.2.4) มาตรการประหยัดน้ำมันเชื้อเพลิง ปี 2568 (หน้า 2–9) ความผิดปกติ C1: ไฟล์คลุมขอบเขต — เริ่มด้วยหน้า 3.2.3 และจบด้วยหน้า 3.2.5 เป็นฐานประวัติปี 2568 การใช้ทรัพยากรและพลังงาน ev-cat3-measures-fuel-fy2568 3.2.4 2568",
+        "Cat3 FY2568 Fuel Conservation Measures (3.2.4) FY2568 fuel conservation measures for office travel (pages 2–9). C1 anomaly: the file is misbounded — starts with a 3.2.3 page and ends with 3.2.5 pages. Frozen historical baseline. Resource and Energy Utilization ev-cat3-measures-fuel-fy2568 3.2.4 2568"
+      ],
+      "route": "/evidence/ev-cat3-measures-fuel-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-data-fuel-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "ข้อมูลการใช้น้ำมันเชื้อเพลิงต่อระยะทางหมวด 3 ปี 2568 (3.2.5)",
+        "Cat3 FY2568 Fuel Consumption Data per Distance (3.2.5)"
+      ],
+      "context": [
+        "ข้อมูลการใช้น้ำมันปี 2568: 695.82 ลิตร (−205 ลิตร, −22.7% เทียบปี 2567) → บรรลุเป้าหมาย (ลด 1%) ความผิดปกติ C1: ไฟล์เริ่มจากข้อ (2); ข้อ (1) อยู่ในรายงานรวมเท่านั้น เป็นฐานประวัติปี 2568",
+        "FY2568 fuel data: 695.82 L (−205 L, −22.7% vs 2024) → MET (target reduce 1%). C1 anomaly: standalone file starts at item (2); item (1) exists only in the compiled reports. Frozen historical baseline."
+      ],
+      "keywords": [
+        "ข้อมูลการใช้น้ำมันเชื้อเพลิงต่อระยะทางหมวด 3 ปี 2568 (3.2.5) ข้อมูลการใช้น้ำมันปี 2568: 695.82 ลิตร (−205 ลิตร, −22.7% เทียบปี 2567) → บรรลุเป้าหมาย (ลด 1%) ความผิดปกติ C1: ไฟล์เริ่มจากข้อ (2); ข้อ (1) อยู่ในรายงานรวมเท่านั้น เป็นฐานประวัติปี 2568 การใช้ทรัพยากรและพลังงาน ev-cat3-data-fuel-fy2568 3.2.5 2568",
+        "Cat3 FY2568 Fuel Consumption Data per Distance (3.2.5) FY2568 fuel data: 695.82 L (−205 L, −22.7% vs 2024) → MET (target reduce 1%). C1 anomaly: standalone file starts at item (2); item (1) exists only in the compiled reports. Frozen historical baseline. Resource and Energy Utilization ev-cat3-data-fuel-fy2568 3.2.5 2568"
+      ],
+      "route": "/evidence/ev-cat3-data-fuel-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-measures-meetings-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "มาตรการจัดประชุม/นิทรรศการสีเขียวหมวด 3 ปี 2568 (3.4.1)",
+        "Cat3 FY2568 Green Meeting and Exhibition Measures (3.4.1)"
+      ],
+      "context": [
+        "มาตรการประชุมสีเขียว ปี 2568: ประชุมอิเล็กทรอนิกส์, QR-Code, เชิญประชุมออนไลน์ เป็นฐานประวัติปี 2568",
+        "FY2568 green-meeting measures: e-meeting, QR-Code, online invitation. Frozen historical baseline."
+      ],
+      "keywords": [
+        "มาตรการจัดประชุม/นิทรรศการสีเขียวหมวด 3 ปี 2568 (3.4.1) มาตรการประชุมสีเขียว ปี 2568: ประชุมอิเล็กทรอนิกส์, QR-Code, เชิญประชุมออนไลน์ เป็นฐานประวัติปี 2568 การใช้ทรัพยากรและพลังงาน ev-cat3-measures-meetings-fy2568 3.4.1 2568",
+        "Cat3 FY2568 Green Meeting and Exhibition Measures (3.4.1) FY2568 green-meeting measures: e-meeting, QR-Code, online invitation. Frozen historical baseline. Resource and Energy Utilization ev-cat3-measures-meetings-fy2568 3.4.1 2568"
+      ],
+      "route": "/evidence/ev-cat3-measures-meetings-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-measures-ink-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "มาตรการประหยัดหมึก/วัสดุสำนักงานหมวด 3 ปี 2568 (3.3.4)",
+        "Cat3 FY2568 Ink and Office-Supplies Measures (3.3.4)"
+      ],
+      "context": [
+        "มาตรการหมึก/วัสดุสำนักงาน ปี 2568: ใช้เครื่องพิมพ์ร่วมกันและเบิกวัสดุสำนักงานส่วนกลาง เป็นฐานประวัติปี 2568",
+        "FY2568 ink/stationery measures: shared printers and pooled office supplies. Frozen historical baseline."
+      ],
+      "keywords": [
+        "มาตรการประหยัดหมึก/วัสดุสำนักงานหมวด 3 ปี 2568 (3.3.4) มาตรการหมึก/วัสดุสำนักงาน ปี 2568: ใช้เครื่องพิมพ์ร่วมกันและเบิกวัสดุสำนักงานส่วนกลาง เป็นฐานประวัติปี 2568 การใช้ทรัพยากรและพลังงาน ev-cat3-measures-ink-fy2568 3.3.4 2568",
+        "Cat3 FY2568 Ink and Office-Supplies Measures (3.3.4) FY2568 ink/stationery measures: shared printers and pooled office supplies. Frozen historical baseline. Resource and Energy Utilization ev-cat3-measures-ink-fy2568 3.3.4 2568"
+      ],
+      "route": "/evidence/ev-cat3-measures-ink-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-compliance-ink-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "การสำรวจการปฏิบัติตามมาตรการประหยัดหมึก/วัสดุหมวด 3 ปี 2568 (3.3.5)",
+        "Cat3 FY2568 Ink and Stationery Compliance Survey (3.3.5)"
+      ],
+      "context": [
+        "การสำรวจปี 2568: ไม่พบการใช้หมึก/วัสดุสำนักงานสิ้นเปลือง ไม่มีคะแนนตัวเลข",
+        "FY2568 compliance survey: no wasteful ink/stationery use found. No numeric score."
+      ],
+      "keywords": [
+        "การสำรวจการปฏิบัติตามมาตรการประหยัดหมึก/วัสดุหมวด 3 ปี 2568 (3.3.5) การสำรวจปี 2568: ไม่พบการใช้หมึก/วัสดุสำนักงานสิ้นเปลือง ไม่มีคะแนนตัวเลข การใช้ทรัพยากรและพลังงาน ev-cat3-compliance-ink-fy2568 3.3.5 2568",
+        "Cat3 FY2568 Ink and Stationery Compliance Survey (3.3.5) FY2568 compliance survey: no wasteful ink/stationery use found. No numeric score. Resource and Energy Utilization ev-cat3-compliance-ink-fy2568 3.3.5 2568"
+      ],
+      "route": "/evidence/ev-cat3-compliance-ink-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-compliance-paper-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "การสำรวจการปฏิบัติตามมาตรการประหยัดกระดาษหมวด 3 ปี 2568 (3.3.3)",
+        "Cat3 FY2568 Paper Compliance Survey (3.3.3)"
+      ],
+      "context": [
+        "การสำรวจพฤติกรรมปี 2568: ไม่พบการใช้กระดาษสิ้นเปลือง ไม่มีคะแนนตัวเลข",
+        "FY2568 behavioral compliance survey: no wasteful paper use found. No numeric score."
+      ],
+      "keywords": [
+        "การสำรวจการปฏิบัติตามมาตรการประหยัดกระดาษหมวด 3 ปี 2568 (3.3.3) การสำรวจพฤติกรรมปี 2568: ไม่พบการใช้กระดาษสิ้นเปลือง ไม่มีคะแนนตัวเลข การใช้ทรัพยากรและพลังงาน ev-cat3-compliance-paper-fy2568 3.3.3 2568",
+        "Cat3 FY2568 Paper Compliance Survey (3.3.3) FY2568 behavioral compliance survey: no wasteful paper use found. No numeric score. Resource and Energy Utilization ev-cat3-compliance-paper-fy2568 3.3.3 2568"
+      ],
+      "route": "/evidence/ev-cat3-compliance-paper-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-measures-paper-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "มาตรการประหยัดกระดาษหมวด 3 ปี 2568 (3.3.1)",
+        "Cat3 FY2568 Paper Conservation Measures (3.3.1)"
+      ],
+      "context": [
+        "มาตรการประหยัดกระดาษ ปี 2568: นำกระดาษกลับมาใช้ พิมพ์สองหน้า ใช้เอกสารอิเล็กทรอนิกส์ เป็นฐานประวัติปี 2568",
+        "FY2568 paper measures: reuse, double-side printing, e-documents. Frozen historical baseline."
+      ],
+      "keywords": [
+        "มาตรการประหยัดกระดาษหมวด 3 ปี 2568 (3.3.1) มาตรการประหยัดกระดาษ ปี 2568: นำกระดาษกลับมาใช้ พิมพ์สองหน้า ใช้เอกสารอิเล็กทรอนิกส์ เป็นฐานประวัติปี 2568 การใช้ทรัพยากรและพลังงาน ev-cat3-measures-paper-fy2568 3.3.1 2568",
+        "Cat3 FY2568 Paper Conservation Measures (3.3.1) FY2568 paper measures: reuse, double-side printing, e-documents. Frozen historical baseline. Resource and Energy Utilization ev-cat3-measures-paper-fy2568 3.3.1 2568"
+      ],
+      "route": "/evidence/ev-cat3-measures-paper-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-data-paper-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "ข้อมูลการใช้กระดาษต่อหน่วยหมวด 3 ปี 2568 (3.3.2)",
+        "Cat3 FY2568 Paper Consumption Data per Unit (3.3.2)"
+      ],
+      "context": [
+        "ข้อมูลการใช้กระดาษปี 2568: 2,197.80 กก. (+117 กก.), 23.13 กก./หน่วย (+5.6% เทียบปี 2567) → ไม่บรรลุเป้าหมาย (ลด 1%) เป็นฐานประวัติปี 2568",
+        "FY2568 paper data: 2,197.80 kg (+117 kg), 23.13 kg/unit (+5.6% vs 2024) → NOT met (target reduce 1%). Frozen historical baseline."
+      ],
+      "keywords": [
+        "ข้อมูลการใช้กระดาษต่อหน่วยหมวด 3 ปี 2568 (3.3.2) ข้อมูลการใช้กระดาษปี 2568: 2,197.80 กก. (+117 กก.), 23.13 กก./หน่วย (+5.6% เทียบปี 2567) → ไม่บรรลุเป้าหมาย (ลด 1%) เป็นฐานประวัติปี 2568 การใช้ทรัพยากรและพลังงาน ev-cat3-data-paper-fy2568 3.3.2 2568",
+        "Cat3 FY2568 Paper Consumption Data per Unit (3.3.2) FY2568 paper data: 2,197.80 kg (+117 kg), 23.13 kg/unit (+5.6% vs 2024) → NOT met (target reduce 1%). Frozen historical baseline. Resource and Energy Utilization ev-cat3-data-paper-fy2568 3.3.2 2568"
+      ],
+      "route": "/evidence/ev-cat3-data-paper-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-targets-measures-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "เป้าหมาย ตัวชี้วัด และมาตรการหมวด 3 ปี 2568",
+        "Cat3 FY2568 Targets and Measures (หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68)"
+      ],
+      "context": [
+        "ตารางเป้าหมายหมวด 3 ปี 2568 (ไฟฟ้า/น้ำ/น้ำมัน/กระดาษ ลด 1% เทียบปี 2567) และมาตรการควบคุมการใช้พลังงานและทรัพยากร 9 หัวข้อ เป็นฐานประวัติสำหรับเปรียบเทียบปี 2569 ไม่ใช่ผลปีปัจจุบัน",
+        "FY2568 Cat3 target table (electricity/water/fuel/paper each reduce 1% vs 2024) plus the full 9-section resource conservation measures. Frozen historical baseline for comparison with FY2569; not a current-year result."
+      ],
+      "keywords": [
+        "เป้าหมาย ตัวชี้วัด และมาตรการหมวด 3 ปี 2568 ตารางเป้าหมายหมวด 3 ปี 2568 (ไฟฟ้า/น้ำ/น้ำมัน/กระดาษ ลด 1% เทียบปี 2567) และมาตรการควบคุมการใช้พลังงานและทรัพยากร 9 หัวข้อ เป็นฐานประวัติสำหรับเปรียบเทียบปี 2569 ไม่ใช่ผลปีปัจจุบัน การใช้ทรัพยากรและพลังงาน ev-cat3-targets-measures-fy2568 2568",
+        "Cat3 FY2568 Targets and Measures (หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68) FY2568 Cat3 target table (electricity/water/fuel/paper each reduce 1% vs 2024) plus the full 9-section resource conservation measures. Frozen historical baseline for comparison with FY2569; not a current-year result. Resource and Energy Utilization ev-cat3-targets-measures-fy2568 2568"
+      ],
+      "route": "/evidence/ev-cat3-targets-measures-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": null
+    },
+    {
+      "id": "ev-cat3-vehicle-log-scan-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "รายงานการใช้รถยนต์หมวด 3 ปี 2568 (3.2.4, สแกน)",
+        "Cat3 FY2568 Vehicle-Use Log (3.2.4, scan)"
+      ],
+      "context": [
+        "สแกนรายงานการใช้รถยนต์ 22 หน้า อ่านเนื้อหาไม่ได้ ระบุจากชื่อไฟล์/โฟลเดอร์เท่านั้น สนับสนุนมาตรการ 3.2.4 แต่ยังไม่ยืนยันเนื้อหา",
+        "22-page image-only scanned vehicle-use log. Content not machine-readable; filename/folder only. Supports 3.2.4 fuel measures but is NOT semantically verified."
+      ],
+      "keywords": [
+        "รายงานการใช้รถยนต์หมวด 3 ปี 2568 (3.2.4, สแกน) สแกนรายงานการใช้รถยนต์ 22 หน้า อ่านเนื้อหาไม่ได้ ระบุจากชื่อไฟล์/โฟลเดอร์เท่านั้น สนับสนุนมาตรการ 3.2.4 แต่ยังไม่ยืนยันเนื้อหา การใช้ทรัพยากรและพลังงาน ev-cat3-vehicle-log-scan-fy2568 3.2.4 2568",
+        "Cat3 FY2568 Vehicle-Use Log (3.2.4, scan) 22-page image-only scanned vehicle-use log. Content not machine-readable; filename/folder only. Supports 3.2.4 fuel measures but is NOT semantically verified. Resource and Energy Utilization ev-cat3-vehicle-log-scan-fy2568 3.2.4 2568"
+      ],
+      "route": "/evidence/ev-cat3-vehicle-log-scan-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-compliance-water-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "การสำรวจการปฏิบัติตามมาตรการประหยัดน้ำหมวด 3 ปี 2568 (3.1.3)",
+        "Cat3 FY2568 Water Compliance Survey (3.1.3)"
+      ],
+      "context": [
+        "การสำรวจพฤติกรรมปี 2568: ไม่พบจุดรั่ว/หยดน้ำที่ก๊อกน้ำในพื้นที่ทำงาน ไม่มีคะแนนตัวเลข",
+        "FY2568 behavioral compliance survey: no leaks/drips found at faucets in work areas. No numeric score."
+      ],
+      "keywords": [
+        "การสำรวจการปฏิบัติตามมาตรการประหยัดน้ำหมวด 3 ปี 2568 (3.1.3) การสำรวจพฤติกรรมปี 2568: ไม่พบจุดรั่ว/หยดน้ำที่ก๊อกน้ำในพื้นที่ทำงาน ไม่มีคะแนนตัวเลข การใช้ทรัพยากรและพลังงาน ev-cat3-compliance-water-fy2568 3.1.3 2568",
+        "Cat3 FY2568 Water Compliance Survey (3.1.3) FY2568 behavioral compliance survey: no leaks/drips found at faucets in work areas. No numeric score. Resource and Energy Utilization ev-cat3-compliance-water-fy2568 3.1.3 2568"
+      ],
+      "route": "/evidence/ev-cat3-compliance-water-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-measures-water-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "มาตรการประหยัดน้ำหมวด 3 ปี 2568 (3.1.1)",
+        "Cat3 FY2568 Water Conservation Measures (3.1.1)"
+      ],
+      "context": [
+        "มาตรการประหยัดน้ำ ปี 2568: สติ๊กเกอร์รณรงค์ กำหนดเวลารดน้ำ 08.00–09.00 แอปตั้งเวลา นำน้ำทิ้งเครื่องปรับอากาศมารดน้ำ ก๊อกเซนเซอร์ เป็นฐานประวัติปี 2568",
+        "FY2568 water conservation measures: awareness stickers, 08:00–09:00 watering schedule, timer-app watering, AC-condensate reuse, sensor faucets. Frozen historical baseline."
+      ],
+      "keywords": [
+        "มาตรการประหยัดน้ำหมวด 3 ปี 2568 (3.1.1) มาตรการประหยัดน้ำ ปี 2568: สติ๊กเกอร์รณรงค์ กำหนดเวลารดน้ำ 08.00–09.00 แอปตั้งเวลา นำน้ำทิ้งเครื่องปรับอากาศมารดน้ำ ก๊อกเซนเซอร์ เป็นฐานประวัติปี 2568 การใช้ทรัพยากรและพลังงาน ev-cat3-measures-water-fy2568 3.1.1 2568",
+        "Cat3 FY2568 Water Conservation Measures (3.1.1) FY2568 water conservation measures: awareness stickers, 08:00–09:00 watering schedule, timer-app watering, AC-condensate reuse, sensor faucets. Frozen historical baseline. Resource and Energy Utilization ev-cat3-measures-water-fy2568 3.1.1 2568"
+      ],
+      "route": "/evidence/ev-cat3-measures-water-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
+      "id": "ev-cat3-data-water-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "ข้อมูลการใช้น้ำต่อหน่วยหมวด 3 ปี 2568 (3.1.2)",
+        "Cat3 FY2568 Water Consumption Data per Unit (3.1.2)"
+      ],
+      "context": [
+        "ข้อมูลการใช้น้ำปี 2568: 8,337.50 หน่วย (+47.1% เทียบปี 2567), 87.76 หน่วย/คน (+47.71%) → ไม่บรรลุเป้าหมาย (ลด 1%) เป็นฐานประวัติปี 2568",
+        "FY2568 water data: 8,337.50 units (+47.1% vs 2024), 87.76 units/person (+47.71%) → NOT met (target reduce 1%). Frozen historical baseline."
+      ],
+      "keywords": [
+        "ข้อมูลการใช้น้ำต่อหน่วยหมวด 3 ปี 2568 (3.1.2) ข้อมูลการใช้น้ำปี 2568: 8,337.50 หน่วย (+47.1% เทียบปี 2567), 87.76 หน่วย/คน (+47.71%) → ไม่บรรลุเป้าหมาย (ลด 1%) เป็นฐานประวัติปี 2568 การใช้ทรัพยากรและพลังงาน ev-cat3-data-water-fy2568 3.1.2 2568",
+        "Cat3 FY2568 Water Consumption Data per Unit (3.1.2) FY2568 water data: 8,337.50 units (+47.1% vs 2024), 87.76 units/person (+47.71%) → NOT met (target reduce 1%). Frozen historical baseline. Resource and Energy Utilization ev-cat3-data-water-fy2568 3.1.2 2568"
+      ],
+      "route": "/evidence/ev-cat3-data-water-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
       "id": "ev-ghg-emission-factors",
       "section": "evidence",
       "type": "evidence",
@@ -3858,8 +4333,8 @@
         "Monthly fuel consumption and mileage records for the organizational vehicle fleet."
       ],
       "keywords": [
-        "บันทึกการใช้เชื้อเพลิงยานพาหนะ ปี 2568 บันทึกปริมาณการใช้เชื้อเพลิงและระยะทางรายเดือนของยานพาหนะของหน่วยงาน การจัดซื้อและจัดจ้าง ev-transport-fleet-2025 3.2.5 2025",
-        "Fleet Fuel Usage Records 2025 Monthly fuel consumption and mileage records for the organizational vehicle fleet. Procurement and Hiring ev-transport-fleet-2025 3.2.5 2025"
+        "บันทึกการใช้เชื้อเพลิงยานพาหนะ ปี 2568 บันทึกปริมาณการใช้เชื้อเพลิงและระยะทางรายเดือนของยานพาหนะของหน่วยงาน การจัดซื้อและจัดจ้าง ev-transport-fleet-2025 2025",
+        "Fleet Fuel Usage Records 2025 Monthly fuel consumption and mileage records for the organizational vehicle fleet. Procurement and Hiring ev-transport-fleet-2025 2025"
       ],
       "route": "/evidence/ev-transport-fleet-2025/",
       "routeKind": "page",
@@ -4033,8 +4508,8 @@
         "Monthly electricity consumption data from sub-meters across all building zones."
       ],
       "keywords": [
-        "ข้อมูลมิเตอร์ไฟฟ้ารายเดือน ปี 2568 ข้อมูลการใช้ไฟฟ้ารายเดือนจากมิเตอร์ย่อยในทุกพื้นที่ของอาคาร การใช้ทรัพยากรและพลังงาน ev-energy-metering-2025 3.2.2 2025",
-        "Monthly Energy Metering Data 2025 Monthly electricity consumption data from sub-meters across all building zones. Resource and Energy Utilization ev-energy-metering-2025 3.2.2 2025"
+        "ข้อมูลมิเตอร์ไฟฟ้ารายเดือน ปี 2568 ข้อมูลการใช้ไฟฟ้ารายเดือนจากมิเตอร์ย่อยในทุกพื้นที่ของอาคาร การใช้ทรัพยากรและพลังงาน ev-energy-metering-2025 2025",
+        "Monthly Energy Metering Data 2025 Monthly electricity consumption data from sub-meters across all building zones. Resource and Energy Utilization ev-energy-metering-2025 2025"
       ],
       "route": "/evidence/ev-energy-metering-2025/",
       "routeKind": "page",
@@ -4283,8 +4758,8 @@
         "Quarterly water consumption readings from main and sub-meters."
       ],
       "keywords": [
-        "ข้อมูลมิเตอร์น้ำ ไตรมาส 1 ปี 2568 ข้อมูลการใช้น้ำรายไตรมาสจากมิเตอร์หลักและมิเตอร์ย่อย การใช้ทรัพยากรและพลังงาน ev-water-meter-q1 3.1.2 2025",
-        "Water Metering Data Q1 2025 Quarterly water consumption readings from main and sub-meters. Resource and Energy Utilization ev-water-meter-q1 3.1.2 2025"
+        "ข้อมูลมิเตอร์น้ำ ไตรมาส 1 ปี 2568 ข้อมูลการใช้น้ำรายไตรมาสจากมิเตอร์หลักและมิเตอร์ย่อย การใช้ทรัพยากรและพลังงาน ev-water-meter-q1 2025",
+        "Water Metering Data Q1 2025 Quarterly water consumption readings from main and sub-meters. Resource and Energy Utilization ev-water-meter-q1 2025"
       ],
       "route": "/evidence/ev-water-meter-q1/",
       "routeKind": "page",
