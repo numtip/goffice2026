@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "wastewater",
+  "updated": "2026-08-23",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CATEGORY4_WASTE_BLUEPRINT_V1",
+  "note": "FY2568 historical-baseline contract for 4.2.1 (office wastewater management + effluent quality vs the legal standard). The verified monthly FY2568 effluent statistics (BOD/COD/SS/TDS/pH/Temp/Cl₂) from the central MJU SBR plant are within the thresholds printed on the form; effluent is tested by an accredited lab (บริษัทห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด) and reported within the ประกาศกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม 2548 building-discharge standards. The oil/grease skimming record (4-page scan) stays pending. No FY2569 facts.",
+  "sources": [
+    { "ref": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (1) บันทึกรายละเอียดของสถิติคุณภาพน้ำ ปี 2568.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #25 — verified FY2568 monthly effluent statistics from the MJU central SBR plant (BOD/COD/SS/TDS/pH/Temp/Cl₂ + treatment-efficiency %), all within the standard thresholds printed on the form." },
+    { "ref": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (1) บันทึกการตักคราบน้ำมัน และไขมัน.pdf", "role": "skim-record", "inspection": "filename_folder_only", "disposition": "canonical-pending-verification", "note": "C1 #24 — 4-page image scan of the oil/grease skimming record (byte-identical to 4.2.2(3), G2 duplicate). Content pending OCR." },
+    { "ref": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (2).txt", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #26 — grease-trap + food-screen treatment appropriate to the building context (floor-1 traps; floor-3 trap removed due to leveling/backflow issues)." },
+    { "ref": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (3).txt", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #27 — all wastewater discharge points treated (2 grease-trap points, floor 1 front/back; weekly Friday skimming)." },
+    { "ref": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (4).txt", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #28 — effluent tested by the accredited lab and reported within the legal standard (ประกาศ 2548)." },
+    { "ref": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (10-03-69).docx", "role": "category-report", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #33 — canonical annual report containing the full 4.2.1 narrative and effluent results." }
+  ],
+  "records": [
+    {
+      "id": "wastewater-effluent-stats-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.2.1"],
+      "issueCodes": ["4.2"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-wastewater-effluent-stats-fy2568"],
+      "sourceRef": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (1) บันทึกรายละเอียดของสถิติคุณภาพน้ำ ปี 2568.pdf",
+      "manifestSha256": "b51f1116851a37dd329d75f64cdc866b60eecebdff45b5e7cc3c284a76eac067",
+      "verification": {
+        "status": "pending",
+        "basis": "4.2.1(1) FY2568 monthly effluent statistics (BOD/COD/SS/TDS/pH/Temp/Cl₂ + treatment-efficiency %) from the MJU central SBR plant — within the standard thresholds printed on the form. Text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "effluentStats",
+      "labelTh": "สถิติคุณภาพน้ำทิ้ง ปี 2568",
+      "labelEn": "FY2568 effluent quality statistics",
+      "domain": "wastewater",
+      "note": "Effluent within the legal standard thresholds; tested by the accredited lab (บริษัทห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด) per ประกาศกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม 2548."
+    },
+    {
+      "id": "wastewater-grease-trap-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.2.1"],
+      "issueCodes": ["4.2"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-wastewater-grease-trap-fy2568"],
+      "sourceRef": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (2).txt",
+      "manifestSha256": "4cbf86fae9f5389189629ef670e4dec42d79b83c8d278e90343643a08169acd2",
+      "verification": {
+        "status": "pending",
+        "basis": "4.2.1(2) grease-trap + food-screen treatment appropriate to the building context (floor-1 traps at 2 points; floor-3 trap removed due to leveling/backflow issues, food screens used instead) — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "wastewaterControl",
+      "labelTh": "การบำบัดน้ำเสียเบื้องต้น 4.2.1(2)",
+      "labelEn": "Preliminary wastewater treatment 4.2.1(2)"
+    },
+    {
+      "id": "wastewater-all-points-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.2.1"],
+      "issueCodes": ["4.2"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-wastewater-all-points-fy2568"],
+      "sourceRef": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (3).txt",
+      "manifestSha256": "a6098f9536ff14d83c58e50dad15d9f20f575c17c1882fd882b5b38d0c187fbe",
+      "verification": {
+        "status": "pending",
+        "basis": "4.2.1(3) all wastewater discharge points treated (2 grease-trap points on floor 1 — front dining/IQS area and back dish/bottle-washing area for the tissue-culture lab; weekly Friday skimming) — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "wastewaterControl",
+      "labelTh": "บำบัดน้ำเสียครบทุกจุด 4.2.1(3)",
+      "labelEn": "All discharge points treated 4.2.1(3)"
+    },
+    {
+      "id": "wastewater-standard-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.2.1"],
+      "issueCodes": ["4.2"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-wastewater-standard-fy2568"],
+      "sourceRef": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (4).txt",
+      "manifestSha256": "8853be2fa2b0929b523dafce14bfce8ae10129c10e96c5f70a422068061885e3",
+      "verification": {
+        "status": "pending",
+        "basis": "4.2.1(4) effluent tested by the accredited lab (บริษัทห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด) and reported within the legal standard per ประกาศกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม เรื่อง กำหนดมาตรฐานควบคุมการระบายน้ำทิ้งจากอาคารบางประเภทและบางขนาด พ.ศ. 2548 — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "effluentCompliance",
+      "labelTh": "คุณภาพน้ำทิ้งตามมาตรฐานกฎหมาย 4.2.1(4)",
+      "labelEn": "Effluent within legal standard 4.2.1(4)"
+    },
+    {
+      "id": "wastewater-skim-scan-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.2.1"],
+      "issueCodes": ["4.2"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-wastewater-skim-scan-fy2568"],
+      "sourceRef": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (1) บันทึกการตักคราบน้ำมัน และไขมัน.pdf",
+      "manifestSha256": "3a21d03a278b29503433b6b5071f0c588201813d84f9a6b4c2321c5dc0eedd8a",
+      "verification": {
+        "status": "pending",
+        "basis": "Oil/grease skimming record (4-page image scan; byte-identical to 4.2.2(3), G2 duplicate). 0 text chars — content unverifiable without OCR. NOT semantically verified."
+      },
+      "availability": "filename_folder_only",
+      "kind": "skimRecordScan",
+      "labelTh": "บันทึกการตักคราบน้ำมันและไขมัน (สแกน, ไม่ยืนยันเนื้อหา)",
+      "labelEn": "Oil/grease skimming record (scan, content unverified)",
+      "promoted": false
+    }
+  ],
+  "gaps": [],
+  "forwardRequirements": [],
+  "crossLinks": [
+    { "from": "4.2.1", "to": "4.2.2", "reason": "Wastewater control (4.2.1) is maintained and cared for under 4.2.2 (weekly skimming, repair, leak inspection)" }
+  ]
+}

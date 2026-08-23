@@ -58,7 +58,7 @@ test('covers all 7 categories in canonical order', () => {
 });
 
 test('PO-approved category counts match', () => {
-  const expected = { cat1: 38, cat2: 29, cat3: 32, cat4: 28, cat5: 47, cat6: 32, cat7: 3 };
+  const expected = { cat1: 38, cat2: 29, cat3: 32, cat4: 32, cat5: 47, cat6: 32, cat7: 3 };
   for (const entry of BASELINE_2568_CATEGORY_COUNTS) {
     assert.strictEqual(
       entry.recordedBaselineCount,
@@ -68,8 +68,8 @@ test('PO-approved category counts match', () => {
   }
 });
 
-test('total baseline count is 209', () => {
-  assert.strictEqual(BASELINE_2568_TOTAL, 209);
+test('total baseline count is 213', () => {
+  assert.strictEqual(BASELINE_2568_TOTAL, 213);
 });
 
 test('coverage state is category-level only — no indicator verification claim', () => {
@@ -177,7 +177,7 @@ const AUDITED_SOURCE_TYPES = {
   cat1: { pdf: 28, xlsx: 3, docx: 7 },
   cat2: { pdf: 24, xlsx: 2, docx: 2, xls: 1 },
   cat3: { pdf: 26, docx: 6 },
-  cat4: { xlsx: 1, pdf: 10, txt: 15, docx: 2 },
+  cat4: { xlsx: 1, pdf: 14, txt: 15, docx: 2 },
   cat5: { pdf: 46, docx: 1 },
   cat6: { pdf: 31, docx: 1 },
   cat7: { pdf: 3 },
@@ -196,7 +196,7 @@ test('source-type totals match the verified aggregate audit', () => {
 test('getSourceTypeCounts returns safe, sorted extension counts', () => {
   assert.deepStrictEqual(getSourceTypeCounts('cat4'), [
     { ext: 'txt', count: 15 },
-    { ext: 'pdf', count: 10 },
+    { ext: 'pdf', count: 14 },
     { ext: 'docx', count: 2 },
     { ext: 'xlsx', count: 1 },
   ]);

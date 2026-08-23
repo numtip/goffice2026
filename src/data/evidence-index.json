@@ -199,28 +199,26 @@
       "id": "ev-waste-recycling-2025",
       "categoryId": "cat4",
       "indicator": "Waste segregation and recycling",
-      "title": "Waste Recycling Summary 2025",
-      "titleTh": "สรุปการคัดแยกและรีไซเคิลของเสีย ปี 2568",
-      "description": "Annual summary of waste segregation and recycling performance across all departments.",
-      "descriptionTh": "สรุปผลการคัดแยกและรีไซเคิลของเสียประจำปีของทุกหน่วยงาน",
+      "title": "Waste Recycling Summary 2025 (superseded)",
+      "titleTh": "สรุปการคัดแยกและรีไซเคิลของเสีย ปี 2568 (ถูกแทนที่)",
+      "description": "Legacy off-manifest operational-workbook claim (docs/1.5_Waste.xlsx, recycling calculation sheets). Downgraded to category-level in GO-CAT4 C3 — superseded by the canonical Cat4 evidence set. Source file is off-disk.",
+      "descriptionTh": "ข้ออ้างเดิมจากเวิร์กบุ๊กนอก manifest (docs/1.5_Waste.xlsx แผ่นคำนวณรีไซเคิล) ลดระดับเป็นระดับหมวดใน C3 หมวด 4 — ถูกแทนที่ด้วยชุดหลักฐาน Cat4 ตามหลักการ ไฟล์ต้นฉบับไม่อยู่บนดิสก์",
       "year": 2025,
       "path": "/documents/cat4/waste-recycling-2025.xlsx",
       "fileType": "XLSX",
       "status": "available",
-      "updated": "2026-07-27",
+      "updated": "2026-08-23",
       "sourceId": "src-xlsx-waste-data",
       "realSourcePath": "docs/1.5_Waste.xlsx",
       "realSourceAvailable": false,
       "publicationMode": "internal-metadata-only",
       "sharePointUrl": null,
       "sharePointUrlPending": true,
-      "traceabilityLevel": "indicator",
-      "indicatorCodes": [
-        "4.1.3"
-      ],
-      "issueCodes": [
-        "4.1"
-      ],
+      "superseded": true,
+      "supersededBy": "ev-cat4-data-reuse-compost-fy2568",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
       "categoryCodes": [
         "cat4"
       ],
@@ -229,16 +227,13 @@
         "sourceLabel": "Waste management workbook — recycling calculation sheets (Green Office form 4.1(1))",
         "sourceLabelTh": "ไฟล์บันทึกการจัดการของเสีย — แผ่นคำนวณการรีไซเคิล (แบบฟอร์ม 4.1(1))",
         "mappingReviewId": "review-007",
-        "mappingConfidence": "medium",
+        "mappingConfidence": "low",
         "humanVerificationRequired": true
       },
       "verification": {
         "status": "pending",
-        "basis": "WS-B metadata promotion: shared waste workbook (docs/1.5_Waste.xlsx) partially supports indicator 4.1.3 via recycling calculation sheets. Same source as ev-waste-monthly-2025; human review required to confirm scope covers recycling summary requirement.",
-        "basisTh": "การยกระดับ metadata WS-B: ไฟล์ของเสียร่วมกันรองรับตัวชี้วัด 4.1.3 บางส่วนผ่านแผ่นคำนวณรีไซเคิล ต้องตรวจสอบว่าครอบคลุมข้อกำหนดสรุปการรีไซเคิล",
-        "reviewPhase": "WS-B",
-        "reviewedAt": "2026-07-27",
-        "reviewOutcome": "pending-po-signoff"
+        "basis": "GO-CAT4 C3 reconciliation: legacy off-manifest workbook claim downgraded to category-level (realSourceAvailable false, indicatorCodes cleared) and superseded by the canonical Cat4 reuse/recycling evidence (ev-cat4-data-reuse-compost-fy2568). Not an indicator-level Cat4 claim.",
+        "basisTh": "การปรับ C3 หมวด 4: ข้ออ้างเวิร์กบุ๊กนอก manifest ลดระดับเป็นระดับหมวดและถูกแทนที่ด้วยหลักฐานการนำขยะกลับมาใช้ประโยชน์ของ Cat4 ไม่ใช่ข้ออ้างระดับตัวชี้วัด"
       }
     },
     {
@@ -272,28 +267,26 @@
       "id": "ev-waste-monthly-2025",
       "categoryId": "cat4",
       "indicator": "Monthly waste tracking",
-      "title": "Monthly Waste Tracking Data 2025",
-      "titleTh": "ข้อมูลติดตามของเสียรายเดือน ปี 2568",
-      "description": "Monthly waste generation and diversion data by waste type and disposal method.",
-      "descriptionTh": "ข้อมูลปริมาณของเสียและการจัดการรายเดือน แยกตามประเภทของเสียและวิธีกำจัด",
+      "title": "Monthly Waste Tracking Data 2025 (superseded)",
+      "titleTh": "ข้อมูลติดตามของเสียรายเดือน ปี 2568 (ถูกแทนที่)",
+      "description": "Legacy off-manifest operational-workbook claim (docs/1.5_Waste.xlsx, monthly tracking). Downgraded to category-level in GO-CAT4 C3 — superseded by the canonical Cat4 evidence set. Source file is off-disk.",
+      "descriptionTh": "ข้ออ้างเดิมจากเวิร์กบุ๊กนอก manifest (docs/1.5_Waste.xlsx การติดตามรายเดือน) ลดระดับเป็นระดับหมวดใน C3 หมวด 4 — ถูกแทนที่ด้วยชุดหลักฐาน Cat4 ตามหลักการ ไฟล์ต้นฉบับไม่อยู่บนดิสก์",
       "year": 2025,
       "path": "/documents/cat3/waste-monthly-2025.xlsx",
       "fileType": "XLSX",
       "status": "available",
-      "updated": "2026-07-19",
+      "updated": "2026-08-23",
       "sourceId": "src-xlsx-waste-data",
       "realSourcePath": "docs/1.5_Waste.xlsx",
       "realSourceAvailable": false,
       "publicationMode": "internal-metadata-only",
       "sharePointUrl": null,
       "sharePointUrlPending": true,
-      "traceabilityLevel": "indicator",
-      "indicatorCodes": [
-        "4.1.2"
-      ],
-      "issueCodes": [
-        "4.1"
-      ],
+      "superseded": true,
+      "supersededBy": "ev-cat4-data-waste-annual-fy2568",
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
       "categoryCodes": [
         "cat4"
       ],
@@ -302,16 +295,13 @@
         "sourceLabel": "Waste management reporting workbook (Green Office form 4.1(1))",
         "sourceLabelTh": "ไฟล์บันทึกการจัดการของเสีย (แบบฟอร์มสำนักงานสีเขียว 4.1(1))",
         "mappingReviewId": "review-009",
-        "mappingConfidence": "high",
+        "mappingConfidence": "low",
         "humanVerificationRequired": true
       },
       "verification": {
         "status": "pending",
-        "basis": "ET-1 traceability promotion: monthly waste tracking workbook (form 4.1(1)) directly supports indicator 4.1.2 (sorting, collection, and disposal implementation). Source file docs/1.5_Waste.xlsx is off-disk (Test-Path 2026-07-27); realSourceAvailable set false. Human data-owner verification and file restoration required before verified status.",
-        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์บันทึกข้อมูลของเสียรายเดือน (แบบฟอร์ม 4.1(1)) สนับสนุนตัวชี้วัด 4.1.2 โดยตรง ไฟล์ต้นฉบับ docs/1.5_Waste.xlsx ไม่อยู่บนดิสก์ (ตรวจสอบ 2026-07-27) ตั้ง realSourceAvailable เป็น false ต้องกู้คืนไฟล์และรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนเปลี่ยนเป็นสถานะตรวจสอบแล้ว",
-        "reviewPhase": "REL-1",
-        "reviewedAt": "2026-07-19",
-        "reviewOutcome": "pending-po-signoff"
+        "basis": "GO-CAT4 C3 reconciliation: legacy off-manifest workbook claim downgraded to category-level (realSourceAvailable false, indicatorCodes cleared) and superseded by the canonical Cat4 annual waste data (ev-cat4-data-waste-annual-fy2568). Not an indicator-level Cat4 claim.",
+        "basisTh": "การปรับ C3 หมวด 4: ข้ออ้างเวิร์กบุ๊กนอก manifest ลดระดับเป็นระดับหมวดและถูกแทนที่ด้วยข้อมูลปริมาณขยะรายปีของ Cat4 ไม่ใช่ข้ออ้างระดับตัวชี้วัด"
       }
     },
     {
@@ -2463,6 +2453,1313 @@
         "basis": "C1 semantic-verification: text extracted (content-verified). Category-level historical baseline only; no signed/approved submission claim. PDF export excluded from indicator evidence.",
         "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) เป็นฐานประวัติระดับหมวดหมู่เท่านั้น ไม่มีการอ้างฉบับลงนาม/อนุมัติ ไม่นับ PDF export เป็นหลักฐานตัวชี้วัด"
       }
+    },
+    {
+      "id": "ev-cat4-annual-report-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Category 4 annual report",
+      "title": "Cat4 FY2568 Waste Management Annual Report (10-03-69, canonical)",
+      "titleTh": "รายงานผลการจัดการของเสีย หมวด 4 ปี 2568 (10-03-69, ฉบับหลัก)",
+      "description": "Canonical FY2568 annual report (10-03-69 DOCX, revision 129): waste measures, sorting/collection/disposal, waste data (general 4,380.10 kg, target −3% vs 2567 NOT met; total 6,434.70 kg; reuse 31.93%), wastewater control and treatment care. Category-level historical baseline — no signed/approved copy.",
+      "descriptionTh": "รายงานผลการจัดการของเสีย ปี 2568 ฉบับหลัก (10-03-69 DOCX, revision 129): มาตรการขยะ การคัดแยก/รวบรวม/กำจัด ข้อมูลขยะ (ขยะทั่วไป 4,380.10 กก. เป้าหมายลด 3% ไม่บรรลุ รวม 6,434.70 กก. นำกลับมาใช้ใหม่ 31.93%) การจัดการน้ำเสียและการดูแลบำบัด เป็นฐานประวัติระดับหมวด — ไม่มีฉบับลงนาม",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/%E0%B8%AB%E0%B8%A1%E0%B8%A7%E0%B8%94%E0%B8%97%E0%B8%B5%E0%B9%88%204%20%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9C%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%20%20(10-03-69).docx",
+      "fileType": "DOCX",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (10-03-69).docx",
+      "manifestSha256": "52c5bb3cee45013f0b78b2e06800dc9acb29e61eb72921d746e3685336ebbbb8",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "category",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Waste Management Annual Report (10-03-69, canonical)",
+        "sourceLabelTh": "รายงานผลการจัดการของเสีย หมวด 4 ปี 2568 (10-03-69, ฉบับหลัก)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: canonical annual report DOCX (10-03-69, revision 129) text extracted. Category-level historical baseline; 02-03-69 DOCX superseded; 10-03-69 PDF is the reader export. Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว: รายงานหลัก DOCX (10-03-69 revision 129) ฐานประวัติระดับหมวด 02-03-69 ถูกแทนที่แล้ว PDF 10-03-69 เป็นไฟล์ export ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-measures-waste-plan-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Waste management measures (4.1.1)",
+      "title": "Cat4 FY2568 Waste Management Measures 4.1.1 (garbled — cross-reference only)",
+      "titleTh": "มาตรการจัดการขยะ 4.1.1 ปี 2568 (PDF ข้อความเพี้ยน — ตรวจข้ามอ้างอิง)",
+      "description": "8-item waste measures plan (3Rs, bin layout, 4-category disposal, campaigns, monthly data). Thai text layer garbled (broken glyph mapping); content verified by cross-reference to the 4.1 section narrative which quotes item 6 verbatim. Glyph layer pending OCR.",
+      "descriptionTh": "มาตรการจัดการขยะ 8 ข้อ (3Rs การจัดวางถังขยะ การกำจัด 4 ประเภท การรณรงค์ ข้อมูลรายเดือน) ชั้นข้อความไทยเพี้ยน (glyph เสีย) ยืนยันเนื้อหาโดยการอ้างอิงข้ามกับเนื้อหาตอน 4.1 ซึ่งอ้างข้อ 6 ตรงตามต้นฉบับ รอ OCR",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.1%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.1%20(1)%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%A7%E0%B8%9A%E0%B8%84%E0%B8%B8%E0%B8%A1%E0%B8%9E%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%20%E0%B8%AD%E0%B8%B2%E0%B8%84%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%89%E0%B8%A5%E0%B8%B4%E0%B8%A1%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%81%E0%B8%B5%E0%B8%A2%E0%B8%A3%E0%B8%95%E0%B8%B4%E0%B8%AF%202568.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1 (1) มาตรการควบคุมพลังงานและทรัพยากร อาคารเฉลิมพระเกียรติฯ 2568.pdf",
+      "manifestSha256": "5c2ff640b8af80842f213f755952370ecf609a1ace391f8ab7cc32b83a87cb9f",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.1"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "filename_folder_only",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Waste Management Measures 4.1.1 (garbled — cross-reference only)",
+        "sourceLabelTh": "มาตรการจัดการขยะ 4.1.1 ปี 2568 (PDF ข้อความเพี้ยน — ตรวจข้ามอ้างอิง)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 classification: garbled text layer (0 Thai chars, broken glyph mapping); content verified by cross-reference only — not OCR-verified. Glyph layer pending OCR/human verification.",
+        "basisTh": "C1 จัดชั้น: ข้อความเพี้ยน (0 ตัวอักษรไทย) ยืนยันโดยการอ้างอิงข้ามเท่านั้น — ยังไม่ใช่ผล OCR"
+      },
+      "promoted": false
+    },
+    {
+      "id": "ev-cat4-measures-target-announce-scan-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Environmental-target announcement (4.1.1)",
+      "title": "Cat4 FY2568 Environmental-Target Announcement 2568 (scan)",
+      "titleTh": "ประกาศการกำหนดเป้าหมายสิ่งแวดล้อม 2568 (สแกน)",
+      "description": "1-page image scan of the ประกาศการกำหนดเป้าหมายสิ่งแวดล้อม 2568 (Zero-waste / −3% general-waste target). Content unverifiable without OCR; target clause cross-verified via the report text.",
+      "descriptionTh": "สแกนประกาศการกำหนดเป้าหมายสิ่งแวดล้อม 2568 (เป้าหมาย Zero waste / ลดขยะทั่วไป 3%) 1 หน้า ยังอ่านเนื้อหาไม่ได้ รอ OCR ข้อความเป้าหมายยืนยันข้ามจากรายงาน",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.1%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.1.%20(2)%20%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%A5%E0%B8%B1%E0%B8%A2%E0%B9%81%E0%B8%A1%E0%B9%88%E0%B9%82%E0%B8%88%E0%B9%89%20%E0%B9%80%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%81%E0%B8%B3%E0%B8%AB%E0%B8%99%E0%B8%94%E0%B9%80%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B9%81%E0%B8%A7%E0%B8%94%E0%B8%A5%E0%B9%89%E0%B8%AD%E0%B8%A12568.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1. (2) ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อม2568.pdf",
+      "manifestSha256": "d1983fd22805eaadccb714ac3687709965a9a36da341bfba2187577cb4eb981d",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.1"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "filename_folder_only",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Environmental-Target Announcement 2568 (scan)",
+        "sourceLabelTh": "ประกาศการกำหนดเป้าหมายสิ่งแวดล้อม 2568 (สแกน)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 classification: filename_folder_only (1-page image scan, 0 text chars). Content unverifiable without OCR — NOT semantically verified.",
+        "basisTh": "C1 จัดชั้น: filename_folder_only (สแกน 1 หน้า 0 ตัวอักษร) ยังไม่ยืนยันเนื้อหา"
+      },
+      "promoted": false
+    },
+    {
+      "id": "ev-cat4-measures-context-announce-scan-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Organizational-context announcement (4.1.1)",
+      "title": "Cat4 FY2568 Context-and-Scope Announcement 2568 (scan)",
+      "titleTh": "ประกาศบริบทองค์กรและขอบเขต 2568 (สแกน)",
+      "description": "8-page image scan of the ประกาศบริบทองค์กรและขอบเขต 2568 (9,873 m², 4 units). Content unverifiable without OCR; scope cross-verified via the report text.",
+      "descriptionTh": "สแกนประกาศบริบทองค์กรและขอบเขต 2568 (9,873 ตร.ม. 4 หน่วยงาน) 8 หน้า ยังอ่านเนื้อหาไม่ได้ รอ OCR ขอบเขตยืนยันข้ามจากรายงาน",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.1%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.1%20(4)%20%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%A5%E0%B8%B1%E0%B8%A2%E0%B9%81%E0%B8%A1%E0%B9%88%E0%B9%82%E0%B8%88%E0%B9%89%20%E0%B9%80%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%20%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%9A%E0%B8%97%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%81%E0%B8%A3%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%82%E0%B8%AD%E0%B8%9A%E0%B9%80%E0%B8%82%E0%B8%95%E0%B8%AF%202568.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1 (4) ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง บริบทองค์กรและขอบเขตฯ 2568.pdf",
+      "manifestSha256": "f10afbf39c6bc4731f1227f3ec3626464fa4279b22df686308d9cf3e2a3f1d8d",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.1"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "filename_folder_only",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Context-and-Scope Announcement 2568 (scan)",
+        "sourceLabelTh": "ประกาศบริบทองค์กรและขอบเขต 2568 (สแกน)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 classification: filename_folder_only (8-page image scan, 0 text chars). Content unverifiable without OCR — NOT semantically verified.",
+        "basisTh": "C1 จัดชั้น: filename_folder_only (สแกน 8 หน้า 0 ตัวอักษร) ยังไม่ยืนยันเนื้อหา"
+      },
+      "promoted": false
+    },
+    {
+      "id": "ev-cat4-measures-foam-free-gap-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Foam-free gap disclosure (4.1.1)",
+      "title": "Cat4 FY2568 Foam-Free Gap Disclosure 4.1.1(3)",
+      "titleTh": "การเปิดเผยช่องว่างปลอดโฟม 4.1.1(3) ปี 2568",
+      "description": "Disclosure note: no foam-free declaration/campaign was conducted in FY2568; the FY2569 foam-free plan is a forward statement only (FOAM_FREE_FY2569_PLAN), not verified FY2569 evidence.",
+      "descriptionTh": "บันทึกเปิดเผย: ปี 2568 ไม่มีการประกาศ/รณรงค์ปลอดโฟม แผนปลอดโฟมปี 2569 เป็นเพียงข้อความวางแผนล่วงหน้า (FOAM_FREE_FY2569_PLAN) ไม่ใช่หลักฐานปี 2569 ที่ตรวจสอบแล้ว",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.1%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.1%20(3)%20.txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1 (3) .txt",
+      "manifestSha256": "89f6aa22d75e889d1ea732fed60b54d3692c282526259452635c796a5e7b1c06",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.1"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Foam-Free Gap Disclosure 4.1.1(3)",
+        "sourceLabelTh": "การเปิดเผยช่องว่างปลอดโฟม 4.1.1(3) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: source note text extracted — explicitly states no foam-free declaration in FY2568. Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว: บันทึกต้นทางระบุชัดว่าไม่มีประกาศปลอดโฟมในปี 2568 ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-measures-plastic-campaign-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Plastic-reduction campaign (4.1.1)",
+      "title": "Cat4 FY2568 Plastic-Reduction Participation Campaign 4.1.1(5)",
+      "titleTh": "รณรงค์ลดขยะพลาสติก 4.1.1(5) ปี 2568",
+      "description": "Participation campaign: cloth-bag service points (return-and-reuse) and reusable personal cups to reduce plastic waste.",
+      "descriptionTh": "รณรงค์สร้างการมีส่วนร่วมลดขยะพลาสติก: จุดให้บริการถุงผ้าหมุนเวียน และการใช้แก้วน้ำส่วนตัว",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.1%20%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.1.%20(5)%20.txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1. (5) .txt",
+      "manifestSha256": "1cde893eac064c92646d2fe58ba45fc855a4612eb0d453ca3b7fe0b42324ec4f",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.1"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Plastic-Reduction Participation Campaign 4.1.1(5)",
+        "sourceLabelTh": "รณรงค์ลดขยะพลาสติก 4.1.1(5) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-sorting-bin-layout-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Waste bin layout and sorting (4.1.2)",
+      "title": "Cat4 FY2568 Bin Layout and Waste Sorting 4.1.2(1)",
+      "titleTh": "การจัดวางถังขยะและการคัดแยก 4.1.2(1) ปี 2568",
+      "description": "Bin layout and sorting by category: 2 dining-area points (floor 3), 4 indoor points (floors 1–3), 1 outdoor 3-bay holding point.",
+      "descriptionTh": "จัดวางถังขยะและคัดแยกตามประเภท: จุดรับประทานอาหาร 2 จุด (ชั้น 3) จุดในอาคาร 4 จุด (ชั้น 1–3) จุดพักขยะรอบอาคาร 1 จุด (3 ช่อง)",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B9%80%E0%B8%99%E0%B8%B4%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B9%81%E0%B8%99%E0%B8%87%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%B1%E0%B8%94%E0%B9%81%E0%B8%A2%E0%B8%81%20%E0%B8%A3%E0%B8%A7%E0%B8%9A%E0%B8%A3%E0%B8%A7%E0%B8%A1%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.2%20(1)%20.txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (1) .txt",
+      "manifestSha256": "adce045c6d7211771b684ff7e113dbee00cc4c20e203f25bdcfe80ddf50fffaa",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.2"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Bin Layout and Waste Sorting 4.1.2(1)",
+        "sourceLabelTh": "การจัดวางถังขยะและการคัดแยก 4.1.2(1) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-sorting-labels-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Waste-type labels (4.1.2)",
+      "title": "Cat4 FY2568 Color-Coded Waste Labels 4.1.2(2)",
+      "titleTh": "ป้ายบ่งชี้ประเภทขยะ 4.1.2(2) ปี 2568",
+      "description": "Color-coded labels on every bin (blue general / yellow recyclable / green wet / red hazardous).",
+      "descriptionTh": "ติดป้ายบ่งชี้ประเภทขยะทุกถัง (น้ำเงินทั่วไป เหลืองรีไซเคิล เขียวเปียก แดงอันตราย)",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B9%80%E0%B8%99%E0%B8%B4%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B9%81%E0%B8%99%E0%B8%87%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%B1%E0%B8%94%E0%B9%81%E0%B8%A2%E0%B8%81%20%E0%B8%A3%E0%B8%A7%E0%B8%9A%E0%B8%A3%E0%B8%A7%E0%B8%A1%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.2%20(2).txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (2).txt",
+      "manifestSha256": "96c7139f1d9c0adae83fea885f37a2264bba1547bb129aa9e6befba6b12e6df0",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.2"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Color-Coded Waste Labels 4.1.2(2)",
+        "sourceLabelTh": "ป้ายบ่งชี้ประเภทขยะ 4.1.2(2) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-sorting-holding-point-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Waste holding point (4.1.2)",
+      "title": "Cat4 FY2568 Waste Holding Point 4.1.2(3)",
+      "titleTh": "จุดพักขยะ 4.1.2(3) ปี 2568",
+      "description": "Covered, gated holding point (roof, rain/dust protection) + university central holding point beside อาคารเรียนรวม 80 ปี.",
+      "descriptionTh": "จุดพักขยะมีหลังคาและประตูปิดมิดชิด + จุดพักขยะส่วนกลางของมหาวิทยาลัยข้างอาคารเรียนรวม 80 ปี",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B9%80%E0%B8%99%E0%B8%B4%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B9%81%E0%B8%99%E0%B8%87%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%B1%E0%B8%94%E0%B9%81%E0%B8%A2%E0%B8%81%20%E0%B8%A3%E0%B8%A7%E0%B8%9A%E0%B8%A3%E0%B8%A7%E0%B8%A1%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.2%20(3)%20.txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (3) .txt",
+      "manifestSha256": "03aaba1ac7ccbb7688da511da1fabf7b226f81544f054aaa0278079502002980",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.2"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Waste Holding Point 4.1.2(3)",
+        "sourceLabelTh": "จุดพักขยะ 4.1.2(3) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-sorting-random-check-scan-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Random waste-check form (4.1.2)",
+      "title": "Cat4 FY2568 Random Waste-Check Form 4.1.2(4) (scan)",
+      "titleTh": "แบบฟอร์มสุ่มตรวจการทิ้งขยะ 4.1.2(4) (สแกน)",
+      "description": "24-page image scan of monthly random-check records (2 days/month, first and last week). Content unverifiable without OCR.",
+      "descriptionTh": "สแกนบันทึกการสุ่มตรวจการทิ้งขยะรายเดือน 24 หน้า (เดือนละ 2 วัน สัปดาห์แรกและสัปดาห์สุดท้าย) ยังอ่านเนื้อหาไม่ได้ รอ OCR",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B9%80%E0%B8%99%E0%B8%B4%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B9%81%E0%B8%99%E0%B8%87%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%B1%E0%B8%94%E0%B9%81%E0%B8%A2%E0%B8%81%20%E0%B8%A3%E0%B8%A7%E0%B8%9A%E0%B8%A3%E0%B8%A7%E0%B8%A1%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.2%20(4)%20%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%9F%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%A1%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%B6%E0%B8%81%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B8%95%E0%B8%A3%E0%B8%A7%E0%B8%88%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B8%B4%E0%B9%89%E0%B8%87%E0%B8%82%E0%B8%A2%E0%B8%B0.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (4) แบบฟอร์มบันทึกการสุ่มตรวจการทิ้งขยะ.pdf",
+      "manifestSha256": "53250412855edb6d6e13ac1d321efd02f4197dc9e8634f571a9e5246c6acf023",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.2"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "filename_folder_only",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Random Waste-Check Form 4.1.2(4) (scan)",
+        "sourceLabelTh": "แบบฟอร์มสุ่มตรวจการทิ้งขยะ 4.1.2(4) (สแกน)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 classification: filename_folder_only (24-page image scan, 0 text chars). Content unverifiable without OCR — NOT semantically verified.",
+        "basisTh": "C1 จัดชั้น: filename_folder_only (สแกน 24 หน้า 0 ตัวอักษร) ยังไม่ยืนยันเนื้อหา"
+      },
+      "promoted": false
+    },
+    {
+      "id": "ev-cat4-sorting-contractor-scan-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Waste-contractor contract (4.1.2)",
+      "title": "Cat4 FY2568 Waste-Contractor Contract 4.1.2(5) (scan)",
+      "titleTh": "สัญญาจ้างกำจัดขยะ 4.1.2(5) (สแกน)",
+      "description": "1-page image scan of the waste-contractor contract (บริษัทเชียงใหม่เมืองสะอาด จำกัด, เลขที่ มจ.(กค.) 9/2568). Content unverifiable without OCR; contract number cross-verified via the report text.",
+      "descriptionTh": "สแกนสัญญาจ้างกำจัดขยะ (บริษัทเชียงใหม่เมืองสะอาด จำกัด เลขที่ มจ.(กค.) 9/2568) ยังอ่านเนื้อหาไม่ได้ รอ OCR เลขสัญญายืนยันข้ามจากรายงาน",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B9%80%E0%B8%99%E0%B8%B4%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B9%81%E0%B8%99%E0%B8%87%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%B1%E0%B8%94%E0%B9%81%E0%B8%A2%E0%B8%81%20%E0%B8%A3%E0%B8%A7%E0%B8%9A%E0%B8%A3%E0%B8%A7%E0%B8%A1%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.2%20(5)%20%E0%B8%AA%E0%B8%B1%E0%B8%8D%E0%B8%8D%E0%B8%B2%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%87.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (5) สัญญาจ้าง.pdf",
+      "manifestSha256": "b3fd6fbc7954156c0894cf6429957f8e552acc82175a60d592a866a5dd0d64db",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.2"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "filename_folder_only",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Waste-Contractor Contract 4.1.2(5) (scan)",
+        "sourceLabelTh": "สัญญาจ้างกำจัดขยะ 4.1.2(5) (สแกน)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 classification: filename_folder_only (1-page image scan, 0 text chars). Content unverifiable without OCR — NOT semantically verified.",
+        "basisTh": "C1 จัดชั้น: filename_folder_only (สแกน 1 หน้า 0 ตัวอักษร) ยังไม่ยืนยันเนื้อหา"
+      },
+      "promoted": false
+    },
+    {
+      "id": "ev-cat4-sorting-monitor-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Contractor-disposal monitoring (4.1.2)",
+      "title": "Cat4 FY2568 Contractor-Disposal Monitoring 4.1.2(6)",
+      "titleTh": "การติดตามการกำจัดขยะของผู้รับจ้าง 4.1.2(6) ปี 2568",
+      "description": "Monitoring/tracing of contractor disposal per waste category (sorting, weighing/recording, holding, licensed disposal).",
+      "descriptionTh": "ติดตามตรวจสอบการกำจัดขยะของผู้รับจ้างตามประเภท (คัดแยก ชั่ง/บันทึก วางจุดพัก กำจัดโดยผู้รับจ้างที่ได้รับอนุญาต)",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B9%80%E0%B8%99%E0%B8%B4%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B9%81%E0%B8%99%E0%B8%87%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%B1%E0%B8%94%E0%B9%81%E0%B8%A2%E0%B8%81%20%E0%B8%A3%E0%B8%A7%E0%B8%9A%E0%B8%A3%E0%B8%A7%E0%B8%A1%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.2%20(6)%20.txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (6) .txt",
+      "manifestSha256": "397aeebc01b4aa5c0826a11208887f280a0a588a3c38eddf7be31da54baad102",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.2"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Contractor-Disposal Monitoring 4.1.2(6)",
+        "sourceLabelTh": "การติดตามการกำจัดขยะของผู้รับจ้าง 4.1.2(6) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-sorting-no-burning-fy2568",
+      "categoryId": "cat4",
+      "indicator": "No waste burning (4.1.2)",
+      "title": "Cat4 FY2568 No Waste Burning 4.1.2(7)",
+      "titleTh": "ไม่มีการเผาขยะ 4.1.2(7) ปี 2568",
+      "description": "No waste burning on site; each category sorted and handled by the licensed contractor.",
+      "descriptionTh": "ไม่มีการเผาขยะในพื้นที่สำนักงาน ขยะแต่ละประเภทถูกคัดแยกและผู้รับจ้างนำไปจัดการตามหลักวิชาการ",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B9%80%E0%B8%99%E0%B8%B4%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B9%81%E0%B8%99%E0%B8%87%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%B1%E0%B8%94%E0%B9%81%E0%B8%A2%E0%B8%81%20%E0%B8%A3%E0%B8%A7%E0%B8%9A%E0%B8%A3%E0%B8%A7%E0%B8%A1%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.2%20(7)%20.txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (7) .txt",
+      "manifestSha256": "713dcb524f5d1f062b93255534f42dc02723e8c0e5ff32a708eeb22ca0d2c8ea",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.2"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 No Waste Burning 4.1.2(7)",
+        "sourceLabelTh": "ไม่มีการเผาขยะ 4.1.2(7) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-data-waste-annual-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Annual waste data (4.1.3)",
+      "title": "Cat4 FY2568 Annual Waste Data (annual scope) 4.1.3(1)",
+      "titleTh": "ข้อมูลปริมาณขยะรายปี 4.1.3(1) ปี 2568",
+      "description": "Annual scope: total all waste 6,434.70 kg, general waste sent for disposal 4,380.10 kg, reuse incl. food/leaves 2,054.60 kg (31.93%). Target −3% vs 2567 NOT met (+72.40 kg, +1.68%). Monthly-form scope total 5,625.7 kg recorded separately — never conflated.",
+      "descriptionTh": "ขอบเขตรายปี: รวม 6,434.70 กก. ขยะทั่วไปส่งกำจัด 4,380.10 กก. นำกลับมาใช้ใหม่รวม 2,054.60 กก. (31.93%) เป้าหมายลด 3% เทียบ 2567 ไม่บรรลุ (+72.40 กก. +1.68%) ขอบเขตแบบฟอร์มรายเดือน 5,625.7 กก. บันทึกแยกต่างหาก",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.%20%E0%B8%AB%E0%B8%A1%E0%B8%A7%E0%B8%94%204%20%E0%B8%82%E0%B9%89%E0%B8%AD%204.1(1)%20%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%B6%E0%B8%81%E0%B8%9B%E0%B8%A3%E0%B8%B4%E0%B8%A1%E0%B8%B2%E0%B8%93%E0%B8%82%E0%B8%A2%E0%B8%B0.xls%20%20%E0%B8%9B%E0%B8%B5%202568.xls%2014-02-68.xlsx",
+      "fileType": "XLSX",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4. หมวด 4 ข้อ 4.1(1) บันทึกปริมาณขยะ.xls  ปี 2568.xls 14-02-68.xlsx",
+      "manifestSha256": "9ef91b02404c05dca96b5ea2d3cc97cea571fd007b63bafffab3668fb419e01e",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.3"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Annual Waste Data (annual scope) 4.1.3(1)",
+        "sourceLabelTh": "ข้อมูลปริมาณขยะรายปี 4.1.3(1) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted from the form XLSX + report tables (content-verified), cross-checked with the promoted ปี 2568.pdf table. Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) จาก XLSX แบบฟอร์ม + ตารางรายงาน ตรวจข้ามกับตารางปี 2568 ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-data-waste-analysis-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Waste target analysis (4.1.3)",
+      "title": "Cat4 FY2568 Waste Target Analysis 4.1.3(2)",
+      "titleTh": "การวิเคราะห์ปริมาณขยะเทียบค่าเป้าหมาย 4.1.3(2) ปี 2568",
+      "description": "Verified target analysis: 2567 4,307.70 vs 2568 4,380.10 kg → +72.40 kg (+1.68%), target −3% vs 2567 NOT met. 3-year table 2566–2568.",
+      "descriptionTh": "วิเคราะห์เทียบค่าเป้าหมาย: ปี 2567 4,307.70 เทียบ ปี 2568 4,380.10 กก. → +72.40 กก. (+1.68%) เป้าหมายลด 3% ไม่บรรลุ ตาราง 3 ปีย้อนหลัง 2566–2568",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B8%B3%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B9%84%E0%B8%9B%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%82%E0%B8%A2%E0%B8%8A%E0%B8%99%E0%B9%8C%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%99%E0%B8%B3%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B8%A1%E0%B8%B2%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88/4.1.3%20(2)%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%A7%E0%B8%B4%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B2%E0%B8%B0%E0%B8%AB%E0%B9%8C%E0%B8%9B%E0%B8%A3%E0%B8%B4%E0%B8%A1%E0%B8%B2%E0%B8%93%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%B5%E0%B8%A2%E0%B8%9A%E0%B8%84%E0%B9%88%E0%B8%B2%E0%B9%80%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.3 การนำขยะกลับไปใช้ประโยชน์หรือนำกลับมาใช้ใหม่/4.1.3 (2) การวิเคราะห์ปริมาณขยะเทียบค่าเป้าหมาย.pdf",
+      "manifestSha256": "356065c028f42eea439bb6225959a09d430266872a413ea9b046c2202550dc3f",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.3"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Waste Target Analysis 4.1.3(2)",
+        "sourceLabelTh": "การวิเคราะห์ปริมาณขยะเทียบค่าเป้าหมาย 4.1.3(2) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-data-reuse-compost-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Waste reuse/recycling (4.1.3)",
+      "title": "Cat4 FY2568 Waste Reuse and Composting 4.1.3(3)",
+      "titleTh": "การนำขยะกลับมาใช้ประโยชน์ 4.1.3(3) ปี 2568",
+      "description": "Reuse/recycling + innovation/composting: used-packaging upcycling, organic-waste composting, 3Rs seedling-planters at the ครั้งที่ 12 conference (4–10 พ.ย. 2568). Numeric >50% reuse threshold NOT met (31.93%) — claim rests on the innovation/composting branch.",
+      "descriptionTh": "นำขยะกลับมาใช้ใหม่/ทำปุ๋ยหมัก + นวัตกรรม: ประดิษฐ์ภาชนะจากบรรจุภัณฑ์ใช้แล้ว ทำปุ๋ยหมักจากขยะอินทรีย์ กิจกรรม 3Rs ภาชนะเพาะกล้าที่ประชุมวิชาการครั้งที่ 12 (4–10 พ.ย. 2568) เกณฑ์ตัวเลข >50% ไม่บรรลุ (31.93%) — อ้างอิงสาขานวัตกรรม/ปุ๋ยหมัก",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B8%B3%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B9%84%E0%B8%9B%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%82%E0%B8%A2%E0%B8%8A%E0%B8%99%E0%B9%8C%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%99%E0%B8%B3%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B8%A1%E0%B8%B2%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88/4.1.3%20(3).txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.3 การนำขยะกลับไปใช้ประโยชน์หรือนำกลับมาใช้ใหม่/4.1.3 (3).txt",
+      "manifestSha256": "3dba6927f77fe23643b953810b69862ea2ad2fcaa47e748e86e69beee889f284",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.3"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Waste Reuse and Composting 4.1.3(3)",
+        "sourceLabelTh": "การนำขยะกลับมาใช้ประโยชน์ 4.1.3(3) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Numeric >50% reuse NOT met — honest claim via innovation/composting branch only. Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) เกณฑ์ >50% ไม่บรรลุ — ยืนยันผ่านสาขานวัตกรรม/ปุ๋ยหมักเท่านั้น"
+      }
+    },
+    {
+      "id": "ev-cat4-data-disposal-trend-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Disposal quantity trend (4.1.3)",
+      "title": "Cat4 FY2568 Disposal Quantity Trend 4.1.3(4)",
+      "titleTh": "แนวโน้มปริมาณขยะที่ส่งกำจัด 4.1.3(4) ปี 2568",
+      "description": "Trend: 2566 4,633.10 / 2567 4,307.70 / 2568 4,380.10 kg. Down 253 kg vs 2566 but UP +72.40 kg (+1.68%) vs 2567 — the declining-trend claim is only valid on the 3-year window vs 2566.",
+      "descriptionTh": "แนวโน้ม: 2566 4,633.10 / 2567 4,307.70 / 2568 4,380.10 กก. ลดลง 253 กก. เทียบ 2566 แต่เพิ่มขึ้น +72.40 กก. (+1.68%) เทียบ 2567 — ข้ออ้างแนวโน้มลดลงใช้ได้เฉพาะกรอบ 3 ปีเทียบ 2566",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B8%B3%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B9%84%E0%B8%9B%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%82%E0%B8%A2%E0%B8%8A%E0%B8%99%E0%B9%8C%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%99%E0%B8%B3%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B8%A1%E0%B8%B2%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88/4.1.3%20(4).txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.3 การนำขยะกลับไปใช้ประโยชน์หรือนำกลับมาใช้ใหม่/4.1.3 (4).txt",
+      "manifestSha256": "3e8243b7f80d9c6432aa7b84b03e3ec434133b0ad3b365610f26f9e2be9c408e",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.3"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Disposal Quantity Trend 4.1.3(4)",
+        "sourceLabelTh": "แนวโน้มปริมาณขยะที่ส่งกำจัด 4.1.3(4) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-data-waste-log-scan-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Monthly waste-log form (4.1.3)",
+      "title": "Cat4 FY2568 Monthly Waste Log 4.1.3(1) (scan)",
+      "titleTh": "แบบบันทึกข้อมูลปริมาณขยะ 4.1.3(1) (สแกน)",
+      "description": "12-page image scan of the FY2568 monthly waste log (byte-identical to the root แบบบันทึกปริมาณน้ำหนักขยะ ปี 2568.pdf). Content unverifiable without OCR; monthly values cross-verified via the promoted year-2568 table and the form XLSX.",
+      "descriptionTh": "สแกนแบบบันทึกข้อมูลปริมาณขยะรายเดือน 12 หน้า (เหมือนไฟล์ แบบบันทึกปริมาณน้ำหนักขยะ ปี 2568.pdf) ยังอ่านเนื้อหาไม่ได้ รอ OCR ค่ารายเดือนยืนยันข้ามจากตารางปี 2568 และ XLSX",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B8%B3%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B9%84%E0%B8%9B%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%82%E0%B8%A2%E0%B8%8A%E0%B8%99%E0%B9%8C%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%99%E0%B8%B3%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B8%A1%E0%B8%B2%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88/4.1.3%20(1)%20%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%B6%E0%B8%81%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B8%9B%E0%B8%A3%E0%B8%B4%E0%B8%A1%E0%B8%B2%E0%B8%93%E0%B8%82%E0%B8%A2%E0%B8%B0.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.1 การจัดการขยะ/4.1.3 การนำขยะกลับไปใช้ประโยชน์หรือนำกลับมาใช้ใหม่/4.1.3 (1) แบบบันทึกข้อมูลปริมาณขยะ.pdf",
+      "manifestSha256": "094dcbde011f8cfc4b0f752fab9e263753c1a8392f77f29852cb0a4100b75ecb",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.3"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "filename_folder_only",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Monthly Waste Log 4.1.3(1) (scan)",
+        "sourceLabelTh": "แบบบันทึกข้อมูลปริมาณขยะ 4.1.3(1) (สแกน)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 classification: filename_folder_only (12-page image scan, 0 text chars). Content unverifiable without OCR — NOT semantically verified.",
+        "basisTh": "C1 จัดชั้น: filename_folder_only (สแกน 12 หน้า 0 ตัวอักษร) ยังไม่ยืนยันเนื้อหา"
+      },
+      "promoted": false
+    },
+    {
+      "id": "ev-cat4-data-waste-trend-2566-fy2568",
+      "categoryId": "cat4",
+      "indicator": "FY2566 waste data table (4.1.3)",
+      "title": "Cat4 FY2566 Waste Data Table (promoted)",
+      "titleTh": "ตารางข้อมูลขยะ ปี 2566 (ส่งเสริมเป็นหลักฐาน)",
+      "description": "Promoted verified FY2566 data table: total 6,028.30 kg, general waste 4,633.10 kg, reuse 23.14%. Supports the 3-year trend in 4.1.3(2)/(4).",
+      "descriptionTh": "ตารางข้อมูลขยะปี 2566 ที่ตรวจสอบแล้ว: รวม 6,028.30 กก. ขยะทั่วไป 4,633.10 กก. นำกลับมาใช้ใหม่ 23.14% สนับสนุนแนวโน้ม 3 ปีใน 4.1.3(2)/(4)",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/%E0%B8%9B%E0%B8%B5%202566.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "ปี 2566.pdf",
+      "manifestSha256": "3a803fd017d0432c7466aa91d65c022203dd6d1ed4aeb4888b613a65f5860100",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.3"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2566 Waste Data Table (promoted)",
+        "sourceLabelTh": "ตารางข้อมูลขยะ ปี 2566 (ส่งเสริมเป็นหลักฐาน)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-data-waste-trend-2567-fy2568",
+      "categoryId": "cat4",
+      "indicator": "FY2567 waste data table (4.1.3)",
+      "title": "Cat4 FY2567 Waste Data Table (promoted)",
+      "titleTh": "ตารางข้อมูลขยะ ปี 2567 (ส่งเสริมเป็นหลักฐาน)",
+      "description": "Promoted verified FY2567 data table: total 5,737.40 kg, general waste 4,307.70 kg, reuse 24.92%. Supports the 3-year trend in 4.1.3(2)/(4).",
+      "descriptionTh": "ตารางข้อมูลขยะปี 2567 ที่ตรวจสอบแล้ว: รวม 5,737.40 กก. ขยะทั่วไป 4,307.70 กก. นำกลับมาใช้ใหม่ 24.92% สนับสนุนแนวโน้ม 3 ปีใน 4.1.3(2)/(4)",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/%E0%B8%9B%E0%B8%B5%202567.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "ปี 2567.pdf",
+      "manifestSha256": "c6160cfb3457c0ab1657431b8d6d95c1456d430aec1bf412bf24a47dea8d5202",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.3"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2567 Waste Data Table (promoted)",
+        "sourceLabelTh": "ตารางข้อมูลขยะ ปี 2567 (ส่งเสริมเป็นหลักฐาน)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-data-waste-trend-2568-fy2568",
+      "categoryId": "cat4",
+      "indicator": "FY2568 waste data table (4.1.3)",
+      "title": "Cat4 FY2568 Waste Data Table (promoted)",
+      "titleTh": "ตารางข้อมูลขยะ ปี 2568 (ส่งเสริมเป็นหลักฐาน)",
+      "description": "Promoted verified FY2568 data table (canonical monthly + annual values): total 6,434.70 kg, general waste 4,380.10 kg, reuse 2,054.60 kg = 31.93%.",
+      "descriptionTh": "ตารางข้อมูลขยะปี 2568 ที่ตรวจสอบแล้ว (ค่ารายเดือน + รายปีตามฉบับหลัก): รวม 6,434.70 กก. ขยะทั่วไป 4,380.10 กก. นำกลับมาใช้ใหม่ 2,054.60 กก. = 31.93%",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/%E0%B8%9B%E0%B8%B5%202568.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "ปี 2568.pdf",
+      "manifestSha256": "75a6690dc217115d5302cebc3e993cfd236aadfba4ae1fa11e848f461b8e79e5",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.3"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Waste Data Table (promoted)",
+        "sourceLabelTh": "ตารางข้อมูลขยะ ปี 2568 (ส่งเสริมเป็นหลักฐาน)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-wastewater-effluent-stats-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Effluent quality statistics (4.2.1)",
+      "title": "Cat4 FY2568 Effluent Quality Statistics 4.2.1(1)",
+      "titleTh": "สถิติคุณภาพน้ำทิ้ง 4.2.1(1) ปี 2568",
+      "description": "Verified FY2568 monthly effluent statistics from the MJU central SBR plant (BOD/COD/SS/TDS/pH/Temp/Cl₂ + treatment-efficiency %), within the standard thresholds printed on the form.",
+      "descriptionTh": "สถิติคุณภาพน้ำทิ้งรายเดือนปี 2568 จากระบบบำบัดน้ำเสียรวม (SBR) ของมหาวิทยาลัย (BOD/COD/SS/TDS/pH/Temp/Cl₂ + %ประสิทธิภาพ) อยู่ในเกณฑ์มาตรฐานตามแบบฟอร์ม",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/4.2.1%20(1)%20%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%B6%E0%B8%81%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%A5%E0%B8%B0%E0%B9%80%E0%B8%AD%E0%B8%B5%E0%B8%A2%E0%B8%94%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%96%E0%B8%B4%E0%B8%95%E0%B8%B4%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%99%E0%B9%89%E0%B8%B3%20%E0%B8%9B%E0%B8%B5%202568.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (1) บันทึกรายละเอียดของสถิติคุณภาพน้ำ ปี 2568.pdf",
+      "manifestSha256": "b51f1116851a37dd329d75f64cdc866b60eecebdff45b5e7cc3c284a76eac067",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.2.1"
+      ],
+      "issueCodes": [
+        "4.2"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Effluent Quality Statistics 4.2.1(1)",
+        "sourceLabelTh": "สถิติคุณภาพน้ำทิ้ง 4.2.1(1) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-wastewater-grease-trap-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Preliminary wastewater treatment (4.2.1)",
+      "title": "Cat4 FY2568 Grease-Trap Treatment 4.2.1(2)",
+      "titleTh": "การบำบัดน้ำเสียเบื้องต้น 4.2.1(2) ปี 2568",
+      "description": "Grease-trap + food-screen treatment appropriate to the building context (floor-1 traps at 2 points; floor-3 trap removed due to leveling/backflow issues, food screens used instead).",
+      "descriptionTh": "ถังดักไขมันและตะแกรงดักเศษอาหารตามบริบทอาคาร (ชั้น 1 มีถังดักไขมัน 2 จุด; ชั้น 3 รื้อถอนเนื่องจากปัญหาต่างระดับ/น้ำย้อนกลับ ใช้ตะแกรงดักเศษอาหารแทน)",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/4.2.1%20(2).txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (2).txt",
+      "manifestSha256": "4cbf86fae9f5389189629ef670e4dec42d79b83c8d278e90343643a08169acd2",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.2.1"
+      ],
+      "issueCodes": [
+        "4.2"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Grease-Trap Treatment 4.2.1(2)",
+        "sourceLabelTh": "การบำบัดน้ำเสียเบื้องต้น 4.2.1(2) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-wastewater-all-points-fy2568",
+      "categoryId": "cat4",
+      "indicator": "All discharge points treated (4.2.1)",
+      "title": "Cat4 FY2568 All Wastewater Discharge Points Treated 4.2.1(3)",
+      "titleTh": "บำบัดน้ำเสียครบทุกจุด 4.2.1(3) ปี 2568",
+      "description": "All wastewater discharge points treated: 2 grease-trap points on floor 1 (front dining/IQS area and back dish/bottle-washing area for the tissue-culture lab); weekly Friday skimming.",
+      "descriptionTh": "บำบัดน้ำเสียครบทุกจุด: ถังดักไขมัน 2 จุดชั้น 1 (ห้องเตรียมอาหาร/รับประทานอาหารรวมด้านหน้า และห้องล้างภาชนะ/ขวดแก้วด้านหลัง) ตักเศษอาหาร/ไขมัน/น้ำมันทุกวันศุกร์",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/4.2.1%20(3).txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (3).txt",
+      "manifestSha256": "a6098f9536ff14d83c58e50dad15d9f20f575c17c1882fd882b5b38d0c187fbe",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.2.1"
+      ],
+      "issueCodes": [
+        "4.2"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 All Wastewater Discharge Points Treated 4.2.1(3)",
+        "sourceLabelTh": "บำบัดน้ำเสียครบทุกจุด 4.2.1(3) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-wastewater-standard-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Effluent within legal standard (4.2.1)",
+      "title": "Cat4 FY2568 Effluent within Legal Standard 4.2.1(4)",
+      "titleTh": "คุณภาพน้ำทิ้งตามมาตรฐานกฎหมาย 4.2.1(4) ปี 2568",
+      "description": "Effluent tested by the accredited lab (บริษัทห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด) and reported within the legal standard per ประกาศกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม เรื่อง กำหนดมาตรฐานควบคุมการระบายน้ำทิ้งจากอาคารบางประเภทและบางขนาด พ.ศ. 2548.",
+      "descriptionTh": "น้ำทิ้งผ่านการวิเคราะห์โดยห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด (ได้รับการรับรอง) อยู่ในเกณฑ์มาตรฐานตามประกาศกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม ว่าด้วยมาตรฐานควบคุมการระบายน้ำทิ้งจากอาคาร พ.ศ. 2548",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/4.2.1%20(4).txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (4).txt",
+      "manifestSha256": "8853be2fa2b0929b523dafce14bfce8ae10129c10e96c5f70a422068061885e3",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.2.1"
+      ],
+      "issueCodes": [
+        "4.2"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Effluent within Legal Standard 4.2.1(4)",
+        "sourceLabelTh": "คุณภาพน้ำทิ้งตามมาตรฐานกฎหมาย 4.2.1(4) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-wastewater-skim-scan-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Oil/grease skimming record (4.2.1)",
+      "title": "Cat4 FY2568 Oil/Grease Skimming Record 4.2.1(1) (scan)",
+      "titleTh": "บันทึกการตักคราบน้ำมันและไขมัน 4.2.1(1) (สแกน)",
+      "description": "4-page image scan of the oil/grease skimming record (byte-identical to 4.2.2(3), G2 duplicate). Content unverifiable without OCR.",
+      "descriptionTh": "สแกนบันทึกการตักคราบน้ำมันและไขมัน 4 หน้า (เหมือนไฟล์ 4.2.2(3) ทุกไบต์ — ซ้ำ G2) ยังอ่านเนื้อหาไม่ได้ รอ OCR",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/4.2.1%20(1)%20%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%B6%E0%B8%81%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%95%E0%B8%B1%E0%B8%81%E0%B8%84%E0%B8%A3%E0%B8%B2%E0%B8%9A%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%A1%E0%B8%B1%E0%B8%99%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%84%E0%B8%82%E0%B8%A1%E0%B8%B1%E0%B8%99.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (1) บันทึกการตักคราบน้ำมัน และไขมัน.pdf",
+      "manifestSha256": "3a21d03a278b29503433b6b5071f0c588201813d84f9a6b4c2321c5dc0eedd8a",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.2.1"
+      ],
+      "issueCodes": [
+        "4.2"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "filename_folder_only",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Oil/Grease Skimming Record 4.2.1(1) (scan)",
+        "sourceLabelTh": "บันทึกการตักคราบน้ำมันและไขมัน 4.2.1(1) (สแกน)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 classification: filename_folder_only (4-page image scan, 0 text chars). Content unverifiable without OCR — NOT semantically verified.",
+        "basisTh": "C1 จัดชั้น: filename_folder_only (สแกน 4 หน้า 0 ตัวอักษร) ยังไม่ยืนยันเนื้อหา"
+      },
+      "promoted": false
+    },
+    {
+      "id": "ev-cat4-treatment-skimming-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Grease-trap skimming (4.2.2)",
+      "title": "Cat4 FY2568 Grease-Trap Skimming 4.2.2(1)",
+      "titleTh": "การตักและทำความสะอาดถังดักไขมัน 4.2.2(1) ปี 2568",
+      "description": "Weekly Friday skimming by floor-1 cleaning staff; floors 2–3 have no grease trap (structure unsuitable); committee-4 reviews records.",
+      "descriptionTh": "พนักงานทำความสะอาดชั้น 1 ดูแลและตัก/ทำความสะอาดถังดักไขมันทุกวันศุกร์ ชั้น 2–3 ไม่ติดตั้งถัง (โครงสร้างไม่เหมาะสม) กรรมการหมวด 4 ตรวจสอบความเรียบร้อย",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B9%E0%B9%81%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9A%E0%B8%B3%E0%B8%9A%E0%B8%B1%E0%B8%94%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20(1).txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (1).txt",
+      "manifestSha256": "5c73319333ba635f3385ec2fd0baf73f452bd46ad4be92bf0abb738ed2ebd7f7",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.2.2"
+      ],
+      "issueCodes": [
+        "4.2"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Grease-Trap Skimming 4.2.2(1)",
+        "sourceLabelTh": "การตักและทำความสะอาดถังดักไขมัน 4.2.2(1) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-treatment-grease-disposal-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Grease/food-waste disposal (4.2.2)",
+      "title": "Cat4 FY2568 Grease/Food-Waste Disposal 4.2.2(2)",
+      "titleTh": "การจัดการไขมัน/เศษอาหารไปกำจัด 4.2.2(2) ปี 2568",
+      "description": "Grease/oil/food-waste from the grease traps disposed into the ถังหมักรักษ์โลก compost bin beside the building.",
+      "descriptionTh": "ไขมัน น้ำมัน เศษอาหารจากถังดักไขมันนำไปกำจัดอย่างถูกต้องโดยใส่ถังหมักรักษ์โลกที่ติดตั้งข้างอาคาร",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B9%E0%B9%81%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9A%E0%B8%B3%E0%B8%9A%E0%B8%B1%E0%B8%94%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20(2).txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (2).txt",
+      "manifestSha256": "e434155bba65987b96ca13241e482b175066bfa6a9b65e461e103acbfcb35b0d",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.2.2"
+      ],
+      "issueCodes": [
+        "4.2"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Grease/Food-Waste Disposal 4.2.2(2)",
+        "sourceLabelTh": "การจัดการไขมัน/เศษอาหารไปกำจัด 4.2.2(2) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-treatment-repair-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Wastewater-treatment repair (4.2.2)",
+      "title": "Cat4 FY2568 Wastewater-Treatment Repair and Maintenance 4.2.2(3)",
+      "titleTh": "การตรวจสอบ/ซ่อมแซมระบบบำบัดน้ำเสีย 4.2.2(3) ปี 2568",
+      "description": "Grease-trap inspection/maintenance during the weekly Friday skimming; anomalies reported to the building technician for immediate repair (from the canonical 10-03-69 report).",
+      "descriptionTh": "ตรวจสอบและบำรุงรักษาถังดักไขมันให้พร้อมใช้งานระหว่างการตักคราบทุกวันศุกร์ หากพบความผิดปกติแจ้งช่างเทคนิคอาคารซ่อมแซมทันที (จากรายงานหลัก 10-03-69)",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/%E0%B8%AB%E0%B8%A1%E0%B8%A7%E0%B8%94%E0%B8%97%E0%B8%B5%E0%B9%88%204%20%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9C%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%20%20(10-03-69).docx",
+      "fileType": "DOCX",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (10-03-69).docx",
+      "manifestSha256": "52c5bb3cee45013f0b78b2e06800dc9acb29e61eb72921d746e3685336ebbbb8",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.2.2"
+      ],
+      "issueCodes": [
+        "4.2"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Wastewater-Treatment Repair and Maintenance 4.2.2(3)",
+        "sourceLabelTh": "การตรวจสอบ/ซ่อมแซมระบบบำบัดน้ำเสีย 4.2.2(3) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted from the canonical 10-03-69 report (content-verified). Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) จากรายงานหลัก 10-03-69 ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-treatment-leak-inspection-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Wastewater leak inspection (4.2.2)",
+      "title": "Cat4 FY2568 Wastewater Leak Inspection 4.2.2(4)",
+      "titleTh": "การตรวจสอบการรั่วไหลของน้ำเสีย 4.2.2(4) ปี 2568",
+      "description": "Regular wastewater leak-inspection to prevent cross-contamination, plus effluent checks from the central plant before reuse. แบบ ทส.1/ทส.2 WTMS records (building.mju.ac.th bID 18845/18846) are external online references.",
+      "descriptionTh": "ตรวจสอบการรั่วไหลของน้ำเสียอย่างสม่ำเสมอ + ตรวจคุณภาพน้ำทิ้งจากโรงบำบัดรวมก่อนนำกลับมาใช้ แบบ ทส.1/ทส.2 เป็นลิงก์อ้างอิงออนไลน์ภายนอก (WTMS)",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B9%E0%B9%81%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9A%E0%B8%B3%E0%B8%9A%E0%B8%B1%E0%B8%94%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20(4).txt",
+      "fileType": "TXT",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (4).txt",
+      "manifestSha256": "714b093cf28d77acc41d73dd4ea5b2285eae62d6542255a143fb964cdfef4fbb",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.2.2"
+      ],
+      "issueCodes": [
+        "4.2"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Wastewater Leak Inspection 4.2.2(4)",
+        "sourceLabelTh": "การตรวจสอบการรั่วไหลของน้ำเสีย 4.2.2(4) ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 semantic-verification: text extracted (content-verified). WTMS ทส.1/ทส.2 records are external references, not in-repo. Human/PO verification pending.",
+        "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) บันทึก ทส.1/ทส.2 เป็นข้อมูลอ้างอิงภายนอก ยังต้องรอการตรวจยืนยัน"
+      }
+    },
+    {
+      "id": "ev-cat4-treatment-skim-scan-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Oil/grease skimming record (4.2.2)",
+      "title": "Cat4 FY2568 Oil/Grease Skimming Record 4.2.2(3) (scan, duplicate)",
+      "titleTh": "บันทึกการตักคราบน้ำมันและไขมัน 4.2.2(3) (สแกน — ซ้ำ)",
+      "description": "4-page image scan of the oil/grease skimming record. Byte-identical to the 4.2.1(1) record (G2 duplicate) — disclosed, NOT counted as separate evidence. Content unverifiable without OCR.",
+      "descriptionTh": "สแกนบันทึกการตักคราบน้ำมันและไขมัน 4 หน้า เหมือนกับไฟล์ 4.2.1(1) ทุกไบต์ (ซ้ำ G2) — เปิดเผย ไม่นับเป็นหลักฐานแยก ยังอ่านเนื้อหาไม่ได้ รอ OCR",
+      "year": 2568,
+      "path": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B9%E0%B9%81%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9A%E0%B8%B3%E0%B8%9A%E0%B8%B1%E0%B8%94%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20(3)%20%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%B6%E0%B8%81%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%95%E0%B8%B1%E0%B8%81%E0%B8%84%E0%B8%A3%E0%B8%B2%E0%B8%9A%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%A1%E0%B8%B1%E0%B8%99%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%84%E0%B8%82%E0%B8%A1%E0%B8%B1%E0%B8%99.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-23",
+      "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (3) บันทึกการตักคราบน้ำมัน และไขมัน.pdf",
+      "manifestSha256": "3a21d03a278b29503433b6b5071f0c588201813d84f9a6b4c2321c5dc0eedd8a",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.2.2"
+      ],
+      "issueCodes": [
+        "4.2"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "availability": "filename_folder_only",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat4 FY2568 Oil/Grease Skimming Record 4.2.2(3) (scan, duplicate)",
+        "sourceLabelTh": "บันทึกการตักคราบน้ำมันและไขมัน 4.2.2(3) (สแกน — ซ้ำ)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "C1 classification: filename_folder_only (4-page image scan, 0 text chars). Byte-identical duplicate of the 4.2.1 skimming record — disclosed, not double-counted. NOT semantically verified.",
+        "basisTh": "C1 จัดชั้น: filename_folder_only (สแกน 4 หน้า 0 ตัวอักษร) ซ้ำกับบันทึก 4.2.1 — เปิดเผย ไม่นับซ้ำ ยังไม่ยืนยันเนื้อหา"
+      },
+      "promoted": false,
+      "duplicateOf": "wastewater-skim-scan-fy2568"
     }
   ]
 }

@@ -158,11 +158,12 @@ function phaseCategory1() {
 
 function phaseCategory23() {
   console.log('\n========================================');
-  console.log('PHASE 1.87: Category 2 + 3 Contracts');
+  console.log('PHASE 1.87: Category 2 + 3 + 4 Contracts');
   console.log('========================================');
   const cat2 = runScript('validate-category2-contracts.mjs');
   const cat3 = runScript('validate-category3-contracts.mjs');
-  return { ok: cat2.ok && cat3.ok };
+  const cat4 = runScript('validate-category4-contracts.mjs');
+  return { ok: cat2.ok && cat3.ok && cat4.ok };
 }
 
 // ── Phase 1.9: Search-Index Metadata Validation ─────────────
@@ -392,7 +393,7 @@ function main() {
     { phase: 'Evidence-Links Metadata', ok: evidenceLinksResult.ok },
     { phase: 'Action-Plan Canonical Scope', ok: actionPlanResult.ok },
     { phase: 'Category 1 Contracts + 1.3 Aspects', ok: category1Result.ok },
-    { phase: 'Category 2 + 3 Contracts', ok: category23Result.ok },
+    { phase: 'Category 2 + 3 + 4 Contracts', ok: category23Result.ok },
     { phase: 'Search-Index Metadata',  ok: searchIndexResult.ok },
     { phase: 'Evidence Validation',    ok: evidenceResult.ok },
     { phase: 'Route Verification',     ok: routeOk },
@@ -419,7 +420,7 @@ function main() {
     console.log('  ⚠  Category 1 contracts / 1.3 aspects validator reported issues. Check output above.');
   }
   if (!category23Result.ok) {
-    console.log('  ⚠  Category 2/3 contracts validator reported issues. Check output above.');
+    console.log('  ⚠  Category 2/3/4 contracts validator reported issues. Check output above.');
   }
   if (!searchIndexResult.ok) {
     console.log('  ⚠  Search-Index metadata validator reported issues. Check output above.');

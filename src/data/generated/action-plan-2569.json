@@ -1407,7 +1407,7 @@
         {
           "id": "cat-4-4.1.1-1-1",
           "indicatorCode": "4.1.1",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.1",
           "taskNumber": null,
           "activityTh": "(1) กำหนดมาตรการหรือแนวทางจัดการขยะแต่ละประเภทของหน่วยงาน การลดขยะพลาสติกที่ใช้ครั้งเดียวทิ้ง (Single Use Plastic)",
           "frequency": "1 ครั้ง",
@@ -1420,7 +1420,7 @@
         {
           "id": "cat-4-4.1.1-2-2",
           "indicatorCode": "4.1.1",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.1",
           "taskNumber": null,
           "activityTh": "(2) แผนในการลดปริมาณขยะในภาพรวม เพื่อมุ่งสู่ Zero Waste",
           "frequency": "1 ครั้ง",
@@ -1433,7 +1433,7 @@
         {
           "id": "cat-4-4.1.1-3-3",
           "indicatorCode": "4.1.1",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.1",
           "taskNumber": null,
           "activityTh": "(3) การประกาศเป็นองค์กรปลอดโฟม",
           "frequency": "1 ครั้ง",
@@ -1446,7 +1446,7 @@
         {
           "id": "cat-4-4.1.1-4-4",
           "indicatorCode": "4.1.1",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.1",
           "taskNumber": null,
           "activityTh": "(4) การประกาศเจตนารมณ์หรือทำข้อตกลงร่วมกันในองค์กร",
           "frequency": "1 ครั้ง",
@@ -1459,7 +1459,7 @@
         {
           "id": "cat-4-4.1.1-5-5",
           "indicatorCode": "4.1.1",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.1",
           "taskNumber": null,
           "activityTh": "(5) การรณรงค์สร้างการมีส่วนร่วมเพื่อลดขยะพลาสติกในองค์กร",
           "frequency": "1 ครั้ง",
@@ -1472,7 +1472,7 @@
         {
           "id": "cat-4-4.1.2-6-6",
           "indicatorCode": "4.1.2",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(1)   การกำหนดจุดวางถังขยะบริเวณสำนักงานอย่างเหมาะสม และมีการคัดแยกขยะตามประเภทขยะที่เกิดขึ้นจากกิจกรรมภายในสำนักงาน",
           "frequency": "12 ครั้ง",
@@ -1496,7 +1496,7 @@
         {
           "id": "cat-4-4.1.2-7-7",
           "indicatorCode": "4.1.2",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(2)  การติดป้ายบ่งชี้ประเภทขยะอย่างถูกต้องและชัดเจนทุกถัง",
           "frequency": "1 ครั้ง",
@@ -1509,7 +1509,7 @@
         {
           "id": "cat-4-4.1.2-8-8",
           "indicatorCode": "4.1.2",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(3)  จุดพักขยะหรือโรงพักขยะที่เหมาะสมตามหลักวิชาการ โดยจะต้องมีพื้นที่รองรับขยะแต่ละประเภทจากข้อ (1) อย่างเพียงพอ",
           "frequency": "12 ครั้ง",
@@ -1533,7 +1533,7 @@
         {
           "id": "cat-4-4.1.2-9-9",
           "indicatorCode": "4.1.2",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(4)  การสำรวจการทิ้งขยะแต่ละประเภทในสำนักงาน มีความถูกต้องทุกจุดที่สุ่มตรวจสอบ",
           "frequency": "12 ครั้ง",
@@ -1557,7 +1557,7 @@
         {
           "id": "cat-4-4.1.2-10-10",
           "indicatorCode": "4.1.2",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(5) การจัดทำเส้นทางการจัดการขยะแต่ละประเภทอย่างเหมาะสม และส่งขยะให้กับหน่วยงานที่รับดำเนินการ (สำนักงานเขต/ อปท.) หรือผู้รับจ้างที่ได้รับอนุญาตตามกฏหมาย",
           "frequency": "12 ครั้ง",
@@ -1581,7 +1581,7 @@
         {
           "id": "cat-4-4.1.2-11-11",
           "indicatorCode": "4.1.2",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(6)  การติดตาม ตรวจสอบการกำจัดขยะของผู้รับจ้างให้มีการจัดการอย่างเหมาะสมตามหลักวิชาการ (กรณีส่งให้สำนักงานเขต/ อปท. ให้ถือว่ามีการจัดการอย่างเหมาะสม)",
           "frequency": "12 ครั้ง",
@@ -1605,7 +1605,7 @@
         {
           "id": "cat-4-4.1.2-12-12",
           "indicatorCode": "4.1.2",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(7)  ไม่มีการเผาขยะในบริเวณหรือพื้นที่ของสำนักงาน (ยกเว้นเตาเผาที่ได้รับการอนุญาตอย่างถูกต้อง)",
           "frequency": "12 ครั้ง",
@@ -1629,7 +1629,7 @@
         {
           "id": "cat-4-4.1.3-13-13",
           "indicatorCode": "4.1.3",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.3",
           "taskNumber": null,
           "activityTh": "(1)  บันทึกข้อมูลปริมาณขยะแต่ละประเภทครบถ้วนทุกเดือน พร้อมแสดงผล",
           "frequency": "12 ครั้ง",
@@ -1653,7 +1653,7 @@
         {
           "id": "cat-4-4.1.3-14-14",
           "indicatorCode": "4.1.3",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.3",
           "taskNumber": null,
           "activityTh": "(3) การนำขยะกลับมาใช้ประโยชน์หรือนำกลับมาใช้ใหม่ มากกว่าร้อยละ 50 ของปริมาณขยะทั้งหมดของหน่วยงานต่อเดือน หรือมีนวัตกรรมหรือมีการส่งขยะไปเป็นเชื้อเพลิง RDF)",
           "frequency": "4 ครั้ง",
@@ -1669,7 +1669,7 @@
         {
           "id": "cat-4-4.1.3-15-15",
           "indicatorCode": "4.1.3",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.3",
           "taskNumber": null,
           "activityTh": "(4)  ปริมาณขยะที่ส่งกำจัด (ขยะทั่วไปมีแนวโน้มลดลง)",
           "frequency": "12 ครั้ง",
@@ -1694,6 +1694,7 @@
           "id": "cat-4-4.1.3-16-16",
           "indicatorCode": "4.1.3",
           "canonicalIndicatorCode": null,
+          "canonicalMappingNote": "DISCLOSED: กิจกรรม 5 ส (5S workplace-organization) cannot be supported by a single canonical Cat4 indicator; left unmapped rather than invented.",
           "taskNumber": null,
           "activityTh": "(5) กิจกรรม 5 ส",
           "frequency": "12 ครั้ง",
@@ -1717,7 +1718,7 @@
         {
           "id": "cat-4-4.1.3-17-17",
           "indicatorCode": "4.1.3",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(6) กิจกรรม Big Clean Day",
           "frequency": "2 ครั้ง",
@@ -1731,7 +1732,7 @@
         {
           "id": "cat-4-4.2.1-18-18",
           "indicatorCode": "4.2.1",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.2.1",
           "taskNumber": null,
           "activityTh": "(1)  กำหนดผู้รับผิดชอบที่มีความรู้ความเข้าใจในการดูแลจัดการน้ำเสียของหน่วยงาน",
           "frequency": "1 ครั้ง",
@@ -1744,7 +1745,7 @@
         {
           "id": "cat-4-4.2.1-19-19",
           "indicatorCode": "4.2.1",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.2.1",
           "taskNumber": null,
           "activityTh": "(2)  หน่วยงานมีการบำบัดน้ำเสียอย่างเหมาะสมและมีประสิทธิภาพ ตามบริบทของหน่วยงาน เช่น มีตะแกรงดักเศษอาหาร อุปกรณ์บำบัดน้ำเสีย ถังดักไขมัน ระบบบำบัดน้ำเสียเหมาะสมกับองค์ประกอบของน้ำเสีย",
           "frequency": "12 ครั้ง",
@@ -1768,7 +1769,7 @@
         {
           "id": "cat-4-4.2.1-20-20",
           "indicatorCode": "4.2.1",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.2.1",
           "taskNumber": null,
           "activityTh": "(3)  บำบัดน้ำเสียครบทุกจุดที่ปล่อยน้ำเสียของหน่วยงาน",
           "frequency": "12 ครั้ง",
@@ -1792,7 +1793,7 @@
         {
           "id": "cat-4-4.2.1-21-21",
           "indicatorCode": "4.2.1",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.2.1",
           "taskNumber": null,
           "activityTh": "(4)  ระบบบำบัดน้ำเสียอยู่ในสภาพพร้อมใช้งาน และมีผลการตรวจสอบคุณภาพน้ำทิ้งที่อยู่ในเกณฑ์มาตรฐานตามที่กฏหมายกำหนด",
           "frequency": "12 ครั้ง",
@@ -1816,7 +1817,7 @@
         {
           "id": "cat-4-4.2.2-22-22",
           "indicatorCode": "4.2.2",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.2.2",
           "taskNumber": null,
           "activityTh": "(1)  ดูแลระบบบำบัดน้ำเสียหรือมีการตักและทำความสะอาดเศษอาหาร และไขมันออกจากตะแกรงดักขยะ หรือบ่อดักไขมัน ตามความถี่ที่กำหนดอย่างเหมาะสมกับปริมาณและการปนเปื้อน",
           "frequency": "12 ครั้ง",
@@ -1840,7 +1841,7 @@
         {
           "id": "cat-4-4.2.2-23-23",
           "indicatorCode": "4.2.2",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.2.2",
           "taskNumber": null,
           "activityTh": "(2)  การจัดการไขมัน น้ำมัน เศษ อาหารจากถังดักไขมัน หรือกากตะกอนจากระบบบำบัดน้ำเสีย ไปกำจัดอย่างถูกต้อง",
           "frequency": "12 ครั้ง",
@@ -1864,7 +1865,7 @@
         {
           "id": "cat-4-4.2.2-24-24",
           "indicatorCode": "4.2.2",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.2.2",
           "taskNumber": null,
           "activityTh": "(3)  ตรวจสอบ ปรับปรุง ซ่อมแซมถังดักไขมัน หรือระบบบำบัดน้ำเสียให้สามารถใช้งานและมีประสิทธิภาพอยู่เสมอ",
           "frequency": "12 ครั้ง",
@@ -1888,7 +1889,7 @@
         {
           "id": "cat-4-4.2.2-25-25",
           "indicatorCode": "4.2.2",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "4.2.2",
           "taskNumber": null,
           "activityTh": "(4)  ตรวจสอบการรั่วไหลของน้ำเสียอย่างสม่ำเสมอเพื่อป้องกันการปนเปื้อนของน้ำเสียไปยังแหล่งอื่นๆ",
           "frequency": "12 ครั้ง",
