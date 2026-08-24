@@ -1922,7 +1922,7 @@
         {
           "id": "cat-5-5.1-1-1",
           "indicatorCode": "5.1",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "5.1.1",
           "taskNumber": null,
           "activityTh": "(1)  โดยบริษัท",
           "frequency": "1 ครั้ง",
@@ -1935,7 +1935,7 @@
         {
           "id": "cat-5-5.1-2-2",
           "indicatorCode": "5.1",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "5.1.1",
           "taskNumber": null,
           "activityTh": "(2)  โดยบุคลากร",
           "frequency": "2 ครั้ง",
@@ -1949,7 +1949,7 @@
         {
           "id": "cat-5-5.2-5.2-3",
           "indicatorCode": "5.2",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "5.1.1",
           "taskNumber": "5.2",
           "activityTh": "ทำความสะอาดเครื่องฟอกอากาศ",
           "frequency": "2 ครั้ง",
@@ -1963,7 +1963,7 @@
         {
           "id": "cat-5-5.3-5.3-4",
           "indicatorCode": "5.3",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "5.1.1",
           "taskNumber": "5.3",
           "activityTh": "ทำความสะอาดเครื่องพิมพ์เอกสาร",
           "frequency": "12 ครั้ง",
@@ -2038,7 +2038,7 @@
         {
           "id": "cat-5-5.7-5.7-8",
           "indicatorCode": "5.7",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "5.4.2",
           "taskNumber": "5.7",
           "activityTh": "การดูแลพื้นที่พักผ่อนหย่อนใจ",
           "frequency": "12 ครั้ง",
@@ -2062,7 +2062,7 @@
         {
           "id": "cat-5-5.8-5.8-9",
           "indicatorCode": "5.8",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "5.4.2",
           "taskNumber": "5.8",
           "activityTh": "การดูแลพื้นที่สีเขียว บริเวณพื้นที่ส่วนรวมภายใน/ภายนอกอาคาร และบริเวณโต๊ะทำงาน",
           "frequency": "12 ครั้ง",
@@ -2086,7 +2086,7 @@
         {
           "id": "cat-5-5.9-5.9-10",
           "indicatorCode": "5.9",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "5.4.3",
           "taskNumber": "5.9",
           "activityTh": "การเพิ่มพื้นที่สีเขียว บริเวณพื้นที่ส่วนรวมภายในอาคาร และบริเวณโต๊ะทำงาน",
           "frequency": "1 ครั้ง",
@@ -2123,7 +2123,7 @@
         {
           "id": "cat-5-5.11-5.11-12",
           "indicatorCode": "5.11",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "5.4.4",
           "taskNumber": "5.11",
           "activityTh": "การดูแลพื้นที่ทำงาน",
           "frequency": "12 ครั้ง",
@@ -2147,7 +2147,7 @@
         {
           "id": "cat-5-5.12-5.12-13",
           "indicatorCode": "5.12",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "5.4.4",
           "taskNumber": "5.12",
           "activityTh": "การดูแลพื้นที่โดยรอบอาคาร",
           "frequency": "12 ครั้ง",
@@ -2171,7 +2171,7 @@
         {
           "id": "cat-5-5.13-5.13-14",
           "indicatorCode": "5.13",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "5.5.1",
           "taskNumber": "5.13",
           "activityTh": "การฝึกซ้อมดับเพลิง หนีไฟ และแผ่นดินไหว",
           "frequency": "1 ครั้ง",
@@ -2184,7 +2184,7 @@
         {
           "id": "cat-5-5.14-5.14-15",
           "indicatorCode": "5.14",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "5.2.1",
           "taskNumber": "5.14",
           "activityTh": "กิจกรรมตรวจสอบความเข้มของแสงสว่างในสำนักงาน",
           "frequency": "1 ครั้ง",
@@ -2197,7 +2197,7 @@
         {
           "id": "cat-5-5.15-5.15-16",
           "indicatorCode": "5.15",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "5.5.2",
           "taskNumber": "5.15",
           "activityTh": "รายงานผลการปฏิบัติงาน",
           "frequency": "1 ครั้ง",
@@ -2210,7 +2210,7 @@
         {
           "id": "cat-5-5.16-5.16-17",
           "indicatorCode": "5.16",
-          "canonicalIndicatorCode": null,
+          "canonicalIndicatorCode": "5.5.3",
           "taskNumber": "5.16",
           "activityTh": "ประชุมคณะกรรมการหมวด 5",
           "frequency": "2 ครั้ง",

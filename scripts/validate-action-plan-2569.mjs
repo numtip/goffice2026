@@ -354,6 +354,80 @@ export function validateActionPlanScope(planData, pageMeta, criteria, criteriaIn
   return errors;
 }
 
+/**
+ * Cat5 canonical-indicator mapping checks (GO-CAT5 Phase B).
+ * Every cat5 activity must either carry a canonicalIndicatorCode or be one of
+ * the 4 disclosed unmapped activities. Frozen counts: 5.1.1=4 · 5.2.1=1 ·
+ * 5.4.2=2 · 5.4.3=1 · 5.4.4=2 · 5.5.1=1 · 5.5.2=1 · 5.5.3=1 (13 mapped, 4
+ * unmapped, total 17). Legacy indicatorCode is retained. No activity may carry
+ * executed FY2569 actualMonths.
+ */
+const CAT5_FROZEN_CANONICAL_COUNTS = {
+  '5.1.1': 4,
+  '5.2.1': 1,
+  '5.4.2': 2,
+  '5.4.3': 1,
+  '5.4.4': 2,
+  '5.5.1': 1,
+  '5.5.2': 1,
+  '5.5.3': 1,
+};
+const VALID_CAT5_CANONICAL = new Set(Object.keys(CAT5_FROZEN_CANONICAL_COUNTS));
+const CAT5_UNMAPPED_ACTIVITY_IDS = new Set([
+  'cat-5-5.4-5.4-5', // carpet cleaning — covered by 5.1.1 maintenance evidence; no single canonical indicator
+  'cat-5-5.5-5.5-6', // bookshelf/journal cleaning — same basis
+  'cat-5-5.6-5.6-7', // alarm/equipment readiness survey — spans 5.5.3 and building systems; left unmapped rather than invented
+  'cat-5-5.1-5.1-11', // shared-area vector trail inspection — canonical code already carried by cat-5-5.11-5.11-12
+]);
+
+export function validateActionPlanCat5Canonical(data) {
+  const errors = [];
+  const cat5 = (data?.categories ?? []).find((c) => c.id === 'cat-5');
+  if (!cat5) return ['action-plan must contain cat-5'];
+  if (!Array.isArray(cat5.activities)) return ['cat-5 activities must be array'];
+  if (cat5.activities.length !== 17) {
+    errors.push(`cat-5 must have exactly 17 activities (no new activities added), got ${cat5.activities.length}`);
+  }
+
+  const counts = {};
+  let unmappedCount = 0;
+  for (const act of cat5.activities) {
+    if (!act.indicatorCode) errors.push(`${act.id}: legacy indicatorCode must be retained`);
+    if (act.actualMonths && act.actualMonths.length > 0) {
+      errors.push(`${act.id}: FY2569 activity must not carry executed actualMonths (no FY2569 facts)`);
+    }
+    const code = act.canonicalIndicatorCode;
+    if (!code || typeof code !== 'string') {
+      if (CAT5_UNMAPPED_ACTIVITY_IDS.has(act.id)) {
+        unmappedCount += 1;
+        continue;
+      }
+      errors.push(`${act.id}: missing canonicalIndicatorCode (only the 4 disclosed activities may be unmapped)`);
+      continue;
+    }
+    if (!VALID_CAT5_CANONICAL.has(code)) {
+      errors.push(`${act.id}: invalid canonicalIndicatorCode "${code}"`);
+      continue;
+    }
+    if (!/^5\.\d+\.\d+$/.test(code)) {
+      errors.push(`${act.id}: canonicalIndicatorCode must be a canonical 5.x.x code, got "${code}"`);
+    }
+    counts[code] = (counts[code] ?? 0) + 1;
+  }
+
+  for (const [code, expected] of Object.entries(CAT5_FROZEN_CANONICAL_COUNTS)) {
+    const actual = counts[code] ?? 0;
+    if (actual !== expected) {
+      errors.push(`cat5 canonicalIndicatorCode count for ${code} must be ${expected}, got ${actual}`);
+    }
+  }
+  if (unmappedCount !== CAT5_UNMAPPED_ACTIVITY_IDS.size) {
+    errors.push(`cat5 must have exactly ${CAT5_UNMAPPED_ACTIVITY_IDS.size} disclosed unmapped activities, got ${unmappedCount}`);
+  }
+
+  return errors;
+}
+
 function main() {
   if (!existsSync(DATA_PATH)) {
     console.error('Missing generated data:', DATA_PATH);
@@ -394,8 +468,14 @@ function main() {
     cat4Errors.forEach((e) => console.error('  ✗', e));
     process.exit(1);
   }
+  const cat5Errors = validateActionPlanCat5Canonical(data);
+  if (cat5Errors.length) {
+    console.error('action-plan-2569 cat5 canonical mapping FAIL');
+    cat5Errors.forEach((e) => console.error('  ●', e));
+    process.exit(1);
+  }
   console.log(
-    `action-plan-2569 validation PASS (${data.summary.activityCount} activities, ${data.categories.length} categories, renewal scope 7/24/65, cat2 canonical 2.1.1=8/2.2.1=1/2.2.2=9/2.2.4=2, cat3 canonical 3.1.1=2/3.1.2=1/3.2.1=1/3.2.2=1/3.4.1=1, cat4 canonical 4.1.1=5/4.1.2=8/4.1.3=3/4.2.1=4/4.2.2=4 + 1 disclosed)`,
+    `action-plan-2569 validation PASS (${data.summary.activityCount} activities, ${data.categories.length} categories, renewal scope 7/24/65, cat2 canonical 2.1.1=8/2.2.1=1/2.2.2=9/2.2.4=2, cat3 canonical 3.1.1=2/3.1.2=1/3.2.1=1/3.2.2=1/3.4.1=1, cat4 canonical 4.1.1=5/4.1.2=8/4.1.3=3/4.2.1=4/4.2.2=4 + 1 disclosed, cat5 canonical 13 mapped + 4 disclosed)`,
   );
 }
 
