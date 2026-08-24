@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validateActionPlan2569, validateActionPlanScope, validateActionPlanCat2Canonical, validateActionPlanCat3Canonical, validateActionPlanCat4Canonical } from './validate-action-plan-2569.mjs';
+import { validateActionPlan2569, validateActionPlanScope, validateActionPlanCat2Canonical, validateActionPlanCat3Canonical, validateActionPlanCat4Canonical, validateActionPlanCat5Canonical } from './validate-action-plan-2569.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = join(ROOT, 'src/data/generated/action-plan-2569.json');
@@ -192,5 +192,51 @@ describe('action-plan-2569 generated data', () => {
     delete fiveS.canonicalMappingNote;
     const errors2 = validateActionPlanCat4Canonical(clone2);
     assert.ok(errors2.some((e) => /DISCLOSED/i.test(e)), 'must flag a missing disclosure note');
+  });
+
+  test('cat5 canonical indicator mapping matches the frozen C4 counts (17 activities, 14 mapped, 3 disclosed)', () => {
+    const data = JSON.parse(readFileSync(DATA, 'utf8'));
+    const errors = validateActionPlanCat5Canonical(data);
+    assert.deepEqual(errors, []);
+    const cat5 = data.categories.find((c) => c.id === 'cat-5');
+    assert.equal(cat5.activities.length, 17);
+    const counts = {};
+    const unmapped = [];
+    for (const act of cat5.activities) {
+      assert.ok(act.indicatorCode, `${act.id} must retain legacy indicatorCode`);
+      assert.deepEqual(act.actualMonths, [], `${act.id} must have no executed FY2569 actualMonths`);
+      if (act.canonicalIndicatorCode) {
+        assert.match(act.canonicalIndicatorCode, /^5\.\d+\.\d+$/, `${act.id} must map to a canonical 5.x.x code`);
+        counts[act.canonicalIndicatorCode] = (counts[act.canonicalIndicatorCode] || 0) + 1;
+      } else {
+        unmapped.push(act.id);
+      }
+    }
+    // Criteria-based semantic mapping (GO-CAT5 Phase B correction).
+    assert.deepEqual(counts, { '5.1.1': 5, '5.2.1': 1, '5.4.1': 1, '5.4.3': 4, '5.4.4': 1, '5.5.1': 1, '5.5.3': 1 });
+    assert.equal(counts['5.4.2'], undefined, '5.4.2 must be disclosed at 0, never backfilled');
+    assert.equal(counts['5.5.2'], undefined, '5.5.2 must be disclosed at 0, never backfilled');
+    assert.deepEqual(
+      [...unmapped].sort(),
+      ['cat-5-5.15-5.15-16', 'cat-5-5.16-5.16-17', 'cat-5-5.5-5.5-6'],
+      'only bookshelf/journal cleaning, work-result reporting and the Cat5 committee meeting may be unmapped',
+    );
+  });
+
+  test('cat5 canonical mapping guard trips when a count drifts or a zero-disclosed indicator is backfilled', () => {
+    const data = JSON.parse(readFileSync(DATA, 'utf8'));
+    const clone = structuredClone(data);
+    const cat5 = clone.categories.find((c) => c.id === 'cat-5');
+    const carpet = cat5.activities.find((a) => a.id === 'cat-5-5.4-5.4-5');
+    delete carpet.canonicalIndicatorCode; // would make 5.1.1=4
+    const errors = validateActionPlanCat5Canonical(clone);
+    assert.ok(errors.some((e) => /5\.1\.1/.test(e)), 'must flag 5.1.1 count drift');
+
+    const clone2 = structuredClone(data);
+    const clone2Cat5 = clone2.categories.find((c) => c.id === 'cat-5');
+    const committee = clone2Cat5.activities.find((a) => a.id === 'cat-5-5.16-5.16-17');
+    committee.canonicalIndicatorCode = '5.5.2'; // would backfill the disclosed zero-count 5.5.2
+    const errors2 = validateActionPlanCat5Canonical(clone2);
+    assert.ok(errors2.some((e) => /5\.5\.2/.test(e)), 'must flag 5.5.2 as invalid/zero-disclosed');
   });
 });
