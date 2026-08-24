@@ -4577,6 +4577,49 @@
         "basis": "All files content-verified (hotel search sources, example eco hotels, Form 6.2(3), section narrative). Annual report declares no external hotel/venue eco service used in FY2568/FY2567 (in-building meeting rooms); Green Meeting measure in resource-control measures §5."
       },
       "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat7-internal-audit-request-fy2568",
+      "categoryId": "cat7",
+      "indicator": "Green Office internal audit FY2568 request (7.1)",
+      "title": "Cat7 FY2568 Internal-Audit Request 7.1",
+      "titleTh": "การแจ้งความประสงค์ขอรับการตรวจประเมินภายในสำนักงาน Green Office ปี 2568",
+      "description": "FY2568 (ประจำปี 2568) internal-audit request submitted to the Green Office steering committee chair, dated 17 Mar 2569, per the at-least-annual frequency condition. This is the ONLY baseline-eligible 7.1 claim per the accepted Phase-A disposition; appointment, competence, audit completion, result report, score and PASS are not claimed.",
+      "descriptionTh": "คำขอรับการตรวจประเมินภายในสำนักงาน Green Office ปีงบประมาณ 2568 ส่งถึงประธานคณะกรรมการขับเคลื่อนฯ ลงวันที่ 17 มี.ค. 2569 ตามเงื่อนไขอย่างน้อยปีละ 1 ครั้ง นี่เป็นข้อเท็จจริงเดียวของ 7.1 ที่ผ่านเกณฑ์ปีฐาน 2568 ตามข้อสรุป Phase A ที่รับรอง ไม่มีการอ้างการแต่งตั้ง ความเชี่ยวชาญ ผลการตรวจ รายงานผล คะแนน หรือการผ่านเกณฑ์",
+      "year": 2568,
+      "path": "/documents/fy2568/cat7/7.1%20(9-3-69).pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "7.1 (9-3-69).pdf",
+      "manifestSha256": "ddd4a25292512a4dec5e08086083dcd0b53dfcd9b60af3975ff1de1a1e5dd485",
+      "sizeBytes": 309091,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "7.1"
+      ],
+      "issueCodes": [
+        "7.1"
+      ],
+      "categoryCodes": [
+        "cat7"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat7 FY2568 Internal-Audit Request 7.1",
+        "sourceLabelTh": "การแจ้งความประสงค์ขอรับการตรวจประเมินภายในสำนักงาน Green Office ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "Page 2 of 7.1 (9-3-69).pdf text layer content-verified: the FY2568 (ประจำปี 2568) internal-audit request was submitted to the Green Office steering committee chair (ประธานคณะกรรมการขับเคลื่อนฯ), dated 17 มี.ค. 2569, per the at-least-annual frequency condition. Appointment (p1), criteria (p5) and execution/result (p7) are 2569-dated QUARANTINE claims; roster (p6) is YEAR_UNVERIFIED; p3-p4 photos scan-only (pending OCR). Cross-referenced on หมวด 7_(9-3-69).pdf p2 (contentDuplicateCandidate, separate sourceRef)."
+      },
+      "fy2569Status": "awaiting-update"
     }
   ]
 }

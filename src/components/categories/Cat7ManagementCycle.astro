@@ -1,0 +1,82 @@
+---
+/**
+ * Cat7ManagementCycle.astro — Category 7 continuity control loop.
+ * Compact loop (Internal audit → Evidence control → Advancement), restrained
+ * single-accent (green) hierarchy, not a marketing/hero surface. Renders the
+ * honest FY2568 baseline: 7.1 limited request evidence, 7.2 explicit gap.
+ */
+import {
+  CAT7_MANAGEMENT_CYCLE,
+  indicatorTitle,
+} from '../../utils/category7-presentation';
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const isEn = locale === 'en';
+const path = (p: string) => getLocalizedPath(locale, p);
+
+function t(field: { th: string; en: string }): string {
+  return isEn ? field.en : field.th;
+}
+---
+
+<section
+  class="mb-8 rounded-xl border border-green-100 bg-green-50/30 p-5 sm:p-6"
+  aria-labelledby="cat7-management-cycle"
+  data-cat7-management-cycle
+>
+  <div class="mb-4">
+    <h2 id="cat7-management-cycle" class="text-base font-semibold text-gray-900">
+      {isEn ? 'Category 7 continuity control loop' : 'วงจรควบคุมความต่อเนื่องหมวด 7'}
+    </h2>
+    <p class="mt-1 text-sm leading-relaxed text-gray-600">
+      {isEn
+        ? 'The FY2568 baseline layer for Category 7 is limited and honest: only the FY2568 internal-audit request (7.1) is baseline-eligible, and 7.2 advancement currently has no verified FY2568 execution evidence (explicit gap). FY2569-dated claims are quarantined. This is coverage/control context — never a score or PASS claim.'
+        : 'ชั้นข้อมูลฐานปี 2568 ของหมวด 7 จำกัดและตรงไปตรงมา: เฉพาะคำขอตรวจประเมินภายในปี 2568 (7.1) ที่ผ่านเกณฑ์ปีฐาน และ 7.2 การพัฒนา/ต่อยอดยังไม่มีหลักฐานการดำเนินงานปี 2568 ที่ตรวจสอบได้ (ช่องว่างที่ชัดเจน) ข้อเท็จจริงปี 2569 ถูกแยกออก นี่คือบริบทความครอบคลุม/การควบคุม — ไม่ใช่คะแนนหรือการผ่านเกณฑ์'}
+    </p>
+  </div>
+
+  <ol class="grid grid-cols-1 gap-3 sm:grid-cols-3" role="list" aria-label={isEn ? 'Continuity control stages' : 'ขั้นตอนวงจรควบคุมความต่อเนื่อง'}>
+    {
+      CAT7_MANAGEMENT_CYCLE.map((step) => (
+        <li class="flex flex-col rounded-xl border border-green-200 bg-white p-4 shadow-sm">
+          <span class="mb-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-xs font-bold text-green-800">
+            {step.stage}
+          </span>
+          <a
+            href={path(`/indicators/${step.targetCode}/`)}
+            class="text-sm font-semibold leading-snug text-green-700 hover:text-green-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded"
+          >
+            {t(step.label)}
+          </a>
+          <p class="mt-1.5 text-xs leading-relaxed text-gray-500">
+            {t(step.summary)}
+          </p>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="mt-4 border-t border-green-100 pt-3">
+    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+      {isEn ? 'Indicator links' : 'ลิงก์ตัวชี้วัด'}
+    </h3>
+    <ul class="flex flex-wrap gap-2" role="list">
+      {['7.1', '7.2'].map((code) => (
+        <li>
+          <a
+            href={path(`/indicators/${code}/`)}
+            class="inline-flex items-center rounded-full border border-green-200 bg-white px-3 py-1 text-xs font-medium text-green-800 transition-colors hover:border-green-400 hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+            aria-label={indicatorTitle(code, locale)}
+          >
+            {code} · {indicatorTitle(code, locale)}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

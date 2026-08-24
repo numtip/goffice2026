@@ -20,6 +20,8 @@ import Cat5ManagementCycle from '../../components/categories/Cat5ManagementCycle
 import Cat5DomainSnapshot from '../../components/categories/Cat5DomainSnapshot.astro';
 import Cat6ManagementCycle from '../../components/categories/Cat6ManagementCycle.astro';
 import Cat6DomainSnapshot from '../../components/categories/Cat6DomainSnapshot.astro';
+import Cat7ManagementCycle from '../../components/categories/Cat7ManagementCycle.astro';
+import Cat7DomainSnapshot from '../../components/categories/Cat7DomainSnapshot.astro';
 
 export function getStaticPaths() {
   const issues = issueData.issues;
@@ -363,6 +365,13 @@ const weightLabel = isCat7
       <>
         <Cat6ManagementCycle locale={locale} />
         <Cat6DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat7' && (
+      <>
+        <Cat7ManagementCycle locale={locale} />
+        <Cat7DomainSnapshot locale={locale} />
       </>
     )}
 
