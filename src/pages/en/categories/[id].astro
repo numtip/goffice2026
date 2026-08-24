@@ -18,6 +18,8 @@ import Cat4ManagementCycle from '../../../components/categories/Cat4ManagementCy
 import Cat4DomainSnapshot from '../../../components/categories/Cat4DomainSnapshot.astro';
 import Cat5ManagementCycle from '../../../components/categories/Cat5ManagementCycle.astro';
 import Cat5DomainSnapshot from '../../../components/categories/Cat5DomainSnapshot.astro';
+import Cat6ManagementCycle from '../../../components/categories/Cat6ManagementCycle.astro';
+import Cat6DomainSnapshot from '../../../components/categories/Cat6DomainSnapshot.astro';
 
 const locale = 'en';
 
@@ -283,6 +285,11 @@ function localizedUrl(path: string): string {
                 Source-structure note: all 13 indicators have dedicated FY2568 evidence (47/47 files SHA-256 matched), but it is the baseline layer for FY2569 — light measurement, the fire drill and recurring inspections must be re-collected in FY2569. 23 files are scans (content unverified), 5.3.1 has no sound measurement (pending assessor confirmation), the 5.4.2/5.4.3/5.5.2 percentages are not evidenced, the FY2569-budget contract is excluded, and file 5.5.3-3 is unconfirmed.
               </p>
             )}
+            {category.code === 'cat6' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                Source-structure note: all 6 indicators have dedicated FY2568 evidence (32/32 files SHA-256 matched), but it is the baseline layer for FY2569 — the 6.1.2 procurement % (92.33/89.80 as source-declared, not recomputed), product-list review and contractor evaluations must be re-collected in FY2569. 12 files are scans (content unverified), the 6.1.3 % is not evidenced (random check –), the FY2569-budget cleaning contract (งบ 69) is QUARANTINED, and two evaluation-form pairs are contentDuplicateCandidate.
+              </p>
+            )}
             {category.code === 'cat7' && (
               <p class="mt-1 text-xs leading-relaxed text-gray-600">
                 Source-structure note: no verified individual-indicator mapping for category 7.
@@ -337,6 +344,13 @@ function localizedUrl(path: string): string {
       <>
         <Cat5ManagementCycle locale={locale} />
         <Cat5DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat6' && (
+      <>
+        <Cat6ManagementCycle locale={locale} />
+        <Cat6DomainSnapshot locale={locale} />
       </>
     )}
 

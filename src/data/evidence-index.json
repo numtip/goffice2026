@@ -4319,6 +4319,264 @@
         "basis": "Equipment summary has a readable text layer; inventory facts (26 red extinguishers, 12 hose points, alarm system + heat detectors, unobstructed access) and per-floor inspection logs cross-verified against the content-verified annual report DOCX. Extinguisher log scans (floors 1-3) pending OCR. Hose-cabinet report 5.5.3-3 is absent from the source set — EXPECTED_SOURCE_UNCONFIRMED."
       },
       "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat6-products-procurement-fy2568",
+      "categoryId": "cat6",
+      "indicator": "Environmentally friendly product procurement (6.1.1)",
+      "title": "Cat6 FY2568 Eco Product Procurement 6.1.1",
+      "titleTh": "การจัดซื้อสินค้าที่เป็นมิตรกับสิ่งแวดล้อม ปี 2568",
+      "description": "Assigned responsible persons, eco search sources, Form 6.1(1) eco product list with label/expiry/review, vendor request letters; cross-verified via the annual report.",
+      "descriptionTh": "ผู้รับผิดชอบ แหล่งสืบค้นสินค้า บัญชีรายการสินค้าฉลากสิ่งแวดล้อม (แบบฟอร์ม 6.1(1)) และหนังสือขอความร่วมมือ ตรวจสอบข้ามกับรายงานประจำปี",
+      "year": 2568,
+      "path": "/documents/fy2568/cat6/6.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%8B%E0%B8%B7%E0%B9%89%E0%B8%AD%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B8%84%E0%B9%89%E0%B8%B2/6.1.1(1)%201%20%E0%B8%84%E0%B8%B3%E0%B8%AA%E0%B8%B1%E0%B9%88%E0%B8%87Green%20Office%2068.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "6.1 การจัดซื้อสินค้า/6.1.1(1) 1 คำสั่งGreen Office 68.pdf",
+      "manifestSha256": "9557573e0268f9d949d5e6cbf89271ac87a7fd33d97bad9225961e774de1c4dc",
+      "sizeBytes": 2624997,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "6.1.1"
+      ],
+      "issueCodes": [
+        "6.1"
+      ],
+      "categoryCodes": [
+        "cat6"
+      ],
+      "availability": "metadata-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat6 FY2568 Eco Product Procurement 6.1.1",
+        "sourceLabelTh": "การจัดซื้อสินค้าที่เป็นมิตรกับสิ่งแวดล้อม ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "คำสั่งGreen Office 68 (web printout) has a readable text layer; eco search sources, Form 6.1(1) product list (label + expiry + review 4 Jun 2568) and section narrative content-verified. Plan/request-letter/response-form are scans (pending OCR). Cross-verified against the annual report DOCX §6.1.1."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat6-products-report-fy2568",
+      "categoryId": "cat6",
+      "indicator": "Procurement report of eco office materials (6.1.2)",
+      "title": "Cat6 FY2568 Eco Procurement Report 6.1.2",
+      "titleTh": "รายงานการจัดซื้อวัสดุอุปกรณ์สำนักงานที่เป็นมิตรกับสิ่งแวดล้อม ปี 2568",
+      "description": "Form 6.1(2) procurement report; FY2568 source-declared 92.33% volume / 89.80% value vs >40% target (not recomputed).",
+      "descriptionTh": "แบบรายงานแบบฟอร์ม 6.1(2) ปีงบประมาณ 2568 ระบุร้อยละ 92.33 (ปริมาณ) / 89.80 (มูลค่า) เทียบเป้าหมาย >40% (ตามที่แหล่งข้อมูลระบุ ไม่คำนวณใหม่)",
+      "year": 2568,
+      "path": "/documents/fy2568/cat6/6.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%8B%E0%B8%B7%E0%B9%89%E0%B8%AD%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B8%84%E0%B9%89%E0%B8%B2/6.1.2.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "6.1 การจัดซื้อสินค้า/6.1.2.pdf",
+      "manifestSha256": "0e180beccaa77379966437fcaf1a480b8111547c0e42eac022e4245637f808d2",
+      "sizeBytes": 413517,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "6.1.2"
+      ],
+      "issueCodes": [
+        "6.1"
+      ],
+      "categoryCodes": [
+        "cat6"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat6 FY2568 Eco Procurement Report 6.1.2",
+        "sourceLabelTh": "รายงานการจัดซื้อวัสดุอุปกรณ์สำนักงานที่เป็นมิตรกับสิ่งแวดล้อม ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "Content-verified section narrative + Form 6.1(2). FY2568 eco-procurement source-declared 92.33% volume / 89.80% value vs >40% target (annual report table + Form 6.1(2)); presented as declared, not recomputed."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat6-products-survey-fy2568",
+      "categoryId": "cat6",
+      "indicator": "Percentage of eco office materials (6.1.3)",
+      "title": "Cat6 FY2568 Eco Material Survey 6.1.3",
+      "titleTh": "ร้อยละของปริมาณและประเภทวัสดุอุปกรณ์สำนักงานที่เป็นมิตรกับสิ่งแวดล้อม ปี 2568",
+      "description": "Survey of eco materials inside the building (photo page is image content); the required percentage is NOT evidenced (report declares 'สุ่มตรวจ –').",
+      "descriptionTh": "สำรวจวัสดุอุปกรณ์ที่เป็นมิตรกับสิ่งแวดล้อมภายในอาคาร (หน้าภาพถ่ายเป็นรูปภาพ) ร้อยละตามเกณฑ์ไม่มีหลักฐานตัวเลข (รายงานระบุ 'สุ่มตรวจ –')",
+      "year": 2568,
+      "path": "/documents/fy2568/cat6/6.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%8B%E0%B8%B7%E0%B9%89%E0%B8%AD%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B8%84%E0%B9%89%E0%B8%B2/6.1.3.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "6.1 การจัดซื้อสินค้า/6.1.3.pdf",
+      "manifestSha256": "02032e658260ece880551832588ad3c11220a05d8a34f5890f2be8a6e2da58b4",
+      "sizeBytes": 291017,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "6.1.3"
+      ],
+      "issueCodes": [
+        "6.1"
+      ],
+      "categoryCodes": [
+        "cat6"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat6 FY2568 Eco Material Survey 6.1.3",
+        "sourceLabelTh": "ร้อยละของปริมาณและประเภทวัสดุอุปกรณ์สำนักงานที่เป็นมิตรกับสิ่งแวดล้อม ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "Section narrative content-verified: survey declared; photo page is image content. Percentage NOT numerically evidenced (report declares 'สุ่มตรวจ –') — PERCENT_NOT_EVIDENCED."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat6-contractors-engagement-fy2568",
+      "categoryId": "cat6",
+      "indicator": "Engagement of eco contractors (6.2.1)",
+      "title": "Cat6 FY2568 Eco Contractor Engagement 6.2.1",
+      "titleTh": "การจัดจ้างหน่วยงาน/บุคคลที่ดำเนินงานเป็นมิตรกับสิ่งแวดล้อม ปี 2568",
+      "description": "4 FY2568 engagements (source-declared 4/4 = 100%); 2 certified (ฉลากเขียว) and 2 via environmental agreement; FY2569 contract quarantined.",
+      "descriptionTh": "การจัดจ้างปีงบประมาณ 2568 จำนวน 4 รายการ (ระบุ 100% ในแหล่งข้อมูล) ได้รับการรับรอง 2 รายการ และทำข้อตกลงด้านสิ่งแวดล้อม 2 รายการ; สัญญางบ 69 ถูกแยกออก",
+      "year": 2568,
+      "path": "/documents/fy2568/cat6/6.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%87/6.2.1.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "6.2 การจัดจ้าง/6.2.1.pdf",
+      "manifestSha256": "992c398b40c2e778b14a61ae1f9a9c6a1921a542ede5fb7af02fb137d31fa7c6",
+      "sizeBytes": 1559884,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "6.2.1"
+      ],
+      "issueCodes": [
+        "6.2"
+      ],
+      "categoryCodes": [
+        "cat6"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat6 FY2568 Eco Contractor Engagement 6.2.1",
+        "sourceLabelTh": "การจัดจ้างหน่วยงาน/บุคคลที่ดำเนินงานเป็นมิตรกับสิ่งแวดล้อม ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "Section narrative + Form 6.1(2) content-verified: 4 engagements Jan–Dec 2568, source-declared 4/4 = 100% (total 515,367.88 บาท). Certs/contract 68/env-agreement/eval packs are scans (pending OCR). FY2569-budget contract (สัญญา 69) QUARANTINED, never a sourceRef."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat6-contractors-inspection-fy2568",
+      "categoryId": "cat6",
+      "indicator": "Environmental inspection of contractors' work areas (6.2.2)",
+      "title": "Cat6 FY2568 Contractor Work-Area Inspection 6.2.2",
+      "titleTh": "การตรวจสอบการดูแลสิ่งแวดล้อมในพื้นที่ปฏิบัติงานของผู้รับจ้าง ปี 2568",
+      "description": "Monthly cleaning-contractor evaluation (result letter 30 Sep 2568, ระดับดีมาก) and per-visit AC evaluation; forms are contentDuplicateCandidate scans.",
+      "descriptionTh": "ประเมินผู้รับจ้างทำความสะอาดรายเดือน (หนังสือแจ้งผล 30 ก.ย. 2568 ระดับดีมาก) และประเมินผู้รับจ้างล้างเครื่องปรับอากาศทุกครั้ง; แบบประเมินเป็นสแกน (contentDuplicateCandidate)",
+      "year": 2568,
+      "path": "/documents/fy2568/cat6/6.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%87/6.2.2.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "6.2 การจัดจ้าง/6.2.2.pdf",
+      "manifestSha256": "103f8944f7ad2566e26744db3d92ac665a223373eecb59d2097ecc5b081d04aa",
+      "sizeBytes": 329011,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "6.2.2"
+      ],
+      "issueCodes": [
+        "6.2"
+      ],
+      "categoryCodes": [
+        "cat6"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat6 FY2568 Contractor Work-Area Inspection 6.2.2",
+        "sourceLabelTh": "การตรวจสอบการดูแลสิ่งแวดล้อมในพื้นที่ปฏิบัติงานของผู้รับจ้าง ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "Section narrative content-verified + evaluation-result letter (30 Sep 2568, ระดับดีมาก) verified: monthly cleaning evaluation, per-visit AC evaluation. Evaluation forms (34p pack, 1p AC form) are scans pending OCR and are contentDuplicateCandidate pairs kept under their own sourceRefs."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat6-services-guideline-fy2568",
+      "categoryId": "cat6",
+      "indicator": "Guideline for eco external services (6.2.3)",
+      "title": "Cat6 FY2568 External Eco-Service Guideline 6.2.3",
+      "titleTh": "แนวทางการเลือกใช้บริการที่เป็นมิตรกับสิ่งแวดล้อมนอกสำนักงาน ปี 2568",
+      "description": "Hotel search sources, example eco hotels, Form 6.2(3) selection guideline; no external eco service used in FY2568 (declared).",
+      "descriptionTh": "แหล่งสืบค้นโรงแรม ตัวอย่างโรงแรมที่เป็นมิตร และแบบฟอร์ม 6.2(3); ปี 2568 ไม่ได้ใช้บริการนอกสำนักงาน (ตามที่รายงาน)",
+      "year": 2568,
+      "path": "/documents/fy2568/cat6/6.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%87/6.2.3.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "6.2 การจัดจ้าง/6.2.3.pdf",
+      "manifestSha256": "e2ca5a7492512c0b702da6e2be9d4d5e6c836a5da36b49af88945bc5dd6be5e8",
+      "sizeBytes": 683621,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "6.2.3"
+      ],
+      "issueCodes": [
+        "6.2"
+      ],
+      "categoryCodes": [
+        "cat6"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat6 FY2568 External Eco-Service Guideline 6.2.3",
+        "sourceLabelTh": "แนวทางการเลือกใช้บริการที่เป็นมิตรกับสิ่งแวดล้อมนอกสำนักงาน ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "All files content-verified (hotel search sources, example eco hotels, Form 6.2(3), section narrative). Annual report declares no external hotel/venue eco service used in FY2568/FY2567 (in-building meeting rooms); Green Meeting measure in resource-control measures §5."
+      },
+      "fy2569Status": "awaiting-update"
     }
   ]
 }
