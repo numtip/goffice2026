@@ -1,0 +1,189 @@
+---
+/**
+ * Cat5SourceDocuments.astro — "เอกสารต้นฉบับสำหรับการตรวจสอบ" (Original document for review)
+ * Shared source-document section for Category 5 indicator groups (5.1–5.5).
+ * Data comes only from the deterministic FY2568 publication manifest, filtered to
+ * the Phase-A-approved file set defined by the Category 5 contracts (air,
+ * lighting, noise, livability, emergency) plus the canonical annual report DOCX.
+ * The FY2569-contamination file (งบ 69) and the PDF export are honestly excluded
+ * from the per-group lists (both disclosed in Cat5ContractContext and the manifest).
+ */
+import fy2568Publication from '../../data/fy2568-publication.json';
+import airContract from '../../data/category5/air.json';
+import lightingContract from '../../data/category5/lighting.json';
+import noiseContract from '../../data/category5/noise.json';
+import livabilityContract from '../../data/category5/livability.json';
+import emergencyContract from '../../data/category5/emergency.json';
+import { withBase } from '../../utils/with-base';
+
+interface Props {
+  issueCode: string; // '5.1' | '5.2' | '5.3' | '5.4' | '5.5'
+  locale: 'th' | 'en';
+}
+
+const { issueCode, locale } = Astro.props;
+const isEn = locale === 'en';
+
+function t(th: string, en: string): string {
+  return isEn ? en : th;
+}
+
+interface PublicationDoc {
+  path: string;
+  title: string;
+  type: string;
+  sizeBytes: number;
+  sha256: string;
+  url: string;
+}
+
+const publication = fy2568Publication as unknown as {
+  categories: Record<string, { count: number; bytes: number; documents: PublicationDoc[] }>;
+};
+
+// Phase-A-approved source paths derived from the contracts (records).
+const APPROVED_PATHS = new Set<string>();
+for (const contract of [airContract, lightingContract, noiseContract, livabilityContract, emergencyContract]) {
+  for (const rec of (contract as { records: { sourceRef?: string; relatedSources?: string[] }[] }).records ?? []) {
+    if (rec.sourceRef) APPROVED_PATHS.add(rec.sourceRef);
+    for (const rs of rec.relatedSources ?? []) APPROVED_PATHS.add(rs);
+  }
+}
+
+// Canonical annual report (supporting report for all groups).
+const ANNUAL_REPORT_DOCX = 'รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx';
+
+const GROUP_PREFIX: Record<string, string> = {
+  '5.1': '5.1 ',
+  '5.2': '5.2 ',
+  '5.3': '5.3 ',
+  '5.4': '5.4 ',
+  '5.5': '5.5 ',
+};
+
+const prefix = GROUP_PREFIX[issueCode];
+const docs = prefix
+  ? [
+      ...(publication.categories.cat5?.documents ?? [])
+        .filter((d) => d.path.startsWith(prefix) && APPROVED_PATHS.has(d.path))
+        .sort((a, b) => a.path.localeCompare(b.path)),
+      ...(publication.categories.cat5?.documents ?? []).filter((d) => d.path === ANNUAL_REPORT_DOCX),
+    ]
+  : [];
+
+const typeLabel: Record<string, string> = {
+  pdf: 'PDF',
+  docx: 'Word / DOCX',
+};
+
+// Editorial per-document description (th/en). Keyed by manifest path suffix;
+// grounded in GO-CAT5-PHASE-A — never invented.
+function describe(path: string): { th: string; en: string } | undefined {
+  if (path === ANNUAL_REPORT_DOCX) {
+    return {
+      th: 'รายงานผลการดำเนินงานสำนักงานสีเขียว ปี 2568 หมวดที่ 5 (DOCX — แหล่งข้อมูลหลักที่อ่านเนื้อหาได้ ครอบคลุมทั้ง 13 ตัวชี้วัด)',
+      en: 'FY2568 Green Office annual report, Category 5 (DOCX — the only fully content-verified source; covers all 13 indicators)',
+    };
+  }
+  if (/5\.1\.1\(1\)/.test(path)) return { th: 'แผนการบำรุงรักษาประจำปี 2568 (สแกน — เนื้อหารอ OCR)', en: 'FY2568 annual maintenance plan (scan — content pending OCR)' };
+  if (/5\.1\.1\(2\)/.test(path)) return { th: 'ภาพการบำรุงรักษาเครื่องปรับอากาศ ปี 68', en: 'AC maintenance photos, FY2568' };
+  if (/5\.1\.1\(3\)/.test(path)) return { th: 'ฟอร์มทำความสะอาดเครื่องปรับอากาศ ปี 68 (สแกน)', en: 'AC cleaning form, FY2568 (scan)' };
+  if (/5\.1\.1\(4\)/.test(path)) return { th: 'แผนการบำรุงรักษาเครื่องปริ้นเตอร์ ปี 2568 (สแกน)', en: 'Printer maintenance plan, FY2568 (scan)' };
+  if (/5\.1\.1\(5\)/.test(path)) return { th: 'ภาพการบำรุงรักษาเครื่องพิมพ์', en: 'Printer maintenance photos' };
+  if (/5\.1\.1\(6\)/.test(path)) return { th: 'ฟอร์มทำความสะอาดเครื่องพิมพ์ ปี 68 (สแกน)', en: 'Printer cleaning form, FY2568 (scan)' };
+  if (/5\.1\.1\(7\)/.test(path)) return { th: 'การดูแลพรมปูพื้นและชั้นวางหนังสือ', en: 'Carpet and bookshelf care' };
+  if (/5\.1\.1\(8\)/.test(path)) return { th: 'การดูแลลิฟท์ (สแกน)', en: 'Lift maintenance (scan)' };
+  if (/5\.1\.1\(9\)/.test(path)) return { th: 'การควบคุมควันไอเสียรถยนต์บริเวณสำนักงาน', en: 'Vehicle-exhaust control signage' };
+  if (/5\.1\.2/.test(path)) return { th: 'การรณรงค์ไม่สูบบุหรี่และเขตสูบบุหรี่', en: 'No-smoking campaign and smoking areas' };
+  if (/5\.2\/5\.2\.pdf$/.test(path)) return { th: 'เอกสารสรุปหมวดย่อย 5.2 แสงสว่าง', en: 'Section summary 5.2 Lighting' };
+  if (path.includes('รายงานวัดค่าแสง')) return { th: 'รายงานวัดค่าแสง ปี 68 (44 หน้า — วัด 7-8 ก.ค. 2568)', en: 'Light measurement report, FY2568 (44 pp — measured 7-8 Jul 2568)' };
+  if (/5\.3\/5\.3\.pdf$/.test(path)) return { th: 'เอกสารสรุปหมวดย่อย 5.3 เสียง', en: 'Section summary 5.3 Noise' };
+  if (path.includes('มาตรการควบคุมการใช้พลังงาน')) return { th: 'มาตรการควบคุมการใช้พลังงานและทรัพยากร ปี 68', en: 'Energy/resource control measures, FY2568' };
+  if (/5\.4\(1\)/.test(path)) return { th: 'แผนการดูแลพื้นที่ของสำนักงาน ปี 68 (สแกน)', en: 'Office-area care plan, FY2568 (scan)' };
+  if (path.includes('พาหะ') && path.includes('ชั้น 1')) return { th: 'แผนควบคุมพาหะนำเชื้อ ชั้น 1 ปี 68 (สแกน)', en: 'Vector-control plan floor 1, FY2568 (scan)' };
+  if (path.includes('พาหะ') && path.includes('ชั้น 2')) return { th: 'แผนควบคุมพาหะนำเชื้อ ชั้น 2 ปี 68 (สแกน)', en: 'Vector-control plan floor 2, FY2568 (scan)' };
+  if (path.includes('พาหะ') && path.includes('ชั้น 3')) return { th: 'แผนควบคุมพาหะนำเชื้อ ชั้น 3 ปี 68 (สแกน)', en: 'Vector-control plan floor 3, FY2568 (scan)' };
+  if (path.includes('5.4-2')) return { th: 'พื้นที่สีเขียว ปี 68', en: 'Green area, FY2568' };
+  if (path.includes('Big cleaning')) return { th: 'กิจกรรม Big cleaning day ครั้งที่ 1 ปี 68 (สแกน)', en: 'Big Cleaning Day #1, FY2568 (scan)' };
+  if (path.includes('5.4-4')) return { th: 'ภาพกิจกรรม 5 ส', en: '5S activity photos' };
+  if (path.includes('งบ 68')) return { th: 'สัญญาจ้างทำความสะอาดอาคาร งบ 68 (สแกน — canonical สำหรับปี 2568)', en: 'Cleaning contract FY2568 budget (scan — canonical for FY2568)' };
+  if (/5\.4\.pdf$/.test(path)) return { th: 'เอกสารสรุปหมวดย่อย 5.4 ความน่าอยู่', en: 'Section summary 5.4 Livability' };
+  if (path.includes('5.5.1-1')) return { th: 'ขออนุมัติจัดโครงการอพยพหนีภัย ปี 68 (สแกน)', en: 'Drill project approval, FY2568 (scan)' };
+  if (path.includes('5.5.1-2')) return { th: 'แผนผังอาคารสมเด็จพระเทพฯ (Green Office) ปี 2568', en: 'Building floor plan (Green Office), FY2568' };
+  if (path.includes('5.5.1-3')) return { th: 'ป้ายทางหนีไฟ', en: 'Fire-exit signage' };
+  if (path.includes('5.5.1-4')) return { th: 'รูปธงนำทาง', en: 'Evacuation flag bearers' };
+  if (path.includes('5.5.1-5')) return { th: 'จุดรวมพล', en: 'Assembly point' };
+  if (path.includes('5.5.1-6')) return { th: 'ภาพประกอบวันอพยพหนีไฟ', en: 'Drill-day photos' };
+  if (path.includes('5.5.1-7')) return { th: 'ใบประกาศ ปี 2568 (สแกน)', en: 'Training certificate, FY2568 (scan)' };
+  if (path.includes('5.5.2(1)')) return { th: 'แผนฉุกเฉิน', en: 'Emergency plan' };
+  if (path.includes('5.5.2(2)')) return { th: 'แผนป้องกันและระงับอัคคีภัย', en: 'Fire prevention and suppression plan' };
+  if (path.includes('5.5(2)-1')) return { th: 'ความเพียงพอและพร้อมใช้อุปกรณ์ดับเพลิง', en: 'Fire-equipment adequacy and readiness' };
+  if (path.includes('5.5(2)-2')) return { th: 'บันทึกตรวจสภาพถังดับเพลิง ชั้นที่ 1 ปี 68 (สแกน)', en: 'Extinguisher inspection log floor 1, FY2568 (scan)' };
+  if (path.includes('5.5(2)-3')) return { th: 'รายงานตรวจสอบถังดับเพลิง ชั้น 1 ปี 68', en: 'Extinguisher inspection report floor 1, FY2568' };
+  if (path.includes('5.5(2)-4')) return { th: 'บันทึกตรวจสภาพถังดับเพลิง ชั้นที่ 2 ปี 68 (สแกน)', en: 'Extinguisher inspection log floor 2, FY2568 (scan)' };
+  if (path.includes('5.5(2)-5')) return { th: 'รายงานตรวจสอบถังดับเพลิง ชั้น 2 ปี 68', en: 'Extinguisher inspection report floor 2, FY2568' };
+  if (path.includes('5.5(2)-6')) return { th: 'บันทึกตรวจสภาพถังดับเพลิง ชั้นที่ 3 ปี 68 (สแกน)', en: 'Extinguisher inspection log floor 3, FY2568 (scan)' };
+  if (path.includes('5.5(2)-7')) return { th: 'รายงานตรวจสอบถังดับเพลิง ชั้น 3 ปี 68', en: 'Extinguisher inspection report floor 3, FY2568' };
+  if (path.includes('5.5.3-1')) return { th: 'รายงานตู้สายดับเพลิง ชั้น 1', en: 'Hose-cabinet report floor 1' };
+  if (path.includes('5.5.3-2')) return { th: 'รายงานตู้สายดับเพลิง ชั้น 2', en: 'Hose-cabinet report floor 2' };
+  if (path.includes('5.5.3-4')) return { th: 'รายงานตู้สายดับเพลิง ชั้น 3 (ไฟล์ -3 ไม่ปรากฏ — EXPECTED_SOURCE_UNCONFIRMED)', en: 'Hose-cabinet report floor 3 (the -3 file is absent — EXPECTED_SOURCE_UNCONFIRMED)' };
+  if (/5\.5\.pdf$/.test(path)) return { th: 'เอกสารสรุปหมวดย่อย 5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน', en: 'Section summary 5.5 Emergency preparedness' };
+  return undefined;
+}
+---
+
+{
+  docs.length > 0 && (
+    <section
+      class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6"
+      aria-labelledby={`cat5-source-title-${issueCode}`}
+      data-cat5-source-documents
+      data-group={issueCode}
+    >
+      <p class="text-xs font-semibold text-primary">
+        {t('เอกสารต้นฉบับสำหรับการตรวจสอบ', 'Original document for review')}
+      </p>
+      <h2 id={`cat5-source-title-${issueCode}`} class="mt-1 text-base font-bold text-on-surface">
+        {t(`เอกสารต้นฉบับ ${issueCode} ปี 2568`, `Original ${issueCode} FY2568 documents`)}
+      </h2>
+      <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+        {t(
+          `ไฟล์ต้นฉบับปี 2568 ของกลุ่ม ${issueCode} ที่เผยแพร่แบบเปิดจากเว็บไซต์นี้ — สำหรับการตรวจสอบเอกสารต้นทาง (เฉพาะรายการที่ได้รับอนุมัติจาก Phase A; ไม่รวมสัญญางบ 69 ซึ่งเป็นเอกสารปี 2569 และไม่รวมไฟล์ PDF export ของรายงาน)`,
+          `Openly published FY2568 source files for group ${issueCode} — for original-document review (Phase-A-approved set only; the FY2569-budget contract (งบ 69) and the report PDF export excluded)`,
+        )}
+      </p>
+      <ul class="mt-4 space-y-3" role="list">
+        {docs.map((doc) => {
+          const description = describe(doc.path);
+          return (
+            <li
+              class="rounded-lg border border-gray-100 bg-white p-4"
+              data-cat5-source-doc
+              data-path={doc.path}
+            >
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-1 text-[11px] font-semibold text-emerald-800">
+                  {typeLabel[doc.type] ?? doc.type.toUpperCase()}
+                </span>
+                <p class="min-w-0 flex-1 font-medium num-tabular text-sm text-on-surface">{doc.title}</p>
+                <a
+                  href={withBase(doc.url)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex min-h-11 items-center justify-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-white transition duration-300 ease-out hover:-translate-y-0.5 focus-ring motion-reduce:transform-none"
+                >
+                  {t('เปิดเอกสารต้นฉบับ', 'Open original document')}
+                </a>
+              </div>
+              {description && (
+                <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+                  {t(description.th, description.en)}
+                </p>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )
+}

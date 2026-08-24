@@ -16,6 +16,8 @@ import Cat3ManagementCycle from '../../components/categories/Cat3ManagementCycle
 import Cat3DomainSnapshot from '../../components/categories/Cat3DomainSnapshot.astro';
 import Cat4ManagementCycle from '../../components/categories/Cat4ManagementCycle.astro';
 import Cat4DomainSnapshot from '../../components/categories/Cat4DomainSnapshot.astro';
+import Cat5ManagementCycle from '../../components/categories/Cat5ManagementCycle.astro';
+import Cat5DomainSnapshot from '../../components/categories/Cat5DomainSnapshot.astro';
 
 export function getStaticPaths() {
   const issues = issueData.issues;
@@ -288,6 +290,11 @@ const weightLabel = isCat7
                 หมายเหตุโครงสร้างต้นทาง: ทั้ง 5 ตัวชี้วัดมีหลักฐานเฉพาะปี 2568 แต่ปลอดโฟม 4.1.1(3) ยังไม่ได้ดำเนินการ เกณฑ์นำกลับมาใช้ใหม่ >50% ไม่บรรลุ (31.93% — สาขานวัตกรรม/ปุ๋ยหมัก) เป้าหมายขยะทั่วไปลด 3% ไม่บรรลุ (+1.68%) มีสแกน 10 รายการ (เนื้อหาไม่ซ้ำ 8) PDF มาตรการข้อความเพี้ยน (อ้างอิงข้ามเท่านั้น) รายงานหลักคือฉบับ 10-03-69 (ไม่มีฉบับลงนาม) และบันทึก ทส.1/ทส.2 เป็นข้อมูลอ้างอิงภายนอก
               </p>
             )}
+            {category.code === 'cat5' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                หมายเหตุโครงสร้างต้นทาง: ทั้ง 13 ตัวชี้วัดมีหลักฐานเฉพาะปี 2568 (47/47 ไฟล์ตรงกันแบบ SHA-256) แต่เป็นข้อมูลฐานสำหรับปี 2569 — การวัดแสง การซ้อมอพยพ และการตรวจประจำ ต้องเก็บใหม่ในปี 2569 มีสแกน 23 รายการ (ยังไม่ตรวจสอบเนื้อหา) 5.3.1 ไม่ได้วัดเสียง (รอผู้ประเมินยืนยัน) ร้อยละ 5.4.2/5.4.3/5.5.2 ไม่มีหลักฐาน สัญญางบ 69 ถูกแยกออก และไฟล์ 5.5.3-3 ยืนยันไม่ได้
+              </p>
+            )}
             {category.code === 'cat7' && (
               <p class="mt-1 text-xs leading-relaxed text-gray-600">
                 หมายเหตุโครงสร้างต้นทาง: ยังไม่มีการยืนยันการเชื่อมโยงรายตัวชี้วัดสำหรับหมวด 7
@@ -335,6 +342,13 @@ const weightLabel = isCat7
       <>
         <Cat4ManagementCycle locale={locale} />
         <Cat4DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat5' && (
+      <>
+        <Cat5ManagementCycle locale={locale} />
+        <Cat5DomainSnapshot locale={locale} />
       </>
     )}
 

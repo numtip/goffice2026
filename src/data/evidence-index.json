@@ -1,7 +1,7 @@
 {
   "version": "0.8.0",
-  "updated": "2026-08-23",
-  "note": "C3 (2026-08-23): added Category 3 FY2568 indicator-level evidence entries for all 15 cat3 indicators from the C2 contracts + C1 disposition + fy2568-publication manifest (17 indicator-level + targets/measures + annual report category-level). Scans and image-only tables honestly flagged; 3.2.2 MEDIUM; misbounded #19 / incomplete #21 / partial #32 disclosed; no signed-copy claim. Legacy cat3 placeholders reconciled: ev-energy-audit-2025, ev-energy-metering-2025, ev-energy-led-project, ev-water-meter-q1, ev-waste-audit-2025, ev-transport-fleet-2025 marked superseded; off-manifest operational-workbook claims (energy metering, water meter q1, fleet fuel) downgraded to category-level. Stale cat2 water placeholders (ev-water-audit-2025, ev-water-conservation) left untouched.",
+  "updated": "2026-08-24",
+  "note": "C3 (2026-08-23): added Category 3 FY2568 indicator-level evidence entries for all 15 cat3 indicators from the C2 contracts + C1 disposition + fy2568-publication manifest (17 indicator-level + targets/measures + annual report category-level). Scans and image-only tables honestly flagged; 3.2.2 MEDIUM; misbounded #19 / incomplete #21 / partial #32 disclosed; no signed-copy claim. Legacy cat3 placeholders reconciled: ev-energy-audit-2025, ev-energy-metering-2025, ev-energy-led-project, ev-water-meter-q1, ev-waste-audit-2025, ev-transport-fleet-2025 marked superseded; off-manifest operational-workbook claims (energy metering, water meter q1, fleet fuel) downgraded to category-level. Stale cat2 water placeholders (ev-water-audit-2025, ev-water-conservation) left untouched. [Cat5 Phase B 2026-08-24: added 13 canonical FY2568 cat5 indicator-level evidence entries (baseline layer for FY2569; recurring evidence awaiting update).]",
   "items": [
     {
       "id": "ev-energy-audit-2025",
@@ -3760,6 +3760,565 @@
       },
       "promoted": false,
       "duplicateOf": "wastewater-skim-scan-fy2568"
+    },
+    {
+      "id": "ev-cat5-air-maintenance-fy2568",
+      "categoryId": "cat5",
+      "indicator": "Indoor air pollution control (5.1.1)",
+      "title": "Cat5 FY2568 Indoor Air Maintenance 5.1.1",
+      "titleTh": "การบำรุงรักษาควบคุมมลพิษทางอากาศในสำนักงาน ปี 2568",
+      "description": "Maintenance plans/forms/photos for AC (148 units, 2 rounds/year), printers, carpet, bookshelves, lift and engine-off signage; execution cross-verified via the annual report.",
+      "descriptionTh": "แผน/ฟอร์ม/ภาพการบำรุงรักษาเครื่องปรับอากาศ เครื่องพิมพ์ พรม ชั้นหนังสือ ลิฟท์ และป้ายดับเครื่องยนต์ ข้อเท็จจริงการปฏิบัติตรวจสอบข้ามกับรายงานประจำปี",
+      "year": 2568,
+      "path": "/documents/fy2568/cat5/5.1%20%E0%B8%AD%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B9%83%E0%B8%99%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/5.1.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%A7%E0%B8%9A%E0%B8%84%E0%B8%B8%E0%B8%A1%E0%B8%A1%E0%B8%A5%E0%B8%9E%E0%B8%B4%E0%B8%A9%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%AD%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B9%83%E0%B8%99%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/5.1.1(1)%20%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9A%E0%B8%B3%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B8%B2%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5%202568.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "5.1 อากาศในสำนักงาน/5.1.1 การควบคุมมลพิษทางอากาศในสำนักงาน/5.1.1(1) แผนการบำรุงรักษาประจำปี 2568.pdf",
+      "manifestSha256": "9f172e69f5ecc624aa9983ac8a7fbb780dd4fc1b870a5934b39b7236871aac69",
+      "sizeBytes": 5461221,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "5.1.1"
+      ],
+      "issueCodes": [
+        "5.1"
+      ],
+      "categoryCodes": [
+        "cat5"
+      ],
+      "availability": "filename_folder_only",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat5 FY2568 Indoor Air Maintenance 5.1.1",
+        "sourceLabelTh": "การบำรุงรักษาควบคุมมลพิษทางอากาศในสำนักงาน ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "Maintenance plan/forms/photos for AC, printers, carpet/bookshelves, lift and vehicle-exhaust signage are image scans (content pending OCR). Execution facts (148 AC units, 2 rounds/year: round 1 Jan-Mar 2568 self-clean, round 2 May-Oct 2568 incl. contractor) are cross-verified against the content-verified annual report DOCX."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat5-air-smoke-free-fy2568",
+      "categoryId": "cat5",
+      "indicator": "No-smoking campaign (5.1.2)",
+      "title": "Cat5 FY2568 No-Smoking Campaign 5.1.2",
+      "titleTh": "การรณรงค์ไม่สูบบุหรี่ ปี 2568",
+      "description": "Campaign signage and smoking-area designation with compliance statement.",
+      "descriptionTh": "ป้ายรณรงค์และการกำหนดเขตสูบบุหรี่ พร้อมข้อความการปฏิบัติตาม",
+      "year": 2568,
+      "path": "/documents/fy2568/cat5/5.1%20%E0%B8%AD%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B9%83%E0%B8%99%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/5.1.2%20%E0%B8%A1%E0%B8%B5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%A3%E0%B8%93%E0%B8%A3%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%AA%E0%B8%B9%E0%B8%9A%E0%B8%9A%E0%B8%B8%E0%B8%AB%E0%B8%A3%E0%B8%B5%E0%B9%88%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%A1%E0%B8%B5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%81%E0%B8%B3%E0%B8%AB%E0%B8%99%E0%B8%94%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%AA%E0%B8%B9%E0%B8%9A%E0%B8%9A%E0%B8%B8%E0%B8%AB%E0%B8%A3%E0%B8%B5%E0%B9%88/5.1.2%20(1)-(4)%20%E0%B8%A1%E0%B8%B5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%A3%E0%B8%93%E0%B8%A3%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%AA%E0%B8%B9%E0%B8%9A%E0%B8%9A%E0%B8%B8%E0%B8%AB%E0%B8%A3%E0%B8%B5%E0%B9%88.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "5.1 อากาศในสำนักงาน/5.1.2 มีการรณรงค์ไม่สูบบุหรี่หรือมีการกำหนดพื้นที่สูบบุหรี่/5.1.2 (1)-(4) มีการรณรงค์ไม่สูบบุหรี่.pdf",
+      "manifestSha256": "343f04abd4696a1e898bdc937b63abad9f612f1840fd80b973485cd089eecfbf",
+      "sizeBytes": 522523,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "5.1.2"
+      ],
+      "issueCodes": [
+        "5.1"
+      ],
+      "categoryCodes": [
+        "cat5"
+      ],
+      "availability": "metadata-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat5 FY2568 No-Smoking Campaign 5.1.2",
+        "sourceLabelTh": "การรณรงค์ไม่สูบบุหรี่ ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "No-smoking campaign/signage pack has a readable text layer (structure confirmed); campaign facts (signage at smoking point, no-smoking zones, compliance statement) cross-verified against the content-verified annual report DOCX. Human/PO sign-off pending."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat5-air-construction-fy2568",
+      "categoryId": "cat5",
+      "indicator": "Construction air pollution (5.1.3)",
+      "title": "Cat5 FY2568 Construction Air Measures 5.1.3",
+      "titleTh": "มาตรการมลพิษอากาศจากการก่อสร้าง ปี 2568",
+      "description": "Countermeasures narrative (backup workspaces, dust barriers, signage) from the annual report; execution conditional on renovation.",
+      "descriptionTh": "มาตรการรองรับ (พื้นที่สำรอง ฉากกั้น ป้ายเตือน) จากรายงานประจำปี การดำเนินการขึ้นกับการมีการปรับปรุง",
+      "year": 2568,
+      "path": "/documents/fy2568/cat5/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%81%E0%B8%A3%E0%B8%B5%E0%B8%99%E0%B8%AB%E0%B8%A1%E0%B8%A7%E0%B8%94%205%20(68)%20%E0%B8%AD%E0%B8%B2%E0%B8%84%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%AF.docx",
+      "fileType": "DOCX",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx",
+      "manifestSha256": "1de8d296952c530d5b630440756aa5703253ce66385b0805483d9a266dbe2a35",
+      "sizeBytes": 22174564,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "5.1.3"
+      ],
+      "issueCodes": [
+        "5.1"
+      ],
+      "categoryCodes": [
+        "cat5"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat5 FY2568 Construction Air Measures 5.1.3",
+        "sourceLabelTh": "มาตรการมลพิษอากาศจากการก่อสร้าง ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "Content-verified from the annual report DOCX section 5.1.3: defined countermeasures for construction/renovation air pollution (backup workspaces, dust barriers, warning signage). No standalone evidence file exists; execution is conditional on renovation activity occurring."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat5-lighting-measurement-fy2568",
+      "categoryId": "cat5",
+      "indicator": "Light intensity measurement (5.2.1)",
+      "title": "Cat5 FY2568 Light Measurement 5.2.1",
+      "titleTh": "รายงานวัดค่าแสง ปี 2568",
+      "description": "44-page measurement report (7-8 Jul 2568) by qualified จป. professional; annual recurring evidence.",
+      "descriptionTh": "รายงานวัด 44 หน้า (7-8 ก.ค. 2568) โดยผู้ทรงคุณวุฒิ จป.; หลักฐานที่เก็บเป็นประจำทุกปี",
+      "year": 2568,
+      "path": "/documents/fy2568/cat5/5.2%20%E0%B9%81%E0%B8%AA%E0%B8%87%E0%B8%AA%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%83%E0%B8%99%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%84%E0%B9%88%E0%B8%B2%E0%B9%81%E0%B8%AA%E0%B8%87%20%E0%B8%9B%E0%B8%B568.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "5.2 แสงสว่างในสำนักงาน/รายงานวัดค่าแสง ปี68.pdf",
+      "manifestSha256": "1cc7eb240000fa6f7bbda592cf5b9bb5394ea02930f9197e66f9630fe73099fc",
+      "sizeBytes": 24155374,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "5.2.1"
+      ],
+      "issueCodes": [
+        "5.2"
+      ],
+      "categoryCodes": [
+        "cat5"
+      ],
+      "availability": "metadata-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat5 FY2568 Light Measurement 5.2.1",
+        "sourceLabelTh": "รายงานวัดค่าแสง ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "44-page measurement report has a readable text layer (structure confirmed); measurement date/measurer/certificate facts cross-verified against the content-verified annual report DOCX. Per-point lux values need human review before any numeric claim."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat5-noise-control-fy2568",
+      "categoryId": "cat5",
+      "indicator": "Internal noise control (5.3.1)",
+      "title": "Cat5 FY2568 Noise Control 5.3.1",
+      "titleTh": "มาตรการควบคุมเสียงภายใน ปี 2568",
+      "description": "Internal noise measures; measurement declared not applicable (CONTEXTUAL_NA_PENDING_ASSESSOR).",
+      "descriptionTh": "มาตรการควบคุมเสียงภายใน; การวัดเสียงแจ้งว่าไม่จำเป็น (CONTEXTUAL_NA_PENDING_ASSESSOR)",
+      "year": 2568,
+      "path": "/documents/fy2568/cat5/5.3%20%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%87%E0%B9%83%E0%B8%99%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%A7%E0%B8%9A%E0%B8%84%E0%B8%B8%E0%B8%A1%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%9E%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%20%E0%B8%9B%E0%B8%B5%2068.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "5.3 เสียงในสำนักงาน/มาตรการควบคุมการใช้พลังงานและทรัพยากร ปี 68.pdf",
+      "manifestSha256": "f6f7e19b82641ea78712617601ad7eba13c8699e281816d2b9e967055795f51a",
+      "sizeBytes": 2068808,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "5.3.1"
+      ],
+      "issueCodes": [
+        "5.3"
+      ],
+      "categoryCodes": [
+        "cat5"
+      ],
+      "availability": "metadata-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat5 FY2568 Noise Control 5.3.1",
+        "sourceLabelTh": "มาตรการควบคุมเสียงภายใน ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "Measures document has a readable text layer; internal-noise control measures (printer/vacuum scheduling, library quiet rule) cross-verified against the content-verified annual report DOCX."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat5-noise-construction-fy2568",
+      "categoryId": "cat5",
+      "indicator": "Construction noise (5.3.2)",
+      "title": "Cat5 FY2568 Construction Noise 5.3.2",
+      "titleTh": "มาตรการเสียงจากการก่อสร้าง ปี 2568",
+      "description": "Countermeasures narrative with designated backup rooms from the annual report.",
+      "descriptionTh": "มาตรการรองรับพร้อมห้องสำรองรายชั้น จากรายงานประจำปี",
+      "year": 2568,
+      "path": "/documents/fy2568/cat5/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%81%E0%B8%A3%E0%B8%B5%E0%B8%99%E0%B8%AB%E0%B8%A1%E0%B8%A7%E0%B8%94%205%20(68)%20%E0%B8%AD%E0%B8%B2%E0%B8%84%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%AF.docx",
+      "fileType": "DOCX",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx",
+      "manifestSha256": "1de8d296952c530d5b630440756aa5703253ce66385b0805483d9a266dbe2a35",
+      "sizeBytes": 22174564,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "5.3.2"
+      ],
+      "issueCodes": [
+        "5.3"
+      ],
+      "categoryCodes": [
+        "cat5"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat5 FY2568 Construction Noise 5.3.2",
+        "sourceLabelTh": "มาตรการเสียงจากการก่อสร้าง ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "Content-verified from the annual report DOCX section 5.3.2: construction-noise countermeasures with designated backup rooms (floor 1 wheat room, floor 2 scientist room, floor 3 conference room 304). No standalone evidence file; execution is conditional on renovation activity."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat5-livability-plan-fy2568",
+      "categoryId": "cat5",
+      "indicator": "Livability plan (5.4.1)",
+      "title": "Cat5 FY2568 Livability Plan 5.4.1",
+      "titleTh": "แผนการดูแลพื้นที่ ปี 2568",
+      "description": "Area-care plan (scan) + green-area evidence; area facts cross-verified via the annual report.",
+      "descriptionTh": "แผนดูแลพื้นที่ (สแกน) + พื้นที่สีเขียว; ข้อเท็จจริงพื้นที่ตรวจสอบข้ามกับรายงาน",
+      "year": 2568,
+      "path": "/documents/fy2568/cat5/5.4%20%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%99%E0%B9%88%E0%B8%B2%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88/5.4(1)%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B9%E0%B9%81%E0%B8%A5%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99%20%E0%B8%9B%E0%B8%B568.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "5.4 ความน่าอยู่/5.4(1)แผนการดูแลพื้นที่ของสำนักงาน ปี68.pdf",
+      "manifestSha256": "536dc4f94646f65077c8f1e45d1f493ab10f91d1b21fc1be0db7d57a7eb0a558",
+      "sizeBytes": 1425035,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "5.4.1"
+      ],
+      "issueCodes": [
+        "5.4"
+      ],
+      "categoryCodes": [
+        "cat5"
+      ],
+      "availability": "filename_folder_only",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat5 FY2568 Livability Plan 5.4.1",
+        "sourceLabelTh": "แผนการดูแลพื้นที่ ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "Area-care plan is an image scan (content pending OCR). Structural facts (assessed area 9,881 m² = 1,934 outdoor + 7,947 indoor; green area 282 m² outdoor = 14.58% of outdoor area / 2.91% of total; 6 m² indoor; responsibility assignments) cross-verified against the content-verified annual report DOCX."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat5-livability-utilization-fy2568",
+      "categoryId": "cat5",
+      "indicator": "Space utilization (5.4.2)",
+      "title": "Cat5 FY2568 Space Utilization 5.4.2",
+      "titleTh": "การใช้พื้นที่ตามวัตถุประสงค์ ปี 2568",
+      "description": "Shared-use survey narrative; percentage NOT evidenced.",
+      "descriptionTh": "บันทึกการสำรวจการใช้พื้นที่ร่วม; ไม่มีตัวเลขร้อยละ",
+      "year": 2568,
+      "path": "/documents/fy2568/cat5/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%81%E0%B8%A3%E0%B8%B5%E0%B8%99%E0%B8%AB%E0%B8%A1%E0%B8%A7%E0%B8%94%205%20(68)%20%E0%B8%AD%E0%B8%B2%E0%B8%84%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%AF.docx",
+      "fileType": "DOCX",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx",
+      "manifestSha256": "1de8d296952c530d5b630440756aa5703253ce66385b0805483d9a266dbe2a35",
+      "sizeBytes": 22174564,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "5.4.2"
+      ],
+      "issueCodes": [
+        "5.4"
+      ],
+      "categoryCodes": [
+        "cat5"
+      ],
+      "availability": "content-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat5 FY2568 Space Utilization 5.4.2",
+        "sourceLabelTh": "การใช้พื้นที่ตามวัตถุประสงค์ ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "Content-verified from the annual report DOCX section 5.4.2: shared-use survey narrative (shared equipment/space). NO numeric utilization percentage is evidenced anywhere in the FY2568 sources."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat5-livability-maintenance-fy2568",
+      "categoryId": "cat5",
+      "indicator": "Area maintenance (5.4.3)",
+      "title": "Cat5 FY2568 Area Maintenance 5.4.3",
+      "titleTh": "การดูแลบำรุงรักษาพื้นที่ ปี 2568",
+      "description": "Big Cleaning Day #1/2568, 5S photos and FY2568 cleaning contract; percentage NOT evidenced.",
+      "descriptionTh": "Big cleaning day ครั้งที่ 1/2568, ภาพกิจกรรม 5 ส และสัญญาจ้างงบ 68; ไม่มีตัวเลขร้อยละ",
+      "year": 2568,
+      "path": "/documents/fy2568/cat5/5.4%20%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%99%E0%B9%88%E0%B8%B2%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88/5.4-3%20%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1%20Big%20cleaning%20day%20%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%201%20%E0%B8%9B%E0%B8%B568.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "5.4 ความน่าอยู่/5.4-3 กิจกรรม Big cleaning day ครั้งที่ 1 ปี68.pdf",
+      "manifestSha256": "73ad9e71ee4d5db3f4967f85da6edcc5a3664c216276c5f7a6f35f1a35e24dbc",
+      "sizeBytes": 516438,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "5.4.3"
+      ],
+      "issueCodes": [
+        "5.4"
+      ],
+      "categoryCodes": [
+        "cat5"
+      ],
+      "availability": "filename_folder_only",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat5 FY2568 Area Maintenance 5.4.3",
+        "sourceLabelTh": "การดูแลบำรุงรักษาพื้นที่ ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "Big Cleaning Day #1/2568 pack is an image scan; 5S activity photos and the FY2568 cleaning contract (งบ 68) also lack reviewed content. Maintenance activities are cross-verified via the content-verified annual report DOCX. NO numeric maintenance percentage is evidenced."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat5-livability-vector-fy2568",
+      "categoryId": "cat5",
+      "indicator": "Vector control (5.4.4)",
+      "title": "Cat5 FY2568 Vector Control 5.4.4",
+      "titleTh": "แผนควบคุมพาหะนำเชื้อ ปี 2568",
+      "description": "Per-floor vector-control plans (scans); program facts cross-verified via the annual report.",
+      "descriptionTh": "แผนควบคุมพาหะนำเชื้อรายชั้น (สแกน); ข้อเท็จจริงโครงการตรวจสอบข้ามกับรายงาน",
+      "year": 2568,
+      "path": "/documents/fy2568/cat5/5.4%20%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%99%E0%B9%88%E0%B8%B2%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88/5.4(2)%20-%205.4.(3)%20%20%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%84%E0%B8%A7%E0%B8%9A%E0%B8%84%E0%B8%B8%E0%B8%A1%E0%B8%9E%E0%B8%B2%E0%B8%AB%E0%B8%B0%E0%B8%99%E0%B8%B3%E0%B9%80%E0%B8%8A%E0%B8%B7%E0%B9%89%E0%B8%AD%20%E0%B8%8A%E0%B8%B1%E0%B9%89%E0%B8%99%201%20%20%E0%B8%9B%E0%B8%B568%20new.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "5.4 ความน่าอยู่/5.4(2) - 5.4.(3)  แผนควบคุมพาหะนำเชื้อ ชั้น 1  ปี68 new.pdf",
+      "manifestSha256": "91bc2106b8deaacf0b772202b3020b6fba80a3bd43c2ceaed4046818198fe61d",
+      "sizeBytes": 4353852,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "5.4.4"
+      ],
+      "issueCodes": [
+        "5.4"
+      ],
+      "categoryCodes": [
+        "cat5"
+      ],
+      "availability": "filename_folder_only",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat5 FY2568 Vector Control 5.4.4",
+        "sourceLabelTh": "แผนควบคุมพาหะนำเชื้อ ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "Vector-control plans (floors 1-3) are image scans (content pending OCR). Program facts (daily trail inspections on working days, trap-and-release policy, waste/food-source management) cross-verified against the content-verified annual report DOCX."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat5-emergency-drill-fy2568",
+      "categoryId": "cat5",
+      "indicator": "Fire drill training (5.5.1)",
+      "title": "Cat5 FY2568 Fire Drill 5.5.1",
+      "titleTh": "การฝึกซ้อมอพยพหนีไฟ ปี 2568",
+      "description": "Drill 30 May 2568 (104 attendees = 78.35% vs >=40%) with plans/signage/flags/assembly points; frozen baseline.",
+      "descriptionTh": "ซ้อมอพยพหนีไฟ 30 พ.ค. 2568 (104 ราย = 78.35% เทียบเกณฑ์ 40%) พร้อมแผนผัง/ป้าย/ธง/จุดรวมพล; ข้อมูลฐานสแกน",
+      "year": 2568,
+      "path": "/documents/fy2568/cat5/5.5%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%95%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%A1%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%AA%E0%B8%A0%E0%B8%B2%E0%B8%A7%E0%B8%B0%E0%B8%89%E0%B8%B8%E0%B8%81%E0%B9%80%E0%B8%89%E0%B8%B4%E0%B8%99/5.5.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%A1%E0%B8%9D%E0%B8%B6%E0%B8%81%E0%B8%8B%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%94%E0%B8%B1%E0%B8%9A%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%B4%E0%B8%87/5.5.1-6%20%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%AD%E0%B8%9A%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%AD%E0%B8%9E%E0%B8%A2%E0%B8%9E%E0%B8%AB%E0%B8%99%E0%B8%B5%E0%B9%84%E0%B8%9F.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.1 การอบรมฝึกซ้อมดับเพลิง/5.5.1-6 ภาพประกอบวันอพยพหนีไฟ.pdf",
+      "manifestSha256": "e9821c8a136ef678955094ee3f1965a31053abd7bad17846a8d69fe6b1b06385",
+      "sizeBytes": 1401038,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "5.5.1"
+      ],
+      "issueCodes": [
+        "5.5"
+      ],
+      "categoryCodes": [
+        "cat5"
+      ],
+      "availability": "metadata-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat5 FY2568 Fire Drill 5.5.1",
+        "sourceLabelTh": "การฝึกซ้อมอพยพหนีไฟ ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "Drill photo pack has a readable text layer; drill facts (planned Mar 2568, executed 30 May 2568 08.30-17.00; 97 building personnel, 104 attendees = 78.35% vs >=40% criterion; +28 external participants; flag bearers per floor; assembly point front of building, backup at ลานจัตุรัสนานาชาติ) cross-verified against the content-verified annual report DOCX. Approval scan and certificate scan pending OCR."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat5-emergency-plan-fy2568",
+      "categoryId": "cat5",
+      "indicator": "Emergency plan (5.5.2)",
+      "title": "Cat5 FY2568 Emergency Plans 5.5.2",
+      "titleTh": "แผนฉุกเฉิน ปี 2568",
+      "description": "Emergency + fire prevention/suppression plans; understanding percentage NOT evidenced.",
+      "descriptionTh": "แผนฉุกเฉินและแผนป้องกัน-ระงับอัคคีภัย; ไม่มีตัวเลขร้อยละความเข้าใจ",
+      "year": 2568,
+      "path": "/documents/fy2568/cat5/5.5%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%95%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%A1%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%AA%E0%B8%A0%E0%B8%B2%E0%B8%A7%E0%B8%B0%E0%B8%89%E0%B8%B8%E0%B8%81%E0%B9%80%E0%B8%89%E0%B8%B4%E0%B8%99/5.5.2%20%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%89%E0%B8%B8%E0%B8%81%E0%B9%80%E0%B8%89%E0%B8%B4%E0%B8%99/5.5.2(1)%20%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%89%E0%B8%B8%E0%B8%81%E0%B9%80%E0%B8%89%E0%B8%B4%E0%B8%99.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.2 แผนฉุกเฉิน/5.5.2(1) แผนฉุกเฉิน.pdf",
+      "manifestSha256": "f6695df01de54238e67e3faaa7756ee806bf39e536373b94123f1bf6681c75f7",
+      "sizeBytes": 250358,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "5.5.2"
+      ],
+      "issueCodes": [
+        "5.5"
+      ],
+      "categoryCodes": [
+        "cat5"
+      ],
+      "availability": "metadata-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat5 FY2568 Emergency Plans 5.5.2",
+        "sourceLabelTh": "แผนฉุกเฉิน ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "Emergency plan and fire prevention/suppression plan have readable text layers; plan structure (fire-watch plan, training plan, suppression chain, evacuation plan, relief/restoration plans) cross-verified against the content-verified annual report DOCX. The personnel-understanding percentage required by the criterion is NOT evidenced."
+      },
+      "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat5-emergency-equipment-fy2568",
+      "categoryId": "cat5",
+      "indicator": "Fire equipment readiness (5.5.3)",
+      "title": "Cat5 FY2568 Fire Equipment 5.5.3",
+      "titleTh": "อุปกรณ์ดับเพลิงพร้อมใช้ ปี 2568",
+      "description": "26 extinguishers / 12 hose points / alarm system with per-floor inspection logs; 5.5.3-3 EXPECTED_SOURCE_UNCONFIRMED.",
+      "descriptionTh": "ถังดับเพลิง 26 จุด สายฉีดน้ำ 12 จุด ระบบสัญญาณ พร้อมบันทึกตรวจรายชั้น; 5.5.3-3 ยังยืนยันไม่ได้",
+      "year": 2568,
+      "path": "/documents/fy2568/cat5/5.5%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%95%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%A1%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%AA%E0%B8%A0%E0%B8%B2%E0%B8%A7%E0%B8%B0%E0%B8%89%E0%B8%B8%E0%B8%81%E0%B9%80%E0%B8%89%E0%B8%B4%E0%B8%99/5.5.3%20%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B9%80%E0%B8%9E%E0%B8%B5%E0%B8%A2%E0%B8%87%E0%B8%9E%E0%B8%AD%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%AD%E0%B8%B8%E0%B8%9B%E0%B8%81%E0%B8%A3%E0%B8%93%E0%B9%8C%E0%B8%94%E0%B8%B1%E0%B8%9A%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%B4%E0%B8%87/5.5(2)-1%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B9%80%E0%B8%9E%E0%B8%B5%E0%B8%A2%E0%B8%87%E0%B8%9E%E0%B8%AD%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%AD%E0%B8%B8%E0%B8%9B%E0%B8%81%E0%B8%A3%E0%B8%93%E0%B9%8C%E0%B8%94%E0%B8%B1%E0%B8%9A%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%B4%E0%B8%87.pdf",
+      "fileType": "PDF",
+      "status": "available",
+      "updated": "2026-08-24",
+      "manifestPath": "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.3 ความเพียงพอและการพร้อมใช้อุปกรณ์ดับเพลิง/5.5(2)-1ความเพียงพอและพร้อมใช้อุปกรณ์ดับเพลิง.pdf",
+      "manifestSha256": "62d3ef804ad07505e3d37c74da5e8c9abd1438ce9dbe04fc0681dffe26c91bcc",
+      "sizeBytes": 98927,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "5.5.3"
+      ],
+      "issueCodes": [
+        "5.5"
+      ],
+      "categoryCodes": [
+        "cat5"
+      ],
+      "availability": "metadata-verified",
+      "provenance": {
+        "sourceType": "public-static-fy2568",
+        "sourceLabel": "Cat5 FY2568 Fire Equipment 5.5.3",
+        "sourceLabelTh": "อุปกรณ์ดับเพลิงพร้อมใช้ ปี 2568",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "reviewed",
+        "basis": "Equipment summary has a readable text layer; inventory facts (26 red extinguishers, 12 hose points, alarm system + heat detectors, unobstructed access) and per-floor inspection logs cross-verified against the content-verified annual report DOCX. Extinguisher log scans (floors 1-3) pending OCR. Hose-cabinet report 5.5.3-3 is absent from the source set — EXPECTED_SOURCE_UNCONFIRMED."
+      },
+      "fy2569Status": "awaiting-update"
     }
   ]
 }

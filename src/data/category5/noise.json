@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "noise",
+  "updated": "2026-08-24",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CAT5_PHASE_A_SOURCE_DISPOSITION",
+  "note": "FY2568 historical-baseline contract for 5.3.1/5.3.2 (เสียงในสำนักงาน). LOCKED DISCLOSURE: the building declares no sound-level measurement was performed (no significant noise source) — status CONTEXTUAL_NA_PENDING_ASSESSOR; the N/A stance must be re-affirmed (or measured) for FY2569. No FY2569 facts.",
+  "sources": [
+    {
+      "ref": "5.3 เสียงในสำนักงาน/มาตรการควบคุมการใช้พลังงานและทรัพยากร ปี 68.pdf",
+      "role": "primary",
+      "inspection": "text-layer-present",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx",
+      "role": "supporting-report",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    }
+  ],
+  "records": [
+    {
+      "id": "noise-control-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "5.3.1"
+      ],
+      "issueCodes": [
+        "5.3"
+      ],
+      "categoryCode": "cat5",
+      "evidenceIds": [
+        "ev-cat5-noise-control-fy2568"
+      ],
+      "sourceRef": "5.3 เสียงในสำนักงาน/มาตรการควบคุมการใช้พลังงานและทรัพยากร ปี 68.pdf",
+      "manifestSha256": "f6f7e19b82641ea78712617601ad7eba13c8699e281816d2b9e967055795f51a",
+      "relatedSources": [
+        "5.3 เสียงในสำนักงาน/5.3.pdf",
+        "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx"
+      ],
+      "verification": {
+        "status": "reviewed",
+        "basis": "Measures document has a readable text layer; internal-noise control measures (printer/vacuum scheduling, library quiet rule) cross-verified against the content-verified annual report DOCX."
+      },
+      "availability": "metadata-verified",
+      "kind": "measuresDocument",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "มาตรการควบคุมมลพิษทางเสียงภายในอาคาร ปี 2568",
+      "labelEn": "FY2568 internal noise-control measures",
+      "noiseMeasurementStatus": "CONTEXTUAL_NA_PENDING_ASSESSOR",
+      "noiseMeasurementNote": "Building declares no sound-level measurement performed (no significant noise source); assessor acceptance pending.",
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "re-affirm N/A declaration annually, or measure if the noise source changes"
+      }
+    },
+    {
+      "id": "noise-construction-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "5.3.2"
+      ],
+      "issueCodes": [
+        "5.3"
+      ],
+      "categoryCode": "cat5",
+      "evidenceIds": [
+        "ev-cat5-noise-construction-fy2568"
+      ],
+      "sourceRef": "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx",
+      "manifestSha256": "1de8d296952c530d5b630440756aa5703253ce66385b0805483d9a266dbe2a35",
+      "relatedSources": [],
+      "verification": {
+        "status": "reviewed",
+        "basis": "Content-verified from the annual report DOCX section 5.3.2: construction-noise countermeasures with designated backup rooms (floor 1 wheat room, floor 2 scientist room, floor 3 conference room 304). No standalone evidence file; execution is conditional on renovation activity."
+      },
+      "availability": "content-verified",
+      "kind": "contextualNarrative",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "มาตรการจัดการเสียงจากการก่อสร้าง/ปรับปรุงอาคาร (บันทึกในรายงานประจำปี)",
+      "labelEn": "Construction/renovation noise countermeasures (recorded in the annual report)",
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "declare occurrence Y/N once per year; collect execution evidence only if renovation occurs"
+      }
+    }
+  ],
+  "gaps": []
+}
