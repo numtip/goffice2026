@@ -355,29 +355,32 @@ export function validateActionPlanScope(planData, pageMeta, criteria, criteriaIn
 }
 
 /**
- * Cat5 canonical-indicator mapping checks (GO-CAT5 Phase B).
+ * Cat5 canonical-indicator mapping checks (GO-CAT5 Phase B, semantic correction).
  * Every cat5 activity must either carry a canonicalIndicatorCode or be one of
- * the 4 disclosed unmapped activities. Frozen counts: 5.1.1=4 · 5.2.1=1 ·
- * 5.4.2=2 · 5.4.3=1 · 5.4.4=2 · 5.5.1=1 · 5.5.2=1 · 5.5.3=1 (13 mapped, 4
- * unmapped, total 17). Legacy indicatorCode is retained. No activity may carry
+ * the 3 disclosed unmapped activities. Frozen counts: 5.1.1=5 · 5.2.1=1 ·
+ * 5.4.1=1 · 5.4.3=4 · 5.4.4=1 · 5.5.1=1 · 5.5.3=1 (14 mapped, 3 unmapped,
+ * total 17). 5.4.2 and 5.5.2 are deliberately 0 — the space-utilization % and
+ * the emergency-understanding % have no plan activity (disclosed FY2569 GAPs,
+ * never backfilled). Legacy indicatorCode is retained. No activity may carry
  * executed FY2569 actualMonths.
  */
 const CAT5_FROZEN_CANONICAL_COUNTS = {
-  '5.1.1': 4,
+  '5.1.1': 5,
   '5.2.1': 1,
-  '5.4.2': 2,
-  '5.4.3': 1,
-  '5.4.4': 2,
+  '5.4.1': 1,
+  '5.4.3': 4,
+  '5.4.4': 1,
   '5.5.1': 1,
-  '5.5.2': 1,
   '5.5.3': 1,
 };
+// Disclosed zero-count indicators: no plan activity maps to these (FY2569
+// measurement GAPs — never backfilled).
+const CAT5_ZERO_DISCLOSED = ['5.4.2', '5.5.2'];
 const VALID_CAT5_CANONICAL = new Set(Object.keys(CAT5_FROZEN_CANONICAL_COUNTS));
 const CAT5_UNMAPPED_ACTIVITY_IDS = new Set([
-  'cat-5-5.4-5.4-5', // carpet cleaning — covered by 5.1.1 maintenance evidence; no single canonical indicator
-  'cat-5-5.5-5.5-6', // bookshelf/journal cleaning — same basis
-  'cat-5-5.6-5.6-7', // alarm/equipment readiness survey — spans 5.5.3 and building systems; left unmapped rather than invented
-  'cat-5-5.1-5.1-11', // shared-area vector trail inspection — canonical code already carried by cat-5-5.11-5.11-12
+  'cat-5-5.5-5.5-6', // bookshelf/journal cleaning — covered by 5.1.1 maintenance evidence; no single canonical indicator
+  'cat-5-5.15-5.15-16', // work-result reporting — internal reporting, not a criteria activity
+  'cat-5-5.16-5.16-17', // Cat5 committee meeting — governance, not a criteria activity
 ]);
 
 export function validateActionPlanCat5Canonical(data) {
@@ -402,7 +405,7 @@ export function validateActionPlanCat5Canonical(data) {
         unmappedCount += 1;
         continue;
       }
-      errors.push(`${act.id}: missing canonicalIndicatorCode (only the 4 disclosed activities may be unmapped)`);
+      errors.push(`${act.id}: missing canonicalIndicatorCode (only the 3 disclosed activities may be unmapped)`);
       continue;
     }
     if (!VALID_CAT5_CANONICAL.has(code)) {
@@ -419,6 +422,11 @@ export function validateActionPlanCat5Canonical(data) {
     const actual = counts[code] ?? 0;
     if (actual !== expected) {
       errors.push(`cat5 canonicalIndicatorCode count for ${code} must be ${expected}, got ${actual}`);
+    }
+  }
+  for (const code of CAT5_ZERO_DISCLOSED) {
+    if ((counts[code] ?? 0) !== 0) {
+      errors.push(`cat5 canonicalIndicatorCode count for ${code} must be 0 (disclosed, never backfilled), got ${counts[code]}`);
     }
   }
   if (unmappedCount !== CAT5_UNMAPPED_ACTIVITY_IDS.size) {
@@ -475,7 +483,7 @@ function main() {
     process.exit(1);
   }
   console.log(
-    `action-plan-2569 validation PASS (${data.summary.activityCount} activities, ${data.categories.length} categories, renewal scope 7/24/65, cat2 canonical 2.1.1=8/2.2.1=1/2.2.2=9/2.2.4=2, cat3 canonical 3.1.1=2/3.1.2=1/3.2.1=1/3.2.2=1/3.4.1=1, cat4 canonical 4.1.1=5/4.1.2=8/4.1.3=3/4.2.1=4/4.2.2=4 + 1 disclosed, cat5 canonical 13 mapped + 4 disclosed)`,
+    `action-plan-2569 validation PASS (${data.summary.activityCount} activities, ${data.categories.length} categories, renewal scope 7/24/65, cat2 canonical 2.1.1=8/2.2.1=1/2.2.2=9/2.2.4=2, cat3 canonical 3.1.1=2/3.1.2=1/3.2.1=1/3.2.2=1/3.4.1=1, cat4 canonical 4.1.1=5/4.1.2=8/4.1.3=3/4.2.1=4/4.2.2=4 + 1 disclosed, cat5 canonical 14 mapped + 3 disclosed)`,
   );
 }
 

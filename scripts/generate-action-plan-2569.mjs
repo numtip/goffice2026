@@ -163,32 +163,34 @@ const CAT4_CANONICAL_MAPPING_NOTE = new Map([
 ]);
 
 /**
- * Cat5 canonical-indicator mapping (GO-CAT5 Phase B). The FY2569 workbook keeps
- * its legacy 5.1-5.16 numbering; canonical codes are assigned by MEANING of the
- * activity (activityTh), never by blind renumbering. Frozen counts:
- * 5.1.1=4 · 5.2.1=1 · 5.4.2=2 · 5.4.3=1 · 5.4.4=2 · 5.5.1=1 · 5.5.2=1 ·
- * 5.5.3=1 (total 13 mapped); carpet cleaning (5.4), bookshelf/journal cleaning
- * (5.5), the alarm/equipment readiness survey (5.6) and the shared-area
- * vector-trail inspection (5.10 legacy id) are left unmapped rather than
- * invented — the survey activity spans multiple indicators and the vector
- * trail inspection is already covered by cat-5-5.11-5.11-12's canonical code.
- * No new activities and no FY2569 facts added.
+ * Cat5 canonical-indicator mapping (GO-CAT5 Phase B, semantic correction).
+ * The FY2569 workbook keeps its legacy 5.1-5.16 numbering; canonical codes are
+ * assigned by CRITERIA MEANING of the activity (activityTh), never by blind
+ * renumbering. Frozen counts: 5.1.1=5 · 5.2.1=1 · 5.4.1=1 · 5.4.3=4 ·
+ * 5.4.4=1 · 5.5.1=1 · 5.5.3=1 (total 14 mapped). 5.4.2 and 5.5.2 are
+ * deliberately 0 — no plan activity maps to the space-utilization % or the
+ * emergency-understanding % (both are FY2569 measurement GAPs disclosed in
+ * GO-CAT5-PHASE-A, never backfilled). Bookshelf/journal cleaning (5.5),
+ * work-result reporting (5.15) and the Cat5 committee meeting (5.16) are left
+ * unmapped rather than invented. No new activities and no FY2569 facts added.
  */
 const CAT5_CANONICAL_INDICATOR = new Map([
-  ['cat-5-5.1-1-1', '5.1.1'], // (1) contractor AC cleaning — maintenance execution → 5.1.1
-  ['cat-5-5.1-2-2', '5.1.1'], // (2) staff AC cleaning — maintenance execution → 5.1.1
-  ['cat-5-5.2-5.2-3', '5.1.1'], // air-purifier cleaning → 5.1.1
-  ['cat-5-5.3-5.3-4', '5.1.1'], // printer cleaning → 5.1.1
-  ['cat-5-5.14-5.14-15', '5.2.1'], // light-intensity measurement → 5.2.1
-  ['cat-5-5.7-5.7-8', '5.4.2'], // rest/recreation-area upkeep → space utilization per objectives
-  ['cat-5-5.8-5.8-9', '5.4.2'], // green/shared-area upkeep → space utilization per objectives
-  ['cat-5-5.9-5.9-10', '5.4.3'], // green-area expansion (indoor/outdoor) → area upkeep
-  ['cat-5-5.11-5.11-12', '5.4.4'], // shared-area care incl. vector trail inspection → vector control
-  ['cat-5-5.12-5.12-13', '5.4.4'], // building-surroundings care → vector-source management/upkeep
-  ['cat-5-5.15-5.15-16', '5.5.2'], // work-result reporting vs emergency plan → plan currency
-  ['cat-5-5.13-5.13-14', '5.5.1'], // fire drill / evacuation training → 5.5.1
-  ['cat-5-5.16-5.16-17', '5.5.3'], // extinguisher/equipment condition checks → equipment readiness
+  ['cat-5-5.1-1-1', '5.1.1'], // (1) contractor AC cleaning — 5.1.1 maintenance
+  ['cat-5-5.1-2-2', '5.1.1'], // (2) staff AC cleaning — 5.1.1 maintenance
+  ['cat-5-5.2-5.2-3', '5.1.1'], // air-purifier cleaning — 5.1.1 maintenance
+  ['cat-5-5.3-5.3-4', '5.1.1'], // printer cleaning — 5.1.1 maintenance
+  ['cat-5-5.4-5.4-5', '5.1.1'], // carpet cleaning — 5.1.1 indoor-air maintenance
+  ['cat-5-5.6-5.6-7', '5.5.3'], // alarm/emergency-light/extinguisher readiness survey — 5.5.3
+  ['cat-5-5.7-5.7-8', '5.4.3'], // rest/recreation-area care — 5.4.3 upkeep
+  ['cat-5-5.8-5.8-9', '5.4.3'], // green/shared-area care — 5.4.3 upkeep
+  ['cat-5-5.9-5.9-10', '5.4.1'], // green-area expansion — 5.4.1 livability plan
+  ['cat-5-5.1-5.1-11', '5.4.4'], // shared-area vector-trail inspection — 5.4.4
+  ['cat-5-5.11-5.11-12', '5.4.3'], // workspace care — 5.4.3 upkeep
+  ['cat-5-5.12-5.12-13', '5.4.3'], // surrounding-area care — 5.4.3 upkeep
+  ['cat-5-5.13-5.13-14', '5.5.1'], // fire drill / evacuation training — 5.5.1
+  ['cat-5-5.14-5.14-15', '5.2.1'], // light-intensity measurement — 5.2.1
 ]);
+
 
 function cell(v) {
   return String(v ?? '')
