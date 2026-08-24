@@ -14,6 +14,7 @@ import Cat2ManagementCycle from '../../components/categories/Cat2ManagementCycle
 import Cat2DomainSnapshot from '../../components/categories/Cat2DomainSnapshot.astro';
 import Cat3ManagementCycle from '../../components/categories/Cat3ManagementCycle.astro';
 import Cat3DomainSnapshot from '../../components/categories/Cat3DomainSnapshot.astro';
+import Cat3Fy2569MeasurePlan from '../../components/categories/Cat3Fy2569MeasurePlan.astro';
 import Cat4ManagementCycle from '../../components/categories/Cat4ManagementCycle.astro';
 import Cat4DomainSnapshot from '../../components/categories/Cat4DomainSnapshot.astro';
 import Cat5ManagementCycle from '../../components/categories/Cat5ManagementCycle.astro';
@@ -342,6 +343,7 @@ const weightLabel = isCat7
 
     {category.code === 'cat3' && (
       <>
+        <Cat3Fy2569MeasurePlan locale={locale} />
         <Cat3ManagementCycle locale={locale} />
         <Cat3DomainSnapshot locale={locale} />
       </>
