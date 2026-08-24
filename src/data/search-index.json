@@ -5421,6 +5421,31 @@
       "fileType": "PDF"
     },
     {
+      "id": "ev-cat7-internal-audit-request-fy2568",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "การแจ้งความประสงค์ขอรับการตรวจประเมินภายในสำนักงาน Green Office ปี 2568",
+        "Cat7 FY2568 Internal-Audit Request 7.1"
+      ],
+      "context": [
+        "คำขอรับการตรวจประเมินภายในสำนักงาน Green Office ปีงบประมาณ 2568 ส่งถึงประธานคณะกรรมการขับเคลื่อนฯ ลงวันที่ 17 มี.ค. 2569 ตามเงื่อนไขอย่างน้อยปีละ 1 ครั้ง นี่เป็นข้อเท็จจริงเดียวของ 7.1 ที่ผ่านเกณฑ์ปีฐาน 2568 ตามข้อสรุป Phase A ที่รับรอง ไม่มีการอ้างการแต่งตั้ง ความเชี่ยวชาญ ผลการตรวจ รายงานผล คะแนน หรือการผ่านเกณฑ์",
+        "FY2568 (ประจำปี 2568) internal-audit request submitted to the Green Office steering committee chair, dated 17 Mar 2569, per the at-least-annual frequency condition. This is the ONLY baseline-eligible 7.1 claim per the accepted Phase-A disposition; appointment, competence, audit completion, result report, score and PASS are not claimed."
+      ],
+      "keywords": [
+        "การแจ้งความประสงค์ขอรับการตรวจประเมินภายในสำนักงาน Green Office ปี 2568 คำขอรับการตรวจประเมินภายในสำนักงาน Green Office ปีงบประมาณ 2568 ส่งถึงประธานคณะกรรมการขับเคลื่อนฯ ลงวันที่ 17 มี.ค. 2569 ตามเงื่อนไขอย่างน้อยปีละ 1 ครั้ง นี่เป็นข้อเท็จจริงเดียวของ 7.1 ที่ผ่านเกณฑ์ปีฐาน 2568 ตามข้อสรุป Phase A ที่รับรอง ไม่มีการอ้างการแต่งตั้ง ความเชี่ยวชาญ ผลการตรวจ รายงานผล คะแนน หรือการผ่านเกณฑ์ การดำเนินงานสำนักงานสีเขียวเพื่อความต่อเนื่อง ev-cat7-internal-audit-request-fy2568 7.1 2568",
+        "Cat7 FY2568 Internal-Audit Request 7.1 FY2568 (ประจำปี 2568) internal-audit request submitted to the Green Office steering committee chair, dated 17 Mar 2569, per the at-least-annual frequency condition. This is the ONLY baseline-eligible 7.1 claim per the accepted Phase-A disposition; appointment, competence, audit completion, result report, score and PASS are not claimed. Green Office Operations for Continuity ev-cat7-internal-audit-request-fy2568 7.1 2568"
+      ],
+      "route": "/evidence/ev-cat7-internal-audit-request-fy2568/",
+      "routeKind": "page",
+      "category": [
+        "การดำเนินงานสำนักงานสีเขียวเพื่อความต่อเนื่อง",
+        "Green Office Operations for Continuity"
+      ],
+      "year": 2568,
+      "fileType": "PDF"
+    },
+    {
       "id": "ev-ghg-emission-factors",
       "section": "evidence",
       "type": "evidence",

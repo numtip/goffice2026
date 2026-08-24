@@ -177,6 +177,15 @@ function phaseCategory56() {
   return { ok: cat5.ok && cat6.ok };
 }
 
+// ── Phase 1.89: Category 7 Canonical Contracts ────────────────
+
+function phaseCategory7() {
+  console.log('\n========================================');
+  console.log('PHASE 1.89: Category 7 Contracts');
+  console.log('========================================');
+  return runScript('validate-category7-contracts.mjs');
+}
+
 // ── Phase 1.9: Search-Index Metadata Validation ─────────────
 
 function phaseSearchIndex() {
@@ -387,6 +396,7 @@ function main() {
   const category1Result = phaseCategory1();
   const category23Result = phaseCategory23();
   const category56Result = phaseCategory56();
+  const category7Result = phaseCategory7();
   const searchIndexResult = phaseSearchIndex();
   const evidenceResult = phaseEvidence();
   const routeResult = phaseRoutes();
@@ -407,6 +417,7 @@ function main() {
     { phase: 'Category 1 Contracts + 1.3 Aspects', ok: category1Result.ok },
     { phase: 'Category 2 + 3 + 4 Contracts', ok: category23Result.ok },
     { phase: 'Category 5 + 6 Contracts', ok: category56Result.ok },
+    { phase: 'Category 7 Contracts (continuity)', ok: category7Result.ok },
     { phase: 'Search-Index Metadata',  ok: searchIndexResult.ok },
     { phase: 'Evidence Validation',    ok: evidenceResult.ok },
     { phase: 'Route Verification',     ok: routeOk },
@@ -437,6 +448,9 @@ function main() {
   }
   if (!category56Result.ok) {
     console.log('  ⚠  Category 5/6 contracts validator reported issues. Check output above.');
+  }
+  if (!category7Result.ok) {
+    console.log('  ⚠  Category 7 contracts validator reported issues. Check output above.');
   }
   if (!searchIndexResult.ok) {
     console.log('  ⚠  Search-Index metadata validator reported issues. Check output above.');
