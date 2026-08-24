@@ -94,6 +94,7 @@ FY2568 Cat5 is the **baseline layer for FY2569**:
 - `src/data/category5/category5-manifest.json` + `air.json`, `lighting.json`, `noise.json`, `livability.json`, `emergency.json` — canonical static contracts (schema mirrors Cat4).
 - `src/data/evidence-index.json` — 13 new indicator-level entries `ev-cat5-*-fy2568`.
 - `scripts/validate-category5-contracts.mjs` — deterministic gate (manifest↔contract↔evidence path/hash equality, 13/13 coverage, locked disclosures).
+- **FY2569 action-plan canonical mapping (semantic correction, criteria-based):** 14 of 17 cat-5 activities mapped by criteria meaning — 5.1.1=5 (incl. carpet cleaning), 5.2.1=1 (light measurement), 5.4.1=1 (green-area expansion), 5.4.3=4 (rest/green/shared/workspace + surrounding-area care), 5.4.4=1 (vector-trail inspection), 5.5.1=1 (fire drill), 5.5.3=1 (alarm/emergency-light/extinguisher survey). **5.4.2 and 5.5.2 are deliberately 0** (space-utilization % and emergency-understanding % have no plan activity — disclosed FY2569 GAPs, never backfilled). Bookshelf/journal cleaning, work-result reporting and the Cat5 committee meeting stay unmapped. Enforced by `scripts/validate-action-plan-2569.mjs` (`validateActionPlanCat5Canonical`).
 - Presentation wiring reusing the Cat3/Cat4 architecture: management cycle + domain snapshot on the category page, contract context + source documents on indicator pages. No score, no PASS claim.
 
 ## 6. Gaps / data-owner questions
