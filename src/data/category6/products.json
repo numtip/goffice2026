@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "products",
+  "updated": "2026-08-24",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CAT6_PHASE_A_SOURCE_DISPOSITION",
+  "note": "FY2568 historical-baseline contract for procurement indicators 6.1.1/6.1.2/6.1.3 (การจัดซื้อสินค้า). Eco-product procurement facts are the frozen FY2568 baseline: assigned responsible persons, eco search sources, Form 6.1(1) product list with label/expiry/review, Form 6.1(2) procurement report (source-declared FY2568 % 92.33 volume / 89.80 value vs >40% target — not recomputed), and the 6.1.3 material survey. The FY2568 percentage and survey are permanently FY2568 facts; recurring collection must be re-done in FY2569. No FY2569 facts, no scores, no PASS claims.",
+  "sources": [
+    {
+      "ref": "6.1 การจัดซื้อสินค้า/6.1.1(1) 1 คำสั่งGreen Office 68.pdf",
+      "role": "primary",
+      "inspection": "text-layer-present",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.1 การจัดซื้อสินค้า/6.1.1(2) 1 ค้นหารายการสินค้าที่เป็นมิตรกับสิ่งแวดล.pdf",
+      "role": "primary",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.1 การจัดซื้อสินค้า/6.1.1(3) 1 รายการสินค้าที่เป็นมิตรกับสิ่งแวดล้อม+ทบทวน.pdf",
+      "role": "primary",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.1 การจัดซื้อสินค้า/6.1.1(3) 2 แผนการดำเนินการโครงการสำนักงานสีเขียวฯ.pdf",
+      "role": "primary-scan",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "6.1 การจัดซื้อสินค้า/6.1.1(4) 1 หนังสือขอความร่วมมือ.pdf",
+      "role": "primary-scan",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "6.1 การจัดซื้อสินค้า/6.1.1(4) 2 แบบตอบรับ.pdf",
+      "role": "primary-scan",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "6.1 การจัดซื้อสินค้า/6.1.1.pdf",
+      "role": "primary",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.1 การจัดซื้อสินค้า/6.1.2.pdf",
+      "role": "primary",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.1 การจัดซื้อสินค้า/6.1.3(1) 1 ภาพถ่ายรายการสินค้าที่เป็นมิตรกับสิ่งแวดล้อมภายในอาคารฯ.pdf",
+      "role": "photo",
+      "inspection": "photo_label_only",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.1 การจัดซื้อสินค้า/6.1.3.pdf",
+      "role": "primary",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.1(2) 1 รายงานจัดซื้อจัดจ้าง ฟอร์มใหม่.pdf",
+      "role": "supporting-form",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "รายงานหมวด6 (แก้ไข) 17-3-69.docx",
+      "role": "supporting-report",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    }
+  ],
+  "records": [
+    {
+      "id": "products-eco-procurement-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "6.1.1"
+      ],
+      "issueCodes": [
+        "6.1"
+      ],
+      "categoryCode": "cat6",
+      "evidenceIds": [
+        "ev-cat6-products-procurement-fy2568"
+      ],
+      "sourceRef": "6.1 การจัดซื้อสินค้า/6.1.1(1) 1 คำสั่งGreen Office 68.pdf",
+      "manifestSha256": "9557573e0268f9d949d5e6cbf89271ac87a7fd33d97bad9225961e774de1c4dc",
+      "relatedSources": [
+        "6.1 การจัดซื้อสินค้า/6.1.1(2) 1 ค้นหารายการสินค้าที่เป็นมิตรกับสิ่งแวดล.pdf",
+        "6.1 การจัดซื้อสินค้า/6.1.1(3) 1 รายการสินค้าที่เป็นมิตรกับสิ่งแวดล้อม+ทบทวน.pdf",
+        "6.1 การจัดซื้อสินค้า/6.1.1(3) 2 แผนการดำเนินการโครงการสำนักงานสีเขียวฯ.pdf",
+        "6.1 การจัดซื้อสินค้า/6.1.1(4) 1 หนังสือขอความร่วมมือ.pdf",
+        "6.1 การจัดซื้อสินค้า/6.1.1(4) 2 แบบตอบรับ.pdf",
+        "6.1 การจัดซื้อสินค้า/6.1.1.pdf",
+        "รายงานหมวด6 (แก้ไข) 17-3-69.docx"
+      ],
+      "verification": {
+        "status": "reviewed",
+        "basis": "คำสั่งGreen Office 68 (web printout) has a readable text layer (appointed responsible persons per unit); eco search sources, Form 6.1(1) product list (label + expiry + review 4 Jun 2568) and section narrative are content-verified. Plan/request-letter/response-form are image scans (content pending OCR). Cross-verified against the content-verified annual report DOCX §6.1.1."
+      },
+      "availability": "metadata-verified",
+      "kind": "procurementEvidence",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "การจัดซื้อสินค้าที่เป็นมิตรกับสิ่งแวดล้อม ปี 2568 — ผู้รับผิดชอบ แหล่งสืบค้น บัญชีรายการสินค้าฉลากสิ่งแวดล้อม และหนังสือขอความร่วมมือ",
+      "labelEn": "FY2568 environmentally-friendly product procurement — responsible persons, search sources, eco-label product list, vendor request letters",
+      "promoted": true,
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "product-list review (June cadence) and search-source refresh annually"
+      }
+    },
+    {
+      "id": "products-report-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "6.1.2"
+      ],
+      "issueCodes": [
+        "6.1"
+      ],
+      "categoryCode": "cat6",
+      "evidenceIds": [
+        "ev-cat6-products-report-fy2568"
+      ],
+      "sourceRef": "6.1 การจัดซื้อสินค้า/6.1.2.pdf",
+      "manifestSha256": "0e180beccaa77379966437fcaf1a480b8111547c0e42eac022e4245637f808d2",
+      "relatedSources": [
+        "6.2 การจัดจ้าง/6.2.1(2) 1 รายงานจัดซื้อจัดจ้าง ฟอร์มใหม่.pdf",
+        "รายงานหมวด6 (แก้ไข) 17-3-69.docx"
+      ],
+      "verification": {
+        "status": "reviewed",
+        "basis": "Content-verified section narrative (6.1.2.pdf) + Form 6.1(2) procurement report. FY2568 eco-procurement is source-declared: 92.33% by volume / 89.80% by value vs handbook target >40% (annual report table + Form 6.1(2)); NOT recomputed here."
+      },
+      "availability": "content-verified",
+      "kind": "procurementReport",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "รายงานการจัดซื้อวัสดุอุปกรณ์สำนักงานที่เป็นมิตรกับสิ่งแวดล้อม ปี 2568 (แบบฟอร์ม 6.1(2))",
+      "labelEn": "FY2568 procurement report of environmentally-friendly office materials (Form 6.1(2))",
+      "promoted": true,
+      "percentageBasis": {
+        "declared": {
+          "volume": "92.33",
+          "value": "89.80"
+        },
+        "unit": "percent",
+        "target": ">40%",
+        "basis": "source-declared in the FY2568 annual report table and Form 6.1(2); presented as declared, NOT recomputed",
+        "sourceDeclaredYears": {
+          "2568": { "volume": "92.33", "value": "89.80" },
+          "2567": { "volume": "70", "value": "78.99" },
+          "2566": { "volume": "44.81", "value": "63.63" }
+        }
+      },
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "annual — FY2569 percentage to be produced from FY2569 procurement data"
+      }
+    },
+    {
+      "id": "products-survey-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "6.1.3"
+      ],
+      "issueCodes": [
+        "6.1"
+      ],
+      "categoryCode": "cat6",
+      "evidenceIds": [
+        "ev-cat6-products-survey-fy2568"
+      ],
+      "sourceRef": "6.1 การจัดซื้อสินค้า/6.1.3.pdf",
+      "manifestSha256": "02032e658260ece880551832588ad3c11220a05d8a34f5890f2be8a6e2da58b4",
+      "relatedSources": [
+        "6.1 การจัดซื้อสินค้า/6.1.3(1) 1 ภาพถ่ายรายการสินค้าที่เป็นมิตรกับสิ่งแวดล้อมภายในอาคารฯ.pdf",
+        "รายงานหมวด6 (แก้ไข) 17-3-69.docx"
+      ],
+      "verification": {
+        "status": "reviewed",
+        "basis": "Section narrative (6.1.3.pdf) content-verified: survey of eco office materials inside the building declared; the photo page is image content (label only). The required percentage of eco materials is NOT numerically evidenced — the report declares 'สุ่มตรวจ –' (PERCENT_NOT_EVIDENCED)."
+      },
+      "availability": "content-verified",
+      "kind": "materialSurvey",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "การสำรวจร้อยละของปริมาณและประเภทวัสดุอุปกรณ์สำนักงานที่เป็นมิตรกับสิ่งแวดล้อม ปี 2568 (ไม่มีตัวเลขร้อยละในหลักฐาน)",
+      "labelEn": "FY2568 survey of the percentage of eco office materials (no percentage evidenced)",
+      "promoted": true,
+      "percentNotEvidenced": true,
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "random-check survey to be conducted in FY2569 (survey instrument pending)"
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "indicator": "6.1.1",
+      "status": "SCAN_CONTENT_PENDING_OCR",
+      "note": "Plan/request-letter/response-form are image scans; facts cross-verified via the report and verified text files only."
+    },
+    {
+      "indicator": "6.1.3",
+      "status": "PERCENT_NOT_EVIDENCED",
+      "note": "The 6.1.3 percentage of eco office materials is not numerically evidenced in any FY2568 source (report declares 'สุ่มตรวจ –')."
+    }
+  ]
+}

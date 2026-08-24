@@ -18,6 +18,8 @@ import Cat4ManagementCycle from '../../components/categories/Cat4ManagementCycle
 import Cat4DomainSnapshot from '../../components/categories/Cat4DomainSnapshot.astro';
 import Cat5ManagementCycle from '../../components/categories/Cat5ManagementCycle.astro';
 import Cat5DomainSnapshot from '../../components/categories/Cat5DomainSnapshot.astro';
+import Cat6ManagementCycle from '../../components/categories/Cat6ManagementCycle.astro';
+import Cat6DomainSnapshot from '../../components/categories/Cat6DomainSnapshot.astro';
 
 export function getStaticPaths() {
   const issues = issueData.issues;
@@ -295,6 +297,11 @@ const weightLabel = isCat7
                 หมายเหตุโครงสร้างต้นทาง: ทั้ง 13 ตัวชี้วัดมีหลักฐานเฉพาะปี 2568 (47/47 ไฟล์ตรงกันแบบ SHA-256) แต่เป็นข้อมูลฐานสำหรับปี 2569 — การวัดแสง การซ้อมอพยพ และการตรวจประจำ ต้องเก็บใหม่ในปี 2569 มีสแกน 23 รายการ (ยังไม่ตรวจสอบเนื้อหา) 5.3.1 ไม่ได้วัดเสียง (รอผู้ประเมินยืนยัน) ร้อยละ 5.4.2/5.4.3/5.5.2 ไม่มีหลักฐาน สัญญางบ 69 ถูกแยกออก และไฟล์ 5.5.3-3 ยืนยันไม่ได้
               </p>
             )}
+            {category.code === 'cat6' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                หมายเหตุโครงสร้างต้นทาง: ทั้ง 6 ตัวชี้วัดมีหลักฐานเฉพาะปี 2568 (32/32 ไฟล์ตรงกันแบบ SHA-256) แต่เป็นข้อมูลฐานสำหรับปี 2569 — ร้อยละการจัดซื้อ 6.1.2 (92.33/89.80 ตามที่แหล่งข้อมูลระบุ ไม่คำนวณใหม่) การทบทวนบัญชีสินค้า และการประเมินผู้รับจ้าง ต้องเก็บใหม่ในปี 2569 มีสแกน 12 รายการ (ยังไม่ตรวจสอบเนื้อหา) ร้อยละ 6.1.3 ไม่มีหลักฐาน (สุ่มตรวจ –) สัญญาทำความสะอาดงบ 69 ถูกแยกออก (QUARANTINE) และแบบประเมิน 2 คู่เป็น contentDuplicateCandidate
+              </p>
+            )}
             {category.code === 'cat7' && (
               <p class="mt-1 text-xs leading-relaxed text-gray-600">
                 หมายเหตุโครงสร้างต้นทาง: ยังไม่มีการยืนยันการเชื่อมโยงรายตัวชี้วัดสำหรับหมวด 7
@@ -349,6 +356,13 @@ const weightLabel = isCat7
       <>
         <Cat5ManagementCycle locale={locale} />
         <Cat5DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat6' && (
+      <>
+        <Cat6ManagementCycle locale={locale} />
+        <Cat6DomainSnapshot locale={locale} />
       </>
     )}
 
