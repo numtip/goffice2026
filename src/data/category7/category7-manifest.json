@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0.0",
+  "updated": "2026-08-24",
+  "titleTh": "หมวด 7 — การดำเนินงานสำนักงานสีเขียวเพื่อความต่อเนื่อง (Canonical Data Contracts)",
+  "titleEn": "Category 7 — Green Office Operations for Continuity (Canonical Data Contracts)",
+  "governance": "GOFFICE2026_CAT7_PHASE_A_SOURCE_DISPOSITION",
+  "year": 2568,
+  "status": "PHASE_B_BASELINE",
+  "freeze": {
+    "status": "FROZEN_READ_ONLY_BASELINE",
+    "date": "2026-08-24",
+    "authorityDoc": "docs/data/GO-CAT7-PHASE-A-SOURCE-DISPOSITION.md",
+    "dispositionDoc": "docs/data/GO-CAT7-PHASE-A-SOURCE-DISPOSITION.md"
+  },
+  "note": "Static-only canonical data contracts for Category 7 (หมวด 7 การดำเนินงานสำนักงานสีเขียวเพื่อความต่อเนื่อง / Green Office Operations for Continuity), modeling the frozen FY2568 historical baseline for FY2569 reuse. Canonical taxonomy is only 7.1 and 7.2; the five 7.2 activity types are facets, not new indicators. HARD TRUTH of the accepted Phase-A disposition: (a) for 7.1 ONLY the FY2568 internal-audit REQUEST on page 2 is baseline-eligible — appointment, auditor competence, audit completion and result report are NOT claimed (2569-dated or scan-only); (b) for 7.2 there is NO verified FY2568 execution evidence in the reconciled 3-file source set — rendered as an explicit EVIDENCE_GAP, never fake evidence for coverage. All FY2569-dated claims are QUARANTINE: no sourceRef, no evidence entry, no public claim, no result. YEAR_UNVERIFIED and scan-only pages stay pending/unpromoted. หมวด 7_(9-3-69).pdf is contentDuplicateCandidate only (combined export duplicating the text of 7.1 and 7.2) — separate sourceRefs, no duplicateOf/dedupe. No scores, no PASS, no certification status, no FY2569 result.",
+  "contracts": [
+    {
+      "domain": "audit",
+      "file": "src/data/category7/audit.json",
+      "indicators": [
+        "7.1"
+      ],
+      "status": "historical-baseline",
+      "note": "7.1 internal audit (การตรวจประเมินสำนักงานสีเขียวเพื่อการปรับปรุงอย่างต่อเนื่อง). Only the FY2568 internal-audit request on 7.1 p2 is baseline-eligible. Appointment (p1, ประจำปี 2569), criteria/schedule (p5, 17 มี.ค. 2569) and execution/result (p7, 17/20/23 มี.ค. 2569) are FY2569-dated QUARANTINE claims; auditor-assignment roster (p6) is YEAR_UNVERIFIED; p3-p4 photos are scan_only (pending OCR)."
+    },
+    {
+      "domain": "advancement",
+      "file": "src/data/category7/advancement.json",
+      "indicators": [
+        "7.2"
+      ],
+      "status": "evidence-gap",
+      "note": "7.2 development/advancement (การพัฒนาหรือต่อยอดการดำเนินงานสำนักงานสีเขียว). No verified FY2568 execution evidence in the reconciled source set → EVIDENCE_GAP. Facets (1)-(3) (continuation/certification, mentor-speaker, network/coaching) are FY2569-dated plans → QUARANTINE; facet (4) MAEJO PGS community activity has no explicit year and no date/result on the page → YEAR_UNVERIFIED candidate; p2 photos are scan_only (pending OCR)."
+    }
+  ],
+  "missingIndicators": [],
+  "claimQuarantineDisclosure": {
+    "note": "FY2569-dated claims are QUARANTINED at claim level. They carry no sourceRef, no evidence entry, no public result, and never appear as promoted evidence. Full claim list with page/year/status is in the domain contracts.",
+    "quarantinedClaimIds": [
+      "claim-71-p1-appointment",
+      "claim-71-p5-criteria",
+      "claim-71-p7-execution",
+      "claim-72-p1-continuation",
+      "claim-72-p1-mentor-speaker",
+      "claim-72-p1-network"
+    ],
+    "status": "QUARANTINE"
+  },
+  "quarantined": [
+    {
+      "path": "7.1 (9-3-69).pdf",
+      "reason": "Mixed-year source: appointment (p1) and execution/report (p5, p7) are 2569-dated; only the p2 FY2568 request is baseline-eligible.",
+      "status": "MIXED_YEAR_PARTIAL",
+      "fy2569Candidate": "claimLevelQuarantine",
+      "note": "File stays MIXED_YEAR and is NOT quarantined wholesale. Individual claims are split: the p2 FY2568 request is baseline-eligible; the 2569-dated claims are claim-level QUARANTINE."
+    },
+    {
+      "path": "7.2 (9-3-69).pdf",
+      "reason": "Facets (1)-(3) are FY2569-dated plans; facet (4) MAEJO PGS has no explicit year and no execution facts.",
+      "status": "MIXED_YEAR_PARTIAL",
+      "fy2569Candidate": "claimLevelQuarantine",
+      "note": "File stays MIXED_YEAR and is NOT quarantined wholesale. No verified FY2568 execution evidence → 7.2 is EVIDENCE_GAP."
+    },
+    {
+      "path": "หมวด 7_(9-3-69).pdf",
+      "reason": "Combined export duplicating the text of 7.1 and 7.2 (contentDuplicateCandidate); same mixed-year claims.",
+      "status": "MIXED_YEAR_PARTIAL",
+      "fy2569Candidate": "claimLevelQuarantine",
+      "note": "contentDuplicateCandidate only — separate sourceRef, no dedupe/duplicateOf. Claim-level split as in 7.1/7.2."
+    }
+  ],
+  "contentDuplicateGroups": [
+    {
+      "group": "C1",
+      "paths": [
+        "7.1 (9-3-69).pdf",
+        "7.2 (9-3-69).pdf",
+        "หมวด 7_(9-3-69).pdf"
+      ],
+      "note": "หมวด 7_(9-3-69).pdf is a combined export duplicating the extracted text of 7.1 (p1-7) and 7.2 (p8). All three paths keep their own sourceRef — contentDuplicateCandidate, no deduplication, no duplicateOf."
+    }
+  ],
+  "forwardRequirements": [
+    {
+      "code": "FY2569_RECURRING_EVIDENCE_COLLECTION",
+      "note": "7.1 FY2568 internal-audit evidence (the p2 request) is the baseline layer; the FY2569 internal-audit cycle must be re-evidenced with FY2569-dated documents. 7.2 continuation/advancement evidence must be collected for FY2569."
+    },
+    {
+      "code": "FY2569_PLAN_CLAIMS_QUARANTINED",
+      "note": "7.2 facets (1)-(3) and 7.1 appointment/criteria/execution claims are FY2569-dated plans/events → QUARANTINE for the FY2568 baseline. Decide their FY2569-cycle disposition (not counted as FY2569 evidence now)."
+    },
+    {
+      "code": "OCR_DECISION_FOR_SCANS",
+      "note": "Scan-only pages (7.1 p3-p4, 7.2 p2, หมวด 7_ p3-p4/p9) stay pending OCR; contents are not verified and not quoted."
+    }
+  ],
+  "sourceLimitations": [
+    {
+      "code": "SEVEN_ONE_LIMITED_TO_FY2568_REQUEST",
+      "note": "For 7.1, only the FY2568 internal-audit request on 7.1 p2 is baseline-eligible. Appointment, auditor competence, audit completion, result report, score and PASS are NOT claimed."
+    },
+    {
+      "code": "SEVEN_TWO_NO_VERIFIED_FY2568_EXECUTION_EVIDENCE",
+      "note": "For 7.2 there is no verified FY2568 execution evidence in the reconciled source set — explicit EVIDENCE_GAP; no fake evidence is created for coverage."
+    },
+    {
+      "code": "FY2569_CLAIMS_QUARANTINED",
+      "note": "FY2569-dated claims are QUARANTINE: no sourceRef, no evidence entry, no public claim, no result."
+    },
+    {
+      "code": "MIXED_YEAR_SOURCES",
+      "note": "All 3 source files carry mixed-year content (2568 audited period + 2569 appointment/plans/execution). Files are MIXED_YEAR; claim-level split; no wholesale file quarantine."
+    },
+    {
+      "code": "SCAN_ONLY_PAGES",
+      "note": "Scan-only pages (7.1 p3-p4, 7.2 p2, หมวด 7_ p3-p4/p9) are pending OCR; contents unverified."
+    },
+    {
+      "code": "NO_OCR_IN_THIS_PHASE",
+      "note": "No OCR/transcription was performed; scan contents are not verified."
+    }
+  ],
+  "validation": {
+    "validator": "scripts/validate-category7-contracts.mjs",
+    "invariants": [
+      "canonical taxonomy is only 7.1 and 7.2; 7.2 activity types are facets, not indicators",
+      "manifestSha256 equals the fy2568-publication cat7 entry for every sourceRef/relatedSources path",
+      "7.1 limit: only the p2 FY2568 request is baseline-eligible; no appointment/competence/completion/result/score/PASS claim",
+      "mandatory 7.2 gap: records empty + evidenceGap declared; no evidence-index entry for 7.2",
+      "FY2569-dated claims (QUARANTINE) never appear as record sourceRef/relatedSources and produce no evidence/public result",
+      "YEAR_UNVERIFIED and scan-only pages stay pending/unpromoted",
+      "contentDuplicateCandidate group C1 keeps all three sourceRefs (no dedupe/duplicateOf)",
+      "no local paths, no score/PASS/FY2569 leakage, no year other than 2568",
+      "TH/EN parity: every bilingual field present and non-empty"
+    ]
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "data",
+  "updated": "2026-08-23",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CATEGORY3_RESOURCE_BLUEPRINT_V1",
+  "note": "FY2568 historical-baseline measurement-data contract (Measure + Compare-target + Analyze stages). Records the four numeric measurement indicators (3.1.2 water, 3.2.2 electricity, 3.2.5 fuel, 3.3.2 paper) with C1-verified text values and target outcomes (met/not-met context — never a score). 3.2.2 per-unit values are unavailable (image-only tables) and marked pending; 3.2.5 standalone source is incomplete (#21 starts at item (2)). No FY2569 facts.",
+  "sources": [
+    { "ref": "3.1 การใช้น้ำ/3.1.2.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #6 — water data: 8,337.50 u (+47.1%), 87.76 u/person (+47.71%), target reduce 1% → NOT met." },
+    { "ref": "3.2 การใช้พลังงาน/3.2.2 มีการจัดทำข้อมูลการใช้ไฟฟ้าต่อหน่วยเปรียบเทียบกับเป้าหมาย/3.2.2 มีการจัดทำข้อมูลการใช้ไฟฟ้าต่อหน่วยเปรียบเทียบกับเป้าหมาย.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical-medium", "note": "C1 #17 — electricity data: 403,036.80 u (+4.6%) in text; per-unit tables are image-only (MEDIUM)." },
+    { "ref": "3.2 การใช้พลังงาน/3.2.5 มีการจัดทำข้อมูลการใช้น้ำมันเชื้อเพลิงต่อหน่วยเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล/3.2.5.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical-incomplete", "note": "C1 #21 — fuel data: 695.82 L (−205 L, −22.7% → MET); standalone file starts at item (2), item (1) exists only in compiled reports." },
+    { "ref": "3.3 การทรัพยากรอื่นๆ/3.3.2 มีการจัดทำข้อมูลการใช้กระดาษต่อหน่วยเปรียบเทียบกับเป้าหมาย/3.3.2.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #25 — paper data: 2,197.80 kg (+117), 23.13 kg/unit (+2, +5.6%), target reduce 1% → NOT met." }
+  ],
+  "records": [
+    {
+      "id": "data-water-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.1.2"],
+      "issueCodes": ["3.1"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-data-water-fy2568"],
+      "sourceRef": "3.1 การใช้น้ำ/3.1.2.pdf",
+      "manifestSha256": "a1a81b1385f768295017211d30b95f1327a405353a72dde427867b5c7cca9a72",
+      "verification": {
+        "status": "pending",
+        "basis": "3.1.2 water data per unit vs target: total 8,337.50 หน่วย (+47.1% vs 2024), 87.76 หน่วย/คน (+47.71%) → NOT met (target reduce 1%). Text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "measurementData",
+      "labelTh": "ข้อมูลการใช้น้ำต่อหน่วย 3.1.2",
+      "labelEn": "Water consumption data per unit 3.1.2",
+      "domain": "water",
+      "unit": "หน่วย (units)",
+      "total": 8337.5,
+      "changePercentVs2024": 47.1,
+      "perUnit": 87.76,
+      "perUnitLabel": "หน่วย/คน",
+      "perUnitChangePercentVs2024": 47.71,
+      "targetPercent": -1,
+      "targetOutcome": "NOT_MET"
+    },
+    {
+      "id": "data-electricity-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.2.2"],
+      "issueCodes": ["3.2"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-data-electricity-fy2568"],
+      "sourceRef": "3.2 การใช้พลังงาน/3.2.2 มีการจัดทำข้อมูลการใช้ไฟฟ้าต่อหน่วยเปรียบเทียบกับเป้าหมาย/3.2.2 มีการจัดทำข้อมูลการใช้ไฟฟ้าต่อหน่วยเปรียบเทียบกับเป้าหมาย.pdf",
+      "manifestSha256": "96c97dbda160bf13d34e75274db49510a93a9ad48831d098f41d92c9be74f81d",
+      "verification": {
+        "status": "pending",
+        "basis": "3.2.2 electricity data per unit vs target: total 403,036.80 หน่วย (+4.6% vs 2024) → NOT met (target reduce 1%). Per-unit electricity tables are image-only — per-unit numbers NOT text-extractable (evidenceStrength MEDIUM). Human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "measurementData",
+      "labelTh": "ข้อมูลการใช้ไฟฟ้าต่อหน่วย 3.2.2",
+      "labelEn": "Electricity consumption data per unit 3.2.2",
+      "domain": "electricity",
+      "unit": "หน่วย (units)",
+      "total": 403036.8,
+      "changePercentVs2024": 4.6,
+      "perUnit": null,
+      "perUnitLabel": "หน่วย/คน",
+      "perUnitChangePercentVs2024": null,
+      "perUnitUnavailableReason": "IMAGE_ONLY_TABLE",
+      "evidenceStrength": "MEDIUM",
+      "targetPercent": -1,
+      "targetOutcome": "NOT_MET"
+    },
+    {
+      "id": "data-fuel-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.2.5"],
+      "issueCodes": ["3.2"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-data-fuel-fy2568"],
+      "sourceRef": "3.2 การใช้พลังงาน/3.2.5 มีการจัดทำข้อมูลการใช้น้ำมันเชื้อเพลิงต่อหน่วยเปรียบเทียบกับเป้าหมาย และวิเคราะห์ผล/3.2.5.pdf",
+      "manifestSha256": "658078f073b64030f391fa5e07e7d042a4daea6b7736c4c16937bfe53ae052bd",
+      "verification": {
+        "status": "pending",
+        "basis": "3.2.5 fuel data per distance vs target: total 695.82 L (−205 L, −22.7% vs 2024) → MET (target reduce 1%). C1 anomaly #21: standalone file starts at item (2); item (1) exists only in the compiled reports. Human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "measurementData",
+      "labelTh": "ข้อมูลการใช้น้ำมันเชื้อเพลิงต่อระยะทาง 3.2.5",
+      "labelEn": "Fuel consumption data per distance 3.2.5",
+      "domain": "fuel",
+      "unit": "L",
+      "total": 695.82,
+      "changeAbsVs2024": -205,
+      "changePercentVs2024": -22.7,
+      "perUnit": null,
+      "perUnitLabel": "—",
+      "perUnitChangePercentVs2024": null,
+      "sourceAnomaly": "INCOMPLETE_ITEM1",
+      "targetPercent": -1,
+      "targetOutcome": "MET"
+    },
+    {
+      "id": "data-paper-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.3.2"],
+      "issueCodes": ["3.3"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-data-paper-fy2568"],
+      "sourceRef": "3.3 การทรัพยากรอื่นๆ/3.3.2 มีการจัดทำข้อมูลการใช้กระดาษต่อหน่วยเปรียบเทียบกับเป้าหมาย/3.3.2.pdf",
+      "manifestSha256": "c55106396e32acb345029b3bb2e1e223bb2ff9e50b6887c5e2fbfcff06def801",
+      "verification": {
+        "status": "pending",
+        "basis": "3.3.2 paper data per unit vs target: total 2,197.80 kg (+117 kg vs 2024), 23.13 kg/หน่วย (+2, +5.6%) → NOT met (target reduce 1%). Text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "measurementData",
+      "labelTh": "ข้อมูลการใช้กระดาษต่อหน่วย 3.3.2",
+      "labelEn": "Paper consumption data per unit 3.3.2",
+      "domain": "paper",
+      "unit": "kg",
+      "total": 2197.8,
+      "changeAbsVs2024": 117,
+      "changePercentVs2024": 5.6,
+      "perUnit": 23.13,
+      "perUnitLabel": "kg/หน่วย",
+      "perUnitChangePercentVs2024": 5.6,
+      "targetPercent": -1,
+      "targetOutcome": "NOT_MET"
+    }
+  ],
+  "gaps": [
+    { "indicator": "3.2.2", "status": "PARTIAL", "note": "Per-unit electricity numbers are image-only in the FY2568 source (MEDIUM strength); only the summary total 403,036.80 u (+4.6%) is text-verifiable. Values stay unavailable/pending — never invented." }
+  ],
+  "forwardRequirements": [],
+  "crossLinks": [
+    { "from": "3.1.2", "to": "3.1.1", "reason": "Water data (3.1.2) measures the effect of the 3.1.1 water measures" },
+    { "from": "3.2.2", "to": "3.2.1", "reason": "Electricity data (3.2.2) measures the effect of the 3.2.1 electricity measures" },
+    { "from": "3.2.5", "to": "3.2.4", "reason": "Fuel data (3.2.5) measures the effect of the 3.2.4 fuel measures" },
+    { "from": "3.3.2", "to": "3.3.1", "reason": "Paper data (3.3.2) measures the effect of the 3.3.1 paper measures" }
+  ]
+}

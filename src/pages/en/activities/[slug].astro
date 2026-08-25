@@ -1,0 +1,23 @@
+---
+import ContentDetailPage from '../../../components/content/ContentDetailPage.astro';
+import { activitiesCollection } from '../../../data/content/load-content';
+
+export function getStaticPaths() {
+  return activitiesCollection.items
+    .filter((item) => item.status === 'published')
+    .map((item) => ({
+      params: { slug: item.slug },
+      props: { item },
+    }));
+}
+
+const { item } = Astro.props;
+---
+
+<ContentDetailPage
+  item={item}
+  locale="en"
+  hubRoute="/activities"
+  hubLabelTh="กิจกรรม"
+  hubLabelEn="Activities"
+/>

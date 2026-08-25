@@ -1,0 +1,48 @@
+---
+/**
+ * FY2569 implementation-plan card for Category 3.
+ * Deliberately separate from frozen FY2568 contracts: plan only, no results.
+ */
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const isEn = locale === 'en';
+const sourceUrl = 'https://maejo365-my.sharepoint.com/:w:/g/personal/researchmju_mju_ac_th/IQCjwNr7XEE3QasnQ517nAftAYB4p_bLL9dIZyKxLtAeQac?e=8pBJK4';
+---
+
+<section
+  class="mb-8 rounded-xl border border-blue-200 bg-blue-50/50 p-5 sm:p-6"
+  aria-labelledby="cat3-fy2569-measures-plan"
+  data-cat3-fy2569-measures-plan
+>
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+    <div>
+      <p class="mb-1 text-xs font-semibold uppercase tracking-wider text-blue-700">
+        {isEn ? 'FY2569 implementation plan' : 'แผนการดำเนินงาน ปี 2569'}
+      </p>
+      <h2 id="cat3-fy2569-measures-plan" class="text-base font-semibold text-gray-900">
+        {isEn ? 'Energy and resource control measures, FY2569' : 'มาตรการควบคุมการใช้พลังงานและทรัพยากร ประจำปี 2569'}
+      </h2>
+      <p class="mt-2 max-w-3xl text-sm leading-relaxed text-gray-600">
+        {isEn
+          ? 'This seven-page document is a FY2569 operational plan for Category 3. It is presented separately from the frozen FY2568 baseline and does not claim FY2569 execution, measurements, assessment results, scores, or PASS status.'
+          : 'เอกสาร 7 หน้านี้เป็นแผนการปฏิบัติงานปี 2569 ของหมวด 3 แสดงแยกจากข้อมูลฐานปี 2568 และไม่อ้างว่ามีผลการดำเนินงาน การวัด ผลประเมิน คะแนน หรือการผ่านเกณฑ์ของปี 2569'}
+      </p>
+      <p class="mt-2 text-xs leading-relaxed text-gray-500">
+        {isEn
+          ? 'Scope stated in the source includes water conservation, electricity and lighting, air conditioning, and office equipment.'
+          : 'ขอบเขตที่ระบุในเอกสารครอบคลุมการใช้น้ำ ไฟฟ้าและแสงสว่าง เครื่องปรับอากาศ และอุปกรณ์สำนักงาน'}
+      </p>
+    </div>
+    <a
+      href={sourceUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2"
+    >
+      {isEn ? 'Open source document' : 'เปิดเอกสารต้นฉบับ'}
+    </a>
+  </div>
+</section>

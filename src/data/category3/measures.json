@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "measures",
+  "updated": "2026-08-23",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CATEGORY3_RESOURCE_BLUEPRINT_V1",
+  "note": "FY2568 historical-baseline contract for Category 3 resource-conservation measures (Plan stage). Covers 3.1.1 water, 3.2.1 electricity, 3.2.4 fuel, 3.3.1 paper, 3.3.4 ink/stationery measures. 3.4.1 green-meeting measures live in meetings.json (one canonical registry per indicator — no duplicates). Two image scans (AC-condensate #11, vehicle log #20) are filename_folder_only and NOT promoted; the garbled measures PDF #3 is listed in targets.json sources. No invented measures.",
+  "sources": [
+    { "ref": "3.1 การใช้น้ำ/3.1.1.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #5 — water measures (stickers, 08.00–09.00 schedule, timer-app watering, AC-water reuse, sensor faucets)." },
+    { "ref": "3.1 การใช้น้ำ/3.1.1 มาตรการหรือแนวทางใช้น้ำ/ปริมาณน้ำทั้งเครื่องปรับอากาศ.pdf", "role": "photo-scan", "inspection": "filename_folder_only", "disposition": "canonical-pending-verification", "note": "C1 #11 — 12-page image-only AC-condensate water photos; content unverifiable without OCR." },
+    { "ref": "3.2 การใช้พลังงาน/3.2.1 มาตรการหรือแนวทางใช้ไฟฟ้ากับสำนักงาน/3.2.1 มาตรการหรือแนวทางใช้ไฟฟ้ากับสำนักงาน.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #16 — electricity measures (LED T8 ×150, solar ×4, motion sensors)." },
+    { "ref": "3.2 การใช้พลังงาน/3.2.4 มาตรการหรือแนวทางการใช้น้ำมันเชื้อเพลิงในการเดินทางที่เหมาะสมกับสำนักงาน/3.2.4.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical-misbounded", "note": "C1 #19 — fuel measures (pages 2–9); misbounded file (starts with a 3.2.3 page, ends with 3.2.5 pages)." },
+    { "ref": "3.2 การใช้พลังงาน/3.2.4 มาตรการหรือแนวทางการใช้น้ำมันเชื้อเพลิงในการเดินทางที่เหมาะสมกับสำนักงาน/รายงานการใช้รถยนต์.pdf", "role": "scan-log", "inspection": "filename_folder_only", "disposition": "canonical-pending-verification", "note": "C1 #20 — 22-page image-only scanned vehicle-use log; content unverifiable without OCR." },
+    { "ref": "3.3 การทรัพยากรอื่นๆ/3.3.1 มาตรการหรือแนวทางการใช้กระดาษที่เหมาะสมกับสำนักงาน/3.3.1 มาตรการหรือแนวทางการใช้กระดาษที่เหมาะสมกับสำนักงาน.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #24 — paper measures (reuse, double-side, e-documents)." },
+    { "ref": "3.3 การทรัพยากรอื่นๆ/3.3.4 มาตรการหรือแนวทางการใช้หมึกพิมพ์ อุปกรณ์เครื่องเขียน วัสดุอุปกรณ์เหมาะสมกับสำนักงาน/3.3.4.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #27 — ink/stationery measures (shared printers & office supplies)." },
+    { "ref": "หมวดที่ 3 เป้าหมายและตัวชี้วัด และ มาตรการ 68.docx", "role": "targets-measures-source", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #4 — full 9-section มาตรการ controlling energy and resources." }
+  ],
+  "records": [
+    {
+      "id": "measure-water-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.1.1"],
+      "issueCodes": ["3.1"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-measures-water-fy2568"],
+      "sourceRef": "3.1 การใช้น้ำ/3.1.1.pdf",
+      "manifestSha256": "e588f03c81bc9a1004eb25d0a83ecef20f81ce7225ece4fd64d9c07763a0e64c",
+      "verification": {
+        "status": "pending",
+        "basis": "3.1.1 water-conservation measures: สติ๊กเกอร์รณรงค์, กำหนดเวลารดน้ำต้นไม้ 08.00–09.00, แอปตั้งเวลารดน้ำ, นำน้ำทิ้งเครื่องปรับอากาศมารดน้ำ, ก๊อกน้ำเซนเซอร์ — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "conservationMeasure",
+      "labelTh": "มาตรการประหยัดน้ำ 3.1.1",
+      "labelEn": "Water conservation measures 3.1.1"
+    },
+    {
+      "id": "measure-water-ac-condensate-scan-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.1.1"],
+      "issueCodes": ["3.1"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-ac-condensate-scan-fy2568"],
+      "sourceRef": "3.1 การใช้น้ำ/3.1.1 มาตรการหรือแนวทางใช้น้ำ/ปริมาณน้ำทั้งเครื่องปรับอากาศ.pdf",
+      "manifestSha256": "67c366e0ab38ea8173184be1d0cf4cd50c3dd2d4af5b1f6326fe6763dc4d606c",
+      "verification": {
+        "status": "pending",
+        "basis": "AC-condensate water capture photos (12-page scan). Image-only, 0 text chars — content not verifiable without OCR. Supports 3.1.1 AC-water reuse measure but is NOT semantically verified."
+      },
+      "availability": "filename_folder_only",
+      "kind": "measurePhotoScan",
+      "labelTh": "รูปน้ำทิ้งเครื่องปรับอากาศ (สแกน, ไม่ยืนยันเนื้อหา)",
+      "labelEn": "AC-condensate water photos (scan, content unverified)",
+      "promoted": false
+    },
+    {
+      "id": "measure-electricity-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.2.1"],
+      "issueCodes": ["3.2"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-measures-electricity-fy2568"],
+      "sourceRef": "3.2 การใช้พลังงาน/3.2.1 มาตรการหรือแนวทางใช้ไฟฟ้ากับสำนักงาน/3.2.1 มาตรการหรือแนวทางใช้ไฟฟ้ากับสำนักงาน.pdf",
+      "manifestSha256": "7aef62a4cea6f224505394210fbe5e4504712e5566bf193230ddf8b16de0121b",
+      "verification": {
+        "status": "pending",
+        "basis": "3.2.1 electricity-conservation measures: หลอด LED T8 ×150, โซล่าร์เซล ×4, เซนเซอร์ตรวจจับความเคลื่อนไหว — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "conservationMeasure",
+      "labelTh": "มาตรการประหยัดไฟฟ้า 3.2.1",
+      "labelEn": "Electricity conservation measures 3.2.1"
+    },
+    {
+      "id": "measure-fuel-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.2.4"],
+      "issueCodes": ["3.2"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-measures-fuel-fy2568"],
+      "sourceRef": "3.2 การใช้พลังงาน/3.2.4 มาตรการหรือแนวทางการใช้น้ำมันเชื้อเพลิงในการเดินทางที่เหมาะสมกับสำนักงาน/3.2.4.pdf",
+      "manifestSha256": "a57aa5d4e80b8c63402b41b715fa3bfe697cbe2c00efacd13863654d638df785",
+      "verification": {
+        "status": "pending",
+        "basis": "3.2.4 fuel-conservation measures for office travel (pages 2–9). C1 anomaly #19: file is misbounded — starts with a 3.2.3 page and ends with 3.2.5 pages; measure content extracted from the middle section; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "conservationMeasure",
+      "labelTh": "มาตรการประหยัดน้ำมันเชื้อเพลิง 3.2.4",
+      "labelEn": "Fuel conservation measures 3.2.4"
+    },
+    {
+      "id": "measure-fuel-vehicle-log-scan-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.2.4"],
+      "issueCodes": ["3.2"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-vehicle-log-scan-fy2568"],
+      "sourceRef": "3.2 การใช้พลังงาน/3.2.4 มาตรการหรือแนวทางการใช้น้ำมันเชื้อเพลิงในการเดินทางที่เหมาะสมกับสำนักงาน/รายงานการใช้รถยนต์.pdf",
+      "manifestSha256": "22690d5b05ad0a03464740b15f17f36b9654585237981ac8ae4568a4836f7b07",
+      "verification": {
+        "status": "pending",
+        "basis": "Scanned vehicle-use log (22-page image scan). Image-only, 0 text chars — content not verifiable without OCR. Supports 3.2.4 fuel measures but is NOT semantically verified."
+      },
+      "availability": "filename_folder_only",
+      "kind": "measureScan",
+      "labelTh": "รายงานการใช้รถยนต์ (สแกน, ไม่ยืนยันเนื้อหา)",
+      "labelEn": "Vehicle-use log (scan, content unverified)",
+      "promoted": false
+    },
+    {
+      "id": "measure-paper-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.3.1"],
+      "issueCodes": ["3.3"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-measures-paper-fy2568"],
+      "sourceRef": "3.3 การทรัพยากรอื่นๆ/3.3.1 มาตรการหรือแนวทางการใช้กระดาษที่เหมาะสมกับสำนักงาน/3.3.1 มาตรการหรือแนวทางการใช้กระดาษที่เหมาะสมกับสำนักงาน.pdf",
+      "manifestSha256": "5010e706951cfafd303a88e0daaaa084124e9033c966f9fd33af57bfc2633652",
+      "verification": {
+        "status": "pending",
+        "basis": "3.3.1 paper-conservation measures: นำกระดาษกลับมาใช้, พิมพ์สองหน้า, ใช้เอกสารอิเล็กทรอนิกส์ — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "conservationMeasure",
+      "labelTh": "มาตรการประหยัดกระดาษ 3.3.1",
+      "labelEn": "Paper conservation measures 3.3.1"
+    },
+    {
+      "id": "measure-ink-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.3.4"],
+      "issueCodes": ["3.3"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-measures-ink-fy2568"],
+      "sourceRef": "3.3 การทรัพยากรอื่นๆ/3.3.4 มาตรการหรือแนวทางการใช้หมึกพิมพ์ อุปกรณ์เครื่องเขียน วัสดุอุปกรณ์เหมาะสมกับสำนักงาน/3.3.4.pdf",
+      "manifestSha256": "ad55261fb9c24b454a613d54d5abffd0b4654843274da6264d10dd7e788b0386",
+      "verification": {
+        "status": "pending",
+        "basis": "3.3.4 ink/stationery measures: ใช้เครื่องพิมพ์ร่วมกันและเบิกวัสดุสำนักงานส่วนกลาง — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "conservationMeasure",
+      "labelTh": "มาตรการประหยัดหมึก/วัสดุสำนักงาน 3.3.4",
+      "labelEn": "Ink and office-supplies measures 3.3.4"
+    }
+  ],
+  "gaps": [],
+  "forwardRequirements": [],
+  "crossLinks": [
+    { "from": "3.1.1", "to": "3.1.2", "reason": "Water measures (3.1.1) are evaluated against the water data in 3.1.2" },
+    { "from": "3.2.1", "to": "3.2.2", "reason": "Electricity measures (3.2.1) are evaluated against the electricity data in 3.2.2" },
+    { "from": "3.2.4", "to": "3.2.5", "reason": "Fuel measures (3.2.4) are evaluated against the fuel data in 3.2.5" },
+    { "from": "3.3.1", "to": "3.3.2", "reason": "Paper measures (3.3.1) are evaluated against the paper data in 3.3.2" },
+    { "from": "3.3.4", "to": "3.3.5", "reason": "Ink/stationery measures (3.3.4) pair with the compliance survey 3.3.5" }
+  ]
+}

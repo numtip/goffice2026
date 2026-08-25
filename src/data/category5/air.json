@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "air",
+  "updated": "2026-08-24",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CAT5_PHASE_A_SOURCE_DISPOSITION",
+  "note": "FY2568 historical-baseline contract for indoor-air indicators 5.1.1/5.1.2/5.1.3 (อากาศในสำนักงาน). Maintenance-execution records are recurring evidence: the FY2568 plans/forms/photos remain the frozen baseline and MUST be re-collected for FY2569. The annual report DOCX is the content-verified supporting source. No FY2569 facts.",
+  "sources": [
+    {
+      "ref": "5.1 อากาศในสำนักงาน/5.1.1 การควบคุมมลพิษทางอากาศในสำนักงาน/5.1.1(1) แผนการบำรุงรักษาประจำปี 2568.pdf",
+      "role": "primary-scan",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "5.1 อากาศในสำนักงาน/5.1.2 มีการรณรงค์ไม่สูบบุหรี่หรือมีการกำหนดพื้นที่สูบบุหรี่/5.1.2 (1)-(4) มีการรณรงค์ไม่สูบบุหรี่.pdf",
+      "role": "primary",
+      "inspection": "text-layer-present",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx",
+      "role": "supporting-report",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    }
+  ],
+  "records": [
+    {
+      "id": "air-maintenance-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "5.1.1"
+      ],
+      "issueCodes": [
+        "5.1"
+      ],
+      "categoryCode": "cat5",
+      "evidenceIds": [
+        "ev-cat5-air-maintenance-fy2568"
+      ],
+      "sourceRef": "5.1 อากาศในสำนักงาน/5.1.1 การควบคุมมลพิษทางอากาศในสำนักงาน/5.1.1(1) แผนการบำรุงรักษาประจำปี 2568.pdf",
+      "manifestSha256": "9f172e69f5ecc624aa9983ac8a7fbb780dd4fc1b870a5934b39b7236871aac69",
+      "relatedSources": [
+        "5.1 อากาศในสำนักงาน/5.1.1 การควบคุมมลพิษทางอากาศในสำนักงาน/5.1.1(2) ภาพการบำรุงรักษาเครื่องปรับอากาศ ปี68.pdf",
+        "5.1 อากาศในสำนักงาน/5.1.1 การควบคุมมลพิษทางอากาศในสำนักงาน/5.1.1(3) ฟอร์มทำความสะอาดเครื่องปรับอากาศ ปี68.pdf",
+        "5.1 อากาศในสำนักงาน/5.1.1 การควบคุมมลพิษทางอากาศในสำนักงาน/5.1.1(4) แผนการบำรุงรักษาเครื่องปริ้นเตอร์ ปี 2568.pdf",
+        "5.1 อากาศในสำนักงาน/5.1.1 การควบคุมมลพิษทางอากาศในสำนักงาน/5.1.1(5) ภาพการบำรุงรักษาเครื่องพิมพ์.pdf",
+        "5.1 อากาศในสำนักงาน/5.1.1 การควบคุมมลพิษทางอากาศในสำนักงาน/5.1.1(6) ฟอร์มทำความสะอาดเครื่องพิมพ์ ปี68.pdf",
+        "5.1 อากาศในสำนักงาน/5.1.1 การควบคุมมลพิษทางอากาศในสำนักงาน/5.1.1(7) การดูแลพรมปูพื้นและชั้นวางหนังสือ.pdf",
+        "5.1 อากาศในสำนักงาน/5.1.1 การควบคุมมลพิษทางอากาศในสำนักงาน/5.1.1(8) การดูแลลิฟท์.pdf",
+        "5.1 อากาศในสำนักงาน/5.1.1 การควบคุมมลพิษทางอากาศในสำนักงาน/5.1.1(9) การควบคุมควันไอเสียรถยนต์บริเวณสำนักงาน.pdf",
+        "5.1 อากาศในสำนักงาน/5.1.pdf",
+        "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx"
+      ],
+      "verification": {
+        "status": "pending",
+        "basis": "Maintenance plan/forms/photos for AC, printers, carpet/bookshelves, lift and vehicle-exhaust signage are image scans (content pending OCR). Execution facts (148 AC units, 2 rounds/year: round 1 Jan-Mar 2568 self-clean, round 2 May-Oct 2568 incl. contractor) are cross-verified against the content-verified annual report DOCX."
+      },
+      "availability": "filename_folder_only",
+      "kind": "maintenancePlanScan",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "แผน/ฟอร์ม/ภาพการบำรุงรักษาเครื่องปรับอากาศ เครื่องพิมพ์ พรม ชั้นหนังสือ ลิฟท์ และป้ายรณรงค์ดับเครื่องยนต์ ปี 2568",
+      "labelEn": "FY2568 maintenance plans/forms/photos for AC, printers, carpet, bookshelves, lift and engine-off campaign signage",
+      "promoted": false,
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "AC 2x/year (round 1 Jan-Mar, round 2 May-Oct); printer monthly; carpet/library scheduled"
+      }
+    },
+    {
+      "id": "air-smoke-free-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "5.1.2"
+      ],
+      "issueCodes": [
+        "5.1"
+      ],
+      "categoryCode": "cat5",
+      "evidenceIds": [
+        "ev-cat5-air-smoke-free-fy2568"
+      ],
+      "sourceRef": "5.1 อากาศในสำนักงาน/5.1.2 มีการรณรงค์ไม่สูบบุหรี่หรือมีการกำหนดพื้นที่สูบบุหรี่/5.1.2 (1)-(4) มีการรณรงค์ไม่สูบบุหรี่.pdf",
+      "manifestSha256": "343f04abd4696a1e898bdc937b63abad9f612f1840fd80b973485cd089eecfbf",
+      "relatedSources": [
+        "5.1 อากาศในสำนักงาน/5.1.pdf",
+        "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx"
+      ],
+      "verification": {
+        "status": "reviewed",
+        "basis": "No-smoking campaign/signage pack has a readable text layer (structure confirmed); campaign facts (signage at smoking point, no-smoking zones, compliance statement) cross-verified against the content-verified annual report DOCX. Human/PO sign-off pending."
+      },
+      "availability": "metadata-verified",
+      "kind": "campaignEvidence",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "การรณรงค์ไม่สูบบุหรี่และการกำหนดเขตสูบบุหรี่ ปี 2568",
+      "labelEn": "FY2568 no-smoking campaign and designated smoking areas",
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "at least 1 compliance observation per year"
+      }
+    },
+    {
+      "id": "air-construction-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "5.1.3"
+      ],
+      "issueCodes": [
+        "5.1"
+      ],
+      "categoryCode": "cat5",
+      "evidenceIds": [
+        "ev-cat5-air-construction-fy2568"
+      ],
+      "sourceRef": "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx",
+      "manifestSha256": "1de8d296952c530d5b630440756aa5703253ce66385b0805483d9a266dbe2a35",
+      "relatedSources": [],
+      "verification": {
+        "status": "reviewed",
+        "basis": "Content-verified from the annual report DOCX section 5.1.3: defined countermeasures for construction/renovation air pollution (backup workspaces, dust barriers, warning signage). No standalone evidence file exists; execution is conditional on renovation activity occurring."
+      },
+      "availability": "content-verified",
+      "kind": "contextualNarrative",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "มาตรการจัดการมลพิษทางอากาศจากการก่อสร้าง/ปรับปรุงอาคาร (บันทึกในรายงานประจำปี)",
+      "labelEn": "Construction/renovation air-pollution countermeasures (recorded in the annual report)",
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "declare occurrence Y/N once per year; collect execution evidence only if renovation occurs"
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "indicator": "5.1.1",
+      "status": "SCAN_CONTENT_PENDING_OCR",
+      "note": "All 9 maintenance packs are image scans; facts cross-verified via the report only."
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "lighting",
+  "updated": "2026-08-24",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CAT5_PHASE_A_SOURCE_DISPOSITION",
+  "note": "FY2568 historical-baseline contract for 5.2.1 (แสงสว่างในสำนักงาน). Light measurement is ANNUAL legal evidence: the FY2568 measurement (7-8 Jul 2568 by กองกายภาพและสิ่งแวดล้อม ม.แม่โจ้, measurer ผศ.ดร.ชนวัฒน์ นิทัศน์วิจิตร จป.วิชาชีพ) is frozen baseline and must NEVER be presented as a FY2569 result. No FY2569 facts.",
+  "sources": [
+    {
+      "ref": "5.2 แสงสว่างในสำนักงาน/รายงานวัดค่าแสง ปี68.pdf",
+      "role": "primary",
+      "inspection": "text-layer-present",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx",
+      "role": "supporting-report",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    }
+  ],
+  "records": [
+    {
+      "id": "lighting-measurement-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "5.2.1"
+      ],
+      "issueCodes": [
+        "5.2"
+      ],
+      "categoryCode": "cat5",
+      "evidenceIds": [
+        "ev-cat5-lighting-measurement-fy2568"
+      ],
+      "sourceRef": "5.2 แสงสว่างในสำนักงาน/รายงานวัดค่าแสง ปี68.pdf",
+      "manifestSha256": "1cc7eb240000fa6f7bbda592cf5b9bb5394ea02930f9197e66f9630fe73099fc",
+      "relatedSources": [
+        "5.2 แสงสว่างในสำนักงาน/5.2.pdf",
+        "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx"
+      ],
+      "verification": {
+        "status": "reviewed",
+        "basis": "44-page measurement report has a readable text layer (structure confirmed); measurement date/measurer/certificate facts cross-verified against the content-verified annual report DOCX. Per-point lux values need human review before any numeric claim."
+      },
+      "availability": "metadata-verified",
+      "kind": "measurementReport",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "รายงานวัดค่าความเข้มแสงสว่าง ปี 2568 (วัด 7-8 ก.ค. 2568)",
+      "labelEn": "FY2568 light-intensity measurement report (measured 7-8 Jul 2568)",
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "annual measurement by a qualified จป. professional + corrective actions"
+      }
+    }
+  ],
+  "gaps": []
+}

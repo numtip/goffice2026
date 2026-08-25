@@ -49,7 +49,7 @@ export const BASELINE_2568_CATEGORY_COUNTS: readonly BaselineCategoryCoverage[] 
   { categoryCode: 'cat1', categoryId: '1', recordedBaselineCount: 38, coverageState: 'CATEGORY_LEVEL_RECORDED', sourceAccess: 'public', sourceTypeTotals: { pdf: 28, xlsx: 3, docx: 7 } },
   { categoryCode: 'cat2', categoryId: '2', recordedBaselineCount: 29, coverageState: 'CATEGORY_LEVEL_RECORDED', sourceAccess: 'public', sourceTypeTotals: { pdf: 24, xlsx: 2, docx: 2, xls: 1 } },
   { categoryCode: 'cat3', categoryId: '3', recordedBaselineCount: 32, coverageState: 'CATEGORY_LEVEL_RECORDED', sourceAccess: 'public', sourceTypeTotals: { pdf: 26, docx: 6 } },
-  { categoryCode: 'cat4', categoryId: '4', recordedBaselineCount: 28, coverageState: 'CATEGORY_LEVEL_RECORDED', sourceAccess: 'public', sourceTypeTotals: { xlsx: 1, pdf: 10, txt: 15, docx: 2 } },
+  { categoryCode: 'cat4', categoryId: '4', recordedBaselineCount: 32, coverageState: 'CATEGORY_LEVEL_RECORDED', sourceAccess: 'public', sourceTypeTotals: { xlsx: 1, pdf: 14, txt: 15, docx: 2 } },
   { categoryCode: 'cat5', categoryId: '5', recordedBaselineCount: 47, coverageState: 'CATEGORY_LEVEL_RECORDED', sourceAccess: 'public', sourceTypeTotals: { pdf: 46, docx: 1 } },
   { categoryCode: 'cat6', categoryId: '6', recordedBaselineCount: 32, coverageState: 'CATEGORY_LEVEL_RECORDED', sourceAccess: 'public', sourceTypeTotals: { pdf: 31, docx: 1 } },
   { categoryCode: 'cat7', categoryId: '7', recordedBaselineCount: 3, coverageState: 'CATEGORY_LEVEL_RECORDED', sourceAccess: 'public', sourceTypeTotals: { pdf: 3 } },

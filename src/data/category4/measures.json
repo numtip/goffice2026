@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "measures",
+  "updated": "2026-08-23",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CATEGORY4_WASTE_BLUEPRINT_V1",
+  "note": "FY2568 historical-baseline contract for 4.1.1 (waste management measures + awareness/participation). The 4.1.1(1) measures PDF has a broken Thai glyph layer — verified by cross-reference only, never claimed as OCR-verified. ประกาศเป้าหมาย/ประกาศบริบท are image scans (pending). 4.1.1(3) ปลอดโฟม is a disclosed FY2568 gap: the source note explicitly states no foam-free declaration was made in FY2568 and records a FY2569 plan as a forward statement only. No invented measures.",
+  "sources": [
+    { "ref": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1 (1) มาตรการควบคุมพลังงานและทรัพยากร อาคารเฉลิมพระเกียรติฯ 2568.pdf", "role": "primary", "inspection": "garbled", "disposition": "canonical-pending-verification", "note": "C1 #8 — 8-item waste-measures plan (3Rs, bin layout, 4-category disposal, campaigns, monthly data). Thai text layer present but glyph mapping broken; content verified by cross-reference to the 4.1 section narrative which quotes item 6 verbatim." },
+    { "ref": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1. (2) ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อม2568.pdf", "role": "target-announcement", "inspection": "filename_folder_only", "disposition": "canonical-pending-verification", "note": "C1 #11 — 1-page image scan of the เป้าหมายสิ่งแวดล้อม 2568 announcement (Zero-waste / −3% target). Content pending OCR." },
+    { "ref": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1 (4) ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง บริบทองค์กรและขอบเขตฯ 2568.pdf", "role": "context-announcement", "inspection": "filename_folder_only", "disposition": "canonical-pending-verification", "note": "C1 #10 — 8-page image scan of the บริบทองค์กรและขอบเขต 2568 announcement (9,873 m², 4 units). Content pending OCR." },
+    { "ref": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1 (3) .txt", "role": "gap-note", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #9 — discloses that no foam-free declaration was made in FY2568 (no campaign conducted); FY2569 plan is a forward statement only." },
+    { "ref": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1. (5) .txt", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #12 — plastic-reduction participation campaign (ถุงผ้า, แก้วน้ำส่วนตัว)." }
+  ],
+  "records": [
+    {
+      "id": "measure-waste-plan-crossref-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.1.1"],
+      "issueCodes": ["4.1"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-measures-waste-plan-fy2568"],
+      "sourceRef": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1 (1) มาตรการควบคุมพลังงานและทรัพยากร อาคารเฉลิมพระเกียรติฯ 2568.pdf",
+      "manifestSha256": "5c2ff640b8af80842f213f755952370ecf609a1ace391f8ab7cc32b83a87cb9f",
+      "verification": {
+        "status": "pending",
+        "basis": "4.1.1 waste measures (3Rs, bin layout, 4-category disposal, campaigns, monthly data). Text layer garbled (0 Thai chars, broken glyph mapping); content verified by cross-reference to the 4.1 section narrative only. Glyph layer pending OCR — not semantically verified as OCR."
+      },
+      "availability": "filename_folder_only",
+      "kind": "conservationMeasure",
+      "labelTh": "มาตรการจัดการขยะ 4.1.1 (PDF ข้อความเพี้ยน — ตรวจข้ามอ้างอิง)",
+      "labelEn": "Waste management measures 4.1.1 (garbled PDF — cross-reference only)",
+      "promoted": false
+    },
+    {
+      "id": "measure-target-announce-scan-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.1.1"],
+      "issueCodes": ["4.1"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-measures-target-announce-scan-fy2568"],
+      "sourceRef": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1. (2) ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อม2568.pdf",
+      "manifestSha256": "d1983fd22805eaadccb714ac3687709965a9a36da341bfba2187577cb4eb981d",
+      "verification": {
+        "status": "pending",
+        "basis": "ประกาศการกำหนดเป้าหมายสิ่งแวดล้อม 2568 (1-page image scan). 0 text chars — content unverifiable without OCR. Target clause cross-verified via the report text; NOT semantically verified."
+      },
+      "availability": "filename_folder_only",
+      "kind": "announcementScan",
+      "labelTh": "ประกาศเป้าหมายสิ่งแวดล้อม 2568 (สแกน, ไม่ยืนยันเนื้อหา)",
+      "labelEn": "Environmental-target announcement 2568 (scan, content unverified)",
+      "promoted": false
+    },
+    {
+      "id": "measure-context-announce-scan-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.1.1"],
+      "issueCodes": ["4.1"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-measures-context-announce-scan-fy2568"],
+      "sourceRef": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1 (4) ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง บริบทองค์กรและขอบเขตฯ 2568.pdf",
+      "manifestSha256": "f10afbf39c6bc4731f1227f3ec3626464fa4279b22df686308d9cf3e2a3f1d8d",
+      "verification": {
+        "status": "pending",
+        "basis": "ประกาศบริบทองค์กรและขอบเขต 2568 (8-page image scan). 0 text chars — content unverifiable without OCR. Scope 9,873 m² / 4 units cross-verified via the report text; NOT semantically verified."
+      },
+      "availability": "filename_folder_only",
+      "kind": "announcementScan",
+      "labelTh": "ประกาศบริบทองค์กรและขอบเขต 2568 (สแกน, ไม่ยืนยันเนื้อหา)",
+      "labelEn": "Organizational-context and scope announcement 2568 (scan, content unverified)",
+      "promoted": false
+    },
+    {
+      "id": "measure-foam-free-gap-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.1.1"],
+      "issueCodes": ["4.1"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-measures-foam-free-gap-fy2568"],
+      "sourceRef": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1 (3) .txt",
+      "manifestSha256": "89f6aa22d75e889d1ea732fed60b54d3692c282526259452635c796a5e7b1c06",
+      "verification": {
+        "status": "pending",
+        "basis": "4.1.1(3) ปลอดโฟม: source note explicitly states no foam-free declaration/campaign was conducted in FY2568; the FY2569 plan is a forward statement only (recorded as FOAM_FREE_FY2569_PLAN, not a verified FY2569 fact)."
+      },
+      "availability": "content-verified",
+      "kind": "disclosedGap",
+      "labelTh": "ปลอดโฟม 4.1.1(3) — ยังไม่ได้ดำเนินการในปี 2568 (เปิดเผยช่องว่าง)",
+      "labelEn": "Foam-free 4.1.1(3) — not implemented in FY2568 (disclosed gap)"
+    },
+    {
+      "id": "measure-plastic-campaign-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.1.1"],
+      "issueCodes": ["4.1"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-measures-plastic-campaign-fy2568"],
+      "sourceRef": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1. (5) .txt",
+      "manifestSha256": "1cde893eac064c92646d2fe58ba45fc855a4612eb0d453ca3b7fe0b42324ec4f",
+      "verification": {
+        "status": "pending",
+        "basis": "4.1.1(5) plastic-reduction participation campaign: cloth-bag service points (return-and-reuse) and reusable personal cups — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "awarenessCampaign",
+      "labelTh": "รณรงค์ลดขยะพลาสติก 4.1.1(5)",
+      "labelEn": "Plastic-reduction campaign 4.1.1(5)"
+    }
+  ],
+  "gaps": [
+    { "indicator": "4.1.1", "status": "PARTIAL", "note": "4.1.1(3) ปลอดโฟม (foam-free declaration) was NOT implemented in FY2568 — explicitly disclosed by the source note. The FY2569 plan is a forward statement only (FOAM_FREE_FY2569_PLAN), not verified FY2569 evidence." }
+  ],
+  "forwardRequirements": [
+    { "code": "FOAM_FREE_FY2569_PLAN", "year": 2569, "note": "FY2569 plan to implement foam-free measures in the office (from 4.1.1 (3) .txt) — forward statement only, not a verified FY2569 fact." }
+  ],
+  "crossLinks": [
+    { "from": "4.1.1", "to": "4.1.2", "reason": "Waste measures (4.1.1) are implemented as sorting/collection/disposal operations (4.1.2)" },
+    { "from": "4.1.1", "to": "4.1.3", "reason": "Waste measures (4.1.1) are evaluated against the waste data and target analysis (4.1.3)" }
+  ]
+}

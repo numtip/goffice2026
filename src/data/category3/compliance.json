@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "compliance",
+  "updated": "2026-08-23",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CATEGORY3_RESOURCE_BLUEPRINT_V1",
+  "note": "FY2568 historical-baseline compliance contract (Monitor stage). Behavioral workspace-compliance surveys: 3.1.3 water, 3.2.3 electricity, 3.3.3 paper, 3.3.5 ink/stationery. Each survey is a content-verified narrative (no numeric score); outcomes are presented as evidence context, never as a score. No FY2569 facts.",
+  "sources": [
+    { "ref": "3.1 การใช้น้ำ/3.1.3.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #7 — water compliance survey: no leaks/drips found at faucets." },
+    { "ref": "3.2 การใช้พลังงาน/3.2.3 การปฏิบัติตามมาตรการประหยัดไฟฟ้าในพื้นที่ทำงาน/3.2.3 การปฏิบัติตามมาตรการประหยัดไฟฟ้าในพื้นที่ทำงาน.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #18 — electricity compliance survey: no lights left on in unused areas." },
+    { "ref": "3.3 การทรัพยากรอื่นๆ/3.3.3 การปฏิบัติตามมาตรการการประหยัดกระดาษในพื้นที่ทำงาน/3.3.3 การปฏิบัติตามมาตรการการประหยัดกระดาษในพื้นที่ทำงาน.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #26 — paper compliance survey: no wasteful paper use found." },
+    { "ref": "3.3 การทรัพยากรอื่นๆ/3.3.5 การดำเนินตามมาตรการประหยัดการใช้หมึกพิมพ์  อุปกรณ์เครื่องเขียน วัสดุอุปกรณ์สำนักงาน/3.3.5.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #28 — ink/stationery compliance: no wasteful ink/stationery use found." }
+  ],
+  "records": [
+    {
+      "id": "compliance-water-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.1.3"],
+      "issueCodes": ["3.1"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-compliance-water-fy2568"],
+      "sourceRef": "3.1 การใช้น้ำ/3.1.3.pdf",
+      "manifestSha256": "96dc30d3f6a558252fdcdc0ded706142611bac8ca457539aa21768169e93b40c",
+      "verification": {
+        "status": "pending",
+        "basis": "3.1.3 behavioral compliance survey: no leaks/drips found at faucets in work areas — text extracted; human/PO verification pending. No numeric score."
+      },
+      "availability": "content-verified",
+      "kind": "complianceSurvey",
+      "labelTh": "การปฏิบัติตามมาตรการประหยัดน้ำ 3.1.3",
+      "labelEn": "Water conservation compliance survey 3.1.3"
+    },
+    {
+      "id": "compliance-electricity-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.2.3"],
+      "issueCodes": ["3.2"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-compliance-electricity-fy2568"],
+      "sourceRef": "3.2 การใช้พลังงาน/3.2.3 การปฏิบัติตามมาตรการประหยัดไฟฟ้าในพื้นที่ทำงาน/3.2.3 การปฏิบัติตามมาตรการประหยัดไฟฟ้าในพื้นที่ทำงาน.pdf",
+      "manifestSha256": "03a312b3b7f730386cc755d09ad41601f3ab387f733f421cb0d8d969a018ba0d",
+      "verification": {
+        "status": "pending",
+        "basis": "3.2.3 behavioral compliance survey: no lights left on in unused areas — text extracted; human/PO verification pending. No numeric score."
+      },
+      "availability": "content-verified",
+      "kind": "complianceSurvey",
+      "labelTh": "การปฏิบัติตามมาตรการประหยัดไฟฟ้า 3.2.3",
+      "labelEn": "Electricity conservation compliance survey 3.2.3"
+    },
+    {
+      "id": "compliance-paper-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.3.3"],
+      "issueCodes": ["3.3"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-compliance-paper-fy2568"],
+      "sourceRef": "3.3 การทรัพยากรอื่นๆ/3.3.3 การปฏิบัติตามมาตรการการประหยัดกระดาษในพื้นที่ทำงาน/3.3.3 การปฏิบัติตามมาตรการการประหยัดกระดาษในพื้นที่ทำงาน.pdf",
+      "manifestSha256": "12fc9e8a9df8016d60847c55b591a4c5a17113634d743c52ab753390ff6d6679",
+      "verification": {
+        "status": "pending",
+        "basis": "3.3.3 behavioral compliance survey: no wasteful paper use found in work areas — text extracted; human/PO verification pending. No numeric score."
+      },
+      "availability": "content-verified",
+      "kind": "complianceSurvey",
+      "labelTh": "การปฏิบัติตามมาตรการประหยัดกระดาษ 3.3.3",
+      "labelEn": "Paper conservation compliance survey 3.3.3"
+    },
+    {
+      "id": "compliance-ink-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.3.5"],
+      "issueCodes": ["3.3"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-compliance-ink-fy2568"],
+      "sourceRef": "3.3 การทรัพยากรอื่นๆ/3.3.5 การดำเนินตามมาตรการประหยัดการใช้หมึกพิมพ์  อุปกรณ์เครื่องเขียน วัสดุอุปกรณ์สำนักงาน/3.3.5.pdf",
+      "manifestSha256": "f196dd07a4d1c5dec1cbe0c15d804736b064cb75e61dc2b32b7f6f822056265d",
+      "verification": {
+        "status": "pending",
+        "basis": "3.3.5 compliance survey: no wasteful ink/stationery use found — text extracted; human/PO verification pending. No numeric score."
+      },
+      "availability": "content-verified",
+      "kind": "complianceSurvey",
+      "labelTh": "การปฏิบัติตามมาตรการประหยัดหมึก/วัสดุ 3.3.5",
+      "labelEn": "Ink and stationery compliance survey 3.3.5"
+    }
+  ],
+  "gaps": [],
+  "forwardRequirements": [],
+  "crossLinks": [
+    { "from": "3.1.3", "to": "3.1.1", "reason": "Water compliance (3.1.3) verifies the 3.1.1 water measures in practice" },
+    { "from": "3.2.3", "to": "3.2.1", "reason": "Electricity compliance (3.2.3) verifies the 3.2.1 electricity measures in practice" },
+    { "from": "3.3.3", "to": "3.3.1", "reason": "Paper compliance (3.3.3) verifies the 3.3.1 paper measures in practice" },
+    { "from": "3.3.5", "to": "3.3.4", "reason": "Ink/stationery compliance (3.3.5) verifies the 3.3.4 measures in practice" }
+  ]
+}

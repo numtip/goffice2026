@@ -1,0 +1,177 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "audit",
+  "updated": "2026-08-24",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CAT7_PHASE_A_SOURCE_DISPOSITION",
+  "note": "FY2568 historical-baseline contract for indicator 7.1 (การตรวจประเมินสำนักงานสีเขียวเพื่อการปรับปรุงอย่างต่อเนื่อง / internal audit). HARD TRUTH of the accepted Phase-A disposition: only the FY2568 internal-audit REQUEST on 7.1 p2 is baseline-eligible. The committee appointment (p1, ประจำปี 2569), audit criteria/schedule (p5, 17 มี.ค. 2569) and audit execution + result report (p7, 17/20/23 มี.ค. 2569) are FY2569-dated claims → QUARANTINE (no sourceRef/evidence/public result). The auditor-assignment roster (p6) has no explicit year → YEAR_UNVERIFIED. p3-p4 photos are scan_only (pending OCR). Appointment, auditor competence, audit completion, result report, score and PASS are NOT claimed. หมวด 7_(9-3-69).pdf is contentDuplicateCandidate only (separate sourceRef, no dedupe). No FY2569 result.",
+  "sources": [
+    {
+      "ref": "7.1 (9-3-69).pdf",
+      "role": "primary",
+      "inspection": "content-verified-text-layer",
+      "disposition": "canonical-pending-year-split"
+    },
+    {
+      "ref": "หมวด 7_(9-3-69).pdf",
+      "role": "content-duplicate-C1",
+      "inspection": "content-verified-text-layer",
+      "disposition": "canonical-pending-year-split"
+    },
+    {
+      "ref": "7.2 (9-3-69).pdf",
+      "role": "cross-reference",
+      "inspection": "content-verified-text-layer",
+      "disposition": "cross-reference-only"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-71-p1-appointment",
+      "indicator": "7.1",
+      "page": "p1",
+      "sourceRef": "7.1 (9-3-69).pdf",
+      "summary": {
+        "th": "แต่งตั้งคณะกรรมการตรวจประเมินสำนักงานสีเขียว อาคารเฉลิมพระเกียรติฯ ประจำปี 2569 (พร้อมรายนาม/หมวดที่รับผิดชอบ)",
+        "en": "Internal-audit committee appointment, ปี 2569 (with roster / responsible categories)"
+      },
+      "year": 2569,
+      "status": "QUARANTINE",
+      "classification": "candidate",
+      "note": "Appointment is explicitly 2569-dated; the audited period (ประจำปี 2568) appears as scope context within this appointment sentence but does NOT create separate evidence. Formal order/competence likely on p3-p4 scans (pending OCR)."
+    },
+    {
+      "id": "claim-71-p2-request",
+      "indicator": "7.1",
+      "page": "p2",
+      "sourceRef": "7.1 (9-3-69).pdf",
+      "summary": {
+        "th": "แจ้งความประสงค์ขอรับการตรวจประเมินภายในสำนักงาน Green Office ประจำปี 2568 (วันที่ 17 มีนาคม 2569) ไปยังประธานคณะกรรมการขับเคลื่อนฯ ตามเงื่อนไขอย่างน้อยปีละ 1 ครั้ง",
+        "en": "FY2568 internal-audit REQUEST (ประจำปี 2568) submitted to the Green Office steering committee chair, dated 17 Mar 2569, per at-least-annual frequency condition"
+      },
+      "year": 2568,
+      "status": "baseline-eligible",
+      "classification": "verified-execution",
+      "note": "THE baseline-eligible 7.1 evidence (per Phase B hard truth, only this p2 request is baseline-eligible): who (อาคารฯ), what (request for FY2568 internal audit), date (17 มี.ค. 2569), recipient (ประธานคณะกรรมการฯ). The audited period/scope (ประจำปี 2568) is stated on p1/p2; the request is the only record-backed claim. Request letter itself is the p2 embedded image (scan, pending OCR)."
+    },
+    {
+      "id": "claim-71-p5-criteria",
+      "indicator": "7.1",
+      "page": "p5",
+      "sourceRef": "7.1 (9-3-69).pdf",
+      "summary": {
+        "th": "จัดทำข้อกำหนดการตรวจประเมินภายใน 17 มีนาคม 2569 ครอบคลุมทุกหมวด + กำหนดการ (ติดตาม 20 มี.ค., ส่งรายงาน 23 มี.ค. 2569)",
+        "en": "Internal-audit criteria covering all categories prepared 17 Mar 2569 + schedule (follow-up 20 Mar, report 23 Mar 2569)"
+      },
+      "year": 2569,
+      "status": "QUARANTINE",
+      "classification": "declared-only",
+      "note": "Criteria/schedule are 2569-dated (17/20/23 มี.ค. 2569)."
+    },
+    {
+      "id": "claim-71-p6-assignment",
+      "indicator": "7.1",
+      "page": "p6",
+      "sourceRef": "7.1 (9-3-69).pdf",
+      "summary": {
+        "th": "กำหนดผู้ตรวจประเมินแต่ละหมวดเพียงพอ/เหมาะสมและเป็นอิสระ พร้อมรายนาม",
+        "en": "Assignment of auditors per category (adequate/independent) with roster"
+      },
+      "year": null,
+      "status": "YEAR_UNVERIFIED",
+      "classification": "declared-only",
+      "note": "No explicit year on page; roster has who/what but no date/result. Not promoted."
+    },
+    {
+      "id": "claim-71-p7-execution",
+      "indicator": "7.1",
+      "page": "p7",
+      "sourceRef": "7.1 (9-3-69).pdf",
+      "summary": {
+        "th": "ตรวจประเมิน 17 มีนาคม 2569 ครบทุกหมวด + สรุปผล; ติดตาม 20 มี.ค., จัดส่งรายงาน 23 มี.ค. 2569",
+        "en": "Audit execution 17 Mar 2569 across all categories + result summary; follow-up 20 Mar, report delivery 23 Mar 2569"
+      },
+      "year": 2569,
+      "status": "QUARANTINE",
+      "classification": "verified-execution",
+      "note": "Execution/result are 2569-dated; audited period is 2568. NOT claimed for the FY2568 baseline."
+    },
+    {
+      "id": "claim-71-p3p4-photos",
+      "indicator": "7.1",
+      "page": "p3-p4",
+      "sourceRef": "7.1 (9-3-69).pdf",
+      "summary": {
+        "th": "ภาพถ่าย/เอกสารสแกน (หน้า 3-4; 1 ภาพต่อหน้า) — เนื้อหายังไม่ผ่าน OCR",
+        "en": "Photos/scans (pages 3-4; 1 image each) — content pending OCR"
+      },
+      "year": null,
+      "status": "YEAR_UNVERIFIED",
+      "classification": "gap",
+      "note": "scan_only, pending OCR; not quoted, not scored, not promoted."
+    }
+  ],
+  "records": [
+    {
+      "id": "audit-internal-request-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "7.1"
+      ],
+      "issueCodes": [
+        "7.1"
+      ],
+      "categoryCode": "cat7",
+      "evidenceIds": [
+        "ev-cat7-internal-audit-request-fy2568"
+      ],
+      "sourceRef": "7.1 (9-3-69).pdf",
+      "manifestSha256": "ddd4a25292512a4dec5e08086083dcd0b53dfcd9b60af3975ff1de1a1e5dd485",
+      "relatedSources": [
+        "หมวด 7_(9-3-69).pdf"
+      ],
+      "verification": {
+        "status": "reviewed",
+        "basis": "Page 2 of 7.1 (9-3-69).pdf text layer content-verified: the FY2568 (ประจำปี 2568) internal-audit request was submitted to the Green Office steering committee chair (ประธานคณะกรรมการขับเคลื่อนฯ), dated 17 มี.ค. 2569, per the at-least-annual frequency condition. This is the ONLY baseline-eligible 7.1 claim. Appointment, competence, audit completion and result report are NOT claimed (2569-dated or scan-only). Request letter itself is the p2 embedded image (pending OCR). Cross-referenced on หมวด 7_(9-3-69).pdf p2 (contentDuplicateCandidate, separate sourceRef)."
+      },
+      "availability": "content-verified",
+      "kind": "auditRequestEvidence",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline — เฉพาะคำขอตรวจประเมินภายใน)",
+        "en": "FY2568 baseline (frozen — internal-audit request only)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "การแจ้งความประสงค์ขอรับการตรวจประเมินภายในสำนักงาน Green Office ประจำปี 2568 (เฉพาะคำขอตรวจประเมิน — ไม่รวมผลการตรวจหรือการผ่านเกณฑ์)",
+      "labelEn": "FY2568 Green Office internal-audit request (request only — no audit result, no PASS)",
+      "promoted": true,
+      "pageAnchor": "7.1 (9-3-69).pdf p2",
+      "limitation": {
+        "code": "SEVEN_ONE_LIMITED_TO_FY2568_REQUEST",
+        "note": "Only the p2 FY2568 request is baseline-eligible. Appointment (p1, 2569), criteria (p5, 2569), execution/result (p7, 2569) are QUARANTINE; roster (p6) YEAR_UNVERIFIED; photos (p3-p4) scan_only."
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "indicator": "7.1",
+      "status": "SCAN_PAGES_PENDING_OCR",
+      "note": "p3-p4 photos and the p2 request letter are image scans (pending OCR); facts rely on the verified text layer of p1/p2/p5/p6/p7."
+    },
+    {
+      "indicator": "7.1",
+      "status": "FY2569_CLAIMS_QUARANTINED",
+      "note": "Appointment (p1), criteria/schedule (p5) and execution/result (p7) are 2569-dated claims → QUARANTINE; not used as FY2568 evidence."
+    },
+    {
+      "indicator": "7.1",
+      "status": "FORMAL_ORDER_NOT_EVIDENCED",
+      "note": "Formal appointment order / auditor-competence certificates are not separately evidenced in the 3-file set; likely on p3-p4 scans (pending OCR)."
+    },
+    {
+      "indicator": "7.1",
+      "status": "RESULT_REPORT_NOT_IN_SET",
+      "note": "The 7.1 result report is referenced (ส่งรายงาน 23 มี.ค. 2569, p7) but no standalone report file exists in the reconciled source set."
+    }
+  ]
+}

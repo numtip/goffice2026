@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "advancement",
+  "updated": "2026-08-24",
+  "year": 2568,
+  "status": "evidence-gap",
+  "governance": "GOFFICE2026_CAT7_PHASE_A_SOURCE_DISPOSITION",
+  "note": "FY2568 historical-baseline contract for indicator 7.2 (การพัฒนาหรือต่อยอดการดำเนินงานสำนักงานสีเขียว / development & advancement). HARD TRUTH of the accepted Phase-A disposition: there is NO verified FY2568 execution evidence in the reconciled 3-file source set. Facets (1)-(3) (continuation/certification, mentor-speaker/study-visit, network/coaching) are FY2569-dated plans (ประจำปี 2569) → QUARANTINE (no sourceRef/evidence/public result). Facet (4) MAEJO PGS community activity has no explicit year and no date/result on the page → YEAR_UNVERIFIED candidate. p2 photos are scan_only (pending OCR). 7.2 is rendered as an explicit EVIDENCE_GAP — no fake evidence is created merely for coverage. The five 7.2 activity types are facets of indicator 7.2, not new indicators. หมวด 7_(9-3-69).pdf is contentDuplicateCandidate only (separate sourceRef, no dedupe). No score, no PASS, no certification status, no FY2569 result.",
+  "sources": [
+    {
+      "ref": "7.2 (9-3-69).pdf",
+      "role": "primary",
+      "inspection": "content-verified-text-layer",
+      "disposition": "canonical-pending-year-split"
+    },
+    {
+      "ref": "หมวด 7_(9-3-69).pdf",
+      "role": "content-duplicate-C1",
+      "inspection": "content-verified-text-layer",
+      "disposition": "canonical-pending-year-split"
+    },
+    {
+      "ref": "7.1 (9-3-69).pdf",
+      "role": "cross-reference",
+      "inspection": "content-verified-text-layer",
+      "disposition": "cross-reference-only"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-72-p1-continuation",
+      "indicator": "7.2",
+      "page": "p1",
+      "sourceRef": "7.2 (9-3-69).pdf",
+      "summary": {
+        "th": "(1) ต่อยอดสู่รางวัล/การรับรอง (Carbon Footprint for Organization, ISO 14001) — กำหนดแผนการดำเนินงานฯ ประจำปี 2569",
+        "en": "(1) Continuation toward awards/certification (CFO, ISO 14001) — FY2569 action-plan statement"
+      },
+      "year": 2569,
+      "status": "QUARANTINE",
+      "classification": "declared-only",
+      "note": "FY2569 plan statement; no event-specific who/date/result."
+    },
+    {
+      "id": "claim-72-p1-mentor-speaker",
+      "indicator": "7.2",
+      "page": "p1",
+      "sourceRef": "7.2 (9-3-69).pdf",
+      "summary": {
+        "th": "(2) ส่งเสริมเป็นวิทยากร/ให้คำแนะนำ/สถานที่ศึกษาดูงาน (คณะสัตวแพทยศาสตร์ ม.แม่โจ้) — กำหนดแผนฯ ประจำปี 2569",
+        "en": "(2) Mentor-speaker / study-visit promotion (Faculty of Veterinary Medicine, Maejo) — FY2569 plan statement"
+      },
+      "year": 2569,
+      "status": "QUARANTINE",
+      "classification": "declared-only",
+      "note": "FY2569 plan; target named but no event/date/result."
+    },
+    {
+      "id": "claim-72-p1-network",
+      "indicator": "7.2",
+      "page": "p1",
+      "sourceRef": "7.2 (9-3-69).pdf",
+      "summary": {
+        "th": "(3) สร้างเครือข่าย/ทีมพี่เลี้ยง Coaching (คณะสัตวแพทยศาสตร์) — กำหนดแผนฯ ประจำปี 2569",
+        "en": "(3) Network / coaching mentorship (Faculty of Veterinary Medicine) — FY2569 plan statement"
+      },
+      "year": 2569,
+      "status": "QUARANTINE",
+      "classification": "declared-only",
+      "note": "FY2569 plan; no event/date/result."
+    },
+    {
+      "id": "claim-72-p1-community",
+      "indicator": "7.2",
+      "page": "p1",
+      "sourceRef": "7.2 (9-3-69).pdf",
+      "summary": {
+        "th": "(4) กิจกรรมร่วมกับชุมชน: ส่งเสริมเกษตรอินทรีย์ผ่านโครงการอบรม MAEJO PGS — ระบุว่า \"มีการดำเนินกิจกรรมร่วมกับชุมชน\" แต่ไม่มีวันที่/ผลลัพธ์ในหน้า",
+        "en": "(4) Community activity: organic-farming promotion via MAEJO PGS training — activity declared with program name but no date/result on page"
+      },
+      "year": null,
+      "status": "YEAR_UNVERIFIED",
+      "classification": "candidate",
+      "note": "No explicit year; concrete program named (MAEJO PGS) but no execution date/result → candidate, not verified execution. Photos on p2 scan (pending OCR)."
+    },
+    {
+      "id": "claim-72-p2-photos",
+      "indicator": "7.2",
+      "page": "p2",
+      "sourceRef": "7.2 (9-3-69).pdf",
+      "summary": {
+        "th": "ภาพถ่ายกิจกรรม (หน้า 2; 3 ภาพ) — เนื้อหายังไม่ผ่าน OCR",
+        "en": "Activity photos (page 2; 3 images) — content pending OCR"
+      },
+      "year": null,
+      "status": "YEAR_UNVERIFIED",
+      "classification": "gap",
+      "note": "scan_only, pending OCR; not quoted, not scored, not promoted."
+    }
+  ],
+  "records": [],
+  "evidenceGap": {
+    "indicator": "7.2",
+    "status": "EVIDENCE_GAP",
+    "noteTh": "ไม่พบหลักฐานการดำเนินงานปี 2568 ที่ตรวจสอบได้ในชุดแหล่งข้อมูลที่ผ่านการกระทบยอด (3 ไฟล์) ข้อ (1)-(3) เป็นแผนปี 2569 (QUARANTINE) ข้อ (4) MAEJO PGS ไม่ระบุปีและไม่มีวันที่/ผลลัพธ์ (candidate · YEAR_UNVERIFIED) หน้าภาพถ่ายยังไม่ผ่าน OCR",
+    "noteEn": "No verified FY2568 execution evidence in the reconciled 3-file source set. Facets (1)-(3) are FY2569-dated plans (QUARANTINE); facet (4) MAEJO PGS has no explicit year and no date/result (candidate · YEAR_UNVERIFIED); photo page pending OCR.",
+    "mandatory": true,
+    "noFakeEvidence": true
+  },
+  "gaps": [
+    {
+      "indicator": "7.2",
+      "status": "EVIDENCE_GAP",
+      "note": "No verified FY2568 execution evidence — explicit gap; no fake evidence for coverage."
+    },
+    {
+      "indicator": "7.2",
+      "status": "SCAN_PAGES_PENDING_OCR",
+      "note": "p2 activity photos (3 images) are scan_only (pending OCR)."
+    },
+    {
+      "indicator": "7.2",
+      "status": "YEAR_UNVERIFIED_MAEJO_PGS",
+      "note": "MAEJO PGS community activity (facet 4) has no explicit year and no date/result on the page — needs FY attribution + supporting event evidence."
+    }
+  ]
+}

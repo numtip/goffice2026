@@ -813,8 +813,8 @@
       ]
     },
     "cat4": {
-      "count": 28,
-      "bytes": 144189887,
+      "count": 32,
+      "bytes": 147885351,
       "documents": [
         {
           "path": "4. หมวด 4 ข้อ 4.1(1) บันทึกปริมาณขยะ.xls  ปี 2568.xls 14-02-68.xlsx",
@@ -1025,6 +1025,30 @@
           "url": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B9%E0%B9%81%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9A%E0%B8%B3%E0%B8%9A%E0%B8%B1%E0%B8%94%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20(4).txt"
         },
         {
+          "path": "ปี 2566.pdf",
+          "title": "ปี 2566.pdf",
+          "type": "pdf",
+          "sizeBytes": 68117,
+          "sha256": "3a803fd017d0432c7466aa91d65c022203dd6d1ed4aeb4888b613a65f5860100",
+          "url": "/documents/fy2568/cat4/%E0%B8%9B%E0%B8%B5%202566.pdf"
+        },
+        {
+          "path": "ปี 2567.pdf",
+          "title": "ปี 2567.pdf",
+          "type": "pdf",
+          "sizeBytes": 67807,
+          "sha256": "c6160cfb3457c0ab1657431b8d6d95c1456d430aec1bf412bf24a47dea8d5202",
+          "url": "/documents/fy2568/cat4/%E0%B8%9B%E0%B8%B5%202567.pdf"
+        },
+        {
+          "path": "ปี 2568.pdf",
+          "title": "ปี 2568.pdf",
+          "type": "pdf",
+          "sizeBytes": 68373,
+          "sha256": "75a6690dc217115d5302cebc3e993cfd236aadfba4ae1fa11e848f461b8e79e5",
+          "url": "/documents/fy2568/cat4/%E0%B8%9B%E0%B8%B5%202568.pdf"
+        },
+        {
           "path": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (02-03-69).docx",
           "title": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (02-03-69).docx",
           "type": "docx",
@@ -1039,6 +1063,14 @@
           "sizeBytes": 49759555,
           "sha256": "52c5bb3cee45013f0b78b2e06800dc9acb29e61eb72921d746e3685336ebbbb8",
           "url": "/documents/fy2568/cat4/%E0%B8%AB%E0%B8%A1%E0%B8%A7%E0%B8%94%E0%B8%97%E0%B8%B5%E0%B9%88%204%20%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9C%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%20%20(10-03-69).docx"
+        },
+        {
+          "path": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (10-03-69).pdf",
+          "title": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (10-03-69).pdf",
+          "type": "pdf",
+          "sizeBytes": 3491167,
+          "sha256": "1577e4a438076d6264a14955dd69e4a4e22979616ab40e6a318728e274a307c9",
+          "url": "/documents/fy2568/cat4/%E0%B8%AB%E0%B8%A1%E0%B8%A7%E0%B8%94%E0%B8%97%E0%B8%B5%E0%B9%88%204%20%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9C%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%20%20(10-03-69).pdf"
         }
       ]
     },
@@ -1717,6 +1749,6 @@
       ]
     }
   },
-  "total": 209,
-  "totalBytes": 790135849
+  "total": 213,
+  "totalBytes": 793831313
 }

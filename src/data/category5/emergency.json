@@ -1,0 +1,181 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "emergency",
+  "updated": "2026-08-24",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CAT5_PHASE_A_SOURCE_DISPOSITION",
+  "note": "FY2568 historical-baseline contract for 5.5.1-5.5.3 (การเตรียมพร้อมต่อสภาวะฉุกเฉิน). LOCKED DISCLOSURES: the FY2568 drill result (30 May 2568, 104 attendees = 78.35% vs >=40%) is frozen baseline and must NEVER be relabeled FY2569; the 5.5.2 personnel-understanding percentage is NOT evidenced; hose-cabinet report 5.5.3-3 is EXPECTED_SOURCE_UNCONFIRMED (numbering skips floor 3 copy). Static safety infrastructure (plans, exit signage, flags, assembly points, equipment inventory 26 extinguishers / 12 hose points) is reusable baseline. No FY2569 facts.",
+  "sources": [
+    {
+      "ref": "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.1 การอบรมฝึกซ้อมดับเพลิง/5.5.1-6 ภาพประกอบวันอพยพหนีไฟ.pdf",
+      "role": "primary",
+      "inspection": "text-layer-present",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.2 แผนฉุกเฉิน/5.5.2(1) แผนฉุกเฉิน.pdf",
+      "role": "plan",
+      "inspection": "text-layer-present",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.3 ความเพียงพอและการพร้อมใช้อุปกรณ์ดับเพลิง/5.5(2)-1ความเพียงพอและพร้อมใช้อุปกรณ์ดับเพลิง.pdf",
+      "role": "equipment",
+      "inspection": "text-layer-present",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx",
+      "role": "supporting-report",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    }
+  ],
+  "records": [
+    {
+      "id": "emergency-drill-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "5.5.1"
+      ],
+      "issueCodes": [
+        "5.5"
+      ],
+      "categoryCode": "cat5",
+      "evidenceIds": [
+        "ev-cat5-emergency-drill-fy2568"
+      ],
+      "sourceRef": "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.1 การอบรมฝึกซ้อมดับเพลิง/5.5.1-6 ภาพประกอบวันอพยพหนีไฟ.pdf",
+      "manifestSha256": "e9821c8a136ef678955094ee3f1965a31053abd7bad17846a8d69fe6b1b06385",
+      "relatedSources": [
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.1 การอบรมฝึกซ้อมดับเพลิง/5.5.1-1 ขออนุมัติจัดโครงการอพยพหนีภัยกรณีเกิดเพลิงไหม้และแผ่นดินไหวปี68.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.1 การอบรมฝึกซ้อมดับเพลิง/5.5.1-2 แผนผังอาคารสมเด็จพระเทพฯ (Green Office) ปี 2568.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.1 การอบรมฝึกซ้อมดับเพลิง/5.5.1-3 ป้ายทางหนีไฟ.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.1 การอบรมฝึกซ้อมดับเพลิง/5.5.1-4 รูปธงนำทาง.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.1 การอบรมฝึกซ้อมดับเพลิง/5.5.1-5 จุดรวมพล.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.1 การอบรมฝึกซ้อมดับเพลิง/5.5.1-7ใบประกาศ ปี 2568.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.pdf",
+        "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx"
+      ],
+      "verification": {
+        "status": "reviewed",
+        "basis": "Drill photo pack has a readable text layer; drill facts (planned Mar 2568, executed 30 May 2568 08.30-17.00; 97 building personnel, 104 attendees = 78.35% vs >=40% criterion; +28 external participants; flag bearers per floor; assembly point front of building, backup at ลานจัตุรัสนานาชาติ) cross-verified against the content-verified annual report DOCX. Approval scan and certificate scan pending OCR."
+      },
+      "availability": "metadata-verified",
+      "kind": "drillEvidence",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "การอบรมฝึกซ้อมอพยพหนีไฟ 30 พ.ค. 2568 พร้อมแผนผัง ป้าย ธง และจุดรวมพล",
+      "labelEn": "FY2568 fire drill (30 May 2568) with floor plans, exit signage, flags and assembly points",
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "annual drill; attendance >=40% per department; new photos + certificate"
+      }
+    },
+    {
+      "id": "emergency-plan-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "5.5.2"
+      ],
+      "issueCodes": [
+        "5.5"
+      ],
+      "categoryCode": "cat5",
+      "evidenceIds": [
+        "ev-cat5-emergency-plan-fy2568"
+      ],
+      "sourceRef": "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.2 แผนฉุกเฉิน/5.5.2(1) แผนฉุกเฉิน.pdf",
+      "manifestSha256": "f6695df01de54238e67e3faaa7756ee806bf39e536373b94123f1bf6681c75f7",
+      "relatedSources": [
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.2 แผนฉุกเฉิน/5.5.2(2)แผนป้องกันและระงับอัคคีภัย.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.pdf",
+        "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx"
+      ],
+      "verification": {
+        "status": "reviewed",
+        "basis": "Emergency plan and fire prevention/suppression plan have readable text layers; plan structure (fire-watch plan, training plan, suppression chain, evacuation plan, relief/restoration plans) cross-verified against the content-verified annual report DOCX. The personnel-understanding percentage required by the criterion is NOT evidenced."
+      },
+      "availability": "metadata-verified",
+      "kind": "emergencyPlan",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "แผนฉุกเฉิน แผนป้องกันและระงับอัคคีภัย ปี 2568",
+      "labelEn": "FY2568 emergency plan and fire prevention/suppression plan",
+      "percentNotEvidenced": true,
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "annual plan currency review + collect personnel-understanding percentage (current GAP)"
+      }
+    },
+    {
+      "id": "emergency-equipment-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "5.5.3"
+      ],
+      "issueCodes": [
+        "5.5"
+      ],
+      "categoryCode": "cat5",
+      "evidenceIds": [
+        "ev-cat5-emergency-equipment-fy2568"
+      ],
+      "sourceRef": "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.3 ความเพียงพอและการพร้อมใช้อุปกรณ์ดับเพลิง/5.5(2)-1ความเพียงพอและพร้อมใช้อุปกรณ์ดับเพลิง.pdf",
+      "manifestSha256": "62d3ef804ad07505e3d37c74da5e8c9abd1438ce9dbe04fc0681dffe26c91bcc",
+      "relatedSources": [
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.3 ความเพียงพอและการพร้อมใช้อุปกรณ์ดับเพลิง/5.5(2)-2บันทึกตรวจสภาพถังดับเพลิง ชั้นที่ 1 ปี 68.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.3 ความเพียงพอและการพร้อมใช้อุปกรณ์ดับเพลิง/5.5(2)-3รายงานตรวจสอบถังดับเพลิง ชั้น 1 ปี68.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.3 ความเพียงพอและการพร้อมใช้อุปกรณ์ดับเพลิง/5.5(2)-4บันทึกตรวจสภาพถังดับเพลิง ชั้นที่ 2 ปี 68.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.3 ความเพียงพอและการพร้อมใช้อุปกรณ์ดับเพลิง/5.5(2)-5รายงานตรวจสอบถังดับเพลิง ชั้น 2 ปี68.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.3 ความเพียงพอและการพร้อมใช้อุปกรณ์ดับเพลิง/5.5(2)-6บันทึกตรวจสภาพถังดับเพลิง ชั้นที่ 3 ปี68.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.3 ความเพียงพอและการพร้อมใช้อุปกรณ์ดับเพลิง/5.5(2)-7รายงานตรวจสอบถังดับเพลิง ชั้น 3 ปี68.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.3 ความเพียงพอและการพร้อมใช้อุปกรณ์ดับเพลิง/5.5.3-1รายงานตู้สายดับเพลิง ชั้น 1.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.3 ความเพียงพอและการพร้อมใช้อุปกรณ์ดับเพลิง/5.5.3-2รายงานตู้สายดับเพลิง ชั้น 2.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.3 ความเพียงพอและการพร้อมใช้อุปกรณ์ดับเพลิง/5.5.3-4รายงานตู้สายดับเพลิง ชั้น 3.pdf",
+        "5.5 การเตรียมพร้อมต่อสภาวะฉุกเฉิน/5.5.pdf",
+        "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx"
+      ],
+      "verification": {
+        "status": "reviewed",
+        "basis": "Equipment summary has a readable text layer; inventory facts (26 red extinguishers, 12 hose points, alarm system + heat detectors, unobstructed access) and per-floor inspection logs cross-verified against the content-verified annual report DOCX. Extinguisher log scans (floors 1-3) pending OCR. Hose-cabinet report 5.5.3-3 is absent from the source set — EXPECTED_SOURCE_UNCONFIRMED."
+      },
+      "availability": "metadata-verified",
+      "kind": "equipmentReadiness",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "ความพร้อมใช้ของอุปกรณ์ดับเพลิง (ถังดับเพลิง 26 จุด สายฉีดน้ำ 12 จุด) พร้อมบันทึกตรวจสภาพรายชั้น",
+      "labelEn": "FY2568 fire-equipment readiness (26 extinguishers, 12 hose points) with per-floor inspection logs",
+      "expectedSourceUnconfirmed": {
+        "ref": "5.5.3-3 (รายงานตู้สายดับเพลิง ชั้น 3)",
+        "reason": "numbering skips from 5.5.3-2 to 5.5.3-4; floor-3 coverage is evidenced by 5.5.3-4 but the -3 slot is unconfirmed"
+      },
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "per-schedule extinguisher/hose/alarm inspections across all floors"
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "indicator": "5.5.2",
+      "status": "PERCENT_NOT_EVIDENCED",
+      "note": "Personnel-understanding percentage required by the criterion is not evidenced in FY2568 sources."
+    },
+    {
+      "indicator": "5.5.3",
+      "status": "EXPECTED_SOURCE_UNCONFIRMED",
+      "note": "Hose-cabinet report 5.5.3-3 absent; floor-3 covered by 5.5.3-4 pending data-owner confirmation."
+    }
+  ]
+}

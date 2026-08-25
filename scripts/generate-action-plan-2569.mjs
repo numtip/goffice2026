@@ -61,6 +61,137 @@ const MONTHS = [
 
 const MONTH_LABELS = new Set(MONTHS.map((m) => m.labelTh));
 
+/**
+ * Cat2 FY2569 action-plan canonical indicator mapping (GO-CAT2-PHASE-A §2, C4).
+ * Keyed by the deterministic generated activity id; legacy indicatorCode retained.
+ * Frozen counts: 2.1.1=8 · 2.2.1=1 · 2.2.2=9 · 2.2.4=2 · 2.1.2=0 · 2.2.3=0.
+ * The workbook keeps its legacy 2.1–2.7 numbering (binary Excel edit is not
+ * safely reproducible); the canonical code lives in the generated JSON + docs.
+ */
+const CAT2_CANONICAL_INDICATOR = new Map([
+  ['cat-2-2.1-2.1-1', '2.2.1'], // ประชุมคณะกรรมการหมวด 2 → comms responsibility/guidelines
+  ['cat-2-2.1.1-2.1.1-2', '2.2.2'], // ดำเนินการตามแผนการสื่อสารสิ่งแวดล้อม → campaign execution
+  ['cat-2-2.2-3-3', '2.1.1'], // module trainings (formal training delivery)
+  ['cat-2-2.2-4-4', '2.1.1'],
+  ['cat-2-2.2-5-5', '2.1.1'],
+  ['cat-2-2.2-6-6', '2.1.1'],
+  ['cat-2-2.2-7-7', '2.1.1'],
+  ['cat-2-2.2-8-8', '2.1.1'],
+  ['cat-2-2.3-2.3-9', '2.1.1'], // registration + pre/post evaluation → 2.1.1 evaluation/records
+  ['cat-2-2.4-2.4-10', '2.1.1'], // training history/records → 2.1.1 records
+  ['cat-2-2.5-11-11', '2.2.2'], // recurring awareness campaign series ครั้งที่ 1–8
+  ['cat-2-2.5-12-12', '2.2.2'],
+  ['cat-2-2.5-13-13', '2.2.2'],
+  ['cat-2-2.5-14-14', '2.2.2'],
+  ['cat-2-2.5-15-15', '2.2.2'],
+  ['cat-2-2.5-16-16', '2.2.2'],
+  ['cat-2-2.5-17-17', '2.2.2'],
+  ['cat-2-2.5-18-18', '2.2.2'],
+  ['cat-2-2.6-2.6-19', '2.2.4'], // systematic feedback channel → 2.2.4
+  ['cat-2-2.7-2.7-20', '2.2.4'], // summarize/analyze/report to management → 2.2.4
+]);
+
+/**
+ * Cat3 FY2569 action-plan canonical indicator mapping (GO-CAT3 §6, C4).
+ * Keyed by the deterministic generated activity id; legacy indicatorCode retained.
+ * Frozen counts: 3.1.1=2 · 3.2.1=1 · 3.2.2=1 · 3.1.2=1 · 3.4.1=1 (total 6).
+ * Meaning-based mapping (by activityTh, not blind renumbering):
+ *   - cross-domain Plan (มาตรการ/ค่าเป้าหมาย/แนวทางปฏิบัติ, น้ำ first) → 3.1.1
+ *   - solar + energy-saving lighting plan → 3.2.1 (matches FY2568 3.2.1 evidence)
+ *   - AC-condensate water refinement plan → 3.1.1 (AC-water reuse is a 3.1.1 measure)
+ *   - monthly consumption data collection + analysis → 3.2.2 (covers 3.1.2/3.2.2/3.2.5/3.3.2)
+ *   - report consumption results → 3.1.2 (water listed first in the activity domain list)
+ *   - green meetings/exhibitions → 3.4.1
+ * No new activities and no FY2569 facts are added.
+ */
+const CAT3_CANONICAL_INDICATOR = new Map([
+  ['cat-3-3.1-3.1-1', '3.1.1'], // กำหนดมาตรการ/ค่าเป้าหมาย/แนวทางปฏิบัติ (cross-domain Plan; น้ำ first)
+  ['cat-3-3.2-3.2-2', '3.2.1'], // แผนติดตั้งโซล่าร์เซล + ระบบแสงสว่างประหยัดพลังงาน
+  ['cat-3-3.3-3.3-3', '3.1.1'], // แผนปรุงปรับน้ำทิ้งเครื่องปรับอากาศ (AC-water reuse measure)
+  ['cat-3-3.4-3.4-4', '3.2.2'], // เก็บข้อมูลการใช้พลังงาน/ทรัพยากรรายเดือน + วิเคราะห์ (น้ำ/ไฟฟ้า/น้ำมัน/กระดาษ)
+  ['cat-3-3.5-3.5-5', '3.1.2'], // รายงานผลการใช้พลังงาน/ทรัพยากรให้ผู้เกี่ยวข้องทราบ (น้ำ listed first)
+  ['cat-3-3.6-3.6-6', '3.4.1'], // การประชุมและการจัดนิทรรศการ (green meetings)
+]);
+
+/**
+ * Cat4 FY2569 action-plan canonical indicator mapping (GO-CAT4 §6, C4).
+ * Keyed by the deterministic generated activity id; legacy indicatorCode retained
+ * (the FY2569 workbook already uses the canonical 4.x.x codes for most rows).
+ * Frozen counts: 4.1.1=5 · 4.1.2=8 · 4.1.3=3 · 4.2.1=4 · 4.2.2=4 · disclosed=1 (total 25).
+ * Meaning-based mapping (by activityTh, not blind renumbering):
+ *   - 4.1.1 measures/Zero-waste/foam-free/intent/campaign → 4.1.1
+ *   - 4.1.2 sorting/collection/disposal operations → 4.1.2
+ *   - 4.1.3 waste-data/reuse/disposal-trend → 4.1.3
+ *   - Big Clean Day (cleaning/sorting/collection campaign) → 4.1.2
+ *   - 4.2.1 wastewater control → 4.2.1 · 4.2.2 treatment care → 4.2.2
+ * DISCLOSED (no canonical indicator): 5ส (5S workplace-organization activity)
+ *   cannot be supported by a single canonical Cat4 indicator — left null and
+ *   disclosed (canonicalMappingNote), never invented.
+ * No new activities and no FY2569 facts are added.
+ */
+const CAT4_CANONICAL_INDICATOR = new Map([
+  ['cat-4-4.1.1-1-1', '4.1.1'],
+  ['cat-4-4.1.1-2-2', '4.1.1'],
+  ['cat-4-4.1.1-3-3', '4.1.1'],
+  ['cat-4-4.1.1-4-4', '4.1.1'],
+  ['cat-4-4.1.1-5-5', '4.1.1'],
+  ['cat-4-4.1.2-6-6', '4.1.2'],
+  ['cat-4-4.1.2-7-7', '4.1.2'],
+  ['cat-4-4.1.2-8-8', '4.1.2'],
+  ['cat-4-4.1.2-9-9', '4.1.2'],
+  ['cat-4-4.1.2-10-10', '4.1.2'],
+  ['cat-4-4.1.2-11-11', '4.1.2'],
+  ['cat-4-4.1.2-12-12', '4.1.2'],
+  ['cat-4-4.1.3-13-13', '4.1.3'],
+  ['cat-4-4.1.3-14-14', '4.1.3'],
+  ['cat-4-4.1.3-15-15', '4.1.3'],
+  // cat-4-4.1.3-16-16 (5ส) → DISCLOSED, no canonical indicator
+  ['cat-4-4.1.3-17-17', '4.1.2'], // Big Clean Day → cleaning/sorting/collection supports 4.1.2
+  ['cat-4-4.2.1-18-18', '4.2.1'],
+  ['cat-4-4.2.1-19-19', '4.2.1'],
+  ['cat-4-4.2.1-20-20', '4.2.1'],
+  ['cat-4-4.2.1-21-21', '4.2.1'],
+  ['cat-4-4.2.2-22-22', '4.2.2'],
+  ['cat-4-4.2.2-23-23', '4.2.2'],
+  ['cat-4-4.2.2-24-24', '4.2.2'],
+  ['cat-4-4.2.2-25-25', '4.2.2'],
+]);
+
+/** Disclosure note for Cat4 activities without a canonical indicator (GO-CAT4 C4). */
+const CAT4_CANONICAL_MAPPING_NOTE = new Map([
+  ['cat-4-4.1.3-16-16', 'DISCLOSED: กิจกรรม 5 ส (5S workplace-organization) cannot be supported by a single canonical Cat4 indicator; left unmapped rather than invented.'],
+]);
+
+/**
+ * Cat5 canonical-indicator mapping (GO-CAT5 Phase B, semantic correction).
+ * The FY2569 workbook keeps its legacy 5.1-5.16 numbering; canonical codes are
+ * assigned by CRITERIA MEANING of the activity (activityTh), never by blind
+ * renumbering. Frozen counts: 5.1.1=5 · 5.2.1=1 · 5.4.1=1 · 5.4.3=4 ·
+ * 5.4.4=1 · 5.5.1=1 · 5.5.3=1 (total 14 mapped). 5.4.2 and 5.5.2 are
+ * deliberately 0 — no plan activity maps to the space-utilization % or the
+ * emergency-understanding % (both are FY2569 measurement GAPs disclosed in
+ * GO-CAT5-PHASE-A, never backfilled). Bookshelf/journal cleaning (5.5),
+ * work-result reporting (5.15) and the Cat5 committee meeting (5.16) are left
+ * unmapped rather than invented. No new activities and no FY2569 facts added.
+ */
+const CAT5_CANONICAL_INDICATOR = new Map([
+  ['cat-5-5.1-1-1', '5.1.1'], // (1) contractor AC cleaning — 5.1.1 maintenance
+  ['cat-5-5.1-2-2', '5.1.1'], // (2) staff AC cleaning — 5.1.1 maintenance
+  ['cat-5-5.2-5.2-3', '5.1.1'], // air-purifier cleaning — 5.1.1 maintenance
+  ['cat-5-5.3-5.3-4', '5.1.1'], // printer cleaning — 5.1.1 maintenance
+  ['cat-5-5.4-5.4-5', '5.1.1'], // carpet cleaning — 5.1.1 indoor-air maintenance
+  ['cat-5-5.6-5.6-7', '5.5.3'], // alarm/emergency-light/extinguisher readiness survey — 5.5.3
+  ['cat-5-5.7-5.7-8', '5.4.3'], // rest/recreation-area care — 5.4.3 upkeep
+  ['cat-5-5.8-5.8-9', '5.4.3'], // green/shared-area care — 5.4.3 upkeep
+  ['cat-5-5.9-5.9-10', '5.4.1'], // green-area expansion — 5.4.1 livability plan
+  ['cat-5-5.1-5.1-11', '5.4.4'], // shared-area vector-trail inspection — 5.4.4
+  ['cat-5-5.11-5.11-12', '5.4.3'], // workspace care — 5.4.3 upkeep
+  ['cat-5-5.12-5.12-13', '5.4.3'], // surrounding-area care — 5.4.3 upkeep
+  ['cat-5-5.13-5.13-14', '5.5.1'], // fire drill / evacuation training — 5.5.1
+  ['cat-5-5.14-5.14-15', '5.2.1'], // light-intensity measurement — 5.2.1
+]);
+
+
 function cell(v) {
   return String(v ?? '')
     .replace(/\r\n/g, '\n')
@@ -162,9 +293,21 @@ function parseWorkbook(rows) {
     const indicatorCode =
       /^\d+\.\d+(\.\d+)?$/.test(taskNumber ?? '') ? taskNumber : currentIndicator || null;
 
+    const activityId = `${currentCategory.id}-${slugPart(indicatorCode || 'item')}-${slugPart(taskNumber || String(activitySeq))}-${activitySeq}`;
+
+    const canonicalIndicatorCode =
+      CAT5_CANONICAL_INDICATOR.get(activityId) ??
+      CAT4_CANONICAL_INDICATOR.get(activityId) ??
+      CAT3_CANONICAL_INDICATOR.get(activityId) ??
+      CAT2_CANONICAL_INDICATOR.get(activityId) ??
+      null;
+    const canonicalMappingNote = CAT4_CANONICAL_MAPPING_NOTE.get(activityId) ?? null;
+
     currentCategory.activities.push({
-      id: `${currentCategory.id}-${slugPart(indicatorCode || 'item')}-${slugPart(taskNumber || String(activitySeq))}-${activitySeq}`,
+      id: activityId,
       indicatorCode: indicatorCode || null,
+      canonicalIndicatorCode,
+      ...(canonicalMappingNote ? { canonicalMappingNote } : {}),
       taskNumber,
       activityTh: titleParts.map((p) => p.trim()).filter(Boolean).join('\n'),
       frequency: cell(row[3]) || null,
