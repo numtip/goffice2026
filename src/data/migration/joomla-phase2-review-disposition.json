@@ -118,6 +118,7 @@
     "KEEP": 8,
     "MERGE": 1,
     "EXCLUDE": 1,
-    "REVIEW": 2
+    "REVIEW": 2,
+    "note": "PO 2026-08-25: B2 migrated KEEP cohort (#55,#43,#39+#40,#36,#32,#31,#29,#28). #30 KEEP separate (not B2). #56 REVIEW. #21 EXCLUDE."
   }
 }
