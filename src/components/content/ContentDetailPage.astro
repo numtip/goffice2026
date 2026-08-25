@@ -4,6 +4,7 @@ import '../../styles/global.css';
 import { getLocalizedPath } from '../../i18n/utils';
 import type { ContentRecord } from '../../utils/content-presentation';
 import { formatPublishDate, pickLocalizedContent } from '../../utils/content-presentation';
+import { withBase } from '../../utils/with-base';
 
 interface Props {
   item: ContentRecord;
@@ -72,7 +73,7 @@ const hubLabel = isTh ? hubLabelTh : hubLabelEn;
         {item.media.filter((m) => m.type === 'image').map((media) => (
           <figure>
             <img
-              src={media.src}
+              src={withBase(media.src)}
               alt={pickLocalizedContent(locale, media.altTh ?? title, media.altEn ?? title, item.translationPending)}
               class="w-full rounded-2xl border border-gray-200"
               loading="lazy"
