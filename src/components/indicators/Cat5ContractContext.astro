@@ -1,0 +1,152 @@
+---
+/**
+ * Cat5ContractContext.astro — per-indicator FY2568 baseline context for
+ * Category 5 (environment & safety). Data comes only from the canonical static
+ * contracts in src/data/category5/*.json. Honest limitation notes are grounded
+ * in GO-CAT5-PHASE-A; no score, no PASS claim, no FY2569 facts.
+ */
+import {
+  buildCat5DomainSnapshot,
+  contractForDomain,
+  cycleStagesForIndicator,
+  domainForIndicator,
+  domainLabel,
+  resolveDomainFactValue,
+  CAT5_YEAR,
+} from '../../utils/category5-presentation';
+
+interface Props {
+  indicatorCode: string;
+  locale: 'th' | 'en';
+}
+
+const { indicatorCode, locale } = Astro.props;
+const isEn = locale === 'en';
+
+function t(field: { th: string; en: string }): string {
+  return isEn ? field.en : field.th;
+}
+
+const domain = domainForIndicator(indicatorCode);
+const snapshot = domain ? buildCat5DomainSnapshot(domain) : null;
+const stages = cycleStagesForIndicator(indicatorCode);
+
+// Per-indicator honest limitation notes grounded in GO-CAT5-PHASE-A / the manifest.
+const LIMITATIONS: Record<string, { th: string; en: string }> = {
+  '5.1.1': {
+    th: 'แผน/ฟอร์ม/ภาพการบำรุงรักษาทั้ง 9 ชุดเป็นภาพสแกน (ยังไม่ตรวจสอบเนื้อหา) ข้อเท็จจริงการปฏิบัติตรวจสอบข้ามกับรายงานประจำปีที่อ่านได้',
+    en: 'All 9 maintenance packs are image scans (content pending OCR); execution facts cross-verified via the content-verified annual report.',
+  },
+  '5.1.2': {
+    th: 'ชุดหลักฐานรณรงค์มีเลเยอร์ข้อความอ่านได้ ภาพป้ายเป็นรูปภาพ',
+    en: 'Campaign pack has a readable text layer; signage photos remain images.',
+  },
+  '5.1.3': {
+    th: 'มีเพียงบันทึกมาตรการในรายงานประจำปี ไม่มีไฟล์หลักฐานแยก การดำเนินการขึ้นกับการมีการปรับปรุงจริง',
+    en: 'Narrative measures only (annual report); no standalone evidence file; execution conditional on renovation occurring.',
+  },
+  '5.2.1': {
+    th: 'ค่า lux รายจุดต้องได้รับการตรวจทานโดยคนก่อนอ้างสิทธิ์เชิงตัวเลข การวัดเป็นหลักฐานรายปี — ต้องวัดใหม่ในปี 2569',
+    en: 'Per-point lux values need human review before any numeric claim; measurement is annual — must be re-done in FY2569.',
+  },
+  '5.3.1': {
+    th: 'อาคารแจ้งว่าไม่ได้ตรวจวัดระดับเสียง (ไม่มีแหล่งก่อเสียงดัง) — สถานะ CONTEXTUAL_NA_PENDING_ASSESSOR รอการยืนยันจากผู้ประเมิน',
+    en: 'Building declares no sound-level measurement performed (no significant noise source) — CONTEXTUAL_NA_PENDING_ASSESSOR; assessor confirmation pending.',
+  },
+  '5.3.2': {
+    th: 'มีเพียงบันทึกมาตรการและห้องสำรองรายชั้นในรายงานประจำปี ไม่มีไฟล์หลักฐานแยก',
+    en: 'Narrative measures with designated backup rooms only (annual report); no standalone evidence file.',
+  },
+  '5.4.1': {
+    th: 'แผนดูแลพื้นที่เป็นภาพสแกน (ยังไม่ตรวจสอบเนื้อหา) ข้อเท็จจริงพื้นที่ตรวจสอบข้ามกับรายงานประจำปี',
+    en: 'Area-care plan is an image scan (content pending OCR); area facts cross-verified via the annual report.',
+  },
+  '5.4.2': {
+    th: 'เกณฑ์กำหนดร้อยละการใช้พื้นที่ แต่แหล่งข้อมูลปี 2568 มีเพียงบันทึกการสำรวจเชิงบรรยาย — ไม่มีตัวเลขร้อยละ',
+    en: 'The criterion expects a utilization percentage, but FY2568 sources provide narrative survey records only — percentage NOT evidenced.',
+  },
+  '5.4.3': {
+    th: 'หลักฐานกิจกรรมเป็นภาพสแกน และไม่มีตัวเลขร้อยละการดูแล สัญญาจ้างงบ 69 ถูกแยกออกจากข้อมูลฐานปี 2568',
+    en: 'Activity evidence is scans and no maintenance percentage is evidenced; the FY2569-budget contract (งบ 69) is excluded from the FY2568 baseline.',
+  },
+  '5.4.4': {
+    th: 'แผนควบคุมพาหะนำเชื้อรายชั้นเป็นภาพสแกน (ยังไม่ตรวจสอบเนื้อหา) ข้อเท็จจริงโครงการตรวจสอบข้ามกับรายงานประจำปี',
+    en: 'Per-floor vector-control plans are image scans (content pending OCR); program facts cross-verified via the annual report.',
+  },
+  '5.5.1': {
+    th: 'ผลการซ้อมปี 2568 (104 ราย ≈78.35%) เป็นข้อมูลฐานที่ตรึงแล้ว ต้องซ้อมใหม่ในปี 2569 ใบอนุมัติ/ใบประกาศเป็นสแกน',
+    en: 'The FY2568 drill result (104 attendees ≈78.35%) is frozen baseline; a new drill is required in FY2569. Approval/certificate scans pending OCR.',
+  },
+  '5.5.2': {
+    th: 'แผนมีเลเยอร์ข้อความอ่านได้ แต่ร้อยละความเข้าใจของพนักงานตามเกณฑ์ยังไม่มีหลักฐาน',
+    en: 'Plans have readable text layers, but the personnel-understanding percentage required by the criterion is NOT evidenced.',
+  },
+  '5.5.3': {
+    th: 'รายงานตู้สายดับเพลิง 5.5.3-3 ไม่ปรากฏในชุดแหล่งข้อมูล (EXPECTED_SOURCE_UNCONFIRMED) ชั้น 3 มี 5.5.3-4 ครอบคลุม บันทึกถังดับเพลิงเป็นสแกน',
+    en: 'Hose-cabinet report 5.5.3-3 is absent from the source set (EXPECTED_SOURCE_UNCONFIRMED); floor 3 covered by 5.5.3-4. Extinguisher logs are scans.',
+  },
+};
+const limitation = LIMITATIONS[indicatorCode];
+
+const pendingScanCount = domain
+  ? contractForDomain(domain).records.filter((r) => r.availability === 'filename_folder_only').length
+  : 0;
+const sourceCount = domain ? contractForDomain(domain).records.length : 0;
+
+const facts = snapshot?.facts ?? [];
+---
+
+{
+  domain && (
+    <section class="mb-6 rounded-xl border border-gray-200 bg-white p-6" data-cat5-contract-context>
+      <div class="mb-4 flex flex-wrap items-center gap-2">
+        <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+          {isEn ? `FY${CAT5_YEAR} baseline context` : `บริบทข้อมูลฐานปี ${CAT5_YEAR}`}
+        </h2>
+        <span class="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+          {t(domainLabel(domain))}
+        </span>
+        <span class="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800">
+          {isEn ? 'FY2569 awaiting update' : 'ปี 2569 รอการอัปเดต'}
+        </span>
+      </div>
+
+      <dl class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {facts.map((fact) => (
+          <div class="rounded-lg border border-gray-100 bg-gray-50/60 px-3 py-2" data-cat5-domain-fact={fact.kind}>
+            <dt class="text-xs text-gray-500">{t(fact.label)}</dt>
+            <dd
+              class:list={[
+                'mt-0.5 text-sm leading-snug',
+                fact.kind === 'unavailable' ? 'font-medium text-amber-700' : 'font-semibold text-gray-800',
+              ]}
+            >
+              {resolveDomainFactValue(fact.value, locale)}
+            </dd>
+          </div>
+        ))}
+      </dl>
+
+      {limitation && (
+        <p class="mt-4 rounded-lg border border-amber-200 bg-amber-50/60 px-3 py-2 text-xs leading-relaxed text-amber-900">
+          <strong class="font-semibold">{isEn ? 'Limitations: ' : 'ข้อจำกัด: '}</strong>
+          {t(limitation)}
+        </p>
+      )}
+
+      <div class="mt-4 flex flex-wrap gap-x-6 gap-y-1 border-t border-gray-100 pt-3 text-xs text-gray-500">
+        <span>
+          {isEn
+            ? `${sourceCount} canonical source record(s), ${pendingScanCount} scan(s) pending verification`
+            : `บันทึกแหล่งข้อมูลหลัก ${sourceCount} รายการ · สแกนรอการตรวจสอบ ${pendingScanCount} รายการ`}
+        </span>
+        {stages.length > 0 && (
+          <span>
+            {isEn ? 'Cycle stage: ' : 'ขั้นตอนในวงจร: '}
+            {stages.map((s) => t(s.label)).join(isEn ? ' · ' : ' · ')}
+          </span>
+        )}
+      </div>
+    </section>
+  )
+}

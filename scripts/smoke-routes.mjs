@@ -45,6 +45,10 @@ const thRoutes = [
   '/knowledge/green-mobility/',
   '/knowledge/green-meeting/',
   '/knowledge/green-workplace/',
+  '/news/',
+  '/activities/',
+  '/activities/simina3/',
+  '/activities/5s/',
 ];
 
 const enRoutes = [
@@ -71,6 +75,10 @@ const enRoutes = [
   '/en/knowledge/green-mobility/',
   '/en/knowledge/green-meeting/',
   '/en/knowledge/green-workplace/',
+  '/en/news/',
+  '/en/activities/',
+  '/en/activities/simina3/',
+  '/en/activities/5s/',
 ];
 
 const routes = [...thRoutes, ...enRoutes];

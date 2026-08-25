@@ -1,0 +1,215 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "contractors",
+  "updated": "2026-08-24",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CAT6_PHASE_A_SOURCE_DISPOSITION",
+  "note": "FY2568 historical-baseline contract for contracting indicators 6.2.1/6.2.2 (การจัดจ้าง). Covers engagement of eco contractors (4 FY2568 engagements, source-declared 4/4 = 100%) and monthly/on-visit environmental inspection of contractors' work areas. The FY2569-budget cleaning contract (สัญญาจ้างทำความสะอาด 69.pdf) is QUARANTINED and never referenced as FY2568 evidence. Two evaluation-form pairs are contentDuplicateCandidate (same scan re-exported for two indicators) — each path keeps its own sourceRef, no deduplication. No FY2569 facts, no scores, no PASS claims.",
+  "sources": [
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.1(1) 2 รับรองฉลากเขียว_บริษัท เควี เพสท์ จำกัด.pdf",
+      "role": "primary-scan",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.1(1) 3 รับรองเครื่องถ่ายเอกสารฉลากเขียว.pdf",
+      "role": "primary",
+      "inspection": "photo_label_only",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.1(2) 1 รายงานจัดซื้อจัดจ้าง ฟอร์มใหม่.pdf",
+      "role": "supporting-form",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.1(2) 1 ใบประเมินด้านสิ่งแวดล้อมฯ จ้างเหมาทำความสะอาดอาคารฯ.pdf",
+      "role": "scan-content-duplicate-P1",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.1(2) 2 ภาพถ่ายการส่งมอบผลิตภัณฑ์.pdf",
+      "role": "photo",
+      "inspection": "photo_label_only",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.1(2) 4 ใบประเมินด้านสิ่งแวดล้อมฯ ล้างเครื่องปรับอากาศ.pdf",
+      "role": "scan-content-duplicate-P2",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.1(2)3 หนังสือรับรองผลิตภัณฑ์.pdf",
+      "role": "primary-scan",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.1(3) 1 สัญญาจ้างทำความสะอาด 68.pdf",
+      "role": "primary-scan",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.1(3) 2  ใบอนุญาตปฏิบัติงานและข้อตกลงด้านสิ่งแวดล้อม.pdf",
+      "role": "primary-scan",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.1(4) 1 ประกาศคณะฯ เรื่องนโยบาย ปี 2568.pdf",
+      "role": "primary",
+      "inspection": "photo_label_only",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.1(4) 2 ภาพถ่าย ลายเซ็นการชี้แจงนโยบายสิ่งแวดล้อม.pdf",
+      "role": "photo",
+      "inspection": "photo_label_only",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.1.pdf",
+      "role": "primary",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.2(1) 1 ใบประเมินด้านสิ่งแวดล้อมฯ จ้างเหมาทำความสะอาดอาคารฯ.pdf",
+      "role": "scan-content-duplicate-P1",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.2(1) 2 หนังสือแจ้งผลการประเมินประสิทธิภาพการปฏิบัติงาน.pdf",
+      "role": "primary",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.2(2 )1 ใบประเมินประสิทธิภาพผู้รับจ้างล้างเครื่องปรับอากาศ.pdf",
+      "role": "scan-content-duplicate-P2",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.2.pdf",
+      "role": "primary",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "รายงานหมวด6 (แก้ไข) 17-3-69.docx",
+      "role": "supporting-report",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    }
+  ],
+  "records": [
+    {
+      "id": "contractors-engagement-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "6.2.1"
+      ],
+      "issueCodes": [
+        "6.2"
+      ],
+      "categoryCode": "cat6",
+      "evidenceIds": [
+        "ev-cat6-contractors-engagement-fy2568"
+      ],
+      "sourceRef": "6.2 การจัดจ้าง/6.2.1.pdf",
+      "manifestSha256": "992c398b40c2e778b14a61ae1f9a9c6a1921a542ede5fb7af02fb137d31fa7c6",
+      "relatedSources": [
+        "6.2 การจัดจ้าง/6.2.1(1) 2 รับรองฉลากเขียว_บริษัท เควี เพสท์ จำกัด.pdf",
+        "6.2 การจัดจ้าง/6.2.1(1) 3 รับรองเครื่องถ่ายเอกสารฉลากเขียว.pdf",
+        "6.2 การจัดจ้าง/6.2.1(2) 1 รายงานจัดซื้อจัดจ้าง ฟอร์มใหม่.pdf",
+        "6.2 การจัดจ้าง/6.2.1(2) 1 ใบประเมินด้านสิ่งแวดล้อมฯ จ้างเหมาทำความสะอาดอาคารฯ.pdf",
+        "6.2 การจัดจ้าง/6.2.1(2) 2 ภาพถ่ายการส่งมอบผลิตภัณฑ์.pdf",
+        "6.2 การจัดจ้าง/6.2.1(2) 4 ใบประเมินด้านสิ่งแวดล้อมฯ ล้างเครื่องปรับอากาศ.pdf",
+        "6.2 การจัดจ้าง/6.2.1(2)3 หนังสือรับรองผลิตภัณฑ์.pdf",
+        "6.2 การจัดจ้าง/6.2.1(3) 1 สัญญาจ้างทำความสะอาด 68.pdf",
+        "6.2 การจัดจ้าง/6.2.1(3) 2  ใบอนุญาตปฏิบัติงานและข้อตกลงด้านสิ่งแวดล้อม.pdf",
+        "6.2 การจัดจ้าง/6.2.1(4) 1 ประกาศคณะฯ เรื่องนโยบาย ปี 2568.pdf",
+        "6.2 การจัดจ้าง/6.2.1(4) 2 ภาพถ่าย ลายเซ็นการชี้แจงนโยบายสิ่งแวดล้อม.pdf",
+        "รายงานหมวด6 (แก้ไข) 17-3-69.docx"
+      ],
+      "verification": {
+        "status": "reviewed",
+        "basis": "Section narrative (6.2.1.pdf) + Form 6.1(2) content-verified: 4 engagements Jan–Dec 2568 (cleaning เควี เพสท์ ฉลากเขียว; photocopier rental ริโก้ ฉลากเขียว; AC cleaning and elevator via environmental agreement), source-declared 4/4 = 100% (total 515,367.88 บาท). Green-label certs, cleaning contract 68, work-permit/env-agreement and evaluation packs are scans (content pending OCR). The FY2569-budget contract (สัญญาจ้างทำความสะอาด 69.pdf) is QUARANTINED and never a sourceRef."
+      },
+      "availability": "content-verified",
+      "kind": "contractingEvidence",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "การจัดจ้างหน่วยงาน/บุคคลที่ดำเนินงานเป็นมิตรกับสิ่งแวดล้อม ปี 2568 (4 รายการ, ระบุ 100% ในแหล่งข้อมูล)",
+      "labelEn": "FY2568 engagement of environmentally-friendly contractors (4 engagements, source-declared 100%)",
+      "promoted": true,
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "cleaning contract FY2569 = candidateFy2569Only (decide in FY2569 cycle); policy briefing annual"
+      }
+    },
+    {
+      "id": "contractors-inspection-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "6.2.2"
+      ],
+      "issueCodes": [
+        "6.2"
+      ],
+      "categoryCode": "cat6",
+      "evidenceIds": [
+        "ev-cat6-contractors-inspection-fy2568"
+      ],
+      "sourceRef": "6.2 การจัดจ้าง/6.2.2.pdf",
+      "manifestSha256": "103f8944f7ad2566e26744db3d92ac665a223373eecb59d2097ecc5b081d04aa",
+      "relatedSources": [
+        "6.2 การจัดจ้าง/6.2.2(1) 1 ใบประเมินด้านสิ่งแวดล้อมฯ จ้างเหมาทำความสะอาดอาคารฯ.pdf",
+        "6.2 การจัดจ้าง/6.2.2(1) 2 หนังสือแจ้งผลการประเมินประสิทธิภาพการปฏิบัติงาน.pdf",
+        "6.2 การจัดจ้าง/6.2.2(2 )1 ใบประเมินประสิทธิภาพผู้รับจ้างล้างเครื่องปรับอากาศ.pdf",
+        "รายงานหมวด6 (แก้ไข) 17-3-69.docx"
+      ],
+      "verification": {
+        "status": "reviewed",
+        "basis": "Section narrative (6.2.2.pdf) content-verified + evaluation-result letter (30 Sep 2568, ระดับดีมาก) verified: cleaning contractor evaluated monthly by คณะกรรมการตรวจรับ; AC contractor evaluated on each visit. Evaluation forms (34p cleaning pack, 1p AC form) are scans pending OCR and are contentDuplicateCandidate pairs kept under their own sourceRefs."
+      },
+      "availability": "content-verified",
+      "kind": "inspectionEvidence",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "การตรวจสอบการดูแลสิ่งแวดล้อมในพื้นที่ปฏิบัติงานของผู้รับจ้าง ปี 2568 (ประเมินรายเดือน/ทุกครั้งที่เข้าปฏิบัติงาน)",
+      "labelEn": "FY2568 environmental inspection of contractors' work areas (monthly / per-visit evaluation)",
+      "promoted": true,
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "monthly evaluation (in-residence) and per-visit evaluation (non-residence) continuous"
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "indicator": "6.2.1",
+      "status": "SCAN_CONTENT_PENDING_OCR",
+      "note": "Green-label certs, cleaning contract 68, work-permit/env-agreement and evaluation packs are image scans; facts cross-verified via the report and Form 6.1(2)."
+    },
+    {
+      "indicator": "6.2.1",
+      "status": "FY2569_CONTRACT_QUARANTINED",
+      "note": "สัญญาจ้างทำความสะอาด 69.pdf (FY2569 budget) is excluded from all FY2568 records (candidateFy2569Only) and never referenced as sourceRef/evidence."
+    }
+  ]
+}

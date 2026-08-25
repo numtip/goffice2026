@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "treatment-care",
+  "updated": "2026-08-23",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CATEGORY4_WASTE_BLUEPRINT_V1",
+  "note": "FY2568 historical-baseline contract for 4.2.2 (wastewater treatment care and maintenance). Weekly Friday skimming by cleaning staff, grease/oil disposal into the ถังหมักรักษ์โลก, repair and leak-inspection procedures are content-verified from the txt notes and the canonical report. The skimming record (4-page scan) is byte-identical to the 4.2.1 record (G2 duplicate) — it is disclosed here as a duplicate, never double-counted as separate evidence. แบบ ทส.1/ทส.2 monthly records are external online references (WTMS). No FY2569 facts.",
+  "sources": [
+    { "ref": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (1).txt", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #29 — weekly Friday skimming by floor-1 cleaning staff; floors 2–3 have no grease trap (structure unsuitable); committee 4 reviews records." },
+    { "ref": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (2).txt", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #30 — grease/oil/food-waste disposal into the ถังหมักรักษ์โลก (compost bin) beside the building." },
+    { "ref": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (3) บันทึกการตักคราบน้ำมัน และไขมัน.pdf", "role": "skim-record-duplicate", "inspection": "filename_folder_only", "disposition": "duplicate-of-4.2.1", "note": "C1 #31 — 4-page image scan, byte-identical to the 4.2.1(1) skimming record (sha 3a21d03a…, G2). Disclosed as duplicate — not counted as separate evidence." },
+    { "ref": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (4).txt", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #32 — แบบ ทส.1 / แบบ ทส.2 WTMS links (building.mju.ac.th bID 18845/18846) — external online discharge records, reference only." },
+    { "ref": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (10-03-69).docx", "role": "category-report", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #33 — canonical annual report containing the full 4.2.2 narrative (including the repair/maintenance procedure)." }
+  ],
+  "records": [
+    {
+      "id": "treatment-skimming-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.2.2"],
+      "issueCodes": ["4.2"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-treatment-skimming-fy2568"],
+      "sourceRef": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (1).txt",
+      "manifestSha256": "5c73319333ba635f3385ec2fd0baf73f452bd46ad4be92bf0abb738ed2ebd7f7",
+      "verification": {
+        "status": "pending",
+        "basis": "4.2.2(1) weekly Friday skimming by floor-1 cleaning staff; floors 2–3 have no grease trap (structure unsuitable); committee-4 reviews records — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "treatmentCare",
+      "labelTh": "การตักและทำความสะอาดถังดักไขมัน 4.2.2(1)",
+      "labelEn": "Grease-trap skimming and cleaning 4.2.2(1)"
+    },
+    {
+      "id": "treatment-grease-disposal-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.2.2"],
+      "issueCodes": ["4.2"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-treatment-grease-disposal-fy2568"],
+      "sourceRef": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (2).txt",
+      "manifestSha256": "e434155bba65987b96ca13241e482b175066bfa6a9b65e461e103acbfcb35b0d",
+      "verification": {
+        "status": "pending",
+        "basis": "4.2.2(2) grease/oil/food-waste from the grease traps disposed into the ถังหมักรักษ์โลก compost bin beside the building — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "treatmentCare",
+      "labelTh": "การจัดการไขมัน/เศษอาหารไปกำจัด 4.2.2(2)",
+      "labelEn": "Grease/food-waste disposal 4.2.2(2)"
+    },
+    {
+      "id": "treatment-repair-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.2.2"],
+      "issueCodes": ["4.2"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-treatment-repair-fy2568"],
+      "sourceRef": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (10-03-69).docx",
+      "manifestSha256": "52c5bb3cee45013f0b78b2e06800dc9acb29e61eb72921d746e3685336ebbbb8",
+      "verification": {
+        "status": "pending",
+        "basis": "4.2.2(3) grease-trap inspection/maintenance by cleaning staff during the weekly Friday skimming; anomalies reported to the building technician for immediate repair — from the canonical 10-03-69 report; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "treatmentCare",
+      "labelTh": "การตรวจสอบ/ซ่อมแซมระบบบำบัดน้ำเสีย 4.2.2(3)",
+      "labelEn": "Wastewater-treatment inspection and repair 4.2.2(3)"
+    },
+    {
+      "id": "treatment-leak-inspection-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.2.2"],
+      "issueCodes": ["4.2"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-treatment-leak-inspection-fy2568"],
+      "sourceRef": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (4).txt",
+      "manifestSha256": "714b093cf28d77acc41d73dd4ea5b2285eae62d6542255a143fb964cdfef4fbb",
+      "verification": {
+        "status": "pending",
+        "basis": "4.2.2(4) regular wastewater leak-inspection to prevent cross-contamination, plus effluent checks from the central plant before reuse (แบบ ทส.1/ทส.2 WTMS records, building.mju.ac.th bID 18845/18846 — external online references). Text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "treatmentCare",
+      "labelTh": "การตรวจสอบการรั่วไหลของน้ำเสีย 4.2.2(4)",
+      "labelEn": "Wastewater leak inspection 4.2.2(4)"
+    },
+    {
+      "id": "treatment-skim-scan-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["4.2.2"],
+      "issueCodes": ["4.2"],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-treatment-skim-scan-fy2568"],
+      "sourceRef": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (3) บันทึกการตักคราบน้ำมัน และไขมัน.pdf",
+      "manifestSha256": "3a21d03a278b29503433b6b5071f0c588201813d84f9a6b4c2321c5dc0eedd8a",
+      "verification": {
+        "status": "pending",
+        "basis": "Oil/grease skimming record (4-page image scan). 0 text chars — content unverifiable without OCR. Byte-identical to the 4.2.1(1) record (G2 duplicate) — disclosed, NOT counted as separate evidence. NOT semantically verified."
+      },
+      "availability": "filename_folder_only",
+      "kind": "skimRecordScan",
+      "labelTh": "บันทึกการตักคราบน้ำมันและไขมัน (สแกน — ซ้ำกับ 4.2.1(1))",
+      "labelEn": "Oil/grease skimming record (scan — duplicate of 4.2.1(1))",
+      "duplicateOf": "wastewater-skim-scan-fy2568",
+      "promoted": false
+    }
+  ],
+  "gaps": [],
+  "forwardRequirements": [],
+  "crossLinks": [
+    { "from": "4.2.2", "to": "4.2.1", "reason": "Treatment care/maintenance (4.2.2) keeps the 4.2.1 wastewater-control equipment effective" },
+    { "from": "4.2.2", "to": "4.1.3", "reason": "Grease/food-waste from traps is composted via the ถังหมักรักษ์โลก, contributing to the organic-waste reuse accounting (4.1.3)" }
+  ]
+}

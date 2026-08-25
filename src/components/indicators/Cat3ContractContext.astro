@@ -1,0 +1,237 @@
+---
+import {
+  buildCat3DomainSnapshot,
+  contractForDomain,
+  cycleStagesForIndicator,
+  domainForIndicator,
+  domainLabel,
+  CAT3_MEDIUM_INDICATORS,
+  resolveDomainFactValue,
+  CAT3_YEAR,
+} from '../../utils/category3-presentation';
+
+interface Props {
+  indicatorCode: string;
+  locale: 'th' | 'en';
+}
+
+const { indicatorCode, locale } = Astro.props;
+const isEn = locale === 'en';
+
+function t(field: { th: string; en: string }): string {
+  return isEn ? field.en : field.th;
+}
+
+const domain = domainForIndicator(indicatorCode);
+const snapshot = domain ? buildCat3DomainSnapshot(domain) : null;
+const stages = cycleStagesForIndicator(indicatorCode);
+const isMedium = (CAT3_MEDIUM_INDICATORS as readonly string[]).includes(indicatorCode);
+
+// Per-indicator honest limitation notes grounded in GO-CAT3-PHASE-A / the manifest.
+const LIMITATIONS: Record<string, { th: string; en: string }> = {
+  '3.1.1': {
+    th: 'มาตรการน้ำได้รับการยืนยันเนื้อหาจากเอกสาร 3.1.1.pdf; ภาพถ่ายน้ำทิ้งเครื่องปรับอากาศ (12 หน้า) เป็นสแกน — ยังไม่ยืนยันเนื้อหาจนกว่าจะผ่าน OCR',
+    en: 'Water measures are content-verified from 3.1.1.pdf; the AC-condensate photos (12 pages) are image scans — content pending OCR verification',
+  },
+  '3.1.2': {
+    th: 'ข้อมูลน้ำ 8,337.50 หน่วย (+47.1% เทียบปี 2567) และ 87.76 หน่วย/คน (+47.71%) — ไม่บรรลุเป้าหมาย (ลด 1%)',
+    en: 'Water data 8,337.50 units (+47.1% vs 2024) and 87.76 units/person (+47.71%) — target not met (reduce 1%)',
+  },
+  '3.1.3': {
+    th: 'การสำรวจพฤติกรรม: ไม่พบจุดรั่ว/หยดน้ำที่ก๊อกน้ำ — เป็นหลักฐานเนื้อหาบรรยาย ไม่มีคะแนนตัวเลข',
+    en: 'Behavioral survey: no leaks/drips found at faucets — narrative evidence, no numeric score',
+  },
+  '3.2.1': {
+    th: 'มาตรการไฟฟ้าได้รับการยืนยันเนื้อหา (LED T8 ×150, โซล่าร์เซล ×4, เซนเซอร์)',
+    en: 'Electricity measures are content-verified (LED T8 ×150, solar ×4, motion sensors)',
+  },
+  '3.2.2': {
+    th: 'สรุป 403,036.80 หน่วย (+4.6% เทียบปี 2567) — ไม่บรรลุเป้าหมาย (ลด 1%) ตารางการใช้ไฟฟ้าต่อหน่วยเป็นรูปภาพ ตัวเลขต่อหน่วยจึงยังไม่พร้อมใช้งาน (หลักฐานระดับ MEDIUM)',
+    en: 'Summary 403,036.80 units (+4.6% vs 2024) — target not met (reduce 1%). Per-unit electricity tables are image-only, so per-unit numbers remain unavailable (MEDIUM evidence)',
+  },
+  '3.2.3': {
+    th: 'การสำรวจพฤติกรรม: ไม่พบการเปิดไฟทิ้งในพื้นที่ที่ไม่ได้ใช้งาน — เป็นหลักฐานเนื้อหาบรรยาย ไม่มีคะแนนตัวเลข',
+    en: 'Behavioral survey: no lights left on in unused areas — narrative evidence, no numeric score',
+  },
+  '3.2.4': {
+    th: 'ไฟล์ 3.2.4.pdf คลุมขอบเขต (เริ่มด้วยหน้า 3.2.3 และจบด้วยหน้า 3.2.5) เนื้อหามาตรการน้ำมันอยู่หน้า 2–9; รายงานการใช้รถยนต์ (22 หน้า) เป็นสแกน — ยังไม่ยืนยันเนื้อหา',
+    en: '3.2.4.pdf is misbounded (starts with a 3.2.3 page, ends with 3.2.5 pages); fuel measures are on pages 2–9. The vehicle-use log (22 pages) is an image scan — content pending verification',
+  },
+  '3.2.5': {
+    th: 'ข้อมูลน้ำมัน 695.82 ลิตร (−205 ลิตร, −22.7% เทียบปี 2567) — บรรลุเป้าหมาย (ลด 1%) ไฟล์เดี่ยวเริ่มจากข้อ (2); ข้อ (1) มีในรายงานรวมเท่านั้น',
+    en: 'Fuel data 695.82 L (−205 L, −22.7% vs 2024) — target met (reduce 1%). The standalone file starts at item (2); item (1) exists only in the compiled reports',
+  },
+  '3.3.1': {
+    th: 'มาตรการกระดาษได้รับการยืนยันเนื้อหา (นำกลับมาใช้ พิมพ์สองหน้า เอกสารอิเล็กทรอนิกส์)',
+    en: 'Paper measures are content-verified (reuse, double-side, e-documents)',
+  },
+  '3.3.2': {
+    th: 'ข้อมูลกระดาษ 2,197.80 กก. (+117 กก.) และ 23.13 กก./หน่วย (+5.6% เทียบปี 2567) — ไม่บรรลุเป้าหมาย (ลด 1%)',
+    en: 'Paper data 2,197.80 kg (+117 kg) and 23.13 kg/unit (+5.6% vs 2024) — target not met (reduce 1%)',
+  },
+  '3.3.3': {
+    th: 'การสำรวจพฤติกรรม: ไม่พบการใช้กระดาษสิ้นเปลือง — เป็นหลักฐานเนื้อหาบรรยาย ไม่มีคะแนนตัวเลข',
+    en: 'Behavioral survey: no wasteful paper use found — narrative evidence, no numeric score',
+  },
+  '3.3.4': {
+    th: 'มาตรการหมึก/วัสดุสำนักงานได้รับการยืนยันเนื้อหา (เครื่องพิมพ์ร่วม วัสดุส่วนกลาง)',
+    en: 'Ink/stationery measures are content-verified (shared printers, pooled supplies)',
+  },
+  '3.3.5': {
+    th: 'การสำรวจ: ไม่พบการใช้หมึก/วัสดุสำนักงานสิ้นเปลือง — เป็นหลักฐานเนื้อหาบรรยาย ไม่มีคะแนนตัวเลข',
+    en: 'Survey: no wasteful ink/stationery use found — narrative evidence, no numeric score',
+  },
+  '3.4.1': {
+    th: 'มาตรการประชุม/นิทรรศการสีเขียวได้รับการยืนยันเนื้อหา (ประชุมอิเล็กทรอนิกส์, QR-Code, เชิญออนไลน์)',
+    en: 'Green meeting/exhibition measures are content-verified (e-meeting, QR-Code, online invite)',
+  },
+  '3.4.2': {
+    th: 'ไฟล์ 3.4.2.pdf เริ่มจากข้อ (3) (พลังงานในห้อง + อาหาร/เครื่องดื่ม); ข้อ (1)/(2) อยู่ในรายงานหมวด 3.4 เท่านั้น — เนื้อหาครบมีใน DOCX รายงาน',
+    en: '3.4.2.pdf starts at item (3) (energy in rooms + food/drink); items (1)/(2) are present only in the 3.4 issue report DOCX — complete content is in the report',
+  },
+};
+const limitation = LIMITATIONS[indicatorCode];
+
+const pendingScanCount = domain
+  ? contractForDomain(domain).records.filter((r) => r.availability === 'filename_folder_only').length
+  : 0;
+const sourceCount = domain ? contractForDomain(domain).records.length : 0;
+
+const limitationCodes = [
+  'SCAN_AC_CONDENSATE',
+  'SCAN_VEHICLE_LOG',
+  'GARBLED_MEASURES_PDF',
+  'IMAGE_ONLY_PER_UNIT',
+  'MISBOUNDED_19',
+  'INCOMPLETE_21',
+  'PARTIAL_32',
+  'NO_SIGNED_COPY',
+];
+const limitationLabels: Record<string, { th: string; en: string }> = {
+  SCAN_AC_CONDENSATE: { th: 'สแกนภาพถ่ายน้ำทิ้งเครื่องปรับอากาศ', en: 'AC-condensate photo scan' },
+  SCAN_VEHICLE_LOG: { th: 'สแกนรายงานการใช้รถยนต์', en: 'Vehicle-use log scan' },
+  GARBLED_MEASURES_PDF: { th: 'PDF มาตรการข้อความเพี้ยน', en: 'Garbled measures PDF' },
+  IMAGE_ONLY_PER_UNIT: { th: 'ตารางต่อหน่วยเป็นรูปภาพ (3.2.2)', en: 'Image-only per-unit tables (3.2.2)' },
+  MISBOUNDED_19: { th: 'ไฟล์ 3.2.4 คลุมขอบเขต', en: 'Misbounded 3.2.4 file' },
+  INCOMPLETE_21: { th: 'ไฟล์ 3.2.5 ไม่สมบูรณ์', en: 'Incomplete 3.2.5 file' },
+  PARTIAL_32: { th: 'ไฟล์ 3.4.2 บางส่วน', en: 'Partial 3.4.2 file' },
+  NO_SIGNED_COPY: { th: 'ไม่มีฉบับลงนาม', en: 'No signed copy' },
+};
+const relevantLimitations = isMedium ? ['IMAGE_ONLY_PER_UNIT', 'NO_SIGNED_COPY'] : limitationCodes;
+---
+
+<div
+  class="rounded-xl border border-green-100 bg-green-50/30 p-5"
+  aria-labelledby="cat3-contract-context"
+  data-cat3-contract-context
+  data-indicator-code={indicatorCode}
+>
+  <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+    <h2 id="cat3-contract-context" class="text-sm font-semibold text-gray-900">
+      {isEn ? `FY${CAT3_YEAR} contract context` : `บริบทข้อมูลสัญญา ปี ${CAT3_YEAR}`}
+    </h2>
+    {
+      domain && (
+        <span class="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-medium text-green-800">
+          {t(domainLabel(domain))}
+        </span>
+      )
+    }
+  </div>
+
+  {
+    stages.length > 0 && (
+      <div class="mb-3 flex flex-wrap items-center gap-2" data-cat3-cycle-stage>
+        {isEn ? 'Cycle stage:' : 'ขั้นวงจร:'}
+        {
+          stages.map((s) => (
+            <span class="inline-flex items-center rounded-full border border-green-200 bg-white px-2 py-0.5 text-[11px] font-semibold text-green-800">
+              {s.stage}. {t(s.label)}
+            </span>
+          ))
+        }
+      </div>
+    )
+  }
+
+  {
+    snapshot ? (
+      <>
+        <ul class="space-y-1.5" role="list">
+          {
+            snapshot.facts.map((fact) => (
+              <li class="flex items-baseline justify-between gap-3 text-xs">
+                <span class="text-gray-500">{t(fact.label)}</span>
+                <span class={`font-medium text-right ${fact.kind === 'unavailable' ? 'text-gray-400' : fact.kind === 'status' ? 'text-amber-700' : 'text-gray-800'}`} data-cat3-domain-fact={fact.kind}>
+                  {resolveDomainFactValue(fact.value, locale)}
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+        <dl class="mt-3 space-y-1 border-t border-green-100 pt-2 text-xs">
+          <div class="flex items-center justify-between gap-3">
+            <dt class="text-gray-500">{isEn ? 'Source files' : 'ไฟล์ต้นทาง'}</dt>
+            <dd class="font-medium text-gray-700" data-cat3-source-count>
+              {sourceCount}
+            </dd>
+          </div>
+          {
+            pendingScanCount > 0 && (
+              <div class="flex items-center justify-between gap-3">
+                <dt class="text-gray-500">{isEn ? 'Scans pending' : 'สแกนที่รอตรวจ'}</dt>
+                <dd class="font-medium text-amber-700" data-cat3-pending-scan-count>{pendingScanCount}</dd>
+              </div>
+            )
+          }
+          <div class="flex items-center justify-between gap-3">
+            <dt class="text-gray-500">{isEn ? 'Contract status' : 'สถานะสัญญา'}</dt>
+            <dd class="font-medium text-gray-700">{snapshot.status}</dd>
+          </div>
+        </dl>
+      </>
+    ) : (
+      <p class="text-xs italic text-gray-400">
+        {isEn ? 'No FY2568 contract domain maps to this indicator.' : 'ไม่มีโดเมนสัญญาข้อมูลปี 2568 สำหรับตัวชี้วัดนี้'}
+      </p>
+    )
+  }
+
+  {
+    limitation && (
+      <div class="mt-3 rounded-lg border border-amber-100 bg-amber-50/50 p-3" data-cat3-limitation>
+        <p class="text-xs font-semibold text-amber-800">
+          {isEn ? 'FY2568 source limitation' : 'ข้อจำกัดของแหล่งข้อมูลปี 2568'}
+        </p>
+        <p class="mt-1 text-xs leading-relaxed text-amber-700">{t(limitation)}</p>
+      </div>
+    )
+  }
+
+  <div class="mt-3 rounded-lg border border-blue-100 bg-blue-50/40 p-3" data-cat3-fy2569-pending>
+    <p class="text-xs font-semibold text-blue-900">
+      {isEn ? 'FY2569 layer: awaiting verified data' : 'ชั้นปี 2569: รอข้อมูลที่ตรวจสอบแล้ว'}
+    </p>
+    <p class="mt-1 text-xs leading-relaxed text-blue-800">
+      {isEn
+        ? 'The FY2569 assessment layer for this indicator is not built yet — it will appear only when verified FY2569 sources exist. No FY2568 value is copied forward.'
+        : 'ชั้นประเมินปี 2569 ของตัวชี้วัดนี้ยังไม่ได้สร้าง — จะแสดงเมื่อมีแหล่งข้อมูลปี 2569 ที่ตรวจสอบแล้วเท่านั้น ไม่มีการคัดลอกค่าปี 2568 ไปข้างหน้า'}
+    </p>
+  </div>
+
+  <details class="mt-3 rounded-lg border border-gray-200 bg-white p-3" data-cat3-source-limitations>
+    <summary class="cursor-pointer text-xs font-semibold text-gray-600 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 rounded">
+      {isEn ? 'Source limitations (all FY2568 Cat3 files)' : 'ข้อจำกัดแหล่งข้อมูล (ไฟล์หมวด 3 ปี 2568 ทั้งหมด)'}
+    </summary>
+    <ul class="mt-2 space-y-1.5" role="list">
+      {
+        relevantLimitations.map((code) => (
+          <li class="flex items-start gap-2 text-xs text-gray-600">
+            <span aria-hidden="true" class="mt-0.5 text-amber-500">•</span>
+            <span>{t(limitationLabels[code])}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </details>
+</div>

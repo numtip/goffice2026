@@ -10,6 +10,19 @@ import { getBaselineCategoryCoverage, getSourceTypeCounts, FY2568_BASELINE_YEAR 
 import { categoryImageUrl, categoryImageDimensions } from '../../utils/wow2-images';
 import Cat1ManagementCycle from '../../components/categories/Cat1ManagementCycle.astro';
 import Cat1DomainSnapshot from '../../components/categories/Cat1DomainSnapshot.astro';
+import Cat2ManagementCycle from '../../components/categories/Cat2ManagementCycle.astro';
+import Cat2DomainSnapshot from '../../components/categories/Cat2DomainSnapshot.astro';
+import Cat3ManagementCycle from '../../components/categories/Cat3ManagementCycle.astro';
+import Cat3DomainSnapshot from '../../components/categories/Cat3DomainSnapshot.astro';
+import Cat3Fy2569MeasurePlan from '../../components/categories/Cat3Fy2569MeasurePlan.astro';
+import Cat4ManagementCycle from '../../components/categories/Cat4ManagementCycle.astro';
+import Cat4DomainSnapshot from '../../components/categories/Cat4DomainSnapshot.astro';
+import Cat5ManagementCycle from '../../components/categories/Cat5ManagementCycle.astro';
+import Cat5DomainSnapshot from '../../components/categories/Cat5DomainSnapshot.astro';
+import Cat6ManagementCycle from '../../components/categories/Cat6ManagementCycle.astro';
+import Cat6DomainSnapshot from '../../components/categories/Cat6DomainSnapshot.astro';
+import Cat7ManagementCycle from '../../components/categories/Cat7ManagementCycle.astro';
+import Cat7DomainSnapshot from '../../components/categories/Cat7DomainSnapshot.astro';
 
 export function getStaticPaths() {
   const issues = issueData.issues;
@@ -269,7 +282,27 @@ const weightLabel = isCat7
             </p>
             {category.code === 'cat2' && (
               <p class="mt-1 text-xs leading-relaxed text-gray-600">
-                หมายเหตุโครงสร้างต้นทาง: พบรายการที่ยังไม่ได้รับการแก้ไขในหมวด 2
+                หมายเหตุโครงสร้างต้นทาง: ตัวชี้วัด 2.2.3 ยังไม่มีหลักฐานเฉพาะ และรายการหลักฐานน้ำเก่าของหมวด 2 ยังรอการเชื่อมโยงหมวด 3 ที่ชัดเจน
+              </p>
+            )}
+            {category.code === 'cat3' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                หมายเหตุโครงสร้างต้นทาง: ทั้ง 15 ตัวชี้วัดมีหลักฐานเฉพาะปี 2568 แต่ 3.2.2 มีระดับ MEDIUM (ตารางต่อหน่วยเป็นรูปภาพ) มีสแกน 2 ไฟล์ เอกสารมาตรการ PDF ข้อความเพี้ยน ไฟล์ 3.2.4/3.2.5/3.4.2 มีข้อจำกัด และไม่มีฉบับลงนาม
+              </p>
+            )}
+            {category.code === 'cat4' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                หมายเหตุโครงสร้างต้นทาง: ทั้ง 5 ตัวชี้วัดมีหลักฐานเฉพาะปี 2568 แต่ปลอดโฟม 4.1.1(3) ยังไม่ได้ดำเนินการ เกณฑ์นำกลับมาใช้ใหม่ >50% ไม่บรรลุ (31.93% — สาขานวัตกรรม/ปุ๋ยหมัก) เป้าหมายขยะทั่วไปลด 3% ไม่บรรลุ (+1.68%) มีสแกน 10 รายการ (เนื้อหาไม่ซ้ำ 8) PDF มาตรการข้อความเพี้ยน (อ้างอิงข้ามเท่านั้น) รายงานหลักคือฉบับ 10-03-69 (ไม่มีฉบับลงนาม) และบันทึก ทส.1/ทส.2 เป็นข้อมูลอ้างอิงภายนอก
+              </p>
+            )}
+            {category.code === 'cat5' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                หมายเหตุโครงสร้างต้นทาง: ทั้ง 13 ตัวชี้วัดมีหลักฐานเฉพาะปี 2568 (47/47 ไฟล์ตรงกันแบบ SHA-256) แต่เป็นข้อมูลฐานสำหรับปี 2569 — การวัดแสง การซ้อมอพยพ และการตรวจประจำ ต้องเก็บใหม่ในปี 2569 มีสแกน 23 รายการ (ยังไม่ตรวจสอบเนื้อหา) 5.3.1 ไม่ได้วัดเสียง (รอผู้ประเมินยืนยัน) ร้อยละ 5.4.2/5.4.3/5.5.2 ไม่มีหลักฐาน สัญญางบ 69 ถูกแยกออก และไฟล์ 5.5.3-3 ยืนยันไม่ได้
+              </p>
+            )}
+            {category.code === 'cat6' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                หมายเหตุโครงสร้างต้นทาง: ทั้ง 6 ตัวชี้วัดมีหลักฐานเฉพาะปี 2568 (32/32 ไฟล์ตรงกันแบบ SHA-256) แต่เป็นข้อมูลฐานสำหรับปี 2569 — ร้อยละการจัดซื้อ 6.1.2 (92.33/89.80 ตามที่แหล่งข้อมูลระบุ ไม่คำนวณใหม่) การทบทวนบัญชีสินค้า และการประเมินผู้รับจ้าง ต้องเก็บใหม่ในปี 2569 มีสแกน 12 รายการ (ยังไม่ตรวจสอบเนื้อหา) ร้อยละ 6.1.3 ไม่มีหลักฐาน (สุ่มตรวจ –) สัญญาทำความสะอาดงบ 69 ถูกแยกออก (QUARANTINE) และแบบประเมิน 2 คู่เป็น contentDuplicateCandidate
               </p>
             )}
             {category.code === 'cat7' && (
@@ -298,6 +331,49 @@ const weightLabel = isCat7
       <>
         <Cat1ManagementCycle locale={locale} />
         <Cat1DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat2' && (
+      <>
+        <Cat2ManagementCycle locale={locale} />
+        <Cat2DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat3' && (
+      <>
+        <Cat3Fy2569MeasurePlan locale={locale} />
+        <Cat3ManagementCycle locale={locale} />
+        <Cat3DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat4' && (
+      <>
+        <Cat4ManagementCycle locale={locale} />
+        <Cat4DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat5' && (
+      <>
+        <Cat5ManagementCycle locale={locale} />
+        <Cat5DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat6' && (
+      <>
+        <Cat6ManagementCycle locale={locale} />
+        <Cat6DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat7' && (
+      <>
+        <Cat7ManagementCycle locale={locale} />
+        <Cat7DomainSnapshot locale={locale} />
       </>
     )}
 

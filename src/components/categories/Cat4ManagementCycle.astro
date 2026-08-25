@@ -1,0 +1,85 @@
+---
+/**
+ * Cat4ManagementCycle.astro — Category 4 waste/wastewater management cycle.
+ * Compact loop (Plan → Sort/Collect/Dispose → Reuse/Recycle → Control → Maintain),
+ * restrained single-accent (green) hierarchy, not a marketing/hero surface.
+ */
+import {
+  CAT4_MANAGEMENT_CYCLE,
+  CAT4_JOURNEYS,
+  indicatorTitle,
+} from '../../utils/category4-presentation';
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const isEn = locale === 'en';
+const path = (p: string) => getLocalizedPath(locale, p);
+
+function t(field: { th: string; en: string }): string {
+  return isEn ? field.en : field.th;
+}
+---
+
+<section
+  class="mb-8 rounded-xl border border-green-100 bg-green-50/30 p-5 sm:p-6"
+  aria-labelledby="cat4-management-cycle"
+  data-cat4-management-cycle
+>
+  <div class="mb-4">
+    <h2 id="cat4-management-cycle" class="text-base font-semibold text-gray-900">
+      {isEn ? 'Category 4 waste management cycle' : 'วงจรการจัดการของเสียหมวด 4'}
+    </h2>
+    <p class="mt-1 text-sm leading-relaxed text-gray-600">
+      {isEn
+        ? 'FY2568 facts below come from the normalized Category 4 contracts. Each stage links to its indicators. FY2569 work is shown separately — never presented as a FY2568 result.'
+        : 'ข้อมูลปี 2568 ด้านล่างมาจากสัญญาข้อมูลหมวด 4 ที่ผ่านการปรับให้เป็นมาตรฐานแล้ว แต่ละขั้นเชื่อมไปยังตัวชี้วัด งานปี 2569 แสดงแยกกัน — ไม่แสดงเป็นผลปี 2568'}
+    </p>
+  </div>
+
+  <ol class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-5" role="list" aria-label={isEn ? 'Waste management cycle stages' : 'ขั้นวงจรการจัดการของเสีย'}>
+    {
+      CAT4_MANAGEMENT_CYCLE.map((step) => (
+        <li class="flex flex-col rounded-xl border border-green-200 bg-white p-4 shadow-sm">
+          <span class="mb-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-xs font-bold text-green-800">
+            {step.stage}
+          </span>
+          <a
+            href={path(`/indicators/${step.targetCode}/`)}
+            class="text-sm font-semibold leading-snug text-green-700 hover:text-green-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded"
+          >
+            {t(step.label)}
+          </a>
+          <p class="mt-1.5 text-xs leading-relaxed text-gray-500">
+            {t(step.summary)}
+          </p>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="mt-4 border-t border-green-100 pt-3">
+    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+      {isEn ? 'Cross-links' : 'เส้นทางการเชื่อมโยง'}
+    </h3>
+    <ul class="flex flex-wrap gap-2" role="list">
+      {
+        CAT4_JOURNEYS.map((j) => (
+          <li>
+            <a
+              href={path(`/indicators/${j.from}/`)}
+              class="inline-flex items-center gap-1 rounded-full border border-green-200 bg-white px-3 py-1 text-xs font-medium text-green-800 transition-colors hover:border-green-400 hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+              aria-label={`${indicatorTitle(j.from, locale)} → ${indicatorTitle(j.to, locale)}`}
+            >
+              {j.from} → {j.to}
+              <span class="hidden sm:inline text-gray-500">· {t(j.label)}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

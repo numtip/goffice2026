@@ -93,6 +93,7 @@
         {
           "id": "cat-1-1.1.1-1-1",
           "indicatorCode": "1.1.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "(1)  การกำหนดขอบเขตพื้นที่ของสำนักงาน\n(2)  การกำหนดขอบเขตกิจกรรมของสำนักงาน โดยระบุหน่วยของพื้นที่เป็นตารางเมตร และระบุของเขตของกิจกรรมในแต่ละห้องให้ชัดเจน เช่น ห้องปฏิบัติการ ต้องระบุให้ชัดเจนว่าเป็นห้องปฏิบัติการที่ใช้ทำกิจกรรมอะไร ตามข้อเสนอแนะของกรมการเปลี่ยนแปลงสภาพภูมิอากาศและสิ่งแวดล้อม\n(3)  นำเสนอต่อคณะกรรมการอำนวยการ",
           "frequency": "1 ครั้ง",
@@ -105,6 +106,7 @@
         {
           "id": "cat-1-1.1.1-2-2",
           "indicatorCode": "1.1.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "2)",
           "activityTh": "จัดทำประกาศบริบทองค์กรและขอบเขตของการจัดการสิ่งแวดล้อม เสนอผู้บริหารสูงสุดเพื่อลงนามอนุมัติ และระบุวันที่จัดทำให้ชัดเจน",
           "frequency": "1 ครั้ง",
@@ -117,6 +119,7 @@
         {
           "id": "cat-1-1.1.1-3-3",
           "indicatorCode": "1.1.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "3)",
           "activityTh": "ประชาสัมพันธ์/แจ้งเวียน ทุกช่องทาง",
           "frequency": "1 ครั้ง",
@@ -129,6 +132,7 @@
         {
           "id": "cat-1-1.1.2-1-4",
           "indicatorCode": "1.1.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "(1)  รวบรวมข้อมูลเพื่อทบทวนนโยบายด้านสิ่งแวดล้อมครอบคลุมประเด็นตามเกณฑ์สำนักงานสีเขียว ข้อ 1-4 เป็นอย่างน้อย ได้แก่ (1.1)  ปรับปรุงระบบการจัดการสิ่งแวดล้อมอย่างต่อเนื่อง (1.2)  การควบคุม ป้องกัน ลดผลกระทบด้านการใช้ทรัพยากร พลังงาน และมลพิษ/ของเสีย รวมไปถึงการจัดซื้อจัดจ้าง และบริการที่เป็นมิตรกับสิ่งแวดล้อม เพื่อนำไปสู่การลดการปล่อยก๊าซเรือนกระจก (1.3)  การปฏิบัติตามเกณฑ์กฎหมายและเกณฑ์การเป็นสำนักงานสีเขียวของกรมการเปลี่ยนแปลงสภาพภูมิอากาศและสิ่งแวดล้อม และ(1.4)  การสร้างความรู้และความตระหนักด้านสิ่งแวดล้อมกับผู้เกี่ยวข้อง\n(2)  นำเสนอต่อคณะกรรมการอำนวยการเพื่อให้ความเห็นชอบ",
           "frequency": "1 ครั้ง",
@@ -141,6 +145,7 @@
         {
           "id": "cat-1-1.1.2-2-5",
           "indicatorCode": "1.1.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "2)",
           "activityTh": "จัดทำประกาศนโยบายด้านสิ่งแวดล้อม เสนอผู้บริหารสูงสุดเพื่อลงนามอนุมัติ พร้อมระบุวันที่ประกาศให้ชัดเจน",
           "frequency": "1 ครั้ง",
@@ -153,6 +158,7 @@
         {
           "id": "cat-1-1.1.2-3-6",
           "indicatorCode": "1.1.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "3)",
           "activityTh": "ประชาสัมพันธ์/แจ้งเวียน ทุกช่องทาง",
           "frequency": "1 ครั้ง",
@@ -165,6 +171,7 @@
         {
           "id": "cat-1-1.1.3-1-7",
           "indicatorCode": "1.1.3",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "รวบรวมข้อมูลเป้าหมายและตัวชี้วัดด้านการใช้ทรัพยากรพลังงานและของเสีย และปริมาณก๊าซเรือนกระจก \n   (1)  ไฟฟ้า  (2)  น้ำมันเชื้อเพลิง  (3) น้ำ  (4) กระดาษ  (5) ของเสีย  และ  (6) ประเภทก๊าซเรือนกระจก",
           "frequency": "1 ครั้ง",
@@ -177,6 +184,7 @@
         {
           "id": "cat-1-1.1.3-2-8",
           "indicatorCode": "1.1.3",
+          "canonicalIndicatorCode": null,
           "taskNumber": "2)",
           "activityTh": "ประชุมคณะกรรมการฯ เพื่อพิจารณาเป้าหมายและตัวชี้วัดด้านการใช้ทรัพยากรพลังงานและของเสีย และปริมาณก๊าซเรือนกระจก",
           "frequency": "1 ครั้ง",
@@ -189,6 +197,7 @@
         {
           "id": "cat-1-1.1.3-3-9",
           "indicatorCode": "1.1.3",
+          "canonicalIndicatorCode": null,
           "taskNumber": "3)",
           "activityTh": "จัดทำประกาศเป้าหมายและตัวชี้วัดด้านการใช้ทรัพยากรพลังงานและของเสีย และปริมาณก๊าซเรือนกระจก (ครอบคลุม 6 ข้อ) เสนอผู้บริหารเพื่อลงนามอนุมัติ พร้อมระบุวันที่ให้ชัดเจน",
           "frequency": "1 ครั้ง",
@@ -201,6 +210,7 @@
         {
           "id": "cat-1-1.1.3-4-10",
           "indicatorCode": "1.1.3",
+          "canonicalIndicatorCode": null,
           "taskNumber": "4)",
           "activityTh": "ประชาสัมพันธ์/แจ้งเวียน ทุกช่องทาง",
           "frequency": "1 ครั้ง",
@@ -213,6 +223,7 @@
         {
           "id": "cat-1-1.1.3-5-11",
           "indicatorCode": "1.1.3",
+          "canonicalIndicatorCode": null,
           "taskNumber": "5)",
           "activityTh": "นำเป้าหมายตัวชี้วัดสู่การปฏิบัติ",
           "frequency": "11 ครั้ง",
@@ -234,6 +245,7 @@
         {
           "id": "cat-1-1.1.4-1-12",
           "indicatorCode": "1.1.4",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "รวบรวมข้อมูล ได้แก่\n   (1)  แผนการดำเนินงานของแต่ละหมวด โดยระบุชื่อผู้รับผิดชอบกิจกรรมในแต่ละหมวดให้ชัดเจนเพื่อสะดวกในการติดตามงาน ตามข้อเสนอแนะของตามข้อเสนอแนะของกรมการเปลี่ยนแปลงสภาพภูมิอากาศและสิ่งแวดล้อม\n   (2)  กำหนดเวลา/ความถี่ของการดำเนินงานแต่ละหมวด",
           "frequency": "1 ครั้ง",
@@ -246,6 +258,7 @@
         {
           "id": "cat-1-1.1.4-2-13",
           "indicatorCode": "1.1.4",
+          "canonicalIndicatorCode": null,
           "taskNumber": "2)",
           "activityTh": "ประชุมคณะกรรมการฯ เพื่อพิจารณาแผนฯ",
           "frequency": "1 ครั้ง",
@@ -258,6 +271,7 @@
         {
           "id": "cat-1-1.1.4-3-14",
           "indicatorCode": "1.1.4",
+          "canonicalIndicatorCode": null,
           "taskNumber": "3)",
           "activityTh": "จัดทำแผนการดำเนินงานสำนักงานสีเขียว เสนอผู้บริหารเพื่อลงนามอนุมัติ พร้อมระบุวันที่ลงนามให้ชัดเจน",
           "frequency": "1 ครั้ง",
@@ -270,6 +284,7 @@
         {
           "id": "cat-1-1.1.4-4-15",
           "indicatorCode": "1.1.4",
+          "canonicalIndicatorCode": null,
           "taskNumber": "4)",
           "activityTh": "ประชาสัมพันธ์/แจ้งเวียนแผนงาน ทุกช่องทาง",
           "frequency": "1 ครั้ง",
@@ -282,6 +297,7 @@
         {
           "id": "cat-1-1.1.4-5-16",
           "indicatorCode": "1.1.4",
+          "canonicalIndicatorCode": null,
           "taskNumber": "5)",
           "activityTh": "นำแผนสู่การปฏิบัติ",
           "frequency": "11 ครั้ง",
@@ -303,6 +319,7 @@
         {
           "id": "cat-1-1.2.1-1-17",
           "indicatorCode": "1.2.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "รวบรวมข้อมูลรายชื่อบุคลากรภายในอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา เพื่อจัดทำ ร่าง คำสั่ง แต่งตั้งคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา",
           "frequency": "1 ครั้ง",
@@ -315,6 +332,7 @@
         {
           "id": "cat-1-1.2.1-2-18",
           "indicatorCode": "1.2.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "2)",
           "activityTh": "เสนอคณะกรรมการพิจารณา ร่าง คำสั่ง แต่งตั้งคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา พร้อมทั้งกำหนดอำนาจ บทบาท หน้าที่รับผิดชอบของคณะกรรมการ",
           "frequency": "1 ครั้ง",
@@ -327,6 +345,7 @@
         {
           "id": "cat-1-1.2.1-3-19",
           "indicatorCode": "1.2.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "3)",
           "activityTh": "จัดทำคำสั่ง แต่งตั้งคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา เสนอผู้บริหารเพื่อลงนามอนุมัติพร้อมระบุวันที่ลงนามให้ชัดเจน",
           "frequency": "1 ครั้ง",
@@ -339,6 +358,7 @@
         {
           "id": "cat-1-1.2.1-4-20",
           "indicatorCode": "1.2.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "4)",
           "activityTh": "ประชาสัมพันธ์/แจ้งเวียนคำสั่งทุกช่องทาง",
           "frequency": "1 ครั้ง",
@@ -351,6 +371,7 @@
         {
           "id": "cat-1-1.2.2-1-21",
           "indicatorCode": "1.2.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "คณะกรรมการพร้อมรับการประเมินจากผู้ตรวจ (ช่วงคะแนน 1-4)\n(หมายเหตุ: ผู้ตรวจประเมินจะทำการสุ่มสัมภาษณ์ในบทบาทหน้าที่ของคณะกรรมการ โดยร้อยละ 100 ของจำนวนที่สุ่มสัมภาษณ์ทุกหมวด จะได้ 4 คะแนนเต็ม)",
           "frequency": "1 ครั้ง",
@@ -363,6 +384,7 @@
         {
           "id": "cat-1-1.3.1-1-22",
           "indicatorCode": "1.3.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "มีการรวบรวมกิจกรรมของสำนักงานครบถ้วน\n(1)  จัดทำตารางวิเคราะห์กระบวนการทำงาน",
           "frequency": "1 ครั้ง",
@@ -375,6 +397,7 @@
         {
           "id": "cat-1-1.3.1-2-23",
           "indicatorCode": "1.3.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "2)",
           "activityTh": "มีการกำหนดผู้รับผิดชอบที่เหมาะสมและมีความเข้าใจ\n(1)  มีการกำหนดผู้รับผิดชอบ",
           "frequency": "1 ครั้ง",
@@ -387,6 +410,7 @@
         {
           "id": "cat-1-1.3.1-24-24",
           "indicatorCode": "1.3.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": null,
           "activityTh": "(1)  จัดทำทะเบียนระบุและประเมินปัญหาสิ่งแวดล้อมด้านทรัพยากร (Input)",
           "frequency": "1 ครั้ง",
@@ -399,6 +423,7 @@
         {
           "id": "cat-1-1.3.1-6-25",
           "indicatorCode": "1.3.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "6)",
           "activityTh": "มีการพิจารณากฎหมายสิ่งแวดล้อมที่เกี่ยวข้องกับปัญหาสิ่งแวดล้อมนั้นๆ อย่างครบถ้วนและถูกต้อง",
           "frequency": "1 ครั้ง",
@@ -411,6 +436,7 @@
         {
           "id": "cat-1-1.3.1-7-26",
           "indicatorCode": "1.3.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "7)",
           "activityTh": "การประเมินเพื่อจัดลำดับความสำคัญของปัญหาสิ่งแวดล้อม\n(1)  จัดทำทะเบียนจัดลำดับปัญหาสิ่งแวดล้อมที่มีนัยสำคัญ",
           "frequency": "1 ครั้ง",
@@ -423,6 +449,7 @@
         {
           "id": "cat-1-1.3.1-8-27",
           "indicatorCode": "1.3.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "8)",
           "activityTh": "มีหลักฐานการกำหนดระยะเวลาในการทบทวน การระบุประเด็นปัญหาสิ่งแวดล้อม การใช้ทรัพยากรและพลังงานอย่างน้อยปีละ 1 ครั้ง\n(1)  จัดทำแผนการทบทวนระบุปัญหาสิ่งแวดล้อม การใช้ทรัพยากร",
           "frequency": "1 ครั้ง",
@@ -435,6 +462,7 @@
         {
           "id": "cat-1-1.3.1-9-28",
           "indicatorCode": "1.3.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "9)",
           "activityTh": "กรณีมีการปรับแผน/กิจกรรม หรือมีกิจกรรมเพิ่มเติม (เช่น มีแผนที่จะก่อสร้างอาคาร หรือเพิ่มเติมกิจกรรมของสำนักงานในอนาคตอันใกล้ เป็นต้น) จะต้องระบุกิจกรรมดังกล่าวด้วย (ถ้ามี)",
           "frequency": "1 ครั้ง",
@@ -447,6 +475,7 @@
         {
           "id": "cat-1-1.3.2-1-29",
           "indicatorCode": "1.3.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "มีสรุปรายการปัญหาสิ่งแวดล้อมที่มีนัยสำคัญ\n(1)  จัดทำสรุปรายงานปัญหาสิ่งแวดล้อม",
           "frequency": "1 ครั้ง",
@@ -459,6 +488,7 @@
         {
           "id": "cat-1-1.3.2-2-30",
           "indicatorCode": "1.3.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "2)",
           "activityTh": "กำหนดมาตรการคู่มือ/แนวทางปฏิบัติ เพื่อแก้ไขปัญหาสิ่งแวดล้อมที่มีนัยสำคัญ\n(1)  จัดทำมาตรการคู่มือ/แนวทางปฏิบัติ เพื่อแก้ไขปัญหาสิ่งแวดล้อม",
           "frequency": "1 ครั้ง",
@@ -473,6 +503,7 @@
         {
           "id": "cat-1-1.3.2-3-31",
           "indicatorCode": "1.3.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "3)",
           "activityTh": "ปัญหาสิ่งแวดล้อมที่มีนัยสำคัญมีการดำเนินการตามมาตรการ คู่มือ/แนวทางการแก้ไขครบถ้วน",
           "frequency": "9 ครั้ง",
@@ -493,6 +524,7 @@
         {
           "id": "cat-1-1.3.2-4-32",
           "indicatorCode": "1.3.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "4)",
           "activityTh": "กำหนดมาตรการคู่มือ/แนวทางปฏิบัติ เพื่อป้องกันปัญหาสิ่งแวดล้อมที่เกิดในสภาวะผิดปกติและสภาวะฉุกเฉิน",
           "frequency": "1 ครั้ง",
@@ -505,6 +537,7 @@
         {
           "id": "cat-1-1.3.2-5-33",
           "indicatorCode": "1.3.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "5)",
           "activityTh": "ปัญหาสิ่งแวดล้อมที่เกิดในสภาวะผิดปกติและสภาวะฉุกเฉินมีการดำเนินการตามมาตรการคู่มือ/แนวทางการป้องกันครบถ้วน",
           "frequency": "9 ครั้ง",
@@ -525,6 +558,7 @@
         {
           "id": "cat-1-1.3.3-1.3.3-34",
           "indicatorCode": "1.3.3",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1.3.3",
           "activityTh": "แผนงานโครงการที่จัดทำขึ้นเพื่อแก้ไขปัญหาสิ่งแวดล้อมที่มีนัยสำคัญหรือโครงการที่สอดคล้องกับนโยบายสิ่งแวดล้อม หรือกฎหมายสิ่งแวดล้อม ภายใต้การดำเนินการ ดังนี้",
           "frequency": "1 แผนงานโครงการ",
@@ -537,6 +571,7 @@
         {
           "id": "cat-1-1.4.1-1-35",
           "indicatorCode": "1.4.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "ทำรายการกฎหมายที่ครอบคลุมปัญหาสิ่งแวดล้อมและบริบทของสำนักงาน",
           "frequency": "1 ครั้ง",
@@ -549,6 +584,7 @@
         {
           "id": "cat-1-1.4.1-2-36",
           "indicatorCode": "1.4.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "2)",
           "activityTh": "ระบุแหล่งที่มาของกฎหมายและข้อกำหนดอื่นๆ ที่เกี่ยวข้อง",
           "frequency": "1 ครั้ง",
@@ -561,6 +597,7 @@
         {
           "id": "cat-1-1.4.1-3-37",
           "indicatorCode": "1.4.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "3)",
           "activityTh": "ระบุความเกี่ยวข้องของกฎหมายกับประเด็นปัญหาสิ่งแวดล้อม",
           "frequency": "1 ครั้ง",
@@ -573,6 +610,7 @@
         {
           "id": "cat-1-1.4.1-4-38",
           "indicatorCode": "1.4.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "4)",
           "activityTh": "ตรวจสอบกฎหมายสิ่งแวดล้อมและความปลอดภัยที่เกี่ยวข้องให้เป็นปัจจุบัน",
           "frequency": "1 ครั้ง",
@@ -585,6 +623,7 @@
         {
           "id": "cat-1-1.4.1-5-39",
           "indicatorCode": "1.4.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "5)",
           "activityTh": "มีการรวบรวมและทบทวนกฎหมายอย่างน้อยปีละ 1 ครั้ง",
           "frequency": "1 ครั้ง",
@@ -597,6 +636,7 @@
         {
           "id": "cat-1-1.4.2-1-40",
           "indicatorCode": "1.4.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "ผู้รับผิดชอบมีความเข้าใจในการประเมินความสอดคล้องของกฎหมายกับการดำเนินงานการจัดการสิ่งแวดล้อม",
           "frequency": "1 ครั้ง",
@@ -609,6 +649,7 @@
         {
           "id": "cat-1-1.4.2-2-41",
           "indicatorCode": "1.4.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "2)",
           "activityTh": "ประเมินความสอดคล้องของกฎหมายครบถ้วน",
           "frequency": "1 ครั้ง",
@@ -621,6 +662,7 @@
         {
           "id": "cat-1-1.4.2-3-42",
           "indicatorCode": "1.4.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "3)",
           "activityTh": "อ้างอิงหลักฐานการปฏิบัติตามกฎหมายอย่างครบถ้วนและถูกต้อง (กรณีที่พบว่าการดำเนินงานไม่สอดคล้องกับกฎหมาย จะต้องมีการวิเคราะห์สาเหตุ และกำหนดแนวทางการแก้ไข)",
           "frequency": "1 ครั้ง",
@@ -633,6 +675,7 @@
         {
           "id": "cat-1-1.4.2-4-43",
           "indicatorCode": "1.4.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "4)",
           "activityTh": "กำหนดความถี่ในการประเมินความสอดคล้องของกฎหมายอย่างน้อยปีละ 1 ครั้ง ที่เหมาะสมและมีการปฏิบัติตามที่กำหนดได้",
           "frequency": "1 ครั้ง",
@@ -645,6 +688,7 @@
         {
           "id": "cat-1-1.5.1-1-44",
           "indicatorCode": "1.5.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "รวบรวมข้อมูลปริมาณการใช้ไฟฟ้า การใช้เชื้อเพลิงสำหรับการเดินทาง การใช้น้ำประปา การใช้กระดาษ ปริมาณการเกิดของเสีย จากหมวดที่เกี่ยวข้อง",
           "frequency": "12 ครั้ง",
@@ -668,6 +712,7 @@
         {
           "id": "cat-1-1.5.1-2-45",
           "indicatorCode": "1.5.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "2)",
           "activityTh": "คำนวณก๊าซเรือนกระจก และจัดทำกราฟแผนภาพเพื่อนำเสนอข้อมูล",
           "frequency": "12 ครั้ง",
@@ -691,6 +736,7 @@
         {
           "id": "cat-1-1.5.2-1-46",
           "indicatorCode": "1.5.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "การวิเคราะห์ปริมาณก๊าซเรือนกระจกเพื่อกำหนดนโยบายและค่าเป้าหมาย",
           "frequency": "1 ครั้ง",
@@ -703,6 +749,7 @@
         {
           "id": "cat-1-1.5.3-1-47",
           "indicatorCode": "1.5.3",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "อบรมให้ความรู้เรื่อง ความสำคัญของก๊าซเรือนกระจก แนวทางการลดการปล่อยก๊าซเรือนกระจก ปริมาณก๊าซเรือนกระจกของสำนักงานเมื่อเปรียบเทียบกับค่าเป้าหมาย",
           "frequency": "1 ครั้ง",
@@ -715,6 +762,7 @@
         {
           "id": "cat-1-1.6.1-1-48",
           "indicatorCode": "1.6.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "แผนต้องระบุการดำเนินงานหรือกิจกรรม",
           "frequency": "1 ครั้ง",
@@ -727,6 +775,7 @@
         {
           "id": "cat-1-1.6.1-2-49",
           "indicatorCode": "1.6.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "2)",
           "activityTh": "มีการกำหนดเวลาหรือความถี่ของการดำเนินงาน อย่างน้อย 1 ปี",
           "frequency": "1 ครั้ง",
@@ -739,6 +788,7 @@
         {
           "id": "cat-1-1.6.1-3-50",
           "indicatorCode": "1.6.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "3)",
           "activityTh": "มีการดำเนินแผนการดำเน นงานเป็นลายลักษณ์อักษรและได้รับการอนุมัติจากผู้บริหาร",
           "frequency": "1 ครั้ง",
@@ -751,6 +801,7 @@
         {
           "id": "cat-1-1.6.1-4-51",
           "indicatorCode": "1.6.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "4)",
           "activityTh": "มีการแสดงเจตนารมณ์เพื่อมุ่งสู่ความเป็นกลางทางคาร์บอน และการปล่อยก๊าซเรือนกระจกสุทธิเป็นศุนย์ หรือมีวาระหารือในการประชุมทบทวนฝ่ายบริหาร",
           "frequency": "1 ครั้ง",
@@ -763,6 +814,7 @@
         {
           "id": "cat-1-1.6.2-1.6.2-52",
           "indicatorCode": "1.6.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1.6.2",
           "activityTh": "โครงการที่นำไปสู่การลดก๊าซเรือนกระจกของหน่วยงาน",
           "frequency": null,
@@ -776,6 +828,7 @@
         {
           "id": "cat-1-1.6.2-1-53",
           "indicatorCode": "1.6.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "มีการกำหนดวัตถุประสงค์ เป้าหมายโครงการที่สามารถวัดผลได้ชัดเจน",
           "frequency": "1 ครั้ง",
@@ -788,6 +841,7 @@
         {
           "id": "cat-1-1.6.2-2-54",
           "indicatorCode": "1.6.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "2)",
           "activityTh": "จัดทำแผนการดำเนินงาน/กิจกรรม/นวัตกรรมที่กำหนดในโครงการสิ่งแวดล้อมที่มีความสอดคล้องกับวัตถุประสงค์และเป้าหมาย",
           "frequency": "8 ครั้ง",
@@ -806,6 +860,7 @@
         {
           "id": "cat-1-1.6.2-3-55",
           "indicatorCode": "1.6.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "3)",
           "activityTh": "กำหนดระยะเวลาการทำโครงการที่มีความชัดเจนและเหมาะสม",
           "frequency": "2 ครั้ง",
@@ -819,6 +874,7 @@
         {
           "id": "cat-1-1.6.2-4-56",
           "indicatorCode": "1.6.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "4)",
           "activityTh": "กำหนดผู้รับผิดชอบในการทำโครงการอย่างชัดเจน มีความเข้าใจและสามารถอธิบายได้",
           "frequency": "2 ครั้ง",
@@ -832,6 +888,7 @@
         {
           "id": "cat-1-1.6.2-5-57",
           "indicatorCode": "1.6.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "5)",
           "activityTh": "มีการติดตามความก้าวหน้าโครงการ และกำหนดความถี่เพื่อติดตามผลการปฏิบัติงานอย่างต่อเนื่อง",
           "frequency": "1 ครั้ง",
@@ -844,6 +901,7 @@
         {
           "id": "cat-1-1.6.2-6-58",
           "indicatorCode": "1.6.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "6)",
           "activityTh": "สรุปผลการดำเนินโครงการ บรรลุตามเป้าหมารที่กำหนด กรณีไม่บรรลุเป้าหมายที่กำหนดมีการทบทวนเพื่อหาสาเหตุและแนวทางแก้ไข",
           "frequency": "1 ครั้ง",
@@ -856,6 +914,7 @@
         {
           "id": "cat-1-1.6.2-7-59",
           "indicatorCode": "1.6.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "7)",
           "activityTh": "นำเสนอแนวทางการพัฒนาโครงการเพื่อให้เกิดความต่อเนื่องและยั่งยืนหลังบรรลุเป้าหมายตามที่กำหนด",
           "frequency": "1 ครั้ง",
@@ -866,6 +925,7 @@
         {
           "id": "cat-1-1.7.1-1.7.1-60",
           "indicatorCode": "1.7.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1.7.1",
           "activityTh": "การกำหนดองค์ประชุมทบทวนฝ่ายบริหาร",
           "frequency": "1 ครั้ง",
@@ -883,6 +943,7 @@
         {
           "id": "cat-1-1.7.2-1.7.2-61",
           "indicatorCode": "1.7.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1.7.2",
           "activityTh": "มีการกำหนดวาระการประชุมและทำการประชุมทบทวนฝ่ายบริหาร",
           "frequency": "2 ครั้ง",
@@ -910,6 +971,7 @@
         {
           "id": "cat-2-2.1-2.1-1",
           "indicatorCode": "2.1",
+          "canonicalIndicatorCode": "2.2.1",
           "taskNumber": "2.1",
           "activityTh": "ประชุมคณะกรรมการหมวด 2",
           "frequency": "3 ครั้ง",
@@ -925,6 +987,7 @@
         {
           "id": "cat-2-2.1.1-2.1.1-2",
           "indicatorCode": "2.1.1",
+          "canonicalIndicatorCode": "2.2.2",
           "taskNumber": "2.1.1",
           "activityTh": "ดำเนินการตามแผนการสื่อสารสิ่งแวดล้อม ปี 2569\n(Green Office AI Governance Framework)",
           "frequency": "12 ครั้ง",
@@ -948,6 +1011,7 @@
         {
           "id": "cat-2-2.2-3-3",
           "indicatorCode": "2.2",
+          "canonicalIndicatorCode": "2.1.1",
           "taskNumber": null,
           "activityTh": "หมวด 1 ความสำคัญของสำนักงานสีเขียว",
           "frequency": "1 ครั้ง",
@@ -960,6 +1024,7 @@
         {
           "id": "cat-2-2.2-4-4",
           "indicatorCode": "2.2",
+          "canonicalIndicatorCode": "2.1.1",
           "taskNumber": null,
           "activityTh": "หมวด 1 ก๊าซเรือนกระจก",
           "frequency": "1 ครั้ง",
@@ -972,6 +1037,7 @@
         {
           "id": "cat-2-2.2-5-5",
           "indicatorCode": "2.2",
+          "canonicalIndicatorCode": "2.1.1",
           "taskNumber": null,
           "activityTh": "หมวด 3 พลังงานและทรัพยากร",
           "frequency": "1 ครั้ง",
@@ -984,6 +1050,7 @@
         {
           "id": "cat-2-2.2-6-6",
           "indicatorCode": "2.2",
+          "canonicalIndicatorCode": "2.1.1",
           "taskNumber": null,
           "activityTh": "หมวด 4 การจัดการของเสีย",
           "frequency": "1 ครั้ง",
@@ -996,6 +1063,7 @@
         {
           "id": "cat-2-2.2-7-7",
           "indicatorCode": "2.2",
+          "canonicalIndicatorCode": "2.1.1",
           "taskNumber": null,
           "activityTh": "หมวด 5 การจัดฝึกอบรมการซ้อมดับเพลิง หนีไฟ และแผ่นดินไหว",
           "frequency": "1 ครั้ง",
@@ -1008,6 +1076,7 @@
         {
           "id": "cat-2-2.2-8-8",
           "indicatorCode": "2.2",
+          "canonicalIndicatorCode": "2.1.1",
           "taskNumber": null,
           "activityTh": "หมวด 6 การจัดซื้อจัดจ้างที่เป็นมิตรกับสิ่งแวดล้อม",
           "frequency": "1 ครั้ง",
@@ -1020,6 +1089,7 @@
         {
           "id": "cat-2-2.3-2.3-9",
           "indicatorCode": "2.3",
+          "canonicalIndicatorCode": "2.1.1",
           "taskNumber": "2.3",
           "activityTh": "ลงทะเบียนฝึกอบรมและการประเมินผลบุคลากรก่อนและหลังฝึกอบรม (Pre/Post)",
           "frequency": "5 ครั้ง",
@@ -1036,6 +1106,7 @@
         {
           "id": "cat-2-2.4-2.4-10",
           "indicatorCode": "2.4",
+          "canonicalIndicatorCode": "2.1.1",
           "taskNumber": "2.4",
           "activityTh": "จัดทำประวัติและบันทึกการฝึกอบรมของบุคลากร",
           "frequency": "6 ครั้ง",
@@ -1053,6 +1124,7 @@
         {
           "id": "cat-2-2.5-11-11",
           "indicatorCode": "2.5",
+          "canonicalIndicatorCode": "2.2.2",
           "taskNumber": null,
           "activityTh": "ครั้งที่ 1 นโยบายสิ่งแวดล้อม",
           "frequency": "1 ครั้ง",
@@ -1065,6 +1137,7 @@
         {
           "id": "cat-2-2.5-12-12",
           "indicatorCode": "2.5",
+          "canonicalIndicatorCode": "2.2.2",
           "taskNumber": null,
           "activityTh": "ครั้งที่ 2 ปัญหาสิ่งแวดล้อมและการจัดการ",
           "frequency": "1 ครั้ง",
@@ -1077,6 +1150,7 @@
         {
           "id": "cat-2-2.5-13-13",
           "indicatorCode": "2.5",
+          "canonicalIndicatorCode": "2.2.2",
           "taskNumber": null,
           "activityTh": "ครั้งที่ 3 การปฏิบัติตามกฏหมายสิ่งแวดล้อม",
           "frequency": "1 ครั้ง",
@@ -1089,6 +1163,7 @@
         {
           "id": "cat-2-2.5-14-14",
           "indicatorCode": "2.5",
+          "canonicalIndicatorCode": "2.2.2",
           "taskNumber": null,
           "activityTh": "ครั้งที่ 4 ความสะอาดและความเป็นระเบียบ (5ส)",
           "frequency": "1 ครั้ง",
@@ -1101,6 +1176,7 @@
         {
           "id": "cat-2-2.5-15-15",
           "indicatorCode": "2.5",
+          "canonicalIndicatorCode": "2.2.2",
           "taskNumber": null,
           "activityTh": "ครั้งที่ 5 เป้าหมายและมาตรการพลังงานและทรัพยากร (ได้แก่ ไฟฟ้า น้ำ น้ำมัน กระดาษ)",
           "frequency": "12 ครั้ง",
@@ -1124,6 +1200,7 @@
         {
           "id": "cat-2-2.5-16-16",
           "indicatorCode": "2.5",
+          "canonicalIndicatorCode": "2.2.2",
           "taskNumber": null,
           "activityTh": "ครั้งที่ 6 เป้าหมายและมาตรการจัดการของเสีย",
           "frequency": "1 ครั้ง",
@@ -1136,6 +1213,7 @@
         {
           "id": "cat-2-2.5-17-17",
           "indicatorCode": "2.5",
+          "canonicalIndicatorCode": "2.2.2",
           "taskNumber": null,
           "activityTh": "ครั้งที่ 7 สินค้าและบริการที่เป็นมิตรกับสิ่งแวดล้อม",
           "frequency": "1 ครั้ง",
@@ -1148,6 +1226,7 @@
         {
           "id": "cat-2-2.5-18-18",
           "indicatorCode": "2.5",
+          "canonicalIndicatorCode": "2.2.2",
           "taskNumber": null,
           "activityTh": "ครั้งที่ 8 ก๊าซเรือนกระจก",
           "frequency": "1 ครั้ง",
@@ -1160,6 +1239,7 @@
         {
           "id": "cat-2-2.6-2.6-19",
           "indicatorCode": "2.6",
+          "canonicalIndicatorCode": "2.2.4",
           "taskNumber": "2.6",
           "activityTh": "จัดทำช่องทางรับข้อเสนอแนะ/ข้อคิดเห็นด้านสิ่งแวดล้อม อย่างเป็นระบบ \n - ระบบรับข้อเสนอแนะ (Engagement & Learning Layer)",
           "frequency": "12 ครั้ง",
@@ -1183,6 +1263,7 @@
         {
           "id": "cat-2-2.7-2.7-20",
           "indicatorCode": "2.7",
+          "canonicalIndicatorCode": "2.2.4",
           "taskNumber": "2.7",
           "activityTh": "สรุปข้อมูล วิเคราะห์ และรายงานผลต่อผู้บริหาร",
           "frequency": "1 ครั้ง",
@@ -1204,6 +1285,7 @@
         {
           "id": "cat-3-3.1-3.1-1",
           "indicatorCode": "3.1",
+          "canonicalIndicatorCode": "3.1.1",
           "taskNumber": "3.1",
           "activityTh": "กำหนดมาตรการ กำหนดค่าเป้าหมายและแนวทางการปฏิบัติ : การใช้น้ำ การใช้พลังงาน การใช้ทรัพยากรอื่นๆ และการจัดประชุมที่เป็นมิตรกับสิ่งแวดล้อม",
           "frequency": "1 ครั้ง",
@@ -1216,6 +1298,7 @@
         {
           "id": "cat-3-3.2-3.2-2",
           "indicatorCode": "3.2",
+          "canonicalIndicatorCode": "3.2.1",
           "taskNumber": "3.2",
           "activityTh": "มีแผนงานการติดตั้งระบบแสงสว่างแบบโซล่าร์เซล  และแบบประหยัดพลังงาน",
           "frequency": "3 ครั้ง",
@@ -1230,6 +1313,7 @@
         {
           "id": "cat-3-3.3-3.3-3",
           "indicatorCode": "3.3",
+          "canonicalIndicatorCode": "3.1.1",
           "taskNumber": "3.3",
           "activityTh": "มีแผนงานการปรุงปรับน้ำทิ้งเครื่องปรับอากาศ",
           "frequency": "1 ครั้ง",
@@ -1242,6 +1326,7 @@
         {
           "id": "cat-3-3.4-3.4-4",
           "indicatorCode": "3.4",
+          "canonicalIndicatorCode": "3.2.2",
           "taskNumber": "3.4",
           "activityTh": "เก็บข้อมูลปริมาณการใช้พลังงานและทรัพยากรแต่ละเดือนพร้อมวิเคราะห์ข้อมูล\n- น้ำและไฟฟ้า\n- น้ำมัน\n- กระดาษ",
           "frequency": "12 ครั้ง",
@@ -1265,6 +1350,7 @@
         {
           "id": "cat-3-3.5-3.5-5",
           "indicatorCode": "3.5",
+          "canonicalIndicatorCode": "3.1.2",
           "taskNumber": "3.5",
           "activityTh": "รายงานผลปริมาณการใช้พลังงานและทรัพยากรให้ผู้ที่เกี่ยวข้องทราบ\n- น้ำและไฟฟ้า\n- น้ำมัน\n- กระดาษ",
           "frequency": "12 ครั้ง",
@@ -1288,6 +1374,7 @@
         {
           "id": "cat-3-3.6-3.6-6",
           "indicatorCode": "3.6",
+          "canonicalIndicatorCode": "3.4.1",
           "taskNumber": "3.6",
           "activityTh": "การประชุมและการจัดนิทรรศการ",
           "frequency": "12 ครั้ง",
@@ -1320,6 +1407,7 @@
         {
           "id": "cat-4-4.1.1-1-1",
           "indicatorCode": "4.1.1",
+          "canonicalIndicatorCode": "4.1.1",
           "taskNumber": null,
           "activityTh": "(1) กำหนดมาตรการหรือแนวทางจัดการขยะแต่ละประเภทของหน่วยงาน การลดขยะพลาสติกที่ใช้ครั้งเดียวทิ้ง (Single Use Plastic)",
           "frequency": "1 ครั้ง",
@@ -1332,6 +1420,7 @@
         {
           "id": "cat-4-4.1.1-2-2",
           "indicatorCode": "4.1.1",
+          "canonicalIndicatorCode": "4.1.1",
           "taskNumber": null,
           "activityTh": "(2) แผนในการลดปริมาณขยะในภาพรวม เพื่อมุ่งสู่ Zero Waste",
           "frequency": "1 ครั้ง",
@@ -1344,6 +1433,7 @@
         {
           "id": "cat-4-4.1.1-3-3",
           "indicatorCode": "4.1.1",
+          "canonicalIndicatorCode": "4.1.1",
           "taskNumber": null,
           "activityTh": "(3) การประกาศเป็นองค์กรปลอดโฟม",
           "frequency": "1 ครั้ง",
@@ -1356,6 +1446,7 @@
         {
           "id": "cat-4-4.1.1-4-4",
           "indicatorCode": "4.1.1",
+          "canonicalIndicatorCode": "4.1.1",
           "taskNumber": null,
           "activityTh": "(4) การประกาศเจตนารมณ์หรือทำข้อตกลงร่วมกันในองค์กร",
           "frequency": "1 ครั้ง",
@@ -1368,6 +1459,7 @@
         {
           "id": "cat-4-4.1.1-5-5",
           "indicatorCode": "4.1.1",
+          "canonicalIndicatorCode": "4.1.1",
           "taskNumber": null,
           "activityTh": "(5) การรณรงค์สร้างการมีส่วนร่วมเพื่อลดขยะพลาสติกในองค์กร",
           "frequency": "1 ครั้ง",
@@ -1380,6 +1472,7 @@
         {
           "id": "cat-4-4.1.2-6-6",
           "indicatorCode": "4.1.2",
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(1)   การกำหนดจุดวางถังขยะบริเวณสำนักงานอย่างเหมาะสม และมีการคัดแยกขยะตามประเภทขยะที่เกิดขึ้นจากกิจกรรมภายในสำนักงาน",
           "frequency": "12 ครั้ง",
@@ -1403,6 +1496,7 @@
         {
           "id": "cat-4-4.1.2-7-7",
           "indicatorCode": "4.1.2",
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(2)  การติดป้ายบ่งชี้ประเภทขยะอย่างถูกต้องและชัดเจนทุกถัง",
           "frequency": "1 ครั้ง",
@@ -1415,6 +1509,7 @@
         {
           "id": "cat-4-4.1.2-8-8",
           "indicatorCode": "4.1.2",
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(3)  จุดพักขยะหรือโรงพักขยะที่เหมาะสมตามหลักวิชาการ โดยจะต้องมีพื้นที่รองรับขยะแต่ละประเภทจากข้อ (1) อย่างเพียงพอ",
           "frequency": "12 ครั้ง",
@@ -1438,6 +1533,7 @@
         {
           "id": "cat-4-4.1.2-9-9",
           "indicatorCode": "4.1.2",
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(4)  การสำรวจการทิ้งขยะแต่ละประเภทในสำนักงาน มีความถูกต้องทุกจุดที่สุ่มตรวจสอบ",
           "frequency": "12 ครั้ง",
@@ -1461,6 +1557,7 @@
         {
           "id": "cat-4-4.1.2-10-10",
           "indicatorCode": "4.1.2",
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(5) การจัดทำเส้นทางการจัดการขยะแต่ละประเภทอย่างเหมาะสม และส่งขยะให้กับหน่วยงานที่รับดำเนินการ (สำนักงานเขต/ อปท.) หรือผู้รับจ้างที่ได้รับอนุญาตตามกฏหมาย",
           "frequency": "12 ครั้ง",
@@ -1484,6 +1581,7 @@
         {
           "id": "cat-4-4.1.2-11-11",
           "indicatorCode": "4.1.2",
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(6)  การติดตาม ตรวจสอบการกำจัดขยะของผู้รับจ้างให้มีการจัดการอย่างเหมาะสมตามหลักวิชาการ (กรณีส่งให้สำนักงานเขต/ อปท. ให้ถือว่ามีการจัดการอย่างเหมาะสม)",
           "frequency": "12 ครั้ง",
@@ -1507,6 +1605,7 @@
         {
           "id": "cat-4-4.1.2-12-12",
           "indicatorCode": "4.1.2",
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(7)  ไม่มีการเผาขยะในบริเวณหรือพื้นที่ของสำนักงาน (ยกเว้นเตาเผาที่ได้รับการอนุญาตอย่างถูกต้อง)",
           "frequency": "12 ครั้ง",
@@ -1530,6 +1629,7 @@
         {
           "id": "cat-4-4.1.3-13-13",
           "indicatorCode": "4.1.3",
+          "canonicalIndicatorCode": "4.1.3",
           "taskNumber": null,
           "activityTh": "(1)  บันทึกข้อมูลปริมาณขยะแต่ละประเภทครบถ้วนทุกเดือน พร้อมแสดงผล",
           "frequency": "12 ครั้ง",
@@ -1553,6 +1653,7 @@
         {
           "id": "cat-4-4.1.3-14-14",
           "indicatorCode": "4.1.3",
+          "canonicalIndicatorCode": "4.1.3",
           "taskNumber": null,
           "activityTh": "(3) การนำขยะกลับมาใช้ประโยชน์หรือนำกลับมาใช้ใหม่ มากกว่าร้อยละ 50 ของปริมาณขยะทั้งหมดของหน่วยงานต่อเดือน หรือมีนวัตกรรมหรือมีการส่งขยะไปเป็นเชื้อเพลิง RDF)",
           "frequency": "4 ครั้ง",
@@ -1568,6 +1669,7 @@
         {
           "id": "cat-4-4.1.3-15-15",
           "indicatorCode": "4.1.3",
+          "canonicalIndicatorCode": "4.1.3",
           "taskNumber": null,
           "activityTh": "(4)  ปริมาณขยะที่ส่งกำจัด (ขยะทั่วไปมีแนวโน้มลดลง)",
           "frequency": "12 ครั้ง",
@@ -1591,6 +1693,8 @@
         {
           "id": "cat-4-4.1.3-16-16",
           "indicatorCode": "4.1.3",
+          "canonicalIndicatorCode": null,
+          "canonicalMappingNote": "DISCLOSED: กิจกรรม 5 ส (5S workplace-organization) cannot be supported by a single canonical Cat4 indicator; left unmapped rather than invented.",
           "taskNumber": null,
           "activityTh": "(5) กิจกรรม 5 ส",
           "frequency": "12 ครั้ง",
@@ -1614,6 +1718,7 @@
         {
           "id": "cat-4-4.1.3-17-17",
           "indicatorCode": "4.1.3",
+          "canonicalIndicatorCode": "4.1.2",
           "taskNumber": null,
           "activityTh": "(6) กิจกรรม Big Clean Day",
           "frequency": "2 ครั้ง",
@@ -1627,6 +1732,7 @@
         {
           "id": "cat-4-4.2.1-18-18",
           "indicatorCode": "4.2.1",
+          "canonicalIndicatorCode": "4.2.1",
           "taskNumber": null,
           "activityTh": "(1)  กำหนดผู้รับผิดชอบที่มีความรู้ความเข้าใจในการดูแลจัดการน้ำเสียของหน่วยงาน",
           "frequency": "1 ครั้ง",
@@ -1639,6 +1745,7 @@
         {
           "id": "cat-4-4.2.1-19-19",
           "indicatorCode": "4.2.1",
+          "canonicalIndicatorCode": "4.2.1",
           "taskNumber": null,
           "activityTh": "(2)  หน่วยงานมีการบำบัดน้ำเสียอย่างเหมาะสมและมีประสิทธิภาพ ตามบริบทของหน่วยงาน เช่น มีตะแกรงดักเศษอาหาร อุปกรณ์บำบัดน้ำเสีย ถังดักไขมัน ระบบบำบัดน้ำเสียเหมาะสมกับองค์ประกอบของน้ำเสีย",
           "frequency": "12 ครั้ง",
@@ -1662,6 +1769,7 @@
         {
           "id": "cat-4-4.2.1-20-20",
           "indicatorCode": "4.2.1",
+          "canonicalIndicatorCode": "4.2.1",
           "taskNumber": null,
           "activityTh": "(3)  บำบัดน้ำเสียครบทุกจุดที่ปล่อยน้ำเสียของหน่วยงาน",
           "frequency": "12 ครั้ง",
@@ -1685,6 +1793,7 @@
         {
           "id": "cat-4-4.2.1-21-21",
           "indicatorCode": "4.2.1",
+          "canonicalIndicatorCode": "4.2.1",
           "taskNumber": null,
           "activityTh": "(4)  ระบบบำบัดน้ำเสียอยู่ในสภาพพร้อมใช้งาน และมีผลการตรวจสอบคุณภาพน้ำทิ้งที่อยู่ในเกณฑ์มาตรฐานตามที่กฏหมายกำหนด",
           "frequency": "12 ครั้ง",
@@ -1708,6 +1817,7 @@
         {
           "id": "cat-4-4.2.2-22-22",
           "indicatorCode": "4.2.2",
+          "canonicalIndicatorCode": "4.2.2",
           "taskNumber": null,
           "activityTh": "(1)  ดูแลระบบบำบัดน้ำเสียหรือมีการตักและทำความสะอาดเศษอาหาร และไขมันออกจากตะแกรงดักขยะ หรือบ่อดักไขมัน ตามความถี่ที่กำหนดอย่างเหมาะสมกับปริมาณและการปนเปื้อน",
           "frequency": "12 ครั้ง",
@@ -1731,6 +1841,7 @@
         {
           "id": "cat-4-4.2.2-23-23",
           "indicatorCode": "4.2.2",
+          "canonicalIndicatorCode": "4.2.2",
           "taskNumber": null,
           "activityTh": "(2)  การจัดการไขมัน น้ำมัน เศษ อาหารจากถังดักไขมัน หรือกากตะกอนจากระบบบำบัดน้ำเสีย ไปกำจัดอย่างถูกต้อง",
           "frequency": "12 ครั้ง",
@@ -1754,6 +1865,7 @@
         {
           "id": "cat-4-4.2.2-24-24",
           "indicatorCode": "4.2.2",
+          "canonicalIndicatorCode": "4.2.2",
           "taskNumber": null,
           "activityTh": "(3)  ตรวจสอบ ปรับปรุง ซ่อมแซมถังดักไขมัน หรือระบบบำบัดน้ำเสียให้สามารถใช้งานและมีประสิทธิภาพอยู่เสมอ",
           "frequency": "12 ครั้ง",
@@ -1777,6 +1889,7 @@
         {
           "id": "cat-4-4.2.2-25-25",
           "indicatorCode": "4.2.2",
+          "canonicalIndicatorCode": "4.2.2",
           "taskNumber": null,
           "activityTh": "(4)  ตรวจสอบการรั่วไหลของน้ำเสียอย่างสม่ำเสมอเพื่อป้องกันการปนเปื้อนของน้ำเสียไปยังแหล่งอื่นๆ",
           "frequency": "12 ครั้ง",
@@ -1809,6 +1922,7 @@
         {
           "id": "cat-5-5.1-1-1",
           "indicatorCode": "5.1",
+          "canonicalIndicatorCode": "5.1.1",
           "taskNumber": null,
           "activityTh": "(1)  โดยบริษัท",
           "frequency": "1 ครั้ง",
@@ -1821,6 +1935,7 @@
         {
           "id": "cat-5-5.1-2-2",
           "indicatorCode": "5.1",
+          "canonicalIndicatorCode": "5.1.1",
           "taskNumber": null,
           "activityTh": "(2)  โดยบุคลากร",
           "frequency": "2 ครั้ง",
@@ -1834,6 +1949,7 @@
         {
           "id": "cat-5-5.2-5.2-3",
           "indicatorCode": "5.2",
+          "canonicalIndicatorCode": "5.1.1",
           "taskNumber": "5.2",
           "activityTh": "ทำความสะอาดเครื่องฟอกอากาศ",
           "frequency": "2 ครั้ง",
@@ -1847,6 +1963,7 @@
         {
           "id": "cat-5-5.3-5.3-4",
           "indicatorCode": "5.3",
+          "canonicalIndicatorCode": "5.1.1",
           "taskNumber": "5.3",
           "activityTh": "ทำความสะอาดเครื่องพิมพ์เอกสาร",
           "frequency": "12 ครั้ง",
@@ -1870,6 +1987,7 @@
         {
           "id": "cat-5-5.4-5.4-5",
           "indicatorCode": "5.4",
+          "canonicalIndicatorCode": "5.1.1",
           "taskNumber": "5.4",
           "activityTh": "ทำความสะอาดพรมปูพื้น",
           "frequency": "1 ครั้ง",
@@ -1882,6 +2000,7 @@
         {
           "id": "cat-5-5.5-5.5-6",
           "indicatorCode": "5.5",
+          "canonicalIndicatorCode": null,
           "taskNumber": "5.5",
           "activityTh": "ทำความสะอาดชั้นหนังสือ/วารสาร",
           "frequency": "12 ครั้ง",
@@ -1905,6 +2024,7 @@
         {
           "id": "cat-5-5.6-5.6-7",
           "indicatorCode": "5.6",
+          "canonicalIndicatorCode": "5.5.3",
           "taskNumber": "5.6",
           "activityTh": "สำรวจความพร้อมของสัญญาณเตือนภัย ไฟฉุกเฉิน ถังดับเพลิง",
           "frequency": "2 ครั้ง",
@@ -1918,6 +2038,7 @@
         {
           "id": "cat-5-5.7-5.7-8",
           "indicatorCode": "5.7",
+          "canonicalIndicatorCode": "5.4.3",
           "taskNumber": "5.7",
           "activityTh": "การดูแลพื้นที่พักผ่อนหย่อนใจ",
           "frequency": "12 ครั้ง",
@@ -1941,6 +2062,7 @@
         {
           "id": "cat-5-5.8-5.8-9",
           "indicatorCode": "5.8",
+          "canonicalIndicatorCode": "5.4.3",
           "taskNumber": "5.8",
           "activityTh": "การดูแลพื้นที่สีเขียว บริเวณพื้นที่ส่วนรวมภายใน/ภายนอกอาคาร และบริเวณโต๊ะทำงาน",
           "frequency": "12 ครั้ง",
@@ -1964,6 +2086,7 @@
         {
           "id": "cat-5-5.9-5.9-10",
           "indicatorCode": "5.9",
+          "canonicalIndicatorCode": "5.4.1",
           "taskNumber": "5.9",
           "activityTh": "การเพิ่มพื้นที่สีเขียว บริเวณพื้นที่ส่วนรวมภายในอาคาร และบริเวณโต๊ะทำงาน",
           "frequency": "1 ครั้ง",
@@ -1976,6 +2099,7 @@
         {
           "id": "cat-5-5.1-5.1-11",
           "indicatorCode": "5.1",
+          "canonicalIndicatorCode": "5.4.4",
           "taskNumber": "5.1",
           "activityTh": "การดูแลพื้นที่ส่วนร่วม (ตรวจสอบร่องรอยสัตว์พาหะ นก หนู แมลงสาบ อื่น ๆ)",
           "frequency": "12 ครั้ง",
@@ -1999,6 +2123,7 @@
         {
           "id": "cat-5-5.11-5.11-12",
           "indicatorCode": "5.11",
+          "canonicalIndicatorCode": "5.4.3",
           "taskNumber": "5.11",
           "activityTh": "การดูแลพื้นที่ทำงาน",
           "frequency": "12 ครั้ง",
@@ -2022,6 +2147,7 @@
         {
           "id": "cat-5-5.12-5.12-13",
           "indicatorCode": "5.12",
+          "canonicalIndicatorCode": "5.4.3",
           "taskNumber": "5.12",
           "activityTh": "การดูแลพื้นที่โดยรอบอาคาร",
           "frequency": "12 ครั้ง",
@@ -2045,6 +2171,7 @@
         {
           "id": "cat-5-5.13-5.13-14",
           "indicatorCode": "5.13",
+          "canonicalIndicatorCode": "5.5.1",
           "taskNumber": "5.13",
           "activityTh": "การฝึกซ้อมดับเพลิง หนีไฟ และแผ่นดินไหว",
           "frequency": "1 ครั้ง",
@@ -2057,6 +2184,7 @@
         {
           "id": "cat-5-5.14-5.14-15",
           "indicatorCode": "5.14",
+          "canonicalIndicatorCode": "5.2.1",
           "taskNumber": "5.14",
           "activityTh": "กิจกรรมตรวจสอบความเข้มของแสงสว่างในสำนักงาน",
           "frequency": "1 ครั้ง",
@@ -2069,6 +2197,7 @@
         {
           "id": "cat-5-5.15-5.15-16",
           "indicatorCode": "5.15",
+          "canonicalIndicatorCode": null,
           "taskNumber": "5.15",
           "activityTh": "รายงานผลการปฏิบัติงาน",
           "frequency": "1 ครั้ง",
@@ -2081,6 +2210,7 @@
         {
           "id": "cat-5-5.16-5.16-17",
           "indicatorCode": "5.16",
+          "canonicalIndicatorCode": null,
           "taskNumber": "5.16",
           "activityTh": "ประชุมคณะกรรมการหมวด 5",
           "frequency": "2 ครั้ง",
@@ -2103,6 +2233,7 @@
         {
           "id": "cat-6-6.1-6.1-1",
           "indicatorCode": "6.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "6.1",
           "activityTh": "การจัดซื้อสินค้าเป็นมิตรกับสิ่งแวดล้อม",
           "frequency": "12 ครั้ง",
@@ -2126,6 +2257,7 @@
         {
           "id": "cat-6-6.2-6.2-2",
           "indicatorCode": "6.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "6.2",
           "activityTh": "จัดทำบัญชีรายชื่อสินค้าที่เป็นมิตรกับสิ่งแวดล้อมที่สอดคล้องกับสินค้าที่ใชจริงในสำนักงาน โดยจะต้องระบุรายการสินค้า ยี่ห้อ ฉลากสิ่งแวดล้อม วันหมดอายุการรับรองของสินค้านั้น",
           "frequency": "1 ครั้ง",
@@ -2138,6 +2270,7 @@
         {
           "id": "cat-6-6.2-3-3",
           "indicatorCode": "6.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": null,
           "activityTh": "6.2.1 ทบทวนบัญชีรายชื่อสินค้าที่เป็นมิตรกับสิ่งแวดล้อมที่สอดคล้องกับสินค้าที่ใชจริงในสำนักงาน โดยจะต้องระบุรายการสินค้า ยี่ห้อ ฉลากสิ่งแวดล้อม วันหมดอายุการรับรองของสินค้านั้น",
           "frequency": "1 ครั้ง",
@@ -2150,6 +2283,7 @@
         {
           "id": "cat-6-6.3-6.3-4",
           "indicatorCode": "6.3",
+          "canonicalIndicatorCode": null,
           "taskNumber": "6.3",
           "activityTh": "จัดทำหนังสือถึงผู้ขายเพื่อขอความร่วมมือในการจัดหาสินค้าที่เป็นมิตรกับสิ่งแวดล้อม",
           "frequency": "1 ครั้ง",
@@ -2163,6 +2297,7 @@
         {
           "id": "cat-6-6.4-6.4-5",
           "indicatorCode": "6.4",
+          "canonicalIndicatorCode": null,
           "taskNumber": "6.4",
           "activityTh": "การจัดจ้างหน่วยงานหรือบุคคลที่มีการดำเนินงานที่เป็นมิตรกับสิ่งแวดล้อม",
           "frequency": "12 ครั้ง",
@@ -2186,6 +2321,7 @@
         {
           "id": "cat-6-6.5-6.5-6",
           "indicatorCode": "6.5",
+          "canonicalIndicatorCode": null,
           "taskNumber": "6.5",
           "activityTh": "ประชุมชี้แจงนโยบายสิ่งแวดล้อมโครงการสำนักงานสีเขียวอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดาให้แก่ผู้รับจ้าง",
           "frequency": "1 ครั้ง",
@@ -2207,6 +2343,7 @@
         {
           "id": "cat-7-7.1-1-1",
           "indicatorCode": "7.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1)",
           "activityTh": "ทำหนังสือแจ้งคณะกรรมการขับเคลื่อนสำนักงานสีเขียวมหาวิทยาลัยแม่โจ้ เพื่อกำหนดช่วงเวลาในการรับการตรวจประเมินสำนักงานสีเขียวอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา",
           "frequency": "1 ครั้ง",
@@ -2220,6 +2357,7 @@
         {
           "id": "cat-7-7.1-2-2",
           "indicatorCode": "7.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "2)",
           "activityTh": "จัดทำแผนการตรวจประเมินสำนักงานสีเขียวภายในสำนักงานอย่างน้อยปีละ 1 ครั้ง",
           "frequency": "1 ครั้ง",
@@ -2232,6 +2370,7 @@
         {
           "id": "cat-7-7.1-3-3",
           "indicatorCode": "7.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "3)",
           "activityTh": "มีการจัดทำข้อกำหนดการตรวจประเมินภายในครอบคลุมทุกหมวด",
           "frequency": "1 ครั้ง",
@@ -2244,6 +2383,7 @@
         {
           "id": "cat-7-7.1-4-4",
           "indicatorCode": "7.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "4)",
           "activityTh": "กำหนดผู้ตรวจประเมินภายในแต่ละหมวดมีความพอเพียงและเหมาะสมมีความเป็นอิสระในการตรวจอย่างชัดเจน",
           "frequency": "1 ครั้ง",
@@ -2256,6 +2396,7 @@
         {
           "id": "cat-7-7.1-5-5",
           "indicatorCode": "7.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "5)",
           "activityTh": "รับการตรวจประเมินสำนักงานสีเขียวภายในสำนักงานครบถ้วนทุกหมวด",
           "frequency": "1 ครั้ง",
@@ -2273,6 +2414,7 @@
         {
           "id": "cat-7-7.1-6-6",
           "indicatorCode": "7.1",
+          "canonicalIndicatorCode": null,
           "taskNumber": "6)",
           "activityTh": "จัดทำสรุปข้อมูลสรุปผลการตรวจประเมินสำนักงานสีเขียวภายในสำนักงาน",
           "frequency": "1 ครั้ง",
@@ -2285,6 +2427,7 @@
         {
           "id": "cat-7-7.2-1.1-7",
           "indicatorCode": "7.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1.1)",
           "activityTh": "การต่อยอดจากสำนักงานสีเขียวไปสู่การรับรองด้านสิ่งแวดล้อม หรือมาตรฐานด้านสิ่งแวดล้อม หรือด้านพลังงาน หรือการลดการปล่อยก๊าซเรือนกระจก",
           "frequency": "1 กิจกรรม/โครงการ",
@@ -2297,6 +2440,7 @@
         {
           "id": "cat-7-7.2-1.2-8",
           "indicatorCode": "7.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1.2)",
           "activityTh": "ส่งเสริมการดำเนินงานสำนักงานสีเขียวโดยการเป็นวิทยากรให้ความรู้การเป็นพี่เลี้ยง เป็นที่ปรึกษา ให้คำแนะนำให้กับหน่วยงานที่สนใจเข้าร่วมโครงการ",
           "frequency": "2 เรื่อง\n(1 หน่วยงาน)",
@@ -2309,6 +2453,7 @@
         {
           "id": "cat-7-7.2-1.3-9",
           "indicatorCode": "7.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1.3)",
           "activityTh": "เป็นสถานที่ศึกษาดูงานให้ความรู้เรื่องสำนักงานสีเขียว เป็นตัวอย่างในการดำเนินงาน หรือโครงการ หรือกิจกรรมที่ดี (Best Practice)",
           "frequency": "1 เรื่อง\n(1 หน่วยงาน)",
@@ -2321,6 +2466,7 @@
         {
           "id": "cat-7-7.2-1.4-10",
           "indicatorCode": "7.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1.4)",
           "activityTh": "สร้างเครือข่ายในการดำเนินงานสำนักงานสีเขียว ในรูปแบบของการจัดประชุม/กิจกรรม/นิทรรศการ แลกเปลี่ยนการดำเนินงานสำนักงาน สีเขียว การแสดงผลงาน การร่วมเวทีเสวนาเรื่องสำนักงานสีเขียว",
           "frequency": "2 โครงการ",
@@ -2333,6 +2479,7 @@
         {
           "id": "cat-7-7.2-1.5-11",
           "indicatorCode": "7.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "1.5)",
           "activityTh": "ดำเนินกิจกรรมที่มีส่วนร่วมกับชุมชนหรือหน่วยงานต่างองค์กร ในการอนุรักษ์ ทรัพยากร ธรรมชาติ หรือการจัดการ สิ่งแวดล้อม หรือการลดการปล่อยก๊าซเรือนกระจก",
           "frequency": "2 กิจกรรม/โครงการ",
@@ -2345,6 +2492,7 @@
         {
           "id": "cat-7-7.2-2-12",
           "indicatorCode": "7.2",
+          "canonicalIndicatorCode": null,
           "taskNumber": "2)",
           "activityTh": "จัดทำรายงานผลการดำเนินกิจกรรม/โครงการ (ข้อมูลรายละเอียด/ภาพประกอบการดำเนินงาน/สรุปผลการดำเนินงานแบบย่อ One Page) \nตามหลักฐานอ้างอิงที่ระบุไว้ในเกณฑ์การประเมิน",
           "frequency": "2 กิจกรรม/โครงการ",

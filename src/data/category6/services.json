@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "services",
+  "updated": "2026-08-24",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CAT6_PHASE_A_SOURCE_DISPOSITION",
+  "note": "FY2568 historical-baseline contract for external eco-service selection indicator 6.2.3 (แนวทางการเลือกใช้บริการที่เป็นมิตรกับสิ่งแวดล้อม นอกสำนักงาน). Verified search sources for eco hotels (gp.pcd.go.th, greenhotelthai.com, greenleafthai.org), example eco hotels, and Form 6.2(3) selection guideline. The FY2568 annual report declares no external hotel/venue eco service was used (in-building meeting rooms; Green Meeting measure in the resource-control measures §5). No FY2569 facts, no scores, no PASS claims.",
+  "sources": [
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.3(1) 1 แหล่งสืบค้นข้อมูลโรงแรมที่เป็นมิตรกับสิ่งแวดล้อมจากเว็บไซต์.pdf",
+      "role": "primary",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.3(1) 2 ตัวอย่างโรงแรมที่เป็นมิตรกับสิ่งแวดล้อมที่เลือกมา.pdf",
+      "role": "primary",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.3(1) 3 การคัดเลือกสถานที่ที่เป็นมิตรกับสิ่งแวดล้อม.pdf",
+      "role": "primary",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "6.2 การจัดจ้าง/6.2.3.pdf",
+      "role": "primary",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    },
+    {
+      "ref": "รายงานหมวด6 (แก้ไข) 17-3-69.docx",
+      "role": "supporting-report",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    }
+  ],
+  "records": [
+    {
+      "id": "services-guideline-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "6.2.3"
+      ],
+      "issueCodes": [
+        "6.2"
+      ],
+      "categoryCode": "cat6",
+      "evidenceIds": [
+        "ev-cat6-services-guideline-fy2568"
+      ],
+      "sourceRef": "6.2 การจัดจ้าง/6.2.3.pdf",
+      "manifestSha256": "e2ca5a7492512c0b702da6e2be9d4d5e6c836a5da36b49af88945bc5dd6be5e8",
+      "relatedSources": [
+        "6.2 การจัดจ้าง/6.2.3(1) 1 แหล่งสืบค้นข้อมูลโรงแรมที่เป็นมิตรกับสิ่งแวดล้อมจากเว็บไซต์.pdf",
+        "6.2 การจัดจ้าง/6.2.3(1) 2 ตัวอย่างโรงแรมที่เป็นมิตรกับสิ่งแวดล้อมที่เลือกมา.pdf",
+        "6.2 การจัดจ้าง/6.2.3(1) 3 การคัดเลือกสถานที่ที่เป็นมิตรกับสิ่งแวดล้อม.pdf",
+        "รายงานหมวด6 (แก้ไข) 17-3-69.docx"
+      ],
+      "verification": {
+        "status": "reviewed",
+        "basis": "All files content-verified (readable text layers): hotel search sources (gp.pcd.go.th, greenhotelthai.com, greenleafthai.org), example eco hotels, Form 6.2(3) venue-selection guideline and section narrative. The FY2568 annual report declares no external hotel/venue eco service was used in FY2568/FY2567 (in-building meeting rooms) and defines the Green Meeting measure in the resource-control measures §5."
+      },
+      "availability": "content-verified",
+      "kind": "externalServiceGuideline",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "แนวทางการเลือกใช้บริการที่เป็นมิตรกับสิ่งแวดล้อมนอกสำนักงาน ปี 2568 (แหล่งสืบค้น ตัวอย่างโรงแรม แบบฟอร์ม 6.2(3))",
+      "labelEn": "FY2568 guideline for selecting environmentally-friendly external services (search sources, example hotels, Form 6.2(3))",
+      "promoted": true,
+      "fy2569Recurrence": {
+        "required": false,
+        "cadence": "as-needed; Form 6.2(3) selection guideline reusable baseline"
+      }
+    }
+  ],
+  "gaps": []
+}

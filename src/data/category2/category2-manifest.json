@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0.0",
+  "updated": "2026-08-23",
+  "titleTh": "หมวด 2 — สัญญาข้อมูลตามหลักการ (Canonical Data Contracts)",
+  "titleEn": "Category 2 — Canonical Data Contracts",
+  "governance": "GOFFICE2026_CATEGORY2_COMMUNICATION_BLUEPRINT_V1",
+  "year": 2568,
+  "status": "PHASE_C_CONTRACTS",
+  "freeze": {
+    "status": "FROZEN_READ_ONLY_BASELINE",
+    "date": "2026-08-23",
+    "authorityDoc": "docs/GOFFICE2026_CATEGORY2_COMMUNICATION_BLUEPRINT_V1.md",
+    "dispositionDoc": "docs/data/GO-CAT2-PHASE-A-SOURCE-DISPOSITION.md"
+  },
+  "note": "Static-only canonical data contracts for Category 2 (no backend/database). Each contract models the frozen FY2568 historical baseline only, using only C1-approved mappings and fy2568-publication.json manifest references/hashes. Every record keeps year 2568, indicator/issue/category codes, a relative sourceRef, manifest sha256, and verification/availability truth. evidenceIds are intentionally empty until C3 maps evidence-index. 2.2.3 appears only as MISSING_DEDICATED_EVIDENCE in missingIndicators and contract gaps. No invented data, no official scoring, no signed-submission claim.",
+  "contracts": [
+    { "domain": "training", "file": "src/data/category2/training.json", "indicators": ["2.1.1", "2.1.2"], "status": "historical-baseline", "note": "Training plan/delivery/evaluation/history (2.1.1) + trainer CVs and course responsibility (2.1.2); 4 registration scans pending verification; 2.1.2 FY2569 minutes requirement recorded as forward requirement (PO B2)" },
+    { "domain": "communication", "file": "src/data/category2/communication.json", "indicators": ["2.2.1", "2.2.2"], "status": "historical-baseline", "note": "Communication plan/responsibility/target-groups (2.2.1); 2.2.2 THIN with 2 scan candidates pending, not promoted" },
+    { "domain": "feedback", "file": "src/data/category2/feedback.json", "indicators": ["2.2.4"], "status": "historical-baseline", "note": "Feedback channels/guideline/complaint/aggregate report (2.2.4); blank form templates structural-only" }
+  ],
+  "missingIndicators": [
+    { "indicator": "2.2.3", "status": "MISSING_DEDICATED_EVIDENCE", "note": "No questionnaire, respondent count (≥4), or percentage in the FY2568 source set; 2.2.3.pdf is narrative-only (methodology + PR media). FY2569 plan has 0 activities measuring understanding %. Never fabricated; requires a real questionnaire artifact to close." }
+  ],
+  "forwardRequirements": [
+    { "indicator": "2.1.2", "year": 2569, "status": "FORWARD_REQUIREMENT", "note": "PO B2 (2026-08-23): no new FY2569 activity is added. FY2569 committee minutes must record per-course trainer assignment and serve as the required 2.1.2 cross-evidence. This is a forward evidence requirement — not verified FY2569 evidence and not a historical claim." }
+  ],
+  "annualReport": {
+    "status": "category-level-historical-baseline",
+    "canonical": { "path": "รายงานผลการดำเนินงานหมวด2 (2568).docx", "sizeBytes": 37344232, "sha256": "4b4182a65142d1278789d6faf8785d2e3bce4e4fa5643c1a1f9f520717bcedbd" },
+    "export": { "path": "รายงานผลการดำเนินงานหมวด2 (2568).pdf", "sizeBytes": 6076264, "sha256": "56ad8f17d9953143be4b3e52a35f61f7e150d366d9d279ff2ab6ddc496caf252" },
+    "superseded": { "path": "2.3/รายงานผลการดำเนินงานหมวด2 (2568).docx", "sizeBytes": 37344917, "sha256": "ebecee13784423855f7e1db4bbcb94e09992e51d86f2eca0767a4c312e5264e2" },
+    "note": "PO B1 (2026-08-23): the root docx is the canonical historical baseline only — no claim of a signed/approved submission copy. No signed version exists in the FY2568 source set."
+  },
+  "validation": "scripts/validate-category2-contracts.mjs"
+}
