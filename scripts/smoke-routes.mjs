@@ -48,6 +48,7 @@ const thRoutes = [
   '/news/',
   '/activities/',
   '/activities/simina3/',
+  '/activities/5s/',
 ];
 
 const enRoutes = [
@@ -77,6 +78,7 @@ const enRoutes = [
   '/en/news/',
   '/en/activities/',
   '/en/activities/simina3/',
+  '/en/activities/5s/',
 ];
 
 const routes = [...thRoutes, ...enRoutes];
