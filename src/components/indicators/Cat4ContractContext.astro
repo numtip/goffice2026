@@ -1,0 +1,202 @@
+---
+import {
+  buildCat4DomainSnapshot,
+  contractForDomain,
+  cycleStagesForIndicator,
+  domainForIndicator,
+  domainLabel,
+  resolveDomainFactValue,
+  CAT4_YEAR,
+} from '../../utils/category4-presentation';
+
+interface Props {
+  indicatorCode: string;
+  locale: 'th' | 'en';
+}
+
+const { indicatorCode, locale } = Astro.props;
+const isEn = locale === 'en';
+
+function t(field: { th: string; en: string }): string {
+  return isEn ? field.en : field.th;
+}
+
+const domain = domainForIndicator(indicatorCode);
+const snapshot = domain ? buildCat4DomainSnapshot(domain) : null;
+const stages = cycleStagesForIndicator(indicatorCode);
+
+// Per-indicator honest limitation notes grounded in GO-CAT4-PHASE-A / the manifest.
+const LIMITATIONS: Record<string, { th: string; en: string }> = {
+  '4.1.1': {
+    th: 'มาตรการจัดการขยะยืนยันเนื้อหาโดยการอ้างอิงข้ามเท่านั้น (PDF ข้อความเพี้ยน — glyph เสีย รอ OCR); ประกาศเป้าหมาย/บริบทเป็นสแกน (รอ OCR); ปลอดโฟม 4.1.1(3) ยังไม่ได้ดำเนินการในปี 2568 (แผนปี 2569 เป็นเพียงข้อความวางแผนล่วงหน้า)',
+    en: 'Waste measures verified by cross-reference only (garbled PDF — broken glyphs, OCR pending); target/context announcements are scans (OCR pending); foam-free 4.1.1(3) was NOT implemented in FY2568 (the FY2569 plan is a forward statement only)',
+  },
+  '4.1.2': {
+    th: 'การคัดแยก/รวบรวม/กำจัดยืนยันเนื้อหาจากบันทึกและรายงาน; แบบฟอร์มสุ่มตรวจ (24 หน้า) และสัญญาจ้าง (1 หน้า) เป็นสแกน — ยังไม่ยืนยันเนื้อหา เลขสัญญา มจ.(กค.) 9/2568 ยืนยันข้ามจากรายงาน',
+    en: 'Sorting/collection/disposal content-verified from notes and the report; the random-check form (24p) and contractor contract (1p) are image scans — content pending OCR (contract no. มจ.(กค.) 9/2568 cross-verified via the report)',
+  },
+  '4.1.3': {
+    th: 'ขอบเขตรายปี (ขยะทั่วไป 4,380.10 กก. รวม 6,434.70 กก. นำกลับมาใช้ใหม่ 31.93%) ไม่บรรลุเป้าหมายลด 3% (+1.68% เทียบ 2567); เกณฑ์ >50% ไม่บรรลุ — ยืนยันผ่านสาขานวัตกรรม/ปุ๋ยหมัก; ขอบเขตแบบฟอร์มรายเดือน 5,625.7 กก. บันทึกแยก; แบบบันทึก 12 หน้าเป็นสแกน (ค่ารายเดือนยืนยันข้ามจากตารางปี 2568)',
+    en: 'Annual scope (general waste 4,380.10 kg, total 6,434.70 kg, reuse 31.93%) — target reduce 3% NOT met (+1.68% vs 2567); numeric >50% reuse NOT met (innovation/compost branch); monthly-form scope 5,625.7 kg recorded separately; the 12-page log is a scan (monthly values cross-verified via the promoted year-2568 table)',
+  },
+  '4.2.1': {
+    th: 'สถิติคุณภาพน้ำทิ้งรายเดือนปี 2568 ตรวจเนื้อหาแล้วและอยู่ในเกณฑ์มาตรฐาน (ห้องปฏิบัติการที่ได้รับการรับรอง); บันทึกการตักคราบน้ำมัน/ไขมัน (4 หน้า) เป็นสแกน — ยังไม่ยืนยันเนื้อหา',
+    en: 'FY2568 monthly effluent statistics are content-verified and within the legal standard (accredited lab); the oil/grease skimming record (4p) is an image scan — content pending OCR',
+  },
+  '4.2.2': {
+    th: 'การดูแล/บำรุงรักษาระบบบำบัดยืนยันเนื้อหา (ตักคราบรายสัปดาห์ ถังหมักรักษ์โลก ซ่อมแซม ตรวจสอบรั่วไหล); บันทึกตักคราบเป็นสแกนและเป็นสำเนาเดียวกับ 4.2.1(1) (ซ้ำ G2 — เปิดเผย ไม่นับซ้ำ); แบบ ทส.1/ทส.2 เป็นลิงก์อ้างอิงออนไลน์ภายนอก (WTMS)',
+    en: 'Treatment care/maintenance content-verified (weekly skimming, compost-bin disposal, repair, leak inspection); the skimming record is a scan and is byte-identical to 4.2.1(1) (G2 duplicate — disclosed, not double-counted); ทส.1/ทส.2 are external online references (WTMS)',
+  },
+};
+const limitation = LIMITATIONS[indicatorCode];
+
+const pendingScanCount = domain
+  ? contractForDomain(domain).records.filter((r) => r.availability === 'filename_folder_only').length
+  : 0;
+const sourceCount = domain ? contractForDomain(domain).records.length : 0;
+
+const limitationCodes = [
+  'SCAN_TARGET_ANNOUNCE',
+  'SCAN_CONTEXT_ANNOUNCE',
+  'SCAN_RANDOM_CHECK_FORM',
+  'SCAN_CONTRACT',
+  'SCAN_WASTE_LOG',
+  'SCAN_SKIMMING_RECORD',
+  'GARBLED_MEASURES_PDF',
+  'NO_SIGNED_COPY',
+  'REUSE_NUMERIC_NOT_MET',
+  'GENERAL_WASTE_TARGET_NOT_MET',
+  'MONTHLY_VS_ANNUAL_SCOPE',
+  'WTMS_EXTERNAL_RECORDS',
+];
+const limitationLabels: Record<string, { th: string; en: string }> = {
+  SCAN_TARGET_ANNOUNCE: { th: 'สแกนประกาศเป้าหมายสิ่งแวดล้อม 2568', en: 'Environmental-target announcement scan' },
+  SCAN_CONTEXT_ANNOUNCE: { th: 'สแกนประกาศบริบทองค์กร/ขอบเขต 2568', en: 'Context/scope announcement scan' },
+  SCAN_RANDOM_CHECK_FORM: { th: 'สแกนแบบฟอร์มสุ่มตรวจการทิ้งขยะ (24 หน้า)', en: 'Random waste-check form scan (24p)' },
+  SCAN_CONTRACT: { th: 'สแกนสัญญาจ้างกำจัดขยะ', en: 'Waste-contractor contract scan' },
+  SCAN_WASTE_LOG: { th: 'สแกนแบบบันทึกข้อมูลปริมาณขยะ (12 หน้า)', en: 'Monthly waste-log scan (12p)' },
+  SCAN_SKIMMING_RECORD: { th: 'สแกนบันทึกการตักคราบน้ำมัน/ไขมัน (ซ้ำ G2)', en: 'Oil/grease skimming-record scan (G2 duplicate)' },
+  GARBLED_MEASURES_PDF: { th: 'PDF มาตรการข้อความเพี้ยน (อ้างอิงข้ามเท่านั้น)', en: 'Garbled measures PDF (cross-reference only)' },
+  NO_SIGNED_COPY: { th: 'ไม่มีฉบับลงนาม', en: 'No signed copy' },
+  REUSE_NUMERIC_NOT_MET: { th: 'เกณฑ์นำกลับมาใช้ใหม่ >50% ไม่บรรลุ (31.93%)', en: 'Reuse >50% numeric threshold not met (31.93%)' },
+  GENERAL_WASTE_TARGET_NOT_MET: { th: 'เป้าหมายขยะทั่วไปลด 3% ไม่บรรลุ (+1.68%)', en: 'General-waste −3% target not met (+1.68%)' },
+  MONTHLY_VS_ANNUAL_SCOPE: { th: 'ขอบเขตแบบฟอร์มรายเดือน (5,625.7) vs ขอบเขตรายปี (6,434.70)', en: 'Monthly-form scope (5,625.7) vs annual scope (6,434.70)' },
+  WTMS_EXTERNAL_RECORDS: { th: 'บันทึก ทส.1/ทส.2 เป็นข้อมูลอ้างอิงภายนอก (WTMS)', en: 'ทส.1/ทส.2 records are external references (WTMS)' },
+};
+---
+
+<div
+  class="rounded-xl border border-green-100 bg-green-50/30 p-5"
+  aria-labelledby="cat4-contract-context"
+  data-cat4-contract-context
+  data-indicator-code={indicatorCode}
+>
+  <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+    <h2 id="cat4-contract-context" class="text-sm font-semibold text-gray-900">
+      {isEn ? `FY${CAT4_YEAR} contract context` : `บริบทข้อมูลสัญญา ปี ${CAT4_YEAR}`}
+    </h2>
+    {
+      domain && (
+        <span class="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-medium text-green-800">
+          {t(domainLabel(domain))}
+        </span>
+      )
+    }
+  </div>
+
+  {
+    stages.length > 0 && (
+      <div class="mb-3 flex flex-wrap items-center gap-2" data-cat4-cycle-stage>
+        {isEn ? 'Cycle stage:' : 'ขั้นวงจร:'}
+        {
+          stages.map((s) => (
+            <span class="inline-flex items-center rounded-full border border-green-200 bg-white px-2 py-0.5 text-[11px] font-semibold text-green-800">
+              {s.stage}. {t(s.label)}
+            </span>
+          ))
+        }
+      </div>
+    )
+  }
+
+  {
+    snapshot ? (
+      <>
+        <ul class="space-y-1.5" role="list">
+          {
+            snapshot.facts.map((fact) => (
+              <li class="flex items-baseline justify-between gap-3 text-xs">
+                <span class="text-gray-500">{t(fact.label)}</span>
+                <span class={`font-medium text-right ${fact.kind === 'unavailable' ? 'text-gray-400' : fact.kind === 'status' ? 'text-amber-700' : 'text-gray-800'}`} data-cat4-domain-fact={fact.kind}>
+                  {resolveDomainFactValue(fact.value, locale)}
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+        <dl class="mt-3 space-y-1 border-t border-green-100 pt-2 text-xs">
+          <div class="flex items-center justify-between gap-3">
+            <dt class="text-gray-500">{isEn ? 'Source files' : 'ไฟล์ต้นทาง'}</dt>
+            <dd class="font-medium text-gray-700" data-cat4-source-count>
+              {sourceCount}
+            </dd>
+          </div>
+          {
+            pendingScanCount > 0 && (
+              <div class="flex items-center justify-between gap-3">
+                <dt class="text-gray-500">{isEn ? 'Scans pending' : 'สแกนที่รอตรวจ'}</dt>
+                <dd class="font-medium text-amber-700" data-cat4-pending-scan-count>{pendingScanCount}</dd>
+              </div>
+            )
+          }
+          <div class="flex items-center justify-between gap-3">
+            <dt class="text-gray-500">{isEn ? 'Contract status' : 'สถานะสัญญา'}</dt>
+            <dd class="font-medium text-gray-700">{snapshot.status}</dd>
+          </div>
+        </dl>
+      </>
+    ) : (
+      <p class="text-xs italic text-gray-400">
+        {isEn ? 'No FY2568 contract domain maps to this indicator.' : 'ไม่มีโดเมนสัญญาข้อมูลปี 2568 สำหรับตัวชี้วัดนี้'}
+      </p>
+    )
+  }
+
+  {
+    limitation && (
+      <div class="mt-3 rounded-lg border border-amber-100 bg-amber-50/50 p-3" data-cat4-limitation>
+        <p class="text-xs font-semibold text-amber-800">
+          {isEn ? 'FY2568 source limitation' : 'ข้อจำกัดของแหล่งข้อมูลปี 2568'}
+        </p>
+        <p class="mt-1 text-xs leading-relaxed text-amber-700">{t(limitation)}</p>
+      </div>
+    )
+  }
+
+  <div class="mt-3 rounded-lg border border-blue-100 bg-blue-50/40 p-3" data-cat4-fy2569-pending>
+    <p class="text-xs font-semibold text-blue-900">
+      {isEn ? 'FY2569 layer: awaiting verified data' : 'ชั้นปี 2569: รอข้อมูลที่ตรวจสอบแล้ว'}
+    </p>
+    <p class="mt-1 text-xs leading-relaxed text-blue-800">
+      {isEn
+        ? 'The FY2569 assessment layer for this indicator is not built yet — it will appear only when verified FY2569 sources exist. No FY2568 value is copied forward (only the 4.1.1(3) foam-free plan is a forward statement).'
+        : 'ชั้นประเมินปี 2569 ของตัวชี้วัดนี้ยังไม่ได้สร้าง — จะแสดงเมื่อมีแหล่งข้อมูลปี 2569 ที่ตรวจสอบแล้วเท่านั้น ไม่มีการคัดลอกค่าปี 2568 ไปข้างหน้า (มีเพียงแผนปลอดโฟม 4.1.1(3) ที่เป็นข้อความวางแผนล่วงหน้า)'}
+    </p>
+  </div>
+
+  <details class="mt-3 rounded-lg border border-gray-200 bg-white p-3" data-cat4-source-limitations>
+    <summary class="cursor-pointer text-xs font-semibold text-gray-600 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 rounded">
+      {isEn ? 'Source limitations (all FY2568 Cat4 files)' : 'ข้อจำกัดแหล่งข้อมูล (ไฟล์หมวด 4 ปี 2568 ทั้งหมด)'}
+    </summary>
+    <ul class="mt-2 space-y-1.5" role="list">
+      {
+        limitationCodes.map((code) => (
+          <li class="flex items-start gap-2 text-xs text-gray-600">
+            <span aria-hidden="true" class="mt-0.5 text-amber-500">•</span>
+            <span>{t(limitationLabels[code])}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </details>
+</div>

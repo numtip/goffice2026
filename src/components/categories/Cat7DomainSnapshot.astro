@@ -1,0 +1,84 @@
+---
+/**
+ * Cat7DomainSnapshot.astro — Category 7 continuity evidence-control view.
+ * Renders the honest FY2568 baseline state from the normalized Category 7
+ * contracts: 7.1 limited to the FY2568 internal-audit request; 7.2 as an
+ * explicit EVIDENCE_GAP; FY2569-dated claims quarantined; scan pages pending
+ * OCR. Coverage/control context only — never a score, never a PASS claim,
+ * never a FY2569 result.
+ */
+import {
+  buildCat7ContinuitySnapshot,
+  CAT7_YEAR,
+  type ContinuityFact,
+} from '../../utils/category7-presentation';
+import { getLocalizedPath } from '../../i18n/utils';
+
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const isEn = locale === 'en';
+const path = (p: string) => getLocalizedPath(locale, p);
+const snapshot = buildCat7ContinuitySnapshot();
+const facts = snapshot.facts as ContinuityFact[];
+
+function t(field: { th: string; en: string }): string {
+  return isEn ? field.en : field.th;
+}
+
+const kindStyle: Record<ContinuityFact['kind'], string> = {
+  status: 'border-green-100 bg-green-50/60',
+  gap: 'border-amber-200 bg-amber-50/70',
+  quarantine: 'border-red-100 bg-red-50/50',
+  unavailable: 'border-gray-100 bg-gray-50/60',
+};
+---
+
+<section class="mb-8" aria-labelledby="cat7-continuity-control" data-cat7-continuity-control>
+  <div class="mb-4">
+    <h2 id="cat7-continuity-control" class="text-base font-semibold text-gray-900">
+      {isEn ? `FY${CAT7_YEAR} continuity evidence control` : `การควบคุมหลักฐานความต่อเนื่อง ปี ${CAT7_YEAR}`}
+    </h2>
+    <p class="mt-1 text-sm leading-relaxed text-gray-600">
+      {isEn
+        ? 'Evidence-control view of the frozen FY2568 baseline for Category 7 (continuity). Only the FY2568 internal-audit request (7.1 p2) is baseline-eligible; 7.2 has no verified FY2568 execution evidence (explicit gap). FY2569-dated claims are quarantined and never presented as evidence or results. Shown as coverage/control context — never a score or PASS claim.'
+        : 'มุมมองควบคุมหลักฐานข้อมูลฐานปี 2568 ของหมวด 7 (ความต่อเนื่อง) เฉพาะคำขอตรวจประเมินภายในปี 2568 (7.1 หน้า 2) ที่ผ่านเกณฑ์ปีฐาน 7.2 ยังไม่มีหลักฐานการดำเนินงานปี 2568 ที่ตรวจสอบได้ (ช่องว่างที่ชัดเจน) ข้อเท็จจริงปี 2569 ถูกแยกออก (QUARANTINE) ไม่แสดงเป็นหลักฐานหรือผล นำเสนอเป็นบริบทความครอบคลุม/การควบคุมเท่านั้น ไม่ใช่คะแนนหรือการผ่านเกณฑ์'}
+    </p>
+  </div>
+
+  <dl class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    {facts.map((fact) => (
+      <div
+        class:list={['rounded-xl border bg-white p-4 shadow-sm', kindStyle[fact.kind]]}
+        data-cat7-continuity-fact={fact.code}
+        data-kind={fact.kind}
+      >
+        <dt class="text-xs font-semibold text-gray-500">{t(fact.label)}</dt>
+        <dd class="mt-1.5 text-sm leading-snug text-gray-800">{t(fact.value)}</dd>
+      </div>
+    ))}
+  </dl>
+
+  <div class="mt-4 flex flex-wrap gap-2">
+    <a
+      href={path('/indicators/7.1/')}
+      class="inline-flex items-center rounded-full border border-green-200 bg-white px-3 py-1 text-xs font-medium text-green-800 transition-colors hover:border-green-400 hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+    >
+      7.1 {t({ th: 'ตรวจประเมินภายใน', en: 'Internal audit' })}
+    </a>
+    <a
+      href={path('/indicators/7.2/')}
+      class="inline-flex items-center rounded-full border border-amber-200 bg-white px-3 py-1 text-xs font-medium text-amber-800 transition-colors hover:border-amber-400 hover:bg-amber-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:ring-offset-2"
+    >
+      7.2 {t({ th: 'พัฒนา/ต่อยอด (ช่องว่างหลักฐาน)', en: 'Advancement (evidence gap)' })}
+    </a>
+    <a
+      href={path('/documents/cat7/')}
+      class="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-medium text-gray-700 transition-colors hover:border-gray-400 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-700 focus-visible:ring-offset-2"
+    >
+      {t({ th: 'เอกสารต้นฉบับปี 2568', en: 'FY2568 source documents' })}
+    </a>
+  </div>
+</section>

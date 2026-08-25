@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/global.css';
+import { getLocalizedPath } from '../../i18n/utils';
+import type { ContentRecord } from '../../utils/content-presentation';
+import { formatPublishDate, pickLocalizedContent } from '../../utils/content-presentation';
+import { withBase } from '../../utils/with-base';
+
+interface Props {
+  item: ContentRecord;
+  locale: 'th' | 'en';
+  hubRoute: '/activities' | '/news';
+  hubLabelTh: string;
+  hubLabelEn: string;
+}
+
+const { item, locale, hubRoute, hubLabelTh, hubLabelEn } = Astro.props;
+const isTh = locale === 'th';
+const title = pickLocalizedContent(locale, item.titleTh, item.titleEn, item.translationPending);
+const body = pickLocalizedContent(locale, item.bodyTh ?? item.summaryTh, item.bodyEn ?? item.summaryEn, item.translationPending);
+const summary = pickLocalizedContent(locale, item.summaryTh, item.summaryEn, item.translationPending);
+const categoryLabel = item.category
+  ? pickLocalizedContent(locale, item.category.labelTh, item.category.labelEn)
+  : '';
+const typeLabel = item.activityType
+  ? pickLocalizedContent(locale, item.activityType.labelTh, item.activityType.labelEn)
+  : '';
+const dateLabel = formatPublishDate(item.publishDate, locale);
+const hubHref = getLocalizedPath(locale, hubRoute);
+const hubLabel = isTh ? hubLabelTh : hubLabelEn;
+---
+
+<BaseLayout title={title} description={summary} locale={locale}>
+  <article class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <nav class="mb-6 text-sm" aria-label={isTh ? 'เส้นทาง' : 'Breadcrumb'}>
+      <a href={hubHref} class="font-semibold text-green-700 hover:underline">{hubLabel}</a>
+      <span class="mx-2 text-gray-400" aria-hidden="true">/</span>
+      <span class="text-gray-600">{title}</span>
+    </nav>
+
+    {!isTh && item.translationPending && (
+      <p class="mb-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+        English translation is pending. Thai content is shown as the authoritative source.
+      </p>
+    )}
+
+    <header class="mb-8 border-b border-gray-200 pb-6">
+      <p class="mb-3 flex flex-wrap items-center gap-2 text-sm text-gray-500">
+        {dateLabel && <time datetime={item.publishDate}>{dateLabel}</time>}
+        {categoryLabel && (
+          <>
+            <span aria-hidden="true">·</span>
+            <span>{categoryLabel}</span>
+          </>
+        )}
+        {typeLabel && (
+          <>
+            <span aria-hidden="true">·</span>
+            <span>{typeLabel}</span>
+          </>
+        )}
+        <span aria-hidden="true">·</span>
+        <span>{isTh ? `พ.ศ. ${item.fiscalYear}` : `BE ${item.fiscalYear}`}</span>
+      </p>
+      <h1 class="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl">{title}</h1>
+      {summary && summary !== body && (
+        <p class="mt-4 text-lg leading-relaxed text-gray-600">{summary}</p>
+      )}
+    </header>
+
+    {item.media && item.media.length > 0 && (
+      <div class="mb-8 space-y-4">
+        {item.media.filter((m) => m.type === 'image').map((media) => (
+          <figure>
+            <img
+              src={withBase(media.src)}
+              alt={pickLocalizedContent(locale, media.altTh ?? title, media.altEn ?? title, item.translationPending)}
+              class="w-full rounded-2xl border border-gray-200"
+              loading="lazy"
+            />
+          </figure>
+        ))}
+      </div>
+    )}
+
+    <div class="prose prose-green max-w-none text-gray-800 leading-relaxed whitespace-pre-line">
+      {body}
+    </div>
+
+    {item.relatedLinks && item.relatedLinks.length > 0 && (
+      <section class="mt-10" aria-labelledby="related-links-heading">
+        <h2 id="related-links-heading" class="text-lg font-semibold text-gray-900 mb-3">
+          {isTh ? 'ลิงก์ที่เกี่ยวข้อง' : 'Related links'}
+        </h2>
+        <ul class="space-y-2">
+          {item.relatedLinks.map((link) => (
+            <li>
+              <a href={getLocalizedPath(locale, link.route.replace(/\/$/, ''))} class="text-green-700 font-medium hover:underline">
+                {isTh ? link.labelTh : link.labelEn}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {item.source?.mergedSources && item.source.mergedSources.length > 0 && (
+      <footer class="mt-6 rounded-xl border border-dashed border-gray-300 bg-gray-50 p-4 text-xs text-gray-500">
+        <p class="font-semibold text-gray-700 mb-1">{isTh ? 'แหล่ง Joomla ที่รวม' : 'Merged Joomla sources'}</p>
+        <ul class="space-y-1">
+          {item.source.mergedSources.map((s) => (
+            <li>
+              <a href={s.joomlaUrl} class="text-green-700 hover:underline" rel="noopener noreferrer" target="_blank">
+                #{s.joomlaArticleId}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </footer>
+    )}
+
+    {item.source?.joomlaUrl && (
+      <footer class="mt-10 rounded-xl border border-dashed border-gray-300 bg-gray-50 p-4 text-xs text-gray-500">
+        <p>
+          {isTh ? 'แหล่งที่มาเดิม (Joomla):' : 'Original source (Joomla):'}
+          {' '}
+          <a href={item.source.joomlaUrl} class="text-green-700 hover:underline" rel="noopener noreferrer" target="_blank">
+            {item.source.joomlaArticleId ? `#${item.source.joomlaArticleId}` : item.source.joomlaUrl}
+          </a>
+        </p>
+      </footer>
+    )}
+  </article>
+</BaseLayout>

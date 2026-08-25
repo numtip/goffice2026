@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "meetings",
+  "updated": "2026-08-23",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CATEGORY3_RESOURCE_BLUEPRINT_V1",
+  "note": "FY2568 historical-baseline contract for issue 3.4 (การประชุมและการจัดนิทรรศการ). 3.4.1 green-meeting/exhibition measures and 3.4.2 eco-material implementation. The standalone 3.4.2 source (#32) is partial — starts at item (3); complete content exists in the #29 DOCX issue report. Green-meeting measures for 3.4.1 live here (not in measures.json) so each indicator has exactly one canonical contract. No FY2569 facts.",
+  "sources": [
+    { "ref": "3.4 การประชุมและการจัดนิทรรศการ/3.4.1 มาตรการหรือแนวทางการจัดการประชุมและนิทรรศการที่เป็นมิตรกับสิ่งแวดล้อม/3.4.1.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #31 — green-meeting measures: e-meeting, QR-Code, online invite." },
+    { "ref": "3.4 การประชุมและการจัดนิทรรศการ/3.4.2 การจัดประชุมและนิทรรศการที่เป็นมิตรกับสิ่งแวดล้อม/3.4.2.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical-partial", "note": "C1 #32 — eco-material meeting/exhibition implementation; starts at item (3), items (1)/(2) absent. Complete content exists in the #29 DOCX report." },
+    { "ref": "3.4 การประชุมและการจัดนิทรรศการ/การประชุมและการจัดนิทรรศการ.docx", "role": "category-report", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #29 — canonical 3.4 issue report with complete 3.4.2 items (1)–(5)." }
+  ],
+  "records": [
+    {
+      "id": "meeting-green-measures-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.4.1"],
+      "issueCodes": ["3.4"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-measures-meetings-fy2568"],
+      "sourceRef": "3.4 การประชุมและการจัดนิทรรศการ/3.4.1 มาตรการหรือแนวทางการจัดการประชุมและนิทรรศการที่เป็นมิตรกับสิ่งแวดล้อม/3.4.1.pdf",
+      "manifestSha256": "6c5dee9a0abbfa0c30eed9b7352aa2464f46674900e50ef924aa4fd21a55a905",
+      "verification": {
+        "status": "pending",
+        "basis": "3.4.1 green-meeting/exhibition measures: ประชุมอิเล็กทรอนิกส์, QR-Code, เชิญประชุมออนไลน์ — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "greenMeetingMeasures",
+      "labelTh": "มาตรการจัดประชุม/นิทรรศการสีเขียว 3.4.1",
+      "labelEn": "Green meeting and exhibition measures 3.4.1"
+    },
+    {
+      "id": "meeting-eco-materials-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["3.4.2"],
+      "issueCodes": ["3.4"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-meetings-eco-materials-fy2568"],
+      "sourceRef": "3.4 การประชุมและการจัดนิทรรศการ/3.4.2 การจัดประชุมและนิทรรศการที่เป็นมิตรกับสิ่งแวดล้อม/3.4.2.pdf",
+      "manifestSha256": "83eea050a2f01232010b9c71b402e37fca1d06a858f981cbe9817d58d5f9125d",
+      "verification": {
+        "status": "pending",
+        "basis": "3.4.2 eco-material implementation: starts at item (3) (energy in rooms + food/drink) — items (1)/(2) absent in the standalone file (C1 anomaly #5). Complete 3.4.2 items (1)–(5) exist in the #29 DOCX issue report. Human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "ecoMaterialImplementation",
+      "labelTh": "การจัดประชุม/นิทรรศการด้วยวัสดุสีเขียว 3.4.2",
+      "labelEn": "Eco-material meeting/exhibition implementation 3.4.2"
+    }
+  ],
+  "gaps": [
+    { "indicator": "3.4.2", "status": "PARTIAL", "note": "Standalone 3.4.2.pdf starts at item (3); items (1)/(2) are present only in the #29 DOCX issue report and its export. Complete content is available via the category report." }
+  ],
+  "forwardRequirements": [],
+  "crossLinks": [
+    { "from": "3.4.1", "to": "3.4.2", "reason": "Green-meeting measures (3.4.1) are implemented as eco-material meetings/exhibitions (3.4.2)" },
+    { "from": "3.4.2", "to": "3.1.1", "reason": "Meetings use water/energy/resource reduction aligned with the Cat3 resource measures" }
+  ]
+}

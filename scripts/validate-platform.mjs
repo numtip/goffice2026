@@ -154,6 +154,38 @@ function phaseCategory1() {
   return { ok: shared.ok && aspects.ok };
 }
 
+// ── Phase 1.87: Category 2 + 3 Canonical Contracts ────────────
+
+function phaseCategory23() {
+  console.log('\n========================================');
+  console.log('PHASE 1.87: Category 2 + 3 + 4 Contracts');
+  console.log('========================================');
+  const cat2 = runScript('validate-category2-contracts.mjs');
+  const cat3 = runScript('validate-category3-contracts.mjs');
+  const cat4 = runScript('validate-category4-contracts.mjs');
+  return { ok: cat2.ok && cat3.ok && cat4.ok };
+}
+
+// ── Phase 1.88: Category 5 + 6 Canonical Contracts ────────────
+
+function phaseCategory56() {
+  console.log('\n========================================');
+  console.log('PHASE 1.88: Category 5 + 6 Contracts');
+  console.log('========================================');
+  const cat5 = runScript('validate-category5-contracts.mjs');
+  const cat6 = runScript('validate-category6-contracts.mjs');
+  return { ok: cat5.ok && cat6.ok };
+}
+
+// ── Phase 1.89: Category 7 Canonical Contracts ────────────────
+
+function phaseCategory7() {
+  console.log('\n========================================');
+  console.log('PHASE 1.89: Category 7 Contracts');
+  console.log('========================================');
+  return runScript('validate-category7-contracts.mjs');
+}
+
 // ── Phase 1.9: Search-Index Metadata Validation ─────────────
 
 function phaseSearchIndex() {
@@ -161,6 +193,13 @@ function phaseSearchIndex() {
   console.log('PHASE 1.9: Search-Index Metadata');
   console.log('========================================');
   return runScript('validate-search-index.mjs');
+}
+
+function phaseActivities() {
+  console.log('\n========================================');
+  console.log('PHASE 1.91: Activities/News Content');
+  console.log('========================================');
+  return runScript('validate-activities.mjs');
 }
 
 // ── Phase 2: Evidence Validation ────────────────────────────
@@ -362,7 +401,11 @@ function main() {
   const evidenceLinksResult = phaseEvidenceLinks();
   const actionPlanResult = phaseActionPlan();
   const category1Result = phaseCategory1();
+  const category23Result = phaseCategory23();
+  const category56Result = phaseCategory56();
+  const category7Result = phaseCategory7();
   const searchIndexResult = phaseSearchIndex();
+  const activitiesResult = phaseActivities();
   const evidenceResult = phaseEvidence();
   const routeResult = phaseRoutes();
   const linkResult = routeResult.skipped ? { ok: true, skipped: true } : phaseLinks();
@@ -380,7 +423,11 @@ function main() {
     { phase: 'Evidence-Links Metadata', ok: evidenceLinksResult.ok },
     { phase: 'Action-Plan Canonical Scope', ok: actionPlanResult.ok },
     { phase: 'Category 1 Contracts + 1.3 Aspects', ok: category1Result.ok },
+    { phase: 'Category 2 + 3 + 4 Contracts', ok: category23Result.ok },
+    { phase: 'Category 5 + 6 Contracts', ok: category56Result.ok },
+    { phase: 'Category 7 Contracts (continuity)', ok: category7Result.ok },
     { phase: 'Search-Index Metadata',  ok: searchIndexResult.ok },
+    { phase: 'Activities/News Content', ok: activitiesResult.ok },
     { phase: 'Evidence Validation',    ok: evidenceResult.ok },
     { phase: 'Route Verification',     ok: routeOk },
     { phase: 'Production Link Check',  ok: linkOk },
@@ -404,6 +451,15 @@ function main() {
   }
   if (!category1Result.ok) {
     console.log('  ⚠  Category 1 contracts / 1.3 aspects validator reported issues. Check output above.');
+  }
+  if (!category23Result.ok) {
+    console.log('  ⚠  Category 2/3/4 contracts validator reported issues. Check output above.');
+  }
+  if (!category56Result.ok) {
+    console.log('  ⚠  Category 5/6 contracts validator reported issues. Check output above.');
+  }
+  if (!category7Result.ok) {
+    console.log('  ⚠  Category 7 contracts validator reported issues. Check output above.');
   }
   if (!searchIndexResult.ok) {
     console.log('  ⚠  Search-Index metadata validator reported issues. Check output above.');

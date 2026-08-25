@@ -1,0 +1,123 @@
+---
+/**
+ * Cat7SourceDocuments.astro — "เอกสารต้นฉบับสำหรับการตรวจสอบ" (Original document for review)
+ * Source-document section for Category 7 indicators (7.1, 7.2). Data comes only
+ * from the deterministic FY2568 publication manifest cat7 set (3 files). Each
+ * file is described honestly per GO-CAT7-PHASE-A: only the 7.1 p2 FY2568 request
+ * is baseline-eligible; FY2569-dated claims are quarantined; scan pages are
+ * pending OCR; หมวด 7_ is contentDuplicateCandidate (separate sourceRef, no dedup).
+ * No score, no PASS, no FY2569 result.
+ */
+import fy2568Publication from '../../data/fy2568-publication.json';
+import { withBase } from '../../utils/with-base';
+
+interface Props {
+  issueCode: string; // '7.1' | '7.2'
+  locale: 'th' | 'en';
+}
+
+const { issueCode, locale } = Astro.props;
+const isEn = locale === 'en';
+
+function t(th: string, en: string): string {
+  return isEn ? en : th;
+}
+
+interface PublicationDoc {
+  path: string;
+  title: string;
+  type: string;
+  sizeBytes: number;
+  sha256: string;
+  url: string;
+}
+
+const publication = fy2568Publication as unknown as {
+  categories: Record<string, { count: number; bytes: number; documents: PublicationDoc[] }>;
+};
+
+const docs = [...(publication.categories.cat7?.documents ?? [])].sort((a, b) =>
+  a.path.localeCompare(b.path),
+);
+
+const typeLabel: Record<string, string> = {
+  pdf: 'PDF',
+  docx: 'Word / DOCX',
+};
+
+// Editorial per-document description (th/en). Grounded in GO-CAT7-PHASE-A —
+// never invented. FY2569-dated claims are disclosed as quarantined, not linked.
+function describe(path: string): { th: string; en: string } | undefined {
+  if (path.includes('7.1 (')) {
+    return {
+      th: 'เอกสาร 7.1 การตรวจประเมินภายใน — 7 หน้า (ข้อความอ่านได้บนหน้า 1,2,5,6,7) เฉพาะคำขอตรวจประเมินภายในปี 2568 (หน้า 2) ที่ผ่านเกณฑ์ปีฐาน การแต่งตั้ง (หน้า 1) ข้อกำหนด (หน้า 5) การตรวจ/สรุปผล (หน้า 7) ลงปี 2569 → QUARANTINE รายนาม (หน้า 6) ไม่ระบุปี ภาพถ่ายหน้า 3–4 รอ OCR',
+      en: '7.1 internal audit — 7 pages (readable text on p1,2,5,6,7). Only the FY2568 internal-audit request (p2) is baseline-eligible. Appointment (p1), criteria (p5), execution/result (p7) are FY2569-dated → QUARANTINE; roster (p6) has no year; p3–4 photos pending OCR.',
+    };
+  }
+  if (path.includes('7.2 (')) {
+    return {
+      th: 'เอกสาร 7.2 การพัฒนา/ต่อยอด — 2 หน้า (ข้อความอ่านได้บนหน้า 1) ข้อ (1)–(3) เป็นแผนปี 2569 → QUARANTINE ข้อ (4) MAEJO PGS ไม่ระบุปี (candidate) ภาพถ่ายหน้า 2 รอ OCR ไม่มีหลักฐานการดำเนินงานปี 2568 ที่ตรวจสอบได้ (EVIDENCE_GAP)',
+      en: '7.2 advancement — 2 pages (readable text on p1). Facets (1)–(3) are FY2569-dated plans → QUARANTINE; facet (4) MAEJO PGS has no explicit year (candidate); p2 photos pending OCR. No verified FY2568 execution evidence (EVIDENCE_GAP).',
+    };
+  }
+  if (path.includes('หมวด 7_')) {
+    return {
+      th: 'รายงานรวมหมวด 7 — 9 หน้า (ข้อความอ่านได้บนหน้า 1,2,5,6,7,8) รวมเนื้อหา 7.1 (หน้า 1–7) + 7.2 (หน้า 8) — contentDuplicateCandidate (ไม่มี dedupe/duplicateOf) หน้าสแกน 3–4, 9 รอ OCR',
+      en: 'Combined Category 7 export — 9 pages (readable text on p1,2,5,6,7,8) containing 7.1 (p1–7) + 7.2 (p8) — contentDuplicateCandidate (no dedupe/duplicateOf); scan pages 3–4, 9 pending OCR.',
+    };
+  }
+  return undefined;
+}
+---
+
+<section
+  class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6"
+  aria-labelledby={`cat7-source-title-${issueCode}`}
+  data-cat7-source-documents
+  data-group={issueCode}
+>
+  <p class="text-xs font-semibold text-primary">
+    {t('เอกสารต้นฉบับสำหรับการตรวจสอบ', 'Original document for review')}
+  </p>
+  <h2 id={`cat7-source-title-${issueCode}`} class="mt-1 text-base font-bold text-on-surface">
+    {t(`เอกสารต้นฉบับ ${issueCode} ปี 2568`, `Original ${issueCode} FY2568 documents`)}
+  </h2>
+  <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+    {t(
+      `ไฟล์ต้นฉบับปี 2568 ของหมวด 7 (ชุด 3 ไฟล์ที่ผ่านการกระทบยอด) — สำหรับการตรวจสอบเอกสารต้นทาง เฉพาะคำขอตรวจประเมินภายในปี 2568 (7.1 หน้า 2) ที่ผ่านเกณฑ์ปีฐาน ข้อเท็จจริงปี 2569 ถูก QUARANTINE (ไม่มีลิงก์ผล/หลักฐาน) และหน้าสแกนรอ OCR`,
+      `Openly published FY2568 source files for Category 7 (reconciled 3-file set) — for original-document review. Only the FY2568 internal-audit request (7.1 p2) is baseline-eligible; FY2569-dated claims are QUARANTINED (no result/evidence links) and scan pages await OCR.`,
+    )}
+  </p>
+  <ul class="mt-4 space-y-3" role="list">
+    {docs.map((doc) => {
+      const description = describe(doc.path);
+      return (
+        <li
+          class="rounded-lg border border-gray-100 bg-white p-4"
+          data-cat7-source-doc
+          data-path={doc.path}
+        >
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-1 text-[11px] font-semibold text-emerald-800">
+              {typeLabel[doc.type] ?? doc.type.toUpperCase()}
+            </span>
+            <p class="min-w-0 flex-1 font-medium num-tabular text-sm text-on-surface">{doc.title}</p>
+            <a
+              href={withBase(doc.url)}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex min-h-11 items-center justify-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-white transition duration-300 ease-out hover:-translate-y-0.5 focus-ring motion-reduce:transform-none"
+            >
+              {t('เปิดเอกสารต้นฉบับ', 'Open original document')}
+            </a>
+          </div>
+          {description && (
+            <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+              {t(description.th, description.en)}
+            </p>
+          )}
+        </li>
+      );
+    })}
+  </ul>
+</section>

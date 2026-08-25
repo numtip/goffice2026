@@ -83,6 +83,205 @@ export function validateActionPlan2569(data) {
 }
 
 /**
+ * Cat2 canonical-indicator mapping checks (GO-CAT2 C4).
+ * Every cat2 activity must carry a canonicalIndicatorCode; the frozen mapping
+ * counts must hold exactly: 2.1.1=8 · 2.2.1=1 · 2.2.2=9 · 2.2.4=2 · 2.1.2=0 · 2.2.3=0.
+ * Legacy indicatorCode is retained. No activity may map to MISSING 2.2.3 or the
+ * zero-activity 2.1.2 (2.1.2 is a forward committee-minutes requirement, not a plan activity).
+ */
+const CAT2_FROZEN_CANONICAL_COUNTS = {
+  '2.1.1': 8,
+  '2.1.2': 0,
+  '2.2.1': 1,
+  '2.2.2': 9,
+  '2.2.3': 0,
+  '2.2.4': 2,
+};
+const VALID_CAT2_CANONICAL = new Set(Object.keys(CAT2_FROZEN_CANONICAL_COUNTS));
+
+export function validateActionPlanCat2Canonical(data) {
+  const errors = [];
+  const cat2 = (data?.categories ?? []).find((c) => c.id === 'cat-2');
+  if (!cat2) return ['action-plan must contain cat-2'];
+  if (!Array.isArray(cat2.activities)) return ['cat-2 activities must be array'];
+
+  const counts = {};
+  for (const act of cat2.activities) {
+    const code = act.canonicalIndicatorCode;
+    if (!code || typeof code !== 'string') {
+      errors.push(`${act.id}: missing canonicalIndicatorCode`);
+      continue;
+    }
+    if (!VALID_CAT2_CANONICAL.has(code)) {
+      errors.push(`${act.id}: invalid canonicalIndicatorCode "${code}"`);
+      continue;
+    }
+    if (code === '2.2.3') errors.push(`${act.id}: must never map to MISSING 2.2.3`);
+    if (code === '2.1.2') errors.push(`${act.id}: 2.1.2 has 0 plan activities (forward committee-minutes requirement only)`);
+    if (!act.indicatorCode) errors.push(`${act.id}: legacy indicatorCode must be retained`);
+    counts[code] = (counts[code] ?? 0) + 1;
+  }
+
+  for (const [code, expected] of Object.entries(CAT2_FROZEN_CANONICAL_COUNTS)) {
+    const actual = counts[code] ?? 0;
+    if (actual !== expected) {
+      errors.push(`cat2 canonicalIndicatorCode count for ${code} must be ${expected}, got ${actual}`);
+    }
+  }
+  const total = Object.values(counts).reduce((s, n) => s + n, 0);
+  if (total !== cat2.activities.length) {
+    errors.push(`cat2 canonical mapping total must equal activity count ${cat2.activities.length}, got ${total}`);
+  }
+  return errors;
+}
+
+/**
+ * Cat3 canonical-indicator mapping checks (GO-CAT3 C4).
+ * Every cat3 activity must carry a canonicalIndicatorCode; the frozen mapping
+ * counts must hold exactly: 3.1.1=2 · 3.2.1=1 · 3.2.2=1 · 3.1.2=1 · 3.4.1=1.
+ * Legacy indicatorCode (3.1–3.6) is retained. Codes must be canonical 3.x.x
+ * codes; no new activities and no FY2569 facts are introduced.
+ */
+const CAT3_FROZEN_CANONICAL_COUNTS = {
+  '3.1.1': 2,
+  '3.1.2': 1,
+  '3.2.1': 1,
+  '3.2.2': 1,
+  '3.2.5': 0,
+  '3.2.4': 0,
+  '3.3.1': 0,
+  '3.3.2': 0,
+  '3.3.3': 0,
+  '3.3.4': 0,
+  '3.3.5': 0,
+  '3.4.1': 1,
+  '3.4.2': 0,
+};
+const VALID_CAT3_CANONICAL = new Set([
+  '3.1.1', '3.1.2', '3.1.3',
+  '3.2.1', '3.2.2', '3.2.3', '3.2.4', '3.2.5',
+  '3.3.1', '3.3.2', '3.3.3', '3.3.4', '3.3.5',
+  '3.4.1', '3.4.2',
+]);
+
+export function validateActionPlanCat3Canonical(data) {
+  const errors = [];
+  const cat3 = (data?.categories ?? []).find((c) => c.id === 'cat-3');
+  if (!cat3) return ['action-plan must contain cat-3'];
+  if (!Array.isArray(cat3.activities)) return ['cat-3 activities must be array'];
+  if (cat3.activities.length !== 6) {
+    errors.push(`cat-3 must have exactly 6 activities (no new activities added), got ${cat3.activities.length}`);
+  }
+
+  const counts = {};
+  for (const act of cat3.activities) {
+    const code = act.canonicalIndicatorCode;
+    if (!code || typeof code !== 'string') {
+      errors.push(`${act.id}: missing canonicalIndicatorCode`);
+      continue;
+    }
+    if (!VALID_CAT3_CANONICAL.has(code)) {
+      errors.push(`${act.id}: invalid canonicalIndicatorCode "${code}"`);
+      continue;
+    }
+    if (!/^3\.\d+\.\d+$/.test(code)) {
+      errors.push(`${act.id}: canonicalIndicatorCode must be a canonical 3.x.x code, got "${code}"`);
+    }
+    if (!act.indicatorCode) errors.push(`${act.id}: legacy indicatorCode must be retained`);
+    if (act.actualMonths && act.actualMonths.length > 0) {
+      errors.push(`${act.id}: FY2569 activity must not carry executed actualMonths (no FY2569 facts)`);
+    }
+    counts[code] = (counts[code] ?? 0) + 1;
+  }
+
+  for (const [code, expected] of Object.entries(CAT3_FROZEN_CANONICAL_COUNTS)) {
+    const actual = counts[code] ?? 0;
+    if (actual !== expected) {
+      errors.push(`cat3 canonicalIndicatorCode count for ${code} must be ${expected}, got ${actual}`);
+    }
+  }
+  const total = Object.values(counts).reduce((s, n) => s + n, 0);
+  if (total !== cat3.activities.length) {
+    errors.push(`cat3 canonical mapping total must equal activity count ${cat3.activities.length}, got ${total}`);
+  }
+  return errors;
+}
+
+/**
+ * Cat4 canonical-indicator mapping checks (GO-CAT4 C4).
+ * Every cat4 activity must either carry a canonicalIndicatorCode or be
+ * explicitly disclosed as unmapped (5S). Frozen counts: 4.1.1=5 · 4.1.2=8 ·
+ * 4.1.3=3 · 4.2.1=4 · 4.2.2=4 · disclosed=1 (total 25).
+ * Legacy indicatorCode is retained. No activity may carry executed FY2569
+ * actualMonths; the disclosed 5S activity must carry canonicalMappingNote.
+ */
+const CAT4_FROZEN_CANONICAL_COUNTS = {
+  '4.1.1': 5,
+  '4.1.2': 8,
+  '4.1.3': 3,
+  '4.2.1': 4,
+  '4.2.2': 4,
+};
+const VALID_CAT4_CANONICAL = new Set([
+  '4.1.1', '4.1.2', '4.1.3', '4.2.1', '4.2.2',
+]);
+const CAT4_DISCLOSED_ACTIVITY = 'cat-4-4.1.3-16-16';
+
+export function validateActionPlanCat4Canonical(data) {
+  const errors = [];
+  const cat4 = (data?.categories ?? []).find((c) => c.id === 'cat-4');
+  if (!cat4) return ['action-plan must contain cat-4'];
+  if (!Array.isArray(cat4.activities)) return ['cat-4 activities must be array'];
+  if (cat4.activities.length !== 25) {
+    errors.push(`cat-4 must have exactly 25 activities (no new activities added), got ${cat4.activities.length}`);
+  }
+
+  const counts = {};
+  let disclosedCount = 0;
+  for (const act of cat4.activities) {
+    if (!act.indicatorCode) errors.push(`${act.id}: legacy indicatorCode must be retained`);
+    if (act.actualMonths && act.actualMonths.length > 0) {
+      errors.push(`${act.id}: FY2569 activity must not carry executed actualMonths (no FY2569 facts)`);
+    }
+    const code = act.canonicalIndicatorCode;
+    if (!code || typeof code !== 'string') {
+      if (act.id === CAT4_DISCLOSED_ACTIVITY) {
+        disclosedCount += 1;
+        if (!act.canonicalMappingNote || !/DISCLOSED/i.test(act.canonicalMappingNote)) {
+          errors.push(`${act.id}: disclosed activity must carry a canonicalMappingNote declaring the disclosure`);
+        }
+        continue;
+      }
+      errors.push(`${act.id}: missing canonicalIndicatorCode (only the disclosed 5S activity may be unmapped)`);
+      continue;
+    }
+    if (!VALID_CAT4_CANONICAL.has(code)) {
+      errors.push(`${act.id}: invalid canonicalIndicatorCode "${code}"`);
+      continue;
+    }
+    if (!/^4\.\d+\.\d+$/.test(code)) {
+      errors.push(`${act.id}: canonicalIndicatorCode must be a canonical 4.x.x code, got "${code}"`);
+    }
+    counts[code] = (counts[code] ?? 0) + 1;
+  }
+
+  for (const [code, expected] of Object.entries(CAT4_FROZEN_CANONICAL_COUNTS)) {
+    const actual = counts[code] ?? 0;
+    if (actual !== expected) {
+      errors.push(`cat4 canonicalIndicatorCode count for ${code} must be ${expected}, got ${actual}`);
+    }
+  }
+  if (disclosedCount !== 1) {
+    errors.push(`cat4 must have exactly 1 disclosed (unmapped) activity (${CAT4_DISCLOSED_ACTIVITY}), got ${disclosedCount}`);
+  }
+  const total = Object.values(counts).reduce((s, n) => s + n, 0) + disclosedCount;
+  if (total !== cat4.activities.length) {
+    errors.push(`cat4 canonical mapping total must equal activity count ${cat4.activities.length}, got ${total}`);
+  }
+  return errors;
+}
+
+/**
  * Canonical-scope regression checks.
  * planData            — parsed action-plan-2569.json
  * pageMeta            — about/pages.json (must have about-action-plan entry)
@@ -155,6 +354,88 @@ export function validateActionPlanScope(planData, pageMeta, criteria, criteriaIn
   return errors;
 }
 
+/**
+ * Cat5 canonical-indicator mapping checks (GO-CAT5 Phase B, semantic correction).
+ * Every cat5 activity must either carry a canonicalIndicatorCode or be one of
+ * the 3 disclosed unmapped activities. Frozen counts: 5.1.1=5 · 5.2.1=1 ·
+ * 5.4.1=1 · 5.4.3=4 · 5.4.4=1 · 5.5.1=1 · 5.5.3=1 (14 mapped, 3 unmapped,
+ * total 17). 5.4.2 and 5.5.2 are deliberately 0 — the space-utilization % and
+ * the emergency-understanding % have no plan activity (disclosed FY2569 GAPs,
+ * never backfilled). Legacy indicatorCode is retained. No activity may carry
+ * executed FY2569 actualMonths.
+ */
+const CAT5_FROZEN_CANONICAL_COUNTS = {
+  '5.1.1': 5,
+  '5.2.1': 1,
+  '5.4.1': 1,
+  '5.4.3': 4,
+  '5.4.4': 1,
+  '5.5.1': 1,
+  '5.5.3': 1,
+};
+// Disclosed zero-count indicators: no plan activity maps to these (FY2569
+// measurement GAPs — never backfilled).
+const CAT5_ZERO_DISCLOSED = ['5.4.2', '5.5.2'];
+const VALID_CAT5_CANONICAL = new Set(Object.keys(CAT5_FROZEN_CANONICAL_COUNTS));
+const CAT5_UNMAPPED_ACTIVITY_IDS = new Set([
+  'cat-5-5.5-5.5-6', // bookshelf/journal cleaning — covered by 5.1.1 maintenance evidence; no single canonical indicator
+  'cat-5-5.15-5.15-16', // work-result reporting — internal reporting, not a criteria activity
+  'cat-5-5.16-5.16-17', // Cat5 committee meeting — governance, not a criteria activity
+]);
+
+export function validateActionPlanCat5Canonical(data) {
+  const errors = [];
+  const cat5 = (data?.categories ?? []).find((c) => c.id === 'cat-5');
+  if (!cat5) return ['action-plan must contain cat-5'];
+  if (!Array.isArray(cat5.activities)) return ['cat-5 activities must be array'];
+  if (cat5.activities.length !== 17) {
+    errors.push(`cat-5 must have exactly 17 activities (no new activities added), got ${cat5.activities.length}`);
+  }
+
+  const counts = {};
+  let unmappedCount = 0;
+  for (const act of cat5.activities) {
+    if (!act.indicatorCode) errors.push(`${act.id}: legacy indicatorCode must be retained`);
+    if (act.actualMonths && act.actualMonths.length > 0) {
+      errors.push(`${act.id}: FY2569 activity must not carry executed actualMonths (no FY2569 facts)`);
+    }
+    const code = act.canonicalIndicatorCode;
+    if (!code || typeof code !== 'string') {
+      if (CAT5_UNMAPPED_ACTIVITY_IDS.has(act.id)) {
+        unmappedCount += 1;
+        continue;
+      }
+      errors.push(`${act.id}: missing canonicalIndicatorCode (only the 3 disclosed activities may be unmapped)`);
+      continue;
+    }
+    if (!VALID_CAT5_CANONICAL.has(code)) {
+      errors.push(`${act.id}: invalid canonicalIndicatorCode "${code}"`);
+      continue;
+    }
+    if (!/^5\.\d+\.\d+$/.test(code)) {
+      errors.push(`${act.id}: canonicalIndicatorCode must be a canonical 5.x.x code, got "${code}"`);
+    }
+    counts[code] = (counts[code] ?? 0) + 1;
+  }
+
+  for (const [code, expected] of Object.entries(CAT5_FROZEN_CANONICAL_COUNTS)) {
+    const actual = counts[code] ?? 0;
+    if (actual !== expected) {
+      errors.push(`cat5 canonicalIndicatorCode count for ${code} must be ${expected}, got ${actual}`);
+    }
+  }
+  for (const code of CAT5_ZERO_DISCLOSED) {
+    if ((counts[code] ?? 0) !== 0) {
+      errors.push(`cat5 canonicalIndicatorCode count for ${code} must be 0 (disclosed, never backfilled), got ${counts[code]}`);
+    }
+  }
+  if (unmappedCount !== CAT5_UNMAPPED_ACTIVITY_IDS.size) {
+    errors.push(`cat5 must have exactly ${CAT5_UNMAPPED_ACTIVITY_IDS.size} disclosed unmapped activities, got ${unmappedCount}`);
+  }
+
+  return errors;
+}
+
 function main() {
   if (!existsSync(DATA_PATH)) {
     console.error('Missing generated data:', DATA_PATH);
@@ -177,8 +458,32 @@ function main() {
     scopeErrors.forEach((e) => console.error('  ✗', e));
     process.exit(1);
   }
+  const cat2Errors = validateActionPlanCat2Canonical(data);
+  if (cat2Errors.length) {
+    console.error('action-plan-2569 cat2 canonical mapping FAIL');
+    cat2Errors.forEach((e) => console.error('  ✗', e));
+    process.exit(1);
+  }
+  const cat3Errors = validateActionPlanCat3Canonical(data);
+  if (cat3Errors.length) {
+    console.error('action-plan-2569 cat3 canonical mapping FAIL');
+    cat3Errors.forEach((e) => console.error('  ✗', e));
+    process.exit(1);
+  }
+  const cat4Errors = validateActionPlanCat4Canonical(data);
+  if (cat4Errors.length) {
+    console.error('action-plan-2569 cat4 canonical mapping FAIL');
+    cat4Errors.forEach((e) => console.error('  ✗', e));
+    process.exit(1);
+  }
+  const cat5Errors = validateActionPlanCat5Canonical(data);
+  if (cat5Errors.length) {
+    console.error('action-plan-2569 cat5 canonical mapping FAIL');
+    cat5Errors.forEach((e) => console.error('  ●', e));
+    process.exit(1);
+  }
   console.log(
-    `action-plan-2569 validation PASS (${data.summary.activityCount} activities, ${data.categories.length} categories, renewal scope 7/24/65)`,
+    `action-plan-2569 validation PASS (${data.summary.activityCount} activities, ${data.categories.length} categories, renewal scope 7/24/65, cat2 canonical 2.1.1=8/2.2.1=1/2.2.2=9/2.2.4=2, cat3 canonical 3.1.1=2/3.1.2=1/3.2.1=1/3.2.2=1/3.4.1=1, cat4 canonical 4.1.1=5/4.1.2=8/4.1.3=3/4.2.1=4/4.2.2=4 + 1 disclosed, cat5 canonical 14 mapped + 3 disclosed)`,
   );
 }
 

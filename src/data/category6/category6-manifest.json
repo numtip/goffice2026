@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "1.0.0",
+  "updated": "2026-08-24",
+  "titleTh": "หมวด 6 — การจัดซื้อและจัดจ้าง (Canonical Data Contracts)",
+  "titleEn": "Category 6 — Procurement (Canonical Data Contracts)",
+  "governance": "GOFFICE2026_CAT6_PHASE_A_SOURCE_DISPOSITION",
+  "year": 2568,
+  "status": "PHASE_B_BASELINE",
+  "freeze": {
+    "status": "FROZEN_READ_ONLY_BASELINE",
+    "date": "2026-08-24",
+    "authorityDoc": "docs/data/GO-CAT6-PHASE-A-SOURCE-DISPOSITION.md",
+    "dispositionDoc": "docs/data/GO-CAT6-PHASE-A-SOURCE-DISPOSITION.md"
+  },
+  "note": "Static-only canonical data contracts for Category 6 (การจัดซื้อและจัดจ้าง / Procurement), modeling the frozen FY2568 historical baseline for FY2569 reuse. All 6 indicators (6.1.1-6.2.3) resolve to dedicated evidence anchored on the SHA-verified fy2568-publication.json cat6 manifest (32/32 source-mirror-manifest match). FY2568 is the baseline layer for FY2569: recurring evidence (eco-procurement %, product-list review, policy briefing, monthly contractor evaluations) is labeled awaiting-update and must be re-collected in FY2569 — never relabeled. The FY2569-budget cleaning contract (สัญญาจ้างทำความสะอาด 69.pdf) is QUARANTINED (candidateFy2569Only) and never a sourceRef/evidence. Two evaluation-form pairs are contentDuplicateCandidate (each path keeps its own sourceRef — no dedup). No scores, no PASS claims, no FY2569 facts.",
+  "contracts": [
+    {
+      "domain": "products",
+      "file": "src/data/category6/products.json",
+      "indicators": [
+        "6.1.1",
+        "6.1.2",
+        "6.1.3"
+      ],
+      "status": "historical-baseline",
+      "note": "Eco product procurement: responsible persons, search sources, Form 6.1(1) product list, Form 6.1(2) procurement report (source-declared %), material survey."
+    },
+    {
+      "domain": "contractors",
+      "file": "src/data/category6/contractors.json",
+      "indicators": [
+        "6.2.1",
+        "6.2.2"
+      ],
+      "status": "historical-baseline",
+      "note": "Engagement of eco contractors (4 FY2568 engagements, source-declared 100%) and monthly/per-visit environmental inspection."
+    },
+    {
+      "domain": "services",
+      "file": "src/data/category6/services.json",
+      "indicators": [
+        "6.2.3"
+      ],
+      "status": "historical-baseline",
+      "note": "Guideline for selecting eco external services (hotel search sources, examples, Form 6.2(3)); no external eco service used in FY2568 (declared)."
+    }
+  ],
+  "missingIndicators": [],
+  "quarantined": [
+    {
+      "path": "6.2 การจัดจ้าง/6.2.1(3) 1 สัญญาจ้างทำความสะอาด 69.pdf",
+      "reason": "FY2569-budget cleaning contract",
+      "status": "QUARANTINE",
+      "fy2569Candidate": "candidateFy2569Only",
+      "note": "Excluded from all FY2568 records / evidence mapping; never a sourceRef or relatedSources. Candidate to be re-examined in the FY2569 cycle — not counted as FY2569 evidence now."
+    }
+  ],
+  "contentDuplicateGroups": [
+    {
+      "group": "P1",
+      "paths": [
+        "6.2 การจัดจ้าง/6.2.1(2) 1 ใบประเมินด้านสิ่งแวดล้อมฯ จ้างเหมาทำความสะอาดอาคารฯ.pdf",
+        "6.2 การจัดจ้าง/6.2.2(1) 1 ใบประเมินด้านสิ่งแวดล้อมฯ จ้างเหมาทำความสะอาดอาคารฯ.pdf"
+      ],
+      "note": "Same 34-page cleaning-contractor environmental-evaluation pack re-exported for two indicators (6.2.1(2) and 6.2.2(1)); both paths keep their own sourceRef — contentDuplicateCandidate, no deduplication."
+    },
+    {
+      "group": "P2",
+      "paths": [
+        "6.2 การจัดจ้าง/6.2.1(2) 4 ใบประเมินด้านสิ่งแวดล้อมฯ ล้างเครื่องปรับอากาศ.pdf",
+        "6.2 การจัดจ้าง/6.2.2(2 )1 ใบประเมินประสิทธิภาพผู้รับจ้างล้างเครื่องปรับอากาศ.pdf"
+      ],
+      "note": "Same 1-page AC-cleaning evaluation form re-exported for two indicators (6.2.1(2) and 6.2.2(2)); both paths keep their own sourceRef — contentDuplicateCandidate, no deduplication."
+    }
+  ],
+  "forwardRequirements": [
+    {
+      "code": "FY2569_RECURRING_EVIDENCE_COLLECTION",
+      "note": "Recurring FY2568 streams must be re-collected in FY2569: 6.1.2 eco-procurement %, 6.1.1(3) product-list review, 6.2.1(4) policy briefing, 6.2.2 monthly/per-visit contractor evaluations."
+    },
+    {
+      "code": "FY2569_CONTRACT_CANDIDATE",
+      "note": "สัญญาจ้างทำความสะอาด 69.pdf = candidateFy2569Only: decide its FY2569-cycle disposition (not counted as FY2569 evidence in this baseline)."
+    },
+    {
+      "code": "OCR_DECISION_FOR_SCANS",
+      "note": "12 image-only scans stay filename_folder_only; OCR/transcription is out of scope for this phase."
+    }
+  ],
+  "sourceLimitations": [
+    {
+      "code": "SCAN_ONLY_FILES",
+      "note": "12 of 32 files are image-only scans (filename_folder_only); facts rely on content-verified narratives/forms and the annual report DOCX."
+    },
+    {
+      "code": "FY2569_CONTRACT_QUARANTINED",
+      "note": "6.2.1(3) 1 สัญญาจ้างทำความสะอาด 69.pdf is a FY2569-budget contract (QUARANTINE · candidateFy2569Only) excluded from all FY2568 records; the FY2568 twin (สัญญา 68.pdf) is canonical for 6.2.1(3)."
+    },
+    {
+      "code": "CAT613_PERCENT_NOT_EVIDENCED",
+      "note": "6.1.3 percentage of eco office materials is not numerically evidenced (report declares 'สุ่มตรวจ –')."
+    },
+    {
+      "code": "EVAL_FORM_CONTENT_DUPLICATES",
+      "note": "P1 (34p cleaning eval pack) and P2 (1p AC eval form) are contentDuplicateCandidate pairs — each path keeps its own sourceRef, no deduplication."
+    },
+    {
+      "code": "DOCX_TITLE_METADATA_QUIRK",
+      "note": "DOCX core title is a survey-template string; content is the full Cat6 report. Filename '17-3-69' = calendar date (17 Mar 2569 BE), not a fiscal-year marker."
+    },
+    {
+      "code": "NO_OCR_IN_THIS_PHASE",
+      "note": "No OCR/transcription was performed; scan contents are not verified."
+    }
+  ],
+  "annualReport": {
+    "canonical": {
+      "path": "รายงานหมวด6 (แก้ไข) 17-3-69.docx",
+      "sha256": "523210c53e46a5294bf36383d899c277f4e2729fb4cd44e7c4077e9aa00a787f",
+      "role": "content-verified supporting report covering all 6 indicators",
+      "baselineDataYear": 2568,
+      "revisionDate": "2569-03-17"
+    },
+    "note": "The DOCX is the only fully content-verified source (text extracted read-only). baselineDataYear 2568 / revisionDate 2569-03-17: only facts the report explicitly marks as FY2568 are used; nothing is inferred from the revision date."
+  },
+  "validation": {
+    "validator": "scripts/validate-category6-contracts.mjs",
+    "invariants": [
+      "every 6.1.1-6.2.3 resolves to >=1 valid manifest document (6/6)",
+      "manifestSha256 equals the fy2568-publication cat6 entry for every sourceRef/relatedSources path",
+      "the quarantined FY2569 contract (สัญญาจ้างทำความสะอาด 69.pdf) never appears as a record sourceRef/relatedSources",
+      "contentDuplicateCandidate pairs P1/P2 keep both sourceRefs (no deduplication)",
+      "6.1.2 percentage is source-declared with basis/unit (92.33 volume / 89.80 value) and never recomputed",
+      "6.1.3 record declares percentNotEvidenced true (PERCENT_NOT_EVIDENCED)",
+      "scan records stay promoted:false / filename_folder_only / verification pending",
+      "annualReport baselineDataYear 2568 / revisionDate 2569-03-17 with manifest-matching sha256",
+      "no local paths, no FY2569 results, no year other than 2568"
+    ]
+  }
+}

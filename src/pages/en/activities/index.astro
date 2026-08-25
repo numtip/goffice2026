@@ -1,6 +1,14 @@
 ---
-import HubPage from '../../news/_HubPage.astro';
+import ContentHub from '../../../components/content/ContentHub.astro';
+import { activitiesCollection } from '../../../data/content/load-content';
 import hubs from '../../../data/content/hubs.json';
 ---
 
-<HubPage hub={hubs.hubs.activities} />
+<ContentHub
+  locale="en"
+  hub={hubs.hubs.activities}
+  kind="activity"
+  baseRoute="/activities"
+  items={activitiesCollection.items}
+  showTypeFilter={true}
+/>

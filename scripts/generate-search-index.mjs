@@ -385,6 +385,34 @@ for (const [hubKey, hub] of Object.entries(hubsData.hubs)) {
   });
 }
 
+// --- 9b. Published activities & news (content/*.json) -------------------------
+for (const [hubKey, rel, routeBase] of [
+  ['activities', 'content/activities.json', '/activities/'],
+  ['news', 'content/news.json', '/news/'],
+]) {
+  const contentPath = path.join(DATA_DIR, rel);
+  if (!existsSync(contentPath)) continue;
+  const contentData = JSON.parse(readFileSync(contentPath, 'utf8'));
+  for (const item of contentData.items || []) {
+    if (item.status !== 'published') continue;
+    const titleEn = (item.titleEn && item.titleEn.trim()) || item.titleTh;
+    const summaryEn = (item.summaryEn && item.summaryEn.trim()) || item.summaryTh;
+    items.push({
+      id: item.id,
+      section: hubKey,
+      type: hubKey === 'news' ? 'news' : 'activities',
+      title: [item.titleTh, titleEn],
+      context: [item.summaryTh, summaryEn],
+      keywords: [cat([item.titleTh, item.summaryTh, item.id]), cat([titleEn, summaryEn, item.id])],
+      route: `${routeBase}${item.slug}/`,
+      routeKind: 'page',
+      category: item.category ? [item.category.labelTh, item.category.labelEn] : null,
+      year: typeof item.fiscalYear === 'number' ? item.fiscalYear : null,
+      fileType: null,
+    });
+  }
+}
+
 // --- 10. Knowledge practices (knowledge / practice) -------------------------
 // knowledge/practices.json → practices[] {id, slug, titleTh, titleEn, taglineTh,
 // taglineEn, summaryTh, summaryEn, keywordsTh, keywordsEn, actionsTh, actionsEn}

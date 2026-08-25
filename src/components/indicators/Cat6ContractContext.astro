@@ -1,0 +1,124 @@
+---
+/**
+ * Cat6ContractContext.astro — per-indicator FY2568 baseline context for
+ * Category 6 (procurement). Data comes only from the canonical static
+ * contracts in src/data/category6/*.json. Honest limitation notes are grounded
+ * in GO-CAT6-PHASE-A; no score, no PASS claim, no FY2569 facts.
+ */
+import {
+  buildCat6DomainSnapshot,
+  contractForDomain,
+  cycleStagesForIndicator,
+  domainForIndicator,
+  domainLabel,
+  resolveDomainFactValue,
+  CAT6_YEAR,
+} from '../../utils/category6-presentation';
+
+interface Props {
+  indicatorCode: string;
+  locale: 'th' | 'en';
+}
+
+const { indicatorCode, locale } = Astro.props;
+const isEn = locale === 'en';
+
+function t(field: { th: string; en: string }): string {
+  return isEn ? field.en : field.th;
+}
+
+const domain = domainForIndicator(indicatorCode);
+const snapshot = domain ? buildCat6DomainSnapshot(domain) : null;
+const stages = cycleStagesForIndicator(indicatorCode);
+
+// Per-indicator honest limitation notes grounded in GO-CAT6-PHASE-A / the manifest.
+const LIMITATIONS: Record<string, { th: string; en: string }> = {
+  '6.1.1': {
+    th: 'คำสั่งแต่งตั้งเป็นหน้าเว็บที่มีข้อความอ่านได้ แหล่งสืบค้น/บัญชีรายการ Form 6.1(1) และเนื้อเรื่องตรวจสอบได้ แผนการดำเนินการ/หนังสือขอความร่วมมือ/แบบตอบรับเป็นภาพสแกน (รอ OCR)',
+    en: 'Appointment order is a web printout with readable text; search sources, Form 6.1(1) product list and narrative are content-verified. Plan / request letter / response form are image scans (pending OCR).',
+  },
+  '6.1.2': {
+    th: 'ร้อยละปี 2568 (92.33 ปริมาณ / 89.80 มูลค่า เทียบเป้าหมาย >40%) เป็นค่าที่แหล่งข้อมูลระบุในรายงานประจำปีและแบบฟอร์ม 6.1(2) — ไม่มีการคำนวณใหม่ ร้อยละปี 2569 ต้องผลิตจากข้อมูลปี 2569',
+    en: 'The FY2568 percentages (92.33 volume / 89.80 value vs >40% target) are source-declared in the annual report and Form 6.1(2) — not recomputed. The FY2569 percentage must be produced from FY2569 data.',
+  },
+  '6.1.3': {
+    th: 'รายงานระบุ “สุ่มตรวจ –” ไม่มีตัวเลขร้อยละของวัสดุอุปกรณ์ที่เป็นมิตรฯ — PERCENT_NOT_EVIDENCED หน้าภาพถ่ายเป็นรูปภาพ (มีเพียงป้ายกำกับ)',
+    en: 'The report declares “สุ่มตรวจ –” — no percentage of eco office materials is evidenced (PERCENT_NOT_EVIDENCED). The photo page is image content (label only).',
+  },
+  '6.2.1': {
+    th: 'เนื้อเรื่อง + แบบฟอร์ม 6.1(2) ตรวจสอบได้: จัดจ้าง 4 รายการ (ระบุ 100%) รับรองฉลากเขียว 2 รายการ อีก 2 รายการทำข้อตกลงด้านสิ่งแวดล้อม ใบรับรอง/สัญญา 68/ข้อตกลงเป็นสแกน (รอ OCR) สัญญางบ 69 ถูกแยกออก (QUARANTINE · candidateFy2569Only)',
+    en: 'Narrative + Form 6.1(2) content-verified: 4 engagements (source-declared 100%), 2 ฉลากเขียว certified, 2 via environmental agreement. Certs / contract 68 / agreement are scans (pending OCR). The FY2569-budget contract (งบ 69) is excluded (QUARANTINE · candidateFy2569Only).',
+  },
+  '6.2.2': {
+    th: 'ประเมินผู้รับจ้างทำความสะอาดรายเดือน และผู้รับจ้างล้างเครื่องปรับอากาศทุกครั้งที่เข้าปฏิบัติงาน หนังสือแจ้งผล 30 ก.ย. 2568 ระดับดีมาก ตรวจสอบได้ แบบประเมินเป็นสแกน (contentDuplicateCandidate คง sourceRef แยก ไม่ตัดซ้ำ)',
+    en: 'Cleaning contractor evaluated monthly; AC contractor evaluated per visit. Evaluation-result letter 30 Sep 2568 (ระดับดีมาก) is content-verified. Evaluation forms are scans (contentDuplicateCandidate — each keeps its own sourceRef, no dedup).',
+  },
+  '6.2.3': {
+    th: 'ทุกไฟล์มีข้อความอ่านได้ (แหล่งสืบค้น ตัวอย่างโรงแรม แบบฟอร์ม 6.2(3)) ปี 2568/2567 ไม่ได้ใช้บริการนอกสำนักงาน (มีห้องประชุมภายในอาคาร) มีมาตรการ Green Meeting ในมาตรการควบคุมพลังงานฯ ข้อ 5',
+    en: 'All files have readable text layers (search sources, example hotels, Form 6.2(3)). No external eco service used in FY2568/2567 (in-building meeting rooms); Green Meeting measure in resource-control measures §5.',
+  },
+};
+const limitation = LIMITATIONS[indicatorCode];
+
+const pendingScanCount = domain
+  ? contractForDomain(domain).records.filter((r) => r.availability === 'filename_folder_only').length
+  : 0;
+const sourceCount = domain ? contractForDomain(domain).records.length : 0;
+
+const facts = snapshot?.facts ?? [];
+---
+
+{
+  domain && (
+    <section class="mb-6 rounded-xl border border-gray-200 bg-white p-6" data-cat6-contract-context>
+      <div class="mb-4 flex flex-wrap items-center gap-2">
+        <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+          {isEn ? `FY${CAT6_YEAR} baseline context` : `บริบทข้อมูลฐานปี ${CAT6_YEAR}`}
+        </h2>
+        <span class="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+          {t(domainLabel(domain))}
+        </span>
+        <span class="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800">
+          {isEn ? 'FY2569 awaiting update' : 'ปี 2569 รอการอัปเดต'}
+        </span>
+      </div>
+
+      <dl class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {facts.map((fact) => (
+          <div class="rounded-lg border border-gray-100 bg-gray-50/60 px-3 py-2" data-cat6-domain-fact={fact.kind}>
+            <dt class="text-xs text-gray-500">{t(fact.label)}</dt>
+            <dd
+              class:list={[
+                'mt-0.5 text-sm leading-snug',
+                fact.kind === 'unavailable' ? 'font-medium text-amber-700' : 'font-semibold text-gray-800',
+              ]}
+            >
+              {resolveDomainFactValue(fact.value, locale)}
+            </dd>
+          </div>
+        ))}
+      </dl>
+
+      {limitation && (
+        <p class="mt-4 rounded-lg border border-amber-200 bg-amber-50/60 px-3 py-2 text-xs leading-relaxed text-amber-900">
+          <strong class="font-semibold">{isEn ? 'Limitations: ' : 'ข้อจำกัด: '}</strong>
+          {t(limitation)}
+        </p>
+      )}
+
+      <div class="mt-4 flex flex-wrap gap-x-6 gap-y-1 border-t border-gray-100 pt-3 text-xs text-gray-500">
+        <span>
+          {isEn
+            ? `${sourceCount} canonical source record(s), ${pendingScanCount} scan(s) pending verification`
+            : `บันทึกแหล่งข้อมูลหลัก ${sourceCount} รายการ · สแกนรอการตรวจสอบ ${pendingScanCount} รายการ`}
+        </span>
+        {stages.length > 0 && (
+          <span>
+            {isEn ? 'Cycle stage: ' : 'ขั้นตอนในวงจร: '}
+            {stages.map((s) => t(s.label)).join(isEn ? ' · ' : ' · ')}
+          </span>
+        )}
+      </div>
+    </section>
+  )
+}
