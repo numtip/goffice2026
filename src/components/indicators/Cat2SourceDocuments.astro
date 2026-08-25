@@ -1,0 +1,207 @@
+---
+/**
+ * Cat2SourceDocuments.astro — "เอกสารต้นฉบับสำหรับการตรวจสอบ" (Original document for review)
+ * Shared source-document section for Category 2 indicator groups (2.1, 2.2).
+ * Data comes only from the deterministic FY2568 publication manifest, filtered to
+ * the C1-approved file set defined by the Category 2 contracts (training,
+ * communication, feedback). No invented filenames; D1 duplicate, misplaced 1.3(4),
+ * superseded docx, export and blank templates are excluded.
+ */
+import fy2568Publication from '../../data/fy2568-publication.json';
+import trainingContract from '../../data/category2/training.json';
+import communicationContract from '../../data/category2/communication.json';
+import feedbackContract from '../../data/category2/feedback.json';
+import { withBase } from '../../utils/with-base';
+
+interface Props {
+  issueCode: string; // '2.1' | '2.2'
+  locale: 'th' | 'en';
+}
+
+const { issueCode, locale } = Astro.props;
+const isEn = locale === 'en';
+
+function t(th: string, en: string): string {
+  return isEn ? en : th;
+}
+
+interface PublicationDoc {
+  path: string;
+  title: string;
+  type: string;
+  sizeBytes: number;
+  sha256: string;
+  url: string;
+}
+
+const publication = fy2568Publication as unknown as {
+  categories: Record<string, { count: number; bytes: number; documents: PublicationDoc[] }>;
+};
+
+// C1-approved source paths for each issue group, derived from the C2 contracts.
+const APPROVED_PATHS = new Set<string>();
+for (const contract of [trainingContract, communicationContract, feedbackContract]) {
+  for (const rec of (contract as { records: { sourceRef?: string; relatedSources?: string[] }[] }).records ?? []) {
+    if (rec.sourceRef) APPROVED_PATHS.add(rec.sourceRef);
+    for (const rs of rec.relatedSources ?? []) APPROVED_PATHS.add(rs);
+  }
+}
+
+const GROUP_PREFIX: Record<string, string> = {
+  '2.1': '2.1/',
+  '2.2': '2.2/',
+};
+
+const prefix = GROUP_PREFIX[issueCode];
+const docs = prefix
+  ? (publication.categories.cat2?.documents ?? [])
+      .filter((d) => d.path.startsWith(prefix) && APPROVED_PATHS.has(d.path))
+  : [];
+
+const typeLabel: Record<string, string> = {
+  pdf: 'PDF',
+  xlsx: 'Excel / XLSX',
+  docx: 'Word / DOCX',
+};
+
+// Editorial per-document description (th/en). Keyed by manifest path; grounded in
+// the C2 contracts and the C1 disposition — never invented.
+const DOC_DESCRIPTIONS: Record<string, { th: string; en: string }> = {
+  '2.1/2.1.1/68-2.1(1) แผน.pdf': {
+    th: 'แบบฟอร์ม 2.1(1) แผนการฝึกอบรมประจำปี 2568 — หลักสูตร กลุ่มเป้าหมาย เดือน และวิทยากร',
+    en: 'Form 2.1(1) FY2568 training plan — courses, target groups, months and trainers',
+  },
+  '2.1/2.1.1/68-2.1(1) ผล.pdf': {
+    th: 'แบบฟอร์ม 2.1(1) ผลการประเมินการฝึกอบรม ปี 2568',
+    en: 'Form 2.1(1) FY2568 training evaluation results',
+  },
+  '2.1/2.1.1/68-2.1(3) ประวัติการอบรมบุคลากร.pdf': {
+    th: 'แบบฟอร์ม 2.1(3) ประวัติการอบรมบุคลากร ปี 2568 (ทะเบียนรายบุคคล 104 หน้า)',
+    en: 'Form 2.1(3) FY2568 personnel training history (104-page per-person register)',
+  },
+  '2.1/2.1.1/2.1.1.pdf': {
+    th: 'เอกสารตัวชี้วัด 2.1.1 — การอบรมให้ความรู้ด้านสิ่งแวดล้อมแก่บุคลากร',
+    en: 'Indicator 2.1.1 document — environmental training delivered to personnel',
+  },
+  '2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1(2) ใบลงทะเบียน (การฝึกซ้อมการดับเพลิงและซ้อมอพยพหนีไฟ).pdf': {
+    th: 'ใบลงทะเบียน 2.1(2) การฝึกซ้อมดับเพลิงและอพยพหนีไฟ (สแกน — รอการตรวจสอบเนื้อหา)',
+    en: 'Form 2.1(2) fire-drill sign-in (scan — content pending verification)',
+  },
+  '2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1(2) ใบลงทะเบียน (กิจกรรมBigCleaningDay2025).pdf': {
+    th: 'ใบลงทะเบียน 2.1(2) กิจกรรม Big Cleaning Day 2025 (สแกน — ผู้สมัคร 2.2.2 ยังไม่เลื่อนระดับ)',
+    en: 'Form 2.1(2) Big Cleaning Day 2025 sign-in (scan — 2.2.2 candidate, not promoted)',
+  },
+  '2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1(2) ใบลงทะเบียน (ให้ความรู้และทบทวนกฎหมายสิ่งแวดล้อม GO) สี.pdf': {
+    th: 'ใบลงทะเบียน 2.1(2) ให้ความรู้และทบทวนกฎหมายสิ่งแวดล้อม GO (สแกน — รอการตรวจสอบเนื้อหา)',
+    en: 'Form 2.1(2) environmental-law refresher sign-in (scan — content pending verification)',
+  },
+  '2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1.2(1)-ใบลงทบความสำคัญสำนักงานสีเขียว.PDF': {
+    th: 'ใบลงนามความสำคัญสำนักงานสีเขียว (สแกน — กำกวม 2.1.1/2.2.2 ยังไม่เลื่อนระดับ)',
+    en: 'Green-office significance acknowledgment (scan — ambiguous 2.1.1/2.2.2, not promoted)',
+  },
+  '2.1/2.1.2/2.1.2.pdf': {
+    th: 'เอกสารตัวชี้วัด 2.1.2 — ผู้รับผิดชอบการอบรมแต่ละหลักสูตร',
+    en: 'Indicator 2.1.2 document — responsible trainer per course',
+  },
+  '2.1/2.1.2/วิทยากร/ประวัติ รศ.ดร.สยาม อรุณศรีมรกต.pdf': {
+    th: 'ประวัติวิทยากร รศ.ดร.สยาม อรุณศรีมรกต (2.1.2)',
+    en: 'Trainer CV — Assoc. Prof. Dr. Siam Arunsrimorakot (2.1.2)',
+  },
+  '2.1/2.1.2/วิทยากร/ประวัติวิทยากร (งานป้องกันและบรรเทาสาธารณภัย เทศบาลเมืองแม่โจ้).pdf': {
+    th: 'ประวัติวิทยากร งานป้องกันและบรรเทาสาธารณภัย เทศบาลเมืองแม่โจ้ (2.1.2)',
+    en: 'Trainer CV — Maejo Municipality disaster prevention (2.1.2)',
+  },
+  '2.2/2.2.1/2.2.1.pdf': {
+    th: 'เอกสารตัวชี้วัด 2.2.1 — การกำหนดผู้รับผิดชอบและแนวทางสื่อสารสิ่งแวดล้อม',
+    en: 'Indicator 2.2.1 document — communication responsibility and guidelines',
+  },
+  '2.2/2.2.1/2.2.1 (4) กำหนดผู้รับผิดชอบในการสื่อสาร.pdf': {
+    th: 'การกำหนดผู้รับผิดชอบในการสื่อสาร (สแกน — รอการตรวจสอบเนื้อหา)',
+    en: 'Communication responsibility assignment (scan — content pending verification)',
+  },
+  '2.2/2.2.1/68-2.2(1) แผนสื่อสารสิ่งแวดล้อม.pdf': {
+    th: 'แบบฟอร์ม 2.2(1) แผนการสื่อสารด้านสิ่งแวดล้อมประจำปี 2568',
+    en: 'Form 2.2(1) FY2568 environmental communication plan',
+  },
+  '2.2/2.2.1/68-2.2.1 (3) กำหนดกลุ่มเป้าหมายรับเรื่องสื่อสาร  (มอบหมายงานและกำหนดกลุ่มเป้าหมาย).pdf': {
+    th: 'การกำหนดกลุ่มเป้าหมายรับเรื่องสื่อสารและมอบหมายงาน 2.2.1(3)',
+    en: 'Communication target groups and task assignment 2.2.1(3)',
+  },
+  '2.2/2.2.2/2.2.2.pdf': {
+    th: 'เอกสารตัวชี้วัด 2.2.2 — การรณรงค์สื่อสารและให้ความรู้ตามข้อ 2.2.1 (หลักฐานระดับ THIN)',
+    en: 'Indicator 2.2.2 document — campaigns and knowledge per 2.2.1 (THIN evidence)',
+  },
+  '2.2/2.2.4/2.2.4.pdf': {
+    th: 'เอกสารตัวชี้วัด 2.2.4 — ช่องทางรับข้อเสนอแนะและนำมาปรับปรุงแก้ไข',
+    en: 'Indicator 2.2.4 document — feedback channels and improvements',
+  },
+  '2.2/2.2.4/2.2.4-แนวทางการจัดการข้อร้องเรียน.pdf': {
+    th: 'แนวทางการจัดการข้อร้องเรียน 2.2.4 — 4 ช่องทางและขั้นตอนการปรับปรุง',
+    en: '2.2.4 complaint management guideline — 4 channels and improvement procedure',
+  },
+  '2.2/2.2.4/2.2.4_2ef-ep_complaints.pdf': {
+    th: 'บันทึกข้อร้องเรียนที่นำมาปรับปรุง (แบบฟอร์ม 2.2(2), 2 ต.ค. 2568)',
+    en: 'Complaint improvement record (form 2.2(2), 2 Oct 2568)',
+  },
+  '2.2/2.2.4/2.4.4_1-รายงานการรับข้อเสนอแนะและข้อร้องเรียนด้านสิ่งแวดล้อม.pdf': {
+    th: 'รายงานการรับข้อเสนอแนะและข้อร้องเรียนด้านสิ่งแวดล้อม ปีงบประมาณ 2568',
+    en: 'FY2568 environmental feedback and complaint summary report',
+  },
+};
+---
+
+{
+  docs.length > 0 && (
+    <section
+      class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6"
+      aria-labelledby={`cat2-source-title-${issueCode}`}
+      data-cat2-source-documents
+      data-group={issueCode}
+    >
+      <p class="text-xs font-semibold text-primary">
+        {t('เอกสารต้นฉบับสำหรับการตรวจสอบ', 'Original document for review')}
+      </p>
+      <h2 id={`cat2-source-title-${issueCode}`} class="mt-1 text-base font-bold text-on-surface">
+        {t(`เอกสารต้นฉบับ ${issueCode} ปี 2568`, `Original ${issueCode} FY2568 documents`)}
+      </h2>
+      <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+        {t(
+          `ไฟล์ต้นฉบับปี 2568 ของกลุ่ม ${issueCode} ที่เผยแพร่แบบเปิดจากเว็บไซต์นี้ — สำหรับการตรวจสอบเอกสารต้นทาง (เฉพาะรายการที่ได้รับอนุมัติ C1)`,
+          `Openly published FY2568 source files for group ${issueCode} — for original-document review (C1-approved set only)`,
+        )}
+      </p>
+      <ul class="mt-4 space-y-3" role="list">
+        {docs.map((doc) => {
+          const description = DOC_DESCRIPTIONS[doc.path];
+          return (
+            <li
+              class="rounded-lg border border-gray-100 bg-white p-4"
+              data-cat2-source-doc
+              data-path={doc.path}
+            >
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-1 text-[11px] font-semibold text-emerald-800">
+                  {typeLabel[doc.type] ?? doc.type.toUpperCase()}
+                </span>
+                <p class="min-w-0 flex-1 font-medium num-tabular text-sm text-on-surface">{doc.title}</p>
+                <a
+                  href={withBase(doc.url)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex min-h-11 items-center justify-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-white transition duration-300 ease-out hover:-translate-y-0.5 focus-ring motion-reduce:transform-none"
+                >
+                  {t('เปิดเอกสารต้นฉบับ', 'Open original document')}
+                </a>
+              </div>
+              {description && (
+                <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+                  {t(description.th, description.en)}
+                </p>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )
+}

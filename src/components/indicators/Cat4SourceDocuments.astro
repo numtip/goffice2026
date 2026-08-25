@@ -1,0 +1,275 @@
+---
+/**
+ * Cat4SourceDocuments.astro — "เอกสารต้นฉบับสำหรับการตรวจสอบ" (Original document for review)
+ * Shared source-document section for Category 4 indicator groups (4.1, 4.2).
+ * Data comes only from the deterministic FY2568 publication manifest, filtered to
+ * the C1-approved file set defined by the Category 4 contracts (targets, measures,
+ * sorting, data, wastewater, treatment-care) plus the canonical 10-03-69 annual
+ * report DOCX, the promoted year tables, and the form XLSX per group.
+ * The superseded 02-03-69 DOCX and the reader-friendly 10-03-69 PDF export are
+ * honestly excluded from the per-issue lists (both disclosed in Cat4ContractContext
+ * and the manifest source limitations).
+ */
+import fy2568Publication from '../../data/fy2568-publication.json';
+import targetsContract from '../../data/category4/targets.json';
+import measuresContract from '../../data/category4/measures.json';
+import sortingContract from '../../data/category4/sorting.json';
+import dataContract from '../../data/category4/data.json';
+import wastewaterContract from '../../data/category4/wastewater.json';
+import treatmentCareContract from '../../data/category4/treatment-care.json';
+import { withBase } from '../../utils/with-base';
+
+interface Props {
+  issueCode: string; // '4.1' | '4.2'
+  locale: 'th' | 'en';
+}
+
+const { issueCode, locale } = Astro.props;
+const isEn = locale === 'en';
+
+function t(th: string, en: string): string {
+  return isEn ? en : th;
+}
+
+interface PublicationDoc {
+  path: string;
+  title: string;
+  type: string;
+  sizeBytes: number;
+  sha256: string;
+  url: string;
+}
+
+const publication = fy2568Publication as unknown as {
+  categories: Record<string, { count: number; bytes: number; documents: PublicationDoc[] }>;
+};
+
+// C1-approved source paths derived from the C4 contracts (records).
+const APPROVED_PATHS = new Set<string>();
+for (const contract of [targetsContract, measuresContract, sortingContract, dataContract, wastewaterContract, treatmentCareContract]) {
+  for (const rec of (contract as { records: { sourceRef?: string; relatedSources?: string[] }[] }).records ?? []) {
+    if (rec.sourceRef) APPROVED_PATHS.add(rec.sourceRef);
+    for (const rs of rec.relatedSources ?? []) APPROVED_PATHS.add(rs);
+  }
+}
+
+// Canonical annual report (category report for both groups).
+const ANNUAL_REPORT = 'หมวดที่ 4 รายงานผลการจัดการของเสีย  (10-03-69).docx';
+// Form XLSX + promoted year tables (belong to the 4.1 waste-data group).
+const ROOT_4_1_DOCS = [
+  '4. หมวด 4 ข้อ 4.1(1) บันทึกปริมาณขยะ.xls  ปี 2568.xls 14-02-68.xlsx',
+  'ปี 2566.pdf',
+  'ปี 2567.pdf',
+  'ปี 2568.pdf',
+];
+
+const GROUP_PREFIX: Record<string, string> = {
+  '4.1': '4.1 การจัดการขยะ/',
+  '4.2': '4.2 การจัดการน้ำเสีย/',
+};
+
+const prefix = GROUP_PREFIX[issueCode];
+const prefixDocs = prefix
+  ? (publication.categories.cat4?.documents ?? [])
+      .filter((d) => d.path.startsWith(prefix) && APPROVED_PATHS.has(d.path))
+      .sort((a, b) => a.path.localeCompare(b.path))
+  : [];
+
+const rootDocs = issueCode === '4.1'
+  ? (publication.categories.cat4?.documents ?? []).filter((d) => ROOT_4_1_DOCS.includes(d.path))
+  : [];
+
+const docs = [
+  ...prefixDocs,
+  ...rootDocs,
+  ...(publication.categories.cat4?.documents ?? []).filter((d) => d.path === ANNUAL_REPORT),
+];
+
+const typeLabel: Record<string, string> = {
+  pdf: 'PDF',
+  xlsx: 'Excel / XLSX',
+  docx: 'Word / DOCX',
+  txt: 'TXT',
+};
+
+// Editorial per-document description (th/en). Keyed by manifest path; grounded in
+// the C4 contracts and the C1 disposition — never invented.
+const DOC_DESCRIPTIONS: Record<string, { th: string; en: string }> = {
+  '4. หมวด 4 ข้อ 4.1(1) บันทึกปริมาณขยะ.xls  ปี 2568.xls 14-02-68.xlsx': {
+    th: 'แบบฟอร์ม 4.1(1) บันทึกปริมาณขยะ ปี 2568 (XLSX) — แผ่นปริมาณขยะรายเดือนและคำนวณ% (ขอบเขตแบบฟอร์มรายเดือน 5,625.7 กก.)',
+    en: 'Form 4.1(1) FY2568 waste-quantity log (XLSX) — monthly quantity and % calculation sheets (monthly-form scope 5,625.7 kg)',
+  },
+  'ปี 2566.pdf': {
+    th: 'ตารางข้อมูลขยะ ปี 2566 (ตรวจสอบแล้ว — รวม 6,028.30 กก. นำกลับมาใช้ใหม่ 23.14%)',
+    en: 'FY2566 waste data table (verified — total 6,028.30 kg, reuse 23.14%)',
+  },
+  'ปี 2567.pdf': {
+    th: 'ตารางข้อมูลขยะ ปี 2567 (ตรวจสอบแล้ว — รวม 5,737.40 กก. นำกลับมาใช้ใหม่ 24.92%)',
+    en: 'FY2567 waste data table (verified — total 5,737.40 kg, reuse 24.92%)',
+  },
+  'ปี 2568.pdf': {
+    th: 'ตารางข้อมูลขยะ ปี 2568 (ตรวจสอบแล้ว — รวม 6,434.70 กก. ขยะทั่วไป 4,380.10 กก. นำกลับมาใช้ใหม่ 31.93%)',
+    en: 'FY2568 waste data table (verified — total 6,434.70 kg, general waste 4,380.10 kg, reuse 31.93%)',
+  },
+  '4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1 (1) มาตรการควบคุมพลังงานและทรัพยากร อาคารเฉลิมพระเกียรติฯ 2568.pdf': {
+    th: 'เอกสารตัวชี้วัด 4.1.1 — มาตรการจัดการขยะ (PDF ข้อความเพี้ยน — ยืนยันโดยการอ้างอิงข้าม รอ OCR)',
+    en: 'Indicator 4.1.1 document — waste management measures (garbled PDF — cross-reference only, OCR pending)',
+  },
+  '4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1. (2) ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อม2568.pdf': {
+    th: 'ประกาศการกำหนดเป้าหมายสิ่งแวดล้อม 2568 (สแกน 1 หน้า — ยังไม่ยืนยันเนื้อหา)',
+    en: 'Environmental-target announcement 2568 (1-page scan — content unverified)',
+  },
+  '4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1 (4) ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง บริบทองค์กรและขอบเขตฯ 2568.pdf': {
+    th: 'ประกาศบริบทองค์กรและขอบเขต 2568 (สแกน 8 หน้า — ยังไม่ยืนยันเนื้อหา)',
+    en: 'Context-and-scope announcement 2568 (8-page scan — content unverified)',
+  },
+  '4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1 (3) .txt': {
+    th: 'บันทึก 4.1.1(3) — เปิดเผยว่าไม่มีการประกาศปลอดโฟมในปี 2568 (แผนปี 2569 เป็นข้อความวางแผนล่วงหน้า)',
+    en: 'Note 4.1.1(3) — discloses no foam-free declaration in FY2568 (FY2569 plan is a forward statement)',
+  },
+  '4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1. (5) .txt': {
+    th: 'บันทึก 4.1.1(5) — รณรงค์ลดขยะพลาสติก (ถุงผ้า แก้วน้ำส่วนตัว)',
+    en: 'Note 4.1.1(5) — plastic-reduction campaign (cloth bags, personal cups)',
+  },
+  '4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (1) .txt': {
+    th: 'บันทึก 4.1.2(1) — การจัดวางถังขยะและการคัดแยกตามประเภท',
+    en: 'Note 4.1.2(1) — bin layout and sorting by category',
+  },
+  '4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (2).txt': {
+    th: 'บันทึก 4.1.2(2) — ป้ายบ่งชี้ประเภทขยะ (สีมาตรฐานทุกถัง)',
+    en: 'Note 4.1.2(2) — color-coded waste labels on every bin',
+  },
+  '4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (3) .txt': {
+    th: 'บันทึก 4.1.2(3) — จุดพักขยะมีหลังคา/ประตูปิดมิดชิด + จุดพักส่วนกลาง',
+    en: 'Note 4.1.2(3) — covered/gated holding point + university central holding point',
+  },
+  '4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (4) แบบฟอร์มบันทึกการสุ่มตรวจการทิ้งขยะ.pdf': {
+    th: 'แบบฟอร์มบันทึกการสุ่มตรวจการทิ้งขยะ (สแกน 24 หน้า — ยังไม่ยืนยันเนื้อหา)',
+    en: 'Random waste-check form (24-page scan — content unverified)',
+  },
+  '4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (5) สัญญาจ้าง.pdf': {
+    th: 'สัญญาจ้างกำจัดขยะ (สแกน 1 หน้า — ยังไม่ยืนยันเนื้อหา; เลขที่ มจ.(กค.) 9/2568 ยืนยันข้ามจากรายงาน)',
+    en: 'Waste-contractor contract (1-page scan — content unverified; no. มจ.(กค.) 9/2568 cross-verified via the report)',
+  },
+  '4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (6) .txt': {
+    th: 'บันทึก 4.1.2(6) — การติดตามการกำจัดขยะของผู้รับจ้าง',
+    en: 'Note 4.1.2(6) — contractor-disposal monitoring',
+  },
+  '4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (7) .txt': {
+    th: 'บันทึก 4.1.2(7) — ไม่มีการเผาขยะในพื้นที่สำนักงาน',
+    en: 'Note 4.1.2(7) — no waste burning on site',
+  },
+  '4.1 การจัดการขยะ/4.1.3 การนำขยะกลับไปใช้ประโยชน์หรือนำกลับมาใช้ใหม่/4.1.3 (1) แบบบันทึกข้อมูลปริมาณขยะ.pdf': {
+    th: 'แบบบันทึกข้อมูลปริมาณขยะ ปี 2568 (สแกน 12 หน้า — ยังไม่ยืนยันเนื้อหา; ค่ารายเดือนยืนยันข้ามจากตารางปี 2568)',
+    en: 'FY2568 monthly waste-log form (12-page scan — content unverified; monthly values cross-verified via the year-2568 table)',
+  },
+  '4.1 การจัดการขยะ/4.1.3 การนำขยะกลับไปใช้ประโยชน์หรือนำกลับมาใช้ใหม่/4.1.3 (2) การวิเคราะห์ปริมาณขยะเทียบค่าเป้าหมาย.pdf': {
+    th: 'เอกสารตัวชี้วัด 4.1.3(2) — การวิเคราะห์ปริมาณขยะเทียบค่าเป้าหมาย (4,380.10 กก. +1.68% ไม่บรรลุเป้าหมายลด 3%)',
+    en: 'Indicator 4.1.3(2) document — waste target analysis (4,380.10 kg +1.68%, −3% target not met)',
+  },
+  '4.1 การจัดการขยะ/4.1.3 การนำขยะกลับไปใช้ประโยชน์หรือนำกลับมาใช้ใหม่/4.1.3 (3).txt': {
+    th: 'บันทึก 4.1.3(3) — การนำขยะกลับมาใช้ประโยชน์/ปุ๋ยหมัก/นวัตกรรม (เกณฑ์ >50% ไม่บรรลุ — ยืนยันผ่านสาขานวัตกรรม)',
+    en: 'Note 4.1.3(3) — reuse/recycling/composting/innovation (numeric >50% not met — innovation branch)',
+  },
+  '4.1 การจัดการขยะ/4.1.3 การนำขยะกลับไปใช้ประโยชน์หรือนำกลับมาใช้ใหม่/4.1.3 (4).txt': {
+    th: 'บันทึก 4.1.3(4) — แนวโน้มปริมาณขยะส่งกำจัด (ลดจากปี 2566 แต่เพิ่มจากปี 2567)',
+    en: 'Note 4.1.3(4) — disposal-quantity trend (down vs 2566, up vs 2567)',
+  },
+  '4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (1) บันทึกรายละเอียดของสถิติคุณภาพน้ำ ปี 2568.pdf': {
+    th: 'เอกสารตัวชี้วัด 4.2.1(1) — สถิติคุณภาพน้ำทิ้ง ปี 2568 (อยู่ในเกณฑ์มาตรฐาน)',
+    en: 'Indicator 4.2.1(1) document — FY2568 effluent quality statistics (within standard)',
+  },
+  '4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (1) บันทึกการตักคราบน้ำมัน และไขมัน.pdf': {
+    th: 'บันทึกการตักคราบน้ำมันและไขมัน (สแกน 4 หน้า — ยังไม่ยืนยันเนื้อหา)',
+    en: 'Oil/grease skimming record (4-page scan — content unverified)',
+  },
+  '4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (2).txt': {
+    th: 'บันทึก 4.2.1(2) — ถังดักไขมัน/ตะแกรงดักเศษอาหารตามบริบทอาคาร',
+    en: 'Note 4.2.1(2) — grease trap / food-screen treatment per building context',
+  },
+  '4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (3).txt': {
+    th: 'บันทึก 4.2.1(3) — บำบัดน้ำเสียครบทุกจุด (ถังดักไขมัน 2 จุด ชั้น 1)',
+    en: 'Note 4.2.1(3) — all discharge points treated (2 grease-trap points, floor 1)',
+  },
+  '4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (4).txt': {
+    th: 'บันทึก 4.2.1(4) — คุณภาพน้ำทิ้งอยู่ในเกณฑ์มาตรฐานตามกฎหมาย (ห้องปฏิบัติการที่ได้รับการรับรอง)',
+    en: 'Note 4.2.1(4) — effluent within legal standard (accredited lab)',
+  },
+  '4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (1).txt': {
+    th: 'บันทึก 4.2.2(1) — การตัก/ทำความสะอาดถังดักไขมันทุกวันศุกร์',
+    en: 'Note 4.2.2(1) — weekly Friday grease-trap skimming',
+  },
+  '4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (2).txt': {
+    th: 'บันทึก 4.2.2(2) — นำไขมัน/เศษอาหารใส่ถังหมักรักษ์โลก',
+    en: 'Note 4.2.2(2) — grease/food-waste into the compost bin (ถังหมักรักษ์โลก)',
+  },
+  '4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (3) บันทึกการตักคราบน้ำมัน และไขมัน.pdf': {
+    th: 'บันทึกการตักคราบน้ำมันและไขมัน (สแกน 4 หน้า — สำเนาเดียวกับ 4.2.1(1) ซ้ำ G2 เปิดเผย ไม่นับซ้ำ)',
+    en: 'Oil/grease skimming record (4-page scan — byte-identical to 4.2.1(1), G2 duplicate, disclosed)',
+  },
+  '4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (4).txt': {
+    th: 'บันทึก 4.2.2(4) — การตรวจสอบการรั่วไหลของน้ำเสีย + ลิงก์แบบ ทส.1/ทส.2 (อ้างอิงภายนอก WTMS)',
+    en: 'Note 4.2.2(4) — wastewater leak inspection + ทส.1/ทส.2 links (external WTMS references)',
+  },
+  'หมวดที่ 4 รายงานผลการจัดการของเสีย  (10-03-69).docx': {
+    th: 'รายงานผลการจัดการของเสีย หมวด 4 ปี 2568 ฉบับหลัก (DOCX 10-03-69 — ฐานประวัติระดับหมวด ไม่มีฉบับลงนาม)',
+    en: 'FY2568 Cat4 annual report (canonical 10-03-69 DOCX — category-level historical baseline, no signed copy)',
+  },
+};
+---
+
+{
+  docs.length > 0 && (
+    <section
+      class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6"
+      aria-labelledby={`cat4-source-title-${issueCode}`}
+      data-cat4-source-documents
+      data-group={issueCode}
+    >
+      <p class="text-xs font-semibold text-primary">
+        {t('เอกสารต้นฉบับสำหรับการตรวจสอบ', 'Original document for review')}
+      </p>
+      <h2 id={`cat4-source-title-${issueCode}`} class="mt-1 text-base font-bold text-on-surface">
+        {t(`เอกสารต้นฉบับ ${issueCode} ปี 2568`, `Original ${issueCode} FY2568 documents`)}
+      </h2>
+      <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+        {t(
+          `ไฟล์ต้นฉบับปี 2568 ของกลุ่ม ${issueCode} ที่เผยแพร่แบบเปิดจากเว็บไซต์นี้ — สำหรับการตรวจสอบเอกสารต้นทาง (เฉพาะรายการที่ได้รับอนุมัติ C1; ไม่รวมฉบับ 02-03-69 ที่ถูกแทนที่ และไฟล์ PDF export)`,
+          `Openly published FY2568 source files for group ${issueCode} — for original-document review (C1-approved set only; the superseded 02-03-69 DOCX and the PDF export excluded)`,
+        )}
+      </p>
+      <ul class="mt-4 space-y-3" role="list">
+        {docs.map((doc) => {
+          const description = DOC_DESCRIPTIONS[doc.path];
+          return (
+            <li
+              class="rounded-lg border border-gray-100 bg-white p-4"
+              data-cat4-source-doc
+              data-path={doc.path}
+            >
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-1 text-[11px] font-semibold text-emerald-800">
+                  {typeLabel[doc.type] ?? doc.type.toUpperCase()}
+                </span>
+                <p class="min-w-0 flex-1 font-medium num-tabular text-sm text-on-surface">{doc.title}</p>
+                <a
+                  href={withBase(doc.url)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex min-h-11 items-center justify-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-white transition duration-300 ease-out hover:-translate-y-0.5 focus-ring motion-reduce:transform-none"
+                >
+                  {t('เปิดเอกสารต้นฉบับ', 'Open original document')}
+                </a>
+              </div>
+              {description && (
+                <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+                  {t(description.th, description.en)}
+                </p>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )
+}

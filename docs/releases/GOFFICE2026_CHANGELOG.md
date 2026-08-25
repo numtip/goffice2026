@@ -7,6 +7,24 @@ For day-to-day development changes see also [CHANGELOG.md](../../CHANGELOG.md) a
 
 ---
 
+## [1.9.0] — 2026-08-25
+
+**Release title:** Cat2–Cat7 FY2568 baselines + Cat3 FY2569 measures (VPS)
+**Branch:** `master`
+**Deployed commit:** `da3450985784ecce283e0df341532efa06d88905`
+**Previous production:** `v1.8.0` / `1b11c48`
+**Status:** `PRODUCTION_SUCCESS` · `V1.9.0_PRODUCTION_DEPLOYED`
+
+Promotes 27 commits after v1.8.0 (`1b11c48` → `da34509`): Category 2–7 FY2568 baseline contracts and presentation layers, Category 1 FY2569 overlay, Category 3 FY2569 measures plan, Category 5 semantic action-plan mapping corrections, and platform validation expansion (451 routes, 115 evidence items). See [v1.9.0 deploy record](GOFFICE2026_RELEASE_v1.9.0_DEPLOY.md).
+
+### Deployment
+
+- Live: `/var/www/goffice/current` → `/var/www/goffice/releases/v1.9.0`
+- Rollback: `/var/www/goffice/releases/v1.8.0`
+- Record: [GOFFICE2026_RELEASE_v1.9.0_DEPLOY.md](./GOFFICE2026_RELEASE_v1.9.0_DEPLOY.md)
+
+---
+
 ## [1.8.0] — 2026-08-21
 
 **Release title:** Cinematic hero + CAT1 presentation polish (VPS)

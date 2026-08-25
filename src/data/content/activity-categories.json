@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-08-25",
+  "note": "Facet vocabularies for activity/news hubs. Not indicator mappings — assign relatedIndicators only when verified.",
+  "activityCategories": [
+    { "id": "meeting", "labelTh": "การประชุม", "labelEn": "Meeting" },
+    { "id": "training", "labelTh": "การฝึกอบรม", "labelEn": "Training" },
+    { "id": "campaign", "labelTh": "โครงการรณรงค์", "labelEn": "Campaign" },
+    { "id": "assessment", "labelTh": "การตรวจประเมิน", "labelEn": "Assessment" },
+    { "id": "award", "labelTh": "รางวัล / เกียรติคุณ", "labelEn": "Awards" },
+    { "id": "preparedness", "labelTh": "ความพร้อม / ความปลอดภัย", "labelEn": "Preparedness" },
+    { "id": "historical", "labelTh": "ข้อมูลย้อนหลัง", "labelEn": "Historical" }
+  ],
+  "activityTypes": [
+    { "id": "committee", "labelTh": "คณะกรรมการ", "labelEn": "Committee" },
+    { "id": "workshop", "labelTh": "อบรม / สัมมนา", "labelEn": "Workshop" },
+    { "id": "community", "labelTh": "ชุมชน / รณรงค์", "labelEn": "Community" },
+    { "id": "cleaning", "labelTh": "Big Cleaning / 5ส", "labelEn": "Cleaning / 5S" },
+    { "id": "eco-event", "labelTh": "วันสิ่งแวดล้อม", "labelEn": "Eco event" }
+  ],
+  "newsCategories": [
+    { "id": "announcement", "labelTh": "ประกาศ", "labelEn": "Announcement" },
+    { "id": "platform", "labelTh": "อัปเดตแพลตฟอร์ม", "labelEn": "Platform update" },
+    { "id": "recognition", "labelTh": "เกียรติคุณ", "labelEn": "Recognition" }
+  ]
+}
