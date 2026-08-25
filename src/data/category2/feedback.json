@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "feedback",
+  "updated": "2026-08-23",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CATEGORY2_COMMUNICATION_BLUEPRINT_V1",
+  "note": "FY2568 historical-baseline contract for Cat2 indicator 2.2.4 (มีช่องทางรับข้อเสนอแนะ/ข้อคิดเห็นด้านสิ่งแวดล้อม และนำมาปรับปรุงแก้ไข). Blank form templates (ef-ep.xlsx, root .xls form 2.2(2)) are structural-only and are NOT operational evidence. evidenceIds intentionally empty until C3.",
+  "sources": [
+    { "ref": "2.2/2.2.4/2.2.4.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical" },
+    { "ref": "2.2/2.2.4/2.2.4-แนวทางการจัดการข้อร้องเรียน.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical" },
+    { "ref": "2.2/2.2.4/2.2.4_2ef-ep_complaints.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical" },
+    { "ref": "2.2/2.2.4/2.4.4_1-รายงานการรับข้อเสนอแนะและข้อร้องเรียนด้านสิ่งแวดล้อม.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical" },
+    { "ref": "2.2/2.2.4/ef-ep.xlsx", "role": "form-template", "inspection": "structural-only", "disposition": "blank-form" },
+    { "ref": "หมวด 2 ข้อ 2.2(2) ใบรับข้อเสนอแนะด้านสิ่งแวดล้อม.xls", "role": "form-template", "inspection": "structural-only", "disposition": "blank-form" }
+  ],
+  "records": [
+    {
+      "id": "fb-channels-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.2.4"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-fb-channels-fy2568"],
+      "sourceRef": "2.2/2.2.4/2.2.4.pdf",
+      "manifestSha256": "c0f8b8cefabf7ac300f328519c67bbfbf30d818a5c34877042299a6c86b3463f",
+      "verification": {
+        "status": "pending",
+        "basis": "2.2.4 narrative: มีช่องทางรับข้อเสนอแนะ/ข้อคิดเห็นด้านสิ่งแวดล้อมและนำมาปรับปรุงแก้ไข — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "feedbackChannels",
+      "labelTh": "ช่องทางรับข้อเสนอแนะ 2.2.4",
+      "labelEn": "Feedback channels 2.2.4"
+    },
+    {
+      "id": "fb-guideline-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.2.4"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-fb-guideline-fy2568"],
+      "sourceRef": "2.2/2.2.4/2.2.4-แนวทางการจัดการข้อร้องเรียน.pdf",
+      "manifestSha256": "2ded651a57c922baa03571a44f35ae1899d47f7dfcc64b960037722cab1bd873",
+      "verification": {
+        "status": "pending",
+        "basis": "แนวทางการรับข้อเสนอแนะ/ข้อคิดเห็น + ขั้นตอนการปรับปรุงแก้ไข, 4 ช่องทาง (QR, แบบฟอร์ม, e-mail, โทรศัพท์) — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "feedbackGuideline",
+      "labelTh": "แนวทางการจัดการข้อร้องเรียน 2.2.4",
+      "labelEn": "Complaint management guideline 2.2.4"
+    },
+    {
+      "id": "fb-complaint-record-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.2.4"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-fb-complaint-record-fy2568"],
+      "sourceRef": "2.2/2.2.4/2.2.4_2ef-ep_complaints.pdf",
+      "manifestSha256": "e84259b4b35abcfa4d3484eee6d1a1119446535d2f9bec8c48e0dda498a9d65c",
+      "verification": {
+        "status": "pending",
+        "basis": "แบบฟอร์ม 2.2(2) filled complaint record (น้ำรั่วห้องน้ำชั้น 3, 2 ต.ค. 2568; วิเคราะห์สาเหตุ/แก้ไข/ติดตาม) — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "feedbackImprovementRecord",
+      "labelTh": "บันทึกข้อร้องเรียนที่นำมาปรับปรุง 2.2.4",
+      "labelEn": "Complaint improvement record 2.2.4"
+    },
+    {
+      "id": "fb-annual-report-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.2.4"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-fb-annual-report-fy2568"],
+      "sourceRef": "2.2/2.2.4/2.4.4_1-รายงานการรับข้อเสนอแนะและข้อร้องเรียนด้านสิ่งแวดล้อม.pdf",
+      "manifestSha256": "7b04d116d4bde120529105bf8838b164a65bc29e2cf0bac6900f3a039cd232f4",
+      "verification": {
+        "status": "pending",
+        "basis": "รายงานการรับข้อเสนอแนะและข้อร้องเรียนด้านสิ่งแวดล้อม — Executive Summary ปีงบประมาณ 2568 — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "feedbackAggregateReport",
+      "labelTh": "รายงานสรุปข้อเสนอแนะ/ข้อร้องเรียน 2568",
+      "labelEn": "FY2568 feedback/complaint summary report"
+    }
+  ],
+  "gaps": [
+    { "indicator": "2.2.3", "status": "MISSING_DEDICATED_EVIDENCE", "note": "Cross-category gap declared per Cat1 convention: no questionnaire/respondent/percentage evidence anywhere in the FY2568 Cat2 source set; 2.2.3.pdf is narrative-only." },
+    { "indicator": "2.2.4", "status": "PARTIAL", "note": "ef-ep.xlsx and root หมวด 2 ข้อ 2.2(2) .xls are blank form templates (structural-only) — they evidence that the form exists, not that feedback was received/improved. Do not count them as operational evidence." }
+  ],
+  "forwardRequirements": [],
+  "crossLinks": [
+    { "from": "2.2.4", "to": "about-feedback", "reason": "About feedback page (2.2.4) consumes the same feedback-channel evidence; personal contacts redacted" },
+    { "from": "2.2.4", "to": "2.2.1", "reason": "Feedback loop closes via the 2.2.1 communication responsibilities" }
+  ]
+}

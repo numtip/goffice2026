@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "targets",
+  "updated": "2026-08-23",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CATEGORY4_WASTE_BLUEPRINT_V1",
+  "note": "FY2568 historical-baseline target contract for Category 4. The canonical 10-03-69 annual report (citing the ประกาศการกำหนดเป้าหมายสิ่งแวดล้อม 2568) sets a single cross-indicator target clause: ปริมาณขยะทั่วไป (general waste) ลดลง 3% จากปี 2567. The target clause feeds 4.1.3 data and the 4.1.1 measures. The standalone ประกาศเป้าหมาย PDF is a 1-page image scan (pending OCR) — the clause is cross-verified from report text, never invented. Target outcomes are met/not-met context in data.json, never a score. No FY2569 facts.",
+  "sources": [
+    { "ref": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (10-03-69).docx", "role": "primary", "inspection": "content-verified", "disposition": "canonical", "note": "C1 #33 — canonical annual report; states the target clause 'ปริมาณขยะทั่วไป (กิโลกรัม) ลดลง 3% จากปี 2567' verbatim." },
+    { "ref": "4.1 การจัดการขยะ/4.1.1 มาตรการหรือแนวทางจัดการขยะที่เหมาะสม/4.1.1. (2) ประกาศมหาวิทยาลัยแม่โจ้ เรื่อง การกำหนดเป้าหมายสิ่งแวดล้อม2568.pdf", "role": "target-announcement", "inspection": "filename_folder_only", "disposition": "canonical-pending-verification", "note": "C1 #11 — 1-page image scan of the official target announcement; content pending OCR. Target clause cross-verified via the report text." }
+  ],
+  "records": [
+    {
+      "id": "target-general-waste-fy2568",
+      "year": 2568,
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCode": "cat4",
+      "evidenceIds": ["ev-cat4-annual-report-fy2568"],
+      "sourceRef": "หมวดที่ 4 รายงานผลการจัดการของเสีย  (10-03-69).docx",
+      "manifestSha256": "52c5bb3cee45013f0b78b2e06800dc9acb29e61eb72921d746e3685336ebbbb8",
+      "verification": {
+        "status": "pending",
+        "basis": "FY2568 target clause from the canonical 10-03-69 report (citing ประกาศการกำหนดเป้าหมายสิ่งแวดล้อม 2568): general waste reduce 3% vs 2567. Human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "target",
+      "domain": "general-waste",
+      "labelTh": "ขยะทั่วไป",
+      "labelEn": "General waste",
+      "unit": "kg",
+      "targetPercent": -3,
+      "targetDirection": "reduction",
+      "comparisonBasis": "2567",
+      "targetYear": 2568
+    }
+  ],
+  "gaps": [],
+  "forwardRequirements": [],
+  "crossLinks": [
+    { "from": "targets", "to": "4.1.3", "reason": "The −3% general-waste target clause is compared in 4.1.3 data (4,380.10 kg, +1.68% → NOT met)" },
+    { "from": "targets", "to": "4.1.1", "reason": "The target clause anchors the 4.1.1 waste-measures plan and Zero-waste goal" }
+  ]
+}

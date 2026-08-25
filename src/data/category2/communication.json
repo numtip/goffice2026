@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "communication",
+  "updated": "2026-08-23",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CATEGORY2_COMMUNICATION_BLUEPRINT_V1",
+  "note": "FY2568 historical-baseline contract for Cat2 issue 2.2 (การรณรงค์และประชาสัมพันธ์แก่บุคลากร). 2.2.2 is THIN (single verified narrative file); scan candidates are pending and NOT promoted. 1.3(4) misplaced form and the D1 duplicate root committee PDF are excluded from mapping. evidenceIds intentionally empty until C3.",
+  "sources": [
+    { "ref": "2.2/2.2.1/2.2.1.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical" },
+    { "ref": "2.2/2.2.1/2.2.1 (4) กำหนดผู้รับผิดชอบในการสื่อสาร.pdf", "role": "primary-scan", "inspection": "filename_folder_only", "disposition": "canonical-pending-verification" },
+    { "ref": "2.2/2.2.1/68-2.2(1) แผนสื่อสารสิ่งแวดล้อม.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical" },
+    { "ref": "2.2/2.2.1/68-2.2.1 (3) กำหนดกลุ่มเป้าหมายรับเรื่องสื่อสาร  (มอบหมายงานและกำหนดกลุ่มเป้าหมาย).pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical" },
+    { "ref": "คณะกรรมการGreen2025.pdf", "role": "duplicate-of-2.2.1(4)", "inspection": "filename_folder_only", "disposition": "duplicate-excluded", "note": "D1: byte-identical (sha256 050857ac85b00969c098a9dfce966e38a4dd2dfc784e70ac28fe7a973ab99dbb) to 2.2/2.2.1/2.2.1 (4) กำหนดผู้รับผิดชอบในการสื่อสาร.pdf — excluded from cat2 indicator mapping" },
+    { "ref": "2.2/2.2.2/2.2.2.pdf", "role": "primary", "inspection": "content-verified", "disposition": "canonical-thin" },
+    { "ref": "2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1(2) ใบลงทะเบียน (กิจกรรมBigCleaningDay2025).pdf", "role": "campaign-candidate-scan", "inspection": "filename_folder_only", "disposition": "pending-not-promoted" },
+    { "ref": "2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1.2(1)-ใบลงทบความสำคัญสำนักงานสีเขียว.PDF", "role": "campaign-candidate-scan", "inspection": "filename_folder_only", "disposition": "pending-not-promoted" },
+    { "ref": "2.2/2.2.2/1.3(4) ทะเบียนจัดลำดับปัญหาสิ่งแวดล้อมด้านทร.pdf", "role": "misplaced-cat1-form", "inspection": "content-verified", "disposition": "misplaced-excluded", "note": "แบบฟอร์ม 1.3(4) (Cat1) misplaced in Cat2/2.2.2 — not Cat2 evidence" },
+    { "ref": "รายงานผลการดำเนินงานหมวด2 (2568).docx", "role": "category-report", "inspection": "content-verified", "disposition": "canonical", "note": "C1 D2: canonical annual report (rev 60) — historical baseline only, no signed-submission claim (PO B1)" }
+  ],
+  "records": [
+    {
+      "id": "comm-responsibility-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.2.1"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-comm-responsibility-fy2568"],
+      "sourceRef": "2.2/2.2.1/2.2.1.pdf",
+      "manifestSha256": "a5d72fb0d400f6bb3b76abce89c3d802e3323001036294688d2619cbe24f2345",
+      "verification": {
+        "status": "pending",
+        "basis": "2.2.1 narrative (19 pp): การกำหนดผู้รับผิดชอบและแนวทางสื่อสารด้านสิ่งแวดล้อมทั้งภายในและภายนอก — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "communicationResponsibility",
+      "labelTh": "ผู้รับผิดชอบและแนวทางสื่อสาร 2.2.1",
+      "labelEn": "Communication responsibility and guidelines 2.2.1"
+    },
+    {
+      "id": "comm-responsibility-scan-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.2.1"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-comm-responsibility-scan-fy2568"],
+      "sourceRef": "2.2/2.2.1/2.2.1 (4) กำหนดผู้รับผิดชอบในการสื่อสาร.pdf",
+      "manifestSha256": "050857ac85b00969c098a9dfce966e38a4dd2dfc784e70ac28fe7a973ab99dbb",
+      "verification": {
+        "status": "pending",
+        "basis": "Determination of communication responsibility — 6-page scan, filename_folder_only (0 text chars); content not readable without OCR. Not semantically verified. Root duplicate คณะกรรมการGreen2025.pdf excluded."
+      },
+      "availability": "filename_folder_only",
+      "kind": "communicationResponsibilityScan",
+      "labelTh": "กำหนดผู้รับผิดชอบในการสื่อสาร (สแกน)",
+      "labelEn": "Communication responsibility assignment (scan)",
+      "promoted": false
+    },
+    {
+      "id": "comm-plan-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.2.1"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-comm-plan-fy2568"],
+      "sourceRef": "2.2/2.2.1/68-2.2(1) แผนสื่อสารสิ่งแวดล้อม.pdf",
+      "manifestSha256": "19372e2a6b1938cd2f0746506e635b43c4e28db54487942b7f7d7c1af3b2fa5c",
+      "verification": {
+        "status": "pending",
+        "basis": "Form 2.2(1) แผนการสื่อสารด้านสิ่งแวดล้อมประจำปี 2568 — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "communicationPlan",
+      "labelTh": "แผนสื่อสารสิ่งแวดล้อม 2.2(1)",
+      "labelEn": "Environmental communication plan form 2.2(1)"
+    },
+    {
+      "id": "comm-target-groups-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.2.1"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-comm-target-groups-fy2568"],
+      "sourceRef": "2.2/2.2.1/68-2.2.1 (3) กำหนดกลุ่มเป้าหมายรับเรื่องสื่อสาร  (มอบหมายงานและกำหนดกลุ่มเป้าหมาย).pdf",
+      "manifestSha256": "55ffc2322b10ecf44f5901b0f6caa77ed317ff150a06ca15fdcf8fbf6b8d4684",
+      "verification": {
+        "status": "pending",
+        "basis": "เกณฑ์การประเมิน/การดำเนินงาน + มอบหมายงานและกำหนดกลุ่มเป้าหมายสำหรับการสื่อสาร — text extracted; human/PO verification pending."
+      },
+      "availability": "content-verified",
+      "kind": "communicationTargetGroups",
+      "labelTh": "กลุ่มเป้าหมายรับเรื่องสื่อสาร 2.2.1 (3)",
+      "labelEn": "Communication target groups 2.2.1 (3)"
+    },
+    {
+      "id": "campaign-narrative-fy2568",
+      "year": 2568,
+      "indicatorCodes": ["2.2.2"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-campaign-narrative-fy2568"],
+      "sourceRef": "2.2/2.2.2/2.2.2.pdf",
+      "manifestSha256": "0286f38137996141c97c82a4e924ac397a3d961597113cdf5cb6df0af9860d71",
+      "verification": {
+        "status": "pending",
+        "basis": "2.2.2 narrative: มีการรณรงค์สื่อสารและให้ความรู้ตามที่กำหนดในข้อ 2.2.1 — text extracted; human/PO verification pending. SINGLE verified file — evidence is THIN."
+      },
+      "availability": "content-verified",
+      "kind": "campaignNarrative",
+      "labelTh": "การรณรงค์สื่อสารและให้ความรู้ 2.2.2",
+      "labelEn": "Campaign and knowledge communication 2.2.2",
+      "evidenceStrength": "THIN"
+    },
+    {
+      "id": "campaign-candidate-bigcleaning",
+      "year": 2568,
+      "indicatorCodes": ["2.2.2"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-campaign-candidate-bigcleaning"],
+      "sourceRef": "2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1(2) ใบลงทะเบียน (กิจกรรมBigCleaningDay2025).pdf",
+      "manifestSha256": "530b7710c26b6f43f9b29bab4f3b84a1e06656fcd829caba9883a7941c34e8b8",
+      "verification": {
+        "status": "pending",
+        "basis": "BigCleaningDay sign-in — pure image scan, 0 text chars; filename + 2.2.1/2.2.2 narratives lean campaign (2.2.2) but content is NOT readable. Candidate only — requires OCR/human verification before promotion."
+      },
+      "availability": "filename_folder_only",
+      "kind": "campaignCandidate",
+      "labelTh": "ใบลงทะเบียน Big Cleaning Day 2025 (สแกน, ไม่ยืนยันเนื้อหา)",
+      "labelEn": "Big Cleaning Day 2025 sign-in (scan, content unverified)",
+      "promoted": false
+    },
+    {
+      "id": "campaign-candidate-significance",
+      "year": 2568,
+      "indicatorCodes": ["2.2.2"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-campaign-candidate-significance"],
+      "sourceRef": "2.1/2.1.1/2.1(2) ใบลงทะเบียนและประเมินผลบุคลากร/68-2.1.2(1)-ใบลงทบความสำคัญสำนักงานสีเขียว.PDF",
+      "manifestSha256": "1c641382d6bc98e093c2c738a8980d549b1aca500c98fa1e5d0a1f963485f7ad",
+      "verification": {
+        "status": "pending",
+        "basis": "ใบลงทบความสำคัญสำนักงานสีเขียว — pure image scan, 0 text chars; genuinely ambiguous between 2.1.1 (course acknowledgment) and 2.2.2 (awareness acknowledgment). Not defensible without readable content."
+      },
+      "availability": "filename_folder_only",
+      "kind": "campaignCandidate",
+      "labelTh": "ใบลงนามความสำคัญสำนักงานสีเขียว (สแกน, ไม่ยืนยันเนื้อหา)",
+      "labelEn": "Green-office significance acknowledgment (scan, content unverified)",
+      "promoted": false
+    }
+  ],
+  "gaps": [
+    { "indicator": "2.2.3", "status": "MISSING_DEDICATED_EVIDENCE", "note": "Cross-category gap declared per Cat1 convention: no questionnaire/respondent/percentage evidence anywhere in the FY2568 Cat2 source set; 2.2.3.pdf is narrative-only." },
+    { "indicator": "2.2.2", "status": "THIN", "note": "Single verified narrative file (2.2/2.2.2/2.2.2.pdf). Two scan candidates (BigCleaningDay sign-in, significance acknowledgment) are filename_folder_only — pending OCR/human verification, NOT promoted. The misplaced 1.3(4) form is not 2.2.2 evidence." }
+  ],
+  "forwardRequirements": [],
+  "crossLinks": [
+    { "from": "2.2.1", "to": "2.2.2", "reason": "2.2.2 campaigns are delivered ตามที่กำหนดในข้อ 2.2.1 (per the 2.2.1 communication plan)" },
+    { "from": "2.2.2", "to": "2.1.1", "reason": "BigCleaningDay candidate is filed under the 2.1(2) training folder; promotion to 2.2.2 requires content verification" }
+  ]
+}

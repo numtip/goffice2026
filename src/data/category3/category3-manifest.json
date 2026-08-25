@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0",
+  "updated": "2026-08-23",
+  "titleTh": "หมวด 3 — สัญญาข้อมูลตามหลักการ (Canonical Data Contracts)",
+  "titleEn": "Category 3 — Canonical Data Contracts",
+  "governance": "GOFFICE2026_CATEGORY3_RESOURCE_BLUEPRINT_V1",
+  "year": 2568,
+  "status": "PHASE_C_CONTRACTS",
+  "freeze": {
+    "status": "FROZEN_READ_ONLY_BASELINE",
+    "date": "2026-08-23",
+    "authorityDoc": "docs/GOFFICE2026_CATEGORY3_RESOURCE_BLUEPRINT_V1.md",
+    "dispositionDoc": "docs/data/GO-CAT3-PHASE-A-SOURCE-DISPOSITION.md"
+  },
+  "note": "Static-only canonical data contracts for Category 3 (การใช้ทรัพยากรและพลังงาน). Each contract models the frozen FY2568 historical baseline only, using only C1-approved mappings and fy2568-publication.json manifest references/hashes. All 15 indicators (3.1.1–3.4.2) have dedicated content-verified evidence — no GAP/MISSING indicator. 3.2.2 is MEDIUM strength (per-unit electricity tables are image-only); 2 scans, the garbled measures PDF (#3), misbounded #19, incomplete #21/#32, and the absent signed copy are honestly disclosed. No invented OCR, signature, approval, score, or FY2569 data. evidenceIds reference the C3 evidence-index entries with matching manifest path/hash/availability.",
+  "contracts": [
+    { "domain": "targets", "file": "src/data/category3/targets.json", "indicators": [], "status": "historical-baseline", "note": "Cross-indicator FY2568 target clauses (electricity/water/fuel/paper each reduce 1% vs 2024) from the canonical เป้าหมาย/ตัวชี้วัด/มาตรการ 68 docx (#4). Category-level evidence by design (spans all 15 indicators)." },
+    { "domain": "measures", "file": "src/data/category3/measures.json", "indicators": ["3.1.1", "3.2.1", "3.2.4", "3.3.1", "3.3.4"], "status": "historical-baseline", "note": "Resource conservation measures (water/electricity/fuel/paper/ink). 3.4.1 green-meeting measures live in meetings.json to avoid a duplicate registry. Scans (AC condensate #11, vehicle log #20) are filename_folder_only, not promoted." },
+    { "domain": "data", "file": "src/data/category3/data.json", "indicators": ["3.1.2", "3.2.2", "3.2.5", "3.3.2"], "status": "historical-baseline", "note": "Per-unit measurement data vs target with analysis: water 8,337.50 u (+47.1%), electricity 403,036.80 u (+4.6%), fuel 695.82 L (−22.7% MET), paper 2,197.80 kg (+5.6%). 3.2.2 per-unit values unavailable (image-only tables)." },
+    { "domain": "compliance", "file": "src/data/category3/compliance.json", "indicators": ["3.1.3", "3.2.3", "3.3.3", "3.3.5"], "status": "historical-baseline", "note": "Behavioral compliance surveys in work areas (water/electricity/paper/ink)." },
+    { "domain": "meetings", "file": "src/data/category3/meetings.json", "indicators": ["3.4.1", "3.4.2"], "status": "historical-baseline", "note": "Green meetings/exhibitions: eco measures (3.4.1) + eco-material implementation (3.4.2, partial in standalone #32; complete content in the #29 DOCX report)." }
+  ],
+  "missingIndicators": [],
+  "forwardRequirements": [],
+  "sourceLimitations": [
+    { "code": "SCAN_AC_CONDENSATE", "note": "#11 ปริมาณน้ำทั้งเครื่องปรับอากาศ.pdf — 12-page image-only scan (filename_folder_only), content not verifiable without OCR." },
+    { "code": "SCAN_VEHICLE_LOG", "note": "#20 รายงานการใช้รถยนต์.pdf — 22-page image-only scanned vehicle-use log (filename_folder_only), content not verifiable without OCR." },
+    { "code": "GARBLED_MEASURES_PDF", "note": "#3 มาตรการควบคุมการใช้พลังงานและทรัพยากร ปี 68.pdf — Thai text garbled in extraction (broken font cmap); visually readable only, details pending OCR review." },
+    { "code": "IMAGE_ONLY_PER_UNIT", "note": "3.2.2 per-unit electricity tables and water monthly charts are image-only; only summary numbers (403,036.80 u, +4.6%; 8,337.50 u, +47.1%) are text-verifiable. 3.2.2 is MEDIUM strength." },
+    { "code": "MISBOUNDED_19", "note": "#19 (3.2.4.pdf) is misbounded: starts with a 3.2.3 page and ends with 3.2.5 pages; fuel measures on pages 2–9." },
+    { "code": "INCOMPLETE_21", "note": "#21 (3.2.5.pdf) begins at item (2); item (1) exists in the compiled 3.2 reports (#14/#15)." },
+    { "code": "PARTIAL_32", "note": "#32 (3.4.2.pdf) starts at item (3), missing items (1)/(2); complete 3.4.2 content exists in the #29 DOCX report." },
+    { "code": "NO_SIGNED_COPY", "note": "No file in the FY2568 Cat3 set contains a signature/approval block; #4 carries a typed-name placeholder only. No signed/approved submission copy is claimed." }
+  ],
+  "annualReport": {
+    "status": "category-level-historical-baseline",
+    "canonical": { "path": "การประเมินสานักงานสีเขียว (Green Office) หมวด 3.docx", "sizeBytes": 25176318, "sha256": "5af63ace319cf11b0d67935ba0257c3c2111e5521af9c897d993760656b9d2f3" },
+    "export": { "path": "การประเมินสานักงานสีเขียว (Green Office) หมวด 3.pdf", "sizeBytes": 8950230, "sha256": "dd5b4ed811b1dd01c522d1e583eff00a91dd46e2810f7520893b05748c8c48ad" },
+    "note": "The GO หมวด 3 DOCX is the canonical category-level historical baseline only — no signed/approved submission copy exists or is claimed. No signature block appears anywhere in the FY2568 Cat3 source set."
+  },
+  "validation": "scripts/validate-category3-contracts.mjs"
+}

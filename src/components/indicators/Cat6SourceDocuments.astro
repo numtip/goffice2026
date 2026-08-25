@@ -1,0 +1,171 @@
+---
+/**
+ * Cat6SourceDocuments.astro — "เอกสารต้นฉบับสำหรับการตรวจสอบ" (Original document for review)
+ * Shared source-document section for Category 6 indicator groups (6.1, 6.2).
+ * Data comes only from the deterministic FY2568 publication manifest, filtered to
+ * the Phase-A-approved file set defined by the Category 6 contracts (products,
+ * contractors, services) plus the canonical annual report DOCX. The
+ * FY2569-budget cleaning contract (สัญญาจ้างทำความสะอาด 69.pdf) is QUARANTINED
+ * and honestly excluded (disclosed in Cat6ContractContext and the manifest).
+ */
+import fy2568Publication from '../../data/fy2568-publication.json';
+import productsContract from '../../data/category6/products.json';
+import contractorsContract from '../../data/category6/contractors.json';
+import servicesContract from '../../data/category6/services.json';
+import { withBase } from '../../utils/with-base';
+
+interface Props {
+  issueCode: string; // '6.1' | '6.2'
+  locale: 'th' | 'en';
+}
+
+const { issueCode, locale } = Astro.props;
+const isEn = locale === 'en';
+
+function t(th: string, en: string): string {
+  return isEn ? en : th;
+}
+
+interface PublicationDoc {
+  path: string;
+  title: string;
+  type: string;
+  sizeBytes: number;
+  sha256: string;
+  url: string;
+}
+
+const publication = fy2568Publication as unknown as {
+  categories: Record<string, { count: number; bytes: number; documents: PublicationDoc[] }>;
+};
+
+// Phase-A-approved source paths derived from the contracts (records).
+const APPROVED_PATHS = new Set<string>();
+for (const contract of [productsContract, contractorsContract, servicesContract]) {
+  for (const rec of (contract as { records: { sourceRef?: string; relatedSources?: string[] }[] }).records ?? []) {
+    if (rec.sourceRef) APPROVED_PATHS.add(rec.sourceRef);
+    for (const rs of rec.relatedSources ?? []) APPROVED_PATHS.add(rs);
+  }
+}
+
+// Canonical annual report (supporting report for all groups).
+const ANNUAL_REPORT_DOCX = 'รายงานหมวด6 (แก้ไข) 17-3-69.docx';
+
+const GROUP_PREFIX: Record<string, string> = {
+  '6.1': '6.1 ',
+  '6.2': '6.2 ',
+};
+
+const prefix = GROUP_PREFIX[issueCode];
+const docs = prefix
+  ? [
+      ...(publication.categories.cat6?.documents ?? [])
+        .filter((d) => d.path.startsWith(prefix) && APPROVED_PATHS.has(d.path))
+        .sort((a, b) => a.path.localeCompare(b.path)),
+      ...(publication.categories.cat6?.documents ?? []).filter((d) => d.path === ANNUAL_REPORT_DOCX),
+    ]
+  : [];
+
+const typeLabel: Record<string, string> = {
+  pdf: 'PDF',
+  docx: 'Word / DOCX',
+};
+
+// Editorial per-document description (th/en). Keyed by manifest path;
+// grounded in GO-CAT6-PHASE-A — never invented.
+function describe(path: string): { th: string; en: string } | undefined {
+  if (path === ANNUAL_REPORT_DOCX) {
+    return {
+      th: 'รายงานผลการดำเนินงานสำนักงานสีเขียว ปี 2568 หมวดที่ 6 (DOCX — แหล่งข้อมูลหลักที่อ่านเนื้อหาได้ ครอบคลุมทั้ง 6 ตัวชี้วัด; baselineDataYear 2568 / revisionDate 2569-03-17)',
+      en: 'FY2568 Green Office annual report, Category 6 (DOCX — the only fully content-verified source; covers all 6 indicators; baselineDataYear 2568 / revisionDate 2569-03-17)',
+    };
+  }
+  if (path.includes('6.1.1(1)')) return { th: 'คำสั่งแต่งตั้งคณะกรรมการ/ผู้รับผิดชอบ Green Office ปี 68 (หน้าเว็บ — มีข้อความอ่านได้)', en: 'Green Office FY2568 appointment order (web printout — readable text)' };
+  if (path.includes('6.1.1(2)')) return { th: 'แหล่งสืบค้นรายการสินค้าที่เป็นมิตรกับสิ่งแวดล้อม', en: 'Eco-product search sources' };
+  if (path.includes('6.1.1(3) 1')) return { th: 'บัญชีรายชื่อสินค้าที่เป็นมิตรกับสิ่งแวดล้อม (แบบฟอร์ม 6.1(1)) + ทบทวน 4 มิ.ย. 2568', en: 'Eco product list (Form 6.1(1)) + review 4 Jun 2568' };
+  if (path.includes('6.1.1(3) 2')) return { th: 'แผนการดำเนินการโครงการสำนักงานสีเขียวฯ (สแกน — รอ OCR)', en: 'Green Office action plan (scan — pending OCR)' };
+  if (path.includes('6.1.1(4) 1')) return { th: 'หนังสือขอความร่วมมือจำหน่ายสินค้าที่เป็นมิตรฯ (สแกน)', en: 'Vendor cooperation request letter (scan)' };
+  if (path.includes('6.1.1(4) 2')) return { th: 'แบบตอบรับให้ความร่วมมือ (สแกน)', en: 'Vendor cooperation response form (scan)' };
+  if (/6\.1\.1\.pdf$/.test(path)) return { th: 'เอกสารสรุปหมวดย่อย 6.1.1 การจัดซื้อสินค้าที่เป็นมิตรฯ', en: 'Section summary 6.1.1 eco product procurement' };
+  if (/6\.1\.2\.pdf$/.test(path)) return { th: 'เอกสารสรุปหมวดย่อย 6.1.2 รายงานการจัดซื้อฯ (ตารางร้อยละปี 2568)', en: 'Section summary 6.1.2 procurement report (FY2568 % table)' };
+  if (path.includes('6.1.3(1)')) return { th: 'ภาพถ่ายรายการสินค้าที่เป็นมิตรกับสิ่งแวดล้อมภายในอาคารฯ (รูปภาพ)', en: 'Photos of eco products inside the building (image content)' };
+  if (/6\.1\.3\.pdf$/.test(path)) return { th: 'เอกสารสรุปหมวดย่อย 6.1.3 ร้อยละวัสดุอุปกรณ์เป็นมิตรฯ (สุ่มตรวจ –)', en: 'Section summary 6.1.3 eco material % (random check –)' };
+  if (path.includes('6.2.1(1) 2')) return { th: 'ใบรับรองฉลากเขียว บริษัท เควี เพสท์ จำกัด (สแกน)', en: 'Green-label certificate, KV Pest Co. (scan)' };
+  if (path.includes('6.2.1(1) 3')) return { th: 'ใบรับรองฉลากเขียวเครื่องถ่ายเอกสาร Ricoh', en: 'Green-label certificate, Ricoh photocopier' };
+  if (path.includes('6.2.1(2) 1 รายงาน')) return { th: 'แบบฟอร์ม 6.1(2) รายงานผลการจัดซื้อจัดจ้างสินค้าและบริการที่เป็นมิตรฯ', en: 'Form 6.1(2) eco procurement report' };
+  if (path.includes('6.2.1(2) 1 ใบประเมิน')) return { th: 'ใบประเมินด้านสิ่งแวดล้อมฯ จ้างเหมาทำความสะอาดอาคาร (สแกน; contentDuplicateCandidate P1)', en: 'Cleaning-contractor environmental evaluation (scan; contentDuplicateCandidate P1)' };
+  if (path.includes('6.2.1(2) 2')) return { th: 'ภาพถ่ายการส่งมอบผลิตภัณฑ์ที่เป็นมิตรฯ', en: 'Eco-product delivery photos' };
+  if (path.includes('6.2.1(2) 4')) return { th: 'ใบประเมินด้านสิ่งแวดล้อมฯ ล้างเครื่องปรับอากาศ (สแกน; contentDuplicateCandidate P2)', en: 'AC-cleaning environmental evaluation (scan; contentDuplicateCandidate P2)' };
+  if (path.includes('6.2.1(2)3')) return { th: 'หนังสือรับรองรายการผลิตภัณฑ์ทำความสะอาด (สแกน)', en: 'Cleaning-product certification (scan)' };
+  if (path.includes('สัญญาจ้างทำความสะอาด 68')) return { th: 'สัญญาจ้างทำความสะอาด งบ 68 (สแกน — canonical สำหรับปี 2568)', en: 'Cleaning contract FY2568 budget (scan — canonical for FY2568)' };
+  if (path.includes('6.2.1(3) 2')) return { th: 'ใบอนุญาตปฏิบัติงานและข้อตกลงด้านสิ่งแวดล้อม ปีงบประมาณ 2568 (สแกน)', en: 'Work permit + environmental agreement, FY2568 (scan)' };
+  if (path.includes('6.2.1(4) 1')) return { th: 'ประกาศคณะฯ เรื่องนโยบายสิ่งแวดล้อมโครงการสำนักงานสีเขียว ปี 2568', en: 'Policy announcement, Green Office, FY2568' };
+  if (path.includes('6.2.1(4) 2')) return { th: 'ภาพถ่าย/ลายเซ็นการประชุมชี้แจงนโยบายสิ่งแวดล้อม 27 ต.ค. 2568', en: 'Photos/signatures of policy briefing 27 Oct 2568' };
+  if (/6\.2\.1\.pdf$/.test(path)) return { th: 'เอกสารสรุปหมวดย่อย 6.2.1 การจัดจ้างหน่วยงาน/บุคคลเป็นมิตรฯ', en: 'Section summary 6.2.1 eco contractor engagement' };
+  if (path.includes('6.2.2(1) 1')) return { th: 'ใบประเมินด้านสิ่งแวดล้อมฯ จ้างเหมาทำความสะอาดอาคาร (สแกน; contentDuplicateCandidate P1)', en: 'Cleaning-contractor environmental evaluation (scan; contentDuplicateCandidate P1)' };
+  if (path.includes('6.2.2(1) 2')) return { th: 'หนังสือแจ้งผลการประเมินประสิทธิภาพการปฏิบัติงาน 30 ก.ย. 2568 (ระดับดีมาก)', en: 'Evaluation-result letter 30 Sep 2568 (ระดับดีมาก)' };
+  if (path.includes('6.2.2(2 )1')) return { th: 'ใบประเมินประสิทธิภาพผู้รับจ้างล้างเครื่องปรับอากาศ (สแกน; contentDuplicateCandidate P2)', en: 'AC-cleaning contractor performance evaluation (scan; contentDuplicateCandidate P2)' };
+  if (/6\.2\.2\.pdf$/.test(path)) return { th: 'เอกสารสรุปหมวดย่อย 6.2.2 การตรวจสอบการดูแลสิ่งแวดล้อมของผู้รับจ้าง', en: 'Section summary 6.2.2 contractor environmental inspection' };
+  if (path.includes('6.2.3(1) 1')) return { th: 'แหล่งสืบค้นข้อมูลโรงแรมที่เป็นมิตรกับสิ่งแวดล้อมจากเว็บไซต์ (gp.pcd.go.th, greenhotelthai.com, greenleafthai.org)', en: 'Eco-hotel search sources (gp.pcd.go.th, greenhotelthai.com, greenleafthai.org)' };
+  if (path.includes('6.2.3(1) 2')) return { th: 'ตัวอย่างโรงแรมที่เป็นมิตรกับสิ่งแวดล้อมที่เลือกมา', en: 'Example eco-friendly hotels selected' };
+  if (path.includes('6.2.3(1) 3')) return { th: 'แบบฟอร์ม 6.2(3) การคัดเลือกสถานที่ที่เป็นมิตรกับสิ่งแวดล้อม', en: 'Form 6.2(3) eco venue-selection guideline' };
+  if (/6\.2\.3\.pdf$/.test(path)) return { th: 'เอกสารสรุปหมวดย่อย 6.2.3 แนวทางเลือกใช้บริการเป็นมิตรฯ (นอกสำนักงาน)', en: 'Section summary 6.2.3 eco external-service guideline' };
+  return undefined;
+}
+---
+
+{
+  docs.length > 0 && (
+    <section
+      class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6"
+      aria-labelledby={`cat6-source-title-${issueCode}`}
+      data-cat6-source-documents
+      data-group={issueCode}
+    >
+      <p class="text-xs font-semibold text-primary">
+        {t('เอกสารต้นฉบับสำหรับการตรวจสอบ', 'Original document for review')}
+      </p>
+      <h2 id={`cat6-source-title-${issueCode}`} class="mt-1 text-base font-bold text-on-surface">
+        {t(`เอกสารต้นฉบับ ${issueCode} ปี 2568`, `Original ${issueCode} FY2568 documents`)}
+      </h2>
+      <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+        {t(
+          `ไฟล์ต้นฉบับปี 2568 ของกลุ่ม ${issueCode} ที่เผยแพร่แบบเปิดจากเว็บไซต์นี้ — สำหรับการตรวจสอบเอกสารต้นทาง (เฉพาะรายการที่ได้รับอนุมัติจาก Phase A; ไม่รวมสัญญาจ้างทำความสะอาด 69 ซึ่งเป็นเอกสารงบปี 2569 ที่ถูก QUARANTINE)`,
+          `Openly published FY2568 source files for group ${issueCode} — for original-document review (Phase-A-approved set only; the FY2569-budget cleaning contract (งบ 69) is QUARANTINED and excluded)`,
+        )}
+      </p>
+      <ul class="mt-4 space-y-3" role="list">
+        {docs.map((doc) => {
+          const description = describe(doc.path);
+          return (
+            <li
+              class="rounded-lg border border-gray-100 bg-white p-4"
+              data-cat6-source-doc
+              data-path={doc.path}
+            >
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-1 text-[11px] font-semibold text-emerald-800">
+                  {typeLabel[doc.type] ?? doc.type.toUpperCase()}
+                </span>
+                <p class="min-w-0 flex-1 font-medium num-tabular text-sm text-on-surface">{doc.title}</p>
+                <a
+                  href={withBase(doc.url)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex min-h-11 items-center justify-center rounded-stitch bg-primary px-4 py-2.5 text-sm font-semibold text-white transition duration-300 ease-out hover:-translate-y-0.5 focus-ring motion-reduce:transform-none"
+                >
+                  {t('เปิดเอกสารต้นฉบับ', 'Open original document')}
+                </a>
+              </div>
+              {description && (
+                <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
+                  {t(description.th, description.en)}
+                </p>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )
+}

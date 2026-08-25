@@ -10,6 +10,19 @@ import { categoryImageUrl, categoryImageDimensions } from '../../../utils/wow2-i
 import { getBaselineCategoryCoverage, getSourceTypeCounts, FY2568_BASELINE_YEAR } from '../../../data/criteria/baseline-2568';
 import Cat1ManagementCycle from '../../../components/categories/Cat1ManagementCycle.astro';
 import Cat1DomainSnapshot from '../../../components/categories/Cat1DomainSnapshot.astro';
+import Cat2ManagementCycle from '../../../components/categories/Cat2ManagementCycle.astro';
+import Cat2DomainSnapshot from '../../../components/categories/Cat2DomainSnapshot.astro';
+import Cat3ManagementCycle from '../../../components/categories/Cat3ManagementCycle.astro';
+import Cat3DomainSnapshot from '../../../components/categories/Cat3DomainSnapshot.astro';
+import Cat3Fy2569MeasurePlan from '../../../components/categories/Cat3Fy2569MeasurePlan.astro';
+import Cat4ManagementCycle from '../../../components/categories/Cat4ManagementCycle.astro';
+import Cat4DomainSnapshot from '../../../components/categories/Cat4DomainSnapshot.astro';
+import Cat5ManagementCycle from '../../../components/categories/Cat5ManagementCycle.astro';
+import Cat5DomainSnapshot from '../../../components/categories/Cat5DomainSnapshot.astro';
+import Cat6ManagementCycle from '../../../components/categories/Cat6ManagementCycle.astro';
+import Cat6DomainSnapshot from '../../../components/categories/Cat6DomainSnapshot.astro';
+import Cat7ManagementCycle from '../../../components/categories/Cat7ManagementCycle.astro';
+import Cat7DomainSnapshot from '../../../components/categories/Cat7DomainSnapshot.astro';
 
 const locale = 'en';
 
@@ -257,7 +270,27 @@ function localizedUrl(path: string): string {
             </p>
             {category.code === 'cat2' && (
               <p class="mt-1 text-xs leading-relaxed text-gray-600">
-                Source-structure note: an unresolved item exists for category 2.
+                Source-structure note: 2.2.3 still lacks dedicated evidence; legacy cat2 water records remain unresolved pending an explicit category-3 target.
+              </p>
+            )}
+            {category.code === 'cat3' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                Source-structure note: all 15 indicators have dedicated FY2568 evidence, but 3.2.2 is MEDIUM (image-only per-unit tables), 2 scans and the garbled measures PDF are unverified, 3.2.4/3.2.5/3.4.2 files have limitations, and no signed copy exists.
+              </p>
+            )}
+            {category.code === 'cat4' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                Source-structure note: all 5 indicators have dedicated FY2568 evidence, but foam-free 4.1.1(3) was not implemented, the reuse &gt;50% numeric threshold is not met (31.93% — innovation/composting branch), the general-waste −3% target is not met (+1.68%), 10 scan paths (8 unique contents) and the garbled measures PDF (cross-reference only) are unverified, the canonical report is the 10-03-69 DOCX (no signed copy), and ทส.1/ทส.2 records are external references.
+              </p>
+            )}
+            {category.code === 'cat5' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                Source-structure note: all 13 indicators have dedicated FY2568 evidence (47/47 files SHA-256 matched), but it is the baseline layer for FY2569 — light measurement, the fire drill and recurring inspections must be re-collected in FY2569. 23 files are scans (content unverified), 5.3.1 has no sound measurement (pending assessor confirmation), the 5.4.2/5.4.3/5.5.2 percentages are not evidenced, the FY2569-budget contract is excluded, and file 5.5.3-3 is unconfirmed.
+              </p>
+            )}
+            {category.code === 'cat6' && (
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                Source-structure note: all 6 indicators have dedicated FY2568 evidence (32/32 files SHA-256 matched), but it is the baseline layer for FY2569 — the 6.1.2 procurement % (92.33/89.80 as source-declared, not recomputed), product-list review and contractor evaluations must be re-collected in FY2569. 12 files are scans (content unverified), the 6.1.3 % is not evidenced (random check –), the FY2569-budget cleaning contract (งบ 69) is QUARANTINED, and two evaluation-form pairs are contentDuplicateCandidate.
               </p>
             )}
             {category.code === 'cat7' && (
@@ -286,6 +319,49 @@ function localizedUrl(path: string): string {
       <>
         <Cat1ManagementCycle locale={locale} />
         <Cat1DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat2' && (
+      <>
+        <Cat2ManagementCycle locale={locale} />
+        <Cat2DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat3' && (
+      <>
+        <Cat3Fy2569MeasurePlan locale={locale} />
+        <Cat3ManagementCycle locale={locale} />
+        <Cat3DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat4' && (
+      <>
+        <Cat4ManagementCycle locale={locale} />
+        <Cat4DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat5' && (
+      <>
+        <Cat5ManagementCycle locale={locale} />
+        <Cat5DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat6' && (
+      <>
+        <Cat6ManagementCycle locale={locale} />
+        <Cat6DomainSnapshot locale={locale} />
+      </>
+    )}
+
+    {category.code === 'cat7' && (
+      <>
+        <Cat7ManagementCycle locale={locale} />
+        <Cat7DomainSnapshot locale={locale} />
       </>
     )}
 

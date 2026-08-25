@@ -1,0 +1,207 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "livability",
+  "updated": "2026-08-24",
+  "year": 2568,
+  "status": "historical-baseline",
+  "governance": "GOFFICE2026_CAT5_PHASE_A_SOURCE_DISPOSITION",
+  "note": "FY2568 historical-baseline contract for 5.4.1-5.4.4 (ความน่าอยู่). LOCKED DISCLOSURES: the FY2569-budget cleaning contract (5.4-1 ... งบ 69.pdf) is EXCLUDED from the FY2568 baseline (FY2569 contamination; the FY2568 twin 5.4-5 ... งบ 68.pdf is canonical); utilization (5.4.2) and maintenance (5.4.3) PERCENTAGES ARE NOT EVIDENCED — area facts only. No FY2569 facts.",
+  "sources": [
+    {
+      "ref": "5.4 ความน่าอยู่/5.4(1)แผนการดูแลพื้นที่ของสำนักงาน ปี68.pdf",
+      "role": "primary-scan",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "5.4 ความน่าอยู่/5.4-3 กิจกรรม Big cleaning day ครั้งที่ 1 ปี68.pdf",
+      "role": "activity-scan",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "5.4 ความน่าอยู่/5.4(2) - 5.4.(3)  แผนควบคุมพาหะนำเชื้อ ชั้น 1  ปี68 new.pdf",
+      "role": "plan-scan",
+      "inspection": "filename_folder_only",
+      "disposition": "canonical-pending-verification"
+    },
+    {
+      "ref": "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx",
+      "role": "supporting-report",
+      "inspection": "content-verified",
+      "disposition": "canonical"
+    }
+  ],
+  "records": [
+    {
+      "id": "livability-plan-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "5.4.1"
+      ],
+      "issueCodes": [
+        "5.4"
+      ],
+      "categoryCode": "cat5",
+      "evidenceIds": [
+        "ev-cat5-livability-plan-fy2568"
+      ],
+      "sourceRef": "5.4 ความน่าอยู่/5.4(1)แผนการดูแลพื้นที่ของสำนักงาน ปี68.pdf",
+      "manifestSha256": "536dc4f94646f65077c8f1e45d1f493ab10f91d1b21fc1be0db7d57a7eb0a558",
+      "relatedSources": [
+        "5.4 ความน่าอยู่/5.4-2 พื้นที่สีเขียว ปี68.pdf",
+        "5.4 ความน่าอยู่/5.4.pdf",
+        "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx"
+      ],
+      "verification": {
+        "status": "pending",
+        "basis": "Area-care plan is an image scan (content pending OCR). Structural facts (assessed area 9,881 m² = 1,934 outdoor + 7,947 indoor; green area 282 m² outdoor = 14.58% of outdoor area / 2.91% of total; 6 m² indoor; responsibility assignments) cross-verified against the content-verified annual report DOCX."
+      },
+      "availability": "filename_folder_only",
+      "kind": "livabilityPlanScan",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "แผนการดูแลพื้นที่ของสำนักงาน และพื้นที่สีเขียว ปี 2568",
+      "labelEn": "FY2568 office-area care plan and green-area evidence",
+      "promoted": false,
+      "fy2569Recurrence": {
+        "required": false,
+        "cadence": "reuse unless areas/responsibilities change"
+      }
+    },
+    {
+      "id": "livability-utilization-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "5.4.2"
+      ],
+      "issueCodes": [
+        "5.4"
+      ],
+      "categoryCode": "cat5",
+      "evidenceIds": [
+        "ev-cat5-livability-utilization-fy2568"
+      ],
+      "sourceRef": "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx",
+      "manifestSha256": "1de8d296952c530d5b630440756aa5703253ce66385b0805483d9a266dbe2a35",
+      "relatedSources": [],
+      "verification": {
+        "status": "reviewed",
+        "basis": "Content-verified from the annual report DOCX section 5.4.2: shared-use survey narrative (shared equipment/space). NO numeric utilization percentage is evidenced anywhere in the FY2568 sources."
+      },
+      "availability": "content-verified",
+      "kind": "contextualNarrative",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "การสำรวจการใช้พื้นที่ตามวัตถุประสงค์ (ไม่มีตัวเลขร้อยละ)",
+      "labelEn": "Space-utilization survey narrative (percentage NOT evidenced)",
+      "percentNotEvidenced": true,
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "produce a numeric utilization percentage in FY2569 (current GAP)"
+      }
+    },
+    {
+      "id": "livability-maintenance-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "5.4.3"
+      ],
+      "issueCodes": [
+        "5.4"
+      ],
+      "categoryCode": "cat5",
+      "evidenceIds": [
+        "ev-cat5-livability-maintenance-fy2568"
+      ],
+      "sourceRef": "5.4 ความน่าอยู่/5.4-3 กิจกรรม Big cleaning day ครั้งที่ 1 ปี68.pdf",
+      "manifestSha256": "73ad9e71ee4d5db3f4967f85da6edcc5a3664c216276c5f7a6f35f1a35e24dbc",
+      "relatedSources": [
+        "5.4 ความน่าอยู่/5.4-4 ภาพกิจกรรม 5 ส.pdf",
+        "5.4 ความน่าอยู่/5.4-5 สัญญาจ้างทำความสะอาดอาคาร งบ 68.pdf",
+        "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx"
+      ],
+      "verification": {
+        "status": "pending",
+        "basis": "Big Cleaning Day #1/2568 pack is an image scan; 5S activity photos and the FY2568 cleaning contract (งบ 68) also lack reviewed content. Maintenance activities are cross-verified via the content-verified annual report DOCX. NO numeric maintenance percentage is evidenced."
+      },
+      "availability": "filename_folder_only",
+      "kind": "activityScan",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "กิจกรรม Big cleaning day ครั้งที่ 1/2568, ภาพกิจกรรม 5 ส และสัญญาจ้างทำความสะอาด (งบ 68)",
+      "labelEn": "FY2568 Big Cleaning Day #1, 5S activity photos and cleaning contract (FY2568 budget)",
+      "promoted": false,
+      "percentNotEvidenced": true,
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "collect FY2569 cleaning-day/5S records + current-year contract"
+      }
+    },
+    {
+      "id": "livability-vector-fy2568",
+      "year": 2568,
+      "indicatorCodes": [
+        "5.4.4"
+      ],
+      "issueCodes": [
+        "5.4"
+      ],
+      "categoryCode": "cat5",
+      "evidenceIds": [
+        "ev-cat5-livability-vector-fy2568"
+      ],
+      "sourceRef": "5.4 ความน่าอยู่/5.4(2) - 5.4.(3)  แผนควบคุมพาหะนำเชื้อ ชั้น 1  ปี68 new.pdf",
+      "manifestSha256": "91bc2106b8deaacf0b772202b3020b6fba80a3bd43c2ceaed4046818198fe61d",
+      "relatedSources": [
+        "5.4 ความน่าอยู่/5.4(2) - 5.4.(3) แผนควบคุมพาหะนำเชื้อ ชั้น 2  ปี68 new.pdf",
+        "5.4 ความน่าอยู่/5.4(2) - 5.4.(3) แผนควบคุมพาหะนำเชื้อ ชั้น 3  ปี68 new.pdf",
+        "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx"
+      ],
+      "verification": {
+        "status": "pending",
+        "basis": "Vector-control plans (floors 1-3) are image scans (content pending OCR). Program facts (daily trail inspections on working days, trap-and-release policy, waste/food-source management) cross-verified against the content-verified annual report DOCX."
+      },
+      "availability": "filename_folder_only",
+      "kind": "vectorControlPlanScan",
+      "baselineYearLabel": {
+        "th": "ข้อมูลฐานปี 2568 (Frozen baseline)",
+        "en": "FY2568 baseline (frozen)"
+      },
+      "fy2569Status": "awaiting-update",
+      "labelTh": "แผนควบคุมพาหะนำเชื้อ ชั้น 1-3 ปี 2568",
+      "labelEn": "FY2568 vector-control plans (floors 1-3)",
+      "promoted": false,
+      "fy2569Recurrence": {
+        "required": true,
+        "cadence": "continuous daily/weekly inspection logs across all floors"
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "indicator": "5.4.2",
+      "status": "PERCENT_NOT_EVIDENCED",
+      "note": "Criteria expect a utilization percentage; FY2568 sources provide narrative only."
+    },
+    {
+      "indicator": "5.4.3",
+      "status": "PERCENT_NOT_EVIDENCED",
+      "note": "Criteria expect a maintenance percentage; FY2568 sources provide activity evidence only."
+    },
+    {
+      "indicator": "5.4.3",
+      "status": "FY2569_CONTAMINATION_EXCLUDED",
+      "note": "5.4-1 ... งบ 69.pdf (FY2569 budget contract) excluded from the FY2568 baseline."
+    }
+  ]
+}

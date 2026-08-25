@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "1.0.0",
+  "updated": "2026-08-24",
+  "titleTh": "หมวด 5 — สภาพแวดล้อมและความปลอดภัย (Canonical Data Contracts)",
+  "titleEn": "Category 5 — Environment and Safety (Canonical Data Contracts)",
+  "governance": "GOFFICE2026_CAT5_PHASE_A_SOURCE_DISPOSITION",
+  "year": 2568,
+  "status": "PHASE_B_BASELINE",
+  "freeze": {
+    "status": "FROZEN_READ_ONLY_BASELINE",
+    "date": "2026-08-24",
+    "authorityDoc": "docs/data/GO-CAT5-PHASE-A-SOURCE-DISPOSITION.md",
+    "dispositionDoc": "docs/data/GO-CAT5-PHASE-A-SOURCE-DISPOSITION.md"
+  },
+  "note": "Static-only canonical data contracts for Category 5 (สภาพแวดล้อมและความปลอดภัย), modeling the frozen FY2568 historical baseline for FY2569 reuse. All 13 indicators (5.1.1-5.5.3) resolve to dedicated evidence anchored on the SHA-verified fy2568-publication.json cat5 manifest (47/47 source-mirror-manifest match). FY2568 is the baseline layer for FY2569: recurring evidence (measurements, drills, inspections, cleaning campaigns) is labeled awaiting-update and must be re-collected in FY2569 — never relabeled. No scores, no PASS claims, no FY2569 facts.",
+  "contracts": [
+    {
+      "domain": "air",
+      "file": "src/data/category5/air.json",
+      "indicators": [
+        "5.1.1",
+        "5.1.2",
+        "5.1.3"
+      ],
+      "status": "historical-baseline",
+      "note": "Indoor air: maintenance (recurring), smoke-free campaign, construction countermeasures."
+    },
+    {
+      "domain": "lighting",
+      "file": "src/data/category5/lighting.json",
+      "indicators": [
+        "5.2.1"
+      ],
+      "status": "historical-baseline",
+      "note": "Annual light-intensity measurement (FY2568 frozen)."
+    },
+    {
+      "domain": "noise",
+      "file": "src/data/category5/noise.json",
+      "indicators": [
+        "5.3.1",
+        "5.3.2"
+      ],
+      "status": "historical-baseline",
+      "note": "Noise measures; measurement status CONTEXTUAL_NA_PENDING_ASSESSOR."
+    },
+    {
+      "domain": "livability",
+      "file": "src/data/category5/livability.json",
+      "indicators": [
+        "5.4.1",
+        "5.4.2",
+        "5.4.3",
+        "5.4.4"
+      ],
+      "status": "historical-baseline",
+      "note": "Livability plan/utilization/maintenance/vector control; งบ 69 contract excluded."
+    },
+    {
+      "domain": "emergency",
+      "file": "src/data/category5/emergency.json",
+      "indicators": [
+        "5.5.1",
+        "5.5.2",
+        "5.5.3"
+      ],
+      "status": "historical-baseline",
+      "note": "Drill/plans/equipment readiness; understanding % not evidenced; 5.5.3-3 unconfirmed."
+    }
+  ],
+  "missingIndicators": [],
+  "forwardRequirements": [
+    {
+      "code": "FY2569_RECURRING_EVIDENCE_COLLECTION",
+      "note": "Data2569/Cat5/ folder skeleton exists (13 indicator folders) but is empty; recurring evidence listed per-record via fy2569Recurrence must be collected in FY2569."
+    },
+    {
+      "code": "FY2569_DRILL_AND_LIGHTING_REMEASUREMENT",
+      "note": "Light measurement (5.2.1) and fire drill (5.5.1) are annual; FY2568 results stay frozen baseline."
+    },
+    {
+      "code": "OCR_DECISION_FOR_SCANS",
+      "note": "23 image-only scans stay filename_folder_only; OCR/transcription is out of scope for this phase."
+    }
+  ],
+  "sourceLimitations": [
+    {
+      "code": "SCAN_ONLY_FILES",
+      "note": "23 of 47 files are image-only scans (filename_folder_only); facts rely on report cross-reference."
+    },
+    {
+      "code": "FY2569_CONTAMINATION_EXCLUDED",
+      "note": "5.4 ความน่าอยู่/5.4-1 สัญญาจ้างทำความสะอาดอาคาร งบ 69.pdf is a FY2569-budget document excluded from all FY2568 records; the FY2568 twin (5.4-5 ... งบ 68.pdf) is canonical."
+    },
+    {
+      "code": "NOISE_MEASUREMENT_CONTEXTUAL_NA",
+      "note": "5.3.1: building declares no sound-level measurement performed (CONTEXTUAL_NA_PENDING_ASSESSOR); re-affirm or measure in FY2569."
+    },
+    {
+      "code": "LIVABILITY_PERCENT_NOT_EVIDENCED",
+      "note": "5.4.2 utilization % and 5.4.3 maintenance % are not evidenced numerically."
+    },
+    {
+      "code": "EMERGENCY_UNDERSTANDING_PERCENT_NOT_EVIDENCED",
+      "note": "5.5.2 personnel-understanding % is not evidenced."
+    },
+    {
+      "code": "HOSE_CABINET_REPORT_3_UNCONFIRMED",
+      "note": "5.5.3-3 hose-cabinet report absent (EXPECTED_SOURCE_UNCONFIRMED); floor 3 covered by 5.5.3-4."
+    },
+    {
+      "code": "NO_OCR_IN_THIS_PHASE",
+      "note": "No OCR/transcription was performed; scan contents are not verified."
+    },
+    {
+      "code": "NO_SIGNED_COPY",
+      "note": "No signed/approved submission copy is part of the source set."
+    }
+  ],
+  "annualReport": {
+    "canonical": {
+      "path": "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.docx",
+      "sha256": "1de8d296952c530d5b630440756aa5703253ce66385b0805483d9a266dbe2a35",
+      "role": "content-verified supporting report covering all 13 indicators"
+    },
+    "export": {
+      "path": "รายงานกรีนหมวด 5 (68) อาคารสมเด็จพระเทพฯ.pdf",
+      "sha256": "47833e6db08d86271dda0fe699a42b42130f61e52aeef74e862be0d2efe01e3c",
+      "role": "reader-friendly PDF export of the same report (not indicator-level)"
+    },
+    "note": "The DOCX is the only content-verified source (text extracted read-only); the PDF export is a convenience copy and never a record sourceRef."
+  },
+  "validation": {
+    "validator": "scripts/validate-category5-contracts.mjs",
+    "invariants": [
+      "every 5.1.1-5.5.3 resolves to >=1 valid manifest document (13/13)",
+      "manifestSha256 equals the fy2568-publication cat5 entry for every sourceRef/relatedSources path",
+      "the excluded FY2569-contamination file never appears as a record sourceRef",
+      "scan records stay promoted:false / filename_folder_only / verification pending",
+      "locked disclosures present: CONTEXTUAL_NA_PENDING_ASSESSOR (5.3.1), PERCENT_NOT_EVIDENCED (5.4.2/5.4.3/5.5.2), EXPECTED_SOURCE_UNCONFIRMED (5.5.3-3)"
+    ]
+  }
+}

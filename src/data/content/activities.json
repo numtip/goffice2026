@@ -1,0 +1,1777 @@
+{
+  "version": "1.2.0",
+  "updated": "2026-08-25",
+  "note": "Phase 2 B1+B2 — 17 publish-ready records migrated locally (B1: 9 FY2568/FY2567; B2: 8 FY2567/FY2566). EN translation pending. Merged #62→#63, #40→#39.",
+  "items": [
+    {
+      "id": "ACT-2568-001",
+      "slug": "simina3",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "ประชุมคณะกรรมการอำนวยการดำเนินงาน ครั้งที่ 3/2568",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 18 กันยายน 2568 สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ จัดการประชุมคณะกรรมการอำนวยการดำเนินงาน สำนักงานสีเขียว (Green Office) อาคารสำนักงานเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดามหาวิทยาลัยแม่โจ้ โดยมี ผู้ช่วยศาสตรารย…",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 18 กันยายน 2568 สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ จัดการประชุมคณะกรรมการอำนวยการดำเนินงาน สำนักงานสีเขียว (Green Office) อาคารสำนักงานเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดามหาวิทยาลัยแม่โจ้ โดยมี ผู้ช่วยศาสตรารย์ ดร.ณัฐพล เลาห์รอดพันธุ์ ผู้อำนวยการสำนักวิจัยฯ เป็นประธานงานการประชุมดังกล่าว ณ ห้องประชุม 301 ชั้น 3 อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้",
+      "bodyEn": "",
+      "publishDate": "2025-09-18",
+      "fiscalYear": 2568,
+      "category": {
+        "id": "meeting",
+        "labelTh": "การประชุม",
+        "labelEn": "Meeting"
+      },
+      "activityType": {
+        "id": "committee",
+        "labelTh": "คณะกรรมการ",
+        "labelEn": "Committee"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/68-simina3/ep1.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการดำเนินงาน ครั้งที่ 3/2568 — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/68-simina3/ep2.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการดำเนินงาน ครั้งที่ 3/2568 — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/68-simina3/ep4.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการดำเนินงาน ครั้งที่ 3/2568 — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/68-simina3/ep5.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการดำเนินงาน ครั้งที่ 3/2568 — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/68-simina3/ep6.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการดำเนินงาน ครั้งที่ 3/2568 — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/68-simina3/ep7.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการดำเนินงาน ครั้งที่ 3/2568 — ภาพที่ 6",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/68-simina3/ep8.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการดำเนินงาน ครั้งที่ 3/2568 — ภาพที่ 7",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 68,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/68-simina3",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2568-003",
+      "slug": "realy2025",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "กิจกรรม Rally Bike Rally Life",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 5 มิถุนายน 2568 สำนักหอสมุด มหาวิทยาลัยแม่โจ้จัดกิจกรรม \"Rally Bike Rally Life\" ณ ลานอนุเสาวรีย์ ศ.ดร.วิภาต บุญศรี วังซ้าย โดยมี รองศาสตราจารย์ ดร.วีระพล ทองมา อธิการบดีมหาวิทยาลัยแม่โจ้ เป็นประธานเปิดงาน กิ…",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 5 มิถุนายน 2568 สำนักหอสมุด มหาวิทยาลัยแม่โจ้จัดกิจกรรม \"Rally Bike Rally Life\" ณ ลานอนุเสาวรีย์ ศ.ดร.วิภาต บุญศรี วังซ้าย โดยมี รองศาสตราจารย์ ดร.วีระพล ทองมา อธิการบดีมหาวิทยาลัยแม่โจ้ เป็นประธานเปิดงาน กิจกรรมครั้งนี้มีผู้บริหารและบุคลากรสำนักวิจัยฯ เข้าร่วมอย่างพร้อมเพรียง นำโดย ผู้ช่วยศาสตราจารย์ ภานุวัฒน์ เมฆะ รองผู้อำนวยการสำนักวิจัยฯ ฝ่ายบริหาร พร้อมด้วยบุคลากรสำนักวิจัยฯ และสมาชิกจากหน่วยงานต่างๆ ภายในมหาวิทยาลัย วัตถุประสงค์เพื่อสิ่งแวดล้อม กิจกรรม \"Rally Bike Rally Life\" จัดขึ้นด้วยเจตนารมณ์ที่ชัดเจนในการส่งเสริมให้บุคลากรในมหาวิทยาลัยหันมาใช้จักรยานเป็นพาหนะในการเดินทางภายในมหาวิทยาลัย เพื่อช่วยลดปริมาณการปล่อยก๊าซคาร์บอนไดออกไซด์ สอดคล้องกับนโยบายการอนุรักษ์สิ่งแวดล้อมและการพัฒนาอย่างยั่งยืน รูปแบบกิจกรรมที่หลากหลาย กิจกรรมในครั้งนี้ออกแบบให้น่าสนใจและท้าทายผ่านการแข่งขันปั่นจักรยานตามเส้นทางที่กำหนดไว้ล่วงหน้า โดยมีจุดเด่นคือการผสมผสานระหว่างการออกกำลังกายและการเรียนรู้ ผู้เข้าร่วมต้องค้นหาคำตอบสำหรับคำถามที่เกี่ยวข้องกับสิ่งแวดล้อม (RC Questions) ตามอาคารต่างๆ ของคณะและสำนักงาน รวมถึงสถานที่สำคัญภายในมหาวิทยาลัยแม่โจ้ การจัดกิจกรรมในลักษณะนี้ไม่เพียงแต่ส่งเสริมให้เกิดจิตสำนึกด้านสิ่งแวดล้อม แต่ยังเป็นการสร้างความสัมพันธ์ที่ดีระหว่างบุคลากรและเปิดโอกาสให้ได้เรียนรู้เกี่ยวกับมหาวิทยาลัยในมุมมองใหม่ กิจกรรม \"Rally Bike Rally Life\" นับเป็นอีกหนึ่งก้าวสำคัญของมหาวิทยาลัยแม่โจ้ในการสร้างวัฒนธรรมที่เป็นมิตรกับสิ่งแวดล้อม และเป็นแบบอย่างที่ดีสำหรับสถาบันการศึกษาอื่นๆ ในการส่งเสริมการใช้พลังงานสะอาดและลดผลกระทบต่อสิ่งแวดล้อม",
+      "bodyEn": "",
+      "publishDate": "2025-06-05",
+      "fiscalYear": 2568,
+      "category": {
+        "id": "campaign",
+        "labelTh": "โครงการรณรงค์",
+        "labelEn": "Campaign"
+      },
+      "activityType": {
+        "id": "community",
+        "labelTh": "ชุมชน / รณรงค์",
+        "labelEn": "Community"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/66-realy2025/j41.jpg",
+          "altTh": "กิจกรรม Rally Bike Rally Life — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/66-realy2025/j42.jpg",
+          "altTh": "กิจกรรม Rally Bike Rally Life — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/66-realy2025/j43.jpg",
+          "altTh": "กิจกรรม Rally Bike Rally Life — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/66-realy2025/j44.jpg",
+          "altTh": "กิจกรรม Rally Bike Rally Life — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/66-realy2025/j45.jpg",
+          "altTh": "กิจกรรม Rally Bike Rally Life — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/66-realy2025/j46.jpg",
+          "altTh": "กิจกรรม Rally Bike Rally Life — ภาพที่ 6",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/66-realy2025/j48.jpg",
+          "altTh": "กิจกรรม Rally Bike Rally Life — ภาพที่ 7",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 66,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/66-realy2025",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2568-002",
+      "slug": "mjuecoday2025",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "กิจกรรม MJU ECO DAY วันสิ่งแวดล้อมโลก",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 5 มิถุนายน 2568 มหาวิทยาลัยแม่โจ้ได้จัดกิจกรรมพิเศษ \"MJU ECO DAY\" เพื่อรำลึกถึงวันสิ่งแวดล้อมโลก โดยมุ่งเน้นการสร้างจิตสำนึกด้านการอนุรักษ์สิ่งแวดล้อมและการลดการใช้พลาสติกในชีวิตประจำวัน รองศาสตราจารย์ ดร.วี…",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 5 มิถุนายน 2568 มหาวิทยาลัยแม่โจ้ได้จัดกิจกรรมพิเศษ \"MJU ECO DAY\" เพื่อรำลึกถึงวันสิ่งแวดล้อมโลก โดยมุ่งเน้นการสร้างจิตสำนึกด้านการอนุรักษ์สิ่งแวดล้อมและการลดการใช้พลาสติกในชีวิตประจำวัน รองศาสตราจารย์ ดร.วีระพล ทองมา อธิการบดีมหาวิทยาลัยแม่โจ้ เป็นประธานเปิดงานในครั้งนี้ ณ อาคารแผ่พืชน์ โดยเน้นย้ำถึงความสำคัญของการมีส่วนร่วมของทุกภาคส่วนในการรักษาสิ่งแวดล้อมเพื่อความยั่งยืนของโลกใบนี้ สำนักวิจัยและพัฒนา มหาวิทยาลัยแม่โจ้ ภายใต้การนำของผู้ช่วยศาสตราจารย์ภานุวัฒน์ เมฆะ รองผู้อำนวยการสำนักวิจัยฯ ฝ่ายบริหาร พร้อมทีมบุคลากร ได้เข้าร่วมกิจกรรมอย่างเต็มที่ โดยจัดนิทรรศการแสดงผลงานวิจัยด้านสิ่งแวดล้อมและนวัตกรรมเพื่อความยั่งยืน ไฮไลท์ของงาน: แซนด์วิชใบตองลดพลาสติก จุดเด่นของกิจกรรมในครั้งนี้คือการจัดกิจกรรมเวิร์กช็อป \"การทำแซนด์วิชที่ใช้ใบตอง\" ซึ่งเป็นนวัตกรรมที่น่าสนใจในการลดการใช้บรรจุภัณฑ์พลาสติก โดยมีนายณัฐวุฒิ เครือฟู ทำหน้าที่เป็นวิทยากรให้ความรู้แก่ผู้เข้าร่วมกิจกรรม การใช้ใบตองแทนพลาสติกในการห่ออาหารนี้ ไม่เพียงแต่เป็นการอนุรักษ์สิ่งแวดล้อมเท่านั้น แต่ยังเป็นการสืบสานภูมิปัญญาท้องถิ่นของไทยที่มีการใช้ใบตองในการห่อและบรรจุอาหารมาแต่โบราณ ความหมายและผลกระทบ กิจกรรม MJU ECO DAY ในครั้งนี้สะท้อนให้เห็นถึงความมุ่งมั่นของมหาวิทยาลัยแม่โจ้ในการเป็นสถาบันการศึกษาที่มีความรับผิดชอบต่อสิ่งแวดล้อม และการนำองค์ความรู้ทางวิชาการมาประยุกต์ใช้เพื่อแก้ไขปัญหาสิ่งแวดล้อมอย่างเป็นรูปธรรม การจัดกิจกรรมในลักษณะนี้ไม่เพียงแต่สร้างความตระหนักรู้แก่นักศึกษาและบุคลากรของมหาวิทยาลัย แต่ยังเป็นแบบอย่างที่ดีในการขยายผลไปสู่ชุมชนและสังคมในวงกว้าง โดยเฉพาะการส่งเสริมการใช้วัสดุธรรมชาติทดแทนพลาสติกซึ่งเป็นปัญหาสำคัญของโลกในปัจจุบัน กิจกรรมนี้จึงถือเป็นอีกหนึ่งก้าวสำคัญของมหาวิทยาลัยแม่โจ้ในการสร้างสรรค์นวัตกรรมเพื่อสิ่งแวดล้อม และการปลูกฝังจิตสำนึกรักษ์โลกให้แก่คนรุ่นใหม่อย่างยั่งยืนต่อไป",
+      "bodyEn": "",
+      "publishDate": "2025-06-05",
+      "fiscalYear": 2568,
+      "category": {
+        "id": "campaign",
+        "labelTh": "โครงการรณรงค์",
+        "labelEn": "Campaign"
+      },
+      "activityType": {
+        "id": "eco-event",
+        "labelTh": "วันสิ่งแวดล้อม",
+        "labelEn": "Eco event"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/67-mjuecoday2025/j51.jpg",
+          "altTh": "กิจกรรม MJU ECO DAY วันสิ่งแวดล้อมโลก — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/67-mjuecoday2025/j53.jpg",
+          "altTh": "กิจกรรม MJU ECO DAY วันสิ่งแวดล้อมโลก — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/67-mjuecoday2025/j54.jpg",
+          "altTh": "กิจกรรม MJU ECO DAY วันสิ่งแวดล้อมโลก — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/67-mjuecoday2025/j55.jpg",
+          "altTh": "กิจกรรม MJU ECO DAY วันสิ่งแวดล้อมโลก — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/67-mjuecoday2025/j56.jpg",
+          "altTh": "กิจกรรม MJU ECO DAY วันสิ่งแวดล้อมโลก — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/67-mjuecoday2025/j57.jpg",
+          "altTh": "กิจกรรม MJU ECO DAY วันสิ่งแวดล้อมโลก — ภาพที่ 6",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/67-mjuecoday2025/j58.jpg",
+          "altTh": "กิจกรรม MJU ECO DAY วันสิ่งแวดล้อมโลก — ภาพที่ 7",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/67-mjuecoday2025/j59.jpg",
+          "altTh": "กิจกรรม MJU ECO DAY วันสิ่งแวดล้อมโลก — ภาพที่ 8",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/67-mjuecoday2025/j60.jpg",
+          "altTh": "กิจกรรม MJU ECO DAY วันสิ่งแวดล้อมโลก — ภาพที่ 9",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/67-mjuecoday2025/j61.jpg",
+          "altTh": "กิจกรรม MJU ECO DAY วันสิ่งแวดล้อมโลก — ภาพที่ 10",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 67,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/67-mjuecoday2025",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2568-004",
+      "slug": "fire2028",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "กิจกรรมการเตรียมความพร้อมการอพยพหนีภัย",
+      "titleEn": "",
+      "summaryTh": "บันทึกกิจกรรมจากแหล่งที่มา Joomla หมายเลข 65 — วันที่ 30 พฤษภาคม 2568",
+      "summaryEn": "",
+      "bodyTh": "บันทึกกิจกรรมจากแหล่งที่มา Joomla หมายเลข 65 — วันที่ 30 พฤษภาคม 2568",
+      "bodyEn": "",
+      "publishDate": "2025-05-30",
+      "fiscalYear": 2568,
+      "category": {
+        "id": "preparedness",
+        "labelTh": "ความพร้อม / ความปลอดภัย",
+        "labelEn": "Preparedness"
+      },
+      "activityType": {
+        "id": "workshop",
+        "labelTh": "อบรม / สัมมนา",
+        "labelEn": "Workshop"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/65-fire2028/ss1.jpg",
+          "altTh": "กิจกรรมการเตรียมความพร้อมการอพยพหนีภัย — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/65-fire2028/ss11.jpg",
+          "altTh": "กิจกรรมการเตรียมความพร้อมการอพยพหนีภัย — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/65-fire2028/ss12.jpg",
+          "altTh": "กิจกรรมการเตรียมความพร้อมการอพยพหนีภัย — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/65-fire2028/ss13.jpg",
+          "altTh": "กิจกรรมการเตรียมความพร้อมการอพยพหนีภัย — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/65-fire2028/ss15.jpg",
+          "altTh": "กิจกรรมการเตรียมความพร้อมการอพยพหนีภัย — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/65-fire2028/ss18.jpg",
+          "altTh": "กิจกรรมการเตรียมความพร้อมการอพยพหนีภัย — ภาพที่ 6",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/65-fire2028/ss19.jpg",
+          "altTh": "กิจกรรมการเตรียมความพร้อมการอพยพหนีภัย — ภาพที่ 7",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/65-fire2028/ss20.jpg",
+          "altTh": "กิจกรรมการเตรียมความพร้อมการอพยพหนีภัย — ภาพที่ 8",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/65-fire2028/ss3.jpg",
+          "altTh": "กิจกรรมการเตรียมความพร้อมการอพยพหนีภัย — ภาพที่ 9",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/65-fire2028/ss4.jpg",
+          "altTh": "กิจกรรมการเตรียมความพร้อมการอพยพหนีภัย — ภาพที่ 10",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/65-fire2028/ss8.jpg",
+          "altTh": "กิจกรรมการเตรียมความพร้อมการอพยพหนีภัย — ภาพที่ 11",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 65,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/65-fire2028",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2568-005",
+      "slug": "bigcleaning2025-1",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 19 พฤษภาคม 2568 เวลา 08.30-16.30 น.",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 19 พฤษภาคม 2568 เวลา 08.30-16.30 น.",
+      "bodyEn": "",
+      "publishDate": "2025-05-19",
+      "fiscalYear": 2568,
+      "category": {
+        "id": "campaign",
+        "labelTh": "โครงการรณรงค์",
+        "labelEn": "Campaign"
+      },
+      "activityType": {
+        "id": "cleaning",
+        "labelTh": "Big Cleaning / 5ส",
+        "labelEn": "Cleaning / 5S"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_22.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_24.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_26.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_39.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_40.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_43.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 6",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_45.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 7",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_46.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 8",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_48.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 9",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_50.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 10",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_51.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 11",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_52.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 12",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_60.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 13",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_61.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 14",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_63.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 15",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_66.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 16",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/64-bigcleaning2025-1/BigCleaning_78.jpg",
+          "altTh": "กิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2568 — ภาพที่ 17",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 64,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/64-bigcleaning2025-1",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2568-006",
+      "slug": "g-green2025mju",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green",
+      "titleEn": "",
+      "summaryTh": "(26 มีนาคม 2568) งานประกาศเกียรติคุณ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) จากโครงการ G-Green เมื่อวันที่ 26 มีนาคม 2568 ผู้ช่วยศาสตราจารย์ภาณุวัฒน์ เมฆะ รองผู้อำนวยการสำนักวิจัยฯ ฝ่ายบริหาร และนางสาวเกศณี จิตรัตน์ ตัวแท…",
+      "summaryEn": "",
+      "bodyTh": "\n\n(26 มีนาคม 2568) งานประกาศเกียรติคุณ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) จากโครงการ G-Green\nเมื่อวันที่ 26 มีนาคม 2568 ผู้ช่วยศาสตราจารย์ภาณุวัฒน์ เมฆะ รองผู้อำนวยการสำนักวิจัยฯ ฝ่ายบริหาร และนางสาวเกศณี จิตรัตน์ ตัวแทนจาก",
+      "bodyEn": "",
+      "publishDate": "2025-05-14",
+      "fiscalYear": 2568,
+      "category": {
+        "id": "award",
+        "labelTh": "รางวัล / เกียรติคุณ",
+        "labelEn": "Awards"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/63-g-green2025mju/40May.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/63-g-green2025mju/41May.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/63-g-green2025mju/42May.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/63-g-green2025mju/43May.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/63-g-green2025mju/44May.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/63-g-green2025mju/45May.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 6",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/63-g-green2025mju/46May.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 7",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/62-g-green2025/Gold0.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 8",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/62-g-green2025/Gold1.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 9",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/62-g-green2025/Gold2.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 10",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/62-g-green2025/Gold3.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 11",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/62-g-green2025/Gold4.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 12",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/62-g-green2025/Gold5.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 13",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/62-g-green2025/Gold6.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 14",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/62-g-green2025/Gold7.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 15",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/62-g-green2025/LINE_ALBUM_Green_250326_19.jpg",
+          "altTh": "พิธีมอบรางวัลอันทรงเกียรติ รางวัลเกียรติยศระดับดีเยี่ยม (G ทอง) โครงการ G-Green — ภาพที่ 16",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 63,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/63-g-green2025mju",
+        "joomlaCategory": "project2",
+        "mergedSources": [
+          {
+            "joomlaArticleId": 62,
+            "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/62-g-green2025"
+          }
+        ],
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2568-007",
+      "slug": "simina7mar2025",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "ประชุมคณะกรรมการอำนวยการ \"สำนักงานสีเขียว\" (Green Office) ครั้งที่ 1/2568",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 7 มีนาคม 2568 เวลา 10.00 น. ณ ห้องประชุม 304 ชั้น 3 อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้ ผู้ช่วยศาสตราจารย์ ดร.ณัฐพล เลาห์รอดพันธุ์ ผู้อำนวยการสำนักวิจัยและส่งเสริมวิชาการการเกษตร พร…",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 7 มีนาคม 2568 เวลา 10.00 น. ณ ห้องประชุม 304 ชั้น 3 อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้ ผู้ช่วยศาสตราจารย์ ดร.ณัฐพล เลาห์รอดพันธุ์ ผู้อำนวยการสำนักวิจัยและส่งเสริมวิชาการการเกษตร พร้อมด้วยผู้บริหารและบุคลากร ได้จัดการประชุมคณะกรรมการอำนวยการสำนักงานสีเขียว (Green Office) ครั้งที่ 1/2568 โดยมีตัวแทนจาก 4 หน่วยงานภายในอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดาเข้าร่วม ประกอบด้วย สถาบันบริการตรวจสอบคุณภาพและมาตรฐานผลิตภัณฑ์, สถาบันรับรองระบบการผลิตผลิตภัณฑ์การเกษตร, หน่วยความเป็นเลิศด้านการปรับปรุงพันธุ์ข้าว และสำนักวิจัยและส่งเสริมวิชาการการเกษตร การประชุมครั้งนี้มีวัตถุประสงค์เพื่อวางแผนการดำเนินงานตามแนวทางสำนักงานสีเขียว ซึ่งเป็นหนึ่งในนโยบายสำคัญของมหาวิทยาลัยแม่โจ้ในการมุ่งสู่การเป็นมหาวิทยาลัยสีเขียว (Green University) โดยเน้นการสร้างความตระหนักและการมีส่วนร่วมของบุคลากรทุกระดับในการอนุรักษ์พลังงานและสิ่งแวดล้อม การลดปริมาณขยะ การใช้ทรัพยากรอย่างคุ้มค่า และการจัดการของเสียอย่างถูกวิธี ผู้ช่วยศาสตราจารย์ ดร.ณัฐพล เลาห์รอดพันธุ์ กล่าวว่า \"นโยบายสำนักงานสีเขียวนี้จะช่วยยกระดับมาตรฐานการทำงานของหน่วยงานให้เป็นมิตรกับสิ่งแวดล้อมมากขึ้น ซึ่งไม่เพียงช่วยลดค่าใช้จ่ายด้านพลังงานและทรัพยากร แต่ยังส่งเสริมภาพลักษณ์ที่ดีขององค์กรในการเป็นหน่วยงานที่รับผิดชอบต่อสังคมและสิ่งแวดล้อม สอดคล้องกับแนวคิดการพัฒนาที่ยั่งยืน\" ที่ประชุมได้หารือถึงแนวทางการดำเนินงานตามเกณฑ์มาตรฐานสำนักงานสีเขียวของกรมส่งเสริมคุณภาพสิ่งแวดล้อม ที่ครอบคลุม 6 ด้านหลัก ได้แก่ การบริหารจัดการองค์กร, การดำเนินงานสำนักงานสีเขียว, การใช้พลังงานและทรัพยากร, การจัดการของเสีย, สภาพแวดล้อมภายในและภายนอกสำนักงาน และการจัดซื้อจัดจ้างที่เป็นมิตรกับสิ่งแวดล้อม การประชุมครั้งนี้ยังได้กำหนดแผนงานและตัวชี้วัดความสำเร็จร่วมกัน เพื่อให้การขับเคลื่อนสำนักงานสีเขียวเป็นไปในทิศทางเดียวกัน โดยมุ่งสู่การเป็นต้นแบบสำนักงานสีเขียวที่มีมาตรฐานและสามารถถ่ายทอดแนวปฏิบัติที่ดีให้แก่หน่วยงานอื่นๆ ทั้งภายในและภายนอกมหาวิทยาลัยต่อไป",
+      "bodyEn": "",
+      "publishDate": "2025-03-07",
+      "fiscalYear": 2568,
+      "category": {
+        "id": "meeting",
+        "labelTh": "การประชุม",
+        "labelEn": "Meeting"
+      },
+      "activityType": {
+        "id": "committee",
+        "labelTh": "คณะกรรมการ",
+        "labelEn": "Committee"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/60-simina7mar2025/mar1.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการ \"สำนักงานสีเขียว\" (Green Office) ครั้งที่ 1/2568 — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/60-simina7mar2025/mar2.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการ \"สำนักงานสีเขียว\" (Green Office) ครั้งที่ 1/2568 — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/60-simina7mar2025/mar3.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการ \"สำนักงานสีเขียว\" (Green Office) ครั้งที่ 1/2568 — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/60-simina7mar2025/mar4.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการ \"สำนักงานสีเขียว\" (Green Office) ครั้งที่ 1/2568 — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/60-simina7mar2025/mar5.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการ \"สำนักงานสีเขียว\" (Green Office) ครั้งที่ 1/2568 — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/60-simina7mar2025/mar6.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการ \"สำนักงานสีเขียว\" (Green Office) ครั้งที่ 1/2568 — ภาพที่ 6",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/60-simina7mar2025/mar7.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการ \"สำนักงานสีเขียว\" (Green Office) ครั้งที่ 1/2568 — ภาพที่ 7",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/60-simina7mar2025/mar8.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการ \"สำนักงานสีเขียว\" (Green Office) ครั้งที่ 1/2568 — ภาพที่ 8",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/60-simina7mar2025/mar9.jpg",
+          "altTh": "ประชุมคณะกรรมการอำนวยการ \"สำนักงานสีเขียว\" (Green Office) ครั้งที่ 1/2568 — ภาพที่ 9",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 60,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/60-simina7mar2025",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2568-008",
+      "slug": "simina1-2025",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "ประชุมคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) หมวด 1 ครั้งที่ 1/2568",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 29 มกราคม 2568 ณ ห้องประชุม 304 สำนักวิจัยฯ ได้จัดการประชุมคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) หมวด 1 ครั้งที่ 1/2568 เพื่อวางรากฐานการดำเนินงานด้านสิ่งแวดล้อมประจำปี 2568 การประชุมครั้งนี้มีวา…",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 29 มกราคม 2568 ณ ห้องประชุม 304 สำนักวิจัยฯ ได้จัดการประชุมคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) หมวด 1 ครั้งที่ 1/2568 เพื่อวางรากฐานการดำเนินงานด้านสิ่งแวดล้อมประจำปี 2568 การประชุมครั้งนี้มีวาระสำคัญในการพิจารณาผลการประเมินและแนวทางการพัฒนาอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา โดยนำข้อเสนอแนะจากกรมการเปลี่ยนแปลงสภาพภูมิอากาศและสิ่งแวดล้อมมาปรับปรุงการดำเนินงาน พร้อมทั้งทบทวนนโยบายและขอบเขตการจัดการสิ่งแวดล้อมให้มีประสิทธิภาพยิ่งขึ้น คณะกรรมการได้ร่วมกันพิจารณาแผนการดำเนินงานและการมอบหมายผู้รับผิดชอบในการทบทวนกฎหมายที่เกี่ยวข้อง รวมถึงการปรับปรุงคำสั่งแต่งตั้งคณะกรรมการชุดใหม่ เพื่อขับเคลื่อนโครงการสำนักงานสีเขียวให้บรรลุเป้าหมายการเป็นองค์กรต้นแบบด้านการอนุรักษ์สิ่งแวดล้อมอย่างเป็นรูปธรรม การประชุมครั้งนี้สะท้อนให้เห็นถึงความมุ่งมั่นของทุกหน่วยงานภายในอาคารฯ ในการยกระดับมาตรฐานการดำเนินงานด้านสิ่งแวดล้อม ซึ่งไม่เพียงแต่จะช่วยลดผลกระทบต่อสิ่งแวดล้อม แต่ยังเป็นแบบอย่างที่ดีให้กับหน่วยงานอื่นๆ ในการร่วมกันสร้างสังคมสีเขียวที่ยั่งยืน",
+      "bodyEn": "",
+      "publishDate": "2025-01-29",
+      "fiscalYear": 2568,
+      "category": {
+        "id": "meeting",
+        "labelTh": "การประชุม",
+        "labelEn": "Meeting"
+      },
+      "activityType": {
+        "id": "committee",
+        "labelTh": "คณะกรรมการ",
+        "labelEn": "Committee"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/59-simina1-2025/DSC_6243_0.jpg",
+          "altTh": "ประชุมคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) หมวด 1 ครั้งที่ 1/2568 — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/59-simina1-2025/DSC_6247_0.jpg",
+          "altTh": "ประชุมคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) หมวด 1 ครั้งที่ 1/2568 — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/59-simina1-2025/DSC_6248_0.jpg",
+          "altTh": "ประชุมคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) หมวด 1 ครั้งที่ 1/2568 — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/59-simina1-2025/DSC_6253_0.jpg",
+          "altTh": "ประชุมคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) หมวด 1 ครั้งที่ 1/2568 — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/59-simina1-2025/DSC_6255_0.jpg",
+          "altTh": "ประชุมคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) หมวด 1 ครั้งที่ 1/2568 — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/59-simina1-2025/DSC_6259_0.jpg",
+          "altTh": "ประชุมคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) หมวด 1 ครั้งที่ 1/2568 — ภาพที่ 6",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/59-simina1-2025/DSC_6260_0.jpg",
+          "altTh": "ประชุมคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) หมวด 1 ครั้งที่ 1/2568 — ภาพที่ 7",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/59-simina1-2025/DSC_6263_0.jpg",
+          "altTh": "ประชุมคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) หมวด 1 ครั้งที่ 1/2568 — ภาพที่ 8",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 59,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/59-simina1-2025",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2567-001",
+      "slug": "qa2024",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 17 กรกฎาคม 2567",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 17 กรกฎาคม 2567",
+      "bodyEn": "",
+      "publishDate": "2024-07-17",
+      "fiscalYear": 2567,
+      "category": {
+        "id": "assessment",
+        "labelTh": "การตรวจประเมิน",
+        "labelEn": "Assessment"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/58880_0.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/58881_0.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/S__10100787_0.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/S__10100789_0.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/S__77725719.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/S__77725723.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 6",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/S__77725725_0.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 7",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/S__77725727_0.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 8",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/S__77725728_0.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 9",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/gf1.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 10",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/gf10.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 11",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/gf11.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 12",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/gf12.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 13",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/gf14.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 14",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/gf15.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 15",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/gf16.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 16",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/gf3.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 17",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/gf4.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 18",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/gf5.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 19",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/gf6.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 20",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/gf7.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 21",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/57-qa2024/gf9.jpg",
+          "altTh": "การตรวจประเมินสำนักงานสีเขียว (Green Office) ประจำปี 2567 — ภาพที่ 22",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 57,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/57-qa2024",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2567-002",
+      "slug": "5s",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 5 กรกฎาคม 2567 สำนักวิจัยฯ ได้จัดกิจกรรม 5ส (สะสาง สะดวก สะอาด สุขลักษณะ และสร้างนิสัย) มีวัตถุประสงค์เพื่อความเป็นระเบียบเรียบร้อยในสำนักงาน มีการทำความสะอาดภายในสำนักงานทุกห้องทำงาน ให้ถูกสุขลักษณะ เพื่อคว…",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 5 กรกฎาคม 2567 สำนักวิจัยฯ ได้จัดกิจกรรม 5ส (สะสาง สะดวก สะอาด สุขลักษณะ และสร้างนิสัย) มีวัตถุประสงค์เพื่อความเป็นระเบียบเรียบร้อยในสำนักงาน มีการทำความสะอาดภายในสำนักงานทุกห้องทำงาน ให้ถูกสุขลักษณะ เพื่อความสะดวก และสร้างนิสัยในเรื่องความสะอาดภายในหน่วยงาน และกิจกรรมนี้ เป็นส่วนหนึ่งของโครงการสำนักงานสีเขียว(Green Office) กิจกรรมจัดขึ้น ณ อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราขสุดา",
+      "bodyEn": "",
+      "publishDate": "2024-07-05",
+      "fiscalYear": 2567,
+      "category": {
+        "id": "campaign",
+        "labelTh": "โครงการรณรงค์",
+        "labelEn": "Campaign"
+      },
+      "activityType": {
+        "id": "cleaning",
+        "labelTh": "Big Cleaning / 5ส",
+        "labelEn": "Cleaning / 5S"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/147282_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/147283_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/147285_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/147286_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/147287_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/147288_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 6",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/147289_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 7",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/147290_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 8",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/147291_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 9",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/147292_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 10",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/147293_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 11",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/147294_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 12",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/147295_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 13",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/147296_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 14",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/52627_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 15",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/55-5s/52628_0.jpg",
+          "altTh": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส — ภาพที่ 16",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 55,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/55-5s",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2567-003",
+      "slug": "emergency2024",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "กิจกรรม การเตรียมความพร้อมการอพยพหนีภัย กรณีเกิดเหตุเพลิงไหม้และแผ่นดินไหว",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 29 พฤษภาคม 2567 สำนักวิจัยฯ ร่วมกับ",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 29 พฤษภาคม 2567 สำนักวิจัยฯ ร่วมกับ",
+      "bodyEn": "",
+      "publishDate": "2024-05-29",
+      "fiscalYear": 2567,
+      "category": {
+        "id": "preparedness",
+        "labelTh": "ความพร้อม / ความปลอดภัย",
+        "labelEn": "Preparedness"
+      },
+      "activityType": {
+        "id": "workshop",
+        "labelTh": "อบรม / สัมมนา",
+        "labelEn": "Workshop"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/43-emergency2024/31902_0.jpg",
+          "altTh": "กิจกรรม การเตรียมความพร้อมการอพยพหนีภัย กรณีเกิดเหตุเพลิงไหม้และแผ่นดินไหว — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/43-emergency2024/DSC_4579.jpg",
+          "altTh": "กิจกรรม การเตรียมความพร้อมการอพยพหนีภัย กรณีเกิดเหตุเพลิงไหม้และแผ่นดินไหว — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/43-emergency2024/DSC_4674.jpg",
+          "altTh": "กิจกรรม การเตรียมความพร้อมการอพยพหนีภัย กรณีเกิดเหตุเพลิงไหม้และแผ่นดินไหว — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/43-emergency2024/DSC_4856.jpg",
+          "altTh": "กิจกรรม การเตรียมความพร้อมการอพยพหนีภัย กรณีเกิดเหตุเพลิงไหม้และแผ่นดินไหว — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/43-emergency2024/DSC_4860.jpg",
+          "altTh": "กิจกรรม การเตรียมความพร้อมการอพยพหนีภัย กรณีเกิดเหตุเพลิงไหม้และแผ่นดินไหว — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/43-emergency2024/DSC_8265.jpg",
+          "altTh": "กิจกรรม การเตรียมความพร้อมการอพยพหนีภัย กรณีเกิดเหตุเพลิงไหม้และแผ่นดินไหว — ภาพที่ 6",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/43-emergency2024/DSC_8344.jpg",
+          "altTh": "กิจกรรม การเตรียมความพร้อมการอพยพหนีภัย กรณีเกิดเหตุเพลิงไหม้และแผ่นดินไหว — ภาพที่ 7",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/43-emergency2024/DSC_8361.jpg",
+          "altTh": "กิจกรรม การเตรียมความพร้อมการอพยพหนีภัย กรณีเกิดเหตุเพลิงไหม้และแผ่นดินไหว — ภาพที่ 8",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/43-emergency2024/DSC_8401.jpg",
+          "altTh": "กิจกรรม การเตรียมความพร้อมการอพยพหนีภัย กรณีเกิดเหตุเพลิงไหม้และแผ่นดินไหว — ภาพที่ 9",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 43,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/43-emergency2024",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2567-004",
+      "slug": "green-office2",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office)",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 29 เมษายน 2567 (16 พฤษภาคม 2567) ประชุมเตรียมความพร้อมในการเข้ารับการตรวจประเมิน สำนักงานสีเขียว (Green Office) เมื่อวันที่ 16 พ.ค.2567 คณะกรรมการขับเคลื่อนการดำเนินงานโครงการสำนักงานสีเขียว(Green Office) อา…",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 29 เมษายน 2567\n\n(16 พฤษภาคม 2567) ประชุมเตรียมความพร้อมในการเข้ารับการตรวจประเมิน สำนักงานสีเขียว (Green Office)\nเมื่อวันที่ 16 พ.ค.2567 คณะกรรมการขับเคลื่อนการดำเนินงานโครงการสำนักงานสีเขียว(Green Office) อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา จัดประชุมหารือการตรียมความพร้อมในการเข้ารับการตรวจประเมิน สำนักงานสีเขียว (Green Office) ประจำปี 2567 ซึ่งทางหน่วยงานได้รับแจ้งจาก ศูนย์วิจัย ตรวจประเมิน และให้การรับรองมาตรฐานการจัดการสิ่งแวดล้อม มหาวิทยาลัยมหิดล ว่าผ่านการประเมินให้เข้าร่วมโครงการตรวจประเมินจากหน่วยงานภายนอกได้ การประชุมจัดขึ้น ณ ห้องประชุม301 สำนักวิจัยฯ #GreenOffice",
+      "bodyEn": "",
+      "publishDate": "2024-04-29",
+      "fiscalYear": 2567,
+      "category": {
+        "id": "training",
+        "labelTh": "การฝึกอบรม",
+        "labelEn": "Training"
+      },
+      "activityType": {
+        "id": "workshop",
+        "labelTh": "อบรม / สัมมนา",
+        "labelEn": "Workshop"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/39-green-office2/Ap23.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/39-green-office2/Ap24.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/39-green-office2/Ap25.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/39-green-office2/Ap26.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/39-green-office2/Ap27.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/39-green-office2/Ap28.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 6",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/39-green-office2/Ap29.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 7",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/39-green-office2/Ap30.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 8",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/40-green-office-may2024/S__16105477_0.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 9",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/40-green-office-may2024/S__16105479_0.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 10",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/40-green-office-may2024/S__16105480_0.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 11",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/40-green-office-may2024/S__16105481_0.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 12",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/40-green-office-may2024/S__16105482_0.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 13",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/40-green-office-may2024/S__16105483_0.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 14",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/40-green-office-may2024/S__16105484_0.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 15",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/40-green-office-may2024/S__16105485_0.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 16",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/40-green-office-may2024/S__16105486_0.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 17",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/40-green-office-may2024/S__16105487_0.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 18",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/40-green-office-may2024/S__16105488.jpg",
+          "altTh": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office) — ภาพที่ 19",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 39,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/39-green-office2",
+        "joomlaCategory": "project2",
+        "mergedSources": [
+          {
+            "joomlaArticleId": 40,
+            "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/40-green-office-may2024"
+          }
+        ],
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2567-005",
+      "slug": "green-office-2567",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "บุคลากร เข้าร่วมฝึกตรวจประเมินการจัดการสิ่งแวดล้อม Green Office (ประเมินภายใน) ประจำปี 2567",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 19 มีนาคม 2567 นายปริญญา เพียรอุตส่าห์ บุคลากรสังกัดสำนักวิจัยฯ ได้เข้าร่วมการฝึกตรวจประเมินการจัดการสิ่งแวดล้อม Green Office (ประเมินภายใน) ประจำปี 2567 ร่วมกับ คณะกรรมการตรวจประเมินภายใน นำโดย นางสาวเพชรปร…",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 19 มีนาคม 2567 นายปริญญา เพียรอุตส่าห์ บุคลากรสังกัดสำนักวิจัยฯ ได้เข้าร่วมการฝึกตรวจประเมินการจัดการสิ่งแวดล้อม Green Office (ประเมินภายใน) ประจำปี 2567 ร่วมกับ คณะกรรมการตรวจประเมินภายใน นำโดย นางสาวเพชรประกายแก้ว ดวงหฤทัยทิพย์ หัวหน้าผู้ตรวจประเมิน และคณะ ณ ศูนย์กิจการนักศึกษา อาคารอำนวย ยศสุข",
+      "bodyEn": "",
+      "publishDate": "2024-03-19",
+      "fiscalYear": 2567,
+      "category": {
+        "id": "training",
+        "labelTh": "การฝึกอบรม",
+        "labelEn": "Training"
+      },
+      "activityType": {
+        "id": "workshop",
+        "labelTh": "อบรม / สัมมนา",
+        "labelEn": "Workshop"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/36-green-office-2567/20240319_093030.jpg",
+          "altTh": "บุคลากร เข้าร่วมฝึกตรวจประเมินการจัดการสิ่งแวดล้อม Green Office (ประเมินภายใน) ประจำปี 2567 — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/36-green-office-2567/20240319_093038.jpg",
+          "altTh": "บุคลากร เข้าร่วมฝึกตรวจประเมินการจัดการสิ่งแวดล้อม Green Office (ประเมินภายใน) ประจำปี 2567 — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/36-green-office-2567/20240319_093050.jpg",
+          "altTh": "บุคลากร เข้าร่วมฝึกตรวจประเมินการจัดการสิ่งแวดล้อม Green Office (ประเมินภายใน) ประจำปี 2567 — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/36-green-office-2567/20240319_093057.jpg",
+          "altTh": "บุคลากร เข้าร่วมฝึกตรวจประเมินการจัดการสิ่งแวดล้อม Green Office (ประเมินภายใน) ประจำปี 2567 — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/36-green-office-2567/20240319_094355.jpg",
+          "altTh": "บุคลากร เข้าร่วมฝึกตรวจประเมินการจัดการสิ่งแวดล้อม Green Office (ประเมินภายใน) ประจำปี 2567 — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/36-green-office-2567/news_29567_14_25670320095906_501260.jpg",
+          "altTh": "บุคลากร เข้าร่วมฝึกตรวจประเมินการจัดการสิ่งแวดล้อม Green Office (ประเมินภายใน) ประจำปี 2567 — ภาพที่ 6",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 36,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/36-green-office-2567",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2567-006",
+      "slug": "problem",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "ประชุมหารือการระบุประเด็นปัญหาสิ่งแวดล้อมภายในอาคารและนอกอาคารฯ",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 20 กุมภาพันธ์ 2567 คณะกรรมการขับเคลื่อนการดำเนินงานโครงการสำนักงานสีเขียว(Green Office) อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา จัดประชุมหารือการระบุประเด็นปัญหาสิ่งแวดล้อมภายในอาคารและนอกอาคารฯ โดยได้รั…",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 20 กุมภาพันธ์ 2567 คณะกรรมการขับเคลื่อนการดำเนินงานโครงการสำนักงานสีเขียว(Green Office) อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา จัดประชุมหารือการระบุประเด็นปัญหาสิ่งแวดล้อมภายในอาคารและนอกอาคารฯ โดยได้รับเชิญวิทยากรผู้มีประสบการณ์จากสำนักหอสมุด มหาวิทยาลัยแม่โจ้ คุณเพชรประกายแก้ว ดวงหฤทัยทิพย์ ผู้อำนวยการกองบริหารงานสำนักหอสมุด และคุณพิทยา สุนทราวงศ์ บรรณารักษ์ ชำนาญการพิเศษ มาร่วมแลกแปลี่ยน ให้ความรู้ กิจกรรมจัดขึ้น ณ ห้องประชุม301 สำนักวิจัยฯ",
+      "bodyEn": "",
+      "publishDate": "2024-02-20",
+      "fiscalYear": 2567,
+      "category": {
+        "id": "meeting",
+        "labelTh": "การประชุม",
+        "labelEn": "Meeting"
+      },
+      "activityType": {
+        "id": "committee",
+        "labelTh": "คณะกรรมการ",
+        "labelEn": "Committee"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/32-problem/S__6111254_0.jpg",
+          "altTh": "ประชุมหารือการระบุประเด็นปัญหาสิ่งแวดล้อมภายในอาคารและนอกอาคารฯ — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/32-problem/S__6111256_0.jpg",
+          "altTh": "ประชุมหารือการระบุประเด็นปัญหาสิ่งแวดล้อมภายในอาคารและนอกอาคารฯ — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/32-problem/S__6111257_0.jpg",
+          "altTh": "ประชุมหารือการระบุประเด็นปัญหาสิ่งแวดล้อมภายในอาคารและนอกอาคารฯ — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/32-problem/S__64929794_0.jpg",
+          "altTh": "ประชุมหารือการระบุประเด็นปัญหาสิ่งแวดล้อมภายในอาคารและนอกอาคารฯ — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/32-problem/S__64929796_0.jpg",
+          "altTh": "ประชุมหารือการระบุประเด็นปัญหาสิ่งแวดล้อมภายในอาคารและนอกอาคารฯ — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/32-problem/S__64929797_0.jpg",
+          "altTh": "ประชุมหารือการระบุประเด็นปัญหาสิ่งแวดล้อมภายในอาคารและนอกอาคารฯ — ภาพที่ 6",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/32-problem/S__64929798_0.jpg",
+          "altTh": "ประชุมหารือการระบุประเด็นปัญหาสิ่งแวดล้อมภายในอาคารและนอกอาคารฯ — ภาพที่ 7",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/32-problem/S__64929799_0.jpg",
+          "altTh": "ประชุมหารือการระบุประเด็นปัญหาสิ่งแวดล้อมภายในอาคารและนอกอาคารฯ — ภาพที่ 8",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/32-problem/S__64929800_0.jpg",
+          "altTh": "ประชุมหารือการระบุประเด็นปัญหาสิ่งแวดล้อมภายในอาคารและนอกอาคารฯ — ภาพที่ 9",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/32-problem/S__64929801_0.jpg",
+          "altTh": "ประชุมหารือการระบุประเด็นปัญหาสิ่งแวดล้อมภายในอาคารและนอกอาคารฯ — ภาพที่ 10",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 32,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/32-problem",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2567-007",
+      "slug": "activity1-2",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "ประชุมมคณะกรรมการอำนวยการ สำนักงานสีเขียว (Green Office)",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 31 มกราคม 2567 ฝ่ายเลขานุการคณะกรรมการสำนักงานสีเขียว (Green Office)",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 31 มกราคม 2567 ฝ่ายเลขานุการคณะกรรมการสำนักงานสีเขียว (Green Office)",
+      "bodyEn": "",
+      "publishDate": "2024-01-31",
+      "fiscalYear": 2567,
+      "category": {
+        "id": "meeting",
+        "labelTh": "การประชุม",
+        "labelEn": "Meeting"
+      },
+      "activityType": {
+        "id": "committee",
+        "labelTh": "คณะกรรมการ",
+        "labelEn": "Committee"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/31-activity1-2/31j-1.jpg",
+          "altTh": "ประชุมมคณะกรรมการอำนวยการ สำนักงานสีเขียว (Green Office) — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/31-activity1-2/31j-2.jpg",
+          "altTh": "ประชุมมคณะกรรมการอำนวยการ สำนักงานสีเขียว (Green Office) — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/31-activity1-2/31j-3.jpg",
+          "altTh": "ประชุมมคณะกรรมการอำนวยการ สำนักงานสีเขียว (Green Office) — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/31-activity1-2/31j-4.jpg",
+          "altTh": "ประชุมมคณะกรรมการอำนวยการ สำนักงานสีเขียว (Green Office) — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/31-activity1-2/31j-5.jpg",
+          "altTh": "ประชุมมคณะกรรมการอำนวยการ สำนักงานสีเขียว (Green Office) — ภาพที่ 5",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 31,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/31-activity1-2",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2566-001",
+      "slug": "activity1-6",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "กิจกรรมอบรมให้ความรู้สำนักงานสีเขียว(Green Office)",
+      "titleEn": "",
+      "summaryTh": "คณะกรรมการ",
+      "summaryEn": "",
+      "bodyTh": "คณะกรรมการ",
+      "bodyEn": "",
+      "publishDate": "2023-10-09",
+      "fiscalYear": 2566,
+      "category": {
+        "id": "training",
+        "labelTh": "การฝึกอบรม",
+        "labelEn": "Training"
+      },
+      "activityType": {
+        "id": "workshop",
+        "labelTh": "อบรม / สัมมนา",
+        "labelEn": "Workshop"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/29-activity1-6/1-3.jpg",
+          "altTh": "กิจกรรมอบรมให้ความรู้สำนักงานสีเขียว(Green Office) — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/29-activity1-6/1-6.jpg",
+          "altTh": "กิจกรรมอบรมให้ความรู้สำนักงานสีเขียว(Green Office) — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/29-activity1-6/1.png",
+          "altTh": "กิจกรรมอบรมให้ความรู้สำนักงานสีเขียว(Green Office) — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/29-activity1-6/23-10.jpg",
+          "altTh": "กิจกรรมอบรมให้ความรู้สำนักงานสีเขียว(Green Office) — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/29-activity1-6/3-2.jpg",
+          "altTh": "กิจกรรมอบรมให้ความรู้สำนักงานสีเขียว(Green Office) — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/29-activity1-6/3.png",
+          "altTh": "กิจกรรมอบรมให้ความรู้สำนักงานสีเขียว(Green Office) — ภาพที่ 6",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/29-activity1-6/5-6.jpg",
+          "altTh": "กิจกรรมอบรมให้ความรู้สำนักงานสีเขียว(Green Office) — ภาพที่ 7",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/29-activity1-6/5-7.jpg",
+          "altTh": "กิจกรรมอบรมให้ความรู้สำนักงานสีเขียว(Green Office) — ภาพที่ 8",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/29-activity1-6/6.png",
+          "altTh": "กิจกรรมอบรมให้ความรู้สำนักงานสีเขียว(Green Office) — ภาพที่ 9",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 29,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/29-activity1-6",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    },
+    {
+      "id": "ACT-2566-002",
+      "slug": "big",
+      "kind": "activity",
+      "status": "published",
+      "translationPending": true,
+      "titleTh": "กิจกรรม Big cleaning day 2023",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 2 มิถุนายน 2023",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 2 มิถุนายน 2023",
+      "bodyEn": "",
+      "publishDate": "2023-06-02",
+      "fiscalYear": 2566,
+      "category": {
+        "id": "campaign",
+        "labelTh": "โครงการรณรงค์",
+        "labelEn": "Campaign"
+      },
+      "activityType": {
+        "id": "cleaning",
+        "labelTh": "Big Cleaning / 5ส",
+        "labelEn": "Cleaning / 5S"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/28-big/109248.jpg",
+          "altTh": "กิจกรรม Big cleaning day 2023 — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/28-big/109294.jpg",
+          "altTh": "กิจกรรม Big cleaning day 2023 — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/28-big/109295.jpg",
+          "altTh": "กิจกรรม Big cleaning day 2023 — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/28-big/95915.jpg",
+          "altTh": "กิจกรรม Big cleaning day 2023 — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/28-big/95917.jpg",
+          "altTh": "กิจกรรม Big cleaning day 2023 — ภาพที่ 5",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/migrated/28-big/VideoCapture_20230602-100021.jpg",
+          "altTh": "กิจกรรม Big cleaning day 2023 — ภาพที่ 6",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "joomla",
+        "joomlaArticleId": 28,
+        "joomlaUrl": "https://researchex.mju.ac.th/goffice/index.php/project2/28-big",
+        "joomlaCategory": "project2",
+        "migratedAt": "2026-08-25"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-25"
+    }
+  ]
+}
