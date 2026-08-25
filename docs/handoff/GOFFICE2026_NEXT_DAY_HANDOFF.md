@@ -1,23 +1,33 @@
 # Next-Day Handoff
 
-**Generated:** 2026-08-19 (daily close)
-**Prepared for:** Next working session (2026-08-20+)
+**Generated:** 2026-08-25 (daily close)
+**Prepared for:** Next working session (2026-08-26+)
 
 ---
 
 ## Where We Stopped
 
-**CAT1 FY2568 is complete, reconciled, and frozen.** All 18 indicator runtime journeys exist on GitHub Pages. Category 1 contract work is **closed** until new source evidence or an approved FY2569 overlay.
+**All 7 category FY2568 baselines (Cat1–Cat7) are merged and frozen on `master`.**
+GO-DASH-V2 Phase B+C (QA/i18n parity + partial YoY explorer) is merged.
+Dependabot housekeeping done: all 5 GitHub Actions bumps + 6 npm patch/minor bumps merged.
 
 | Item | Value |
 |------|-------|
-| **Authority SHA** | `0ea8371` |
+| **Authority SHA** | see `git log -1 master` (post-2026-08-25 merge batch) |
 | Branch | `master` (= `origin/master` after daily close push) |
-| Status | **`CAT1 FY2568 = FROZEN READ-ONLY BASELINE`** |
+| Status | **`CAT1–CAT7 FY2568 = FROZEN READ-ONLY BASELINES`** |
 | Preview | https://numtip.github.io/goffice2026/ |
 | Production | **NOT deployed** — no VPS changes |
 
 Read first: `docs/releases/GOFFICE2026_CAT1_FY2568_FREEZE.md`
+
+### Merged this session (2026-08-25)
+
+- GO-DASH-V2 Phase B-C: QA/i18n parity, a11y hardening, partial YoY explorer (`feat/go-dash-v2-phase-bc`)
+- Dependabot Actions PRs #24–#28 (checkout v7, setup-node v7, configure-pages v6, deploy-pages v5, upload-pages-artifact v5)
+- Dependabot npm patch/minor PRs #29, #30, #31, #36, #40, #41 (supabase-js, tsx, autoprefixer, postcss, nanoid, fast-uri)
+
+Note: duplicate branches `feat/cat6-fy2568-baseline` / `fix/cat5-action-plan-semantic-mapping` were already merged earlier via PRs #47/#48 — safe to delete.
 
 ---
 
@@ -53,13 +63,22 @@ Read first: `docs/releases/GOFFICE2026_CAT1_FY2568_FREEZE.md`
 
 ## Next Session — Pick One
 
-### A. Category 2 FY2568 baseline (recommended if continuing Green Office domains)
+### A. Dependabot major-bump migration (recommended next housekeeping)
 
-Reconcile and present Category 2 indicators using same static-first / contract pattern. CAT1 remains frozen reference.
+6 open PRs remain: astro 4→7 (#37, #42), tailwindcss 3→4 (#33), typescript 5→7 (#32),
+@astrojs/check 0.9.10 (#35), @astrojs/sitemap 3.7.3 (#34). These are **breaking-change
+migrations** requiring code changes + full build/test validation — do NOT direct-merge.
+Plan: migrate one package at a time on a branch, run `npm run build` + `npm test` +
+`node scripts/validate-platform.mjs` before each PR merge.
 
 ### B. CAT1 FY2569 overlay
 
 Import verified FY2569 records as **new year-qualified entries**. Reuse schema and journeys. Do not mutate frozen FY2568 contracts in place.
+
+### C. FY2569 current-year data intake
+
+All 7 resource metrics in `data/reconciliation-status.json` remain `CURRENT_DATA_PENDING`
+(energy/water/fuel/paper/waste/procurement/continuity). Waiting for official FY2569 source data.
 
 ---
 
@@ -73,8 +92,4 @@ npm run build
 git status
 ```
 
-Daily report: `docs/reports/GOFFICE2026_DAILY_REPORT_2026-08-19.md`
-
----
-
-*Updated at GOFFICE2026 DAILY_CLOSE_2026-08-19*
+Daily report: `docs/reports/` (latest close 2026-08-25)
