@@ -1,0 +1,63 @@
+---
+import { getLocalizedPath } from '../../i18n/utils';
+import ContentCard from '../content/ContentCard.astro';
+import activitiesData from '../../data/content/activities.json';
+import { getLatestPublished } from '../../utils/content-presentation';
+
+interface Props {
+  locale: 'th' | 'en';
+  headingTh?: string;
+  headingEn?: string;
+  descriptionTh?: string;
+  descriptionEn?: string;
+  viewAllTh?: string;
+  viewAllEn?: string;
+}
+
+const {
+  locale,
+  headingTh = 'กิจกรรมล่าสุด',
+  headingEn = 'Latest activities',
+  descriptionTh = 'กิจกรรม โครงการรณรงค์ และการฝึกอบรมด้านสิ่งแวดล้อม',
+  descriptionEn = 'Environmental activities, campaigns, and training',
+  viewAllTh = 'ดูกิจกรรมทั้งหมด',
+  viewAllEn = 'View all activities',
+} = Astro.props;
+
+const isTh = locale === 'th';
+const latest = getLatestPublished(activitiesData, 3);
+const activitiesHref = getLocalizedPath(locale, '/activities');
+---
+
+{latest.length > 0 && (
+  <section class="landing-section relative bg-surface" aria-labelledby="latest-activities-heading">
+    <div class="landing-container">
+      <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 id="latest-activities-heading" class="landing-heading mb-2 font-bold text-balance">
+            {isTh ? headingTh : headingEn}
+          </h2>
+          <p class="text-body-md text-on-surface-variant sm:text-body-lg">
+            {isTh ? descriptionTh : descriptionEn}
+          </p>
+        </div>
+        <a
+          href={activitiesHref}
+          class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          {isTh ? viewAllTh : viewAllEn}
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      <div class="landing-stagger grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {latest.map((item) => (
+          <div class="landing-reveal h-full">
+            <ContentCard item={item} locale={locale} baseRoute="/activities" compact={true} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

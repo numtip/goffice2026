@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/global.css';
+import { getLocalizedPath } from '../../i18n/utils';
+import ContentCard from './ContentCard.astro';
+import type { ContentRecord } from '../../utils/content-presentation';
+import {
+  applyContentFilters,
+  getAvailableYears,
+  parseContentFilters,
+} from '../../utils/content-presentation';
+import facets from '../../data/content/activity-categories.json';
+
+interface HubLink {
+  route: string;
+  labelTh: string;
+  labelEn: string;
+}
+
+interface HubSlot {
+  categoryTh: string;
+  categoryEn: string;
+  titleTh: string;
+  titleEn: string;
+  excerptTh: string;
+  excerptEn: string;
+}
+
+interface HubConfig {
+  titleTh: string;
+  titleEn: string;
+  descriptionTh: string;
+  descriptionEn: string;
+  pendingTitleTh: string;
+  pendingTitleEn: string;
+  pendingBodyTh: string;
+  pendingBodyEn: string;
+  relatedHeadingTh: string;
+  relatedHeadingEn: string;
+  relatedLinks: HubLink[];
+  slots: HubSlot[];
+}
+
+interface Props {
+  locale: 'th' | 'en';
+  hub: HubConfig;
+  kind: 'activity' | 'news';
+  baseRoute: '/activities' | '/news';
+  items: ContentRecord[];
+  showTypeFilter?: boolean;
+}
+
+const { locale, hub, kind, baseRoute, items, showTypeFilter = false } = Astro.props;
+const isTh = locale === 'th';
+const filters = parseContentFilters(Astro.url.searchParams);
+const published = items.filter((i) => i.status === 'published');
+const filtered = applyContentFilters(published, filters);
+const years = getAvailableYears(published);
+const categories = kind === 'news' ? facets.newsCategories : facets.activityCategories;
+const types = facets.activityTypes;
+
+const pageTitle = isTh ? hub.titleTh : hub.titleEn;
+const pageDescription = isTh ? hub.descriptionTh : hub.descriptionEn;
+const hubPath = getLocalizedPath(locale, baseRoute);
+
+function filterHref(params: Record<string, string | null>): string {
+  const sp = new URLSearchParams(Astro.url.searchParams);
+  for (const [k, v] of Object.entries(params)) {
+    if (v) sp.set(k, v);
+    else sp.delete(k);
+  }
+  const q = sp.toString();
+  return q ? `${hubPath}?${q}` : hubPath;
+}
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} locale={locale}>
+  <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl">{pageTitle}</h1>
+      <p class="mt-2 max-w-3xl text-gray-600 leading-relaxed">{pageDescription}</p>
+    </header>
+
+    {published.length === 0 ? (
+      <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 mb-8 flex items-start gap-4 shadow-sm">
+        <div class="flex-shrink-0 mt-0.5">
+          <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-lg font-bold text-amber-800">{isTh ? hub.pendingTitleTh : hub.pendingTitleEn}</h2>
+          <p class="text-sm text-amber-700 mt-1 leading-relaxed">{isTh ? hub.pendingBodyTh : hub.pendingBodyEn}</p>
+        </div>
+      </div>
+    ) : (
+      <form method="get" class="mb-8 flex flex-wrap items-end gap-4 rounded-2xl border border-gray-200 bg-gray-50 p-4" aria-label={isTh ? 'ตัวกรอง' : 'Filters'}>
+        {years.length > 0 && (
+          <label class="flex flex-col gap-1 text-sm">
+            <span class="font-semibold text-gray-700">{isTh ? 'ปี (พ.ศ.)' : 'Year (BE)'}</span>
+            <select name="year" class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm">
+              <option value="">{isTh ? 'ทั้งหมด' : 'All'}</option>
+              {years.map((y) => (
+                <option value={y} selected={filters.year === y}>{y}</option>
+              ))}
+            </select>
+          </label>
+        )}
+        {categories.length > 0 && (
+          <label class="flex flex-col gap-1 text-sm">
+            <span class="font-semibold text-gray-700">{isTh ? 'หมวด' : 'Category'}</span>
+            <select name="category" class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm">
+              <option value="">{isTh ? 'ทั้งหมด' : 'All'}</option>
+              {categories.map((c) => (
+                <option value={c.id} selected={filters.category === c.id}>
+                  {isTh ? c.labelTh : c.labelEn}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+        {showTypeFilter && types.length > 0 && (
+          <label class="flex flex-col gap-1 text-sm">
+            <span class="font-semibold text-gray-700">{isTh ? 'ประเภท' : 'Type'}</span>
+            <select name="type" class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm">
+              <option value="">{isTh ? 'ทั้งหมด' : 'All'}</option>
+              {types.map((t) => (
+                <option value={t.id} selected={filters.type === t.id}>
+                  {isTh ? t.labelTh : t.labelEn}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+        <button type="submit" class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-container">
+          {isTh ? 'กรอง' : 'Filter'}
+        </button>
+        {(filters.year || filters.category || filters.type) && (
+          <a href={hubPath} class="text-sm font-semibold text-green-700 hover:underline">
+            {isTh ? 'ล้างตัวกรอง' : 'Clear filters'}
+          </a>
+        )}
+      </form>
+    )}
+
+    {published.length > 0 ? (
+      <section aria-labelledby="content-list-heading">
+        <h2 id="content-list-heading" class="sr-only">{isTh ? 'รายการ' : 'Listing'}</h2>
+        {filtered.length === 0 ? (
+          <p class="text-gray-600">{isTh ? 'ไม่พบรายการตามตัวกรอง' : 'No items match the selected filters.'}</p>
+        ) : (
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((item) => (
+              <ContentCard item={item} locale={locale} baseRoute={baseRoute} />
+            ))}
+          </div>
+        )}
+      </section>
+    ) : (
+      <section class="mb-10" aria-labelledby="hub-slots-heading">
+        <h2 id="hub-slots-heading" class="text-xl font-semibold text-gray-900 mb-4">
+          {isTh ? 'รายการที่รอเนื้อหา' : 'Content awaiting publication'}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {hub.slots.map((slot) => (
+            <article class="bg-white rounded-xl border border-dashed border-gray-300 p-5">
+              <p class="text-xs font-mono uppercase tracking-wider text-gray-400 mb-2">
+                {isTh ? slot.categoryTh : slot.categoryEn}
+              </p>
+              <h3 class="font-semibold text-gray-900 mb-2">{isTh ? slot.titleTh : slot.titleEn}</h3>
+              <p class="text-sm text-gray-600 leading-relaxed">{isTh ? slot.excerptTh : slot.excerptEn}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="mt-12" aria-labelledby="hub-related-heading">
+      <h2 id="hub-related-heading" class="text-xl font-semibold text-gray-900 mb-4">
+        {isTh ? hub.relatedHeadingTh : hub.relatedHeadingEn}
+      </h2>
+      <ul class="space-y-2">
+        {hub.relatedLinks.map((link) => (
+          <li>
+            <a href={getLocalizedPath(locale, link.route.replace(/\/$/, ''))} class="text-green-700 font-medium hover:underline">
+              {isTh ? link.labelTh : link.labelEn}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <p class="text-xs text-gray-400 mt-8 text-center">
+      {isTh ? 'อัปเดตโครงสร้างเส้นทาง: 2026-08-25' : 'Route foundation updated: 2026-08-25'}
+    </p>
+  </div>
+</BaseLayout>
+
+<script>
+  import '../../scripts/landing-motion.ts';
+</script>

@@ -19,6 +19,7 @@ import DashboardShowcase from './DashboardShowcase.astro';
 import AssessmentFramework from './AssessmentFramework.astro';
 import EvidenceGateway from './EvidenceGateway.astro';
 import EngageVisualSection from './EngageVisualSection.astro';
+import LatestActivitiesSection from './LatestActivitiesSection.astro';
 import ImprovementJourney from './ImprovementJourney.astro';
 import LandingCTA from './LandingCTA.astro';
 
@@ -76,6 +77,7 @@ const coveredMonthSlots = resourceIds.reduce((sum, id) => {
       t={home.evidence}
     />
     <EngageVisualSection locale={locale} t={home.engage} />
+    <LatestActivitiesSection locale={locale} />
     <AssessmentFramework locale={locale} t={home.assessment} />
     <ImprovementJourney locale={locale} t={home.improvement} />
     <LandingCTA locale={locale} t={home.cta} />
