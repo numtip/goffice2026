@@ -1,6 +1,6 @@
 ---
 import ContentHub from '../../../components/content/ContentHub.astro';
-import activitiesData from '../../../data/content/activities.json';
+import { activitiesCollection } from '../../../data/content/load-content';
 import hubs from '../../../data/content/hubs.json';
 ---
 
@@ -9,6 +9,6 @@ import hubs from '../../../data/content/hubs.json';
   hub={hubs.hubs.activities}
   kind="activity"
   baseRoute="/activities"
-  items={activitiesData.items}
+  items={activitiesCollection.items}
   showTypeFilter={true}
 />

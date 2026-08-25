@@ -1,9 +1,9 @@
 ---
 import ContentDetailPage from '../../../components/content/ContentDetailPage.astro';
-import newsData from '../../../data/content/news.json';
+import { newsCollection } from '../../../data/content/load-content';
 
 export function getStaticPaths() {
-  return newsData.items
+  return newsCollection.items
     .filter((item) => item.status === 'published')
     .map((item) => ({
       params: { slug: item.slug },

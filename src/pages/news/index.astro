@@ -1,6 +1,6 @@
 ---
 import ContentHub from '../../components/content/ContentHub.astro';
-import newsData from '../../data/content/news.json';
+import { newsCollection } from '../../data/content/load-content';
 import hubs from '../../data/content/hubs.json';
 ---
 
@@ -9,6 +9,6 @@ import hubs from '../../data/content/hubs.json';
   hub={hubs.hubs.news}
   kind="news"
   baseRoute="/news"
-  items={newsData.items}
+  items={newsCollection.items}
   showTypeFilter={false}
 />

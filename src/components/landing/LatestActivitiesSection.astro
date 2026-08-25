@@ -1,7 +1,7 @@
 ---
 import { getLocalizedPath } from '../../i18n/utils';
 import ContentCard from '../content/ContentCard.astro';
-import activitiesData from '../../data/content/activities.json';
+import { activitiesCollection } from '../../data/content/load-content';
 import { getLatestPublished } from '../../utils/content-presentation';
 
 interface Props {
@@ -25,7 +25,7 @@ const {
 } = Astro.props;
 
 const isTh = locale === 'th';
-const latest = getLatestPublished(activitiesData, 3);
+const latest = getLatestPublished(activitiesCollection, 3);
 const activitiesHref = getLocalizedPath(locale, '/activities');
 ---
 

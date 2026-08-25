@@ -18,6 +18,11 @@ export interface ContentMedia {
   altEn?: string;
 }
 
+export interface ContentMergedSource {
+  joomlaArticleId: number;
+  joomlaUrl: string;
+}
+
 export interface ContentSource {
   system: 'manual' | 'joomla' | 'onedrive';
   joomlaArticleId?: number | null;
@@ -25,6 +30,7 @@ export interface ContentSource {
   joomlaCategory?: string | null;
   onedrivePath?: string | null;
   migratedAt?: string | null;
+  mergedSources?: ContentMergedSource[];
 }
 
 export interface ContentRecord {
