@@ -2,6 +2,7 @@
 import { getLocalizedPath } from '../../i18n/utils';
 import type { ContentRecord } from '../../utils/content-presentation';
 import { formatPublishDate, pickLocalizedContent } from '../../utils/content-presentation';
+import { withBase } from '../../utils/with-base';
 
 interface Props {
   item: ContentRecord;
@@ -27,7 +28,7 @@ const dateLabel = formatPublishDate(item.publishDate, locale);
     {image ? (
       <div class="aspect-[16/10] overflow-hidden bg-gray-100">
         <img
-          src={image.src}
+          src={withBase(image.src)}
           alt={pickLocalizedContent(locale, image.altTh ?? title, image.altEn ?? title, item.translationPending)}
           class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
           loading="lazy"
