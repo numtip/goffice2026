@@ -1,0 +1,63 @@
+---
+import { getLocalizedPath } from '../../i18n/utils';
+import type { ContentRecord } from '../../utils/content-presentation';
+import { formatPublishDate, pickLocalizedContent } from '../../utils/content-presentation';
+
+interface Props {
+  item: ContentRecord;
+  locale: 'th' | 'en';
+  baseRoute: '/activities' | '/news';
+  compact?: boolean;
+}
+
+const { item, locale, baseRoute, compact = false } = Astro.props;
+const isTh = locale === 'th';
+const href = getLocalizedPath(locale, `${baseRoute}/${item.slug}/`);
+const title = pickLocalizedContent(locale, item.titleTh, item.titleEn, item.translationPending);
+const summary = pickLocalizedContent(locale, item.summaryTh, item.summaryEn, item.translationPending);
+const categoryLabel = item.category
+  ? pickLocalizedContent(locale, item.category.labelTh, item.category.labelEn)
+  : '';
+const image = item.media?.find((m) => m.type === 'image');
+const dateLabel = formatPublishDate(item.publishDate, locale);
+---
+
+<article class="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:border-green-300 hover:shadow-md">
+  <a href={href} class="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
+    {image ? (
+      <div class="aspect-[16/10] overflow-hidden bg-gray-100">
+        <img
+          src={image.src}
+          alt={pickLocalizedContent(locale, image.altTh ?? title, image.altEn ?? title, item.translationPending)}
+          class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+          loading="lazy"
+        />
+      </div>
+    ) : (
+      <div class="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100">
+        <span class="rounded-full bg-white/80 px-3 py-1 text-xs font-mono uppercase tracking-wider text-gray-500">
+          {isTh ? 'Green Office' : 'Green Office'}
+        </span>
+      </div>
+    )}
+    <div class={`flex flex-1 flex-col ${compact ? 'p-4' : 'p-5'}`}>
+      <p class="mb-2 flex flex-wrap items-center gap-2 text-xs text-gray-500">
+        {dateLabel && <time datetime={item.publishDate}>{dateLabel}</time>}
+        {categoryLabel && (
+          <>
+            <span aria-hidden="true">·</span>
+            <span>{categoryLabel}</span>
+          </>
+        )}
+        <span aria-hidden="true">·</span>
+        <span>{item.fiscalYear}</span>
+      </p>
+      <h3 class={`font-semibold text-gray-900 transition group-hover:text-primary ${compact ? 'text-base line-clamp-2' : 'text-lg line-clamp-3'}`}>
+        {title}
+      </h3>
+      {!compact && summary && (
+        <p class="mt-2 line-clamp-3 text-sm leading-relaxed text-gray-600">{summary}</p>
+      )}
+    </div>
+  </a>
+</article>

@@ -1,0 +1,123 @@
+{
+  "version": "1.0.0",
+  "auditedAt": "2026-08-25",
+  "phase": "2A",
+  "note": "Per-article HTML fetched 2026-08-25. Dates from body วันที่: only — never RSS pubDate. Titles from HTML h1 or category listing fallback.",
+  "items": [
+    {
+      "joomlaArticleId": 56,
+      "title": "อบรม การเสริมสร้างความรู้ ความเข้าใจด้านสิ่งแวดล้อม ตามเกณฑ์การประเมินสำนักงานสีเขียว",
+      "publishDate": "2024-07-11",
+      "fiscalYear": 2567,
+      "proposedType": "training / workshop",
+      "disposition": "REVIEW",
+      "notes": "Header date 11 ก.ค. vs body 9 ก.ค. 2567 — PO must pick authoritative date before KEEP"
+    },
+    {
+      "joomlaArticleId": 55,
+      "title": "กิจกรรมสร้างความเป็นระเบียบเรียบร้อยในสำนักงาน 5ส",
+      "publishDate": "2024-07-05",
+      "fiscalYear": 2567,
+      "proposedType": "campaign / cleaning",
+      "disposition": "KEEP",
+      "notes": "16 images; ready for B2 after PO confirms"
+    },
+    {
+      "joomlaArticleId": 43,
+      "title": "กิจกรรม การเตรียมความพร้อมการอพยพหนีภัย กรณีเกิดเหตุเพลิงไหม้และแผ่นดินไหว",
+      "publishDate": "2024-05-29",
+      "fiscalYear": 2567,
+      "proposedType": "preparedness / workshop",
+      "disposition": "KEEP",
+      "notes": "FY2567 fire drill; distinct from #65 (2568)"
+    },
+    {
+      "joomlaArticleId": 40,
+      "title": "ประชุมเตรียมความพร้อมในการเข้ารับการตรวจประเมิน สำนักงานสีเขียว (Green Office)",
+      "publishDate": "2024-05-16",
+      "fiscalYear": 2567,
+      "proposedType": "meeting / committee",
+      "disposition": "MERGE",
+      "mergeTarget": 39,
+      "notes": "Assessment-prep cluster with #39 — single post recommended"
+    },
+    {
+      "joomlaArticleId": 39,
+      "title": "อบรมเตรียมความพร้อมก่อนเข้ารับการประเมินสำนักงานสีเขียว (Green Office)",
+      "publishDate": "2024-04-29",
+      "fiscalYear": 2567,
+      "proposedType": "training / workshop",
+      "disposition": "KEEP",
+      "notes": "Primary record if merged with #40"
+    },
+    {
+      "joomlaArticleId": 36,
+      "title": "บุคลากร เข้าร่วมฝึกตรวจประเมินการจัดการสิ่งแวดล้อม Green Office (ประเมินภายใน) ประจำปี 2567",
+      "publishDate": "2024-03-19",
+      "fiscalYear": 2567,
+      "proposedType": "training / workshop",
+      "disposition": "KEEP",
+      "notes": "Internal audit training FY2567"
+    },
+    {
+      "joomlaArticleId": 32,
+      "title": "ประชุมหารือการระบุประเด็นปัญหาสิ่งแวดล้อมภายในอาคารและนอกอาคารฯ",
+      "publishDate": "2024-02-20",
+      "fiscalYear": 2567,
+      "proposedType": "meeting / committee",
+      "disposition": "KEEP",
+      "notes": "Working meeting"
+    },
+    {
+      "joomlaArticleId": 31,
+      "title": "ประชุมมคณะกรรมการอำนวยการ สำนักงานสีเขียว (Green Office)",
+      "publishDate": "2024-01-31",
+      "fiscalYear": 2567,
+      "proposedType": "meeting / committee",
+      "disposition": "KEEP",
+      "notes": "Steering committee"
+    },
+    {
+      "joomlaArticleId": 30,
+      "title": "ประชุมคณะกรรมการดำเนินงาน  หมวด1",
+      "publishDate": "2024-01-09",
+      "fiscalYear": 2567,
+      "proposedType": "meeting / committee",
+      "disposition": "REVIEW",
+      "notes": "PO 2026-08-25: KEEP separate from #59 unless source proves duplicate — not migrated in B2"
+    },
+    {
+      "joomlaArticleId": 29,
+      "title": "กิจกรรมอบรมให้ความรู้สำนักงานสีเขียว(Green Office)",
+      "publishDate": "2023-10-09",
+      "fiscalYear": 2566,
+      "proposedType": "training / workshop",
+      "disposition": "KEEP",
+      "notes": "Batch B3 edge"
+    },
+    {
+      "joomlaArticleId": 28,
+      "title": "กิจกรรม Big cleaning day 2023",
+      "publishDate": "2023-06-02",
+      "fiscalYear": 2566,
+      "proposedType": "campaign / cleaning",
+      "disposition": "KEEP",
+      "notes": "CE date in source; พ.ศ. 2566"
+    },
+    {
+      "joomlaArticleId": 21,
+      "title": "กิจกรรมปลุกจิตสำนึกการอนุรักษ์พลังงานของสำนักวิจัยฯ",
+      "publishDate": null,
+      "fiscalYear": null,
+      "proposedType": "campaign / historical",
+      "disposition": "EXCLUDE",
+      "notes": "No event date in HTML; minimal body; legacy Widgetkit media only — insufficient for contract"
+    }
+  ],
+  "summary": {
+    "KEEP": 8,
+    "MERGE": 1,
+    "EXCLUDE": 1,
+    "REVIEW": 2
+  }
+}

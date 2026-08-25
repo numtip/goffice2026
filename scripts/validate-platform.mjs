@@ -195,6 +195,13 @@ function phaseSearchIndex() {
   return runScript('validate-search-index.mjs');
 }
 
+function phaseActivities() {
+  console.log('\n========================================');
+  console.log('PHASE 1.91: Activities/News Content');
+  console.log('========================================');
+  return runScript('validate-activities.mjs');
+}
+
 // ── Phase 2: Evidence Validation ────────────────────────────
 
 function phaseEvidence() {
@@ -398,6 +405,7 @@ function main() {
   const category56Result = phaseCategory56();
   const category7Result = phaseCategory7();
   const searchIndexResult = phaseSearchIndex();
+  const activitiesResult = phaseActivities();
   const evidenceResult = phaseEvidence();
   const routeResult = phaseRoutes();
   const linkResult = routeResult.skipped ? { ok: true, skipped: true } : phaseLinks();
@@ -419,6 +427,7 @@ function main() {
     { phase: 'Category 5 + 6 Contracts', ok: category56Result.ok },
     { phase: 'Category 7 Contracts (continuity)', ok: category7Result.ok },
     { phase: 'Search-Index Metadata',  ok: searchIndexResult.ok },
+    { phase: 'Activities/News Content', ok: activitiesResult.ok },
     { phase: 'Evidence Validation',    ok: evidenceResult.ok },
     { phase: 'Route Verification',     ok: routeOk },
     { phase: 'Production Link Check',  ok: linkOk },
