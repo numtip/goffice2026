@@ -1,0 +1,499 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-08-26",
+  "status": "AUDIT_ONLY",
+  "base": "origin/master@72f62fc",
+  "note": "FY2569 Facebook activities intake audit. urlgreen.txt was not found in the repo; inventory is the 7 URLs supplied in the PO task brief. No activities.json writes. Media lives only under .tmp-audit-facebook-fy2569/.",
+  "sourceListAuthority": {
+    "expectedFile": "urlgreen.txt",
+    "foundInRepo": false,
+    "usedInstead": "PO task brief URL list (7 entries)",
+    "totalUrls": 7,
+    "fy2569Candidates": 6,
+    "fy2568OutOfScope": 1
+  },
+  "inspection": {
+    "date": "2026-08-26",
+    "method": "Public Facebook web UI (share/p → GofficePhraThepbuilding posts). Login overlay present; post text and photo grid visible without signing in. No auth bypass.",
+    "page": {
+      "name": "Green Office อาคารเฉลิมพระเกียรติสมเด็จพระเทพฯ MJU",
+      "handle": "GofficePhraThepbuilding"
+    }
+  },
+  "canonicalBaseline": {
+    "publishedActivities": 19,
+    "act2569Records": 0,
+    "activitiesJsonUnchanged": true
+  },
+  "actionPlanOverlay": {
+    "file": "src/data/generated/action-plan-2569.json",
+    "workbookActualsOnly": ["5/3/69", "30/3/69", "17/3/69"],
+    "rows": [
+      {
+        "facebookId": "FY2569-FB-01",
+        "match": "none",
+        "note": "No 9/2/69. Management-review actuals are 5/3/69 and 30/3/69 (1.7.1/1.7.2) — different meetings."
+      },
+      {
+        "facebookId": "FY2569-FB-02",
+        "match": "plan-only",
+        "planId": "cat-4-4.1.3-17-17",
+        "activityTh": "(6) กิจกรรม Big Clean Day",
+        "plannedMonths": ["mar", "nov"],
+        "actualMonths": [],
+        "note": "Does not resolve title ครั้งที่ 2 vs body ครั้งที่ 1."
+      },
+      {
+        "facebookId": "FY2569-FB-03",
+        "match": "actual-date",
+        "planId": "cat-7-7.1-5-5",
+        "activityTh": "รับการตรวจประเมินสำนักงานสีเขียวภายในสำนักงานครบถ้วนทุกหมวด",
+        "actualMonths": ["17/3/69"],
+        "note": "Corroborates Facebook execution date. ev-cat7-internal-audit-request-fy2568 is the FY2568 request letter, not this post."
+      },
+      {
+        "facebookId": "FY2569-FB-04",
+        "match": "plan-only-different-wording",
+        "planId": "cat-5-5.13-5.13-14",
+        "activityTh": "การฝึกซ้อมดับเพลิง หนีไฟ และแผ่นดินไหว",
+        "canonicalIndicatorCode": "5.5.1",
+        "plannedMonths": ["may"],
+        "actualMonths": [],
+        "note": "Plan is drill/earthquake; Facebook source is fire-emergency workshop plus first aid. Not equated."
+      },
+      {
+        "facebookId": "FY2569-FB-05",
+        "match": "none",
+        "note": "No GREEN SYNERGY / ไซเนอร์จี row."
+      },
+      {
+        "facebookId": "FY2569-FB-06",
+        "match": "none",
+        "note": "No ปุ๋ยหมัก row."
+      }
+    ]
+  },
+  "mediaAudit": {
+    "location": ".tmp-audit-facebook-fy2569/",
+    "publicRuntimeCopy": false,
+    "fy2569VisibleGridDownloaded": 30,
+    "fy2569OverlayNotDownloaded": 38,
+    "fy2569Videos": 0,
+    "duplicateSha256Groups": 0,
+    "downloadHttp": "30/30 HTTP 200 image/jpeg",
+    "note": "Grid files are Facebook s590x590 display derivatives, not full originals. Overlay remainder not downloaded (album not opened; no login)."
+  },
+  "items": [
+    {
+      "id": "FY2569-FB-01",
+      "scope": "FY2569",
+      "poMetadata": {
+        "title": "ประชุมคณะกรรมการดำเนินงานงานสำนักงานสีเขียว Green Office ครั้งที่ 1/2569",
+        "eventDateTh": "9 กุมภาพันธ์ 2569",
+        "shareUrl": "https://www.facebook.com/share/p/1DMe5HQKNd/"
+      },
+      "sourceAccessible": true,
+      "loginOverlayPresent": true,
+      "canonicalUrl": "https://www.facebook.com/GofficePhraThepbuilding/posts/pfbid0Y3HE6QGE3pRUmtnX9uMV1uv8qgVXdWEszaHUtKoD5qYMDYiJPKQ5k5BtXXtRsEQAl",
+      "numericPostId": "945801561607319",
+      "exactTitle": "ประชุมคณะกรรมการดำเนินงานงานสำนักงานสีเขียว Green Office ครั้งที่ 1/2569",
+      "exactPostText": "ประชุมคณะกรรมการดำเนินงานงานสำนักงานสีเขียว Green Office ครั้งที่ 1/2569\nเมื่อวันที่ 9 กุมภาพันธ์ 2569 คณะกรรมการดำเนินงาน สำนักงานสีเขียว(Green office) จัดการประชุมคณะกรรมการดำนเนินงานงานสำนักงานสีเขียว Green Office อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา เพื่อติดตามความก้าวหน้าของการดำเนินงาน ปัญหา อุปสรรค์ รวมถึงการวางแผนการดำเนินงานในการเตรียมความพร้อมก่อนรับการประเมิน ณ ห้องประชุม 301 ชั้น 3 อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้",
+      "eventDateCandidateTh": "9 กุมภาพันธ์ 2569",
+      "eventDateCandidateIso": "2026-02-09",
+      "facebookTimestampVisible": "11 May",
+      "facebookTimestampYearVisible": false,
+      "conflictingDates": [
+        "Event date in post body: 9 กุมภาพันธ์ 2569 (2026-02-09)",
+        "Facebook UI timestamp: 11 May (year not shown)"
+      ],
+      "canonicalDateRecommendation": "2026-02-09",
+      "dateBasis": "Event date from source body, not Facebook publication timestamp",
+      "pageAccount": "Green Office อาคารเฉลิมพระเกียรติสมเด็จพระเทพฯ MJU",
+      "location": "ห้องประชุม 301 ชั้น 3 อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้; Facebook place tag Chiang Mai",
+      "participantsNamed": [
+        "คณะกรรมการดำเนินงาน สำนักงานสีเขียว(Green office)"
+      ],
+      "purposeFromSource": "ติดตามความก้าวหน้าของการดำเนินงาน ปัญหา อุปสรรค์ รวมถึงการวางแผนการดำเนินงานในการเตรียมความพร้อมก่อนรับการประเมิน",
+      "sourceTyposPreserved": ["ดำนเนินงานงาน", "อุปสรรค์"],
+      "activityTypeCandidate": { "id": "committee", "confidence": "SUPPORTED", "basis": "Source names คณะกรรมการดำเนินงาน and ประชุม" },
+      "categoryCandidate": { "id": "meeting", "confidence": "SUPPORTED", "basis": "Source is a meeting, not inferred from title alone — body uses จัดการประชุม" },
+      "indicatorCandidates": [
+        {
+          "code": "1.2.1",
+          "confidence": "UNRESOLVED",
+          "basis": "1.2.1 is committee appointment. Source is an operations meeting. Appointment evidence is a separate 31 มี.ค. 2569 order."
+        },
+        {
+          "code": "1.7.2",
+          "confidence": "UNRESOLVED",
+          "basis": "Source does not state ทบทวนฝ่ายบริหาร or meeting agenda as management review. Analog ACT-2568-001 (generic steering meeting) was left unmapped in Phase F. Same-date minutes doc-policy-review exist but are a different artefact; do not auto-map from title."
+        }
+      ],
+      "evidenceCandidates": [
+        {
+          "id": "doc-policy-review",
+          "relation": "same-date committee minutes in about/documents.json (9 ก.พ. 2569, ห้องประชุม 301). Not an evidence-index activity link. SCHEMA_EXTENSION still required for activity.evidenceIds."
+        }
+      ],
+      "mediaVisibleInGrid": 5,
+      "mediaOverlayAdditional": 0,
+      "mediaType": "image",
+      "videos": 0,
+      "duplicateCanonical": false,
+      "nearestAnalog": "ACT-2568-001 / ACT-2568-007 / ACT-2568-008 — historical committee meetings; analog ≠ mapping",
+      "intakeVerdict": "READY_FOR_DRAFT",
+      "readinessNotes": "activity:new can draft with title, date 2026-02-09, year 2569, category meeting, type committee. Leave relatedIndicators empty. Preserve source typos in body or copy-edit only with PO note."
+    },
+    {
+      "id": "FY2569-FB-02",
+      "scope": "FY2569",
+      "poMetadata": {
+        "title": "กิจกรรม Big Cleaning day ครั้งที่ 2 ประจำปี 2569",
+        "eventDateTh": "13 มีนาคม 2569",
+        "shareUrl": "https://www.facebook.com/share/p/1Jk6bSDKhg/"
+      },
+      "sourceAccessible": true,
+      "loginOverlayPresent": true,
+      "canonicalUrl": "https://www.facebook.com/GofficePhraThepbuilding/posts/pfbid0KU5s7Bu3KkLiHMMPFYjzmvW1fVYDW3EtdT2M67W4Cz2gBMZQjoUsN5Gjq6shzkucl",
+      "numericPostId": "945806608273481",
+      "exactTitle": "กิจกรรม Big Cleaning day ครั้งที่ 2 ประจำปี 2569",
+      "exactPostText": "กิจกรรม Big Cleaning day ครั้งที่ 2 ประจำปี 2569\nเมื่อวันที่ 13 มีนาคม 2569 สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ จัดกิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2569 ร่วมกับกลุ่มสำนักงานอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้ รวมทั้งหมด 4 หน่วยงาน ได้แก่ สถาบันบริการตรวจสอบคุณภาพและมาตรฐานผลิตภัณฑ์, สถาบันรับรองระบบการผลิตผลิตภัณฑ์การเกษตร, หน่วยความเป็นเลิศด้านการปรับปรุงพันธุ์ข้าวมหาวิทยาลัยแม่โจ้ และสำนักวิจัยและส่งเสริมวิชาการการเกษตร ซึ่งจัดขึ้นภายใต้โครงการสำนักงานสีเขียว อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา(Green Office) เพื่อมุ่งเน้นการปรับปรุงสภาพแวดล้อมในการทำงานและส่งเสริมการอนุรักษ์พลังงาน โดยมี ผู้ช่วยศาสตราจารย์ ดร.ณัฐพล เลาห์รอดพันธุ์ ผู้อำนวยการสำนักวิจัยฯ เป็นประธาน และมีผู้ช่วยศาสตราจารย์ภานุวัฒน์ เมฆะ รองผู้อำนวยการสำนักวิจัยฯ ฝ่ายบริหาร เป็นผู้ชี้แจงนโยบาย พร้อมทั้งอธิบายหลักเกณฑ์การทำกิจกรรม 5ส เพื่อให้ผู้เข้าร่วมนำไปปฏิบัติได้อย่างถูกต้อง นอกจากนี้ยังมีกิจกรรม Big Cleaning Day ร่วมกันเก็บกวาดและทำความสะอาดบริเวณรอบอาคารสมเด็จพระเทพรัตนราชสุดา และพื้นที่ปฏิบัติงานของหน่วยงานตนเอง พร้อมทั้งดำเนินการคัดแยกขยะตามหลัก 3Rs (Reduce, Reuse, Recycle) และร่วมกันปิดไฟ และเครื่องใช้ไฟฟ้าที่ไม่ได้ใช้งาน ในช่วงเวลาพักกลางวัน ณ อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้",
+      "eventDateCandidateTh": "13 มีนาคม 2569",
+      "eventDateCandidateIso": "2026-03-13",
+      "facebookTimestampVisible": "11 May",
+      "facebookTimestampYearVisible": false,
+      "conflictingDates": [
+        "Event date in post body: 13 มีนาคม 2569 (2026-03-13)",
+        "Facebook UI timestamp: 11 May (year not shown)",
+        "Title says ครั้งที่ 2; body says ครั้งที่ 1 ประจำปี 2569"
+      ],
+      "canonicalDateRecommendation": "2026-03-13",
+      "dateBasis": "Event date from source body",
+      "pageAccount": "Green Office อาคารเฉลิมพระเกียรติสมเด็จพระเทพฯ MJU",
+      "location": "อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้; Facebook place tag Chiang Mai",
+      "participantsNamed": [
+        "สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้",
+        "สถาบันบริการตรวจสอบคุณภาพและมาตรฐานผลิตภัณฑ์",
+        "สถาบันรับรองระบบการผลิตผลิตภัณฑ์การเกษตร",
+        "หน่วยความเป็นเลิศด้านการปรับปรุงพันธุ์ข้าวมหาวิทยาลัยแม่โจ้",
+        "สำนักวิจัยและส่งเสริมวิชาการการเกษตร",
+        "ผู้ช่วยศาสตราจารย์ ดร.ณัฐพล เลาห์รอดพันธุ์ ผู้อำนวยการสำนักวิจัยฯ",
+        "ผู้ช่วยศาสตราจารย์ภานุวัฒน์ เมฆะ รองผู้อำนวยการสำนักวิจัยฯ ฝ่ายบริหาร"
+      ],
+      "purposeFromSource": "ปรับปรุงสภาพแวดล้อมในการทำงานและส่งเสริมการอนุรักษ์พลังงาน; 5ส; เก็บกวาดทำความสะอาด; คัดแยกขยะ 3Rs; ปิดไฟและเครื่องใช้ไฟฟ้าที่ไม่ได้ใช้งานช่วงพักกลางวัน",
+      "activityTypeCandidate": { "id": "cleaning", "confidence": "SUPPORTED", "basis": "Body describes Big Cleaning Day + 5ส, not title-only" },
+      "categoryCandidate": { "id": "campaign", "confidence": "SUPPORTED", "basis": "Matches historical Big Cleaning facet (ACT-2568-005 category campaign). Source also supports cleaning type." },
+      "indicatorCandidates": [
+        {
+          "code": "5.4.3",
+          "confidence": "SUPPORTED",
+          "basis": "Body describes area cleaning/upkeep. 5.4.3 is a percentage metric — source does not state a percentage. Do not copy FY2568 CONFIRMED mapping (ev-cat5-livability-maintenance-fy2568 is #1/2568)."
+        },
+        {
+          "code": "2.2.2",
+          "confidence": "SUPPORTED",
+          "basis": "Body: อธิบายหลักเกณฑ์การทำกิจกรรม 5ส — campaign/knowledge sharing in the activity, not title-only."
+        },
+        {
+          "code": "4.1.3",
+          "confidence": "UNRESOLVED",
+          "basis": "3Rs named; no reuse/recycling outcome or quantity."
+        }
+      ],
+      "evidenceCandidates": [],
+      "mediaVisibleInGrid": 5,
+      "mediaOverlayAdditional": 7,
+      "mediaCountStatedByUi": "5 visible + overlay +7 (album not opened; login not used)",
+      "mediaType": "image",
+      "videos": 0,
+      "duplicateCanonical": false,
+      "nearestAnalog": "ACT-2568-005 Big Cleaning day ครั้งที่ 1 ประจำปี 2568 (19 พ.ค. 2568, relatedIndicators 5.4.3) — analog ≠ mapping",
+      "intakeVerdict": "NEEDS_REVIEW",
+      "readinessNotes": "Title ครั้งที่ 2 vs body ครั้งที่ 1 must be resolved by PO before draft title is frozen. Event date 13 มี.ค. 2569 is consistent."
+    },
+    {
+      "id": "FY2569-FB-03",
+      "scope": "FY2569",
+      "poMetadata": {
+        "title": "ตรวจประเมินสำนักงานสีเขียวภายในสำนักงาน (Green Office) ประจำปี 2569",
+        "eventDateTh": "17 มีนาคม 2569",
+        "shareUrl": "https://www.facebook.com/share/p/19AE1vgSut/"
+      },
+      "sourceAccessible": true,
+      "loginOverlayPresent": true,
+      "canonicalUrl": "https://www.facebook.com/GofficePhraThepbuilding/posts/pfbid02S7hpKay5xwiLjHjPqd9TzTiZ3LD9px7kXurMAjdtHdmB6fwgyD4UVeZnDkn9vyz8l",
+      "numericPostId": "945811614939647",
+      "exactTitle": "ตรวจประเมินสำนักงานสีเขียวภายในสำนักงาน (Green Office) ประจำปี 2569",
+      "exactPostText": "ตรวจประเมินสำนักงานสีเขียวภายในสำนักงาน (Green Office) ประจำปี 2569\nเมื่อวันที่ 17 มีนาคม 2569 สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ ร่วมกับ กลุ่มสำนักงานอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดาฯ มหาวิทยาลัยแม่โจ้ รวมทั้งหมด 4 หน่วยงาน ได้แก่ สถาบันบริการตรวจสอบคุณภาพและมาตรฐานผลิตภัณฑ์ สถาบันรับรองการผลิตภัณฑ์การเกษตร หน่วยความเป็นเลิศด้านการปรับปรุงพันธุ์ข้าวมหาวิทยาลัยแม่โจ้และสำนักวิจัยและส่งเสริมวิชาการการเกษตร เข้ารับการตรวจประเมินสำนักงานสีเขียวภายในสำนักงาน (Green Office) ประจำปี 2569 โดยมี ผู้ช่วยศาสตราจารย์ ดร.ณัฐพล เลาห์รอดพันธุ์ ผู้อำนวยการสำนักวิจัยฯ เป็นประธานในงาน พร้อมทั้งให้การต้อนรับคณะผู้ตรวจประเมิน 1-7 ทั้งนี้เพื่อมุ่งเน้นการยกระดับมาตรฐานการจัดการสิ่งแวดล้อมภายในองค์กรอย่างยั่งยืน ณ อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดาฯ มหาวิทยาลัยแม่โจ้.",
+      "eventDateCandidateTh": "17 มีนาคม 2569",
+      "eventDateCandidateIso": "2026-03-17",
+      "facebookTimestampVisible": "11 May",
+      "facebookTimestampYearVisible": false,
+      "conflictingDates": [
+        "Event date in post body: 17 มีนาคม 2569 (2026-03-17)",
+        "Facebook UI timestamp: 11 May (year not shown)"
+      ],
+      "canonicalDateRecommendation": "2026-03-17",
+      "dateBasis": "Event date from source body",
+      "pageAccount": "Green Office อาคารเฉลิมพระเกียรติสมเด็จพระเทพฯ MJU",
+      "location": "อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดาฯ มหาวิทยาลัยแม่โจ้; Facebook place tag Chiang Mai",
+      "participantsNamed": [
+        "สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้",
+        "สถาบันบริการตรวจสอบคุณภาพและมาตรฐานผลิตภัณฑ์",
+        "สถาบันรับรองการผลิตภัณฑ์การเกษตร",
+        "หน่วยความเป็นเลิศด้านการปรับปรุงพันธุ์ข้าวมหาวิทยาลัยแม่โจ้",
+        "สำนักวิจัยและส่งเสริมวิชาการการเกษตร",
+        "ผู้ช่วยศาสตราจารย์ ดร.ณัฐพล เลาห์รอดพันธุ์ ผู้อำนวยการสำนักวิจัยฯ",
+        "คณะผู้ตรวจประเมิน 1-7"
+      ],
+      "purposeFromSource": "เข้ารับการตรวจประเมินสำนักงานสีเขียวภายในสำนักงาน ประจำปี 2569; ยกระดับมาตรฐานการจัดการสิ่งแวดล้อมภายในองค์กรอย่างยั่งยืน",
+      "activityTypeCandidate": { "id": null, "note": "No assessment-specific activityType in vocabulary; category assessment is the supported facet" },
+      "categoryCandidate": { "id": "assessment", "confidence": "SUPPORTED", "basis": "Body: เข้ารับการตรวจประเมินภายใน — not title-only" },
+      "indicatorCandidates": [
+        {
+          "code": "7.1",
+          "confidence": "SUPPORTED",
+          "basis": "Source describes an internal Green Office assessment with category 1–7 auditors. 7.1 is issue-level (2-part). relatedIndicators validator requires 3-part codes — cannot write 7.1 onto the activity record without schema change (Phase F backlog)."
+        }
+      ],
+      "evidenceCandidates": [
+        {
+          "id": "ev-cat7-internal-audit-request-fy2568",
+          "relation": "NOT this activity. That evidence is the FY2568 request letter dated 17 มี.ค. 2569. Facebook post is the 2569 internal-audit event. cat7 audit.json quarantines 17/20/23 มี.ค. 2569 execution as FY2569."
+        }
+      ],
+      "mediaVisibleInGrid": 5,
+      "mediaOverlayAdditional": 9,
+      "mediaCountStatedByUi": "5 visible + overlay +9 / aria 9 remaining items",
+      "mediaType": "image",
+      "videos": 0,
+      "duplicateCanonical": false,
+      "nearestAnalog": "ACT-2567-001 is FY2567 Green Office assessment (external-style page); ACT-2567-005 is internal-audit training — neither is this 2569 event",
+      "intakeVerdict": "READY_FOR_DRAFT",
+      "readinessNotes": "Draft with category assessment, relatedIndicators empty (7.1 not 3-part). Do not treat as duplicate of ACT-2567-001."
+    },
+    {
+      "id": "FY2569-FB-04",
+      "scope": "FY2569",
+      "poMetadata": {
+        "title": "กิจกรรมการเตรียมความพร้อมกรณีฉุกเฉิน เพลิงไหม้ และการปฐมพยาบาลเบื้องต้น",
+        "eventDateTh": "8 พฤษภาคม 2569",
+        "shareUrl": "https://www.facebook.com/share/p/1EhpBgJ5FN/"
+      },
+      "sourceAccessible": true,
+      "loginOverlayPresent": true,
+      "canonicalUrl": "https://www.facebook.com/GofficePhraThepbuilding/posts/pfbid0haDEfk8GDqf1M2BKfA9RiuJjH2A4D9G7cyMATKr28nvmR4F9vP9ZsSvPu1F1UwHul",
+      "numericPostId": "945822504938558",
+      "exactTitle": "กิจกรามการเตรียมความพร้อมกรณีฉุกเฉิน เพลิงไหม้ และการปฐมพยาบาลเบื้องต้น",
+      "exactPostText": "กิจกรามการเตรียมความพร้อมกรณีฉุกเฉิน เพลิงไหม้ และการปฐมพยาบาลเบื้องต้น เมื่อวันที่ 8 พฤษภาคม 2569 ร่วมกับกลุ่มสำนักงานอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้ โดยมี ผู้ช่วยศาสตราจารย์ ดร.ณัฐพล เลาห์รอดพันธุ์ ผู้อำนวยการสำนักวิจัยฯ เป็นประธานเปิดโครงการดังกล่าว ณ ห้องประชุมข้าวหอมมะลิ ชั้น 1 อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้\nวิทยากรโดย คุณยุทธนา นำโน ,  คุณบัณฑิต ธรรมธิ , คุณปิติพงษ์ วลัญไชย และ คุณสุวิทย์ ทองอ่วมใหญ่ จากงานป้องกันและบรรเทาสาธารณภัย เทศบาลเมืองแม่โจ้ ให้ความรู้ในการอบรมเชิงปฏิบัติการ",
+      "eventDateCandidateTh": "8 พฤษภาคม 2569",
+      "eventDateCandidateIso": "2026-05-08",
+      "facebookTimestampVisible": "11 May",
+      "facebookTimestampYearVisible": false,
+      "conflictingDates": [
+        "Event date in post body: 8 พฤษภาคม 2569 (2026-05-08)",
+        "Facebook UI timestamp: 11 May (year not shown; likely publication a few days later)"
+      ],
+      "canonicalDateRecommendation": "2026-05-08",
+      "dateBasis": "Event date from source body",
+      "pageAccount": "Green Office อาคารเฉลิมพระเกียรติสมเด็จพระเทพฯ MJU",
+      "location": "ห้องประชุมข้าวหอมมะลิ ชั้น 1 อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้; Facebook place tag Chiang Mai",
+      "participantsNamed": [
+        "ผู้ช่วยศาสตราจารย์ ดร.ณัฐพล เลาห์รอดพันธุ์ ผู้อำนวยการสำนักวิจัยฯ",
+        "คุณยุทธนา นำโน",
+        "คุณบัณฑิต ธรรมธิ",
+        "คุณปิติพงษ์ วลัญไชย",
+        "คุณสุวิทย์ ทองอ่วมใหญ่",
+        "งานป้องกันและบรรเทาสาธารณภัย เทศบาลเมืองแม่โจ้"
+      ],
+      "purposeFromSource": "อบรมเชิงปฏิบัติการ เตรียมความพร้อมกรณีฉุกเฉิน เพลิงไหม้ และการปฐมพยาบาลเบื้องต้น",
+      "sourceTyposPreserved": ["กิจกรามการ"],
+      "activityTypeCandidate": { "id": "workshop", "confidence": "SUPPORTED", "basis": "Source: อบรมเชิงปฏิบัติการ with named trainers" },
+      "categoryCandidate": { "id": "preparedness", "confidence": "SUPPORTED", "basis": "Source is emergency/fire/first-aid preparedness training. training category also possible; prefer preparedness to match historical fire-drill facet, without copying indicator." },
+      "indicatorCandidates": [
+        {
+          "code": "5.5.1",
+          "confidence": "SUPPORTED",
+          "basis": "Source is fire-emergency preparedness workshop. 5.5.1 requires fire drill and evacuation training according to plan. Source does not explicitly say ฝึกซ้อมอพยพหนีไฟ. First aid is additional and unmapped."
+        },
+        {
+          "code": "5.5.2",
+          "confidence": "UNRESOLVED",
+          "basis": "Emergency plan not stated."
+        },
+        {
+          "code": "5.5.3",
+          "confidence": "UNRESOLVED",
+          "basis": "Fire equipment readiness not stated."
+        },
+        {
+          "code": "2.1.1",
+          "confidence": "UNRESOLVED",
+          "basis": "Training delivery is visible; plan/evaluation/records are not."
+        }
+      ],
+      "evidenceCandidates": [],
+      "mediaVisibleInGrid": 5,
+      "mediaOverlayAdditional": 10,
+      "mediaCountStatedByUi": "5 visible + overlay +10",
+      "mediaType": "image",
+      "videos": 0,
+      "duplicateCanonical": false,
+      "nearestAnalog": "ACT-2568-004 / ACT-2567-003 evacuation drills — similar family, different year and this source includes first aid workshop",
+      "intakeVerdict": "READY_FOR_DRAFT",
+      "readinessNotes": "Draft with category preparedness, type workshop. relatedIndicators empty or PO may later accept 5.5.1 as SUPPORTED not CONFIRMED. Preserve source typo กิจกรามการ or correct with PO note."
+    },
+    {
+      "id": "FY2569-FB-05",
+      "scope": "FY2569",
+      "poMetadata": {
+        "title": "กิจกรรมวันสิ่งแวดล้อมโลก GREEN SYNERGY",
+        "eventDateTh": "5 มิถุนายน 2569",
+        "shareUrl": "https://www.facebook.com/share/p/1HZ6VEp74X/"
+      },
+      "sourceAccessible": true,
+      "loginOverlayPresent": true,
+      "canonicalUrl": "https://www.facebook.com/GofficePhraThepbuilding/posts/pfbid036WAsZNkQdsPy1d8HsfgcCAafngPjcA6Rd7rGDV6mojpnN7hgKYPpjJLrPFHU6jZnl",
+      "numericPostId": "969826419204833",
+      "exactTitle": "กิจกรรมวันสิ่งแวดล้อมโลก \"GREEN SYNERGY ปรับวิถีออฟฟิศ เพื่อโลกที่ยั่งยืน\"",
+      "exactPostText": "กิจกรรมวันสิ่งแวดล้อมโลก \"GREEN SYNERGY ปรับวิถีออฟฟิศ เพื่อโลกที่ยั่งยืน\"\nเมื่อวันที่ 5 มิถุนายน 2569 สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ เข้าร่วมกิจกรรมวันสิ่งแวดล้อมโลก \"GREEN SYNERGY ปรับวิถีออฟฟิศ เพื่อโลกที่ยั่งยืน\" โดยมี ผู้ช่วยศาสตราจารย์ภานุวัฒน์ เมฆะ รองผู้อำนวยการสำนักวิจัยฯ ฝ่ายบริหาร และบุคลากรสำนักวิจัยฯ เข้าร่วมกิจกรรมดังกล่าว ในการนี้ได้รับเกียรติจาก รองศาสตราจารย์จักรพงษ์ พิมพ์พิมล รองอธิการบดี มหาวิทยาลัยแม่โจ้ เป็นประธานในพิธีเปิด สำนักวิจัยฯ ได้เข้าร่วมนำเสนอผลงานและนิทรรศการด้านการดำเนินงานกรีนออฟฟิศของหน่วยงาน โดยนายปริญญา เพียรอุตส่าห์ ผู้แทนสำนักวิจัยฯ ในการนำเสนอผลงานดังกล่าว ณ ห้องประชุมสายน้ำผึ้ง สำนักหอสมุด มหาวิทยาลัยแม่โจ้",
+      "eventDateCandidateTh": "5 มิถุนายน 2569",
+      "eventDateCandidateIso": "2026-06-05",
+      "facebookTimestampVisible": "8 June",
+      "facebookTimestampYearVisible": false,
+      "conflictingDates": [
+        "Event date in post body: 5 มิถุนายน 2569 (2026-06-05)",
+        "Facebook UI timestamp: 8 June (year not shown)"
+      ],
+      "canonicalDateRecommendation": "2026-06-05",
+      "dateBasis": "Event date from source body",
+      "pageAccount": "Green Office อาคารเฉลิมพระเกียรติสมเด็จพระเทพฯ MJU",
+      "location": "ห้องประชุมสายน้ำผึ้ง สำนักหอสมุด มหาวิทยาลัยแม่โจ้; Facebook place tag มหาวิทยาลัยแม่โจ้ / Chiang Mai",
+      "participantsNamed": [
+        "ผู้ช่วยศาสตราจารย์ภานุวัฒน์ เมฆะ รองผู้อำนวยการสำนักวิจัยฯ ฝ่ายบริหาร",
+        "บุคลากรสำนักวิจัยฯ",
+        "รองศาสตราจารย์จักรพงษ์ พิมพ์พิมล รองอธิการบดี มหาวิทยาลัยแม่โจ้",
+        "นายปริญญา เพียรอุตส่าห์ ผู้แทนสำนักวิจัยฯ"
+      ],
+      "purposeFromSource": "เข้าร่วมวันสิ่งแวดล้อมโลก GREEN SYNERGY; นำเสนอผลงานและนิทรรศการด้านการดำเนินงานกรีนออฟฟิศ",
+      "activityTypeCandidate": { "id": "eco-event", "confidence": "SUPPORTED", "basis": "Source: วันสิ่งแวดล้อมโลก" },
+      "categoryCandidate": { "id": "campaign", "confidence": "SUPPORTED", "basis": "World Environment Day participation + exhibition" },
+      "indicatorCandidates": [
+        {
+          "code": "2.2.2",
+          "confidence": "SUPPORTED",
+          "basis": "Source describes communication/exhibition of green-office work at a World Environment Day event. Same family as ACT-2568-002 mapping, but this is a new FY2569 event — do not copy blindly; content independently supports campaign knowledge-sharing."
+        }
+      ],
+      "evidenceCandidates": [],
+      "mediaVisibleInGrid": 5,
+      "mediaOverlayAdditional": 6,
+      "mediaCountStatedByUi": "5 visible + overlay +6",
+      "mediaType": "image",
+      "videos": 0,
+      "duplicateCanonical": false,
+      "nearestAnalog": "ACT-2568-002 MJU ECO DAY วันสิ่งแวดล้อมโลก (5 มิ.ย. 2568) — same calendar day previous year, different event name/location; not a duplicate",
+      "intakeVerdict": "READY_FOR_DRAFT",
+      "readinessNotes": "Draft with category campaign, type eco-event. relatedIndicators may stay empty until PO accepts 2.2.2 SUPPORTED."
+    },
+    {
+      "id": "FY2569-FB-06",
+      "scope": "FY2569",
+      "poMetadata": {
+        "title": "กิจกรรมการทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์",
+        "eventDateTh": "21 กรกฎาคม 2569",
+        "shareUrl": "https://www.facebook.com/share/p/1BEkSTdbVT/"
+      },
+      "sourceAccessible": true,
+      "loginOverlayPresent": true,
+      "canonicalUrl": "https://www.facebook.com/GofficePhraThepbuilding/posts/pfbid0bkCvtVDnvLiGYyDGQn8R2XNUW1G9RVUE4SVfhTttk97RQyowByxBimZbfdeM99Zsl",
+      "numericPostId": "1036833852504089",
+      "exactTitle": "การทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์",
+      "exactPostText": "การทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์\nเมื่อวันที่ 21 กรกฎาคม 2569 สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ ร่วมกับหน่วยงายภายในอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา ร่วมกิจกรรม Green Office รักษ์โลก \"การทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์\" ณ บริเวณด้านหลังอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้",
+      "eventDateCandidateTh": "21 กรกฎาคม 2569",
+      "eventDateCandidateIso": "2026-07-21",
+      "facebookTimestampVisible": "4h",
+      "facebookTimestampYearVisible": false,
+      "conflictingDates": [
+        "Event date in post body: 21 กรกฎาคม 2569 (2026-07-21)",
+        "Facebook UI timestamp at inspection (2026-08-26): relative '4h' — publication appears much later than the event; year not shown"
+      ],
+      "canonicalDateRecommendation": "2026-07-21",
+      "dateBasis": "Event date from source body; relative Facebook timestamp is publication not event",
+      "pageAccount": "Green Office อาคารเฉลิมพระเกียรติสมเด็จพระเทพฯ MJU",
+      "location": "บริเวณด้านหลังอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้; Facebook place tag Chiang Mai",
+      "participantsNamed": [
+        "สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้",
+        "หน่วยงายภายในอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา"
+      ],
+      "purposeFromSource": "ร่วมกิจกรรม Green Office รักษ์โลก การทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์",
+      "sourceTyposPreserved": ["หน่วยงาย"],
+      "activityTypeCandidate": { "id": "community", "confidence": "SUPPORTED", "basis": "Source: ร่วมกิจกรรม Green Office รักษ์โลก (campaign/community activity). Thin body." },
+      "categoryCandidate": { "id": "campaign", "confidence": "SUPPORTED", "basis": "Named as Green Office รักษ์โลก activity; not a meeting/assessment" },
+      "indicatorCandidates": [
+        {
+          "code": "4.1.3",
+          "confidence": "SUPPORTED",
+          "basis": "Source is composting from organic material (waste reuse). No quantity. ev-cat4-data-reuse-compost-fy2568 is FY2568 data, not this event."
+        }
+      ],
+      "evidenceCandidates": [],
+      "mediaVisibleInGrid": 5,
+      "mediaOverlayAdditional": 6,
+      "mediaCountStatedByUi": "5 visible + overlay +6",
+      "mediaType": "image",
+      "videos": 0,
+      "duplicateCanonical": false,
+      "nearestAnalog": "None among 19 activities. Knowledge practice text mentions compost generally; not a duplicate activity.",
+      "intakeVerdict": "NEEDS_REVIEW",
+      "readinessNotes": "Body is thin; typo หน่วยงาย; Facebook timestamp 4h vs event 21 ก.ค. Confirm title (PO กิจกรรมการทำปุ๋ยหมักฯ vs source การทำปุ๋ยหมักฯ) and whether more caption exists off-screen."
+    },
+    {
+      "id": "FY2568-FB-07",
+      "scope": "FY2568",
+      "poMetadata": {
+        "title": "โครงการอบรมส่งเสริมการเรียนรู้ \"การปลูกต้นไม้ประดับ ปรับอากาศลดโลกร้อน\"",
+        "eventDateTh": "18 กันยายน 2568",
+        "shareUrl": "https://www.facebook.com/share/p/1BkAdddQq4/"
+      },
+      "sourceAccessible": true,
+      "loginOverlayPresent": true,
+      "canonicalUrl": "https://www.facebook.com/GofficePhraThepbuilding/posts/pfbid02b2NrNQcr5hG7CaHuhEfB5RCPAyfdFoKyLoZM1CNWJu7UyHBXkYKXTuYGGnsfP3uUl",
+      "numericPostId": "707630775424400",
+      "exactTitle": "กิจกรรมส่งเสริม ลดโลกร้อน",
+      "exactPostText": "กิจกรรมส่งเสริม ลดโลกร้อน\n[shared/embedded] สำนักวิจัยฯ ม.แม่โจ้ จัดโครงการอบรมส่งเสริมการเรียนรู้ เรื่อง \"การปลูกต้นไม้ประดับ ปรับอากาศลดโลกร้อน\"\n.\nวันที่ 17 กรกฎาคม 2568 เวลา 13.00-15.00 น. สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ จัดโครงการอบรมส่งเสริมการเรียนรู้ เรื่อง \"การปลูกต้นไม้ประดับ ปรับอากาศลดโลกร้อน\" กล่าวต้อนรับ โดย รองศาสตราจารย์ ดร.พัชรินทร์ สุภาพันธ์ รองผู้อำนวยการสำนักวิจัยฯ ฝ่ายบริการวิชาการ มีนักเรียนห้องเรียนพิเศษวิทยาศาสตร์และคณิตศาสตร์ (S-MAP) ระดับประถมศึกษาปีที่ 4-6 โรงเรียนดาราวิทยาลัย จำนวน 104 คน พร้อมครูผู้ควบคุม จำนวน 8 คน เข้าร่วมกิจกรรม ณ แปลงสาธิตเกษตรทฤษฎีใหม่ตามแนวพระราชดำริ มหาวิทยาลัยแม่โจ้\n#ไม้ประดับลดโลกร้อน #เกษตรทฤษฎีใหม่",
+      "eventDateCandidateTh": "17 กรกฎาคม 2568",
+      "eventDateCandidateIso": "2025-07-17",
+      "facebookTimestampVisible": "17 July 2025",
+      "facebookTimestampYearVisible": true,
+      "conflictingDates": [
+        "PO-supplied date: 18 กันยายน 2568",
+        "Source event date: 17 กรกฎาคม 2568 เวลา 13.00-15.00 น.",
+        "Facebook timestamp: 17 July 2025"
+      ],
+      "canonicalDateRecommendation": "UNRESOLVED for this FY2569 batch (out of scope). If later ingested as historical, use 2025-07-17 from source body, not PO 18 ก.ย. 2568.",
+      "dateBasis": "Source body 17 ก.ค. 2568 conflicts with PO metadata 18 ก.ย. 2568",
+      "pageAccount": "Green Office อาคารเฉลิมพระเกียรติสมเด็จพระเทพฯ MJU (appears to share/embed สำนักวิจัยและส่งเสริมวิชาการการเกษตร มหาวิทยาลัยแม่โจ้)",
+      "location": "แปลงสาธิตเกษตรทฤษฎีใหม่ตามแนวพระราชดำริ มหาวิทยาลัยแม่โจ้",
+      "participantsNamed": [
+        "รองศาสตราจารย์ ดร.พัชรินทร์ สุภาพันธ์ รองผู้อำนวยการสำนักวิจัยฯ ฝ่ายบริการวิชาการ",
+        "นักเรียนห้องเรียนพิเศษวิทยาศาสตร์และคณิตศาสตร์ (S-MAP) ระดับประถมศึกษาปีที่ 4-6 โรงเรียนดาราวิทยาลัย จำนวน 104 คน",
+        "ครูผู้ควบคุม จำนวน 8 คน"
+      ],
+      "purposeFromSource": "โครงการอบรมส่งเสริมการเรียนรู้ การปลูกต้นไม้ประดับ ปรับอากาศลดโลกร้อน",
+      "activityTypeCandidate": { "id": "workshop", "confidence": "SUPPORTED", "basis": "Out of FY2569 scope — recorded only" },
+      "categoryCandidate": { "id": "training", "confidence": "SUPPORTED", "basis": "Out of FY2569 scope — recorded only" },
+      "indicatorCandidates": [],
+      "evidenceCandidates": [],
+      "mediaVisibleInGrid": 5,
+      "mediaOverlayAdditional": 43,
+      "mediaCountStatedByUi": "5 visible photos + overlay +43 (album not opened)",
+      "mediaType": "image",
+      "videos": 0,
+      "duplicateCanonical": false,
+      "nearestAnalog": "None of the 19 published activities match this title/date",
+      "intakeVerdict": "OUT_OF_SCOPE",
+      "readinessNotes": "FY2568 historical. Not part of this FY2569 batch. Do not run activity:new for this URL in this task."
+    }
+  ]
+}
