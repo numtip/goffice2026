@@ -76,14 +76,17 @@ describe('content-presentation', () => {
     assert.equal(getPublishedItems(collection).length, 1);
   });
 
-  it('Phase 3B B3 — 19 published activities with #30 and #56', () => {
+  it('Phase 3B B3 — 25 published (19 historical Joomla + 6 FY2569)', () => {
     const data = loadJson('src/data/content/activities.json');
     const published = getPublishedItems(data);
-    assert.equal(published.length, 19);
+    assert.equal(published.length, 25);
 
-    const act30 = published.find((i) => i.source?.joomlaArticleId === 30);
-    const act56 = published.find((i) => i.source?.joomlaArticleId === 56);
-    const act59 = published.find((i) => i.source?.joomlaArticleId === 59);
+    const historical = published.filter((i) => !String(i.id).startsWith('ACT-2569-'));
+    assert.equal(historical.length, 19);
+
+    const act30 = historical.find((i) => i.source?.joomlaArticleId === 30);
+    const act56 = historical.find((i) => i.source?.joomlaArticleId === 56);
+    const act59 = historical.find((i) => i.source?.joomlaArticleId === 59);
 
     assert.ok(act30, 'Joomla #30 migrated');
     assert.equal(act30.slug, 'activity1');

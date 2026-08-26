@@ -277,13 +277,18 @@ describe('activity:new integration (temp fixtures)', () => {
     const publishedOnly = [draft, ...loadPublishedActivities()].filter(
       (i) => i.status === 'published',
     );
-    assert.equal(publishedOnly.length, 19);
+    assert.equal(publishedOnly.length, 25);
     assert.ok(!publishedOnly.some((i) => i.id === 'ACT-2569-050'));
   });
 });
 
-describe('canonical activities.json unchanged', () => {
-  it('published count remains 19', () => {
-    assert.equal(loadPublishedActivities().length, 19);
+describe('canonical activities.json publish state', () => {
+  it('25 published, 0 draft (19 historical + 6 FY2569)', () => {
+    const all = JSON.parse(
+      readFileSync(join(ROOT, 'src/data/content/activities.json'), 'utf8'),
+    ).items;
+    assert.equal(loadPublishedActivities().length, 25);
+    assert.equal(all.filter((i) => i.status === 'draft').length, 0);
+    assert.equal(all.filter((i) => i.fiscalYear === 2569 && i.status === 'published').length, 6);
   });
 });

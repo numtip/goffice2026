@@ -148,7 +148,7 @@ function publicFromSrc(src) {
   return join(ROOT, 'public', ...src.replace(/^\//, '').split('/'));
 }
 
-describe('FY2569 Facebook draft intake', () => {
+describe('FY2569 Facebook activities (canonical intake + publish batch)', () => {
   const activities = loadJson('src/data/content/activities.json');
   const audit = loadJson('src/data/migration/facebook-fy2569-intake-audit.json');
   const search = loadJson('src/data/search-index.json');
@@ -162,12 +162,12 @@ describe('FY2569 Facebook draft intake', () => {
     );
   });
 
-  it('creates FY2569 drafts with audited or PO-resolved identity', () => {
+  it('FY2569 records are published with audited or PO-resolved identity', () => {
     for (const expected of DRAFTS) {
       const rec = activities.items.find((i) => i.id === expected.id);
       const sourceItem = audit.items.find((i) => i.id === expected.intakeId);
       assert.ok(rec, expected.id);
-      assert.equal(rec.status, 'draft');
+      assert.equal(rec.status, 'published');
       assert.equal(rec.slug, expected.slug);
       assert.equal(rec.fiscalYear, 2569);
       assert.equal(rec.publishDate, expected.publishDate);
@@ -207,17 +207,25 @@ describe('FY2569 Facebook draft intake', () => {
     }
   });
 
-  it('published count remains 19 and historical IDs are unchanged', () => {
+  it('publish batch — 25 published, 0 draft, historical 19 unchanged', () => {
     const published = activities.items.filter((i) => i.status === 'published');
-    assert.equal(published.length, 19);
+    const drafts = activities.items.filter((i) => i.status === 'draft');
+    assert.equal(published.length, 25);
+    assert.equal(drafts.length, 0);
     assert.equal(activities.items.length, 25);
+
+    const historicalPublished = published.filter((i) => HISTORICAL_IDS.includes(i.id));
+    assert.equal(historicalPublished.length, 19);
     assert.deepEqual(
-      published.map((i) => i.id).sort(),
+      historicalPublished.map((i) => i.id).sort(),
       [...HISTORICAL_IDS].sort(),
     );
+
     const fy2569 = activities.items.filter((i) => i.fiscalYear === 2569);
     assert.equal(fy2569.length, 6);
-    assert.ok(fy2569.every((i) => i.status === 'draft'));
+    assert.ok(fy2569.every((i) => i.status === 'published'));
+    assert.ok(fy2569.every((i) => Array.isArray(i.relatedIndicators) && i.relatedIndicators.length === 0));
+    assert.ok(fy2569.every((i) => i.translationPending === true));
   });
 
   it('does not convert OUT_OF_SCOPE records', () => {
@@ -227,20 +235,20 @@ describe('FY2569 Facebook draft intake', () => {
     }
   });
 
-  it('drafts are excluded from search index, homepage latest, and published helpers', () => {
+  it('published FY2569 activities appear in search index and published helpers', () => {
     const published = getPublishedItems(activities);
-    assert.equal(published.length, 19);
-    assert.ok(!published.some((i) => String(i.id).startsWith('ACT-2569-')));
+    assert.equal(published.length, 25);
+    assert.ok(published.some((i) => i.id === 'ACT-2569-006'));
 
     const latest = getLatestPublished(activities, 3);
     assert.equal(latest.length, 3);
     assert.ok(latest.every((i) => i.status === 'published'));
-    assert.ok(!latest.some((i) => String(i.id).startsWith('ACT-2569-')));
+    assert.ok(latest.some((i) => String(i.id).startsWith('ACT-2569-')));
 
     const searchIds = new Set(search.items.map((i) => i.id));
-    for (const draft of DRAFTS) {
-      assert.equal(searchIds.has(draft.id), false, draft.id);
-      assert.ok(!search.items.some((i) => i.route === `/activities/${draft.slug}/`));
+    for (const expected of DRAFTS) {
+      assert.equal(searchIds.has(expected.id), true, expected.id);
+      assert.ok(search.items.some((i) => i.route === `/activities/${expected.slug}/`));
     }
   });
 

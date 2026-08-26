@@ -31,12 +31,14 @@ const PROTECTED_FIELDS = [
 ];
 
 describe('Phase F — historical activity mapping', () => {
-  it('covers all 19 published activities', () => {
+  it('covers all 19 historical published activities (FY2569 excluded from Phase F)', () => {
     const data = JSON.parse(readFileSync(join(ROOT, 'src/data/content/activities.json'), 'utf8'));
     const published = data.items.filter((i) => i.status === 'published');
-    assert.equal(published.length, 19);
+    const historical = published.filter((i) => !String(i.id).startsWith('ACT-2569-'));
+    assert.equal(published.length, 25);
+    assert.equal(historical.length, 19);
     assert.equal(PHASE_F_MAPPINGS.length, 19);
-    for (const item of published) {
+    for (const item of historical) {
       assert.ok(PHASE_F_MAPPINGS.some((m) => m.id === item.id), `missing mapping row ${item.id}`);
     }
   });
@@ -102,9 +104,11 @@ describe('Phase F — historical activity mapping', () => {
     assert.ok(Object.keys(CANDIDATE_EVIDENCE_BY_ACTIVITY_ID).length >= 1);
   });
 
-  it('published count remains 19 after mapping apply (in-memory)', () => {
+  it('published count unchanged after mapping apply (in-memory)', () => {
     const data = JSON.parse(readFileSync(join(ROOT, 'src/data/content/activities.json'), 'utf8'));
+    const before = data.items.filter((i) => i.status === 'published').length;
     applyPhaseFIndicatorMappings(data);
-    assert.equal(data.items.filter((i) => i.status === 'published').length, 19);
+    assert.equal(data.items.filter((i) => i.status === 'published').length, before);
+    assert.equal(before, 25);
   });
 });
