@@ -35,12 +35,6 @@ export const CANDIDATE_EVIDENCE_BY_ACTIVITY_ID = {
     basis:
       'ev-cat5-livability-maintenance-fy2568 description names Big Cleaning Day #1/2568; indicator 5.4.3.',
   },
-  'ACT-2567-009': {
-    ids: ['ev-cat2-tr-delivery-fy2568'],
-    confidence: 'SUPPORTED',
-    basis:
-      'Training narrative 2.1.1 covers FY2568 sessions; activity is FY2567 — same indicator, different fiscal year.',
-  },
 };
 
 /**

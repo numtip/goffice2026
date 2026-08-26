@@ -71,6 +71,6 @@ Publish sequence unchanged — search index unaffected (`relatedIndicators` not 
 
 1. PO approve `evidenceIds[]` (or `linkedEvidence[]`) on activity contract
 2. Widen `relatedIndicators` validator to accept issue-level codes (`7.1`, `7.2`) OR add 3-part cat7 assessment codes
-3. Map 6 UNRESOLVED activities after richer Joomla body OCR or PO disposition
+3. Map 8 UNRESOLVED activities after richer Joomla body OCR or PO disposition
 4. Promote evidence candidates (e.g. bigcleaning) after human verification
 5. Surface `relatedIndicators` on activity detail UI (currently unused)
