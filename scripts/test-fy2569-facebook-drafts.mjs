@@ -40,6 +40,8 @@ const DRAFTS = [
     categoryId: 'meeting',
     typeId: 'committee',
     shareUrl: 'https://www.facebook.com/share/p/1DMe5HQKNd/',
+    displayTitle:
+      'ประชุมคณะกรรมการดำเนินงานสำนักงานสีเขียว (Green Office) ครั้งที่ 1/2569',
     sha256: [
       'f54ea7f5b4ef5efebe7ab16b33e655aed8302faafebc590aaa79f2cd77e5bf14',
       '2d71ab9b326dfa78b3f04b46979dfa714c6e9ce0329516e07a43f4d8397dfe5c',
@@ -72,6 +74,8 @@ const DRAFTS = [
     categoryId: 'preparedness',
     typeId: 'workshop',
     shareUrl: 'https://www.facebook.com/share/p/1EhpBgJ5FN/',
+    displayTitle:
+      'กิจกรรมการเตรียมความพร้อมกรณีฉุกเฉิน เพลิงไหม้ และการปฐมพยาบาลเบื้องต้น',
     sha256: [
       '5a3181b7993ca0027222533fd0c873d5e1ef5b257eba59ab2a86d029bb36b514',
       '6c7a7a4dc301513fa426e1a83b8c118ab932c6210d8ec79b525996982abc6bac',
@@ -131,8 +135,14 @@ describe('FY2569 Facebook draft intake', () => {
       assert.equal(rec.slug, expected.slug);
       assert.equal(rec.fiscalYear, 2569);
       assert.equal(rec.publishDate, expected.publishDate);
-      assert.equal(rec.titleTh, sourceItem.exactTitle);
+      const expectedTitle = expected.displayTitle ?? sourceItem.exactTitle;
+      assert.equal(rec.titleTh, expectedTitle);
       assert.equal(rec.bodyTh, sourceItem.exactPostText);
+      assert.equal(rec.source.exactTitle ?? rec.titleTh, sourceItem.exactTitle);
+      if (expected.displayTitle) {
+        assert.notEqual(rec.titleTh, sourceItem.exactTitle);
+        assert.equal(rec.source.exactPostText, sourceItem.exactPostText);
+      }
       assert.equal(rec.translationPending, true);
       assert.equal(rec.titleEn, '');
       assert.equal(rec.bodyEn, '');
@@ -151,6 +161,7 @@ describe('FY2569 Facebook draft intake', () => {
   it('published count remains 19 and historical IDs are unchanged', () => {
     const published = activities.items.filter((i) => i.status === 'published');
     assert.equal(published.length, 19);
+    assert.equal(activities.items.length, 23);
     assert.deepEqual(
       published.map((i) => i.id).sort(),
       [...HISTORICAL_IDS].sort(),
