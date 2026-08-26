@@ -100,9 +100,45 @@ const DRAFTS = [
       '1b8515035e380df49c7d41168777c8f8781bacc6fea995e4d88da77fd9b8a1d4',
     ],
   },
+  {
+    id: 'ACT-2569-005',
+    slug: 'big-cleaning-1-2569',
+    intakeId: 'FY2569-FB-02',
+    publishDate: '2026-03-13',
+    categoryId: 'campaign',
+    typeId: 'cleaning',
+    shareUrl: 'https://www.facebook.com/share/p/1Jk6bSDKhg/',
+    displayTitle: 'กิจกรรม Big Cleaning Day ครั้งที่ 1 ประจำปี 2569',
+    sha256: [
+      '51cb1d4ed76f2ebfa6ba44ecc4fc1dda127777fd94f8b38ddfd826c4e22978ec',
+      'a07c120f148af8b93ee9f56001b86edf42a1821a1e1a54344cd432c7a2a24c5b',
+      '3e54c09e97a64f2d4908eda4890502f3e63f02a6c0115de5bff5fb96edb267b4',
+      '2a79f2d0c5a2f651ba3460f7e63ef03e252eb2c74d509cce7850624a72ec419e',
+      '212011728b590c5f21c7ccef7033f93c1842a826c8b07d213459046a3dbfec0c',
+    ],
+  },
+  {
+    id: 'ACT-2569-006',
+    slug: 'compost-organic-waste-2569',
+    intakeId: 'FY2569-FB-06',
+    publishDate: '2026-07-21',
+    categoryId: 'campaign',
+    typeId: 'community',
+    shareUrl: 'https://www.facebook.com/share/p/1BEkSTdbVT/',
+    displayTitle: 'กิจกรรมการทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์',
+    poBody:
+      'เมื่อวันที่ 21 กรกฎาคม 2569 สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ ร่วมกับหน่วยงายภายในอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา ร่วมกิจกรรม Green Office รักษ์โลก "การทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์" ณ บริเวณด้านหลังอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้',
+    sha256: [
+      '0f60c1246fd54491ccc1bf910a55fc2081c76f7986754d8d7d01c95e67966131',
+      'feed3ea9d4c4a944cde52c9fb34ebd29785592531c874266f4a5516c25b939ea',
+      'c34d540f448578a97b991e188ac62cb67d10295e9cec28112c79e5525437ff95',
+      '407a26a31d910b149a37e8a20c792b395b022af296d85ba39001a4d2c87bc36b',
+      '01fecef959d952e164ed05f976de6a0342fdc3b897ceede43c1abb09647d1ece',
+    ],
+  },
 ];
 
-const SKIPPED_INTAKE_IDS = ['FY2569-FB-02', 'FY2569-FB-06', 'FY2568-FB-07'];
+const SKIPPED_INTAKE_IDS = ['FY2568-FB-07'];
 
 function loadJson(rel) {
   return JSON.parse(readFileSync(join(ROOT, rel), 'utf8'));
@@ -126,7 +162,7 @@ describe('FY2569 Facebook draft intake', () => {
     );
   });
 
-  it('creates four FY2569 drafts with audited identity', () => {
+  it('creates FY2569 drafts with audited or PO-resolved identity', () => {
     for (const expected of DRAFTS) {
       const rec = activities.items.find((i) => i.id === expected.id);
       const sourceItem = audit.items.find((i) => i.id === expected.intakeId);
@@ -137,11 +173,16 @@ describe('FY2569 Facebook draft intake', () => {
       assert.equal(rec.publishDate, expected.publishDate);
       const expectedTitle = expected.displayTitle ?? sourceItem.exactTitle;
       assert.equal(rec.titleTh, expectedTitle);
-      assert.equal(rec.bodyTh, sourceItem.exactPostText);
+      const expectedBody = expected.poBody ?? sourceItem.exactPostText;
+      assert.equal(rec.bodyTh, expectedBody);
       assert.equal(rec.source.exactTitle ?? rec.titleTh, sourceItem.exactTitle);
       if (expected.displayTitle) {
         assert.notEqual(rec.titleTh, sourceItem.exactTitle);
         assert.equal(rec.source.exactPostText, sourceItem.exactPostText);
+      }
+      if (expected.poBody) {
+        assert.equal(rec.source.poAuthorityBody, expected.poBody);
+        assert.match(rec.bodyTh, /หน่วยงาย/);
       }
       assert.equal(rec.translationPending, true);
       assert.equal(rec.titleEn, '');
@@ -158,28 +199,32 @@ describe('FY2569 Facebook draft intake', () => {
     }
   });
 
+  it('PO-resolved backlog intake records are drafted', () => {
+    for (const id of ['FY2569-FB-02', 'FY2569-FB-06']) {
+      const item = audit.items.find((i) => i.id === id);
+      assert.equal(item.intakeVerdict, 'PO_RESOLVED');
+      assert.ok(item.canonicalDraftId?.startsWith('ACT-2569-'));
+    }
+  });
+
   it('published count remains 19 and historical IDs are unchanged', () => {
     const published = activities.items.filter((i) => i.status === 'published');
     assert.equal(published.length, 19);
-    assert.equal(activities.items.length, 23);
+    assert.equal(activities.items.length, 25);
     assert.deepEqual(
       published.map((i) => i.id).sort(),
       [...HISTORICAL_IDS].sort(),
     );
     const fy2569 = activities.items.filter((i) => i.fiscalYear === 2569);
-    assert.equal(fy2569.length, 4);
+    assert.equal(fy2569.length, 6);
     assert.ok(fy2569.every((i) => i.status === 'draft'));
   });
 
-  it('does not convert REVIEW/BLOCKED/DUPLICATE/OUT_OF_SCOPE records', () => {
+  it('does not convert OUT_OF_SCOPE records', () => {
     const intakeIds = new Set(activities.items.map((i) => i.source?.intakeId).filter(Boolean));
     for (const skipped of SKIPPED_INTAKE_IDS) {
       assert.equal(intakeIds.has(skipped), false, skipped);
     }
-    assert.equal(
-      activities.items.some((i) => i.fiscalYear === 2569 && /Big Cleaning|ปุ๋ยหมัก/.test(i.titleTh)),
-      false,
-    );
   });
 
   it('drafts are excluded from search index, homepage latest, and published helpers', () => {
