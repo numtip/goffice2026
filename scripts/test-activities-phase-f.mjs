@@ -89,7 +89,7 @@ describe('Phase F — historical activity mapping', () => {
     }
 
     const mapped = summarizePhaseFCoverage();
-    assert.equal(mapped.indicatorMapped, 13);
+    assert.equal(mapped.indicatorMapped, 11);
     assert.equal(mapped.total, 19);
   });
 

@@ -30,10 +30,10 @@ export const CANDIDATE_EVIDENCE_BY_ACTIVITY_ID = {
       'FY2567 fire drill activity; FY2568 drill evidence is same indicator family — no FY2567-specific evidence id verified.',
   },
   'ACT-2568-005': {
-    ids: ['ev-cat2-campaign-candidate-bigcleaning'],
-    confidence: 'SUPPORTED',
+    ids: ['ev-cat5-livability-maintenance-fy2568'],
+    confidence: 'CONFIRMED',
     basis:
-      'Evidence filename references BigCleaningDay2025; candidate-only, not promoted per evidence-index.',
+      'ev-cat5-livability-maintenance-fy2568 description names Big Cleaning Day #1/2568; indicator 5.4.3.',
   },
   'ACT-2567-009': {
     ids: ['ev-cat2-tr-delivery-fy2568'],
@@ -102,10 +102,11 @@ export const PHASE_F_MAPPINGS = [
     slug: 'bigcleaning2025-1',
     fiscalYear: 2568,
     categoryId: 'campaign',
-    relatedIndicators: ['2.2.2'],
-    confidence: 'SUPPORTED',
-    basis: 'Big Cleaning Day campaign; cross-ref ev-cat2-campaign-candidate-bigcleaning filename.',
-    candidateEvidenceIds: ['ev-cat2-campaign-candidate-bigcleaning'],
+    relatedIndicators: ['5.4.3'],
+    confidence: 'CONFIRMED',
+    basis:
+      'Title “Big Cleaning day ครั้งที่ 1”; ev-cat5-livability-maintenance-fy2568 names Big Cleaning Day #1/2568.',
+    candidateEvidenceIds: ['ev-cat5-livability-maintenance-fy2568'],
   },
   {
     id: 'ACT-2568-006',
@@ -151,10 +152,10 @@ export const PHASE_F_MAPPINGS = [
     slug: 'traininggreen',
     fiscalYear: 2567,
     categoryId: 'training',
-    relatedIndicators: ['2.1.1'],
-    confidence: 'CONFIRMED',
-    basis: 'Title: อบรม...ตามเกณฑ์การประเมินสำนักงานสีเขียว (training delivery per criteria).',
-    candidateEvidenceIds: ['ev-cat2-tr-delivery-fy2568'],
+    relatedIndicators: [],
+    confidence: 'UNRESOLVED',
+    basis: 'Title cites training per GO criteria; body is migration stub — title-only insufficient per Phase F rules.',
+    unresolvedNote: 'Restore body narrative or link FY2567 training evidence before mapping 2.1.1.',
   },
   {
     id: 'ACT-2567-002',
@@ -227,9 +228,10 @@ export const PHASE_F_MAPPINGS = [
     slug: 'activity1-6',
     fiscalYear: 2566,
     categoryId: 'training',
-    relatedIndicators: ['2.1.1'],
-    confidence: 'CONFIRMED',
-    basis: 'Title: กิจกรรมอบรมให้ความรู้สำนักงานสีเขียว.',
+    relatedIndicators: [],
+    confidence: 'UNRESOLVED',
+    basis: 'Title suggests training; body stub — no explicit indicator narrative retained.',
+    unresolvedNote: 'Await body restoration or PO disposition.',
   },
   {
     id: 'ACT-2566-002',

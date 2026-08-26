@@ -500,7 +500,7 @@
         }
       ],
       "relatedIndicators": [
-        "2.2.2"
+        "5.4.3"
       ],
       "relatedLinks": [],
       "source": {
@@ -1079,9 +1079,7 @@
           "altEn": ""
         }
       ],
-      "relatedIndicators": [
-        "2.1.1"
-      ],
+      "relatedIndicators": [],
       "relatedLinks": [],
       "source": {
         "system": "joomla",
@@ -1883,9 +1881,7 @@
           "altEn": ""
         }
       ],
-      "relatedIndicators": [
-        "2.1.1"
-      ],
+      "relatedIndicators": [],
       "relatedLinks": [],
       "source": {
         "system": "joomla",
