@@ -75,4 +75,26 @@ describe('content-presentation', () => {
     };
     assert.equal(getPublishedItems(collection).length, 1);
   });
+
+  it('Phase 3B B3 — 19 published activities with #30 and #56', () => {
+    const data = loadJson('src/data/content/activities.json');
+    const published = getPublishedItems(data);
+    assert.equal(published.length, 19);
+
+    const act30 = published.find((i) => i.source?.joomlaArticleId === 30);
+    const act56 = published.find((i) => i.source?.joomlaArticleId === 56);
+    const act59 = published.find((i) => i.source?.joomlaArticleId === 59);
+
+    assert.ok(act30, 'Joomla #30 migrated');
+    assert.equal(act30.slug, 'activity1');
+    assert.equal(act30.publishDate, '2024-01-09');
+    assert.notEqual(act30.id, act59?.id);
+
+    assert.ok(act56, 'Joomla #56 migrated');
+    assert.equal(act56.slug, 'traininggreen');
+    assert.equal(act56.publishDate, '2024-07-09');
+    assert.equal(act56.source.dateResolution.headerPublishDate, '2024-07-11');
+    assert.equal(act56.media.length, 10);
+    assert.equal(act30.media.length, 5);
+  });
 });

@@ -2,16 +2,25 @@
   "version": "1.0.0",
   "auditedAt": "2026-08-25",
   "phase": "2A",
-  "note": "Per-article HTML fetched 2026-08-25. Dates from body วันที่: only — never RSS pubDate. Titles from HTML h1 or category listing fallback.",
+  "note": "Per-article HTML fetched 2026-08-25. Dates from body วันที่: only — never RSS pubDate. Titles from HTML h1 or category listing fallback. Phase 3B (2026-08-26): #30 and #56 promoted REVIEW→KEEP.",
   "items": [
     {
       "joomlaArticleId": 56,
       "title": "อบรม การเสริมสร้างความรู้ ความเข้าใจด้านสิ่งแวดล้อม ตามเกณฑ์การประเมินสำนักงานสีเขียว",
-      "publishDate": "2024-07-11",
+      "publishDate": "2024-07-09",
       "fiscalYear": 2567,
       "proposedType": "training / workshop",
-      "disposition": "REVIEW",
-      "notes": "Header date 11 ก.ค. vs body 9 ก.ค. 2567 — PO must pick authoritative date before KEEP"
+      "disposition": "KEEP",
+      "notes": "Phase 3A/3B: canonical event date 9 ก.ค. 2567 (body narrative). Raw fetch cache retains header 11 ก.ค. / 2024-07-11 — see source.dateResolution on ACT-2567-009.",
+      "dateResolution": {
+        "conflict": true,
+        "authority": "body narrative per GO-ACTIVITIES-MIGRATION-BATCHES.md (Phase 3A)",
+        "headerEventDateRaw": "11 กรกฎาคม 2567",
+        "headerPublishDate": "2024-07-11",
+        "bodyEventDateRaw": "9 กรกฎาคม 2567",
+        "bodyPublishDate": "2024-07-09",
+        "resolvedAt": "2026-08-26"
+      }
     },
     {
       "joomlaArticleId": 55,
@@ -83,8 +92,8 @@
       "publishDate": "2024-01-09",
       "fiscalYear": 2567,
       "proposedType": "meeting / committee",
-      "disposition": "REVIEW",
-      "notes": "PO 2026-08-25: KEEP separate from #59 unless source proves duplicate — not migrated in B2"
+      "disposition": "KEEP",
+      "notes": "Phase 3A/3B: distinct from published #59 (2567-01-09 vs 2568-01-29); migrated as ACT-2567-008 slug activity1"
     },
     {
       "joomlaArticleId": 29,
@@ -115,10 +124,10 @@
     }
   ],
   "summary": {
-    "KEEP": 8,
+    "KEEP": 10,
     "MERGE": 1,
     "EXCLUDE": 1,
-    "REVIEW": 2,
-    "note": "PO 2026-08-25: B2 migrated KEEP cohort (#55,#43,#39+#40,#36,#32,#31,#29,#28). #30 KEEP separate (not B2). #56 REVIEW. #21 EXCLUDE."
+    "REVIEW": 0,
+    "note": "PO 2026-08-25 B2 + Phase 3B 2026-08-26: B2 cohort (#55,#43,#39+#40,#36,#32,#31,#29,#28); B3 (#30,#56). #21 EXCLUDE."
   }
 }

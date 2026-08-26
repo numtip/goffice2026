@@ -9,6 +9,11 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  decodeHtml,
+  parseThaiDate,
+  parseBodyEventDate,
+} from './lib/joomla-activity-dates.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -16,34 +21,8 @@ const INVENTORY = join(ROOT, 'src/data/migration/joomla-activities-inventory.jso
 const OUT_DIR = join(ROOT, 'src/data/migration/joomla-article-fetch');
 const BASE = 'https://researchex.mju.ac.th/goffice';
 
-const THAI_MONTHS = {
-  มกราคม: 1,
-  กุมภาพันธ์: 2,
-  มีนาคม: 3,
-  เมษายน: 4,
-  พฤษภาคม: 5,
-  มิถุนายน: 6,
-  กรกฎาคม: 7,
-  สิงหาคม: 8,
-  กันยายน: 9,
-  ตุลาคม: 10,
-  พฤศจิกายน: 11,
-  ธันวาคม: 12,
-};
-
 const COHORT = [68, 67, 66, 65, 64, 63, 62, 60, 59, 57];
 const REVIEW = [56, 55, 43, 40, 39, 36, 32, 31, 30, 29, 28, 21];
-
-function decodeHtml(s) {
-  return s
-    .replace(/&quot;/g, '"')
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
-    .replace(/&nbsp;/g, ' ')
-    .trim();
-}
 
 function stripTags(html) {
   let t = decodeHtml(html);
@@ -52,31 +31,6 @@ function stripTags(html) {
     t = t.slice(0, openIdx);
   }
   return t.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-}
-
-function parseThaiDate(text) {
-  if (!text) return null;
-  const cleaned = decodeHtml(text).replace(/\s+/g, ' ');
-  const be = cleaned.match(/(\d{1,2})\s+([^\d\s]+)\s+(25\d{2})/);
-  if (be) {
-    const day = Number(be[1]);
-    const month = THAI_MONTHS[be[2]];
-    const yearBe = Number(be[3]);
-    if (!month) return { raw: cleaned, iso: null, fiscalYear: yearBe };
-    const yearCe = yearBe - 543;
-    const iso = `${yearCe}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-    return { raw: cleaned, iso, fiscalYear: yearBe };
-  }
-  const ce = cleaned.match(/(\d{1,2})\s+([^\d\s]+)\s+(20\d{2})/);
-  if (ce) {
-    const day = Number(ce[1]);
-    const month = THAI_MONTHS[ce[2]];
-    const yearCe = Number(ce[3]);
-    if (!month) return { raw: cleaned, iso: null, fiscalYear: yearCe + 543 };
-    const iso = `${yearCe}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-    return { raw: cleaned, iso, fiscalYear: yearCe + 543 };
-  }
-  return { raw: cleaned, iso: null, fiscalYear: null };
 }
 
 function parseArticleHtml(html, meta) {
@@ -122,6 +76,7 @@ function parseArticleHtml(html, meta) {
   }
 
   const lightGalleryFolders = [...mediaPaths].filter((p) => !p.includes('.'));
+  const bodyEventDate = parseBodyEventDate(bodyTh);
 
   return {
     joomlaArticleId: meta.joomlaArticleId,
@@ -131,6 +86,10 @@ function parseArticleHtml(html, meta) {
     eventDateRaw: eventDate?.raw ?? eventDateRaw,
     publishDate: eventDate?.iso ?? null,
     fiscalYear: eventDate?.fiscalYear ?? null,
+    headerEventDateRaw: eventDate?.raw ?? eventDateRaw ?? null,
+    headerPublishDate: eventDate?.iso ?? null,
+    bodyEventDateRaw: bodyEventDate?.raw ?? null,
+    bodyPublishDate: bodyEventDate?.iso ?? null,
     bodyTh: bodyTh.slice(0, 8000),
     mediaPaths: [...mediaPaths],
     lightGalleryFolders,
