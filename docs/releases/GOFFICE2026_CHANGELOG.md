@@ -7,6 +7,24 @@ For day-to-day development changes see also [CHANGELOG.md](../../CHANGELOG.md) a
 
 ---
 
+## [1.10.0] — 2026-08-26
+
+**Release title:** FY2569 publish batch — six activities live (VPS)
+**Branch:** `master`
+**Deployed commit:** `400105b8236a8fa4ec4e984ca46d748b47987fa4`
+**Previous production:** `v1.9.0` / `da34509`
+**Status:** `PRODUCTION_SUCCESS` · `V1.10.0_PRODUCTION_DEPLOYED`
+
+Publish-only promotion of six FY2569 canonical activities (ACT-2569-001..006) from accepted GitHub Pages SHA. Canonical state: **25 total / 25 published / 0 draft**. `relatedIndicators=[]` on all FY2569 records. EN translation pending. See [v1.10.0 deploy record](GOFFICE2026_RELEASE_v1.10.0_DEPLOY.md).
+
+### Deployment
+
+- Live: `/var/www/goffice/current` → `/var/www/goffice/releases/v1.10.0`
+- Rollback: `/var/www/goffice/releases/v1.9.0`
+- Record: [GOFFICE2026_RELEASE_v1.10.0_DEPLOY.md](./GOFFICE2026_RELEASE_v1.10.0_DEPLOY.md)
+
+---
+
 ## [1.9.0] — 2026-08-25
 
 **Release title:** Cat2–Cat7 FY2568 baselines + Cat3 FY2569 measures (VPS)
