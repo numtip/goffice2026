@@ -68,6 +68,23 @@ Preserve `joomlaArticleId`, `joomlaUrl`, `joomlaCategory` on every migrated reco
 
 ## 8. Authoring
 
+**New activities (FY2569+):**
+
+```bash
+npm run activity:new -- \
+  --title "ชื่อกิจกรรม" \
+  --date 2026-03-17 \
+  --year 2569 \
+  --slug ascii-slug \
+  --category meeting \
+  [--type committee] \
+  [--dry-run]
+```
+
+See `docs/blueprint/GOFFICE2026_ACTIVITY_NEW_CONTENT_WORKFLOW_V1.md` for publish sequence (draft → edit → `published` → regenerate search index → validate/build → PR).
+
+**Legacy stub (news or quick draft — prefer `activity:new` for activities):**
+
 ```bash
 npm run news:new -- --kind activity --title "..." --year 2569
 node scripts/validate-activities.mjs
