@@ -53,22 +53,21 @@ Review docs on master:
 
 **Do not start new implementation without PO scope.**
 
-1. **Merge PR #63** if not done — v1.10.0 deploy record + changelog (`docs/v1.10.0-deploy-record` @ `d61aeb5`, CI PASS).
-2. All runtime FY2569 publish + production work is **closed** for SHA `400105b`.
+All runtime FY2569 publish + production work is **closed** for SHA `400105b`.  
+Deploy record is on `master` (PR #63 → `75f2567`). Merge PR #64 to finalize daily close docs.
 
 ---
 
 ## Next Session — Pick ONE (PO-authorized)
 
-### A. Merge deploy record (housekeeping)
+### A. Merge daily close docs (housekeeping)
 
-PR [#63](https://github.com/numtip/goffice2026/pull/63) — docs-only, CI green. No runtime effect.
+PR [#64](https://github.com/numtip/goffice2026/pull/64) — daily report + handoff. No runtime effect.  
+(PR [#63](https://github.com/numtip/goffice2026/pull/63) deploy record — **merged** @ `75f2567`.)
 
 ### B. FY2569 EN translation
 
 Six activities · `translationPending=true` · preserve Thai as authority · no indicator mapping in same batch unless scoped.
-
-### C. FY2569 indicator / evidence decision
 
 Phase B audit: `SAFE_TO_MAP = 0`. Requires PO decision + possible schema work (`evidenceIds`, Cat7 `7.1` vs 3-part contract). **Do not auto-map.**
 
@@ -119,4 +118,4 @@ bash /home/rae_admin/joomla-greenoffice/ops/prod2/health-check.sh   # production
 ```
 
 Daily report: `docs/reports/GOFFICE2026_DAILY_REPORT_2026-08-26.md`  
-Deploy record (PR #63): `docs/releases/GOFFICE2026_RELEASE_v1.10.0_DEPLOY.md`
+Deploy record: `docs/releases/GOFFICE2026_RELEASE_v1.10.0_DEPLOY.md` (on `master` since PR #63 → `75f2567`)

@@ -22,7 +22,7 @@ Today closed the full FY2569 Facebook activity lifecycle on GOFFICE2026: Phase F
 
 **Headline milestones:** `PHASE_F_HISTORICAL_MAPPING_CLOSED` → `FY2569_DRAFT_CANONICAL_MERGE_CLOSED` → `FY2569_FB02_FB06_DRAFT_CANONICAL_MERGE_CLOSED` → `FY2569_PUBLISH_BATCH_PAGES_ACCEPTED` → `FY2569_PRODUCTION_PROMOTION_SUCCESS`
 
-**Outstanding docs PR:** [#63](https://github.com/numtip/goffice2026/pull/63) — v1.10.0 deploy record (CI PASS, not merged).
+**Housekeeping closed:** PR [#63](https://github.com/numtip/goffice2026/pull/63) merged → deploy record on `master` @ `75f2567`.
 
 ---
 
@@ -178,15 +178,13 @@ Deploy record (local/PR): `docs/releases/GOFFICE2026_RELEASE_v1.10.0_DEPLOY.md`
 
 ---
 
-### 8. Production deploy record PR (#63)
+### 8. Production deploy record (PR #63 — merged in housekeeping close)
 
 | Item | Value |
 |------|-------|
 | PR | [#63](https://github.com/numtip/goffice2026/pull/63) — docs-only |
-| Branch | `docs/v1.10.0-deploy-record` |
-| Head | `d61aeb5ab8db1bea3e0c4a194e47cb7fc249cb1a` |
-| CI | Quality gates **PASS** |
-| Merge status | **OPEN** — not on `origin/master` yet |
+| Merge SHA | `75f2567c37f5385c1cc63ca8cc81a82db5ec74a3` |
+| Record | `docs/releases/GOFFICE2026_RELEASE_v1.10.0_DEPLOY.md` on `master` |
 
 ---
 
@@ -198,7 +196,7 @@ Deploy record (local/PR): `docs/releases/GOFFICE2026_RELEASE_v1.10.0_DEPLOY.md`
 | [#60](https://github.com/numtip/goffice2026/pull/60) | FY2569 draft intake (4) | `65359c9` | 23 / 19 / 4 | `FY2569_DRAFT_CANONICAL_MERGE_CLOSED` |
 | [#61](https://github.com/numtip/goffice2026/pull/61) | FY2569 FB-02/06 drafts | `347905b` | 25 / 19 / 6 | `FY2569_FB02_FB06_DRAFT_CANONICAL_MERGE_CLOSED` |
 | [#62](https://github.com/numtip/goffice2026/pull/62) | Publish FY2569 001–006 | `400105b` | 25 / 25 / 0 | `FY2569_PUBLISH_BATCH_PAGES_ACCEPTED` |
-| [#63](https://github.com/numtip/goffice2026/pull/63) | v1.10.0 deploy record | — (open) | docs only | pending merge |
+| [#63](https://github.com/numtip/goffice2026/pull/63) | v1.10.0 deploy record | `75f2567` | docs on master | merged (housekeeping) |
 
 ---
 
@@ -237,7 +235,7 @@ All six public on GitHub Pages and production (TH + EN fallback routes).
 | `DEPLOY_TARGET=github-pages npm run validate` | PASS |
 | `npm run build` (production URL) | PASS — 502 pages |
 | PR CI (#59–#62) | PASS |
-| PR CI (#63) | PASS (docs-only, open) |
+| PR CI (#63, #64) | PASS (docs-only) |
 
 ---
 
@@ -272,7 +270,7 @@ docker run --rm -v /var/www:/var/www alpine:3.20 \
 - **SHA gate:** Production must match last **Pages-accepted** SHA; if `origin/master` advances, re-accept Pages before any production promotion.
 - **EN fallback:** six FY2569 EN routes show Thai authoritative content with translation-pending banner — by design.
 - **Indicator gaps:** Phase F leaves 8/19 historical UNRESOLVED; FY2569 has zero mapped indicators — intentional.
-- **Docs debt:** PR #63 deploy record not yet merged to `master`.
+- **Docs:** v1.10.0 deploy record merged via PR #63 (`75f2567`); daily close PR #64 pending merge.
 - **Hermes / AI-OS:** preferred future path is Telegram → Hermes → GitHub PR → CI → Pages → PO → exact SHA → VPS; do not invent parallel governance.
 
 ---
