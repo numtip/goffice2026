@@ -151,7 +151,9 @@
           "altEn": ""
         }
       ],
-      "relatedIndicators": [],
+      "relatedIndicators": [
+        "2.2.2"
+      ],
       "relatedLinks": [],
       "source": {
         "system": "joomla",
@@ -249,7 +251,9 @@
           "altEn": ""
         }
       ],
-      "relatedIndicators": [],
+      "relatedIndicators": [
+        "2.2.2"
+      ],
       "relatedLinks": [],
       "source": {
         "system": "joomla",
@@ -353,7 +357,9 @@
           "altEn": ""
         }
       ],
-      "relatedIndicators": [],
+      "relatedIndicators": [
+        "5.5.1"
+      ],
       "relatedLinks": [],
       "source": {
         "system": "joomla",
@@ -493,7 +499,9 @@
           "altEn": ""
         }
       ],
-      "relatedIndicators": [],
+      "relatedIndicators": [
+        "5.4.3"
+      ],
       "relatedLinks": [],
       "source": {
         "system": "joomla",
@@ -806,7 +814,9 @@
           "altEn": ""
         }
       ],
-      "relatedIndicators": [],
+      "relatedIndicators": [
+        "1.7.2"
+      ],
       "relatedLinks": [],
       "source": {
         "system": "joomla",
@@ -1211,7 +1221,9 @@
           "altEn": ""
         }
       ],
-      "relatedIndicators": [],
+      "relatedIndicators": [
+        "2.2.2"
+      ],
       "relatedLinks": [],
       "source": {
         "system": "joomla",
@@ -1303,7 +1315,9 @@
           "altEn": ""
         }
       ],
-      "relatedIndicators": [],
+      "relatedIndicators": [
+        "5.5.1"
+      ],
       "relatedLinks": [],
       "source": {
         "system": "joomla",
@@ -1455,7 +1469,9 @@
           "altEn": ""
         }
       ],
-      "relatedIndicators": [],
+      "relatedIndicators": [
+        "2.1.1"
+      ],
       "relatedLinks": [],
       "source": {
         "system": "joomla",
@@ -1535,7 +1551,9 @@
           "altEn": ""
         }
       ],
-      "relatedIndicators": [],
+      "relatedIndicators": [
+        "2.1.1"
+      ],
       "relatedLinks": [],
       "source": {
         "system": "joomla",
@@ -1633,7 +1651,9 @@
           "altEn": ""
         }
       ],
-      "relatedIndicators": [],
+      "relatedIndicators": [
+        "1.3.1"
+      ],
       "relatedLinks": [],
       "source": {
         "system": "joomla",
@@ -1935,7 +1955,9 @@
           "altEn": ""
         }
       ],
-      "relatedIndicators": [],
+      "relatedIndicators": [
+        "2.2.2"
+      ],
       "relatedLinks": [],
       "source": {
         "system": "joomla",
