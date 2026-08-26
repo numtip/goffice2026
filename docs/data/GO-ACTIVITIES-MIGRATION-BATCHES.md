@@ -1,7 +1,7 @@
 # GO-ACTIVITIES-MIGRATION-BATCHES
 
-**Date:** 2026-08-25 (updated after subagent audits)  
-**Status:** Round 1 — inventory + batch plan only (no mass migration)  
+**Date:** 2026-08-26 (Phase D reconciliation)
+**Status:** Joomla `project2` historical cohort **COMPLETE** (19 published). Legacy archives pending Phase A/B.
 **Authority:** ACTIVITY_CONTENT_CONTRACT_V1
 
 ---
@@ -11,9 +11,10 @@
 | Batch | Fiscal years | Source | Est. records | Gate |
 |-------|--------------|--------|--------------|------|
 | **B0** | FY2569 | OneDrive `Data2569`, action-plan actuals | 3 verified done + plan rows | PO-approved publish only |
-| **B1** | FY2568 | Joomla `project2` HTML listing | **22 articles** (IDs 21–68, gaps) | Disposition review complete |
-| **B2** | FY2567 | Joomla + legacy archives | Subset of B1 + Data2568 | After B1 validated |
-| **B3** | FY2566 and earlier | Joomla (e.g. ID 28 Big Cleaning 2023) | TBD | After B2 validated |
+| **B1** | FY2568 | Joomla `project2` HTML listing | **9 records** (IDs 57–68; #62→#63) | **COMPLETE** — merged PR #56 batch |
+| **B2** | FY2567/FY2566 | Joomla `project2` subset | **8 records** (#55,#43,#39+#40,#36,#32,#31,#29,#28) | **COMPLETE** |
+| **B3** | FY2567 edge | Joomla #30, #56 | **2 records** | **COMPLETE** — `B3_LIVE_ACCEPTANCE_PASS` |
+| **D-next** | Pre-2566 / legacy | Legacy filesystem (`746 activity_image`) | TBD | **BLOCKED** — requires Phase A audit + Phase B disposition |
 | **B-knowledge** | Mixed | Joomla `content1` (แหล่งเรียนรู้) | ~10 articles | Separate from activities — link to `/knowledge/` |
 
 ---
@@ -78,3 +79,20 @@ Do not merge into `project2` activity migration — reconcile with existing `/kn
 5. `node scripts/validate-activities.mjs` → `npm run build` → `npm run validate`
 
 **No auto-publish. No OneDrive writes.**
+
+---
+
+## Phase D closeout (2026-08-26)
+
+Reconciliation: `node scripts/reconcile-activities-phase-d.mjs`
+
+| Year (BE) | Source total | KEEP | MERGE | EXCLUDE | REVIEW | Migrated | Remaining eligible |
+|-----------|-------------|------|-------|---------|--------|----------|-------------------|
+| 2568 | 9 | 0* | 0* | 0 | 9* | 9 | 0 |
+| 2567 | 10 | 8 | 1 | 0 | 1* | 10 | 0 |
+| 2566 | 2 | 2 | 0 | 0 | 0 | 2 | 0 |
+| unknown | 1 | 0 | 0 | 1 | 0 | 0 | 0 |
+
+\*FY2568 articles were PO-approved via B1 while inventory still marked REVIEW; disposition file updated at Phase 2A for HTML-only cohort. #21 EXCLUDE (no event date, insufficient for contract).
+
+**Verdict:** `PHASE_D_HISTORICAL_BLOCKED` for Joomla `project2` — all dispositioned KEEP/MERGE records are canonical. Next historical intake = legacy archive audit, not FY2569 new content (B0).
