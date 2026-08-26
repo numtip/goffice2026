@@ -1,8 +1,84 @@
 {
   "version": "1.3.0",
   "updated": "2026-08-26",
-  "note": "Phase 2 B1+B2 + Phase 3B B3 — 19 publish-ready records migrated locally (B3: #30, #56). EN translation pending. Merged #62→#63, #40→#39. #56 canonical date from body narrative (header 2024-07-11 preserved in source.dateResolution). FY2569 Facebook draft intake (4 drafts, DRAFT CONTENT ONLY — NOT PUBLIC). PO display-title fixes on ACT-2569-001 and ACT-2569-003 (source verbatim in body + source.exactTitle).",
+  "note": "Phase 2 B1+B2 + Phase 3B B3 — 19 publish-ready records migrated locally (B3: #30, #56). EN translation pending. Merged #62→#63, #40→#39. #56 canonical date from body narrative (header 2024-07-11 preserved in source.dateResolution). FY2569 Facebook draft intake (4 drafts, DRAFT CONTENT ONLY — NOT PUBLIC). PO display-title fixes on ACT-2569-001 and ACT-2569-003 (source verbatim in body + source.exactTitle). FY2569 Facebook backlog drafts FB-02 + FB-06 (2 drafts, DRAFT CONTENT ONLY — NOT PUBLIC). PO-resolved numbering (Big Cleaning ครั้งที่ 1) and compost title/body.",
   "items": [
+    {
+      "id": "ACT-2569-006",
+      "slug": "compost-organic-waste-2569",
+      "kind": "activity",
+      "status": "draft",
+      "translationPending": true,
+      "titleTh": "กิจกรรมการทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์",
+      "titleEn": "",
+      "summaryTh": "เมื่อวันที่ 21 กรกฎาคม 2569 สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ ร่วมกับหน่วยงายภายในอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา ร่วมกิจกรรม Green Office รักษ์โลก \"การทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์\" ณ บริเวณด้านหลังอาคารเฉลิม…",
+      "summaryEn": "",
+      "bodyTh": "เมื่อวันที่ 21 กรกฎาคม 2569 สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ ร่วมกับหน่วยงายภายในอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา ร่วมกิจกรรม Green Office รักษ์โลก \"การทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์\" ณ บริเวณด้านหลังอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้",
+      "bodyEn": "",
+      "publishDate": "2026-07-21",
+      "fiscalYear": 2569,
+      "category": {
+        "id": "campaign",
+        "labelTh": "โครงการรณรงค์",
+        "labelEn": "Campaign"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/2569/compost-organic-waste-2569/01.jpg",
+          "altTh": "กิจกรรมการทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์ — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/2569/compost-organic-waste-2569/02.jpg",
+          "altTh": "กิจกรรมการทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์ — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/2569/compost-organic-waste-2569/03.jpg",
+          "altTh": "กิจกรรมการทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์ — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/2569/compost-organic-waste-2569/04.jpg",
+          "altTh": "กิจกรรมการทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์ — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/2569/compost-organic-waste-2569/05.jpg",
+          "altTh": "กิจกรรมการทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์ — ภาพที่ 5",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "manual",
+        "facebookShareUrl": "https://www.facebook.com/share/p/1BEkSTdbVT/",
+        "facebookCanonicalUrl": "https://www.facebook.com/GofficePhraThepbuilding/posts/pfbid0bkCvtVDnvLiGYyDGQn8R2XNUW1G9RVUE4SVfhTttk97RQyowByxBimZbfdeM99Zsl",
+        "facebookPostId": "1036833852504089",
+        "facebookPage": "GofficePhraThepbuilding",
+        "intakeId": "FY2569-FB-06",
+        "inspectedSource": "facebook-public-web",
+        "auditArtifact": "src/data/migration/facebook-fy2569-intake-audit.json",
+        "exactTitle": "การทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์",
+        "exactPostText": "การทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์\nเมื่อวันที่ 21 กรกฎาคม 2569 สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ ร่วมกับหน่วยงายภายในอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา ร่วมกิจกรรม Green Office รักษ์โลก \"การทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์\" ณ บริเวณด้านหลังอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้",
+        "displayTitleSource": "po-authority-fy2569-backlog",
+        "poResolutionNote": "PO supplied canonical title and body. Preserve หน่วยงาย verbatim per PO. Facebook exactPostText retained in source layer.",
+        "poAuthorityBody": "เมื่อวันที่ 21 กรกฎาคม 2569 สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ ร่วมกับหน่วยงายภายในอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา ร่วมกิจกรรม Green Office รักษ์โลก \"การทำปุ๋ยหมักฯ จากเศษวัสดุอินทรีย์\" ณ บริเวณด้านหลังอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้"
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-26",
+      "activityType": {
+        "id": "community",
+        "labelTh": "ชุมชน / รณรงค์",
+        "labelEn": "Community"
+      }
+    },
     {
       "id": "ACT-2569-004",
       "slug": "green-synergy-2569",
@@ -213,6 +289,81 @@
       },
       "contentOwner": "Green Office team",
       "updatedAt": "2026-08-26"
+    },
+    {
+      "id": "ACT-2569-005",
+      "slug": "big-cleaning-1-2569",
+      "kind": "activity",
+      "status": "draft",
+      "translationPending": true,
+      "titleTh": "กิจกรรม Big Cleaning Day ครั้งที่ 1 ประจำปี 2569",
+      "titleEn": "",
+      "summaryTh": "กิจกรรม Big Cleaning day ครั้งที่ 2 ประจำปี 2569\nเมื่อวันที่ 13 มีนาคม 2569 สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ จัดกิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2569 ร่วมกับกลุ่มสำนักงานอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุ…",
+      "summaryEn": "",
+      "bodyTh": "กิจกรรม Big Cleaning day ครั้งที่ 2 ประจำปี 2569\nเมื่อวันที่ 13 มีนาคม 2569 สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ จัดกิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2569 ร่วมกับกลุ่มสำนักงานอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้ รวมทั้งหมด 4 หน่วยงาน ได้แก่ สถาบันบริการตรวจสอบคุณภาพและมาตรฐานผลิตภัณฑ์, สถาบันรับรองระบบการผลิตผลิตภัณฑ์การเกษตร, หน่วยความเป็นเลิศด้านการปรับปรุงพันธุ์ข้าวมหาวิทยาลัยแม่โจ้ และสำนักวิจัยและส่งเสริมวิชาการการเกษตร ซึ่งจัดขึ้นภายใต้โครงการสำนักงานสีเขียว อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา(Green Office) เพื่อมุ่งเน้นการปรับปรุงสภาพแวดล้อมในการทำงานและส่งเสริมการอนุรักษ์พลังงาน โดยมี ผู้ช่วยศาสตราจารย์ ดร.ณัฐพล เลาห์รอดพันธุ์ ผู้อำนวยการสำนักวิจัยฯ เป็นประธาน และมีผู้ช่วยศาสตราจารย์ภานุวัฒน์ เมฆะ รองผู้อำนวยการสำนักวิจัยฯ ฝ่ายบริหาร เป็นผู้ชี้แจงนโยบาย พร้อมทั้งอธิบายหลักเกณฑ์การทำกิจกรรม 5ส เพื่อให้ผู้เข้าร่วมนำไปปฏิบัติได้อย่างถูกต้อง นอกจากนี้ยังมีกิจกรรม Big Cleaning Day ร่วมกันเก็บกวาดและทำความสะอาดบริเวณรอบอาคารสมเด็จพระเทพรัตนราชสุดา และพื้นที่ปฏิบัติงานของหน่วยงานตนเอง พร้อมทั้งดำเนินการคัดแยกขยะตามหลัก 3Rs (Reduce, Reuse, Recycle) และร่วมกันปิดไฟ และเครื่องใช้ไฟฟ้าที่ไม่ได้ใช้งาน ในช่วงเวลาพักกลางวัน ณ อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้",
+      "bodyEn": "",
+      "publishDate": "2026-03-13",
+      "fiscalYear": 2569,
+      "category": {
+        "id": "campaign",
+        "labelTh": "โครงการรณรงค์",
+        "labelEn": "Campaign"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/activities/2569/big-cleaning-1-2569/01.jpg",
+          "altTh": "กิจกรรม Big Cleaning Day ครั้งที่ 1 ประจำปี 2569 — ภาพที่ 1",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/2569/big-cleaning-1-2569/02.jpg",
+          "altTh": "กิจกรรม Big Cleaning Day ครั้งที่ 1 ประจำปี 2569 — ภาพที่ 2",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/2569/big-cleaning-1-2569/03.jpg",
+          "altTh": "กิจกรรม Big Cleaning Day ครั้งที่ 1 ประจำปี 2569 — ภาพที่ 3",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/2569/big-cleaning-1-2569/04.jpg",
+          "altTh": "กิจกรรม Big Cleaning Day ครั้งที่ 1 ประจำปี 2569 — ภาพที่ 4",
+          "altEn": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/activities/2569/big-cleaning-1-2569/05.jpg",
+          "altTh": "กิจกรรม Big Cleaning Day ครั้งที่ 1 ประจำปี 2569 — ภาพที่ 5",
+          "altEn": ""
+        }
+      ],
+      "relatedIndicators": [],
+      "relatedLinks": [],
+      "source": {
+        "system": "manual",
+        "facebookShareUrl": "https://www.facebook.com/share/p/1Jk6bSDKhg/",
+        "facebookCanonicalUrl": "https://www.facebook.com/GofficePhraThepbuilding/posts/pfbid0KU5s7Bu3KkLiHMMPFYjzmvW1fVYDW3EtdT2M67W4Cz2gBMZQjoUsN5Gjq6shzkucl",
+        "facebookPostId": "945806608273481",
+        "facebookPage": "GofficePhraThepbuilding",
+        "intakeId": "FY2569-FB-02",
+        "inspectedSource": "facebook-public-web",
+        "auditArtifact": "src/data/migration/facebook-fy2569-intake-audit.json",
+        "exactTitle": "กิจกรรม Big Cleaning day ครั้งที่ 2 ประจำปี 2569",
+        "exactPostText": "กิจกรรม Big Cleaning day ครั้งที่ 2 ประจำปี 2569\nเมื่อวันที่ 13 มีนาคม 2569 สำนักวิจัยฯ มหาวิทยาลัยแม่โจ้ จัดกิจกรรม Big Cleaning day ครั้งที่ 1 ประจำปี 2569 ร่วมกับกลุ่มสำนักงานอาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้ รวมทั้งหมด 4 หน่วยงาน ได้แก่ สถาบันบริการตรวจสอบคุณภาพและมาตรฐานผลิตภัณฑ์, สถาบันรับรองระบบการผลิตผลิตภัณฑ์การเกษตร, หน่วยความเป็นเลิศด้านการปรับปรุงพันธุ์ข้าวมหาวิทยาลัยแม่โจ้ และสำนักวิจัยและส่งเสริมวิชาการการเกษตร ซึ่งจัดขึ้นภายใต้โครงการสำนักงานสีเขียว อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา(Green Office) เพื่อมุ่งเน้นการปรับปรุงสภาพแวดล้อมในการทำงานและส่งเสริมการอนุรักษ์พลังงาน โดยมี ผู้ช่วยศาสตราจารย์ ดร.ณัฐพล เลาห์รอดพันธุ์ ผู้อำนวยการสำนักวิจัยฯ เป็นประธาน และมีผู้ช่วยศาสตราจารย์ภานุวัฒน์ เมฆะ รองผู้อำนวยการสำนักวิจัยฯ ฝ่ายบริหาร เป็นผู้ชี้แจงนโยบาย พร้อมทั้งอธิบายหลักเกณฑ์การทำกิจกรรม 5ส เพื่อให้ผู้เข้าร่วมนำไปปฏิบัติได้อย่างถูกต้อง นอกจากนี้ยังมีกิจกรรม Big Cleaning Day ร่วมกันเก็บกวาดและทำความสะอาดบริเวณรอบอาคารสมเด็จพระเทพรัตนราชสุดา และพื้นที่ปฏิบัติงานของหน่วยงานตนเอง พร้อมทั้งดำเนินการคัดแยกขยะตามหลัก 3Rs (Reduce, Reuse, Recycle) และร่วมกันปิดไฟ และเครื่องใช้ไฟฟ้าที่ไม่ได้ใช้งาน ในช่วงเวลาพักกลางวัน ณ อาคารเฉลิมพระเกียรติสมเด็จพระเทพรัตนราชสุดา มหาวิทยาลัยแม่โจ้",
+        "displayTitleSource": "po-authority-fy2569-backlog",
+        "poResolutionNote": "PO confirmed FY2569 Big Cleaning Day occurs twice (Mar + Nov per action plan). FB-02 event 2026-03-13 = ครั้งที่ 1. Display title uses PO authority; Facebook headline ครั้งที่ 2 preserved in source.exactTitle."
+      },
+      "contentOwner": "Green Office team",
+      "updatedAt": "2026-08-26",
+      "activityType": {
+        "id": "cleaning",
+        "labelTh": "Big Cleaning / 5ส",
+        "labelEn": "Cleaning / 5S"
+      }
     },
     {
       "id": "ACT-2569-001",
