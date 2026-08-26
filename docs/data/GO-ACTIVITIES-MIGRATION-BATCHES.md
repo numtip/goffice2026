@@ -72,11 +72,19 @@ Do not merge into `project2` activity migration — reconcile with existing `/kn
 
 ## Workflow
 
+**New FY2569+ manual content:**
+
+1. `npm run activity:new -- --title "..." --date YYYY-MM-DD --year 2569 --slug ascii-slug --category <id> [--dry-run]`
+2. Edit draft in `activities.json`; add media under `public/images/activities/{year}/{slug}/`
+3. `node scripts/validate-activities.mjs`
+4. Set `status: published` when PO approves → `node scripts/generate-search-index.mjs`
+5. `npm run build` → `DEPLOY_TARGET=github-pages npm run validate` → PR/CI
+
+**Historical Joomla migration (complete):**
+
 1. `node scripts/audit-joomla-activities.mjs` — refresh inventory
 2. PO assigns KEEP / MERGE / EXCLUDE per item
-3. `npm run news:new -- --kind activity --title "..." --year 2569`
-4. Fill TH/EN, `source.joomla*`, media under `public/`
-5. `node scripts/validate-activities.mjs` → `npm run build` → `npm run validate`
+3. B1/B2/B3 migrators (frozen — do not rerun without PO)
 
 **No auto-publish. No OneDrive writes.**
 
