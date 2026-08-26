@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import { reconcileActivitiesPhaseD } from './lib/reconcile-activities-phase-d.mjs';
 
 describe('Phase D — historical migration reconciliation', () => {
-  it('Joomla project2 KEEP/MERGE cohort fully migrated (19 published)', () => {
+  it('Joomla project2 KEEP/MERGE cohort fully migrated (25 published incl. FY2569 batch)', () => {
     const result = reconcileActivitiesPhaseD();
-    assert.equal(result.publishedCount, 19);
+    assert.equal(result.publishedCount, 25);
     assert.equal(result.unmigratedEligible.length, 0);
     assert.equal(result.verdict, 'PHASE_D_HISTORICAL_BLOCKED');
   });
