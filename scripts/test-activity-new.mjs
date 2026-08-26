@@ -160,7 +160,8 @@ describe('activity:new integration (temp fixtures)', () => {
     const after = readFileSync(activitiesPath, 'utf8');
     assert.equal(before, after);
     assert.equal(result.record.status, 'draft');
-    assert.equal(result.record.id, 'ACT-2569-001');
+    const expectedId = nextActivityId(JSON.parse(before).items, 2569);
+    assert.equal(result.record.id, expectedId);
   });
 
   it('creates valid draft that passes validate-activities when written', () => {
