@@ -18,7 +18,10 @@
  *   node scripts/extract-workbook.mjs --staging=<dir>
  *
  * Parser A (col6 template): water / electricity / fuel / paper.
- * Parser C (waste) & D (ghg): FY2569 currently WAITING_FOR_INPUT → no CSV.
+ * Parser C (waste): monthly total = general + hazardous total + recycle total
+ *   from sheet "ปริมาณขยะรายเดือน " (raw sheet only — not คำนวณ%).
+ * Parser D (ghg): monthly CF kgCO₂e from สรุปการคำนวณ ปี 2569 row รวม CF
+ *   columns → tCO₂e (/1000). CF display 0 with no activity = MISSING.
  */
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
@@ -70,6 +73,53 @@ function extractCol6(ws) {
   return out.sort((a, b) => a.month - b.month);
 }
 
+/**
+ * Parser C — waste total kg per month from raw monthly sheet.
+ * Rows (0-based): r3 general landfill, r11 hazardous total, r18 recycle total.
+ * Month columns c1..c12. A month is observed when general (r3) display is numeric.
+ */
+function extractWaste(ws) {
+  const out = [];
+  for (let c = 1; c <= 12; c++) {
+    const genDisp = displayOf(ws[XLSX.utils.encode_cell({ r: 3, c })]);
+    const gen = numOrNull(genDisp);
+    if (gen === null) continue; // month missing — never invent zero
+    const haz = numOrNull(displayOf(ws[XLSX.utils.encode_cell({ r: 11, c })])) ?? 0;
+    const rec = numOrNull(displayOf(ws[XLSX.utils.encode_cell({ r: 18, c })])) ?? 0;
+    out.push({ month: c, value: Math.round((gen + haz + rec) * 100) / 100 });
+  }
+  return out.sort((a, b) => a.month - b.month);
+}
+
+/**
+ * Parser D — GHG monthly CF from สรุปการคำนวณ ปี 2569.
+ * Row r25 (รวม) CF columns c7,c9,…c29 → kgCO₂e; convert to tCO₂e.
+ * CF display 0 is MISSING (formula zero for blank months), not measured zero.
+ */
+function extractGhg(wb) {
+  const sn = wb.SheetNames.find((s) => s.includes('ปี 2569'));
+  if (!sn) return { months: [], workbookTotal: null, sourceSheet: null };
+  const ws = wb.Sheets[sn];
+  const out = [];
+  let month = 1;
+  for (let c = 7; c <= 29; c += 2) {
+    const disp = displayOf(ws[XLSX.utils.encode_cell({ r: 25, c })]);
+    const kg = numOrNull(disp);
+    if (kg !== null && kg > 0) {
+      out.push({ month, value: Math.round((kg / 1000) * 1000) / 1000 });
+    }
+    month++;
+  }
+  const yearTotalKg = numOrNull(displayOf(ws[XLSX.utils.encode_cell({ r: 25, c: 30 })]));
+  const workbookTotal =
+    yearTotalKg !== null && yearTotalKg > 0
+      ? Math.round((yearTotalKg / 1000) * 100) / 100
+      : out.length > 0
+        ? Math.round(out.reduce((s, m) => s + m.value, 0) * 100) / 100
+        : null;
+  return { months: out.sort((a, b) => a.month - b.month), workbookTotal, sourceSheet: sn };
+}
+
 function parseArgs() {
   const args = process.argv.slice(2);
   const opts = {};
@@ -109,31 +159,46 @@ function main() {
     }
     const wb = XLSX.read(readFileSync(abs), { type: 'buffer', cellDates: false });
 
-    if (t.metric === 'waste' || t.metric === 'ghg') {
-      // Parser C/D — FY2569 canonical ranges are template copies today (WAITING_FOR_INPUT).
-      // When observations arrive, a future extractor stage writes breakdown CSVs.
-      console.log(`  ℹ ${t.fileName}: ${t.metric} FY2569 = WAITING_FOR_INPUT (no CSV emitted; missing months are never zero)`);
-      skipped++;
-      continue;
+    let months = [];
+    let workbookTotal = null;
+    let sourceSheet = '2569';
+
+    if (t.metric === 'waste') {
+      const wsName = wb.SheetNames.find((s) => s.includes('ปริมาณขยะรายเดือน'));
+      const ws = wsName ? wb.Sheets[wsName] : null;
+      if (!ws) {
+        console.log(`  ⚠ ${t.fileName}: waste monthly sheet not found`);
+        skipped++;
+        continue;
+      }
+      months = extractWaste(ws);
+      sourceSheet = wsName;
+      workbookTotal = months.length > 0
+        ? Math.round(months.reduce((s, m) => s + m.value, 0) * 100) / 100
+        : null;
+    } else if (t.metric === 'ghg') {
+      const ghg = extractGhg(wb);
+      months = ghg.months;
+      workbookTotal = ghg.workbookTotal;
+      sourceSheet = ghg.sourceSheet || 'สรุปการคำนวณ ปี 2569';
+    } else {
+      const ws = wb.Sheets['2569'];
+      if (!ws) {
+        console.log(`  ⚠ ${t.fileName}: sheet '2569' not found`);
+        skipped++;
+        continue;
+      }
+      months = extractCol6(ws);
+      // Workbook total from the 2569 sheet `รวม` row (row 17), display-aware.
+      const totalDisp = displayOf(ws[XLSX.utils.encode_cell({ r: 17, c: 6 })]);
+      workbookTotal = numOrNull(totalDisp);
     }
 
-    const ws = wb.Sheets['2569'];
-    if (!ws) {
-      console.log(`  ⚠ ${t.fileName}: sheet '2569' not found`);
-      skipped++;
-      continue;
-    }
-    const months = extractCol6(ws);
     if (months.length === 0) {
       console.log(`  ℹ ${t.fileName}: 0 observations → WAITING_FOR_INPUT (no CSV emitted)`);
       skipped++;
       continue;
     }
-
-    // Workbook total from the 2569 sheet `รวม` row (row 17), display-aware — used
-    // by the pipeline for reconciliation of the verified (CONFIRMED_XLSX) import.
-    const totalDisp = displayOf(ws[XLSX.utils.encode_cell({ r: 17, c: 6 })]);
-    const workbookTotal = numOrNull(totalDisp);
 
     const csvPath = join(IMPORT_DIR, `${t.metric}-${t.year}.csv`);
     const lines = ['month,value', ...months.map((m) => `${m.month},${m.value}`)];
@@ -142,7 +207,7 @@ function main() {
     registry[`${t.metric}-${t.year}`] = {
       workbookTotal,
       sourceWorkbook: t.workbookName,
-      sourceSheet: '2569',
+      sourceSheet,
       classification: 'CONFIRMED_XLSX',
       extractionScript: 'scripts/extract-workbook.mjs',
     };

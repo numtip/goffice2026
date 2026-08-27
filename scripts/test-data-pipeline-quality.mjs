@@ -83,14 +83,24 @@ describe('RC-1: current-year FY2569 data provenance (GO-DATA-3 states)', () => {
     assert.deepEqual(months, [1, 2, 3, 4, 5, 6, 7]);
   });
 
-  it('fuel/paper/waste/recycling_rate/ghg 2569 are WAITING_FOR_INPUT with empty months (template copies, never zero)', () => {
-    for (const metric of ['fuel', 'paper', 'waste', 'recycling_rate', 'ghg']) {
+  it('fuel/recycling_rate 2569 remain WAITING_FOR_INPUT; paper/waste/ghg are PUBLISHABLE_PARTIAL', () => {
+    for (const metric of ['fuel', 'recycling_rate']) {
       const data = readGenerated(`${metric}.json`);
       const y2569 = data.years['2569'];
       assert.equal(y2569.datasetState, 'WAITING_FOR_INPUT', `${metric} 2569 should be WAITING_FOR_INPUT`);
       assert.equal(y2569.months.length, 0, `${metric} 2569 must have no months (never zero-filled)`);
       assert.equal(y2569.latestDataMonth, null, `${metric} 2569 latestDataMonth must be null`);
       assert.equal(y2569.quality.valid, false, `${metric} 2569 must remain unverified while waiting`);
+    }
+    for (const metric of ['paper', 'waste', 'ghg']) {
+      const data = readGenerated(`${metric}.json`);
+      const y2569 = data.years['2569'];
+      assert.equal(y2569.datasetState, 'PUBLISHABLE_PARTIAL', `${metric} 2569 should be PUBLISHABLE_PARTIAL`);
+      assert.equal(y2569.months.length, 7, `${metric} 2569 Jan–Jul`);
+      assert.equal(y2569.latestDataMonth, 7);
+      assert.equal(y2569.dataClassification, 'CONFIRMED_XLSX');
+      assert.equal(y2569.quality.valid, true, `${metric} 2569 reconciled against workbook`);
+      assert.deepEqual(y2569.months.map((m) => m.month), [1, 2, 3, 4, 5, 6, 7]);
     }
   });
 
@@ -154,9 +164,8 @@ describe('RC-3: validator must surface unverified/invalid quality states, not si
   it('validateGenerated warns for every metric-year whose quality.valid is false', () => {
     const result = validateGenerated(false);
     const invalidWarnings = result.warnings.filter((w) => w.includes('quality flagged INVALID'));
-    // fuel, paper, waste, recycling_rate, ghg (2569 only) = 5 invalid year entries.
-    // water/energy 2569 are CONFIRMED_XLSX + reconciled (valid) since GO-DATA-3.
-    assert.equal(invalidWarnings.length, 5);
+    // fuel + recycling_rate 2569 still WAITING (invalid). paper/waste/ghg now CONFIRMED.
+    assert.equal(invalidWarnings.length, 2);
   });
 
   it('validateGenerated raises an ERROR when a %-unit metric declares aggregation "sum"', () => {
@@ -222,8 +231,8 @@ describe('RC-1/RC-4: executive KPI summary marks unverified data explicitly', ()
       assert.equal(entry.verified, expectedVerified, `${entry.metric} verified flag must mirror dataQuality.valid`);
     }
     const verified = summary.metrics.filter((e) => e.verified === true).map((e) => e.metric);
-    // GO-DATA-3: only the two CONFIRMED_XLSX workbook-backed partial years are verified.
-    assert.deepEqual(verified.sort(), ['energy', 'water']);
+    // GO-DATA-3: CONFIRMED_XLSX workbook-backed partial years (quality.valid=true).
+    assert.deepEqual(verified.sort(), ['energy', 'ghg', 'paper', 'waste', 'water']);
   });
 });
 

@@ -12,5 +12,26 @@
     "sourceSheet": "2569",
     "classification": "CONFIRMED_XLSX",
     "extractionScript": "scripts/extract-workbook.mjs"
+  },
+  "paper-2569": {
+    "workbookTotal": 1239.76,
+    "sourceWorkbook": "1.4paper.xlsx",
+    "sourceSheet": "2569",
+    "classification": "CONFIRMED_XLSX",
+    "extractionScript": "scripts/extract-workbook.mjs"
+  },
+  "waste-2569": {
+    "workbookTotal": 3909.7,
+    "sourceWorkbook": "1.5waste2026.xlsx",
+    "sourceSheet": "ปริมาณขยะรายเดือน ",
+    "classification": "CONFIRMED_XLSX",
+    "extractionScript": "scripts/extract-workbook.mjs"
+  },
+  "ghg-2569": {
+    "workbookTotal": 145.07,
+    "sourceWorkbook": "1.6GreenHouseGas2026.xlsx",
+    "sourceSheet": "สรุปการคำนวณ ปี 2569",
+    "classification": "CONFIRMED_XLSX",
+    "extractionScript": "scripts/extract-workbook.mjs"
   }
 }
