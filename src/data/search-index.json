@@ -4871,6 +4871,156 @@
       "fileType": "PDF"
     },
     {
+      "id": "ev-cat3-measures-electricity-fy2569",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "มาตรการควบคุมการใช้ไฟฟ้า ปี 2569 (3.2.1)",
+        "Cat3 FY2569 Electricity Conservation Measures Plan (3.2.1)"
+      ],
+      "context": [
+        "แผนมาตรการไฟฟ้า 2569 — หมวด 2 ของ DOCX ร่วม เป็นแผนเท่านั้น",
+        "FY2569 electricity conservation measures plan — section 2 of the shared measures DOCX (AC, lighting, IT equipment, copiers, refrigerators). Plan-only; one physical DOCX source."
+      ],
+      "keywords": [
+        "มาตรการควบคุมการใช้ไฟฟ้า ปี 2569 (3.2.1) แผนมาตรการไฟฟ้า 2569 — หมวด 2 ของ DOCX ร่วม เป็นแผนเท่านั้น การใช้ทรัพยากรและพลังงาน ev-cat3-measures-electricity-fy2569 3.2.1 2569",
+        "Cat3 FY2569 Electricity Conservation Measures Plan (3.2.1) FY2569 electricity conservation measures plan — section 2 of the shared measures DOCX (AC, lighting, IT equipment, copiers, refrigerators). Plan-only; one physical DOCX source. Resource and Energy Utilization ev-cat3-measures-electricity-fy2569 3.2.1 2569"
+      ],
+      "route": "/evidence/ev-cat3-measures-electricity-fy2569/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2569,
+      "fileType": null
+    },
+    {
+      "id": "ev-cat3-measures-fuel-fy2569",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "มาตรการประหยัดน้ำมันเชื้อเพลิง ปี 2569 (3.2.4)",
+        "Cat3 FY2569 Fuel Conservation Measures Plan (3.2.4)"
+      ],
+      "context": [
+        "แผนมาตรการน้ำมัน 2569 — หมวด 3 ของ DOCX ร่วม เป็นแผนเท่านั้น",
+        "FY2569 fuel conservation measures plan — section 3 of the shared measures DOCX (travel necessity, carpooling, speed limits, engine-off policy). Plan-only; vehicle logs deferred to B3-2."
+      ],
+      "keywords": [
+        "มาตรการประหยัดน้ำมันเชื้อเพลิง ปี 2569 (3.2.4) แผนมาตรการน้ำมัน 2569 — หมวด 3 ของ DOCX ร่วม เป็นแผนเท่านั้น การใช้ทรัพยากรและพลังงาน ev-cat3-measures-fuel-fy2569 3.2.4 2569",
+        "Cat3 FY2569 Fuel Conservation Measures Plan (3.2.4) FY2569 fuel conservation measures plan — section 3 of the shared measures DOCX (travel necessity, carpooling, speed limits, engine-off policy). Plan-only; vehicle logs deferred to B3-2. Resource and Energy Utilization ev-cat3-measures-fuel-fy2569 3.2.4 2569"
+      ],
+      "route": "/evidence/ev-cat3-measures-fuel-fy2569/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2569,
+      "fileType": null
+    },
+    {
+      "id": "ev-cat3-measures-meetings-fy2569",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "มาตรการประชุมและนิทรรศการสีเขียว ปี 2569 (3.4.1)",
+        "Cat3 FY2569 Green Meeting Measures Plan (3.4.1)"
+      ],
+      "context": [
+        "แผนมาตรการประชุมสีเขียว 2569 — หมวด 5 ของ DOCX ร่วม เป็นแผนเท่านั้น ไม่รวม 3.4.2",
+        "FY2569 green meeting/exhibition measures plan — section 5 of the shared measures DOCX. Plan-only — 3.4.2 execution not included."
+      ],
+      "keywords": [
+        "มาตรการประชุมและนิทรรศการสีเขียว ปี 2569 (3.4.1) แผนมาตรการประชุมสีเขียว 2569 — หมวด 5 ของ DOCX ร่วม เป็นแผนเท่านั้น ไม่รวม 3.4.2 การใช้ทรัพยากรและพลังงาน ev-cat3-measures-meetings-fy2569 3.4.1 2569",
+        "Cat3 FY2569 Green Meeting Measures Plan (3.4.1) FY2569 green meeting/exhibition measures plan — section 5 of the shared measures DOCX. Plan-only — 3.4.2 execution not included. Resource and Energy Utilization ev-cat3-measures-meetings-fy2569 3.4.1 2569"
+      ],
+      "route": "/evidence/ev-cat3-measures-meetings-fy2569/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2569,
+      "fileType": null
+    },
+    {
+      "id": "ev-cat3-measures-ink-fy2569",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "มาตรการหมึกพิมพ์และวัสดุสำนักงาน ปี 2569 (3.3.4)",
+        "Cat3 FY2569 Ink/Stationery Measures Plan (3.3.4)"
+      ],
+      "context": [
+        "แผนมาตรการหมึกพิมพ์/วัสดุ 2569 — หมวด 4.2–4.3 ของ DOCX ร่วม เป็นแผนเท่านั้น",
+        "FY2569 ink/stationery conservation measures plan — sections 4.2–4.3 of the shared measures DOCX. Plan-only."
+      ],
+      "keywords": [
+        "มาตรการหมึกพิมพ์และวัสดุสำนักงาน ปี 2569 (3.3.4) แผนมาตรการหมึกพิมพ์/วัสดุ 2569 — หมวด 4.2–4.3 ของ DOCX ร่วม เป็นแผนเท่านั้น การใช้ทรัพยากรและพลังงาน ev-cat3-measures-ink-fy2569 3.3.4 2569",
+        "Cat3 FY2569 Ink/Stationery Measures Plan (3.3.4) FY2569 ink/stationery conservation measures plan — sections 4.2–4.3 of the shared measures DOCX. Plan-only. Resource and Energy Utilization ev-cat3-measures-ink-fy2569 3.3.4 2569"
+      ],
+      "route": "/evidence/ev-cat3-measures-ink-fy2569/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2569,
+      "fileType": null
+    },
+    {
+      "id": "ev-cat3-measures-paper-fy2569",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "มาตรการใช้กระดาษ ปี 2569 (3.3.1)",
+        "Cat3 FY2569 Paper Conservation Measures Plan (3.3.1)"
+      ],
+      "context": [
+        "แผนมาตรการกระดาษ 2569 — หมวด 4.1 ของ DOCX ร่วม เป็นแผนเท่านั้น",
+        "FY2569 paper conservation measures plan — section 4.1 of the shared measures DOCX (reuse, double-side, e-meeting, e-doc circulation). Plan-only."
+      ],
+      "keywords": [
+        "มาตรการใช้กระดาษ ปี 2569 (3.3.1) แผนมาตรการกระดาษ 2569 — หมวด 4.1 ของ DOCX ร่วม เป็นแผนเท่านั้น การใช้ทรัพยากรและพลังงาน ev-cat3-measures-paper-fy2569 3.3.1 2569",
+        "Cat3 FY2569 Paper Conservation Measures Plan (3.3.1) FY2569 paper conservation measures plan — section 4.1 of the shared measures DOCX (reuse, double-side, e-meeting, e-doc circulation). Plan-only. Resource and Energy Utilization ev-cat3-measures-paper-fy2569 3.3.1 2569"
+      ],
+      "route": "/evidence/ev-cat3-measures-paper-fy2569/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2569,
+      "fileType": null
+    },
+    {
+      "id": "ev-cat3-measures-water-fy2569",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "มาตรการควบคุมการใช้น้ำ ปี 2569 (3.1.1)",
+        "Cat3 FY2569 Water Conservation Measures Plan (3.1.1)"
+      ],
+      "context": [
+        "แผนมาตรการใช้น้ำ 2569 — หมวด 1 ของ DOCX ร่วม เป็นแผนเท่านั้น หมวด 6–9 อยู่นอกขอบเขต Cat3",
+        "FY2569 water conservation measures plan — section 1 of the shared measures DOCX (nine office water-use measures). Plan-only; shared primary source with other Cat3 measure indicators. Sections 6–9 of the source document are OUT OF CAT3 scope."
+      ],
+      "keywords": [
+        "มาตรการควบคุมการใช้น้ำ ปี 2569 (3.1.1) แผนมาตรการใช้น้ำ 2569 — หมวด 1 ของ DOCX ร่วม เป็นแผนเท่านั้น หมวด 6–9 อยู่นอกขอบเขต Cat3 การใช้ทรัพยากรและพลังงาน ev-cat3-measures-water-fy2569 3.1.1 2569",
+        "Cat3 FY2569 Water Conservation Measures Plan (3.1.1) FY2569 water conservation measures plan — section 1 of the shared measures DOCX (nine office water-use measures). Plan-only; shared primary source with other Cat3 measure indicators. Sections 6–9 of the source document are OUT OF CAT3 scope. Resource and Energy Utilization ev-cat3-measures-water-fy2569 3.1.1 2569"
+      ],
+      "route": "/evidence/ev-cat3-measures-water-fy2569/",
+      "routeKind": "page",
+      "category": [
+        "การใช้ทรัพยากรและพลังงาน",
+        "Resource and Energy Utilization"
+      ],
+      "year": 2569,
+      "fileType": null
+    },
+    {
       "id": "ev-cat4-data-waste-trend-2566-fy2568",
       "section": "evidence",
       "type": "evidence",

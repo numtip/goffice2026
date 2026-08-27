@@ -172,8 +172,9 @@ function phaseCategory23() {
   const cat2 = runScript('validate-category2-contracts.mjs');
   const cat2Fy2569 = runScript('validate-category2-fy2569.mjs');
   const cat3 = runScript('validate-category3-contracts.mjs');
+  const cat3Fy2569 = runScript('validate-category3-fy2569.mjs');
   const cat4 = runScript('validate-category4-contracts.mjs');
-  return { ok: cat2.ok && cat2Fy2569.ok && cat3.ok && cat4.ok };
+  return { ok: cat2.ok && cat2Fy2569.ok && cat3.ok && cat3Fy2569.ok && cat4.ok };
 }
 
 // ── Phase 1.88: Category 5 + 6 Canonical Contracts ────────────

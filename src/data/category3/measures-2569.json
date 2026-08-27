@@ -1,0 +1,244 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "measures-2569",
+  "updated": "2026-08-27",
+  "year": 2569,
+  "status": "current-year-overlay",
+  "governance": "GOFFICE2026_DASHBOARD_PROGRESS_BLUEPRINT_V1",
+  "note": "D5C B3-1 Cat3 FY2569 measures plan intake from OneDrive Data2569/Cat3. One physical DOCX source (PDF render copy on disk for reference only). Sections 1–5 map to six measure indicators only. Sections 6–9 are explicitly OUT OF CAT3 scope (waste/wastewater/emergency/workplace — Cat4/Cat5). Plan-only — no execution, measurement, compliance survey, or PASS claims. Track B KPI workbooks and SharePoint exports excluded (B3-2 deferred). No FY2568 carry-forward.",
+  "sources": [
+    {
+      "ref": "3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+      "role": "primary-measures-plan",
+      "inspection": "content-verified-sections",
+      "disposition": "available-unverified",
+      "renderCopyRef": "3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569_pdf.pdf",
+      "renderCopyNote": "PDF export for human reading only — not a separate evidence artifact."
+    }
+  ],
+  "outOfScopeSections": [
+    {
+      "section": "6",
+      "titleTh": "มาตรการการจัดการขยะ และการลดขยะที่ต้นทาง",
+      "reason": "Cat4 waste management — not Cat3 criteria"
+    },
+    {
+      "section": "7",
+      "titleTh": "มาตรการการจัดการน้ำเสียในสำนักงาน",
+      "reason": "Cat4 wastewater — not Cat3 criteria"
+    },
+    {
+      "section": "8",
+      "titleTh": "มาตรการการเตรียมความพร้อมและตอบสนองต่อสภาวะฉุกเฉิน",
+      "reason": "Cat5 safety/emergency — not Cat3 criteria"
+    },
+    {
+      "section": "9",
+      "titleTh": "มาตรการการจัดสภาพแวดล้อมการทำงานให้น่าอยู่ น่าทำงานและปลอดภัย",
+      "reason": "Cat5 indoor environment — not Cat3 criteria"
+    }
+  ],
+  "excludedTracks": [
+    {
+      "code": "TRACK_B_KPI",
+      "note": "water-2569.csv, energy-2569.csv, and operational workbooks remain dashboard-only per PO — not mapped to 3.1.2/3.2.2/3.2.5/3.3.2."
+    },
+    {
+      "code": "SHAREPOINT_B3_2",
+      "note": "SharePoint export rerun deferred to B3-2."
+    }
+  ],
+  "records": [
+    {
+      "id": "measures-water-fy2569",
+      "year": 2569,
+      "indicatorCodes": ["3.1.1"],
+      "issueCodes": ["3.1"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-measures-water-fy2569"],
+      "sourceRef": "3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+      "manifestSha256": "5f3a72e532041d46b6c994db3c9f58e1dc2daff54665b33ba47e1919b0b45b12",
+      "sourceSection": {
+        "section": "1",
+        "titleTh": "มาตรการควบคุมการใช้น้ำ",
+        "basis": "Section 1 lists nine office water conservation measures (leak checks, faucet discipline, reuse, signage)."
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "D5C B3-1: content-verified section 1 from OneDrive measures DOCX. Plan-only — no verified execution or compliance survey for FY2569."
+      },
+      "intakeVerification": "available_unverified",
+      "availability": "content-verified",
+      "kind": "waterMeasuresPlan",
+      "labelTh": "มาตรการควบคุมการใช้น้ำ ปี 2569 (3.1.1)",
+      "labelEn": "FY2569 water conservation measures plan (3.1.1)"
+    },
+    {
+      "id": "measures-electricity-fy2569",
+      "year": 2569,
+      "indicatorCodes": ["3.2.1"],
+      "issueCodes": ["3.2"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-measures-electricity-fy2569"],
+      "sourceRef": "3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+      "manifestSha256": "5f3a72e532041d46b6c994db3c9f58e1dc2daff54665b33ba47e1919b0b45b12",
+      "sourceSection": {
+        "section": "2",
+        "titleTh": "มาตรการการควบคุมการใช้ไฟฟ้า",
+        "basis": "Section 2 covers AC scheduling (25°C, ber 5), lighting, computers/printers, copiers, refrigerators — electricity conservation measures."
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "D5C B3-1: content-verified section 2 from shared measures DOCX. Plan-only — no verified installation/compliance records."
+      },
+      "intakeVerification": "available_unverified",
+      "availability": "content-verified",
+      "kind": "electricityMeasuresPlan",
+      "labelTh": "มาตรการควบคุมการใช้ไฟฟ้า ปี 2569 (3.2.1)",
+      "labelEn": "FY2569 electricity conservation measures plan (3.2.1)"
+    },
+    {
+      "id": "measures-fuel-fy2569",
+      "year": 2569,
+      "indicatorCodes": ["3.2.4"],
+      "issueCodes": ["3.2"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-measures-fuel-fy2569"],
+      "sourceRef": "3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+      "manifestSha256": "5f3a72e532041d46b6c994db3c9f58e1dc2daff54665b33ba47e1919b0b45b12",
+      "sourceSection": {
+        "section": "3",
+        "titleTh": "มาตรการประหยัดน้ำมันเชื้อเพลิง",
+        "basis": "Section 3 lists travel/fleet fuel conservation measures (vehicle necessity, carpooling, speed limit, engine-off policy)."
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "D5C B3-1: content-verified section 3 from shared measures DOCX. Plan-only — vehicle log scans not on OneDrive; SharePoint deferred."
+      },
+      "intakeVerification": "available_unverified",
+      "availability": "content-verified",
+      "kind": "fuelMeasuresPlan",
+      "labelTh": "มาตรการประหยัดน้ำมันเชื้อเพลิง ปี 2569 (3.2.4)",
+      "labelEn": "FY2569 fuel conservation measures plan (3.2.4)"
+    },
+    {
+      "id": "measures-paper-fy2569",
+      "year": 2569,
+      "indicatorCodes": ["3.3.1"],
+      "issueCodes": ["3.3"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-measures-paper-fy2569"],
+      "sourceRef": "3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+      "manifestSha256": "5f3a72e532041d46b6c994db3c9f58e1dc2daff54665b33ba47e1919b0b45b12",
+      "sourceSection": {
+        "section": "4.1",
+        "titleTh": "กระดาษ (ภายใต้มาตรการการใช้ทรัพยากรอื่นๆ)",
+        "basis": "Section 4.1 lists paper reuse, double-side printing, e-meeting, e-document circulation, Google Forms, e-doc campaigns."
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "D5C B3-1: content-verified section 4.1 from shared measures DOCX. Plan-only — no consumption data or compliance survey."
+      },
+      "intakeVerification": "available_unverified",
+      "availability": "content-verified",
+      "kind": "paperMeasuresPlan",
+      "labelTh": "มาตรการใช้กระดาษ ปี 2569 (3.3.1)",
+      "labelEn": "FY2569 paper conservation measures plan (3.3.1)"
+    },
+    {
+      "id": "measures-ink-fy2569",
+      "year": 2569,
+      "indicatorCodes": ["3.3.4"],
+      "issueCodes": ["3.3"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-measures-ink-fy2569"],
+      "sourceRef": "3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+      "manifestSha256": "5f3a72e532041d46b6c994db3c9f58e1dc2daff54665b33ba47e1919b0b45b12",
+      "sourceSection": {
+        "section": "4.2-4.3",
+        "titleTh": "หมึกพิมพ์ / อุปกรณ์เครื่องเขียน / วัสดุสำนักงาน",
+        "basis": "Sections 4.2–4.3 cover shared printers/supplies, toner discipline, and office equipment conservation."
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "D5C B3-1: content-verified sections 4.2–4.3 from shared measures DOCX. Plan-only — no compliance survey."
+      },
+      "intakeVerification": "available_unverified",
+      "availability": "content-verified",
+      "kind": "inkStationeryMeasuresPlan",
+      "labelTh": "มาตรการหมึกพิมพ์และวัสดุสำนักงาน ปี 2569 (3.3.4)",
+      "labelEn": "FY2569 ink/stationery measures plan (3.3.4)"
+    },
+    {
+      "id": "measures-meetings-fy2569",
+      "year": 2569,
+      "indicatorCodes": ["3.4.1"],
+      "issueCodes": ["3.4"],
+      "categoryCode": "cat3",
+      "evidenceIds": ["ev-cat3-measures-meetings-fy2569"],
+      "sourceRef": "3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+      "manifestSha256": "5f3a72e532041d46b6c994db3c9f58e1dc2daff54665b33ba47e1919b0b45b12",
+      "sourceSection": {
+        "section": "5",
+        "titleTh": "มาตรการประชุมและการจัดนิทรรศการ",
+        "basis": "Section 5 lists green-meeting measures: online invites, screens vs handouts, double-side materials, appropriate room sizing, lighting/AC discipline."
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "D5C B3-1: content-verified section 5 from shared measures DOCX. Plan-only — 3.4.2 execution evidence not included."
+      },
+      "intakeVerification": "available_unverified",
+      "availability": "content-verified",
+      "kind": "greenMeetingMeasuresPlan",
+      "labelTh": "มาตรการประชุมและนิทรรศการสีเขียว ปี 2569 (3.4.1)",
+      "labelEn": "FY2569 green meeting measures plan (3.4.1)"
+    }
+  ],
+  "gaps": [
+    {
+      "indicator": "3.1.2",
+      "status": "UNAVAILABLE",
+      "note": "Track B KPI/workbooks excluded per PO — no FY2569 criteria data/analysis artifact intake."
+    },
+    {
+      "indicator": "3.1.3",
+      "status": "UNAVAILABLE",
+      "note": "No FY2569 behavioral compliance survey on OneDrive or SharePoint export."
+    },
+    {
+      "indicator": "3.2.2",
+      "status": "UNAVAILABLE",
+      "note": "Track B partial energy CSV/workbook excluded — requires full form 3.2(1) with target/analysis narrative."
+    },
+    {
+      "indicator": "3.2.3",
+      "status": "UNAVAILABLE",
+      "note": "No FY2569 electricity compliance survey."
+    },
+    {
+      "indicator": "3.2.5",
+      "status": "UNAVAILABLE",
+      "note": "FY2569 fuel workbook empty — no data artifact."
+    },
+    {
+      "indicator": "3.3.2",
+      "status": "UNAVAILABLE",
+      "note": "FY2569 paper workbook empty — Track B excluded."
+    },
+    {
+      "indicator": "3.3.3",
+      "status": "UNAVAILABLE",
+      "note": "No FY2569 paper compliance survey."
+    },
+    {
+      "indicator": "3.3.5",
+      "status": "UNAVAILABLE",
+      "note": "No FY2569 ink/stationery compliance survey."
+    },
+    {
+      "indicator": "3.4.2",
+      "status": "UNAVAILABLE",
+      "note": "Section 5 plan-only — no verified eco-material meeting/exhibition execution records."
+    }
+  ]
+}
