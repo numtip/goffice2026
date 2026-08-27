@@ -5,19 +5,19 @@
   "year": 2569,
   "status": "current-year-overlay",
   "governance": "GOFFICE2026_DASHBOARD_PROGRESS_BLUEPRINT_V1",
-  "note": "D5C B2 Cat2 FY2569 feedback intake gap contract. Data2569/Cat2/2.2/2.2.4 empty. Action-plan rows 2.6/2.7 (canonical 2.2.4) have no actualMonths. No FY2569 feedback channel or improvement report migrated.",
+  "note": "FY2569 Cat2 feedback gap contract. Source now has 2.2.4 guideline PDF but it is byte-identical to FY2568 (hash 2ded651a…) — NEEDS_DISPOSITION; not ingested as FY2569 currency. No FY2569 improvement-loop / intake log found. 2.2.3 folder artifact is satisfaction (not understanding %) and cloud-offline.",
   "sources": [],
   "records": [],
   "gaps": [
     {
       "indicator": "2.2.4",
       "status": "MISSING",
-      "note": "Data2569/Cat2/2.2/2.2.4 folder empty. Need channel establishment artifact + management summary/improvement loop for 2.2.4."
+      "note": "Data2569 has 2.2.4-แนวทางการจัดการข้อร้องเรียน.pdf but SHA-256 matches FY2568 published file exactly. Held NEEDS_DISPOSITION — folder placement alone ≠ FY2569 currency. Need 2569-dated channel artifact + improvement loop before intake."
     },
     {
       "indicator": "2.2.3",
       "status": "MISSING_DEDICATED_EVIDENCE",
-      "note": "Declared in feedback contract for cross-domain gap visibility per Cat2 convention."
+      "note": "Declared in feedback contract for cross-domain gap visibility. Source folder file is Big Cleaning Day satisfaction survey — PO disposition required before any mapping to understanding %."
     }
   ]
 }

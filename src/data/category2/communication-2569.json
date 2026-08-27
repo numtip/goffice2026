@@ -5,14 +5,38 @@
   "year": 2569,
   "status": "current-year-overlay",
   "governance": "GOFFICE2026_DASHBOARD_PROGRESS_BLUEPRINT_V1",
-  "note": "D5C B2 Cat2 FY2569 communication intake. B2 content audit: 2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx is misnamed — body title is แผนการสื่อสารด้านสิ่งแวดล้อมประจำปี 2569 with 10 topics, channels, frequencies, and per-channel responsible persons (remapped from erroneous B1 2.1.1 binding). Plan-only — signature date fields are placeholders; no verified campaign execution records. ACT-2569-* remain quarantined for 2.2.2.",
+  "note": "FY2569 Cat2 communication delta. Retains misfiled docx as content-verified 2.2.1 plan. Adds preferred form PDF 69-2.2.1(1), policy/minutes supporting PDFs, and 2.2.2 channel-satisfaction survey (52 คน). Skipped: duplicate 69-2.2.2(2)=same hash as 2.2.1(1) plan; FY2568 Cat3 measures PDF misfiled under 2.2.1(1)-3; offline campaign/channels/targets/committee. ACT-2569-* remain quarantined. No progress/score inference.",
   "sources": [
     {
       "ref": "2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx",
-      "role": "primary-comm-plan",
+      "role": "primary-comm-plan-docx",
       "inspection": "content-verified",
       "disposition": "available-unverified",
-      "note": "Physically under 2.1.1 folder with training filename; content authority is FY2569 communication plan (form 2.2(1) equivalent narrative)."
+      "note": "Physically under 2.1.1 folder with training filename; content authority is FY2569 communication plan."
+    },
+    {
+      "ref": "2.2/2.2.1/69-2.2.1(1) แผนสื่อสารสิ่งแวดล้อม.pdf",
+      "role": "preferred-form-2.2(1)-pdf",
+      "inspection": "structural-only",
+      "disposition": "available-unverified"
+    },
+    {
+      "ref": "2.2/2.2.1/2.2.1(1)-1 นโยบายสำนักงานสีเขียวอาคารพระเทพรัตนราชสุดา ประจำปี พ.ศ. 2569.pdf",
+      "role": "policy-supporting",
+      "inspection": "structural-only",
+      "disposition": "available-unverified"
+    },
+    {
+      "ref": "2.2/2.2.1/2.2.1(1)-2 มติการกำหนดนโยบายสิ่งแวดล้อม 2569.pdf",
+      "role": "minutes-supporting",
+      "inspection": "structural-only",
+      "disposition": "available-unverified"
+    },
+    {
+      "ref": "2.2/2.2.2/69-2.2.2(3) แบบสำรวจประเมินความพึงพอใจด้านการสื่อสาร 52คน.pdf",
+      "role": "channel-satisfaction-survey",
+      "inspection": "structural-only",
+      "disposition": "available-unverified"
     }
   ],
   "records": [
@@ -27,32 +51,113 @@
       "manifestSha256": "e44be974ba66bc9288d2ac0b9aa1eda130c3b974c1c98050b86af715a7c7fa7a",
       "verification": {
         "status": "pending",
-        "basis": "B2 content-verified: document title แผนการสื่อสารด้านสิ่งแวดล้อมประจำปี 2569 lists 10 communication topics, channels (Line/Facebook/Website/board/meeting), frequencies, internal/external targets, and named responsible persons plus org chart for channel owners. Misfiled under 2.1.1 training path — remapped to 2.2.1. Plan-only; placeholder signature dates; no verified posting/minutes."
+        "basis": "B2 content-verified: document title แผนการสื่อสารด้านสิ่งแวดล้อมประจำปี 2569. Misfiled under 2.1.1. Plan-only; placeholder signature dates."
       },
       "intakeVerification": "available_unverified",
       "availability": "content-verified",
       "kind": "communicationPlan",
-      "labelTh": "แผนการสื่อสารด้านสิ่งแวดล้อม 2569 (2.2.1)",
-      "labelEn": "FY2569 environmental communication plan (2.2.1)"
+      "labelTh": "แผนการสื่อสารด้านสิ่งแวดล้อม 2569 (docx)",
+      "labelEn": "FY2569 environmental communication plan (docx)"
+    },
+    {
+      "id": "comm-plan-form-pdf-fy2569",
+      "year": 2569,
+      "indicatorCodes": ["2.2.1"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-comm-plan-form-pdf-fy2569"],
+      "sourceRef": "2.2/2.2.1/69-2.2.1(1) แผนสื่อสารสิ่งแวดล้อม.pdf",
+      "manifestSha256": "1e4f396788fad13b4b9c91c98e248d1d761c84dd826d6f27b14f8d8bdd2c614d",
+      "verification": {
+        "status": "pending",
+        "basis": "Form 2.2(1) PDF preferred path under 2.2.1. Structural intake; may supersede or parallel misfiled docx after PO preference. Note: 69-2.2.2(2) is byte-identical duplicate — not ingested separately."
+      },
+      "intakeVerification": "available_unverified",
+      "availability": "structural-only",
+      "kind": "communicationPlanForm",
+      "labelTh": "แบบฟอร์ม 2.2(1) แผนสื่อสารสิ่งแวดล้อม PDF",
+      "labelEn": "Form 2.2(1) communication plan PDF"
+    },
+    {
+      "id": "comm-policy-supporting-fy2569",
+      "year": 2569,
+      "indicatorCodes": ["2.2.1"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-comm-policy-supporting-fy2569"],
+      "sourceRef": "2.2/2.2.1/2.2.1(1)-1 นโยบายสำนักงานสีเขียวอาคารพระเทพรัตนราชสุดา ประจำปี พ.ศ. 2569.pdf",
+      "manifestSha256": "1c409f42c77551669252c5f0d23fe9fb2b24443e291d6103aa3a98b19b0cc8ae",
+      "verification": {
+        "status": "pending",
+        "basis": "Policy PDF under 2.2.1(1) folder — supporting topic/frequency context. Scan with thin OCR; structural intake only."
+      },
+      "intakeVerification": "available_unverified",
+      "availability": "structural-only",
+      "kind": "policySupporting",
+      "labelTh": "นโยบายสำนักงานสีเขียว 2569 (สนับสนุน 2.2.1)",
+      "labelEn": "FY2569 green office policy (2.2.1 supporting)"
+    },
+    {
+      "id": "comm-minutes-supporting-fy2569",
+      "year": 2569,
+      "indicatorCodes": ["2.2.1"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-comm-minutes-supporting-fy2569"],
+      "sourceRef": "2.2/2.2.1/2.2.1(1)-2 มติการกำหนดนโยบายสิ่งแวดล้อม 2569.pdf",
+      "manifestSha256": "a9779c98929d14069b4a24cd0768c3d3d5ed7d535dcf65bd0b31402b501e019a",
+      "verification": {
+        "status": "pending",
+        "basis": "Meeting minutes PDF — supporting 2.2.1. Scan with 0 extractable text; structural intake only."
+      },
+      "intakeVerification": "available_unverified",
+      "availability": "structural-only",
+      "kind": "minutesSupporting",
+      "labelTh": "มตินโยบายสิ่งแวดล้อม 2569 (สนับสนุน 2.2.1)",
+      "labelEn": "FY2569 policy minutes (2.2.1 supporting)"
+    },
+    {
+      "id": "comm-channel-satisfaction-fy2569",
+      "year": 2569,
+      "indicatorCodes": ["2.2.2"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-comm-channel-satisfaction-fy2569"],
+      "sourceRef": "2.2/2.2.2/69-2.2.2(3) แบบสำรวจประเมินความพึงพอใจด้านการสื่อสาร 52คน.pdf",
+      "manifestSha256": "3e4d54a9eda0dc297b3131903adb6d9ba822921f133740fcfe11e25edbfc18ca",
+      "verification": {
+        "status": "pending",
+        "basis": "Channel satisfaction survey (52 respondents). Mapped to 2.2.2 secondary only — NOT auto-mapped to 2.2.3 understanding %. Campaign execution PDF 69-2.2.2(1) deferred (cloud-offline)."
+      },
+      "intakeVerification": "available_unverified",
+      "availability": "structural-only",
+      "kind": "channelSatisfactionSurvey",
+      "labelTh": "แบบสำรวจความพึงพอใจช่องทางสื่อสาร 52 คน",
+      "labelEn": "Channel satisfaction survey (52 respondents)"
     }
   ],
   "gaps": [
     {
+      "indicator": "2.2.1",
+      "status": "PARTIAL",
+      "note": "Plan docx + form PDF + policy/minutes supporting ingested. Channels/targets/committee PDFs deferred (cloud-offline). 2.2.1(1)-3 measures PDF is FY2568 Cat3 byte-identical — held NEEDS_DISPOSITION, not mapped to Cat2."
+    },
+    {
       "indicator": "2.2.2",
-      "status": "MISSING",
-      "note": "No FY2569 campaign/session/posting records in Data2569 Cat2/2.2/2.2.2 (empty). ACT-2569-004/005 SUPPORTED for 2.2.2 remain quarantined — no PO-confirmed mapping."
+      "status": "PARTIAL",
+      "note": "Satisfaction survey ingested as secondary. Primary campaign/posting PDF deferred (cloud-offline). Duplicate plan PDF 69-2.2.2(2) not ingested. ACT-2569-004/005 remain quarantined."
     },
     {
       "indicator": "2.2.3",
       "status": "MISSING_DEDICATED_EVIDENCE",
-      "note": "PO decision: no questionnaire/respondent/percentage artifact in Data2569 or repo."
+      "note": "PO decision: no dedicated understanding-% artifact confirmed. Folder holds Big Cleaning satisfaction survey (NEEDS_DISPOSITION + offline)."
     }
   ],
   "crossLinks": [
     {
       "from": "2.2.1",
       "to": "2.2.2",
-      "reason": "Communication plan defines topics/channels; execution evidence for campaigns not yet migrated"
+      "reason": "Communication plan defines topics/channels; campaign execution still incomplete (offline primary PDF)"
     }
   ]
 }
