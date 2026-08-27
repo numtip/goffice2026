@@ -10,6 +10,7 @@ import { categoryImageUrl, categoryImageDimensions } from '../../../utils/wow2-i
 import { getBaselineCategoryCoverage, getSourceTypeCounts, FY2568_BASELINE_YEAR } from '../../../data/criteria/baseline-2568';
 import Cat1ManagementCycle from '../../../components/categories/Cat1ManagementCycle.astro';
 import Cat1DomainSnapshot from '../../../components/categories/Cat1DomainSnapshot.astro';
+import Cat1ProgressSection from '../../../components/categories/Cat1ProgressSection.astro';
 import Cat2ManagementCycle from '../../../components/categories/Cat2ManagementCycle.astro';
 import Cat2DomainSnapshot from '../../../components/categories/Cat2DomainSnapshot.astro';
 import Cat3ManagementCycle from '../../../components/categories/Cat3ManagementCycle.astro';
@@ -236,21 +237,52 @@ function localizedUrl(path: string): string {
       </div>
     )}
 
-    <!-- FY2568 / FY2569 Comparison Panel -->
+    <!-- FY2569 (current year) vs FY2568 (historical reference) -->
     {baselineCoverage && (
-      <section class={`mb-8 rounded-xl border p-5 ${isCat7 ? 'border-amber-200 bg-amber-50/50' : 'border-green-100 bg-green-50/50'}`}>
+      <section class="mb-8 rounded-xl border border-gray-200 bg-white/70 p-5">
         <div class="mb-4">
           <h2 class="text-sm font-semibold text-gray-900">
-            {`FY${FY2568_BASELINE_YEAR} baseline for FY2569 comparison`}
+            FY2569 (current year) vs FY2568 (reference baseline)
           </h2>
           <p class="mt-1 text-xs leading-relaxed text-gray-600">
-            The committee reviews the FY2568 baseline (year base) and the FY2569 assessment (assessment year) together.
+            The left column shows FY2569 (assessment year) status; the right column is the FY2568 baseline for historical comparison only.
           </p>
         </div>
         <div class="grid gap-4 md:grid-cols-2">
-          <!-- FY2568 / Year Base -->
-          <div class="rounded-lg border border-green-200 bg-white/60 p-4">
-            <h3 class="text-sm font-semibold text-green-800">
+          <!-- FY2569 / Assessment Year (primary) -->
+          <div class={`min-w-0 rounded-lg border p-4 ${category.code === 'cat1' ? 'border-emerald-200 bg-emerald-50/30' : 'border-gray-300 bg-white/70'}`}>
+            {category.code === 'cat1' ? (
+              <>
+                <div class="mb-3 flex flex-wrap items-center gap-2">
+              <h3 class="text-sm font-semibold text-gray-900">{`FY${FY2568_BASELINE_YEAR + 1} Assessment Year`}</h3>
+              <span class="rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-semibold text-white">Current Year</span>
+            </div>
+                <Cat1ProgressSection locale={locale} />
+              </>
+            ) : (
+              <>
+                <div class="mb-3 flex flex-wrap items-center gap-2">
+              <h3 class="text-sm font-semibold text-gray-900">{`FY${FY2568_BASELINE_YEAR + 1} Assessment Year`}</h3>
+              <span class="rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-semibold text-white">Current Year</span>
+            </div>
+                <p class="mt-2 text-sm font-medium text-amber-700">
+                  Status: Awaiting update
+                </p>
+                <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                  No FY2569 assessment data is available for this category yet. This release adds no FY2569 counts, evidence, results, or indicator mappings.
+                </p>
+              </>
+            )}
+          </div>
+
+          <!-- FY2568 / Year Base (secondary historical reference) -->
+          <div class="min-w-0 rounded-lg border border-gray-200 bg-gray-50/60 p-4">
+            <div class="mb-2 flex flex-wrap items-center gap-2">
+              <h3 class="text-sm font-semibold text-gray-600">{`FY${FY2568_BASELINE_YEAR} Year Base (Baseline)`}</h3>
+              <span class="rounded-full bg-gray-200 px-2 py-0.5 text-[10px] font-medium text-gray-600">Reference</span>
+            </div>
+
+            <h3 class="text-sm font-semibold text-gray-600">
               {`FY${FY2568_BASELINE_YEAR} Year Base (Baseline)`}
             </h3>
             <p class="mt-2 text-sm text-gray-700">
@@ -261,7 +293,7 @@ function localizedUrl(path: string): string {
             </p>
             <p class="mt-2 text-xs leading-relaxed text-gray-600">
               FY2568 is a frozen public baseline. Source documents are publicly available from this site at the{' '}
-              <a href={publicSourceHref} class="text-green-700 underline hover:text-green-900">
+              <a href={publicSourceHref} class="text-gray-600 underline hover:text-gray-900">
                 category document center
               </a>.
             </p>
@@ -298,18 +330,6 @@ function localizedUrl(path: string): string {
                 Source-structure note: no verified individual-indicator mapping for category 7.
               </p>
             )}
-          </div>
-          <!-- FY2569 / Assessment Year -->
-          <div class="rounded-lg border border-gray-200 bg-white/60 p-4">
-            <h3 class="text-sm font-semibold text-gray-800">
-              {`FY${FY2568_BASELINE_YEAR + 1} Assessment Year`}
-            </h3>
-            <p class="mt-2 text-sm font-medium text-amber-700">
-              Status: Awaiting update
-            </p>
-            <p class="mt-1 text-xs leading-relaxed text-gray-600">
-              No FY2569 assessment data is available for this category yet. This release adds no FY2569 counts, evidence, results, or indicator mappings.
-            </p>
           </div>
         </div>
       </section>

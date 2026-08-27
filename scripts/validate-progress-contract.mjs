@@ -27,6 +27,7 @@ const REGISTRY_PATH = join(ROOT, 'src/data/progress/indicator-progress-2569.json
 const GENERATED_PATH = join(ROOT, 'src/data/generated/category-progress-2569.json');
 const INDICATORS_PATH = join(ROOT, 'src/data/criteria/indicators.json');
 const CATEGORIES_PATH = join(ROOT, 'src/data/criteria/categories.json');
+const ISSUES_PATH = join(ROOT, 'src/data/criteria/issues.json');
 
 // ── Canonical enums (blueprint §5.1 / §5.2) ─────────────────────
 // Keep in sync with src/utils/progress-model.ts (TS mirror).
@@ -86,19 +87,48 @@ function buildSummary(items) {
   };
 }
 
+/** Evidence-status counts (blueprint §5.2) — separate semantics from progress. */
+function buildEvidenceCounts(items) {
+  const counts = { verified: 0, availableUnverified: 0, pending: 0, unavailable: 0, notApplicable: 0 };
+  for (const item of items) {
+    if (item.evidenceStatus === 'verified') counts.verified += 1;
+    else if (item.evidenceStatus === 'available_unverified') counts.availableUnverified += 1;
+    else if (item.evidenceStatus === 'pending') counts.pending += 1;
+    else if (item.evidenceStatus === 'not_applicable') counts.notApplicable += 1;
+    else counts.unavailable += 1;
+  }
+  return counts;
+}
+
+/** Issue-level progress summaries from records grouped by canonical issue id. */
+function buildIssueSummaries(records, codeToIssue) {
+  const byIssue = new Map();
+  for (const r of records) {
+    const issueId = codeToIssue.get(String(r.indicator));
+    if (!issueId) continue;
+    if (!byIssue.has(issueId)) byIssue.set(issueId, []);
+    byIssue.get(issueId).push(r);
+  }
+  return Array.from(byIssue.entries())
+    .map(([id, recs]) => ({ id, ...buildSummary(recs) }))
+    .sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
+}
+
 /**
- * Aggregates the registry bottom-up (Indicator → Category → Overall,
+ * Aggregates the registry bottom-up (Indicator → Issue → Category → Overall,
  * blueprint §7.3) using the canonical criteria taxonomy.
  * Shared with scripts/generate-category-progress-2569.mjs.
  */
 export function computeAggregation(registry, indicators, categories) {
   const records = registry.items ?? [];
   const codeToCat = new Map();
+  const codeToIssue = new Map();
   for (const ind of indicators) {
     codeToCat.set(String(ind.code), {
       categoryId: String(ind.categoryId),
       categoryCode: String(ind.categoryCode),
     });
+    codeToIssue.set(String(ind.code), String(ind.issueCode));
   }
   const byCategory = new Map(); // categoryId -> records[]
   for (const record of records) {
@@ -107,21 +137,26 @@ export function computeAggregation(registry, indicators, categories) {
     if (!byCategory.has(cat.categoryId)) byCategory.set(cat.categoryId, []);
     byCategory.get(cat.categoryId).push(record);
   }
-  const overall = buildSummary(records);
+  const overall = { ...buildSummary(records), evidence: buildEvidenceCounts(records) };
   const categorySummaries = (categories ?? [])
     .slice()
     .sort((a, b) => Number(a.id) - Number(b.id))
-    .map((cat) => ({
-      id: String(cat.id),
-      code: String(cat.code),
-      ...buildSummary(byCategory.get(String(cat.id)) ?? []),
-    }));
+    .map((cat) => {
+      const catRecords = byCategory.get(String(cat.id)) ?? [];
+      return {
+        id: String(cat.id),
+        code: String(cat.code),
+        ...buildSummary(catRecords),
+        evidence: buildEvidenceCounts(catRecords),
+        issues: buildIssueSummaries(catRecords, codeToIssue),
+      };
+    });
   return { overall, categories: categorySummaries };
 }
 
 // ── Validation ──────────────────────────────────────────────────
 
-export function validateProgressContract(registry, generated, indicators, categories) {
+export function validateProgressContract(registry, generated, indicators, categories, issues) {
   const errors = [];
   const canonicalCodes = indicators.map((ind) => String(ind.code));
   const canonicalSet = new Set(canonicalCodes);
@@ -230,6 +265,48 @@ export function validateProgressContract(registry, generated, indicators, catego
     }
   }
 
+  // Evidence counts must be internally consistent (separate semantics, §5.2).
+  const evidenceKeys = ['verified', 'availableUnverified', 'pending', 'unavailable', 'notApplicable'];
+  const sumEvidence = (e) => evidenceKeys.reduce((s, k) => s + (e?.[k] ?? 0), 0);
+  if (sumEvidence(generated?.overall?.evidence) !== (generated?.overall?.total ?? -1)) {
+    errors.push('generated.overall.evidence counts must sum to overall.total');
+  }
+  for (const cat of generated?.categories ?? []) {
+    if (sumEvidence(cat.evidence) !== cat.total) {
+      errors.push(`generated category ${cat.id} evidence counts must sum to its total`);
+    }
+  }
+
+  // Issue-level breakdowns must reconcile with category totals and the taxonomy.
+  const canonicalIssueIds = new Set((issues ?? []).map((i) => String(i.id)));
+  const issueIdsByCategory = new Map();
+  for (const iss of issues ?? []) {
+    if (!issueIdsByCategory.has(String(iss.categoryId))) issueIdsByCategory.set(String(iss.categoryId), new Set());
+    issueIdsByCategory.get(String(iss.categoryId)).add(String(iss.id));
+  }
+  for (const cat of generated?.categories ?? []) {
+    const issuesArr = cat.issues ?? [];
+    if (!Array.isArray(issuesArr)) {
+      errors.push(`generated category ${cat.id} issues must be an array`);
+      continue;
+    }
+    const issueTotal = issuesArr.reduce((s, iss) => s + (iss.total ?? 0), 0);
+    if (issueTotal !== cat.total) {
+      errors.push(`generated category ${cat.id} issue totals must sum to ${cat.total}, got ${issueTotal}`);
+    }
+    const allowed = issueIdsByCategory.get(String(cat.id)) ?? new Set();
+    for (const iss of issuesArr) {
+      if (!canonicalIssueIds.has(String(iss.id)) || !allowed.has(String(iss.id))) {
+        errors.push(`generated category ${cat.id} has invalid issue id "${iss.id}"`);
+      }
+      const s = ['ready', 'inProgress', 'notStarted', 'unavailable', 'notApplicable']
+        .reduce((acc, k) => acc + (iss[k] ?? 0), 0);
+      if (s !== iss.total) {
+        errors.push(`generated issue ${iss.id} status counts must sum to its total ${iss.total}`);
+      }
+    }
+  }
+
   return errors;
 }
 
@@ -248,8 +325,9 @@ function main() {
   const generated = JSON.parse(readFileSync(GENERATED_PATH, 'utf8'));
   const indicators = JSON.parse(readFileSync(INDICATORS_PATH, 'utf8')).indicators;
   const categories = JSON.parse(readFileSync(CATEGORIES_PATH, 'utf8')).categories;
+  const issues = JSON.parse(readFileSync(ISSUES_PATH, 'utf8')).issues;
 
-  const errors = validateProgressContract(registry, generated, indicators, categories);
+  const errors = validateProgressContract(registry, generated, indicators, categories, issues);
   if (errors.length > 0) {
     console.error('progress contract validation FAIL');
     errors.forEach((e) => console.error('  ✗', e));

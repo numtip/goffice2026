@@ -1,0 +1,184 @@
+---
+/**
+ * Cat1ProgressSection.astro
+ * =========================
+ * Data-driven FY2569 progress for /categories/cat1/ (D3/D4).
+ *
+ * D4 hierarchy:
+ *   1. Counts-first donut hero ("4 ของ 18") — percentage secondary
+ *   2. Status chips (executive pulse)
+ *   3. Issue 1.1–1.7 diagnostic list (state-colored badges + counts)
+ *   4. Needs-attention watch list (data-derived, no inference)
+ *   5. Evidence readiness block (indigo — unmistakable separation)
+ *   6. Accessible fallback table
+ * Cat2–7 stay on the static panel. All numbers derive from the generated
+ * dataset via the VM. Progress ≠ Evidence ≠ Official Score.
+ */
+import EChart from '../dashboard/EChart.astro';
+import ChartLegend from '../dashboard/ChartLegend.astro';
+import { buildCat1Progress, PROGRESS_STATUS_COLORS, EVIDENCE_STATUS_COLORS, formatRate } from '../../utils/category-progress-vm';
+import { buildCategoryProgressDonutOption } from '../../utils/chart-option';
+
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const th = locale === 'th';
+const vm = buildCat1Progress(locale);
+
+const donutOption = buildCategoryProgressDonutOption({
+  ready: vm.overall.ready,
+  applicable: vm.overall.applicable,
+  percent: vm.overall.readyRate,
+  locale,
+  ariaDescription: vm.heroSummary,
+});
+
+function evidenceLabel(key: string): string {
+  const labels: Record<string, { th: string; en: string }> = {
+    verified: { th: 'ตรวจสอบแล้ว', en: 'Verified' },
+    available_unverified: { th: 'มีแต่ยังไม่ยืนยัน', en: 'Available, Unverified' },
+    unavailable: { th: 'ไม่มีหลักฐาน', en: 'Unavailable' },
+  };
+  return labels[key][locale] ?? key;
+}
+
+/** State color for an issue badge: emerald = all ready, amber = open work, slate = all unavailable. */
+function issueStateColor(iss: { ready: number; inProgress: number; notStarted: number; unavailable: number; total: number }): string {
+  if (iss.total > 0 && iss.ready === iss.total) return '#10b981';
+  if (iss.inProgress > 0 || iss.notStarted > 0) return '#f59e0b';
+  return '#94a3b8';
+}
+
+function issueReadyWidth(ready: number, total: number): string {
+  const pct = total > 0 ? (ready / total) * 100 : 0;
+  return `${pct}%`;
+}
+---
+
+<div class="flex flex-col gap-4">
+  <!-- Hero: counts-first donut -->
+  <div class="flex items-center justify-center">
+    <div class="w-full max-w-[230px]">
+      <EChart option={donutOption} ariaLabel={th ? 'โดนัทความคืบหน้าหมวด 1 ปี 2569' : `Category 1 FY${vm.year} progress donut`} height={190} noTable />
+    </div>
+  </div>
+  <p class="text-center text-sm font-bold text-gray-900">{vm.heroSummary}</p>
+
+  <!-- Status chips (executive pulse) -->
+  <div class="grid grid-cols-2 gap-2" role="list" aria-label={th ? 'สถานะความคืบหน้าการดำเนินงาน' : 'Progress status counts'}>
+    {vm.statusChips.map((chip) => (
+      <div class="flex items-center justify-between rounded-lg border border-gray-200 bg-white/70 px-3 py-2" role="listitem">
+        <span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-700">
+          <span class="h-2.5 w-2.5 rounded-full ring-1 ring-inset ring-outline-variant/30" style={`background-color: ${PROGRESS_STATUS_COLORS[chip.status]}`} aria-hidden="true"></span>
+          {chip.label}
+        </span>
+        <span class="text-base font-extrabold tabular-nums text-gray-900">{chip.count}</span>
+      </div>
+    ))}
+  </div>
+
+  <!-- Issue diagnostics 1.1–1.7 -->
+  <div>
+    <h4 class="mb-2 text-xs font-bold uppercase tracking-wide text-gray-800">
+      {th ? 'รายประเด็น (1.1–1.7)' : 'By Issue (1.1–1.7)'}
+    </h4>
+    <ul class="space-y-1.5">
+      {vm.issues.map((iss) => {
+        const color = issueStateColor(iss);
+        return (
+          <li class="rounded-lg border border-gray-100 bg-white/70 px-2.5 py-2">
+            <div class="flex items-center gap-2">
+              <span
+                class="flex h-6 w-9 shrink-0 items-center justify-center rounded-md text-[11px] font-bold text-white"
+                style={`background-color: ${color}`}
+              >
+                {iss.id}
+              </span>
+              <div class="min-w-0 flex-1">
+                <p class="truncate text-[11px] font-semibold text-gray-800">{iss.title}</p>
+                <p class="text-[10px] text-gray-500">
+                  {iss.ready}/{iss.total} {th ? 'พร้อม' : 'ready'}
+                  {iss.inProgress > 0 ? ` · ${iss.inProgress} ${th ? 'กำลังดำเนินการ' : 'in progress'}` : ''}
+                  {iss.notStarted > 0 ? ` · ${iss.notStarted} ${th ? 'ยังไม่เริ่ม' : 'not started'}` : ''}
+                  {iss.unavailable > 0 ? ` · ${iss.unavailable} ${th ? 'ไม่มีข้อมูล' : 'unavailable'}` : ''}
+                </p>
+              </div>
+            </div>
+            <div class="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-gray-100" role="presentation">
+              <div class="h-full rounded-full" style={`width: ${issueReadyWidth(iss.ready, iss.total)}; background-color: ${color}`}></div>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+
+  <!-- Needs attention (data-derived) -->
+  {vm.needsAttention.length > 0 && (
+    <div class="rounded-lg border border-amber-200 bg-amber-50/60 p-3">
+      <h4 class="text-xs font-bold uppercase tracking-wide text-amber-800">
+        {th ? 'จุดที่ต้องติดตาม' : 'Needs Attention'}
+      </h4>
+      <ul class="mt-1.5 space-y-1">
+        {vm.needsAttention.map((line) => (
+          <li class="text-[11px] leading-relaxed text-amber-900">{line}</li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  <!-- Evidence readiness (unmistakable separation) -->
+  <div class="rounded-lg border border-indigo-200 bg-indigo-50/60 p-3">
+    <div class="flex flex-wrap items-center gap-2">
+      <h4 class="text-xs font-bold text-indigo-900">
+        {th ? `ความพร้อมหลักฐาน ปี ${vm.year}` : `FY${vm.year} Evidence Readiness`}
+      </h4>
+      <span class="rounded-full bg-indigo-600 px-2 py-0.5 text-[9px] font-bold text-white">
+        EVIDENCE
+      </span>
+    </div>
+    <p class="mt-1 text-[11px] leading-relaxed text-indigo-900/70">{vm.evidenceSummary}</p>
+    <div class="mt-2">
+      <ChartLegend
+        items={[
+          { color: EVIDENCE_STATUS_COLORS.verified, label: `${evidenceLabel('verified')} ${vm.overall.evidence.verified}` },
+          { color: EVIDENCE_STATUS_COLORS.available_unverified, label: `${evidenceLabel('available_unverified')} ${vm.overall.evidence.availableUnverified}` },
+          { color: EVIDENCE_STATUS_COLORS.unavailable, label: `${evidenceLabel('unavailable')} ${vm.overall.evidence.unavailable}` },
+        ]}
+        ariaLabel={th ? 'คำอธิบายสถานะหลักฐาน' : 'Evidence status legend'}
+      />
+    </div>
+  </div>
+
+  <!-- Accessible fallback table -->
+  <details class="mt-1">
+    <summary class="cursor-pointer select-none rounded text-xs text-gray-500 hover:text-green-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">
+      {th ? 'ตารางข้อมูล' : 'Data table'}
+    </summary>
+    <p class="mt-2 mb-1 text-[10px] text-gray-500">
+      {th ? `ตารางข้อมูลความคืบหน้ารายประเด็น ปี ${vm.year} (หมวด 1)` : `Per-issue progress data table, FY${vm.year} (Category 1)`}
+    </p>
+    <div class="mt-2 overflow-x-auto">
+      <table class="w-full border-collapse text-left text-xs">
+        <thead class="border-b border-gray-200">
+          <tr>
+            {vm.fallbackColumns.map((col) => (
+              <th scope="col" class={`px-2 py-1.5 font-semibold text-gray-700 ${col.align === 'right' ? 'text-right' : ''}`}>{col.label}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {vm.fallbackRows.map((row) => (
+            <tr class="border-b border-gray-100">
+              {row.map((cell, ci) => (
+                <td class={`px-2 py-1.5 text-gray-600 ${vm.fallbackColumns[ci]?.align === 'right' ? 'text-right tabular-nums' : ''}`}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </details>
+</div>

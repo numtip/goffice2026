@@ -27,6 +27,9 @@ import {
   buildCategoryScoreOption,
   buildCoverageRadialOption,
   buildExplorerOption,
+  buildCategoryProgressDonutOption,
+  buildProgressStackedBarOption,
+  PROGRESS_STATUS_COLORS,
   categoryStatusTexts,
   rollingAverage,
   monthLabel,
@@ -259,5 +262,59 @@ describe('buildExplorerOption — multi-metric monthly explorer (GO-DASH-V2-B-A)
   it('keeps connectNulls false so gaps are not bridged', () => {
     const option = buildExplorerOption({ resources, locale: 'en', yearLabel: 'FY2569', ariaDescription: 'test' });
     assert.equal(option.series[0].connectNulls, false);
+  });
+});
+
+describe('buildCategoryProgressDonutOption — criteria progress donut (D3)', () => {
+  it('is JSON-serializable, shows percent in title and ready/applicable in subtext', () => {
+    const option = buildCategoryProgressDonutOption({
+      ready: 4,
+      applicable: 18,
+      percent: 22.2,
+      locale: 'th',
+      ariaDescription: 'หมวด 1: 4 จาก 18 ตัวชี้วัด',
+    });
+    assert.doesNotThrow(() => JSON.stringify(option));
+    // counts-first: title leads with ready/applicable, percent is secondary subtext
+    assert.equal(option.title.text, '4/18');
+    assert.equal(option.title.subtext, '22.2%');
+    assert.equal(option.series[0].type, 'pie');
+    assert.equal(option.series[0].data[0].value, 4);
+    assert.equal(option.series[0].data[1].value, 14, 'remaining = applicable - ready');
+    assert.equal(option.series[0].data[0].itemStyle.color, PROGRESS_STATUS_COLORS.ready);
+  });
+
+  it('clamps remaining to zero when ready equals applicable', () => {
+    const option = buildCategoryProgressDonutOption({ ready: 18, applicable: 18, percent: 100, locale: 'en', ariaDescription: 'x' });
+    assert.equal(option.series[0].data[1].value, 0);
+    assert.equal(option.title.text, '18/18');
+    assert.equal(option.title.subtext, '100%');
+  });
+});
+
+describe('buildProgressStackedBarOption — horizontal status stacks (D3)', () => {
+  const items = [
+    { label: '1 หมวด 1', ready: 4, inProgress: 2, notStarted: 2, unavailable: 10 },
+    { label: '2 หมวด 2', ready: 0, inProgress: 0, notStarted: 0, unavailable: 6 },
+  ];
+
+  it('renders four stacked series in progress order with count labels', () => {
+    const option = buildProgressStackedBarOption({ items, locale: 'th', ariaDescription: 'test' });
+    assert.doesNotThrow(() => JSON.stringify(option));
+    assert.equal(option.series.length, 4);
+    assert.ok(option.series.every((s) => s.stack === 'progress'));
+    assert.equal(option.series[0].name, 'พร้อม');
+    assert.equal(option.series[0].data[0], 4);
+    assert.equal(option.series[3].data[1], 6);
+    assert.ok(option.series.every((s) => s.label.formatter === '{c}'), 'labels use serializable {c} template');
+    assert.equal(option.yAxis.data.length, 2);
+  });
+
+  it('keeps status colors from the shared palette', () => {
+    const option = buildProgressStackedBarOption({ items, locale: 'en', ariaDescription: 'test' });
+    assert.equal(option.series[0].itemStyle.color, PROGRESS_STATUS_COLORS.ready);
+    assert.equal(option.series[1].itemStyle.color, PROGRESS_STATUS_COLORS.inProgress);
+    assert.equal(option.series[2].itemStyle.color, PROGRESS_STATUS_COLORS.notStarted);
+    assert.equal(option.series[3].itemStyle.color, PROGRESS_STATUS_COLORS.unavailable);
   });
 });

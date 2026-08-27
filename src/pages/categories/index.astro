@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/global.css';
 import { getLocale } from '../../i18n/utils';
 import CategoryCard from '../../components/categories/CategoryCard.astro';
+import CategoryProgressOverview from '../../components/categories/CategoryProgressOverview.astro';
 import categoryData from '../../data/criteria/categories.json';
 import issueData from '../../data/criteria/issues.json';
 import indicatorData from '../../data/criteria/indicators.json';
@@ -48,6 +49,9 @@ const separateCategory = categories.find((c) => c.code === 'cat7');
         {subtitle}
       </p>
     </header>
+
+    <!-- FY2569 Criteria Progress (data-driven, dashboard progress blueprint V1) -->
+    <CategoryProgressOverview locale={locale} />
 
     <!-- Weighted Categories (cat1-cat6) -->
     <section class="mb-12">

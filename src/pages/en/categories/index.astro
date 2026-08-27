@@ -5,6 +5,7 @@ import categoryData from '../../../data/criteria/categories.json';
 import issueData from '../../../data/criteria/issues.json';
 import indicatorData from '../../../data/criteria/indicators.json';
 import CategoryCard from '../../../components/categories/CategoryCard.astro';
+import CategoryProgressOverview from '../../../components/categories/CategoryProgressOverview.astro';
 import { categoryImageUrl } from '../../../utils/wow2-images';
 import { getBaselineCategoryCoverage, FY2568_BASELINE_YEAR } from '../../../data/criteria/baseline-2568';
 
@@ -45,6 +46,9 @@ const separateCategory = categories.find((c) => c.code === 'cat7');
         {subtitle}
       </p>
     </header>
+
+    <!-- FY2569 Criteria Progress (data-driven, dashboard progress blueprint V1) -->
+    <CategoryProgressOverview locale={locale} />
 
     <!-- Weighted Categories (cat1-cat6) -->
     <section class="mb-12">

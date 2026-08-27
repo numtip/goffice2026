@@ -10,7 +10,14 @@
     "notStarted": 2,
     "unavailable": 57,
     "notApplicable": 0,
-    "readyRate": 6.2
+    "readyRate": 6.2,
+    "evidence": {
+      "verified": 2,
+      "availableUnverified": 4,
+      "pending": 0,
+      "unavailable": 59,
+      "notApplicable": 0
+    }
   },
   "categories": [
     {
@@ -23,7 +30,93 @@
       "notStarted": 2,
       "unavailable": 10,
       "notApplicable": 0,
-      "readyRate": 22.2
+      "readyRate": 22.2,
+      "evidence": {
+        "verified": 2,
+        "availableUnverified": 4,
+        "pending": 0,
+        "unavailable": 12,
+        "notApplicable": 0
+      },
+      "issues": [
+        {
+          "id": "1.1",
+          "total": 4,
+          "applicable": 4,
+          "ready": 2,
+          "inProgress": 2,
+          "notStarted": 0,
+          "unavailable": 0,
+          "notApplicable": 0,
+          "readyRate": 50
+        },
+        {
+          "id": "1.2",
+          "total": 2,
+          "applicable": 2,
+          "ready": 1,
+          "inProgress": 0,
+          "notStarted": 1,
+          "unavailable": 0,
+          "notApplicable": 0,
+          "readyRate": 50
+        },
+        {
+          "id": "1.3",
+          "total": 3,
+          "applicable": 3,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 3,
+          "notApplicable": 0,
+          "readyRate": 0
+        },
+        {
+          "id": "1.4",
+          "total": 2,
+          "applicable": 2,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 2,
+          "notApplicable": 0,
+          "readyRate": 0
+        },
+        {
+          "id": "1.5",
+          "total": 3,
+          "applicable": 3,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 1,
+          "unavailable": 2,
+          "notApplicable": 0,
+          "readyRate": 0
+        },
+        {
+          "id": "1.6",
+          "total": 2,
+          "applicable": 2,
+          "ready": 1,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 1,
+          "notApplicable": 0,
+          "readyRate": 50
+        },
+        {
+          "id": "1.7",
+          "total": 2,
+          "applicable": 2,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 2,
+          "notApplicable": 0,
+          "readyRate": 0
+        }
+      ]
     },
     {
       "id": "2",
@@ -35,7 +128,38 @@
       "notStarted": 0,
       "unavailable": 6,
       "notApplicable": 0,
-      "readyRate": 0
+      "readyRate": 0,
+      "evidence": {
+        "verified": 0,
+        "availableUnverified": 0,
+        "pending": 0,
+        "unavailable": 6,
+        "notApplicable": 0
+      },
+      "issues": [
+        {
+          "id": "2.1",
+          "total": 2,
+          "applicable": 2,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 2,
+          "notApplicable": 0,
+          "readyRate": 0
+        },
+        {
+          "id": "2.2",
+          "total": 4,
+          "applicable": 4,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 4,
+          "notApplicable": 0,
+          "readyRate": 0
+        }
+      ]
     },
     {
       "id": "3",
@@ -47,7 +171,60 @@
       "notStarted": 0,
       "unavailable": 15,
       "notApplicable": 0,
-      "readyRate": 0
+      "readyRate": 0,
+      "evidence": {
+        "verified": 0,
+        "availableUnverified": 0,
+        "pending": 0,
+        "unavailable": 15,
+        "notApplicable": 0
+      },
+      "issues": [
+        {
+          "id": "3.1",
+          "total": 3,
+          "applicable": 3,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 3,
+          "notApplicable": 0,
+          "readyRate": 0
+        },
+        {
+          "id": "3.2",
+          "total": 5,
+          "applicable": 5,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 5,
+          "notApplicable": 0,
+          "readyRate": 0
+        },
+        {
+          "id": "3.3",
+          "total": 5,
+          "applicable": 5,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 5,
+          "notApplicable": 0,
+          "readyRate": 0
+        },
+        {
+          "id": "3.4",
+          "total": 2,
+          "applicable": 2,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 2,
+          "notApplicable": 0,
+          "readyRate": 0
+        }
+      ]
     },
     {
       "id": "4",
@@ -59,7 +236,38 @@
       "notStarted": 0,
       "unavailable": 5,
       "notApplicable": 0,
-      "readyRate": 0
+      "readyRate": 0,
+      "evidence": {
+        "verified": 0,
+        "availableUnverified": 0,
+        "pending": 0,
+        "unavailable": 5,
+        "notApplicable": 0
+      },
+      "issues": [
+        {
+          "id": "4.1",
+          "total": 3,
+          "applicable": 3,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 3,
+          "notApplicable": 0,
+          "readyRate": 0
+        },
+        {
+          "id": "4.2",
+          "total": 2,
+          "applicable": 2,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 2,
+          "notApplicable": 0,
+          "readyRate": 0
+        }
+      ]
     },
     {
       "id": "5",
@@ -71,7 +279,71 @@
       "notStarted": 0,
       "unavailable": 13,
       "notApplicable": 0,
-      "readyRate": 0
+      "readyRate": 0,
+      "evidence": {
+        "verified": 0,
+        "availableUnverified": 0,
+        "pending": 0,
+        "unavailable": 13,
+        "notApplicable": 0
+      },
+      "issues": [
+        {
+          "id": "5.1",
+          "total": 3,
+          "applicable": 3,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 3,
+          "notApplicable": 0,
+          "readyRate": 0
+        },
+        {
+          "id": "5.2",
+          "total": 1,
+          "applicable": 1,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 1,
+          "notApplicable": 0,
+          "readyRate": 0
+        },
+        {
+          "id": "5.3",
+          "total": 2,
+          "applicable": 2,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 2,
+          "notApplicable": 0,
+          "readyRate": 0
+        },
+        {
+          "id": "5.4",
+          "total": 4,
+          "applicable": 4,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 4,
+          "notApplicable": 0,
+          "readyRate": 0
+        },
+        {
+          "id": "5.5",
+          "total": 3,
+          "applicable": 3,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 3,
+          "notApplicable": 0,
+          "readyRate": 0
+        }
+      ]
     },
     {
       "id": "6",
@@ -83,7 +355,38 @@
       "notStarted": 0,
       "unavailable": 6,
       "notApplicable": 0,
-      "readyRate": 0
+      "readyRate": 0,
+      "evidence": {
+        "verified": 0,
+        "availableUnverified": 0,
+        "pending": 0,
+        "unavailable": 6,
+        "notApplicable": 0
+      },
+      "issues": [
+        {
+          "id": "6.1",
+          "total": 3,
+          "applicable": 3,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 3,
+          "notApplicable": 0,
+          "readyRate": 0
+        },
+        {
+          "id": "6.2",
+          "total": 3,
+          "applicable": 3,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 3,
+          "notApplicable": 0,
+          "readyRate": 0
+        }
+      ]
     },
     {
       "id": "7",
@@ -95,7 +398,38 @@
       "notStarted": 0,
       "unavailable": 2,
       "notApplicable": 0,
-      "readyRate": 0
+      "readyRate": 0,
+      "evidence": {
+        "verified": 0,
+        "availableUnverified": 0,
+        "pending": 0,
+        "unavailable": 2,
+        "notApplicable": 0
+      },
+      "issues": [
+        {
+          "id": "7.1",
+          "total": 1,
+          "applicable": 1,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 1,
+          "notApplicable": 0,
+          "readyRate": 0
+        },
+        {
+          "id": "7.2",
+          "total": 1,
+          "applicable": 1,
+          "ready": 0,
+          "inProgress": 0,
+          "notStarted": 0,
+          "unavailable": 1,
+          "notApplicable": 0,
+          "readyRate": 0
+        }
+      ]
     }
   ]
 }
