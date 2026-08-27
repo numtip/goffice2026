@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "training-2569",
+  "updated": "2026-08-27",
+  "year": 2569,
+  "status": "current-year-overlay",
+  "governance": "GOFFICE2026_DASHBOARD_PROGRESS_BLUEPRINT_V1",
+  "note": "D5C B1 Cat2 FY2569 training intake from OneDrive Data2569 P1 (PO-approved migration). Sources: 2.1.1 training plan docx + form 2.1(1) curriculum/plan workbook xlsx. Plan-only evidence — no verified delivery, evaluation, registration scans, or training history for FY2569. 2.1.2 trainer names appear in the xlsx plan rows but committee-minute cross-evidence remains a forward requirement (PO B2). No FY2568 carry-forward. ACT-2569-* not referenced.",
+  "sources": [
+    {
+      "ref": "2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx",
+      "role": "primary-plan-narrative",
+      "inspection": "structural-only",
+      "disposition": "available-unverified"
+    },
+    {
+      "ref": "2.1/2.1.1/2.1.1_1หลักสูตรแผผนผลปี2569.xlsx",
+      "role": "primary-form-2.1(1)",
+      "inspection": "structural-only",
+      "disposition": "available-unverified"
+    }
+  ],
+  "records": [
+    {
+      "id": "tr-plan-narrative-fy2569",
+      "year": 2569,
+      "indicatorCodes": ["2.1.1"],
+      "issueCodes": ["2.1"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-tr-plan-fy2569"],
+      "sourceRef": "2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx",
+      "manifestSha256": "e44be974ba66bc9288d2ac0b9aa1eda130c3b974c1c98050b86af715a7c7fa7a",
+      "verification": {
+        "status": "pending",
+        "basis": "FY2569 Cat2 training plan narrative docx migrated from Data2569/Cat2/2.1/2.1.1. Filename and folder authority map to 2.1.1 plan evidence. Content not fully extracted in intake pass; plan-only — does not prove delivery, evaluation, or history."
+      },
+      "intakeVerification": "available_unverified",
+      "availability": "source-available",
+      "kind": "trainingPlan",
+      "labelTh": "แผนการฝึกอบรม 2569 (2.1.1)",
+      "labelEn": "FY2569 training plan narrative (2.1.1)"
+    },
+    {
+      "id": "tr-curriculum-form-fy2569",
+      "year": 2569,
+      "indicatorCodes": ["2.1.1"],
+      "issueCodes": ["2.1"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-tr-curriculum-fy2569"],
+      "sourceRef": "2.1/2.1.1/2.1.1_1หลักสูตรแผผนผลปี2569.xlsx",
+      "manifestSha256": "828cc00582c2e73a5b2febd423828e9bd9eb2b36abcfb4db2b675347150a851e",
+      "verification": {
+        "status": "pending",
+        "basis": "Form 2.1(1) workbook: plan sheet lists 6 FY2569 courses/target groups/trainers; results sheet is largely blank (one month mark on course 6 only). Plan-only — not verified delivery/evaluation. Blank 2.1(2) template sheets and a 2563 sample row excluded from mapping."
+      },
+      "intakeVerification": "available_unverified",
+      "availability": "structural-only",
+      "kind": "trainingPlanForm",
+      "labelTh": "แบบฟอร์ม 2.1(1) หลักสูตรและแผน 2569",
+      "labelEn": "Form 2.1(1) curriculum and plan FY2569"
+    }
+  ],
+  "gaps": [
+    {
+      "indicator": "2.1.1",
+      "status": "PARTIAL",
+      "note": "Plan artifacts only — delivery, evaluation, registration scans (2.1(2)), and training history (2.1(3)) not yet migrated for FY2569."
+    },
+    {
+      "indicator": "2.1.2",
+      "status": "FORWARD_REQUIREMENT",
+      "note": "PO B2: per-course responsible-person assignment requires FY2569 committee minutes cross-evidence. Trainer names in xlsx plan rows are plan metadata only — not promoted to 2.1.2 criteria evidence."
+    },
+    {
+      "indicator": "2.2.1",
+      "status": "MISSING",
+      "note": "Data2569/Cat2/2.2/2.2.1 folder empty at B1 intake — no comms responsibility/guideline artifact."
+    },
+    {
+      "indicator": "2.2.2",
+      "status": "MISSING",
+      "note": "Data2569/Cat2/2.2/2.2.2 folder empty — no FY2569 campaign/session records. ACT-2569-* remain quarantined."
+    },
+    {
+      "indicator": "2.2.3",
+      "status": "MISSING_DEDICATED_EVIDENCE",
+      "note": "PO decision: remains missing until official requirement/source verified — no questionnaire/respondent/percentage artifact."
+    },
+    {
+      "indicator": "2.2.4",
+      "status": "MISSING",
+      "note": "Data2569/Cat2/2.2/2.2.4 folder empty — no feedback channel or improvement report."
+    }
+  ],
+  "forwardRequirements": [
+    {
+      "indicator": "2.1.2",
+      "year": 2569,
+      "status": "FORWARD_REQUIREMENT",
+      "note": "Committee minutes must record per-course trainer assignment — plan workbook alone insufficient for criteria progress."
+    }
+  ],
+  "crossLinks": [
+    {
+      "from": "2.1.1",
+      "to": "2.1.2",
+      "reason": "xlsx plan rows name trainers per course — informational only; not promoted to 2.1.2 evidence without committee-minute authority"
+    }
+  ]
+}

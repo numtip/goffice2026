@@ -328,7 +328,8 @@ function main() {
       errors.push(`evidence-index: ${ev.id} must not reference MISSING indicator 2.2.3`);
     }
   }
-  // 2. Every indicator-level cat2 evidence entry must be referenced by exactly one contract record
+  // 2. Every FY2568 indicator-level cat2 evidence entry must be referenced by exactly one frozen contract record
+  //    (FY2569 overlay entries are validated by validate-category2-fy2569.mjs)
   const referencedCat2Evidence = new Set();
   for (const domain of ALLOWED_DOMAINS) {
     let contract;
@@ -344,6 +345,7 @@ function main() {
   for (const ev of evidence) {
     if (!(ev.categoryCodes || []).includes('cat2')) continue;
     if (ev.traceabilityLevel !== 'indicator') continue;
+    if (ev.year === 2569) continue;
     if (!referencedCat2Evidence.has(ev.id)) {
       errors.push(`evidence-index: cat2 indicator-level entry "${ev.id}" is not referenced by any C2 contract record`);
     }
