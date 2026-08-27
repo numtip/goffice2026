@@ -10,6 +10,7 @@ import { categoryImageUrl, categoryImageDimensions } from '../../../utils/wow2-i
 import { getBaselineCategoryCoverage, getSourceTypeCounts, FY2568_BASELINE_YEAR } from '../../../data/criteria/baseline-2568';
 import Cat1ManagementCycle from '../../../components/categories/Cat1ManagementCycle.astro';
 import Cat1DomainSnapshot from '../../../components/categories/Cat1DomainSnapshot.astro';
+import Cat1ProgressSection from '../../../components/categories/Cat1ProgressSection.astro';
 import Cat2ManagementCycle from '../../../components/categories/Cat2ManagementCycle.astro';
 import Cat2DomainSnapshot from '../../../components/categories/Cat2DomainSnapshot.astro';
 import Cat3ManagementCycle from '../../../components/categories/Cat3ManagementCycle.astro';
@@ -249,7 +250,7 @@ function localizedUrl(path: string): string {
         </div>
         <div class="grid gap-4 md:grid-cols-2">
           <!-- FY2568 / Year Base -->
-          <div class="rounded-lg border border-green-200 bg-white/60 p-4">
+          <div class="min-w-0 rounded-lg border border-green-200 bg-white/60 p-4">
             <h3 class="text-sm font-semibold text-green-800">
               {`FY${FY2568_BASELINE_YEAR} Year Base (Baseline)`}
             </h3>
@@ -299,17 +300,28 @@ function localizedUrl(path: string): string {
               </p>
             )}
           </div>
-          <!-- FY2569 / Assessment Year -->
-          <div class="rounded-lg border border-gray-200 bg-white/60 p-4">
-            <h3 class="text-sm font-semibold text-gray-800">
-              {`FY${FY2568_BASELINE_YEAR + 1} Assessment Year`}
-            </h3>
-            <p class="mt-2 text-sm font-medium text-amber-700">
-              Status: Awaiting update
-            </p>
-            <p class="mt-1 text-xs leading-relaxed text-gray-600">
-              No FY2569 assessment data is available for this category yet. This release adds no FY2569 counts, evidence, results, or indicator mappings.
-            </p>
+          <!-- FY2569 / Assessment Year (cat1: data-driven progress; others: static) -->
+          <div class={`min-w-0 rounded-lg border p-4 ${category.code === 'cat1' ? 'border-green-200 bg-white/60' : 'border-gray-200 bg-white/60'}`}>
+            {category.code === 'cat1' ? (
+              <>
+                <h3 class="text-sm font-semibold text-gray-800 mb-3">
+                  {`FY${FY2568_BASELINE_YEAR + 1} Assessment Year`}
+                </h3>
+                <Cat1ProgressSection locale={locale} />
+              </>
+            ) : (
+              <>
+                <h3 class="text-sm font-semibold text-gray-800">
+                  {`FY${FY2568_BASELINE_YEAR + 1} Assessment Year`}
+                </h3>
+                <p class="mt-2 text-sm font-medium text-amber-700">
+                  Status: Awaiting update
+                </p>
+                <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                  No FY2569 assessment data is available for this category yet. This release adds no FY2569 counts, evidence, results, or indicator mappings.
+                </p>
+              </>
+            )}
           </div>
         </div>
       </section>

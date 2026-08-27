@@ -10,6 +10,7 @@ import { getBaselineCategoryCoverage, getSourceTypeCounts, FY2568_BASELINE_YEAR 
 import { categoryImageUrl, categoryImageDimensions } from '../../utils/wow2-images';
 import Cat1ManagementCycle from '../../components/categories/Cat1ManagementCycle.astro';
 import Cat1DomainSnapshot from '../../components/categories/Cat1DomainSnapshot.astro';
+import Cat1ProgressSection from '../../components/categories/Cat1ProgressSection.astro';
 import Cat2ManagementCycle from '../../components/categories/Cat2ManagementCycle.astro';
 import Cat2DomainSnapshot from '../../components/categories/Cat2DomainSnapshot.astro';
 import Cat3ManagementCycle from '../../components/categories/Cat3ManagementCycle.astro';
@@ -260,7 +261,7 @@ const weightLabel = isCat7
         </div>
         <div class="grid gap-4 md:grid-cols-2">
           <!-- FY2568 / ปีฐาน -->
-          <div class="rounded-lg border border-green-200 bg-white/60 p-4">
+          <div class="min-w-0 rounded-lg border border-green-200 bg-white/60 p-4">
             <h3 class="text-sm font-semibold text-green-800">
               ปีฐาน 2568 (FY2568 Baseline)
             </h3>
@@ -311,17 +312,28 @@ const weightLabel = isCat7
               </p>
             )}
           </div>
-          <!-- FY2569 / ปีประเมิน -->
-          <div class="rounded-lg border border-gray-200 bg-white/60 p-4">
-            <h3 class="text-sm font-semibold text-gray-800">
-              ปีประเมิน 2569 (FY2569 Assessment)
-            </h3>
-            <p class="mt-2 text-sm font-medium text-amber-700">
-              สถานะ: รอการอัปเดต
-            </p>
-            <p class="mt-1 text-xs leading-relaxed text-gray-600">
-              ยังไม่มีข้อมูลผลการประเมินปี 2569 ในหมวดนี้ การเผยแพร่ครั้งนี้ไม่มีจำนวนข้อมูล หลักฐาน ผลลัพธ์ หรือการเชื่อมโยงตัวชี้วัดของปี 2569
-            </p>
+          <!-- FY2569 / ปีประเมิน (cat1: data-driven progress; others: static) -->
+          <div class={`min-w-0 rounded-lg border p-4 ${category.code === 'cat1' ? 'border-green-200 bg-white/60' : 'border-gray-200 bg-white/60'}`}>
+            {category.code === 'cat1' ? (
+              <>
+                <h3 class="text-sm font-semibold text-gray-800 mb-3">
+                  ปีประเมิน 2569 (FY2569 Assessment)
+                </h3>
+                <Cat1ProgressSection locale={locale} />
+              </>
+            ) : (
+              <>
+                <h3 class="text-sm font-semibold text-gray-800">
+                  ปีประเมิน 2569 (FY2569 Assessment)
+                </h3>
+                <p class="mt-2 text-sm font-medium text-amber-700">
+                  สถานะ: รอการอัปเดต
+                </p>
+                <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                  ยังไม่มีข้อมูลผลการประเมินปี 2569 ในหมวดนี้ การเผยแพร่ครั้งนี้ไม่มีจำนวนข้อมูล หลักฐาน ผลลัพธ์ หรือการเชื่อมโยงตัวชี้วัดของปี 2569
+                </p>
+              </>
+            )}
           </div>
         </div>
       </section>

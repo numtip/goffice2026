@@ -1,0 +1,153 @@
+---
+/**
+ * Cat1ProgressSection.astro
+ * =========================
+ * Data-driven FY2569 progress for the Category 1 pilot page
+ * (/categories/cat1/), replacing the static "รอการอัปเดต" panel
+ * (dashboard progress blueprint V1 §10.2, §11).
+ *
+ * Shows counts + percentages together, separates progress from evidence,
+ * and ships an accessible fallback table. Cat2–7 stay on the static panel
+ * (no generalization in D3). All numbers derive from
+ * src/data/generated/category-progress-2569.json via the VM.
+ */
+import EChart from '../dashboard/EChart.astro';
+import ChartLegend from '../dashboard/ChartLegend.astro';
+import { buildCat1Progress, PROGRESS_STATUS_COLORS, EVIDENCE_STATUS_COLORS, formatRate } from '../../utils/category-progress-vm';
+import { buildCategoryProgressDonutOption } from '../../utils/chart-option';
+
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const th = locale === 'th';
+const vm = buildCat1Progress(locale);
+
+const donutOption = buildCategoryProgressDonutOption({
+  ready: vm.overall.ready,
+  applicable: vm.overall.applicable,
+  percent: vm.overall.readyRate,
+  locale,
+  ariaDescription: th
+    ? `ความคืบหน้าการดำเนินงานหมวด 1 ปี 2569: พร้อม ${vm.overall.ready} จาก ${vm.overall.applicable} ตัวชี้วัด`
+    : `Category 1 FY${vm.year} progress: ${vm.overall.ready} of ${vm.overall.applicable} indicators ready`,
+});
+
+function evidenceLabel(key: string): string {
+  const labels: Record<string, { th: string; en: string }> = {
+    verified: { th: 'ตรวจสอบแล้ว', en: 'Verified' },
+    available_unverified: { th: 'มีแต่ยังไม่ยืนยัน', en: 'Available, Unverified' },
+    unavailable: { th: 'ไม่มีหลักฐาน', en: 'Unavailable' },
+  };
+  return labels[key][locale] ?? key;
+}
+
+function issueReadyWidth(ready: number, total: number): string {
+  const pct = total > 0 ? (ready / total) * 100 : 0;
+  return `${pct}%`;
+}
+---
+
+<div class="flex flex-col gap-4">
+  <!-- Donut -->
+  <div class="flex items-center justify-center">
+    <div class="w-full max-w-[220px]">
+      <EChart option={donutOption} ariaLabel={th ? 'โดนัทความคืบหน้าหมวด 1 ปี 2569' : `Category 1 FY${vm.year} progress donut`} height={180} noTable />
+    </div>
+  </div>
+
+  <!-- Progress status chips -->
+  <div class="grid grid-cols-2 gap-2" role="list" aria-label={th ? 'สถานะความคืบหน้าการดำเนินงาน' : 'Progress status counts'}>
+    {vm.statusChips.map((chip) => (
+      <div
+        class="flex items-center justify-between rounded-lg border border-gray-200 bg-white/70 px-3 py-2"
+        role="listitem"
+      >
+        <span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-700">
+          <span class="h-2.5 w-2.5 rounded-full ring-1 ring-inset ring-outline-variant/30" style={`background-color: ${PROGRESS_STATUS_COLORS[chip.status]}`} aria-hidden="true"></span>
+          {chip.label}
+        </span>
+        <span class="text-sm font-bold tabular-nums text-gray-900">{chip.count}</span>
+      </div>
+    ))}
+  </div>
+
+  <p class="text-xs text-gray-600">
+    {th
+      ? `ความคืบหน้าการดำเนินงาน: พร้อม ${vm.overall.ready} จาก ${vm.overall.applicable} ตัวชี้วัดที่ใช้ได้ (${formatRate(vm.overall.readyRate)}) — ไม่ใช่คะแนนประเมิน`
+      : `Progress: ${vm.overall.ready} of ${vm.overall.applicable} applicable indicators ready (${formatRate(vm.overall.readyRate)}) — not an official score.`}
+  </p>
+
+  <!-- Issue-level breakdown -->
+  <div>
+    <h4 class="mb-2 text-xs font-semibold text-gray-800">
+      {th ? 'รายประเด็น (1.1–1.7)' : 'By Issue (1.1–1.7)'}
+    </h4>
+    <ul class="space-y-1.5">
+      {vm.issues.map((iss) => (
+        <li class="rounded-md border border-gray-100 bg-white/60 px-2.5 py-1.5">
+          <div class="flex items-baseline justify-between gap-2">
+            <span class="min-w-0 truncate text-[11px] font-medium text-gray-800">
+              <span class="text-gray-400">{iss.id}</span> {iss.title}
+            </span>
+            <span class="shrink-0 text-[11px] tabular-nums text-gray-600">
+              {iss.ready}/{iss.total}
+            </span>
+          </div>
+          <div class="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-gray-100" role="presentation">
+            <div class="h-full rounded-full bg-emerald-500" style={`width: ${issueReadyWidth(iss.ready, iss.total)}`}></div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- Evidence readiness (separate semantics) -->
+  <div class="rounded-lg border border-amber-100 bg-amber-50/40 p-3">
+    <h4 class="text-xs font-semibold text-gray-800">
+      {th ? `ความพร้อมหลักฐาน ปี ${vm.year}` : `FY${vm.year} Evidence Readiness`}
+    </h4>
+    <p class="mt-1 text-[11px] leading-relaxed text-gray-500">{vm.evidenceSummary}</p>
+    <div class="mt-2">
+      <ChartLegend
+        items={[
+          { color: EVIDENCE_STATUS_COLORS.verified, label: `${evidenceLabel('verified')} ${vm.overall.evidence.verified}` },
+          { color: EVIDENCE_STATUS_COLORS.available_unverified, label: `${evidenceLabel('available_unverified')} ${vm.overall.evidence.availableUnverified}` },
+          { color: EVIDENCE_STATUS_COLORS.unavailable, label: `${evidenceLabel('unavailable')} ${vm.overall.evidence.unavailable}` },
+        ]}
+        ariaLabel={th ? 'คำอธิบายสถานะหลักฐาน' : 'Evidence status legend'}
+      />
+    </div>
+  </div>
+
+  <!-- Accessible fallback table -->
+  <details class="mt-1">
+    <summary class="cursor-pointer select-none rounded text-xs text-gray-500 hover:text-green-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">
+      {th ? 'ตารางข้อมูล' : 'Data table'}
+    </summary>
+    <p class="mt-2 mb-1 text-[10px] text-gray-500">
+      {th ? `ตารางข้อมูลความคืบหน้ารายประเด็น ปี ${vm.year} (หมวด 1)` : `Per-issue progress data table, FY${vm.year} (Category 1)`}
+    </p>
+    <div class="mt-2 overflow-x-auto">
+      <table class="w-full border-collapse text-left text-xs">
+        <thead class="border-b border-gray-200">
+          <tr>
+            {vm.fallbackColumns.map((col) => (
+              <th scope="col" class={`px-2 py-1.5 font-semibold text-gray-700 ${col.align === 'right' ? 'text-right' : ''}`}>{col.label}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {vm.fallbackRows.map((row) => (
+            <tr class="border-b border-gray-100">
+              {row.map((cell, ci) => (
+                <td class={`px-2 py-1.5 text-gray-600 ${vm.fallbackColumns[ci]?.align === 'right' ? 'text-right tabular-nums' : ''}`}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </details>
+</div>

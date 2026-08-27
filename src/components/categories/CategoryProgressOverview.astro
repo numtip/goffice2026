@@ -1,0 +1,146 @@
+---
+/**
+ * CategoryProgressOverview.astro
+ * ==============================
+ * FY2569 criteria-progress overview for /categories/ (dashboard progress
+ * blueprint V1 §10.1): overall donut + category stacked bars + evidence
+ * summary. All numbers derive from src/data/generated/
+ * category-progress-2569.json (via category-progress-vm.ts) — never
+ * hardcoded. Progress ≠ Evidence ≠ Official Score.
+ */
+import EChart from '../dashboard/EChart.astro';
+import ChartLegend from '../dashboard/ChartLegend.astro';
+import {
+  buildProgressOverview,
+  PROGRESS_STATUS_COLORS,
+  EVIDENCE_STATUS_COLORS,
+  progressStatusLabel,
+  evidenceStatusLabel,
+  formatRate,
+} from '../../utils/category-progress-vm';
+import { buildCategoryProgressDonutOption, buildProgressStackedBarOption } from '../../utils/chart-option';
+
+interface Props {
+  locale: 'th' | 'en';
+}
+
+const { locale } = Astro.props;
+const th = locale === 'th';
+const vm = buildProgressOverview(locale);
+
+const donutOption = buildCategoryProgressDonutOption({
+  ready: vm.overall.ready,
+  applicable: vm.overall.applicable,
+  percent: vm.overall.readyRate,
+  locale,
+  ariaDescription: vm.overallSummary,
+});
+
+const stackedOption = buildProgressStackedBarOption({
+  items: vm.categories.map((c) => ({
+    label: `${c.id} ${c.label}`,
+    ready: c.ready,
+    inProgress: c.inProgress,
+    notStarted: c.notStarted,
+    unavailable: c.unavailable,
+  })),
+  locale,
+  ariaDescription: th
+    ? 'ความคืบหน้าการดำเนินงานรายหมวด ปี 2569: จำนวนตัวชี้วัดที่พร้อม กำลังดำเนินการ ยังไม่เริ่ม และไม่มีข้อมูล'
+    : `FY${vm.year} progress per category: ready, in progress, not started and unavailable indicator counts`,
+});
+
+const progressLegend = [
+  { color: PROGRESS_STATUS_COLORS.ready, label: progressStatusLabel('ready', locale) },
+  { color: PROGRESS_STATUS_COLORS.in_progress, label: progressStatusLabel('in_progress', locale) },
+  { color: PROGRESS_STATUS_COLORS.not_started, label: progressStatusLabel('not_started', locale) },
+  { color: PROGRESS_STATUS_COLORS.unavailable, label: progressStatusLabel('unavailable', locale) },
+];
+
+const evidenceLegend = [
+  { color: EVIDENCE_STATUS_COLORS.verified, label: evidenceStatusLabel('verified', locale) },
+  { color: EVIDENCE_STATUS_COLORS.available_unverified, label: evidenceStatusLabel('available_unverified', locale) },
+  { color: EVIDENCE_STATUS_COLORS.unavailable, label: evidenceStatusLabel('unavailable', locale) },
+];
+---
+
+<section class="mb-12 rounded-xl border border-green-100 bg-white shadow-sm" aria-labelledby="progress-overview-heading">
+  <div class="border-b border-gray-100 px-5 py-4 sm:px-6">
+    <h2 id="progress-overview-heading" class="text-lg font-semibold text-gray-900">
+      {th ? `ความคืบหน้าการดำเนินงาน ปี ${vm.year}` : `FY${vm.year} Operational Progress`}
+    </h2>
+    <p class="mt-1 text-xs leading-relaxed text-gray-500">
+      {th
+        ? 'แสดงความคืบหน้าการดำเนินงานตามตัวชี้วัด — ไม่ใช่คะแนนประเมินอย่างเป็นทางการ และไม่ใช่ผลการดำเนินงานด้านสิ่งแวดล้อม (ดูแดชบอร์ดทรัพยากรแยกต่างหาก)'
+        : 'Indicator implementation progress — not an official assessment score and not environmental performance (see resource dashboards separately).'}
+    </p>
+  </div>
+
+  <div class="grid gap-6 p-5 sm:p-6 lg:grid-cols-2">
+    <!-- Overall donut + summary -->
+    <div class="flex flex-col items-center justify-center gap-4">
+      <div class="w-full max-w-xs">
+        <EChart
+          option={donutOption}
+          ariaLabel={vm.overallSummary}
+          height={230}
+          noTable
+        />
+      </div>
+      <div class="text-center">
+        <p class="text-sm font-medium text-gray-800">{vm.overallSummary}</p>
+        <p class="mt-2 text-xs text-gray-500">
+          {th ? `ความพร้อมใช้งาน: ${vm.overall.applicable} จาก ${vm.overall.total} ตัวชี้วัด (ไม่รวม ไม่เกี่ยวข้อง)` : `Applicable: ${vm.overall.applicable} of ${vm.overall.total} indicators (excludes not-applicable)`}
+        </p>
+      </div>
+    </div>
+
+    <!-- Category comparison -->
+    <div>
+      <h3 class="mb-3 text-sm font-semibold text-gray-800">
+        {th ? 'เปรียบเทียบรายหมวด' : 'Category Comparison'}
+      </h3>
+      <EChart
+        option={stackedOption}
+        tooltipMeta={{ locale }}
+        ariaLabel={th
+          ? 'กราฟแท่งแนวนอนแสดงจำนวนตัวชี้วัดแต่ละสถานะของทั้ง 7 หมวด ปี 2569'
+          : `Horizontal stacked bars of indicator status counts for all 7 categories, FY${vm.year}`}
+        height={Math.max(220, vm.categories.length * 34)}
+        columns={vm.fallbackColumns}
+        rows={vm.fallbackRows}
+        tableSummary={th ? `ตารางข้อมูลความคืบหน้า ปี ${vm.year}` : `Progress data table, FY${vm.year}`}
+      />
+      <div class="mt-3">
+        <ChartLegend items={progressLegend} ariaLabel={th ? 'คำอธิบายสถานะความคืบหน้า' : 'Progress status legend'} />
+      </div>
+    </div>
+  </div>
+
+  <!-- Evidence readiness (separate semantics) -->
+  <div class="border-t border-gray-100 bg-gray-50/40 px-5 py-4 sm:px-6">
+    <h3 class="text-sm font-semibold text-gray-800">
+      {th ? `ความพร้อมหลักฐาน ปี ${vm.year} (แยกจากความคืบหน้า)` : `FY${vm.year} Evidence Readiness (separate from progress)`}
+    </h3>
+    <p class="mt-1 text-xs leading-relaxed text-gray-500">
+      {th
+        ? 'งานอาจดำเนินการแล้วแต่หลักฐานยังไม่ครบ — สองแกนนี้ประเมินคนละเรื่อง'
+        : 'Work may be done while evidence is incomplete — these are two independent axes.'}
+    </p>
+    <div class="mt-3">
+      <ChartLegend
+        items={[
+          { color: EVIDENCE_STATUS_COLORS.verified, label: `${evidenceStatusLabel('verified', locale)} ${vm.overall.evidence.verified}` },
+          { color: EVIDENCE_STATUS_COLORS.available_unverified, label: `${evidenceStatusLabel('available_unverified', locale)} ${vm.overall.evidence.availableUnverified}` },
+          { color: EVIDENCE_STATUS_COLORS.unavailable, label: `${evidenceStatusLabel('unavailable', locale)} ${vm.overall.evidence.unavailable}` },
+        ]}
+        ariaLabel={th ? 'คำอธิบายสถานะหลักฐาน' : 'Evidence status legend'}
+      />
+    </div>
+    <p class="mt-2 text-[11px] text-gray-400">
+      {th
+        ? 'สถานะหลักฐานตรวจสอบแล้ว = เอกสารผ่านการตรวจสอบเนื้อหา · มีแต่ยังไม่ยืนยัน = แหล่งที่มาเป็น OCR หรือรอการตรวจสอบโดยมนุษย์ · ไม่มีหลักฐาน = ยังไม่มีเอกสารปี 2569'
+        : 'Verified = content-reviewed documents · Available-unverified = OCR-derived or pending human verification · Unavailable = no FY2569 document yet.'}
+    </p>
+  </div>
+</section>
