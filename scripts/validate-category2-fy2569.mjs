@@ -6,15 +6,6 @@
  * Quality gate for FY2569 Cat2 overlay contracts (src/data/category2/*-2569.json).
  * Frozen FY2568 contracts are validated by validate-category2-contracts.mjs.
  *
- * Checks:
- *   1. FY2569 overlay contract parses with required top-level keys
- *   2. every contract/record is year 2569
- *   3. indicator/issue/category codes resolve against canonical taxonomy
- *   4. 2.2.3 appears only in gaps as MISSING_DEDICATED_EVIDENCE
- *   5. no local filesystem paths
- *   6. evidenceIds reference existing FY2569 cat2 evidence-index entries when present
- *   7. sourceRef files exist under public/documents/fy2569/cat2/
- *
  * Usage: node scripts/validate-category2-fy2569.mjs
  * Exit code: 0 on pass, 1 on failure.
  */
@@ -27,7 +18,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 
 const CONTRACT_DIR = resolve(ROOT, 'src', 'data', 'category2');
-const FY2569_DOMAINS = ['training-2569'];
+const FY2569_DOMAINS = ['training-2569', 'communication-2569', 'feedback-2569'];
 const MISSING_INDICATOR = '2.2.3';
 const MISSING_STATUS = 'MISSING_DEDICATED_EVIDENCE';
 const LOCAL_PATH_PATTERNS = [/F:\\/i, /G:\\/i, /projectAi/i, /OneDrive - Maejo/i];
@@ -38,6 +29,7 @@ function readJSON(p) {
 
 function main() {
   const errors = [];
+  const allReferencedEvidence = new Set();
 
   let criteria, issues, evidence;
   try {
@@ -108,14 +100,23 @@ function main() {
         }
       }
       for (const evId of rec.evidenceIds || []) {
+        allReferencedEvidence.add(evId);
         const ev = evidenceById.get(evId);
         if (!ev) {
           errors.push(`${at}: evidenceId "${evId}" not in evidence-index.json`);
           continue;
         }
         if (ev.year !== 2569) errors.push(`${at}: evidenceId "${evId}" must be year 2569`);
+        if (ev.superseded) errors.push(`${at}: evidenceId "${evId}" is superseded`);
         if (!(ev.categoryCodes || []).includes('cat2')) {
           errors.push(`${at}: evidenceId "${evId}" must include categoryCodes cat2`);
+        }
+        if (ev.traceabilityLevel === 'indicator') {
+          const recCodes = [...(rec.indicatorCodes || [])].sort();
+          const evCodes = [...(ev.indicatorCodes || [])].sort();
+          if (JSON.stringify(recCodes) !== JSON.stringify(evCodes)) {
+            errors.push(`${at}: evidenceId "${evId}" indicatorCodes must equal record ${JSON.stringify(recCodes)}`);
+          }
         }
       }
     }
@@ -124,18 +125,15 @@ function main() {
     if (!gap223 || gap223.status !== MISSING_STATUS) {
       errors.push(`${domain}: gaps must declare ${MISSING_INDICATOR} as ${MISSING_STATUS}`);
     }
+  }
 
-    const referencedEvidence = new Set();
-    for (const rec of contract.records || []) {
-      for (const evId of rec.evidenceIds || []) referencedEvidence.add(evId);
-    }
-    for (const ev of evidence) {
-      if (ev.year !== 2569) continue;
-      if (!(ev.categoryCodes || []).includes('cat2')) continue;
-      if (ev.traceabilityLevel !== 'indicator') continue;
-      if (!referencedEvidence.has(ev.id)) {
-        errors.push(`evidence-index: FY2569 cat2 entry "${ev.id}" is not referenced by any FY2569 overlay record`);
-      }
+  for (const ev of evidence) {
+    if (ev.year !== 2569) continue;
+    if (!(ev.categoryCodes || []).includes('cat2')) continue;
+    if (ev.traceabilityLevel !== 'indicator') continue;
+    if (ev.superseded) continue;
+    if (!allReferencedEvidence.has(ev.id)) {
+      errors.push(`evidence-index: FY2569 cat2 entry "${ev.id}" is not referenced by any FY2569 overlay record`);
     }
   }
 

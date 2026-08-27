@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "communication-2569",
+  "updated": "2026-08-27",
+  "year": 2569,
+  "status": "current-year-overlay",
+  "governance": "GOFFICE2026_DASHBOARD_PROGRESS_BLUEPRINT_V1",
+  "note": "D5C B2 Cat2 FY2569 communication intake. B2 content audit: 2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx is misnamed — body title is แผนการสื่อสารด้านสิ่งแวดล้อมประจำปี 2569 with 10 topics, channels, frequencies, and per-channel responsible persons (remapped from erroneous B1 2.1.1 binding). Plan-only — signature date fields are placeholders; no verified campaign execution records. ACT-2569-* remain quarantined for 2.2.2.",
+  "sources": [
+    {
+      "ref": "2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx",
+      "role": "primary-comm-plan",
+      "inspection": "content-verified",
+      "disposition": "available-unverified",
+      "note": "Physically under 2.1.1 folder with training filename; content authority is FY2569 communication plan (form 2.2(1) equivalent narrative)."
+    }
+  ],
+  "records": [
+    {
+      "id": "comm-plan-fy2569",
+      "year": 2569,
+      "indicatorCodes": ["2.2.1"],
+      "issueCodes": ["2.2"],
+      "categoryCode": "cat2",
+      "evidenceIds": ["ev-cat2-comm-plan-fy2569"],
+      "sourceRef": "2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx",
+      "manifestSha256": "e44be974ba66bc9288d2ac0b9aa1eda130c3b974c1c98050b86af715a7c7fa7a",
+      "verification": {
+        "status": "pending",
+        "basis": "B2 content-verified: document title แผนการสื่อสารด้านสิ่งแวดล้อมประจำปี 2569 lists 10 communication topics, channels (Line/Facebook/Website/board/meeting), frequencies, internal/external targets, and named responsible persons plus org chart for channel owners. Misfiled under 2.1.1 training path — remapped to 2.2.1. Plan-only; placeholder signature dates; no verified posting/minutes."
+      },
+      "intakeVerification": "available_unverified",
+      "availability": "content-verified",
+      "kind": "communicationPlan",
+      "labelTh": "แผนการสื่อสารด้านสิ่งแวดล้อม 2569 (2.2.1)",
+      "labelEn": "FY2569 environmental communication plan (2.2.1)"
+    }
+  ],
+  "gaps": [
+    {
+      "indicator": "2.2.2",
+      "status": "MISSING",
+      "note": "No FY2569 campaign/session/posting records in Data2569 Cat2/2.2/2.2.2 (empty). ACT-2569-004/005 SUPPORTED for 2.2.2 remain quarantined — no PO-confirmed mapping."
+    },
+    {
+      "indicator": "2.2.3",
+      "status": "MISSING_DEDICATED_EVIDENCE",
+      "note": "PO decision: no questionnaire/respondent/percentage artifact in Data2569 or repo."
+    }
+  ],
+  "crossLinks": [
+    {
+      "from": "2.2.1",
+      "to": "2.2.2",
+      "reason": "Communication plan defines topics/channels; execution evidence for campaigns not yet migrated"
+    }
+  ]
+}
