@@ -244,8 +244,8 @@ test('TH and EN detail routes render comparison-baseline title and document type
     const src = readFileSync(join(PROJECT_ROOT, route), 'utf8');
     if (route.includes('/en/')) {
       assert.ok(
-        src.includes('baseline for FY2569 comparison'),
-        `${route} must render the EN comparison title`,
+        src.includes('current year') && src.includes('reference baseline'),
+        `${route} must render the EN comparison title (FY2569 current year vs FY2568 reference)`,
       );
       assert.ok(
         src.includes('Source document types'),
@@ -253,8 +253,8 @@ test('TH and EN detail routes render comparison-baseline title and document type
       );
     } else {
       assert.ok(
-        src.includes('สำหรับการเปรียบเทียบปี 2569'),
-        `${route} must render the TH comparison title`,
+        src.includes('ปีปัจจุบัน') && src.includes('ปีฐานอ้างอิง'),
+        `${route} must render the TH comparison title (ปี 2569 ปีปัจจุบัน vs ปี 2568 ปีฐานอ้างอิง)`,
       );
       assert.ok(
         src.includes('ประเภทเอกสารต้นทาง'),
@@ -321,12 +321,12 @@ test('detail routes state the committee comparison purpose (TH/EN parity)', () =
     const src = readFileSync(join(PROJECT_ROOT, route), 'utf8');
     if (route.includes('/en/')) {
       assert.ok(
-        /committee reviews the FY2568 baseline \(year base\) and the FY2569 assessment \(assessment year\) together/i.test(src),
+        /left column shows FY2569 \(assessment year\).*right column is the FY2568 baseline for historical comparison/i.test(src),
         `${route} must state the committee comparison purpose (EN)`,
       );
     } else {
       assert.ok(
-        src.includes('ปีฐาน') && src.includes('ปีประเมิน') && src.includes('ร่วมกัน'),
+        src.includes('ปีประเมิน') && src.includes('ปีฐาน 2568') && src.includes('อ้างอิงเปรียบเทียบ'),
         `${route} must state the committee comparison purpose (TH)`,
       );
     }
