@@ -347,6 +347,7 @@ function main() {
     }
   }
   for (const ev of evidence) {
+    if (ev.year === 2569) continue;
     if (!(ev.categoryCodes || []).includes('cat3')) continue;
     if (ev.traceabilityLevel !== 'indicator') continue;
     if (!referencedCat3Evidence.has(ev.id)) {
