@@ -34,6 +34,8 @@
     "env-aspects:validate": "node scripts/validate-environmental-aspects-2568.mjs && node scripts/validate-category1-contracts.mjs",
     "action-plan:generate": "node scripts/generate-action-plan-2569.mjs",
     "action-plan:validate": "node scripts/validate-action-plan-2569.mjs",
+    "progress:generate": "node scripts/generate-category-progress-2569.mjs",
+    "progress:validate": "node scripts/validate-progress-contract.mjs",
     "bootstrap:local-auth": "node scripts/bootstrap-local-auth.mjs",
     "test:admin-e2e": "node scripts/test-admin-e2e.mjs"
   },

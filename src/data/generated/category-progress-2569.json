@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "1.0.0",
+  "year": 2569,
+  "generatedAt": "2026-08-27",
+  "overall": {
+    "total": 65,
+    "applicable": 65,
+    "ready": 0,
+    "inProgress": 0,
+    "notStarted": 0,
+    "unavailable": 65,
+    "notApplicable": 0,
+    "readyRate": 0
+  },
+  "categories": [
+    {
+      "id": "1",
+      "code": "cat1",
+      "total": 18,
+      "applicable": 18,
+      "ready": 0,
+      "inProgress": 0,
+      "notStarted": 0,
+      "unavailable": 18,
+      "notApplicable": 0,
+      "readyRate": 0
+    },
+    {
+      "id": "2",
+      "code": "cat2",
+      "total": 6,
+      "applicable": 6,
+      "ready": 0,
+      "inProgress": 0,
+      "notStarted": 0,
+      "unavailable": 6,
+      "notApplicable": 0,
+      "readyRate": 0
+    },
+    {
+      "id": "3",
+      "code": "cat3",
+      "total": 15,
+      "applicable": 15,
+      "ready": 0,
+      "inProgress": 0,
+      "notStarted": 0,
+      "unavailable": 15,
+      "notApplicable": 0,
+      "readyRate": 0
+    },
+    {
+      "id": "4",
+      "code": "cat4",
+      "total": 5,
+      "applicable": 5,
+      "ready": 0,
+      "inProgress": 0,
+      "notStarted": 0,
+      "unavailable": 5,
+      "notApplicable": 0,
+      "readyRate": 0
+    },
+    {
+      "id": "5",
+      "code": "cat5",
+      "total": 13,
+      "applicable": 13,
+      "ready": 0,
+      "inProgress": 0,
+      "notStarted": 0,
+      "unavailable": 13,
+      "notApplicable": 0,
+      "readyRate": 0
+    },
+    {
+      "id": "6",
+      "code": "cat6",
+      "total": 6,
+      "applicable": 6,
+      "ready": 0,
+      "inProgress": 0,
+      "notStarted": 0,
+      "unavailable": 6,
+      "notApplicable": 0,
+      "readyRate": 0
+    },
+    {
+      "id": "7",
+      "code": "cat7",
+      "total": 2,
+      "applicable": 2,
+      "ready": 0,
+      "inProgress": 0,
+      "notStarted": 0,
+      "unavailable": 2,
+      "notApplicable": 0,
+      "readyRate": 0
+    }
+  ]
+}

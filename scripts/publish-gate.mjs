@@ -35,7 +35,14 @@ const ROOT = resolve(__dirname, '..');
 
 const GENERATED_DIR = 'src/data/generated';
 const IMPORT_DIR = 'data/import';
-const WATCH_PATHS = [GENERATED_DIR, IMPORT_DIR, 'data/staging/manifest.json', 'data/staging/extract-sources.json'];
+const WATCH_PATHS = [
+  GENERATED_DIR,
+  IMPORT_DIR,
+  'data/staging/manifest.json',
+  'data/staging/extract-sources.json',
+  // Progress contract (D1): source registry + generated category-progress dataset.
+  'src/data/progress',
+];
 const REPORT_DIR = join(ROOT, 'data', 'publish-gate');
 const REPORT_PATH = join(REPORT_DIR, 'latest.json');
 const METRIC_FILES = ['energy.json', 'water.json', 'fuel.json', 'paper.json', 'waste.json', 'recycling_rate.json', 'ghg.json'];
