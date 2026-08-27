@@ -1,7 +1,7 @@
 {
   "version": "0.8.0",
   "updated": "2026-08-27",
-  "note": "C3 (2026-08-23): added Category 3 FY2568 indicator-level evidence entries for all 15 cat3 indicators from the C2 contracts + C1 disposition + fy2568-publication manifest (17 indicator-level + targets/measures + annual report category-level). Scans and image-only tables honestly flagged; 3.2.2 MEDIUM; misbounded #19 / incomplete #21 / partial #32 disclosed; no signed-copy claim. Legacy cat3 placeholders reconciled: ev-energy-audit-2025, ev-energy-metering-2025, ev-energy-led-project, ev-water-meter-q1, ev-waste-audit-2025, ev-transport-fleet-2025 marked superseded; off-manifest operational-workbook claims (energy metering, water meter q1, fleet fuel) downgraded to category-level. Stale cat2 water placeholders (ev-water-audit-2025, ev-water-conservation) left untouched. [Cat5 Phase B 2026-08-24: added 13 canonical FY2568 cat5 indicator-level evidence entries (baseline layer for FY2569; recurring evidence awaiting update).] [D5C B1 2026-08-27: added 2 FY2569 Cat2 training plan intake entries (2.1.1 plan-only; available_unverified; no progressStatus change).] [D5C B2 2026-08-27: remapped misnamed comm-plan docx to 2.2.1; added communication-2569 + feedback-2569 gap contracts.] [D5C B3-1 2026-08-27: added 6 FY2569 Cat3 measures plan entries from one shared DOCX (sections 1–5 only; sections 6–9 OUT OF CAT3 scope; plan-only available_unverified; Track B KPI excluded).]",
+  "note": "C3 (2026-08-23): added Category 3 FY2568 indicator-level evidence entries for all 15 cat3 indicators from the C2 contracts + C1 disposition + fy2568-publication manifest (17 indicator-level + targets/measures + annual report category-level). Scans and image-only tables honestly flagged; 3.2.2 MEDIUM; misbounded #19 / incomplete #21 / partial #32 disclosed; no signed-copy claim. Legacy cat3 placeholders reconciled: ev-energy-audit-2025, ev-energy-metering-2025, ev-energy-led-project, ev-water-meter-q1, ev-waste-audit-2025, ev-transport-fleet-2025 marked superseded; off-manifest operational-workbook claims (energy metering, water meter q1, fleet fuel) downgraded to category-level. Stale cat2 water placeholders (ev-water-audit-2025, ev-water-conservation) left untouched. [Cat5 Phase B 2026-08-24: added 13 canonical FY2568 cat5 indicator-level evidence entries (baseline layer for FY2569; recurring evidence awaiting update).] [D5C B1 2026-08-27: added 2 FY2569 Cat2 training plan intake entries (2.1.1 plan-only; available_unverified; no progressStatus change).] [D5C B2 2026-08-27: remapped misnamed comm-plan docx to 2.2.1; added communication-2569 + feedback-2569 gap contracts.] [D5C B3-1 2026-08-27: added 6 FY2569 Cat3 measures plan entries from one shared DOCX (sections 1–5 only; sections 6–9 OUT OF CAT3 scope; plan-only available_unverified; Track B KPI excluded).] [FY2569 Cat2 delta 2026-08-27: re-synced training xlsx hash; added 2.1.1 delivery/registration/history + 3 trainer CVs + 2.2.1 form PDF/policy/minutes + 2.2.2 satisfaction survey. Held offline files and NEEDS_DISPOSITION 2.2.3/2.2.4/measures-misfile.]",
   "items": [
     {
       "id": "ev-energy-audit-2025",
@@ -4707,8 +4707,8 @@
       "status": "available",
       "updated": "2026-08-27",
       "manifestPath": "2.1/2.1.1/2.1.1_1หลักสูตรแผผนผลปี2569.xlsx",
-      "manifestSha256": "828cc00582c2e73a5b2febd423828e9bd9eb2b36abcfb4db2b675347150a851e",
-      "sizeBytes": 120730,
+      "manifestSha256": "456afea5432eae74660ba676b6218cc1d21c0f42776ef39a23591a26b37aeec9",
+      "sizeBytes": 119332,
       "publicationMode": "public-static",
       "sharePointUrl": null,
       "sharePointUrlPending": false,
@@ -4732,8 +4732,8 @@
       },
       "verification": {
         "status": "pending",
-        "basis": "D5C B1 intake: xlsx structural inspection shows 6 FY2569 courses on plan sheet; results sheet mostly empty. Intake verification: available_unverified — plan-only; trainer names not promoted to 2.1.2 without committee-minute authority.",
-        "basisTh": "D5C B1: ตรวจโครงสร้าง xlsx พบ 6 หลักสูตรในแผน แผ่นผลว่างเกือบทั้งหมด available_unverified — ไม่เลื่อนชื่อวิทยากรเป็น 2.1.2 โดยไม่มีมติคณะกรรมการ"
+        "basis": "FY2569 Cat2 delta: xlsx re-synced to OneDrive Data2569 source hash 456afea5… (was 828cc005…). Plan sheet courses present; available_unverified — not progress/score.",
+        "basisTh": "ซิงก์ xlsx กับ OneDrive ใหม่ hash 456afea5… available_unverified"
       },
       "intakeVerification": "available_unverified"
     },
@@ -4757,9 +4757,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["3.1.1"],
-      "issueCodes": ["3.1"],
-      "categoryCodes": ["cat3"],
+      "indicatorCodes": [
+        "3.1.1"
+      ],
+      "issueCodes": [
+        "3.1"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2569",
@@ -4795,9 +4801,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["3.2.1"],
-      "issueCodes": ["3.2"],
-      "categoryCodes": ["cat3"],
+      "indicatorCodes": [
+        "3.2.1"
+      ],
+      "issueCodes": [
+        "3.2"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2569",
@@ -4833,9 +4845,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["3.2.4"],
-      "issueCodes": ["3.2"],
-      "categoryCodes": ["cat3"],
+      "indicatorCodes": [
+        "3.2.4"
+      ],
+      "issueCodes": [
+        "3.2"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2569",
@@ -4871,9 +4889,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["3.3.1"],
-      "issueCodes": ["3.3"],
-      "categoryCodes": ["cat3"],
+      "indicatorCodes": [
+        "3.3.1"
+      ],
+      "issueCodes": [
+        "3.3"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2569",
@@ -4909,9 +4933,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["3.3.4"],
-      "issueCodes": ["3.3"],
-      "categoryCodes": ["cat3"],
+      "indicatorCodes": [
+        "3.3.4"
+      ],
+      "issueCodes": [
+        "3.3"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2569",
@@ -4947,9 +4977,15 @@
       "sharePointUrl": null,
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
-      "indicatorCodes": ["3.4.1"],
-      "issueCodes": ["3.4"],
-      "categoryCodes": ["cat3"],
+      "indicatorCodes": [
+        "3.4.1"
+      ],
+      "issueCodes": [
+        "3.4"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
       "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2569",
@@ -4964,6 +5000,436 @@
         "basisTh": "D5C B3-1: ตรวจเนื้อหาหมวด 5 แล้ว เป็นแผนเท่านั้น ไม่รวม 3.4.2"
       },
       "intakeVerification": "available_unverified"
+    },
+    {
+      "year": 2569,
+      "status": "available",
+      "updated": "2026-08-27",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "categoryId": "cat2",
+      "categoryCodes": [
+        "cat2"
+      ],
+      "availability": "structural-only",
+      "id": "ev-cat2-tr-delivery-marks-fy2569",
+      "indicator": "Training delivery marks FY2569",
+      "title": "Cat2 FY2569 Training Plan/Result Marks (2.1.1(1))",
+      "titleTh": "แบบแผน/ผลการอบรม ปี 2569 (2.1.1(1))",
+      "description": "FY2569 69-2.1.1(1) plan/result marks PDF. Structural intake; human verification required. Evidence ≠ progress/score.",
+      "descriptionTh": "PDF 69-2.1.1(1) เครื่องหมายแผน/ผล ปี 2569 รับเข้าเชิงโครงสร้าง ยังไม่ยืนยันเนื้อหา",
+      "path": "/documents/fy2569/cat2/2.1/2.1.1/69-2.1.1(1).pdf",
+      "fileType": "PDF",
+      "manifestPath": "2.1/2.1.1/69-2.1.1(1).pdf",
+      "manifestSha256": "16704b6131f45c14419135c41adc33537ad54f386497487999f0fa754c82ffe6",
+      "sizeBytes": 101119,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "2.1.1"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "provenance": {
+        "sourceType": "public-static-fy2569",
+        "sourceLabel": "Data2569 Cat2 69-2.1.1(1)",
+        "sourceLabelTh": "Data2569 Cat2 69-2.1.1(1)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "Structural intake from Data2569; available_unverified.",
+        "basisTh": "Structural intake from Data2569; available_unverified."
+      }
+    },
+    {
+      "year": 2569,
+      "status": "available",
+      "updated": "2026-08-27",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "categoryId": "cat2",
+      "categoryCodes": [
+        "cat2"
+      ],
+      "availability": "structural-only",
+      "id": "ev-cat2-tr-registration-eval-fy2569",
+      "indicator": "Training registration/evaluation FY2569",
+      "title": "Cat2 FY2569 Training Registration/Evaluation (2.1.1(2), 14 May 2569)",
+      "titleTh": "ใบลงทะเบียน/ประเมินการอบรม ปี 2569 (2.1.1(2))",
+      "description": "FY2569 69-2.1.1(2) registration/evaluation scan dated 14 พ.ค. 69. Thin OCR; structural intake only.",
+      "descriptionTh": "สแกน 69-2.1.1(2) ลงทะเบียน/ประเมิน 14 พ.ค. 69 OCR บาง รับเข้าเชิงโครงสร้าง",
+      "path": "/documents/fy2569/cat2/2.1/2.1.1/69-2.1.1(2)%20-%2014%20%E0%B8%9E.%E0%B8%84.%2069.pdf",
+      "fileType": "PDF",
+      "manifestPath": "2.1/2.1.1/69-2.1.1(2) - 14 พ.ค. 69.pdf",
+      "manifestSha256": "53575ef58d934bc0a9f2c76f7948ec6d3121a3a348d2a40c73fb2e9ed6ed9b08",
+      "sizeBytes": 7928906,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "2.1.1"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "provenance": {
+        "sourceType": "public-static-fy2569",
+        "sourceLabel": "Data2569 Cat2 69-2.1.1(2)",
+        "sourceLabelTh": "Data2569 Cat2 69-2.1.1(2)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "Structural intake; thin OCR. available_unverified.",
+        "basisTh": "Structural intake; thin OCR. available_unverified."
+      }
+    },
+    {
+      "year": 2569,
+      "status": "available",
+      "updated": "2026-08-27",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "categoryId": "cat2",
+      "categoryCodes": [
+        "cat2"
+      ],
+      "availability": "structural-only",
+      "id": "ev-cat2-tr-history-fy2569",
+      "indicator": "Personnel training history FY2569",
+      "title": "Cat2 FY2569 Personnel Training History (2.1.1(3))",
+      "titleTh": "ประวัติการอบรมบุคลากร ปี 2569 (2.1.1(3))",
+      "description": "FY2569 69-2.1.1(3) personnel training history PDF. Structural intake; content verification pending.",
+      "descriptionTh": "PDF ประวัติการอบรมบุคลากร 69-2.1.1(3) ปี 2569 รับเข้าเชิงโครงสร้าง",
+      "path": "/documents/fy2569/cat2/2.1/2.1.1/69-2.1.1(3)%20%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%A1%20%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%A5%E0%B8%B2%E0%B8%81%E0%B8%A3.pdf",
+      "fileType": "PDF",
+      "manifestPath": "2.1/2.1.1/69-2.1.1(3) ประวัติการอบรม บุคลากร.pdf",
+      "manifestSha256": "fece26d1543e89fd2a75d32a8342f165206a26842d13a38af46d87ea4c3be0a9",
+      "sizeBytes": 908876,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "2.1.1"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "provenance": {
+        "sourceType": "public-static-fy2569",
+        "sourceLabel": "Data2569 Cat2 69-2.1.1(3)",
+        "sourceLabelTh": "Data2569 Cat2 69-2.1.1(3)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "Structural intake. available_unverified.",
+        "basisTh": "Structural intake. available_unverified."
+      }
+    },
+    {
+      "year": 2569,
+      "status": "available",
+      "updated": "2026-08-27",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "categoryId": "cat2",
+      "categoryCodes": [
+        "cat2"
+      ],
+      "availability": "structural-only",
+      "id": "ev-cat2-tr-trainer-cv-ngamnit-fy2569",
+      "indicator": "Trainer CV supporting FY2569",
+      "title": "Cat2 FY2569 Trainer CV — Ngamnit Anusat",
+      "titleTh": "ประวัติวิทยากร ปี 2569 — นางสาวงามนิจ อนุศาสน์",
+      "description": "Trainer CV supporting 2.1.2 qualification. Does NOT replace committee-minute per-course assignment. available_unverified.",
+      "descriptionTh": "ประวัติวิทยากรสนับสนุน 2.1.2 — ไม่ทดแทนมติคณะกรรมการกำหนดผู้รับผิดชอบรายหลักสูตร",
+      "path": "/documents/fy2569/cat2/2.1/2.1.2/%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%20%E0%B8%99%E0%B8%B2%E0%B8%87%E0%B8%AA%E0%B8%B2%E0%B8%A7%E0%B8%87%E0%B8%B2%E0%B8%A1%E0%B8%99%E0%B8%B4%E0%B8%88%20%E0%B8%AD%E0%B8%99%E0%B8%B8%E0%B8%A8%E0%B8%B2%E0%B8%AA%E0%B8%99%E0%B9%8C.pdf",
+      "fileType": "PDF",
+      "manifestPath": "2.1/2.1.2/ประวัติวิทยากร นางสาวงามนิจ อนุศาสน์.pdf",
+      "manifestSha256": "66fe9f390781629a3dc3421ca721ed2ecfb5c0a77520c68db63c2db55b67b68f",
+      "sizeBytes": 116635,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "2.1.2"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "provenance": {
+        "sourceType": "public-static-fy2569",
+        "sourceLabel": "Data2569 Cat2 trainer CV Ngamnit",
+        "sourceLabelTh": "Data2569 Cat2 trainer CV Ngamnit",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "Supporting CV only; committee minutes still required for 2.1.2.",
+        "basisTh": "Supporting CV only; committee minutes still required for 2.1.2."
+      }
+    },
+    {
+      "year": 2569,
+      "status": "available",
+      "updated": "2026-08-27",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "categoryId": "cat2",
+      "categoryCodes": [
+        "cat2"
+      ],
+      "availability": "structural-only",
+      "id": "ev-cat2-tr-trainer-cv-waranya-fy2569",
+      "indicator": "Trainer CV supporting FY2569",
+      "title": "Cat2 FY2569 Trainer CV — Waranya Thanaphet",
+      "titleTh": "ประวัติวิทยากร ปี 2569 — คุณวรัญญา ธนะเพทย์",
+      "description": "Trainer CV supporting 2.1.2 qualification. Does NOT replace committee-minute per-course assignment. available_unverified.",
+      "descriptionTh": "ประวัติวิทยากรสนับสนุน 2.1.2 — ไม่ทดแทนมติคณะกรรมการกำหนดผู้รับผิดชอบรายหลักสูตร",
+      "path": "/documents/fy2569/cat2/2.1/2.1.2/%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%20%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%A7%E0%B8%A3%E0%B8%B1%E0%B8%8D%E0%B8%8D%E0%B8%B2%20%E0%B8%98%E0%B8%99%E0%B8%B0%E0%B9%80%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C.pdf",
+      "fileType": "PDF",
+      "manifestPath": "2.1/2.1.2/ประวัติวิทยากร คุณวรัญญา ธนะเพทย์.pdf",
+      "manifestSha256": "cf3ea1c946775ea197cdb3891442c3bded2791fed03cfffa29045eef9fc77377",
+      "sizeBytes": 3985264,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "2.1.2"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "provenance": {
+        "sourceType": "public-static-fy2569",
+        "sourceLabel": "Data2569 Cat2 trainer CV Waranya",
+        "sourceLabelTh": "Data2569 Cat2 trainer CV Waranya",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "Supporting CV only; committee minutes still required for 2.1.2.",
+        "basisTh": "Supporting CV only; committee minutes still required for 2.1.2."
+      }
+    },
+    {
+      "year": 2569,
+      "status": "available",
+      "updated": "2026-08-27",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "categoryId": "cat2",
+      "categoryCodes": [
+        "cat2"
+      ],
+      "availability": "structural-only",
+      "id": "ev-cat2-tr-trainer-cv-juthaporn-fy2569",
+      "indicator": "Trainer CV supporting FY2569",
+      "title": "Cat2 FY2569 Trainer CV — Assoc. Prof. Dr. Juthaporn Chanathaworn",
+      "titleTh": "ประวัติวิทยากร ปี 2569 — รศ.ดร.จุฑาภรณ์ ชนะถาวร",
+      "description": "Trainer CV supporting 2.1.2 qualification. Does NOT replace committee-minute per-course assignment. available_unverified.",
+      "descriptionTh": "ประวัติวิทยากรสนับสนุน 2.1.2 — ไม่ทดแทนมติคณะกรรมการกำหนดผู้รับผิดชอบรายหลักสูตร",
+      "path": "/documents/fy2569/cat2/2.1/2.1.2/%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%20%E0%B8%A3%E0%B8%AD%E0%B8%87%E0%B8%A8%E0%B8%B2%E0%B8%AA%E0%B8%95%E0%B8%A3%E0%B8%B2%E0%B8%88%E0%B8%B2%E0%B8%A3%E0%B8%A2%E0%B9%8C%20%E0%B8%94%E0%B8%A3.%E0%B8%88%E0%B8%B8%E0%B8%91%E0%B8%B2%E0%B8%A0%E0%B8%A3%E0%B8%93%E0%B9%8C%20%E0%B8%8A%E0%B8%99%E0%B8%B0%E0%B8%96%E0%B8%B2%E0%B8%A7%E0%B8%A3.pdf",
+      "fileType": "PDF",
+      "manifestPath": "2.1/2.1.2/ประวัติวิทยากร รองศาสตราจารย์ ดร.จุฑาภรณ์ ชนะถาวร.pdf",
+      "manifestSha256": "a90cc1567f92397d0821f716a8480f648f4d003b7e1344117786ee749bf7bbc1",
+      "sizeBytes": 4005715,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "2.1.2"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "provenance": {
+        "sourceType": "public-static-fy2569",
+        "sourceLabel": "Data2569 Cat2 trainer CV Juthaporn",
+        "sourceLabelTh": "Data2569 Cat2 trainer CV Juthaporn",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "Supporting CV only; committee minutes still required for 2.1.2.",
+        "basisTh": "Supporting CV only; committee minutes still required for 2.1.2."
+      }
+    },
+    {
+      "year": 2569,
+      "status": "available",
+      "updated": "2026-08-27",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "categoryId": "cat2",
+      "categoryCodes": [
+        "cat2"
+      ],
+      "availability": "structural-only",
+      "id": "ev-cat2-comm-plan-form-pdf-fy2569",
+      "indicator": "Communication plan form PDF FY2569",
+      "title": "Cat2 FY2569 Form 2.2(1) Communication Plan PDF",
+      "titleTh": "แบบฟอร์ม 2.2(1) แผนสื่อสารสิ่งแวดล้อม PDF ปี 2569",
+      "description": "Preferred form 2.2(1) PDF under 2.2.1. Structural intake. Byte-identical duplicate under 2.2.2 not ingested separately.",
+      "descriptionTh": "PDF แบบฟอร์ม 2.2(1) ใต้ 2.2.1 — สำเนาใน 2.2.2 ไม่รับซ้ำ",
+      "path": "/documents/fy2569/cat2/2.2/2.2.1/69-2.2.1(1)%20%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%AA%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B9%81%E0%B8%A7%E0%B8%94%E0%B8%A5%E0%B9%89%E0%B8%AD%E0%B8%A1.pdf",
+      "fileType": "PDF",
+      "manifestPath": "2.2/2.2.1/69-2.2.1(1) แผนสื่อสารสิ่งแวดล้อม.pdf",
+      "manifestSha256": "1e4f396788fad13b4b9c91c98e248d1d761c84dd826d6f27b14f8d8bdd2c614d",
+      "sizeBytes": 260137,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "2.2.1"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "provenance": {
+        "sourceType": "public-static-fy2569",
+        "sourceLabel": "Data2569 Cat2 69-2.2.1(1)",
+        "sourceLabelTh": "Data2569 Cat2 69-2.2.1(1)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "Structural intake of form PDF; available_unverified plan artifact.",
+        "basisTh": "Structural intake of form PDF; available_unverified plan artifact."
+      }
+    },
+    {
+      "year": 2569,
+      "status": "available",
+      "updated": "2026-08-27",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "categoryId": "cat2",
+      "categoryCodes": [
+        "cat2"
+      ],
+      "availability": "structural-only",
+      "id": "ev-cat2-comm-policy-supporting-fy2569",
+      "indicator": "Policy supporting 2.2.1 FY2569",
+      "title": "Cat2 FY2569 Green Office Policy (2.2.1 supporting)",
+      "titleTh": "นโยบายสำนักงานสีเขียว 2569 (สนับสนุน 2.2.1)",
+      "description": "Policy PDF under 2.2.1(1) folder — supporting topic context. Scan/thin OCR; structural intake.",
+      "descriptionTh": "PDF นโยบายใต้โฟลเดอร์ 2.2.1(1) สนับสนุนหัวข้อสื่อสาร — สแกน OCR บาง",
+      "path": "/documents/fy2569/cat2/2.2/2.2.1/2.2.1(1)-1%20%E0%B8%99%E0%B9%82%E0%B8%A2%E0%B8%9A%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%AA%E0%B8%B5%E0%B9%80%E0%B8%82%E0%B8%B5%E0%B8%A2%E0%B8%A7%E0%B8%AD%E0%B8%B2%E0%B8%84%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%A3%E0%B8%B1%E0%B8%95%E0%B8%99%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%AA%E0%B8%B8%E0%B8%94%E0%B8%B2%20%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5%20%E0%B8%9E.%E0%B8%A8.%202569.pdf",
+      "fileType": "PDF",
+      "manifestPath": "2.2/2.2.1/2.2.1(1)-1 นโยบายสำนักงานสีเขียวอาคารพระเทพรัตนราชสุดา ประจำปี พ.ศ. 2569.pdf",
+      "manifestSha256": "1c409f42c77551669252c5f0d23fe9fb2b24443e291d6103aa3a98b19b0cc8ae",
+      "sizeBytes": 1339030,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "2.2.1"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "provenance": {
+        "sourceType": "public-static-fy2569",
+        "sourceLabel": "Data2569 Cat2 policy supporting",
+        "sourceLabelTh": "Data2569 Cat2 policy supporting",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "Supporting scan; available_unverified.",
+        "basisTh": "Supporting scan; available_unverified."
+      }
+    },
+    {
+      "year": 2569,
+      "status": "available",
+      "updated": "2026-08-27",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "categoryId": "cat2",
+      "categoryCodes": [
+        "cat2"
+      ],
+      "availability": "structural-only",
+      "id": "ev-cat2-comm-minutes-supporting-fy2569",
+      "indicator": "Policy minutes supporting 2.2.1 FY2569",
+      "title": "Cat2 FY2569 Policy Minutes (2.2.1 supporting)",
+      "titleTh": "มตินโยบายสิ่งแวดล้อม 2569 (สนับสนุน 2.2.1)",
+      "description": "Meeting minutes PDF supporting 2.2.1. Scan with 0 extractable text; structural intake only.",
+      "descriptionTh": "มติประชุมสนับสนุน 2.2.1 — สแกนไม่มีข้อความสกัดได้",
+      "path": "/documents/fy2569/cat2/2.2/2.2.1/2.2.1(1)-2%20%E0%B8%A1%E0%B8%95%E0%B8%B4%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%81%E0%B8%B3%E0%B8%AB%E0%B8%99%E0%B8%94%E0%B8%99%E0%B9%82%E0%B8%A2%E0%B8%9A%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B9%81%E0%B8%A7%E0%B8%94%E0%B8%A5%E0%B9%89%E0%B8%AD%E0%B8%A1%202569.pdf",
+      "fileType": "PDF",
+      "manifestPath": "2.2/2.2.1/2.2.1(1)-2 มติการกำหนดนโยบายสิ่งแวดล้อม 2569.pdf",
+      "manifestSha256": "a9779c98929d14069b4a24cd0768c3d3d5ed7d535dcf65bd0b31402b501e019a",
+      "sizeBytes": 457639,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "2.2.1"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "provenance": {
+        "sourceType": "public-static-fy2569",
+        "sourceLabel": "Data2569 Cat2 minutes supporting",
+        "sourceLabelTh": "Data2569 Cat2 minutes supporting",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "Supporting scan; available_unverified.",
+        "basisTh": "Supporting scan; available_unverified."
+      }
+    },
+    {
+      "year": 2569,
+      "status": "available",
+      "updated": "2026-08-27",
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "categoryId": "cat2",
+      "categoryCodes": [
+        "cat2"
+      ],
+      "availability": "structural-only",
+      "id": "ev-cat2-comm-channel-satisfaction-fy2569",
+      "indicator": "Channel satisfaction survey FY2569",
+      "title": "Cat2 FY2569 Channel Satisfaction Survey (52 respondents, 2.2.2)",
+      "titleTh": "แบบสำรวจความพึงพอใจช่องทางสื่อสาร 52 คน (2.2.2)",
+      "description": "Channel satisfaction survey mapped to 2.2.2 secondary only. NOT auto-mapped to 2.2.3 understanding %. Campaign PDF deferred (offline).",
+      "descriptionTh": "แบบสำรวจความพึงพอใจช่องทาง — แมป 2.2.2 เท่านั้น ไม่เลื่อนเป็น 2.2.3 อัตโนมัติ",
+      "path": "/documents/fy2569/cat2/2.2/2.2.2/69-2.2.2(3)%20%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%AA%E0%B8%B3%E0%B8%A3%E0%B8%A7%E0%B8%88%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%A1%E0%B8%B4%E0%B8%99%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%9E%E0%B8%B6%E0%B8%87%E0%B8%9E%E0%B8%AD%E0%B9%83%E0%B8%88%E0%B8%94%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%AA%E0%B8%B2%E0%B8%A3%2052%E0%B8%84%E0%B8%99.pdf",
+      "fileType": "PDF",
+      "manifestPath": "2.2/2.2.2/69-2.2.2(3) แบบสำรวจประเมินความพึงพอใจด้านการสื่อสาร 52คน.pdf",
+      "manifestSha256": "3e4d54a9eda0dc297b3131903adb6d9ba822921f133740fcfe11e25edbfc18ca",
+      "sizeBytes": 310656,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "2.2.2"
+      ],
+      "issueCodes": [
+        "2.2"
+      ],
+      "provenance": {
+        "sourceType": "public-static-fy2569",
+        "sourceLabel": "Data2569 Cat2 69-2.2.2(3)",
+        "sourceLabelTh": "Data2569 Cat2 69-2.2.2(3)",
+        "mappingConfidence": "medium",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "2.2.2 secondary survey only; not 2.2.3. available_unverified.",
+        "basisTh": "2.2.2 secondary survey only; not 2.2.3. available_unverified."
+      }
     }
   ]
 }
