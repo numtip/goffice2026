@@ -5,12 +5,12 @@
   "overall": {
     "total": 65,
     "applicable": 65,
-    "ready": 0,
-    "inProgress": 0,
-    "notStarted": 0,
-    "unavailable": 65,
+    "ready": 5,
+    "inProgress": 1,
+    "notStarted": 2,
+    "unavailable": 57,
     "notApplicable": 0,
-    "readyRate": 0
+    "readyRate": 7.7
   },
   "categories": [
     {
@@ -18,12 +18,12 @@
       "code": "cat1",
       "total": 18,
       "applicable": 18,
-      "ready": 0,
-      "inProgress": 0,
-      "notStarted": 0,
-      "unavailable": 18,
+      "ready": 5,
+      "inProgress": 1,
+      "notStarted": 2,
+      "unavailable": 10,
       "notApplicable": 0,
-      "readyRate": 0
+      "readyRate": 27.8
     },
     {
       "id": "2",
