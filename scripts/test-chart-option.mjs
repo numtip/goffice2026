@@ -58,13 +58,14 @@ describe('buildMonthlySeries — missing months are null, never zero', () => {
     assert.equal(series.currentYear, 2569);
   });
 
-  it('ghg 2569 (pending): all 12 current values are null, never 0', () => {
+  it('ghg 2569 (partial): 7 populated months + 5 nulls; never zero-filled', () => {
     const metric = readMetric('ghg');
     const series = buildMonthlySeries(metric, 'en');
     assert.equal(series.baseline.filter((v) => v !== null).length, 12);
-    assert.equal(series.current.filter((v) => v === null).length, 12);
-    assert.equal(series.current.filter((v) => v === 0).length, 0);
-    assert.equal(series.currentUnverified, true, 'pending year is unverified');
+    assert.equal(series.current.filter((v) => v !== null).length, 7, 'ghg 2569 has Jan–Jul');
+    assert.equal(series.current.filter((v) => v === null).length, 5, 'Aug–Dec must be null, NOT 0');
+    assert.equal(series.current.includes(0), false);
+    assert.equal(series.currentUnverified, false, 'CONFIRMED_XLSX partial year is verified');
     assert.equal(series.unit, 'tCO₂e');
   });
 

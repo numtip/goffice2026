@@ -1,8 +1,8 @@
 {
   "generatedFrom": "canonical-metrics",
   "totalMetrics": 7,
-  "metricsWithWarnings": 5,
-  "metricsWithErrors": 5,
+  "metricsWithWarnings": 3,
+  "metricsWithErrors": 2,
   "entries": [
     {
       "metric": "energy",
@@ -72,13 +72,11 @@
     {
       "metric": "paper",
       "yearBE": 2569,
-      "valid": false,
-      "warnings": [
-        "Waiting for Official FY2569 Data"
-      ],
-      "reconciliationDifference": null,
-      "monthCount": 0,
-      "dataStatus": "CURRENT_DATA_PENDING"
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 7,
+      "dataStatus": "in_progress"
     },
     {
       "metric": "waste",
@@ -92,13 +90,11 @@
     {
       "metric": "waste",
       "yearBE": 2569,
-      "valid": false,
-      "warnings": [
-        "Waiting for Official FY2569 Data"
-      ],
-      "reconciliationDifference": null,
-      "monthCount": 0,
-      "dataStatus": "CURRENT_DATA_PENDING"
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 7,
+      "dataStatus": "in_progress"
     },
     {
       "metric": "recycling_rate",
@@ -124,7 +120,10 @@
       "metric": "ghg",
       "yearBE": 2568,
       "valid": true,
-      "warnings": [],
+      "warnings": [
+        "Monthly sum 231.60 tCO2e vs narrative/inventory 231.62 tCO2e (0.02 delta)",
+        "December not from workbook O68 — derived from narrative minus Jan–Nov"
+      ],
       "reconciliationDifference": 0,
       "monthCount": 12,
       "dataStatus": "VERIFIED_BASELINE"
@@ -132,13 +131,11 @@
     {
       "metric": "ghg",
       "yearBE": 2569,
-      "valid": false,
-      "warnings": [
-        "Waiting for Official FY2569 Data"
-      ],
-      "reconciliationDifference": null,
-      "monthCount": 0,
-      "dataStatus": "CURRENT_DATA_PENDING"
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 7,
+      "dataStatus": "in_progress"
     }
   ]
 }

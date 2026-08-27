@@ -3,7 +3,7 @@
   "label": "GHG Emissions",
   "unit": "tCO₂e",
   "kpiField": "total_tco2e",
-  "status": "CURRENT_DATA_PENDING",
+  "status": "missing",
   "baselineYear": 2568,
   "currentYear": 2569,
   "targetYear": 2569,
@@ -108,29 +108,63 @@
     "2569": {
       "year": 2569,
       "isBaseline": false,
-      "months": [],
-      "total": 0,
-      "average": 0,
-      "dataStatus": "CURRENT_DATA_PENDING",
-      "source": "Waiting for Official FY2569 Data",
-      "updated": "2026-07-27",
-      "provenance": {
-        "sourceWorkbook": "docs/1.5_GreenhouseGas.xlsx",
-        "extractionStatus": "NO_2569_DATA",
-        "validationStatus": "CURRENT_DATA_PENDING",
-        "reconciliationDay1": "2026-07-27"
-      },
-      "quality": {
-        "valid": false,
-        "warnings": [
-          "Waiting for Official FY2569 Data"
-        ],
-        "reconciliationDifference": null
-      },
+      "months": [
+        {
+          "month": 1,
+          "value": 16.113,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 17.195,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 18.611,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 23.402,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 21.822,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 24.336,
+          "label": "Jun"
+        },
+        {
+          "month": 7,
+          "value": 23.591,
+          "label": "Jul"
+        }
+      ],
+      "total": 145.07,
+      "average": 20.72,
       "aggregation": "sum",
-      "dataClassification": "PLACEHOLDER",
-      "datasetState": "WAITING_FOR_INPUT",
-      "latestDataMonth": null
+      "dataStatus": "in_progress",
+      "source": "1.6GreenHouseGas2026.xlsx (ghg-2569.csv) — partial, 7 of 12 months",
+      "quality": {
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": 0
+      },
+      "dataClassification": "CONFIRMED_XLSX",
+      "datasetState": "PUBLISHABLE_PARTIAL",
+      "latestDataMonth": 7,
+      "updated": "2026-08-27",
+      "provenance": {
+        "sourceWorkbook": "1.6GreenHouseGas2026.xlsx",
+        "sourceSheet": "สรุปการคำนวณ ปี 2569",
+        "extractionScript": "scripts/extract-workbook.mjs",
+        "validationStatus": "in_progress"
+      }
     }
   },
   "target": {
@@ -145,9 +179,9 @@
     "months": []
   },
   "yoyChange": {
-    "absolute": 0,
-    "percent": 0,
-    "direction": "stable"
+    "absolute": -86.53,
+    "percent": -37,
+    "direction": "down"
   },
   "relatedIndicators": [
     {
