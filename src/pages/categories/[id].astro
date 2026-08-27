@@ -261,14 +261,14 @@ const weightLabel = isCat7
         </div>
         <div class="grid gap-4 md:grid-cols-2">
           <!-- FY2569 / ปีประเมิน (primary) -->
-          <div class={`min-w-0 rounded-lg border p-4 ${category.code === 'cat1' ? 'border-emerald-200 bg-emerald-50/30' : 'border-gray-300 bg-white/70'}`}>
-            {category.code === 'cat1' ? (
+          <div class={`min-w-0 rounded-lg border p-4 ${['cat1', 'cat2', 'cat3'].includes(category.code) ? 'border-emerald-200 bg-emerald-50/30' : 'border-gray-300 bg-white/70'}`}>
+            {['cat1', 'cat2', 'cat3'].includes(category.code) ? (
               <>
                 <div class="mb-3 flex flex-wrap items-center gap-2">
               <h3 class="text-sm font-semibold text-gray-900">ปีประเมิน 2569 (FY2569 Assessment)</h3>
               <span class="rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-semibold text-white">ปีปัจจุบัน</span>
             </div>
-                <Cat1ProgressSection locale={locale} />
+                <Cat1ProgressSection locale={locale} categoryCode={category.code as 'cat1' | 'cat2' | 'cat3'} />
               </>
             ) : (
               <>

@@ -2,30 +2,35 @@
 /**
  * Cat1ProgressSection.astro
  * =========================
- * Data-driven FY2569 progress for /categories/cat1/ (D3/D4).
+ * Data-driven FY2569 progress for /categories/cat1|cat2|cat3/ (reuse layout).
  *
- * D4 hierarchy:
- *   1. Counts-first donut hero ("4 ของ 18") — percentage secondary
+ * Hierarchy:
+ *   1. Counts-first donut hero — percentage secondary
  *   2. Status chips (executive pulse)
- *   3. Issue 1.1–1.7 diagnostic list (state-colored badges + counts)
+ *   3. Issue diagnostic list (state-colored badges + counts)
  *   4. Needs-attention watch list (data-derived, no inference)
  *   5. Evidence readiness block (indigo — unmistakable separation)
  *   6. Accessible fallback table
- * Cat2–7 stay on the static panel. All numbers derive from the generated
+ * Cat4–7 stay on the static panel. All numbers derive from the generated
  * dataset via the VM. Progress ≠ Evidence ≠ Official Score.
  */
 import EChart from '../dashboard/EChart.astro';
 import ChartLegend from '../dashboard/ChartLegend.astro';
-import { buildCat1Progress, PROGRESS_STATUS_COLORS, EVIDENCE_STATUS_COLORS, formatRate } from '../../utils/category-progress-vm';
+import { buildCategoryProgress, PROGRESS_STATUS_COLORS, EVIDENCE_STATUS_COLORS } from '../../utils/category-progress-vm';
 import { buildCategoryProgressDonutOption } from '../../utils/chart-option';
 
 interface Props {
   locale: 'th' | 'en';
+  /** Category code: cat1 | cat2 | cat3 */
+  categoryCode?: 'cat1' | 'cat2' | 'cat3';
 }
 
-const { locale } = Astro.props;
+const { locale, categoryCode = 'cat1' } = Astro.props;
 const th = locale === 'th';
-const vm = buildCat1Progress(locale);
+const vm = buildCategoryProgress(categoryCode, locale);
+const issueRangeHint =
+  categoryCode === 'cat1' ? '1.1–1.7' : categoryCode === 'cat2' ? '2.1–2.2' : '3.1–3.4';
+const catNum = categoryCode.replace('cat', '');
 
 const donutOption = buildCategoryProgressDonutOption({
   ready: vm.overall.ready,
@@ -61,7 +66,7 @@ function issueReadyWidth(ready: number, total: number): string {
   <!-- Hero: counts-first donut -->
   <div class="flex items-center justify-center">
     <div class="w-full max-w-[230px]">
-      <EChart option={donutOption} ariaLabel={th ? 'โดนัทความคืบหน้าหมวด 1 ปี 2569' : `Category 1 FY${vm.year} progress donut`} height={190} noTable />
+      <EChart option={donutOption} ariaLabel={th ? `โดนัทความคืบหน้าหมวด ${catNum} ปี 2569` : `Category ${catNum} FY${vm.year} progress donut`} height={190} noTable />
     </div>
   </div>
   <p class="text-center text-sm font-bold text-gray-900">{vm.heroSummary}</p>
@@ -82,7 +87,7 @@ function issueReadyWidth(ready: number, total: number): string {
   <!-- Issue diagnostics 1.1–1.7 -->
   <div>
     <h4 class="mb-2 text-xs font-bold uppercase tracking-wide text-gray-800">
-      {th ? 'รายประเด็น (1.1–1.7)' : 'By Issue (1.1–1.7)'}
+      {th ? `รายประเด็น (${issueRangeHint})` : `By Issue (${issueRangeHint})`}
     </h4>
     <ul class="space-y-1.5">
       {vm.issues.map((iss) => {
@@ -158,7 +163,7 @@ function issueReadyWidth(ready: number, total: number): string {
       {th ? 'ตารางข้อมูล' : 'Data table'}
     </summary>
     <p class="mt-2 mb-1 text-[10px] text-gray-500">
-      {th ? `ตารางข้อมูลความคืบหน้ารายประเด็น ปี ${vm.year} (หมวด 1)` : `Per-issue progress data table, FY${vm.year} (Category 1)`}
+      {th ? `ตารางข้อมูลความคืบหน้ารายประเด็น ปี ${vm.year} (หมวด ${catNum})` : `Per-issue progress data table, FY${vm.year} (Category ${catNum})`}
     </p>
     <div class="mt-2 overflow-x-auto">
       <table class="w-full border-collapse text-left text-xs">
