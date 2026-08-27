@@ -1,7 +1,7 @@
 {
   "version": "0.8.0",
   "updated": "2026-08-24",
-  "note": "C3 (2026-08-23): added Category 3 FY2568 indicator-level evidence entries for all 15 cat3 indicators from the C2 contracts + C1 disposition + fy2568-publication manifest (17 indicator-level + targets/measures + annual report category-level). Scans and image-only tables honestly flagged; 3.2.2 MEDIUM; misbounded #19 / incomplete #21 / partial #32 disclosed; no signed-copy claim. Legacy cat3 placeholders reconciled: ev-energy-audit-2025, ev-energy-metering-2025, ev-energy-led-project, ev-water-meter-q1, ev-waste-audit-2025, ev-transport-fleet-2025 marked superseded; off-manifest operational-workbook claims (energy metering, water meter q1, fleet fuel) downgraded to category-level. Stale cat2 water placeholders (ev-water-audit-2025, ev-water-conservation) left untouched. [Cat5 Phase B 2026-08-24: added 13 canonical FY2568 cat5 indicator-level evidence entries (baseline layer for FY2569; recurring evidence awaiting update).] [D5C B1 2026-08-27: added 2 FY2569 Cat2 training plan intake entries (2.1.1 plan-only; available_unverified; no progressStatus change).]",
+  "note": "C3 (2026-08-23): added Category 3 FY2568 indicator-level evidence entries for all 15 cat3 indicators from the C2 contracts + C1 disposition + fy2568-publication manifest (17 indicator-level + targets/measures + annual report category-level). Scans and image-only tables honestly flagged; 3.2.2 MEDIUM; misbounded #19 / incomplete #21 / partial #32 disclosed; no signed-copy claim. Legacy cat3 placeholders reconciled: ev-energy-audit-2025, ev-energy-metering-2025, ev-energy-led-project, ev-water-meter-q1, ev-waste-audit-2025, ev-transport-fleet-2025 marked superseded; off-manifest operational-workbook claims (energy metering, water meter q1, fleet fuel) downgraded to category-level. Stale cat2 water placeholders (ev-water-audit-2025, ev-water-conservation) left untouched. [Cat5 Phase B 2026-08-24: added 13 canonical FY2568 cat5 indicator-level evidence entries (baseline layer for FY2569; recurring evidence awaiting update).] [D5C B1 2026-08-27: added 2 FY2569 Cat2 training plan intake entries (2.1.1 plan-only; available_unverified; no progressStatus change).] [D5C B2 2026-08-27: remapped misnamed comm-plan docx to 2.2.1; added communication-2569 + feedback-2569 gap contracts.]",
   "items": [
     {
       "id": "ev-energy-audit-2025",
@@ -4624,11 +4624,39 @@
     {
       "id": "ev-cat2-tr-plan-fy2569",
       "categoryId": "cat2",
-      "indicator": "Training plan FY2569",
-      "title": "Cat2 FY2569 Training Plan Narrative (2.1.1)",
-      "titleTh": "แผนการฝึกอบรมหมวด 2 ปี 2569 (2.1.1)",
-      "description": "FY2569 Cat2 training plan narrative document migrated from OneDrive Data2569 P1. Plan-only evidence — does not prove delivery, evaluation, or training history.",
-      "descriptionTh": "เอกสารแผนการฝึกอบรมหมวด 2 ปี 2569 จาก OneDrive Data2569 P1 เป็นหลักฐานระดับแผนเท่านั้น ยังไม่พิสูจน์การดำเนินการอบรม การประเมินผล หรือประวัติการอบรม",
+      "indicator": "Training plan FY2569 (superseded mapping)",
+      "title": "Cat2 FY2569 Misnamed Plan Docx — Superseded B1 Mapping",
+      "titleTh": "เอกสารแผน docx ชื่อไฟล์ผิด — ยกเลิกการแมป B1",
+      "description": "B1 incorrectly mapped this file to 2.1.1 based on filename. B2 content audit shows it is the FY2569 communication plan — superseded by ev-cat2-comm-plan-fy2569.",
+      "descriptionTh": "B1 แมปไฟล์นี้เป็น 2.1.1 จากชื่อไฟล์ B2 ตรวจเนื้อหาแล้วเป็นแผนสื่อสาร — ใช้ ev-cat2-comm-plan-fy2569 แทน",
+      "year": 2569,
+      "path": "/documents/fy2569/cat2/2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx",
+      "fileType": "DOCX",
+      "status": "superseded",
+      "updated": "2026-08-27",
+      "manifestPath": "2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx",
+      "manifestSha256": "e44be974ba66bc9288d2ac0b9aa1eda130c3b974c1c98050b86af715a7c7fa7a",
+      "sizeBytes": 122514,
+      "publicationMode": "public-static",
+      "traceabilityLevel": "unmapped",
+      "indicatorCodes": [],
+      "issueCodes": [],
+      "categoryCodes": [],
+      "superseded": true,
+      "supersededBy": "ev-cat2-comm-plan-fy2569",
+      "verification": {
+        "status": "deferred",
+        "basis": "Superseded B1 mis-mapping (filename/folder ≠ content). Do not use for 2.1.1."
+      }
+    },
+    {
+      "id": "ev-cat2-comm-plan-fy2569",
+      "categoryId": "cat2",
+      "indicator": "Communication plan FY2569",
+      "title": "Cat2 FY2569 Environmental Communication Plan (2.2.1)",
+      "titleTh": "แผนการสื่อสารด้านสิ่งแวดล้อม ปี 2569 (2.2.1)",
+      "description": "FY2569 communication plan (10 topics, channels, frequencies, responsible persons). Content-verified from docx body title แผนการสื่อสารด้านสิ่งแวดล้อมประจำปี 2569; misfiled under 2.1.1 training folder. Plan-only — no verified campaign execution.",
+      "descriptionTh": "แผนสื่อสาร 2569 (10 หัวข้อ ช่องทาง ความถี่ ผู้รับผิดชอบ) ตรวจเนื้อหาแล้ว ไฟล์อยู่โฟลเดอร์ 2.1.1 โดยชื่อไฟล์ผิด เป็นแผนเท่านั้น",
       "year": 2569,
       "path": "/documents/fy2569/cat2/2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx",
       "fileType": "DOCX",
@@ -4642,26 +4670,26 @@
       "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
       "indicatorCodes": [
-        "2.1.1"
+        "2.2.1"
       ],
       "issueCodes": [
-        "2.1"
+        "2.2"
       ],
       "categoryCodes": [
         "cat2"
       ],
-      "availability": "source-available",
+      "availability": "content-verified",
       "provenance": {
         "sourceType": "public-static-fy2569",
-        "sourceLabel": "Cat2 FY2569 training plan narrative (OneDrive Data2569 P1)",
-        "sourceLabelTh": "แผนการฝึกอบรมหมวด 2 ปี 2569 (OneDrive Data2569 P1)",
+        "sourceLabel": "Cat2 FY2569 communication plan (OneDrive Data2569 P1, content-verified)",
+        "sourceLabelTh": "แผนการสื่อสารด้านสิ่งแวดล้อม 2569 (OneDrive Data2569 P1)",
         "mappingConfidence": "high",
         "humanVerificationRequired": true
       },
       "verification": {
         "status": "pending",
-        "basis": "D5C B1 intake: plan docx migrated to public/documents/fy2569/cat2/. Filename/folder authority maps to 2.1.1. Intake verification: available_unverified — content not fully extracted; plan-only does not support criteria execution claims.",
-        "basisTh": "D5C B1: ย้ายแผน docx แล้ว แมป 2.1.1 จากชื่อไฟล์/โฟลเดอร์ สถานะ available_unverified — เป็นแผนเท่านั้น ยังไม่รองรับการอ้างว่าดำเนินการครบตามเกณฑ์"
+        "basis": "D5C B2: content-verified remapping from misnamed training docx to 2.2.1. Lists channels/responsible persons for 10 topics. Intake verification: available_unverified — plan-only; placeholder signature dates; no verified postings/minutes.",
+        "basisTh": "D5C B2: แมปใหม่เป็น 2.2.1 จากเนื้อหาแผนสื่อสาร available_unverified — แผนเท่านั้น"
       },
       "intakeVerification": "available_unverified"
     },

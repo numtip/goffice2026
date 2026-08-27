@@ -4321,6 +4321,31 @@
       "fileType": "PDF"
     },
     {
+      "id": "ev-cat2-comm-plan-fy2569",
+      "section": "evidence",
+      "type": "evidence",
+      "title": [
+        "แผนการสื่อสารด้านสิ่งแวดล้อม ปี 2569 (2.2.1)",
+        "Cat2 FY2569 Environmental Communication Plan (2.2.1)"
+      ],
+      "context": [
+        "แผนสื่อสาร 2569 (10 หัวข้อ ช่องทาง ความถี่ ผู้รับผิดชอบ) ตรวจเนื้อหาแล้ว ไฟล์อยู่โฟลเดอร์ 2.1.1 โดยชื่อไฟล์ผิด เป็นแผนเท่านั้น",
+        "FY2569 communication plan (10 topics, channels, frequencies, responsible persons). Content-verified from docx body title แผนการสื่อสารด้านสิ่งแวดล้อมประจำปี 2569; misfiled under 2.1.1 training folder. Plan-only — no verified campaign execution."
+      ],
+      "keywords": [
+        "แผนการสื่อสารด้านสิ่งแวดล้อม ปี 2569 (2.2.1) แผนสื่อสาร 2569 (10 หัวข้อ ช่องทาง ความถี่ ผู้รับผิดชอบ) ตรวจเนื้อหาแล้ว ไฟล์อยู่โฟลเดอร์ 2.1.1 โดยชื่อไฟล์ผิด เป็นแผนเท่านั้น การสื่อสารและสร้างจิตสำนึก ev-cat2-comm-plan-fy2569 2.2.1 2569",
+        "Cat2 FY2569 Environmental Communication Plan (2.2.1) FY2569 communication plan (10 topics, channels, frequencies, responsible persons). Content-verified from docx body title แผนการสื่อสารด้านสิ่งแวดล้อมประจำปี 2569; misfiled under 2.1.1 training folder. Plan-only — no verified campaign execution. Communication and Awareness Cultivation ev-cat2-comm-plan-fy2569 2.2.1 2569"
+      ],
+      "route": "/evidence/ev-cat2-comm-plan-fy2569/",
+      "routeKind": "page",
+      "category": [
+        "การสื่อสารและสร้างจิตสำนึก",
+        "Communication and Awareness Cultivation"
+      ],
+      "year": 2569,
+      "fileType": null
+    },
+    {
       "id": "ev-cat2-tr-curriculum-fy2569",
       "section": "evidence",
       "type": "evidence",
@@ -4350,16 +4375,16 @@
       "section": "evidence",
       "type": "evidence",
       "title": [
-        "แผนการฝึกอบรมหมวด 2 ปี 2569 (2.1.1)",
-        "Cat2 FY2569 Training Plan Narrative (2.1.1)"
+        "เอกสารแผน docx ชื่อไฟล์ผิด — ยกเลิกการแมป B1",
+        "Cat2 FY2569 Misnamed Plan Docx — Superseded B1 Mapping"
       ],
       "context": [
-        "เอกสารแผนการฝึกอบรมหมวด 2 ปี 2569 จาก OneDrive Data2569 P1 เป็นหลักฐานระดับแผนเท่านั้น ยังไม่พิสูจน์การดำเนินการอบรม การประเมินผล หรือประวัติการอบรม",
-        "FY2569 Cat2 training plan narrative document migrated from OneDrive Data2569 P1. Plan-only evidence — does not prove delivery, evaluation, or training history."
+        "B1 แมปไฟล์นี้เป็น 2.1.1 จากชื่อไฟล์ B2 ตรวจเนื้อหาแล้วเป็นแผนสื่อสาร — ใช้ ev-cat2-comm-plan-fy2569 แทน",
+        "B1 incorrectly mapped this file to 2.1.1 based on filename. B2 content audit shows it is the FY2569 communication plan — superseded by ev-cat2-comm-plan-fy2569."
       ],
       "keywords": [
-        "แผนการฝึกอบรมหมวด 2 ปี 2569 (2.1.1) เอกสารแผนการฝึกอบรมหมวด 2 ปี 2569 จาก OneDrive Data2569 P1 เป็นหลักฐานระดับแผนเท่านั้น ยังไม่พิสูจน์การดำเนินการอบรม การประเมินผล หรือประวัติการอบรม การสื่อสารและสร้างจิตสำนึก ev-cat2-tr-plan-fy2569 2.1.1 2569",
-        "Cat2 FY2569 Training Plan Narrative (2.1.1) FY2569 Cat2 training plan narrative document migrated from OneDrive Data2569 P1. Plan-only evidence — does not prove delivery, evaluation, or training history. Communication and Awareness Cultivation ev-cat2-tr-plan-fy2569 2.1.1 2569"
+        "เอกสารแผน docx ชื่อไฟล์ผิด — ยกเลิกการแมป B1 B1 แมปไฟล์นี้เป็น 2.1.1 จากชื่อไฟล์ B2 ตรวจเนื้อหาแล้วเป็นแผนสื่อสาร — ใช้ ev-cat2-comm-plan-fy2569 แทน การสื่อสารและสร้างจิตสำนึก ev-cat2-tr-plan-fy2569 2569",
+        "Cat2 FY2569 Misnamed Plan Docx — Superseded B1 Mapping B1 incorrectly mapped this file to 2.1.1 based on filename. B2 content audit shows it is the FY2569 communication plan — superseded by ev-cat2-comm-plan-fy2569. Communication and Awareness Cultivation ev-cat2-tr-plan-fy2569 2569"
       ],
       "route": "/evidence/ev-cat2-tr-plan-fy2569/",
       "routeKind": "page",

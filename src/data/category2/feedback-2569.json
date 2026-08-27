@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0.0",
+  "domain": "feedback-2569",
+  "updated": "2026-08-27",
+  "year": 2569,
+  "status": "current-year-overlay",
+  "governance": "GOFFICE2026_DASHBOARD_PROGRESS_BLUEPRINT_V1",
+  "note": "D5C B2 Cat2 FY2569 feedback intake gap contract. Data2569/Cat2/2.2/2.2.4 empty. Action-plan rows 2.6/2.7 (canonical 2.2.4) have no actualMonths. No FY2569 feedback channel or improvement report migrated.",
+  "sources": [],
+  "records": [],
+  "gaps": [
+    {
+      "indicator": "2.2.4",
+      "status": "MISSING",
+      "note": "Data2569/Cat2/2.2/2.2.4 folder empty. Need channel establishment artifact + management summary/improvement loop for 2.2.4."
+    },
+    {
+      "indicator": "2.2.3",
+      "status": "MISSING_DEDICATED_EVIDENCE",
+      "note": "Declared in feedback contract for cross-domain gap visibility per Cat2 convention."
+    }
+  ]
+}
