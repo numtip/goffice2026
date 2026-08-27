@@ -682,7 +682,9 @@ export interface CategoryProgressDonutInput {
 
 /**
  * Light-theme donut for criteria progress: ready segment (emerald) vs
- * remaining applicable (light slate); center title shows percent + ready/applicable.
+ * remaining applicable (light slate). The center title leads with the
+ * COUNTS (`ready/applicable`); the percentage is secondary subtext —
+ * counts-first per D4 (blueprint §7.2 shows counts alongside %).
  * Tooltip disabled (shared client formatter is axis-oriented) — the visible
  * title and the accessible table fallback carry the data.
  */
@@ -699,12 +701,12 @@ export function buildCategoryProgressDonutOption(input: CategoryProgressDonutInp
       label: { description },
     },
     title: {
-      text: `${input.percent}%`,
-      subtext: `${ready}/${applicable}`,
+      text: `${ready}/${applicable}`,
+      subtext: `${input.percent}%`,
       left: 'center',
       top: 'center',
-      textStyle: { fontSize: 28, fontWeight: 700, color: '#111827', lineHeight: 34 },
-      subtextStyle: { fontSize: 12, color: '#6b7280', lineHeight: 16 },
+      textStyle: { fontSize: 30, fontWeight: 800, color: '#111827', lineHeight: 36 },
+      subtextStyle: { fontSize: 15, fontWeight: 600, color: '#047857', lineHeight: 20 },
     },
     series: [
       {
@@ -764,26 +766,26 @@ export function buildProgressStackedBarOption(input: ProgressStackedBarInput): R
   };
 
   return {
-    grid: { left: 16, right: 24, top: 8, bottom: 8, containLabel: true },
+    grid: { left: 16, right: 28, top: 8, bottom: 8, containLabel: true },
     xAxis: {
       type: 'value',
       min: 0,
-      axisLabel: { fontSize: 9 },
+      axisLabel: { fontSize: 10 },
       splitLine: { lineStyle: { color: '#e5e7eb', width: 0.5 } },
     },
     yAxis: {
       type: 'category',
       data: items.map((i) => i.label),
       inverse: true,
-      axisLabel: { fontSize: 10, width: 120, overflow: 'truncate' },
+      axisLabel: { fontSize: 12, fontWeight: 600, width: 150, overflow: 'truncate' },
       axisTick: { show: false },
     },
     tooltip: { trigger: 'axis', confine: true, axisPointer: { type: 'shadow' } },
     legend: {
       bottom: 0,
-      itemWidth: 12,
-      itemHeight: 8,
-      textStyle: { fontSize: 10 },
+      itemWidth: 14,
+      itemHeight: 9,
+      textStyle: { fontSize: 11 },
       selectedMode: false,
     },
     aria: {
@@ -797,36 +799,36 @@ export function buildProgressStackedBarOption(input: ProgressStackedBarInput): R
         type: 'bar',
         stack: 'progress',
         data: items.map((i) => i.ready),
-        barWidth: 16,
+        barWidth: 22,
         itemStyle: { color: PROGRESS_STATUS_COLORS.ready, borderRadius: [0, 0, 0, 0] },
-        label: { show: true, position: 'inside', fontSize: 9, color: '#ffffff', formatter: '{c}' },
+        label: { show: true, position: 'inside', fontSize: 11, fontWeight: 700, color: '#ffffff', formatter: '{c}' },
       },
       {
         name: t.inProgress,
         type: 'bar',
         stack: 'progress',
         data: items.map((i) => i.inProgress),
-        barWidth: 16,
+        barWidth: 22,
         itemStyle: { color: PROGRESS_STATUS_COLORS.inProgress },
-        label: { show: true, position: 'inside', fontSize: 9, color: '#ffffff', formatter: '{c}' },
+        label: { show: true, position: 'inside', fontSize: 11, fontWeight: 700, color: '#ffffff', formatter: '{c}' },
       },
       {
         name: t.notStarted,
         type: 'bar',
         stack: 'progress',
         data: items.map((i) => i.notStarted),
-        barWidth: 16,
+        barWidth: 22,
         itemStyle: { color: PROGRESS_STATUS_COLORS.notStarted },
-        label: { show: true, position: 'inside', fontSize: 9, color: '#ffffff', formatter: '{c}' },
+        label: { show: true, position: 'inside', fontSize: 11, fontWeight: 700, color: '#ffffff', formatter: '{c}' },
       },
       {
         name: t.unavailable,
         type: 'bar',
         stack: 'progress',
         data: items.map((i) => i.unavailable),
-        barWidth: 16,
+        barWidth: 22,
         itemStyle: { color: PROGRESS_STATUS_COLORS.unavailable },
-        label: { show: true, position: 'inside', fontSize: 9, color: '#475569', formatter: '{c}' },
+        label: { show: true, position: 'inside', fontSize: 11, fontWeight: 700, color: '#475569', formatter: '{c}' },
       },
     ],
   };

@@ -2,11 +2,16 @@
 /**
  * CategoryProgressOverview.astro
  * ==============================
- * FY2569 criteria-progress overview for /categories/ (dashboard progress
- * blueprint V1 §10.1): overall donut + category stacked bars + evidence
- * summary. All numbers derive from src/data/generated/
- * category-progress-2569.json (via category-progress-vm.ts) — never
- * hardcoded. Progress ≠ Evidence ≠ Official Score.
+ * FY2569 criteria-progress hero + overview for /categories/ (D3/D4).
+ *
+ * Layout hierarchy (D4):
+ *   1. FY2569 hero — large counts-first donut + executive pulse cards
+ *   2. Needs-attention summary (strictly data-derived from counts)
+ *   3. Full-width 7-category stacked comparison (large, fast scanning)
+ *   4. Evidence readiness block (visually unmistakable separation)
+ *
+ * All numbers derive from src/data/generated/category-progress-2569.json via
+ * category-progress-vm.ts — never hardcoded. Progress ≠ Evidence ≠ Score.
  */
 import EChart from '../dashboard/EChart.astro';
 import ChartLegend from '../dashboard/ChartLegend.astro';
@@ -16,7 +21,6 @@ import {
   EVIDENCE_STATUS_COLORS,
   progressStatusLabel,
   evidenceStatusLabel,
-  formatRate,
 } from '../../utils/category-progress-vm';
 import { buildCategoryProgressDonutOption, buildProgressStackedBarOption } from '../../utils/chart-option';
 
@@ -33,7 +37,7 @@ const donutOption = buildCategoryProgressDonutOption({
   applicable: vm.overall.applicable,
   percent: vm.overall.readyRate,
   locale,
-  ariaDescription: vm.overallSummary,
+  ariaDescription: vm.heroSummary,
 });
 
 const stackedOption = buildProgressStackedBarOption({
@@ -56,78 +60,128 @@ const progressLegend = [
   { color: PROGRESS_STATUS_COLORS.not_started, label: progressStatusLabel('not_started', locale) },
   { color: PROGRESS_STATUS_COLORS.unavailable, label: progressStatusLabel('unavailable', locale) },
 ];
-
-const evidenceLegend = [
-  { color: EVIDENCE_STATUS_COLORS.verified, label: evidenceStatusLabel('verified', locale) },
-  { color: EVIDENCE_STATUS_COLORS.available_unverified, label: evidenceStatusLabel('available_unverified', locale) },
-  { color: EVIDENCE_STATUS_COLORS.unavailable, label: evidenceStatusLabel('unavailable', locale) },
-];
 ---
 
-<section class="mb-12 rounded-xl border border-green-100 bg-white shadow-sm" aria-labelledby="progress-overview-heading">
-  <div class="border-b border-gray-100 px-5 py-4 sm:px-6">
-    <h2 id="progress-overview-heading" class="text-lg font-semibold text-gray-900">
-      {th ? `ความคืบหน้าการดำเนินงาน ปี ${vm.year}` : `FY${vm.year} Operational Progress`}
-    </h2>
-    <p class="mt-1 text-xs leading-relaxed text-gray-500">
-      {th
-        ? 'แสดงความคืบหน้าการดำเนินงานตามตัวชี้วัด — ไม่ใช่คะแนนประเมินอย่างเป็นทางการ และไม่ใช่ผลการดำเนินงานด้านสิ่งแวดล้อม (ดูแดชบอร์ดทรัพยากรแยกต่างหาก)'
-        : 'Indicator implementation progress — not an official assessment score and not environmental performance (see resource dashboards separately).'}
-    </p>
-  </div>
-
-  <div class="grid gap-6 p-5 sm:p-6 lg:grid-cols-2">
-    <!-- Overall donut + summary -->
-    <div class="flex flex-col items-center justify-center gap-4">
-      <div class="w-full max-w-xs">
-        <EChart
-          option={donutOption}
-          ariaLabel={vm.overallSummary}
-          height={230}
-          noTable
-        />
+<div class="mb-12 space-y-6">
+  <!-- ══ 1. FY2569 HERO ══ -->
+  <section class="overflow-hidden rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50/80 via-white to-green-50/60 shadow-sm" aria-labelledby="progress-hero-heading">
+    <div class="border-b border-emerald-100/80 px-5 py-4 sm:px-6">
+      <div class="flex flex-wrap items-center gap-2">
+        <h2 id="progress-hero-heading" class="text-lg font-bold text-gray-900">
+          {th ? `ความคืบหน้าการดำเนินงาน ปี ${vm.year}` : `FY${vm.year} Operational Progress`}
+        </h2>
+        <span class="rounded-full bg-emerald-600 px-2.5 py-0.5 text-[11px] font-semibold text-white">
+          {th ? 'ปีปัจจุบัน' : 'Current Year'}
+        </span>
       </div>
-      <div class="text-center">
-        <p class="text-sm font-medium text-gray-800">{vm.overallSummary}</p>
-        <p class="mt-2 text-xs text-gray-500">
-          {th ? `ความพร้อมใช้งาน: ${vm.overall.applicable} จาก ${vm.overall.total} ตัวชี้วัด (ไม่รวม ไม่เกี่ยวข้อง)` : `Applicable: ${vm.overall.applicable} of ${vm.overall.total} indicators (excludes not-applicable)`}
-        </p>
-      </div>
+      <p class="mt-1 text-xs leading-relaxed text-gray-500">
+        {th
+          ? 'แสดงความคืบหน้าการดำเนินงานตามตัวชี้วัด — ไม่ใช่คะแนนประเมินอย่างเป็นทางการ และไม่ใช่ผลการดำเนินงานด้านสิ่งแวดล้อม'
+          : 'Indicator implementation progress — not an official assessment score and not environmental performance.'}
+      </p>
     </div>
 
-    <!-- Category comparison -->
-    <div>
-      <h3 class="mb-3 text-sm font-semibold text-gray-800">
-        {th ? 'เปรียบเทียบรายหมวด' : 'Category Comparison'}
-      </h3>
+    <div class="grid gap-6 p-5 sm:p-6 lg:grid-cols-[minmax(0,300px)_1fr]">
+      <!-- Donut (counts-first) -->
+      <div class="flex flex-col items-center justify-center gap-3">
+        <div class="w-full max-w-[280px]">
+          <EChart option={donutOption} ariaLabel={vm.heroSummary} height={250} noTable />
+        </div>
+        <p class="text-center text-sm font-semibold text-gray-800">{vm.heroSummary}</p>
+        <p class="text-center text-xs text-gray-500">
+          {th ? `จากทั้งหมด ${vm.overall.total} ตัวชี้วัด` : `across ${vm.overall.total} indicators`}
+        </p>
+      </div>
+
+      <!-- Executive pulse + needs attention -->
+      <div class="flex flex-col gap-4">
+        <div class="grid grid-cols-2 gap-3 sm:grid-cols-4" role="list" aria-label={th ? 'สถานะความคืบหน้าการดำเนินงาน' : 'Progress status counts'}>
+          {vm.pulse.map((p) => (
+            <div
+              class="rounded-xl border border-gray-100 bg-white p-3 shadow-sm"
+              role="listitem"
+            >
+              <p class="text-2xl font-extrabold tabular-nums" style={`color: ${PROGRESS_STATUS_COLORS[p.status]}`}>
+                {p.count}
+              </p>
+              <p class="mt-0.5 flex items-center gap-1.5 text-[11px] font-medium text-gray-600">
+                <span class="h-2 w-2 rounded-full ring-1 ring-inset ring-outline-variant/30" style={`background-color: ${PROGRESS_STATUS_COLORS[p.status]}`} aria-hidden="true"></span>
+                {p.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Needs attention (data-derived) -->
+        <div class="rounded-xl border border-amber-200 bg-amber-50/60 p-4" aria-labelledby="needs-attention-heading">
+          <h3 id="needs-attention-heading" class="text-xs font-bold uppercase tracking-wide text-amber-800">
+            {th ? 'จุดที่ต้องติดตาม (จากข้อมูล)' : 'Needs Attention (data-derived)'}
+          </h3>
+          <ul class="mt-2 space-y-1.5">
+            {vm.needsAttention.map((item) => (
+              <li class="flex items-start gap-2 text-xs leading-relaxed text-amber-900">
+                <span class="mt-0.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" aria-hidden="true"></span>
+                <span>
+                  <span class="font-semibold">{item.label}</span>
+                  <span class="text-amber-800"> — {item.detail}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-2 text-[10px] text-amber-700/80">
+            {th
+              ? 'สรุปจากจำนวนตัวชี้วัดในข้อมูลเท่านั้น ไม่ใช่การคาดเดา'
+              : 'Derived from indicator counts only — no inference.'}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2. CATEGORY COMPARISON (large, fast scanning) ══ -->
+  <section class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="category-compare-heading">
+    <h3 id="category-compare-heading" class="text-sm font-bold text-gray-900">
+      {th ? `เปรียบเทียบ 7 หมวด ปี ${vm.year}` : `All 7 Categories — FY${vm.year}`}
+    </h3>
+    <p class="mt-1 text-xs text-gray-500">
+      {th
+        ? 'จำนวนตัวชี้วัดแยกตามสถานะในแต่ละหมวด — เห็นภาพรวมได้ในบรรทัดเดียว'
+        : 'Indicator counts per status in each category — scannable at a glance.'}
+    </p>
+    <div class="mt-4">
       <EChart
         option={stackedOption}
         tooltipMeta={{ locale }}
         ariaLabel={th
           ? 'กราฟแท่งแนวนอนแสดงจำนวนตัวชี้วัดแต่ละสถานะของทั้ง 7 หมวด ปี 2569'
           : `Horizontal stacked bars of indicator status counts for all 7 categories, FY${vm.year}`}
-        height={Math.max(220, vm.categories.length * 34)}
+        height={Math.max(280, vm.categories.length * 44)}
         columns={vm.fallbackColumns}
         rows={vm.fallbackRows}
         tableSummary={th ? `ตารางข้อมูลความคืบหน้า ปี ${vm.year}` : `Progress data table, FY${vm.year}`}
       />
-      <div class="mt-3">
-        <ChartLegend items={progressLegend} ariaLabel={th ? 'คำอธิบายสถานะความคืบหน้า' : 'Progress status legend'} />
-      </div>
     </div>
-  </div>
-
-  <!-- Evidence readiness (separate semantics) -->
-  <div class="border-t border-gray-100 bg-gray-50/40 px-5 py-4 sm:px-6">
-    <h3 class="text-sm font-semibold text-gray-800">
-      {th ? `ความพร้อมหลักฐาน ปี ${vm.year} (แยกจากความคืบหน้า)` : `FY${vm.year} Evidence Readiness (separate from progress)`}
-    </h3>
-    <p class="mt-1 text-xs leading-relaxed text-gray-500">
-      {th
-        ? 'งานอาจดำเนินการแล้วแต่หลักฐานยังไม่ครบ — สองแกนนี้ประเมินคนละเรื่อง'
-        : 'Work may be done while evidence is incomplete — these are two independent axes.'}
-    </p>
     <div class="mt-3">
+      <ChartLegend items={progressLegend} ariaLabel={th ? 'คำอธิบายสถานะความคืบหน้า' : 'Progress status legend'} />
+    </div>
+  </section>
+
+  <!-- ══ 3. EVIDENCE READINESS (unmistakable separation) ══ -->
+  <section class="rounded-2xl border border-indigo-200 bg-indigo-50/50 p-5 shadow-sm sm:p-6" aria-labelledby="evidence-readiness-heading">
+    <div class="flex flex-wrap items-center gap-2">
+      <h3 id="evidence-readiness-heading" class="text-sm font-bold text-indigo-900">
+        {th ? `ความพร้อมหลักฐาน ปี ${vm.year}` : `FY${vm.year} Evidence Readiness`}
+      </h3>
+      <span class="rounded-full bg-indigo-600 px-2.5 py-0.5 text-[11px] font-semibold text-white">
+        {th ? 'EVIDENCE — แยกจากความคืบหน้า' : 'EVIDENCE — separate from progress'}
+      </span>
+    </div>
+    <p class="mt-1 text-xs leading-relaxed text-indigo-800/80">
+      {th
+        ? 'งานอาจดำเนินการแล้วแต่หลักฐานยังไม่ครบ — ความคืบหน้า (เขียว) และความพร้อมหลักฐาน (น้ำเงิน) เป็นคนละแกน'
+        : 'Work may be done while evidence is incomplete — progress (green) and evidence readiness (blue) are independent axes.'}
+    </p>
+    <div class="mt-3 flex flex-wrap gap-2">
       <ChartLegend
         items={[
           { color: EVIDENCE_STATUS_COLORS.verified, label: `${evidenceStatusLabel('verified', locale)} ${vm.overall.evidence.verified}` },
@@ -137,10 +191,10 @@ const evidenceLegend = [
         ariaLabel={th ? 'คำอธิบายสถานะหลักฐาน' : 'Evidence status legend'}
       />
     </div>
-    <p class="mt-2 text-[11px] text-gray-400">
+    <p class="mt-2 text-[11px] text-indigo-900/60">
       {th
-        ? 'สถานะหลักฐานตรวจสอบแล้ว = เอกสารผ่านการตรวจสอบเนื้อหา · มีแต่ยังไม่ยืนยัน = แหล่งที่มาเป็น OCR หรือรอการตรวจสอบโดยมนุษย์ · ไม่มีหลักฐาน = ยังไม่มีเอกสารปี 2569'
+        ? 'ตรวจสอบแล้ว = เอกสารผ่านการตรวจสอบเนื้อหา · มีแต่ยังไม่ยืนยัน = แหล่งที่มาเป็น OCR หรือรอการตรวจสอบโดยมนุษย์ · ไม่มีหลักฐาน = ยังไม่มีเอกสารปี 2569'
         : 'Verified = content-reviewed documents · Available-unverified = OCR-derived or pending human verification · Unavailable = no FY2569 document yet.'}
     </p>
-  </div>
-</section>
+  </section>
+</div>

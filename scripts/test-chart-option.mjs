@@ -275,8 +275,9 @@ describe('buildCategoryProgressDonutOption — criteria progress donut (D3)', ()
       ariaDescription: 'หมวด 1: 4 จาก 18 ตัวชี้วัด',
     });
     assert.doesNotThrow(() => JSON.stringify(option));
-    assert.equal(option.title.text, '22.2%');
-    assert.equal(option.title.subtext, '4/18');
+    // counts-first: title leads with ready/applicable, percent is secondary subtext
+    assert.equal(option.title.text, '4/18');
+    assert.equal(option.title.subtext, '22.2%');
     assert.equal(option.series[0].type, 'pie');
     assert.equal(option.series[0].data[0].value, 4);
     assert.equal(option.series[0].data[1].value, 14, 'remaining = applicable - ready');
@@ -286,6 +287,8 @@ describe('buildCategoryProgressDonutOption — criteria progress donut (D3)', ()
   it('clamps remaining to zero when ready equals applicable', () => {
     const option = buildCategoryProgressDonutOption({ ready: 18, applicable: 18, percent: 100, locale: 'en', ariaDescription: 'x' });
     assert.equal(option.series[0].data[1].value, 0);
+    assert.equal(option.title.text, '18/18');
+    assert.equal(option.title.subtext, '100%');
   });
 });
 

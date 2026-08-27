@@ -57,6 +57,12 @@ export interface ProgressOverviewVM {
   categories: CategoryProgressVM[];
   /** Human-readable summary line (counts + %, never a score). */
   overallSummary: string;
+  /** Counts-first hero line, e.g. "4 of 65 indicators ready". */
+  heroSummary: string;
+  /** Executive pulse cards (counts only). */
+  pulse: { status: string; label: string; count: number }[];
+  /** Data-derived needs-attention rows (no inference beyond counts). */
+  needsAttention: { label: string; count: number; detail: string }[];
   fallbackColumns: { label: string; align?: 'left' | 'right' }[];
   fallbackRows: (string | number)[][];
 }
@@ -67,6 +73,8 @@ export interface Cat1ProgressVM {
   overall: ProgressCountsVM & { evidence: EvidenceCountsVM };
   issues: IssueProgressVM[];
   evidenceSummary: string;
+  heroSummary: string;
+  needsAttention: string[];
   fallbackColumns: { label: string; align?: 'left' | 'right' }[];
   fallbackRows: (string | number)[][];
   statusChips: { status: string; label: string; count: number }[];
@@ -176,6 +184,45 @@ export function buildProgressOverview(locale: Locale): ProgressOverviewVM {
       ? `ภาพรวมปี ${generated.year}: พร้อม ${overall.ready} · กำลังดำเนินการ ${overall.inProgress} · ยังไม่เริ่ม ${overall.notStarted} · ไม่มีข้อมูล ${overall.unavailable} จากทั้งหมด ${overall.total} ตัวชี้วัด (${formatRate(overall.readyRate)})`
       : `FY${generated.year} overview: ${overall.ready} ready · ${overall.inProgress} in progress · ${overall.notStarted} not started · ${overall.unavailable} unavailable of ${overall.total} indicators (${formatRate(overall.readyRate)})`;
 
+  // Counts-first hero line — percentage stays secondary.
+  const heroSummary =
+    locale === 'th'
+      ? `พร้อม ${overall.ready} จาก ${overall.total} ตัวชี้วัด (${formatRate(overall.readyRate)})`
+      : `${overall.ready} of ${overall.total} indicators ready (${formatRate(overall.readyRate)})`;
+
+  const pulse = [
+    { status: 'ready', label: progressStatusLabel('ready', locale), count: overall.ready },
+    { status: 'in_progress', label: progressStatusLabel('in_progress', locale), count: overall.inProgress },
+    { status: 'not_started', label: progressStatusLabel('not_started', locale), count: overall.notStarted },
+    { status: 'unavailable', label: progressStatusLabel('unavailable', locale), count: overall.unavailable },
+  ];
+
+  // Needs-attention rows derived strictly from counts: categories with open
+  // work (in_progress + not_started) first, then unavailable coverage.
+  const openWork = cats
+    .map((c) => ({ cat: c, open: c.inProgress + c.notStarted }))
+    .filter((x) => x.open > 0)
+    .sort((a, b) => b.open - a.open)
+    .slice(0, 3);
+  const needsAttention = openWork.map(({ cat, open }) => ({
+    label: `${cat.id} ${cat.label}`,
+    count: open,
+    detail:
+      locale === 'th'
+        ? `${open} ตัวชี้วัดค้างดำเนินการ (กำลังดำเนินการ ${cat.inProgress} · ยังไม่เริ่ม ${cat.notStarted})`
+        : `${open} indicators with open work (${cat.inProgress} in progress · ${cat.notStarted} not started)`,
+  }));
+  if (overall.unavailable > 0) {
+    needsAttention.push({
+      label: locale === 'th' ? 'ไม่มีข้อมูลปี 2569' : 'FY2569 data unavailable',
+      count: overall.unavailable,
+      detail:
+        locale === 'th'
+          ? `${overall.unavailable} ตัวชี้วัดยังไม่มีข้อมูลที่ verified — รอเอกสาร/หลักฐานปี 2569`
+          : `${overall.unavailable} indicators still lack verified FY2569 data — awaiting sources`,
+    });
+  }
+
   const fallbackColumns = [
     { label: locale === 'th' ? 'หมวด' : 'Category' },
     { label: locale === 'th' ? 'ตัวชี้วัด' : 'Indicators', align: 'right' as const },
@@ -201,6 +248,9 @@ export function buildProgressOverview(locale: Locale): ProgressOverviewVM {
     overall,
     categories: cats,
     overallSummary: summary,
+    heroSummary,
+    pulse,
+    needsAttention,
     fallbackColumns,
     fallbackRows,
   };
@@ -242,6 +292,30 @@ export function buildCat1Progress(locale: Locale): Cat1ProgressVM {
     { status: 'unavailable', label: evidenceStatusLabel('unavailable', locale), count: cat.evidence.unavailable },
   ];
 
+  const heroSummary =
+    locale === 'th'
+      ? `พร้อม ${cat.ready} จาก ${cat.total} ตัวชี้วัด (${formatRate(cat.readyRate)})`
+      : `${cat.ready} of ${cat.total} indicators ready (${formatRate(cat.readyRate)})`;
+
+  // Data-derived watch list: issues with open work, then fully-unavailable ones.
+  const needsAttention: string[] = [];
+  for (const iss of issueRows) {
+    const open = iss.inProgress + iss.notStarted;
+    if (open > 0) {
+      needsAttention.push(
+        locale === 'th'
+          ? `${iss.id} ${iss.title} — ค้างดำเนินการ ${open} (กำลังดำเนินการ ${iss.inProgress} · ยังไม่เริ่ม ${iss.notStarted})`
+          : `${iss.id} ${iss.title} — ${open} open (${iss.inProgress} in progress · ${iss.notStarted} not started)`,
+      );
+    } else if (iss.unavailable === iss.total && iss.total > 0) {
+      needsAttention.push(
+        locale === 'th'
+          ? `${iss.id} ${iss.title} — ${iss.total} ตัวชี้วัดยังไม่มีข้อมูลปี 2569`
+          : `${iss.id} ${iss.title} — ${iss.total} indicators lack FY2569 data`,
+      );
+    }
+  }
+
   const fallbackColumns = [
     { label: locale === 'th' ? 'ประเด็น' : 'Issue' },
     { label: locale === 'th' ? 'ตัวชี้วัด' : 'Indicators', align: 'right' as const },
@@ -268,6 +342,8 @@ export function buildCat1Progress(locale: Locale): Cat1ProgressVM {
     overall: { ...cat },
     issues: issueRows,
     evidenceSummary,
+    heroSummary,
+    needsAttention,
     fallbackColumns,
     fallbackRows,
     statusChips,

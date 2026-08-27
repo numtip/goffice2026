@@ -2,14 +2,17 @@
 /**
  * Cat1ProgressSection.astro
  * =========================
- * Data-driven FY2569 progress for the Category 1 pilot page
- * (/categories/cat1/), replacing the static "รอการอัปเดต" panel
- * (dashboard progress blueprint V1 §10.2, §11).
+ * Data-driven FY2569 progress for /categories/cat1/ (D3/D4).
  *
- * Shows counts + percentages together, separates progress from evidence,
- * and ships an accessible fallback table. Cat2–7 stay on the static panel
- * (no generalization in D3). All numbers derive from
- * src/data/generated/category-progress-2569.json via the VM.
+ * D4 hierarchy:
+ *   1. Counts-first donut hero ("4 ของ 18") — percentage secondary
+ *   2. Status chips (executive pulse)
+ *   3. Issue 1.1–1.7 diagnostic list (state-colored badges + counts)
+ *   4. Needs-attention watch list (data-derived, no inference)
+ *   5. Evidence readiness block (indigo — unmistakable separation)
+ *   6. Accessible fallback table
+ * Cat2–7 stay on the static panel. All numbers derive from the generated
+ * dataset via the VM. Progress ≠ Evidence ≠ Official Score.
  */
 import EChart from '../dashboard/EChart.astro';
 import ChartLegend from '../dashboard/ChartLegend.astro';
@@ -29,9 +32,7 @@ const donutOption = buildCategoryProgressDonutOption({
   applicable: vm.overall.applicable,
   percent: vm.overall.readyRate,
   locale,
-  ariaDescription: th
-    ? `ความคืบหน้าการดำเนินงานหมวด 1 ปี 2569: พร้อม ${vm.overall.ready} จาก ${vm.overall.applicable} ตัวชี้วัด`
-    : `Category 1 FY${vm.year} progress: ${vm.overall.ready} of ${vm.overall.applicable} indicators ready`,
+  ariaDescription: vm.heroSummary,
 });
 
 function evidenceLabel(key: string): string {
@@ -43,6 +44,13 @@ function evidenceLabel(key: string): string {
   return labels[key][locale] ?? key;
 }
 
+/** State color for an issue badge: emerald = all ready, amber = open work, slate = all unavailable. */
+function issueStateColor(iss: { ready: number; inProgress: number; notStarted: number; unavailable: number; total: number }): string {
+  if (iss.total > 0 && iss.ready === iss.total) return '#10b981';
+  if (iss.inProgress > 0 || iss.notStarted > 0) return '#f59e0b';
+  return '#94a3b8';
+}
+
 function issueReadyWidth(ready: number, total: number): string {
   const pct = total > 0 ? (ready / total) * 100 : 0;
   return `${pct}%`;
@@ -50,65 +58,88 @@ function issueReadyWidth(ready: number, total: number): string {
 ---
 
 <div class="flex flex-col gap-4">
-  <!-- Donut -->
+  <!-- Hero: counts-first donut -->
   <div class="flex items-center justify-center">
-    <div class="w-full max-w-[220px]">
-      <EChart option={donutOption} ariaLabel={th ? 'โดนัทความคืบหน้าหมวด 1 ปี 2569' : `Category 1 FY${vm.year} progress donut`} height={180} noTable />
+    <div class="w-full max-w-[230px]">
+      <EChart option={donutOption} ariaLabel={th ? 'โดนัทความคืบหน้าหมวด 1 ปี 2569' : `Category 1 FY${vm.year} progress donut`} height={190} noTable />
     </div>
   </div>
+  <p class="text-center text-sm font-bold text-gray-900">{vm.heroSummary}</p>
 
-  <!-- Progress status chips -->
+  <!-- Status chips (executive pulse) -->
   <div class="grid grid-cols-2 gap-2" role="list" aria-label={th ? 'สถานะความคืบหน้าการดำเนินงาน' : 'Progress status counts'}>
     {vm.statusChips.map((chip) => (
-      <div
-        class="flex items-center justify-between rounded-lg border border-gray-200 bg-white/70 px-3 py-2"
-        role="listitem"
-      >
+      <div class="flex items-center justify-between rounded-lg border border-gray-200 bg-white/70 px-3 py-2" role="listitem">
         <span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-700">
           <span class="h-2.5 w-2.5 rounded-full ring-1 ring-inset ring-outline-variant/30" style={`background-color: ${PROGRESS_STATUS_COLORS[chip.status]}`} aria-hidden="true"></span>
           {chip.label}
         </span>
-        <span class="text-sm font-bold tabular-nums text-gray-900">{chip.count}</span>
+        <span class="text-base font-extrabold tabular-nums text-gray-900">{chip.count}</span>
       </div>
     ))}
   </div>
 
-  <p class="text-xs text-gray-600">
-    {th
-      ? `ความคืบหน้าการดำเนินงาน: พร้อม ${vm.overall.ready} จาก ${vm.overall.applicable} ตัวชี้วัดที่ใช้ได้ (${formatRate(vm.overall.readyRate)}) — ไม่ใช่คะแนนประเมิน`
-      : `Progress: ${vm.overall.ready} of ${vm.overall.applicable} applicable indicators ready (${formatRate(vm.overall.readyRate)}) — not an official score.`}
-  </p>
-
-  <!-- Issue-level breakdown -->
+  <!-- Issue diagnostics 1.1–1.7 -->
   <div>
-    <h4 class="mb-2 text-xs font-semibold text-gray-800">
+    <h4 class="mb-2 text-xs font-bold uppercase tracking-wide text-gray-800">
       {th ? 'รายประเด็น (1.1–1.7)' : 'By Issue (1.1–1.7)'}
     </h4>
     <ul class="space-y-1.5">
-      {vm.issues.map((iss) => (
-        <li class="rounded-md border border-gray-100 bg-white/60 px-2.5 py-1.5">
-          <div class="flex items-baseline justify-between gap-2">
-            <span class="min-w-0 truncate text-[11px] font-medium text-gray-800">
-              <span class="text-gray-400">{iss.id}</span> {iss.title}
-            </span>
-            <span class="shrink-0 text-[11px] tabular-nums text-gray-600">
-              {iss.ready}/{iss.total}
-            </span>
-          </div>
-          <div class="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-gray-100" role="presentation">
-            <div class="h-full rounded-full bg-emerald-500" style={`width: ${issueReadyWidth(iss.ready, iss.total)}`}></div>
-          </div>
-        </li>
-      ))}
+      {vm.issues.map((iss) => {
+        const color = issueStateColor(iss);
+        return (
+          <li class="rounded-lg border border-gray-100 bg-white/70 px-2.5 py-2">
+            <div class="flex items-center gap-2">
+              <span
+                class="flex h-6 w-9 shrink-0 items-center justify-center rounded-md text-[11px] font-bold text-white"
+                style={`background-color: ${color}`}
+              >
+                {iss.id}
+              </span>
+              <div class="min-w-0 flex-1">
+                <p class="truncate text-[11px] font-semibold text-gray-800">{iss.title}</p>
+                <p class="text-[10px] text-gray-500">
+                  {iss.ready}/{iss.total} {th ? 'พร้อม' : 'ready'}
+                  {iss.inProgress > 0 ? ` · ${iss.inProgress} ${th ? 'กำลังดำเนินการ' : 'in progress'}` : ''}
+                  {iss.notStarted > 0 ? ` · ${iss.notStarted} ${th ? 'ยังไม่เริ่ม' : 'not started'}` : ''}
+                  {iss.unavailable > 0 ? ` · ${iss.unavailable} ${th ? 'ไม่มีข้อมูล' : 'unavailable'}` : ''}
+                </p>
+              </div>
+            </div>
+            <div class="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-gray-100" role="presentation">
+              <div class="h-full rounded-full" style={`width: ${issueReadyWidth(iss.ready, iss.total)}; background-color: ${color}`}></div>
+            </div>
+          </li>
+        );
+      })}
     </ul>
   </div>
 
-  <!-- Evidence readiness (separate semantics) -->
-  <div class="rounded-lg border border-amber-100 bg-amber-50/40 p-3">
-    <h4 class="text-xs font-semibold text-gray-800">
-      {th ? `ความพร้อมหลักฐาน ปี ${vm.year}` : `FY${vm.year} Evidence Readiness`}
-    </h4>
-    <p class="mt-1 text-[11px] leading-relaxed text-gray-500">{vm.evidenceSummary}</p>
+  <!-- Needs attention (data-derived) -->
+  {vm.needsAttention.length > 0 && (
+    <div class="rounded-lg border border-amber-200 bg-amber-50/60 p-3">
+      <h4 class="text-xs font-bold uppercase tracking-wide text-amber-800">
+        {th ? 'จุดที่ต้องติดตาม' : 'Needs Attention'}
+      </h4>
+      <ul class="mt-1.5 space-y-1">
+        {vm.needsAttention.map((line) => (
+          <li class="text-[11px] leading-relaxed text-amber-900">{line}</li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  <!-- Evidence readiness (unmistakable separation) -->
+  <div class="rounded-lg border border-indigo-200 bg-indigo-50/60 p-3">
+    <div class="flex flex-wrap items-center gap-2">
+      <h4 class="text-xs font-bold text-indigo-900">
+        {th ? `ความพร้อมหลักฐาน ปี ${vm.year}` : `FY${vm.year} Evidence Readiness`}
+      </h4>
+      <span class="rounded-full bg-indigo-600 px-2 py-0.5 text-[9px] font-bold text-white">
+        EVIDENCE
+      </span>
+    </div>
+    <p class="mt-1 text-[11px] leading-relaxed text-indigo-900/70">{vm.evidenceSummary}</p>
     <div class="mt-2">
       <ChartLegend
         items={[

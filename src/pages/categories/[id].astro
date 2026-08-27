@@ -248,21 +248,53 @@ const weightLabel = isCat7
       </div>
     )}
 
-    <!-- FY2568 / FY2569 Comparison Panel -->
+    <!-- FY2569 (current year) vs FY2568 (historical reference) -->
     {baselineCoverage && (
-      <section class={`mb-8 rounded-xl border p-5 ${isCat7 ? 'border-amber-200 bg-amber-50/50' : 'border-green-100 bg-green-50/50'}`}>
+      <section class="mb-8 rounded-xl border border-gray-200 bg-white/70 p-5">
         <div class="mb-4">
           <h2 class="text-sm font-semibold text-gray-900">
-            ข้อมูลพื้นฐาน ปี {FY2568_BASELINE_YEAR} สำหรับการเปรียบเทียบปี 2569
+            ปี 2569 (ปีปัจจุบัน) เทียบกับปี 2568 (ปีฐานอ้างอิง)
           </h2>
           <p class="mt-1 text-xs leading-relaxed text-gray-600">
-            คณะกรรมการพิจารณาเปรียบเทียบข้อมูลพื้นฐาน ปี 2568 (ปีฐาน) กับผลการประเมิน ปี 2569 (ปีประเมิน) ร่วมกัน
+            คอลัมน์ซ้ายคือสถานะปี 2569 (ปีประเมิน) ส่วนคอลัมน์ขวาเป็นข้อมูลปีฐาน 2568 สำหรับอ้างอิงเปรียบเทียบเท่านั้น
           </p>
         </div>
         <div class="grid gap-4 md:grid-cols-2">
-          <!-- FY2568 / ปีฐาน -->
-          <div class="min-w-0 rounded-lg border border-green-200 bg-white/60 p-4">
-            <h3 class="text-sm font-semibold text-green-800">
+          <!-- FY2569 / ปีประเมิน (primary) -->
+          <div class="min-w-0 rounded-lg border p-4 border-emerald-200 bg-emerald-50/30">
+<div class={`min-w-0 rounded-lg border p-4 ${category.code === 'cat1' ? 'border-green-200 bg-white/60' : 'border-gray-200 bg-white/60'}`}>
+            {category.code === 'cat1' ? (
+              <>
+                <div class="mb-3 flex flex-wrap items-center gap-2">
+              <h3 class="text-sm font-semibold text-gray-900">ปีประเมิน 2569 (FY2569 Assessment)</h3>
+              <span class="rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-semibold text-white">ปีปัจจุบัน</span>
+            </div>
+                <Cat1ProgressSection locale={locale} />
+              </>
+            ) : (
+              <>
+                <div class="mb-3 flex flex-wrap items-center gap-2">
+              <h3 class="text-sm font-semibold text-gray-900">ปีประเมิน 2569 (FY2569 Assessment)</h3>
+              <span class="rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-semibold text-white">ปีปัจจุบัน</span>
+            </div>
+                <p class="mt-2 text-sm font-medium text-amber-700">
+                  สถานะ: รอการอัปเดต
+                </p>
+                <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                  ยังไม่มีข้อมูลผลการประเมินปี 2569 ในหมวดนี้ การเผยแพร่ครั้งนี้ไม่มีจำนวนข้อมูล หลักฐาน ผลลัพธ์ หรือการเชื่อมโยงตัวชี้วัดของปี 2569
+                </p>
+              </>
+            )}
+          </div>
+
+          <!-- FY2568 / ปีฐาน (secondary historical reference) -->
+          <div class="min-w-0 rounded-lg border border-gray-200 bg-gray-50/60 p-4">
+            <div class="mb-2 flex flex-wrap items-center gap-2">
+              <h3 class="text-sm font-semibold text-gray-600">ปีฐาน 2568 (FY2568 Baseline)</h3>
+              <span class="rounded-full bg-gray-200 px-2 py-0.5 text-[10px] font-medium text-gray-600">ปีฐาน · อ้างอิง</span>
+            </div>
+
+            <h3 class="text-sm font-semibold text-gray-600">
               ปีฐาน 2568 (FY2568 Baseline)
             </h3>
             <p class="mt-2 text-sm text-gray-700">
@@ -274,7 +306,7 @@ const weightLabel = isCat7
             <p class="mt-2 text-xs leading-relaxed text-gray-600">
               ข้อมูลพื้นฐาน ปี 2568 เป็นข้อมูลสาธารณะที่เผยแพร่แบบเปิดจากเว็บไซต์นี้
               เอกสารต้นทางเข้าถึงได้จาก{' '}
-              <a href={publicSourceHref} class="text-green-700 underline hover:text-green-900">
+              <a href={publicSourceHref} class="text-gray-600 underline hover:text-gray-900">
                 ศูนย์เอกสารหมวดนี้
               </a>
             </p>
@@ -334,6 +366,7 @@ const weightLabel = isCat7
                 </p>
               </>
             )}
+
           </div>
         </div>
       </section>
