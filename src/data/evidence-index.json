@@ -1,7 +1,7 @@
 {
   "version": "0.8.0",
   "updated": "2026-08-24",
-  "note": "C3 (2026-08-23): added Category 3 FY2568 indicator-level evidence entries for all 15 cat3 indicators from the C2 contracts + C1 disposition + fy2568-publication manifest (17 indicator-level + targets/measures + annual report category-level). Scans and image-only tables honestly flagged; 3.2.2 MEDIUM; misbounded #19 / incomplete #21 / partial #32 disclosed; no signed-copy claim. Legacy cat3 placeholders reconciled: ev-energy-audit-2025, ev-energy-metering-2025, ev-energy-led-project, ev-water-meter-q1, ev-waste-audit-2025, ev-transport-fleet-2025 marked superseded; off-manifest operational-workbook claims (energy metering, water meter q1, fleet fuel) downgraded to category-level. Stale cat2 water placeholders (ev-water-audit-2025, ev-water-conservation) left untouched. [Cat5 Phase B 2026-08-24: added 13 canonical FY2568 cat5 indicator-level evidence entries (baseline layer for FY2569; recurring evidence awaiting update).]",
+  "note": "C3 (2026-08-23): added Category 3 FY2568 indicator-level evidence entries for all 15 cat3 indicators from the C2 contracts + C1 disposition + fy2568-publication manifest (17 indicator-level + targets/measures + annual report category-level). Scans and image-only tables honestly flagged; 3.2.2 MEDIUM; misbounded #19 / incomplete #21 / partial #32 disclosed; no signed-copy claim. Legacy cat3 placeholders reconciled: ev-energy-audit-2025, ev-energy-metering-2025, ev-energy-led-project, ev-water-meter-q1, ev-waste-audit-2025, ev-transport-fleet-2025 marked superseded; off-manifest operational-workbook claims (energy metering, water meter q1, fleet fuel) downgraded to category-level. Stale cat2 water placeholders (ev-water-audit-2025, ev-water-conservation) left untouched. [Cat5 Phase B 2026-08-24: added 13 canonical FY2568 cat5 indicator-level evidence entries (baseline layer for FY2569; recurring evidence awaiting update).] [D5C B1 2026-08-27: added 2 FY2569 Cat2 training plan intake entries (2.1.1 plan-only; available_unverified; no progressStatus change).]",
   "items": [
     {
       "id": "ev-energy-audit-2025",
@@ -4620,6 +4620,94 @@
         "basis": "Page 2 of 7.1 (9-3-69).pdf text layer content-verified: the FY2568 (ประจำปี 2568) internal-audit request was submitted to the Green Office steering committee chair (ประธานคณะกรรมการขับเคลื่อนฯ), dated 17 มี.ค. 2569, per the at-least-annual frequency condition. Appointment (p1), criteria (p5) and execution/result (p7) are 2569-dated QUARANTINE claims; roster (p6) is YEAR_UNVERIFIED; p3-p4 photos scan-only (pending OCR). Cross-referenced on หมวด 7_(9-3-69).pdf p2 (contentDuplicateCandidate, separate sourceRef)."
       },
       "fy2569Status": "awaiting-update"
+    },
+    {
+      "id": "ev-cat2-tr-plan-fy2569",
+      "categoryId": "cat2",
+      "indicator": "Training plan FY2569",
+      "title": "Cat2 FY2569 Training Plan Narrative (2.1.1)",
+      "titleTh": "แผนการฝึกอบรมหมวด 2 ปี 2569 (2.1.1)",
+      "description": "FY2569 Cat2 training plan narrative document migrated from OneDrive Data2569 P1. Plan-only evidence — does not prove delivery, evaluation, or training history.",
+      "descriptionTh": "เอกสารแผนการฝึกอบรมหมวด 2 ปี 2569 จาก OneDrive Data2569 P1 เป็นหลักฐานระดับแผนเท่านั้น ยังไม่พิสูจน์การดำเนินการอบรม การประเมินผล หรือประวัติการอบรม",
+      "year": 2569,
+      "path": "/documents/fy2569/cat2/2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx",
+      "fileType": "DOCX",
+      "status": "available",
+      "updated": "2026-08-27",
+      "manifestPath": "2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx",
+      "manifestSha256": "e44be974ba66bc9288d2ac0b9aa1eda130c3b974c1c98050b86af715a7c7fa7a",
+      "sizeBytes": 122514,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "2.1.1"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
+      "availability": "source-available",
+      "provenance": {
+        "sourceType": "public-static-fy2569",
+        "sourceLabel": "Cat2 FY2569 training plan narrative (OneDrive Data2569 P1)",
+        "sourceLabelTh": "แผนการฝึกอบรมหมวด 2 ปี 2569 (OneDrive Data2569 P1)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "D5C B1 intake: plan docx migrated to public/documents/fy2569/cat2/. Filename/folder authority maps to 2.1.1. Intake verification: available_unverified — content not fully extracted; plan-only does not support criteria execution claims.",
+        "basisTh": "D5C B1: ย้ายแผน docx แล้ว แมป 2.1.1 จากชื่อไฟล์/โฟลเดอร์ สถานะ available_unverified — เป็นแผนเท่านั้น ยังไม่รองรับการอ้างว่าดำเนินการครบตามเกณฑ์"
+      },
+      "intakeVerification": "available_unverified"
+    },
+    {
+      "id": "ev-cat2-tr-curriculum-fy2569",
+      "categoryId": "cat2",
+      "indicator": "Training curriculum form 2.1(1) FY2569",
+      "title": "Cat2 FY2569 Form 2.1(1) Curriculum and Plan Workbook",
+      "titleTh": "แบบฟอร์ม 2.1(1) หลักสูตรและแผนการฝึกอบรม ปี 2569",
+      "description": "FY2569 form 2.1(1) workbook listing 6 planned courses with target groups and named trainers. Plan sheet populated; results sheet largely blank. Blank 2.1(2) templates excluded from mapping.",
+      "descriptionTh": "สมุดงานแบบฟอร์ม 2.1(1) ปี 2569 ระบุ 6 หลักสูตร กลุ่มเป้าหมาย และวิทยากร แผนครบ แต่แผ่นผลส่วนใหญ่ยังว่าง ไม่รวมแบบฟอร์ม 2.1(2) ว่าง",
+      "year": 2569,
+      "path": "/documents/fy2569/cat2/2.1/2.1.1/2.1.1_1หลักสูตรแผผนผลปี2569.xlsx",
+      "fileType": "XLSX",
+      "status": "available",
+      "updated": "2026-08-27",
+      "manifestPath": "2.1/2.1.1/2.1.1_1หลักสูตรแผผนผลปี2569.xlsx",
+      "manifestSha256": "828cc00582c2e73a5b2febd423828e9bd9eb2b36abcfb4db2b675347150a851e",
+      "sizeBytes": 120730,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "2.1.1"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
+      "categoryCodes": [
+        "cat2"
+      ],
+      "availability": "structural-only",
+      "provenance": {
+        "sourceType": "public-static-fy2569",
+        "sourceLabel": "Cat2 FY2569 form 2.1(1) curriculum/plan workbook (OneDrive Data2569 P1)",
+        "sourceLabelTh": "แบบฟอร์ม 2.1(1) หลักสูตรและแผน ปี 2569 (OneDrive Data2569 P1)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "D5C B1 intake: xlsx structural inspection shows 6 FY2569 courses on plan sheet; results sheet mostly empty. Intake verification: available_unverified — plan-only; trainer names not promoted to 2.1.2 without committee-minute authority.",
+        "basisTh": "D5C B1: ตรวจโครงสร้าง xlsx พบ 6 หลักสูตรในแผน แผ่นผลว่างเกือบทั้งหมด available_unverified — ไม่เลื่อนชื่อวิทยากรเป็น 2.1.2 โดยไม่มีมติคณะกรรมการ"
+      },
+      "intakeVerification": "available_unverified"
     }
   ]
 }
