@@ -9,6 +9,9 @@ import {
   type Cat2Domain,
   CAT2_YEAR,
 } from '../../utils/category2-presentation';
+import progressRegistry from '../../data/progress/indicator-progress-2569.json';
+import feedback2569 from '../../data/category2/feedback-2569.json';
+import { progressStatusLabel, evidenceStatusLabel } from '../../utils/category-progress-vm';
 
 interface Props {
   indicatorCode: string;
@@ -42,6 +45,50 @@ const verificationStatus = domain
 const pendingScanCount = domain
   ? contractForDomain(domain).records.filter((r) => r.availability === 'filename_folder_only').length
   : 0;
+
+const fy2569Progress = (progressRegistry.items as Array<{
+  indicator: string;
+  progressStatus: string;
+  evidenceStatus: string;
+  notes?: string;
+  source?: { type: string; ref: string | null };
+}>).find((i) => i.indicator === indicatorCode);
+
+const fy2569Gap = (feedback2569.gaps as Array<{ indicator: string; status: string; note: string }>).find(
+  (g) => g.indicator === indicatorCode,
+);
+
+const FY2569_PARTIAL: Record<string, { available: { th: string; en: string }; missing: { th: string; en: string }; next: { th: string; en: string } }> = {
+  '2.2.3': {
+    available: {
+      th: 'โฟลเดอร์ Data2569 มีแบบสอบถามความพึงพอใจ Big Cleaning Day (สถานะ NEEDS_DISPOSITION / offline) — ไม่ใช่หลักฐานร้อยละความเข้าใจ',
+      en: 'Data2569 folder holds a Big Cleaning Day satisfaction survey (NEEDS_DISPOSITION / offline) — not understanding-% evidence',
+    },
+    missing: {
+      th: 'ยังไม่มีแบบสอบถาม/จำนวนผู้ตอบ/ร้อยละความเข้าใจเฉพาะปี 2569 — ห้ามตีความความพึงพอใจเป็นความเข้าใจ',
+      en: 'No FY2569 understanding questionnaire, respondent count, or percentage — do not treat satisfaction as understanding',
+    },
+    next: {
+      th: 'รอการตัดสินใจ PO ก่อน map ไฟล์ความพึงพอใจ; หรือรับหลักฐานวัดความเข้าใจปี 2569 โดยตรง',
+      en: 'Await PO disposition before any satisfaction mapping; or ingest a dedicated FY2569 understanding measure',
+    },
+  },
+  '2.2.4': {
+    available: {
+      th: 'มีไฟล์แนวทางใน Data2569 แต่ SHA-256 ตรงกับปี 2568 ทุกไบต์ — ระงับไม่รับเป็นหลักฐานปี 2569',
+      en: 'Data2569 has a guideline PDF, but SHA-256 is byte-identical to FY2568 — held; not accepted as FY2569 currency',
+    },
+    missing: {
+      th: 'ยังไม่มีช่องทางรับเรื่องปี 2569 ที่ลงวันที่ใหม่ และยังไม่มีบันทึกวงจรปรับปรุง',
+      en: 'No 2569-dated intake channel artifact and no FY2569 improvement-loop log',
+    },
+    next: {
+      th: 'รับไฟล์แนวทาง/ช่องทางที่ลงปี 2569 (ไม่ใช่สำเนาปี 2568) พร้อมหลักฐานการปิดลูป',
+      en: 'Ingest a 2569-dated channel guideline (not an FY2568 copy) plus improvement-loop evidence',
+    },
+  },
+};
+const partial = FY2569_PARTIAL[indicatorCode];
 ---
 
 <div
@@ -64,6 +111,49 @@ const pendingScanCount = domain
   </div>
 
   {
+    fy2569Progress && (
+      <div class="mb-3 rounded-lg border border-emerald-200 bg-emerald-50/50 p-3" data-cat2-fy2569-progress>
+        <p class="text-xs font-semibold text-emerald-900">
+          {isEn ? 'FY2569 operational progress (not an official score)' : 'ความคืบหน้าการดำเนินงานปี 2569 (ไม่ใช่คะแนนประเมิน)'}
+        </p>
+        <dl class="mt-2 space-y-1 text-xs">
+          <div class="flex items-center justify-between gap-3">
+            <dt class="text-emerald-800/80">{isEn ? 'Progress' : 'ความคืบหน้า'}</dt>
+            <dd class="font-medium text-emerald-900">{progressStatusLabel(fy2569Progress.progressStatus, locale)}</dd>
+          </div>
+          <div class="flex items-center justify-between gap-3">
+            <dt class="text-emerald-800/80">{isEn ? 'Evidence' : 'หลักฐาน'}</dt>
+            <dd class="font-medium text-emerald-900">{evidenceStatusLabel(fy2569Progress.evidenceStatus, locale)}</dd>
+          </div>
+        </dl>
+        {fy2569Progress.notes && (
+          <p class="mt-2 text-[11px] leading-relaxed text-emerald-900/80">{fy2569Progress.notes}</p>
+        )}
+      </div>
+    )
+  }
+
+  {
+    partial && (
+      <div class="mb-3 rounded-lg border border-amber-200 bg-amber-50/60 p-3" data-cat2-fy2569-partial>
+        <p class="text-xs font-semibold text-amber-900">
+          {isEn ? `FY2569 partial status — ${indicatorCode}` : `สถานะบางส่วนปี 2569 — ${indicatorCode}`}
+        </p>
+        <ul class="mt-2 space-y-1.5 text-[11px] leading-relaxed text-amber-900">
+          <li><span class="font-semibold">{isEn ? 'Available:' : 'มีอยู่:'}</span> {t(partial.available)}</li>
+          <li><span class="font-semibold">{isEn ? 'Missing:' : 'ยังขาด:'}</span> {t(partial.missing)}</li>
+          <li><span class="font-semibold">{isEn ? 'Next:' : 'ถัดไป:'}</span> {t(partial.next)}</li>
+        </ul>
+        {fy2569Gap && (
+          <p class="mt-2 text-[10px] text-amber-800/80">
+            {isEn ? `Gap contract: ${fy2569Gap.status}` : `สัญญาช่องว่าง: ${fy2569Gap.status}`} — {fy2569Gap.note}
+          </p>
+        )}
+      </div>
+    )
+  }
+
+  {
     isMissing ? (
       <div class="rounded-lg border border-amber-100 bg-amber-50/50 p-3" data-cat2-missing-notice>
         <p class="text-sm font-medium text-amber-800">
@@ -73,8 +163,8 @@ const pendingScanCount = domain
         </p>
         <p class="mt-1 text-xs leading-relaxed text-amber-700">
           {isEn
-            ? 'No questionnaire, respondent count (≥4) or percentage exists in the FY2568 source set; 2.2.3.pdf is narrative-only. Recorded as MISSING_DEDICATED_EVIDENCE and never filled in. The FY2569 action plan also has no activity measuring it.'
-            : 'ไม่มีแบบสอบถาม จำนวนผู้ตอบ (≥4) หรือร้อยละในชุดแหล่งข้อมูลปี 2568; 2.2.3.pdf มีเพียงเนื้อหาบรรยาย ถูกบันทึกเป็น MISSING_DEDICATED_EVIDENCE และไม่เติมข้อมูล แผนปี 2569 ก็ไม่มีกิจกรรมที่วัดผลนี้เช่นกัน'}
+            ? 'No questionnaire, respondent count (≥4) or percentage exists in the FY2568 source set; 2.2.3.pdf is narrative-only. Recorded as MISSING_DEDICATED_EVIDENCE and never filled in.'
+            : 'ไม่มีแบบสอบถาม จำนวนผู้ตอบ (≥4) หรือร้อยละในชุดแหล่งข้อมูลปี 2568; 2.2.3.pdf มีเพียงเนื้อหาบรรยาย ถูกบันทึกเป็น MISSING_DEDICATED_EVIDENCE และไม่เติมข้อมูล'}
         </p>
       </div>
     ) : snapshot ? (

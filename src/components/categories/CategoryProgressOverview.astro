@@ -21,6 +21,7 @@ import {
   EVIDENCE_STATUS_COLORS,
   progressStatusLabel,
   evidenceStatusLabel,
+  formatRate,
 } from '../../utils/category-progress-vm';
 import { buildCategoryProgressDonutOption, buildProgressStackedBarOption } from '../../utils/chart-option';
 
@@ -104,12 +105,32 @@ const progressLegend = [
               <p class="text-2xl font-extrabold tabular-nums" style={`color: ${PROGRESS_STATUS_COLORS[p.status]}`}>
                 {p.count}
               </p>
+              <p class="text-[10px] tabular-nums text-gray-400">{formatRate(p.rate)}</p>
               <p class="mt-0.5 flex items-center gap-1.5 text-[11px] font-medium text-gray-600">
                 <span class="h-2 w-2 rounded-full ring-1 ring-inset ring-outline-variant/30" style={`background-color: ${PROGRESS_STATUS_COLORS[p.status]}`} aria-hidden="true"></span>
                 {p.label}
               </p>
             </div>
           ))}
+        </div>
+
+        <div class="grid grid-cols-1 gap-2 sm:grid-cols-2" role="list" aria-label={th ? 'เริ่มแล้วและคงเหลือ' : 'Started and remaining'}>
+          <div class="rounded-xl border border-emerald-100 bg-emerald-50/50 p-3" role="listitem">
+            <p class="text-lg font-extrabold tabular-nums text-emerald-800">{vm.started.count}</p>
+            <p class="text-[10px] tabular-nums text-emerald-700/80">{formatRate(vm.started.rate)}</p>
+            <p class="mt-0.5 text-[11px] font-medium text-emerald-900">
+              {th ? 'เริ่มแล้ว (พร้อม + กำลังดำเนินการ)' : 'Started (Ready + In Progress)'}
+            </p>
+          </div>
+          <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-3" role="listitem">
+            <p class="text-lg font-extrabold tabular-nums text-slate-700">{vm.remaining.count}</p>
+            <p class="text-[10px] tabular-nums text-slate-500">{formatRate(vm.remaining.rate)}</p>
+            <p class="mt-0.5 text-[11px] font-medium text-slate-700">
+              {th
+                ? `คงเหลือ (ยังไม่เริ่ม ${vm.remaining.notStarted} · ไม่มีข้อมูล ${vm.remaining.unavailable})`
+                : `Remaining (not started ${vm.remaining.notStarted} · unavailable ${vm.remaining.unavailable})`}
+            </p>
+          </div>
         </div>
 
         <!-- Needs attention (data-derived) -->

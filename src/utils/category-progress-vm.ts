@@ -59,15 +59,25 @@ export interface ProgressOverviewVM {
   overallSummary: string;
   /** Counts-first hero line, e.g. "4 of 65 indicators ready". */
   heroSummary: string;
-  /** Executive pulse cards (counts only). */
-  pulse: { status: string; label: string; count: number }[];
+  /** Executive pulse cards (counts + share of total; never a score). */
+  pulse: { status: string; label: string; count: number; rate: number }[];
+  /** Ready + In Progress (implementation started). */
+  started: { count: number; rate: number; label: string };
+  /** Not Started + Unavailable remaining breakdown. */
+  remaining: {
+    count: number;
+    rate: number;
+    label: string;
+    notStarted: number;
+    unavailable: number;
+  };
   /** Data-derived needs-attention rows (no inference beyond counts). */
   needsAttention: { label: string; count: number; detail: string }[];
   fallbackColumns: { label: string; align?: 'left' | 'right' }[];
   fallbackRows: (string | number)[][];
 }
 
-export interface Cat1ProgressVM {
+export interface CategoryProgressDetailVM {
   year: number;
   category: { code: string; title: string };
   overall: ProgressCountsVM & { evidence: EvidenceCountsVM };
@@ -80,6 +90,9 @@ export interface Cat1ProgressVM {
   statusChips: { status: string; label: string; count: number }[];
   evidenceChips: { status: string; label: string; count: number }[];
 }
+
+/** Alias kept for Cat1 call sites / tests. */
+export type Cat1ProgressVM = CategoryProgressDetailVM;
 
 type ProgressCounts = {
   total: number;
@@ -166,6 +179,12 @@ export function formatRate(rate: number): string {
   return `${rate}%`;
 }
 
+/** Share of total as one decimal (same rule as readyRate); never a synthetic mid-status %. */
+export function shareOfTotal(count: number, total: number): number {
+  if (total <= 0) return 0;
+  return Math.round((count / total) * 1000) / 10;
+}
+
 /**
  * Overview for /categories/: overall counts + evidence + per-category rows.
  * All numbers derive from the generated dataset; no hardcoded percentages.
@@ -191,11 +210,52 @@ export function buildProgressOverview(locale: Locale): ProgressOverviewVM {
       : `${overall.ready} of ${overall.total} indicators ready (${formatRate(overall.readyRate)})`;
 
   const pulse = [
-    { status: 'ready', label: progressStatusLabel('ready', locale), count: overall.ready },
-    { status: 'in_progress', label: progressStatusLabel('in_progress', locale), count: overall.inProgress },
-    { status: 'not_started', label: progressStatusLabel('not_started', locale), count: overall.notStarted },
-    { status: 'unavailable', label: progressStatusLabel('unavailable', locale), count: overall.unavailable },
+    {
+      status: 'ready',
+      label: progressStatusLabel('ready', locale),
+      count: overall.ready,
+      rate: shareOfTotal(overall.ready, overall.total),
+    },
+    {
+      status: 'in_progress',
+      label: progressStatusLabel('in_progress', locale),
+      count: overall.inProgress,
+      rate: shareOfTotal(overall.inProgress, overall.total),
+    },
+    {
+      status: 'not_started',
+      label: progressStatusLabel('not_started', locale),
+      count: overall.notStarted,
+      rate: shareOfTotal(overall.notStarted, overall.total),
+    },
+    {
+      status: 'unavailable',
+      label: progressStatusLabel('unavailable', locale),
+      count: overall.unavailable,
+      rate: shareOfTotal(overall.unavailable, overall.total),
+    },
   ];
+
+  const startedCount = overall.ready + overall.inProgress;
+  const remainingCount = overall.notStarted + overall.unavailable;
+  const started = {
+    count: startedCount,
+    rate: shareOfTotal(startedCount, overall.total),
+    label:
+      locale === 'th'
+        ? `เริ่มแล้ว ${startedCount} (${formatRate(shareOfTotal(startedCount, overall.total))}) = พร้อม + กำลังดำเนินการ`
+        : `Started ${startedCount} (${formatRate(shareOfTotal(startedCount, overall.total))}) = Ready + In Progress`,
+  };
+  const remaining = {
+    count: remainingCount,
+    rate: shareOfTotal(remainingCount, overall.total),
+    label:
+      locale === 'th'
+        ? `คงเหลือ ${remainingCount} (${formatRate(shareOfTotal(remainingCount, overall.total))})`
+        : `Remaining ${remainingCount} (${formatRate(shareOfTotal(remainingCount, overall.total))})`,
+    notStarted: overall.notStarted,
+    unavailable: overall.unavailable,
+  };
 
   // Needs-attention rows derived strictly from counts: categories with open
   // work (in_progress + not_started) first, then unavailable coverage.
@@ -250,6 +310,8 @@ export function buildProgressOverview(locale: Locale): ProgressOverviewVM {
     overallSummary: summary,
     heroSummary,
     pulse,
+    started,
+    remaining,
     needsAttention,
     fallbackColumns,
     fallbackRows,
@@ -257,13 +319,13 @@ export function buildProgressOverview(locale: Locale): ProgressOverviewVM {
 }
 
 /**
- * Cat1 pilot detail: overall counts + evidence + issue-level breakdown.
- * Only Category 1 (no Cat2–7 generalization in D3).
+ * Category detail: overall counts + evidence + issue-level breakdown.
+ * Used for Cat1–Cat3 incremental FY2569 publication (reuse Cat1 layout).
  */
-export function buildCat1Progress(locale: Locale): Cat1ProgressVM {
-  const cat = generated.categories.find((c) => c.code === 'cat1');
+export function buildCategoryProgress(categoryCode: string, locale: Locale): CategoryProgressDetailVM {
+  const cat = generated.categories.find((c) => c.code === categoryCode);
   if (!cat) {
-    throw new Error('category-progress-2569.json is missing cat1');
+    throw new Error(`category-progress-2569.json is missing ${categoryCode}`);
   }
 
   const issueRows: IssueProgressVM[] = cat.issues.map((iss) => ({
@@ -349,4 +411,9 @@ export function buildCat1Progress(locale: Locale): Cat1ProgressVM {
     statusChips,
     evidenceChips,
   };
+}
+
+/** Cat1 detail — thin wrapper over buildCategoryProgress('cat1'). */
+export function buildCat1Progress(locale: Locale): Cat1ProgressVM {
+  return buildCategoryProgress('cat1', locale);
 }

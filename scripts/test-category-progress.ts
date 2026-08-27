@@ -19,6 +19,7 @@ import { fileURLToPath } from 'node:url';
 import {
   buildProgressOverview,
   buildCat1Progress,
+  buildCategoryProgress,
   progressStatusLabel,
   evidenceStatusLabel,
 } from '../src/utils/category-progress-vm.ts';
@@ -74,17 +75,42 @@ assert.notDeepEqual(
 
 // ── View models ─────────────────────────────────────────────────────────
 
+assert.equal(generated.overall.ready, 4, 'overall ready = 4');
+assert.equal(generated.overall.inProgress, 12, 'overall in_progress = 12');
+assert.equal(generated.overall.notStarted, 2, 'overall not_started = 2');
+assert.equal(generated.overall.unavailable, 47, 'overall unavailable = 47');
+
+const cat2 = generated.categories.find((c: { code: string }) => c.code === 'cat2');
+assert.equal(cat2?.total, 6, 'cat2 has 6 indicators');
+assert.equal(cat2?.inProgress, 4, 'cat2 in_progress = 4');
+assert.equal(cat2?.unavailable, 2, 'cat2 unavailable = 2');
+
+const cat3 = generated.categories.find((c: { code: string }) => c.code === 'cat3');
+assert.equal(cat3?.total, 15, 'cat3 has 15 indicators');
+assert.equal(cat3?.inProgress, 6, 'cat3 in_progress = 6');
+assert.equal(cat3?.unavailable, 9, 'cat3 unavailable = 9');
+
 const overviewTh = buildProgressOverview('th');
 assert.equal(overviewTh.categories.length, 7, 'overview has 7 categories');
 assert.equal(overviewTh.overall.total, 65);
 assert.equal(overviewTh.fallbackRows.length, 7, 'fallback table has 7 rows');
 assert.match(overviewTh.overallSummary, /4|พร้อม/, 'TH summary carries counts');
 assert.ok(overviewTh.categories.every((c) => c.label.length > 0), 'category labels resolved');
+assert.equal(overviewTh.started.count, 16, 'started = ready + in_progress');
+assert.equal(overviewTh.remaining.count, 49, 'remaining = not_started + unavailable');
+assert.equal(overviewTh.pulse.length, 4, 'pulse has four statuses');
+assert.ok(overviewTh.pulse.every((p) => typeof p.rate === 'number'), 'pulse includes share %');
 
 const overviewEn = buildProgressOverview('en');
 assert.match(overviewEn.overallSummary, /ready/i, 'EN summary carries counts');
 assert.equal(overviewEn.categories[0].code, 'cat1');
 assert.equal(overviewEn.categories[0].label.length > 0, true);
+
+const cat2Vm = buildCategoryProgress('cat2', 'en');
+assert.equal(cat2Vm.overall.inProgress, 4);
+assert.equal(cat2Vm.issues.length >= 2, true, 'cat2 has issue rows');
+const cat3Vm = buildCategoryProgress('cat3', 'th');
+assert.equal(cat3Vm.overall.inProgress, 6);
 
 const cat1Vm = buildCat1Progress('th');
 assert.equal(cat1Vm.issues.length, 7, 'cat1 has 7 issues (1.1–1.7)');

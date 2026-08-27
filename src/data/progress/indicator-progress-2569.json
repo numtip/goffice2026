@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "year": 2569,
   "updated": "2026-08-27",
-  "note": "D2 + semantics review (2026-08-27): Cat1 populated from verified FY2569 sources only. Evidence verification is strict: sources inspected ocr-derived or pending human verification are marked evidenceStatus=available_unverified (verification.status=reviewed alone does not imply verified). 1.1.3 downgraded to in_progress: official criterion requires 7 target domains, targets-2569 provides 6 (no verified recycled/reused-waste target). Verified MISSING gaps (1.2.2, 1.5.3) stay not_started. Unknown stays unavailable; no inference; no FY2568 carry-forward.",
+  "note": "Incremental FY2569 publication (2026-08-27): Cat1 retained from prior reconciliation. Cat2 2.1.1/2.1.2/2.2.1/2.2.2 → in_progress from published Data2569 evidence (not ready — scope incomplete). Cat2 2.2.3/2.2.4 stay unavailable (no dedicated FY2569 understanding %; 2.2.4 FY2568-identical held). Cat3 measure indicators 3.1.1/3.2.1/3.2.4/3.3.1/3.3.4/3.4.1 → in_progress from B3-1 plan-only measures DOCX. Cat3 KPI/compliance remain unavailable. Progress ≠ evidence ≠ official score. No FY2568 carry-forward.",
   "items": [
     {
       "indicator": "1.1.1",
@@ -241,46 +241,54 @@
     {
       "indicator": "2.1.1",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/category2/training-2569.json"
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-08-27",
+      "owner": "หมวด 2",
+      "notes": "FY2569 training work started: plan workbook + 2.1.1(1)/(2)/(3) delivery/registration/history published. Not ready — summary 2.1.1(4) offline; content verification pending; evidence ≠ complete criterion scope."
     },
     {
       "indicator": "2.1.2",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/category2/training-2569.json"
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-08-27",
+      "owner": "หมวด 2",
+      "notes": "FY2569 trainer CVs (3 local) published as supporting evidence. Not ready — committee-minute per-course assignment still FORWARD_REQUIREMENT; Maejo CV offline."
     },
     {
       "indicator": "2.2.1",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/category2/communication-2569.json"
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-08-27",
+      "owner": "หมวด 2",
+      "notes": "FY2569 communication plan (docx + form PDF) + policy/minutes supporting published. Not ready — channels/targets/committee offline; plan-only portions remain."
     },
     {
       "indicator": "2.2.2",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/category2/communication-2569.json"
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-08-27",
+      "owner": "หมวด 2",
+      "notes": "FY2569 channel-satisfaction survey (52) mapped as secondary 2.2.2 evidence. Not ready — primary campaign PDF offline; ACT-2569 quarantined."
     },
     {
       "indicator": "2.2.3",
@@ -291,7 +299,9 @@
         "type": "unavailable",
         "ref": null
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-08-27",
+      "owner": "หมวด 2",
+      "notes": "No dedicated FY2569 understanding-% artifact. Folder holds Big Cleaning satisfaction survey (NEEDS_DISPOSITION + offline) — not mapped as understanding. Keep unavailable."
     },
     {
       "indicator": "2.2.4",
@@ -302,18 +312,22 @@
         "type": "unavailable",
         "ref": null
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-08-27",
+      "owner": "หมวด 2",
+      "notes": "Data2569 guideline PDF is byte-identical to FY2568 — not accepted as FY2569 currency. No FY2569 improvement-loop log. Keep unavailable."
     },
     {
       "indicator": "3.1.1",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/category3/measures-2569.json"
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-08-27",
+      "owner": "หมวด 3",
+      "notes": "B3-1 FY2569 water measures plan (section 1) published. Plan-only — no verified execution/compliance survey. Not ready."
     },
     {
       "indicator": "3.1.2",
@@ -340,13 +354,15 @@
     {
       "indicator": "3.2.1",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/category3/measures-2569.json"
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-08-27",
+      "owner": "หมวด 3",
+      "notes": "B3-1 FY2569 electricity measures plan (section 2) published. Plan-only — no installation/compliance records. Not ready."
     },
     {
       "indicator": "3.2.2",
@@ -373,13 +389,15 @@
     {
       "indicator": "3.2.4",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/category3/measures-2569.json"
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-08-27",
+      "owner": "หมวด 3",
+      "notes": "B3-1 FY2569 fuel measures plan (section 3) published. Plan-only — vehicle logs deferred. Not ready."
     },
     {
       "indicator": "3.2.5",
@@ -395,13 +413,15 @@
     {
       "indicator": "3.3.1",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/category3/measures-2569.json"
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-08-27",
+      "owner": "หมวด 3",
+      "notes": "B3-1 FY2569 paper measures plan (section 4.1) published. Plan-only — no consumption/compliance data. Not ready."
     },
     {
       "indicator": "3.3.2",
@@ -428,13 +448,15 @@
     {
       "indicator": "3.3.4",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/category3/measures-2569.json"
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-08-27",
+      "owner": "หมวด 3",
+      "notes": "B3-1 FY2569 ink/stationery measures plan (sections 4.2–4.3) published. Plan-only. Not ready."
     },
     {
       "indicator": "3.3.5",
@@ -450,13 +472,15 @@
     {
       "indicator": "3.4.1",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/category3/measures-2569.json"
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-08-27",
+      "owner": "หมวด 3",
+      "notes": "B3-1 FY2569 green-meeting measures plan (section 5) published. Plan-only — practice evidence absent. Not ready."
     },
     {
       "indicator": "3.4.2",
