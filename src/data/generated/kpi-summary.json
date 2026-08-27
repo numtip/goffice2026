@@ -78,24 +78,22 @@
       "labelTh": "การใช้กระดาษ",
       "unit": "kg",
       "yearBE": 2569,
-      "value": 0,
+      "value": 1239.76,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 2197.7999999999997,
       "yoyChange": {
-        "absolute": 0,
-        "percent": 0,
-        "direction": "stable"
+        "absolute": -958.0399999999997,
+        "percent": -44,
+        "direction": "down"
       },
       "dataQuality": {
-        "valid": false,
-        "warnings": [
-          "Waiting for Official FY2569 Data"
-        ],
-        "reconciliationDifference": null
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": 0
       },
-      "sourceFile": "Waiting for Official FY2569 Data",
-      "verified": false
+      "sourceFile": "1.4paper.xlsx (paper-2569.csv) — partial, 7 of 12 months",
+      "verified": true
     },
     {
       "metric": "waste",
@@ -103,24 +101,22 @@
       "labelTh": "ปริมาณขยะ",
       "unit": "kg",
       "yearBE": 2569,
-      "value": 0,
+      "value": 3909.7,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 5625.7,
       "yoyChange": {
-        "absolute": 0,
-        "percent": 0,
-        "direction": "stable"
+        "absolute": -1716,
+        "percent": -31,
+        "direction": "down"
       },
       "dataQuality": {
-        "valid": false,
-        "warnings": [
-          "Waiting for Official FY2569 Data"
-        ],
-        "reconciliationDifference": null
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": 0
       },
-      "sourceFile": "Waiting for Official FY2569 Data",
-      "verified": false
+      "sourceFile": "1.5waste2026.xlsx (waste-2569.csv) — partial, 7 of 12 months",
+      "verified": true
     },
     {
       "metric": "recycling_rate",
@@ -153,24 +149,22 @@
       "labelTh": "ก๊าซเรือนกระจก",
       "unit": "tCO₂e",
       "yearBE": 2569,
-      "value": 0,
+      "value": 145.07,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 231.6,
       "yoyChange": {
-        "absolute": 0,
-        "percent": 0,
-        "direction": "stable"
+        "absolute": -86.53,
+        "percent": -37,
+        "direction": "down"
       },
       "dataQuality": {
-        "valid": false,
-        "warnings": [
-          "Waiting for Official FY2569 Data"
-        ],
-        "reconciliationDifference": null
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": 0
       },
-      "sourceFile": "Waiting for Official FY2569 Data",
-      "verified": false
+      "sourceFile": "1.6GreenHouseGas2026.xlsx (ghg-2569.csv) — partial, 7 of 12 months",
+      "verified": true
     }
   ]
 }

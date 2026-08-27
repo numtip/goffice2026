@@ -70,7 +70,7 @@ describe('computePartialYoy — water partial', () => {
   });
 });
 
-describe('computePartialYoy — fuel/ghg pending', () => {
+describe('computePartialYoy — fuel pending; paper/waste/ghg partial', () => {
   it('fuel is pending with null totals and — formatting', () => {
     const metric = readMetric('fuel');
     const result = computePartialYoy(metric, { id: 'fuel' });
@@ -85,11 +85,35 @@ describe('computePartialYoy — fuel/ghg pending', () => {
     assert.equal(formatNullableCell(result.percent), '—');
   });
 
-  it('ghg is pending', () => {
+  it('paper is partial Jan–Jul with overlap YoY ≠ frozen full-year YoY', () => {
+    const metric = readMetric('paper');
+    const result = computePartialYoy(metric, { id: 'paper' });
+    assert.equal(result.status, 'partial');
+    assert.equal(result.comparableCount, 7);
+    assert.equal(metric.yoyChange.percent, -44);
+    assert.notEqual(result.percent, -44);
+    assert.equal(result.percent, -3);
+    assert.equal(result.direction, 'down');
+  });
+
+  it('waste is partial Jan–Jul', () => {
+    const metric = readMetric('waste');
+    const result = computePartialYoy(metric, { id: 'waste' });
+    assert.equal(result.status, 'partial');
+    assert.equal(result.comparableCount, 7);
+    assert.equal(result.percent, 14);
+    assert.equal(result.direction, 'up');
+  });
+
+  it('ghg is partial Jan–Jul (not pending)', () => {
     const metric = readMetric('ghg');
     const result = computePartialYoy(metric, { id: 'ghg' });
-    assert.equal(result.status, 'pending');
-    assert.equal(result.percent, null);
+    assert.equal(result.status, 'partial');
+    assert.equal(result.comparableCount, 7);
+    assert.equal(metric.yoyChange.percent, -37);
+    assert.notEqual(result.percent, -37);
+    assert.equal(result.percent, 8);
+    assert.equal(result.direction, 'up');
   });
 });
 
