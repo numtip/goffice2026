@@ -656,3 +656,178 @@ export function buildPartialYoyOption(input: PartialYoyOptionInput): Record<stri
     ],
   };
 }
+
+// ── Criteria progress (D3) ────────────────────────────────────────────────
+// FY2569 criteria-progress visualizations (dashboard progress blueprint V1
+// §10). Progress ≠ Evidence ≠ Official Score. Percentages always derive from
+// counts in the generated dataset — never hardcoded.
+
+export const PROGRESS_STATUS_COLORS: Record<string, string> = {
+  ready: '#10b981',
+  inProgress: '#f59e0b',
+  notStarted: '#64748b',
+  unavailable: '#e2e8f0',
+} as const;
+
+export interface CategoryProgressDonutInput {
+  /** Count of ready indicators (numerator). */
+  ready: number;
+  /** Applicable indicator count (denominator, excludes not-applicable). */
+  applicable: number;
+  /** Rounded ready rate = round(ready / applicable × 100) — never a score. */
+  percent: number;
+  locale: 'th' | 'en';
+  ariaDescription: string;
+}
+
+/**
+ * Light-theme donut for criteria progress: ready segment (emerald) vs
+ * remaining applicable (light slate); center title shows percent + ready/applicable.
+ * Tooltip disabled (shared client formatter is axis-oriented) — the visible
+ * title and the accessible table fallback carry the data.
+ */
+export function buildCategoryProgressDonutOption(input: CategoryProgressDonutInput): Record<string, unknown> {
+  const { ready, applicable, locale } = input;
+  const remaining = Math.max(0, applicable - ready);
+  const description = input.ariaDescription;
+
+  return {
+    tooltip: { show: false },
+    aria: {
+      enabled: true,
+      decal: { show: false },
+      label: { description },
+    },
+    title: {
+      text: `${input.percent}%`,
+      subtext: `${ready}/${applicable}`,
+      left: 'center',
+      top: 'center',
+      textStyle: { fontSize: 28, fontWeight: 700, color: '#111827', lineHeight: 34 },
+      subtextStyle: { fontSize: 12, color: '#6b7280', lineHeight: 16 },
+    },
+    series: [
+      {
+        name: locale === 'th' ? 'ความคืบหน้าการดำเนินงาน' : 'Operational progress',
+        type: 'pie',
+        radius: ['60%', '84%'],
+        center: ['50%', '50%'],
+        startAngle: 90,
+        silent: true,
+        avoidLabelOverlap: false,
+        itemStyle: { borderRadius: 11, borderColor: 'transparent', borderWidth: 0 },
+        label: { show: false },
+        data: [
+          {
+            value: ready,
+            name: locale === 'th' ? 'พร้อม' : 'Ready',
+            itemStyle: { color: PROGRESS_STATUS_COLORS.ready },
+          },
+          {
+            value: remaining,
+            name: locale === 'th' ? 'คงเหลือ' : 'Remaining',
+            itemStyle: { color: PROGRESS_STATUS_COLORS.unavailable },
+          },
+        ],
+      },
+    ],
+  };
+}
+
+export interface ProgressStackedItem {
+  label: string;
+  ready: number;
+  inProgress: number;
+  notStarted: number;
+  unavailable: number;
+}
+
+export interface ProgressStackedBarInput {
+  items: ProgressStackedItem[];
+  locale: 'th' | 'en';
+  ariaDescription: string;
+}
+
+/**
+ * Horizontal stacked bar of progress statuses (Ready / In Progress /
+ * Not Started / Unavailable) — one row per item (category or issue).
+ * Count labels render via ECharts template '{c}' (JSON-serializable);
+ * legend at the bottom; accessible table fallback supplied by the caller.
+ */
+export function buildProgressStackedBarOption(input: ProgressStackedBarInput): Record<string, unknown> {
+  const { items, locale, ariaDescription } = input;
+  const t = {
+    ready: locale === 'th' ? 'พร้อม' : 'Ready',
+    inProgress: locale === 'th' ? 'กำลังดำเนินการ' : 'In Progress',
+    notStarted: locale === 'th' ? 'ยังไม่เริ่ม' : 'Not Started',
+    unavailable: locale === 'th' ? 'ไม่มีข้อมูล' : 'Unavailable',
+  };
+
+  return {
+    grid: { left: 16, right: 24, top: 8, bottom: 8, containLabel: true },
+    xAxis: {
+      type: 'value',
+      min: 0,
+      axisLabel: { fontSize: 9 },
+      splitLine: { lineStyle: { color: '#e5e7eb', width: 0.5 } },
+    },
+    yAxis: {
+      type: 'category',
+      data: items.map((i) => i.label),
+      inverse: true,
+      axisLabel: { fontSize: 10, width: 120, overflow: 'truncate' },
+      axisTick: { show: false },
+    },
+    tooltip: { trigger: 'axis', confine: true, axisPointer: { type: 'shadow' } },
+    legend: {
+      bottom: 0,
+      itemWidth: 12,
+      itemHeight: 8,
+      textStyle: { fontSize: 10 },
+      selectedMode: false,
+    },
+    aria: {
+      enabled: true,
+      decal: { show: false },
+      label: { description: ariaDescription },
+    },
+    series: [
+      {
+        name: t.ready,
+        type: 'bar',
+        stack: 'progress',
+        data: items.map((i) => i.ready),
+        barWidth: 16,
+        itemStyle: { color: PROGRESS_STATUS_COLORS.ready, borderRadius: [0, 0, 0, 0] },
+        label: { show: true, position: 'inside', fontSize: 9, color: '#ffffff', formatter: '{c}' },
+      },
+      {
+        name: t.inProgress,
+        type: 'bar',
+        stack: 'progress',
+        data: items.map((i) => i.inProgress),
+        barWidth: 16,
+        itemStyle: { color: PROGRESS_STATUS_COLORS.inProgress },
+        label: { show: true, position: 'inside', fontSize: 9, color: '#ffffff', formatter: '{c}' },
+      },
+      {
+        name: t.notStarted,
+        type: 'bar',
+        stack: 'progress',
+        data: items.map((i) => i.notStarted),
+        barWidth: 16,
+        itemStyle: { color: PROGRESS_STATUS_COLORS.notStarted },
+        label: { show: true, position: 'inside', fontSize: 9, color: '#ffffff', formatter: '{c}' },
+      },
+      {
+        name: t.unavailable,
+        type: 'bar',
+        stack: 'progress',
+        data: items.map((i) => i.unavailable),
+        barWidth: 16,
+        itemStyle: { color: PROGRESS_STATUS_COLORS.unavailable },
+        label: { show: true, position: 'inside', fontSize: 9, color: '#475569', formatter: '{c}' },
+      },
+    ],
+  };
+}
