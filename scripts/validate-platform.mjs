@@ -134,6 +134,15 @@ function phaseEvidenceLinks() {
   return runScript('validate-evidence-links.mjs');
 }
 
+// ── Phase 1.8: Progress Contract (D1) ───────────────────────
+
+function phaseProgress() {
+  console.log('\n========================================');
+  console.log('PHASE 1.8: Progress Contract Validation');
+  console.log('========================================');
+  return runScript('validate-progress-contract.mjs');
+}
+
 // ── Phase 1.85: Action-Plan Canonical Scope ─────────────────
 
 function phaseActionPlan() {
@@ -399,6 +408,7 @@ function main() {
   const taxonomyResult = phaseTaxonomy();
   const resourceMapResult = phaseResourceIndicatorMap();
   const evidenceLinksResult = phaseEvidenceLinks();
+  const progressResult = phaseProgress();
   const actionPlanResult = phaseActionPlan();
   const category1Result = phaseCategory1();
   const category23Result = phaseCategory23();
@@ -421,6 +431,7 @@ function main() {
     { phase: 'Taxonomy Validation',    ok: taxonomyResult.ok },
     { phase: 'Resource-Indicator Map', ok: resourceMapResult.ok },
     { phase: 'Evidence-Links Metadata', ok: evidenceLinksResult.ok },
+    { phase: 'Progress Contract (D1)', ok: progressResult.ok },
     { phase: 'Action-Plan Canonical Scope', ok: actionPlanResult.ok },
     { phase: 'Category 1 Contracts + 1.3 Aspects', ok: category1Result.ok },
     { phase: 'Category 2 + 3 + 4 Contracts', ok: category23Result.ok },
@@ -448,6 +459,9 @@ function main() {
   }
   if (!evidenceLinksResult.ok) {
     console.log('  ⚠  Evidence-Links metadata validator reported issues. Check output above.');
+  }
+  if (!progressResult.ok) {
+    console.log('  ⚠  Progress contract validator (D1) reported issues. Check output above.');
   }
   if (!category1Result.ok) {
     console.log('  ⚠  Category 1 contracts / 1.3 aspects validator reported issues. Check output above.');
