@@ -25,7 +25,7 @@
     "sourceSheet": "2569",
     "classification": "CONFIRMED_XLSX",
     "extractionScript": "scripts/extract-workbook.mjs",
-    "sourceSha256": "31c70e5e4eb40c90df602a76a1dcb12dd3bf4f11ad652228d41859ed1a67273c",
+    "sourceSha256": "527be5f01eeb0f1b7faa39017afbb663045804d5d3ed126f2afe8412684faf1c",
     "extractionDate": "2026-08-28",
     "observedMonths": [
       1,
@@ -101,11 +101,11 @@
   },
   "ghg-2569": {
     "workbookTotal": 144.8,
-    "sourceWorkbook": "1.6GreenHouseGas2026.xlsx",
+    "sourceWorkbook": "1.6GreenHouseGas2026_New.xlsx",
     "sourceSheet": "สรุปการคำนวณ ปี 2569",
     "classification": "CONFIRMED_XLSX",
     "extractionScript": "scripts/extract-workbook.mjs",
-    "sourceSha256": "3c2a0e46a7bc0438bfe3dc9bb12bd8d51f0c5685633f69a3bd9f6e052ae5e010",
+    "sourceSha256": "8946f4fe8019be0b277122dadf563e076ed2e28f2bf48689c4944530db681162",
     "extractionDate": "2026-08-28",
     "observedMonths": [
       1,
