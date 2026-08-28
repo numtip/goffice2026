@@ -159,7 +159,7 @@
         "sourceWorkbook": "1.2electric.xlsx",
         "sourceSheet": "2569",
         "extractionScript": "scripts/extract-workbook.mjs",
-        "sourceSha256": "31c70e5e4eb40c90df602a76a1dcb12dd3bf4f11ad652228d41859ed1a67273c",
+        "sourceSha256": "527be5f01eeb0f1b7faa39017afbb663045804d5d3ed126f2afe8412684faf1c",
         "extractionDate": "2026-08-28",
         "coverage": "7 of 12 months",
         "observedMonths": [

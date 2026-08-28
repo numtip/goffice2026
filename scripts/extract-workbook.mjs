@@ -44,7 +44,7 @@ const TARGETS = [
   { fileName: '1.3Gassolene.xlsx', metric: 'fuel',       year: 2569, workbookName: '1.3Gassolene.xlsx' },
   { fileName: '1.4paper.xlsx',     metric: 'paper',      year: 2569, workbookName: '1.4paper.xlsx' },
   { fileName: '1.5waste2026.xlsx', metric: 'waste',      year: 2569, workbookName: '1.5waste2026.xlsx' },
-  { fileName: '1.6GreenHouseGas2026.xlsx', metric: 'ghg', year: 2569, workbookName: '1.6GreenHouseGas2026.xlsx' },
+  { fileName: '1.6GreenHouseGas2026_New.xlsx', metric: 'ghg', year: 2569, workbookName: '1.6GreenHouseGas2026_New.xlsx' },
 ];
 
 function displayOf(cell) {

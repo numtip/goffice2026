@@ -149,7 +149,7 @@
       "average": 20.69,
       "aggregation": "sum",
       "dataStatus": "in_progress",
-      "source": "1.6GreenHouseGas2026.xlsx (ghg-2569.csv) — partial, 7 of 12 months",
+      "source": "1.6GreenHouseGas2026_New.xlsx (ghg-2569.csv) — partial, 7 of 12 months",
       "quality": {
         "valid": true,
         "warnings": [],
@@ -160,10 +160,10 @@
       "latestDataMonth": 7,
       "updated": "2026-08-28",
       "provenance": {
-        "sourceWorkbook": "1.6GreenHouseGas2026.xlsx",
+        "sourceWorkbook": "1.6GreenHouseGas2026_New.xlsx",
         "sourceSheet": "สรุปการคำนวณ ปี 2569",
         "extractionScript": "scripts/extract-workbook.mjs",
-        "sourceSha256": "3c2a0e46a7bc0438bfe3dc9bb12bd8d51f0c5685633f69a3bd9f6e052ae5e010",
+        "sourceSha256": "8946f4fe8019be0b277122dadf563e076ed2e28f2bf48689c4944530db681162",
         "extractionDate": "2026-08-28",
         "coverage": "7 of 12 months",
         "observedMonths": [

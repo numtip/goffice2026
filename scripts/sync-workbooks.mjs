@@ -48,7 +48,8 @@ const FILES = [
   { fileName: '1.5waste2025.xlsx',        metric: 'waste',      yearBE: 2568, parser: 'waste' },
   { fileName: '1.5waste2026.xlsx',        metric: 'waste',      yearBE: 2569, parser: 'waste', templateOf: '1.5waste2025.xlsx' },
   { fileName: '1.6GreenHouseGas2025.xlsx', metric: 'ghg',       yearBE: 2568, parser: 'ghg' },
-  { fileName: '1.6GreenHouseGas2026.xlsx', metric: 'ghg',       yearBE: 2569, parser: 'ghg', templateOf: '1.6GreenHouseGas2025.xlsx' },
+  // Authoritative FY2569 GHG source (owner-replaced 2026-08-28).
+  { fileName: '1.6GreenHouseGas2026_New.xlsx', metric: 'ghg',   yearBE: 2569, parser: 'ghg', templateOf: '1.6GreenHouseGas2025.xlsx' },
 ];
 
 function sha256(filePath) {

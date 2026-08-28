@@ -38,9 +38,9 @@
       "fileName": "1.2electric.xlsx",
       "metric": "electricity",
       "yearBE": 2569,
-      "sha256": "31c70e5e4eb40c90df602a76a1dcb12dd3bf4f11ad652228d41859ed1a67273c",
-      "sizeBytes": 74452,
-      "modifiedTime": "2026-08-27T13:18:39.000Z",
+      "sha256": "527be5f01eeb0f1b7faa39017afbb663045804d5d3ed126f2afe8412684faf1c",
+      "sizeBytes": 74467,
+      "modifiedTime": "2026-08-28T07:43:37.000Z",
       "canonicalFingerprint": "3b8e4153189f2ff4",
       "templateBaselineFingerprint": null,
       "observedMonths": [
@@ -177,13 +177,13 @@
       "status": "STAGED"
     },
     {
-      "fileName": "1.6GreenHouseGas2026.xlsx",
+      "fileName": "1.6GreenHouseGas2026_New.xlsx",
       "metric": "ghg",
       "yearBE": 2569,
-      "sha256": "3c2a0e46a7bc0438bfe3dc9bb12bd8d51f0c5685633f69a3bd9f6e052ae5e010",
-      "sizeBytes": 509573,
-      "modifiedTime": "2026-08-28T06:39:07.000Z",
-      "canonicalFingerprint": "dc4a2e04e6247415",
+      "sha256": "8946f4fe8019be0b277122dadf563e076ed2e28f2bf48689c4944530db681162",
+      "sizeBytes": 523569,
+      "modifiedTime": "2026-08-28T08:14:22.233Z",
+      "canonicalFingerprint": "5fe0db3c9e90e813",
       "templateBaselineFingerprint": "65df515d6694a9c5",
       "observedMonths": [
         1,
@@ -201,7 +201,7 @@
   ],
   "summary": {
     "totalFiles": 8,
-    "copiedNow": 0,
+    "copiedNow": 1,
     "allStaged": true,
     "states": {
       "PUBLISHABLE_PARTIAL": 6,
