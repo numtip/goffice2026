@@ -150,15 +150,33 @@ describe('Indicator page composition (source level)', () => {
     assert.ok(panelIdx < baselineIdx, 'FY2569 panel must appear before FY2568 baseline in the page flow');
   });
 
-  it('every category contract context + source docs render inside the baseline section', () => {
+  it('exactly one closed FY2568 baseline section holds ALL FY2568 content', () => {
     const src = readFileSync(TRACE_COMPONENT, 'utf8');
-    for (const cat of ['Cat1', 'Cat2', 'Cat3', 'Cat4', 'Cat5', 'Cat6', 'Cat7']) {
-      assert.match(src, new RegExp(`<${cat}ContractContext`));
-      assert.match(src, new RegExp(`${cat}SourceDocuments`));
-    }
-    // The contract contexts must be nested inside Fy2568BaselineSection.
+    // The shared template renders exactly ONE Fy2568BaselineSection (which
+    // wraps every category branch); each built page therefore has one section.
     const openDetails = (src.match(/<Fy2568BaselineSection/g) || []).length;
-    assert.ok(openDetails >= 14, `expected ≥14 baseline sections, found ${openDetails}`);
+    const closeDetails = (src.match(/<\/Fy2568BaselineSection>/g) || []).length;
+    assert.equal(openDetails, 1, 'exactly one baseline section in the shared template');
+    assert.equal(closeDetails, 1, 'the baseline section is closed');
+    // All FY2568 content renders inside that single section: contract
+    // contexts, source documents, and FY2568-centric Cat1 journeys.
+    const inside = src.slice(src.indexOf('<Fy2568BaselineSection'), src.lastIndexOf('</Fy2568BaselineSection>'));
+    for (const cat of ['Cat1', 'Cat2', 'Cat3', 'Cat4', 'Cat5', 'Cat6', 'Cat7']) {
+      assert.match(inside, new RegExp(`<${cat}ContractContext`));
+      assert.match(inside, new RegExp(`<${cat}SourceDocuments`));
+    }
+    // FY2568-centric Cat1 journeys render inside the baseline section.
+    for (const comp of [
+      'Cat1EnvironmentalAssessment', 'Cat1LegalPresentation', 'Cat1GhgPresentation',
+      'Cat1ProjectsPresentation', 'Cat1ManagementReviewPresentation',
+    ]) {
+      assert.match(inside, new RegExp(`<${comp}`));
+    }
+    // FY2569-primary Cat1 journeys render OUTSIDE/above the baseline section.
+    const before = src.slice(0, src.indexOf('<Fy2568BaselineSection'));
+    assert.match(before, /<Cat1FoundationPresentation/);
+    assert.doesNotMatch(before, /<Cat1LegalPresentation/);
+    assert.doesNotMatch(before, /<Cat1GhgPresentation/);
   });
 
   it('FY2568 baseline details are collapsed (no `open` attribute)', () => {
@@ -332,30 +350,19 @@ builtDescribe('Built HTML — FY2569 panel before collapsed baseline (TH + EN)',
     }
   });
 
-  it('FY2569 panel appears before the FY2568 baseline details', () => {
+  it('FY2569 panel appears first and exactly ONE closed FY2568 baseline section', () => {
     for (const code of codes) {
       for (const prefix of ['', 'en/']) {
         const file = join(DIST, prefix, 'indicators', code, 'index.html');
         if (!existsSync(file)) continue;
         const html = readFileSync(file, 'utf8');
         const panelIdx = html.indexOf('data-fy2569-status-panel');
-        const baselineIdx = html.indexOf('data-fy2568-baseline');
+        const baselineTags = [...html.matchAll(/<details[^>]*data-fy2568-baseline[^>]*>/g)];
         assert.ok(panelIdx !== -1, `${prefix}${code} has FY2569 panel`);
-        assert.ok(baselineIdx !== -1, `${prefix}${code} has FY2568 baseline details`);
+        assert.equal(baselineTags.length, 1, `${prefix}${code} must have exactly ONE FY2568 baseline section`);
+        const baselineIdx = html.indexOf('data-fy2568-baseline');
         assert.ok(panelIdx < baselineIdx, `${prefix}${code}: panel must precede baseline`);
-      }
-    }
-  });
-
-  it('baseline details are collapsed — no `open` attribute on the details', () => {
-    for (const code of codes) {
-      for (const prefix of ['', 'en/']) {
-        const file = join(DIST, prefix, 'indicators', code, 'index.html');
-        if (!existsSync(file)) continue;
-        const html = readFileSync(file, 'utf8');
-        const detailsTag = html.match(/<details[^>]*data-fy2568-baseline[^>]*>/);
-        assert.ok(detailsTag, `${prefix}${code} has baseline details`);
-        assert.doesNotMatch(detailsTag[0], /\sopen\b/, `${prefix}${code} baseline must be collapsed`);
+        assert.doesNotMatch(baselineTags[0][0], /\sopen\b/, `${prefix}${code} baseline must be collapsed`);
       }
     }
   });

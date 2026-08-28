@@ -151,12 +151,12 @@
       "labelTh": "ก๊าซเรือนกระจก",
       "unit": "tCO₂e",
       "yearBE": 2569,
-      "value": 145.07,
+      "value": 144.8,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 231.6,
       "yoyChange": {
-        "absolute": -86.53,
+        "absolute": -86.79999999999998,
         "percent": -37,
         "direction": "down"
       },

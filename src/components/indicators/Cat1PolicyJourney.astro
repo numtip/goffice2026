@@ -1,17 +1,17 @@
 ---
 /**
  * 1.1.2 Policy & Leadership Commitment — What we commit to.
- * FY2569 = current year (primary). FY2568 historical baseline shown below.
+ * FY2569 = current year (primary). FY2568 historical baseline lives in the
+ * collapsed "ฐานเปรียบเทียบปี 2568" reference section below.
  */
 import {
   buildPolicyApproval2569,
   buildPolicyCommitments2569,
   commitmentPrinciple2569,
   CAT1_FY2569_YEAR,
-  CAT1_FY2568_YEAR,
   CAT11_DOCS_2569,
 } from '../../utils/category1-fy2569-presentation';
-import { buildPolicyInterviewGap, CAT11_DOCS } from '../../utils/category1-foundation-presentation';
+import { buildPolicyInterviewGap } from '../../utils/category1-foundation-presentation';
 import { getLocalizedPath } from '../../i18n/utils';
 import { withBase } from '../../utils/with-base';
 
@@ -113,21 +113,6 @@ function commitmentsForPrinciple(principleId: string) {
       </div>
     </dl>
   </section>
-
-  <details class="rounded-xl border border-dashed border-gray-300 bg-gray-50/80 p-5">
-    <summary class="cursor-pointer text-sm font-medium text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
-      {t(`ฐานประวัติ FY${CAT1_FY2568_YEAR}`, `FY${CAT1_FY2568_YEAR} historical baseline`)}
-    </summary>
-    <p class="mt-3 text-xs leading-relaxed text-on-surface-variant">
-      {t(
-        'นโยบายรอบ 2568 ทบทวนโดยคณะกรรมการอำนวยการ ครั้งที่ 1/2568 (7 มี.ค. 2568) และประกาศ 25 มี.ค. 2568 ลงนามโดยอธิการบดี — โครงสร้าง 10 ข้อเดียวกัน',
-        'FY2568 policy reviewed by the executive committee 1/2568 (7 Mar 2025) and announced 25 Mar 2025, signed by the University President — same 10-statement structure',
-      )}
-    </p>
-    <a href={withBase(CAT11_DOCS.policyPdf)} class="mt-2 inline-block text-xs text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-      {t('1.1.2 (9-3-69).pdf — ฐานปี 2568', '1.1.2 (9-3-69).pdf — FY2568 baseline')}
-    </a>
-  </details>
 
   <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat112-cross-title">
     <h2 id="cat112-cross-title" class="text-base font-bold text-on-surface">{t('เชื่อมโยง', 'Cross-links')}</h2>

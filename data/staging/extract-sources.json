@@ -100,12 +100,12 @@
     "workbookTotalInvalid": false
   },
   "ghg-2569": {
-    "workbookTotal": 145.07,
+    "workbookTotal": 144.8,
     "sourceWorkbook": "1.6GreenHouseGas2026.xlsx",
     "sourceSheet": "สรุปการคำนวณ ปี 2569",
     "classification": "CONFIRMED_XLSX",
     "extractionScript": "scripts/extract-workbook.mjs",
-    "sourceSha256": "e6bc56fd5ed8f3dd952725dfeef162ea0e7a46679dd3d6ad03d921102261b219",
+    "sourceSha256": "3c2a0e46a7bc0438bfe3dc9bb12bd8d51f0c5685633f69a3bd9f6e052ae5e010",
     "extractionDate": "2026-08-28",
     "observedMonths": [
       1,

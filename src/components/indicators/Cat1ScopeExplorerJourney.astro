@@ -1,15 +1,14 @@
 ---
 /**
  * 1.1.1 Scope Explorer — Where we operate.
- * FY2569 = current assessment year (primary). FY2568 historical baseline shown below.
+ * FY2569 = current assessment year (primary). FY2568 historical baseline lives
+ * in the collapsed "ฐานเปรียบเทียบปี 2568" reference section below.
  */
 import {
   buildScopeView2569,
   CAT1_FY2569_YEAR,
-  CAT1_FY2568_YEAR,
   CAT11_DOCS_2569,
 } from '../../utils/category1-fy2569-presentation';
-import { buildScopeView, CAT11_DOCS } from '../../utils/category1-foundation-presentation';
 import { getLocalizedPath } from '../../i18n/utils';
 import { withBase } from '../../utils/with-base';
 
@@ -26,9 +25,7 @@ function t(th: string, en: string): string {
 }
 
 const scope = buildScopeView2569();
-const baseline = buildScopeView();
 const internalSum = scope.floor1Sqm + scope.floor2Sqm + scope.floor3Sqm;
-const baselineInternalSum = baseline.floor1Sqm + baseline.floor2Sqm + baseline.floor3Sqm;
 const personnelSum = scope.organizations.reduce((s, o) => s + o.personnelCount, 0);
 ---
 
@@ -42,8 +39,8 @@ const personnelSum = scope.organizations.reduce((s, o) => s + o.personnelCount, 
     </h2>
     <p class="mt-2 max-w-prose text-sm leading-relaxed text-on-surface-variant">
       {t(
-        'ข้อมูลปี 2569 เป็นหลัก (ประกาศ 5 เม.ย. 2569) — ปี 2568 เป็นฐานประวัติ ด้านล่าง',
-        'FY2569 is primary (announcement 5 Apr 2026) — FY2568 historical baseline below',
+        'ข้อมูลปี 2569 เป็นหลัก (ประกาศ 5 เม.ย. 2569) — ปี 2568 เป็นฐานประวัติในส่วน "ฐานเปรียบเทียบปี 2568" ด้านล่าง',
+        'FY2569 is primary (announcement 5 Apr 2026) — FY2568 historical baseline lives in the collapsed "FY2569 Baseline" reference below',
       )}
     </p>
   </section>
@@ -145,28 +142,7 @@ const personnelSum = scope.organizations.reduce((s, o) => s + o.personnelCount, 
         `Announced ${scope.announcementDateBE}, signed by ${scope.signedByRoleEn}`,
       )}
     </p>
-    <p class="mt-1 text-xs text-blue-800">
-      {t(
-        `เทียบปี 2568: ลงนามโดย อธิการบดี — ปี 2569 เปลี่ยนเป็นผู้ลงนามระดับผู้อำนวยการสำนักวิจัยฯ`,
-        `FY2568 was signed by the University President — FY2569 changes to the RAE Director`,
-      )}
-    </p>
   </section>
-
-  <details class="rounded-xl border border-dashed border-gray-300 bg-gray-50/80 p-5">
-    <summary class="cursor-pointer text-sm font-medium text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
-      {t(`ฐานประวัติ FY${CAT1_FY2568_YEAR}`, `FY${CAT1_FY2568_YEAR} historical baseline`)}
-    </summary>
-    <div class="mt-4 space-y-3 text-sm">
-      <p class="text-xs font-semibold text-on-surface-variant">
-        {t(`FY${CAT1_FY2568_YEAR}: พื้นที่รวม ${baseline.totalSqm} m² (ภายนอก ${baseline.externalSqm} + ชั้น 1/2/3 = ${baselineInternalSum})`, `FY${CAT1_FY2568_YEAR}: total ${baseline.totalSqm} m² (external ${baseline.externalSqm} + floors = ${baselineInternalSum})`)}
-      </p>
-      <ul class="space-y-1.5 text-xs text-on-surface-variant" role="list">
-        <li>{t(baseline.contextNoteTh, baseline.contextNoteEn)}</li>
-        <li>{t(baseline.roomInventoryNoteTh, baseline.roomInventoryNoteEn)}</li>
-      </ul>
-    </div>
-  </details>
 
   <section class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6" aria-labelledby="cat111-cross-title">
     <h2 id="cat111-cross-title" class="text-base font-bold text-on-surface">{t('เชื่อมโยง', 'Cross-links')}</h2>
@@ -184,11 +160,6 @@ const personnelSum = scope.organizations.reduce((s, o) => s + o.personnelCount, 
         <li>
           <a href={withBase(CAT11_DOCS_2569.scopePdf)} class="text-primary hover:underline focus-visible:ring-2 focus-visible:ring-green-700 rounded" target="_blank" rel="noopener noreferrer">
             {t('1.1.1 บริบทองค์กร 2569 (PDF)', '1.1.1 Context 2569 (PDF)')}
-          </a>
-        </li>
-        <li>
-          <a href={withBase(CAT11_DOCS.scopePdf)} class="text-primary hover:underline focus-visible:ring-2 focus-visible:ring-green-700 rounded" target="_blank" rel="noopener noreferrer">
-            {t('1.1.1 (9-3-69).pdf — ฐานปี 2568', '1.1.1 (9-3-69).pdf — FY2568 baseline')}
           </a>
         </li>
       </ul>

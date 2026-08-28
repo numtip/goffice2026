@@ -12,10 +12,10 @@
 ## 1. Scope, Method, and Sources
 
 **Canonical FY2569 evidence source (read-only):**
-`E:\OneDrive\Research\OneDrive - Maejo university\RAE-Document-Center\07-GreenOffice\Data2569`
+`RAE-Document-Center/07-GreenOffice/Data2569` (OneDrive) — repository-independent; staged under `data/staging/source/`.
 
 **FY2569 operational metric workbooks (read-only):**
-`E:\OneDrive\Research\OneDrive - Maejo university\RAE-Document-Center\07-GreenOffice\Resource`
+`RAE-Document-Center/07-GreenOffice/Resource` (OneDrive) — repository-independent; staged under `data/staging/source/`.
 
 **Repo-local truth used for cross-checking (not modified):**
 - `data/staging/manifest.json` — PHASE2-SYNC staging manifest (`files[].sha256`, `observedMonths`, `datasetState`)

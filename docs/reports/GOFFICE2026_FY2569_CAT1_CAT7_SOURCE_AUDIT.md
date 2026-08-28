@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-27  
 **Baseline:** `master` @ `088da64e2a36535075f9f6856eee8651fca92119` (`D5C_B3_1_CAT3_MEASURES_ACCEPTED`)  
-**Source (read-only):** `E:\OneDrive\Research\OneDrive - Maejo university\RAE-Document-Center\07-GreenOffice\Data2569`  
+**Source (read-only):** `RAE-Document-Center/07-GreenOffice/Data2569` (OneDrive, repository-independent)
 **Authority:** Blueprint V5 · Dashboard Progress Blueprint V1 · category blueprints · official criteria 2569 · existing repo contracts/validators  
 
 **Rules honored:** mtime ≠ version truth · FY2568 ↛ FY2569 · evidence ≠ progress ≠ score · plan/template ≠ KPI · unknown stays unavailable · no `indicator-progress-2569.json` edits · no VPS deploy  

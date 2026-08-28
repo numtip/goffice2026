@@ -2,7 +2,8 @@
   {
     "id": "metric:energy",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Resource\\1.2electric.xlsx",
+    "sourceId": "src-resource:1.2electric-2569",
+    "artifactPath": "data/staging/source/1.2electric.xlsx",
     "sourceSha256": "31c70e5e4eb40c90df602a76a1dcb12dd3bf4f11ad652228d41859ed1a67273c",
     "sheetOrPage": "2569",
     "extractionDate": "2026-08-28",
@@ -14,7 +15,8 @@
   {
     "id": "metric:water",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Resource\\1.1Water.xlsx",
+    "sourceId": "src-resource:1.1Water-2569",
+    "artifactPath": "data/staging/source/1.1Water.xlsx",
     "sourceSha256": "87d3dc99b9c86a365b977a6a4eb73d1defe340fabe1d03aa6d41c64b492a58d9",
     "sheetOrPage": "2569",
     "extractionDate": "2026-08-28",
@@ -26,7 +28,8 @@
   {
     "id": "metric:fuel",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Resource\\1.3Gassolene.xlsx",
+    "sourceId": "src-resource:1.3Gassolene-2569",
+    "artifactPath": "data/staging/source/1.3Gassolene.xlsx",
     "sourceSha256": "0e610a4b22ecfdc781d9c14d8b4e4c10ec8189ff019206b631507bb93e121566",
     "sheetOrPage": "2569",
     "extractionDate": "2026-08-28",
@@ -38,7 +41,8 @@
   {
     "id": "metric:paper",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Resource\\1.4paper.xlsx",
+    "sourceId": "src-resource:1.4paper-2569",
+    "artifactPath": "data/staging/source/1.4paper.xlsx",
     "sourceSha256": "4d7d1560381563d7cb7e3aa2d8b63ba3b4df05ce0dcc5b406e2b437c5dd06354",
     "sheetOrPage": "2569",
     "extractionDate": "2026-08-28",
@@ -50,7 +54,8 @@
   {
     "id": "metric:waste",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Resource\\1.5waste2026.xlsx",
+    "sourceId": "src-resource:1.5waste2026-2569",
+    "artifactPath": "data/staging/source/1.5waste2026.xlsx",
     "sourceSha256": "02b1f624796e3ce49599adb0837712a0ac5cac3794a4cabf5bc404501d398df2",
     "sheetOrPage": "ปริมาณขยะรายเดือน ",
     "extractionDate": "2026-08-28",
@@ -62,7 +67,8 @@
   {
     "id": "metric:ghg",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Resource\\1.6GreenHouseGas2026.xlsx",
+    "sourceId": "src-resource:1.6GreenHouseGas2026-2569",
+    "artifactPath": "data/staging/source/1.6GreenHouseGas2026.xlsx",
     "sourceSha256": "e6bc56fd5ed8f3dd952725dfeef162ea0e7a46679dd3d6ad03d921102261b219",
     "sheetOrPage": "สรุปการคำนวณ ปี 2569",
     "extractionDate": "2026-08-28",
@@ -74,7 +80,8 @@
   {
     "id": "evidence:ev-cat2-tr-plan-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat2\\2.1 การอบรมให้ความรู้และประเมินความเข้าใจ\\2.1.1 กำหนดแผนการฝึกอบรม ดำเนินการอบรม การประเมินผล และบันทึกประวัติการฝึกอบรม\\2.1.1แผนการฝึกอบรม2569.docx",
+    "sourceId": "Data2569/Cat2/2.1 การอบรมให้ความรู้และประเมินความเข้าใจ/2.1.1 กำหนดแผนการฝึกอบรม ดำเนินการอบรม การประเมินผล และบันทึกประวัติการฝึกอบรม/2.1.1แผนการฝึกอบรม2569.docx",
+    "artifactPath": "/documents/fy2569/cat2/2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx",
     "sourceSha256": "e44be974ba66bc9288d2ac0b9aa1eda130c3b974c1c98050b86af715a7c7fa7a",
     "sheetOrPage": "N/A (DOCX file evidence)",
     "extractionDate": null,
@@ -86,7 +93,8 @@
   {
     "id": "evidence:ev-cat2-comm-plan-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat2\\2.1 การอบรมให้ความรู้และประเมินความเข้าใจ\\2.1.1 กำหนดแผนการฝึกอบรม ดำเนินการอบรม การประเมินผล และบันทึกประวัติการฝึกอบรม\\2.1.1แผนการฝึกอบรม2569.docx",
+    "sourceId": "Data2569/Cat2/2.1 การอบรมให้ความรู้และประเมินความเข้าใจ/2.1.1 กำหนดแผนการฝึกอบรม ดำเนินการอบรม การประเมินผล และบันทึกประวัติการฝึกอบรม/2.1.1แผนการฝึกอบรม2569.docx",
+    "artifactPath": "/documents/fy2569/cat2/2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx",
     "sourceSha256": "e44be974ba66bc9288d2ac0b9aa1eda130c3b974c1c98050b86af715a7c7fa7a",
     "sheetOrPage": "N/A (DOCX file evidence)",
     "extractionDate": null,
@@ -98,7 +106,8 @@
   {
     "id": "evidence:ev-cat2-tr-curriculum-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat2\\2.1 การอบรมให้ความรู้และประเมินความเข้าใจ\\2.1.1 กำหนดแผนการฝึกอบรม ดำเนินการอบรม การประเมินผล และบันทึกประวัติการฝึกอบรม\\2.1.1_1หลักสูตรแผผนผลปี2569.xlsx",
+    "sourceId": "Data2569/Cat2/2.1 การอบรมให้ความรู้และประเมินความเข้าใจ/2.1.1 กำหนดแผนการฝึกอบรม ดำเนินการอบรม การประเมินผล และบันทึกประวัติการฝึกอบรม/2.1.1_1หลักสูตรแผผนผลปี2569.xlsx",
+    "artifactPath": "/documents/fy2569/cat2/2.1/2.1.1/2.1.1_1หลักสูตรแผผนผลปี2569.xlsx",
     "sourceSha256": "456afea5432eae74660ba676b6218cc1d21c0f42776ef39a23591a26b37aeec9",
     "sheetOrPage": "form 2.1(1) workbook — plan sheet populated; results sheet mostly blank",
     "extractionDate": null,
@@ -110,7 +119,8 @@
   {
     "id": "evidence:ev-cat3-measures-water-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat3\\3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+    "sourceId": "Data2569/Cat3/3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+    "artifactPath": "/documents/fy2569/cat3/3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
     "sourceSha256": "5f3a72e532041d46b6c994db3c9f58e1dc2daff54665b33ba47e1919b0b45b12",
     "sheetOrPage": "section 1 (water measures) of shared DOCX",
     "extractionDate": null,
@@ -122,7 +132,8 @@
   {
     "id": "evidence:ev-cat3-measures-electricity-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat3\\3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+    "sourceId": "Data2569/Cat3/3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+    "artifactPath": "/documents/fy2569/cat3/3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
     "sourceSha256": "5f3a72e532041d46b6c994db3c9f58e1dc2daff54665b33ba47e1919b0b45b12",
     "sheetOrPage": "section 2 (electricity measures) of shared DOCX",
     "extractionDate": null,
@@ -134,7 +145,8 @@
   {
     "id": "evidence:ev-cat3-measures-fuel-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat3\\3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+    "sourceId": "Data2569/Cat3/3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+    "artifactPath": "/documents/fy2569/cat3/3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
     "sourceSha256": "5f3a72e532041d46b6c994db3c9f58e1dc2daff54665b33ba47e1919b0b45b12",
     "sheetOrPage": "section 3 (fuel measures) of shared DOCX",
     "extractionDate": null,
@@ -146,7 +158,8 @@
   {
     "id": "evidence:ev-cat3-measures-paper-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat3\\3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+    "sourceId": "Data2569/Cat3/3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+    "artifactPath": "/documents/fy2569/cat3/3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
     "sourceSha256": "5f3a72e532041d46b6c994db3c9f58e1dc2daff54665b33ba47e1919b0b45b12",
     "sheetOrPage": "section 4.1 (paper measures) of shared DOCX",
     "extractionDate": null,
@@ -158,7 +171,8 @@
   {
     "id": "evidence:ev-cat3-measures-ink-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat3\\3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+    "sourceId": "Data2569/Cat3/3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+    "artifactPath": "/documents/fy2569/cat3/3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
     "sourceSha256": "5f3a72e532041d46b6c994db3c9f58e1dc2daff54665b33ba47e1919b0b45b12",
     "sheetOrPage": "sections 4.2-4.3 (ink/stationery measures) of shared DOCX",
     "extractionDate": null,
@@ -170,7 +184,8 @@
   {
     "id": "evidence:ev-cat3-measures-meetings-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat3\\3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+    "sourceId": "Data2569/Cat3/3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
+    "artifactPath": "/documents/fy2569/cat3/3.1-มาตรการควบคุมการใช้พลังงานและทรัพยากร2569.docx",
     "sourceSha256": "5f3a72e532041d46b6c994db3c9f58e1dc2daff54665b33ba47e1919b0b45b12",
     "sheetOrPage": "section 5 (green meetings/exhibitions) of shared DOCX",
     "extractionDate": null,
@@ -182,7 +197,8 @@
   {
     "id": "evidence:ev-cat2-tr-delivery-marks-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat2\\2.1 การอบรมให้ความรู้และประเมินความเข้าใจ\\2.1.1 กำหนดแผนการฝึกอบรม ดำเนินการอบรม การประเมินผล และบันทึกประวัติการฝึกอบรม\\69-2.1.1(1).pdf",
+    "sourceId": "Data2569/Cat2/2.1 การอบรมให้ความรู้และประเมินความเข้าใจ/2.1.1 กำหนดแผนการฝึกอบรม ดำเนินการอบรม การประเมินผล และบันทึกประวัติการฝึกอบรม/69-2.1.1(1).pdf",
+    "artifactPath": "/documents/fy2569/cat2/2.1/2.1.1/69-2.1.1(1).pdf",
     "sourceSha256": "16704b6131f45c14419135c41adc33537ad54f386497487999f0fa754c82ffe6",
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
@@ -194,7 +210,8 @@
   {
     "id": "evidence:ev-cat2-tr-registration-eval-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat2\\2.1 การอบรมให้ความรู้และประเมินความเข้าใจ\\2.1.1 กำหนดแผนการฝึกอบรม ดำเนินการอบรม การประเมินผล และบันทึกประวัติการฝึกอบรม\\69-2.1.1(2) - 14 พ.ค. 69.pdf",
+    "sourceId": "Data2569/Cat2/2.1 การอบรมให้ความรู้และประเมินความเข้าใจ/2.1.1 กำหนดแผนการฝึกอบรม ดำเนินการอบรม การประเมินผล และบันทึกประวัติการฝึกอบรม/69-2.1.1(2) - 14 พ.ค. 69.pdf",
+    "artifactPath": "/documents/fy2569/cat2/2.1/2.1.1/69-2.1.1(2)%20-%2014%20%E0%B8%9E.%E0%B8%84.%2069.pdf",
     "sourceSha256": "53575ef58d934bc0a9f2c76f7948ec6d3121a3a348d2a40c73fb2e9ed6ed9b08",
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
@@ -206,7 +223,8 @@
   {
     "id": "evidence:ev-cat2-tr-history-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat2\\2.1 การอบรมให้ความรู้และประเมินความเข้าใจ\\2.1.1 กำหนดแผนการฝึกอบรม ดำเนินการอบรม การประเมินผล และบันทึกประวัติการฝึกอบรม\\69-2.1.1(3) ประวัติการอบรม บุคลากร.pdf",
+    "sourceId": "Data2569/Cat2/2.1 การอบรมให้ความรู้และประเมินความเข้าใจ/2.1.1 กำหนดแผนการฝึกอบรม ดำเนินการอบรม การประเมินผล และบันทึกประวัติการฝึกอบรม/69-2.1.1(3) ประวัติการอบรม บุคลากร.pdf",
+    "artifactPath": "/documents/fy2569/cat2/2.1/2.1.1/69-2.1.1(3)%20%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%A1%20%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%A5%E0%B8%B2%E0%B8%81%E0%B8%A3.pdf",
     "sourceSha256": "fece26d1543e89fd2a75d32a8342f165206a26842d13a38af46d87ea4c3be0a9",
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
@@ -218,7 +236,8 @@
   {
     "id": "evidence:ev-cat2-tr-trainer-cv-ngamnit-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat2\\2.1 การอบรมให้ความรู้และประเมินความเข้าใจ\\2.1.2 กำหนดผู้รับผิดชอบด้านการอบรมแต่ละหลักสูตรมีความเหมาะสม\\ประวัติวิทยากร  นางสาวงามนิจ  อนุศาสน์.pdf",
+    "sourceId": "Data2569/Cat2/2.1 การอบรมให้ความรู้และประเมินความเข้าใจ/2.1.2 กำหนดผู้รับผิดชอบด้านการอบรมแต่ละหลักสูตรมีความเหมาะสม/ประวัติวิทยากร  นางสาวงามนิจ  อนุศาสน์.pdf",
+    "artifactPath": "/documents/fy2569/cat2/2.1/2.1.2/%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%20%E0%B8%99%E0%B8%B2%E0%B8%87%E0%B8%AA%E0%B8%B2%E0%B8%A7%E0%B8%87%E0%B8%B2%E0%B8%A1%E0%B8%99%E0%B8%B4%E0%B8%88%20%E0%B8%AD%E0%B8%99%E0%B8%B8%E0%B8%A8%E0%B8%B2%E0%B8%AA%E0%B8%99%E0%B9%8C.pdf",
     "sourceSha256": "66fe9f390781629a3dc3421ca721ed2ecfb5c0a77520c68db63c2db55b67b68f",
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
@@ -230,7 +249,8 @@
   {
     "id": "evidence:ev-cat2-tr-trainer-cv-waranya-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat2\\2.1 การอบรมให้ความรู้และประเมินความเข้าใจ\\2.1.2 กำหนดผู้รับผิดชอบด้านการอบรมแต่ละหลักสูตรมีความเหมาะสม\\ประวัติวิทยากร คุณวรัญญา  ธนะเพทย์.pdf",
+    "sourceId": "Data2569/Cat2/2.1 การอบรมให้ความรู้และประเมินความเข้าใจ/2.1.2 กำหนดผู้รับผิดชอบด้านการอบรมแต่ละหลักสูตรมีความเหมาะสม/ประวัติวิทยากร คุณวรัญญา  ธนะเพทย์.pdf",
+    "artifactPath": "/documents/fy2569/cat2/2.1/2.1.2/%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%20%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%A7%E0%B8%A3%E0%B8%B1%E0%B8%8D%E0%B8%8D%E0%B8%B2%20%E0%B8%98%E0%B8%99%E0%B8%B0%E0%B9%80%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C.pdf",
     "sourceSha256": "cf3ea1c946775ea197cdb3891442c3bded2791fed03cfffa29045eef9fc77377",
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
@@ -242,7 +262,8 @@
   {
     "id": "evidence:ev-cat2-tr-trainer-cv-juthaporn-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat2\\2.1 การอบรมให้ความรู้และประเมินความเข้าใจ\\2.1.2 กำหนดผู้รับผิดชอบด้านการอบรมแต่ละหลักสูตรมีความเหมาะสม\\ประวัติวิทยากร รองศาสตราจารย์ ดร.จุฑาภรณ์   ชนะถาวร.pdf",
+    "sourceId": "Data2569/Cat2/2.1 การอบรมให้ความรู้และประเมินความเข้าใจ/2.1.2 กำหนดผู้รับผิดชอบด้านการอบรมแต่ละหลักสูตรมีความเหมาะสม/ประวัติวิทยากร รองศาสตราจารย์ ดร.จุฑาภรณ์   ชนะถาวร.pdf",
+    "artifactPath": "/documents/fy2569/cat2/2.1/2.1.2/%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%20%E0%B8%A3%E0%B8%AD%E0%B8%87%E0%B8%A8%E0%B8%B2%E0%B8%AA%E0%B8%95%E0%B8%A3%E0%B8%B2%E0%B8%88%E0%B8%B2%E0%B8%A3%E0%B8%A2%E0%B9%8C%20%E0%B8%94%E0%B8%A3.%E0%B8%88%E0%B8%B8%E0%B8%91%E0%B8%B2%E0%B8%A0%E0%B8%A3%E0%B8%93%E0%B9%8C%20%E0%B8%8A%E0%B8%99%E0%B8%B0%E0%B8%96%E0%B8%B2%E0%B8%A7%E0%B8%A3.pdf",
     "sourceSha256": "a90cc1567f92397d0821f716a8480f648f4d003b7e1344117786ee749bf7bbc1",
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
@@ -254,7 +275,8 @@
   {
     "id": "evidence:ev-cat2-comm-plan-form-pdf-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat2\\2.2 การรณรงค์และประชาสัมพันธ์แก่บุคลากร\\2.2.1 กำหนดผู้รับผิดชอบและแนวทางสื่อสารด้านสิ่งแวดล้อมทั้งภายในและภายนอกสำนักงาน\\69-2.2.1(1) แผนสื่อสารสิ่งแวดล้อม.pdf",
+    "sourceId": "Data2569/Cat2/2.2 การรณรงค์และประชาสัมพันธ์แก่บุคลากร/2.2.1 กำหนดผู้รับผิดชอบและแนวทางสื่อสารด้านสิ่งแวดล้อมทั้งภายในและภายนอกสำนักงาน/69-2.2.1(1) แผนสื่อสารสิ่งแวดล้อม.pdf",
+    "artifactPath": "/documents/fy2569/cat2/2.2/2.2.1/69-2.2.1(1)%20%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%AA%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B9%81%E0%B8%A7%E0%B8%94%E0%B8%A5%E0%B9%89%E0%B8%AD%E0%B8%A1.pdf",
     "sourceSha256": "1e4f396788fad13b4b9c91c98e248d1d761c84dd826d6f27b14f8d8bdd2c614d",
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
@@ -266,7 +288,8 @@
   {
     "id": "evidence:ev-cat2-comm-policy-supporting-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat2\\2.2 การรณรงค์และประชาสัมพันธ์แก่บุคลากร\\2.2.1(1) กำหนดหัวข้อและความถี่การสื่อสาร\\2.2.1(1)-1 นโยบายสำนักงานสีเขียวอาคารพระเทพรัตนราชสุดา ประจำปี พ.ศ. 2569.pdf",
+    "sourceId": "Data2569/Cat2/2.2 การรณรงค์และประชาสัมพันธ์แก่บุคลากร/2.2.1(1) กำหนดหัวข้อและความถี่การสื่อสาร/2.2.1(1)-1 นโยบายสำนักงานสีเขียวอาคารพระเทพรัตนราชสุดา ประจำปี พ.ศ. 2569.pdf",
+    "artifactPath": "/documents/fy2569/cat2/2.2/2.2.1/2.2.1(1)-1%20%E0%B8%99%E0%B9%82%E0%B8%A2%E0%B8%9A%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%AA%E0%B8%B5%E0%B9%80%E0%B8%82%E0%B8%B5%E0%B8%A2%E0%B8%A7%E0%B8%AD%E0%B8%B2%E0%B8%84%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%A3%E0%B8%B1%E0%B8%95%E0%B8%99%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%AA%E0%B8%B8%E0%B8%94%E0%B8%B2%20%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5%20%E0%B8%9E.%E0%B8%A8.%202569.pdf",
     "sourceSha256": "1c409f42c77551669252c5f0d23fe9fb2b24443e291d6103aa3a98b19b0cc8ae",
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
@@ -278,7 +301,8 @@
   {
     "id": "evidence:ev-cat2-comm-minutes-supporting-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat2\\2.2 การรณรงค์และประชาสัมพันธ์แก่บุคลากร\\2.2.1(1) กำหนดหัวข้อและความถี่การสื่อสาร\\2.2.1(1)-2 มติการกำหนดนโยบายสิ่งแวดล้อม 2569.pdf",
+    "sourceId": "Data2569/Cat2/2.2 การรณรงค์และประชาสัมพันธ์แก่บุคลากร/2.2.1(1) กำหนดหัวข้อและความถี่การสื่อสาร/2.2.1(1)-2 มติการกำหนดนโยบายสิ่งแวดล้อม 2569.pdf",
+    "artifactPath": "/documents/fy2569/cat2/2.2/2.2.1/2.2.1(1)-2%20%E0%B8%A1%E0%B8%95%E0%B8%B4%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%81%E0%B8%B3%E0%B8%AB%E0%B8%99%E0%B8%94%E0%B8%99%E0%B9%82%E0%B8%A2%E0%B8%9A%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B9%81%E0%B8%A7%E0%B8%94%E0%B8%A5%E0%B9%89%E0%B8%AD%E0%B8%A1%202569.pdf",
     "sourceSha256": "a9779c98929d14069b4a24cd0768c3d3d5ed7d535dcf65bd0b31402b501e019a",
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
@@ -290,7 +314,8 @@
   {
     "id": "evidence:ev-cat2-comm-channel-satisfaction-fy2569",
     "fiscalYear": 2569,
-    "sourcePath": "E:\\OneDrive\\Research\\OneDrive - Maejo university\\RAE-Document-Center\\07-GreenOffice\\Data2569\\Cat2\\2.2 การรณรงค์และประชาสัมพันธ์แก่บุคลากร\\2.2.2 มีการรณรงค์สื่อสารและให้ความรู้ตามที่กำหนดในข้อ 2.2.1\\69-2.2.2(3) แบบสำรวจประเมินความพึงพอใจด้านการสื่อสาร 52คน.pdf",
+    "sourceId": "Data2569/Cat2/2.2 การรณรงค์และประชาสัมพันธ์แก่บุคลากร/2.2.2 มีการรณรงค์สื่อสารและให้ความรู้ตามที่กำหนดในข้อ 2.2.1/69-2.2.2(3) แบบสำรวจประเมินความพึงพอใจด้านการสื่อสาร 52คน.pdf",
+    "artifactPath": "/documents/fy2569/cat2/2.2/2.2.2/69-2.2.2(3)%20%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%AA%E0%B8%B3%E0%B8%A3%E0%B8%A7%E0%B8%88%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%A1%E0%B8%B4%E0%B8%99%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%9E%E0%B8%B6%E0%B8%87%E0%B8%9E%E0%B8%AD%E0%B9%83%E0%B8%88%E0%B8%94%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%AA%E0%B8%B2%E0%B8%A3%2052%E0%B8%84%E0%B8%99.pdf",
     "sourceSha256": "3e4d54a9eda0dc297b3131903adb6d9ba822921f133740fcfe11e25edbfc18ca",
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
