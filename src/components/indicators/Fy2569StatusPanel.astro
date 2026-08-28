@@ -1,0 +1,94 @@
+---
+/**
+ * Fy2569StatusPanel.astro — shared FY2569 status panel.
+ *
+ * Rendered on every /indicators/ page immediately after the Requirement block.
+ * Content is derived exclusively from src/data/progress/indicator-progress-2569.json
+ * via fy2569-status-vm.ts. It is never an official assessment score and never
+ * shows an annual-completion result for partial data.
+ */
+import { fy2569StatusView, type Fy2569PanelKind } from '../../utils/fy2569-status-vm';
+
+interface Props {
+  indicatorCode: string;
+  locale: 'th' | 'en';
+}
+
+const { indicatorCode, locale } = Astro.props;
+const th = locale === 'th';
+
+const view = fy2569StatusView(indicatorCode, locale);
+
+const BADGE_STYLE: Record<Fy2569PanelKind, string> = {
+  ready_verified: 'bg-green-100 text-green-800',
+  ready_unverified: 'bg-amber-100 text-amber-800',
+  partial: 'bg-yellow-100 text-yellow-800',
+  not_started: 'bg-gray-100 text-gray-600',
+  unavailable: 'bg-gray-100 text-gray-500',
+};
+
+const PANEL_STYLE: Record<Fy2569PanelKind, string> = {
+  ready_verified: 'border-green-100 bg-green-50/30',
+  ready_unverified: 'border-amber-100 bg-amber-50/40',
+  partial: 'border-yellow-100 bg-yellow-50/40',
+  not_started: 'border-gray-100 bg-gray-50/60',
+  unavailable: 'border-gray-100 bg-gray-50/60',
+};
+---
+
+<div
+  class:list={['rounded-xl border p-5 mb-6', PANEL_STYLE[view.kind]]}
+  data-fy2569-status-panel
+  data-fy2569-kind={view.kind}
+  data-indicator-code={indicatorCode}
+  aria-labelledby={`fy2569-panel-title-${indicatorCode}`}
+>
+  <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
+    <h2
+      id={`fy2569-panel-title-${indicatorCode}`}
+      class="text-sm font-semibold text-gray-900"
+    >
+      {th ? `สถานะข้อมูล ปี 2569 · ${indicatorCode}` : `FY2569 Status · ${indicatorCode}`}
+    </h2>
+    <span class={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${BADGE_STYLE[view.kind]}`}>
+      {view.badge}
+    </span>
+  </div>
+
+  <p class="text-sm leading-relaxed text-gray-800">{view.headline}</p>
+
+  {
+    view.notes && (
+      <p class="mt-2 rounded-lg border border-gray-100 bg-white/70 p-3 text-xs leading-relaxed text-gray-700">
+        {view.notes}
+      </p>
+    )
+  }
+
+  <dl class="mt-3 grid grid-cols-1 gap-x-6 gap-y-1 text-xs text-gray-500 sm:grid-cols-2">
+    {
+      view.sourceRef && (
+        <div class="flex items-center justify-between gap-3">
+          <dt>{th ? 'แหล่งข้อมูล' : 'Source'}</dt>
+          <dd class="font-mono font-medium text-gray-700 text-right" data-fy2569-source-ref>
+            {view.sourceRef}
+          </dd>
+        </div>
+      )
+    }
+    {
+      view.updatedAt && (
+        <div class="flex items-center justify-between gap-3">
+          <dt>{th ? 'อัปเดตเมื่อ' : 'Updated'}</dt>
+          <dd class="font-medium text-gray-700">{view.updatedAt}</dd>
+        </div>
+      )
+    }
+  </dl>
+
+  <p class="mt-3 border-t border-gray-100 pt-2 text-[11px] text-gray-400" data-fy2569-disclaimer>
+    {th
+      ? 'ความคืบหน้า/สถานะนี้เป็นข้อมูลการดำเนินงานปี 2569 เท่านั้น — ไม่ใช่คะแนนการประเมินสำนักงานสีเขียวอย่างเป็นทางการ'
+      : 'This FY2569 status reflects operational progress only — it is not an official Green Office assessment score'}
+  </p>
+</div>

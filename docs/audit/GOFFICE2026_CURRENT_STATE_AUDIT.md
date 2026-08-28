@@ -18,7 +18,7 @@ The goffice2026 repository is a static-first Astro 4 project building a Green Of
 
 | Field | Value |
 |-------|-------|
-| Path | `f:\projectAi\goffice2026` |
+| Path | `./` (repository root) |
 | Branch | `master` |
 | HEAD | `5e1d11a` |
 | HEAD message | `feat: advance EP-2 readiness — evidence UX, data provenance, pipeline templates, context` |

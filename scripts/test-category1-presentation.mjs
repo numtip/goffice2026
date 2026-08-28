@@ -239,12 +239,16 @@ describe('Phase F — cross-link journeys and view-model', () => {
     const targets = readFileSync(CAT11_TARGETS, 'utf8');
     const plan = readFileSync(CAT11_PLAN, 'utf8');
     const fvm = readFileSync(CAT11_VM, 'utf8');
-    assert.match(scope, /Historical Baseline|historical baseline/);
+    // 1.1.x journeys are FY2569-primary: they must NOT carry FY2568 baseline
+    // facts outside the collapsed Fy2568BaselineSection (moved in PR #75).
+    assert.doesNotMatch(scope, /Historical Baseline|ฐานประวัติ FY2568/);
+    assert.doesNotMatch(plan, /Historical Baseline|ฐานประวัติ FY2568/);
     assert.match(scope, /data-cat11-scope/);
     assert.match(scope, /scope\.totalSqm|buildScopeView/);
     assert.match(scope, /9873|scope\.totalSqm/);
     assert.match(scope, /focus-visible:ring-2/);
     assert.match(scope, /buildScopeView2569/);
+    assert.match(scope, /FY2569 Baseline/);
     assert.match(policy, /data-cat11-policy/);
     assert.match(policy, /NOT COMPLETED/);
     assert.match(policy, /buildPolicyCommitments/);

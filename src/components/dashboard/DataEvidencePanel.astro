@@ -9,12 +9,16 @@ import {
 } from '../../utils/publication-states';
 
 interface Props {
-  /** Summary-level fields shown when collapsed */
+  /** Summary-level fields shown when collapsed (CURRENT-year provenance/status) */
   sourceClassification?: DataClassification;
   sourceWorkbook?: string;
   coverage: string;
   verificationStatus: string;
   evidenceCount: number;
+  /** True only when the current year is COMPLETE + quality.valid (never for partial). */
+  currentYearVerified?: boolean;
+  /** Current-year quality warnings (e.g. unusable workbook total). */
+  currentWarnings?: string[];
 
   /** Technical details shown when expanded */
   baselineSource: string;
@@ -37,6 +41,8 @@ const {
   coverage,
   verificationStatus,
   evidenceCount,
+  currentYearVerified,
+  currentWarnings,
   baselineSource,
   baselineUpdated,
   currentSource,
@@ -78,22 +84,33 @@ const classLabel = sourceClassification
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
       <div>
-        <p class="text-on-surface-variant mb-0.5">{th ? 'การจำแนกแหล่งข้อมูล' : 'Source Classification'}</p>
+        <p class="text-on-surface-variant mb-0.5">{th ? 'การจำแนกแหล่งข้อมูล (ปีปัจจุบัน)' : 'Source Classification (current year)'}</p>
         <p class="text-on-surface font-medium">{classLabel}</p>
       </div>
       <div>
-        <p class="text-on-surface-variant mb-0.5">{th ? 'ไฟล์ต้นฉบับ' : 'Source Workbook'}</p>
+        <p class="text-on-surface-variant mb-0.5">{th ? 'ไฟล์ต้นฉบับ (ปีปัจจุบัน)' : 'Source Workbook (current year)'}</p>
         <p class="text-on-surface font-medium truncate" title={sourceWorkbook}>{sourceWorkbook ?? (th ? 'ไม่ระบุ' : 'Not specified')}</p>
       </div>
       <div>
-        <p class="text-on-surface-variant mb-0.5">{th ? 'ความครอบคลุม' : 'Coverage'}</p>
+        <p class="text-on-surface-variant mb-0.5">{th ? 'ความครอบคลุม (ปีปัจจุบัน)' : 'Coverage (current year)'}</p>
         <p class="text-on-surface font-medium">{coverage}</p>
       </div>
       <div>
-        <p class="text-on-surface-variant mb-0.5">{th ? 'สถานะการตรวจสอบ' : 'Verification Status'}</p>
-        <p class="text-on-surface font-medium">{verificationStatus}</p>
+        <p class="text-on-surface-variant mb-0.5">{th ? 'สถานะการตรวจสอบ (ปีปัจจุบัน)' : 'Verification Status (current year)'}</p>
+        <p class={`font-medium ${currentYearVerified ? 'text-green-700' : 'text-amber-700'}`}>{verificationStatus}</p>
       </div>
     </div>
+
+    {
+      currentWarnings && currentWarnings.length > 0 && (
+        <div class="mt-3 rounded-lg border border-amber-200 bg-amber-50/60 p-3 text-xs text-amber-900" data-current-year-warnings>
+          <p class="font-semibold">{th ? 'ข้อควรทราบข้อมูลปีปัจจุบัน' : 'Current-year data notes'}</p>
+          <ul class="mt-1 list-disc pl-4 space-y-1">
+            {currentWarnings.map((w) => <li>{w}</li>)}
+          </ul>
+        </div>
+      )
+    }
 
     <div class="flex items-center gap-2 mt-3 text-xs">
       <svg class="w-3.5 h-3.5 text-outline" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">

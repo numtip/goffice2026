@@ -91,10 +91,13 @@ describe('About hub — FY2568 / FY2569 year separation', () => {
 });
 
 describe('About hub — no duplicate committee registry', () => {
-  it('committee facts and 1.2.1 journey share same presentation module', () => {
+  it('committee facts use shared module; 1.2.1 journey is FY2569-primary', () => {
     const journey = readFileSync(join(ROOT, 'src/components/indicators/Cat1CommitteeGovernanceJourney.astro'), 'utf8');
     assert.match(facts, /category1-committee-presentation/);
-    assert.match(journey, /category1-committee-presentation/);
+    // The 1.2.1 journey presents the FY2569 appointment; the FY2568 baseline
+    // contract lives in the collapsed Fy2568BaselineSection (PR #75).
+    assert.match(journey, /category1-fy2569-presentation/);
+    assert.doesNotMatch(journey, /category1-committee-presentation/);
     assert.match(journey, /\/about\/committee\//);
   });
 });

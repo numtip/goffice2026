@@ -36,6 +36,18 @@ export function shouldShowYoy(current: YearData | undefined): boolean {
   return (current.months?.length ?? 0) >= 12;
 }
 
+/**
+ * Current-year "verified" is reserved for a COMPLETE 12-month dataset whose
+ * values reconcile to the source. Partial current-year data
+ * (PUBLISHABLE_PARTIAL / in_progress) is machine-extracted but NOT
+ * human-verified — it must never display the Verified badge.
+ */
+export function isCurrentYearVerified(current: YearData | undefined): boolean {
+  if (!current) return false;
+  if (current.quality?.valid === false) return false;
+  return current.datasetState === 'COMPLETE' || (current.months?.length ?? 0) >= 12;
+}
+
 export function hasDisplayableTotal(current: YearData | undefined): boolean {
   if (!current) return false;
   const status = resolveDisplayStatus(current);

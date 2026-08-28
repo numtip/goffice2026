@@ -232,6 +232,9 @@ function main() {
   const kpiEntries = metrics.map(m => {
     const cYear = m.years?.[String(m.currentYear)];
     const bYear = m.years?.[String(m.baselineYear)];
+    // "Verified" requires a complete 12-month dataset reconciled to the source.
+    // Partial current-year data (PUBLISHABLE_PARTIAL) is machine-extracted but
+    // not human-verified — it must never carry the Verified flag.
     return {
       metric: m.metric,
       label: m.label,
@@ -245,7 +248,7 @@ function main() {
       yoyChange: m.yoyChange || null,
       dataQuality: cYear?.quality || null,
       sourceFile: cYear?.source?.split('(')[0]?.trim() || '',
-      verified: cYear?.quality?.valid === true,
+      verified: cYear?.quality?.valid === true && cYear?.datasetState === 'COMPLETE',
     };
   });
 

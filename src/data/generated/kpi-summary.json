@@ -18,11 +18,13 @@
       },
       "dataQuality": {
         "valid": true,
-        "warnings": [],
-        "reconciliationDifference": 0
+        "warnings": [
+          "Workbook total row unusable (corrupt negative cell in canonical range) — total reconciliation skipped; monthly values confirmed against the 2569 sheet. Data-owner correction required before annual claims."
+        ],
+        "reconciliationDifference": null
       },
       "sourceFile": "1.2electric.xlsx (energy-2569.csv) — partial, 7 of 12 months",
-      "verified": true
+      "verified": false
     },
     {
       "metric": "water",
@@ -41,11 +43,13 @@
       },
       "dataQuality": {
         "valid": true,
-        "warnings": [],
-        "reconciliationDifference": 0
+        "warnings": [
+          "Workbook total row unusable (corrupt negative cell in canonical range) — total reconciliation skipped; monthly values confirmed against the 2569 sheet. Data-owner correction required before annual claims."
+        ],
+        "reconciliationDifference": null
       },
       "sourceFile": "1.1Water.xlsx (water-2569.csv) — partial, 7 of 12 months",
-      "verified": true
+      "verified": false
     },
     {
       "metric": "fuel",
@@ -53,23 +57,21 @@
       "labelTh": "การใช้เชื้อเพลิง",
       "unit": "L",
       "yearBE": 2569,
-      "value": 0,
+      "value": 396.37,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 339.83000000000004,
       "yoyChange": {
-        "absolute": 0,
-        "percent": 0,
-        "direction": "stable"
+        "absolute": 56.539999999999964,
+        "percent": 17,
+        "direction": "up"
       },
       "dataQuality": {
-        "valid": false,
-        "warnings": [
-          "Waiting for Official FY2569 Data"
-        ],
-        "reconciliationDifference": null
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": 0
       },
-      "sourceFile": "Waiting for Official FY2569 Data",
+      "sourceFile": "1.3Gassolene.xlsx (fuel-2569.csv) — partial, 7 of 12 months",
       "verified": false
     },
     {
@@ -93,7 +95,7 @@
         "reconciliationDifference": 0
       },
       "sourceFile": "1.4paper.xlsx (paper-2569.csv) — partial, 7 of 12 months",
-      "verified": true
+      "verified": false
     },
     {
       "metric": "waste",
@@ -116,7 +118,7 @@
         "reconciliationDifference": 0
       },
       "sourceFile": "1.5waste2026.xlsx (waste-2569.csv) — partial, 7 of 12 months",
-      "verified": true
+      "verified": false
     },
     {
       "metric": "recycling_rate",
@@ -149,12 +151,12 @@
       "labelTh": "ก๊าซเรือนกระจก",
       "unit": "tCO₂e",
       "yearBE": 2569,
-      "value": 145.07,
+      "value": 144.8,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 231.6,
       "yoyChange": {
-        "absolute": -86.53,
+        "absolute": -86.79999999999998,
         "percent": -37,
         "direction": "down"
       },
@@ -164,7 +166,7 @@
         "reconciliationDifference": 0
       },
       "sourceFile": "1.6GreenHouseGas2026.xlsx (ghg-2569.csv) — partial, 7 of 12 months",
-      "verified": true
+      "verified": false
     }
   ]
 }

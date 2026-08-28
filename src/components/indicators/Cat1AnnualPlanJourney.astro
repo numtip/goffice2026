@@ -1,15 +1,14 @@
 ---
 /**
  * 1.1.4 Annual Action Plan Journey — How we execute.
- * FY2569 = current year (primary, Excel workbook). FY2568 baseline shown below.
+ * FY2569 = current year (primary, Excel workbook). FY2568 baseline lives in the
+ * collapsed "ฐานเปรียบเทียบปี 2568" reference section below.
  */
 import {
   buildAnnualPlanView2569,
   CAT1_FY2569_YEAR,
-  CAT1_FY2568_YEAR,
   CAT11_DOCS_2569,
 } from '../../utils/category1-fy2569-presentation';
-import { CAT11_DOCS } from '../../utils/category1-foundation-presentation';
 import { getLocalizedPath } from '../../i18n/utils';
 import { withBase } from '../../utils/with-base';
 
@@ -130,21 +129,6 @@ const readinessItems = [
       </a>
     </p>
   </section>
-
-  <details class="rounded-xl border border-dashed border-gray-300 bg-gray-50/80 p-5">
-    <summary class="cursor-pointer text-sm font-medium text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">
-      {t(`ฐานประวัติ FY${CAT1_FY2568_YEAR}`, `FY${CAT1_FY2568_YEAR} historical baseline`)}
-    </summary>
-    <p class="mt-3 text-xs leading-relaxed text-on-surface-variant">
-      {t(
-        'แผนรอบ 2568 (proj-plan-1) เป็นไฟล์ PDF (9-3-69) ใช้ร่วมกับ 1.6.1 ตารางแผน/ผลเป็นภาพ และกำหนดการกิจกรรม ERP อยู่นอก repo',
-        'FY2568 plan (proj-plan-1) is the PDF (9-3-69), shared with 1.6.1; plan/actual tables are image-only and the ERP schedule is external to the repo',
-      )}
-    </p>
-    <a href={withBase(CAT11_DOCS.planPdf)} class="mt-2 inline-block text-xs text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-      {t('1.1.4 (9-3-69).pdf — ฐานปี 2568', '1.1.4 (9-3-69).pdf — FY2568 baseline')}
-    </a>
-  </details>
 
   <details class="rounded-xl border border-dashed border-gray-300 bg-gray-50/80 p-5">
     <summary class="cursor-pointer text-sm font-medium text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded">

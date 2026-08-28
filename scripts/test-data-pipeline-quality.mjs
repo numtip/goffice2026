@@ -60,11 +60,22 @@ describe('RC-1: current-year FY2569 data provenance (GO-DATA-3 states)', () => {
     assert.equal(y2569.months[0].value, 1098.4); // verified against workbook 2569 col[6]
     assert.equal(y2569.dataClassification, 'CONFIRMED_XLSX');
     assert.equal(y2569.dataStatus, 'in_progress');
-    assert.equal(y2569.quality.valid, true);     // reconciled exactly (5,572.03 == workbook รวม)
-    assert.equal(y2569.quality.reconciliationDifference, 0);
+    assert.equal(y2569.quality.valid, true);     // monthly values confirmed against the 2569 sheet
+    // The workbook "รวม" row includes a corrupt negative Aug formula cache,
+    // so total reconciliation is skipped with an explicit warning.
+    assert.equal(y2569.quality.reconciliationDifference, null);
+    assert.equal(
+      y2569.quality.warnings.some((w) => w.includes('Workbook total row unusable')),
+      true,
+    );
     // Missing Aug–Dec are ABSENT — never zero-filled
     const months = y2569.months.map((m) => m.month);
     assert.deepEqual(months, [1, 2, 3, 4, 5, 6, 7]);
+    // Provenance must carry SHA-256 + extraction date + available_unverified state
+    assert.match(y2569.provenance.sourceSha256, /^[0-9a-f]{64}$/);
+    assert.ok(y2569.provenance.extractionDate);
+    assert.equal(y2569.provenance.verification.status, 'available_unverified');
+    assert.equal(y2569.provenance.verification.humanVerificationRequired, true);
   });
 
   it('energy 2569 is PUBLISHABLE_PARTIAL, CONFIRMED_XLSX from the approved workbook, Jan–Jul', () => {
@@ -77,21 +88,33 @@ describe('RC-1: current-year FY2569 data provenance (GO-DATA-3 states)', () => {
     assert.equal(y2569.months[0].value, 28618.4); // verified against workbook 2569 col[6]
     assert.equal(y2569.dataClassification, 'CONFIRMED_XLSX');
     assert.equal(y2569.dataStatus, 'in_progress');
-    assert.equal(y2569.quality.valid, true);      // reconciled exactly (264,594.40 == workbook รวม)
-    assert.equal(y2569.quality.reconciliationDifference, 0);
+    assert.equal(y2569.quality.valid, true);      // monthly values confirmed against the 2569 sheet
+    assert.equal(y2569.quality.reconciliationDifference, null); // corrupt workbook total skipped
     const months = y2569.months.map((m) => m.month);
     assert.deepEqual(months, [1, 2, 3, 4, 5, 6, 7]);
+    assert.equal(y2569.provenance.verification.status, 'available_unverified');
   });
 
-  it('fuel/recycling_rate 2569 remain WAITING_FOR_INPUT; paper/waste/ghg are PUBLISHABLE_PARTIAL', () => {
-    for (const metric of ['fuel', 'recycling_rate']) {
-      const data = readGenerated(`${metric}.json`);
-      const y2569 = data.years['2569'];
-      assert.equal(y2569.datasetState, 'WAITING_FOR_INPUT', `${metric} 2569 should be WAITING_FOR_INPUT`);
-      assert.equal(y2569.months.length, 0, `${metric} 2569 must have no months (never zero-filled)`);
-      assert.equal(y2569.latestDataMonth, null, `${metric} 2569 latestDataMonth must be null`);
-      assert.equal(y2569.quality.valid, false, `${metric} 2569 must remain unverified while waiting`);
-    }
+  it('fuel 2569 is now PUBLISHABLE_PARTIAL (actual FY2569 data); recycling_rate remains WAITING_FOR_INPUT', () => {
+    const fuel = readGenerated('fuel.json');
+    const fuel2569 = fuel.years['2569'];
+    assert.equal(fuel2569.datasetState, 'PUBLISHABLE_PARTIAL');
+    assert.equal(fuel2569.months.length, 7, 'fuel 2569 Jan–Jul from the actual FY2569 workbook');
+    assert.equal(fuel2569.latestDataMonth, 7);
+    assert.equal(fuel2569.dataClassification, 'CONFIRMED_XLSX');
+    assert.equal(fuel2569.quality.valid, true);
+    assert.equal(fuel2569.quality.reconciliationDifference, 0);
+    assert.deepEqual(fuel2569.months.map((m) => m.month), [1, 2, 3, 4, 5, 6, 7]);
+
+    const recycling = readGenerated('recycling_rate.json');
+    const recycling2569 = recycling.years['2569'];
+    assert.equal(recycling2569.datasetState, 'WAITING_FOR_INPUT', 'recycling_rate 2569 has no FY2569 input');
+    assert.equal(recycling2569.months.length, 0, 'recycling_rate 2569 must have no months (never zero-filled)');
+    assert.equal(recycling2569.latestDataMonth, null);
+    assert.equal(recycling2569.quality.valid, false);
+  });
+
+  it('paper/waste/ghg 2569 are PUBLISHABLE_PARTIAL and reconciled', () => {
     for (const metric of ['paper', 'waste', 'ghg']) {
       const data = readGenerated(`${metric}.json`);
       const y2569 = data.years['2569'];
@@ -101,6 +124,7 @@ describe('RC-1: current-year FY2569 data provenance (GO-DATA-3 states)', () => {
       assert.equal(y2569.dataClassification, 'CONFIRMED_XLSX');
       assert.equal(y2569.quality.valid, true, `${metric} 2569 reconciled against workbook`);
       assert.deepEqual(y2569.months.map((m) => m.month), [1, 2, 3, 4, 5, 6, 7]);
+      assert.equal(y2569.provenance.verification.status, 'available_unverified', `${metric} is not human-verified`);
     }
   });
 
@@ -164,8 +188,9 @@ describe('RC-3: validator must surface unverified/invalid quality states, not si
   it('validateGenerated warns for every metric-year whose quality.valid is false', () => {
     const result = validateGenerated(false);
     const invalidWarnings = result.warnings.filter((w) => w.includes('quality flagged INVALID'));
-    // fuel + recycling_rate 2569 still WAITING (invalid). paper/waste/ghg now CONFIRMED.
-    assert.equal(invalidWarnings.length, 2);
+    // Only recycling_rate 2569 remains WAITING (invalid); energy/water/fuel/
+    // paper/waste/ghg current years are confirmed against the actual FY2569 files.
+    assert.equal(invalidWarnings.length, 1);
   });
 
   it('validateGenerated raises an ERROR when a %-unit metric declares aggregation "sum"', () => {
@@ -224,15 +249,16 @@ describe('RC-3: validator must surface unverified/invalid quality states, not si
 });
 
 describe('RC-1/RC-4: executive KPI summary marks unverified data explicitly', () => {
-  it('kpi-summary.json marks water/energy 2569 verified:true; other metrics verified:false', () => {
+  it('no partial current-year dataset is marked verified — Verified requires a COMPLETE reconciled year', () => {
     const summary = readGenerated('kpi-summary.json');
-    for (const entry of summary.metrics) {
-      const expectedVerified = entry.dataQuality?.valid === true;
-      assert.equal(entry.verified, expectedVerified, `${entry.metric} verified flag must mirror dataQuality.valid`);
-    }
     const verified = summary.metrics.filter((e) => e.verified === true).map((e) => e.metric);
-    // GO-DATA-3: CONFIRMED_XLSX workbook-backed partial years (quality.valid=true).
-    assert.deepEqual(verified.sort(), ['energy', 'ghg', 'paper', 'waste', 'water']);
+    // All FY2569 datasets are partial (PUBLISHABLE_PARTIAL) and not yet
+    // human-verified — the Verified flag must be reserved for complete years.
+    assert.deepEqual(verified, []);
+    for (const entry of summary.metrics) {
+      const year = entry.yearBE;
+      assert.equal(entry.verified, false, `${entry.metric} ${year} must not claim Verified on partial data`);
+    }
   });
 });
 

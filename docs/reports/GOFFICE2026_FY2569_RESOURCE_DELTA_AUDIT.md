@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-27  
 **Baseline:** `master` @ `13be6a99f8cfa363b8ba981bb1ea34db2f322531`  
-**Source (read-only):** `E:\OneDrive\Research\OneDrive - Maejo university\RAE-Document-Center\07-GreenOffice\Resource`  
+**Source (read-only):** `RAE-Document-Center/07-GreenOffice/Resource` (OneDrive, repository-independent)
 **Authority:** Blueprint V5 · Dashboard Progress Blueprint V1 · GO-DATA-3 pipeline · existing validators  
 
 **Rules honored:** mtime ≠ truth · FY2568 ↛ FY2569 · template ≠ data · missing ≠ zero · no criteria-progress edits · no ready/score inference · no VPS deploy  

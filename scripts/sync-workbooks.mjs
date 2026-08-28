@@ -71,7 +71,9 @@ function displayOf(cell) {
 function isObserved(disp) {
   if (disp === '' || disp === '-') return false;
   const n = Number(disp.replace(/[, ]/g, ''));
-  return !Number.isNaN(n);
+  // Negative cached formula values (e.g. energy/water 2569 Aug) are corrupt —
+  // not observed consumption.
+  return !Number.isNaN(n) && n > 0;
 }
 
 // ── Canonical range extraction per parser ────────────────────────────────────
@@ -181,6 +183,17 @@ function parseArgs() {
   return opts;
 }
 
+/** Repository-independent source label — never a local drive/OneDrive path. */
+function safeSourceLabel(dir) {
+  const marker = '07-GreenOffice\\';
+  const idx = dir.indexOf(marker);
+  if (idx !== -1) {
+    return dir.slice(idx).replace(/\\/g, '/');
+  }
+  // Fallback: strip the drive prefix and any leading parent segments.
+  return dir.replace(/^[A-Za-z]:[\\/]/i, '').replace(/\\/g, '/');
+}
+
 function main() {
   const opts = parseArgs();
   const sourceDir = opts.source || DEFAULT_SOURCE;
@@ -203,8 +216,11 @@ function main() {
     version: '3.0.0',
     phase: 'PHASE2-SYNC',
     generated: '2026-08-07',
-    sourceRoot: sourceDir,
-    stagingRoot: outDir,
+    // Provenance labels must never leak local drive/OneDrive paths into the
+    // committed manifest. sourceRoot keeps the repository-independent relative
+    // path under 07-GreenOffice; stagingRoot is repo-relative.
+    sourceRoot: safeSourceLabel(sourceDir),
+    stagingRoot: 'data/staging/source',
     readOnlyPolicy: 'Source folder strictly read-only. Files copied to staging only when SHA-256 differs.',
     datasetStates: {
       WAITING_FOR_INPUT: 'No FY2569 observations in canonical ranges (template untouched or formatting-only changes).',

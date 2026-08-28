@@ -65,7 +65,9 @@ describe('buildMonthlySeries — missing months are null, never zero', () => {
     assert.equal(series.current.filter((v) => v !== null).length, 7, 'ghg 2569 has Jan–Jul');
     assert.equal(series.current.filter((v) => v === null).length, 5, 'Aug–Dec must be null, NOT 0');
     assert.equal(series.current.includes(0), false);
-    assert.equal(series.currentUnverified, false, 'CONFIRMED_XLSX partial year is verified');
+    // A partial (PUBLISHABLE_PARTIAL) current year is machine-extracted but not
+    // human-verified — it must be flagged unverified, never shown as Verified.
+    assert.equal(series.currentUnverified, true, 'partial FY2569 data must be marked unverified');
     assert.equal(series.unit, 'tCO₂e');
   });
 

@@ -126,10 +126,11 @@ dashboards.forEach((d) => {
   const monthsCount = current?.months.length ?? 0;
   const label = resourceLabels[d.id] ?? dashTitle(d, locale);
 
-  const isWaste = d.id === 'waste'; // recycling: up = good, down = bad
-
+  // All six resource metrics (energy/water/fuel/paper/waste/ghg) are
+  // consumptions, mass, or emissions where LOWER is better — including waste
+  // MASS (kg). A YoY decrease is an improvement.
   if (yoy && current && monthsCount > 0 && yoy.direction !== 'stable') {
-    const isImprovement = isWaste ? yoy.direction === 'up' : yoy.direction === 'down';
+    const isImprovement = yoy.direction === 'down';
     const item = { label, yoyPct: yoy.percent, monthsCount, color: d.color };
     if (isImprovement) insightImproved.push(item);
     else insightAttention.push(item);
@@ -228,7 +229,7 @@ if (riskCandidates.length > 0) {
                     <span class="w-1.5 h-1.5 rounded-full shrink-0" style={`background-color:${item.color}`}></span>
                     {item.label}
                   </span>
-                  <span class="text-amber-600 font-bold tabular-nums">+{item.yoyPct}%</span>
+                  <span class="text-amber-600 font-bold tabular-nums">{item.yoyPct > 0 ? '+' : ''}{item.yoyPct}%</span>
                 </li>
               ))}
             </ul>

@@ -5,6 +5,8 @@ import {
   implementationNotesForIndicator,
 } from '../../utils/evidence-traceability';
 import IndicatorLinkedEvidence from './IndicatorLinkedEvidence.astro';
+import Fy2569StatusPanel from './Fy2569StatusPanel.astro';
+import Fy2568BaselineSection from './Fy2568BaselineSection.astro';
 import Cat1ContractContext from './Cat1ContractContext.astro';
 import Cat1EnvironmentalAssessment from './Cat1EnvironmentalAssessment.astro';
 import Cat1LegalPresentation from './Cat1LegalPresentation.astro';
@@ -100,7 +102,16 @@ const dashboardLinks = (indicator.relatedDashboards || []).map((id: string) => (
 
 const exactEvidence = getEvidenceForIndicator(indicator.code);
 const hasExactEvidence = exactEvidence.length > 0;
-const implementationNotes = implementationNotesForIndicator(indicator.code, undefined, locale);
+// Implementation notes are split by evidence year: FY2569 notes stay in the
+// current-year flow; FY2568-notes render inside the collapsed baseline section.
+const fy2569Evidence = exactEvidence.filter((e) => e.year === 2569);
+const baselineEvidence = exactEvidence.filter((e) => e.year !== 2569);
+const fy2569Notes = implementationNotesForIndicator(indicator.code, fy2569Evidence, locale);
+const baselineNotes = implementationNotesForIndicator(indicator.code, baselineEvidence, locale);
+// Cat1 journeys whose primary view is FY2569 (data-year=2569). They stay in the
+// current-year flow; every other Cat1 journey is FY2568 baseline content and
+// renders inside the single collapsed Fy2568BaselineSection.
+const cat1Fy2569Primary = ['1.1.1', '1.1.2', '1.1.3', '1.1.4', '1.2.1'].includes(indicator.code);
 const cat11Canonical = ['1.1.1', '1.1.2', '1.1.3', '1.1.4'].includes(indicator.code);
 const cat12Canonical = ['1.2.1', '1.2.2'].includes(indicator.code);
 const cat13Canonical = ['1.3.1', '1.3.2', '1.3.3'].includes(indicator.code);
@@ -252,150 +263,161 @@ function alternateTitle(): string {
     </div>
   )}
 
-  {indicator.categoryCode === 'cat1' && cat11Canonical && (
-    <div class="mb-6">
-      <Cat1FoundationPresentation indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
+  <Fy2569StatusPanel indicatorCode={indicator.code} locale={locale} />
 
-  {indicator.categoryCode === 'cat1' && cat12Canonical && (
-    <div class="mb-6">
-      <Cat1GovernancePresentation indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
+  {
+    indicator.categoryCode === 'cat1' && cat11Canonical && (
+      <div class="mb-6">
+        <Cat1FoundationPresentation indicatorCode={indicator.code} locale={locale} />
+      </div>
+    )
+  }
 
-  {indicator.categoryCode === 'cat1' && cat13Canonical && ['1.3.1'].includes(indicator.code) && (
-    <div class="mb-6">
-      <Cat1EnvironmentalAssessment indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
+  {
+    indicator.categoryCode === 'cat1' && cat12Canonical && indicator.code === '1.2.1' && (
+      <div class="mb-6">
+        <Cat1GovernancePresentation indicatorCode={indicator.code} locale={locale} />
+      </div>
+    )
+  }
 
-  {indicator.categoryCode === 'cat1' && cat14Canonical && (
-    <div class="mb-6">
-      <Cat1LegalPresentation indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
+  {
+    fy2569Notes.length > 0 && (
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6" data-fy2569-implementation-notes>
+        <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+          {label('สรุปการดำเนินงานจากหลักฐานปี 2569', 'FY2569 implementation notes from evidence')}
+        </h2>
+        <ul class="list-disc pl-5 space-y-3 text-gray-800 text-sm leading-relaxed" role="list">
+          {fy2569Notes.map((note) => (
+            <li>{note}</li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
 
-  {indicator.categoryCode === 'cat1' && cat15Canonical && (
-    <div class="mb-6">
-      <Cat1GhgPresentation indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
+  {/* One collapsed FY2568 baseline section per indicator — every FY2568
+      journey, contract fact, comparison, link and source document lives here. */}
+  <Fy2568BaselineSection locale={locale} indicatorCode={indicator.code}>
+    {
+      indicator.categoryCode === 'cat1' && !cat1Fy2569Primary && cat13Canonical && (
+        <div class="mb-6">
+          <Cat1EnvironmentalAssessment indicatorCode={indicator.code} locale={locale} />
+        </div>
+      )
+    }
 
-  {indicator.categoryCode === 'cat1' && cat16Canonical && (
-    <div class="mb-6">
-      <Cat1ProjectsPresentation indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
+    {
+      indicator.categoryCode === 'cat1' && !cat1Fy2569Primary && cat14Canonical && (
+        <div class="mb-6">
+          <Cat1LegalPresentation indicatorCode={indicator.code} locale={locale} />
+        </div>
+      )
+    }
 
-  {indicator.categoryCode === 'cat1' && cat17Canonical && (
-    <div class="mb-6">
-      <Cat1ManagementReviewPresentation indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
+    {
+      indicator.categoryCode === 'cat1' && !cat1Fy2569Primary && cat15Canonical && (
+        <div class="mb-6">
+          <Cat1GhgPresentation indicatorCode={indicator.code} locale={locale} />
+        </div>
+      )
+    }
 
-  {indicator.categoryCode === 'cat1' && (
-    <div class="mb-6">
+    {
+      indicator.categoryCode === 'cat1' && !cat1Fy2569Primary && cat16Canonical && (
+        <div class="mb-6">
+          <Cat1ProjectsPresentation indicatorCode={indicator.code} locale={locale} />
+        </div>
+      )
+    }
+
+    {
+      indicator.categoryCode === 'cat1' && !cat1Fy2569Primary && cat17Canonical && (
+        <div class="mb-6">
+          <Cat1ManagementReviewPresentation indicatorCode={indicator.code} locale={locale} />
+        </div>
+      )
+    }
+
+    {
+      indicator.categoryCode === 'cat1' && cat12Canonical && indicator.code === '1.2.2' && (
+        <div class="mb-6">
+          <Cat1GovernancePresentation indicatorCode={indicator.code} locale={locale} />
+        </div>
+      )
+    }
+
+    {indicator.categoryCode === 'cat1' && (
       <Cat1ContractContext indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
+    )}
 
-  {indicator.categoryCode === 'cat2' && (
-    <div class="mb-6">
+    {indicator.categoryCode === 'cat2' && (
       <Cat2ContractContext indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
+    )}
 
-  {indicator.categoryCode === 'cat3' && (
-    <div class="mb-6">
+    {indicator.categoryCode === 'cat3' && (
       <Cat3ContractContext indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
+    )}
 
-  {indicator.categoryCode === 'cat4' && (
-    <div class="mb-6">
+    {indicator.categoryCode === 'cat4' && (
       <Cat4ContractContext indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
+    )}
 
-  {indicator.categoryCode === 'cat5' && (
-    <div class="mb-6">
+    {indicator.categoryCode === 'cat5' && (
       <Cat5ContractContext indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
+    )}
 
-  {indicator.categoryCode === 'cat6' && (
-    <div class="mb-6">
+    {indicator.categoryCode === 'cat6' && (
       <Cat6ContractContext indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
+    )}
 
-  {indicator.categoryCode === 'cat7' && (
-    <div class="mb-6">
+    {indicator.categoryCode === 'cat7' && (
       <Cat7ContractContext indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
+    )}
 
-  {indicator.categoryCode === 'cat1' && indicator.code !== '1.3.1' && (
-    <div class="mb-6">
+    {indicator.categoryCode === 'cat1' && indicator.code !== '1.3.1' && (
       <Cat1SourceDocuments issueCode={indicator.issueCode} locale={locale} />
-    </div>
-  )}
+    )}
 
-  {indicator.categoryCode === 'cat2' && cat2Canonical && indicator.code !== '2.2.3' && (
-    <div class="mb-6">
+    {indicator.categoryCode === 'cat2' && cat2Canonical && indicator.code !== '2.2.3' && (
       <Cat2SourceDocuments issueCode={indicator.issueCode} locale={locale} />
-    </div>
-  )}
+    )}
 
-  {indicator.categoryCode === 'cat3' && cat3Canonical && (
-    <div class="mb-6">
+    {indicator.categoryCode === 'cat3' && cat3Canonical && (
       <Cat3SourceDocuments issueCode={indicator.issueCode} locale={locale} />
-    </div>
-  )}
+    )}
 
-  {indicator.categoryCode === 'cat4' && cat4Canonical && (
-    <div class="mb-6">
+    {indicator.categoryCode === 'cat4' && cat4Canonical && (
       <Cat4SourceDocuments issueCode={indicator.issueCode} locale={locale} />
-    </div>
-  )}
+    )}
 
-  {indicator.categoryCode === 'cat5' && cat5Canonical && (
-    <div class="mb-6">
+    {indicator.categoryCode === 'cat5' && cat5Canonical && (
       <Cat5SourceDocuments issueCode={indicator.issueCode} locale={locale} />
-    </div>
-  )}
+    )}
 
-  {indicator.categoryCode === 'cat6' && cat6Canonical && (
-    <div class="mb-6">
+    {indicator.categoryCode === 'cat6' && cat6Canonical && (
       <Cat6SourceDocuments issueCode={indicator.issueCode} locale={locale} />
-    </div>
-  )}
+    )}
 
-  {indicator.categoryCode === 'cat7' && cat7Canonical && (
-    <div class="mb-6">
+    {indicator.categoryCode === 'cat7' && cat7Canonical && (
       <Cat7SourceDocuments issueCode={indicator.issueCode} locale={locale} />
-    </div>
-  )}
+    )}
 
-  {indicator.categoryCode === 'cat1' && ['1.3.2', '1.3.3'].includes(indicator.code) && (
-    <div class="mb-6">
-      <Cat1EnvironmentalAssessment indicatorCode={indicator.code} locale={locale} />
-    </div>
-  )}
-
-  {implementationNotes.length > 0 && (
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
-      <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-        {label('สรุปการดำเนินงานจากหลักฐาน', 'Implementation notes from evidence')}
-      </h2>
-      <ul class="list-disc pl-5 space-y-3 text-gray-800 text-sm leading-relaxed" role="list">
-        {implementationNotes.map((note) => (
-          <li>{note}</li>
-        ))}
-      </ul>
-    </div>
-  )}
+    {
+      baselineNotes.length > 0 && (
+        <div class="rounded-lg border border-gray-100 bg-gray-50/60 p-4" data-fy2568-implementation-notes>
+          <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+            {label('สรุปการดำเนินงานจากหลักฐาน (ฐานปี 2568)', 'FY2568 implementation notes from evidence')}
+          </h3>
+          <ul class="list-disc pl-5 space-y-3 text-gray-800 text-sm leading-relaxed" role="list">
+            {baselineNotes.map((note) => (
+              <li>{note}</li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </Fy2568BaselineSection>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">

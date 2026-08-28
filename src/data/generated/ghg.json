@@ -111,42 +111,42 @@
       "months": [
         {
           "month": 1,
-          "value": 16.113,
+          "value": 16.129,
           "label": "Jan"
         },
         {
           "month": 2,
-          "value": 17.195,
+          "value": 17.091,
           "label": "Feb"
         },
         {
           "month": 3,
-          "value": 18.611,
+          "value": 18.458,
           "label": "Mar"
         },
         {
           "month": 4,
-          "value": 23.402,
+          "value": 23.268,
           "label": "Apr"
         },
         {
           "month": 5,
-          "value": 21.822,
+          "value": 21.732,
           "label": "May"
         },
         {
           "month": 6,
-          "value": 24.336,
+          "value": 24.444,
           "label": "Jun"
         },
         {
           "month": 7,
-          "value": 23.591,
+          "value": 23.681,
           "label": "Jul"
         }
       ],
-      "total": 145.07,
-      "average": 20.72,
+      "total": 144.8,
+      "average": 20.69,
       "aggregation": "sum",
       "dataStatus": "in_progress",
       "source": "1.6GreenHouseGas2026.xlsx (ghg-2569.csv) — partial, 7 of 12 months",
@@ -158,12 +158,28 @@
       "dataClassification": "CONFIRMED_XLSX",
       "datasetState": "PUBLISHABLE_PARTIAL",
       "latestDataMonth": 7,
-      "updated": "2026-08-27",
+      "updated": "2026-08-28",
       "provenance": {
         "sourceWorkbook": "1.6GreenHouseGas2026.xlsx",
         "sourceSheet": "สรุปการคำนวณ ปี 2569",
         "extractionScript": "scripts/extract-workbook.mjs",
-        "validationStatus": "in_progress"
+        "sourceSha256": "3c2a0e46a7bc0438bfe3dc9bb12bd8d51f0c5685633f69a3bd9f6e052ae5e010",
+        "extractionDate": "2026-08-28",
+        "coverage": "7 of 12 months",
+        "observedMonths": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "validationStatus": "in_progress",
+        "verification": {
+          "status": "available_unverified",
+          "humanVerificationRequired": true
+        }
       }
     }
   },
@@ -179,7 +195,7 @@
     "months": []
   },
   "yoyChange": {
-    "absolute": -86.53,
+    "absolute": -86.79999999999998,
     "percent": -37,
     "direction": "down"
   },

@@ -1,0 +1,38 @@
+---
+/**
+ * Fy2568BaselineSection.astro — collapsed FY2568 baseline reference section.
+ *
+ * All FY2568 contract facts and source documents render inside this closed
+ * <details> titled "ฐานเปรียบเทียบปี 2568" / "FY2568 Baseline". It is always
+ * rendered AFTER the FY2569 status panel and is collapsed by default so the
+ * frozen baseline can never be mistaken for current FY2569 results.
+ */
+interface Props {
+  locale: 'th' | 'en';
+  indicatorCode: string;
+}
+
+const { locale, indicatorCode } = Astro.props;
+const th = locale === 'th';
+---
+
+<details
+  class="mb-6 rounded-xl border border-gray-200 bg-white shadow-sm"
+  data-fy2568-baseline
+  data-indicator-code={indicatorCode}
+>
+  <summary class="flex cursor-pointer items-center justify-between gap-3 px-5 py-3 text-sm font-semibold text-gray-600 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 rounded-t-xl">
+    <span class="flex items-center gap-2">
+      <svg class="w-4 h-4 text-gray-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+      </svg>
+      {th ? 'ฐานเปรียบเทียบปี 2568' : 'FY2568 Baseline'}
+    </span>
+    <span class="text-[11px] font-normal text-gray-400" aria-hidden="true">
+      {th ? 'ข้อมูลปีฐาน — คลิกเพื่อเปิด' : 'Baseline reference — click to expand'}
+    </span>
+  </summary>
+  <div class="space-y-6 border-t border-gray-100 px-5 py-4">
+    <slot />
+  </div>
+</details>
