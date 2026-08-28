@@ -87,9 +87,9 @@
     },
     {
       "resourceDomain": "waste",
-      "label": "Waste Management",
+      "label": "Waste Mass",
       "dashboardId": "waste",
-      "unit": "% (recycling rate)",
+      "unit": "kg",
       "primaryCategory": "cat4",
       "primaryCategoryLabel": "การจัดการของเสีย",
       "mappedIndicators": [
@@ -99,7 +99,7 @@
           "issueCode": "4.1",
           "issueTitle": "การจัดการขยะ",
           "relatedDashboardMatch": true,
-          "mappingBasis": "Implementation indicator — tracks waste sorting, collection and disposal performance. Dashboard recycling rate data supports monitoring of waste diversion from landfill."
+          "mappingBasis": "Implementation indicator — tracks waste sorting, collection and disposal performance. Dashboard supplies total waste mass (kg) per month."
         },
         {
           "code": "4.1.3",
@@ -107,7 +107,7 @@
           "issueCode": "4.1",
           "issueTitle": "การจัดการขยะ",
           "relatedDashboardMatch": true,
-          "mappingBasis": "Outcome indicator — measures waste reuse/recycling resulting in reduced disposal volume. Dashboard recycling % is the direct quantitative measure for this indicator."
+          "mappingBasis": "Outcome indicator — measures waste reuse/recycling resulting in reduced disposal volume. Waste mass (kg) is the quantitative measure; the recycling rate is tracked separately as its own metric (recycling_rate.json, unit %) and is never presented as waste mass."
         }
       ]
     },

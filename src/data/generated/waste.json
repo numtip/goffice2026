@@ -152,12 +152,28 @@
       "dataClassification": "CONFIRMED_XLSX",
       "datasetState": "PUBLISHABLE_PARTIAL",
       "latestDataMonth": 7,
-      "updated": "2026-08-27",
+      "updated": "2026-08-28",
       "provenance": {
         "sourceWorkbook": "1.5waste2026.xlsx",
         "sourceSheet": "ปริมาณขยะรายเดือน ",
         "extractionScript": "scripts/extract-workbook.mjs",
-        "validationStatus": "in_progress"
+        "sourceSha256": "02b1f624796e3ce49599adb0837712a0ac5cac3794a4cabf5bc404501d398df2",
+        "extractionDate": "2026-08-28",
+        "coverage": "7 of 12 months",
+        "observedMonths": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "validationStatus": "in_progress",
+        "verification": {
+          "status": "available_unverified",
+          "humanVerificationRequired": true
+        }
       }
     }
   },

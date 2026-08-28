@@ -146,18 +146,36 @@
       "source": "1.1Water.xlsx (water-2569.csv) — partial, 7 of 12 months",
       "quality": {
         "valid": true,
-        "warnings": [],
-        "reconciliationDifference": 0
+        "warnings": [
+          "Workbook total row unusable (corrupt negative cell in canonical range) — total reconciliation skipped; monthly values confirmed against the 2569 sheet. Data-owner correction required before annual claims."
+        ],
+        "reconciliationDifference": null
       },
       "dataClassification": "CONFIRMED_XLSX",
       "datasetState": "PUBLISHABLE_PARTIAL",
       "latestDataMonth": 7,
-      "updated": "2026-08-27",
+      "updated": "2026-08-28",
       "provenance": {
         "sourceWorkbook": "1.1Water.xlsx",
         "sourceSheet": "2569",
         "extractionScript": "scripts/extract-workbook.mjs",
-        "validationStatus": "in_progress"
+        "sourceSha256": "87d3dc99b9c86a365b977a6a4eb73d1defe340fabe1d03aa6d41c64b492a58d9",
+        "extractionDate": "2026-08-28",
+        "coverage": "7 of 12 months",
+        "observedMonths": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "validationStatus": "in_progress",
+        "verification": {
+          "status": "available_unverified",
+          "humanVerificationRequired": true
+        }
       }
     }
   },

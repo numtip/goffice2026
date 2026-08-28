@@ -1,37 +1,122 @@
 {
   "water-2569": {
-    "workbookTotal": 5572.03,
+    "workbookTotal": null,
     "sourceWorkbook": "1.1Water.xlsx",
     "sourceSheet": "2569",
     "classification": "CONFIRMED_XLSX",
-    "extractionScript": "scripts/extract-workbook.mjs"
+    "extractionScript": "scripts/extract-workbook.mjs",
+    "sourceSha256": "87d3dc99b9c86a365b977a6a4eb73d1defe340fabe1d03aa6d41c64b492a58d9",
+    "extractionDate": "2026-08-28",
+    "observedMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "coverage": "7 of 12 months",
+    "workbookTotalInvalid": true
   },
   "energy-2569": {
-    "workbookTotal": 264594.4,
+    "workbookTotal": null,
     "sourceWorkbook": "1.2electric.xlsx",
     "sourceSheet": "2569",
     "classification": "CONFIRMED_XLSX",
-    "extractionScript": "scripts/extract-workbook.mjs"
+    "extractionScript": "scripts/extract-workbook.mjs",
+    "sourceSha256": "31c70e5e4eb40c90df602a76a1dcb12dd3bf4f11ad652228d41859ed1a67273c",
+    "extractionDate": "2026-08-28",
+    "observedMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "coverage": "7 of 12 months",
+    "workbookTotalInvalid": true
+  },
+  "fuel-2569": {
+    "workbookTotal": 396.37,
+    "sourceWorkbook": "1.3Gassolene.xlsx",
+    "sourceSheet": "2569",
+    "classification": "CONFIRMED_XLSX",
+    "extractionScript": "scripts/extract-workbook.mjs",
+    "sourceSha256": "0e610a4b22ecfdc781d9c14d8b4e4c10ec8189ff019206b631507bb93e121566",
+    "extractionDate": "2026-08-28",
+    "observedMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "coverage": "7 of 12 months",
+    "workbookTotalInvalid": false
   },
   "paper-2569": {
     "workbookTotal": 1239.76,
     "sourceWorkbook": "1.4paper.xlsx",
     "sourceSheet": "2569",
     "classification": "CONFIRMED_XLSX",
-    "extractionScript": "scripts/extract-workbook.mjs"
+    "extractionScript": "scripts/extract-workbook.mjs",
+    "sourceSha256": "4d7d1560381563d7cb7e3aa2d8b63ba3b4df05ce0dcc5b406e2b437c5dd06354",
+    "extractionDate": "2026-08-28",
+    "observedMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "coverage": "7 of 12 months",
+    "workbookTotalInvalid": false
   },
   "waste-2569": {
     "workbookTotal": 3909.7,
     "sourceWorkbook": "1.5waste2026.xlsx",
     "sourceSheet": "ปริมาณขยะรายเดือน ",
     "classification": "CONFIRMED_XLSX",
-    "extractionScript": "scripts/extract-workbook.mjs"
+    "extractionScript": "scripts/extract-workbook.mjs",
+    "sourceSha256": "02b1f624796e3ce49599adb0837712a0ac5cac3794a4cabf5bc404501d398df2",
+    "extractionDate": "2026-08-28",
+    "observedMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "coverage": "7 of 12 months",
+    "workbookTotalInvalid": false
   },
   "ghg-2569": {
     "workbookTotal": 145.07,
     "sourceWorkbook": "1.6GreenHouseGas2026.xlsx",
     "sourceSheet": "สรุปการคำนวณ ปี 2569",
     "classification": "CONFIRMED_XLSX",
-    "extractionScript": "scripts/extract-workbook.mjs"
+    "extractionScript": "scripts/extract-workbook.mjs",
+    "sourceSha256": "e6bc56fd5ed8f3dd952725dfeef162ea0e7a46679dd3d6ad03d921102261b219",
+    "extractionDate": "2026-08-28",
+    "observedMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "coverage": "7 of 12 months",
+    "workbookTotalInvalid": false
   }
 }

@@ -1,8 +1,8 @@
 {
   "generatedFrom": "canonical-metrics",
   "totalMetrics": 7,
-  "metricsWithWarnings": 3,
-  "metricsWithErrors": 2,
+  "metricsWithWarnings": 4,
+  "metricsWithErrors": 1,
   "entries": [
     {
       "metric": "energy",
@@ -17,48 +17,50 @@
       "metric": "energy",
       "yearBE": 2569,
       "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 7,
-      "dataStatus": "in_progress"
-    },
-    {
-      "metric": "water",
-      "yearBE": 2568,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 12,
-      "dataStatus": "VERIFIED_BASELINE"
-    },
-    {
-      "metric": "water",
-      "yearBE": 2569,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 7,
-      "dataStatus": "in_progress"
-    },
-    {
-      "metric": "fuel",
-      "yearBE": 2568,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 12,
-      "dataStatus": "VERIFIED_BASELINE"
-    },
-    {
-      "metric": "fuel",
-      "yearBE": 2569,
-      "valid": false,
       "warnings": [
-        "Waiting for Official FY2569 Data"
+        "Workbook total row unusable (corrupt negative cell in canonical range) — total reconciliation skipped; monthly values confirmed against the 2569 sheet. Data-owner correction required before annual claims."
       ],
       "reconciliationDifference": null,
-      "monthCount": 0,
-      "dataStatus": "CURRENT_DATA_PENDING"
+      "monthCount": 7,
+      "dataStatus": "in_progress"
+    },
+    {
+      "metric": "water",
+      "yearBE": 2568,
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 12,
+      "dataStatus": "VERIFIED_BASELINE"
+    },
+    {
+      "metric": "water",
+      "yearBE": 2569,
+      "valid": true,
+      "warnings": [
+        "Workbook total row unusable (corrupt negative cell in canonical range) — total reconciliation skipped; monthly values confirmed against the 2569 sheet. Data-owner correction required before annual claims."
+      ],
+      "reconciliationDifference": null,
+      "monthCount": 7,
+      "dataStatus": "in_progress"
+    },
+    {
+      "metric": "fuel",
+      "yearBE": 2568,
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 12,
+      "dataStatus": "VERIFIED_BASELINE"
+    },
+    {
+      "metric": "fuel",
+      "yearBE": 2569,
+      "valid": true,
+      "warnings": [],
+      "reconciliationDifference": 0,
+      "monthCount": 7,
+      "dataStatus": "in_progress"
     },
     {
       "metric": "paper",

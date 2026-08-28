@@ -3,7 +3,7 @@
   "label": "Fuel Consumption",
   "unit": "L",
   "kpiField": "liters",
-  "status": "CURRENT_DATA_PENDING",
+  "status": "missing",
   "baselineYear": 2568,
   "currentYear": 2569,
   "targetYear": 2569,
@@ -102,29 +102,79 @@
     "2569": {
       "year": 2569,
       "isBaseline": false,
-      "months": [],
-      "total": 0,
-      "average": 0,
-      "dataStatus": "CURRENT_DATA_PENDING",
-      "source": "Waiting for Official FY2569 Data",
-      "updated": "2026-07-27",
-      "provenance": {
-        "sourceWorkbook": "docs/1.3_Gassolene.xlsx",
-        "extractionStatus": "NO_2569_DATA",
-        "validationStatus": "CURRENT_DATA_PENDING",
-        "reconciliationDay1": "2026-07-27"
-      },
-      "quality": {
-        "valid": false,
-        "warnings": [
-          "Waiting for Official FY2569 Data"
-        ],
-        "reconciliationDifference": null
-      },
+      "months": [
+        {
+          "month": 1,
+          "value": 82.44,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "value": 23.46,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "value": 39.18,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "value": 39.07,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "value": 48.89,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "value": 106.79,
+          "label": "Jun"
+        },
+        {
+          "month": 7,
+          "value": 56.54,
+          "label": "Jul"
+        }
+      ],
+      "total": 396.37,
+      "average": 56.62,
       "aggregation": "sum",
-      "dataClassification": "PLACEHOLDER",
-      "datasetState": "WAITING_FOR_INPUT",
-      "latestDataMonth": null
+      "dataStatus": "in_progress",
+      "source": "1.3Gassolene.xlsx (fuel-2569.csv) — partial, 7 of 12 months",
+      "quality": {
+        "valid": true,
+        "warnings": [],
+        "reconciliationDifference": 0
+      },
+      "dataClassification": "CONFIRMED_XLSX",
+      "datasetState": "PUBLISHABLE_PARTIAL",
+      "latestDataMonth": 7,
+      "updated": "2026-08-28",
+      "provenance": {
+        "sourceWorkbook": "1.3Gassolene.xlsx",
+        "sourceSheet": "2569",
+        "extractionScript": "scripts/extract-workbook.mjs",
+        "sourceSha256": "0e610a4b22ecfdc781d9c14d8b4e4c10ec8189ff019206b631507bb93e121566",
+        "extractionDate": "2026-08-28",
+        "coverage": "7 of 12 months",
+        "observedMonths": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "validationStatus": "in_progress",
+        "verification": {
+          "status": "available_unverified",
+          "humanVerificationRequired": true
+        }
+      }
     }
   },
   "target": {
@@ -139,9 +189,9 @@
     "months": []
   },
   "yoyChange": {
-    "absolute": 0,
-    "percent": 0,
-    "direction": "stable"
+    "absolute": 56.539999999999964,
+    "percent": 17,
+    "direction": "up"
   },
   "relatedIndicators": [
     {

@@ -2,7 +2,7 @@
 import type { DashboardMeta } from '../../data/dashboard-config';
 import { dashTitle, dashDescription, dashSourceLabel } from '../../data/dashboard-config';
 import type { MultiYearMetric, YearData } from '../../utils/multi-year-schema';
-import { resolveDisplayStatus, shouldShowYoy, hasDisplayableTotal } from '../../utils/data-status';
+import { resolveDisplayStatus, shouldShowYoy, hasDisplayableTotal, isCurrentYearVerified } from '../../utils/data-status';
 import { getLocalizedPath } from '../../i18n/utils';
 import { getEvidenceForDashboard } from '../../utils/evidence-traceability';
 import { metricThemes } from '../../data/metric-theme';
@@ -52,7 +52,9 @@ const monthAbbr = th
 const currentDisplayStatus = resolveDisplayStatus(currentYear);
 const showYoy = shouldShowYoy(currentYear);
 const showCurrentTotal = hasDisplayableTotal(currentYear);
-const currentVerified = currentYear?.quality?.valid !== false;
+// Partial (PUBLISHABLE_PARTIAL) current-year data is machine-extracted but not
+// human-verified — only a COMPLETE reconciled dataset carries the Verified flag.
+const currentVerified = isCurrentYearVerified(currentYear);
 
 const fmt = (v: number) => Intl.NumberFormat(th ? 'th' : 'en').format(Math.round(v));
 
@@ -69,7 +71,9 @@ const category = dashboard.categoryId
 const relatedIndicators = indicatorsData.indicators.filter(
   (ind: { relatedDashboards: string[] }) => ind.relatedDashboards.includes(dashboard.id)
 );
-const linkedEvidence = getEvidenceForDashboard(dashboard.id);
+const linkedEvidence = [...getEvidenceForDashboard(dashboard.id)].sort(
+  (a, b) => (b.year === 2569 ? 1 : 0) - (a.year === 2569 ? 1 : 0),
+);
 
 // Related About pages (policy / goals) for this dashboard
 const dashAboutLinks =
@@ -108,7 +112,7 @@ const kpiCards = metric && baselineYear ? [
       : (th ? 'ยังไม่มีข้อมูล' : 'No data yet'),
     verified: currentVerified,
     dimmed: !currentVerified,
-    trendLabel: showYoy && yoyPctText && currentVerified ? yoyPctText : (!currentVerified ? (th ? 'รอข้อมูลอย่างเป็นทางการ ปีงบประมาณ 2569' : 'Waiting for Official FY2569 Data') : undefined),
+    trendLabel: showYoy && yoyPctText && currentVerified ? yoyPctText : (!currentVerified ? (currentYear && currentYear.months.length > 0 ? (th ? 'ข้อมูลบางส่วน — ยังไม่ยืนยัน' : 'Partial — not yet verified') : (th ? 'รอข้อมูลอย่างเป็นทางการ ปีงบประมาณ 2569' : 'Waiting for Official FY2569 Data')) : undefined),
     trendColor: showYoy && yoy && currentVerified ? yoyColor(yoy.percent) : 'text-amber-600',
     status: currentDisplayStatus,
   },
@@ -163,10 +167,17 @@ const coverage = currentYear
   ? (th ? `${currentYear.months.length} จาก 12 เดือน` : `${currentYear.months.length} of 12 months`)
   : (th ? 'ไม่มีข้อมูล' : 'No data');
 
-// Verification status string
+// Verification status string — partial current-year data is "ready for review",
+// never "Verified".
 const verificationStatus = currentVerified
   ? (th ? 'ยืนยันแล้ว' : 'Verified')
-  : (th ? 'ยังไม่ยืนยัน' : 'Unverified');
+  : currentDisplayStatus === 'in_progress'
+    ? (th ? 'พร้อมตรวจสอบ — ยังไม่ยืนยัน (ข้อมูลบางส่วน)' : 'Ready for review — unverified (partial)')
+    : (th ? 'ยังไม่ยืนยัน' : 'Unverified');
+
+// Evidence panel counts CURRENT-year (FY2569) linked evidence only.
+const currentLinkedEvidence = linkedEvidence.filter((e) => e.year === 2569);
+const evidencePanelCount = currentLinkedEvidence.length > 0 ? currentLinkedEvidence.length : linkedEvidence.length;
 
 // Primary indicator code
 const primaryIndicator = metric?.relatedIndicators?.[0];
@@ -203,6 +214,18 @@ const primaryIndicator = metric?.relatedIndicators?.[0];
 
       <!-- KPI Command Center -->
       <MetricKpiGrid cards={kpiCards} theme={theme} locale={locale} />
+
+      {
+        dashboard.id === 'waste' && (
+          <aside class="rounded-stitch-lg border border-outline-variant/20 bg-white p-4 text-xs text-on-surface-variant" data-waste-unit-note>
+            <p>
+              {th
+                ? 'หน่วยที่แสดงคือ ปริมาณขยะ (กิโลกรัม) ตามไฟล์ 1.5waste2026.xlsx อัตราการรีไซเคิล (ร้อยละ) เป็นตัวชี้วัดแยกต่างหาก (recycling_rate) และไม่ใช่ปริมาณขยะ'
+                : 'Units shown are waste MASS (kg) per 1.5waste2026.xlsx. The recycling rate (%) is a separate metric (recycling_rate) and is never presented as waste mass.'}
+            </p>
+          </aside>
+        )
+      }
 
       <!-- Executive Summary -->
       {metric && (
@@ -256,13 +279,15 @@ const primaryIndicator = metric?.relatedIndicators?.[0];
         </section>
       )}
 
-      <!-- Data & Evidence Panel -->
+      <!-- Data & Evidence Panel — leads with CURRENT-year provenance/status -->
       <DataEvidencePanel
-        sourceClassification={baselineYear.dataClassification}
-        sourceWorkbook={baselineYear.provenance?.sourceWorkbook}
+        sourceClassification={currentYear?.dataClassification ?? baselineYear.dataClassification}
+        sourceWorkbook={currentYear?.provenance?.sourceWorkbook ?? baselineYear.provenance?.sourceWorkbook}
         coverage={coverage}
         verificationStatus={verificationStatus}
-        evidenceCount={linkedEvidence.length}
+        evidenceCount={evidencePanelCount}
+        currentYearVerified={currentVerified}
+        currentWarnings={currentYear?.quality?.warnings}
         baselineSource={baselineYear.source}
         baselineUpdated={baselineYear.updated}
         currentSource={currentYear?.source}

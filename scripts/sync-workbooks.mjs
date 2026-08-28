@@ -71,7 +71,9 @@ function displayOf(cell) {
 function isObserved(disp) {
   if (disp === '' || disp === '-') return false;
   const n = Number(disp.replace(/[, ]/g, ''));
-  return !Number.isNaN(n);
+  // Negative cached formula values (e.g. energy/water 2569 Aug) are corrupt —
+  // not observed consumption.
+  return !Number.isNaN(n) && n > 0;
 }
 
 // ── Canonical range extraction per parser ────────────────────────────────────

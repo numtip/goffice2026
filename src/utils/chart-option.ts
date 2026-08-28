@@ -90,7 +90,10 @@ export function buildMonthlySeries(
     baselineYear: metric.baselineYear,
     currentYear: metric.currentYear,
     targetYear: metric.targetYear,
-    currentUnverified: currentYear?.quality?.valid !== true,
+    // A partial (PUBLISHABLE_PARTIAL) or invalid current year is NOT verified:
+    // it is machine-extracted but has not completed 12 months of confirmed data.
+    currentUnverified:
+      currentYear?.quality?.valid !== true || currentYear?.datasetState !== 'COMPLETE',
   };
 }
 

@@ -70,10 +70,10 @@ describe('computePartialYoy — water partial', () => {
   });
 });
 
-describe('computePartialYoy — fuel pending; paper/waste/ghg partial', () => {
-  it('fuel is pending with null totals and — formatting', () => {
-    const metric = readMetric('fuel');
-    const result = computePartialYoy(metric, { id: 'fuel' });
+describe('computePartialYoy — recycling_rate pending; fuel/paper/waste/ghg partial', () => {
+  it('recycling_rate is pending with null totals and — formatting', () => {
+    const metric = readMetric('recycling_rate');
+    const result = computePartialYoy(metric, { id: 'recycling_rate' });
     assert.equal(result.status, 'pending');
     assert.equal(result.comparableCount, 0);
     assert.equal(result.percent, null);
@@ -83,6 +83,14 @@ describe('computePartialYoy — fuel pending; paper/waste/ghg partial', () => {
     assert.equal(result.direction, null);
     assert.ok(result.currentSeries.every((v) => v === null));
     assert.equal(formatNullableCell(result.percent), '—');
+  });
+
+  it('fuel is now partial Jan–Jul from the actual FY2569 workbook', () => {
+    const metric = readMetric('fuel');
+    const result = computePartialYoy(metric, { id: 'fuel' });
+    assert.equal(result.status, 'partial');
+    assert.equal(result.comparableCount, 7);
+    assert.notEqual(result.percent, null);
   });
 
   it('paper is partial Jan–Jul with overlap YoY ≠ frozen full-year YoY', () => {
@@ -163,18 +171,18 @@ describe('buildPartialYoyOption — JSON + connectNulls false + locale months', 
   });
 
   it('pending still returns valid null series with aria', () => {
-    const metric = readMetric('fuel');
-    const result = computePartialYoy(metric, { id: 'fuel' });
+    const metric = readMetric('recycling_rate');
+    const result = computePartialYoy(metric, { id: 'recycling_rate' });
     const option = buildPartialYoyOption({
       result,
       locale: 'en',
       label: { baseline: 'FY2568', current: 'FY2569' },
       colors: { baseline: '#94a3b8', current: '#d97706' },
-      ariaDescription: 'Fuel pending',
+      ariaDescription: 'Recycling rate pending',
     });
     assert.equal(option.series[1].data.every((v) => v === null), true);
     assert.equal(option.aria.enabled, true);
-    assert.equal(option.aria.label.description, 'Fuel pending');
+    assert.equal(option.aria.label.description, 'Recycling rate pending');
     assert.doesNotThrow(() => JSON.stringify(option));
   });
 });

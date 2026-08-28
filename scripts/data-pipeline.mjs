@@ -233,6 +233,11 @@ function importMetric(metric, year, csvPath, _verbose, opts = {}) {
     sourceSheet = null,
     classification = null,
     extractionScript = null,
+    sourceSha256 = null,
+    extractionDate = null,
+    observedMonths = null,
+    coverage = null,
+    workbookTotalInvalid = false,
   } = opts;
   const cfg = METRIC_CONFIG[metric];
   if (!cfg) {
@@ -306,8 +311,35 @@ function importMetric(metric, year, csvPath, _verbose, opts = {}) {
     quality = reconcileTotal(totalValue, null, cfg.unit);
     dataClassification = 'PRESERVED_LEGACY';
   } else if (workbookTotal !== null && workbookTotal !== undefined) {
-    quality = reconcileTotal(totalValue, workbookTotal, cfg.unit);
-    dataClassification = classification || 'CONFIRMED_XLSX';
+    if (workbookTotal < 0) {
+      // Negative workbook totals (e.g. energy/water 2569 "รวม" rows include a
+      // corrupt negative Aug formula-cache value) are unusable for
+      // reconciliation. Monthly values are still confirmed against the 2569
+      // sheet; the total is flagged for the data owner instead of failing.
+      quality = {
+        valid: true,
+        warnings: [
+          `Workbook total is negative (corrupt formula cache in source) — total reconciliation skipped; monthly values confirmed against the 2569 sheet. Data-owner correction required before annual claims.`,
+        ],
+        reconciliationDifference: null,
+      };
+      dataClassification = 'CONFIRMED_XLSX';
+    } else {
+      quality = reconcileTotal(totalValue, workbookTotal, cfg.unit);
+      dataClassification = classification || 'CONFIRMED_XLSX';
+    }
+  } else if (workbookTotalInvalid) {
+    // Extract saw a corrupt negative cell in the canonical range, so the
+    // workbook total is unusable. Monthly values remain CONFIRMED_XLSX
+    // (verified against the 2569 sheet), with an explicit data-owner warning.
+    quality = {
+      valid: true,
+      warnings: [
+        'Workbook total row unusable (corrupt negative cell in canonical range) — total reconciliation skipped; monthly values confirmed against the 2569 sheet. Data-owner correction required before annual claims.',
+      ],
+      reconciliationDifference: null,
+    };
+    dataClassification = 'CONFIRMED_XLSX';
   } else {
     quality = {
       valid: false,
@@ -341,8 +373,20 @@ function importMetric(metric, year, csvPath, _verbose, opts = {}) {
       sourceWorkbook,
       ...(sourceSheet ? { sourceSheet } : {}),
       ...(extractionScript ? { extractionScript } : {}),
+      ...(sourceSha256 ? { sourceSha256 } : {}),
+      ...(extractionDate ? { extractionDate } : {}),
+      ...(coverage ? { coverage } : {}),
+      ...(Array.isArray(observedMonths) && observedMonths.length > 0 ? { observedMonths } : {}),
       validationStatus: monthCount >= 12 ? 'complete' : 'in_progress',
     };
+    // Current-year data is machine-extracted and reconciled against the staged
+    // workbook, but has NOT been human-verified. Never claim human verification.
+    if (!isBaseline) {
+      yearData.provenance.verification = {
+        status: 'available_unverified',
+        humanVerificationRequired: true,
+      };
+    }
   }
 
   // 5. Read existing JSON and merge
@@ -691,7 +735,10 @@ function generateOutputs(_verbose) {
   const kpiEntries = metrics.map(m => {
     const currentYearData = m.years?.[String(m.currentYear)];
     const baselineYearData = m.years?.[String(m.baselineYear)];
-    const verified = currentYearData?.quality?.valid === true;
+    // "Verified" requires a complete 12-month dataset reconciled to the source.
+    // Partial current-year data (PUBLISHABLE_PARTIAL) is machine-extracted but
+    // not human-verified — it must never carry the Verified flag.
+    const verified = currentYearData?.quality?.valid === true && currentYearData?.datasetState === 'COMPLETE';
     return {
       metric: m.metric,
       label: m.label,
