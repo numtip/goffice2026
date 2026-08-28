@@ -154,10 +154,10 @@
       "value": 144.8,
       "target": null,
       "targetStatus": "no-target",
-      "baselineValue": 231.6,
+      "baselineValue": 222.68,
       "yoyChange": {
-        "absolute": -86.79999999999998,
-        "percent": -37,
+        "absolute": -77.88,
+        "percent": -35,
         "direction": "down"
       },
       "dataQuality": {

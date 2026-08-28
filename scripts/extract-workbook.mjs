@@ -45,6 +45,8 @@ const TARGETS = [
   { fileName: '1.4paper.xlsx',     metric: 'paper',      year: 2569, workbookName: '1.4paper.xlsx' },
   { fileName: '1.5waste2026.xlsx', metric: 'waste',      year: 2569, workbookName: '1.5waste2026.xlsx' },
   { fileName: '1.6GreenHouseGas2026_New.xlsx', metric: 'ghg', year: 2569, workbookName: '1.6GreenHouseGas2026_New.xlsx' },
+  // Authoritative FY2568 GHG baseline (owner-replaced 2026-08-28).
+  { fileName: '1.5_greenhousegass_update2.xlsx', metric: 'ghg', year: 2568, workbookName: '1.5_greenhousegass_update2.xlsx' },
 ];
 
 function displayOf(cell) {
@@ -110,12 +112,12 @@ function extractWaste(ws) {
 }
 
 /**
- * Parser D — GHG monthly CF from สรุปการคำนวณ ปี 2569.
+ * Parser D — GHG monthly CF from สรุปการคำนวณ ปี {year}.
  * Row r25 (รวม) CF columns c7,c9,…c29 → kgCO₂e; convert to tCO₂e.
  * CF display 0 is MISSING (formula zero for blank months), not measured zero.
  */
-function extractGhg(wb) {
-  const sn = wb.SheetNames.find((s) => s.includes('ปี 2569'));
+function extractGhg(wb, year = 2569) {
+  const sn = wb.SheetNames.find((s) => s.includes(`ปี ${year}`));
   if (!sn) return { months: [], workbookTotal: null, sourceSheet: null };
   const ws = wb.Sheets[sn];
   const out = [];
@@ -198,10 +200,10 @@ function main() {
         ? Math.round(months.reduce((s, m) => s + m.value, 0) * 100) / 100
         : null;
     } else if (t.metric === 'ghg') {
-      const ghg = extractGhg(wb);
+      const ghg = extractGhg(wb, t.year);
       months = ghg.months;
       workbookTotal = ghg.workbookTotal;
-      sourceSheet = ghg.sourceSheet || 'สรุปการคำนวณ ปี 2569';
+      sourceSheet = ghg.sourceSheet || `สรุปการคำนวณ ปี ${t.year}`;
     } else {
       const ws = wb.Sheets['2569'];
       if (!ws) {

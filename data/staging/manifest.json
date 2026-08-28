@@ -150,13 +150,13 @@
       "status": "STAGED"
     },
     {
-      "fileName": "1.6GreenHouseGas2025.xlsx",
+      "fileName": "1.5_greenhousegass_update2.xlsx",
       "metric": "ghg",
       "yearBE": 2568,
-      "sha256": "ffbbdcb2be28990eeb4c5cdc69528bae33a23f7300d7d4ebbb82fdfc677b9ad5",
-      "sizeBytes": 515168,
-      "modifiedTime": "2026-08-07T03:25:19.961Z",
-      "canonicalFingerprint": "65df515d6694a9c5",
+      "sha256": "5cf3db1275444898d03d6a5cb93b16b8f8fbc67f90e4180b50768e36b47cc18f",
+      "sizeBytes": 527452,
+      "modifiedTime": "2026-08-28T08:46:14.454Z",
+      "canonicalFingerprint": "1808aca00698c289",
       "templateBaselineFingerprint": null,
       "observedMonths": [
         1,
@@ -184,7 +184,7 @@
       "sizeBytes": 523569,
       "modifiedTime": "2026-08-28T08:14:22.233Z",
       "canonicalFingerprint": "5fe0db3c9e90e813",
-      "templateBaselineFingerprint": "65df515d6694a9c5",
+      "templateBaselineFingerprint": "1808aca00698c289",
       "observedMonths": [
         1,
         2,
@@ -201,7 +201,7 @@
   ],
   "summary": {
     "totalFiles": 8,
-    "copiedNow": 1,
+    "copiedNow": 0,
     "allStaged": true,
     "states": {
       "PUBLISHABLE_PARTIAL": 6,
