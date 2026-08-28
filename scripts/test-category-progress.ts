@@ -75,15 +75,17 @@ assert.notDeepEqual(
 
 // ── View models ─────────────────────────────────────────────────────────
 
-assert.equal(generated.overall.ready, 4, 'overall ready = 4');
-assert.equal(generated.overall.inProgress, 12, 'overall in_progress = 12');
+assert.equal(generated.overall.ready, 7, 'overall ready = 7');
+assert.equal(generated.overall.inProgress, 8, 'overall in_progress = 8');
 assert.equal(generated.overall.notStarted, 2, 'overall not_started = 2');
-assert.equal(generated.overall.unavailable, 47, 'overall unavailable = 47');
+assert.equal(generated.overall.unavailable, 48, 'overall unavailable = 48');
 
 const cat2 = generated.categories.find((c: { code: string }) => c.code === 'cat2');
 assert.equal(cat2?.total, 6, 'cat2 has 6 indicators');
-assert.equal(cat2?.inProgress, 4, 'cat2 in_progress = 4');
-assert.equal(cat2?.unavailable, 2, 'cat2 unavailable = 2');
+assert.equal(cat2?.ready, 3, 'cat2 ready = 3 (owner-approved 2.1.1 / 2.1.2 / 2.2.1)');
+assert.equal(cat2?.inProgress, 0, 'cat2 in_progress = 0');
+assert.equal(cat2?.unavailable, 3, 'cat2 unavailable = 3 (2.2.2 / 2.2.3 / 2.2.4)');
+assert.equal(cat2?.evidence.verified, 3, 'cat2 evidence verified = 3');
 
 const cat3 = generated.categories.find((c: { code: string }) => c.code === 'cat3');
 assert.equal(cat3?.total, 15, 'cat3 has 15 indicators');
@@ -96,8 +98,8 @@ assert.equal(overviewTh.overall.total, 65);
 assert.equal(overviewTh.fallbackRows.length, 7, 'fallback table has 7 rows');
 assert.match(overviewTh.overallSummary, /4|พร้อม/, 'TH summary carries counts');
 assert.ok(overviewTh.categories.every((c) => c.label.length > 0), 'category labels resolved');
-assert.equal(overviewTh.started.count, 16, 'started = ready + in_progress');
-assert.equal(overviewTh.remaining.count, 49, 'remaining = not_started + unavailable');
+assert.equal(overviewTh.started.count, 15, 'started = ready + in_progress');
+assert.equal(overviewTh.remaining.count, 50, 'remaining = not_started + unavailable');
 assert.equal(overviewTh.pulse.length, 4, 'pulse has four statuses');
 assert.ok(overviewTh.pulse.every((p) => typeof p.rate === 'number'), 'pulse includes share %');
 
@@ -107,7 +109,9 @@ assert.equal(overviewEn.categories[0].code, 'cat1');
 assert.equal(overviewEn.categories[0].label.length > 0, true);
 
 const cat2Vm = buildCategoryProgress('cat2', 'en');
-assert.equal(cat2Vm.overall.inProgress, 4);
+assert.equal(cat2Vm.overall.inProgress, 0);
+assert.equal(cat2Vm.overall.ready, 3, 'cat2 ready = 3 (owner-approved)');
+assert.equal(cat2Vm.overall.unavailable, 3, 'cat2 unavailable = 3');
 assert.equal(cat2Vm.issues.length >= 2, true, 'cat2 has issue rows');
 const cat3Vm = buildCategoryProgress('cat3', 'th');
 assert.equal(cat3Vm.overall.inProgress, 6);

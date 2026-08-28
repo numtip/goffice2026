@@ -84,7 +84,7 @@ describe('FY2569 status view model (TH + EN)', () => {
   });
 
   it('partial (in_progress) ⇒ exact status without an annual-completion claim', () => {
-    const v = fy2569StatusView('2.1.1', 'th');
+    const v = fy2569StatusView('3.1.1', 'th');
     assert.equal(v.kind, 'partial');
     assert.equal(v.progressStatus, 'in_progress');
     assert.equal(v.evidenceStatus, 'available_unverified');
@@ -92,7 +92,7 @@ describe('FY2569 status view model (TH + EN)', () => {
     // completion claim may appear.
     assert.match(v.headline, /ไม่ใช่ผลสำเร็จประจำปี/);
     assert.doesNotMatch(v.headline, /บรรลุผลสำเร็จประจำปี|ครบถ้วนตามข้อกำหนดแล้ว/);
-    const en = fy2569StatusView('2.1.1', 'en');
+    const en = fy2569StatusView('3.1.1', 'en');
     assert.match(en.headline, /not an annual completion/i);
     assert.doesNotMatch(en.headline, /completed the (scope|criterion)|achieved the (scope|criterion)/i);
   });
@@ -107,16 +107,38 @@ describe('FY2569 status view model (TH + EN)', () => {
     assert.equal(en.badge, 'Ready for review');
   });
 
-  it('only ready+verified (1.1.4, 1.6.1) may carry "ตรวจสอบแล้ว"', () => {
-    for (const code of ['1.1.4', '1.6.1']) {
+  it('owner-approved Cat2 indicators (2.1.1, 2.1.2, 2.2.1) render "พร้อม · ตรวจสอบแล้ว"', () => {
+    for (const code of ['2.1.1', '2.1.2', '2.2.1']) {
+      const v = fy2569StatusView(code, 'th');
+      assert.equal(v.kind, 'ready_verified', `${code} should be ready_verified (owner-approved)`);
+      assert.equal(v.badge, 'พร้อม · ตรวจสอบแล้ว', `${code} TH badge`);
+      const en = fy2569StatusView(code, 'en');
+      assert.equal(en.badge, 'Ready · Verified', `${code} EN badge`);
+      assert.ok(v.owner, `${code} has owner`);
+    }
+  });
+
+  it('only the five ready+verified indicators (1.1.4, 1.6.1, 2.1.1, 2.1.2, 2.2.1) may carry "ตรวจสอบแล้ว"', () => {
+    const verifiedCodes = ['1.1.4', '1.6.1', '2.1.1', '2.1.2', '2.2.1'];
+    for (const code of verifiedCodes) {
       const v = fy2569StatusView(code, 'th');
       assert.equal(v.kind, 'ready_verified', `${code} should be ready_verified`);
     }
     const anyOther = indicatorCodeList()
-      .filter((c) => !['1.1.4', '1.6.1'].includes(c))
+      .filter((c) => !verifiedCodes.includes(c))
       .map((c) => fy2569StatusView(c, 'th'))
       .filter((v) => v.kind === 'ready_verified');
     assert.deepEqual(anyOther, [], 'no other indicator may claim verified');
+  });
+
+  it('all other Cat2 indicators remain FY2569 unavailable (2.2.2 / 2.2.3 / 2.2.4)', () => {
+    for (const code of ['2.2.2', '2.2.3', '2.2.4']) {
+      const v = fy2569StatusView(code, 'th');
+      assert.equal(v.kind, 'unavailable', `${code} must stay unavailable`);
+      assert.equal(v.badge, 'ข้อมูลปี 2569 ยังไม่พร้อม', `${code} TH unavailable badge`);
+      const en = fy2569StatusView(code, 'en');
+      assert.equal(en.badge, 'FY2569 data not yet available', `${code} EN unavailable badge`);
+    }
   });
 
   it('no official-score language in any panel headline/badge', () => {

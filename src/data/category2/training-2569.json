@@ -1,70 +1,76 @@
 {
   "schemaVersion": "1.0.0",
   "domain": "training-2569",
-  "updated": "2026-08-27",
+  "updated": "2026-08-28",
   "year": 2569,
   "status": "current-year-overlay",
   "governance": "GOFFICE2026_DASHBOARD_PROGRESS_BLUEPRINT_V1",
-  "note": "FY2569 Cat2 training delta intake. Re-synced xlsx to OneDrive source hash. Added 2.1.1(1)/(2)/(3) delivery/registration/history PDFs and 3 local trainer CVs as supporting 2.1.2 evidence. CVs ≠ committee-minute assignment — 2.1.2 remains FORWARD_REQUIREMENT. Offline OneDrive files (summary 2.1.1(4), Maejo CV) deferred. No progress/score inference.",
+  "note": "FY2569 Cat2 training delta intake. Re-synced xlsx to OneDrive source hash. Added 2.1.1(1)/(2)/(3) delivery/registration/history PDFs and 3 local trainer CVs as supporting 2.1.2 evidence. CVs ≠ committee-minute assignment — 2.1.2 remains FORWARD_REQUIREMENT. Offline OneDrive files (summary 2.1.1(4), Maejo CV) deferred. No progress/score inference. [2026-08-28 Owner approval: 2.1.1 training evidence and 2.1.2 trainer-CV evidence approved as genuine FY2569 data (verified). 2.1.1(4) summary report still offline; committee-minute per-course assignment remains FORWARD_REQUIREMENT — verified evidence is not an annual-completion claim.]",
   "sources": [
     {
       "ref": "2.1/2.1.1/2.1.1_1หลักสูตรแผผนผลปี2569.xlsx",
       "role": "primary-form-2.1(1)",
       "inspection": "structural-only",
-      "disposition": "available-unverified"
+      "disposition": "owner-approved"
     },
     {
       "ref": "2.1/2.1.1/69-2.1.1(1).pdf",
       "role": "delivery-plan-result-marks",
       "inspection": "structural-only",
-      "disposition": "available-unverified"
+      "disposition": "owner-approved"
     },
     {
       "ref": "2.1/2.1.1/69-2.1.1(2) - 14 พ.ค. 69.pdf",
       "role": "registration-evaluation-scan",
       "inspection": "structural-only",
-      "disposition": "available-unverified"
+      "disposition": "owner-approved"
     },
     {
       "ref": "2.1/2.1.1/69-2.1.1(3) ประวัติการอบรม บุคลากร.pdf",
       "role": "personnel-training-history",
       "inspection": "structural-only",
-      "disposition": "available-unverified"
+      "disposition": "owner-approved"
     },
     {
       "ref": "2.1/2.1.2/ประวัติวิทยากร นางสาวงามนิจ อนุศาสน์.pdf",
       "role": "trainer-cv-supporting",
       "inspection": "structural-only",
-      "disposition": "available-unverified"
+      "disposition": "owner-approved"
     },
     {
       "ref": "2.1/2.1.2/ประวัติวิทยากร คุณวรัญญา ธนะเพทย์.pdf",
       "role": "trainer-cv-supporting",
       "inspection": "structural-only",
-      "disposition": "available-unverified"
+      "disposition": "owner-approved"
     },
     {
       "ref": "2.1/2.1.2/ประวัติวิทยากร รองศาสตราจารย์ ดร.จุฑาภรณ์ ชนะถาวร.pdf",
       "role": "trainer-cv-supporting",
       "inspection": "structural-only",
-      "disposition": "available-unverified"
+      "disposition": "owner-approved"
     }
   ],
   "records": [
     {
       "id": "tr-curriculum-form-fy2569",
       "year": 2569,
-      "indicatorCodes": ["2.1.1"],
-      "issueCodes": ["2.1"],
+      "indicatorCodes": [
+        "2.1.1"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
       "categoryCode": "cat2",
-      "evidenceIds": ["ev-cat2-tr-curriculum-fy2569"],
+      "evidenceIds": [
+        "ev-cat2-tr-curriculum-fy2569"
+      ],
       "sourceRef": "2.1/2.1.1/2.1.1_1หลักสูตรแผผนผลปี2569.xlsx",
       "manifestSha256": "456afea5432eae74660ba676b6218cc1d21c0f42776ef39a23591a26b37aeec9",
       "verification": {
-        "status": "pending",
-        "basis": "Form 2.1(1) workbook re-synced to OneDrive Data2569 source (hash 456afea5…). Plan sheet lists FY2569 courses; not verified delivery alone."
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Form 2.1(1) workbook re-synced to OneDrive Data2569 source (hash 456afea5…). Plan sheet lists FY2569 courses; not verified delivery alone."
       },
-      "intakeVerification": "available_unverified",
+      "intakeVerification": "owner-approved-verified",
       "availability": "structural-only",
       "kind": "trainingPlanForm",
       "labelTh": "แบบฟอร์ม 2.1(1) หลักสูตรและแผน 2569",
@@ -73,17 +79,23 @@
     {
       "id": "tr-delivery-marks-fy2569",
       "year": 2569,
-      "indicatorCodes": ["2.1.1"],
-      "issueCodes": ["2.1"],
+      "indicatorCodes": [
+        "2.1.1"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
       "categoryCode": "cat2",
-      "evidenceIds": ["ev-cat2-tr-delivery-marks-fy2569"],
+      "evidenceIds": [
+        "ev-cat2-tr-delivery-marks-fy2569"
+      ],
       "sourceRef": "2.1/2.1.1/69-2.1.1(1).pdf",
       "manifestSha256": "16704b6131f45c14419135c41adc33537ad54f386497487999f0fa754c82ffe6",
       "verification": {
-        "status": "pending",
-        "basis": "69-2.1.1(1) PDF — plan/result marks dated 14 พ.ค. 2569. Structural intake only; human content verification required. Evidence ≠ progress/score."
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] 69-2.1.1(1) PDF — plan/result marks dated 14 พ.ค. 2569. Structural intake only; human content verification required. Evidence ≠ progress/score."
       },
-      "intakeVerification": "available_unverified",
+      "intakeVerification": "owner-approved-verified",
       "availability": "structural-only",
       "kind": "trainingDeliveryMarks",
       "labelTh": "แบบแผน/ผล 2.1.1(1) ปี 2569",
@@ -92,17 +104,23 @@
     {
       "id": "tr-registration-eval-fy2569",
       "year": 2569,
-      "indicatorCodes": ["2.1.1"],
-      "issueCodes": ["2.1"],
+      "indicatorCodes": [
+        "2.1.1"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
       "categoryCode": "cat2",
-      "evidenceIds": ["ev-cat2-tr-registration-eval-fy2569"],
+      "evidenceIds": [
+        "ev-cat2-tr-registration-eval-fy2569"
+      ],
       "sourceRef": "2.1/2.1.1/69-2.1.1(2) - 14 พ.ค. 69.pdf",
       "manifestSha256": "53575ef58d934bc0a9f2c76f7948ec6d3121a3a348d2a40c73fb2e9ed6ed9b08",
       "verification": {
-        "status": "pending",
-        "basis": "69-2.1.1(2) registration/evaluation scan (14 พ.ค. 69). Thin OCR; structural intake only."
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] 69-2.1.1(2) registration/evaluation scan (14 พ.ค. 69). Thin OCR; structural intake only."
       },
-      "intakeVerification": "available_unverified",
+      "intakeVerification": "owner-approved-verified",
       "availability": "structural-only",
       "kind": "trainingRegistrationEval",
       "labelTh": "ใบลงทะเบียน/ประเมิน 2.1.1(2) 14 พ.ค. 69",
@@ -111,17 +129,23 @@
     {
       "id": "tr-history-fy2569",
       "year": 2569,
-      "indicatorCodes": ["2.1.1"],
-      "issueCodes": ["2.1"],
+      "indicatorCodes": [
+        "2.1.1"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
       "categoryCode": "cat2",
-      "evidenceIds": ["ev-cat2-tr-history-fy2569"],
+      "evidenceIds": [
+        "ev-cat2-tr-history-fy2569"
+      ],
       "sourceRef": "2.1/2.1.1/69-2.1.1(3) ประวัติการอบรม บุคลากร.pdf",
       "manifestSha256": "fece26d1543e89fd2a75d32a8342f165206a26842d13a38af46d87ea4c3be0a9",
       "verification": {
-        "status": "pending",
-        "basis": "69-2.1.1(3) personnel training history PDF. Structural intake; content verification pending."
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] 69-2.1.1(3) personnel training history PDF. Structural intake; content verification pending."
       },
-      "intakeVerification": "available_unverified",
+      "intakeVerification": "owner-approved-verified",
       "availability": "structural-only",
       "kind": "trainingHistory",
       "labelTh": "ประวัติการอบรมบุคลากร 2.1.1(3) ปี 2569",
@@ -130,17 +154,23 @@
     {
       "id": "tr-trainer-cv-ngamnit-fy2569",
       "year": 2569,
-      "indicatorCodes": ["2.1.2"],
-      "issueCodes": ["2.1"],
+      "indicatorCodes": [
+        "2.1.2"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
       "categoryCode": "cat2",
-      "evidenceIds": ["ev-cat2-tr-trainer-cv-ngamnit-fy2569"],
+      "evidenceIds": [
+        "ev-cat2-tr-trainer-cv-ngamnit-fy2569"
+      ],
       "sourceRef": "2.1/2.1.2/ประวัติวิทยากร นางสาวงามนิจ อนุศาสน์.pdf",
       "manifestSha256": "66fe9f390781629a3dc3421ca721ed2ecfb5c0a77520c68db63c2db55b67b68f",
       "verification": {
-        "status": "pending",
-        "basis": "Trainer CV supporting 2.1.2 qualification — does NOT replace committee-minute per-course assignment."
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Trainer CV supporting 2.1.2 qualification — does NOT replace committee-minute per-course assignment."
       },
-      "intakeVerification": "available_unverified",
+      "intakeVerification": "owner-approved-verified",
       "availability": "structural-only",
       "kind": "trainerCvSupporting",
       "labelTh": "ประวัติวิทยากร — นางสาวงามนิจ อนุศาสน์",
@@ -149,17 +179,23 @@
     {
       "id": "tr-trainer-cv-waranya-fy2569",
       "year": 2569,
-      "indicatorCodes": ["2.1.2"],
-      "issueCodes": ["2.1"],
+      "indicatorCodes": [
+        "2.1.2"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
       "categoryCode": "cat2",
-      "evidenceIds": ["ev-cat2-tr-trainer-cv-waranya-fy2569"],
+      "evidenceIds": [
+        "ev-cat2-tr-trainer-cv-waranya-fy2569"
+      ],
       "sourceRef": "2.1/2.1.2/ประวัติวิทยากร คุณวรัญญา ธนะเพทย์.pdf",
       "manifestSha256": "cf3ea1c946775ea197cdb3891442c3bded2791fed03cfffa29045eef9fc77377",
       "verification": {
-        "status": "pending",
-        "basis": "Trainer CV supporting 2.1.2 qualification — does NOT replace committee-minute per-course assignment."
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Trainer CV supporting 2.1.2 qualification — does NOT replace committee-minute per-course assignment."
       },
-      "intakeVerification": "available_unverified",
+      "intakeVerification": "owner-approved-verified",
       "availability": "structural-only",
       "kind": "trainerCvSupporting",
       "labelTh": "ประวัติวิทยากร — คุณวรัญญา ธนะเพทย์",
@@ -168,17 +204,23 @@
     {
       "id": "tr-trainer-cv-juthaporn-fy2569",
       "year": 2569,
-      "indicatorCodes": ["2.1.2"],
-      "issueCodes": ["2.1"],
+      "indicatorCodes": [
+        "2.1.2"
+      ],
+      "issueCodes": [
+        "2.1"
+      ],
       "categoryCode": "cat2",
-      "evidenceIds": ["ev-cat2-tr-trainer-cv-juthaporn-fy2569"],
+      "evidenceIds": [
+        "ev-cat2-tr-trainer-cv-juthaporn-fy2569"
+      ],
       "sourceRef": "2.1/2.1.2/ประวัติวิทยากร รองศาสตราจารย์ ดร.จุฑาภรณ์ ชนะถาวร.pdf",
       "manifestSha256": "a90cc1567f92397d0821f716a8480f648f4d003b7e1344117786ee749bf7bbc1",
       "verification": {
-        "status": "pending",
-        "basis": "Trainer CV supporting 2.1.2 qualification — does NOT replace committee-minute per-course assignment."
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Trainer CV supporting 2.1.2 qualification — does NOT replace committee-minute per-course assignment."
       },
-      "intakeVerification": "available_unverified",
+      "intakeVerification": "owner-approved-verified",
       "availability": "structural-only",
       "kind": "trainerCvSupporting",
       "labelTh": "ประวัติวิทยากร — รศ.ดร.จุฑาภรณ์ ชนะถาวร",

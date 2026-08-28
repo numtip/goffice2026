@@ -99,9 +99,13 @@
     "sheetOrPage": "N/A (DOCX file evidence)",
     "extractionDate": null,
     "coverage": "N/A (static evidence file)",
-    "verificationState": "available_unverified",
+    "verificationState": "owner-approved-verified",
     "classification": "PUBLIC_STATIC",
-    "notes": "FY2569 communication plan (2.2.1), content-verified from docx body; misfiled under 2.1.1 training folder. Plan-only, no verified campaign execution. Published at /documents/fy2569/cat2/2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx. Intake 2026-08-27; available_unverified."
+    "notes": "FY2569 communication plan (2.2.1), content-verified from docx body; misfiled under 2.1.1 training folder. Plan-only, no verified campaign execution. Published at /documents/fy2569/cat2/2.1/2.1.1/2.1.1แผนการฝึกอบรม2569.docx. Intake 2026-08-27; available_unverified.",
+    "ownerApproval": {
+      "approvedBy": "data-owner",
+      "approvedAt": "2026-08-28"
+    }
   },
   {
     "id": "evidence:ev-cat2-tr-curriculum-fy2569",
@@ -112,9 +116,13 @@
     "sheetOrPage": "form 2.1(1) workbook — plan sheet populated; results sheet mostly blank",
     "extractionDate": null,
     "coverage": "N/A (static evidence file)",
-    "verificationState": "available_unverified",
+    "verificationState": "owner-approved-verified",
     "classification": "PUBLIC_STATIC",
-    "notes": "Form 2.1(1) curriculum/plan workbook (6 planned courses, target groups, named trainers). Published at /documents/fy2569/cat2/2.1/2.1.1/2.1.1_1หลักสูตรแผผนผลปี2569.xlsx. Structural-only intake; available_unverified."
+    "notes": "Form 2.1(1) curriculum/plan workbook (6 planned courses, target groups, named trainers). Published at /documents/fy2569/cat2/2.1/2.1.1/2.1.1_1หลักสูตรแผผนผลปี2569.xlsx. Structural-only intake; available_unverified.",
+    "ownerApproval": {
+      "approvedBy": "data-owner",
+      "approvedAt": "2026-08-28"
+    }
   },
   {
     "id": "evidence:ev-cat3-measures-water-fy2569",
@@ -203,9 +211,13 @@
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
     "coverage": "N/A (static evidence file)",
-    "verificationState": "available_unverified",
+    "verificationState": "owner-approved-verified",
     "classification": "PUBLIC_STATIC",
-    "notes": "69-2.1.1(1) training plan/result marks PDF. Published at /documents/fy2569/cat2/2.1/2.1.1/69-2.1.1(1).pdf. Structural intake; human verification required. Evidence != progress/score. available_unverified."
+    "notes": "69-2.1.1(1) training plan/result marks PDF. Published at /documents/fy2569/cat2/2.1/2.1.1/69-2.1.1(1).pdf. Structural intake; human verification required. Evidence != progress/score. available_unverified.",
+    "ownerApproval": {
+      "approvedBy": "data-owner",
+      "approvedAt": "2026-08-28"
+    }
   },
   {
     "id": "evidence:ev-cat2-tr-registration-eval-fy2569",
@@ -216,9 +228,13 @@
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
     "coverage": "N/A (static evidence file)",
-    "verificationState": "available_unverified",
+    "verificationState": "owner-approved-verified",
     "classification": "PUBLIC_STATIC",
-    "notes": "69-2.1.1(2) training registration/evaluation scan dated 14 May 2569 (14 พ.ค. 69). Published at /documents/fy2569/cat2/2.1/2.1.1/69-2.1.1(2) - 14 พ.ค. 69.pdf. Thin OCR; structural intake only. available_unverified."
+    "notes": "69-2.1.1(2) training registration/evaluation scan dated 14 May 2569 (14 พ.ค. 69). Published at /documents/fy2569/cat2/2.1/2.1.1/69-2.1.1(2) - 14 พ.ค. 69.pdf. Thin OCR; structural intake only. available_unverified.",
+    "ownerApproval": {
+      "approvedBy": "data-owner",
+      "approvedAt": "2026-08-28"
+    }
   },
   {
     "id": "evidence:ev-cat2-tr-history-fy2569",
@@ -229,9 +245,13 @@
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
     "coverage": "N/A (static evidence file)",
-    "verificationState": "available_unverified",
+    "verificationState": "owner-approved-verified",
     "classification": "PUBLIC_STATIC",
-    "notes": "69-2.1.1(3) personnel training history PDF. Published at /documents/fy2569/cat2/2.1/2.1.1/69-2.1.1(3) ประวัติการอบรม บุคลากร.pdf. Structural intake; content verification pending. available_unverified."
+    "notes": "69-2.1.1(3) personnel training history PDF. Published at /documents/fy2569/cat2/2.1/2.1.1/69-2.1.1(3) ประวัติการอบรม บุคลากร.pdf. Structural intake; content verification pending. available_unverified.",
+    "ownerApproval": {
+      "approvedBy": "data-owner",
+      "approvedAt": "2026-08-28"
+    }
   },
   {
     "id": "evidence:ev-cat2-tr-trainer-cv-ngamnit-fy2569",
@@ -242,9 +262,13 @@
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
     "coverage": "N/A (static evidence file)",
-    "verificationState": "available_unverified",
+    "verificationState": "owner-approved-verified",
     "classification": "PUBLIC_STATIC",
-    "notes": "Trainer CV (Ngamnit Anusat) supporting 2.1.2; does NOT replace committee-minute per-course assignment. Data2569 filename uses double spaces vs single-space manifestPath in evidence-index.json (content hash identical). Published at /documents/fy2569/cat2/2.1/2.1.2/ประวัติวิทยากร นางสาวงามนิจ อนุศาสน์.pdf. available_unverified."
+    "notes": "Trainer CV (Ngamnit Anusat) supporting 2.1.2; does NOT replace committee-minute per-course assignment. Data2569 filename uses double spaces vs single-space manifestPath in evidence-index.json (content hash identical). Published at /documents/fy2569/cat2/2.1/2.1.2/ประวัติวิทยากร นางสาวงามนิจ อนุศาสน์.pdf. available_unverified.",
+    "ownerApproval": {
+      "approvedBy": "data-owner",
+      "approvedAt": "2026-08-28"
+    }
   },
   {
     "id": "evidence:ev-cat2-tr-trainer-cv-waranya-fy2569",
@@ -255,9 +279,13 @@
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
     "coverage": "N/A (static evidence file)",
-    "verificationState": "available_unverified",
+    "verificationState": "owner-approved-verified",
     "classification": "PUBLIC_STATIC",
-    "notes": "Trainer CV (Waranya Thanaphet) supporting 2.1.2; does NOT replace committee-minute per-course assignment. Data2569 filename uses double spaces vs single-space manifestPath in evidence-index.json (content hash identical). Published at /documents/fy2569/cat2/2.1/2.1.2/ประวัติวิทยากร คุณวรัญญา ธนะเพทย์.pdf. available_unverified."
+    "notes": "Trainer CV (Waranya Thanaphet) supporting 2.1.2; does NOT replace committee-minute per-course assignment. Data2569 filename uses double spaces vs single-space manifestPath in evidence-index.json (content hash identical). Published at /documents/fy2569/cat2/2.1/2.1.2/ประวัติวิทยากร คุณวรัญญา ธนะเพทย์.pdf. available_unverified.",
+    "ownerApproval": {
+      "approvedBy": "data-owner",
+      "approvedAt": "2026-08-28"
+    }
   },
   {
     "id": "evidence:ev-cat2-tr-trainer-cv-juthaporn-fy2569",
@@ -268,9 +296,13 @@
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
     "coverage": "N/A (static evidence file)",
-    "verificationState": "available_unverified",
+    "verificationState": "owner-approved-verified",
     "classification": "PUBLIC_STATIC",
-    "notes": "Trainer CV (Assoc. Prof. Dr. Juthaporn Chanathaworn) supporting 2.1.2; does NOT replace committee-minute per-course assignment. Data2569 filename uses triple spaces vs single-space manifestPath in evidence-index.json (content hash identical). Published at /documents/fy2569/cat2/2.1/2.1.2/ประวัติวิทยากร รองศาสตราจารย์ ดร.จุฑาภรณ์ ชนะถาวร.pdf. available_unverified."
+    "notes": "Trainer CV (Assoc. Prof. Dr. Juthaporn Chanathaworn) supporting 2.1.2; does NOT replace committee-minute per-course assignment. Data2569 filename uses triple spaces vs single-space manifestPath in evidence-index.json (content hash identical). Published at /documents/fy2569/cat2/2.1/2.1.2/ประวัติวิทยากร รองศาสตราจารย์ ดร.จุฑาภรณ์ ชนะถาวร.pdf. available_unverified.",
+    "ownerApproval": {
+      "approvedBy": "data-owner",
+      "approvedAt": "2026-08-28"
+    }
   },
   {
     "id": "evidence:ev-cat2-comm-plan-form-pdf-fy2569",
@@ -281,9 +313,13 @@
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
     "coverage": "N/A (static evidence file)",
-    "verificationState": "available_unverified",
+    "verificationState": "owner-approved-verified",
     "classification": "PUBLIC_STATIC",
-    "notes": "Form 2.2(1) communication plan PDF under 2.2.1. Byte-identical duplicate under 2.2.2 (69-2.2.2(2) แผนสื่อสารสิ่งแวดล้อม.pdf, same sha) not ingested separately. Published at /documents/fy2569/cat2/2.2/2.2.1/69-2.2.1(1) แผนสื่อสารสิ่งแวดล้อม.pdf. available_unverified."
+    "notes": "Form 2.2(1) communication plan PDF under 2.2.1. Byte-identical duplicate under 2.2.2 (69-2.2.2(2) แผนสื่อสารสิ่งแวดล้อม.pdf, same sha) not ingested separately. Published at /documents/fy2569/cat2/2.2/2.2.1/69-2.2.1(1) แผนสื่อสารสิ่งแวดล้อม.pdf. available_unverified.",
+    "ownerApproval": {
+      "approvedBy": "data-owner",
+      "approvedAt": "2026-08-28"
+    }
   },
   {
     "id": "evidence:ev-cat2-comm-policy-supporting-fy2569",
@@ -294,9 +330,13 @@
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
     "coverage": "N/A (static evidence file)",
-    "verificationState": "available_unverified",
+    "verificationState": "owner-approved-verified",
     "classification": "PUBLIC_STATIC",
-    "notes": "Green Office policy PDF supporting 2.2.1 topic context. Published at /documents/fy2569/cat2/2.2/2.2.1/2.2.1(1)-1 นโยบายสำนักงานสีเขียวอาคารพระเทพรัตนราชสุดา ประจำปี พ.ศ. 2569.pdf. Scan/thin OCR; structural intake. available_unverified."
+    "notes": "Green Office policy PDF supporting 2.2.1 topic context. Published at /documents/fy2569/cat2/2.2/2.2.1/2.2.1(1)-1 นโยบายสำนักงานสีเขียวอาคารพระเทพรัตนราชสุดา ประจำปี พ.ศ. 2569.pdf. Scan/thin OCR; structural intake. available_unverified.",
+    "ownerApproval": {
+      "approvedBy": "data-owner",
+      "approvedAt": "2026-08-28"
+    }
   },
   {
     "id": "evidence:ev-cat2-comm-minutes-supporting-fy2569",
@@ -307,9 +347,13 @@
     "sheetOrPage": "N/A (PDF file evidence)",
     "extractionDate": null,
     "coverage": "N/A (static evidence file)",
-    "verificationState": "available_unverified",
+    "verificationState": "owner-approved-verified",
     "classification": "PUBLIC_STATIC",
-    "notes": "Meeting minutes PDF supporting 2.2.1. Published at /documents/fy2569/cat2/2.2/2.2.1/2.2.1(1)-2 มติการกำหนดนโยบายสิ่งแวดล้อม 2569.pdf. Scan with 0 extractable text; structural intake only. available_unverified."
+    "notes": "Meeting minutes PDF supporting 2.2.1. Published at /documents/fy2569/cat2/2.2/2.2.1/2.2.1(1)-2 มติการกำหนดนโยบายสิ่งแวดล้อม 2569.pdf. Scan with 0 extractable text; structural intake only. available_unverified.",
+    "ownerApproval": {
+      "approvedBy": "data-owner",
+      "approvedAt": "2026-08-28"
+    }
   },
   {
     "id": "evidence:ev-cat2-comm-channel-satisfaction-fy2569",
