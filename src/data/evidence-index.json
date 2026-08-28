@@ -4684,14 +4684,19 @@
         "sourceLabel": "Cat2 FY2569 communication plan (OneDrive Data2569 P1, content-verified)",
         "sourceLabelTh": "แผนการสื่อสารด้านสิ่งแวดล้อม 2569 (OneDrive Data2569 P1)",
         "mappingConfidence": "high",
-        "humanVerificationRequired": true
+        "humanVerificationRequired": false
       },
       "verification": {
-        "status": "pending",
-        "basis": "D5C B2: content-verified remapping from misnamed training docx to 2.2.1. Lists channels/responsible persons for 10 topics. Intake verification: available_unverified — plan-only; placeholder signature dates; no verified postings/minutes.",
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Owner-approved FY2569 communication plan docx (content-verified remap to 2.2.1). D5C B2: content-verified remapping from misnamed training docx to 2.2.1. Lists channels/responsible persons for 10 topics. Intake verification: available_unverified — plan-only; placeholder signature dates; no verified postings/minutes.",
         "basisTh": "D5C B2: แมปใหม่เป็น 2.2.1 จากเนื้อหาแผนสื่อสาร available_unverified — แผนเท่านั้น"
       },
-      "intakeVerification": "available_unverified"
+      "intakeVerification": "available_unverified",
+      "ownerApproval": {
+        "status": "verified",
+        "approvedBy": "data-owner",
+        "approvedAt": "2026-08-28"
+      }
     },
     {
       "id": "ev-cat2-tr-curriculum-fy2569",
@@ -4728,14 +4733,19 @@
         "sourceLabel": "Cat2 FY2569 form 2.1(1) curriculum/plan workbook (OneDrive Data2569 P1)",
         "sourceLabelTh": "แบบฟอร์ม 2.1(1) หลักสูตรและแผน ปี 2569 (OneDrive Data2569 P1)",
         "mappingConfidence": "high",
-        "humanVerificationRequired": true
+        "humanVerificationRequired": false
       },
       "verification": {
-        "status": "pending",
-        "basis": "FY2569 Cat2 delta: xlsx re-synced to OneDrive Data2569 source hash 456afea5… (was 828cc005…). Plan sheet courses present; available_unverified — not progress/score.",
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Owner-approved FY2569 form 2.1(1) curriculum/plan workbook. FY2569 Cat2 delta: xlsx re-synced to OneDrive Data2569 source hash 456afea5… (was 828cc005…). Plan sheet courses present; available_unverified — not progress/score.",
         "basisTh": "ซิงก์ xlsx กับ OneDrive ใหม่ hash 456afea5… available_unverified"
       },
-      "intakeVerification": "available_unverified"
+      "intakeVerification": "available_unverified",
+      "ownerApproval": {
+        "status": "verified",
+        "approvedBy": "data-owner",
+        "approvedAt": "2026-08-28"
+      }
     },
     {
       "id": "ev-cat3-measures-water-fy2569",
@@ -5036,12 +5046,17 @@
         "sourceLabel": "Data2569 Cat2 69-2.1.1(1)",
         "sourceLabelTh": "Data2569 Cat2 69-2.1.1(1)",
         "mappingConfidence": "medium",
-        "humanVerificationRequired": true
+        "humanVerificationRequired": false
       },
       "verification": {
-        "status": "pending",
-        "basis": "Structural intake from Data2569; available_unverified.",
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Owner-approved FY2569 2.1.1(1) delivery plan/result marks. Structural intake from Data2569; available_unverified.",
         "basisTh": "Structural intake from Data2569; available_unverified."
+      },
+      "ownerApproval": {
+        "status": "verified",
+        "approvedBy": "data-owner",
+        "approvedAt": "2026-08-28"
       }
     },
     {
@@ -5079,12 +5094,17 @@
         "sourceLabel": "Data2569 Cat2 69-2.1.1(2)",
         "sourceLabelTh": "Data2569 Cat2 69-2.1.1(2)",
         "mappingConfidence": "medium",
-        "humanVerificationRequired": true
+        "humanVerificationRequired": false
       },
       "verification": {
-        "status": "pending",
-        "basis": "Structural intake; thin OCR. available_unverified.",
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Owner-approved FY2569 2.1.1(2) registration/evaluation scan. Structural intake; thin OCR. available_unverified.",
         "basisTh": "Structural intake; thin OCR. available_unverified."
+      },
+      "ownerApproval": {
+        "status": "verified",
+        "approvedBy": "data-owner",
+        "approvedAt": "2026-08-28"
       }
     },
     {
@@ -5122,12 +5142,17 @@
         "sourceLabel": "Data2569 Cat2 69-2.1.1(3)",
         "sourceLabelTh": "Data2569 Cat2 69-2.1.1(3)",
         "mappingConfidence": "medium",
-        "humanVerificationRequired": true
+        "humanVerificationRequired": false
       },
       "verification": {
-        "status": "pending",
-        "basis": "Structural intake. available_unverified.",
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Owner-approved FY2569 2.1.1(3) personnel training history. Structural intake. available_unverified.",
         "basisTh": "Structural intake. available_unverified."
+      },
+      "ownerApproval": {
+        "status": "verified",
+        "approvedBy": "data-owner",
+        "approvedAt": "2026-08-28"
       }
     },
     {
@@ -5165,12 +5190,17 @@
         "sourceLabel": "Data2569 Cat2 trainer CV Ngamnit",
         "sourceLabelTh": "Data2569 Cat2 trainer CV Ngamnit",
         "mappingConfidence": "medium",
-        "humanVerificationRequired": true
+        "humanVerificationRequired": false
       },
       "verification": {
-        "status": "pending",
-        "basis": "Supporting CV only; committee minutes still required for 2.1.2.",
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Owner-approved FY2569 trainer CV (supporting; committee minutes still a forward requirement for full 2.1.2 completeness). Supporting CV only; committee minutes still required for 2.1.2.",
         "basisTh": "Supporting CV only; committee minutes still required for 2.1.2."
+      },
+      "ownerApproval": {
+        "status": "verified",
+        "approvedBy": "data-owner",
+        "approvedAt": "2026-08-28"
       }
     },
     {
@@ -5208,12 +5238,17 @@
         "sourceLabel": "Data2569 Cat2 trainer CV Waranya",
         "sourceLabelTh": "Data2569 Cat2 trainer CV Waranya",
         "mappingConfidence": "medium",
-        "humanVerificationRequired": true
+        "humanVerificationRequired": false
       },
       "verification": {
-        "status": "pending",
-        "basis": "Supporting CV only; committee minutes still required for 2.1.2.",
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Owner-approved FY2569 trainer CV (supporting; committee minutes still a forward requirement for full 2.1.2 completeness). Supporting CV only; committee minutes still required for 2.1.2.",
         "basisTh": "Supporting CV only; committee minutes still required for 2.1.2."
+      },
+      "ownerApproval": {
+        "status": "verified",
+        "approvedBy": "data-owner",
+        "approvedAt": "2026-08-28"
       }
     },
     {
@@ -5251,12 +5286,17 @@
         "sourceLabel": "Data2569 Cat2 trainer CV Juthaporn",
         "sourceLabelTh": "Data2569 Cat2 trainer CV Juthaporn",
         "mappingConfidence": "medium",
-        "humanVerificationRequired": true
+        "humanVerificationRequired": false
       },
       "verification": {
-        "status": "pending",
-        "basis": "Supporting CV only; committee minutes still required for 2.1.2.",
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Owner-approved FY2569 trainer CV (supporting; committee minutes still a forward requirement for full 2.1.2 completeness). Supporting CV only; committee minutes still required for 2.1.2.",
         "basisTh": "Supporting CV only; committee minutes still required for 2.1.2."
+      },
+      "ownerApproval": {
+        "status": "verified",
+        "approvedBy": "data-owner",
+        "approvedAt": "2026-08-28"
       }
     },
     {
@@ -5294,12 +5334,17 @@
         "sourceLabel": "Data2569 Cat2 69-2.2.1(1)",
         "sourceLabelTh": "Data2569 Cat2 69-2.2.1(1)",
         "mappingConfidence": "medium",
-        "humanVerificationRequired": true
+        "humanVerificationRequired": false
       },
       "verification": {
-        "status": "pending",
-        "basis": "Structural intake of form PDF; available_unverified plan artifact.",
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Owner-approved FY2569 form 2.2(1) communication plan PDF. Structural intake of form PDF; available_unverified plan artifact.",
         "basisTh": "Structural intake of form PDF; available_unverified plan artifact."
+      },
+      "ownerApproval": {
+        "status": "verified",
+        "approvedBy": "data-owner",
+        "approvedAt": "2026-08-28"
       }
     },
     {
@@ -5337,12 +5382,17 @@
         "sourceLabel": "Data2569 Cat2 policy supporting",
         "sourceLabelTh": "Data2569 Cat2 policy supporting",
         "mappingConfidence": "medium",
-        "humanVerificationRequired": true
+        "humanVerificationRequired": false
       },
       "verification": {
-        "status": "pending",
-        "basis": "Supporting scan; available_unverified.",
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Owner-approved FY2569 policy supporting scan (2.2.1(1) sub-group of 2.2.1). Supporting scan; available_unverified.",
         "basisTh": "Supporting scan; available_unverified."
+      },
+      "ownerApproval": {
+        "status": "verified",
+        "approvedBy": "data-owner",
+        "approvedAt": "2026-08-28"
       }
     },
     {
@@ -5380,12 +5430,17 @@
         "sourceLabel": "Data2569 Cat2 minutes supporting",
         "sourceLabelTh": "Data2569 Cat2 minutes supporting",
         "mappingConfidence": "medium",
-        "humanVerificationRequired": true
+        "humanVerificationRequired": false
       },
       "verification": {
-        "status": "pending",
-        "basis": "Supporting scan; available_unverified.",
+        "status": "verified",
+        "basis": "[Owner-approved 2026-08-28] Owner-approved FY2569 minutes supporting scan (2.2.1(1) sub-group of 2.2.1). Supporting scan; available_unverified.",
         "basisTh": "Supporting scan; available_unverified."
+      },
+      "ownerApproval": {
+        "status": "verified",
+        "approvedBy": "data-owner",
+        "approvedAt": "2026-08-28"
       }
     },
     {

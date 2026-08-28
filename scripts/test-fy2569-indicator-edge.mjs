@@ -194,9 +194,9 @@ describe('FY2569 registry data invariants (all 65 indicators)', () => {
     }
   });
 
-  it('verified evidenceStatus only accompanies ready progress (only 1.1.4 / 1.6.1)', () => {
+  it('verified evidenceStatus only accompanies ready progress (owner-approved: 1.1.4, 1.6.1, 2.1.1, 2.1.2, 2.2.1)', () => {
     const verified = progress.items.filter((i) => i.evidenceStatus === 'verified');
-    assert.deepEqual(verified.map((i) => i.indicator).sort(), ['1.1.4', '1.6.1']);
+    assert.deepEqual(verified.map((i) => i.indicator).sort(), ['1.1.4', '1.6.1', '2.1.1', '2.1.2', '2.2.1']);
     for (const item of verified) {
       assert.equal(item.progressStatus, 'ready', `${item.indicator} verified ⇒ ready`);
     }
@@ -509,6 +509,37 @@ builtDescribe('TH/EN parity — rendered panel for every indicator code', () => 
       const html = readFileSync(join(DIST, 'en', 'indicators', code, 'index.html'), 'utf8');
       const panel = panelRegion(html);
       assert.ok(!THAI.test(panel), `${code}: EN panel must not contain Thai script`);
+    }
+  });
+
+  it('owner-approved Cat2 pages show verified FY2569; non-approved Cat2 show unavailable; one collapsed baseline', () => {
+    for (const code of ['2.1.1', '2.1.2', '2.2.1']) {
+      for (const prefix of ['', 'en/']) {
+        const html = readFileSync(join(DIST, prefix, 'indicators', code, 'index.html'), 'utf8');
+        const loc = prefix === '' ? 'th' : 'en';
+        assert.equal(panelKind(html), 'ready_verified', `${prefix}${code} must be ready_verified`);
+        assert.equal(badgeText(panelRegion(html)), EXPECTED_BADGE.ready_verified[loc], `${prefix}${code} verified badge`);
+      }
+    }
+    for (const code of ['2.2.2', '2.2.3', '2.2.4']) {
+      for (const prefix of ['', 'en/']) {
+        const html = readFileSync(join(DIST, prefix, 'indicators', code, 'index.html'), 'utf8');
+        const loc = prefix === '' ? 'th' : 'en';
+        assert.equal(panelKind(html), 'unavailable', `${prefix}${code} must stay unavailable`);
+        assert.equal(badgeText(panelRegion(html)), EXPECTED_BADGE.unavailable[loc], `${prefix}${code} unavailable badge`);
+      }
+    }
+    // Exactly one collapsed FY2568 baseline remains after the FY2569 panel on
+    // each approved/unavailable Cat2 page.
+    for (const code of ['2.1.1', '2.1.2', '2.2.1', '2.2.2', '2.2.3', '2.2.4']) {
+      for (const prefix of ['', 'en/']) {
+        const html = readFileSync(join(DIST, prefix, 'indicators', code, 'index.html'), 'utf8');
+        const panelIdx = html.indexOf('data-fy2569-status-panel');
+        const tags = [...html.matchAll(/<details[^>]*data-fy2568-baseline[^>]*>/g)];
+        assert.equal(tags.length, 1, `${prefix}${code}: exactly one FY2568 baseline`);
+        assert.ok(panelIdx < tags[0].index, `${prefix}${code}: FY2569 panel before baseline`);
+        assert.doesNotMatch(tags[0][0], /\sopen\b/, `${prefix}${code}: baseline collapsed`);
+      }
     }
   });
 });
