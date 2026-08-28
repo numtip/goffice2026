@@ -34,6 +34,9 @@ import * as XLSX from 'xlsx';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
 const DEFAULT_SOURCE = join('E:', 'OneDrive', 'Research', 'OneDrive - Maejo university', 'RAE-Document-Center', '07-GreenOffice', 'resource');
+// Authoritative FY2568 GHG baseline lives under Data2568 (owner-replaced
+// 2026-08-28) — not in Resource.
+const DEFAULT_FY2568_GHG_SOURCE = join('E:', 'OneDrive', 'Research', 'OneDrive - Maejo university', 'RAE-Document-Center', '07-GreenOffice', 'Data2568', 'หมวด1', '1.5Green house gass', '1.5_greenhousegass_update2.xlsx');
 const DEFAULT_OUT = join(PROJECT_ROOT, 'data', 'staging', 'source');
 const DEFAULT_MANIFEST = join(PROJECT_ROOT, 'data', 'staging', 'manifest.json');
 
@@ -47,9 +50,11 @@ const FILES = [
   { fileName: '1.4paper.xlsx',            metric: 'paper',      yearBE: 2569, parser: 'col6' },
   { fileName: '1.5waste2025.xlsx',        metric: 'waste',      yearBE: 2568, parser: 'waste' },
   { fileName: '1.5waste2026.xlsx',        metric: 'waste',      yearBE: 2569, parser: 'waste', templateOf: '1.5waste2025.xlsx' },
-  { fileName: '1.6GreenHouseGas2025.xlsx', metric: 'ghg',       yearBE: 2568, parser: 'ghg' },
+  // Authoritative FY2568 GHG baseline (owner-replaced 2026-08-28); source is
+  // the Data2568 path, not Resource.
+  { fileName: '1.5_greenhousegass_update2.xlsx', metric: 'ghg', yearBE: 2568, parser: 'ghg', sourceOverride: DEFAULT_FY2568_GHG_SOURCE },
   // Authoritative FY2569 GHG source (owner-replaced 2026-08-28).
-  { fileName: '1.6GreenHouseGas2026_New.xlsx', metric: 'ghg',   yearBE: 2569, parser: 'ghg', templateOf: '1.6GreenHouseGas2025.xlsx' },
+  { fileName: '1.6GreenHouseGas2026_New.xlsx', metric: 'ghg',   yearBE: 2569, parser: 'ghg', templateOf: '1.5_greenhousegass_update2.xlsx' },
 ];
 
 function sha256(filePath) {
@@ -246,7 +251,7 @@ function main() {
   };
 
   for (const spec of FILES) {
-    const srcPath = join(sourceDir, spec.fileName);
+    const srcPath = spec.sourceOverride || join(sourceDir, spec.fileName);
     const outPath = join(outDir, spec.fileName);
     try {
       if (!existsSync(srcPath)) {

@@ -170,10 +170,10 @@ describe('Phase F — cross-link journeys and view-model', () => {
     const perf = readFileSync(GHG_PERF, 'utf8');
     const undr = readFileSync(GHG_UNDR, 'utf8');
     assert.match(inv, /Historical Baseline/);
-    assert.match(inv, /231\.62|buildGhgInventory/);
+    assert.match(inv, /222\.68|buildGhgInventory/);
     assert.match(inv, /Derived: annual|คำนวณจากผลรวม/);
     assert.match(inv, /dashboard\/ghg/);
-    assert.match(inv, /7,772|E42/);
+    assert.match(inv, /2,344|2344|buildGhgInventory/);
     assert.match(inv, /data-cat15-monthly-table/);
     assert.match(inv, /focus-visible:ring-2/);
     assert.match(perf, /Target not met|ไม่บรรลุเป้าหมาย/);

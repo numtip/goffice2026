@@ -254,10 +254,10 @@ function extractWaste() {
 }
 
 function extractGhg() {
-  console.log('\n📊 GHG — 1.5_GreenhouseGas.xlsx');
+  console.log('\n📊 GHG — 1.5_greenhousegass_update2.xlsx');
   const candidates = [
     join(DOCS, '1.5_GreenhouseGas.xlsx'),
-    join(ROOT, 'public', 'documents', 'fy2568', 'cat1', '1.5Green house gass', '1.5_GreenhouseGas2568.xlsx'),
+    join(ROOT, 'public', 'documents', 'fy2568', 'cat1', '1.5Green house gass', '1.5_greenhousegass_update2.xlsx'),
   ];
   const path = candidates.find((p) => existsSync(p));
   if (!path) {

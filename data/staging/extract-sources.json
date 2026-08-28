@@ -118,5 +118,30 @@
     ],
     "coverage": "7 of 12 months",
     "workbookTotalInvalid": false
+  },
+  "ghg-2568": {
+    "workbookTotal": 222.68,
+    "sourceWorkbook": "1.5_greenhousegass_update2.xlsx",
+    "sourceSheet": "สรุปการคำนวณ ปี 2568",
+    "classification": "CONFIRMED_XLSX",
+    "extractionScript": "scripts/extract-workbook.mjs",
+    "sourceSha256": "5cf3db1275444898d03d6a5cb93b16b8f8fbc67f90e4180b50768e36b47cc18f",
+    "extractionDate": "2026-08-28",
+    "observedMonths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage": "12 of 12 months",
+    "workbookTotalInvalid": false
   }
 }

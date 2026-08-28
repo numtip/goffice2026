@@ -1,5 +1,22 @@
 [
   {
+    "id": "metric:ghg-2568",
+    "fiscalYear": 2568,
+    "sourceId": "src-fy2568:1.5_greenhousegass_update2",
+    "artifactPath": "data/staging/source/1.5_greenhousegass_update2.xlsx",
+    "sourceSha256": "5cf3db1275444898d03d6a5cb93b16b8f8fbc67f90e4180b50768e36b47cc18f",
+    "sheetOrPage": "สรุปการคำนวณ ปี 2568 row \"รวม\" (r25) CF cols H..AD + AE26",
+    "extractionDate": "2026-08-28",
+    "coverage": "12 of 12 months (COMPLETE)",
+    "verificationState": "verified",
+    "classification": "CONFIRMED_XLSX",
+    "ownerApproval": {
+      "approvedBy": "data-owner",
+      "approvedAt": "2026-08-28"
+    },
+    "notes": "Greenhouse gas baseline (tCO2e). AUTHORITATIVE FY2568 source (owner-designated 2026-08-28): 1.5_greenhousegass_update2.xlsx from Data2568. Total 222,679.34 kgCO2e = 222.68 tCO2e (AE26 = sum of 12 monthly CF). FY2567 total 212,436.89 kgCO2e = 212.44 tCO2e. Narrative A166 text (231.62 tCO2e / +10.63 / 4.81%) is stale and conflicts with table totals — not used (disclosed as ANOM-NARRATIVE-STALE)."
+  },
+  {
     "id": "metric:energy",
     "fiscalYear": 2569,
     "sourceId": "src-resource:1.2electric-2569",
@@ -75,7 +92,7 @@
     "coverage": "7 of 12 months (Jan-Jul)",
     "verificationState": "available_unverified",
     "classification": "CONFIRMED_XLSX",
-    "notes": "Greenhouse gas (tCO2e). AUTHORITATIVE FY2569 source (owner-replaced 2026-08-28): 1.6GreenHouseGas2026_New.xlsx, sheet \"สรุปการคำนวณ ปี 2569\" row \"รวม\" (r25) CF columns H/J/L/N/P/R/T/V/X/Z/AB/AD + AE total 144,802.31 kgCO2e -> 144.8 tCO2e. 7 observed months (Jan-Jul); Aug-Dec CF display 0 -> not observed, never zero-filled. FY2568 sibling 1.6GreenHouseGas2025.xlsx (sha ffbbdcb2be28990eeb4c5cdc69528bae33a23f7300d7d4ebbb82fdfc677b9ad5) is the template baseline. SHA-256 matches manifest.json, extract-sources.json and src/data/generated/ghg.json years[2569].provenance."
+    "notes": "Greenhouse gas (tCO2e). AUTHORITATIVE FY2569 source (owner-replaced 2026-08-28): 1.6GreenHouseGas2026_New.xlsx, sheet \"สรุปการคำนวณ ปี 2569\" row \"รวม\" (r25) CF columns H/J/L/N/P/R/T/V/X/Z/AB/AD + AE total 144,802.31 kgCO2e -> 144.8 tCO2e. 7 observed months (Jan-Jul); Aug-Dec CF display 0 -> not observed, never zero-filled. FY2568 baseline now from 1.5_greenhousegass_update2.xlsx (sha 5cf3db1275444898d03d6a5cb93b16b8f8fbc67f90e4180b50768e36b47cc18f, 12/12 months COMPLETE). SHA-256 matches manifest.json, extract-sources.json and src/data/generated/ghg.json years[2569].provenance."
   },
   {
     "id": "evidence:ev-cat2-tr-plan-fy2569",
