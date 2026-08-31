@@ -1,21 +1,21 @@
 {
   "schemaVersion": "1.0.0",
   "year": 2569,
-  "generatedAt": "2026-08-27",
+  "generatedAt": "2026-08-31",
   "overall": {
     "total": 65,
     "applicable": 65,
-    "ready": 7,
-    "inProgress": 8,
+    "ready": 5,
+    "inProgress": 11,
     "notStarted": 2,
-    "unavailable": 48,
+    "unavailable": 47,
     "notApplicable": 0,
-    "readyRate": 10.8,
+    "readyRate": 7.7,
     "evidence": {
-      "verified": 5,
-      "availableUnverified": 10,
+      "verified": 3,
+      "availableUnverified": 13,
       "pending": 0,
-      "unavailable": 50,
+      "unavailable": 49,
       "notApplicable": 0
     }
   },
@@ -25,33 +25,30 @@
       "code": "cat1",
       "total": 18,
       "applicable": 18,
-      "ready": 4,
-      "inProgress": 2,
+      "ready": 2,
+      "inProgress": 5,
       "notStarted": 2,
-      "unavailable": 10,
+      "unavailable": 9,
       "notApplicable": 0,
-      "readyRate": 22.2,
-      "evidence": {
-        "verified": 2,
-        "availableUnverified": 4,
-        "pending": 0,
-        "unavailable": 12,
-        "notApplicable": 0
-      },
+      "evidenceVerified": 0,
+      "evidenceAvailableUnverified": 7,
+      "evidenceUnavailable": 11,
       "issues": [
         {
           "id": "1.1",
+          "title": "",
           "total": 4,
           "applicable": 4,
-          "ready": 2,
-          "inProgress": 2,
+          "ready": 1,
+          "inProgress": 3,
           "notStarted": 0,
           "unavailable": 0,
           "notApplicable": 0,
-          "readyRate": 50
+          "readyRate": 25
         },
         {
           "id": "1.2",
+          "title": "",
           "total": 2,
           "applicable": 2,
           "ready": 1,
@@ -63,6 +60,7 @@
         },
         {
           "id": "1.3",
+          "title": "",
           "total": 3,
           "applicable": 3,
           "ready": 0,
@@ -74,6 +72,7 @@
         },
         {
           "id": "1.4",
+          "title": "",
           "total": 2,
           "applicable": 2,
           "ready": 0,
@@ -85,28 +84,31 @@
         },
         {
           "id": "1.5",
+          "title": "",
           "total": 3,
           "applicable": 3,
           "ready": 0,
-          "inProgress": 0,
+          "inProgress": 2,
           "notStarted": 1,
-          "unavailable": 2,
+          "unavailable": 0,
           "notApplicable": 0,
           "readyRate": 0
         },
         {
           "id": "1.6",
+          "title": "",
           "total": 2,
           "applicable": 2,
-          "ready": 1,
+          "ready": 0,
           "inProgress": 0,
           "notStarted": 0,
-          "unavailable": 1,
+          "unavailable": 2,
           "notApplicable": 0,
-          "readyRate": 50
+          "readyRate": 0
         },
         {
           "id": "1.7",
+          "title": "",
           "total": 2,
           "applicable": 2,
           "ready": 0,
@@ -116,7 +118,15 @@
           "notApplicable": 0,
           "readyRate": 0
         }
-      ]
+      ],
+      "readyRate": 11.1,
+      "evidence": {
+        "verified": 0,
+        "availableUnverified": 7,
+        "pending": 0,
+        "unavailable": 11,
+        "notApplicable": 0
+      }
     },
     {
       "id": "2",
@@ -128,17 +138,13 @@
       "notStarted": 0,
       "unavailable": 3,
       "notApplicable": 0,
-      "readyRate": 50,
-      "evidence": {
-        "verified": 3,
-        "availableUnverified": 0,
-        "pending": 0,
-        "unavailable": 3,
-        "notApplicable": 0
-      },
+      "evidenceVerified": 3,
+      "evidenceAvailableUnverified": 0,
+      "evidenceUnavailable": 3,
       "issues": [
         {
           "id": "2.1",
+          "title": "",
           "total": 2,
           "applicable": 2,
           "ready": 2,
@@ -150,6 +156,7 @@
         },
         {
           "id": "2.2",
+          "title": "",
           "total": 4,
           "applicable": 4,
           "ready": 1,
@@ -159,7 +166,15 @@
           "notApplicable": 0,
           "readyRate": 25
         }
-      ]
+      ],
+      "readyRate": 50,
+      "evidence": {
+        "verified": 3,
+        "availableUnverified": 0,
+        "pending": 0,
+        "unavailable": 3,
+        "notApplicable": 0
+      }
     },
     {
       "id": "3",
@@ -171,17 +186,13 @@
       "notStarted": 0,
       "unavailable": 9,
       "notApplicable": 0,
-      "readyRate": 0,
-      "evidence": {
-        "verified": 0,
-        "availableUnverified": 6,
-        "pending": 0,
-        "unavailable": 9,
-        "notApplicable": 0
-      },
+      "evidenceVerified": 0,
+      "evidenceAvailableUnverified": 6,
+      "evidenceUnavailable": 9,
       "issues": [
         {
           "id": "3.1",
+          "title": "",
           "total": 3,
           "applicable": 3,
           "ready": 0,
@@ -193,6 +204,7 @@
         },
         {
           "id": "3.2",
+          "title": "",
           "total": 5,
           "applicable": 5,
           "ready": 0,
@@ -204,6 +216,7 @@
         },
         {
           "id": "3.3",
+          "title": "",
           "total": 5,
           "applicable": 5,
           "ready": 0,
@@ -215,6 +228,7 @@
         },
         {
           "id": "3.4",
+          "title": "",
           "total": 2,
           "applicable": 2,
           "ready": 0,
@@ -224,7 +238,15 @@
           "notApplicable": 0,
           "readyRate": 0
         }
-      ]
+      ],
+      "readyRate": 0,
+      "evidence": {
+        "verified": 0,
+        "availableUnverified": 6,
+        "pending": 0,
+        "unavailable": 9,
+        "notApplicable": 0
+      }
     },
     {
       "id": "4",
@@ -236,17 +258,13 @@
       "notStarted": 0,
       "unavailable": 5,
       "notApplicable": 0,
-      "readyRate": 0,
-      "evidence": {
-        "verified": 0,
-        "availableUnverified": 0,
-        "pending": 0,
-        "unavailable": 5,
-        "notApplicable": 0
-      },
+      "evidenceVerified": 0,
+      "evidenceAvailableUnverified": 0,
+      "evidenceUnavailable": 5,
       "issues": [
         {
           "id": "4.1",
+          "title": "",
           "total": 3,
           "applicable": 3,
           "ready": 0,
@@ -258,6 +276,7 @@
         },
         {
           "id": "4.2",
+          "title": "",
           "total": 2,
           "applicable": 2,
           "ready": 0,
@@ -267,7 +286,15 @@
           "notApplicable": 0,
           "readyRate": 0
         }
-      ]
+      ],
+      "readyRate": 0,
+      "evidence": {
+        "verified": 0,
+        "availableUnverified": 0,
+        "pending": 0,
+        "unavailable": 5,
+        "notApplicable": 0
+      }
     },
     {
       "id": "5",
@@ -279,17 +306,13 @@
       "notStarted": 0,
       "unavailable": 13,
       "notApplicable": 0,
-      "readyRate": 0,
-      "evidence": {
-        "verified": 0,
-        "availableUnverified": 0,
-        "pending": 0,
-        "unavailable": 13,
-        "notApplicable": 0
-      },
+      "evidenceVerified": 0,
+      "evidenceAvailableUnverified": 0,
+      "evidenceUnavailable": 13,
       "issues": [
         {
           "id": "5.1",
+          "title": "",
           "total": 3,
           "applicable": 3,
           "ready": 0,
@@ -301,6 +324,7 @@
         },
         {
           "id": "5.2",
+          "title": "",
           "total": 1,
           "applicable": 1,
           "ready": 0,
@@ -312,6 +336,7 @@
         },
         {
           "id": "5.3",
+          "title": "",
           "total": 2,
           "applicable": 2,
           "ready": 0,
@@ -323,6 +348,7 @@
         },
         {
           "id": "5.4",
+          "title": "",
           "total": 4,
           "applicable": 4,
           "ready": 0,
@@ -334,6 +360,7 @@
         },
         {
           "id": "5.5",
+          "title": "",
           "total": 3,
           "applicable": 3,
           "ready": 0,
@@ -343,7 +370,15 @@
           "notApplicable": 0,
           "readyRate": 0
         }
-      ]
+      ],
+      "readyRate": 0,
+      "evidence": {
+        "verified": 0,
+        "availableUnverified": 0,
+        "pending": 0,
+        "unavailable": 13,
+        "notApplicable": 0
+      }
     },
     {
       "id": "6",
@@ -355,17 +390,13 @@
       "notStarted": 0,
       "unavailable": 6,
       "notApplicable": 0,
-      "readyRate": 0,
-      "evidence": {
-        "verified": 0,
-        "availableUnverified": 0,
-        "pending": 0,
-        "unavailable": 6,
-        "notApplicable": 0
-      },
+      "evidenceVerified": 0,
+      "evidenceAvailableUnverified": 0,
+      "evidenceUnavailable": 6,
       "issues": [
         {
           "id": "6.1",
+          "title": "",
           "total": 3,
           "applicable": 3,
           "ready": 0,
@@ -377,6 +408,7 @@
         },
         {
           "id": "6.2",
+          "title": "",
           "total": 3,
           "applicable": 3,
           "ready": 0,
@@ -386,7 +418,15 @@
           "notApplicable": 0,
           "readyRate": 0
         }
-      ]
+      ],
+      "readyRate": 0,
+      "evidence": {
+        "verified": 0,
+        "availableUnverified": 0,
+        "pending": 0,
+        "unavailable": 6,
+        "notApplicable": 0
+      }
     },
     {
       "id": "7",
@@ -398,17 +438,13 @@
       "notStarted": 0,
       "unavailable": 2,
       "notApplicable": 0,
-      "readyRate": 0,
-      "evidence": {
-        "verified": 0,
-        "availableUnverified": 0,
-        "pending": 0,
-        "unavailable": 2,
-        "notApplicable": 0
-      },
+      "evidenceVerified": 0,
+      "evidenceAvailableUnverified": 0,
+      "evidenceUnavailable": 2,
       "issues": [
         {
           "id": "7.1",
+          "title": "",
           "total": 1,
           "applicable": 1,
           "ready": 0,
@@ -420,6 +456,7 @@
         },
         {
           "id": "7.2",
+          "title": "",
           "total": 1,
           "applicable": 1,
           "ready": 0,
@@ -429,7 +466,15 @@
           "notApplicable": 0,
           "readyRate": 0
         }
-      ]
+      ],
+      "readyRate": 0,
+      "evidence": {
+        "verified": 0,
+        "availableUnverified": 0,
+        "pending": 0,
+        "unavailable": 2,
+        "notApplicable": 0
+      }
     }
   ]
 }

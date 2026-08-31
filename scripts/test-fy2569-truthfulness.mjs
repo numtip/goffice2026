@@ -118,12 +118,20 @@ describe('FY2569 status view model (TH + EN)', () => {
     }
   });
 
-  it('only the five ready+verified indicators (1.1.4, 1.6.1, 2.1.1, 2.1.2, 2.2.1) may carry "ตรวจสอบแล้ว"', () => {
-    const verifiedCodes = ['1.1.4', '1.6.1', '2.1.1', '2.1.2', '2.2.1'];
+  it('only the four ready+verified indicators (1.6.1 was demoted; remaining: 2.1.1, 2.1.2, 2.2.1) may carry "ตรวจสอบแล้ว"', () => {
+    // Owner decision 2026-08-31: 1.1.4 → in_progress/partial, 1.6.1 → unavailable.
+    // Only Cat2 owner-approved indicators remain ready_verified.
+    const verifiedCodes = ['2.1.1', '2.1.2', '2.2.1'];
     for (const code of verifiedCodes) {
       const v = fy2569StatusView(code, 'th');
       assert.equal(v.kind, 'ready_verified', `${code} should be ready_verified`);
     }
+    // 1.1.4 is now partial, NOT verified
+    const i114 = fy2569StatusView('1.1.4', 'th');
+    assert.equal(i114.kind, 'partial', '1.1.4 must be partial (not verified)');
+    // 1.6.1 is now unavailable
+    const i161 = fy2569StatusView('1.6.1', 'th');
+    assert.equal(i161.kind, 'unavailable', '1.6.1 must be unavailable');
     const anyOther = indicatorCodeList()
       .filter((c) => !verifiedCodes.includes(c))
       .map((c) => fy2569StatusView(c, 'th'))
