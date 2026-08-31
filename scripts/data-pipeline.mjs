@@ -308,8 +308,16 @@ function importMetric(metric, year, csvPath, _verbose, opts = {}) {
   let quality;
   let dataClassification;
   if (isBaseline) {
-    quality = reconcileTotal(totalValue, null, cfg.unit);
-    dataClassification = 'PRESERVED_LEGACY';
+    if (workbookTotal !== null && workbookTotal !== undefined && sourceWorkbook) {
+      // Authoritative FY2568 baseline (e.g. 1.5_greenhousegass_update2.xlsx):
+      // extracted from the workbook with a known total → CONFIRMED_XLSX.
+      quality = reconcileTotal(totalValue, workbookTotal, cfg.unit);
+      dataClassification = 'CONFIRMED_XLSX';
+    } else {
+      // Legacy baseline without a live workbook total → preserved, unverified.
+      quality = reconcileTotal(totalValue, null, cfg.unit);
+      dataClassification = 'PRESERVED_LEGACY';
+    }
   } else if (workbookTotal !== null && workbookTotal !== undefined) {
     if (workbookTotal < 0) {
       // Negative workbook totals (e.g. energy/water 2569 "รวม" rows include a
@@ -358,7 +366,12 @@ function importMetric(metric, year, csvPath, _verbose, opts = {}) {
     total: Math.round(totalValue * 100) / 100,
     average: Math.round(averageValue * 100) / 100,
     aggregation,
-    dataStatus: monthCount >= 12 ? 'complete' : 'in_progress',
+    dataStatus:
+      isBaseline && monthCount >= 12 && dataClassification === 'CONFIRMED_XLSX'
+        ? 'VERIFIED_BASELINE'
+        : monthCount >= 12
+          ? 'complete'
+          : 'in_progress',
     source: sourceDesc,
     quality,
     dataClassification,
@@ -377,7 +390,12 @@ function importMetric(metric, year, csvPath, _verbose, opts = {}) {
       ...(extractionDate ? { extractionDate } : {}),
       ...(coverage ? { coverage } : {}),
       ...(Array.isArray(observedMonths) && observedMonths.length > 0 ? { observedMonths } : {}),
-      validationStatus: monthCount >= 12 ? 'complete' : 'in_progress',
+      validationStatus:
+        isBaseline && monthCount >= 12 && dataClassification === 'CONFIRMED_XLSX'
+          ? 'VERIFIED_BASELINE'
+          : monthCount >= 12
+            ? 'complete'
+            : 'in_progress',
     };
     // Current-year data is machine-extracted and reconciled against the staged
     // workbook, but has NOT been human-verified. Never claim human verification.

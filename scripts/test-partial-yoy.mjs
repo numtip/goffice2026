@@ -118,9 +118,10 @@ describe('computePartialYoy — recycling_rate pending; fuel/paper/waste/ghg par
     const result = computePartialYoy(metric, { id: 'ghg' });
     assert.equal(result.status, 'partial');
     assert.equal(result.comparableCount, 7);
-    assert.equal(metric.yoyChange.percent, -37);
-    assert.notEqual(result.percent, -37);
-    assert.equal(result.percent, 8);
+    // FY2568 baseline replaced (222.68 tCO2e): frozen full-year YoY = -35%.
+    assert.equal(metric.yoyChange.percent, -35);
+    assert.notEqual(result.percent, -35);
+    assert.equal(result.percent, 12);
     assert.equal(result.direction, 'up');
   });
 });

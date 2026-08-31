@@ -107,17 +107,20 @@ describe('category1 contracts — truthfulness guards', () => {
     }
   });
 
-  it('ghg inventory uses the verified 231.62 tCO2e and excludes the septic anomaly as a value', () => {
+  it('ghg inventory uses the authoritative 222.68 tCO2e (1.5_greenhousegass_update2.xlsx) and discloses stale narrative', () => {
     const ghg = readContract('ghg');
     const inv = ghg.records.find((r) => r.kind === 'inventory');
     assert.ok(inv, 'ghg inventory record exists');
-    assert.equal(inv.totalTCO2e, 231.62);
-    assert.equal(inv.scope1TCO2e, 10.85);
-    assert.equal(inv.scope2TCO2e, 201.48);
-    assert.equal(inv.scope3TCO2e, 19.29);
-    assert.equal(inv.septicAnomalyExcluded, true);
-    const exclusions = ghg.records.filter((r) => r.kind === 'exclusion');
-    assert.ok(exclusions.length >= 1, 'septic anomaly documented in exclusions');
+    assert.equal(inv.totalTCO2e, 222.68);
+    assert.equal(inv.scope1TCO2e, 78.96);
+    assert.equal(inv.scope2TCO2e, 132.27);
+    assert.equal(inv.scope3TCO2e, 11.45);
+    assert.equal(inv.septicAnomalyExcluded, false);
+    // The new workbook's septic sheet uses the normal 95-personnel figures, so
+    // no septic exclusion remains; the stale narrative (231.62) is disclosed.
+    assert.ok(!ghg.records.some((r) => r.kind === 'exclusion'), 'no septic exclusion in the new authoritative set');
+    assert.ok(ghg.records.some((r) => r.kind === 'anomaly' && r.code === 'ANOM-NARRATIVE-STALE'), 'stale-narrative conflict disclosed');
+    assert.equal(ghg.sources[0].ref, '1.5Green house gass/1.5_greenhousegass_update2.xlsx');
     const raw = readFileSync(join(CONTRACT_DIR, 'ghg.json'), 'utf8');
     assert.ok(!raw.includes('7548513'), 'inflated septic value must not appear as a reported value');
   });

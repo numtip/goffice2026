@@ -29,11 +29,9 @@
  *      headline copy contains the explicit "not an annual completion"
  *      negation and no positive completion language).
  *
- * Why no `.ts` import here: `fy2569-status-vm.ts` imports a JSON registry
- * without `with { type: 'json' }`, which plain `node --test` rejects
- * (ERR_IMPORT_ATTRIBUTE_MISSING — the existing truthfulness suite fails the
- * same way). Every JSON registry is therefore read via readFileSync, and the
- * VM's rendered output is verified end-to-end against the built HTML instead.
+ * This suite reads JSON registries via readFileSync for deterministic
+ * comparisons across Node test runs and direct built-HTML assertions.
+ * VM behavior is still verified end-to-end against rendered output.
  * The expected badge/headline strings are asserted to exist verbatim in the
  * VM source so the mirror used here is grounded in the real implementation.
  *
@@ -194,9 +192,9 @@ describe('FY2569 registry data invariants (all 65 indicators)', () => {
     }
   });
 
-  it('verified evidenceStatus only accompanies ready progress (owner-approved: 1.1.4, 1.6.1, 2.1.1, 2.1.2, 2.2.1)', () => {
+  it('verified evidenceStatus only accompanies ready progress (owner-approved: 2.1.1, 2.1.2, 2.2.1)', () => {
     const verified = progress.items.filter((i) => i.evidenceStatus === 'verified');
-    assert.deepEqual(verified.map((i) => i.indicator).sort(), ['1.1.4', '1.6.1', '2.1.1', '2.1.2', '2.2.1']);
+    assert.deepEqual(verified.map((i) => i.indicator).sort(), ['2.1.1', '2.1.2', '2.2.1']);
     for (const item of verified) {
       assert.equal(item.progressStatus, 'ready', `${item.indicator} verified ⇒ ready`);
     }

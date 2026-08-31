@@ -162,12 +162,13 @@ function main() {
   if (ghg) {
     const inv = (ghg.records || []).find((r) => r.kind === 'inventory');
     if (!inv) errors.push('ghg: inventory record missing');
-    else if (inv.septicAnomalyExcluded !== true) errors.push('ghg: inventory.septicAnomalyExcluded must be true');
-    else if (Math.abs(inv.totalTCO2e - 231.62) > 0.001) {
-      errors.push(`ghg: inventory total must be the verified 231.62 tCO2e, got ${inv.totalTCO2e}`);
+    else if (Math.abs(inv.totalTCO2e - 222.68) > 0.001) {
+      errors.push(`ghg: inventory total must be the authoritative 222.68 tCO2e (1.5_greenhousegass_update2.xlsx), got ${inv.totalTCO2e}`);
     }
-    const exclusions = (ghg.records || []).filter((r) => r.kind === 'exclusion');
-    if (exclusions.length === 0) errors.push('ghg: exclusions must document the septic-tank anomaly');
+    // The new authoritative workbook has a normal 95-personnel septic sheet, so
+    // Dec is the actual table value — no septic-tank exclusion/anomaly remains.
+    const staleNarrative = (ghg.records || []).find((r) => r.kind === 'anomaly' && r.code === 'ANOM-NARRATIVE-STALE');
+    if (!staleNarrative) errors.push('ghg: must disclose the stale narrative (231.62) vs table totals (222.68) conflict');
   }
 
   // ── projects invariants (1.6) ────────────────────────────────

@@ -1,7 +1,7 @@
 {
   "generatedFrom": "canonical-metrics",
   "totalMetrics": 7,
-  "metricsWithWarnings": 4,
+  "metricsWithWarnings": 3,
   "metricsWithErrors": 1,
   "entries": [
     {
@@ -122,10 +122,7 @@
       "metric": "ghg",
       "yearBE": 2568,
       "valid": true,
-      "warnings": [
-        "Monthly sum 231.60 tCO2e vs narrative/inventory 231.62 tCO2e (0.02 delta)",
-        "December not from workbook O68 — derived from narrative minus Jan–Nov"
-      ],
+      "warnings": [],
       "reconciliationDifference": 0,
       "monthCount": 12,
       "dataStatus": "VERIFIED_BASELINE"
