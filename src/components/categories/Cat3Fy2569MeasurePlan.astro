@@ -2,6 +2,17 @@
 /**
  * FY2569 implementation-plan card for Category 3.
  * Deliberately separate from frozen FY2568 contracts: plan only, no results.
+ *
+ * Plan-evidence mapping (DOCX content → canonical indicator IDs):
+ *   Section 1 (water measures)     → 3.1.1
+ *   Section 2 (electricity/lighting) → 3.2.1, 3.2.4
+ *   Section 3 (air conditioning)   → 3.2.1 (supporting)
+ *   Section 4.1 (paper measures)   → 3.3.1
+ *   Sections 4.2–4.3 (ink/stationery) → 3.3.4
+ *   Section 5 (green-meeting measures) → 3.4.1
+ *
+ * IMPORTANT: These are PLAN evidence only — NOT implementation/result/pass.
+ * Unsupported Cat3 indicators remain unavailable.
  */
 interface Props {
   locale: 'th' | 'en';
@@ -10,6 +21,19 @@ interface Props {
 const { locale } = Astro.props;
 const isEn = locale === 'en';
 const sourceUrl = 'https://maejo365-my.sharepoint.com/:w:/g/personal/researchmju_mju_ac_th/IQCjwNr7XEE3QasnQ517nAftAYB4p_bLL9dIZyKxLtAeQac?e=8pBJK4';
+
+// Canonical indicator IDs directly supported by this DOCX as plan evidence
+const cat3PlanIndicatorIds = ['3.1.1', '3.2.1', '3.2.4', '3.3.1', '3.3.4', '3.4.1'];
+
+// Bilingual labels for the mapped indicators
+const cat3PlanIndicatorLabels: Record<string, { th: string; en: string }> = {
+  '3.1.1': { th: 'มาตรการอนุรักษ์การใช้น้ำ', en: 'Water conservation measures' },
+  '3.2.1': { th: 'มาตรการประหยัดการใช้ไฟฟ้าและแสงสว่าง', en: 'Electricity and lighting saving measures' },
+  '3.2.4': { th: 'มาตรการประหยัดน้ำมันเชื้อเพลิง/ยานพาหนะ', en: 'Fuel/vehicle saving measures' },
+  '3.3.1': { th: 'มาตรการประหยัดการใช้กระดาษ', en: 'Paper consumption saving measures' },
+  '3.3.4': { th: 'มาตรการประหยัดวัสดุอุปกรณ์เครื่องเขียน/หมึก', en: 'Stationery/ink supply saving measures' },
+  '3.4.1': { th: 'มาตรการจัดการประชุมสีเขียว', en: 'Green meeting management measures' },
+};
 ---
 
 <section
@@ -45,4 +69,37 @@ const sourceUrl = 'https://maejo365-my.sharepoint.com/:w:/g/personal/researchmju
       {isEn ? 'Open source document' : 'เปิดเอกสารต้นฉบับ'}
     </a>
   </div>
+</section>
+
+<!-- Plan-evidence indicator mapping -->
+<section
+  class="mb-8 rounded-xl border border-emerald-200 bg-emerald-50/50 p-5 sm:p-6"
+  aria-labelledby="cat3-fy2569-plan-mapping"
+  data-cat3-fy2569-plan-mapping
+>
+  <h2 id="cat3-fy2569-plan-mapping" class="mb-3 text-sm font-semibold text-emerald-900">
+    {isEn ? 'FY2569 Plan Evidence — Indicator Mapping' : 'หลักฐานแผน FY2569 — ตัวชี้วัดที่เกี่ยวข้อง'}
+  </h2>
+  <p class="mb-3 text-xs leading-relaxed text-emerald-700">
+    {isEn
+      ? 'The following indicators are directly supported by the FY2569 measures DOCX as **plan evidence only**. This is NOT implementation, result, pass, or assessment score.'
+      : 'ตัวชี้วัดต่อไปนี้เป็นไปตามเอกสารมาตรการ FY2569 **เฉพาะหลักฐานแผน** เท่านั้น ไม่ใช่ผลการดำเนินงาน ผลการประเมิน หรือคะแนนผ่าน'}
+  </p>
+  <ul class="grid gap-2 sm:grid-cols-2" role="list">
+    {Object.entries(cat3PlanIndicatorLabels).map(([code, labels]) => (
+      <li class="flex items-start gap-2 rounded-lg border border-emerald-200 bg-white/60 px-3 py-2">
+        <span class="shrink-0 rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-bold text-white">
+          {code}
+        </span>
+        <span class="text-xs leading-snug text-gray-700">
+          {isEn ? labels.en : labels.th}
+        </span>
+      </li>
+    ))}
+  </ul>
+  <p class="mt-3 text-[11px] italic text-emerald-600">
+    {isEn
+      ? `Total: ${cat3PlanIndicatorIds.length} indicators mapped to plan evidence. Remaining Cat3 indicators (3.1.2, 3.1.3, 3.2.2, 3.2.3, 3.2.5, 3.3.2, 3.3.3, 3.3.5, 3.4.2) remain unavailable.`
+      : `รวม: ${cat3PlanIndicatorIds.length} ตัวชี้วัดเชื่อมโยงกับหลักฐานแผน ตัวชี้วัดหมวด 3 อื่นๆ (3.1.2, 3.1.3, 3.2.2, 3.2.3, 3.2.5, 3.3.2, 3.3.3, 3.3.5, 3.4.2) ยังไม่มีข้อมูล`}
+  </p>
 </section>
