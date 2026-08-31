@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
   "year": 2569,
-  "updated": "2026-08-27",
-  "note": "Incremental FY2569 publication (2026-08-27): Cat1 retained from prior reconciliation. Cat2 2.1.1/2.1.2/2.2.1/2.2.2 → in_progress from published Data2569 evidence (not ready — scope incomplete). Cat2 2.2.3/2.2.4 stay unavailable (no dedicated FY2569 understanding %; 2.2.4 FY2568-identical held). Cat3 measure indicators 3.1.1/3.2.1/3.2.4/3.3.1/3.3.4/3.4.1 → in_progress from B3-1 plan-only measures DOCX. Cat3 KPI/compliance remain unavailable. Progress ≠ evidence ≠ official score. No FY2568 carry-forward. [2026-08-28 Owner approval: 2.1.1/2.1.2/2.2.1 evidence owner-approved as genuine FY2569 (verified). 2.2.2 NOT approved → stays unavailable. 2.2.1(1) has no canonical indicator mapping (source sub-group of 2.2.1) → not promoted separately. All other Cat2 indicators remain FY2569 unavailable.]",
+  "updated": "2026-08-31",
+  "note": "Incremental FY2569 publication (2026-08-27): Cat1 retained from prior reconciliation. Cat2 2.1.1/2.1.2/2.2.1/2.2.2 → in_progress from published Data2569 evidence (not ready — scope incomplete). Cat2 2.2.3/2.2.4 stay unavailable (no dedicated FY2569 understanding %; 2.2.4 FY2568-identical held). Cat3 measure indicators 3.1.1/3.2.1/3.2.4/3.3.1/3.3.4/3.4.1 → in_progress from B3-1 plan-only measures DOCX. Cat3 KPI/compliance remain unavailable. Progress ≠ evidence ≠ official score. No FY2568 carry-forward. [2026-08-28 Owner approval: 2.1.1/2.1.2/2.2.1 evidence owner-approved as genuine FY2569 (verified). 2.2.2 NOT approved → stays unavailable. 2.2.1(1) has no canonical indicator mapping (source sub-group of 2.2.1) → not promoted separately. All other Cat2 indicators remain FY2569 unavailable.] [2026-08-31 Cat1 status sync: 1.1.1/1.1.2/1.1.3/1.2.1 source-approved kept. 1.1.4→in_progress/partial. 1.5.1/1.5.2→in_progress citing canonical GHG workbook. 1.6.1→unavailable (not owner-approved). All other Cat1 unchanged.]",
   "items": [
     {
       "indicator": "1.1.1",
@@ -46,15 +46,15 @@
     {
       "indicator": "1.1.4",
       "year": 2569,
-      "progressStatus": "ready",
-      "evidenceStatus": "verified",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
         "type": "repository",
         "ref": "src/data/category1/projects-2569.json"
       },
-      "updatedAt": "2026-08-27",
+      "updatedAt": "2026-08-31",
       "owner": "หมวด 1",
-      "notes": "Annual plan: 147 activities · 7 categories · 65 indicators; signed copy 2026-04-20; planned/actual columns separate. PARTIAL gap: actual results not per-activity verified (no activity inference)."
+      "notes": "Annual plan exists (147 activities); internal details in progress → partial. Plan evidence is not implementation/result/pass."
     },
     {
       "indicator": "1.2.1",
@@ -150,28 +150,28 @@
     {
       "indicator": "1.5.1",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/generated/ghg.json"
       },
-      "updatedAt": "2026-08-27",
+      "updatedAt": "2026-08-31",
       "owner": "หมวด 1",
-      "notes": "No verified FY2569 GHG data-collection source (generated ghg KPI is FY2569 pending)."
+      "notes": "FY2569 GHG data sourced from canonical workbook 1.6GreenHouseGas2026_New.xlsx (same as dashboard /dashboard/ghg/). Coverage: 7 of 12 months (Jan-Jul), total 144.8 tCO₂e, sourceSha256 8946f4fe... Validation: in_progress."
     },
     {
       "indicator": "1.5.2",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/generated/ghg.json"
       },
-      "updatedAt": "2026-08-27",
+      "updatedAt": "2026-08-31",
       "owner": "หมวด 1",
-      "notes": "No verified FY2569 GHG analysis vs target."
+      "notes": "FY2569 GHG analysis vs target uses the same canonical workbook as 1.5.1: 1.6GreenHouseGas2026_New.xlsx. Coverage: 7 of 12 months (Jan-Jul), total 144.8 tCO₂e, sourceSha256 8946f4fe... Validation: in_progress."
     },
     {
       "indicator": "1.5.3",
@@ -189,15 +189,15 @@
     {
       "indicator": "1.6.1",
       "year": 2569,
-      "progressStatus": "ready",
-      "evidenceStatus": "verified",
+      "progressStatus": "unavailable",
+      "evidenceStatus": "unavailable",
       "source": {
-        "type": "repository",
-        "ref": "src/data/category1/projects-2569.json"
+        "type": "unavailable",
+        "ref": null
       },
-      "updatedAt": "2026-08-27",
+      "updatedAt": "2026-08-31",
       "owner": "หมวด 1",
-      "notes": "Annual GHG-reduction-driving plan approved (plan record maps 1.6.1; signed 2026-04-20)."
+      "notes": "Not in the owner-approved set. Annual plan record alone does not constitute implementation/result/pass. Keep FY2569 unavailable."
     },
     {
       "indicator": "1.6.2",

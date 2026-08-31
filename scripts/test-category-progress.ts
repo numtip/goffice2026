@@ -57,14 +57,14 @@ for (const cat of generated.categories) {
 
 const cat1 = generated.categories.find((c: { code: string }) => c.code === 'cat1');
 assert.equal(cat1?.total, 18, 'cat1 has 18 indicators');
-assert.equal(cat1?.ready, 4, 'cat1 ready = 4');
-assert.equal(cat1?.inProgress, 2, 'cat1 in_progress = 2');
+assert.equal(cat1?.ready, 2, 'cat1 ready = 2');
+assert.equal(cat1?.inProgress, 5, 'cat1 in_progress = 5');
 assert.equal(cat1?.notStarted, 2, 'cat1 not_started = 2');
-assert.equal(cat1?.unavailable, 10, 'cat1 unavailable = 10');
-assert.equal(cat1?.readyRate, 22.2, 'cat1 readyRate 22.2% (derived, not hardcoded)');
-assert.equal(cat1?.evidence.verified, 2, 'cat1 evidence verified = 2');
-assert.equal(cat1?.evidence.availableUnverified, 4, 'cat1 evidence available_unverified = 4');
-assert.equal(cat1?.evidence.unavailable, 12, 'cat1 evidence unavailable = 12');
+assert.equal(cat1?.unavailable, 9, 'cat1 unavailable = 9');
+assert.equal(cat1?.readyRate, 11.1, 'cat1 readyRate 11.1% (derived, not hardcoded)');
+assert.equal(cat1?.evidence.verified, 0, 'cat1 evidence verified = 0');
+assert.equal(cat1?.evidence.availableUnverified, 7, 'cat1 evidence available_unverified = 7');
+assert.equal(cat1?.evidence.unavailable, 11, 'cat1 evidence unavailable = 11');
 
 // Progress ≠ Evidence (separate semantics)
 assert.notDeepEqual(
@@ -75,10 +75,10 @@ assert.notDeepEqual(
 
 // ── View models ─────────────────────────────────────────────────────────
 
-assert.equal(generated.overall.ready, 7, 'overall ready = 7');
-assert.equal(generated.overall.inProgress, 8, 'overall in_progress = 8');
+assert.equal(generated.overall.ready, 5, 'overall ready = 5');
+assert.equal(generated.overall.inProgress, 11, 'overall in_progress = 11');
 assert.equal(generated.overall.notStarted, 2, 'overall not_started = 2');
-assert.equal(generated.overall.unavailable, 48, 'overall unavailable = 48');
+assert.equal(generated.overall.unavailable, 47, 'overall unavailable = 47');
 
 const cat2 = generated.categories.find((c: { code: string }) => c.code === 'cat2');
 assert.equal(cat2?.total, 6, 'cat2 has 6 indicators');
@@ -96,10 +96,10 @@ const overviewTh = buildProgressOverview('th');
 assert.equal(overviewTh.categories.length, 7, 'overview has 7 categories');
 assert.equal(overviewTh.overall.total, 65);
 assert.equal(overviewTh.fallbackRows.length, 7, 'fallback table has 7 rows');
-assert.match(overviewTh.overallSummary, /4|พร้อม/, 'TH summary carries counts');
+assert.match(overviewTh.overallSummary, /5|พร้อม/, 'TH summary carries counts');
 assert.ok(overviewTh.categories.every((c) => c.label.length > 0), 'category labels resolved');
-assert.equal(overviewTh.started.count, 15, 'started = ready + in_progress');
-assert.equal(overviewTh.remaining.count, 50, 'remaining = not_started + unavailable');
+assert.equal(overviewTh.started.count, 16, 'started = ready + in_progress');
+assert.equal(overviewTh.remaining.count, 49, 'remaining = not_started + unavailable');
 assert.equal(overviewTh.pulse.length, 4, 'pulse has four statuses');
 assert.ok(overviewTh.pulse.every((p) => typeof p.rate === 'number'), 'pulse includes share %');
 

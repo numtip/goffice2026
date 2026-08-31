@@ -1,21 +1,21 @@
 {
   "schemaVersion": "1.0.0",
   "year": 2569,
-  "generatedAt": "2026-08-27",
+  "generatedAt": "2026-08-31",
   "overall": {
     "total": 65,
     "applicable": 65,
-    "ready": 7,
-    "inProgress": 8,
+    "ready": 5,
+    "inProgress": 11,
     "notStarted": 2,
-    "unavailable": 48,
+    "unavailable": 47,
     "notApplicable": 0,
-    "readyRate": 10.8,
+    "readyRate": 7.7,
     "evidence": {
-      "verified": 5,
-      "availableUnverified": 10,
+      "verified": 3,
+      "availableUnverified": 13,
       "pending": 0,
-      "unavailable": 50,
+      "unavailable": 49,
       "notApplicable": 0
     }
   },
@@ -25,17 +25,17 @@
       "code": "cat1",
       "total": 18,
       "applicable": 18,
-      "ready": 4,
-      "inProgress": 2,
+      "ready": 2,
+      "inProgress": 5,
       "notStarted": 2,
-      "unavailable": 10,
+      "unavailable": 9,
       "notApplicable": 0,
-      "readyRate": 22.2,
+      "readyRate": 11.1,
       "evidence": {
-        "verified": 2,
-        "availableUnverified": 4,
+        "verified": 0,
+        "availableUnverified": 7,
         "pending": 0,
-        "unavailable": 12,
+        "unavailable": 11,
         "notApplicable": 0
       },
       "issues": [
@@ -43,12 +43,12 @@
           "id": "1.1",
           "total": 4,
           "applicable": 4,
-          "ready": 2,
-          "inProgress": 2,
+          "ready": 1,
+          "inProgress": 3,
           "notStarted": 0,
           "unavailable": 0,
           "notApplicable": 0,
-          "readyRate": 50
+          "readyRate": 25
         },
         {
           "id": "1.2",
@@ -88,9 +88,9 @@
           "total": 3,
           "applicable": 3,
           "ready": 0,
-          "inProgress": 0,
+          "inProgress": 2,
           "notStarted": 1,
-          "unavailable": 2,
+          "unavailable": 0,
           "notApplicable": 0,
           "readyRate": 0
         },
@@ -98,12 +98,12 @@
           "id": "1.6",
           "total": 2,
           "applicable": 2,
-          "ready": 1,
+          "ready": 0,
           "inProgress": 0,
           "notStarted": 0,
-          "unavailable": 1,
+          "unavailable": 2,
           "notApplicable": 0,
-          "readyRate": 50
+          "readyRate": 0
         },
         {
           "id": "1.7",
