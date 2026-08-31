@@ -196,18 +196,17 @@ describe('rendered output — dashboard and 1.5.1 consume the same canonical dat
       }
     });
 
-    it('1.5.1 shows unavailable FY2569 panel + collapsed FY2568 baseline journey with new baseline values', () => {
+    it('1.5.1 shows partial FY2569 panel + collapsed FY2568 baseline journey with new baseline values', () => {
       for (const prefix of ['', 'en/']) {
         const html = readFileSync(join(DIST, prefix, 'indicators', '1.5.1', 'index.html'), 'utf8');
         const kind = html.match(/data-fy2569-kind="([^"]+)"/);
-        assert.equal(kind?.[1], 'unavailable', `${prefix}1.5.1 FY2569 panel unavailable`);
+        assert.equal(kind?.[1], 'partial', `${prefix}1.5.1 FY2569 panel is partial`);
         const baselineTags = [...html.matchAll(/<details[^>]*data-fy2568-baseline[^>]*>/g)];
         assert.equal(baselineTags.length, 1, `${prefix}1.5.1 exactly one FY2568 baseline`);
         assert.doesNotMatch(baselineTags[0][0], /\sopen\b/, `${prefix}1.5.1 baseline collapsed`);
-        // The FY2569 144.8 current-year total must not leak above the baseline.
         const panelStart = html.indexOf('data-fy2569-status-panel');
         const beforeBaseline = html.slice(panelStart, baselineTags[0].index);
-        assert.doesNotMatch(beforeBaseline, /144\.8|145/, `${prefix}1.5.1 FY2569 total must not leak above baseline`);
+        assert.match(beforeBaseline, /บางส่วน|Partial|ยังไม่ยืนยัน|Unverified/, `${prefix}1.5.1 must disclose partial/unverified FY2569 state`);
         // The FY2568 baseline journey renders the NEW total (222.68) inside the
         // baseline section and the source workbook is the new file.
         const inside = html.slice(baselineTags[0].index, html.indexOf('</details>', baselineTags[0].index));
