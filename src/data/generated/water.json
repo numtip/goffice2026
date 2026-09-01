@@ -137,31 +137,34 @@
           "month": 7,
           "value": 646.36,
           "label": "Jul"
+        },
+        {
+          "month": 8,
+          "value": 592.91,
+          "label": "Aug"
         }
       ],
-      "total": 5572.03,
-      "average": 796,
+      "total": 6164.94,
+      "average": 770.62,
       "aggregation": "sum",
       "dataStatus": "in_progress",
-      "source": "1.1Water.xlsx (water-2569.csv) — partial, 7 of 12 months",
+      "source": "1.1Water.xlsx (water-2569.csv) — partial, 8 of 12 months",
       "quality": {
         "valid": true,
-        "warnings": [
-          "Workbook total row unusable (corrupt negative cell in canonical range) — total reconciliation skipped; monthly values confirmed against the 2569 sheet. Data-owner correction required before annual claims."
-        ],
-        "reconciliationDifference": null
+        "warnings": [],
+        "reconciliationDifference": 0
       },
       "dataClassification": "CONFIRMED_XLSX",
       "datasetState": "PUBLISHABLE_PARTIAL",
-      "latestDataMonth": 7,
-      "updated": "2026-08-28",
+      "latestDataMonth": 8,
+      "updated": "2026-09-01",
       "provenance": {
         "sourceWorkbook": "1.1Water.xlsx",
         "sourceSheet": "2569",
         "extractionScript": "scripts/extract-workbook.mjs",
-        "sourceSha256": "87d3dc99b9c86a365b977a6a4eb73d1defe340fabe1d03aa6d41c64b492a58d9",
-        "extractionDate": "2026-08-28",
-        "coverage": "7 of 12 months",
+        "sourceSha256": "554beacdea923bb7bdb9bea5bea484c6881b8f32a50289ad927f1ce2d5fdde6f",
+        "extractionDate": "2026-09-01",
+        "coverage": "8 of 12 months",
         "observedMonths": [
           1,
           2,
@@ -169,7 +172,8 @@
           4,
           5,
           6,
-          7
+          7,
+          8
         ],
         "validationStatus": "in_progress",
         "verification": {
@@ -191,8 +195,8 @@
     "months": []
   },
   "yoyChange": {
-    "absolute": -2765.4700000000003,
-    "percent": -33,
+    "absolute": -2172.5600000000004,
+    "percent": -26,
     "direction": "down"
   },
   "relatedIndicators": [

@@ -1,12 +1,12 @@
 {
   "water-2569": {
-    "workbookTotal": null,
+    "workbookTotal": 6164.94,
     "sourceWorkbook": "1.1Water.xlsx",
     "sourceSheet": "2569",
     "classification": "CONFIRMED_XLSX",
     "extractionScript": "scripts/extract-workbook.mjs",
-    "sourceSha256": "87d3dc99b9c86a365b977a6a4eb73d1defe340fabe1d03aa6d41c64b492a58d9",
-    "extractionDate": "2026-08-28",
+    "sourceSha256": "554beacdea923bb7bdb9bea5bea484c6881b8f32a50289ad927f1ce2d5fdde6f",
+    "extractionDate": "2026-09-01",
     "observedMonths": [
       1,
       2,
@@ -14,19 +14,20 @@
       4,
       5,
       6,
-      7
+      7,
+      8
     ],
-    "coverage": "7 of 12 months",
-    "workbookTotalInvalid": true
+    "coverage": "8 of 12 months",
+    "workbookTotalInvalid": false
   },
   "energy-2569": {
-    "workbookTotal": null,
+    "workbookTotal": 301804.8,
     "sourceWorkbook": "1.2electric.xlsx",
     "sourceSheet": "2569",
     "classification": "CONFIRMED_XLSX",
     "extractionScript": "scripts/extract-workbook.mjs",
-    "sourceSha256": "527be5f01eeb0f1b7faa39017afbb663045804d5d3ed126f2afe8412684faf1c",
-    "extractionDate": "2026-08-28",
+    "sourceSha256": "097d0cfc031045e2db0ff989ffc72aed4dd4a073537f9453e0170229a9c4a8da",
+    "extractionDate": "2026-09-01",
     "observedMonths": [
       1,
       2,
@@ -34,10 +35,11 @@
       4,
       5,
       6,
-      7
+      7,
+      8
     ],
-    "coverage": "7 of 12 months",
-    "workbookTotalInvalid": true
+    "coverage": "8 of 12 months",
+    "workbookTotalInvalid": false
   },
   "fuel-2569": {
     "workbookTotal": 396.37,
@@ -46,7 +48,7 @@
     "classification": "CONFIRMED_XLSX",
     "extractionScript": "scripts/extract-workbook.mjs",
     "sourceSha256": "0e610a4b22ecfdc781d9c14d8b4e4c10ec8189ff019206b631507bb93e121566",
-    "extractionDate": "2026-08-28",
+    "extractionDate": "2026-09-01",
     "observedMonths": [
       1,
       2,
@@ -66,7 +68,7 @@
     "classification": "CONFIRMED_XLSX",
     "extractionScript": "scripts/extract-workbook.mjs",
     "sourceSha256": "4d7d1560381563d7cb7e3aa2d8b63ba3b4df05ce0dcc5b406e2b437c5dd06354",
-    "extractionDate": "2026-08-28",
+    "extractionDate": "2026-09-01",
     "observedMonths": [
       1,
       2,
@@ -86,7 +88,7 @@
     "classification": "CONFIRMED_XLSX",
     "extractionScript": "scripts/extract-workbook.mjs",
     "sourceSha256": "02b1f624796e3ce49599adb0837712a0ac5cac3794a4cabf5bc404501d398df2",
-    "extractionDate": "2026-08-28",
+    "extractionDate": "2026-09-01",
     "observedMonths": [
       1,
       2,
@@ -105,8 +107,8 @@
     "sourceSheet": "สรุปการคำนวณ ปี 2569",
     "classification": "CONFIRMED_XLSX",
     "extractionScript": "scripts/extract-workbook.mjs",
-    "sourceSha256": "8946f4fe8019be0b277122dadf563e076ed2e28f2bf48689c4944530db681162",
-    "extractionDate": "2026-08-28",
+    "sourceSha256": "d0a75e4cf05319112d10b4d877174782041214678f14ab6875c293769e4a352d",
+    "extractionDate": "2026-09-01",
     "observedMonths": [
       1,
       2,
@@ -126,7 +128,7 @@
     "classification": "CONFIRMED_XLSX",
     "extractionScript": "scripts/extract-workbook.mjs",
     "sourceSha256": "5cf3db1275444898d03d6a5cb93b16b8f8fbc67f90e4180b50768e36b47cc18f",
-    "extractionDate": "2026-08-28",
+    "extractionDate": "2026-09-01",
     "observedMonths": [
       1,
       2,

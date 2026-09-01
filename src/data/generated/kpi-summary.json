@@ -7,23 +7,21 @@
       "labelTh": "การใช้ไฟฟ้า",
       "unit": "kWh",
       "yearBE": 2569,
-      "value": 264594.4,
+      "value": 301804.8,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 403036.80000000005,
       "yoyChange": {
-        "absolute": -138442.40000000002,
-        "percent": -34,
+        "absolute": -101232.00000000006,
+        "percent": -25,
         "direction": "down"
       },
       "dataQuality": {
         "valid": true,
-        "warnings": [
-          "Workbook total row unusable (corrupt negative cell in canonical range) — total reconciliation skipped; monthly values confirmed against the 2569 sheet. Data-owner correction required before annual claims."
-        ],
-        "reconciliationDifference": null
+        "warnings": [],
+        "reconciliationDifference": 0
       },
-      "sourceFile": "1.2electric.xlsx (energy-2569.csv) — partial, 7 of 12 months",
+      "sourceFile": "1.2electric.xlsx (energy-2569.csv) — partial, 8 of 12 months",
       "verified": false
     },
     {
@@ -32,23 +30,21 @@
       "labelTh": "การใช้น้ำ",
       "unit": "m³",
       "yearBE": 2569,
-      "value": 5572.03,
+      "value": 6164.94,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 8337.5,
       "yoyChange": {
-        "absolute": -2765.4700000000003,
-        "percent": -33,
+        "absolute": -2172.5600000000004,
+        "percent": -26,
         "direction": "down"
       },
       "dataQuality": {
         "valid": true,
-        "warnings": [
-          "Workbook total row unusable (corrupt negative cell in canonical range) — total reconciliation skipped; monthly values confirmed against the 2569 sheet. Data-owner correction required before annual claims."
-        ],
-        "reconciliationDifference": null
+        "warnings": [],
+        "reconciliationDifference": 0
       },
-      "sourceFile": "1.1Water.xlsx (water-2569.csv) — partial, 7 of 12 months",
+      "sourceFile": "1.1Water.xlsx (water-2569.csv) — partial, 8 of 12 months",
       "verified": false
     },
     {

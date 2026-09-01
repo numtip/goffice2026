@@ -43,15 +43,15 @@ function readMetric(name) {
 }
 
 describe('buildMonthlySeries — missing months are null, never zero', () => {
-  it('energy 2569: 7 populated months + 5 nulls; baseline 12 values', () => {
+  it('energy 2569: 8 populated months + 4 nulls; baseline 12 values', () => {
     const metric = readMetric('energy');
     const series = buildMonthlySeries(metric, 'en');
     assert.equal(series.labels.length, 12);
     assert.equal(series.baseline.length, 12);
     assert.equal(series.baseline.filter((v) => v !== null).length, 12, 'baseline 2568 is complete');
     assert.equal(series.current.length, 12);
-    assert.equal(series.current.filter((v) => v !== null).length, 7, 'energy 2569 has Jan–Jul');
-    assert.equal(series.current.filter((v) => v === null).length, 5, 'Aug–Dec must be null, NOT 0');
+    assert.equal(series.current.filter((v) => v !== null).length, 8, 'energy 2569 has Jan–Aug');
+    assert.equal(series.current.filter((v) => v === null).length, 4, 'Sep–Dec must be null, NOT 0');
     assert.equal(series.current.includes(0), false, 'missing months must never be 0');
     assert.equal(series.unit, 'kWh');
     assert.equal(series.baselineYear, 2568);
@@ -121,7 +121,7 @@ describe('buildMonthlyOption — serializable + data contract', () => {
     const currentBar = barSeries.find((s) => s.name === '2569 Current');
     assert.ok(currentBar, 'current series present');
     assert.equal(currentBar.data.length, 12);
-    assert.equal(currentBar.data.filter((v) => v === null).length, 5);
+    assert.equal(currentBar.data.filter((v) => v === null).length, 4);
     assert.equal(currentBar.data.includes(0), false);
     assert.equal(roundTripped.yAxis.name, 'kWh', 'unit propagated to axis');
     assert.equal(roundTripped.aria.enabled, true);

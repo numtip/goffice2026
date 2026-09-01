@@ -137,31 +137,34 @@
           "month": 7,
           "value": 43975.2,
           "label": "Jul"
+        },
+        {
+          "month": 8,
+          "value": 37210.4,
+          "label": "Aug"
         }
       ],
-      "total": 264594.4,
-      "average": 37799.2,
+      "total": 301804.8,
+      "average": 37725.6,
       "aggregation": "sum",
       "dataStatus": "in_progress",
-      "source": "1.2electric.xlsx (energy-2569.csv) — partial, 7 of 12 months",
+      "source": "1.2electric.xlsx (energy-2569.csv) — partial, 8 of 12 months",
       "quality": {
         "valid": true,
-        "warnings": [
-          "Workbook total row unusable (corrupt negative cell in canonical range) — total reconciliation skipped; monthly values confirmed against the 2569 sheet. Data-owner correction required before annual claims."
-        ],
-        "reconciliationDifference": null
+        "warnings": [],
+        "reconciliationDifference": 0
       },
       "dataClassification": "CONFIRMED_XLSX",
       "datasetState": "PUBLISHABLE_PARTIAL",
-      "latestDataMonth": 7,
-      "updated": "2026-08-28",
+      "latestDataMonth": 8,
+      "updated": "2026-09-01",
       "provenance": {
         "sourceWorkbook": "1.2electric.xlsx",
         "sourceSheet": "2569",
         "extractionScript": "scripts/extract-workbook.mjs",
-        "sourceSha256": "527be5f01eeb0f1b7faa39017afbb663045804d5d3ed126f2afe8412684faf1c",
-        "extractionDate": "2026-08-28",
-        "coverage": "7 of 12 months",
+        "sourceSha256": "097d0cfc031045e2db0ff989ffc72aed4dd4a073537f9453e0170229a9c4a8da",
+        "extractionDate": "2026-09-01",
+        "coverage": "8 of 12 months",
         "observedMonths": [
           1,
           2,
@@ -169,7 +172,8 @@
           4,
           5,
           6,
-          7
+          7,
+          8
         ],
         "validationStatus": "in_progress",
         "verification": {
@@ -191,8 +195,8 @@
     "months": []
   },
   "yoyChange": {
-    "absolute": -138442.40000000002,
-    "percent": -34,
+    "absolute": -101232.00000000006,
+    "percent": -25,
     "direction": "down"
   },
   "relatedIndicators": [

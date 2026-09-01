@@ -164,13 +164,13 @@
       "dataClassification": "CONFIRMED_XLSX",
       "datasetState": "PUBLISHABLE_PARTIAL",
       "latestDataMonth": 7,
-      "updated": "2026-08-28",
+      "updated": "2026-09-01",
       "provenance": {
         "sourceWorkbook": "1.6GreenHouseGas2026_New.xlsx",
         "sourceSheet": "สรุปการคำนวณ ปี 2569",
         "extractionScript": "scripts/extract-workbook.mjs",
-        "sourceSha256": "8946f4fe8019be0b277122dadf563e076ed2e28f2bf48689c4944530db681162",
-        "extractionDate": "2026-08-28",
+        "sourceSha256": "d0a75e4cf05319112d10b4d877174782041214678f14ab6875c293769e4a352d",
+        "extractionDate": "2026-09-01",
         "coverage": "7 of 12 months",
         "observedMonths": [
           1,
