@@ -15,6 +15,7 @@ import ResourcePulseGrid from '../../../components/dashboard/ResourcePulseGrid.a
 import PerformanceExplorer from '../../../components/dashboard/PerformanceExplorer.astro';
 import PartialYoyExplorer from '../../../components/dashboard/PartialYoyExplorer.astro';
 import { buildExplorerVM } from '../../../utils/dashboard-explorer-vm';
+import { computePartialYoy } from '../../../utils/dashboard-partial-yoy';
 import NormalizedTrendChart from '../../../components/dashboard/NormalizedTrendChart.astro';
 import DataReadinessMatrix from '../../../components/dashboard/DataReadinessMatrix.astro';
 import JourneyLinks from '../../../components/ui/JourneyLinks.astro';
@@ -108,17 +109,22 @@ const insightIncomplete: { label: string; monthsCount: number; color: string }[]
 dashboards.forEach((d) => {
   const m = genMap[d.id];
   if (!m) return;
-  const yoy = m.yoyChange;
   const current = m.years[m.currentYear.toString()];
   const monthsCount = current?.months.length ?? 0;
   const label = resourceLabels[d.id] ?? d.title;
 
+  // Same-period overlap YoY — NEVER the frozen full-year metric.yoyChange.
+  // Partial-year data must not be compared against a full-year baseline.
+  const overlap = computePartialYoy(m, { id: d.id });
+  const yoyPct = overlap.percent;
+  const yoyDir = overlap.direction;
+
   // All six resource metrics (energy/water/fuel/paper/waste/ghg) are
   // consumptions, mass, or emissions where LOWER is better — including waste
   // MASS (kg). A YoY decrease is an improvement.
-  if (yoy && current && monthsCount > 0 && yoy.direction !== 'stable') {
-    const isImprovement = yoy.direction === 'down';
-    const item = { label, yoyPct: yoy.percent, monthsCount, color: d.color };
+  if (yoyPct !== null && monthsCount > 0 && yoyDir && yoyDir !== 'stable') {
+    const isImprovement = yoyDir === 'down';
+    const item = { label, yoyPct, monthsCount, color: d.color };
     if (isImprovement) insightImproved.push(item);
     else insightAttention.push(item);
   }
@@ -165,6 +171,9 @@ if (riskCandidates.length > 0) {
     <!-- 3. Key Insights Panel -->
     <section class="dashboard-section mb-8">
       <h2 class="text-lg font-bold text-on-surface tracking-tight mb-3">Executive Insights</h2>
+      <p class="text-xs text-on-surface-variant mb-3 max-w-3xl">
+        Year-over-year figures compare only months present in both years (same-period) — not full-year comparisons.
+      </p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Improving (top-left) -->
         <div class="bg-emerald-50/60 rounded-stitch-lg border-l-4 border-l-emerald-500 border border-outline-variant/20 p-4">

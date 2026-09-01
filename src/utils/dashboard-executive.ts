@@ -6,6 +6,25 @@
  */
 
 import type { MultiYearMetric, YearData } from './multi-year-schema';
+import { computePartialYoy } from './dashboard-partial-yoy';
+
+const MONTHS_TH = ['', 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+const MONTHS_EN = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/**
+ * Same-period comparison label for partial years, e.g. "เทียบช่วงเวลาเดียวกัน
+ * (ม.ค.–ก.ค.)" / "vs same-period baseline (Jan–Jul)". Empty when not comparable.
+ */
+function samePeriodLabel(months: number[], th: boolean): string {
+  if (months.length === 0) return '';
+  const first = months[0];
+  const last = months[months.length - 1];
+  const m = th ? MONTHS_TH : MONTHS_EN;
+  const span = `${m[first]}–${m[last]}`;
+  return th
+    ? `เทียบช่วงเวลาเดียวกัน (${span})`
+    : `vs same-period baseline (${span})`;
+}
 
 /**
  * Indicator direction configuration
@@ -314,28 +333,41 @@ export function generateExecutiveInsights(
     ? getComparableMonths(baselineYear, currentYear)
     : null;
 
-  // === Positive Findings ===
-  if (metric.yoyChange && baselineYear && currentYear && comparableMonths && direction !== 'neutral') {
-    const isImprovement = direction === 'lower-is-better'
-      ? metric.yoyChange.direction === 'down'
-      : metric.yoyChange.direction === 'up';
+  // === Same-period reference for the current year ===
+  // Partial-year data must NEVER be compared against a full-year baseline total
+  // (that would fabricate claims such as "-35% vs 222.68"). The frozen full-year
+  // metric.yoyChange is used only for complete (12-month) datasets; partial years
+  // use overlap YoY (computePartialYoy) over the months present in both years.
+  const isCompleteYear = coverage >= 12;
+  const overlapYoy = computePartialYoy(metric, { id: metric.metric });
+  const yoyPercent = isCompleteYear ? (metric.yoyChange?.percent ?? null) : overlapYoy.percent;
+  const yoyDirection = isCompleteYear ? (metric.yoyChange?.direction ?? null) : overlapYoy.direction;
+  const periodLabel = isCompleteYear
+    ? (th ? 'เทียบปีฐาน' : 'vs baseline')
+    : samePeriodLabel(overlapYoy.comparableMonths, th);
 
-    if (isImprovement && metric.yoyChange.direction !== 'stable') {
+  // === Positive Findings ===
+  if (yoyPercent !== null && baselineYear && currentYear && comparableMonths && direction !== 'neutral') {
+    const isImprovement = direction === 'lower-is-better'
+      ? yoyDirection === 'down'
+      : yoyDirection === 'up';
+
+    if (isImprovement && yoyDirection !== 'stable') {
       insights.push({
         type: 'positive',
         text: th
-          ? `${metric.label} ${direction === 'lower-is-better' ? 'ลดลง' : 'เพิ่มขึ้น'} ${Math.abs(metric.yoyChange.percent)}% เทียบปีฐาน (ดีขึ้น)`
-          : `${metric.label} ${direction === 'lower-is-better' ? 'decreased' : 'increased'} by ${Math.abs(metric.yoyChange.percent)}% vs baseline (improvement)`,
+          ? `${metric.label} ${direction === 'lower-is-better' ? 'ลดลง' : 'เพิ่มขึ้น'} ${Math.abs(yoyPercent)}% ${periodLabel} (ดีขึ้น)`
+          : `${metric.label} ${direction === 'lower-is-better' ? 'decreased' : 'increased'} by ${Math.abs(yoyPercent)}% ${periodLabel} (improvement)`,
       });
-    } else if (metric.yoyChange.direction === 'stable') {
+    } else if (yoyDirection === 'stable') {
       insights.push({
         type: 'positive',
         text: th
-          ? `${metric.label} คงที่เทียบปีฐาน (เสถียร)`
-          : `${metric.label} stable vs baseline (stable)`,
+          ? `${metric.label} คงที่${isCompleteYear ? 'เทียบปีฐาน' : ` (${periodLabel})`} (เสถียร)`
+          : `${metric.label} stable ${periodLabel} (stable)`,
       });
     }
-  } else if (metric.yoyChange && direction === 'neutral') {
+  } else if (yoyPercent !== null && direction === 'neutral') {
     insights.push({
       type: 'status',
       text: th
@@ -360,17 +392,17 @@ export function generateExecutiveInsights(
   }
 
   // === Attention Points ===
-  if (metric.yoyChange && baselineYear && currentYear && comparableMonths && direction !== 'neutral') {
+  if (yoyPercent !== null && baselineYear && currentYear && comparableMonths && direction !== 'neutral') {
     const isConcern = direction === 'lower-is-better'
-      ? metric.yoyChange.direction === 'up'
-      : metric.yoyChange.direction === 'down';
+      ? yoyDirection === 'up'
+      : yoyDirection === 'down';
 
-    if (isConcern && metric.yoyChange.direction !== 'stable') {
+    if (isConcern && yoyDirection !== 'stable') {
       insights.push({
         type: 'attention',
         text: th
-          ? `${metric.label} ${direction === 'lower-is-better' ? 'เพิ่มขึ้น' : 'ลดลง'} ${Math.abs(metric.yoyChange.percent)}% เทียบปีฐาน (ต้องติดตาม)`
-          : `${metric.label} ${direction === 'lower-is-better' ? 'increased' : 'decreased'} by ${Math.abs(metric.yoyChange.percent)}% vs baseline (monitor)`,
+          ? `${metric.label} ${direction === 'lower-is-better' ? 'เพิ่มขึ้น' : 'ลดลง'} ${Math.abs(yoyPercent)}% ${periodLabel} (ต้องติดตาม)`
+          : `${metric.label} ${direction === 'lower-is-better' ? 'increased' : 'decreased'} by ${Math.abs(yoyPercent)}% ${periodLabel} (monitor)`,
       });
     }
   }
