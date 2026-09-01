@@ -8,8 +8,18 @@
  * - Confidence caps and safeguards
  */
 
-import { resolveIndicatorDirection, calculateRecencyScore, getComparableMonths, calculateConfidence } from '../src/utils/dashboard-executive.ts';
+import { resolveIndicatorDirection, calculateRecencyScore, getComparableMonths, calculateConfidence, generateExecutiveInsights } from '../src/utils/dashboard-executive.ts';
 import assert from 'node:assert';
+import { readFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const GENERATED_DIR = join(__dirname, '..', 'src', 'data', 'generated');
+
+function readMetric(name) {
+  return JSON.parse(readFileSync(join(GENERATED_DIR, `${name}.json`), 'utf-8'));
+}
 
 console.log('Testing dashboard-executive.ts...\n');
 
@@ -335,6 +345,35 @@ test('comparable months ignore null/invalid values', () => {
   assert.strictEqual(result.monthCount, 4); // Months 1, 5, 6, 7 have valid values in both
   assert.deepStrictEqual(result.baselineValues, [100, 110, 120, 130]);
   assert.deepStrictEqual(result.currentValues, [95, 100, 115, 125]);
+});
+
+// === TEST 19: GHG partial-year insight uses same-period, never the frozen full-year -35% ===
+test('GHG partial-year insight: same-period +11.8% monitor, never "-35% vs baseline"', () => {
+  const metric = readMetric('ghg');
+  const insights = generateExecutiveInsights(metric, 'en');
+  const texts = insights.map((i) => i.text);
+
+  // No false annual-reduction claim from comparing 144.8 (partial) vs 222.68 (full).
+  assert.strictEqual(
+    texts.some((t) => t.includes('decreased by 35') || t.includes('-35%')),
+    false,
+    'must never claim a -35% reduction from a partial-year vs full-year comparison',
+  );
+  // No "vs baseline (improvement)" phrasing for the partial GHG increase.
+  assert.strictEqual(
+    texts.some((t) => t.includes('vs baseline (improvement)')),
+    false,
+  );
+
+  // Same-period comparison is surfaced instead.
+  const attention = insights.find((i) => i.type === 'attention');
+  assert.ok(attention, 'GHG partial-year increase must be flagged for attention');
+  assert.strictEqual(attention.text.includes('increased by 11.8%'), true, 'same-period +11.8% shown');
+  assert.strictEqual(attention.text.includes('same-period baseline (Jan–Jul)'), true, 'same-period / Jan–Jul label shown');
+
+  // FY2569 stays partial/in_progress — no annual completion claim.
+  const status = insights.find((i) => i.type === 'status');
+  assert.ok(status && status.text.includes('Full-year trends not yet reliable'), 'partial-year caveat kept');
 });
 
 // Summary

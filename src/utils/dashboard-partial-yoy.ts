@@ -155,7 +155,9 @@ export function computePartialYoy(
   if (baselineOverlapTotal !== null && currentOverlapTotal !== null) {
     absolute = currentOverlapTotal - baselineOverlapTotal;
     if (baselineOverlapTotal !== 0) {
-      percent = Math.round((absolute / baselineOverlapTotal) * 100);
+      // One-decimal precision (e.g. GHG Jan–Jul overlap +11.8%), never a
+      // full-year comparison disguised as a same-period one.
+      percent = Math.round((absolute / baselineOverlapTotal) * 1000) / 10;
     }
   }
 

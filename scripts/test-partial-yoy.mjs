@@ -35,7 +35,7 @@ describe('computePartialYoy — energy partial Jan–Aug', () => {
   it('percent ≠ frozen metric.yoyChange (-25); overlap YoY is independent', () => {
     assert.equal(metric.yoyChange.percent, -25, 'frozen full-year YoY remains -25');
     assert.notEqual(result.percent, metric.yoyChange.percent);
-    assert.equal(result.percent, 10, 'Jan–Aug overlap YoY for energy');
+    assert.equal(result.percent, 10.5, 'Jan–Aug overlap YoY for energy (one-decimal)');
     assert.equal(result.direction, 'up');
   });
 
@@ -66,7 +66,7 @@ describe('computePartialYoy — water partial', () => {
     assert.equal(result.comparableCount, 8);
     assert.equal(metric.yoyChange.percent, -26);
     assert.notEqual(result.percent, -26);
-    assert.equal(result.percent, 18);
+    assert.equal(result.percent, 17.8);
   });
 });
 
@@ -100,7 +100,7 @@ describe('computePartialYoy — recycling_rate pending; fuel/paper/waste/ghg par
     assert.equal(result.comparableCount, 7);
     assert.equal(metric.yoyChange.percent, -44);
     assert.notEqual(result.percent, -44);
-    assert.equal(result.percent, -3);
+    assert.equal(result.percent, -2.7);
     assert.equal(result.direction, 'down');
   });
 
@@ -113,15 +113,20 @@ describe('computePartialYoy — recycling_rate pending; fuel/paper/waste/ghg par
     assert.equal(result.direction, 'up');
   });
 
-  it('ghg is partial Jan–Jul (not pending)', () => {
+  it('ghg is partial Jan–Jul with same-period +11.8% (never the frozen -35% full-year)', () => {
     const metric = readMetric('ghg');
     const result = computePartialYoy(metric, { id: 'ghg' });
     assert.equal(result.status, 'partial');
     assert.equal(result.comparableCount, 7);
-    // FY2568 baseline replaced (222.68 tCO2e): frozen full-year YoY = -35%.
-    assert.equal(metric.yoyChange.percent, -35);
-    assert.notEqual(result.percent, -35);
-    assert.equal(result.percent, 12);
+    assert.deepEqual(result.comparableMonths, [1, 2, 3, 4, 5, 6, 7]);
+    // Frozen full-year YoY compares 144.8 (partial) vs 222.68 (full) — never used.
+    assert.equal(metric.yoyChange.percent, -35, 'frozen full-year YoY remains the full-year value');
+    assert.notEqual(result.percent, metric.yoyChange.percent);
+    // Same-period overlap: FY2568 Jan–Jul 129.511 vs FY2569 Jan–Jul 144.803.
+    assert.ok(Math.abs(result.baselineOverlapTotal - 129.511) < 0.001, 'baseline overlap 129.511');
+    assert.ok(Math.abs(result.currentOverlapTotal - 144.803) < 0.001, 'current overlap 144.803');
+    assert.ok(Math.abs(result.absolute - 15.292) < 0.001, 'absolute delta +15.292');
+    assert.equal(result.percent, 11.8);
     assert.equal(result.direction, 'up');
   });
 });
