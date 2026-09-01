@@ -324,6 +324,11 @@ describe('Current metric values reconcile to audited FY2569 source', () => {
   });
 
   it('annual total equals the sum of observed monthly values (no fake totals)', () => {
+    const EXPECTED = {
+      energy: [1, 2, 3, 4, 5, 6, 7, 8], water: [1, 2, 3, 4, 5, 6, 7, 8],
+      fuel: [1, 2, 3, 4, 5, 6, 7], paper: [1, 2, 3, 4, 5, 6, 7],
+      waste: [1, 2, 3, 4, 5, 6, 7], ghg: [1, 2, 3, 4, 5, 6, 7],
+    };
     for (const metric of METRICS) {
       const data = readJson(`src/data/generated/${metric}.json`);
       const y = data.years['2569'];
@@ -331,7 +336,7 @@ describe('Current metric values reconcile to audited FY2569 source', () => {
       assert.equal(y.total, calc, `${metric} total must be the sum of months`);
       // Missing months are absent — never zero-filled
       const months = y.months.map((m) => m.month);
-      assert.deepEqual(months, [1, 2, 3, 4, 5, 6, 7], `${metric} Jan–Jul observed`);
+      assert.deepEqual(months, EXPECTED[metric], `${metric} observed months from the synced workbook`);
     }
   });
 
@@ -344,16 +349,13 @@ describe('Current metric values reconcile to audited FY2569 source', () => {
     assert.equal(y.provenance.sourceWorkbook, '1.3Gassolene.xlsx');
   });
 
-  it('energy/water flag the unusable workbook total instead of hiding it', () => {
-    for (const metric of ['energy', 'water']) {
+  it('all six metrics reconcile their totals to the workbook (no hidden corruption)', () => {
+    for (const metric of METRICS) {
       const data = readJson(`src/data/generated/${metric}.json`);
       const y = data.years['2569'];
       assert.equal(y.quality.valid, true, `${metric} monthly values confirmed`);
-      assert.equal(y.quality.reconciliationDifference, null);
-      assert.ok(
-        y.quality.warnings.some((w) => w.includes('corrupt negative cell')),
-        `${metric} must disclose the unusable workbook total`,
-      );
+      assert.equal(y.quality.reconciliationDifference, 0, `${metric} total reconciles`);
+      assert.deepEqual(y.quality.warnings, [], `${metric} no corrupt-total warnings`);
     }
   });
 });

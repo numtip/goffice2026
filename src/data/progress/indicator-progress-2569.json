@@ -158,7 +158,7 @@
       },
       "updatedAt": "2026-08-31",
       "owner": "หมวด 1",
-      "notes": "FY2569 GHG data sourced from canonical workbook 1.6GreenHouseGas2026_New.xlsx (same as dashboard /dashboard/ghg/). Coverage: 7 of 12 months (Jan-Jul), total 144.8 tCO₂e, sourceSha256 8946f4fe... Validation: in_progress."
+      "notes": "FY2569 GHG data sourced from canonical workbook 1.6GreenHouseGas2026_New.xlsx (same as dashboard /dashboard/ghg/). Coverage: 7 of 12 months (Jan-Jul), total 144.8 tCO₂e, sourceSha256 d0a75e4c... Validation: in_progress."
     },
     {
       "indicator": "1.5.2",
@@ -171,7 +171,7 @@
       },
       "updatedAt": "2026-08-31",
       "owner": "หมวด 1",
-      "notes": "FY2569 GHG analysis vs target uses the same canonical workbook as 1.5.1: 1.6GreenHouseGas2026_New.xlsx. Coverage: 7 of 12 months (Jan-Jul), total 144.8 tCO₂e, sourceSha256 8946f4fe... Validation: in_progress."
+      "notes": "FY2569 GHG analysis vs target uses the same canonical workbook as 1.5.1: 1.6GreenHouseGas2026_New.xlsx. Coverage: 7 of 12 months (Jan-Jul), total 144.8 tCO₂e, sourceSha256 d0a75e4c... Validation: in_progress."
     },
     {
       "indicator": "1.5.3",

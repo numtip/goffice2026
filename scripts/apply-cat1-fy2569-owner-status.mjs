@@ -38,7 +38,7 @@ function find(code) {
   item.evidenceStatus = 'available_unverified';
   item.updatedAt = '2026-08-31';
   item.source = { type: 'repository', ref: 'src/data/generated/ghg.json' };
-  item.notes = 'FY2569 GHG data sourced from canonical workbook 1.6GreenHouseGas2026_New.xlsx (same as dashboard /dashboard/ghg/). Coverage: 7 of 12 months (Jan-Jul), total 144.8 tCO₂e, sourceSha256 8946f4fe... Validation: in_progress.';
+  item.notes = 'FY2569 GHG data sourced from canonical workbook 1.6GreenHouseGas2026_New.xlsx (same as dashboard /dashboard/ghg/). Coverage: 7 of 12 months (Jan-Jul), total 144.8 tCO₂e, sourceSha256 d0a75e4c... Validation: in_progress.';
   console.log('✓ 1.5.1 → in_progress / available_unverified (GHG workbook)');
 }
 
@@ -50,7 +50,7 @@ function find(code) {
   item.evidenceStatus = 'available_unverified';
   item.updatedAt = '2026-08-31';
   item.source = { type: 'repository', ref: 'src/data/generated/ghg.json' };
-  item.notes = 'FY2569 GHG analysis vs target uses the same canonical workbook as 1.5.1: 1.6GreenHouseGas2026_New.xlsx. Coverage: 7 of 12 months (Jan-Jul), total 144.8 tCO₂e, sourceSha256 8946f4fe... Validation: in_progress.';
+  item.notes = 'FY2569 GHG analysis vs target uses the same canonical workbook as 1.5.1: 1.6GreenHouseGas2026_New.xlsx. Coverage: 7 of 12 months (Jan-Jul), total 144.8 tCO₂e, sourceSha256 d0a75e4c... Validation: in_progress.';
   console.log('✓ 1.5.2 → in_progress / available_unverified (GHG workbook)');
 }
 

@@ -74,46 +74,55 @@ describe('FY2569 current-year records reconcile (edge)', () => {
     }
   });
 
-  it('months are strictly Jan–Jul (1..7) with no zero-fill for Aug–Dec', () => {
+  it('months are strictly Jan–Aug for energy/water, Jan–Jul for others, with no zero-fill', () => {
+    const EXPECTED = {
+      energy: { months: [1, 2, 3, 4, 5, 6, 7, 8], count: 8 },
+      water: { months: [1, 2, 3, 4, 5, 6, 7, 8], count: 8 },
+      fuel: { months: [1, 2, 3, 4, 5, 6, 7], count: 7 },
+      paper: { months: [1, 2, 3, 4, 5, 6, 7], count: 7 },
+      waste: { months: [1, 2, 3, 4, 5, 6, 7], count: 7 },
+      ghg: { months: [1, 2, 3, 4, 5, 6, 7], count: 7 },
+    };
     for (const metric of METRICS) {
       const y = currentYear(metric);
-      assert.equal(y.months.length, 7, `${metric} has exactly 7 observed months`);
-      assert.deepEqual(y.months.map((m) => m.month), [1, 2, 3, 4, 5, 6, 7], `${metric} observed month range`);
+      const exp = EXPECTED[metric];
+      assert.equal(y.months.length, exp.count, `${metric} has exactly ${exp.count} observed months`);
+      assert.deepEqual(y.months.map((m) => m.month), exp.months, `${metric} observed month range`);
       assert.equal(y.months.some((m) => m.value === 0), false, `${metric} observed values are never fabricated zeros`);
-      assert.equal(y.latestDataMonth, 7, `${metric} latestDataMonth`);
+      assert.equal(y.latestDataMonth, exp.months[exp.months.length - 1], `${metric} latestDataMonth`);
     }
   });
 
   it('provenance is complete: verification state, SHA-256, coverage, observed months, extraction date', () => {
+    const COVERAGE = {
+      energy: '8 of 12 months', water: '8 of 12 months',
+      fuel: '7 of 12 months', paper: '7 of 12 months',
+      waste: '7 of 12 months', ghg: '7 of 12 months',
+    };
+    const OBSERVED = {
+      energy: [1, 2, 3, 4, 5, 6, 7, 8], water: [1, 2, 3, 4, 5, 6, 7, 8],
+      fuel: [1, 2, 3, 4, 5, 6, 7], paper: [1, 2, 3, 4, 5, 6, 7],
+      waste: [1, 2, 3, 4, 5, 6, 7], ghg: [1, 2, 3, 4, 5, 6, 7],
+    };
     for (const metric of METRICS) {
       const y = currentYear(metric);
       assert.ok(y.provenance, `${metric} has provenance`);
       assert.equal(y.provenance.verification.status, 'available_unverified', `${metric} not human-verified`);
       assert.equal(y.provenance.verification.humanVerificationRequired, true, `${metric} requires human review`);
       assert.match(y.provenance.sourceSha256, /^[0-9a-f]{64}$/, `${metric} sourceSha256 must be 64 lowercase hex chars`);
-      assert.equal(y.provenance.coverage, '7 of 12 months', `${metric} coverage string`);
-      assert.deepEqual(y.provenance.observedMonths, [1, 2, 3, 4, 5, 6, 7], `${metric} observedMonths`);
+      assert.equal(y.provenance.coverage, COVERAGE[metric], `${metric} coverage string`);
+      assert.deepEqual(y.provenance.observedMonths, OBSERVED[metric], `${metric} observedMonths`);
       assert.ok(y.provenance.extractionDate, `${metric} has extractionDate`);
       assert.equal(y.datasetState, 'PUBLISHABLE_PARTIAL', `${metric} datasetState`);
     }
   });
 
-  it('energy/water flag the unusable workbook total via quality.warnings while fuel/paper/waste/ghg reconcile to 0', () => {
-    for (const metric of ['energy', 'water']) {
+  it('all six metrics reconcile their total to the monthly sum with zero warnings', () => {
+    for (const metric of METRICS) {
       const y = currentYear(metric);
       assert.equal(y.quality.valid, true, `${metric} monthly values confirmed`);
-      assert.equal(y.quality.reconciliationDifference, null, `${metric} reconciliation skipped`);
-      assert.equal(
-        y.quality.warnings.some((w) => w.includes('Workbook total row unusable')),
-        true,
-        `${metric} must disclose the unusable workbook total`,
-      );
-    }
-    for (const metric of ['fuel', 'paper', 'waste', 'ghg']) {
-      const y = currentYear(metric);
-      assert.equal(y.quality.valid, true, `${metric} quality.valid`);
-      assert.equal(y.quality.reconciliationDifference, 0, `${metric} reconciled to 0`);
-      assert.deepEqual(y.quality.warnings, [], `${metric} no warnings`);
+      assert.equal(y.quality.reconciliationDifference, 0, `${metric} total reconciles with the workbook`);
+      assert.deepEqual(y.quality.warnings, [], `${metric} no corrupt-total warnings`);
     }
   });
 });
@@ -179,23 +188,27 @@ describe('buildMonthlySeries — partial current years are unverified, nulls nev
   });
 
   it('missing months are null (never 0) and observed values are preserved verbatim', () => {
+    const POPULATED = {
+      energy: 8, water: 8, fuel: 7, paper: 7, waste: 7, ghg: 7,
+    };
     for (const metric of METRICS) {
       const y = currentYear(metric);
       const series = buildMonthlySeries(readMetric(metric), 'en');
+      const populated = POPULATED[metric];
       assert.equal(series.current.length, 12, `${metric} 12 month slots`);
-      assert.equal(series.current.filter((v) => v !== null).length, 7, `${metric} Jan–Jul populated`);
-      assert.equal(series.current.filter((v) => v === null).length, 5, `${metric} Aug–Dec must be null`);
+      assert.equal(series.current.filter((v) => v !== null).length, populated, `${metric} observed months populated`);
+      assert.equal(series.current.filter((v) => v === null).length, 12 - populated, `${metric} missing months must be null`);
       assert.equal(series.current.includes(0), false, `${metric} no fabricated zeros`);
       assert.deepEqual(
         series.current.filter((v) => v !== null),
         y.months.map((m) => m.value),
         `${metric} observed values match the generated JSON`,
       );
-      // Month-position mapping: months 1..7 hold values, months 8..12 are null.
+      // Month-position mapping: months 1..N hold values, the rest are null.
       for (const m of y.months) {
         assert.equal(series.current[m.month - 1], m.value, `${metric} month ${m.month}`);
       }
-      for (let i = 7; i < 12; i++) {
+      for (let i = populated; i < 12; i++) {
         assert.equal(series.current[i], null, `${metric} month ${i + 1} is null`);
       }
     }
@@ -307,15 +320,14 @@ builtDescribe('Built dashboard pages — FY2569 provenance + KPI truthfulness (e
     assert.doesNotMatch(html, /recycle_pct/, 'waste page must never present recycling rate as waste mass');
   });
 
-  it('data-current-year-warnings appears only where quality warnings exist (energy/water)', () => {
+  it('data-current-year-warnings appears on NO dashboard once corrupt totals are resolved', () => {
     for (const metric of METRICS) {
       const html = readFileSync(join(DIST_DASHBOARD, metric, 'index.html'), 'utf8');
-      const hasWarnings = html.includes('data-current-year-warnings');
-      if (metric === 'energy' || metric === 'water') {
-        assert.equal(hasWarnings, true, `${metric} must surface its current-year workbook warning`);
-      } else {
-        assert.equal(hasWarnings, false, `${metric} has no current-year quality warnings`);
-      }
+      assert.equal(
+        html.includes('data-current-year-warnings'),
+        false,
+        `${metric} must not surface a current-year warning (all totals reconciled to 0)`,
+      );
     }
   });
 

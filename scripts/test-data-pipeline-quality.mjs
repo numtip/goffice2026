@@ -50,27 +50,26 @@ describe('reconcileTotal (pure helper)', () => {
 });
 
 describe('RC-1: current-year FY2569 data provenance (GO-DATA-3 states)', () => {
-  it('water 2569 is PUBLISHABLE_PARTIAL, CONFIRMED_XLSX from the approved workbook, Jan–Jul', () => {
+  it('water 2569 is PUBLISHABLE_PARTIAL, CONFIRMED_XLSX from the approved workbook, Jan–Aug', () => {
     const data = readGenerated('water.json');
     const y2569 = data.years['2569'];
     assert.equal(y2569.datasetState, 'PUBLISHABLE_PARTIAL');
-    assert.equal(y2569.latestDataMonth, 7);
-    assert.equal(y2569.months.length, 7);
+    assert.equal(y2569.latestDataMonth, 8);
+    assert.equal(y2569.months.length, 8);
     assert.equal(y2569.months[0].month, 1);
     assert.equal(y2569.months[0].value, 1098.4); // verified against workbook 2569 col[6]
     assert.equal(y2569.dataClassification, 'CONFIRMED_XLSX');
     assert.equal(y2569.dataStatus, 'in_progress');
     assert.equal(y2569.quality.valid, true);     // monthly values confirmed against the 2569 sheet
-    // The workbook "รวม" row includes a corrupt negative Aug formula cache,
-    // so total reconciliation is skipped with an explicit warning.
-    assert.equal(y2569.quality.reconciliationDifference, null);
-    assert.equal(
-      y2569.quality.warnings.some((w) => w.includes('Workbook total row unusable')),
-      true,
+    // The synced workbook total reconciles exactly with the monthly sum.
+    assert.equal(y2569.quality.reconciliationDifference, 0);
+    assert.deepEqual(
+      y2569.quality.warnings,
+      [],
     );
-    // Missing Aug–Dec are ABSENT — never zero-filled
+    // Missing Sep–Dec are ABSENT — never zero-filled
     const months = y2569.months.map((m) => m.month);
-    assert.deepEqual(months, [1, 2, 3, 4, 5, 6, 7]);
+    assert.deepEqual(months, [1, 2, 3, 4, 5, 6, 7, 8]);
     // Provenance must carry SHA-256 + extraction date + available_unverified state
     assert.match(y2569.provenance.sourceSha256, /^[0-9a-f]{64}$/);
     assert.ok(y2569.provenance.extractionDate);
@@ -78,20 +77,21 @@ describe('RC-1: current-year FY2569 data provenance (GO-DATA-3 states)', () => {
     assert.equal(y2569.provenance.verification.humanVerificationRequired, true);
   });
 
-  it('energy 2569 is PUBLISHABLE_PARTIAL, CONFIRMED_XLSX from the approved workbook, Jan–Jul', () => {
+  it('energy 2569 is PUBLISHABLE_PARTIAL, CONFIRMED_XLSX from the approved workbook, Jan–Aug', () => {
     const data = readGenerated('energy.json');
     const y2569 = data.years['2569'];
     assert.equal(y2569.datasetState, 'PUBLISHABLE_PARTIAL');
-    assert.equal(y2569.latestDataMonth, 7);
-    assert.equal(y2569.months.length, 7);
+    assert.equal(y2569.latestDataMonth, 8);
+    assert.equal(y2569.months.length, 8);
     assert.equal(y2569.months[0].month, 1);
     assert.equal(y2569.months[0].value, 28618.4); // verified against workbook 2569 col[6]
     assert.equal(y2569.dataClassification, 'CONFIRMED_XLSX');
     assert.equal(y2569.dataStatus, 'in_progress');
     assert.equal(y2569.quality.valid, true);      // monthly values confirmed against the 2569 sheet
-    assert.equal(y2569.quality.reconciliationDifference, null); // corrupt workbook total skipped
+    assert.equal(y2569.quality.reconciliationDifference, 0); // total reconciles with monthly sum
+    assert.deepEqual(y2569.quality.warnings, []);
     const months = y2569.months.map((m) => m.month);
-    assert.deepEqual(months, [1, 2, 3, 4, 5, 6, 7]);
+    assert.deepEqual(months, [1, 2, 3, 4, 5, 6, 7, 8]);
     assert.equal(y2569.provenance.verification.status, 'available_unverified');
   });
 

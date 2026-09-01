@@ -16,10 +16,10 @@
       "fileName": "1.1Water.xlsx",
       "metric": "water",
       "yearBE": 2569,
-      "sha256": "87d3dc99b9c86a365b977a6a4eb73d1defe340fabe1d03aa6d41c64b492a58d9",
-      "sizeBytes": 82429,
-      "modifiedTime": "2026-08-27T13:18:40.000Z",
-      "canonicalFingerprint": "549e560f043d6171",
+      "sha256": "554beacdea923bb7bdb9bea5bea484c6881b8f32a50289ad927f1ce2d5fdde6f",
+      "sizeBytes": 82395,
+      "modifiedTime": "2026-08-31T01:20:14.000Z",
+      "canonicalFingerprint": "270203a59d006015",
       "templateBaselineFingerprint": null,
       "observedMonths": [
         1,
@@ -28,9 +28,10 @@
         4,
         5,
         6,
-        7
+        7,
+        8
       ],
-      "monthCount": 7,
+      "monthCount": 8,
       "datasetState": "PUBLISHABLE_PARTIAL",
       "status": "STAGED"
     },
@@ -38,10 +39,10 @@
       "fileName": "1.2electric.xlsx",
       "metric": "electricity",
       "yearBE": 2569,
-      "sha256": "527be5f01eeb0f1b7faa39017afbb663045804d5d3ed126f2afe8412684faf1c",
-      "sizeBytes": 74467,
-      "modifiedTime": "2026-08-28T07:43:37.000Z",
-      "canonicalFingerprint": "3b8e4153189f2ff4",
+      "sha256": "097d0cfc031045e2db0ff989ffc72aed4dd4a073537f9453e0170229a9c4a8da",
+      "sizeBytes": 74450,
+      "modifiedTime": "2026-08-31T01:20:16.000Z",
+      "canonicalFingerprint": "d8e1fa2688c61b78",
       "templateBaselineFingerprint": null,
       "observedMonths": [
         1,
@@ -50,9 +51,10 @@
         4,
         5,
         6,
-        7
+        7,
+        8
       ],
-      "monthCount": 7,
+      "monthCount": 8,
       "datasetState": "PUBLISHABLE_PARTIAL",
       "status": "STAGED"
     },
@@ -180,9 +182,9 @@
       "fileName": "1.6GreenHouseGas2026_New.xlsx",
       "metric": "ghg",
       "yearBE": 2569,
-      "sha256": "8946f4fe8019be0b277122dadf563e076ed2e28f2bf48689c4944530db681162",
-      "sizeBytes": 523569,
-      "modifiedTime": "2026-08-28T08:14:22.233Z",
+      "sha256": "d0a75e4cf05319112d10b4d877174782041214678f14ab6875c293769e4a352d",
+      "sizeBytes": 520206,
+      "modifiedTime": "2026-08-31T02:30:27.000Z",
       "canonicalFingerprint": "5fe0db3c9e90e813",
       "templateBaselineFingerprint": "1808aca00698c289",
       "observedMonths": [

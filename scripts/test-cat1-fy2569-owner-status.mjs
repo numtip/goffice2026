@@ -120,7 +120,7 @@ describe('1.5.1/1.5.2: cite authoritative FY2569 GHG workbook', () => {
     const sha = ghgData.years['2569'].provenance.sourceSha256;
     const i151 = find('1.5.1');
     const i152 = find('1.5.2');
-    // Notes include truncated SHA prefix (first 8 chars visible: "8946f4fe...")
+    // Notes include truncated SHA prefix (first 8 chars visible: "d0a75e4c...")
     assert.ok(i151.notes.includes(sha.substring(0, 8)));
     assert.ok(i152.notes.includes(sha.substring(0, 8)));
   });
