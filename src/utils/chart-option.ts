@@ -507,9 +507,70 @@ export interface ExplorerOptionInput {
 }
 
 /**
+ * Single-resource monthly line chart for Performance Explorer small multiples.
+ * Each panel has its own Y-axis scaled to the resource unit (kWh, m³, etc.).
+ * Missing months stay null — connectNulls:false.
+ */
+export function buildExplorerSingleOption(input: {
+  resource: ExplorerResource;
+  locale: 'th' | 'en';
+  yearLabel: string;
+  ariaDescription: string;
+}): Record<string, unknown> {
+  const { resource, locale, yearLabel, ariaDescription } = input;
+  const monthNames = MONTH_LABELS[locale].slice(1);
+
+  return {
+    grid: { left: 4, right: 8, top: 8, bottom: 4, containLabel: true },
+    tooltip: {
+      trigger: 'axis',
+      confine: true,
+      axisPointer: { type: 'line' },
+    },
+    xAxis: {
+      type: 'category',
+      data: monthNames,
+      boundaryGap: false,
+      axisLabel: { fontSize: 9, interval: 1 },
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: '#d1d5db' } },
+    },
+    yAxis: {
+      type: 'value',
+      name: resource.unit,
+      nameTextStyle: { fontSize: 10, padding: [0, 0, 0, 4] },
+      axisLabel: { fontSize: 9 },
+      splitLine: { lineStyle: { color: '#e5e7eb', width: 0.5 } },
+    },
+    aria: {
+      enabled: true,
+      decal: { show: false },
+      label: { description: ariaDescription },
+    },
+    series: [
+      {
+        name: `${resource.label} (${yearLabel})`,
+        type: 'line' as const,
+        data: resource.months,
+        smooth: false,
+        connectNulls: false,
+        symbol: 'circle',
+        symbolSize: 4,
+        lineStyle: { width: 2, color: resource.color },
+        itemStyle: { color: resource.color },
+        emphasis: { focus: 'series' as const },
+      },
+    ],
+  };
+}
+
+/**
  * Multi-line option comparing genuine monthly consumption across resources.
  * Values are raw (not normalized) so each resource keeps its own unit; the
  * tooltip shows the resource label + month + value + unit.
+ *
+ * @deprecated Prefer buildExplorerSingleOption in a small-multiples layout —
+ * mixed units on one axis are misleading.
  */
 export function buildExplorerOption(input: ExplorerOptionInput): Record<string, unknown> {
   const { resources, locale, yearLabel, ariaDescription } = input;

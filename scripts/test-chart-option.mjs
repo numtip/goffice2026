@@ -27,6 +27,7 @@ import {
   buildCategoryScoreOption,
   buildCoverageRadialOption,
   buildExplorerOption,
+  buildExplorerSingleOption,
   buildCategoryProgressDonutOption,
   buildProgressStackedBarOption,
   PROGRESS_STATUS_COLORS,
@@ -265,6 +266,49 @@ describe('buildExplorerOption — multi-metric monthly explorer (GO-DASH-V2-B-A)
   it('keeps connectNulls false so gaps are not bridged', () => {
     const option = buildExplorerOption({ resources, locale: 'en', yearLabel: 'FY2569', ariaDescription: 'test' });
     assert.equal(option.series[0].connectNulls, false);
+  });
+});
+
+describe('buildExplorerSingleOption — small-multiples monthly panel (GO-DASH-V2)', () => {
+  const resource = {
+    id: 'energy',
+    label: 'Energy',
+    color: '#006c49',
+    months: [100, 110, null, 130, null, null, null, null, null, null, null, null],
+    unit: 'kWh',
+  };
+
+  it('builds one line series with per-resource Y-axis unit', () => {
+    const option = buildExplorerSingleOption({
+      resource,
+      locale: 'en',
+      yearLabel: 'FY2569',
+      ariaDescription: 'Energy panel',
+    });
+    assert.equal(option.series.length, 1);
+    assert.equal(option.series[0].type, 'line');
+    assert.equal(option.series[0].data.length, 12);
+    assert.equal(option.yAxis.name, 'kWh');
+    assert.equal(option.series[0].connectNulls, false);
+  });
+
+  it('preserves nulls — never converts missing months to 0', () => {
+    const option = buildExplorerSingleOption({
+      resource,
+      locale: 'en',
+      yearLabel: 'FY2569',
+      ariaDescription: 'test',
+    });
+    assert.equal(option.series[0].data[2], null);
+    assert.equal(option.series[0].data.includes(0), false);
+  });
+
+  it('uses localized month labels and is JSON-serializable', () => {
+    const th = buildExplorerSingleOption({ resource, locale: 'th', yearLabel: 'ปี 2569', ariaDescription: 'test' });
+    assert.equal(th.xAxis.data[0], 'ม.ค.');
+    const en = buildExplorerSingleOption({ resource, locale: 'en', yearLabel: 'FY2569', ariaDescription: 'test' });
+    assert.equal(en.xAxis.data[0], 'Jan');
+    assert.doesNotThrow(() => JSON.stringify(en));
   });
 });
 

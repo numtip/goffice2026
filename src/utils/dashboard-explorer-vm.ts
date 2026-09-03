@@ -14,7 +14,7 @@ import {
   formatNullableCell,
   type PartialYoyResult,
 } from './dashboard-partial-yoy';
-import { monthLabel } from './chart-option';
+import { monthLabel, round1 } from './chart-option';
 
 export interface ExplorerResourceVM {
   id: string;
@@ -38,6 +38,10 @@ export interface ExplorerCopy {
   monthHeader: string;
   /** Column headers for the drill table (Month | FY2568 | FY2569 | Δ). */
   tableHeaders: [string, string, string, string];
+  /** Footer labels for overlap totals row. */
+  totalsRowLabel: string;
+  baselineTotalLabel: string;
+  currentTotalLabel: string;
   pendingTitle: string;
   pendingBody: string;
   resourceTablistLabel: string;
@@ -76,8 +80,8 @@ function buildCopy(locale: 'th' | 'en'): ExplorerCopy {
       : 'No current-year data yet — YoY cannot be calculated.',
     overlapCaption: (n, firstMonth, lastMonth) =>
       th
-        ? `เปรียบเทียบช่วง ${firstMonth}–${lastMonth} (${n} เดือน)`
-        : `Compared ${firstMonth}–${lastMonth} (${n} months)`,
+        ? `เปรียบเทียบ ${firstMonth}–${lastMonth} 2569 กับ ${firstMonth}–${lastMonth} 2568 (${n} เดือน)`
+        : `${firstMonth}–${lastMonth} FY2569 vs ${firstMonth}–${lastMonth} FY2568 (${n} months)`,
     baselineLabel: th ? 'ปีฐาน 2568' : 'FY2568',
     currentLabel: th ? 'ปีปัจจุบัน 2569' : 'FY2569',
     viewFullDashboard: th ? 'ดูแดชบอร์ดเต็ม' : 'View full dashboard',
@@ -86,6 +90,9 @@ function buildCopy(locale: 'th' | 'en'): ExplorerCopy {
     tableHeaders: th
       ? ['เดือน', 'ปี 2568', 'ปี 2569', 'Δ']
       : ['Month', 'FY2568', 'FY2569', 'Δ'],
+    totalsRowLabel: th ? 'รวมช่วงที่เทียบได้' : 'Matched-period total',
+    baselineTotalLabel: th ? 'รวม 2568' : 'FY2568 total',
+    currentTotalLabel: th ? 'รวม 2569' : 'FY2569 total',
     pendingTitle: th ? 'รอข้อมูลปี 2569' : 'Waiting for FY2569 data',
     pendingBody: th
       ? 'เมื่อมีข้อมูลรายเดือน จะคำนวณ YoY จากเดือนที่ทับซ้อนกับปีฐานโดยอัตโนมัติ'
@@ -100,13 +107,27 @@ function buildCopy(locale: 'th' | 'en'): ExplorerCopy {
 function buildDrillRows(
   yoy: PartialYoyResult,
   locale: 'th' | 'en',
+  copy: ExplorerCopy,
 ): string[][] {
-  return yoy.points.map((p) => [
+  const monthRows = yoy.points.map((p) => [
     monthLabel(p.month, locale),
     formatNullableCell(p.baseline),
     formatNullableCell(p.current),
     formatNullableCell(p.delta),
   ]);
+
+  if (yoy.status === 'pending' || yoy.comparableCount === 0) {
+    return monthRows;
+  }
+
+  const totalRow = [
+    copy.totalsRowLabel,
+    formatNullableCell(yoy.baselineOverlapTotal != null ? round1(yoy.baselineOverlapTotal) : null),
+    formatNullableCell(yoy.currentOverlapTotal != null ? round1(yoy.currentOverlapTotal) : null),
+    formatNullableCell(yoy.absolute != null ? round1(yoy.absolute) : null),
+  ];
+
+  return [...monthRows, totalRow];
 }
 
 export function buildExplorerVM(locale: 'th' | 'en'): ExplorerVM {
@@ -132,7 +153,7 @@ export function buildExplorerVM(locale: 'th' | 'en'): ExplorerVM {
 
   const drillRows: Record<string, string[][]> = {};
   for (const r of resources) {
-    drillRows[r.id] = buildDrillRows(r.yoy, locale);
+    drillRows[r.id] = buildDrillRows(r.yoy, locale, copy);
   }
 
   return {

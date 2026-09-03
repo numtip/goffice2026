@@ -14,7 +14,7 @@ import {
   resolveOverlapCaption,
   type ExplorerVM,
 } from '../../utils/dashboard-explorer-vm';
-import { buildPartialYoyOption } from '../../utils/chart-option';
+import { buildPartialYoyOption, round1 } from '../../utils/chart-option';
 
 interface Props {
   locale?: 'th' | 'en';
@@ -58,6 +58,18 @@ function deltaTone(r: (typeof resources)[0]): string {
   return 'text-on-surface-variant';
 }
 
+function formatTotal(value: number | null): string {
+  if (value == null) return '—';
+  return String(round1(value));
+}
+
+function totalsDisplay(r: (typeof resources)[0]): { baseline: string; current: string } {
+  return {
+    baseline: formatTotal(r.yoy.baselineOverlapTotal),
+    current: formatTotal(r.yoy.currentOverlapTotal),
+  };
+}
+
 /** Client payload map — options + rows + summary fields per resource. */
 const resourcePayload: Record<
   string,
@@ -70,27 +82,38 @@ const resourcePayload: Record<
     percentDisplay: string;
     deltaTone: string;
     overlapCaption: string;
+    baselineTotalDisplay: string;
+    currentTotalDisplay: string;
     pending: boolean;
     option: Record<string, unknown>;
     rows: string[][];
     ariaLabel: string;
+    textSummary: string;
   }
 > = {};
 
 for (const r of resources) {
+  const totals = totalsDisplay(r);
+  const overlapCaption = resolveOverlapCaption(r.yoy, copy, locale);
+  const percentDisplay = deltaDisplay(r);
   resourcePayload[r.id] = {
     id: r.id,
     label: r.label,
     unit: r.unit,
     ctaHref: r.ctaHref,
     status: r.yoy.status,
-    percentDisplay: deltaDisplay(r),
+    percentDisplay,
     deltaTone: deltaTone(r),
-    overlapCaption: resolveOverlapCaption(r.yoy, copy, locale),
+    overlapCaption,
+    baselineTotalDisplay: totals.baseline,
+    currentTotalDisplay: totals.current,
     pending: r.yoy.status === 'pending',
     option: buildOptionFor(r.id),
     rows: drillRows[r.id] ?? [],
     ariaLabel: `${r.label} — ${copy.sectionTitle}`,
+    textSummary: r.yoy.status === 'pending'
+      ? `${r.label}: ${copy.pendingNote}`
+      : `${r.label}. ${overlapCaption}. ${copy.baselineTotalLabel}: ${totals.baseline} ${r.unit}. ${copy.currentTotalLabel}: ${totals.current} ${r.unit}. ${copy.deltaLabel}: ${percentDisplay}.`,
   };
 }
 
@@ -101,6 +124,8 @@ const defaultCaption = defaultPayload.overlapCaption;
 const defaultPending = defaultPayload.pending;
 const defaultDelta = defaultPayload.percentDisplay;
 const defaultDeltaTone = defaultPayload.deltaTone;
+const defaultBaselineTotal = defaultPayload.baselineTotalDisplay;
+const defaultCurrentTotal = defaultPayload.currentTotalDisplay;
 
 const tableHeaders = copy.tableHeaders;
 const uid = `pyoy-${locale}`;
@@ -176,9 +201,30 @@ const tablistId = `${uid}-tabs`;
         >
           {defaultCaption}
         </p>
+        <p class="sr-only" data-yoy-text-summary>{defaultPayload.textSummary}</p>
       </div>
       <div class="flex flex-wrap items-center gap-3 shrink-0">
-        <div class="text-right" data-yoy-delta-wrap>
+        <dl
+          class="grid grid-cols-2 gap-x-4 gap-y-1 text-right text-xs"
+          data-yoy-totals-wrap
+          hidden={defaultPending}
+        >
+          <div>
+            <dt class="text-[10px] uppercase tracking-wide text-on-surface-variant">{copy.baselineTotalLabel}</dt>
+            <dd class="font-semibold text-on-surface tabular-nums" data-yoy-baseline-total>
+              {defaultBaselineTotal}
+              <span class="text-[10px] font-normal text-on-surface-variant ml-0.5">{defaultResource.unit}</span>
+            </dd>
+          </div>
+          <div>
+            <dt class="text-[10px] uppercase tracking-wide text-on-surface-variant">{copy.currentTotalLabel}</dt>
+            <dd class="font-semibold text-on-surface tabular-nums" data-yoy-current-total>
+              {defaultCurrentTotal}
+              <span class="text-[10px] font-normal text-on-surface-variant ml-0.5">{defaultResource.unit}</span>
+            </dd>
+          </div>
+        </dl>
+        <div class="text-right" data-yoy-delta-wrap hidden={defaultPending}>
           <p class="text-[10px] uppercase tracking-wide text-on-surface-variant">{copy.deltaLabel}</p>
           <p class:list={['text-lg font-bold tabular-nums', defaultDeltaTone]} data-yoy-delta>
             {defaultDelta}
@@ -281,10 +327,13 @@ const tablistId = `${uid}-tabs`;
     percentDisplay: string;
     deltaTone: string;
     overlapCaption: string;
+    baselineTotalDisplay: string;
+    currentTotalDisplay: string;
     pending: boolean;
     option: Record<string, unknown>;
     rows: string[][];
     ariaLabel: string;
+    textSummary: string;
   };
 
   function applyChartOption(el: HTMLElement, option: Record<string, unknown>, attempts = 0) {
@@ -314,6 +363,11 @@ const tablistId = `${uid}-tabs`;
     const labelEl = root.querySelector<HTMLElement>('[data-yoy-resource-label]');
     const captionEl = root.querySelector<HTMLElement>('[data-yoy-caption]');
     const deltaEl = root.querySelector<HTMLElement>('[data-yoy-delta]');
+    const deltaWrap = root.querySelector<HTMLElement>('[data-yoy-delta-wrap]');
+    const totalsWrap = root.querySelector<HTMLElement>('[data-yoy-totals-wrap]');
+    const baselineTotalEl = root.querySelector<HTMLElement>('[data-yoy-baseline-total]');
+    const currentTotalEl = root.querySelector<HTMLElement>('[data-yoy-current-total]');
+    const textSummaryEl = root.querySelector<HTMLElement>('[data-yoy-text-summary]');
     const ctaEl = root.querySelector<HTMLAnchorElement>('[data-yoy-cta]');
     const pendingEl = root.querySelector<HTMLElement>('[data-yoy-pending]');
     const chartWrap = root.querySelector<HTMLElement>('[data-yoy-chart-wrap]');
@@ -347,6 +401,15 @@ const tablistId = `${uid}-tabs`;
         captionEl.textContent = payload.overlapCaption;
         captionEl.hidden = payload.pending || !payload.overlapCaption;
       }
+      if (textSummaryEl) textSummaryEl.textContent = payload.textSummary;
+      if (totalsWrap) totalsWrap.hidden = payload.pending;
+      if (baselineTotalEl) {
+        baselineTotalEl.innerHTML = `${payload.baselineTotalDisplay}<span class="text-[10px] font-normal text-on-surface-variant ml-0.5">${payload.unit}</span>`;
+      }
+      if (currentTotalEl) {
+        currentTotalEl.innerHTML = `${payload.currentTotalDisplay}<span class="text-[10px] font-normal text-on-surface-variant ml-0.5">${payload.unit}</span>`;
+      }
+      if (deltaWrap) deltaWrap.hidden = payload.pending;
       if (deltaEl) {
         deltaEl.textContent = payload.percentDisplay;
         toneClasses.forEach((c) => deltaEl.classList.remove(c));
