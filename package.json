@@ -40,7 +40,7 @@
     "test:admin-e2e": "node scripts/test-admin-e2e.mjs"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.2.1",
+    "@astrojs/sitemap": "3.7.3",
     "@astrojs/tailwind": "^6.0.2",
     "@supabase/supabase-js": "^2.112.4",
     "astro": "^4.0.0",
