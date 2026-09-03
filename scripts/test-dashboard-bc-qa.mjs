@@ -72,7 +72,10 @@ describe('B-C a11y focus / keyboard — explorer + pulse + metric tabs', () => {
 
   it('PerformanceExplorer keeps accessible table fallback via EChart', () => {
     assert.match(explorer, /EChart/);
-    assert.match(explorer, /tableSummary/);
+    assert.match(explorer, /buildExplorerSingleOption/);
+    assert.match(explorer, /grid-cols-1 md:grid-cols-2 lg:grid-cols-3/);
+    assert.match(explorer, /หน่วย|Unit/);
+    assert.match(explorer, /sr-only/);
     assert.match(explorer, /null \? '—' : String\(v\)/);
   });
 
@@ -162,6 +165,9 @@ describe('Phase C — Partial YoY Explorer markers (additive)', () => {
     assert.match(partialYoyExplorer, /data-partial-yoy/);
     assert.match(partialYoyExplorer, /data-yoy-resources/);
     assert.match(partialYoyExplorer, /partial-yoy-explorer/);
+    assert.match(partialYoyExplorer, /data-yoy-baseline-total/);
+    assert.match(partialYoyExplorer, /data-yoy-current-total/);
+    assert.match(partialYoyExplorer, /data-yoy-text-summary/);
     assert.match(partialYoyExplorer, /role="tablist"/);
     assert.match(partialYoyExplorer, /ArrowRight/);
     assert.match(partialYoyExplorer, /ArrowLeft/);
