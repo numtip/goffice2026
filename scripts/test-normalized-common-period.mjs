@@ -96,6 +96,34 @@ describe('buildNormalizedVM — common-period index, never partial vs full-year'
     assert.notEqual(water.index, waterWrong);
   });
 
+  it('paper/waste/ghg: fixed index differs from misleading full-year comparison', () => {
+    const expected = { paper: [56, 97], waste: [69, 114], ghg: [65, 112] };
+    for (const [id, [wrong, fixed]] of Object.entries(expected)) {
+      const row = vm.resources.find((r) => r.id === id);
+      assert.equal(wrongFullYearIndex(readMetric(id)), wrong, `${id} wrong index`);
+      assert.equal(row?.index, fixed, `${id} common-period index`);
+      assert.notEqual(row?.index, wrong);
+    }
+  });
+
+  it('canonical runtime index snapshot (Jan–Jul common period)', () => {
+    const byId = Object.fromEntries(vm.resources.map((r) => [r.id, r.index]));
+    assert.deepEqual(byId, {
+      energy: 113,
+      water: 123,
+      fuel: 117,
+      paper: 97,
+      waste: 114,
+      ghg: 112,
+    });
+  });
+
+  it('period caption and description do not duplicate the period label', () => {
+    assert.match(vm.periodCaption, /Jan.*Jul.*2569.*2568/i);
+    assert.doesNotMatch(vm.periodDescription, /Jan.*Jul.*2569/i);
+    assert.doesNotMatch(vm.periodDescription, /2568.*2569.*month/i);
+  });
+
   it('zero baseline denominator yields null index, never 0', () => {
     const resources = [
       { id: 'x', label: 'X', color: '#000', baselineTotal: 0, currentTotal: 100, index: null },

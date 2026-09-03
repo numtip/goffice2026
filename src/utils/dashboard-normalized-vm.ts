@@ -103,15 +103,14 @@ function buildPeriodCaption(commonMonths: number[], locale: 'th' | 'en'): string
 }
 
 function buildPeriodDescription(commonMonths: number[], locale: 'th' | 'en'): string {
-  const caption = buildPeriodCaption(commonMonths, locale);
-  if (!caption) {
+  if (commonMonths.length === 0) {
     return locale === 'th'
       ? 'ยังไม่มีช่วงเดือนที่ครบทั้งหกทรัพยากร — ดัชนีไม่พร้อม'
       : 'No month range is common to all six resources yet — index unavailable.';
   }
   return locale === 'th'
-    ? `ดัชนี = (รวม 2569 ÷ รวม 2568) × 100 สำหรับช่วงเดียวกันเท่านั้น · ${caption} · ค่าที่ต่ำกว่า 100 = การใช้ทรัพยากรลดลง`
-    : `Index = (FY2569 sum ÷ FY2568 sum) × 100 for the same months only · ${caption} · Below 100 = reduced consumption`;
+    ? 'ดัชนี = (รวม 2569 ÷ รวม 2568) × 100 สำหรับช่วงเดียวกันเท่านั้น · ค่าที่ต่ำกว่า 100 = การใช้ทรัพยากรลดลง (ดีขึ้น)'
+    : 'Index = (FY2569 sum ÷ FY2568 sum) × 100 for the same months only · Below 100 = reduced consumption (improvement)';
 }
 
 export function buildNormalizedVM(locale: 'th' | 'en'): NormalizedVM {
