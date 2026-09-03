@@ -83,6 +83,24 @@ describe('FY2569 status view model (TH + EN)', () => {
     }
   });
 
+  it('Cat3 resource KPIs cite published dashboard JSON as in_progress (not ready)', () => {
+    const expected = {
+      '3.1.2': 'src/data/generated/water.json',
+      '3.2.2': 'src/data/generated/energy.json',
+      '3.2.5': 'src/data/generated/fuel.json',
+      '3.3.2': 'src/data/generated/paper.json',
+    };
+    for (const [code, ref] of Object.entries(expected)) {
+      const v = fy2569StatusView(code, 'th');
+      assert.equal(v.kind, 'partial', `${code} must be partial`);
+      assert.equal(v.progressStatus, 'in_progress', `${code} progress`);
+      assert.equal(v.evidenceStatus, 'available_unverified', `${code} evidence`);
+      assert.equal(v.sourceRef, ref, `${code} source`);
+    }
+    const fuel = fy2569StatusView('3.2.5', 'en');
+    assert.match(fuel.notes ?? '', /FUEL_SOURCE_RECONCILIATION_REQUIRED/);
+  });
+
   it('partial (in_progress) ⇒ exact status without an annual-completion claim', () => {
     const v = fy2569StatusView('3.1.1', 'th');
     assert.equal(v.kind, 'partial');

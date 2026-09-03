@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
   "year": 2569,
-  "updated": "2026-08-31",
-  "note": "Incremental FY2569 publication (2026-08-27): Cat1 retained from prior reconciliation. Cat2 2.1.1/2.1.2/2.2.1/2.2.2 → in_progress from published Data2569 evidence (not ready — scope incomplete). Cat2 2.2.3/2.2.4 stay unavailable (no dedicated FY2569 understanding %; 2.2.4 FY2568-identical held). Cat3 measure indicators 3.1.1/3.2.1/3.2.4/3.3.1/3.3.4/3.4.1 → in_progress from B3-1 plan-only measures DOCX. Cat3 KPI/compliance remain unavailable. Progress ≠ evidence ≠ official score. No FY2568 carry-forward. [2026-08-28 Owner approval: 2.1.1/2.1.2/2.2.1 evidence owner-approved as genuine FY2569 (verified). 2.2.2 NOT approved → stays unavailable. 2.2.1(1) has no canonical indicator mapping (source sub-group of 2.2.1) → not promoted separately. All other Cat2 indicators remain FY2569 unavailable.] [2026-08-31 Cat1 status sync: 1.1.1/1.1.2/1.1.3/1.2.1 source-approved kept. 1.1.4→in_progress/partial. 1.5.1/1.5.2→in_progress citing canonical GHG workbook. 1.6.1→unavailable (not owner-approved). All other Cat1 unchanged.]",
+  "updated": "2026-09-03",
+  "note": "Incremental FY2569 publication (2026-08-27): Cat1 retained from prior reconciliation. Cat2 2.1.1/2.1.2/2.2.1/2.2.2 → in_progress from published Data2569 evidence (not ready — scope incomplete). Cat2 2.2.3/2.2.4 stay unavailable (no dedicated FY2569 understanding %; 2.2.4 FY2568-identical held). Cat3 measure indicators 3.1.1/3.2.1/3.2.4/3.3.1/3.3.4/3.4.1 → in_progress from B3-1 plan-only measures DOCX. Cat3 KPI/compliance remain unavailable. Progress ≠ evidence ≠ official score. No FY2568 carry-forward. [2026-08-28 Owner approval: 2.1.1/2.1.2/2.2.1 evidence owner-approved as genuine FY2569 (verified). 2.2.2 NOT approved → stays unavailable. 2.2.1(1) has no canonical indicator mapping (source sub-group of 2.2.1) → not promoted separately. All other Cat2 indicators remain FY2569 unavailable.] [2026-08-31 Cat1 status sync: 1.1.1/1.1.2/1.1.3/1.2.1 source-approved kept. 1.1.4→in_progress/partial. 1.5.1/1.5.2→in_progress citing canonical GHG workbook. 1.6.1→unavailable (not owner-approved). All other Cat1 unchanged.] [2026-09-03 Cat3 resource KPI sync: 3.1.2/3.2.2/3.2.5/3.3.2 → in_progress citing generated water/energy/fuel/paper JSON already on the dashboard. Not ready. Fuel values unchanged (FUEL_SOURCE_RECONCILIATION_REQUIRED). Cat4–Cat7 remain unavailable.]",
   "items": [
     {
       "indicator": "1.1.1",
@@ -350,13 +350,15 @@
     {
       "indicator": "3.1.2",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/generated/water.json"
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-09-03",
+      "owner": "หมวด 3",
+      "notes": "FY2569 water KPI sourced from canonical workbook 1.1Water.xlsx (same as dashboard /dashboard/water/). Coverage: 8 of 12 months (Jan–Aug), datasetState PUBLISHABLE_PARTIAL, verification available_unverified. Partial consumption series only — not per-unit vs target completion, not an official score."
     },
     {
       "indicator": "3.1.3",
@@ -385,13 +387,15 @@
     {
       "indicator": "3.2.2",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/generated/energy.json"
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-09-03",
+      "owner": "หมวด 3",
+      "notes": "FY2569 electricity KPI sourced from canonical workbook 1.2electric.xlsx (same as dashboard /dashboard/energy/). Coverage: 8 of 12 months (Jan–Aug), datasetState PUBLISHABLE_PARTIAL, verification available_unverified. Partial consumption series only — not per-unit vs target completion, not an official score."
     },
     {
       "indicator": "3.2.3",
@@ -420,13 +424,15 @@
     {
       "indicator": "3.2.5",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/generated/fuel.json"
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-09-03",
+      "owner": "หมวด 3",
+      "notes": "FY2569 fuel KPI sourced from canonical workbook 1.3Gassolene.xlsx (same as dashboard /dashboard/fuel/). Coverage: 7 of 12 months (Jan–Jul), datasetState PUBLISHABLE_PARTIAL. Fuel values UNCHANGED. FUEL_SOURCE_RECONCILIATION_REQUIRED — available_unverified; do not treat as verified. Not per-distance vs target completion, not an official score."
     },
     {
       "indicator": "3.3.1",
@@ -444,13 +450,15 @@
     {
       "indicator": "3.3.2",
       "year": 2569,
-      "progressStatus": "unavailable",
-      "evidenceStatus": "unavailable",
+      "progressStatus": "in_progress",
+      "evidenceStatus": "available_unverified",
       "source": {
-        "type": "unavailable",
-        "ref": null
+        "type": "repository",
+        "ref": "src/data/generated/paper.json"
       },
-      "updatedAt": "2026-08-27"
+      "updatedAt": "2026-09-03",
+      "owner": "หมวด 3",
+      "notes": "FY2569 paper KPI sourced from canonical workbook 1.4paper.xlsx (same as dashboard /dashboard/paper/). Coverage: 7 of 12 months (Jan–Jul), datasetState PUBLISHABLE_PARTIAL, verification available_unverified. Partial consumption series only — not per-unit vs target completion, not an official score."
     },
     {
       "indicator": "3.3.3",
