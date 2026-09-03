@@ -1,21 +1,21 @@
 {
   "schemaVersion": "1.0.0",
   "year": 2569,
-  "generatedAt": "2026-08-31",
+  "generatedAt": "2026-09-03",
   "overall": {
     "total": 65,
     "applicable": 65,
     "ready": 5,
-    "inProgress": 11,
+    "inProgress": 15,
     "notStarted": 2,
-    "unavailable": 47,
+    "unavailable": 43,
     "notApplicable": 0,
     "readyRate": 7.7,
     "evidence": {
       "verified": 3,
-      "availableUnverified": 13,
+      "availableUnverified": 17,
       "pending": 0,
-      "unavailable": 49,
+      "unavailable": 45,
       "notApplicable": 0
     }
   },
@@ -167,16 +167,16 @@
       "total": 15,
       "applicable": 15,
       "ready": 0,
-      "inProgress": 6,
+      "inProgress": 10,
       "notStarted": 0,
-      "unavailable": 9,
+      "unavailable": 5,
       "notApplicable": 0,
       "readyRate": 0,
       "evidence": {
         "verified": 0,
-        "availableUnverified": 6,
+        "availableUnverified": 10,
         "pending": 0,
-        "unavailable": 9,
+        "unavailable": 5,
         "notApplicable": 0
       },
       "issues": [
@@ -185,9 +185,9 @@
           "total": 3,
           "applicable": 3,
           "ready": 0,
-          "inProgress": 1,
+          "inProgress": 2,
           "notStarted": 0,
-          "unavailable": 2,
+          "unavailable": 1,
           "notApplicable": 0,
           "readyRate": 0
         },
@@ -196,9 +196,9 @@
           "total": 5,
           "applicable": 5,
           "ready": 0,
-          "inProgress": 2,
+          "inProgress": 4,
           "notStarted": 0,
-          "unavailable": 3,
+          "unavailable": 1,
           "notApplicable": 0,
           "readyRate": 0
         },
@@ -207,9 +207,9 @@
           "total": 5,
           "applicable": 5,
           "ready": 0,
-          "inProgress": 2,
+          "inProgress": 3,
           "notStarted": 0,
-          "unavailable": 3,
+          "unavailable": 2,
           "notApplicable": 0,
           "readyRate": 0
         },
