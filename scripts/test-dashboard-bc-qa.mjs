@@ -185,3 +185,21 @@ describe('Phase C — Partial YoY Explorer markers (additive)', () => {
     assert.doesNotMatch(enDash, /horizontal-overflow/);
   });
 });
+
+describe('B-C normalized section — single period label + fuel reconciliation', () => {
+  const normChart = read('src/components/dashboard/NormalizedTrendChart.astro');
+
+  it('TH/EN show periodCaption once in section header, not repeated in chart card', () => {
+    assert.match(thDash, /normalizedVm\.periodCaption/);
+    assert.match(enDash, /normalizedVm\.periodCaption/);
+    assert.doesNotMatch(normChart, /periodCaption/);
+    assert.doesNotMatch(normChart, /periodDescription/);
+  });
+
+  it('TH/EN fuel chip warns FUEL_SOURCE_RECONCILIATION_REQUIRED', () => {
+    assert.match(thDash, /FUEL_SOURCE_RECONCILIATION/);
+    assert.match(enDash, /FUEL_SOURCE_RECONCILIATION_REQUIRED/);
+    assert.match(thDash, /isFuelUnverified/);
+    assert.match(enDash, /isFuelUnverified/);
+  });
+});

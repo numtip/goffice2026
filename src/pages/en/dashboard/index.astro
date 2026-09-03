@@ -17,6 +17,7 @@ import PartialYoyExplorer from '../../../components/dashboard/PartialYoyExplorer
 import { buildExplorerVM } from '../../../utils/dashboard-explorer-vm';
 import { computePartialYoy } from '../../../utils/dashboard-partial-yoy';
 import NormalizedTrendChart from '../../../components/dashboard/NormalizedTrendChart.astro';
+import { buildNormalizedVM } from '../../../utils/dashboard-normalized-vm';
 import DataReadinessMatrix from '../../../components/dashboard/DataReadinessMatrix.astro';
 import JourneyLinks from '../../../components/ui/JourneyLinks.astro';
 
@@ -34,20 +35,8 @@ const resourceLabels: Record<string, string> = {
   energy: 'Energy', water: 'Water', fuel: 'Fuel', paper: 'Paper', waste: 'Waste', ghg: 'GHG',
 };
 
-// Norm chart data
-const resourcePerf: { id: string; label: string; color: string; baselineTotal: number; currentTotal: number }[] = [];
-dashboards.forEach((d) => {
-  const m = genMap[d.id];
-  if (!m) return;
-  const b = m.years[m.baselineYear.toString()];
-  const c = m.years[m.currentYear.toString()];
-  if (b && c && c.months.length > 0) {
-    resourcePerf.push({
-      id: d.id, label: resourceLabels[d.id] ?? d.title, color: d.color,
-      baselineTotal: b.total, currentTotal: c.total,
-    });
-  }
-});
+const normalizedVm = buildNormalizedVM(locale);
+const resourcePerf = normalizedVm.resources.filter((r) => r.baselineTotal != null || r.currentTotal != null);
 
 // ── Performance Explorer resources (genuine FY-current monthly values) ──────
 const explorerResources: { id: string; label: string; color: string; months: (number | null)[]; unit: string }[] = [];
@@ -297,25 +286,45 @@ if (riskCandidates.length > 0) {
       <section class="dashboard-section mb-8">
         <div class="mb-3">
           <h2 class="text-lg font-bold text-on-surface tracking-tight mb-1">Baseline vs Current Comparison</h2>
-          <p class="text-xs text-on-surface-variant">
-            Index below 100 = reduced consumption (improvement) · {resourcePerf.length} resources compared to baseline 2568
+          {normalizedVm.periodCaption && (
+            <p class="text-xs font-medium text-on-surface-variant">
+              {normalizedVm.periodCaption}
+            </p>
+          )}
+          <p class="text-[10px] text-on-surface-variant/80 mt-1">
+            {normalizedVm.periodDescription}
           </p>
           <div class="flex flex-wrap gap-2 mt-2">
             {resourcePerf.map((r) => {
-              const norm = r.baselineTotal > 0 ? Math.round((r.currentTotal / r.baselineTotal) * 100) : 0;
-              const isImproved = norm < 100;
+              const norm = r.index;
+              const isFuelUnverified = r.id === 'fuel';
+              const isImproved = norm != null && norm < 100 && !isFuelUnverified;
+              const chipClass = norm == null
+                ? 'bg-surface-container text-on-surface-variant border-outline-variant/30'
+                : isFuelUnverified
+                  ? 'bg-amber-50 text-amber-800 border-amber-300'
+                  : isImproved
+                    ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                    : 'bg-amber-50 text-amber-700 border-amber-200';
               return (
-                <span class={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold border ${isImproved ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-amber-50 text-amber-700 border-amber-200'}`}>
+                <span class={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold border ${chipClass}`}>
                   <span class="w-1.5 h-1.5 rounded-full shrink-0" style={`background-color:${r.color}`}></span>
-                  {r.label} <span class="font-bold tabular-nums">{norm}</span>
+                  {r.label} <span class="font-bold tabular-nums">{norm ?? '—'}</span>
+                  {isFuelUnverified && norm != null && (
+                    <span class="font-normal opacity-80">(unverified)</span>
+                  )}
                 </span>
               );
             })}
           </div>
+          {resourcePerf.some((r) => r.id === 'fuel') && (
+            <p class="text-[10px] text-amber-800 mt-2 rounded-md border border-amber-200 bg-amber-50 px-2 py-1.5 leading-relaxed">
+              Fuel: index 117 is from available_unverified data — FUEL_SOURCE_RECONCILIATION_REQUIRED before treating as verified.
+            </p>
+          )}
         </div>
       <NormalizedTrendChart
         title="Normalized Resource Performance vs Baseline (Index = 100)"
-        description="Each resource compared against its own baseline set at 100. Values below 100 indicate reduced consumption (improvement), values above 100 indicate increased consumption."
         resources={resourcePerf}
         baselineLabel="Baseline 2568"
         currentLabel="Current 2569"

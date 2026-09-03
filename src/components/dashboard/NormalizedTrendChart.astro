@@ -5,13 +5,13 @@ import { buildNormalizedSeries, buildNormalizedOption } from '../../utils/chart-
 
 interface Props {
   title: string;
-  description?: string;
   resources: {
     id: string;
     label: string;
     color: string;
-    baselineTotal: number;
-    currentTotal: number;
+    baselineTotal: number | null;
+    currentTotal: number | null;
+    index?: number | null;
   }[];
   baselineLabel: string;
   currentLabel: string;
@@ -19,13 +19,13 @@ interface Props {
 }
 
 const {
-  title, description, resources,
+  title, resources,
   baselineLabel, currentLabel, locale = 'th',
 } = Astro.props;
 
 const th = locale === 'th';
+const unavailable = '—';
 
-// Normalize: baseline = 100 for each resource (index below 100 = improvement)
 const series = buildNormalizedSeries(resources);
 
 const option = buildNormalizedOption({
@@ -33,15 +33,17 @@ const option = buildNormalizedOption({
   locale,
   baselineLabel,
   currentLabel,
-  ariaDescription: description ?? `${title}. ${baselineLabel} = 100.`,
+  ariaDescription: `${title}. ${baselineLabel} = 100.`,
 });
 
-const rows = series.labels.map((label, i) => [label, series.values[i]]);
+const rows = series.labels.map((label, i) => [
+  label,
+  series.values[i] == null ? unavailable : String(series.values[i]),
+]);
 ---
 
 <div class="bg-white rounded-stitch-lg border border-outline-variant/20 p-5 shadow-sm mb-6">
-  <h3 class="text-sm font-semibold text-on-surface mb-1">{title}</h3>
-  {description && <p class="text-xs text-outline-variant mb-3">{description}</p>}
+  <h3 class="text-sm font-semibold text-on-surface mb-3">{title}</h3>
 
   <ChartLegend
     items={[
@@ -62,7 +64,7 @@ const rows = series.labels.map((label, i) => [label, series.values[i]]);
     ]}
     rows={rows}
     tableSummary={th
-      ? 'วิธีคำนวณ: (ค่าปัจจุบัน ÷ ค่าปีฐาน) × 100 · ค่าที่ต่ำกว่า 100 = การใช้ทรัพยากรลดลง (ดีขึ้น)'
-      : 'Method: (current value ÷ baseline value) × 100 · Below 100 = reduced consumption (improvement)'}
+      ? 'วิธีคำนวณ: (รวมช่วงเทียบเคียง 2569 ÷ รวมช่วงเทียบเคียง 2568) × 100 · ค่าที่ต่ำกว่า 100 = การใช้ทรัพยากรลดลง (ดีขึ้น) · — = ไม่พร้อมใช้งาน'
+      : 'Method: (FY2569 common-period sum ÷ FY2568 same-period sum) × 100 · Below 100 = reduced consumption (improvement) · — = unavailable'}
   />
 </div>

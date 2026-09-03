@@ -21,26 +21,26 @@
     "fiscalYear": 2569,
     "sourceId": "src-resource:1.2electric-2569",
     "artifactPath": "data/staging/source/1.2electric.xlsx",
-    "sourceSha256": "31c70e5e4eb40c90df602a76a1dcb12dd3bf4f11ad652228d41859ed1a67273c",
+    "sourceSha256": "097d0cfc031045e2db0ff989ffc72aed4dd4a073537f9453e0170229a9c4a8da",
     "sheetOrPage": "2569",
-    "extractionDate": "2026-08-28",
-    "coverage": "7 of 12 months (Jan-Jul)",
+    "extractionDate": "2026-09-01",
+    "coverage": "8 of 12 months (Jan-Aug)",
     "verificationState": "available_unverified",
     "classification": "CONFIRMED_XLSX",
-    "notes": "Electricity (kWh). Workbook total row corrupt (negative Aug formula cache) -> total reconciliation skipped; monthly values confirmed against 2569 sheet. Data-owner correction required before annual claims. SHA-256 matches data/staging/manifest.json, data/staging/extract-sources.json and src/data/generated/energy.json years[2569].provenance."
+    "notes": "Electricity (kWh). 8 observed months (Jan-Aug) published from 1.2electric.xlsx. Workbook total row previously corrupt (negative Aug formula cache) — monthly values confirmed against 2569 sheet; total reconciliation uses sum of observed months. Data-owner correction required before annual claims. SHA-256 matches data/staging/manifest.json, data/staging/extract-sources.json and src/data/generated/energy.json years[2569].provenance."
   },
   {
     "id": "metric:water",
     "fiscalYear": 2569,
     "sourceId": "src-resource:1.1Water-2569",
     "artifactPath": "data/staging/source/1.1Water.xlsx",
-    "sourceSha256": "87d3dc99b9c86a365b977a6a4eb73d1defe340fabe1d03aa6d41c64b492a58d9",
+    "sourceSha256": "554beacdea923bb7bdb9bea5bea484c6881b8f32a50289ad927f1ce2d5fdde6f",
     "sheetOrPage": "2569",
-    "extractionDate": "2026-08-28",
-    "coverage": "7 of 12 months (Jan-Jul)",
+    "extractionDate": "2026-09-01",
+    "coverage": "8 of 12 months (Jan-Aug)",
     "verificationState": "available_unverified",
     "classification": "CONFIRMED_XLSX",
-    "notes": "Water (m3). Workbook total row corrupt (negative Aug formula cache) -> total reconciliation skipped; monthly values confirmed against 2569 sheet. Data-owner correction required before annual claims. SHA-256 matches manifest.json, extract-sources.json and src/data/generated/water.json years[2569].provenance."
+    "notes": "Water (m3). 8 observed months (Jan-Aug) published from 1.1Water.xlsx. Workbook total row previously corrupt (negative Aug formula cache) — monthly values confirmed against 2569 sheet; total reconciliation uses sum of observed months. Data-owner correction required before annual claims. SHA-256 matches manifest.json, extract-sources.json and src/data/generated/water.json years[2569].provenance."
   },
   {
     "id": "metric:fuel",
