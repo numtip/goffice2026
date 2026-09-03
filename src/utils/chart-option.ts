@@ -266,21 +266,30 @@ export interface NormalizedResource {
   id: string;
   label: string;
   color: string;
-  baselineTotal: number;
-  currentTotal: number;
+  baselineTotal: number | null;
+  currentTotal: number | null;
+  /** Precomputed index; when omitted, derived from totals. */
+  index?: number | null;
 }
 
 export interface NormalizedSeries {
   labels: string[];
-  values: number[];
+  /** null = unavailable (never coerced to 0). */
+  values: (number | null)[];
   colors: string[];
 }
 
-/** Index = (current / baseline) × 100; 0 when baseline is absent. */
+function resolveNormalizedIndex(r: NormalizedResource): number | null {
+  if (r.index !== undefined) return r.index;
+  if (r.baselineTotal == null || r.currentTotal == null || r.baselineTotal === 0) return null;
+  return Math.round((r.currentTotal / r.baselineTotal) * 100);
+}
+
+/** Index = (current / baseline) × 100 for the same comparable period; null when unavailable. */
 export function buildNormalizedSeries(resources: NormalizedResource[]): NormalizedSeries {
   return {
     labels: resources.map((r) => r.label),
-    values: resources.map((r) => (r.baselineTotal > 0 ? Math.round((r.currentTotal / r.baselineTotal) * 100) : 0)),
+    values: resources.map((r) => resolveNormalizedIndex(r)),
     colors: resources.map((r) => r.color),
   };
 }
@@ -296,9 +305,9 @@ export interface NormalizedOptionInput {
 /** Horizontal bar chart of normalized index with a baseline = 100 reference line. */
 export function buildNormalizedOption(input: NormalizedOptionInput): Record<string, unknown> {
   const { series, baselineLabel, ariaDescription } = input;
-  const values = series.values;
-  const maxVal = Math.max(100, ...values);
-  const minVal = Math.min(100, ...values);
+  const numericValues = series.values.filter((v): v is number => v !== null);
+  const maxVal = numericValues.length > 0 ? Math.max(100, ...numericValues) : 100;
+  const minVal = numericValues.length > 0 ? Math.min(100, ...numericValues) : 100;
   const lo = Math.min(80, minVal - 5);
   const hi = Math.max(120, maxVal + 5);
 
@@ -328,9 +337,16 @@ export function buildNormalizedOption(input: NormalizedOptionInput): Record<stri
       {
         name: input.currentLabel,
         type: 'bar',
-        data: series.values.map((v, i) => ({ value: v, itemStyle: { color: series.colors[i] ?? '#006c49', opacity: v < 100 ? 0.75 : 0.9 } })),
+        data: series.values.map((v, i) => ({
+          value: v,
+          itemStyle: {
+            color: series.colors[i] ?? '#006c49',
+            opacity: v == null ? 0.35 : (v as number) < 100 ? 0.75 : 0.9,
+          },
+          label: { show: v != null },
+        })),
         barWidth: 18,
-        label: { show: true, position: 'right', fontSize: 11, formatter: '{c}' },
+        label: { show: true, position: 'right', fontSize: 11 },
         markLine: {
           symbol: 'none',
           silent: true,

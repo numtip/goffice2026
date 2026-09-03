@@ -164,9 +164,9 @@ describe('buildNormalizedSeries/Option — baseline index = 100', () => {
     { id: 'ghg', label: 'GHG', color: '#dc2626', baselineTotal: 0, currentTotal: 0 },
   ];
 
-  it('computes index = round(current / baseline × 100); zero baseline → 0', () => {
+  it('computes index = round(current / baseline × 100); zero baseline → null (never 0)', () => {
     const s = buildNormalizedSeries(resources);
-    assert.deepEqual(s.values, [75, 125, 0]);
+    assert.deepEqual(s.values, [75, 125, null]);
     assert.deepEqual(s.labels, ['Energy', 'Water', 'GHG']);
   });
 
