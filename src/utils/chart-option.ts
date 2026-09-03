@@ -521,7 +521,7 @@ export function buildExplorerSingleOption(input: {
   const monthNames = MONTH_LABELS[locale].slice(1);
 
   return {
-    grid: { left: 4, right: 8, top: 8, bottom: 4, containLabel: true },
+    grid: { left: 4, right: 8, top: 8, bottom: 20, containLabel: true },
     tooltip: {
       trigger: 'axis',
       confine: true,
@@ -531,7 +531,7 @@ export function buildExplorerSingleOption(input: {
       type: 'category',
       data: monthNames,
       boundaryGap: false,
-      axisLabel: { fontSize: 9, interval: 1 },
+      axisLabel: { fontSize: 9, interval: 0, rotate: 35 },
       axisTick: { show: false },
       axisLine: { lineStyle: { color: '#d1d5db' } },
     },

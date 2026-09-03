@@ -74,6 +74,7 @@ describe('B-C a11y focus / keyboard — explorer + pulse + metric tabs', () => {
     assert.match(explorer, /EChart/);
     assert.match(explorer, /buildExplorerSingleOption/);
     assert.match(explorer, /grid-cols-1 md:grid-cols-2 lg:grid-cols-3/);
+    assert.match(explorer, /หน่วย|Unit/);
     assert.match(explorer, /sr-only/);
     assert.match(explorer, /null \? '—' : String\(v\)/);
   });

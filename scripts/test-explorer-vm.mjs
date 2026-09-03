@@ -37,26 +37,34 @@ function buildTotalsRow(yoy, label) {
   ];
 }
 
+function expectedCaption(yoy, copy, locale) {
+  const first = yoy.comparableMonths[0];
+  const last = yoy.comparableMonths[yoy.comparableMonths.length - 1];
+  return copy.overlapCaption(
+    yoy.comparableCount,
+    monthLabel(first, locale),
+    monthLabel(last, locale),
+  );
+}
+
 describe('resolveOverlapCaption — fiscal year labels in comparison period', () => {
   const metric = readMetric('energy');
   const yoy = computePartialYoy(metric, { id: 'energy' });
 
-  it('EN caption includes both fiscal years and month range', () => {
+  it('EN caption includes both fiscal years and the live comparable month range', () => {
     const caption = resolveOverlapCaption(yoy, copyEn, 'en');
+    assert.equal(caption, expectedCaption(yoy, copyEn, 'en'));
     assert.match(caption, /FY2569 vs .* FY2568/);
-    assert.match(caption, /Jan–Jul/);
-    assert.match(caption, /\(7 months\)/);
   });
 
-  it('TH caption includes both fiscal years and month range', () => {
+  it('TH caption includes both fiscal years and the live comparable month range', () => {
     const caption = resolveOverlapCaption(yoy, copyTh, 'th');
+    assert.equal(caption, expectedCaption(yoy, copyTh, 'th'));
     assert.match(caption, /2569 กับ .* 2568/);
-    assert.match(caption, /ม\.ค\.–ก\.ค\./);
-    assert.match(caption, /\(7 เดือน\)/);
   });
 });
 
-describe('matched-period totals row — energy Jan–Jul overlap', () => {
+describe('matched-period totals row — energy overlap', () => {
   const metric = readMetric('energy');
   const yoy = computePartialYoy(metric, { id: 'energy' });
 
@@ -66,7 +74,6 @@ describe('matched-period totals row — energy Jan–Jul overlap', () => {
     assert.notEqual(row[1], '—');
     assert.notEqual(row[2], '—');
     assert.notEqual(row[3], '—');
-    // Full-year baseline total is ~403K; overlap Jan–Jul is much smaller
     assert.ok(Number(row[1]) < metric.years['2568'].total);
   });
 });

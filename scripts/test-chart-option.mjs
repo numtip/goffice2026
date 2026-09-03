@@ -290,6 +290,7 @@ describe('buildExplorerSingleOption — small-multiples monthly panel (GO-DASH-V
     assert.equal(option.series[0].data.length, 12);
     assert.equal(option.yAxis.name, 'kWh');
     assert.equal(option.series[0].connectNulls, false);
+    assert.equal(option.xAxis.axisLabel.interval, 0, 'all month labels shown');
   });
 
   it('preserves nulls — never converts missing months to 0', () => {

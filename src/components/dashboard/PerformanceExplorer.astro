@@ -62,12 +62,14 @@ const panels = resources.map((r) => {
 // Accessible table fallback: rows = resources, columns = months.
 const columns = [
   { label: th ? 'ทรัพยากร' : 'Resource' },
+  { label: th ? 'หน่วย' : 'Unit' },
   { label: th ? 'ครอบคลุม' : 'Coverage', align: 'right' as const },
   ...monthAbbr.map((m) => ({ label: m, align: 'right' as const })),
 ];
 
 const rows = panels.map((r) => [
   r.label,
+  r.unit,
   r.coverageLabel,
   ...r.months.map((v) => (v === null ? '—' : String(v))),
 ]);
