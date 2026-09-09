@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/global.css';
+import VisitDashboardShell from '../../../components/dashboard/visit/VisitDashboardShell.astro';
+import { buildVisitDashboardVM } from '../../../utils/visit-dashboard-vm';
+import { getLocale } from '../../../i18n/utils';
+import { getDictionary } from '../../../i18n/dictionary';
+
+const locale = getLocale(Astro.url);
+const vm = buildVisitDashboardVM(locale);
+const dict = await getDictionary(locale);
+const t = dict.visitDashboard;
+const th = locale === 'th';
+---
+
+<BaseLayout
+  title={th ? `${t.title} | Green Office 2026` : `${t.title} | Green Office 2026`}
+  description={t.subtitle}
+  locale={locale}
+>
+  <VisitDashboardShell
+    locale={locale}
+    vm={vm}
+    pageTitle={t.title}
+    pageDescription={t.subtitle}
+  />
+</BaseLayout>

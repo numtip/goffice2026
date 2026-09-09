@@ -219,6 +219,10 @@
     "generated_data_label": "Generated data",
     "reference_note": "Dashboard structure and KPI terminology adapted from the Green Office Platform, Maejo University"
   },
+  "visitDashboard": {
+    "title": "Executive Visit Dashboard",
+    "subtitle": "Single-scroll Green Office FY2569 briefing — resource performance, criteria progress, evidence, and activities (not an official assessment score)."
+  },
   "documentsPage": {
     "title": "Document Center",
     "description": "Browse and download certification evidence documents organized by Green Office category.",

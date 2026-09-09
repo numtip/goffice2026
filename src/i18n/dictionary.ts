@@ -258,6 +258,11 @@ export interface DashboardPageStrings {
   reference_note: string;
 }
 
+export interface VisitDashboardStrings {
+  title: string;
+  subtitle: string;
+}
+
 export interface DocumentsPageStrings {
   title: string;
   description: string;
@@ -279,6 +284,7 @@ export interface LocaleStrings {
   site: SiteStrings;
   home: HomeStrings;
   dashboardPage: DashboardPageStrings;
+  visitDashboard: VisitDashboardStrings;
   documentsPage: DocumentsPageStrings;
 }
 

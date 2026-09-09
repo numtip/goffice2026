@@ -1,0 +1,74 @@
+---
+import type { VisitLocale } from '../../../utils/visit-dashboard-vm';
+import type { CategoryProgressVM } from '../../../utils/category-progress-vm';
+import { getLocalizedPath } from '../../../i18n/utils';
+import { formatRate } from '../../../utils/category-progress-vm';
+
+interface Props {
+  locale: VisitLocale;
+  categories: CategoryProgressVM[];
+}
+
+const { locale, categories } = Astro.props;
+const th = locale === 'th';
+---
+
+<section
+  class="visit-section dashboard-section mb-8"
+  aria-labelledby="visit-category-summary-heading"
+  data-semantic-track="progress"
+>
+  <div class="mb-3">
+    <h2 id="visit-category-summary-heading" class="text-lg font-bold text-on-surface tracking-tight mb-1">
+      {th ? 'สรุป 7 หมวดเกณฑ์ Green Office' : '7 Green Office Categories — Summary'}
+    </h2>
+    <p class="text-xs text-on-surface-variant">
+      {th
+        ? 'ความคืบหน้าการดำเนินงานปี 2569 รายหมวด · ยังไม่มีผลการประเมินอย่างเป็นทางการ'
+        : 'FY2569 implementation progress by category · No official assessment scores yet'}
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+    {categories.map((cat) => (
+      <a
+        href={getLocalizedPath(locale, `/categories/${cat.code}`)}
+        class="group rounded-stitch-lg border border-outline-variant/20 bg-surface-container/60 p-4 transition-colors hover:border-primary/40 hover:bg-surface-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+      >
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-primary">
+            {th ? `หมวดที่ ${cat.id}` : `Category ${cat.id}`}
+          </span>
+          <span class="text-[10px] font-semibold text-on-surface-variant">
+            {cat.total} {th ? 'ตัวชี้วัด' : 'indicators'}
+          </span>
+        </div>
+        <h3 class="mt-1 text-sm font-bold text-on-surface leading-snug">{cat.label}</h3>
+        <dl class="mt-3 grid grid-cols-2 gap-x-3 gap-y-1 text-[11px]">
+          <div>
+            <dt class="text-on-surface-variant">{th ? 'พร้อม' : 'Ready'}</dt>
+            <dd class="font-bold text-emerald-700 tabular-nums">{cat.ready}</dd>
+          </div>
+          <div>
+            <dt class="text-on-surface-variant">{th ? 'กำลังดำเนินการ' : 'In progress'}</dt>
+            <dd class="font-bold text-amber-700 tabular-nums">{cat.inProgress}</dd>
+          </div>
+          <div>
+            <dt class="text-on-surface-variant">{th ? 'ยังไม่เริ่ม' : 'Not started'}</dt>
+            <dd class="font-bold text-slate-600 tabular-nums">{cat.notStarted}</dd>
+          </div>
+          <div>
+            <dt class="text-on-surface-variant">{th ? 'ไม่มีข้อมูล' : 'Unavailable'}</dt>
+            <dd class="font-bold text-slate-400 tabular-nums">{cat.unavailable}</dd>
+          </div>
+        </dl>
+        <p class="mt-2 text-[10px] font-medium text-primary">
+          {th ? 'อัตราพร้อม' : 'Ready rate'}: {formatRate(cat.readyRate)}
+        </p>
+        <p class="mt-1 text-[10px] font-medium text-amber-700">
+          {th ? 'รอผลการประเมินอย่างเป็นทางการ' : 'Awaiting official assessment'}
+        </p>
+      </a>
+    ))}
+  </div>
+</section>

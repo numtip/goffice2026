@@ -1,0 +1,42 @@
+---
+import ContentCard from '../../content/ContentCard.astro';
+import type { ContentRecord } from '../../../utils/content-presentation';
+import type { VisitLocale } from '../../../utils/visit-dashboard-vm';
+
+interface Props {
+  locale: VisitLocale;
+  activities: ContentRecord[];
+  activitiesHref: string;
+}
+
+const { locale, activities, activitiesHref } = Astro.props;
+const th = locale === 'th';
+---
+
+{activities.length > 0 && (
+  <section class="visit-section dashboard-section mb-8" aria-labelledby="visit-activities-heading">
+    <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <h2 id="visit-activities-heading" class="text-lg font-bold text-on-surface tracking-tight">
+          {th ? 'กิจกรรมที่เลือกแสดง' : 'Selected Activities'}
+        </h2>
+        <p class="text-xs text-on-surface-variant mt-1">
+          {th
+            ? 'กิจกรรมและโครงการรณรงค์ที่เชื่อมโยงกับเกณฑ์ Green Office'
+            : 'Campaigns and training linked to Green Office criteria'}
+        </p>
+      </div>
+      <a
+        href={activitiesHref}
+        class="text-sm font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+      >
+        {th ? 'ดูกิจกรรมทั้งหมด' : 'View all activities'}
+      </a>
+    </div>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+      {activities.map((item) => (
+        <ContentCard item={item} locale={locale} baseRoute="/activities" compact={true} />
+      ))}
+    </div>
+  </section>
+)}

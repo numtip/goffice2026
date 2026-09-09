@@ -1,0 +1,134 @@
+---
+import type { VisitExecutiveInsightsVM, VisitLocale } from '../../../utils/visit-dashboard-vm';
+
+interface Props {
+  locale: VisitLocale;
+  insights: VisitExecutiveInsightsVM;
+}
+
+const { locale, insights } = Astro.props;
+const th = locale === 'th';
+---
+
+<section
+  class="visit-section dashboard-section mb-8"
+  aria-labelledby="visit-insights-heading"
+  data-semantic-track="performance"
+>
+  <h2 id="visit-insights-heading" class="text-lg font-bold text-on-surface tracking-tight mb-1">
+    {th ? 'ข้อมูลเชิงลึกและลำดับความสำคัญ' : 'Executive Highlights & Next Actions'}
+  </h2>
+  <p class="text-xs text-on-surface-variant mb-3 max-w-3xl">
+    {th
+      ? 'เปรียบเทียบปีต่อปีจากเดือนที่มีข้อมูลทั้งสองปี (ช่วงเวลาเดียวกัน) · ความครอบคลุมรายเดือนคำนวณจากข้อมูลจริงของแต่ละด้าน'
+      : 'Year-over-year uses same-period overlap months only · Monthly coverage is derived per resource from canonical data.'}
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div class="bg-emerald-50/60 rounded-stitch-lg border-l-4 border-l-emerald-500 border border-outline-variant/20 p-4">
+      <h3 class="text-sm font-bold text-emerald-800 mb-2">
+        {th ? 'ด้านที่ดีขึ้น' : 'Improving'}
+        <span class="text-emerald-600/60 font-normal text-xs ml-1">({insights.improved.length})</span>
+      </h3>
+      {insights.improved.length > 0 ? (
+        <ul class="space-y-1.5">
+          {insights.improved.map((item) => (
+            <li class="flex items-center justify-between text-xs">
+              <span class="flex items-center gap-1.5 text-emerald-700 font-medium">
+                <span class="w-1.5 h-1.5 rounded-full shrink-0" style={`background-color:${item.color}`} />
+                {item.label}
+                <span class="text-emerald-600/70 font-normal">
+                  ({item.monthsCount}/12 {th ? 'เดือน' : 'mo'})
+                </span>
+              </span>
+              <span class="text-emerald-600 font-bold tabular-nums">
+                {item.yoyPct > 0 ? '+' : ''}{item.yoyPct}%
+              </span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-xs text-emerald-600/60 italic">
+          {th ? 'ยังไม่มีแนวโน้มที่ดีขึ้นที่ชัดเจน' : 'No clear improving trends yet'}
+        </p>
+      )}
+    </div>
+
+    <div class="bg-amber-50/60 rounded-stitch-lg border-l-4 border-l-amber-500 border border-outline-variant/20 p-4">
+      <h3 class="text-sm font-bold text-amber-800 mb-2">
+        {th ? 'ด้านที่ต้องระวัง' : 'Needs Attention'}
+        <span class="text-amber-600/60 font-normal text-xs ml-1">({insights.attention.length})</span>
+      </h3>
+      {insights.attention.length > 0 ? (
+        <ul class="space-y-1.5">
+          {insights.attention.map((item) => (
+            <li class="flex items-center justify-between text-xs">
+              <span class="flex items-center gap-1.5 text-amber-700 font-medium">
+                <span class="w-1.5 h-1.5 rounded-full shrink-0" style={`background-color:${item.color}`} />
+                {item.label}
+                <span class="text-amber-600/70 font-normal">
+                  ({item.monthsCount}/12 {th ? 'เดือน' : 'mo'})
+                </span>
+              </span>
+              <span class="text-amber-600 font-bold tabular-nums">
+                {item.yoyPct > 0 ? '+' : ''}{item.yoyPct}%
+              </span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-xs text-amber-600/60 italic">
+          {th ? 'ไม่มีด้านที่ใช้เพิ่มขึ้นในช่วงเวลาเดียวกัน' : 'No same-period increases detected'}
+        </p>
+      )}
+    </div>
+
+    <div class="bg-sky-50/60 rounded-stitch-lg border-l-4 border-l-sky-500 border border-outline-variant/20 p-4">
+      <h3 class="text-sm font-bold text-sky-800 mb-2">
+        {th ? 'ข้อมูลยังไม่ครบปี' : 'Partial-Year Coverage'}
+        <span class="text-sky-600/60 font-normal text-xs ml-1">({insights.incomplete.length})</span>
+      </h3>
+      {insights.incomplete.length > 0 ? (
+        <ul class="space-y-1.5">
+          {insights.incomplete.map((item) => (
+            <li class="flex items-center justify-between text-xs text-sky-700">
+              <span class="flex items-center gap-1.5 font-medium">
+                <span class="w-1.5 h-1.5 rounded-full shrink-0" style={`background-color:${item.color}`} />
+                {item.label}
+              </span>
+              <span class="font-bold tabular-nums">{item.monthsCount}/12</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-xs text-sky-600/60 italic">
+          {th ? 'ทุกด้านมีข้อมูลครบ 12 เดือน' : 'All resources have 12/12 months'}
+        </p>
+      )}
+    </div>
+
+    <div class="bg-violet-50/60 rounded-stitch-lg border-l-4 border-l-violet-500 border border-outline-variant/20 p-4">
+      <h3 class="text-sm font-bold text-violet-800 mb-2">
+        {th ? 'เกณฑ์ที่ต้องติดตาม (ความคืบหน้า)' : 'Criteria Needs Attention (Progress)'}
+      </h3>
+      {insights.criteriaNeedsAttention.length > 0 ? (
+        <ul class="space-y-2">
+          {insights.criteriaNeedsAttention.map((item) => (
+            <li class="text-xs">
+              <span class="font-semibold text-violet-800">{item.label}</span>
+              <span class="text-violet-700 ml-1">({item.count})</span>
+              <p class="text-violet-600/80 mt-0.5">{item.detail}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-xs text-violet-600/60 italic">
+          {th ? 'ไม่มีหมวดที่ต้องติดตามเป็นพิเศษ' : 'No outstanding category attention rows'}
+        </p>
+      )}
+      <p class="text-[10px] text-violet-600/50 mt-2">
+        {th ? 'ความคืบหน้า — ไม่ใช่คะแนนประเมินอย่างเป็นทางการ' : 'Progress counts — not an official assessment score'}
+      </p>
+    </div>
+  </div>
+</section>
