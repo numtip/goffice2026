@@ -9,6 +9,7 @@ import {
   SOURCE_OFFLINE,
   pubLabel,
 } from './publication-states';
+import { getLocalizedPath } from '../i18n/utils';
 
 export interface EvidenceProvenance {
   sourceType?: string;
@@ -86,6 +87,15 @@ export function getIndicatorCodesForDashboard(
   const domain = map.mappings.find((entry) => entry.dashboardId === dashboardId);
   if (!domain) return [];
   return domain.mappedIndicators.map((indicator) => indicator.code);
+}
+
+/** Evidence library hub filtered to one indicator (client-side filter on /evidence/). */
+export function getEvidenceHubHrefForIndicator(
+  indicatorCode: string,
+  locale: 'th' | 'en' = 'th',
+): string {
+  const base = getLocalizedPath(locale, '/evidence');
+  return `${base}?indicator=${encodeURIComponent(indicatorCode)}`;
 }
 
 export function getEvidenceForDashboard(

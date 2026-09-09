@@ -2,9 +2,9 @@
 
 **Project:** Green Office 2026 — Executive Green Office Visit Dashboard  
 **Document Type:** Audit + Implementation Blueprint (read-only phase complete)  
-**Version:** 1.0  
-**Status:** `PLAN_READY`  
-**Date:** 2026-09-09  
+**Version:** 1.1
+**Status:** `IMPLEMENTED` — PR [#95](https://github.com/numtip/goffice2026/pull/95) (`feat/dashboard-visit-executive`)
+**Date:** 2026-09-09 (updated post-implementation)
 **Repository:** [numtip/goffice2026](https://github.com/numtip/goffice2026)  
 **Parent References:**
 - `docs/00-GREENOFFICE_PROJECT_CONSTITUTION.MD`
@@ -49,13 +49,13 @@ Deliver a **single-scroll executive visit dashboard** that tells the Green Offic
 | 1 | Executive overview | `CommandHero.astro` + `buildPhaseAVM()` | Visit-specific kicker/title copy; optional condensed hero |
 | 2 | 6 resource KPI cards | `ResourcePulseGrid.astro` + `ResourcePulseCard.astro` | None — direct reuse |
 | 3 | Executive highlights / attention / next actions | Inline logic in `dashboard.astro` (lines ~104–144) + `category-progress-vm.ts` `needsAttention` | Extract to `VisitExecutiveInsights.astro` + shared VM; merge performance insights + criteria attention |
-| 4 | Resource trends | `PerformanceExplorer.astro`, `PartialYoyExplorer.astro`, `NormalizedTrendChart.astro` | Condense layout for presentation; keep partial-year labels |
+| 4 | Resource trends | `PerformanceExplorer.astro` only (approved) | Link to full `/dashboard/` for PartialYoY + Normalized views |
 | 5 | Criteria progress (65 indicators) | `CategoryProgressOverview.astro` + `buildProgressOverview()` | Direct embed; already shows 65-indicator counts |
 | 6 | 7 category summary | Category grid in `dashboard.astro` + stacked bar from `CategoryProgressOverview` | Add **actual progress counts** to category cards (today dashboard grid shows taxonomy only, no FY2569 counts) |
 | 7 | Performance → action → indicator → evidence story | `resource-indicator-map.json`, `evidence-traceability.ts`, `JourneyLinks.astro` | **New** `VisitTraceabilityStrip.astro` — narrative chain linking 6 resources → indicators → evidence → action plan |
 | 8 | Selected activities | `LatestActivitiesSection.astro` + `activities.json` | Reuse with visit heading; consider `relatedIndicators` filter for Green Office relevance |
 | 9 | Summary / CTA | Closing banner in `dashboard.astro`, `JourneyLinks.astro` | Visit-specific CTA copy + deep links |
-| + | Presentation / full-screen mode | None existing | **New** client script + CSS shell (`?present=1` or toggle); hide nav/footer, optional Fullscreen API |
+| + | Presentation / full-screen mode | Implemented in PR #95 | Client script + CSS (`?present=1`); hides **BaseLayout site chrome only** (`.site-chrome-*`); sticky toolbar with Exit presentation / Exit fullscreen |
 
 ---
 
@@ -392,12 +392,21 @@ Existing `/dashboard/` executive overview (`src/pages/dashboard.astro`) already 
 | Repo audit | ✅ Complete |
 | Data/component inventory | ✅ Complete |
 | Conflict analysis | ✅ Complete |
-| Implementation plan document | ✅ This file |
-| Code implementation | ⏸ Not started |
-| Merge / deploy | ⏸ Not started |
+| Implementation plan document | ✅ This file (v1.1) |
+| Code implementation | ✅ Complete — [PR #95](https://github.com/numtip/goffice2026/pull/95) |
+| Routes live in branch | ✅ `/dashboard/visit/`, `/en/dashboard/visit/` |
+| Tests | ✅ `scripts/test-visit-dashboard.mjs` in `npm test` |
+| Merge / deploy | ⏸ Not started (PO gate) |
 
-**`PLAN_READY`** — awaiting Product Owner approval to begin Phase 0.
+### Post-PR #95 pre-acceptance fixes (v1.1)
+
+- Presentation CSS targets `.site-chrome-header`, `.site-chrome-footer`, etc. — **never** bare `header`/`footer`.
+- Visit page title (`.visit-page-header`) and section `h2` headers remain visible in presentation mode.
+- Presentation toolbar stays visible with **Exit presentation** / **Exit fullscreen** controls.
+- Traceability evidence count links to `/evidence/?indicator={code}` when indicator mapping exists (counts unchanged).
+
+**`IMPLEMENTED`** — open for review on PR #95; not merged or deployed.
 
 ---
 
-*Audit performed read-only. Subagent reports: dashboard routes/components, categories/progress data, activities/constitution. No destructive commands executed.*
+*Initial audit read-only (2026-09-09). Implementation on `feat/dashboard-visit-executive`.*

@@ -10,7 +10,7 @@ const hasPreviewBadge =
   import.meta.env.BASE_URL !== '/' || import.meta.env.PUBLIC_PREVIEW_BADGE === 'true';
 ---
 
-<div id="back-to-top-root" class:list={[hasPreviewBadge ? 'has-preview-badge' : '']}>
+<div id="back-to-top-root" class:list={['site-chrome-back-to-top', hasPreviewBadge ? 'has-preview-badge' : '']}>
   <button
     id="back-to-top"
     type="button"

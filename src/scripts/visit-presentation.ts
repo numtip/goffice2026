@@ -2,7 +2,7 @@
  * visit-presentation.ts — Client-side presentation mode for the Visit Dashboard.
  *
  * Reads ?present=1 from the browser URL (not static build output).
- * Adds `visit-present` on <html>, hides site chrome, optional fullscreen toggle.
+ * Hides BaseLayout site chrome via .site-chrome-* classes only.
  */
 
 export const VISIT_PRESENT_PARAM = 'present';
@@ -25,44 +25,93 @@ export function applyPresentationMode(enabled: boolean): void {
   document.body.classList.toggle(VISIT_PRESENT_CLASS, enabled);
 }
 
-export function initVisitPresentation(): void {
-  const toolbar = document.getElementById('visit-presentation-toolbar');
-  const toggleBtn = document.getElementById('visit-presentation-toggle');
-  const fullscreenBtn = document.getElementById('visit-fullscreen-toggle');
+export function isFullscreenActive(doc: Document = document): boolean {
+  return Boolean(doc.fullscreenElement);
+}
+
+/** Sync enter/exit control visibility on the presentation toolbar. */
+export function syncPresentationToolbar(
+  present: boolean,
+  fullscreen: boolean,
+  root: ParentNode = document,
+): void {
+  const toolbar = root.getElementById('visit-presentation-toolbar');
+  if (!toolbar) return;
+
+  toolbar.setAttribute('data-presentation-active', present ? 'true' : 'false');
+  toolbar.setAttribute('data-fullscreen-active', fullscreen ? 'true' : 'false');
+
+  const enterBtn = root.getElementById('visit-presentation-enter');
+  const exitBtn = root.getElementById('visit-presentation-exit');
+  const fsEnterBtn = root.getElementById('visit-fullscreen-enter');
+  const fsExitBtn = root.getElementById('visit-fullscreen-exit');
+
+  if (enterBtn) enterBtn.hidden = present;
+  if (exitBtn) exitBtn.hidden = !present;
+  if (fsEnterBtn) fsEnterBtn.hidden = fullscreen;
+  if (fsExitBtn) fsExitBtn.hidden = !fullscreen;
+}
+
+export function setPresentationMode(enabled: boolean, replaceUrl = true): void {
+  applyPresentationMode(enabled);
+  syncPresentationToolbar(enabled, isFullscreenActive());
+
+  if (replaceUrl && typeof window !== 'undefined') {
+    const url = new URL(window.location.href);
+    if (enabled) {
+      url.searchParams.set(VISIT_PRESENT_PARAM, VISIT_PRESENT_VALUE);
+    } else {
+      url.searchParams.delete(VISIT_PRESENT_PARAM);
+    }
+    history.replaceState(null, '', url.toString());
+  }
+}
+
+export function initVisitPresentation(root: ParentNode = document): void {
+  const toolbar = root.getElementById('visit-presentation-toolbar');
+  const enterBtn = root.getElementById('visit-presentation-enter');
+  const exitBtn = root.getElementById('visit-presentation-exit');
+  const fsEnterBtn = root.getElementById('visit-fullscreen-enter');
+  const fsExitBtn = root.getElementById('visit-fullscreen-exit');
 
   const fromUrl = isPresentationMode();
-  applyPresentationMode(fromUrl);
+  setPresentationMode(fromUrl, false);
 
-  if (toggleBtn) {
-    toggleBtn.setAttribute('aria-pressed', fromUrl ? 'true' : 'false');
-    toggleBtn.addEventListener('click', () => {
-      const next = !document.documentElement.classList.contains(VISIT_PRESENT_CLASS);
-      applyPresentationMode(next);
-      toggleBtn.setAttribute('aria-pressed', next ? 'true' : 'false');
+  enterBtn?.addEventListener('click', () => {
+    setPresentationMode(true);
+  });
 
-      const url = new URL(window.location.href);
-      if (next) {
-        url.searchParams.set(VISIT_PRESENT_PARAM, VISIT_PRESENT_VALUE);
-      } else {
-        url.searchParams.delete(VISIT_PRESENT_PARAM);
+  exitBtn?.addEventListener('click', () => {
+    setPresentationMode(false);
+  });
+
+  fsEnterBtn?.addEventListener('click', async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
       }
-      history.replaceState(null, '', url.toString());
-    });
-  }
+    } catch {
+      // Fullscreen may be blocked; presentation CSS still applies.
+    }
+  });
 
-  if (fullscreenBtn) {
-    fullscreenBtn.addEventListener('click', async () => {
-      try {
-        if (!document.fullscreenElement) {
-          await document.documentElement.requestFullscreen();
-        } else {
-          await document.exitFullscreen();
-        }
-      } catch {
-        // Fullscreen may be blocked; presentation CSS still applies.
+  fsExitBtn?.addEventListener('click', async () => {
+    try {
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
       }
-    });
-  }
+    } catch {
+      // Ignore — user can still exit presentation mode.
+    }
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    syncPresentationToolbar(
+      document.documentElement.classList.contains(VISIT_PRESENT_CLASS),
+      isFullscreenActive(),
+      root,
+    );
+  });
 
   if (toolbar) {
     toolbar.hidden = false;
@@ -71,7 +120,7 @@ export function initVisitPresentation(): void {
 
 if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initVisitPresentation);
+    document.addEventListener('DOMContentLoaded', () => initVisitPresentation());
   } else {
     initVisitPresentation();
   }

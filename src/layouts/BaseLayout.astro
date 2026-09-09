@@ -121,11 +121,11 @@ const robotsContent = noindex ? 'noindex, follow' : 'index, follow';
   <body class="bg-gray-50 text-gray-900 antialiased">
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-stitch focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+      class="site-chrome-skip-link sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-stitch focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
     >
       {skipLabel}
     </a>
-    <header class="sticky top-0 z-50">
+    <header class="site-chrome-header sticky top-0 z-50">
       <Navigation
         locale={lang}
         t={navLabels}
@@ -143,7 +143,7 @@ const robotsContent = noindex ? 'noindex, follow' : 'index, follow';
       <slot />
     </main>
 
-    <footer class="mt-8 border-t border-primary/10 bg-inverse-surface py-8 text-white">
+    <footer class="site-chrome-footer mt-8 border-t border-primary/10 bg-inverse-surface py-8 text-white">
       <div class="mx-auto max-w-6xl px-4">
         <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <div class="max-w-md">

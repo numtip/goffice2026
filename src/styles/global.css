@@ -405,11 +405,13 @@
 }
 
 /* ── Visit Dashboard presentation mode (client ?present=1) ─────────── */
-html.visit-present header,
-html.visit-present footer,
-html.visit-present .visit-hide-in-present,
-html.visit-present [data-preview-badge],
-html.visit-present #back-to-top {
+/* Hide BaseLayout site chrome only — never global header/footer elements. */
+html.visit-present .site-chrome-header,
+html.visit-present .site-chrome-footer,
+html.visit-present .site-chrome-skip-link,
+html.visit-present .site-chrome-journey,
+html.visit-present .site-chrome-preview-badge,
+html.visit-present .site-chrome-back-to-top {
   display: none !important;
 }
 
@@ -419,10 +421,29 @@ html.visit-present main {
 
 html.visit-present .visit-dashboard {
   max-width: 88rem;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
   padding-bottom: 2rem;
 }
 
 html.visit-present .visit-section {
-  scroll-margin-top: 1rem;
+  scroll-margin-top: 3.5rem;
+}
+
+html.visit-present .visit-presentation-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  margin-bottom: 0.75rem;
+  border-color: rgba(0, 80, 55, 0.25);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+}
+
+html.visit-present .visit-page-header,
+html.visit-present .visit-section h1,
+html.visit-present .visit-section h2,
+html.visit-present .visit-section header {
+  /* Page title and section headers remain visible in presentation mode */
+  visibility: visible;
 }

@@ -27,7 +27,9 @@ const yearLabel = th ? 'ปี 2569' : 'FY2569';
   <!-- Presentation toolbar (client-side ?present=1) -->
   <div
     id="visit-presentation-toolbar"
-    class="visit-hide-in-present mb-4 flex flex-wrap items-center justify-end gap-2 rounded-stitch-lg border border-outline-variant/20 bg-surface-container/50 px-3 py-2"
+    class="visit-presentation-toolbar mb-4 flex flex-wrap items-center justify-end gap-2 rounded-stitch-lg border border-outline-variant/20 bg-surface-container/50 px-3 py-2"
+    data-presentation-active="false"
+    data-fullscreen-active="false"
     hidden
   >
     <span class="text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant mr-auto">
@@ -35,22 +37,37 @@ const yearLabel = th ? 'ปี 2569' : 'FY2569';
     </span>
     <button
       type="button"
-      id="visit-presentation-toggle"
+      id="visit-presentation-enter"
       class="rounded-full border border-primary/30 px-3 py-1.5 text-xs font-semibold text-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-      aria-pressed="false"
     >
-      {th ? 'สลับโหมดนำเสนอ' : 'Toggle presentation mode'}
+      {th ? 'เข้าโหมดนำเสนอ' : 'Enter presentation'}
     </button>
     <button
       type="button"
-      id="visit-fullscreen-toggle"
+      id="visit-presentation-exit"
+      class="rounded-full border border-amber-500/40 bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-900 hover:bg-amber-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-600"
+      hidden
+    >
+      {th ? 'ออกจากโหมดนำเสนอ' : 'Exit presentation'}
+    </button>
+    <button
+      type="button"
+      id="visit-fullscreen-enter"
       class="rounded-full border border-outline-variant/30 px-3 py-1.5 text-xs font-semibold text-on-surface-variant hover:border-primary/30 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
     >
       {th ? 'เต็มจอ' : 'Fullscreen'}
     </button>
+    <button
+      type="button"
+      id="visit-fullscreen-exit"
+      class="rounded-full border border-outline-variant/30 px-3 py-1.5 text-xs font-semibold text-on-surface-variant hover:border-primary/30 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      hidden
+    >
+      {th ? 'ออกจากเต็มจอ' : 'Exit fullscreen'}
+    </button>
   </div>
 
-  <header class="visit-section dashboard-section mb-6">
+  <header class="visit-page-header visit-section dashboard-section mb-6">
     <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-primary mb-1">
       {th ? 'แดชบอร์ดสำหรับการเยี่ยมชมผู้บริหาร' : 'Executive Visit Dashboard'}
     </p>
@@ -157,7 +174,7 @@ const yearLabel = th ? 'ปี 2569' : 'FY2569';
     </div>
   </section>
 
-  <div class="visit-hide-in-present mt-6">
+  <div class="site-chrome-journey mt-6">
     <JourneyLinks current="dashboard" locale={locale} />
   </div>
 </div>

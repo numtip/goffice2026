@@ -16,6 +16,8 @@ import { fileURLToPath } from 'node:url';
 
 import {
   isPresentationMode,
+  syncPresentationToolbar,
+  setPresentationMode,
   VISIT_PRESENT_CLASS,
   VISIT_PRESENT_PARAM,
   VISIT_PRESENT_VALUE,
@@ -118,6 +120,80 @@ describe('Visit dashboard — presentation mode (client URL)', () => {
     const src = read('src/scripts/visit-presentation.ts');
     assert.match(src, /window\.location\.search|URLSearchParams/);
     assert.doesNotMatch(src, /present=1.*built|dist/);
+  });
+
+  it('CSS hides site chrome only — not global header/footer selectors', () => {
+    const css = read('src/styles/global.css');
+    assert.match(css, /\.site-chrome-header/);
+    assert.match(css, /\.site-chrome-footer/);
+    assert.doesNotMatch(css, /html\.visit-present\s+header,/);
+    assert.doesNotMatch(css, /html\.visit-present\s+footer,/);
+    assert.match(css, /\.visit-page-header/);
+    assert.match(css, /\.visit-presentation-toolbar/);
+  });
+
+  it('toolbar keeps exit controls and is not hidden in presentation mode', () => {
+    assert.match(shell, /visit-presentation-toolbar/);
+    assert.match(shell, /visit-presentation-enter/);
+    assert.match(shell, /visit-presentation-exit/);
+    assert.match(shell, /visit-fullscreen-exit/);
+    assert.doesNotMatch(shell, /visit-hide-in-present/);
+    assert.doesNotMatch(read('src/styles/global.css'), /\.visit-presentation-toolbar[\s\S]*display:\s*none/);
+  });
+
+  it('syncPresentationToolbar exposes enter/exit controls by state', () => {
+    const nodes = {
+      'visit-presentation-toolbar': { setAttribute() {} },
+      'visit-presentation-enter': { hidden: false },
+      'visit-presentation-exit': { hidden: true },
+      'visit-fullscreen-enter': { hidden: false },
+      'visit-fullscreen-exit': { hidden: true },
+    };
+    const root = {
+      getElementById(id) {
+        return nodes[id] ?? null;
+      },
+    };
+    syncPresentationToolbar(true, false, root);
+    assert.equal(nodes['visit-presentation-enter'].hidden, true);
+    assert.equal(nodes['visit-presentation-exit'].hidden, false);
+    syncPresentationToolbar(false, true, root);
+    assert.equal(nodes['visit-fullscreen-enter'].hidden, true);
+    assert.equal(nodes['visit-fullscreen-exit'].hidden, false);
+  });
+
+  it('setPresentationMode is exported for exit/toggle flows', () => {
+    assert.equal(typeof setPresentationMode, 'function');
+    const src = read('src/scripts/visit-presentation.ts');
+    assert.match(src, /visit-presentation-exit/);
+    assert.match(src, /searchParams\.delete\(VISIT_PRESENT_PARAM\)/);
+  });
+});
+
+describe('Visit dashboard — traceability evidence drill-down', () => {
+  it('evidence hub href scopes by primary indicator code', () => {
+    const traceSrc = read('src/utils/evidence-traceability.ts');
+    assert.match(traceSrc, /getEvidenceHubHrefForIndicator/);
+    assert.match(traceSrc, /\?indicator=\$\{encodeURIComponent\(indicatorCode\)\}/);
+    const vmSource = read('src/utils/visit-dashboard-vm.ts');
+    assert.match(vmSource, /getEvidenceHubHrefForIndicator/);
+  });
+
+  it('traceability strip links evidence count to scoped href', () => {
+    assert.match(traceability, /row\.evidenceHref/);
+    assert.match(traceability, /evidenceFilterIndicator/);
+    assert.doesNotMatch(traceability, /href=\{links\.evidence\}.*รายการ/s);
+  });
+
+  it('scoped href count unchanged — still uses getEvidenceForDashboard length', () => {
+    const vmSource = read('src/utils/visit-dashboard-vm.ts');
+    assert.match(vmSource, /evidenceCount: evidence\.length/);
+    for (const d of dashboards) {
+      const codes = getIndicatorCodesForDashboard(d.id);
+      const items = getEvidenceForDashboard(d.id);
+      assert.ok(codes.length >= 1, `${d.id} mapped indicators`);
+      assert.ok(items.length >= 0);
+    }
   });
 });
 

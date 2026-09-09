@@ -74,9 +74,19 @@ const th = locale === 'th';
               )}
             </td>
             <td class="px-3 py-2.5 text-right tabular-nums font-semibold text-on-surface">
-              {row.evidenceCount}
-              <a href={links.evidence} class="ml-1 text-primary font-normal hover:underline">
-                {th ? 'รายการ' : 'items'}
+              <a
+                href={row.evidenceHref}
+                class="text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                title={
+                  row.evidenceFilterIndicator
+                    ? th
+                      ? `ดูหลักฐานตัวชี้วัด ${row.evidenceFilterIndicator}`
+                      : `View evidence for indicator ${row.evidenceFilterIndicator}`
+                    : undefined
+                }
+              >
+                {row.evidenceCount}
+                <span class="ml-1 font-normal">{th ? 'รายการ' : 'items'}</span>
               </a>
             </td>
           </tr>

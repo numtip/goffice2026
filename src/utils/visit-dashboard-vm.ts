@@ -14,7 +14,11 @@ import { generatedMetricMap } from './dashboard-generated-metrics';
 import { buildPhaseAVM } from './dashboard-phase-a-vm';
 import { buildProgressOverview } from './category-progress-vm';
 import { computePartialYoy } from './dashboard-partial-yoy';
-import { getEvidenceForDashboard, getIndicatorCodesForDashboard } from './evidence-traceability';
+import {
+  getEvidenceForDashboard,
+  getEvidenceHubHrefForIndicator,
+  getIndicatorCodesForDashboard,
+} from './evidence-traceability';
 import { getLocalizedPath } from '../i18n/utils';
 import { activitiesCollection } from '../data/content/load-content';
 import { getPublishedItems, type ContentRecord } from './content-presentation';
@@ -59,6 +63,9 @@ export interface VisitTraceabilityRow {
   evidenceCount: number;
   dashboardHref: string;
   primaryIndicatorHref: string | null;
+  /** Scoped evidence hub when an indicator mapping exists; otherwise library root. */
+  evidenceHref: string;
+  evidenceFilterIndicator: string | null;
 }
 
 export interface VisitDashboardVM {
@@ -169,6 +176,9 @@ function buildTraceability(locale: VisitLocale): VisitTraceabilityRow[] {
     const indicatorCodes = getIndicatorCodesForDashboard(d.id);
     const evidence = getEvidenceForDashboard(d.id);
     const primaryCode = indicatorCodes[0] ?? null;
+    const evidenceHref = primaryCode
+      ? getEvidenceHubHrefForIndicator(primaryCode, locale)
+      : getLocalizedPath(locale, '/evidence');
     return {
       dashboardId: d.id,
       resourceLabel: resourceLabel(d.id, locale),
@@ -179,6 +189,8 @@ function buildTraceability(locale: VisitLocale): VisitTraceabilityRow[] {
       primaryIndicatorHref: primaryCode
         ? getLocalizedPath(locale, `/indicators/${primaryCode}`)
         : null,
+      evidenceHref,
+      evidenceFilterIndicator: primaryCode,
     };
   });
 }
