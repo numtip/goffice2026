@@ -9,6 +9,14 @@ export const VISIT_PRESENT_PARAM = 'present';
 export const VISIT_PRESENT_VALUE = '1';
 export const VISIT_PRESENT_CLASS = 'visit-present';
 
+/** Resolve an element by id within any ParentNode (querySelector — valid on ParentNode). */
+export function queryById(root: ParentNode, id: string): HTMLElement | null {
+  // Toolbar ids are static alphanumeric/hyphen tokens from our markup.
+  if (!/^[\w-]+$/.test(id)) return null;
+  const el = root.querySelector(`#${id}`);
+  return el ? (el as HTMLElement) : null;
+}
+
 /** Parse presentation flag from a URL search string or URLSearchParams. */
 export function isPresentationMode(
   search: string | URLSearchParams = typeof window !== 'undefined'
@@ -35,16 +43,16 @@ export function syncPresentationToolbar(
   fullscreen: boolean,
   root: ParentNode = document,
 ): void {
-  const toolbar = root.getElementById('visit-presentation-toolbar');
+  const toolbar = queryById(root, 'visit-presentation-toolbar');
   if (!toolbar) return;
 
   toolbar.setAttribute('data-presentation-active', present ? 'true' : 'false');
   toolbar.setAttribute('data-fullscreen-active', fullscreen ? 'true' : 'false');
 
-  const enterBtn = root.getElementById('visit-presentation-enter');
-  const exitBtn = root.getElementById('visit-presentation-exit');
-  const fsEnterBtn = root.getElementById('visit-fullscreen-enter');
-  const fsExitBtn = root.getElementById('visit-fullscreen-exit');
+  const enterBtn = queryById(root, 'visit-presentation-enter');
+  const exitBtn = queryById(root, 'visit-presentation-exit');
+  const fsEnterBtn = queryById(root, 'visit-fullscreen-enter');
+  const fsExitBtn = queryById(root, 'visit-fullscreen-exit');
 
   if (enterBtn) enterBtn.hidden = present;
   if (exitBtn) exitBtn.hidden = !present;
@@ -68,11 +76,11 @@ export function setPresentationMode(enabled: boolean, replaceUrl = true): void {
 }
 
 export function initVisitPresentation(root: ParentNode = document): void {
-  const toolbar = root.getElementById('visit-presentation-toolbar');
-  const enterBtn = root.getElementById('visit-presentation-enter');
-  const exitBtn = root.getElementById('visit-presentation-exit');
-  const fsEnterBtn = root.getElementById('visit-fullscreen-enter');
-  const fsExitBtn = root.getElementById('visit-fullscreen-exit');
+  const toolbar = queryById(root, 'visit-presentation-toolbar');
+  const enterBtn = queryById(root, 'visit-presentation-enter');
+  const exitBtn = queryById(root, 'visit-presentation-exit');
+  const fsEnterBtn = queryById(root, 'visit-fullscreen-enter');
+  const fsExitBtn = queryById(root, 'visit-fullscreen-exit');
 
   const fromUrl = isPresentationMode();
   setPresentationMode(fromUrl, false);

@@ -73,21 +73,63 @@ const th = locale === 'th';
                 <span class="text-on-surface-variant italic">—</span>
               )}
             </td>
-            <td class="px-3 py-2.5 text-right tabular-nums font-semibold text-on-surface">
-              <a
-                href={row.evidenceHref}
-                class="text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
-                title={
-                  row.evidenceFilterIndicator
-                    ? th
-                      ? `ดูหลักฐานตัวชี้วัด ${row.evidenceFilterIndicator}`
-                      : `View evidence for indicator ${row.evidenceFilterIndicator}`
-                    : undefined
-                }
-              >
-                {row.evidenceCount}
-                <span class="ml-1 font-normal">{th ? 'รายการ' : 'items'}</span>
-              </a>
+            <td class="px-3 py-2.5 text-right font-semibold text-on-surface">
+              {row.evidenceMode === 'single' && row.evidenceLinks[0] ? (
+                <a
+                  href={row.evidenceLinks[0].href}
+                  class="tabular-nums text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                  title={
+                    th
+                      ? `ดูหลักฐานตัวชี้วัด ${row.evidenceLinks[0].indicatorCode}`
+                      : `View evidence for indicator ${row.evidenceLinks[0].indicatorCode}`
+                  }
+                >
+                  {row.evidenceLinks[0].count}
+                  <span class="ml-1 font-normal">{th ? 'รายการ' : 'items'}</span>
+                </a>
+              ) : row.evidenceMode === 'multi' ? (
+                <div class="flex flex-col items-end gap-1">
+                  <ul class="flex flex-wrap justify-end gap-1.5">
+                    {row.evidenceLinks.map((link) => (
+                      <li>
+                        <a
+                          href={link.href}
+                          class="inline-flex items-center gap-1 rounded bg-primary/10 px-1.5 py-0.5 font-mono text-[10px] text-primary hover:bg-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                          title={
+                            th
+                              ? `ดูหลักฐาน ${link.indicatorCode} (${link.count} รายการ)`
+                              : `View evidence for ${link.indicatorCode} (${link.count} items)`
+                          }
+                        >
+                          {link.indicatorCode}
+                          <span class="tabular-nums font-semibold">({link.count})</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={row.aggregateEvidenceHref}
+                    class="text-[10px] tabular-nums text-on-surface-variant hover:text-primary hover:underline"
+                    title={
+                      th
+                        ? `ดูหลักฐานรวม ${row.aggregateEvidenceCount} รายการ (ไม่กรองตัวชี้วัด)`
+                        : `View all ${row.aggregateEvidenceCount} linked items (unfiltered hub)`
+                    }
+                  >
+                    {th
+                      ? `รวม ${row.aggregateEvidenceCount} รายการ → คลังหลักฐาน`
+                      : `${row.aggregateEvidenceCount} total → Evidence hub`}
+                  </a>
+                </div>
+              ) : (
+                <a
+                  href={row.aggregateEvidenceHref}
+                  class="tabular-nums text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                >
+                  {row.aggregateEvidenceCount}
+                  <span class="ml-1 font-normal">{th ? 'รายการ' : 'items'}</span>
+                </a>
+              )}
             </td>
           </tr>
         ))}

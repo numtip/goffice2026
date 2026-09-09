@@ -16,6 +16,7 @@ import { fileURLToPath } from 'node:url';
 
 import {
   isPresentationMode,
+  queryById,
   syncPresentationToolbar,
   setPresentationMode,
   VISIT_PRESENT_CLASS,
@@ -25,7 +26,11 @@ import {
 import { generatedMetricMap } from '../src/utils/dashboard-generated-metrics.ts';
 import { dashboards } from '../src/data/dashboard-config.ts';
 import { buildProgressOverview } from '../src/utils/category-progress-vm.ts';
-import { getEvidenceForDashboard, getIndicatorCodesForDashboard } from '../src/utils/evidence-traceability.ts';
+import {
+  getEvidenceForDashboard,
+  getEvidenceForIndicator,
+  getIndicatorCodesForDashboard,
+} from '../src/utils/evidence-traceability.ts';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (rel) => readFileSync(join(ROOT, rel), 'utf8');
@@ -120,6 +125,19 @@ describe('Visit dashboard — presentation mode (client URL)', () => {
     const src = read('src/scripts/visit-presentation.ts');
     assert.match(src, /window\.location\.search|URLSearchParams/);
     assert.doesNotMatch(src, /present=1.*built|dist/);
+    assert.match(src, /querySelector/);
+    assert.doesNotMatch(src, /getElementById/);
+  });
+
+  it('queryById resolves elements via ParentNode.querySelector', () => {
+    const el = { hidden: false, setAttribute() {} };
+    const root = {
+      querySelector(sel) {
+        return sel === '#visit-presentation-enter' ? el : null;
+      },
+    };
+    assert.equal(queryById(root, 'visit-presentation-enter'), el);
+    assert.equal(queryById(root, 'missing'), null);
   });
 
   it('CSS hides site chrome only — not global header/footer selectors', () => {
@@ -150,7 +168,8 @@ describe('Visit dashboard — presentation mode (client URL)', () => {
       'visit-fullscreen-exit': { hidden: true },
     };
     const root = {
-      getElementById(id) {
+      querySelector(sel) {
+        const id = sel.replace(/^#/, '');
         return nodes[id] ?? null;
       },
     };
@@ -179,20 +198,27 @@ describe('Visit dashboard — traceability evidence drill-down', () => {
     assert.match(vmSource, /getEvidenceHubHrefForIndicator/);
   });
 
-  it('traceability strip links evidence count to scoped href', () => {
-    assert.match(traceability, /row\.evidenceHref/);
-    assert.match(traceability, /evidenceFilterIndicator/);
-    assert.doesNotMatch(traceability, /href=\{links\.evidence\}.*รายการ/s);
+  it('traceability strip uses per-indicator links and aggregate hub for multi', () => {
+    assert.match(traceability, /row\.evidenceLinks/);
+    assert.match(traceability, /evidenceMode === 'single'/);
+    assert.match(traceability, /evidenceMode === 'multi'/);
+    assert.match(traceability, /aggregateEvidenceHref/);
+    assert.doesNotMatch(traceability, /row\.evidenceHref/);
   });
 
-  it('scoped href count unchanged — still uses getEvidenceForDashboard length', () => {
+  it('per-indicator counts match getEvidenceForIndicator; aggregate matches union', () => {
     const vmSource = read('src/utils/visit-dashboard-vm.ts');
-    assert.match(vmSource, /evidenceCount: evidence\.length/);
+    assert.match(vmSource, /getEvidenceForIndicator\(code\)\.length/);
+    assert.match(vmSource, /aggregateEvidenceCount = getEvidenceForDashboard/);
     for (const d of dashboards) {
       const codes = getIndicatorCodesForDashboard(d.id);
-      const items = getEvidenceForDashboard(d.id);
+      const union = getEvidenceForDashboard(d.id);
       assert.ok(codes.length >= 1, `${d.id} mapped indicators`);
-      assert.ok(items.length >= 0);
+      for (const code of codes) {
+        const per = getEvidenceForIndicator(code);
+        assert.ok(Number.isInteger(per.length));
+      }
+      assert.ok(Number.isInteger(union.length));
     }
   });
 });

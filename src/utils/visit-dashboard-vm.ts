@@ -16,6 +16,7 @@ import { buildProgressOverview } from './category-progress-vm';
 import { computePartialYoy } from './dashboard-partial-yoy';
 import {
   getEvidenceForDashboard,
+  getEvidenceForIndicator,
   getEvidenceHubHrefForIndicator,
   getIndicatorCodesForDashboard,
 } from './evidence-traceability';
@@ -55,17 +56,30 @@ export interface VisitExplorerResource {
   monthsCount: number;
 }
 
+export interface VisitEvidenceLink {
+  indicatorCode: string;
+  count: number;
+  href: string;
+}
+
 export interface VisitTraceabilityRow {
   dashboardId: string;
   resourceLabel: string;
   color: string;
   indicatorCodes: string[];
-  evidenceCount: number;
   dashboardHref: string;
   primaryIndicatorHref: string | null;
-  /** Scoped evidence hub when an indicator mapping exists; otherwise library root. */
-  evidenceHref: string;
-  evidenceFilterIndicator: string | null;
+  /** Per-indicator scoped links — count matches ?indicator= filter semantics. */
+  evidenceLinks: VisitEvidenceLink[];
+  /**
+   * single: one indicator — use evidenceLinks[0] (scoped).
+   * multi: several indicators — per-indicator links; aggregate links to hub unfiltered.
+   * none: no indicator mapping — hub root only.
+   */
+  evidenceMode: 'single' | 'multi' | 'none';
+  /** Union count across mapped indicators (multi mode aggregate link only). */
+  aggregateEvidenceCount: number;
+  aggregateEvidenceHref: string;
 }
 
 export interface VisitDashboardVM {
@@ -172,25 +186,37 @@ function buildInsights(locale: VisitLocale): VisitExecutiveInsightsVM {
 }
 
 function buildTraceability(locale: VisitLocale): VisitTraceabilityRow[] {
+  const evidenceHub = getLocalizedPath(locale, '/evidence');
+
   return dashboards.map((d) => {
     const indicatorCodes = getIndicatorCodesForDashboard(d.id);
-    const evidence = getEvidenceForDashboard(d.id);
     const primaryCode = indicatorCodes[0] ?? null;
-    const evidenceHref = primaryCode
-      ? getEvidenceHubHrefForIndicator(primaryCode, locale)
-      : getLocalizedPath(locale, '/evidence');
+    const evidenceLinks: VisitEvidenceLink[] = indicatorCodes.map((code) => ({
+      indicatorCode: code,
+      count: getEvidenceForIndicator(code).length,
+      href: getEvidenceHubHrefForIndicator(code, locale),
+    }));
+    const aggregateEvidenceCount = getEvidenceForDashboard(d.id).length;
+    const evidenceMode: VisitTraceabilityRow['evidenceMode'] =
+      indicatorCodes.length === 0
+        ? 'none'
+        : indicatorCodes.length === 1
+          ? 'single'
+          : 'multi';
+
     return {
       dashboardId: d.id,
       resourceLabel: resourceLabel(d.id, locale),
       color: d.color,
       indicatorCodes,
-      evidenceCount: evidence.length,
       dashboardHref: getLocalizedPath(locale, `/dashboard/${d.id}`),
       primaryIndicatorHref: primaryCode
         ? getLocalizedPath(locale, `/indicators/${primaryCode}`)
         : null,
-      evidenceHref,
-      evidenceFilterIndicator: primaryCode,
+      evidenceLinks,
+      evidenceMode,
+      aggregateEvidenceCount,
+      aggregateEvidenceHref: evidenceHub,
     };
   });
 }
