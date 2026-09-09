@@ -1,0 +1,108 @@
+---
+import type { VisitDashboardVM, VisitLocale } from '../../../utils/visit-dashboard-vm';
+import { getLocalizedPath } from '../../../i18n/utils';
+
+interface Props {
+  locale: VisitLocale;
+  traceability: VisitDashboardVM['traceability'];
+  links: VisitDashboardVM['links'];
+}
+
+const { locale, traceability, links } = Astro.props;
+const th = locale === 'th';
+---
+
+<section
+  class="visit-section dashboard-section mb-8"
+  aria-labelledby="visit-traceability-heading"
+  data-semantic-track="evidence"
+>
+  <div class="mb-3">
+    <h2 id="visit-traceability-heading" class="text-lg font-bold text-on-surface tracking-tight mb-1">
+      {th ? 'เส้นทาง: ผลการดำเนินงาน → ตัวชี้วัด → หลักฐาน → แผนปฏิบัติการ' : 'Story: Performance → Indicators → Evidence → Action Plan'}
+    </h2>
+    <p class="text-xs text-on-surface-variant max-w-3xl">
+      {th
+        ? 'ความพร้อมหลักฐานแยกจากความคืบหน้าและผลการใช้ทรัพยากร — ไม่ใช่คะแนนประเมิน'
+        : 'Evidence readiness is separate from progress and resource performance — not an assessment score.'}
+    </p>
+  </div>
+
+  <div class="overflow-x-auto rounded-stitch-lg border border-outline-variant/20">
+    <table class="min-w-full text-xs">
+      <thead class="bg-surface-container/80 text-on-surface-variant">
+        <tr>
+          <th scope="col" class="px-3 py-2 text-left font-semibold">
+            {th ? 'ผลการดำเนินงาน' : 'Performance'}
+          </th>
+          <th scope="col" class="px-3 py-2 text-left font-semibold">
+            {th ? 'ตัวชี้วัด' : 'Indicators'}
+          </th>
+          <th scope="col" class="px-3 py-2 text-right font-semibold">
+            {th ? 'หลักฐาน' : 'Evidence'}
+          </th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-outline-variant/10">
+        {traceability.map((row) => (
+          <tr class="hover:bg-surface-container/40">
+            <td class="px-3 py-2.5">
+              <a
+                href={row.dashboardHref}
+                class="inline-flex items-center gap-2 font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+              >
+                <span class="w-2 h-2 rounded-full shrink-0" style={`background-color:${row.color}`} />
+                {row.resourceLabel}
+              </a>
+            </td>
+            <td class="px-3 py-2.5">
+              {row.indicatorCodes.length > 0 ? (
+                <ul class="flex flex-wrap gap-1">
+                  {row.indicatorCodes.map((code) => (
+                    <li>
+                      <a
+                        href={getLocalizedPath(locale, `/indicators/${code}`)}
+                        class="rounded bg-primary/10 px-1.5 py-0.5 font-mono text-[10px] text-primary hover:bg-primary/20"
+                      >
+                        {code}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <span class="text-on-surface-variant italic">—</span>
+              )}
+            </td>
+            <td class="px-3 py-2.5 text-right tabular-nums font-semibold text-on-surface">
+              {row.evidenceCount}
+              <a href={links.evidence} class="ml-1 text-primary font-normal hover:underline">
+                {th ? 'รายการ' : 'items'}
+              </a>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-4 flex flex-wrap gap-3 text-xs">
+    <a
+      href={links.actionPlan}
+      class="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/5 px-4 py-2 font-semibold text-primary hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+    >
+      {th ? 'แผนปฏิบัติการ 2569' : 'FY2569 Action Plan'}
+    </a>
+    <a
+      href={links.evidence}
+      class="inline-flex items-center gap-1 rounded-full border border-outline-variant/30 px-4 py-2 font-semibold text-on-surface-variant hover:border-primary/30 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+    >
+      {th ? 'คลังหลักฐาน' : 'Evidence Library'}
+    </a>
+    <a
+      href={links.categories}
+      class="inline-flex items-center gap-1 rounded-full border border-outline-variant/30 px-4 py-2 font-semibold text-on-surface-variant hover:border-primary/30 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+    >
+      {th ? 'หมวดเกณฑ์ 7 หมวด' : '7 Categories'}
+    </a>
+  </div>
+</section>

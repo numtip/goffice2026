@@ -403,3 +403,26 @@
     line-height: 1.1;
   }
 }
+
+/* ── Visit Dashboard presentation mode (client ?present=1) ─────────── */
+html.visit-present header,
+html.visit-present footer,
+html.visit-present .visit-hide-in-present,
+html.visit-present [data-preview-badge],
+html.visit-present #back-to-top {
+  display: none !important;
+}
+
+html.visit-present main {
+  max-width: none;
+}
+
+html.visit-present .visit-dashboard {
+  max-width: 88rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+html.visit-present .visit-section {
+  scroll-margin-top: 1rem;
+}

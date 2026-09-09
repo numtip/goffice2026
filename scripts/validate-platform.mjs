@@ -256,7 +256,9 @@ function phaseRoutes() {
   // ── Count by group ──────────────────────────────────────
   const indicatorCount = countDetailByPrefix(routes, '/indicators');
   const evidenceDetailCount = countDetailByPrefix(routes, '/evidence');
-  const dashboardDetailCount = countDetailByPrefix(routes, '/dashboard');
+  const dashboardDetailCount = VALID_DASHBOARDS.filter((d) =>
+    routes.includes(`/dashboard/${d}/`),
+  ).length;
   const documentDetailCount = countDetailByPrefix(routes, '/documents');
 
   // Categories (hub + 7 detail)
@@ -307,7 +309,7 @@ function phaseRoutes() {
     '/', '/categories/', '/categories/cat1/', '/categories/cat2/',
     '/categories/cat3/', '/categories/cat4/', '/categories/cat5/',
     '/categories/cat6/', '/categories/cat7/',
-    '/evidence/', '/dashboard/', '/documents/', '/search/',
+    '/evidence/', '/dashboard/', '/dashboard/visit/', '/documents/', '/search/',
   ];
   const missingTh = thCoreRoutes.filter(r => !routes.includes(r));
   if (missingTh.length > 0) {
