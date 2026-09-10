@@ -157,13 +157,13 @@
       "dataClassification": "CONFIRMED_XLSX",
       "datasetState": "PUBLISHABLE_PARTIAL",
       "latestDataMonth": 8,
-      "updated": "2026-09-01",
+      "updated": "2026-09-10",
       "provenance": {
         "sourceWorkbook": "1.1Water.xlsx",
         "sourceSheet": "2569",
         "extractionScript": "scripts/extract-workbook.mjs",
         "sourceSha256": "554beacdea923bb7bdb9bea5bea484c6881b8f32a50289ad927f1ce2d5fdde6f",
-        "extractionDate": "2026-09-01",
+        "extractionDate": "2026-09-10",
         "coverage": "8 of 12 months",
         "observedMonths": [
           1,

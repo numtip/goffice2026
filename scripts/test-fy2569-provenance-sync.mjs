@@ -78,10 +78,10 @@ describe('FY2569 provenance registry ↔ canonical artifacts', () => {
     });
   }
 
-  it('energy + water registry reflects Jan–Aug (8/12) after sync', () => {
+  it('energy + water registry reflects Jan–Aug (8/12) after Resource resync', () => {
     for (const id of ['energy', 'water']) {
       const reg = registryEntry(id);
-      assert.equal(reg.extractionDate, '2026-09-01');
+      assert.equal(reg.extractionDate, '2026-09-10');
       assert.match(reg.coverage, /8 of 12 months \(Jan-Aug\)/);
     }
   });

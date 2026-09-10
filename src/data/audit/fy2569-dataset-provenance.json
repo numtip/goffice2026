@@ -2,19 +2,19 @@
   {
     "id": "metric:ghg-2568",
     "fiscalYear": 2568,
-    "sourceId": "src-fy2568:1.5_greenhousegass_update2",
-    "artifactPath": "data/staging/source/1.5_greenhousegass_update2.xlsx",
-    "sourceSha256": "5cf3db1275444898d03d6a5cb93b16b8f8fbc67f90e4180b50768e36b47cc18f",
+    "sourceId": "src-resource:1.6GreenHouseGas2025",
+    "artifactPath": "data/staging/source/1.6GreenHouseGas2025.xlsx",
+    "sourceSha256": "ffbbdcb2be28990eeb4c5cdc69528bae33a23f7300d7d4ebbb82fdfc677b9ad5",
     "sheetOrPage": "สรุปการคำนวณ ปี 2568 row \"รวม\" (r25) CF cols H..AD + AE26",
-    "extractionDate": "2026-08-28",
+    "extractionDate": "2026-09-10",
     "coverage": "12 of 12 months (COMPLETE)",
     "verificationState": "verified",
     "classification": "CONFIRMED_XLSX",
     "ownerApproval": {
-      "approvedBy": "data-owner",
-      "approvedAt": "2026-08-28"
+      "approvedBy": "product-owner",
+      "approvedAt": "2026-09-10"
     },
-    "notes": "Greenhouse gas baseline (tCO2e). AUTHORITATIVE FY2568 source (owner-designated 2026-08-28): 1.5_greenhousegass_update2.xlsx from Data2568. Total 222,679.34 kgCO2e = 222.68 tCO2e (AE26 = sum of 12 monthly CF). FY2567 total 212,436.89 kgCO2e = 212.44 tCO2e. Narrative A166 text (231.62 tCO2e / +10.63 / 4.81%) is stale and conflicts with table totals — not used (disclosed as ANOM-NARRATIVE-STALE)."
+    "notes": "Greenhouse gas baseline (tCO2e). AUTHORITATIVE FY2568 source (PO 2026-09-10): OneDrive Resource 1.6GreenHouseGas2025.xlsx. Total 231.23 tCO2e (12/12 months). Supersedes interim Data2568 1.5_greenhousegass_update2.xlsx (222.68 tCO2e)."
   },
   {
     "id": "metric:energy",
@@ -23,7 +23,7 @@
     "artifactPath": "data/staging/source/1.2electric.xlsx",
     "sourceSha256": "097d0cfc031045e2db0ff989ffc72aed4dd4a073537f9453e0170229a9c4a8da",
     "sheetOrPage": "2569",
-    "extractionDate": "2026-09-01",
+    "extractionDate": "2026-09-10",
     "coverage": "8 of 12 months (Jan-Aug)",
     "verificationState": "available_unverified",
     "classification": "CONFIRMED_XLSX",
@@ -36,7 +36,7 @@
     "artifactPath": "data/staging/source/1.1Water.xlsx",
     "sourceSha256": "554beacdea923bb7bdb9bea5bea484c6881b8f32a50289ad927f1ce2d5fdde6f",
     "sheetOrPage": "2569",
-    "extractionDate": "2026-09-01",
+    "extractionDate": "2026-09-10",
     "coverage": "8 of 12 months (Jan-Aug)",
     "verificationState": "available_unverified",
     "classification": "CONFIRMED_XLSX",
@@ -49,7 +49,7 @@
     "artifactPath": "data/staging/source/1.3Gassolene.xlsx",
     "sourceSha256": "0e610a4b22ecfdc781d9c14d8b4e4c10ec8189ff019206b631507bb93e121566",
     "sheetOrPage": "2569",
-    "extractionDate": "2026-08-28",
+    "extractionDate": "2026-09-10",
     "coverage": "7 of 12 months (Jan-Jul)",
     "verificationState": "available_unverified",
     "classification": "CONFIRMED_XLSX",
@@ -60,23 +60,23 @@
     "fiscalYear": 2569,
     "sourceId": "src-resource:1.4paper-2569",
     "artifactPath": "data/staging/source/1.4paper.xlsx",
-    "sourceSha256": "4d7d1560381563d7cb7e3aa2d8b63ba3b4df05ce0dcc5b406e2b437c5dd06354",
+    "sourceSha256": "4cb0c068408a71f30263917ddbbdb9dee2d5f1c231713904857dd4d0513af823",
     "sheetOrPage": "2569",
-    "extractionDate": "2026-08-28",
-    "coverage": "7 of 12 months (Jan-Jul)",
+    "extractionDate": "2026-09-10",
+    "coverage": "8 of 12 months (Jan-Aug)",
     "verificationState": "available_unverified",
     "classification": "CONFIRMED_XLSX",
-    "notes": "Paper (kg). SHA-256 matches manifest.json, extract-sources.json and src/data/generated/paper.json years[2569].provenance."
+    "notes": "Paper (kg). 8 observed months after OneDrive Resource resync 2026-09-10. SHA-256 matches manifest.json, extract-sources.json and src/data/generated/paper.json years[2569].provenance."
   },
   {
     "id": "metric:waste",
     "fiscalYear": 2569,
     "sourceId": "src-resource:1.5waste2026-2569",
     "artifactPath": "data/staging/source/1.5waste2026.xlsx",
-    "sourceSha256": "02b1f624796e3ce49599adb0837712a0ac5cac3794a4cabf5bc404501d398df2",
+    "sourceSha256": "ca94a2b602375dd8c7cc4d5185184e45eb137a1830f6d78efa502235e1a8142f",
     "sheetOrPage": "ปริมาณขยะรายเดือน ",
-    "extractionDate": "2026-08-28",
-    "coverage": "7 of 12 months (Jan-Jul)",
+    "extractionDate": "2026-09-10",
+    "coverage": "8 of 12 months (Jan-Aug)",
     "verificationState": "available_unverified",
     "classification": "CONFIRMED_XLSX",
     "notes": "Waste (kg). FY2568 sibling 1.5waste2025.xlsx (sha 5512418f9fa10a8baaf5c71601e8d5d47396254725babfae3a64fd413be23e5c) is the template baseline. SHA-256 matches manifest.json, extract-sources.json and src/data/generated/waste.json years[2569].provenance."
@@ -88,11 +88,11 @@
     "artifactPath": "data/staging/source/1.6GreenHouseGas2026_New.xlsx",
     "sourceSha256": "d0a75e4cf05319112d10b4d877174782041214678f14ab6875c293769e4a352d",
     "sheetOrPage": "สรุปการคำนวณ ปี 2569",
-    "extractionDate": "2026-09-01",
+    "extractionDate": "2026-09-10",
     "coverage": "7 of 12 months (Jan-Jul)",
     "verificationState": "available_unverified",
     "classification": "CONFIRMED_XLSX",
-    "notes": "Greenhouse gas (tCO2e). AUTHORITATIVE FY2569 source (owner-replaced 2026-08-28): 1.6GreenHouseGas2026_New.xlsx, sheet \"สรุปการคำนวณ ปี 2569\" row \"รวม\" (r25) CF columns H/J/L/N/P/R/T/V/X/Z/AB/AD + AE total 144,802.31 kgCO2e -> 144.8 tCO2e. 7 observed months (Jan-Jul); Aug-Dec CF display 0 -> not observed, never zero-filled. FY2568 baseline now from 1.5_greenhousegass_update2.xlsx (sha 5cf3db1275444898d03d6a5cb93b16b8f8fbc67f90e4180b50768e36b47cc18f, 12/12 months COMPLETE). SHA-256 matches manifest.json, extract-sources.json and src/data/generated/ghg.json years[2569].provenance."
+    "notes": "Greenhouse gas (tCO2e). FY2569: 1.6GreenHouseGas2026_New.xlsx, 7 observed months (Jan-Jul). FY2568 baseline: OneDrive Resource 1.6GreenHouseGas2025.xlsx (231.23 tCO2e, 12/12 COMPLETE). SHA-256 matches manifest.json, extract-sources.json and src/data/generated/ghg.json years[2569].provenance."
   },
   {
     "id": "evidence:ev-cat2-tr-plan-fy2569",

@@ -45,8 +45,7 @@ const TARGETS = [
   { fileName: '1.4paper.xlsx',     metric: 'paper',      year: 2569, workbookName: '1.4paper.xlsx' },
   { fileName: '1.5waste2026.xlsx', metric: 'waste',      year: 2569, workbookName: '1.5waste2026.xlsx' },
   { fileName: '1.6GreenHouseGas2026_New.xlsx', metric: 'ghg', year: 2569, workbookName: '1.6GreenHouseGas2026_New.xlsx' },
-  // Authoritative FY2568 GHG baseline (owner-replaced 2026-08-28).
-  { fileName: '1.5_greenhousegass_update2.xlsx', metric: 'ghg', year: 2568, workbookName: '1.5_greenhousegass_update2.xlsx' },
+  { fileName: '1.6GreenHouseGas2025.xlsx', metric: 'ghg', year: 2568, workbookName: '1.6GreenHouseGas2025.xlsx' },
 ];
 
 function displayOf(cell) {

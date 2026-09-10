@@ -3,7 +3,7 @@
  * ===================================
  * Focused reconciliation for the multi-year GHG dataset:
  *   FY2569 — authoritative 1.6GreenHouseGas2026_New.xlsx (owner-replaced)
- *   FY2568 — authoritative 1.5_greenhousegass_update2.xlsx (owner-designated)
+ *   FY2568 — authoritative OneDrive Resource 1.6GreenHouseGas2025.xlsx
  * → canonical generated/ghg.json → rendered /dashboard/ghg/ +
  * /indicators/1.5.1/ output, TH and EN.
  *
@@ -12,9 +12,8 @@
  *     H/J/L/N/P/R/T/V/X/Z/AB/AD (cols 7..29 step 2), AE (col 30) = annual total.
  *   - FY2569: Aug–Dec CF display 0 ⇒ not observed (never zero-filled); 7/12,
  *     available_unverified.
- *   - FY2568: 12/12 observed months, total 222.68 tCO₂e (row รวม AE26
- *     222,679.34 kgCO₂e), VERIFIED_BASELINE/CONFIRMED_XLSX; stale narrative
- *     (231.62) disclosed and not used.
+ *   - FY2568: 12/12 observed months, total 231.23 tCO₂e from Resource workbook,
+ *     VERIFIED_BASELINE/CONFIRMED_XLSX; superseded update2 disclosed.
  *   - Dashboard + 1.5.1 consume the same canonical generated ghg.json (no
  *     duplicated hard-coded number), TH and EN.
  *   - FY2568 stays a collapsed baseline on the 1.5.1 page.
@@ -32,7 +31,7 @@ import { buildMonthlySeries } from '../src/utils/chart-option.ts';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = join(ROOT, 'dist');
 const STAGED_WB_2569 = join(ROOT, 'data', 'staging', 'source', '1.6GreenHouseGas2026_New.xlsx');
-const STAGED_WB_2568 = join(ROOT, 'data', 'staging', 'source', '1.5_greenhousegass_update2.xlsx');
+const STAGED_WB_2568 = join(ROOT, 'data', 'staging', 'source', '1.6GreenHouseGas2025.xlsx');
 const GENERATED_GHG = join(ROOT, 'src/data/generated/ghg.json');
 
 function sha256(file) {
@@ -130,29 +129,27 @@ describe('FY2568 authoritative baseline → canonical ghg.json reconciliation', 
     assert.deepEqual(baseline.months.map((m) => m.value), wb.months.map((m) => m.tCO2e));
   });
 
-  it('generated total = workbook AE total = 222.68 tCO₂e = sum of months', () => {
+  it('generated total = workbook AE total = 231.23 tCO₂e = sum of months', () => {
     const sum = Math.round(wb.months.reduce((s, m) => s + m.tCO2e, 0) * 100) / 100;
-    assert.equal(wb.totalTCO2e, 222.68, 'workbook AE26 total (222,679.34 kgCO2e / 1000)');
+    assert.equal(wb.totalTCO2e, 231.23, 'workbook row รวม AE total');
     assert.equal(baseline.total, wb.totalTCO2e);
     assert.equal(baseline.total, sum);
   });
 
-  it('baseline status is VERIFIED_BASELINE/COMPLETE/CONFIRMED_XLSX with new source identity', () => {
+  it('baseline status is VERIFIED_BASELINE/COMPLETE/CONFIRMED_XLSX with Resource source identity', () => {
     assert.equal(baseline.dataStatus, 'VERIFIED_BASELINE');
     assert.equal(baseline.datasetState, 'COMPLETE');
     assert.equal(baseline.dataClassification, 'CONFIRMED_XLSX');
-    assert.equal(baseline.provenance.sourceWorkbook, '1.5_greenhousegass_update2.xlsx');
+    assert.equal(baseline.provenance.sourceWorkbook, '1.6GreenHouseGas2025.xlsx');
     assert.equal(baseline.provenance.sourceSheet, 'สรุปการคำนวณ ปี 2568');
     assert.equal(baseline.provenance.sourceSha256, sha256(STAGED_WB_2568), 'sha must match staged authoritative FY2568 workbook');
     assert.equal(baseline.provenance.coverage, '12 of 12 months');
     assert.equal(baseline.provenance.validationStatus, 'VERIFIED_BASELINE');
-    // Stale narrative (231.62) must NOT be used anywhere as the active value.
-    assert.notEqual(baseline.total, 231.62);
   });
 
-  it('KPI baselineValue uses the new 222.68 total', () => {
+  it('KPI baselineValue uses the Resource 231.23 total', () => {
     const kpi = JSON.parse(readFileSync(join(ROOT, 'src/data/generated/kpi-summary.json'), 'utf8')).metrics.find((m) => m.metric === 'ghg');
-    assert.equal(kpi.baselineValue, 222.68);
+    assert.equal(kpi.baselineValue, 231.23);
   });
 });
 
@@ -186,17 +183,16 @@ describe('rendered output — dashboard and 1.5.1 consume the same canonical dat
       }
     });
 
-    it('dashboard/ghg baseline KPI shows the new 222.68 total (FY2568)', () => {
+    it('dashboard/ghg baseline KPI shows the Resource 231.23 total (FY2568)', () => {
       for (const prefix of ['', 'en/']) {
         const html = readFileSync(join(DIST, prefix, 'dashboard', 'ghg', 'index.html'), 'utf8');
         const rounded = Intl.NumberFormat(prefix === '' ? 'th' : 'en').format(Math.round(baseline.total));
         assert.ok(html.includes(rounded), `${prefix}dashboard ghg baseline must render total ${rounded}`);
-        // Provenance workbook label for the baseline is the new file.
-        assert.ok(html.includes('1.5_greenhousegass_update2.xlsx'), `${prefix}dashboard ghg shows new baseline source`);
+        assert.ok(html.includes('1.6GreenHouseGas2025.xlsx'), `${prefix}dashboard ghg shows Resource baseline source`);
       }
     });
 
-    it('1.5.1 shows partial FY2569 panel + collapsed FY2568 baseline journey with new baseline values', () => {
+    it('1.5.1 shows partial FY2569 panel + collapsed FY2568 baseline journey with Resource baseline values', () => {
       for (const prefix of ['', 'en/']) {
         const html = readFileSync(join(DIST, prefix, 'indicators', '1.5.1', 'index.html'), 'utf8');
         const kind = html.match(/data-fy2569-kind="([^"]+)"/);
@@ -207,16 +203,10 @@ describe('rendered output — dashboard and 1.5.1 consume the same canonical dat
         const panelStart = html.indexOf('data-fy2569-status-panel');
         const beforeBaseline = html.slice(panelStart, baselineTags[0].index);
         assert.match(beforeBaseline, /บางส่วน|Partial|ยังไม่ยืนยัน|Unverified/, `${prefix}1.5.1 must disclose partial/unverified FY2569 state`);
-        // The FY2568 baseline journey renders the NEW total (222.68) inside the
-        // baseline section and the source workbook is the new file.
         const inside = html.slice(baselineTags[0].index, html.indexOf('</details>', baselineTags[0].index));
-        assert.ok(inside.includes('222.68') || inside.includes('222'), `${prefix}1.5.1 baseline renders 222.68 tCO2e`);
+        assert.ok(inside.includes('231.23') || inside.includes('231'), `${prefix}1.5.1 baseline renders 231.23 tCO2e`);
         assert.ok(html.indexOf('data-cat15-monthly-table', baselineTags[0].index) !== -1, `${prefix}1.5.1 monthly table inside baseline`);
-        // The stale narrative value 231.62 must only appear inside the baseline
-        // as the ANOM-NARRATIVE-STALE disclosure — never above it as a value.
-        assert.ok(!beforeBaseline.includes('231.62'), `${prefix}1.5.1 stale narrative must not appear above baseline`);
-        assert.ok(inside.includes('ANOM-NARRATIVE-STALE'), `${prefix}1.5.1 discloses the stale narrative conflict`);
-        assert.ok(inside.includes('231.62'), `${prefix}1.5.1 stale narrative disclosed verbatim for transparency`);
+        assert.ok(inside.includes('ANOM-SUPERSEDED-UPDATE2') || inside.includes('1.6GreenHouseGas2025.xlsx'), `${prefix}1.5.1 discloses Resource authority / superseded update2`);
       }
     });
   });

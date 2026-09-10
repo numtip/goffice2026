@@ -14,8 +14,8 @@
  *   4. evidenceIds exist in evidence-index.json (never invented)
  *   5. verification.status in allowed set; availability present
  *   6. no local filesystem paths (no F:\ , projectAi, full OneDrive paths)
- *   7. ghg invariants: septic anomaly is documented as exclusion only, never as
- *      a reported value; inventory total is the verified 231.62 tCO2e
+ *   7. ghg invariants: inventory total matches authoritative Resource workbook
+ *      1.6GreenHouseGas2025.xlsx (231.23 tCO2e); superseded update2 disclosed
  *   8. MISSING indicators (1.2.2, 1.5.3) appear only in gaps arrays
  *
  * Usage: node scripts/validate-category1-contracts.mjs
@@ -162,13 +162,11 @@ function main() {
   if (ghg) {
     const inv = (ghg.records || []).find((r) => r.kind === 'inventory');
     if (!inv) errors.push('ghg: inventory record missing');
-    else if (Math.abs(inv.totalTCO2e - 222.68) > 0.001) {
-      errors.push(`ghg: inventory total must be the authoritative 222.68 tCO2e (1.5_greenhousegass_update2.xlsx), got ${inv.totalTCO2e}`);
+    else if (Math.abs(inv.totalTCO2e - 231.23) > 0.01) {
+      errors.push(`ghg: inventory total must be the authoritative 231.23 tCO2e (1.6GreenHouseGas2025.xlsx), got ${inv.totalTCO2e}`);
     }
-    // The new authoritative workbook has a normal 95-personnel septic sheet, so
-    // Dec is the actual table value — no septic-tank exclusion/anomaly remains.
-    const staleNarrative = (ghg.records || []).find((r) => r.kind === 'anomaly' && r.code === 'ANOM-NARRATIVE-STALE');
-    if (!staleNarrative) errors.push('ghg: must disclose the stale narrative (231.62) vs table totals (222.68) conflict');
+    const superseded = (ghg.records || []).find((r) => r.kind === 'anomaly' && r.code === 'ANOM-SUPERSEDED-UPDATE2');
+    if (!superseded) errors.push('ghg: must disclose superseded Data2568 update2 workbook (ANOM-SUPERSEDED-UPDATE2)');
   }
 
   // ── projects invariants (1.6) ────────────────────────────────

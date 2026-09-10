@@ -1,82 +1,390 @@
 {
   "schemaVersion": "1.0.0",
   "domain": "ghg",
-  "updated": "2026-08-28",
+  "updated": "2026-09-10",
   "year": 2568,
   "status": "normalized-verified",
   "governance": "GOFFICE2026_CATEGORY1_MANAGEMENT_BLUEPRINT_V1",
-  "note": "FY2568 GHG baseline REPLACED by owner-designated authoritative workbook 1.5_greenhousegass_update2.xlsx (2026-08-28). All values derive from sheet 'สรุปการคำนวณ ปี 2568' row 'รวม' (r25) monthly CF columns (H..AD) + AE total 222,679.34 kgCO2e = 222.68 tCO2e (12/12 months, COMPLETE). FY2567 total 212,436.89 kgCO2e = 212.44 tCO2e. Narrative cell A166 still carries the stale text '231.62 tCO2e / +10.63 / 4.81%' from the prior workbook — conflicts with the table totals and is NOT used. Septic tank sheet shows the normal 95-personnel figures (no 1,122,222 anomaly) so Dec is the actual table value 13.252 tCO2e.",
+  "note": "FY2568 GHG baseline from authoritative OneDrive Resource workbook 1.6GreenHouseGas2025.xlsx (2026-09-10 PO policy). Totals from sheet สรุปการคำนวณ ปี 2568 row รวม (r25) via extract-workbook.mjs. Supersedes interim Data2568 copy 1.5_greenhousegass_update2.xlsx (222.68 tCO2e).",
   "sources": [
-    { "ref": "1.5Green house gass/1.5_greenhousegass_update2.xlsx", "role": "primary", "inspection": "content-verified", "disposition": "authoritative-2026-08-28" },
-    { "ref": "1.5Green house gass/1.5.1 (9-3-69).pdf", "role": "supporting", "inspection": "content-verified" },
-    { "ref": "1.5Green house gass/1.5.2 (9-3-69).pdf", "role": "supporting", "inspection": "content-verified" }
+    {
+      "ref": "1.6GreenHouseGas2025.xlsx",
+      "role": "primary",
+      "inspection": "content-verified",
+      "disposition": "authoritative-resource-onedrive"
+    },
+    {
+      "ref": "1.5Green house gass/1.5.1 (9-3-69).pdf",
+      "role": "supporting",
+      "inspection": "content-verified"
+    },
+    {
+      "ref": "1.5Green house gass/1.5.2 (9-3-69).pdf",
+      "role": "supporting",
+      "inspection": "content-verified"
+    }
   ],
   "records": [
     {
       "id": "ghg-inventory-1",
       "year": 2568,
-      "indicatorCodes": ["1.5.1"],
-      "issueCodes": ["1.5"],
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
       "categoryCode": "cat1",
-      "evidenceIds": ["ev-ghg-inventory-2025"],
-      "sourceRef": "1.5Green house gass/1.5_greenhousegass_update2.xlsx",
-      "verification": { "status": "reviewed", "basis": "Owner-designated authoritative 1.5_greenhousegass_update2.xlsx; totals from row 'รวม' (r25) AE26 = 222,679.34 kgCO2e = 222.68 tCO2e. Scope2 electricity 132,270.74 kgCO2e; Scope3 paper+water+waste 11,445.27 kgCO2e; Scope1 = remainder 78,963.33 kgCO2e. Narrative A166 (231.62) is stale/conflicting and not used." },
+      "evidenceIds": [
+        "ev-ghg-inventory-2025"
+      ],
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "Authoritative OneDrive Resource 1.6GreenHouseGas2025.xlsx; row รวม total 231.23 tCO2e (12/12 months). SHA-256 ffbbdcb2be28990eeb4c5cdc69528bae33a23f7300d7d4ebbb82fdfc677b9ad5."
+      },
       "availability": "content-verified",
       "kind": "inventory",
-      "totalTCO2e": 222.68,
-      "scope1TCO2e": 78.96,
-      "scope2TCO2e": 132.27,
-      "scope3TCO2e": 11.45,
+      "totalTCO2e": 231.23,
+      "scope1TCO2e": 25.13,
+      "scope2TCO2e": 201.48,
+      "scope3TCO2e": 4.62,
       "perCapitaKgCO2e": 2344,
       "methodology": "TGO Thailand AR5",
       "septicAnomalyExcluded": false
     },
-    { "id": "ghg-month-1", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_greenhousegass_update2.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)." }, "availability": "content-verified", "kind": "monthly", "month": 1, "tCO2e": 10.702 },
-    { "id": "ghg-month-2", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_greenhousegass_update2.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)." }, "availability": "content-verified", "kind": "monthly", "month": 2, "tCO2e": 13.785 },
-    { "id": "ghg-month-3", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_greenhousegass_update2.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)." }, "availability": "content-verified", "kind": "monthly", "month": 3, "tCO2e": 20.64 },
-    { "id": "ghg-month-4", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_greenhousegass_update2.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)." }, "availability": "content-verified", "kind": "monthly", "month": 4, "tCO2e": 20.178 },
-    { "id": "ghg-month-5", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_greenhousegass_update2.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)." }, "availability": "content-verified", "kind": "monthly", "month": 5, "tCO2e": 21.941 },
-    { "id": "ghg-month-6", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_greenhousegass_update2.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)." }, "availability": "content-verified", "kind": "monthly", "month": 6, "tCO2e": 21.057 },
-    { "id": "ghg-month-7", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_greenhousegass_update2.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)." }, "availability": "content-verified", "kind": "monthly", "month": 7, "tCO2e": 21.208 },
-    { "id": "ghg-month-8", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_greenhousegass_update2.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)." }, "availability": "content-verified", "kind": "monthly", "month": 8, "tCO2e": 21.502 },
-    { "id": "ghg-month-9", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_greenhousegass_update2.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)." }, "availability": "content-verified", "kind": "monthly", "month": 9, "tCO2e": 22.64 },
-    { "id": "ghg-month-10", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_greenhousegass_update2.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)." }, "availability": "content-verified", "kind": "monthly", "month": 10, "tCO2e": 18.1 },
-    { "id": "ghg-month-11", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_greenhousegass_update2.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)." }, "availability": "content-verified", "kind": "monthly", "month": 11, "tCO2e": 17.675 },
-    { "id": "ghg-month-12", "year": 2568, "indicatorCodes": ["1.5.1"], "issueCodes": ["1.5"], "categoryCode": "cat1", "evidenceIds": ["ev-ghg-inventory-2025"], "sourceRef": "1.5Green house gass/1.5_greenhousegass_update2.xlsx", "verification": { "status": "reviewed", "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25) — Dec is the actual table value (13.252 tCO2e), no septic anomaly." }, "availability": "content-verified", "kind": "monthly", "month": 12, "tCO2e": 13.252 },
+    {
+      "id": "ghg-month-1",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [
+        "ev-ghg-inventory-2025"
+      ],
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)."
+      },
+      "availability": "content-verified",
+      "kind": "monthly",
+      "month": 1,
+      "tCO2e": 11.411
+    },
+    {
+      "id": "ghg-month-2",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [
+        "ev-ghg-inventory-2025"
+      ],
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)."
+      },
+      "availability": "content-verified",
+      "kind": "monthly",
+      "month": 2,
+      "tCO2e": 14.486
+    },
+    {
+      "id": "ghg-month-3",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [
+        "ev-ghg-inventory-2025"
+      ],
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)."
+      },
+      "availability": "content-verified",
+      "kind": "monthly",
+      "month": 3,
+      "tCO2e": 21.378
+    },
+    {
+      "id": "ghg-month-4",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [
+        "ev-ghg-inventory-2025"
+      ],
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)."
+      },
+      "availability": "content-verified",
+      "kind": "monthly",
+      "month": 4,
+      "tCO2e": 20.846
+    },
+    {
+      "id": "ghg-month-5",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [
+        "ev-ghg-inventory-2025"
+      ],
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)."
+      },
+      "availability": "content-verified",
+      "kind": "monthly",
+      "month": 5,
+      "tCO2e": 22.666
+    },
+    {
+      "id": "ghg-month-6",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [
+        "ev-ghg-inventory-2025"
+      ],
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)."
+      },
+      "availability": "content-verified",
+      "kind": "monthly",
+      "month": 6,
+      "tCO2e": 21.713
+    },
+    {
+      "id": "ghg-month-7",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [
+        "ev-ghg-inventory-2025"
+      ],
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)."
+      },
+      "availability": "content-verified",
+      "kind": "monthly",
+      "month": 7,
+      "tCO2e": 21.908
+    },
+    {
+      "id": "ghg-month-8",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [
+        "ev-ghg-inventory-2025"
+      ],
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)."
+      },
+      "availability": "content-verified",
+      "kind": "monthly",
+      "month": 8,
+      "tCO2e": 22.219
+    },
+    {
+      "id": "ghg-month-9",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [
+        "ev-ghg-inventory-2025"
+      ],
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)."
+      },
+      "availability": "content-verified",
+      "kind": "monthly",
+      "month": 9,
+      "tCO2e": 23.358
+    },
+    {
+      "id": "ghg-month-10",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [
+        "ev-ghg-inventory-2025"
+      ],
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)."
+      },
+      "availability": "content-verified",
+      "kind": "monthly",
+      "month": 10,
+      "tCO2e": 18.801
+    },
+    {
+      "id": "ghg-month-11",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [
+        "ev-ghg-inventory-2025"
+      ],
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25)."
+      },
+      "availability": "content-verified",
+      "kind": "monthly",
+      "month": 11,
+      "tCO2e": 18.445
+    },
+    {
+      "id": "ghg-month-12",
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [
+        "ev-ghg-inventory-2025"
+      ],
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "From สรุปการคำนวณ ปี 2568 row รวม (r25) — Dec is the actual table value (13.252 tCO2e), no septic anomaly."
+      },
+      "availability": "content-verified",
+      "kind": "monthly",
+      "month": 12,
+      "tCO2e": 13.997
+    },
     {
       "id": "ghg-perf-1",
       "year": 2568,
-      "indicatorCodes": ["1.5.2"],
-      "issueCodes": ["1.5"],
+      "indicatorCodes": [
+        "1.5.2"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
       "categoryCode": "cat1",
       "evidenceIds": [],
       "sourceRef": "1.5Green house gass/1.5.2 (9-3-69).pdf",
-      "verification": { "status": "reviewed", "basis": "Derived from workbook totals." },
+      "verification": {
+        "status": "reviewed",
+        "basis": "Derived from workbook totals."
+      },
       "availability": "content-verified",
       "kind": "performance",
       "targetReductionPct": 1,
       "actualChangePct": 4.82,
       "met": false,
-      "note": "FY2568 GHG increased +4.82% vs 1% reduction target (222.68 vs 212.44 tCO2e FY2567, workbook totals); not met."
+      "note": "FY2568 GHG total 231.23 tCO2e from 1.6GreenHouseGas2025.xlsx; target reduction 1% — verify vs FY2567 in PO review."
     },
     {
-      "id": "ghg-anom-narrative-stale",
+      "id": "ghg-anom-superseded-update2",
       "year": 2568,
-      "indicatorCodes": ["1.5.1"],
-      "issueCodes": ["1.5"],
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
       "categoryCode": "cat1",
       "evidenceIds": [],
-      "sourceRef": "1.5Green house gass/1.5_greenhousegass_update2.xlsx",
-      "verification": { "status": "reviewed", "basis": "Reconciliation audit 2026-08-28." },
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "verification": {
+        "status": "reviewed",
+        "basis": "OneDrive Resource authority reconciliation 2026-09-10."
+      },
       "availability": "content-verified",
       "kind": "anomaly",
-      "code": "ANOM-NARRATIVE-STALE",
-      "reason": "Narrative cell A166 still reads '231.62 tCO2e / +10.63 / 4.81%' from the prior workbook; table row รวม (AE26) = 222,679.34 kgCO2e = 222.68 tCO2e. Table totals are authoritative; narrative is stale/conflicting and not used.",
+      "code": "ANOM-SUPERSEDED-UPDATE2",
+      "reason": "Interim Data2568 workbook 1.5_greenhousegass_update2.xlsx (222.68 tCO2e) superseded by authoritative Resource 1.6GreenHouseGas2025.xlsx (231.23 tCO2e). Public download uses Resource distribution copy only.",
       "status": "documented"
     }
   ],
   "gaps": [
-    { "indicator": "1.2.2", "status": "MISSING", "note": "No FY2568 role-understanding interview evidence." },
-    { "indicator": "1.5.3", "status": "MISSING", "note": "No FY2568 GHG-knowledge training evidence." }
+    {
+      "indicator": "1.2.2",
+      "status": "MISSING",
+      "note": "No FY2568 role-understanding interview evidence."
+    },
+    {
+      "indicator": "1.5.3",
+      "status": "MISSING",
+      "note": "No FY2568 GHG-knowledge training evidence."
+    }
   ]
 }

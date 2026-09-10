@@ -137,13 +137,18 @@
           "month": 7,
           "value": 224.1,
           "label": "Jul"
+        },
+        {
+          "month": 8,
+          "value": 30.4,
+          "label": "Aug"
         }
       ],
-      "total": 1239.76,
-      "average": 177.11,
+      "total": 1270.16,
+      "average": 158.77,
       "aggregation": "sum",
       "dataStatus": "in_progress",
-      "source": "1.4paper.xlsx (paper-2569.csv) — partial, 7 of 12 months",
+      "source": "1.4paper.xlsx (paper-2569.csv) — partial, 8 of 12 months",
       "quality": {
         "valid": true,
         "warnings": [],
@@ -151,15 +156,15 @@
       },
       "dataClassification": "CONFIRMED_XLSX",
       "datasetState": "PUBLISHABLE_PARTIAL",
-      "latestDataMonth": 7,
-      "updated": "2026-08-28",
+      "latestDataMonth": 8,
+      "updated": "2026-09-10",
       "provenance": {
         "sourceWorkbook": "1.4paper.xlsx",
         "sourceSheet": "2569",
         "extractionScript": "scripts/extract-workbook.mjs",
-        "sourceSha256": "4d7d1560381563d7cb7e3aa2d8b63ba3b4df05ce0dcc5b406e2b437c5dd06354",
-        "extractionDate": "2026-08-28",
-        "coverage": "7 of 12 months",
+        "sourceSha256": "4cb0c068408a71f30263917ddbbdb9dee2d5f1c231713904857dd4d0513af823",
+        "extractionDate": "2026-09-10",
+        "coverage": "8 of 12 months",
         "observedMonths": [
           1,
           2,
@@ -167,7 +172,8 @@
           4,
           5,
           6,
-          7
+          7,
+          8
         ],
         "validationStatus": "in_progress",
         "verification": {
@@ -189,8 +195,8 @@
     "months": []
   },
   "yoyChange": {
-    "absolute": -958.0399999999997,
-    "percent": -44,
+    "absolute": -927.6399999999996,
+    "percent": -42,
     "direction": "down"
   },
   "relatedIndicators": [

@@ -1,0 +1,22 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-09-10",
+  "note": "Read-only inventory of Data2569 Green Office forms. Phase 2 full publication deferred to follow-up PR. Personnel/CV/private records are withheld from blanket publication.",
+  "sourceRootLogical": "Data2569",
+  "sourceRelativePathPrefix": "07-GreenOffice/Data2569",
+  "categorySummary": {
+    "cat1": { "sourceFilesFound": 11, "formsFound": 8, "formsPublished": 0, "needsMapping": 8, "withheld": 3 },
+    "cat2": { "sourceFilesFound": 22, "formsFound": 12, "formsPublished": 0, "needsMapping": 10, "withheld": 10 },
+    "cat3": { "sourceFilesFound": 2, "formsFound": 2, "formsPublished": 0, "needsMapping": 2, "withheld": 0 },
+    "cat4": { "sourceFilesFound": 0, "formsFound": 0, "formsPublished": 0, "needsMapping": 0, "withheld": 0 },
+    "cat5": { "sourceFilesFound": 0, "formsFound": 0, "formsPublished": 0, "needsMapping": 0, "withheld": 0 },
+    "cat6": { "sourceFilesFound": 0, "formsFound": 0, "formsPublished": 0, "needsMapping": 0, "withheld": 0 },
+    "cat7": { "sourceFilesFound": 0, "formsFound": 0, "formsPublished": 0, "needsMapping": 0, "withheld": 0 }
+  },
+  "withheldReasons": [
+    "Personnel CV PDFs (วิทยากร) — not criterion forms",
+    "Outsource personnel txt — private HR record",
+    "Non-form correspondence or unrelated files inside Data2569 tree"
+  ],
+  "forms": []
+}

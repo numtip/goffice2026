@@ -1,0 +1,235 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "note": "Canonical publication records for PO-approved public-static sources. OneDrive Resource and Data2569 are authoritative; staging/public are distribution copies only. Never store absolute Windows drive paths in public metadata.",
+  "records": [
+    {
+      "id": "pub-resource:water:2568",
+      "year": 2568,
+      "category": "cat3",
+      "issue": null,
+      "indicatorCodes": [
+        "3.1.2"
+      ],
+      "originalFilename": "1.1Water.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.1Water.xlsx",
+      "sha256": "554beacdea923bb7bdb9bea5bea484c6881b8f32a50289ad927f1ce2d5fdde6f",
+      "publicPath": "/documents/resources/water/1.1Water.xlsx",
+      "fileType": "XLSX",
+      "publicationMode": "public-static",
+      "sourceAuthority": "OneDrive",
+      "sourceRootLogical": "Resource",
+      "evidenceId": "ev-resource-xlsx-water",
+      "mappingStatus": "mapped"
+    },
+    {
+      "id": "pub-resource:water:2569",
+      "year": 2569,
+      "category": "cat3",
+      "issue": null,
+      "indicatorCodes": [
+        "3.1.2"
+      ],
+      "originalFilename": "1.1Water.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.1Water.xlsx",
+      "sha256": "554beacdea923bb7bdb9bea5bea484c6881b8f32a50289ad927f1ce2d5fdde6f",
+      "publicPath": "/documents/resources/water/1.1Water.xlsx",
+      "fileType": "XLSX",
+      "publicationMode": "public-static",
+      "sourceAuthority": "OneDrive",
+      "sourceRootLogical": "Resource",
+      "evidenceId": "ev-resource-xlsx-water",
+      "mappingStatus": "mapped"
+    },
+    {
+      "id": "pub-resource:electricity:2568",
+      "year": 2568,
+      "category": "cat3",
+      "issue": null,
+      "indicatorCodes": [
+        "3.2.2"
+      ],
+      "originalFilename": "1.2electric.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.2electric.xlsx",
+      "sha256": "097d0cfc031045e2db0ff989ffc72aed4dd4a073537f9453e0170229a9c4a8da",
+      "publicPath": "/documents/resources/electricity/1.2electric.xlsx",
+      "fileType": "XLSX",
+      "publicationMode": "public-static",
+      "sourceAuthority": "OneDrive",
+      "sourceRootLogical": "Resource",
+      "evidenceId": "ev-resource-xlsx-electricity",
+      "mappingStatus": "mapped"
+    },
+    {
+      "id": "pub-resource:electricity:2569",
+      "year": 2569,
+      "category": "cat3",
+      "issue": null,
+      "indicatorCodes": [
+        "3.2.2"
+      ],
+      "originalFilename": "1.2electric.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.2electric.xlsx",
+      "sha256": "097d0cfc031045e2db0ff989ffc72aed4dd4a073537f9453e0170229a9c4a8da",
+      "publicPath": "/documents/resources/electricity/1.2electric.xlsx",
+      "fileType": "XLSX",
+      "publicationMode": "public-static",
+      "sourceAuthority": "OneDrive",
+      "sourceRootLogical": "Resource",
+      "evidenceId": "ev-resource-xlsx-electricity",
+      "mappingStatus": "mapped"
+    },
+    {
+      "id": "pub-resource:fuel:2568",
+      "year": 2568,
+      "category": "cat3",
+      "issue": null,
+      "indicatorCodes": [
+        "3.2.5"
+      ],
+      "originalFilename": "1.3Gassolene.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.3Gassolene.xlsx",
+      "sha256": "0e610a4b22ecfdc781d9c14d8b4e4c10ec8189ff019206b631507bb93e121566",
+      "publicPath": "/documents/resources/fuel/1.3Gassolene.xlsx",
+      "fileType": "XLSX",
+      "publicationMode": "public-static",
+      "sourceAuthority": "OneDrive",
+      "sourceRootLogical": "Resource",
+      "evidenceId": "ev-resource-xlsx-fuel",
+      "mappingStatus": "mapped"
+    },
+    {
+      "id": "pub-resource:fuel:2569",
+      "year": 2569,
+      "category": "cat3",
+      "issue": null,
+      "indicatorCodes": [
+        "3.2.5"
+      ],
+      "originalFilename": "1.3Gassolene.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.3Gassolene.xlsx",
+      "sha256": "0e610a4b22ecfdc781d9c14d8b4e4c10ec8189ff019206b631507bb93e121566",
+      "publicPath": "/documents/resources/fuel/1.3Gassolene.xlsx",
+      "fileType": "XLSX",
+      "publicationMode": "public-static",
+      "sourceAuthority": "OneDrive",
+      "sourceRootLogical": "Resource",
+      "evidenceId": "ev-resource-xlsx-fuel",
+      "mappingStatus": "mapped"
+    },
+    {
+      "id": "pub-resource:paper:2568",
+      "year": 2568,
+      "category": "cat1",
+      "issue": null,
+      "indicatorCodes": [
+        "3.3.2"
+      ],
+      "originalFilename": "1.4paper.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.4paper.xlsx",
+      "sha256": "4cb0c068408a71f30263917ddbbdb9dee2d5f1c231713904857dd4d0513af823",
+      "publicPath": "/documents/resources/paper/1.4paper.xlsx",
+      "fileType": "XLSX",
+      "publicationMode": "public-static",
+      "sourceAuthority": "OneDrive",
+      "sourceRootLogical": "Resource",
+      "evidenceId": "ev-resource-xlsx-paper",
+      "mappingStatus": "mapped"
+    },
+    {
+      "id": "pub-resource:paper:2569",
+      "year": 2569,
+      "category": "cat1",
+      "issue": null,
+      "indicatorCodes": [
+        "3.3.2"
+      ],
+      "originalFilename": "1.4paper.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.4paper.xlsx",
+      "sha256": "4cb0c068408a71f30263917ddbbdb9dee2d5f1c231713904857dd4d0513af823",
+      "publicPath": "/documents/resources/paper/1.4paper.xlsx",
+      "fileType": "XLSX",
+      "publicationMode": "public-static",
+      "sourceAuthority": "OneDrive",
+      "sourceRootLogical": "Resource",
+      "evidenceId": "ev-resource-xlsx-paper",
+      "mappingStatus": "mapped"
+    },
+    {
+      "id": "pub-resource:waste:2568",
+      "year": 2568,
+      "category": "cat4",
+      "issue": null,
+      "indicatorCodes": [
+        "4.1.3"
+      ],
+      "originalFilename": "1.5waste2025.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.5waste2025.xlsx",
+      "sha256": "5512418f9fa10a8baaf5c71601e8d5d47396254725babfae3a64fd413be23e5c",
+      "publicPath": "/documents/resources/waste/1.5waste2025.xlsx",
+      "fileType": "XLSX",
+      "publicationMode": "public-static",
+      "sourceAuthority": "OneDrive",
+      "sourceRootLogical": "Resource",
+      "evidenceId": "ev-resource-xlsx-waste-fy2568",
+      "mappingStatus": "mapped"
+    },
+    {
+      "id": "pub-resource:waste:2569",
+      "year": 2569,
+      "category": "cat4",
+      "issue": null,
+      "indicatorCodes": [
+        "4.1.3"
+      ],
+      "originalFilename": "1.5waste2026.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.5waste2026.xlsx",
+      "sha256": "ca94a2b602375dd8c7cc4d5185184e45eb137a1830f6d78efa502235e1a8142f",
+      "publicPath": "/documents/resources/waste/1.5waste2026.xlsx",
+      "fileType": "XLSX",
+      "publicationMode": "public-static",
+      "sourceAuthority": "OneDrive",
+      "sourceRootLogical": "Resource",
+      "evidenceId": "ev-resource-xlsx-waste-fy2569",
+      "mappingStatus": "mapped"
+    },
+    {
+      "id": "pub-resource:ghg:2568",
+      "year": 2568,
+      "category": "cat1",
+      "issue": null,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "originalFilename": "1.6GreenHouseGas2025.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.6GreenHouseGas2025.xlsx",
+      "sha256": "ffbbdcb2be28990eeb4c5cdc69528bae33a23f7300d7d4ebbb82fdfc677b9ad5",
+      "publicPath": "/documents/resources/ghg/1.6GreenHouseGas2025.xlsx",
+      "fileType": "XLSX",
+      "publicationMode": "public-static",
+      "sourceAuthority": "OneDrive",
+      "sourceRootLogical": "Resource",
+      "evidenceId": "ev-ghg-inventory-2025",
+      "mappingStatus": "mapped"
+    },
+    {
+      "id": "pub-resource:ghg:2569",
+      "year": 2569,
+      "category": "cat1",
+      "issue": null,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "originalFilename": "1.6GreenHouseGas2026_New.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.6GreenHouseGas2026_New.xlsx",
+      "sha256": "d0a75e4cf05319112d10b4d877174782041214678f14ab6875c293769e4a352d",
+      "publicPath": "/documents/resources/ghg/1.6GreenHouseGas2026_New.xlsx",
+      "fileType": "XLSX",
+      "publicationMode": "public-static",
+      "sourceAuthority": "OneDrive",
+      "sourceRootLogical": "Resource",
+      "evidenceId": "ev-resource-xlsx-ghg-fy2569",
+      "mappingStatus": "mapped"
+    }
+  ]
+}

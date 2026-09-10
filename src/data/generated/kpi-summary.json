@@ -76,13 +76,13 @@
       "labelTh": "การใช้กระดาษ",
       "unit": "kg",
       "yearBE": 2569,
-      "value": 1239.76,
+      "value": 1270.16,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 2197.7999999999997,
       "yoyChange": {
-        "absolute": -958.0399999999997,
-        "percent": -44,
+        "absolute": -927.6399999999996,
+        "percent": -42,
         "direction": "down"
       },
       "dataQuality": {
@@ -90,7 +90,7 @@
         "warnings": [],
         "reconciliationDifference": 0
       },
-      "sourceFile": "1.4paper.xlsx (paper-2569.csv) — partial, 7 of 12 months",
+      "sourceFile": "1.4paper.xlsx (paper-2569.csv) — partial, 8 of 12 months",
       "verified": false
     },
     {
@@ -99,13 +99,13 @@
       "labelTh": "ปริมาณขยะ",
       "unit": "kg",
       "yearBE": 2569,
-      "value": 3909.7,
+      "value": 4499.7,
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 5625.7,
       "yoyChange": {
-        "absolute": -1716,
-        "percent": -31,
+        "absolute": -1126,
+        "percent": -20,
         "direction": "down"
       },
       "dataQuality": {
@@ -113,7 +113,7 @@
         "warnings": [],
         "reconciliationDifference": 0
       },
-      "sourceFile": "1.5waste2026.xlsx (waste-2569.csv) — partial, 7 of 12 months",
+      "sourceFile": "1.5waste2026.xlsx (waste-2569.csv) — partial, 8 of 12 months",
       "verified": false
     },
     {
@@ -150,10 +150,10 @@
       "value": 144.8,
       "target": null,
       "targetStatus": "no-target",
-      "baselineValue": 222.68,
+      "baselineValue": 231.23,
       "yoyChange": {
-        "absolute": -77.88,
-        "percent": -35,
+        "absolute": -86.42999999999998,
+        "percent": -37,
         "direction": "down"
       },
       "dataQuality": {

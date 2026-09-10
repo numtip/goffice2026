@@ -137,13 +137,18 @@
           "month": 7,
           "value": 553,
           "label": "Jul"
+        },
+        {
+          "month": 8,
+          "value": 590,
+          "label": "Aug"
         }
       ],
-      "total": 3909.7,
-      "average": 558.53,
+      "total": 4499.7,
+      "average": 562.46,
       "aggregation": "sum",
       "dataStatus": "in_progress",
-      "source": "1.5waste2026.xlsx (waste-2569.csv) — partial, 7 of 12 months",
+      "source": "1.5waste2026.xlsx (waste-2569.csv) — partial, 8 of 12 months",
       "quality": {
         "valid": true,
         "warnings": [],
@@ -151,15 +156,15 @@
       },
       "dataClassification": "CONFIRMED_XLSX",
       "datasetState": "PUBLISHABLE_PARTIAL",
-      "latestDataMonth": 7,
-      "updated": "2026-08-28",
+      "latestDataMonth": 8,
+      "updated": "2026-09-10",
       "provenance": {
         "sourceWorkbook": "1.5waste2026.xlsx",
         "sourceSheet": "ปริมาณขยะรายเดือน ",
         "extractionScript": "scripts/extract-workbook.mjs",
-        "sourceSha256": "02b1f624796e3ce49599adb0837712a0ac5cac3794a4cabf5bc404501d398df2",
-        "extractionDate": "2026-08-28",
-        "coverage": "7 of 12 months",
+        "sourceSha256": "ca94a2b602375dd8c7cc4d5185184e45eb137a1830f6d78efa502235e1a8142f",
+        "extractionDate": "2026-09-10",
+        "coverage": "8 of 12 months",
         "observedMonths": [
           1,
           2,
@@ -167,7 +172,8 @@
           4,
           5,
           6,
-          7
+          7,
+          8
         ],
         "validationStatus": "in_progress",
         "verification": {
@@ -189,8 +195,8 @@
     "months": []
   },
   "yoyChange": {
-    "absolute": -1716,
-    "percent": -31,
+    "absolute": -1126,
+    "percent": -20,
     "direction": "down"
   },
   "relatedIndicators": [

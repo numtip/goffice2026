@@ -2,7 +2,7 @@
   "version": "3.0.0",
   "phase": "PHASE2-SYNC",
   "generated": "2026-08-07",
-  "sourceRoot": "07-GreenOffice/resource",
+  "sourceRoot": "07-GreenOffice/Resource",
   "stagingRoot": "data/staging/source",
   "readOnlyPolicy": "Source folder strictly read-only. Files copied to staging only when SHA-256 differs.",
   "datasetStates": {
@@ -84,10 +84,10 @@
       "fileName": "1.4paper.xlsx",
       "metric": "paper",
       "yearBE": 2569,
-      "sha256": "4d7d1560381563d7cb7e3aa2d8b63ba3b4df05ce0dcc5b406e2b437c5dd06354",
-      "sizeBytes": 201474,
-      "modifiedTime": "2026-08-27T10:48:21.000Z",
-      "canonicalFingerprint": "0c558d17e18a0c33",
+      "sha256": "4cb0c068408a71f30263917ddbbdb9dee2d5f1c231713904857dd4d0513af823",
+      "sizeBytes": 201540,
+      "modifiedTime": "2026-09-01T18:01:41.000Z",
+      "canonicalFingerprint": "892a5fe8e2cffd59",
       "templateBaselineFingerprint": null,
       "observedMonths": [
         1,
@@ -96,9 +96,10 @@
         4,
         5,
         6,
-        7
+        7,
+        8
       ],
-      "monthCount": 7,
+      "monthCount": 8,
       "datasetState": "PUBLISHABLE_PARTIAL",
       "status": "STAGED"
     },
@@ -133,10 +134,10 @@
       "fileName": "1.5waste2026.xlsx",
       "metric": "waste",
       "yearBE": 2569,
-      "sha256": "02b1f624796e3ce49599adb0837712a0ac5cac3794a4cabf5bc404501d398df2",
-      "sizeBytes": 41092,
-      "modifiedTime": "2026-08-25T07:02:51.000Z",
-      "canonicalFingerprint": "010458a379488469",
+      "sha256": "ca94a2b602375dd8c7cc4d5185184e45eb137a1830f6d78efa502235e1a8142f",
+      "sizeBytes": 40879,
+      "modifiedTime": "2026-09-09T08:21:19.000Z",
+      "canonicalFingerprint": "f5f725b7f4c48896",
       "templateBaselineFingerprint": "4ef666baefab17b0",
       "observedMonths": [
         1,
@@ -145,20 +146,21 @@
         4,
         5,
         6,
-        7
+        7,
+        8
       ],
-      "monthCount": 7,
+      "monthCount": 8,
       "datasetState": "PUBLISHABLE_PARTIAL",
       "status": "STAGED"
     },
     {
-      "fileName": "1.5_greenhousegass_update2.xlsx",
+      "fileName": "1.6GreenHouseGas2025.xlsx",
       "metric": "ghg",
       "yearBE": 2568,
-      "sha256": "5cf3db1275444898d03d6a5cb93b16b8f8fbc67f90e4180b50768e36b47cc18f",
-      "sizeBytes": 527452,
-      "modifiedTime": "2026-08-28T08:46:14.454Z",
-      "canonicalFingerprint": "1808aca00698c289",
+      "sha256": "ffbbdcb2be28990eeb4c5cdc69528bae33a23f7300d7d4ebbb82fdfc677b9ad5",
+      "sizeBytes": 515168,
+      "modifiedTime": "2026-08-07T03:25:19.961Z",
+      "canonicalFingerprint": "65df515d6694a9c5",
       "templateBaselineFingerprint": null,
       "observedMonths": [
         1,
@@ -186,7 +188,7 @@
       "sizeBytes": 520206,
       "modifiedTime": "2026-08-31T02:30:27.000Z",
       "canonicalFingerprint": "5fe0db3c9e90e813",
-      "templateBaselineFingerprint": "1808aca00698c289",
+      "templateBaselineFingerprint": "65df515d6694a9c5",
       "observedMonths": [
         1,
         2,
@@ -203,7 +205,7 @@
   ],
   "summary": {
     "totalFiles": 8,
-    "copiedNow": 0,
+    "copiedNow": 3,
     "allStaged": true,
     "states": {
       "PUBLISHABLE_PARTIAL": 6,

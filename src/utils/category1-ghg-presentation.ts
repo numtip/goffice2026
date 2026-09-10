@@ -168,7 +168,7 @@ export function buildGhgProvenance(): GhgProvenanceView {
   const yearBlock = generatedMetricMap.ghg.years[String(CAT1_YEAR)];
   const prov = (yearBlock?.provenance ?? {}) as Record<string, string | undefined>;
   return {
-    sourceWorkbook: (prov.sourceWorkbook as string) || '1.5_greenhousegass_update2.xlsx',
+    sourceWorkbook: (prov.sourceWorkbook as string) || '1.6GreenHouseGas2025.xlsx',
     sourceSheet: (prov.sourceSheet as string) || `สรุปการคำนวณ ปี ${CAT1_YEAR}`,
     sourceRow: (prov.sourceRowRange as string) || 'row 25 (รวม)',
     reconciliationRef: 'docs/data/GO-CAT1-1.5-FY2568-GHG-RECONCILIATION.md',

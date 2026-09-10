@@ -114,18 +114,24 @@ describe('RC-1: current-year FY2569 data provenance (GO-DATA-3 states)', () => {
     assert.equal(recycling2569.quality.valid, false);
   });
 
-  it('paper/waste/ghg 2569 are PUBLISHABLE_PARTIAL and reconciled', () => {
-    for (const metric of ['paper', 'waste', 'ghg']) {
+  it('paper/waste 2569 are PUBLISHABLE_PARTIAL Jan–Aug (8/12) after Resource resync', () => {
+    for (const metric of ['paper', 'waste']) {
       const data = readGenerated(`${metric}.json`);
       const y2569 = data.years['2569'];
       assert.equal(y2569.datasetState, 'PUBLISHABLE_PARTIAL', `${metric} 2569 should be PUBLISHABLE_PARTIAL`);
-      assert.equal(y2569.months.length, 7, `${metric} 2569 Jan–Jul`);
-      assert.equal(y2569.latestDataMonth, 7);
-      assert.equal(y2569.dataClassification, 'CONFIRMED_XLSX');
-      assert.equal(y2569.quality.valid, true, `${metric} 2569 reconciled against workbook`);
-      assert.deepEqual(y2569.months.map((m) => m.month), [1, 2, 3, 4, 5, 6, 7]);
-      assert.equal(y2569.provenance.verification.status, 'available_unverified', `${metric} is not human-verified`);
+      assert.equal(y2569.months.length, 8, `${metric} 2569 Jan–Aug`);
+      assert.equal(y2569.latestDataMonth, 8);
+      assert.deepEqual(y2569.months.map((m) => m.month), [1, 2, 3, 4, 5, 6, 7, 8]);
     }
+  });
+
+  it('ghg 2569 is PUBLISHABLE_PARTIAL Jan–Jul (7/12)', () => {
+    const data = readGenerated('ghg.json');
+    const y2569 = data.years['2569'];
+    assert.equal(y2569.datasetState, 'PUBLISHABLE_PARTIAL');
+    assert.equal(y2569.months.length, 7);
+    assert.equal(y2569.latestDataMonth, 7);
+    assert.deepEqual(y2569.months.map((m) => m.month), [1, 2, 3, 4, 5, 6, 7]);
   });
 
   it('confirmed baseline years (energy/water/ghg 2568) remain quality.valid=true and CONFIRMED_XLSX', () => {

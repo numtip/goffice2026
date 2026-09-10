@@ -6804,12 +6804,12 @@
         "GHG source workbook FY2569 (1.6GreenHouseGas2026_New.xlsx)"
       ],
       "context": [
-        "ไฟล์บัญชีก๊าซเรือนกระจกปี 2569 ตามที่เจ้าของข้อมูลกำหนด (7 จาก 12 เดือน) ปี 2568 ยังใช้ 1.5_greenhousegass_update2.xlsx",
-        "Canonical FY2569 GHG workbook designated by the data owner. 7 of 12 months. Same file as /dashboard/ghg/ current year. FY2568 remains 1.5_greenhousegass_update2.xlsx via ev-ghg-inventory-2025."
+        "ไฟล์บัญชีก๊าซเรือนกระจกปี 2569 จาก OneDrive Resource (7 จาก 12 เดือน) ปี 2568 ใช้ 1.6GreenHouseGas2025.xlsx",
+        "Canonical FY2569 GHG workbook from OneDrive Resource. 7 of 12 months. Same file as /dashboard/ghg/ current year. FY2568 baseline uses 1.6GreenHouseGas2025.xlsx via ev-ghg-inventory-2025."
       ],
       "keywords": [
-        "ไฟล์ต้นฉบับบัญชีก๊าซเรือนกระจก ปี 2569 (1.6GreenHouseGas2026_New.xlsx) ไฟล์บัญชีก๊าซเรือนกระจกปี 2569 ตามที่เจ้าของข้อมูลกำหนด (7 จาก 12 เดือน) ปี 2568 ยังใช้ 1.5_greenhousegass_update2.xlsx การกำหนดนโยบาย การวางแผนการดำเนินงานสำนักงานสีเขียว ev-resource-xlsx-ghg-fy2569 1.5.1 2569",
-        "GHG source workbook FY2569 (1.6GreenHouseGas2026_New.xlsx) Canonical FY2569 GHG workbook designated by the data owner. 7 of 12 months. Same file as /dashboard/ghg/ current year. FY2568 remains 1.5_greenhousegass_update2.xlsx via ev-ghg-inventory-2025. Environmental Policy and Green Office Planning ev-resource-xlsx-ghg-fy2569 1.5.1 2569"
+        "ไฟล์ต้นฉบับบัญชีก๊าซเรือนกระจก ปี 2569 (1.6GreenHouseGas2026_New.xlsx) ไฟล์บัญชีก๊าซเรือนกระจกปี 2569 จาก OneDrive Resource (7 จาก 12 เดือน) ปี 2568 ใช้ 1.6GreenHouseGas2025.xlsx การกำหนดนโยบาย การวางแผนการดำเนินงานสำนักงานสีเขียว ev-resource-xlsx-ghg-fy2569 1.5.1 2569",
+        "GHG source workbook FY2569 (1.6GreenHouseGas2026_New.xlsx) Canonical FY2569 GHG workbook from OneDrive Resource. 7 of 12 months. Same file as /dashboard/ghg/ current year. FY2568 baseline uses 1.6GreenHouseGas2025.xlsx via ev-ghg-inventory-2025. Environmental Policy and Green Office Planning ev-resource-xlsx-ghg-fy2569 1.5.1 2569"
       ],
       "route": "/evidence/ev-resource-xlsx-ghg-fy2569/",
       "routeKind": "page",

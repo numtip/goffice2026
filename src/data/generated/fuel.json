@@ -152,13 +152,13 @@
       "dataClassification": "CONFIRMED_XLSX",
       "datasetState": "PUBLISHABLE_PARTIAL",
       "latestDataMonth": 7,
-      "updated": "2026-08-28",
+      "updated": "2026-09-10",
       "provenance": {
         "sourceWorkbook": "1.3Gassolene.xlsx",
         "sourceSheet": "2569",
         "extractionScript": "scripts/extract-workbook.mjs",
         "sourceSha256": "0e610a4b22ecfdc781d9c14d8b4e4c10ec8189ff019206b631507bb93e121566",
-        "extractionDate": "2026-08-28",
+        "extractionDate": "2026-09-10",
         "coverage": "7 of 12 months",
         "observedMonths": [
           1,

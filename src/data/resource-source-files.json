@@ -1,7 +1,12 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-10",
-  "note": "Canonical resource XLSX publication map. Staging workbooks are authoritative; public/ copies are byte-identical distribution files. GHG FY2568 reuses the existing fy2568 cat1 copy — no duplicate. Paper maps to indicator 3.3.2 only (not 1.4.1).",
+  "note": "OneDrive Resource folder is the authoritative source for six resource workbooks. data/staging/source/ and public/documents/resources/ are byte-identical distribution/processing copies only — never treat staging or public as source of truth.",
+  "sourceAuthority": {
+    "provider": "OneDrive",
+    "sourceRootLogical": "Resource",
+    "sourceRelativePathPrefix": "07-GreenOffice/Resource"
+  },
   "privacyReview": {
     "method": "Full string-cell scan for email, phone, Thai national ID, personal name titles (นาย/นางสาว/นาง/ดร.), and secret keywords. Numeric Thai-ID regex false positives on consumption totals were discarded.",
     "result": "No personal emails, phones, national IDs, or personal names found in any of the six resource workbooks.",
@@ -14,13 +19,15 @@
     "/documents/cat3/metering-data-2025.xlsx",
     "/documents/cat6/fleet-fuel-2025.xlsx",
     "/documents/cat3/waste-monthly-2025.xlsx",
-    "/documents/cat4/waste-recycling-2025.xlsx"
+    "/documents/cat4/waste-recycling-2025.xlsx",
+    "/documents/fy2568/cat1/1.5Green house gass/1.5_greenhousegass_update2.xlsx"
   ],
   "domains": [
     {
       "metric": "water",
       "dashboardId": "water",
       "canonicalWorkbook": "1.1Water.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.1Water.xlsx",
       "stagingPath": "data/staging/source/1.1Water.xlsx",
       "publicPath": "/documents/resources/water/1.1Water.xlsx",
       "sha256": "554beacdea923bb7bdb9bea5bea484c6881b8f32a50289ad927f1ce2d5fdde6f",
@@ -35,6 +42,7 @@
       "metric": "electricity",
       "dashboardId": "energy",
       "canonicalWorkbook": "1.2electric.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.2electric.xlsx",
       "stagingPath": "data/staging/source/1.2electric.xlsx",
       "publicPath": "/documents/resources/electricity/1.2electric.xlsx",
       "sha256": "097d0cfc031045e2db0ff989ffc72aed4dd4a073537f9453e0170229a9c4a8da",
@@ -49,6 +57,7 @@
       "metric": "fuel",
       "dashboardId": "fuel",
       "canonicalWorkbook": "1.3Gassolene.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.3Gassolene.xlsx",
       "stagingPath": "data/staging/source/1.3Gassolene.xlsx",
       "publicPath": "/documents/resources/fuel/1.3Gassolene.xlsx",
       "sha256": "0e610a4b22ecfdc781d9c14d8b4e4c10ec8189ff019206b631507bb93e121566",
@@ -63,20 +72,22 @@
       "metric": "paper",
       "dashboardId": "paper",
       "canonicalWorkbook": "1.4paper.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.4paper.xlsx",
       "stagingPath": "data/staging/source/1.4paper.xlsx",
       "publicPath": "/documents/resources/paper/1.4paper.xlsx",
-      "sha256": "4d7d1560381563d7cb7e3aa2d8b63ba3b4df05ce0dcc5b406e2b437c5dd06354",
+      "sha256": "4cb0c068408a71f30263917ddbbdb9dee2d5f1c231713904857dd4d0513af823",
       "evidenceId": "ev-resource-xlsx-paper",
       "indicatorCodes": ["3.3.2"],
       "yearsCovered": [2568, 2569],
       "publicationMode": "public-static",
       "privacyStatus": "public-safe",
-      "sizeBytes": 201474
+      "sizeBytes": 201540
     },
     {
       "metric": "waste",
       "dashboardId": "waste",
       "canonicalWorkbook": "1.5waste2025.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.5waste2025.xlsx",
       "stagingPath": "data/staging/source/1.5waste2025.xlsx",
       "publicPath": "/documents/resources/waste/1.5waste2025.xlsx",
       "sha256": "5512418f9fa10a8baaf5c71601e8d5d47396254725babfae3a64fd413be23e5c",
@@ -88,31 +99,33 @@
       "sizeBytes": 44028,
       "currentYearWorkbook": {
         "canonicalWorkbook": "1.5waste2026.xlsx",
+        "sourceRelativePath": "07-GreenOffice/Resource/1.5waste2026.xlsx",
         "stagingPath": "data/staging/source/1.5waste2026.xlsx",
         "publicPath": "/documents/resources/waste/1.5waste2026.xlsx",
-        "sha256": "02b1f624796e3ce49599adb0837712a0ac5cac3794a4cabf5bc404501d398df2",
+        "sha256": "ca94a2b602375dd8c7cc4d5185184e45eb137a1830f6d78efa502235e1a8142f",
         "evidenceId": "ev-resource-xlsx-waste-fy2569",
         "yearsCovered": [2569],
-        "sizeBytes": 41092
+        "sizeBytes": 40879
       }
     },
     {
       "metric": "ghg",
       "dashboardId": "ghg",
-      "canonicalWorkbook": "1.5_greenhousegass_update2.xlsx",
-      "stagingPath": "data/staging/source/1.5_greenhousegass_update2.xlsx",
-      "publicPath": "/documents/fy2568/cat1/1.5Green%20house%20gass/1.5_greenhousegass_update2.xlsx",
-      "sha256": "5cf3db1275444898d03d6a5cb93b16b8f8fbc67f90e4180b50768e36b47cc18f",
+      "canonicalWorkbook": "1.6GreenHouseGas2025.xlsx",
+      "sourceRelativePath": "07-GreenOffice/Resource/1.6GreenHouseGas2025.xlsx",
+      "stagingPath": "data/staging/source/1.6GreenHouseGas2025.xlsx",
+      "publicPath": "/documents/resources/ghg/1.6GreenHouseGas2025.xlsx",
+      "sha256": "ffbbdcb2be28990eeb4c5cdc69528bae33a23f7300d7d4ebbb82fdfc677b9ad5",
       "evidenceId": "ev-ghg-inventory-2025",
       "secondaryEvidenceIds": ["ev-ghg-emission-factors"],
       "indicatorCodes": ["1.5.1"],
       "yearsCovered": [2568],
       "publicationMode": "public-static",
       "privacyStatus": "public-safe",
-      "sizeBytes": 527452,
-      "reuseExistingPublicCopy": true,
+      "sizeBytes": 515168,
       "currentYearWorkbook": {
         "canonicalWorkbook": "1.6GreenHouseGas2026_New.xlsx",
+        "sourceRelativePath": "07-GreenOffice/Resource/1.6GreenHouseGas2026_New.xlsx",
         "stagingPath": "data/staging/source/1.6GreenHouseGas2026_New.xlsx",
         "publicPath": "/documents/resources/ghg/1.6GreenHouseGas2026_New.xlsx",
         "sha256": "d0a75e4cf05319112d10b4d877174782041214678f14ab6875c293769e4a352d",

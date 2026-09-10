@@ -206,6 +206,14 @@ function phaseSearchIndex() {
   return runScript('validate-search-index.mjs');
 }
 
+function phasePublicationManifest() {
+  console.log('\n========================================');
+  console.log('PHASE 1.95: Publication Manifest');
+  console.log('========================================');
+  runScript('generate-publication-manifest.mjs');
+  return runScript('validate-publication-manifest.mjs');
+}
+
 function phaseActivities() {
   console.log('\n========================================');
   console.log('PHASE 1.91: Activities/News Content');
@@ -419,6 +427,7 @@ function main() {
   const category56Result = phaseCategory56();
   const category7Result = phaseCategory7();
   const searchIndexResult = phaseSearchIndex();
+  const publicationManifestResult = phasePublicationManifest();
   const activitiesResult = phaseActivities();
   const evidenceResult = phaseEvidence();
   const routeResult = phaseRoutes();
@@ -442,6 +451,7 @@ function main() {
     { phase: 'Category 5 + 6 Contracts', ok: category56Result.ok },
     { phase: 'Category 7 Contracts (continuity)', ok: category7Result.ok },
     { phase: 'Search-Index Metadata',  ok: searchIndexResult.ok },
+    { phase: 'Publication Manifest', ok: publicationManifestResult.ok },
     { phase: 'Activities/News Content', ok: activitiesResult.ok },
     { phase: 'Evidence Validation',    ok: evidenceResult.ok },
     { phase: 'Route Verification',     ok: routeOk },

@@ -74,13 +74,13 @@ describe('FY2569 current-year records reconcile (edge)', () => {
     }
   });
 
-  it('months are strictly Jan–Aug for energy/water, Jan–Jul for others, with no zero-fill', () => {
+  it('months are strictly Jan–Aug for energy/water/paper/waste, Jan–Jul for fuel/ghg, with no zero-fill', () => {
     const EXPECTED = {
       energy: { months: [1, 2, 3, 4, 5, 6, 7, 8], count: 8 },
       water: { months: [1, 2, 3, 4, 5, 6, 7, 8], count: 8 },
       fuel: { months: [1, 2, 3, 4, 5, 6, 7], count: 7 },
-      paper: { months: [1, 2, 3, 4, 5, 6, 7], count: 7 },
-      waste: { months: [1, 2, 3, 4, 5, 6, 7], count: 7 },
+      paper: { months: [1, 2, 3, 4, 5, 6, 7, 8], count: 8 },
+      waste: { months: [1, 2, 3, 4, 5, 6, 7, 8], count: 8 },
       ghg: { months: [1, 2, 3, 4, 5, 6, 7], count: 7 },
     };
     for (const metric of METRICS) {
@@ -96,13 +96,13 @@ describe('FY2569 current-year records reconcile (edge)', () => {
   it('provenance is complete: verification state, SHA-256, coverage, observed months, extraction date', () => {
     const COVERAGE = {
       energy: '8 of 12 months', water: '8 of 12 months',
-      fuel: '7 of 12 months', paper: '7 of 12 months',
-      waste: '7 of 12 months', ghg: '7 of 12 months',
+      fuel: '7 of 12 months', paper: '8 of 12 months',
+      waste: '8 of 12 months', ghg: '7 of 12 months',
     };
     const OBSERVED = {
       energy: [1, 2, 3, 4, 5, 6, 7, 8], water: [1, 2, 3, 4, 5, 6, 7, 8],
-      fuel: [1, 2, 3, 4, 5, 6, 7], paper: [1, 2, 3, 4, 5, 6, 7],
-      waste: [1, 2, 3, 4, 5, 6, 7], ghg: [1, 2, 3, 4, 5, 6, 7],
+      fuel: [1, 2, 3, 4, 5, 6, 7], paper: [1, 2, 3, 4, 5, 6, 7, 8],
+      waste: [1, 2, 3, 4, 5, 6, 7, 8], ghg: [1, 2, 3, 4, 5, 6, 7],
     };
     for (const metric of METRICS) {
       const y = currentYear(metric);
@@ -189,7 +189,7 @@ describe('buildMonthlySeries — partial current years are unverified, nulls nev
 
   it('missing months are null (never 0) and observed values are preserved verbatim', () => {
     const POPULATED = {
-      energy: 8, water: 8, fuel: 7, paper: 7, waste: 7, ghg: 7,
+      energy: 8, water: 8, fuel: 7, paper: 8, waste: 8, ghg: 7,
     };
     for (const metric of METRICS) {
       const y = currentYear(metric);
@@ -250,7 +250,7 @@ describe('Waste dashboard configuration — kg mass, recycling rate separate', (
     const waste = readMetric('waste');
     assert.equal(waste.unit, 'kg');
     assert.equal(waste.kpiField, 'total_kg');
-    assert.equal(waste.years['2569'].months.length, 7, 'waste mass FY2569 partial is published');
+    assert.equal(waste.years['2569'].months.length, 8, 'waste mass FY2569 partial is published');
     const recycling = readMetric('recycling_rate');
     assert.equal(recycling.unit, '%');
     assert.equal(recycling.kpiField, 'recycle_pct');
@@ -311,10 +311,10 @@ builtDescribe('Built dashboard pages — FY2569 provenance + KPI truthfulness (e
   it('waste page shows the kg-mass note and a kg value, and never exposes recycle_pct', () => {
     const html = readFileSync(join(DIST_DASHBOARD, 'waste', 'index.html'), 'utf8');
     assert.match(html, /data-waste-unit-note/, 'waste page has the kg-mass unit note');
-    // Current KPI card value = 3,910 kg (rounded from waste.json total 3909.7).
+    // Current KPI card value = 4,500 kg (rounded from waste.json total 4499.7 after Resource resync).
     assert.match(
       html,
-      /text-2xl font-bold[^>]*>\s*3,910\s*<\/p>\s*<span[^>]*>\s*kg\s*<\/span>/,
+      /text-2xl font-bold[^>]*>\s*4,500\s*<\/p>\s*<span[^>]*>\s*kg\s*<\/span>/,
       'waste current KPI card shows the kg mass value with kg unit',
     );
     assert.doesNotMatch(html, /recycle_pct/, 'waste page must never present recycling rate as waste mass');
