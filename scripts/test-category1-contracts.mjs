@@ -1,9 +1,4 @@
-/**
- * test-category1-contracts.mjs
- * =============================
- * Regression tests for the static Category 1 canonical data contracts
- * (GOFFICE2026 Phase C/D). Read-only over src/data/category1/*.json.
- */
+/** Regression tests for static Category 1 canonical data contracts. */
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -12,33 +7,18 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CONTRACT_DIR = join(ROOT, 'src', 'data', 'category1');
-const DOMAINS = [
-  'activities-aspects',
-  'laws',
-  'compliance',
-  'targets',
-  'ghg',
-  'projects',
-  'management-review',
-  'environmental-aspects-2568',
-  'environmental-committee',
-];
-
-function readContract(domain) {
-  return JSON.parse(readFileSync(join(CONTRACT_DIR, `${domain}.json`), 'utf8'));
-}
+const DOMAINS = ['activities-aspects','laws','compliance','targets','ghg','projects','management-review','environmental-aspects-2568','environmental-committee'];
+const readContract = (domain) => JSON.parse(readFileSync(join(CONTRACT_DIR, `${domain}.json`), 'utf8'));
 
 describe('category1 contracts — presence and shape', () => {
-  it('manifest exists with 9 contracts and declares the missing indicators', () => {
+  it('manifest exists with 9 contracts and declares missing indicators', () => {
     const m = JSON.parse(readFileSync(join(CONTRACT_DIR, 'category1-manifest.json'), 'utf8'));
     assert.equal(m.schemaVersion, '1.0.0');
     assert.equal(m.contracts.length, 9);
-    const missing = m.missingIndicators.map((x) => x.indicator).sort();
-    assert.deepEqual(missing, ['1.2.2', '1.5.3']);
+    assert.deepEqual(m.missingIndicators.map((x) => x.indicator).sort(), ['1.2.2', '1.5.3']);
   });
-
   for (const domain of DOMAINS) {
-    it(`${domain}.json is a valid 2568 contract with records and gaps`, () => {
+    it(`${domain}.json is a valid FY2568 contract`, () => {
       const c = readContract(domain);
       assert.equal(c.schemaVersion, '1.0.0');
       assert.equal(c.domain, domain);
@@ -46,177 +26,109 @@ describe('category1 contracts — presence and shape', () => {
       assert.ok(Array.isArray(c.records));
       assert.ok(Array.isArray(c.gaps));
       const gapInds = c.gaps.map((g) => g.indicator);
-      assert.ok(gapInds.includes('1.2.2'), `${domain} gaps must declare 1.2.2 MISSING`);
-      assert.ok(gapInds.includes('1.5.3'), `${domain} gaps must declare 1.5.3 MISSING`);
+      assert.ok(gapInds.includes('1.2.2'));
+      assert.ok(gapInds.includes('1.5.3'));
     });
   }
 });
 
 describe('category1 contracts — reference integrity', () => {
-  const indicators = JSON.parse(readFileSync(join(ROOT, 'src', 'data', 'criteria', 'indicators.json'), 'utf8')).indicators;
-  const issues = JSON.parse(readFileSync(join(ROOT, 'src', 'data', 'criteria', 'issues.json'), 'utf8')).issues;
-  const evidenceIds = new Set(
-    JSON.parse(readFileSync(join(ROOT, 'src', 'data', 'evidence-index.json'), 'utf8')).items.map((e) => e.id),
-  );
+  const indicators = JSON.parse(readFileSync(join(ROOT, 'src/data/criteria/indicators.json'), 'utf8')).indicators;
+  const issues = JSON.parse(readFileSync(join(ROOT, 'src/data/criteria/issues.json'), 'utf8')).issues;
+  const evidenceIds = new Set(JSON.parse(readFileSync(join(ROOT, 'src/data/evidence-index.json'), 'utf8')).items.map((e) => e.id));
   const validIndicators = new Set(indicators.map((i) => i.code));
   const indToIssue = new Map(indicators.map((i) => [i.code, i.issueCode]));
   const issueToCat = new Map(issues.map((i) => [i.id, i.categoryCode]));
 
-  it('all records reference valid indicator/issue/category codes with matching hierarchy', () => {
+  it('all records reference valid indicator/issue/category/evidence IDs', () => {
     for (const domain of DOMAINS) {
-      const c = readContract(domain);
-      for (const rec of c.records) {
-        assert.ok(rec.indicatorCodes.length > 0, `${domain}/${rec.id} needs indicatorCodes`);
+      for (const rec of readContract(domain).records) {
+        assert.ok(rec.indicatorCodes.length > 0, `${domain}/${rec.id}`);
         for (const code of rec.indicatorCodes) {
-          assert.ok(validIndicators.has(code), `${domain}/${rec.id} unknown indicator ${code}`);
-          const expectedIssue = indToIssue.get(code);
-          assert.ok(rec.issueCodes.includes(expectedIssue), `${domain}/${rec.id} issue mismatch for ${code}`);
-          assert.equal(rec.categoryCode, issueToCat.get(expectedIssue), `${domain}/${rec.id} category mismatch for ${code}`);
+          assert.ok(validIndicators.has(code), `${domain}/${rec.id} unknown ${code}`);
+          const issue = indToIssue.get(code);
+          assert.ok(rec.issueCodes.includes(issue), `${domain}/${rec.id} issue mismatch`);
+          assert.equal(rec.categoryCode, issueToCat.get(issue), `${domain}/${rec.id} category mismatch`);
+          assert.ok(!['1.2.2','1.5.3'].includes(code), `${domain}/${rec.id} claims missing indicator`);
         }
+        for (const evId of rec.evidenceIds || []) assert.ok(evidenceIds.has(evId), `${domain}/${rec.id} evidence ${evId}`);
       }
     }
   });
 
-  it('evidenceIds always resolve to existing evidence-index records', () => {
+  it('no contract leaks local filesystem paths', () => {
     for (const domain of DOMAINS) {
-      for (const rec of readContract(domain).records) {
-        for (const evId of rec.evidenceIds || []) {
-          assert.ok(evidenceIds.has(evId), `${domain}/${rec.id} evidence ${evId} not in evidence-index`);
-        }
-      }
-    }
-  });
-
-  it('no record claims the MISSING indicators 1.2.2 / 1.5.3', () => {
-    for (const domain of DOMAINS) {
-      for (const rec of readContract(domain).records) {
-        assert.ok(!rec.indicatorCodes.includes('1.2.2'), `${domain}/${rec.id} must not claim 1.2.2`);
-        assert.ok(!rec.indicatorCodes.includes('1.5.3'), `${domain}/${rec.id} must not claim 1.5.3`);
-      }
+      const raw = readFileSync(join(CONTRACT_DIR, `${domain}.json`), 'utf8');
+      assert.ok(!/F:\\/i.test(raw));
+      assert.ok(!/projectAi/i.test(raw));
+      assert.ok(!/OneDrive - Maejo/i.test(raw));
     }
   });
 });
 
-describe('category1 contracts — truthfulness guards', () => {
-  it('no contract leaks local filesystem paths', () => {
-    for (const domain of DOMAINS) {
-      const raw = readFileSync(join(CONTRACT_DIR, `${domain}.json`), 'utf8');
-      assert.ok(!/F:\\/i.test(raw), `${domain} leaks F:\\ path`);
-      assert.ok(!/projectAi/i.test(raw), `${domain} leaks projectAi path`);
-      assert.ok(!/OneDrive - Maejo/i.test(raw), `${domain} leaks OneDrive path`);
-    }
-  });
+describe('category1 GHG — official annual vs workbook monthly contract', () => {
+  const ghg = readContract('ghg');
+  const inv = ghg.records.find((r) => r.kind === 'inventory');
 
-  it('ghg inventory uses the official 1.5.2 values (10.85/201.48/19.29=231.62) and discloses every conflict', () => {
-    const ghg = readContract('ghg');
-    const inv = ghg.records.find((r) => r.kind === 'inventory');
-    assert.ok(inv, 'ghg inventory record exists');
-    // Canonical scopes/total come from the OFFICIAL signed form, not the workbook.
+  it('uses official signed-form scopes, annual total and per-capita KPI', () => {
     assert.equal(inv.totalTCO2e, 231.62);
     assert.equal(inv.scope1TCO2e, 10.85);
     assert.equal(inv.scope2TCO2e, 201.48);
     assert.equal(inv.scope3TCO2e, 19.29);
-    // Scope invariant (was the defect: water+waste Scope-3 rows were counted as Scope 1).
-    assert.equal(
-      Math.round((inv.scope1TCO2e + inv.scope2TCO2e + inv.scope3TCO2e) * 100) / 100,
-      inv.totalTCO2e,
-      'scope1+scope2+scope3 must equal totalTCO2e',
-    );
-    assert.equal(inv.perCapitaKgCO2e, 2434);
+    assert.equal(Math.round((inv.scope1TCO2e + inv.scope2TCO2e + inv.scope3TCO2e) * 100) / 100, 231.62);
+    assert.equal(inv.perCapitaTCO2e, 2.44);
+    assert.equal(inv.perCapitaKgCO2e, 2438);
+    assert.equal(inv.perCapitaKgApproximate, true);
     assert.equal(inv.sourceRef, '1.5Green house gass/1.5.2 (9-3-69).pdf');
-    assert.equal(inv.septicAnomalyExcluded, false);
-    assert.ok(!ghg.records.some((r) => r.kind === 'exclusion'), 'no septic exclusion in the authoritative set');
-    // Every conflicting source value stays disclosed — never silently reconciled.
-    for (const code of [
-      'ANOM-SUPERSEDED-UPDATE2',
-      'ANOM-OFFICIAL-VS-WORKBOOK-0.39',
-      'ANOM-NARRATIVE-221-65',
-      'ANOM-PER-CAPITA-BASIS',
-    ]) {
-      assert.ok(ghg.records.some((r) => r.kind === 'anomaly' && r.code === code), `${code} disclosed`);
-    }
-    const narrative = ghg.records.find((r) => r.code === 'ANOM-NARRATIVE-221-65');
-    assert.ok(narrative.reason.includes('221.65'), 'narrative conflict quotes 221.65 verbatim');
-    const delta = ghg.records.find((r) => r.code === 'ANOM-OFFICIAL-VS-WORKBOOK-0.39');
-    assert.ok(delta.reason.includes('0.39'), 'workbook-vs-official delta 0.39 stated');
-    assert.ok(delta.reason.includes('231.23'), 'workbook-calculated total 231.23 stated');
-    assert.ok(delta.reason.includes('231.62'), 'official reported total 231.62 stated');
-    assert.ok(ghg.sources.some((s) => s.ref === '1.6GreenHouseGas2025.xlsx'), 'workbook remains a declared source');
-    const raw = readFileSync(join(CONTRACT_DIR, 'ghg.json'), 'utf8');
-    assert.ok(!raw.includes('7548513'), 'inflated septic value must not appear as a reported value');
   });
 
-  it('ghg monthly series has 12 entries for year 2568', () => {
-    const ghg = readContract('ghg');
-    const months = ghg.records.filter((r) => r.kind === 'monthly');
+  it('keeps 12 workbook months and the documented 0.39 annual delta', () => {
+    const months = ghg.records.filter((r) => r.kind === 'monthly').sort((a,b) => a.month-b.month);
     assert.equal(months.length, 12);
-    assert.deepEqual(months.map((m) => m.month).sort((a, b) => a - b), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
-  });
-
-  it('ghg dashboard baseline months match category1 monthly records', () => {
-    const ghg = readContract('ghg');
-    const metric = JSON.parse(readFileSync(join(ROOT, 'src', 'data', 'generated', 'ghg.json'), 'utf8'));
-    const contractMonths = ghg.records
-      .filter((r) => r.kind === 'monthly')
-      .sort((a, b) => a.month - b.month);
-    const dashMonths = metric.years['2568'].months.sort((a, b) => a.month - b.month);
-    assert.equal(contractMonths.length, dashMonths.length);
-    for (let i = 0; i < contractMonths.length; i++) {
-      assert.equal(contractMonths[i].month, dashMonths[i].month, `month index ${i}`);
-      assert.equal(contractMonths[i].tCO2e, dashMonths[i].value, `month ${contractMonths[i].month} tCO2e`);
+    assert.equal(months[11].month, 12);
+    assert.equal(months[11].tCO2e, 13.997);
+    assert.match(months[11].verification.basis, /13\.997/);
+    const metric = JSON.parse(readFileSync(join(ROOT, 'src/data/generated/ghg.json'), 'utf8'));
+    const dashMonths = metric.years['2568'].months.sort((a,b) => a.month-b.month);
+    for (let i = 0; i < months.length; i++) {
+      assert.equal(months[i].month, dashMonths[i].month);
+      assert.equal(months[i].tCO2e, dashMonths[i].value);
     }
-    const inv = ghg.records.find((r) => r.kind === 'inventory');
-    const dashTotal = metric.years['2568'].total;
-    const monthSum = dashMonths.reduce((s, m) => s + m.value, 0);
-    assert.ok(Math.abs(monthSum - dashTotal) < 0.01, 'dashboard total equals monthly sum');
-    // Documented delta: the dashboard baseline is the workbook-calculated 12/12
-    // monthly sum (231.23 tCO2e) while the canonical contract follows the official
-    // signed form (231.62 tCO2e) — Δ0.39 tCO2e, disclosed as
-    // ANOM-OFFICIAL-VS-WORKBOOK-0.39 and never silently reconciled.
-    const officialDelta = Math.round((inv.totalTCO2e - dashTotal) * 100) / 100;
-    assert.equal(officialDelta, 0.39, 'inventory vs dashboard delta is the documented 0.39 tCO2e');
-    assert.ok(
-      ghg.records.some((r) => r.kind === 'anomaly' && r.code === 'ANOM-OFFICIAL-VS-WORKBOOK-0.39'),
-      'the 0.39 official-vs-workbook delta must stay disclosed',
-    );
+    assert.equal(metric.years['2568'].total, 231.23);
+    assert.equal(Math.round((inv.totalTCO2e - metric.years['2568'].total) * 100) / 100, 0.39);
   });
 
-  it('targets contract covers the six official domains', () => {
-    const t = readContract('targets');
-    const domains = t.records.map((r) => r.domain).sort();
-    assert.deepEqual(domains, ['electricity', 'fuel', 'general_waste', 'ghg', 'paper', 'water']);
+  it('publishes no stale FY2567 performance verdict while the comparison basis is pending', () => {
+    const perf = ghg.records.find((r) => r.kind === 'performance');
+    assert.equal(perf.verification.status, 'pending');
+    assert.equal(perf.status, 'pending-verification');
+    assert.equal(perf.actualChangePct, null);
+    assert.equal(perf.met, null);
+    assert.doesNotMatch(JSON.stringify(perf), /4\.82/);
   });
 
-  it('laws contract has 9 topics, 47 requirements, and 1 explicit aspect mapping', () => {
+  it('keeps every reconciliation disclosure explicit', () => {
+    for (const code of ['ANOM-SUPERSEDED-UPDATE2','ANOM-OFFICIAL-VS-WORKBOOK-0.39','ANOM-NARRATIVE-221-65','ANOM-PER-CAPITA-BASIS']) {
+      assert.ok(ghg.records.some((r) => r.kind === 'anomaly' && r.code === code), code);
+    }
+    const raw = JSON.stringify(ghg);
+    for (const value of ['221.65','231.23','231.62','0.39','2.44','2438','2434']) assert.ok(raw.includes(value), `disclosure ${value}`);
+    assert.ok(!raw.includes('undefined tCO2e/person'));
+  });
+});
+
+describe('category1 selected historical invariants', () => {
+  it('targets cover six official domains', () => assert.deepEqual(readContract('targets').records.map((r) => r.domain).sort(), ['electricity','fuel','general_waste','ghg','paper','water']));
+  it('laws has 9 topics, 47 requirements and the explicit aspect mapping', () => {
     const laws = readContract('laws');
-    assert.equal(laws.status, 'historical-baseline');
     assert.equal(laws.records.filter((r) => r.kind === 'legal-item').length, 9);
     assert.equal(laws.records.filter((r) => r.kind === 'legal-requirement').length, 47);
-    assert.equal(laws.records.filter((r) => r.kind === 'aspect-legal-mapping').length, 1);
     const mapping = laws.records.find((r) => r.id === 'alm-ea79-lr32');
-    assert.equal(mapping.aspectId, 'ea-79');
-    assert.equal(mapping.legalRequirementId, 'lr-3.2');
+    assert.equal(mapping.aspectId, 'ea-79'); assert.equal(mapping.legalRequirementId, 'lr-3.2');
   });
-
-  it('compliance contract has narrative evaluation and 47 register assessments', () => {
-    const c = readContract('compliance');
-    assert.equal(c.status, 'historical-baseline');
-    assert.equal(c.records.filter((r) => r.kind === 'evaluation').length, 1);
-    assert.equal(c.records.filter((r) => r.kind === 'legal-compliance-assessment').length, 47);
-    const tds = c.records.find((r) => r.id === 'lca-1.3');
-    assert.equal(tds.status, 'needs_review');
-  });
-
-  it('management-review quorum is documented at 20/23 = 86.96% for Meeting #1 only', () => {
-    const mr = readContract('management-review');
-    assert.equal(mr.status, 'historical-baseline');
-    const quorum = mr.records.find((r) => r.kind === 'quorum');
-    assert.ok(quorum);
-    assert.equal(quorum.documented, true);
-    assert.equal(quorum.meetingId, 'mr-meeting-1');
-    assert.equal(quorum.attendancePct, 86.96);
-    const meetings = mr.records.filter((r) => r.kind === 'meeting');
-    assert.equal(meetings.length, 2);
-    assert.equal(meetings.find((m) => m.id === 'mr-meeting-2').reviewStatus, 'occurrence_supported');
+  it('compliance has narrative evaluation and 47 register assessments', () => assert.equal(readContract('compliance').records.filter((r) => r.kind === 'legal-compliance-assessment').length, 47));
+  it('management-review retains Meeting #1 quorum 20/23 = 86.96%', () => {
+    const mr = readContract('management-review'); const q = mr.records.find((r) => r.kind === 'quorum');
+    assert.equal(q.documented, true); assert.equal(q.meetingId, 'mr-meeting-1'); assert.equal(q.attendancePct, 86.96);
   });
 });

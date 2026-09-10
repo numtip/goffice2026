@@ -1,136 +1,22 @@
 {
   "generatedFrom": "canonical-metrics",
   "totalMetrics": 7,
-  "metricsWithWarnings": 1,
+  "metricsWithWarnings": 2,
   "metricsWithErrors": 1,
   "entries": [
-    {
-      "metric": "energy",
-      "yearBE": 2568,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 12,
-      "dataStatus": "VERIFIED_BASELINE"
-    },
-    {
-      "metric": "energy",
-      "yearBE": 2569,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 8,
-      "dataStatus": "in_progress"
-    },
-    {
-      "metric": "water",
-      "yearBE": 2568,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 12,
-      "dataStatus": "VERIFIED_BASELINE"
-    },
-    {
-      "metric": "water",
-      "yearBE": 2569,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 8,
-      "dataStatus": "in_progress"
-    },
-    {
-      "metric": "fuel",
-      "yearBE": 2568,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 12,
-      "dataStatus": "VERIFIED_BASELINE"
-    },
-    {
-      "metric": "fuel",
-      "yearBE": 2569,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 7,
-      "dataStatus": "in_progress"
-    },
-    {
-      "metric": "paper",
-      "yearBE": 2568,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 12,
-      "dataStatus": "VERIFIED_BASELINE"
-    },
-    {
-      "metric": "paper",
-      "yearBE": 2569,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 8,
-      "dataStatus": "in_progress"
-    },
-    {
-      "metric": "waste",
-      "yearBE": 2568,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 12,
-      "dataStatus": "VERIFIED_BASELINE"
-    },
-    {
-      "metric": "waste",
-      "yearBE": 2569,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 8,
-      "dataStatus": "in_progress"
-    },
-    {
-      "metric": "recycling_rate",
-      "yearBE": 2568,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 12,
-      "dataStatus": "VERIFIED_BASELINE"
-    },
-    {
-      "metric": "recycling_rate",
-      "yearBE": 2569,
-      "valid": false,
-      "warnings": [
-        "Waiting for Official FY2569 Data"
-      ],
-      "reconciliationDifference": null,
-      "monthCount": 0,
-      "dataStatus": "CURRENT_DATA_PENDING"
-    },
-    {
-      "metric": "ghg",
-      "yearBE": 2568,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 12,
-      "dataStatus": "VERIFIED_BASELINE"
-    },
-    {
-      "metric": "ghg",
-      "yearBE": 2569,
-      "valid": true,
-      "warnings": [],
-      "reconciliationDifference": 0,
-      "monthCount": 7,
-      "dataStatus": "in_progress"
-    }
+    {"metric":"energy","yearBE":2568,"valid":true,"warnings":[],"reconciliationDifference":0,"monthCount":12,"dataStatus":"VERIFIED_BASELINE"},
+    {"metric":"energy","yearBE":2569,"valid":true,"warnings":[],"reconciliationDifference":0,"monthCount":8,"dataStatus":"in_progress"},
+    {"metric":"water","yearBE":2568,"valid":true,"warnings":[],"reconciliationDifference":0,"monthCount":12,"dataStatus":"VERIFIED_BASELINE"},
+    {"metric":"water","yearBE":2569,"valid":true,"warnings":[],"reconciliationDifference":0,"monthCount":8,"dataStatus":"in_progress"},
+    {"metric":"fuel","yearBE":2568,"valid":true,"warnings":[],"reconciliationDifference":0,"monthCount":12,"dataStatus":"VERIFIED_BASELINE"},
+    {"metric":"fuel","yearBE":2569,"valid":true,"warnings":[],"reconciliationDifference":0,"monthCount":7,"dataStatus":"in_progress"},
+    {"metric":"paper","yearBE":2568,"valid":true,"warnings":[],"reconciliationDifference":0,"monthCount":12,"dataStatus":"VERIFIED_BASELINE"},
+    {"metric":"paper","yearBE":2569,"valid":true,"warnings":["August 2569 raw value 30.4 kg is published unchanged but excluded from trend/YoY analytics pending data-owner verification (DQ-PAPER-2569-AUG-LOW)."],"reconciliationDifference":0,"monthCount":8,"dataStatus":"in_progress"},
+    {"metric":"waste","yearBE":2568,"valid":true,"warnings":[],"reconciliationDifference":0,"monthCount":12,"dataStatus":"VERIFIED_BASELINE"},
+    {"metric":"waste","yearBE":2569,"valid":true,"warnings":[],"reconciliationDifference":0,"monthCount":8,"dataStatus":"in_progress"},
+    {"metric":"recycling_rate","yearBE":2568,"valid":true,"warnings":[],"reconciliationDifference":0,"monthCount":12,"dataStatus":"VERIFIED_BASELINE"},
+    {"metric":"recycling_rate","yearBE":2569,"valid":false,"warnings":["Waiting for Official FY2569 Data"],"reconciliationDifference":null,"monthCount":0,"dataStatus":"CURRENT_DATA_PENDING"},
+    {"metric":"ghg","yearBE":2568,"valid":true,"warnings":[],"reconciliationDifference":0,"monthCount":12,"dataStatus":"VERIFIED_BASELINE"},
+    {"metric":"ghg","yearBE":2569,"valid":true,"warnings":[],"reconciliationDifference":0,"monthCount":7,"dataStatus":"in_progress"}
   ]
 }

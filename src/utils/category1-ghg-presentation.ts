@@ -1,7 +1,8 @@
 /**
  * category1-ghg-presentation.ts
- * Read-only FY2568 CAT1-1.5 GHG view-model — inventory, performance, anomalies.
- * Monthly values from generated/ghg.json (dashboard canonical); annual/scopes from category1/ghg.json.
+ * Read-only FY2568 CAT1-1.5 GHG view-model.
+ * Annual/scopes/per-capita follow the official signed form; monthly values follow
+ * the canonical Resource workbook series used by the dashboard.
  */
 import ghgContract from '../data/category1/ghg.json';
 import { generatedMetricMap } from './dashboard-generated-metrics';
@@ -18,7 +19,9 @@ export interface GhgInventoryView {
   scope1TCO2e: number;
   scope2TCO2e: number;
   scope3TCO2e: number;
+  perCapitaTCO2e: number;
   perCapitaKgCO2e: number;
+  perCapitaKgApproximate: boolean;
   methodology: string;
   septicAnomalyExcluded: boolean;
 }
@@ -28,17 +31,18 @@ export interface GhgMonthlyView {
   tCO2e: number;
   labelTh: string;
   labelEn: string;
-  sourceKind: 'workbook-row-68' | 'derived-dec';
+  sourceKind: 'workbook-monthly';
   sourceNote: string;
 }
 
 export interface GhgPerformanceView {
   targetReductionPct: number;
-  actualChangePct: number;
-  met: boolean;
-  previousYearTotalTCO2e: number;
+  actualChangePct: number | null;
+  met: boolean | null;
+  status: 'verified' | 'pending-verification';
+  previousYearTotalTCO2e: number | null;
   currentYearTotalTCO2e: number;
-  absoluteChangeTCO2e: number;
+  absoluteChangeTCO2e: number | null;
   note: string;
 }
 
@@ -91,33 +95,30 @@ export function buildGhgInventory(): GhgInventoryView {
     scope1TCO2e: inv.scope1TCO2e as number,
     scope2TCO2e: inv.scope2TCO2e as number,
     scope3TCO2e: inv.scope3TCO2e as number,
+    perCapitaTCO2e: inv.perCapitaTCO2e as number,
     perCapitaKgCO2e: inv.perCapitaKgCO2e as number,
+    perCapitaKgApproximate: inv.perCapitaKgApproximate === true,
     methodology: inv.methodology as string,
     septicAnomalyExcluded: inv.septicAnomalyExcluded === true,
   };
 }
 
 export function buildGhgMonthlySeries(): GhgMonthlyView[] {
-  const decAnomaly = records().find((r) => r.kind === 'anomaly' && r.code === 'ANOM-DEC-O68');
-  const decNote = (decAnomaly?.reason as string) || '';
   const contractMonths = records()
     .filter((r) => r.kind === 'monthly')
     .sort((a, b) => (a.month as number) - (b.month as number));
-
   const dashMonths = generatedMetricMap.ghg.years[String(CAT1_YEAR)]?.months ?? [];
 
   return contractMonths.map((cm, idx) => {
     const month = cm.month as number;
     const dash = dashMonths.find((m) => m.month === month);
-    const tCO2e = dash?.value ?? (cm.tCO2e as number);
-    const isDec = month === 12;
     return {
       month,
-      tCO2e,
+      tCO2e: dash?.value ?? (cm.tCO2e as number),
       labelTh: MONTH_LABELS[idx]?.th ?? String(month),
       labelEn: MONTH_LABELS[idx]?.en ?? String(month),
-      sourceKind: isDec ? 'derived-dec' : 'workbook-row-68',
-      sourceNote: isDec ? decNote : `สรุปการคำนวณ ปี ${CAT1_YEAR} row 68 col ${String.fromCharCode(68 + idx)}68`,
+      sourceKind: 'workbook-monthly',
+      sourceNote: `1.6GreenHouseGas2025.xlsx · สรุปการคำนวณ ปี ${CAT1_YEAR} · row รวม (r25)`,
     };
   });
 }
@@ -126,14 +127,17 @@ export function buildGhgPerformance(): GhgPerformanceView {
   const perf = records().find((r) => r.kind === 'performance');
   const inv = buildGhgInventory();
   if (!perf) throw new Error('ghg performance record missing');
+
+  const pct = typeof perf.actualChangePct === 'number' ? perf.actualChangePct : null;
   const current = inv.totalTCO2e;
-  const pct = perf.actualChangePct as number;
-  const previous = Math.round((current / (1 + pct / 100)) * 100) / 100;
-  const absolute = Math.round((current - previous) * 100) / 100;
+  const previous = pct === null ? null : Math.round((current / (1 + pct / 100)) * 100) / 100;
+  const absolute = previous === null ? null : Math.round((current - previous) * 100) / 100;
+
   return {
     targetReductionPct: perf.targetReductionPct as number,
     actualChangePct: pct,
-    met: perf.met === true,
+    met: typeof perf.met === 'boolean' ? perf.met : null,
+    status: pct === null || typeof perf.met !== 'boolean' ? 'pending-verification' : 'verified',
     previousYearTotalTCO2e: previous,
     currentYearTotalTCO2e: current,
     absoluteChangeTCO2e: absolute,
@@ -173,7 +177,7 @@ export function buildGhgProvenance(): GhgProvenanceView {
     sourceRow: (prov.sourceRowRange as string) || 'row รวม (r25 0-based = row 26 1-based)',
     reconciliationRef: 'docs/data/GO-CAT1-1.5-FY2568-GHG-RECONCILIATION.md',
     datasetStatus: yearBlock?.dataStatus || 'VERIFIED_BASELINE',
-    evidenceVerification: 'pending human sign-off (ev-ghg-inventory-2025)',
+    evidenceVerification: 'dataset reconciled; evidence sign-off tracked separately',
   };
 }
 
@@ -183,6 +187,6 @@ export function ghgContractSources(): string[] {
 
 export const GHG_PREVIOUS_YEAR = PREVIOUS_YEAR;
 
-export function formatTco2e(value: number, decimals = 2): string {
-  return value.toFixed(decimals);
+export function formatTco2e(value: number | null | undefined, decimals = 2): string {
+  return typeof value === 'number' && Number.isFinite(value) ? value.toFixed(decimals) : '—';
 }

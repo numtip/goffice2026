@@ -6,32 +6,22 @@
  *
  * Rules (PO contract, 2026-09-10):
  *   - Never compare a partial current year against a full baseline year.
- *   - Comparison is computed over months present in BOTH years ("matched months").
- *   - When no window is valid (no overlapping months, missing year, zero
- *     baseline) every numeric field is null — never 0 — and `reason` explains why
- *     so the UI can render "—" with coverage text.
- *   - Percent uses one decimal (round half away from zero at 1dp) and matches
- *     `src/utils/dashboard-partial-yoy.ts` computePartialYoy() exactly.
- *   - Missing months are never coerced to 0. A present 0 stays 0.
- *
- * Canonical record shape (written into src/data/generated/<metric>.json):
- * {
- *   basis: 'matched-months',
- *   baselineYear, currentYear,
- *   months: [1..8], count: 8,
- *   baselineMonths: 12, currentMonths: 8,
- *   valid: true, reason: null,
- *   baselineMatched: 2197.8, currentMatched: 1270.16,
- *   absolute: -927.64, percent: -42.2, direction: 'down'
- * }
+ *   - Comparison is computed over analytically eligible months present in BOTH years.
+ *   - A raw observation may remain published while being excluded from analytics
+ *     by setting `analyticsEligible: false` on that month (for example, an
+ *     owner-verification data-quality hold).
+ *   - When no window is valid, numeric comparison fields are null — never 0 — and
+ *     `reason` explains why so the UI can render “—” with coverage text.
+ *   - Missing months are never coerced to 0. A present, eligible 0 stays 0.
  */
 
 export const MATCHED_YOY_BASIS = 'matched-months';
 
-/** @param {{month:number,value:number}[]|undefined} months */
+/** @param {{month:number,value:number,analyticsEligible?:boolean}[]|undefined} months */
 function monthMap(months) {
   const map = new Map();
   for (const m of months ?? []) {
+    if (m?.analyticsEligible === false) continue;
     if (m && typeof m.month === 'number' && typeof m.value === 'number' && Number.isFinite(m.value)) {
       map.set(m.month, m.value);
     }
@@ -49,8 +39,8 @@ function round2(value) {
 
 /**
  * Compute matched-month YoY between two generated year records.
- * @param {{months?:{month:number,value:number}[], aggregation?:'sum'|'average'}|undefined} baselineYearData
- * @param {{months?:{month:number,value:number}[], aggregation?:'sum'|'average'}|undefined} currentYearData
+ * @param {{months?:{month:number,value:number,analyticsEligible?:boolean}[], aggregation?:'sum'|'average'}|undefined} baselineYearData
+ * @param {{months?:{month:number,value:number,analyticsEligible?:boolean}[], aggregation?:'sum'|'average'}|undefined} currentYearData
  * @param {{baselineYear?:number, currentYear?:number}} [meta]
  */
 export function computeMatchedYoy(baselineYearData, currentYearData, meta = {}) {
@@ -74,8 +64,8 @@ export function computeMatchedYoy(baselineYearData, currentYearData, meta = {}) 
   const count = months.length;
 
   let reason = null;
-  if (!baselineYearData || (baselineYearData.months ?? []).length === 0) reason = 'baseline-missing';
-  else if (!currentYearData || (currentYearData.months ?? []).length === 0) reason = 'current-missing';
+  if (!baselineYearData || baselineMonths.size === 0) reason = 'baseline-missing';
+  else if (!currentYearData || currentMonths.size === 0) reason = 'current-missing';
   else if (count === 0) reason = 'no-overlapping-months';
 
   const divisor = aggregation === 'average' ? count : 1;
@@ -84,7 +74,6 @@ export function computeMatchedYoy(baselineYearData, currentYearData, meta = {}) 
 
   let absolute = null;
   let percent = null;
-  let direction = null;
 
   if (baselineMatched !== null && currentMatched !== null) {
     absolute = round2(currentMatched - baselineMatched);
@@ -116,8 +105,8 @@ export function computeMatchedYoy(baselineYearData, currentYearData, meta = {}) 
 }
 
 /**
- * Placeholder record when a metric has no current-year data yet.
- * All numeric fields are null (never 0) so the UI renders "—".
+ * Placeholder record when a metric has no current-year analytical data yet.
+ * All numeric fields are null (never 0) so the UI renders “—”.
  * @param {{baselineYear?:number, currentYear?:number, reason?:string, baselineCount?:number}} [meta]
  */
 export function emptyMatchedYoy(meta = {}) {
@@ -151,10 +140,7 @@ export function isMatchedYoy(yoy) {
   );
 }
 
-/**
- * Recompute matched-month YoY for an already-parsed metric record.
- * @param {any} metric
- */
+/** Recompute matched-month YoY for an already-parsed metric record. */
 export function recomputeMatchedYoyForMetric(metric) {
   const baselineYear = metric?.baselineYear ?? 2568;
   const currentYear = metric?.currentYear ?? 2569;

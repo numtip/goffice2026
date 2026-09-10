@@ -1,17 +1,14 @@
 # FY2568 publication byte-normalization (PR98 reconciliation)
 
-**Status:** disclosed finding · requires PO confirmation of the accepted published record
+**Status:** PO accepted 2026-09-10 · LF served copies are the canonical published record  
 **Scope:** `public/documents/fy2568/cat4/**/*.txt` (13 files) · `src/data/fy2568-publication.json` · `src/data/evidence-index.json` · `src/data/category4/*.json`
 
-## What was found
+## Finding
 
-`src/data/fy2568-publication.json` recorded size + SHA-256 for 13 Category 4 `.txt`
-evidence documents that did **not** match the committed (and therefore served)
-bytes. Each recorded hash corresponded to a copy that was 1–10 bytes larger than
-the committed blob:
+Thirteen Category 4 `.txt` records had historical manifest hashes calculated from CRLF copies while the committed/served blobs use LF. The only byte-level difference is line-ending normalization; content is otherwise equivalent. The served copies were therefore smaller by the number of CR characters removed.
 
-| document | recorded | served | Δ bytes |
-|---|---|---|---|
+| document | recorded CRLF bytes | served LF bytes | Δ bytes |
+|---|---:|---:|---:|
 | 4.1.2 (1) .txt | 3039 | 3029 | −10 |
 | 4.1.2 (2).txt | 953 | 947 | −6 |
 | 4.1.2 (3) .txt | 1888 | 1885 | −3 |
@@ -26,34 +23,14 @@ the committed blob:
 | 4.2.2 (2).txt | 1095 | 1093 | −2 |
 | 4.2.2 (4).txt | 190 | 185 | −5 |
 
-**Cause:** the recorded hashes were computed from CRLF copies (one byte per line),
-while the committed blobs are LF — the deltas equal the line count of each file.
-`.gitattributes` now marks `public/documents/fy2568/**/*.txt binary` to keep such
-records stable, but the pre-existing records were never refreshed.
+## Accepted publication contract
 
-**Consequence:** `scripts/test-fy2568-publication.mjs`'s byte-identity assertion
-(manifest hash ↔ file on disk) failed for these files. It went unnoticed because the
-suite failed earlier on the removed `1.5_greenhousegass_update2.xlsx` entry and the
-suite was not wired into `npm test`.
+1. The **currently served LF bytes** are the accepted FY2568 public record for these 13 text documents.
+2. `scripts/reconcile-fy2568-publication.mjs` derives per-document size/SHA-256 and aggregate counts from the published tree; current served SHA-256 is therefore canonical for public integrity checks.
+3. The previous CRLF hash is retained in `manifestSha256Note` for provenance. It is not silently discarded or represented as the served hash.
+4. `.gitattributes` marks `public/documents/fy2568/**/*.txt binary` so future Git operations cannot silently re-normalize line endings.
+5. If a source-tree CRLF original is intentionally re-ingested later, that is a **new provenance/publication event**: update the public bytes, manifest, hash and audit record together. Do not silently swap bytes under an existing hash.
 
-## What PR98 does
+## PO decision
 
-1. `scripts/reconcile-fy2568-publication.mjs` regenerates the manifest **from the
-   published tree**, so per-document size/SHA-256 and the per-category
-   counts/bytes/totals are arithmetic facts — not hand-maintained numbers.
-2. The 13 affected records now carry the **served** hash (`manifestSha256`) in
-   `src/data/evidence-index.json` and the Category 4 contracts, with the previously
-   recorded hash preserved verbatim in a new `manifestSha256Note` field so nothing
-   is silently dropped.
-3. `test-fy2568-publication.mjs` is wired into `npm test`, with semantic invariants
-   (counts/totals = sums, every url resolves to a file on disk, no legacy alias)
-   added on top of the documented inventory snapshot.
-
-## PO action required
-
-- Confirm the LF-normalised copies are the accepted published record for these 13
-  documents, or restore the CRLF originals from the source tree
-  (`GOFFICE_FY2568_SOURCE_ROOT`) and re-run
-  `node scripts/reconcile-fy2568-publication.mjs`.
-- Until that confirmation, the served bytes (what a visitor downloads) are the
-  reference for every published hash.
+Accepted by the Product Owner on **2026-09-10** as part of the final PR #98 completion round. No restoration of the 13 files is required for this PR because the difference is line-ending representation only and the already-served LF record is now explicitly the approved public byte representation.

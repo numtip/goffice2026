@@ -1,5 +1,5 @@
 {
-  "$comment": "Pinned transcription of the OFFICIAL signed FY2568 GHG reporting form (1.5.2 (9-3-69).pdf) plus the workbook-calculated cross-check. Every number here is read from the PDF text layer; scripts/validate-category1-contracts.mjs reconciles category1/ghg.json against this file AND (when pdftotext is available) against the PDF text itself, so a hand-edit cannot silently drift.",
+  "$comment": "Pinned transcription of the OFFICIAL signed FY2568 GHG reporting form (1.5.2 (9-3-69).pdf) plus the workbook-calculated cross-check. Every official number is read from the PDF text layer; scripts/validate-category1-contracts.mjs reconciles category1/ghg.json against this file AND (when pdftotext is available) against the PDF text itself, so a hand-edit cannot silently drift.",
   "domain": "ghg",
   "year": 2568,
   "indicatorCodes": ["1.5.1", "1.5.2"],
@@ -23,7 +23,8 @@
     "scope2": 201.48,
     "scope3": 19.29,
     "total": 231.62,
-    "perCapitaTCO2e": 2.44
+    "perCapitaTCO2e": 2.44,
+    "personnel": 95
   },
   "workbookCalculated": {
     "ref": "1.6GreenHouseGas2025.xlsx",
@@ -42,12 +43,15 @@
     "officialVsWorkbookDeltaPct": 0.17
   },
   "perCapita": {
-    "canonicalKgCO2e": 2434,
-    "canonicalBasis": "workbook FY2568 total ÷ 95 personnel (231.23 tCO2e ÷ 95 × 1000 = 2434 kg)",
-    "officialFormValueTCO2e": 2.44,
-    "officialFormKgFromOfficialTotal": 2438,
-    "deltaKg": 4,
-    "note": "The official form rounds 231.62 ÷ 95 = 2.4381 to 2.44 tCO2e/person (= 2438 kg). The published per-capita figure follows the workbook-calculated total (2434 kg). PO confirmation of the preferred per-capita basis is required; both numbers are disclosed in category1/ghg.json (ANOM-PER-CAPITA-BASIS)."
+    "canonicalTCO2e": 2.44,
+    "canonicalKgCO2e": 2438,
+    "canonicalBasis": "Official signed form 1.5.2 (9-3-69).pdf; kg cross-check derived from the unrounded official total divided by 95 personnel",
+    "derivedKgCO2eFromOfficialTotal": 2438,
+    "derivedKgBasis": "231.62 tCO2e / 95 personnel × 1000 = 2438.1 kgCO2e/person; displayed as approximately 2438 kg",
+    "workbookDerivedKgCO2e": 2434,
+    "workbookBasis": "231.23 tCO2e / 95 personnel × 1000 = 2434 kgCO2e/person",
+    "roundedOfficialFormDirectConversionKg": 2440,
+    "note": "Canonical public KPI = official form 2.44 tCO2e/person. ≈2438 kg is an unrounded annual-total/person cross-check; 2434 kg is retained only as workbook reconciliation."
   },
   "superseded": {
     "ref": "1.5Green house gass/1.5_greenhousegass_update2.xlsx",

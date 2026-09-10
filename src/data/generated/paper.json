@@ -12,66 +12,18 @@
       "year": 2568,
       "isBaseline": true,
       "months": [
-        {
-          "month": 1,
-          "value": 194.4,
-          "label": "Jan"
-        },
-        {
-          "month": 2,
-          "value": 175.5,
-          "label": "Feb"
-        },
-        {
-          "month": 3,
-          "value": 245.7,
-          "label": "Mar"
-        },
-        {
-          "month": 4,
-          "value": 189,
-          "label": "Apr"
-        },
-        {
-          "month": 5,
-          "value": 126.9,
-          "label": "May"
-        },
-        {
-          "month": 6,
-          "value": 183.6,
-          "label": "Jun"
-        },
-        {
-          "month": 7,
-          "value": 159.3,
-          "label": "Jul"
-        },
-        {
-          "month": 8,
-          "value": 206.55,
-          "label": "Aug"
-        },
-        {
-          "month": 9,
-          "value": 198.45,
-          "label": "Sep"
-        },
-        {
-          "month": 10,
-          "value": 140.4,
-          "label": "Oct"
-        },
-        {
-          "month": 11,
-          "value": 213.3,
-          "label": "Nov"
-        },
-        {
-          "month": 12,
-          "value": 164.7,
-          "label": "Dec"
-        }
+        {"month": 1, "value": 194.4, "label": "Jan"},
+        {"month": 2, "value": 175.5, "label": "Feb"},
+        {"month": 3, "value": 245.7, "label": "Mar"},
+        {"month": 4, "value": 189, "label": "Apr"},
+        {"month": 5, "value": 126.9, "label": "May"},
+        {"month": 6, "value": 183.6, "label": "Jun"},
+        {"month": 7, "value": 159.3, "label": "Jul"},
+        {"month": 8, "value": 206.55, "label": "Aug"},
+        {"month": 9, "value": 198.45, "label": "Sep"},
+        {"month": 10, "value": 140.4, "label": "Oct"},
+        {"month": 11, "value": 213.3, "label": "Nov"},
+        {"month": 12, "value": 164.7, "label": "Dec"}
       ],
       "total": 2197.7999999999997,
       "average": 183.15,
@@ -89,11 +41,7 @@
         "normalizationTimestamp": "2026-07-15T03:50:00+07:00",
         "validationStatus": "VERIFIED_BASELINE"
       },
-      "quality": {
-        "valid": true,
-        "warnings": [],
-        "reconciliationDifference": 0
-      },
+      "quality": {"valid": true, "warnings": [], "reconciliationDifference": 0},
       "aggregation": "sum",
       "dataClassification": "PRESERVED_LEGACY",
       "datasetState": "COMPLETE",
@@ -103,45 +51,19 @@
       "year": 2569,
       "isBaseline": false,
       "months": [
-        {
-          "month": 1,
-          "value": 145.13,
-          "label": "Jan"
-        },
-        {
-          "month": 2,
-          "value": 175.31,
-          "label": "Feb"
-        },
-        {
-          "month": 3,
-          "value": 157.17,
-          "label": "Mar"
-        },
-        {
-          "month": 4,
-          "value": 145.61,
-          "label": "Apr"
-        },
-        {
-          "month": 5,
-          "value": 225.85,
-          "label": "May"
-        },
-        {
-          "month": 6,
-          "value": 166.59,
-          "label": "Jun"
-        },
-        {
-          "month": 7,
-          "value": 224.1,
-          "label": "Jul"
-        },
+        {"month": 1, "value": 145.13, "label": "Jan"},
+        {"month": 2, "value": 175.31, "label": "Feb"},
+        {"month": 3, "value": 157.17, "label": "Mar"},
+        {"month": 4, "value": 145.61, "label": "Apr"},
+        {"month": 5, "value": 225.85, "label": "May"},
+        {"month": 6, "value": 166.59, "label": "Jun"},
+        {"month": 7, "value": 224.1, "label": "Jul"},
         {
           "month": 8,
           "value": 30.4,
-          "label": "Aug"
+          "label": "Aug",
+          "analyticsEligible": false,
+          "analyticsExclusionCode": "DQ-PAPER-2569-AUG-LOW"
         }
       ],
       "total": 1270.16,
@@ -151,7 +73,9 @@
       "source": "1.4paper.xlsx (paper-2569.csv) — partial, 8 of 12 months",
       "quality": {
         "valid": true,
-        "warnings": [],
+        "warnings": [
+          "August 2569 raw value 30.4 kg is published unchanged but excluded from trend/YoY analytics pending data-owner verification (DQ-PAPER-2569-AUG-LOW)."
+        ],
         "reconciliationDifference": 0
       },
       "dataClassification": "CONFIRMED_XLSX",
@@ -165,21 +89,9 @@
         "sourceSha256": "4cb0c068408a71f30263917ddbbdb9dee2d5f1c231713904857dd4d0513af823",
         "extractionDate": "2026-09-10",
         "coverage": "8 of 12 months",
-        "observedMonths": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8
-        ],
+        "observedMonths": [1,2,3,4,5,6,7,8],
         "validationStatus": "in_progress",
-        "verification": {
-          "status": "available_unverified",
-          "humanVerificationRequired": true
-        }
+        "verification": {"status": "available_unverified", "humanVerificationRequired": true}
       }
     }
   },
@@ -198,34 +110,20 @@
     "basis": "matched-months",
     "baselineYear": 2568,
     "currentYear": 2569,
-    "months": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8
-    ],
-    "count": 8,
+    "months": [1,2,3,4,5,6,7],
+    "count": 7,
     "baselineMonths": 12,
-    "currentMonths": 8,
+    "currentMonths": 7,
     "valid": true,
     "reason": null,
-    "baselineMatched": 1480.95,
-    "currentMatched": 1270.16,
-    "absolute": -210.79,
-    "percent": -14.2,
+    "baselineMatched": 1274.4,
+    "currentMatched": 1239.76,
+    "absolute": -34.64,
+    "percent": -2.7,
     "direction": "down"
   },
   "relatedIndicators": [
-    {
-      "indicatorId": "3.3.2",
-      "label": "Paper consumption",
-      "labelTh": "การใช้กระดาษ",
-      "relevance": "primary"
-    }
+    {"indicatorId": "3.3.2", "label": "Paper consumption", "labelTh": "การใช้กระดาษ", "relevance": "primary"}
   ],
   "sourceEvidence": [],
   "targetStatus": "no-target",

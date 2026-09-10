@@ -11,36 +11,8 @@
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 403036.80000000005,
-      "yoyChange": {
-        "basis": "matched-months",
-        "baselineYear": 2568,
-        "currentYear": 2569,
-        "months": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8
-        ],
-        "count": 8,
-        "baselineMonths": 12,
-        "currentMonths": 8,
-        "valid": true,
-        "reason": null,
-        "baselineMatched": 273195.2,
-        "currentMatched": 301804.8,
-        "absolute": 28609.6,
-        "percent": 10.5,
-        "direction": "up"
-      },
-      "dataQuality": {
-        "valid": true,
-        "warnings": [],
-        "reconciliationDifference": 0
-      },
+      "yoyChange": {"basis":"matched-months","baselineYear":2568,"currentYear":2569,"months":[1,2,3,4,5,6,7,8],"count":8,"baselineMonths":12,"currentMonths":8,"valid":true,"reason":null,"baselineMatched":273195.2,"currentMatched":301804.8,"absolute":28609.6,"percent":10.5,"direction":"up"},
+      "dataQuality": {"valid":true,"warnings":[],"reconciliationDifference":0},
       "sourceFile": "1.2electric.xlsx (energy-2569.csv) — partial, 8 of 12 months",
       "verified": false
     },
@@ -54,36 +26,8 @@
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 8337.5,
-      "yoyChange": {
-        "basis": "matched-months",
-        "baselineYear": 2568,
-        "currentYear": 2569,
-        "months": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8
-        ],
-        "count": 8,
-        "baselineMonths": 12,
-        "currentMonths": 8,
-        "valid": true,
-        "reason": null,
-        "baselineMatched": 5235.3,
-        "currentMatched": 6164.94,
-        "absolute": 929.64,
-        "percent": 17.8,
-        "direction": "up"
-      },
-      "dataQuality": {
-        "valid": true,
-        "warnings": [],
-        "reconciliationDifference": 0
-      },
+      "yoyChange": {"basis":"matched-months","baselineYear":2568,"currentYear":2569,"months":[1,2,3,4,5,6,7,8],"count":8,"baselineMonths":12,"currentMonths":8,"valid":true,"reason":null,"baselineMatched":5235.3,"currentMatched":6164.94,"absolute":929.64,"percent":17.8,"direction":"up"},
+      "dataQuality": {"valid":true,"warnings":[],"reconciliationDifference":0},
       "sourceFile": "1.1Water.xlsx (water-2569.csv) — partial, 8 of 12 months",
       "verified": false
     },
@@ -97,35 +41,8 @@
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 339.83000000000004,
-      "yoyChange": {
-        "basis": "matched-months",
-        "baselineYear": 2568,
-        "currentYear": 2569,
-        "months": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7
-        ],
-        "count": 7,
-        "baselineMonths": 12,
-        "currentMonths": 7,
-        "valid": true,
-        "reason": null,
-        "baselineMatched": 339.83,
-        "currentMatched": 396.37,
-        "absolute": 56.54,
-        "percent": 16.6,
-        "direction": "up"
-      },
-      "dataQuality": {
-        "valid": true,
-        "warnings": [],
-        "reconciliationDifference": 0
-      },
+      "yoyChange": {"basis":"matched-months","baselineYear":2568,"currentYear":2569,"months":[1,2,3,4,5,6,7],"count":7,"baselineMonths":12,"currentMonths":7,"valid":true,"reason":null,"baselineMatched":339.83,"currentMatched":396.37,"absolute":56.54,"percent":16.6,"direction":"up"},
+      "dataQuality": {"valid":true,"warnings":[],"reconciliationDifference":0},
       "sourceFile": "1.3Gassolene.xlsx (fuel-2569.csv) — partial, 7 of 12 months",
       "verified": false
     },
@@ -139,36 +56,8 @@
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 2197.7999999999997,
-      "yoyChange": {
-        "basis": "matched-months",
-        "baselineYear": 2568,
-        "currentYear": 2569,
-        "months": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8
-        ],
-        "count": 8,
-        "baselineMonths": 12,
-        "currentMonths": 8,
-        "valid": true,
-        "reason": null,
-        "baselineMatched": 1480.95,
-        "currentMatched": 1270.16,
-        "absolute": -210.79,
-        "percent": -14.2,
-        "direction": "down"
-      },
-      "dataQuality": {
-        "valid": true,
-        "warnings": [],
-        "reconciliationDifference": 0
-      },
+      "yoyChange": {"basis":"matched-months","baselineYear":2568,"currentYear":2569,"months":[1,2,3,4,5,6,7],"count":7,"baselineMonths":12,"currentMonths":7,"valid":true,"reason":null,"baselineMatched":1274.4,"currentMatched":1239.76,"absolute":-34.64,"percent":-2.7,"direction":"down"},
+      "dataQuality": {"valid":true,"warnings":["August 2569 raw value 30.4 kg is published unchanged but excluded from trend/YoY analytics pending data-owner verification (DQ-PAPER-2569-AUG-LOW)."],"reconciliationDifference":0},
       "sourceFile": "1.4paper.xlsx (paper-2569.csv) — partial, 8 of 12 months",
       "verified": false
     },
@@ -182,36 +71,8 @@
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 5625.7,
-      "yoyChange": {
-        "basis": "matched-months",
-        "baselineYear": 2568,
-        "currentYear": 2569,
-        "months": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8
-        ],
-        "count": 8,
-        "baselineMonths": 12,
-        "currentMonths": 8,
-        "valid": true,
-        "reason": null,
-        "baselineMatched": 3893.2,
-        "currentMatched": 4499.7,
-        "absolute": 606.5,
-        "percent": 15.6,
-        "direction": "up"
-      },
-      "dataQuality": {
-        "valid": true,
-        "warnings": [],
-        "reconciliationDifference": 0
-      },
+      "yoyChange": {"basis":"matched-months","baselineYear":2568,"currentYear":2569,"months":[1,2,3,4,5,6,7,8],"count":8,"baselineMonths":12,"currentMonths":8,"valid":true,"reason":null,"baselineMatched":3893.2,"currentMatched":4499.7,"absolute":606.5,"percent":15.6,"direction":"up"},
+      "dataQuality": {"valid":true,"warnings":[],"reconciliationDifference":0},
       "sourceFile": "1.5waste2026.xlsx (waste-2569.csv) — partial, 8 of 12 months",
       "verified": false
     },
@@ -225,29 +86,8 @@
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 21.57,
-      "yoyChange": {
-        "basis": "matched-months",
-        "baselineYear": 2568,
-        "currentYear": 2569,
-        "months": [],
-        "count": 0,
-        "baselineMonths": 12,
-        "currentMonths": 0,
-        "valid": false,
-        "reason": "current-missing",
-        "baselineMatched": null,
-        "currentMatched": null,
-        "absolute": null,
-        "percent": null,
-        "direction": null
-      },
-      "dataQuality": {
-        "valid": false,
-        "warnings": [
-          "Waiting for Official FY2569 Data"
-        ],
-        "reconciliationDifference": null
-      },
+      "yoyChange": {"basis":"matched-months","baselineYear":2568,"currentYear":2569,"months":[],"count":0,"baselineMonths":12,"currentMonths":0,"valid":false,"reason":"current-missing","baselineMatched":null,"currentMatched":null,"absolute":null,"percent":null,"direction":null},
+      "dataQuality": {"valid":false,"warnings":["Waiting for Official FY2569 Data"],"reconciliationDifference":null},
       "sourceFile": "Waiting for Official FY2569 Data",
       "verified": false
     },
@@ -261,35 +101,8 @@
       "target": null,
       "targetStatus": "no-target",
       "baselineValue": 231.23,
-      "yoyChange": {
-        "basis": "matched-months",
-        "baselineYear": 2568,
-        "currentYear": 2569,
-        "months": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7
-        ],
-        "count": 7,
-        "baselineMonths": 12,
-        "currentMonths": 7,
-        "valid": true,
-        "reason": null,
-        "baselineMatched": 134.41,
-        "currentMatched": 144.8,
-        "absolute": 10.39,
-        "percent": 7.7,
-        "direction": "up"
-      },
-      "dataQuality": {
-        "valid": true,
-        "warnings": [],
-        "reconciliationDifference": 0
-      },
+      "yoyChange": {"basis":"matched-months","baselineYear":2568,"currentYear":2569,"months":[1,2,3,4,5,6,7],"count":7,"baselineMonths":12,"currentMonths":7,"valid":true,"reason":null,"baselineMatched":134.41,"currentMatched":144.8,"absolute":10.39,"percent":7.7,"direction":"up"},
+      "dataQuality": {"valid":true,"warnings":[],"reconciliationDifference":0},
       "sourceFile": "1.6GreenHouseGas2026_New.xlsx (ghg-2569.csv) — partial, 7 of 12 months",
       "verified": false
     }
