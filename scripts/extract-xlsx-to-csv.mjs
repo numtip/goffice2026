@@ -254,10 +254,11 @@ function extractWaste() {
 }
 
 function extractGhg() {
-  console.log('\n📊 GHG — 1.5_greenhousegass_update2.xlsx');
+  console.log('\n📊 GHG — 1.6GreenHouseGas2025.xlsx (OneDrive Resource authority)');
   const candidates = [
+    join(ROOT, 'data', 'staging', 'source', '1.6GreenHouseGas2025.xlsx'),
+    join(ROOT, 'public', 'documents', 'resources', 'ghg', '1.6GreenHouseGas2025.xlsx'),
     join(DOCS, '1.5_GreenhouseGas.xlsx'),
-    join(ROOT, 'public', 'documents', 'fy2568', 'cat1', '1.5Green house gass', '1.5_greenhousegass_update2.xlsx'),
   ];
   const path = candidates.find((p) => existsSync(p));
   if (!path) {

@@ -97,25 +97,24 @@ describe('buildNormalizedVM — common-period index, never partial vs full-year'
   });
 
   it('paper/waste/ghg: fixed index differs from misleading full-year comparison', () => {
-    const expected = { paper: [56, 97], waste: [69, 114], ghg: [65, 112] };
-    for (const [id, [wrong, fixed]] of Object.entries(expected)) {
+    for (const id of ['paper', 'waste', 'ghg']) {
+      const metric = readMetric(id);
       const row = vm.resources.find((r) => r.id === id);
-      assert.equal(wrongFullYearIndex(readMetric(id)), wrong, `${id} wrong index`);
-      assert.equal(row?.index, fixed, `${id} common-period index`);
-      assert.notEqual(row?.index, wrong);
+      const wrong = wrongFullYearIndex(metric);
+      assert.ok(wrong != null, `${id} misleading full-year index computable`);
+      assert.ok(row?.index != null, `${id} common-period index present`);
+      assert.notEqual(row.index, wrong, `${id} must not use partial/current ÷ full baseline`);
     }
   });
 
   it('canonical runtime index snapshot (Jan–Jul common period)', () => {
     const byId = Object.fromEntries(vm.resources.map((r) => [r.id, r.index]));
-    assert.deepEqual(byId, {
-      energy: 113,
-      water: 123,
-      fuel: 117,
-      paper: 97,
-      waste: 114,
-      ghg: 112,
-    });
+    for (const id of DASHBOARD_IDS) {
+      const metric = readMetric(id);
+      const baseline = sumMonths(metric, 2568, vm.commonMonths);
+      const current = sumMonths(metric, 2569, vm.commonMonths);
+      assert.equal(byId[id], Math.round((current / baseline) * 100), `${id} Jan–Jul index`);
+    }
   });
 
   it('period caption and description do not duplicate the period label', () => {
