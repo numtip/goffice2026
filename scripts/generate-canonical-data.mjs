@@ -18,6 +18,7 @@ import { readFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { writeJsonFile } from './lib/serialize-json.mjs';
+import { computeMatchedYoy } from './lib/matched-yoy.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -207,17 +208,20 @@ function main() {
       console.log(`   ➕ Added labelTh: ${data.labelTh}`);
     }
 
-    // 7. Recompute yoyChange from current baseline/current totals (always,
-    // so corrections to totals — e.g. waste sum→average — are reflected).
+    // 7. Recompute yoyChange (always) on the matched-month basis: months present
+    // in BOTH years only. A partial current year is never compared against a
+    // full baseline year; an invalid window yields nulls, never 0.
     {
       const bYear = data.years?.[String(data.baselineYear)];
       const cYear = data.years?.[String(data.currentYear)];
       if (bYear && cYear) {
-        const absolute = Math.round((cYear.total - bYear.total) * 100) / 100;
-        const percent = bYear.total !== 0 ? Math.round((absolute / bYear.total) * 100) : 0;
-        const direction = percent > 0 ? 'up' : percent < 0 ? 'down' : 'stable';
-        data.yoyChange = { absolute, percent, direction };
-        console.log(`   ➕ yoyChange: ${direction} (${percent}%)`);
+        data.yoyChange = computeMatchedYoy(bYear, cYear, {
+          baselineYear: data.baselineYear,
+          currentYear: data.currentYear,
+        });
+        console.log(
+          `   ➕ yoyChange: ${data.yoyChange.direction ?? 'n/a'} (${data.yoyChange.percent ?? '—'}%) over ${data.yoyChange.count} matched month(s)`,
+        );
       }
     }
 

@@ -9,6 +9,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { writeJsonFile } from './lib/serialize-json.mjs';
+import { emptyMatchedYoy } from './lib/matched-yoy.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -89,11 +90,12 @@ function reconcileMetric(metric, aggregation = 'sum') {
 
   data.years['2569'] = emptyYear2569(metric, config, aggregation);
   data.status = 'CURRENT_DATA_PENDING';
-  data.yoyChange = {
-    absolute: 0,
-    percent: 0,
-    direction: 'stable',
-  };
+  data.yoyChange = emptyMatchedYoy({
+    baselineYear: data.baselineYear,
+    currentYear: data.currentYear,
+    reason: 'current-missing',
+    baselineCount: baseline?.months?.length ?? 0,
+  });
 
   writeJsonFile(path, data);
 

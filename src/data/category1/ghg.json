@@ -5,7 +5,7 @@
   "year": 2568,
   "status": "normalized-verified",
   "governance": "GOFFICE2026_CATEGORY1_MANAGEMENT_BLUEPRINT_V1",
-  "note": "FY2568 GHG baseline from authoritative OneDrive Resource workbook 1.6GreenHouseGas2025.xlsx (2026-09-10 PO policy). Totals from sheet สรุปการคำนวณ ปี 2568 row รวม (r25) via extract-workbook.mjs. Supersedes interim Data2568 copy 1.5_greenhousegass_update2.xlsx (222.68 tCO2e).",
+  "note": "FY2568 GHG canonical values follow the OFFICIAL signed form 1.5Green house gass/1.5.2 (9-3-69).pdf: Scope1 10.85 + Scope2 201.48 + Scope3 19.29 = 231.62 tCO2e, 2.44 tCO2e/คน (official). The OneDrive Resource workbook 1.6GreenHouseGas2025.xlsx (07-GreenOffice/Resource/1.6GreenHouseGas2025.xlsx) supplies the 12/12 monthly series and calculates 231.23 tCO2e (row 26 column AE = 231229.387872 kgCO2e), i.e. Δ0.39 tCO2e (0.17%) below the official figure — disclosed, not silently reconciled. The workbook narrative cell still reads 221.65 tCO2e (Δ9.58 vs its own table) and is not used. Superseded interim Data2568 workbook 1.5Green house gass/1.5_greenhousegass_update2.xlsx (222.68 tCO2e) is no longer published. Monthly values are workbook-calculated; the official annual total is the reported figure.",
   "sources": [
     {
       "ref": "1.6GreenHouseGas2025.xlsx",
@@ -14,12 +14,13 @@
       "disposition": "authoritative-resource-onedrive"
     },
     {
-      "ref": "1.5Green house gass/1.5.1 (9-3-69).pdf",
-      "role": "supporting",
-      "inspection": "content-verified"
+      "ref": "1.5Green house gass/1.5.2 (9-3-69).pdf",
+      "role": "official-reported",
+      "inspection": "content-verified",
+      "sha256": "6c2a202da0917caf53e508aa7395ba02de9a951db7f78c31060577109a20acea"
     },
     {
-      "ref": "1.5Green house gass/1.5.2 (9-3-69).pdf",
+      "ref": "1.5Green house gass/1.5.1 (9-3-69).pdf",
       "role": "supporting",
       "inspection": "content-verified"
     }
@@ -38,18 +39,18 @@
       "evidenceIds": [
         "ev-ghg-inventory-2025"
       ],
-      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "sourceRef": "1.5Green house gass/1.5.2 (9-3-69).pdf",
       "verification": {
         "status": "reviewed",
-        "basis": "Authoritative OneDrive Resource 1.6GreenHouseGas2025.xlsx; row รวม total 231.23 tCO2e (12/12 months). SHA-256 ffbbdcb2be28990eeb4c5cdc69528bae33a23f7300d7d4ebbb82fdfc677b9ad5."
+        "basis": "Canonical scopes/total read from the official signed form 1.5Green house gass/1.5.2 (9-3-69).pdf (SHA-256 6c2a202da0917caf53e508aa7395ba02de9a951db7f78c31060577109a20acea); scope invariant 10.85+201.48+19.29=231.62 holds. Monthly series + calculated total 231.23 tCO2e from 1.6GreenHouseGas2025.xlsx (SHA-256 ffbbdcb2be28990eeb4c5cdc69528bae33a23f7300d7d4ebbb82fdfc677b9ad5). Official minus calculated = 0.39 tCO2e (disclosed)."
       },
       "availability": "content-verified",
       "kind": "inventory",
-      "totalTCO2e": 231.23,
-      "scope1TCO2e": 25.13,
+      "totalTCO2e": 231.62,
+      "scope1TCO2e": 10.85,
       "scope2TCO2e": 201.48,
-      "scope3TCO2e": 4.62,
-      "perCapitaKgCO2e": 2344,
+      "scope3TCO2e": 19.29,
+      "perCapitaKgCO2e": 2434,
       "methodology": "TGO Thailand AR5",
       "septicAnomalyExcluded": false
     },
@@ -350,10 +351,9 @@
       "targetReductionPct": 1,
       "actualChangePct": 4.82,
       "met": false,
-      "note": "FY2568 GHG total 231.23 tCO2e from 1.6GreenHouseGas2025.xlsx; target reduction 1% — verify vs FY2567 in PO review."
+      "note": "Official FY2568 reported total 231.62 tCO2e (1.5Green house gass/1.5.2 (9-3-69).pdf); workbook-calculated 231.23 tCO2e. Target reduction 1% — FY2567 comparison and target verdict pending PO review."
     },
     {
-      "id": "ghg-anom-superseded-update2",
       "year": 2568,
       "indicatorCodes": [
         "1.5.1"
@@ -363,16 +363,83 @@
       ],
       "categoryCode": "cat1",
       "evidenceIds": [],
-      "sourceRef": "1.6GreenHouseGas2025.xlsx",
       "verification": {
         "status": "reviewed",
-        "basis": "OneDrive Resource authority reconciliation 2026-09-10."
+        "basis": "OneDrive Resource + official form reconciliation 2026-09-10."
       },
       "availability": "content-verified",
       "kind": "anomaly",
+      "status": "documented",
+      "id": "ghg-anom-official-vs-workbook",
+      "sourceRef": "1.5Green house gass/1.5.2 (9-3-69).pdf",
+      "code": "ANOM-OFFICIAL-VS-WORKBOOK-0.39",
+      "reason": "Official signed form 1.5Green house gass/1.5.2 (9-3-69).pdf reports 231.62 tCO2e while the authoritative workbook 1.6GreenHouseGas2025.xlsx calculates 231.23 tCO2e from its 12/12 monthly table — Δ0.39 tCO2e (0.17%), concentrated in Scope 1 (official 10.85 vs workbook 10.46). Scope 2 and Scope 3 agree. The reported/canonical total follows the official form; the workbook figure stays visible and is never presented as the reported total."
+    },
+    {
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "verification": {
+        "status": "reviewed",
+        "basis": "OneDrive Resource + official form reconciliation 2026-09-10."
+      },
+      "availability": "content-verified",
+      "kind": "anomaly",
+      "status": "documented",
+      "id": "ghg-anom-narrative-221-65",
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
+      "code": "ANOM-NARRATIVE-221-65",
+      "reason": "Workbook 1.6GreenHouseGas2025.xlsx narrative cell states \"221.65 tCO2e\" while its own calculation table totals 231.23 tCO2e (Δ9.58 tCO2e). The narrative figure is stale text carried over from an earlier version and is NOT used for any published value. Disclosed verbatim for transparency."
+    },
+    {
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "verification": {
+        "status": "reviewed",
+        "basis": "OneDrive Resource + official form reconciliation 2026-09-10."
+      },
+      "availability": "content-verified",
+      "kind": "anomaly",
+      "status": "documented",
+      "id": "ghg-anom-per-capita-basis",
+      "sourceRef": "1.5Green house gass/1.5.2 (9-3-69).pdf",
+      "code": "ANOM-PER-CAPITA-BASIS",
+      "reason": "Published per-capita is 2434 kgCO2e/person (workbook FY2568 total ÷ 95 personnel (231.23 tCO2e ÷ 95 × 1000 = 2434 kg)). The official form prints undefined tCO2e/person, which from the official total (÷95) is ~2438 kg — Δ4 kg because per-capita is derived from the workbook-calculated total while the reported total follows the official form. PO to confirm the preferred basis."
+    },
+    {
+      "year": 2568,
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCode": "cat1",
+      "evidenceIds": [],
+      "verification": {
+        "status": "reviewed",
+        "basis": "OneDrive Resource + official form reconciliation 2026-09-10."
+      },
+      "availability": "content-verified",
+      "kind": "anomaly",
+      "status": "documented",
+      "id": "ghg-anom-superseded-update2",
+      "sourceRef": "1.6GreenHouseGas2025.xlsx",
       "code": "ANOM-SUPERSEDED-UPDATE2",
-      "reason": "Interim Data2568 workbook 1.5_greenhousegass_update2.xlsx (222.68 tCO2e) superseded by authoritative Resource 1.6GreenHouseGas2025.xlsx (231.23 tCO2e). Public download uses Resource distribution copy only.",
-      "status": "documented"
+      "reason": "Interim Data2568 workbook 1.5Green house gass/1.5_greenhousegass_update2.xlsx (222.68 tCO2e) superseded by the authoritative Resource workbook 1.6GreenHouseGas2025.xlsx (231.23 tCO2e). Interim Data2568 workbook superseded by the OneDrive Resource workbook; it omitted the septic-tank and non-aerated-pond CH4 rows (7.788 + 0.762 = 8.55 tCO2e), which explains the 222.68 → 231.23 step. The legacy alias is removed from the FY2568 publication manifest and its public file deleted, so no published link points at it."
     }
   ],
   "gaps": [

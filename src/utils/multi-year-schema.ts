@@ -135,10 +135,41 @@ export interface YearData {
 }
 
 // ── Year-over-Year Change ─────────────────────────────────────────────────
+/**
+ * Matched-month year-over-year (PO contract 2026-09-10).
+ *
+ * A partial current year is NEVER compared against a full baseline year: the
+ * comparison window is the months present in BOTH years. When that window is not
+ * valid every numeric field is null (never 0) and `reason` explains why, so the
+ * UI renders "—" plus coverage text instead of a fabricated trend.
+ */
 export interface YoyChange {
-  absolute: number;
-  percent: number;
-  direction: 'up' | 'down' | 'stable';
+  /** Comparison basis — always matched months. */
+  basis: 'matched-months';
+  baselineYear: number | null;
+  currentYear: number | null;
+  /** Matched month numbers (1–12) present in both years. */
+  months: number[];
+  /** Number of matched months = months.length. */
+  count: number;
+  /** Observed months in each year (for coverage text). */
+  baselineMonths: number;
+  currentMonths: number;
+  /** True only when a percent could be computed from a valid window. */
+  valid: boolean;
+  reason:
+    | 'baseline-missing'
+    | 'current-missing'
+    | 'no-overlapping-months'
+    | 'baseline-zero'
+    | 'not-comparable'
+    | null;
+  /** Matched-month subtotals used as the comparison basis. */
+  baselineMatched: number | null;
+  currentMatched: number | null;
+  absolute: number | null;
+  percent: number | null;
+  direction: 'up' | 'down' | 'stable' | null;
 }
 
 // ── Criteria/Indicator Mapping ────────────────────────────────────────────
@@ -207,12 +238,73 @@ export interface DataQualitySummary {
 
 // ── Computed helpers ──────────────────────────────────────────────────────
 
-/** Compute YoY change from two year data objects */
-export function computeYoy(baseline: YearData, current: YearData): YoyChange {
-  const absolute = current.total - baseline.total;
-  const percent = baseline.total !== 0 ? Math.round((absolute / baseline.total) * 100) : 0;
-  const direction: 'up' | 'down' | 'stable' = percent > 0 ? 'up' : percent < 0 ? 'down' : 'stable';
-  return { absolute, percent, direction };
+/**
+ * Matched-month YoY between two year records (TS mirror of
+ * scripts/lib/matched-yoy.mjs — keep both in sync; scripts/test-yoy-matched-months.mjs
+ * asserts parity on every generated metric).
+ *
+ * Months present in BOTH years only. No overlapping window ⇒ every numeric field
+ * is null (never 0) plus a machine-readable `reason`.
+ */
+export function computeYoy(baseline: YearData, current: YearData, meta: { baselineYear?: number | null; currentYear?: number | null } = {}): YoyChange {
+  const baselineMap = new Map<number, number>();
+  for (const m of baseline?.months ?? []) {
+    if (m && typeof m.month === 'number' && Number.isFinite(m.value)) baselineMap.set(m.month, m.value);
+  }
+  const currentMap = new Map<number, number>();
+  for (const m of current?.months ?? []) {
+    if (m && typeof m.month === 'number' && Number.isFinite(m.value)) currentMap.set(m.month, m.value);
+  }
+
+  const months: number[] = [];
+  let bSum = 0;
+  let cSum = 0;
+  for (let m = 1; m <= 12; m += 1) {
+    if (baselineMap.has(m) && currentMap.has(m)) {
+      months.push(m);
+      bSum += baselineMap.get(m) as number;
+      cSum += currentMap.get(m) as number;
+    }
+  }
+
+  const count = months.length;
+  let reason: YoyChange['reason'] = null;
+  if (baselineMap.size === 0) reason = 'baseline-missing';
+  else if (currentMap.size === 0) reason = 'current-missing';
+  else if (count === 0) reason = 'no-overlapping-months';
+
+  const round2 = (v: number) => Math.round((v + Number.EPSILON) * 100) / 100;
+  const round1 = (v: number) => Math.round((v + Number.EPSILON) * 10) / 10;
+
+  const baselineMatched = count > 0 ? round2(bSum) : null;
+  const currentMatched = count > 0 ? round2(cSum) : null;
+
+  let absolute: number | null = null;
+  let percent: number | null = null;
+  if (baselineMatched !== null && currentMatched !== null) {
+    absolute = round2(currentMatched - baselineMatched);
+    if (baselineMatched === 0) reason = reason ?? 'baseline-zero';
+    else percent = round1((absolute / baselineMatched) * 100);
+  }
+
+  const valid = percent !== null;
+
+  return {
+    basis: 'matched-months',
+    baselineYear: meta.baselineYear ?? baseline?.year ?? null,
+    currentYear: meta.currentYear ?? current?.year ?? null,
+    months,
+    count,
+    baselineMonths: baselineMap.size,
+    currentMonths: currentMap.size,
+    valid,
+    reason: valid ? null : (reason ?? 'not-comparable'),
+    baselineMatched,
+    currentMatched,
+    absolute: valid || reason === 'baseline-zero' ? absolute : null,
+    percent,
+    direction: percent === null ? null : percent > 0 ? 'up' : percent < 0 ? 'down' : 'stable',
+  };
 }
 
 /** Compute derived fields (total, average) from monthly values */

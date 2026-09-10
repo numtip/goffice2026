@@ -25,6 +25,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readOfficialGhgValues, reconcileOfficialPdfText, verifyOfficialPdfHash } from './lib/ghg-official.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -160,13 +161,80 @@ function main() {
     ghg = JSON.parse(ghgRaw);
   } catch { /* handled above */ }
   if (ghg) {
-    const inv = (ghg.records || []).find((r) => r.kind === 'inventory');
-    if (!inv) errors.push('ghg: inventory record missing');
-    else if (Math.abs(inv.totalTCO2e - 231.23) > 0.01) {
-      errors.push(`ghg: inventory total must be the authoritative 231.23 tCO2e (1.6GreenHouseGas2025.xlsx), got ${inv.totalTCO2e}`);
+    const official = readOfficialGhgValues();
+    const { scope1, scope2, scope3, total } = official.official;
+
+    // ── Official-form reconciliation (pinned transcription + live PDF text) ──
+    const hashCheck = verifyOfficialPdfHash(official);
+    errors.push(...hashCheck.errors);
+    const textCheck = reconcileOfficialPdfText(official);
+    if (textCheck.checked) {
+      errors.push(...textCheck.errors);
+    } else {
+      console.log(
+        '   ℹ ghg: pdftotext unavailable — official-form check limited to the pinned transcription + PDF SHA-256',
+      );
     }
-    const superseded = (ghg.records || []).find((r) => r.kind === 'anomaly' && r.code === 'ANOM-SUPERSEDED-UPDATE2');
-    if (!superseded) errors.push('ghg: must disclose superseded Data2568 update2 workbook (ANOM-SUPERSEDED-UPDATE2)');
+
+    const inv = (ghg.records || []).find((r) => r.kind === 'inventory');
+    if (!inv) {
+      errors.push('ghg: inventory record missing');
+    } else {
+      // Canonical values follow the OFFICIAL signed form, not the working workbook.
+      for (const [field, expected] of [
+        ['scope1TCO2e', scope1],
+        ['scope2TCO2e', scope2],
+        ['scope3TCO2e', scope3],
+        ['totalTCO2e', total],
+      ]) {
+        if (Math.abs((inv[field] ?? NaN) - expected) > 0.01) {
+          errors.push(
+            `ghg: inventory.${field} must equal the official form value ${expected} (1.5.2 (9-3-69).pdf), got ${inv[field]}`,
+          );
+        }
+      }
+      // Invariant: the scope split must add up to the reported total.
+      const scopeSum = (inv.scope1TCO2e ?? 0) + (inv.scope2TCO2e ?? 0) + (inv.scope3TCO2e ?? 0);
+      if (Math.abs(scopeSum - (inv.totalTCO2e ?? 0)) > 0.01) {
+        errors.push(
+          `ghg: scope invariant violated — scope1+scope2+scope3=${scopeSum} != totalTCO2e=${inv.totalTCO2e}`,
+        );
+      }
+      // Per-capita is published on a documented basis (PO 2026-09-10: workbook-derived kg).
+      if (inv.perCapitaKgCO2e !== official.perCapita.canonicalKgCO2e) {
+        errors.push(
+          `ghg: perCapitaKgCO2e must be ${official.perCapita.canonicalKgCO2e} kg (${official.perCapita.canonicalBasis}), got ${inv.perCapitaKgCO2e}`,
+        );
+      }
+    }
+
+    // ── Conflicts must stay disclosed, never silently reconciled ──
+    const REQUIRED_DISCLOSURES = [
+      'ANOM-SUPERSEDED-UPDATE2',
+      'ANOM-OFFICIAL-VS-WORKBOOK-0.39',
+      'ANOM-NARRATIVE-221-65',
+      'ANOM-PER-CAPITA-BASIS',
+    ];
+    for (const code of REQUIRED_DISCLOSURES) {
+      const found = (ghg.records || []).some((r) => r.kind === 'anomaly' && r.code === code);
+      if (!found) errors.push(`ghg: must disclose ${code}`);
+    }
+    const narrativeDisclosure = (ghg.records || []).find(
+      (r) => r.kind === 'anomaly' && r.code === 'ANOM-NARRATIVE-221-65',
+    );
+    if (narrativeDisclosure && !String(narrativeDisclosure.reason).includes(String(official.workbookCalculated.narrativeTotalTCO2e))) {
+      errors.push(
+        `ghg: narrative conflict must quote the conflicting value ${official.workbookCalculated.narrativeTotalTCO2e} verbatim`,
+      );
+    }
+    const deltaDisclosure = (ghg.records || []).find(
+      (r) => r.kind === 'anomaly' && r.code === 'ANOM-OFFICIAL-VS-WORKBOOK-0.39',
+    );
+    if (deltaDisclosure && !String(deltaDisclosure.reason).includes(String(official.workbookCalculated.officialVsWorkbookDeltaTCO2e))) {
+      errors.push(
+        `ghg: official-vs-workbook disclosure must state Δ${official.workbookCalculated.officialVsWorkbookDeltaTCO2e} clearly`,
+      );
+    }
   }
 
   // ── projects invariants (1.6) ────────────────────────────────

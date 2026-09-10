@@ -1,0 +1,57 @@
+{
+  "$comment": "Pinned transcription of the OFFICIAL signed FY2568 GHG reporting form (1.5.2 (9-3-69).pdf) plus the workbook-calculated cross-check. Every number here is read from the PDF text layer; scripts/validate-category1-contracts.mjs reconciles category1/ghg.json against this file AND (when pdftotext is available) against the PDF text itself, so a hand-edit cannot silently drift.",
+  "domain": "ghg",
+  "year": 2568,
+  "indicatorCodes": ["1.5.1", "1.5.2"],
+  "source": {
+    "ref": "1.5Green house gass/1.5.2 (9-3-69).pdf",
+    "publicPath": "/documents/fy2568/cat1/1.5Green%20house%20gass/1.5.2%20(9-3-69).pdf",
+    "sha256": "6c2a202da0917caf53e508aa7395ba02de9a951db7f78c31060577109a20acea",
+    "sizeBytes": 110681,
+    "extraction": "pdftotext -layout",
+    "extractedLines": {
+      "scope1": "ประเภท 1                       10.85           4.68      tCO2e",
+      "scope2": "ประเภท 2                     201.48           86.99      tCO2e",
+      "scope3": "ประเภท 3                       19.29           8.33      tCO2e",
+      "total": "รวม                        231.62          100.00      tCO2e",
+      "perCapita": "ปริมาณก๊าซเรือนกระจกต่อคน ปี 2568 (ม.ค. - ธ.ค.) เท่ากับ 2.44 tCO2e/คน"
+    }
+  },
+  "official": {
+    "unit": "tCO2e",
+    "scope1": 10.85,
+    "scope2": 201.48,
+    "scope3": 19.29,
+    "total": 231.62,
+    "perCapitaTCO2e": 2.44
+  },
+  "workbookCalculated": {
+    "ref": "1.6GreenHouseGas2025.xlsx",
+    "sheet": "สรุปการคำนวณ ปี 2568",
+    "totalRow": "r25 (0-based index used by scripts/extract-workbook.mjs) = 1-based row 26",
+    "totalColumn": "AE",
+    "totalKgCO2e": 231229.387872,
+    "totalTCO2e": 231.23,
+    "scope1": 10.46,
+    "scope2": 201.48,
+    "scope3": 19.29,
+    "narrativeCellText": "สรุป การปล่อยก๊าซเรือนกระจกตั้งแต่เดือน มกราคม ถึง ธันวาคม ปี 2567 เท่ากับ 221.65 tCO2e ลดลงจากมกราคม ถึง ธันวาคม ปี 2566 เท่ากับ 21.29 tCO2e คิดเป็น 8.76 %",
+    "narrativeTotalTCO2e": 221.65,
+    "narrativeVsTableDeltaTCO2e": 9.58,
+    "officialVsWorkbookDeltaTCO2e": 0.39,
+    "officialVsWorkbookDeltaPct": 0.17
+  },
+  "perCapita": {
+    "canonicalKgCO2e": 2434,
+    "canonicalBasis": "workbook FY2568 total ÷ 95 personnel (231.23 tCO2e ÷ 95 × 1000 = 2434 kg)",
+    "officialFormValueTCO2e": 2.44,
+    "officialFormKgFromOfficialTotal": 2438,
+    "deltaKg": 4,
+    "note": "The official form rounds 231.62 ÷ 95 = 2.4381 to 2.44 tCO2e/person (= 2438 kg). The published per-capita figure follows the workbook-calculated total (2434 kg). PO confirmation of the preferred per-capita basis is required; both numbers are disclosed in category1/ghg.json (ANOM-PER-CAPITA-BASIS)."
+  },
+  "superseded": {
+    "ref": "1.5Green house gass/1.5_greenhousegass_update2.xlsx",
+    "totalTCO2e": 222.68,
+    "disclosure": "Interim Data2568 workbook superseded by the OneDrive Resource workbook; it omitted the septic-tank and non-aerated-pond CH4 rows (7.788 + 0.762 = 8.55 tCO2e), which explains the 222.68 → 231.23 step."
+  }
+}

@@ -48,12 +48,12 @@ const VALID_CATEGORY_CODES = ['cat1', 'cat2', 'cat3', 'cat4', 'cat5', 'cat6', 'c
 
 // ── Helpers ──────────────────────────────────────────────────
 
-function runScript(scriptName) {
+function runScript(scriptName, args = []) {
   const scriptPath = resolve(ROOT, 'scripts', scriptName);
-  console.log(`\n--- Running ${scriptName} ---`);
+  console.log(`\n--- Running ${scriptName}${args.length ? ` ${args.join(' ')}` : ''} ---`);
   try {
     const node = process.execPath;
-    const output = execSync(`"${node}" "${scriptPath}"`, {
+    const output = execSync(`"${node}" "${scriptPath}"${args.map((a) => ` ${a}`).join('')}`, {
       cwd: ROOT,
       encoding: 'utf-8',
       stdio: ['ignore', 'pipe', 'pipe'],
@@ -210,7 +210,7 @@ function phasePublicationManifest() {
   console.log('\n========================================');
   console.log('PHASE 1.95: Publication Manifest');
   console.log('========================================');
-  runScript('generate-publication-manifest.mjs');
+  runScript('generate-publication-manifest.mjs', ['--check']);
   return runScript('validate-publication-manifest.mjs');
 }
 

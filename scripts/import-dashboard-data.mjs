@@ -27,6 +27,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateMonthData, monthLabel, formatValidationReport } from './data-validator.mjs';
 import { writeJsonFile } from './lib/serialize-json.mjs';
+import { computeMatchedYoy, emptyMatchedYoy } from './lib/matched-yoy.mjs';
 
 // ── Config ───────────────────────────────────────────────────────────────────
 
@@ -202,14 +203,8 @@ function computeYearData(year, isBaseline, months, source) {
   };
 }
 
-function computeYoy(baselineTotal, currentTotal) {
-  if (!baselineTotal || baselineTotal === 0) {
-    return { absolute: 0, percent: 0, direction: 'stable' };
-  }
-  const absolute = currentTotal - baselineTotal;
-  const percent = Math.round((absolute / baselineTotal) * 100);
-  const direction = percent > 0 ? 'up' : percent < 0 ? 'down' : 'stable';
-  return { absolute, percent, direction };
+function computeYoy(baselineYearData, currentYearData, meta = {}) {
+  return computeMatchedYoy(baselineYearData, currentYearData, meta);
 }
 
 // ── Main Import Logic ─────────────────────────────────────────────────────────
@@ -282,7 +277,10 @@ function importMetric(metric, year, csvPath, sourceDesc, dryRun) {
     const baselineYearData = metricJson.years[String(metricJson.baselineYear)];
     const currentYearData = metricJson.years[String(metricJson.currentYear)];
     if (baselineYearData && currentYearData) {
-      metricJson.yoyChange = computeYoy(baselineYearData.total, currentYearData.total);
+      metricJson.yoyChange = computeYoy(baselineYearData, currentYearData, {
+        baselineYear: metricJson.baselineYear,
+        currentYear: metricJson.currentYear,
+      });
     }
   } else {
     // Create new metric JSON
@@ -298,7 +296,7 @@ function importMetric(metric, year, csvPath, sourceDesc, dryRun) {
       years: {
         [String(year)]: newYearData,
       },
-      yoyChange: { absolute: 0, percent: 0, direction: 'stable' },
+      yoyChange: emptyMatchedYoy({ baselineYear: baselineYr, currentYear: currentYr }),
     };
   }
 

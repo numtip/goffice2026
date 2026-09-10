@@ -7,6 +7,8 @@ interface Props {
   unit: string;
   trendPct?: number | null;
   trendDir?: 'up' | 'down' | 'stable';
+  /** Matched-month coverage sentence (which months, how many of 12). */
+  trendNote?: string | null;
   monthsCompleted: number;
   color: string;
   monthlyValues?: number[];
@@ -20,7 +22,7 @@ interface Props {
 
 const {
   title, href, currentValue, baselineValue, unit,
-  trendPct, trendDir = 'stable', monthsCompleted, color,
+  trendPct, trendDir = 'stable', trendNote, monthsCompleted, color,
   monthlyValues, statusLabel, partialYear,
   iconUrl, accentColor,
 } = Astro.props;
@@ -109,6 +111,9 @@ if (hasSparkline) {
       <span class={`inline-flex items-center gap-0.5 text-xs font-semibold tabular-nums ${yoyColor}`}>
         {yoyDisplay}
       </span>
+      {trendNote && (
+        <p class="text-[10px] leading-snug text-slate-500 mt-0.5" data-yoy-coverage>{trendNote}</p>
+      )}
     </div>
   </div>
 

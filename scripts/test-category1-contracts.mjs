@@ -107,18 +107,41 @@ describe('category1 contracts — truthfulness guards', () => {
     }
   });
 
-  it('ghg inventory uses authoritative Resource 231.23 tCO2e (1.6GreenHouseGas2025.xlsx) and discloses superseded update2', () => {
+  it('ghg inventory uses the official 1.5.2 values (10.85/201.48/19.29=231.62) and discloses every conflict', () => {
     const ghg = readContract('ghg');
     const inv = ghg.records.find((r) => r.kind === 'inventory');
     assert.ok(inv, 'ghg inventory record exists');
-    assert.equal(inv.totalTCO2e, 231.23);
-    assert.equal(inv.scope1TCO2e, 25.13);
+    // Canonical scopes/total come from the OFFICIAL signed form, not the workbook.
+    assert.equal(inv.totalTCO2e, 231.62);
+    assert.equal(inv.scope1TCO2e, 10.85);
     assert.equal(inv.scope2TCO2e, 201.48);
-    assert.equal(inv.scope3TCO2e, 4.62);
+    assert.equal(inv.scope3TCO2e, 19.29);
+    // Scope invariant (was the defect: water+waste Scope-3 rows were counted as Scope 1).
+    assert.equal(
+      Math.round((inv.scope1TCO2e + inv.scope2TCO2e + inv.scope3TCO2e) * 100) / 100,
+      inv.totalTCO2e,
+      'scope1+scope2+scope3 must equal totalTCO2e',
+    );
+    assert.equal(inv.perCapitaKgCO2e, 2434);
+    assert.equal(inv.sourceRef, '1.5Green house gass/1.5.2 (9-3-69).pdf');
     assert.equal(inv.septicAnomalyExcluded, false);
-    assert.ok(!ghg.records.some((r) => r.kind === 'exclusion'), 'no septic exclusion in authoritative Resource set');
-    assert.ok(ghg.records.some((r) => r.kind === 'anomaly' && r.code === 'ANOM-SUPERSEDED-UPDATE2'), 'superseded update2 disclosed');
-    assert.equal(ghg.sources[0].ref, '1.6GreenHouseGas2025.xlsx');
+    assert.ok(!ghg.records.some((r) => r.kind === 'exclusion'), 'no septic exclusion in the authoritative set');
+    // Every conflicting source value stays disclosed — never silently reconciled.
+    for (const code of [
+      'ANOM-SUPERSEDED-UPDATE2',
+      'ANOM-OFFICIAL-VS-WORKBOOK-0.39',
+      'ANOM-NARRATIVE-221-65',
+      'ANOM-PER-CAPITA-BASIS',
+    ]) {
+      assert.ok(ghg.records.some((r) => r.kind === 'anomaly' && r.code === code), `${code} disclosed`);
+    }
+    const narrative = ghg.records.find((r) => r.code === 'ANOM-NARRATIVE-221-65');
+    assert.ok(narrative.reason.includes('221.65'), 'narrative conflict quotes 221.65 verbatim');
+    const delta = ghg.records.find((r) => r.code === 'ANOM-OFFICIAL-VS-WORKBOOK-0.39');
+    assert.ok(delta.reason.includes('0.39'), 'workbook-vs-official delta 0.39 stated');
+    assert.ok(delta.reason.includes('231.23'), 'workbook-calculated total 231.23 stated');
+    assert.ok(delta.reason.includes('231.62'), 'official reported total 231.62 stated');
+    assert.ok(ghg.sources.some((s) => s.ref === '1.6GreenHouseGas2025.xlsx'), 'workbook remains a declared source');
     const raw = readFileSync(join(CONTRACT_DIR, 'ghg.json'), 'utf8');
     assert.ok(!raw.includes('7548513'), 'inflated septic value must not appear as a reported value');
   });
@@ -146,9 +169,15 @@ describe('category1 contracts — truthfulness guards', () => {
     const dashTotal = metric.years['2568'].total;
     const monthSum = dashMonths.reduce((s, m) => s + m.value, 0);
     assert.ok(Math.abs(monthSum - dashTotal) < 0.01, 'dashboard total equals monthly sum');
+    // Documented delta: the dashboard baseline is the workbook-calculated 12/12
+    // monthly sum (231.23 tCO2e) while the canonical contract follows the official
+    // signed form (231.62 tCO2e) — Δ0.39 tCO2e, disclosed as
+    // ANOM-OFFICIAL-VS-WORKBOOK-0.39 and never silently reconciled.
+    const officialDelta = Math.round((inv.totalTCO2e - dashTotal) * 100) / 100;
+    assert.equal(officialDelta, 0.39, 'inventory vs dashboard delta is the documented 0.39 tCO2e');
     assert.ok(
-      Math.abs(inv.totalTCO2e - dashTotal) <= 0.021,
-      'inventory vs dashboard within documented 0.02 tCO2e narrative delta',
+      ghg.records.some((r) => r.kind === 'anomaly' && r.code === 'ANOM-OFFICIAL-VS-WORKBOOK-0.39'),
+      'the 0.39 official-vs-workbook delta must stay disclosed',
     );
   });
 

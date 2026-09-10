@@ -357,14 +357,19 @@ export function buildExecutiveInsight(
   const yoy = metric.yoyChange;
   const direction = yoy.direction;
   const isReduction = direction === 'down';
+  // Matched-month contract: percent is null when the window is not comparable —
+  // render an em dash and the coverage basis, never "0%".
+  const percentText = yoy.percent === null
+    ? '—'
+    : `${yoy.percent > 0 ? '+' : ''}${yoy.percent}%`;
 
   return {
     summary: th
       ? `ข้อมูลปี ${metric.currentYear} ครบ 12 เดือนและยืนยันแล้ว`
       : `${metric.currentYear} data is complete (12 months) and verified`,
     monthsLine: th
-      ? `เทียบกับปีฐาน ${metric.baselineYear}: ${direction === 'down' ? 'ลดลง' : direction === 'up' ? 'เพิ่มขึ้น' : 'คงที่'} ${yoy.percent > 0 ? '+' : ''}${yoy.percent}%`
-      : `vs ${metric.baselineYear} baseline: ${direction === 'down' ? 'decreased' : direction === 'up' ? 'increased' : 'stable'} ${yoy.percent > 0 ? '+' : ''}${yoy.percent}%`,
+      ? `เทียบกับปีฐาน ${metric.baselineYear}: ${direction === 'down' ? 'ลดลง' : direction === 'up' ? 'เพิ่มขึ้น' : 'คงที่'} ${percentText}`
+      : `vs ${metric.baselineYear} baseline: ${direction === 'down' ? 'decreased' : direction === 'up' ? 'increased' : 'stable'} ${percentText}`,
     interpretation: isReduction
       ? (th ? 'แนวโน้มเป็นไปในทิศทางที่ดีตามเป้าหมายการลดการใช้' : 'Trend is favorable toward reduction targets')
       : (th ? 'ควรติดตามแนวโน้มต่อเนื่องและพิจารณามาตรการเพิ่มเติม' : 'Monitor trend and consider additional measures'),

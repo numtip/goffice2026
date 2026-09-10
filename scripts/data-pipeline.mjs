@@ -43,6 +43,7 @@ import { fileURLToPath } from 'node:url';
 import { validateMonthData, monthLabel, formatValidationReport, deriveDatasetState, latestDataMonthOf, validateDatasetState } from './data-validator.mjs';
 import { validateMetricProvenance } from './validate-provenance.mjs';
 import { writeJsonFile } from './lib/serialize-json.mjs';
+import { computeMatchedYoy, emptyMatchedYoy, isMatchedYoy, MATCHED_YOY_BASIS } from './lib/matched-yoy.mjs';
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -415,11 +416,14 @@ function importMetric(metric, year, csvPath, _verbose, opts = {}) {
   if (existing) {
     metricJson = { ...existing };
     metricJson.years = { ...existing.years, [String(year)]: yearData };
-    // Recompute YoY
+    // Recompute YoY (matched-month basis only)
     const baselineYearData = metricJson.years[String(metricJson.baselineYear)];
     const currentYearData = metricJson.years[String(metricJson.currentYear)];
     if (baselineYearData && currentYearData) {
-      metricJson.yoyChange = computeYoyChange(baselineYearData.total, currentYearData.total);
+      metricJson.yoyChange = computeYoyChange(baselineYearData, currentYearData, {
+        baselineYear: metricJson.baselineYear,
+        currentYear: metricJson.currentYear,
+      });
     }
   } else {
     metricJson = {
@@ -447,7 +451,7 @@ function importMetric(metric, year, csvPath, _verbose, opts = {}) {
         months: [],
       },
       targetStatus: 'no-target',
-      yoyChange: { absolute: 0, percent: 0, direction: 'stable' },
+      yoyChange: emptyMatchedYoy({ baselineYear: 2568, currentYear: 2569 }),
       relatedIndicators: [
         {
           indicatorId: cfg.criteriaId,
@@ -464,11 +468,14 @@ function importMetric(metric, year, csvPath, _verbose, opts = {}) {
   metricJson.baselineYear = 2568;
   metricJson.currentYear = 2569;
 
-  // Recompute YoY from years data
+  // Recompute YoY from years data (matched-month basis only)
   const bYear = metricJson.years[String(metricJson.baselineYear)];
   const cYear = metricJson.years[String(metricJson.currentYear)];
   if (bYear && cYear) {
-    metricJson.yoyChange = computeYoyChange(bYear.total, cYear.total);
+    metricJson.yoyChange = computeYoyChange(bYear, cYear, {
+      baselineYear: metricJson.baselineYear,
+      currentYear: metricJson.currentYear,
+    });
   }
 
   // Resolve overall status
@@ -491,14 +498,13 @@ function importMetric(metric, year, csvPath, _verbose, opts = {}) {
   return { success: true, errors: [] };
 }
 
-function computeYoyChange(baselineTotal, currentTotal) {
-  if (!baselineTotal || baselineTotal === 0) {
-    return { absolute: 0, percent: 0, direction: 'stable' };
-  }
-  const absolute = currentTotal - baselineTotal;
-  const percent = Math.round((absolute / baselineTotal) * 100);
-  const direction = percent > 0 ? 'up' : percent < 0 ? 'down' : 'stable';
-  return { absolute, percent, direction };
+/**
+ * YoY is ALWAYS matched-month (same-period): months present in both years.
+ * A partial current year is never compared against a full baseline year, and
+ * an invalid window yields nulls (never 0) so the UI renders "—" + coverage.
+ */
+function computeYoyChange(baselineYearData, currentYearData, meta = {}) {
+  return computeMatchedYoy(baselineYearData, currentYearData, meta);
 }
 
 function resolveOverallStatus(metricJson) {
@@ -687,8 +693,25 @@ function validateGenerated(verbose) {
 
     // Extreme YoY swings often indicate one side is placeholder/demo data
     // rather than a genuine trend — flag for manual review.
-    if (data.yoyChange && Math.abs(data.yoyChange.percent) > 100) {
+    if (data.yoyChange && typeof data.yoyChange.percent === 'number' && Math.abs(data.yoyChange.percent) > 100) {
       fileWarnings.push(`Extreme YoY change detected (${data.yoyChange.percent}%) — verify both years' data before trusting this trend`);
+    }
+
+    // YoY must be matched-month only: a partial current year compared against a
+    // full baseline year is a contract violation (PO 2026-09-10).
+    if (!data.yoyChange || data.yoyChange.basis !== MATCHED_YOY_BASIS) {
+      fileErrors.push(`yoyChange must use basis "${MATCHED_YOY_BASIS}" (matched months only)`);
+    } else if (!isMatchedYoy(data.yoyChange)) {
+      fileErrors.push('yoyChange has an invalid matched-month record shape');
+    } else if (data.yoyChange.valid) {
+      const currentMonths = data.years?.[String(data.currentYear)]?.months?.length ?? 0;
+      const baselineMonths = data.years?.[String(data.baselineYear)]?.months?.length ?? 0;
+      if (data.yoyChange.count > Math.min(currentMonths, baselineMonths)) {
+        fileErrors.push('yoyChange compares more months than exist in one of the years');
+      }
+      if (currentMonths < 12 && data.yoyChange.count === baselineMonths && baselineMonths === 12) {
+        fileErrors.push('yoyChange compares a partial current year against a full baseline year');
+      }
     }
 
     // Check for hardcoded target values (should be null unless staff-set)
@@ -741,6 +764,13 @@ function generateOutputs(_verbose) {
       if (!yearData.datasetState) yearData.datasetState = deriveDatasetState(n);
       if (yearData.latestDataMonth === undefined) yearData.latestDataMonth = latestDataMonthOf(yearData.months);
     }
+    // Recompute YoY on the matched-month basis for EVERY metric (including
+    // metrics without an import CSV), so a partial current year is never
+    // compared against a full baseline year.
+    m.yoyChange = computeMatchedYoy(m.years[String(m.baselineYear)], m.years[String(m.currentYear)], {
+      baselineYear: m.baselineYear,
+      currentYear: m.currentYear,
+    });
     // Persist the stamped state back to the canonical metric JSON (deterministic).
     writeJSON(join(GENERATED_DIR, `${m.metric}.json`), m);
   }

@@ -170,7 +170,7 @@ export function buildGhgProvenance(): GhgProvenanceView {
   return {
     sourceWorkbook: (prov.sourceWorkbook as string) || '1.6GreenHouseGas2025.xlsx',
     sourceSheet: (prov.sourceSheet as string) || `สรุปการคำนวณ ปี ${CAT1_YEAR}`,
-    sourceRow: (prov.sourceRowRange as string) || 'row 25 (รวม)',
+    sourceRow: (prov.sourceRowRange as string) || 'row รวม (r25 0-based = row 26 1-based)',
     reconciliationRef: 'docs/data/GO-CAT1-1.5-FY2568-GHG-RECONCILIATION.md',
     datasetStatus: yearBlock?.dataStatus || 'VERIFIED_BASELINE',
     evidenceVerification: 'pending human sign-off (ev-ghg-inventory-2025)',

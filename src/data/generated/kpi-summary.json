@@ -12,9 +12,29 @@
       "targetStatus": "no-target",
       "baselineValue": 403036.80000000005,
       "yoyChange": {
-        "absolute": -101232.00000000006,
-        "percent": -25,
-        "direction": "down"
+        "basis": "matched-months",
+        "baselineYear": 2568,
+        "currentYear": 2569,
+        "months": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "count": 8,
+        "baselineMonths": 12,
+        "currentMonths": 8,
+        "valid": true,
+        "reason": null,
+        "baselineMatched": 273195.2,
+        "currentMatched": 301804.8,
+        "absolute": 28609.6,
+        "percent": 10.5,
+        "direction": "up"
       },
       "dataQuality": {
         "valid": true,
@@ -35,9 +55,29 @@
       "targetStatus": "no-target",
       "baselineValue": 8337.5,
       "yoyChange": {
-        "absolute": -2172.5600000000004,
-        "percent": -26,
-        "direction": "down"
+        "basis": "matched-months",
+        "baselineYear": 2568,
+        "currentYear": 2569,
+        "months": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "count": 8,
+        "baselineMonths": 12,
+        "currentMonths": 8,
+        "valid": true,
+        "reason": null,
+        "baselineMatched": 5235.3,
+        "currentMatched": 6164.94,
+        "absolute": 929.64,
+        "percent": 17.8,
+        "direction": "up"
       },
       "dataQuality": {
         "valid": true,
@@ -58,8 +98,27 @@
       "targetStatus": "no-target",
       "baselineValue": 339.83000000000004,
       "yoyChange": {
-        "absolute": 56.539999999999964,
-        "percent": 17,
+        "basis": "matched-months",
+        "baselineYear": 2568,
+        "currentYear": 2569,
+        "months": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "count": 7,
+        "baselineMonths": 12,
+        "currentMonths": 7,
+        "valid": true,
+        "reason": null,
+        "baselineMatched": 339.83,
+        "currentMatched": 396.37,
+        "absolute": 56.54,
+        "percent": 16.6,
         "direction": "up"
       },
       "dataQuality": {
@@ -81,8 +140,28 @@
       "targetStatus": "no-target",
       "baselineValue": 2197.7999999999997,
       "yoyChange": {
-        "absolute": -927.6399999999996,
-        "percent": -42,
+        "basis": "matched-months",
+        "baselineYear": 2568,
+        "currentYear": 2569,
+        "months": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "count": 8,
+        "baselineMonths": 12,
+        "currentMonths": 8,
+        "valid": true,
+        "reason": null,
+        "baselineMatched": 1480.95,
+        "currentMatched": 1270.16,
+        "absolute": -210.79,
+        "percent": -14.2,
         "direction": "down"
       },
       "dataQuality": {
@@ -104,9 +183,29 @@
       "targetStatus": "no-target",
       "baselineValue": 5625.7,
       "yoyChange": {
-        "absolute": -1126,
-        "percent": -20,
-        "direction": "down"
+        "basis": "matched-months",
+        "baselineYear": 2568,
+        "currentYear": 2569,
+        "months": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "count": 8,
+        "baselineMonths": 12,
+        "currentMonths": 8,
+        "valid": true,
+        "reason": null,
+        "baselineMatched": 3893.2,
+        "currentMatched": 4499.7,
+        "absolute": 606.5,
+        "percent": 15.6,
+        "direction": "up"
       },
       "dataQuality": {
         "valid": true,
@@ -127,9 +226,20 @@
       "targetStatus": "no-target",
       "baselineValue": 21.57,
       "yoyChange": {
-        "absolute": 0,
-        "percent": 0,
-        "direction": "stable"
+        "basis": "matched-months",
+        "baselineYear": 2568,
+        "currentYear": 2569,
+        "months": [],
+        "count": 0,
+        "baselineMonths": 12,
+        "currentMonths": 0,
+        "valid": false,
+        "reason": "current-missing",
+        "baselineMatched": null,
+        "currentMatched": null,
+        "absolute": null,
+        "percent": null,
+        "direction": null
       },
       "dataQuality": {
         "valid": false,
@@ -152,9 +262,28 @@
       "targetStatus": "no-target",
       "baselineValue": 231.23,
       "yoyChange": {
-        "absolute": -86.42999999999998,
-        "percent": -37,
-        "direction": "down"
+        "basis": "matched-months",
+        "baselineYear": 2568,
+        "currentYear": 2569,
+        "months": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "count": 7,
+        "baselineMonths": 12,
+        "currentMonths": 7,
+        "valid": true,
+        "reason": null,
+        "baselineMatched": 134.41,
+        "currentMatched": 144.8,
+        "absolute": 10.39,
+        "percent": 7.7,
+        "direction": "up"
       },
       "dataQuality": {
         "valid": true,

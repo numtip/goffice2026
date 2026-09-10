@@ -39,9 +39,22 @@ const PUB_ROOT = join(PROJECT_ROOT, 'public', 'documents', 'fy2568');
 
 const SOURCE_ROOT = process.env.GOFFICE_FY2568_SOURCE_ROOT;
 
-const EXPECTED_COUNTS = { cat1: 38, cat2: 29, cat3: 32, cat4: 32, cat5: 47, cat6: 32, cat7: 3 };
-const EXPECTED_TOTAL = 213;
-const EXPECTED_TOTAL_BYTES = 793831313;
+/**
+ * Documented inventory snapshot (PR98 reconciliation).
+ *
+ * The manifest is now the arithmetic description of what is published under
+ * `public/documents/fy2568/` (see scripts/reconcile-fy2568-publication.mjs), so the
+ * counts below are a *snapshot for review*, not a hand-maintained source of truth:
+ * every one of them is additionally cross-checked against the directory listing.
+ * cat1 38 → 37: the legacy `1.5Green house gass/1.5_greenhousegass_update2.xlsx`
+ * alias was removed from public/ and is no longer claimed by the manifest.
+ */
+const EXPECTED_COUNTS = { cat1: 37, cat2: 29, cat3: 32, cat4: 32, cat5: 47, cat6: 32, cat7: 3 };
+const EXPECTED_TOTAL = 212;
+const EXPECTED_TOTAL_BYTES = 792891551;
+
+/** Legacy aliases that must never reappear in the manifest (404 on deploy). */
+const FORBIDDEN_MANIFEST_PATHS = ['1.5_greenhousegass_update2.xlsx'];
 
 // Private source-location / auth markers assembled from fragments so their raw
 // combined forms never appear in committed text.
@@ -88,7 +101,53 @@ describe('fy2568-publication manifest', () => {
     assert.strictEqual(Object.keys(manifest.categories).length, 7);
   });
 
-  it('total equals 209 and totalBytes matches the verified audit', () => {
+  it('counts/totals are arithmetic sums of the documents (no hand-maintained drift)', () => {
+    let docs = 0;
+    let bytes = 0;
+    for (const [code, cat] of Object.entries(manifest.categories)) {
+      assert.strictEqual(cat.documents.length, cat.count, `${code} count != documents.length`);
+      assert.strictEqual(
+        cat.bytes,
+        cat.documents.reduce((s, d) => s + d.sizeBytes, 0),
+        `${code} bytes != sum of sizeBytes`,
+      );
+      docs += cat.documents.length;
+      bytes += cat.bytes;
+    }
+    assert.strictEqual(manifest.total, docs, 'manifest.total must equal the number of documents');
+    assert.strictEqual(manifest.totalBytes, bytes, 'manifest.totalBytes must equal the sum of category bytes');
+    assert.strictEqual(manifest.total, EXPECTED_TOTAL, 'documented inventory total');
+    assert.strictEqual(manifest.totalBytes, EXPECTED_TOTAL_BYTES, 'documented inventory bytes');
+  });
+
+  it('never claims a legacy alias that no longer exists in public/', () => {
+    for (const [code, cat] of Object.entries(manifest.categories)) {
+      for (const doc of cat.documents) {
+        for (const forbidden of FORBIDDEN_MANIFEST_PATHS) {
+          assert.ok(
+            !doc.path.includes(forbidden) && !doc.url.includes(forbidden),
+            `${code} still claims the removed legacy alias ${forbidden}`,
+          );
+        }
+      }
+    }
+  });
+
+  it('every url resolves to the published file it names (no 404 anchors)', () => {
+    for (const [code, cat] of Object.entries(manifest.categories)) {
+      for (const doc of cat.documents) {
+        const expectedUrl = `/documents/fy2568/${code}/${doc.path
+          .split('/')
+          .map(encodeURIComponent)
+          .join('/')}`;
+        assert.strictEqual(doc.url, expectedUrl, `${code}/${doc.path} url encoding`);
+        const file = join(PUB_ROOT, code, ...doc.path.split('/'));
+        assert.ok(existsSync(file), `${code}/${doc.path} published file must exist (url would 404)`);
+      }
+    }
+  });
+
+  it('total matches the documented inventory snapshot', () => {
     assert.strictEqual(manifest.total, EXPECTED_TOTAL);
     assert.strictEqual(manifest.totalBytes, EXPECTED_TOTAL_BYTES);
   });

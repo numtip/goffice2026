@@ -189,8 +189,27 @@
     "months": []
   },
   "yoyChange": {
-    "absolute": 56.539999999999964,
-    "percent": 17,
+    "basis": "matched-months",
+    "baselineYear": 2568,
+    "currentYear": 2569,
+    "months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "count": 7,
+    "baselineMonths": 12,
+    "currentMonths": 7,
+    "valid": true,
+    "reason": null,
+    "baselineMatched": 339.83,
+    "currentMatched": 396.37,
+    "absolute": 56.54,
+    "percent": 16.6,
     "direction": "up"
   },
   "relatedIndicators": [

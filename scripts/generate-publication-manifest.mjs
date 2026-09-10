@@ -1,10 +1,24 @@
 #!/usr/bin/env node
-/** Build src/data/publication-manifest.json from resource-source-files.json (+ FY2569 form inventory stub). */
+/**
+ * Build src/data/publication-manifest.json from resource-source-files.json
+ * (+ FY2569 form inventory stub).
+ *
+ * Deterministic by construction: the `updated` field mirrors
+ * resource-source-files.json (never `new Date()`), so a test/CI run cannot rewrite
+ * a tracked file just because the calendar moved.
+ *
+ * Usage:
+ *   node scripts/generate-publication-manifest.mjs           # write the manifest
+ *   node scripts/generate-publication-manifest.mjs --check    # verify only, exit 1 on drift
+ */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { serializeJson } from './lib/serialize-json.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const MANIFEST_PATH = join(ROOT, 'src/data/publication-manifest.json');
+const CHECK_ONLY = process.argv.includes('--check');
 const MAP = JSON.parse(readFileSync(join(ROOT, 'src/data/resource-source-files.json'), 'utf8'));
 const FY2569_INV = join(ROOT, 'src/data/fy2569-form-inventory.json');
 
@@ -99,11 +113,34 @@ try {
 
 const manifest = {
   version: '1.0.0',
-  updated: new Date().toISOString().slice(0, 10),
+  // Deterministic: mirrors the source map's `updated` date instead of today's
+  // clock, so `--check` never reports drift merely because a day passed.
+  updated: MAP.updated,
   note:
     'Canonical publication records for PO-approved public-static sources. OneDrive Resource and Data2569 are authoritative; staging/public are distribution copies only. Never store absolute Windows drive paths in public metadata.',
   records,
 };
 
-writeFileSync(join(ROOT, 'src/data/publication-manifest.json'), JSON.stringify(manifest, null, 2) + '\n', 'utf8');
+const serialized = serializeJson(manifest);
+const current = (() => {
+  try {
+    return readFileSync(MANIFEST_PATH, 'utf8');
+  } catch {
+    return null;
+  }
+})();
+
+if (current === serialized) {
+  console.log(`✅ publication-manifest.json already current — ${records.length} record(s) (${fy2569Forms.length} FY2569 forms)`);
+  process.exit(0);
+}
+
+if (CHECK_ONLY) {
+  console.error('❌ src/data/publication-manifest.json is out of date with resource-source-files.json');
+  console.error(`   generated ${records.length} record(s); committed file differs (updated field or records).`);
+  console.error('   → run: node scripts/generate-publication-manifest.mjs');
+  process.exit(1);
+}
+
+writeFileSync(MANIFEST_PATH, serialized, 'utf8');
 console.log(`✅ publication-manifest.json — ${records.length} record(s) (${fy2569Forms.length} FY2569 forms)`);

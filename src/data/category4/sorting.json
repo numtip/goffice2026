@@ -25,7 +25,7 @@
       "categoryCode": "cat4",
       "evidenceIds": ["ev-cat4-sorting-bin-layout-fy2568"],
       "sourceRef": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (1) .txt",
-      "manifestSha256": "adce045c6d7211771b684ff7e113dbee00cc4c20e203f25bdcfe80ddf50fffaa",
+      "manifestSha256": "18cee17cfbebfdba99b175ecf3f1ab31df31ea38b64c5e35feb2773012451190",
       "verification": {
         "status": "pending",
         "basis": "4.1.2(1) bin-layout and sorting by waste category: 2 dining-area points (floor 3), 4 indoor points (floors 1–3), 1 outdoor 3-bay holding point — text extracted; human/PO verification pending."
@@ -43,7 +43,7 @@
       "categoryCode": "cat4",
       "evidenceIds": ["ev-cat4-sorting-labels-fy2568"],
       "sourceRef": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (2).txt",
-      "manifestSha256": "96c7139f1d9c0adae83fea885f37a2264bba1547bb129aa9e6befba6b12e6df0",
+      "manifestSha256": "001a37643ad4224a3f844a93da4d13dd7148b4c1adfc5abd6ac68823609a699f",
       "verification": {
         "status": "pending",
         "basis": "4.1.2(2) color-coded waste labels on every bin (blue general / yellow recyclable / green wet / red hazardous) — text extracted; human/PO verification pending."
@@ -61,7 +61,7 @@
       "categoryCode": "cat4",
       "evidenceIds": ["ev-cat4-sorting-holding-point-fy2568"],
       "sourceRef": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (3) .txt",
-      "manifestSha256": "03aaba1ac7ccbb7688da511da1fabf7b226f81544f054aaa0278079502002980",
+      "manifestSha256": "9b59ed544223e1dfe0965b7ea4777fd82049566bec9d39ce2b5fb940249e7461",
       "verification": {
         "status": "pending",
         "basis": "4.1.2(3) covered/gated holding point + university central holding point (beside อาคารเรียนรวม 80 ปี) — text extracted; human/PO verification pending."
@@ -117,7 +117,7 @@
       "categoryCode": "cat4",
       "evidenceIds": ["ev-cat4-sorting-monitor-fy2568"],
       "sourceRef": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (6) .txt",
-      "manifestSha256": "397aeebc01b4aa5c0826a11208887f280a0a588a3c38eddf7be31da54baad102",
+      "manifestSha256": "b145cc707b4a2a1a8bb1da7c45a490cde1911ba441f61b9ffc6cd067ed0b051f",
       "verification": {
         "status": "pending",
         "basis": "4.1.2(6) contractor-disposal monitoring for each waste category — text extracted; human/PO verification pending."
@@ -135,7 +135,7 @@
       "categoryCode": "cat4",
       "evidenceIds": ["ev-cat4-sorting-no-burning-fy2568"],
       "sourceRef": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (7) .txt",
-      "manifestSha256": "713dcb524f5d1f062b93255534f42dc02723e8c0e5ff32a708eeb22ca0d2c8ea",
+      "manifestSha256": "5541af55d5b90bccb18a7b87d25dc26d2d41d39f4c51edf210e017f27f97ce46",
       "verification": {
         "status": "pending",
         "basis": "4.1.2(7) no waste burning on site; each category sorted and handled by the licensed contractor — text extracted; human/PO verification pending."

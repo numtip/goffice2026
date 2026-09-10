@@ -66,7 +66,30 @@
     "coverage": "8 of 12 months (Jan-Aug)",
     "verificationState": "available_unverified",
     "classification": "CONFIRMED_XLSX",
-    "notes": "Paper (kg). 8 observed months after OneDrive Resource resync 2026-09-10. SHA-256 matches manifest.json, extract-sources.json and src/data/generated/paper.json years[2569].provenance."
+    "notes": "Paper (kg). 8 observed months after OneDrive Resource resync 2026-09-10. SHA-256 matches manifest.json, extract-sources.json and src/data/generated/paper.json years[2569].provenance.",
+    "dataQualityFlags": [
+      {
+        "code": "DQ-PAPER-2569-AUG-LOW",
+        "metric": "paper",
+        "fiscalYear": 2569,
+        "month": 8,
+        "value": 30.4,
+        "unit": "kg",
+        "otherObservedMonthsKg": [
+          145.13,
+          175.31,
+          157.17,
+          145.61,
+          225.85,
+          166.59,
+          224.1
+        ],
+        "reason": "August 2569 paper usage (30.4 kg) is an order below every other observed month (145-226 kg), so it may be a partial-month entry or a keying/unit error in the workbook.",
+        "action": "Source value is published UNCHANGED (no correction invented); data-owner verification of August 2569 paper usage is required before the month is used for any target or trend conclusion.",
+        "ownerVerification": "required",
+        "status": "flagged-unverified"
+      }
+    ]
   },
   {
     "id": "metric:waste",

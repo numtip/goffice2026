@@ -192,7 +192,7 @@ describe('rendered output — dashboard and 1.5.1 consume the same canonical dat
       }
     });
 
-    it('1.5.1 shows partial FY2569 panel + collapsed FY2568 baseline journey with Resource baseline values', () => {
+    it('1.5.1 shows partial FY2569 panel + collapsed FY2568 baseline journey with official GHG values', () => {
       for (const prefix of ['', 'en/']) {
         const html = readFileSync(join(DIST, prefix, 'indicators', '1.5.1', 'index.html'), 'utf8');
         const kind = html.match(/data-fy2569-kind="([^"]+)"/);
@@ -204,9 +204,38 @@ describe('rendered output — dashboard and 1.5.1 consume the same canonical dat
         const beforeBaseline = html.slice(panelStart, baselineTags[0].index);
         assert.match(beforeBaseline, /บางส่วน|Partial|ยังไม่ยืนยัน|Unverified/, `${prefix}1.5.1 must disclose partial/unverified FY2569 state`);
         const inside = html.slice(baselineTags[0].index, html.indexOf('</details>', baselineTags[0].index));
-        assert.ok(inside.includes('231.23') || inside.includes('231'), `${prefix}1.5.1 baseline renders 231.23 tCO2e`);
+        // Official reported values (1.5.2 (9-3-69).pdf) — scopes and total.
+        assert.ok(inside.includes('231.62'), `${prefix}1.5.1 baseline renders the official 231.62 tCO2e total`);
+        assert.ok(inside.includes('10.85'), `${prefix}1.5.1 baseline renders official Scope 1 = 10.85`);
+        assert.ok(inside.includes('19.29'), `${prefix}1.5.1 baseline renders official Scope 3 = 19.29`);
         assert.ok(html.indexOf('data-cat15-monthly-table', baselineTags[0].index) !== -1, `${prefix}1.5.1 monthly table inside baseline`);
-        assert.ok(inside.includes('ANOM-SUPERSEDED-UPDATE2') || inside.includes('1.6GreenHouseGas2025.xlsx'), `${prefix}1.5.1 discloses Resource authority / superseded update2`);
+      }
+    });
+
+    it('1.5.1 discloses every conflicting source value (never silently reconciled)', () => {
+      for (const prefix of ['', 'en/']) {
+        const html = readFileSync(join(DIST, prefix, 'indicators', '1.5.1', 'index.html'), 'utf8');
+        const inside = html.slice(
+          html.indexOf('data-fy2568-baseline'),
+          html.indexOf('</details>', html.indexOf('data-fy2568-baseline')),
+        );
+        // Each disclosure must be present BY CODE and must carry its conflicting value.
+        for (const code of [
+          'ANOM-SUPERSEDED-UPDATE2',
+          'ANOM-OFFICIAL-VS-WORKBOOK-0.39',
+          'ANOM-NARRATIVE-221-65',
+          'ANOM-PER-CAPITA-BASIS',
+        ]) {
+          assert.ok(inside.includes(code), `${prefix}1.5.1 baseline must disclose ${code}`);
+        }
+        // Verbatim conflicting values — no vacuous OR with a filename that always appears.
+        assert.ok(inside.includes('221.65'), `${prefix}1.5.1 must quote the stale narrative 221.65 tCO2e`);
+        assert.ok(inside.includes('231.23'), `${prefix}1.5.1 must quote the workbook-calculated 231.23 tCO2e`);
+        assert.ok(inside.includes('0.39'), `${prefix}1.5.1 must state the Δ0.39 workbook-vs-official delta`);
+        assert.ok(inside.includes('2434') || inside.includes('2,434'), `${prefix}1.5.1 must state the published per-capita basis`);
+        // The narrative figure must never be presented ABOVE the baseline block as a value.
+        const beforeBaseline = html.slice(0, html.indexOf('data-fy2568-baseline'));
+        assert.ok(!beforeBaseline.includes('221.65'), `${prefix}stale narrative must not appear above the baseline disclosure`);
       }
     });
   });

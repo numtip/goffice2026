@@ -2721,7 +2721,7 @@
       "status": "available",
       "updated": "2026-08-23",
       "manifestPath": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (1) .txt",
-      "manifestSha256": "adce045c6d7211771b684ff7e113dbee00cc4c20e203f25bdcfe80ddf50fffaa",
+      "manifestSha256": "18cee17cfbebfdba99b175ecf3f1ab31df31ea38b64c5e35feb2773012451190",
       "publicationMode": "public-static",
       "sharePointUrl": null,
       "sharePointUrlPending": false,
@@ -2747,7 +2747,8 @@
         "status": "pending",
         "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
         "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
-      }
+      },
+      "manifestSha256Note": "Published copy is the LF-normalised committed blob (SHA-256 18cee17cfbebfdba99b175ecf3f1ab31df31ea38b64c5e35feb2773012451190, 3029 bytes). The originally recorded hash adce045c6d7211771b684ff7e113dbee00cc4c20e203f25bdcfe80ddf50fffaa (3039 bytes) came from a CRLF copy and is no longer what the site serves. Reconciled by PR98 (scripts/reconcile-fy2568-publication.mjs); LF copy pending PO confirmation as the accepted published record."
     },
     {
       "id": "ev-cat4-sorting-labels-fy2568",
@@ -2763,7 +2764,7 @@
       "status": "available",
       "updated": "2026-08-23",
       "manifestPath": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (2).txt",
-      "manifestSha256": "96c7139f1d9c0adae83fea885f37a2264bba1547bb129aa9e6befba6b12e6df0",
+      "manifestSha256": "001a37643ad4224a3f844a93da4d13dd7148b4c1adfc5abd6ac68823609a699f",
       "publicationMode": "public-static",
       "sharePointUrl": null,
       "sharePointUrlPending": false,
@@ -2789,7 +2790,8 @@
         "status": "pending",
         "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
         "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
-      }
+      },
+      "manifestSha256Note": "Published copy is the LF-normalised committed blob (SHA-256 001a37643ad4224a3f844a93da4d13dd7148b4c1adfc5abd6ac68823609a699f, 947 bytes). The originally recorded hash 96c7139f1d9c0adae83fea885f37a2264bba1547bb129aa9e6befba6b12e6df0 (953 bytes) came from a CRLF copy and is no longer what the site serves. Reconciled by PR98 (scripts/reconcile-fy2568-publication.mjs); LF copy pending PO confirmation as the accepted published record."
     },
     {
       "id": "ev-cat4-sorting-holding-point-fy2568",
@@ -2805,7 +2807,7 @@
       "status": "available",
       "updated": "2026-08-23",
       "manifestPath": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (3) .txt",
-      "manifestSha256": "03aaba1ac7ccbb7688da511da1fabf7b226f81544f054aaa0278079502002980",
+      "manifestSha256": "9b59ed544223e1dfe0965b7ea4777fd82049566bec9d39ce2b5fb940249e7461",
       "publicationMode": "public-static",
       "sharePointUrl": null,
       "sharePointUrlPending": false,
@@ -2831,7 +2833,8 @@
         "status": "pending",
         "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
         "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
-      }
+      },
+      "manifestSha256Note": "Published copy is the LF-normalised committed blob (SHA-256 9b59ed544223e1dfe0965b7ea4777fd82049566bec9d39ce2b5fb940249e7461, 1885 bytes). The originally recorded hash 03aaba1ac7ccbb7688da511da1fabf7b226f81544f054aaa0278079502002980 (1888 bytes) came from a CRLF copy and is no longer what the site serves. Reconciled by PR98 (scripts/reconcile-fy2568-publication.mjs); LF copy pending PO confirmation as the accepted published record."
     },
     {
       "id": "ev-cat4-sorting-random-check-scan-fy2568",
@@ -2933,7 +2936,7 @@
       "status": "available",
       "updated": "2026-08-23",
       "manifestPath": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (6) .txt",
-      "manifestSha256": "397aeebc01b4aa5c0826a11208887f280a0a588a3c38eddf7be31da54baad102",
+      "manifestSha256": "b145cc707b4a2a1a8bb1da7c45a490cde1911ba441f61b9ffc6cd067ed0b051f",
       "publicationMode": "public-static",
       "sharePointUrl": null,
       "sharePointUrlPending": false,
@@ -2959,7 +2962,8 @@
         "status": "pending",
         "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
         "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
-      }
+      },
+      "manifestSha256Note": "Published copy is the LF-normalised committed blob (SHA-256 b145cc707b4a2a1a8bb1da7c45a490cde1911ba441f61b9ffc6cd067ed0b051f, 855 bytes). The originally recorded hash 397aeebc01b4aa5c0826a11208887f280a0a588a3c38eddf7be31da54baad102 (856 bytes) came from a CRLF copy and is no longer what the site serves. Reconciled by PR98 (scripts/reconcile-fy2568-publication.mjs); LF copy pending PO confirmation as the accepted published record."
     },
     {
       "id": "ev-cat4-sorting-no-burning-fy2568",
@@ -2975,7 +2979,7 @@
       "status": "available",
       "updated": "2026-08-23",
       "manifestPath": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (7) .txt",
-      "manifestSha256": "713dcb524f5d1f062b93255534f42dc02723e8c0e5ff32a708eeb22ca0d2c8ea",
+      "manifestSha256": "5541af55d5b90bccb18a7b87d25dc26d2d41d39f4c51edf210e017f27f97ce46",
       "publicationMode": "public-static",
       "sharePointUrl": null,
       "sharePointUrlPending": false,
@@ -3001,7 +3005,8 @@
         "status": "pending",
         "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
         "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
-      }
+      },
+      "manifestSha256Note": "Published copy is the LF-normalised committed blob (SHA-256 5541af55d5b90bccb18a7b87d25dc26d2d41d39f4c51edf210e017f27f97ce46, 778 bytes). The originally recorded hash 713dcb524f5d1f062b93255534f42dc02723e8c0e5ff32a708eeb22ca0d2c8ea (779 bytes) came from a CRLF copy and is no longer what the site serves. Reconciled by PR98 (scripts/reconcile-fy2568-publication.mjs); LF copy pending PO confirmation as the accepted published record."
     },
     {
       "id": "ev-cat4-data-waste-annual-fy2568",
@@ -3101,7 +3106,7 @@
       "status": "available",
       "updated": "2026-08-23",
       "manifestPath": "4.1 การจัดการขยะ/4.1.3 การนำขยะกลับไปใช้ประโยชน์หรือนำกลับมาใช้ใหม่/4.1.3 (3).txt",
-      "manifestSha256": "3dba6927f77fe23643b953810b69862ea2ad2fcaa47e748e86e69beee889f284",
+      "manifestSha256": "ed2c16810c6b37ee9d122d42d6acc2f7f47e815c3c5479864d4c1d851e62f46a",
       "publicationMode": "public-static",
       "sharePointUrl": null,
       "sharePointUrlPending": false,
@@ -3127,7 +3132,8 @@
         "status": "pending",
         "basis": "C1 semantic-verification: text extracted (content-verified). Numeric >50% reuse NOT met — honest claim via innovation/composting branch only. Human/PO verification pending.",
         "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) เกณฑ์ >50% ไม่บรรลุ — ยืนยันผ่านสาขานวัตกรรม/ปุ๋ยหมักเท่านั้น"
-      }
+      },
+      "manifestSha256Note": "Published copy is the LF-normalised committed blob (SHA-256 ed2c16810c6b37ee9d122d42d6acc2f7f47e815c3c5479864d4c1d851e62f46a, 2875 bytes). The originally recorded hash 3dba6927f77fe23643b953810b69862ea2ad2fcaa47e748e86e69beee889f284 (2878 bytes) came from a CRLF copy and is no longer what the site serves. Reconciled by PR98 (scripts/reconcile-fy2568-publication.mjs); LF copy pending PO confirmation as the accepted published record."
     },
     {
       "id": "ev-cat4-data-disposal-trend-fy2568",
@@ -3143,7 +3149,7 @@
       "status": "available",
       "updated": "2026-08-23",
       "manifestPath": "4.1 การจัดการขยะ/4.1.3 การนำขยะกลับไปใช้ประโยชน์หรือนำกลับมาใช้ใหม่/4.1.3 (4).txt",
-      "manifestSha256": "3e8243b7f80d9c6432aa7b84b03e3ec434133b0ad3b365610f26f9e2be9c408e",
+      "manifestSha256": "5e95eee9af2e843a45a8fad55410eb435482850fced9ec1725ef215f42881e55",
       "publicationMode": "public-static",
       "sharePointUrl": null,
       "sharePointUrlPending": false,
@@ -3169,7 +3175,8 @@
         "status": "pending",
         "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
         "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
-      }
+      },
+      "manifestSha256Note": "Published copy is the LF-normalised committed blob (SHA-256 5e95eee9af2e843a45a8fad55410eb435482850fced9ec1725ef215f42881e55, 893 bytes). The originally recorded hash 3e8243b7f80d9c6432aa7b84b03e3ec434133b0ad3b365610f26f9e2be9c408e (894 bytes) came from a CRLF copy and is no longer what the site serves. Reconciled by PR98 (scripts/reconcile-fy2568-publication.mjs); LF copy pending PO confirmation as the accepted published record."
     },
     {
       "id": "ev-cat4-data-waste-log-scan-fy2568",
@@ -3396,7 +3403,7 @@
       "status": "available",
       "updated": "2026-08-23",
       "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (2).txt",
-      "manifestSha256": "4cbf86fae9f5389189629ef670e4dec42d79b83c8d278e90343643a08169acd2",
+      "manifestSha256": "659a9d4f5b34453b82d4aa14843c20f6ec9eb1fb5775c66e636ad81d2bcecc7a",
       "publicationMode": "public-static",
       "sharePointUrl": null,
       "sharePointUrlPending": false,
@@ -3422,7 +3429,8 @@
         "status": "pending",
         "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
         "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
-      }
+      },
+      "manifestSha256Note": "Published copy is the LF-normalised committed blob (SHA-256 659a9d4f5b34453b82d4aa14843c20f6ec9eb1fb5775c66e636ad81d2bcecc7a, 2041 bytes). The originally recorded hash 4cbf86fae9f5389189629ef670e4dec42d79b83c8d278e90343643a08169acd2 (2044 bytes) came from a CRLF copy and is no longer what the site serves. Reconciled by PR98 (scripts/reconcile-fy2568-publication.mjs); LF copy pending PO confirmation as the accepted published record."
     },
     {
       "id": "ev-cat4-wastewater-all-points-fy2568",
@@ -3438,7 +3446,7 @@
       "status": "available",
       "updated": "2026-08-23",
       "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (3).txt",
-      "manifestSha256": "a6098f9536ff14d83c58e50dad15d9f20f575c17c1882fd882b5b38d0c187fbe",
+      "manifestSha256": "7e208e0dd697d33b76383b3687141531b29f5ce53bfec78061ffdc3f6fd00aa2",
       "publicationMode": "public-static",
       "sharePointUrl": null,
       "sharePointUrlPending": false,
@@ -3464,7 +3472,8 @@
         "status": "pending",
         "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
         "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
-      }
+      },
+      "manifestSha256Note": "Published copy is the LF-normalised committed blob (SHA-256 7e208e0dd697d33b76383b3687141531b29f5ce53bfec78061ffdc3f6fd00aa2, 2327 bytes). The originally recorded hash a6098f9536ff14d83c58e50dad15d9f20f575c17c1882fd882b5b38d0c187fbe (2335 bytes) came from a CRLF copy and is no longer what the site serves. Reconciled by PR98 (scripts/reconcile-fy2568-publication.mjs); LF copy pending PO confirmation as the accepted published record."
     },
     {
       "id": "ev-cat4-wastewater-standard-fy2568",
@@ -3480,7 +3489,7 @@
       "status": "available",
       "updated": "2026-08-23",
       "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (4).txt",
-      "manifestSha256": "8853be2fa2b0929b523dafce14bfce8ae10129c10e96c5f70a422068061885e3",
+      "manifestSha256": "b70dab9a0a6df8ed0292fde67c270b5b7c236915976ff96f1f3d11b0aa5d0fa7",
       "publicationMode": "public-static",
       "sharePointUrl": null,
       "sharePointUrlPending": false,
@@ -3506,7 +3515,8 @@
         "status": "pending",
         "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
         "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
-      }
+      },
+      "manifestSha256Note": "Published copy is the LF-normalised committed blob (SHA-256 b70dab9a0a6df8ed0292fde67c270b5b7c236915976ff96f1f3d11b0aa5d0fa7, 2404 bytes). The originally recorded hash 8853be2fa2b0929b523dafce14bfce8ae10129c10e96c5f70a422068061885e3 (2407 bytes) came from a CRLF copy and is no longer what the site serves. Reconciled by PR98 (scripts/reconcile-fy2568-publication.mjs); LF copy pending PO confirmation as the accepted published record."
     },
     {
       "id": "ev-cat4-wastewater-skim-scan-fy2568",
@@ -3565,7 +3575,7 @@
       "status": "available",
       "updated": "2026-08-23",
       "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (1).txt",
-      "manifestSha256": "5c73319333ba635f3385ec2fd0baf73f452bd46ad4be92bf0abb738ed2ebd7f7",
+      "manifestSha256": "9d1dfabb6d4b207ed879cd0c3ac0aca52668d8d90788e5930c3ee3775a16d902",
       "publicationMode": "public-static",
       "sharePointUrl": null,
       "sharePointUrlPending": false,
@@ -3591,7 +3601,8 @@
         "status": "pending",
         "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
         "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
-      }
+      },
+      "manifestSha256Note": "Published copy is the LF-normalised committed blob (SHA-256 9d1dfabb6d4b207ed879cd0c3ac0aca52668d8d90788e5930c3ee3775a16d902, 1864 bytes). The originally recorded hash 5c73319333ba635f3385ec2fd0baf73f452bd46ad4be92bf0abb738ed2ebd7f7 (1866 bytes) came from a CRLF copy and is no longer what the site serves. Reconciled by PR98 (scripts/reconcile-fy2568-publication.mjs); LF copy pending PO confirmation as the accepted published record."
     },
     {
       "id": "ev-cat4-treatment-grease-disposal-fy2568",
@@ -3607,7 +3618,7 @@
       "status": "available",
       "updated": "2026-08-23",
       "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (2).txt",
-      "manifestSha256": "e434155bba65987b96ca13241e482b175066bfa6a9b65e461e103acbfcb35b0d",
+      "manifestSha256": "6bc3cbdbb3c22708573e37c8a5a6479d69d3608036d4657cfe770dc431034a41",
       "publicationMode": "public-static",
       "sharePointUrl": null,
       "sharePointUrlPending": false,
@@ -3633,7 +3644,8 @@
         "status": "pending",
         "basis": "C1 semantic-verification: text extracted (content-verified). Human/PO verification pending.",
         "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) ยังต้องรอการตรวจยืนยัน"
-      }
+      },
+      "manifestSha256Note": "Published copy is the LF-normalised committed blob (SHA-256 6bc3cbdbb3c22708573e37c8a5a6479d69d3608036d4657cfe770dc431034a41, 1093 bytes). The originally recorded hash e434155bba65987b96ca13241e482b175066bfa6a9b65e461e103acbfcb35b0d (1095 bytes) came from a CRLF copy and is no longer what the site serves. Reconciled by PR98 (scripts/reconcile-fy2568-publication.mjs); LF copy pending PO confirmation as the accepted published record."
     },
     {
       "id": "ev-cat4-treatment-repair-fy2568",
@@ -3691,7 +3703,7 @@
       "status": "available",
       "updated": "2026-08-23",
       "manifestPath": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (4).txt",
-      "manifestSha256": "714b093cf28d77acc41d73dd4ea5b2285eae62d6542255a143fb964cdfef4fbb",
+      "manifestSha256": "408ab68998d804cfe7443ab234269124345dd9883074cdb348a34a290d53f45b",
       "publicationMode": "public-static",
       "sharePointUrl": null,
       "sharePointUrlPending": false,
@@ -3717,7 +3729,8 @@
         "status": "pending",
         "basis": "C1 semantic-verification: text extracted (content-verified). WTMS ทส.1/ทส.2 records are external references, not in-repo. Human/PO verification pending.",
         "basisTh": "C1 ตรวจเนื้อหาแล้ว (content-verified) บันทึก ทส.1/ทส.2 เป็นข้อมูลอ้างอิงภายนอก ยังต้องรอการตรวจยืนยัน"
-      }
+      },
+      "manifestSha256Note": "Published copy is the LF-normalised committed blob (SHA-256 408ab68998d804cfe7443ab234269124345dd9883074cdb348a34a290d53f45b, 185 bytes). The originally recorded hash 714b093cf28d77acc41d73dd4ea5b2285eae62d6542255a143fb964cdfef4fbb (190 bytes) came from a CRLF copy and is no longer what the site serves. Reconciled by PR98 (scripts/reconcile-fy2568-publication.mjs); LF copy pending PO confirmation as the accepted published record."
     },
     {
       "id": "ev-cat4-treatment-skim-scan-fy2568",

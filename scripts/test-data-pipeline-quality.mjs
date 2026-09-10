@@ -114,7 +114,7 @@ describe('RC-1: current-year FY2569 data provenance (GO-DATA-3 states)', () => {
     assert.equal(recycling2569.quality.valid, false);
   });
 
-  it('paper/waste 2569 are PUBLISHABLE_PARTIAL Jan–Aug (8/12) after Resource resync', () => {
+  it('paper/waste/ghg 2569 are PUBLISHABLE_PARTIAL and reconciled (quality + verification restored)', () => {
     for (const metric of ['paper', 'waste']) {
       const data = readGenerated(`${metric}.json`);
       const y2569 = data.years['2569'];
@@ -122,16 +122,29 @@ describe('RC-1: current-year FY2569 data provenance (GO-DATA-3 states)', () => {
       assert.equal(y2569.months.length, 8, `${metric} 2569 Jan–Aug`);
       assert.equal(y2569.latestDataMonth, 8);
       assert.deepEqual(y2569.months.map((m) => m.month), [1, 2, 3, 4, 5, 6, 7, 8]);
+      // Restored (was dropped in PR98): the reconciliation + provenance
+      // guarantees must stay asserted, not just the month count.
+      assert.equal(y2569.dataClassification, 'CONFIRMED_XLSX', `${metric} 2569 is machine-extracted from the workbook`);
+      assert.equal(y2569.quality.valid, true, `${metric} 2569 reconciled against workbook`);
+      assert.equal(
+        y2569.provenance.verification.status,
+        'available_unverified',
+        `${metric} 2569 is not human-verified`,
+      );
     }
   });
 
-  it('ghg 2569 is PUBLISHABLE_PARTIAL Jan–Jul (7/12)', () => {
+  it('ghg 2569 is PUBLISHABLE_PARTIAL Jan–Jul (7/12) and reconciled', () => {
     const data = readGenerated('ghg.json');
     const y2569 = data.years['2569'];
     assert.equal(y2569.datasetState, 'PUBLISHABLE_PARTIAL');
     assert.equal(y2569.months.length, 7);
     assert.equal(y2569.latestDataMonth, 7);
     assert.deepEqual(y2569.months.map((m) => m.month), [1, 2, 3, 4, 5, 6, 7]);
+    // Restored (was dropped in PR98).
+    assert.equal(y2569.dataClassification, 'CONFIRMED_XLSX');
+    assert.equal(y2569.quality.valid, true);
+    assert.equal(y2569.provenance.verification.status, 'available_unverified');
   });
 
   it('confirmed baseline years (energy/water/ghg 2568) remain quality.valid=true and CONFIRMED_XLSX', () => {
@@ -161,17 +174,29 @@ describe('RC-2: recycling_rate (percentage unit) must use average aggregation, n
     }
   });
 
-  it('recycling_rate yoyChange is suppressed when current year is pending (not a false -100% drop)', () => {
+  it('recycling_rate yoyChange is suppressed when current year is pending (null, never a false -100% or 0%)', () => {
     const data = readGenerated('recycling_rate.json');
     const c = data.years[String(data.currentYear)];
     if (c.dataStatus === 'CURRENT_DATA_PENDING' || c.months.length === 0) {
-      assert.equal(data.yoyChange.percent, 0);
-      assert.equal(data.yoyChange.direction, 'stable');
+      // Matched-month contract: no comparable window ⇒ null everywhere (not 0).
+      assert.equal(data.yoyChange.basis, 'matched-months');
+      assert.equal(data.yoyChange.percent, null);
+      assert.equal(data.yoyChange.direction, null);
+      assert.equal(data.yoyChange.absolute, null);
+      assert.equal(data.yoyChange.valid, false);
+      assert.equal(data.yoyChange.reason, 'current-missing');
+      assert.equal(data.yoyChange.count, 0);
       return;
     }
     const b = data.years[String(data.baselineYear)];
-    const expectedPercent = Math.round(((c.total - b.total) / b.total) * 100);
+    const months = b.months.filter((bm) => c.months.some((cm) => cm.month === bm.month));
+    const baseSum = months.reduce((s, m) => s + m.value, 0);
+    const curSum = c.months
+      .filter((cm) => b.months.some((bm) => bm.month === cm.month))
+      .reduce((s, m) => s + m.value, 0);
+    const expectedPercent = Math.round(((curSum - baseSum) / baseSum) * 1000) / 10;
     assert.equal(data.yoyChange.percent, expectedPercent);
+    assert.equal(data.yoyChange.count, months.length);
   });
 });
 

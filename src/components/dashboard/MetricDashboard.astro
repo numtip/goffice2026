@@ -7,6 +7,7 @@ import { getLocalizedPath } from '../../i18n/utils';
 import { getEvidenceForDashboard, getResourceSourcePublication } from '../../utils/evidence-traceability';
 import { metricThemes } from '../../data/metric-theme';
 import { computeMetricInsights } from '../../utils/metric-insights';
+import { formatYoyCoverage, formatYoyReason, formatYoyTrend, isYoyComparable } from '../../utils/yoy-display';
 
 import MetricHero from './MetricHero.astro';
 import MetricKpiGrid from './MetricKpiGrid.astro';
@@ -60,7 +61,12 @@ const fmt = (v: number) => Intl.NumberFormat(th ? 'th' : 'en').format(Math.round
 
 const yoyColor = (pct: number) => pct <= -5 ? 'text-green-600' : pct >= 5 ? 'text-red-600' : 'text-amber-600';
 const yoyArrow = (dir: string) => dir === 'up' ? '\u2191' : dir === 'down' ? '\u2193' : '\u2192';
-const yoyPctText = yoy ? `${yoy.percent > 0 ? '+' : ''}${yoy.percent}% ${yoyArrow(yoy.direction)}` : null;
+// Matched-month contract: a null percent is never rendered as "0%" — it becomes
+// an em dash plus the coverage/reason text explaining the comparison window.
+const yoyComparable = isYoyComparable(yoy);
+const yoyPctText = yoyComparable ? formatYoyTrend(yoy) : null;
+const yoyCoverage = formatYoyCoverage(yoy, locale);
+const yoyInvalidReason = formatYoyReason(yoy, locale);
 
 const showTargetMarker = target?.status !== 'TARGET_PENDING_APPROVAL' && (target?.months?.length ?? 0) > 0;
 
@@ -114,7 +120,16 @@ const kpiCards = metric && baselineYear ? [
     verified: currentVerified,
     dimmed: !currentVerified,
     trendLabel: showYoy && yoyPctText && currentVerified ? yoyPctText : (!currentVerified ? (currentYear && currentYear.months.length > 0 ? (th ? 'ข้อมูลบางส่วน — ยังไม่ยืนยัน' : 'Partial — not yet verified') : (th ? 'รอข้อมูลอย่างเป็นทางการ ปีงบประมาณ 2569' : 'Waiting for Official FY2569 Data')) : undefined),
-    trendColor: showYoy && yoy && currentVerified ? yoyColor(yoy.percent) : 'text-amber-600',
+    trendColor: showYoy && yoyComparable && currentVerified ? yoyColor(yoy!.percent as number) : 'text-amber-600',
+    // Matched-month (same-period) comparison, shown only while the year is still
+    // partial so it can never be mistaken for a full-year trend. When the window
+    // is not comparable the trend is an em dash plus the explicit reason.
+    samePeriodTrend: !currentVerified && (yoyComparable || !currentYear || currentYear.months.length === 0)
+      ? (yoyComparable
+          ? `${th ? 'เทียบเดือนเดียวกัน' : 'Same-period'}: ${yoyPctText}`
+          : (yoyInvalidReason ? `— · ${yoyInvalidReason}` : undefined))
+      : undefined,
+    coverageNote: !currentVerified && yoyComparable ? yoyCoverage ?? undefined : undefined,
     status: currentDisplayStatus,
   },
   {

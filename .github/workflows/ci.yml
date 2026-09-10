@@ -49,3 +49,16 @@ jobs:
 
       - name: SEO QA
         run: npm run qa:seo
+
+      # Gate integrity: the gates above must not mutate tracked files. `npm test`
+      # and `npm run validate` run in --check mode (no regeneration of committed
+      # data), so any dirty tracked file means a generator/check drifted.
+      - name: Verify no tracked files changed
+        run: |
+          if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
+            echo "❌ tracked files changed during the gates:"
+            git status --short --untracked-files=no
+            git diff --stat --untracked-files=no
+            exit 1
+          fi
+          echo "✅ working tree clean — gates are non-mutating"

@@ -96,25 +96,44 @@ describe('buildNormalizedVM — common-period index, never partial vs full-year'
     assert.notEqual(water.index, waterWrong);
   });
 
-  it('paper/waste/ghg: fixed index differs from misleading full-year comparison', () => {
-    for (const id of ['paper', 'waste', 'ghg']) {
-      const metric = readMetric(id);
+  it('paper/waste/ghg: FROZEN index differs from the misleading full-year comparison', () => {
+    // Frozen expectations (restored — PR98 replaced them with a self-derived
+    // assertion that could not fail). [wrongPartialVsFull, fixedCommonPeriod]
+    const expected = { paper: [58, 97], waste: [80, 114], ghg: [63, 108] };
+    for (const [id, [wrong, fixed]] of Object.entries(expected)) {
       const row = vm.resources.find((r) => r.id === id);
-      const wrong = wrongFullYearIndex(metric);
-      assert.ok(wrong != null, `${id} misleading full-year index computable`);
-      assert.ok(row?.index != null, `${id} common-period index present`);
-      assert.notEqual(row.index, wrong, `${id} must not use partial/current ÷ full baseline`);
+      assert.equal(wrongFullYearIndex(readMetric(id)), wrong, `${id} misleading partial-vs-full index`);
+      assert.equal(row?.index, fixed, `${id} frozen common-period index (Jan–Jul)`);
+      assert.notEqual(row?.index, wrong, `${id} must not use partial/current ÷ full baseline`);
     }
   });
 
-  it('canonical runtime index snapshot (Jan–Jul common period)', () => {
+  it('canonical runtime index snapshot (Jan–Jul common period) — frozen values', () => {
     const byId = Object.fromEntries(vm.resources.map((r) => [r.id, r.index]));
+    assert.deepEqual(byId, {
+      energy: 113,
+      water: 123,
+      fuel: 117,
+      paper: 97,
+      waste: 114,
+      ghg: 108,
+    });
+  });
+
+  it('frozen snapshot independently reconciles to the Jan–Jul monthly sums', () => {
     for (const id of DASHBOARD_IDS) {
       const metric = readMetric(id);
       const baseline = sumMonths(metric, 2568, vm.commonMonths);
       const current = sumMonths(metric, 2569, vm.commonMonths);
-      assert.equal(byId[id], Math.round((current / baseline) * 100), `${id} Jan–Jul index`);
+      const row = vm.resources.find((r) => r.id === id);
+      assert.ok(baseline !== null && current !== null, `${id} Jan–Jul months present in both years`);
+      assert.equal(row?.index, Math.round((current / baseline) * 100), `${id} Jan–Jul index`);
     }
+  });
+
+  it('fuel is a documented coincidence (117 both ways) — why it is excluded from notEqual', () => {
+    assert.equal(wrongFullYearIndex(readMetric('fuel')), 117);
+    assert.equal(vm.resources.find((r) => r.id === 'fuel')?.index, 117);
   });
 
   it('period caption and description do not duplicate the period label', () => {

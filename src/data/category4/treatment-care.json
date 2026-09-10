@@ -22,7 +22,7 @@
       "categoryCode": "cat4",
       "evidenceIds": ["ev-cat4-treatment-skimming-fy2568"],
       "sourceRef": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (1).txt",
-      "manifestSha256": "5c73319333ba635f3385ec2fd0baf73f452bd46ad4be92bf0abb738ed2ebd7f7",
+      "manifestSha256": "9d1dfabb6d4b207ed879cd0c3ac0aca52668d8d90788e5930c3ee3775a16d902",
       "verification": {
         "status": "pending",
         "basis": "4.2.2(1) weekly Friday skimming by floor-1 cleaning staff; floors 2–3 have no grease trap (structure unsuitable); committee-4 reviews records — text extracted; human/PO verification pending."
@@ -40,7 +40,7 @@
       "categoryCode": "cat4",
       "evidenceIds": ["ev-cat4-treatment-grease-disposal-fy2568"],
       "sourceRef": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (2).txt",
-      "manifestSha256": "e434155bba65987b96ca13241e482b175066bfa6a9b65e461e103acbfcb35b0d",
+      "manifestSha256": "6bc3cbdbb3c22708573e37c8a5a6479d69d3608036d4657cfe770dc431034a41",
       "verification": {
         "status": "pending",
         "basis": "4.2.2(2) grease/oil/food-waste from the grease traps disposed into the ถังหมักรักษ์โลก compost bin beside the building — text extracted; human/PO verification pending."
@@ -76,7 +76,7 @@
       "categoryCode": "cat4",
       "evidenceIds": ["ev-cat4-treatment-leak-inspection-fy2568"],
       "sourceRef": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (4).txt",
-      "manifestSha256": "714b093cf28d77acc41d73dd4ea5b2285eae62d6542255a143fb964cdfef4fbb",
+      "manifestSha256": "408ab68998d804cfe7443ab234269124345dd9883074cdb348a34a290d53f45b",
       "verification": {
         "status": "pending",
         "basis": "4.2.2(4) regular wastewater leak-inspection to prevent cross-contamination, plus effluent checks from the central plant before reuse (แบบ ทส.1/ทส.2 WTMS records, building.mju.ac.th bID 18845/18846 — external online references). Text extracted; human/PO verification pending."

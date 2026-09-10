@@ -4,7 +4,7 @@
   "categories": {
     "cat1": {
       "count": 37,
-      "bytes": 118137532,
+      "bytes": 117720170,
       "documents": [
         {
           "path": "1.1/1.1.1 (9-3-69).pdf",
@@ -119,6 +119,14 @@
           "url": "/documents/fy2568/cat1/1.3/%E0%B8%97%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B8%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%A1%E0%B8%B4%E0%B8%99%E0%B8%9B%E0%B8%B1%E0%B8%8D%E0%B8%AB%E0%B8%B2%E0%B8%AA%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B9%81%E0%B8%A7%E0%B8%94%E0%B8%A5%E0%B9%89%E0%B8%AD%E0%B8%A1_1.3(1)%20-%201.3(4).xlsx"
         },
         {
+          "path": "1.3/ผลประเมินปัญหา2568.xlsx",
+          "title": "ผลประเมินปัญหา2568.xlsx",
+          "type": "xlsx",
+          "sizeBytes": 110090,
+          "sha256": "d5226fed0d4a6ffb343d5c3e032ef995823c1bca31bb98a5201504053a0c4e93",
+          "url": "/documents/fy2568/cat1/1.3/%E0%B8%9C%E0%B8%A5%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%A1%E0%B8%B4%E0%B8%99%E0%B8%9B%E0%B8%B1%E0%B8%8D%E0%B8%AB%E0%B8%B22568.xlsx"
+        },
+        {
           "path": "1.3/รายงาน_1.3 การระบุประเด็นปัญหาทรัพยากรและสิ่งแวดล้อม_ปี 2568.docx",
           "title": "รายงาน_1.3 การระบุประเด็นปัญหาทรัพยากรและสิ่งแวดล้อม_ปี 2568.docx",
           "type": "docx",
@@ -197,14 +205,6 @@
           "sizeBytes": 110681,
           "sha256": "6c2a202da0917caf53e508aa7395ba02de9a951db7f78c31060577109a20acea",
           "url": "/documents/fy2568/cat1/1.5Green%20house%20gass/1.5.2%20(9-3-69).pdf"
-        },
-        {
-          "path": "1.5Green house gass/1.5_greenhousegass_update2.xlsx",
-          "title": "1.5_greenhousegass_update2.xlsx",
-          "type": "xlsx",
-          "sizeBytes": 527452,
-          "sha256": "5cf3db1275444898d03d6a5cb93b16b8f8fbc67f90e4180b50768e36b47cc18f",
-          "url": "/documents/fy2568/cat1/1.5Green%20house%20gass/1.5_greenhousegass_update2.xlsx"
         },
         {
           "path": "1.6 แผนการดำเนินงานและโครงการเพื่อมุ่งสู่การลดก๊าซเรือนกระจกของหน่วยงาน/1.6.1 (9-3-69).pdf",
@@ -806,7 +806,7 @@
     },
     "cat4": {
       "count": 32,
-      "bytes": 147885351,
+      "bytes": 147885303,
       "documents": [
         {
           "path": "4. หมวด 4 ข้อ 4.1(1) บันทึกปริมาณขยะ.xls  ปี 2568.xls 14-02-68.xlsx",
@@ -860,24 +860,24 @@
           "path": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (1) .txt",
           "title": "4.1.2 (1) .txt",
           "type": "txt",
-          "sizeBytes": 3039,
-          "sha256": "adce045c6d7211771b684ff7e113dbee00cc4c20e203f25bdcfe80ddf50fffaa",
+          "sizeBytes": 3029,
+          "sha256": "18cee17cfbebfdba99b175ecf3f1ab31df31ea38b64c5e35feb2773012451190",
           "url": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B9%80%E0%B8%99%E0%B8%B4%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B9%81%E0%B8%99%E0%B8%87%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%B1%E0%B8%94%E0%B9%81%E0%B8%A2%E0%B8%81%20%E0%B8%A3%E0%B8%A7%E0%B8%9A%E0%B8%A3%E0%B8%A7%E0%B8%A1%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.2%20(1)%20.txt"
         },
         {
           "path": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (2).txt",
           "title": "4.1.2 (2).txt",
           "type": "txt",
-          "sizeBytes": 953,
-          "sha256": "96c7139f1d9c0adae83fea885f37a2264bba1547bb129aa9e6befba6b12e6df0",
+          "sizeBytes": 947,
+          "sha256": "001a37643ad4224a3f844a93da4d13dd7148b4c1adfc5abd6ac68823609a699f",
           "url": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B9%80%E0%B8%99%E0%B8%B4%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B9%81%E0%B8%99%E0%B8%87%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%B1%E0%B8%94%E0%B9%81%E0%B8%A2%E0%B8%81%20%E0%B8%A3%E0%B8%A7%E0%B8%9A%E0%B8%A3%E0%B8%A7%E0%B8%A1%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.2%20(2).txt"
         },
         {
           "path": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (3) .txt",
           "title": "4.1.2 (3) .txt",
           "type": "txt",
-          "sizeBytes": 1888,
-          "sha256": "03aaba1ac7ccbb7688da511da1fabf7b226f81544f054aaa0278079502002980",
+          "sizeBytes": 1885,
+          "sha256": "9b59ed544223e1dfe0965b7ea4777fd82049566bec9d39ce2b5fb940249e7461",
           "url": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B9%80%E0%B8%99%E0%B8%B4%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B9%81%E0%B8%99%E0%B8%87%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%B1%E0%B8%94%E0%B9%81%E0%B8%A2%E0%B8%81%20%E0%B8%A3%E0%B8%A7%E0%B8%9A%E0%B8%A3%E0%B8%A7%E0%B8%A1%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.2%20(3)%20.txt"
         },
         {
@@ -900,16 +900,16 @@
           "path": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (6) .txt",
           "title": "4.1.2 (6) .txt",
           "type": "txt",
-          "sizeBytes": 856,
-          "sha256": "397aeebc01b4aa5c0826a11208887f280a0a588a3c38eddf7be31da54baad102",
+          "sizeBytes": 855,
+          "sha256": "b145cc707b4a2a1a8bb1da7c45a490cde1911ba441f61b9ffc6cd067ed0b051f",
           "url": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B9%80%E0%B8%99%E0%B8%B4%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B9%81%E0%B8%99%E0%B8%87%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%B1%E0%B8%94%E0%B9%81%E0%B8%A2%E0%B8%81%20%E0%B8%A3%E0%B8%A7%E0%B8%9A%E0%B8%A3%E0%B8%A7%E0%B8%A1%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.2%20(6)%20.txt"
         },
         {
           "path": "4.1 การจัดการขยะ/4.1.2 การดำเนินงานตามแนงทางการคัดแยก รวบรวม และกำจัดขยะอย่างเหมาะสม/4.1.2 (7) .txt",
           "title": "4.1.2 (7) .txt",
           "type": "txt",
-          "sizeBytes": 779,
-          "sha256": "713dcb524f5d1f062b93255534f42dc02723e8c0e5ff32a708eeb22ca0d2c8ea",
+          "sizeBytes": 778,
+          "sha256": "5541af55d5b90bccb18a7b87d25dc26d2d41d39f4c51edf210e017f27f97ce46",
           "url": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B9%80%E0%B8%99%E0%B8%B4%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B9%81%E0%B8%99%E0%B8%87%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B8%B1%E0%B8%94%E0%B9%81%E0%B8%A2%E0%B8%81%20%E0%B8%A3%E0%B8%A7%E0%B8%9A%E0%B8%A3%E0%B8%A7%E0%B8%A1%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%B3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1/4.1.2%20(7)%20.txt"
         },
         {
@@ -932,16 +932,16 @@
           "path": "4.1 การจัดการขยะ/4.1.3 การนำขยะกลับไปใช้ประโยชน์หรือนำกลับมาใช้ใหม่/4.1.3 (3).txt",
           "title": "4.1.3 (3).txt",
           "type": "txt",
-          "sizeBytes": 2878,
-          "sha256": "3dba6927f77fe23643b953810b69862ea2ad2fcaa47e748e86e69beee889f284",
+          "sizeBytes": 2875,
+          "sha256": "ed2c16810c6b37ee9d122d42d6acc2f7f47e815c3c5479864d4c1d851e62f46a",
           "url": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B8%B3%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B9%84%E0%B8%9B%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%82%E0%B8%A2%E0%B8%8A%E0%B8%99%E0%B9%8C%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%99%E0%B8%B3%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B8%A1%E0%B8%B2%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88/4.1.3%20(3).txt"
         },
         {
           "path": "4.1 การจัดการขยะ/4.1.3 การนำขยะกลับไปใช้ประโยชน์หรือนำกลับมาใช้ใหม่/4.1.3 (4).txt",
           "title": "4.1.3 (4).txt",
           "type": "txt",
-          "sizeBytes": 894,
-          "sha256": "3e8243b7f80d9c6432aa7b84b03e3ec434133b0ad3b365610f26f9e2be9c408e",
+          "sizeBytes": 893,
+          "sha256": "5e95eee9af2e843a45a8fad55410eb435482850fced9ec1725ef215f42881e55",
           "url": "/documents/fy2568/cat4/4.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%A2%E0%B8%B0/4.1.3%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B8%B3%E0%B8%82%E0%B8%A2%E0%B8%B0%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B9%84%E0%B8%9B%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%82%E0%B8%A2%E0%B8%8A%E0%B8%99%E0%B9%8C%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%99%E0%B8%B3%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B8%A1%E0%B8%B2%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88/4.1.3%20(4).txt"
         },
         {
@@ -964,40 +964,40 @@
           "path": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (2).txt",
           "title": "4.2.1 (2).txt",
           "type": "txt",
-          "sizeBytes": 2044,
-          "sha256": "4cbf86fae9f5389189629ef670e4dec42d79b83c8d278e90343643a08169acd2",
+          "sizeBytes": 2041,
+          "sha256": "659a9d4f5b34453b82d4aa14843c20f6ec9eb1fb5775c66e636ad81d2bcecc7a",
           "url": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/4.2.1%20(2).txt"
         },
         {
           "path": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (3).txt",
           "title": "4.2.1 (3).txt",
           "type": "txt",
-          "sizeBytes": 2335,
-          "sha256": "a6098f9536ff14d83c58e50dad15d9f20f575c17c1882fd882b5b38d0c187fbe",
+          "sizeBytes": 2327,
+          "sha256": "7e208e0dd697d33b76383b3687141531b29f5ce53bfec78061ffdc3f6fd00aa2",
           "url": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/4.2.1%20(3).txt"
         },
         {
           "path": "4.2 การจัดการน้ำเสีย/4.2.1 การจัดการน้ำเสียของสำนักงาน/4.2.1 (4).txt",
           "title": "4.2.1 (4).txt",
           "type": "txt",
-          "sizeBytes": 2407,
-          "sha256": "8853be2fa2b0929b523dafce14bfce8ae10129c10e96c5f70a422068061885e3",
+          "sizeBytes": 2404,
+          "sha256": "b70dab9a0a6df8ed0292fde67c270b5b7c236915976ff96f1f3d11b0aa5d0fa7",
           "url": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.1%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99/4.2.1%20(4).txt"
         },
         {
           "path": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (1).txt",
           "title": "4.2.2 (1).txt",
           "type": "txt",
-          "sizeBytes": 1866,
-          "sha256": "5c73319333ba635f3385ec2fd0baf73f452bd46ad4be92bf0abb738ed2ebd7f7",
+          "sizeBytes": 1864,
+          "sha256": "9d1dfabb6d4b207ed879cd0c3ac0aca52668d8d90788e5930c3ee3775a16d902",
           "url": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B9%E0%B9%81%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9A%E0%B8%B3%E0%B8%9A%E0%B8%B1%E0%B8%94%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20(1).txt"
         },
         {
           "path": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (2).txt",
           "title": "4.2.2 (2).txt",
           "type": "txt",
-          "sizeBytes": 1095,
-          "sha256": "e434155bba65987b96ca13241e482b175066bfa6a9b65e461e103acbfcb35b0d",
+          "sizeBytes": 1093,
+          "sha256": "6bc3cbdbb3c22708573e37c8a5a6479d69d3608036d4657cfe770dc431034a41",
           "url": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B9%E0%B9%81%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9A%E0%B8%B3%E0%B8%9A%E0%B8%B1%E0%B8%94%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20(2).txt"
         },
         {
@@ -1012,8 +1012,8 @@
           "path": "4.2 การจัดการน้ำเสีย/4.2.2 การจัดการดูแลการบำบัดน้ำเสีย/4.2.2 (4).txt",
           "title": "4.2.2 (4).txt",
           "type": "txt",
-          "sizeBytes": 190,
-          "sha256": "714b093cf28d77acc41d73dd4ea5b2285eae62d6542255a143fb964cdfef4fbb",
+          "sizeBytes": 185,
+          "sha256": "408ab68998d804cfe7443ab234269124345dd9883074cdb348a34a290d53f45b",
           "url": "/documents/fy2568/cat4/4.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B9%E0%B9%81%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9A%E0%B8%B3%E0%B8%9A%E0%B8%B1%E0%B8%94%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2/4.2.2%20(4).txt"
         },
         {
@@ -1741,6 +1741,6 @@
       ]
     }
   },
-  "total": 213,
-  "totalBytes": 793831313
+  "total": 212,
+  "totalBytes": 792891551
 }

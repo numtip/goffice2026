@@ -84,7 +84,7 @@
       "categoryCode": "cat4",
       "evidenceIds": ["ev-cat4-data-reuse-compost-fy2568"],
       "sourceRef": "4.1 การจัดการขยะ/4.1.3 การนำขยะกลับไปใช้ประโยชน์หรือนำกลับมาใช้ใหม่/4.1.3 (3).txt",
-      "manifestSha256": "3dba6927f77fe23643b953810b69862ea2ad2fcaa47e748e86e69beee889f284",
+      "manifestSha256": "ed2c16810c6b37ee9d122d42d6acc2f7f47e815c3c5479864d4c1d851e62f46a",
       "verification": {
         "status": "pending",
         "basis": "4.1.3(3) reuse/recycling + innovation/composting: used-packaging upcycling, organic-waste composting, 3Rs seedling-planters at the ครั้งที่ 12 'ทรัพยากรไทย' conference (4–10 พ.ย. 2568). Numeric '>50%' reuse threshold NOT met (31.93%) — the criterion's innovation/composting alternative branch is the claim basis; never present 31.93% as meeting >50%. Human/PO verification pending."
@@ -107,7 +107,7 @@
       "categoryCode": "cat4",
       "evidenceIds": ["ev-cat4-data-disposal-trend-fy2568"],
       "sourceRef": "4.1 การจัดการขยะ/4.1.3 การนำขยะกลับไปใช้ประโยชน์หรือนำกลับมาใช้ใหม่/4.1.3 (4).txt",
-      "manifestSha256": "3e8243b7f80d9c6432aa7b84b03e3ec434133b0ad3b365610f26f9e2be9c408e",
+      "manifestSha256": "5e95eee9af2e843a45a8fad55410eb435482850fced9ec1725ef215f42881e55",
       "verification": {
         "status": "pending",
         "basis": "4.1.3(4) disposal trend: 2566 4,633.10 / 2567 4,307.70 / 2568 4,380.10 kg. Down 253 kg vs 2566 (−5.5%) but UP +72.40 kg (+1.68%) vs 2567 — the 'declining trend' claim is only valid on the 3-year window vs 2566; the FY2568 vs-FY2567 movement is an increase. Human/PO verification pending."
