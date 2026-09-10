@@ -39,6 +39,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { isResourceSourcePublicationEvidence } from './lib/resource-source-publication.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -390,6 +391,8 @@ function main() {
   for (const ev of evidence) {
     if (!(ev.categoryCodes || []).includes('cat4')) continue;
     if (ev.traceabilityLevel !== 'indicator') continue;
+    // Operational waste XLSX are dashboard/evidence source files, not frozen C4 form records.
+    if (isResourceSourcePublicationEvidence(ev)) continue;
     if (!referencedCat4Evidence.has(ev.id)) {
       errors.push(`evidence-index: cat4 indicator-level entry "${ev.id}" is not referenced by any C4 contract record`);
     }
