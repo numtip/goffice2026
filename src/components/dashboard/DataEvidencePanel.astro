@@ -7,6 +7,7 @@ import {
   isPendingSourceSheet,
   pubLabel,
 } from '../../utils/publication-states';
+import { withBase } from '../../utils/with-base';
 
 interface Props {
   /** Summary-level fields shown when collapsed (CURRENT-year provenance/status) */
@@ -30,6 +31,8 @@ interface Props {
   currentDataStatus?: DataStatus;
   dataModelPath?: string;
   sourceRefLabel?: string;
+  baselineWorkbookHref?: string | null;
+  currentWorkbookHref?: string | null;
 
   theme: MetricTheme;
   locale: 'th' | 'en';
@@ -52,6 +55,8 @@ const {
   currentDataStatus,
   dataModelPath,
   sourceRefLabel,
+  baselineWorkbookHref = null,
+  currentWorkbookHref = null,
   theme,
   locale,
 } = Astro.props;
@@ -89,7 +94,20 @@ const classLabel = sourceClassification
       </div>
       <div>
         <p class="text-on-surface-variant mb-0.5">{th ? 'ไฟล์ต้นฉบับ (ปีปัจจุบัน)' : 'Source Workbook (current year)'}</p>
-        <p class="text-on-surface font-medium truncate" title={sourceWorkbook}>{sourceWorkbook ?? (th ? 'ไม่ระบุ' : 'Not specified')}</p>
+        {currentWorkbookHref ? (
+          <p class="text-on-surface font-medium truncate">
+            <a
+              href={withBase(currentWorkbookHref)}
+              class="text-green-700 underline decoration-green-400 underline-offset-2 hover:text-green-900"
+              data-resource-source-current
+              title={sourceWorkbook}
+            >
+              {sourceWorkbook ?? (th ? 'ดาวน์โหลดไฟล์ต้นฉบับ' : 'Download source workbook')}
+            </a>
+          </p>
+        ) : (
+          <p class="text-on-surface font-medium truncate" title={sourceWorkbook}>{sourceWorkbook ?? (th ? 'ไม่ระบุ' : 'Not specified')}</p>
+        )}
       </div>
       <div>
         <p class="text-on-surface-variant mb-0.5">{th ? 'ความครอบคลุม (ปีปัจจุบัน)' : 'Coverage (current year)'}</p>
@@ -145,7 +163,19 @@ const classLabel = sourceClassification
           <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-[11px]">
             <div class="space-y-0.5">
               <p class="text-on-surface-variant">{th ? 'ไฟล์ต้นฉบับ' : 'Source Workbook'}</p>
-              <p class="text-on-surface font-mono break-all">{baselineProvenance.sourceWorkbook}</p>
+              {baselineWorkbookHref ? (
+                <p class="text-on-surface font-mono break-all">
+                  <a
+                    href={withBase(baselineWorkbookHref)}
+                    class="text-green-700 underline decoration-green-400 underline-offset-2 hover:text-green-900"
+                    data-resource-source-baseline
+                  >
+                    {baselineProvenance.sourceWorkbook}
+                  </a>
+                </p>
+              ) : (
+                <p class="text-on-surface font-mono break-all">{baselineProvenance.sourceWorkbook}</p>
+              )}
             </div>
             {baselineProvenance.sourceSheet && (
               <div class="space-y-0.5">

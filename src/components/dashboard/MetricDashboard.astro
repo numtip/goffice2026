@@ -4,7 +4,7 @@ import { dashTitle, dashDescription, dashSourceLabel } from '../../data/dashboar
 import type { MultiYearMetric, YearData } from '../../utils/multi-year-schema';
 import { resolveDisplayStatus, shouldShowYoy, hasDisplayableTotal, isCurrentYearVerified } from '../../utils/data-status';
 import { getLocalizedPath } from '../../i18n/utils';
-import { getEvidenceForDashboard } from '../../utils/evidence-traceability';
+import { getEvidenceForDashboard, getResourceSourcePublication } from '../../utils/evidence-traceability';
 import { metricThemes } from '../../data/metric-theme';
 import { computeMetricInsights } from '../../utils/metric-insights';
 
@@ -74,6 +74,7 @@ const relatedIndicators = indicatorsData.indicators.filter(
 const linkedEvidence = [...getEvidenceForDashboard(dashboard.id)].sort(
   (a, b) => (b.year === 2569 ? 1 : 0) - (a.year === 2569 ? 1 : 0),
 );
+const resourceSource = getResourceSourcePublication(dashboard.id);
 
 // Related About pages (policy / goals) for this dashboard
 const dashAboutLinks =
@@ -297,6 +298,8 @@ const primaryIndicator = metric?.relatedIndicators?.[0];
         currentDataStatus={currentYear?.dataStatus}
         dataModelPath={`src/data/generated/${metric.metric}.json`}
         sourceRefLabel={dashSourceLabel(dashboard, locale)}
+        baselineWorkbookHref={resourceSource?.baselineHref ?? null}
+        currentWorkbookHref={resourceSource?.currentHref ?? null}
         theme={theme}
         locale={locale}
       />

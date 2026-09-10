@@ -1,5 +1,8 @@
 # WS-B Paper Usage Orphan Resolution — QA Note
 
+**Resolution (2026-09-10):** PO required a correct paper resource evidence mapping. Canonical workbook is `data/staging/source/1.4paper.xlsx` (not the missing legacy `docs/1.4_Paper.xlsx`). Published at `/documents/resources/paper/1.4paper.xlsx` as `ev-resource-xlsx-paper`, mapped to **3.3.2 only** — not 1.4.1.
+
+
 **Date:** 2026-07-27  
 **Branch:** `rapid/ws-evidence-orphan`  
 **Worker:** Subagent B — Evidence Orphan  

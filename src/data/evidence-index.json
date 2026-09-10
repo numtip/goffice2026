@@ -1,7 +1,7 @@
 {
   "version": "0.8.0",
-  "updated": "2026-08-27",
-  "note": "C3 (2026-08-23): added Category 3 FY2568 indicator-level evidence entries for all 15 cat3 indicators from the C2 contracts + C1 disposition + fy2568-publication manifest (17 indicator-level + targets/measures + annual report category-level). Scans and image-only tables honestly flagged; 3.2.2 MEDIUM; misbounded #19 / incomplete #21 / partial #32 disclosed; no signed-copy claim. Legacy cat3 placeholders reconciled: ev-energy-audit-2025, ev-energy-metering-2025, ev-energy-led-project, ev-water-meter-q1, ev-waste-audit-2025, ev-transport-fleet-2025 marked superseded; off-manifest operational-workbook claims (energy metering, water meter q1, fleet fuel) downgraded to category-level. Stale cat2 water placeholders (ev-water-audit-2025, ev-water-conservation) left untouched. [Cat5 Phase B 2026-08-24: added 13 canonical FY2568 cat5 indicator-level evidence entries (baseline layer for FY2569; recurring evidence awaiting update).] [D5C B1 2026-08-27: added 2 FY2569 Cat2 training plan intake entries (2.1.1 plan-only; available_unverified; no progressStatus change).] [D5C B2 2026-08-27: remapped misnamed comm-plan docx to 2.2.1; added communication-2569 + feedback-2569 gap contracts.] [D5C B3-1 2026-08-27: added 6 FY2569 Cat3 measures plan entries from one shared DOCX (sections 1–5 only; sections 6–9 OUT OF CAT3 scope; plan-only available_unverified; Track B KPI excluded).] [FY2569 Cat2 delta 2026-08-27: re-synced training xlsx hash; added 2.1.1 delivery/registration/history + 3 trainer CVs + 2.2.1 form PDF/policy/minutes + 2.2.2 satisfaction survey. Held offline files and NEEDS_DISPOSITION 2.2.3/2.2.4/measures-misfile.]",
+  "updated": "2026-09-10",
+  "note": "C3 (2026-08-23): added Category 3 FY2568 indicator-level evidence entries for all 15 cat3 indicators from the C2 contracts + C1 disposition + fy2568-publication manifest (17 indicator-level + targets/measures + annual report category-level). Scans and image-only tables honestly flagged; 3.2.2 MEDIUM; misbounded #19 / incomplete #21 / partial #32 disclosed; no signed-copy claim. Legacy cat3 placeholders reconciled: ev-energy-audit-2025, ev-energy-metering-2025, ev-energy-led-project, ev-water-meter-q1, ev-waste-audit-2025, ev-transport-fleet-2025 marked superseded; off-manifest operational-workbook claims (energy metering, water meter q1, fleet fuel) downgraded to category-level. Stale cat2 water placeholders (ev-water-audit-2025, ev-water-conservation) left untouched. [Cat5 Phase B 2026-08-24: added 13 canonical FY2568 cat5 indicator-level evidence entries (baseline layer for FY2569; recurring evidence awaiting update).] [D5C B1 2026-08-27: added 2 FY2569 Cat2 training plan intake entries (2.1.1 plan-only; available_unverified; no progressStatus change).] [D5C B2 2026-08-27: remapped misnamed comm-plan docx to 2.2.1; added communication-2569 + feedback-2569 gap contracts.] [D5C B3-1 2026-08-27: added 6 FY2569 Cat3 measures plan entries from one shared DOCX (sections 1–5 only; sections 6–9 OUT OF CAT3 scope; plan-only available_unverified; Track B KPI excluded).] [FY2569 Cat2 delta 2026-08-27: re-synced training xlsx hash; added 2.1.1 delivery/registration/history + 3 trainer CVs + 2.2.1 form PDF/policy/minutes + 2.2.2 satisfaction survey. Held offline files and NEEDS_DISPOSITION 2.2.3/2.2.4/measures-misfile.] [2026-09-10: resource XLSX source-file publication — 6 domains; GHG FY2568 uses canonical 1.5_greenhousegass_update2.xlsx; paper mapped to 3.3.2.]",
   "items": [
     {
       "id": "ev-energy-audit-2025",
@@ -39,10 +39,10 @@
       "description": "Monthly electricity consumption data from sub-meters across all building zones.",
       "descriptionTh": "ข้อมูลการใช้ไฟฟ้ารายเดือนจากมิเตอร์ย่อยในทุกพื้นที่ของอาคาร",
       "year": 2025,
-      "path": "/documents/cat3/metering-data-2025.xlsx",
+      "path": "",
       "fileType": "XLSX",
       "status": "available",
-      "updated": "2026-08-18",
+      "updated": "2026-09-10",
       "sourceId": "src-xlsx-electricity-usage",
       "realSourcePath": "docs/1.2-elect.xlsx",
       "realSourceAvailable": false,
@@ -204,10 +204,10 @@
       "description": "Legacy off-manifest operational-workbook claim (docs/1.5_Waste.xlsx, recycling calculation sheets). Downgraded to category-level in GO-CAT4 C3 — superseded by the canonical Cat4 evidence set. Source file is off-disk.",
       "descriptionTh": "ข้ออ้างเดิมจากเวิร์กบุ๊กนอก manifest (docs/1.5_Waste.xlsx แผ่นคำนวณรีไซเคิล) ลดระดับเป็นระดับหมวดใน C3 หมวด 4 — ถูกแทนที่ด้วยชุดหลักฐาน Cat4 ตามหลักการ ไฟล์ต้นฉบับไม่อยู่บนดิสก์",
       "year": 2025,
-      "path": "/documents/cat4/waste-recycling-2025.xlsx",
+      "path": "",
       "fileType": "XLSX",
       "status": "available",
-      "updated": "2026-08-23",
+      "updated": "2026-09-10",
       "sourceId": "src-xlsx-waste-data",
       "realSourcePath": "docs/1.5_Waste.xlsx",
       "realSourceAvailable": false,
@@ -272,10 +272,10 @@
       "description": "Legacy off-manifest operational-workbook claim (docs/1.5_Waste.xlsx, monthly tracking). Downgraded to category-level in GO-CAT4 C3 — superseded by the canonical Cat4 evidence set. Source file is off-disk.",
       "descriptionTh": "ข้ออ้างเดิมจากเวิร์กบุ๊กนอก manifest (docs/1.5_Waste.xlsx การติดตามรายเดือน) ลดระดับเป็นระดับหมวดใน C3 หมวด 4 — ถูกแทนที่ด้วยชุดหลักฐาน Cat4 ตามหลักการ ไฟล์ต้นฉบับไม่อยู่บนดิสก์",
       "year": 2025,
-      "path": "/documents/cat3/waste-monthly-2025.xlsx",
+      "path": "",
       "fileType": "XLSX",
       "status": "available",
-      "updated": "2026-08-23",
+      "updated": "2026-09-10",
       "sourceId": "src-xlsx-waste-data",
       "realSourcePath": "docs/1.5_Waste.xlsx",
       "realSourceAvailable": false,
@@ -312,17 +312,17 @@
       "titleTh": "บัญชีก๊าซเรือนกระจก ปี 2568",
       "description": "Scope 1, 2, and 3 greenhouse gas emissions inventory with methodology documentation.",
       "descriptionTh": "บัญชีการปล่อยก๊าซเรือนกระจกขอบเขตที่ 1–3 พร้อมเอกสารวิธีการคำนวณ",
-      "year": 2025,
-      "path": "/documents/cat1/ghg-inventory-2025.xlsx",
+      "year": 2568,
+      "path": "/documents/fy2568/cat1/1.5Green%20house%20gass/1.5_greenhousegass_update2.xlsx",
       "fileType": "XLSX",
       "status": "available",
-      "updated": "2026-08-28",
+      "updated": "2026-09-10",
       "sourceId": "src-xlsx-ghg-inventory",
       "realSourcePath": "public/documents/fy2568/cat1/1.5Green house gass/1.5_greenhousegass_update2.xlsx",
       "realSourceAvailable": true,
-      "publicationMode": "internal-metadata-only",
+      "publicationMode": "public-static",
       "sharePointUrl": null,
-      "sharePointUrlPending": true,
+      "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
       "indicatorCodes": [
         "1.5.1"
@@ -343,12 +343,13 @@
       },
       "verification": {
         "status": "pending",
-        "basis": "ET-1 traceability promotion: GHG inventory workbook (form 1.5(1)) directly supports indicator 1.5.1 (collection of GHG data from office activities). Source file existence is system-validated; human data-owner verification is still required before verified status.",
-        "basisTh": "การยกระดับความเชื่อมโยงหลักฐาน (ET-1): ไฟล์บันทึกบัญชีก๊าซเรือนกระจก (แบบฟอร์ม 1.5(1)) สนับสนุนตัวชี้วัด 1.5.1 (การรวบรวมข้อมูลก๊าซเรือนกระจกจากกิจกรรมในสำนักงาน) โดยตรง ระบบได้ตรวจสอบว่ามีไฟล์ต้นฉบับอยู่จริงแล้ว แต่ยังต้องรอผู้รับผิดชอบข้อมูลตรวจสอบยืนยันก่อนจึงจะเปลี่ยนเป็นสถานะตรวจสอบแล้ว",
+        "basis": "Canonical FY2568 GHG workbook 1.5_greenhousegass_update2.xlsx published at the existing fy2568 cat1 public path (no duplicate copy). SHA-256 5cf3db1275444898d03d6a5cb93b16b8f8fbc67f90e4180b50768e36b47cc18f. Stale alias /documents/cat1/ghg-inventory-2025.xlsx removed.",
+        "basisTh": "ไฟล์บัญชีก๊าซเรือนกระจกปี 2568 ฉบับทางการ 1.5_greenhousegass_update2.xlsx เผยแพร่ที่พาธ fy2568 cat1 เดิม (ไม่ทำสำเนาซ้ำ) ลบนามแฝงเก่า /documents/cat1/ghg-inventory-2025.xlsx",
         "reviewPhase": "REL-1",
         "reviewedAt": "2026-07-19",
         "reviewOutcome": "pending-po-signoff"
-      }
+      },
+      "manifestSha256": "5cf3db1275444898d03d6a5cb93b16b8f8fbc67f90e4180b50768e36b47cc18f"
     },
     {
       "id": "ev-ghg-reduction-plan",
@@ -383,17 +384,17 @@
       "titleTh": "เอกสารค่าสัมประสิทธิ์การปล่อยก๊าซเรือนกระจก",
       "description": "Reference documentation for emission factors used in GHG calculations.",
       "descriptionTh": "เอกสารอ้างอิงค่าสัมประสิทธิ์ที่ใช้ในการคำนวณก๊าซเรือนกระจก",
-      "year": 2025,
-      "path": "/documents/cat1/emission-factors.xlsx",
+      "year": 2568,
+      "path": "/documents/fy2568/cat1/1.5Green%20house%20gass/1.5_greenhousegass_update2.xlsx",
       "fileType": "XLSX",
       "status": "available",
-      "updated": "2026-08-28",
+      "updated": "2026-09-10",
       "sourceId": "src-xlsx-ghg-inventory",
       "realSourcePath": "public/documents/fy2568/cat1/1.5Green house gass/1.5_greenhousegass_update2.xlsx",
       "realSourceAvailable": true,
-      "publicationMode": "internal-metadata-only",
+      "publicationMode": "public-static",
       "sharePointUrl": null,
-      "sharePointUrlPending": true,
+      "sharePointUrlPending": false,
       "traceabilityLevel": "indicator",
       "indicatorCodes": [
         "1.5.1"
@@ -414,12 +415,13 @@
       },
       "verification": {
         "status": "pending",
-        "basis": "WS-B metadata promotion: GHG workbook contains embedded TGO AR5 emission factors (EF sheet). Partial candidate — same source as ev-ghg-inventory-2025; human review required to confirm EF sheet satisfies standalone emission factor documentation requirement.",
-        "basisTh": "การยกระดับ metadata WS-B: ไฟล์ GHG มีค่าสัมประสิทธิ์ TGO AR5 ฝังอยู่ (แผ่น EF) เป็นผู้สมัครบางส่วน ต้องตรวจสอบว่าครอบคลุมข้อกำหนดเอกสารค่าสัมประสิทธิ์",
+        "basis": "Shared EF sheet lives in the same canonical FY2568 workbook as ev-ghg-inventory-2025 (1.5_greenhousegass_update2.xlsx). Public path is the existing fy2568 copy; no second workbook.",
+        "basisTh": "แผ่นค่าสัมประสิทธิ์อยู่ในไฟล์บัญชีก๊าซเรือนกระจกปี 2568 ฉบับเดียวกับ ev-ghg-inventory-2025 ไม่มีสำเนาที่สอง",
         "reviewPhase": "WS-B",
         "reviewedAt": "2026-07-27",
         "reviewOutcome": "pending-po-signoff"
-      }
+      },
+      "manifestSha256": "5cf3db1275444898d03d6a5cb93b16b8f8fbc67f90e4180b50768e36b47cc18f"
     },
     {
       "id": "ev-iaq-survey-2025",
@@ -530,10 +532,10 @@
       "description": "Monthly fuel consumption and mileage records for the organizational vehicle fleet.",
       "descriptionTh": "บันทึกปริมาณการใช้เชื้อเพลิงและระยะทางรายเดือนของยานพาหนะของหน่วยงาน",
       "year": 2025,
-      "path": "/documents/cat6/fleet-fuel-2025.xlsx",
+      "path": "",
       "fileType": "XLSX",
       "status": "available",
-      "updated": "2026-07-27",
+      "updated": "2026-09-10",
       "sourceId": "src-xlsx-gasoline-fuel",
       "realSourcePath": "docs/1.3_Gassolene.xlsx",
       "realSourceAvailable": false,
@@ -5484,6 +5486,308 @@
         "status": "pending",
         "basis": "2.2.2 secondary survey only; not 2.2.3. available_unverified.",
         "basisTh": "2.2.2 secondary survey only; not 2.2.3. available_unverified."
+      }
+    },
+    {
+      "id": "ev-resource-xlsx-water",
+      "categoryId": "cat3",
+      "indicator": "Water consumption source workbook",
+      "title": "Water consumption source workbook (1.1Water.xlsx)",
+      "titleTh": "ไฟล์ต้นฉบับการใช้น้ำ (1.1Water.xlsx)",
+      "description": "Canonical operational water workbook covering FY2568 and FY2569 monthly consumption (m3). Same file as /dashboard/water/.",
+      "descriptionTh": "ไฟล์บันทึกการใช้น้ำฉบับทางการ ครอบคลุมปี 2568 และ 2569 (ลบ.ม.) ไฟล์เดียวกับแดชบอร์ดน้ำ",
+      "year": 2569,
+      "path": "/documents/resources/water/1.1Water.xlsx",
+      "fileType": "XLSX",
+      "status": "available",
+      "updated": "2026-09-10",
+      "sourceId": "src-resource:1.1Water",
+      "realSourcePath": "data/staging/source/1.1Water.xlsx",
+      "realSourceAvailable": true,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "manifestSha256": "554beacdea923bb7bdb9bea5bea484c6881b8f32a50289ad927f1ce2d5fdde6f",
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.1.2"
+      ],
+      "issueCodes": [
+        "3.1"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "provenance": {
+        "sourceType": "operational-xlsx",
+        "sourceLabel": "Canonical water workbook 1.1Water.xlsx (FY2568+FY2569 sheets)",
+        "sourceLabelTh": "ไฟล์การใช้น้ำฉบับทางการ 1.1Water.xlsx (แผ่นปี 2568 และ 2569)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "PO-required resource source-file publication. Canonical staging workbook 1.1Water.xlsx copied byte-identically to public/documents/resources/water/. Maps to 3.1.2 only. Privacy scan: no email/phone/national-id/personal names.",
+        "basisTh": "เผยแพร่ไฟล์ต้นฉบับทรัพยากรตามที่เจ้าของผลิตภัณฑ์กำหนด สำเนาจากไฟล์ staging 1.1Water.xlsx เชื่อมโยงตัวชี้วัด 3.1.2 เท่านั้น"
+      }
+    },
+    {
+      "id": "ev-resource-xlsx-electricity",
+      "categoryId": "cat3",
+      "indicator": "Electricity consumption source workbook",
+      "title": "Electricity consumption source workbook (1.2electric.xlsx)",
+      "titleTh": "ไฟล์ต้นฉบับการใช้ไฟฟ้า (1.2electric.xlsx)",
+      "description": "Canonical operational electricity workbook covering FY2568 and FY2569 monthly consumption (kWh). Same file as /dashboard/energy/.",
+      "descriptionTh": "ไฟล์บันทึกการใช้ไฟฟ้าฉบับทางการ ครอบคลุมปี 2568 และ 2569 (kWh) ไฟล์เดียวกับแดชบอร์ดไฟฟ้า",
+      "year": 2569,
+      "path": "/documents/resources/electricity/1.2electric.xlsx",
+      "fileType": "XLSX",
+      "status": "available",
+      "updated": "2026-09-10",
+      "sourceId": "src-resource:1.2electric",
+      "realSourcePath": "data/staging/source/1.2electric.xlsx",
+      "realSourceAvailable": true,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "manifestSha256": "097d0cfc031045e2db0ff989ffc72aed4dd4a073537f9453e0170229a9c4a8da",
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.2.2"
+      ],
+      "issueCodes": [
+        "3.2"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "provenance": {
+        "sourceType": "operational-xlsx",
+        "sourceLabel": "Canonical electricity workbook 1.2electric.xlsx (FY2568+FY2569 sheets)",
+        "sourceLabelTh": "ไฟล์การใช้ไฟฟ้าฉบับทางการ 1.2electric.xlsx (แผ่นปี 2568 และ 2569)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "PO-required resource source-file publication. Canonical staging workbook 1.2electric.xlsx copied byte-identically. Maps to 3.2.2 only.",
+        "basisTh": "เผยแพร่ไฟล์ต้นฉบับการใช้ไฟฟ้าจาก staging 1.2electric.xlsx เชื่อมโยงตัวชี้วัด 3.2.2 เท่านั้น"
+      }
+    },
+    {
+      "id": "ev-resource-xlsx-fuel",
+      "categoryId": "cat3",
+      "indicator": "Fuel consumption source workbook",
+      "title": "Fuel consumption source workbook (1.3Gassolene.xlsx)",
+      "titleTh": "ไฟล์ต้นฉบับการใช้น้ำมันเชื้อเพลิง (1.3Gassolene.xlsx)",
+      "description": "Canonical operational fuel workbook covering FY2568 and FY2569 monthly consumption (L). Same file as /dashboard/fuel/.",
+      "descriptionTh": "ไฟล์บันทึกการใช้น้ำมันฉบับทางการ ครอบคลุมปี 2568 และ 2569 (ลิตร) ไฟล์เดียวกับแดชบอร์ดน้ำมัน",
+      "year": 2569,
+      "path": "/documents/resources/fuel/1.3Gassolene.xlsx",
+      "fileType": "XLSX",
+      "status": "available",
+      "updated": "2026-09-10",
+      "sourceId": "src-resource:1.3Gassolene",
+      "realSourcePath": "data/staging/source/1.3Gassolene.xlsx",
+      "realSourceAvailable": true,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "manifestSha256": "0e610a4b22ecfdc781d9c14d8b4e4c10ec8189ff019206b631507bb93e121566",
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.2.5"
+      ],
+      "issueCodes": [
+        "3.2"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "provenance": {
+        "sourceType": "operational-xlsx",
+        "sourceLabel": "Canonical fuel workbook 1.3Gassolene.xlsx (FY2568+FY2569 sheets)",
+        "sourceLabelTh": "ไฟล์การใช้น้ำมันฉบับทางการ 1.3Gassolene.xlsx (แผ่นปี 2568 และ 2569)",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "PO-required resource source-file publication. Canonical staging workbook 1.3Gassolene.xlsx copied byte-identically. Maps to 3.2.5 (fuel consumption per distance), not 3.2.4. Privacy: organizational fleet plates on maintenance sheet disclosed, not withheld.",
+        "basisTh": "เผยแพร่ไฟล์ต้นฉบับน้ำมันจาก staging 1.3Gassolene.xlsx เชื่อมโยงตัวชี้วัด 3.2.5 เท่านั้น"
+      }
+    },
+    {
+      "id": "ev-resource-xlsx-paper",
+      "categoryId": "cat3",
+      "indicator": "Paper consumption source workbook",
+      "title": "Paper consumption source workbook (1.4paper.xlsx)",
+      "titleTh": "ไฟล์ต้นฉบับการใช้กระดาษ (1.4paper.xlsx)",
+      "description": "Canonical operational paper workbook covering FY2568 and FY2569 monthly consumption (kg). Same file as /dashboard/paper/. Maps to indicator 3.3.2 only — not committee indicator 1.4.1.",
+      "descriptionTh": "ไฟล์บันทึกการใช้กระดาษฉบับทางการ ครอบคลุมปี 2568 และ 2569 (กก.) ไฟล์เดียวกับแดชบอร์ดกระดาษ เชื่อมโยงตัวชี้วัด 3.3.2 เท่านั้น ไม่ใช่ 1.4.1",
+      "year": 2569,
+      "path": "/documents/resources/paper/1.4paper.xlsx",
+      "fileType": "XLSX",
+      "status": "available",
+      "updated": "2026-09-10",
+      "sourceId": "src-resource:1.4paper",
+      "realSourcePath": "data/staging/source/1.4paper.xlsx",
+      "realSourceAvailable": true,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "manifestSha256": "4d7d1560381563d7cb7e3aa2d8b63ba3b4df05ce0dcc5b406e2b437c5dd06354",
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "3.3.2"
+      ],
+      "issueCodes": [
+        "3.3"
+      ],
+      "categoryCodes": [
+        "cat3"
+      ],
+      "provenance": {
+        "sourceType": "operational-xlsx",
+        "sourceLabel": "Canonical paper workbook 1.4paper.xlsx (FY2568+FY2569 sheets)",
+        "sourceLabelTh": "ไฟล์การใช้กระดาษฉบับทางการ 1.4paper.xlsx (แผ่นปี 2568 และ 2569)",
+        "mappingReviewId": "review-022",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "PO-required paper resource evidence mapping. Canonical 1.4paper.xlsx published and linked to 3.3.2 only. Explicitly not mapped to 1.4.1 (committee appointment). Resolves review-022 orphan.",
+        "basisTh": "แมปไฟล์กระดาษตามที่เจ้าของผลิตภัณฑ์กำหนดไปยังตัวชี้วัด 3.3.2 เท่านั้น ไม่เชื่อมโยง 1.4.1 แก้ไขสถานะ orphan ของ review-022"
+      }
+    },
+    {
+      "id": "ev-resource-xlsx-waste-fy2568",
+      "categoryId": "cat4",
+      "indicator": "Waste mass source workbook FY2568",
+      "title": "Waste source workbook FY2568 (1.5waste2025.xlsx)",
+      "titleTh": "ไฟล์ต้นฉบับปริมาณขยะ ปี 2568 (1.5waste2025.xlsx)",
+      "description": "Canonical FY2568 waste dashboard workbook (1.5waste2025.xlsx). Distinct from the Cat4 assessment-form XLSX already published as ev-cat4-data-waste-annual-fy2568.",
+      "descriptionTh": "ไฟล์ขยะฉบับทางการของแดชบอร์ดปี 2568 ต่างจากแบบฟอร์มหมวด 4 ที่เผยแพร่แล้วใน ev-cat4-data-waste-annual-fy2568",
+      "year": 2568,
+      "path": "/documents/resources/waste/1.5waste2025.xlsx",
+      "fileType": "XLSX",
+      "status": "available",
+      "updated": "2026-09-10",
+      "sourceId": "src-resource:1.5waste2025",
+      "realSourcePath": "data/staging/source/1.5waste2025.xlsx",
+      "realSourceAvailable": true,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "manifestSha256": "5512418f9fa10a8baaf5c71601e8d5d47396254725babfae3a64fd413be23e5c",
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.3"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "provenance": {
+        "sourceType": "operational-xlsx",
+        "sourceLabel": "Canonical FY2568 waste workbook 1.5waste2025.xlsx",
+        "sourceLabelTh": "ไฟล์ขยะฉบับทางการปี 2568 1.5waste2025.xlsx",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "PO-required resource source-file publication. Dashboard canonical 1.5waste2025.xlsx (sha 5512418f...) is a different byte sequence from the Cat4 form XLSX (sha 9ef91b02...). Both retained; no conflicting duplicate of the same file.",
+        "basisTh": "เผยแพร่ไฟล์ขยะแดชบอร์ดปี 2568 ซึ่งเป็นคนละไฟล์กับแบบฟอร์มหมวด 4 ที่เผยแพร่แล้ว"
+      }
+    },
+    {
+      "id": "ev-resource-xlsx-waste-fy2569",
+      "categoryId": "cat4",
+      "indicator": "Waste mass source workbook FY2569",
+      "title": "Waste source workbook FY2569 (1.5waste2026.xlsx)",
+      "titleTh": "ไฟล์ต้นฉบับปริมาณขยะ ปี 2569 (1.5waste2026.xlsx)",
+      "description": "Canonical FY2569 waste dashboard workbook (1.5waste2026.xlsx), 7 of 12 months. Same file as /dashboard/waste/ current year.",
+      "descriptionTh": "ไฟล์ขยะฉบับทางการของแดชบอร์ดปี 2569 (7 จาก 12 เดือน) ไฟล์เดียวกับแดชบอร์ดขยะปีปัจจุบัน",
+      "year": 2569,
+      "path": "/documents/resources/waste/1.5waste2026.xlsx",
+      "fileType": "XLSX",
+      "status": "available",
+      "updated": "2026-09-10",
+      "sourceId": "src-resource:1.5waste2026",
+      "realSourcePath": "data/staging/source/1.5waste2026.xlsx",
+      "realSourceAvailable": true,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "manifestSha256": "02b1f624796e3ce49599adb0837712a0ac5cac3794a4cabf5bc404501d398df2",
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "4.1.3"
+      ],
+      "issueCodes": [
+        "4.1"
+      ],
+      "categoryCodes": [
+        "cat4"
+      ],
+      "provenance": {
+        "sourceType": "operational-xlsx",
+        "sourceLabel": "Canonical FY2569 waste workbook 1.5waste2026.xlsx",
+        "sourceLabelTh": "ไฟล์ขยะฉบับทางการปี 2569 1.5waste2026.xlsx",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "PO-required resource source-file publication. Canonical staging workbook 1.5waste2026.xlsx copied byte-identically. Maps to 4.1.3.",
+        "basisTh": "เผยแพร่ไฟล์ขยะปี 2569 จาก staging 1.5waste2026.xlsx เชื่อมโยงตัวชี้วัด 4.1.3"
+      }
+    },
+    {
+      "id": "ev-resource-xlsx-ghg-fy2569",
+      "categoryId": "cat1",
+      "indicator": "GHG inventory source workbook FY2569",
+      "title": "GHG source workbook FY2569 (1.6GreenHouseGas2026_New.xlsx)",
+      "titleTh": "ไฟล์ต้นฉบับบัญชีก๊าซเรือนกระจก ปี 2569 (1.6GreenHouseGas2026_New.xlsx)",
+      "description": "Canonical FY2569 GHG workbook designated by the data owner. 7 of 12 months. Same file as /dashboard/ghg/ current year. FY2568 remains 1.5_greenhousegass_update2.xlsx via ev-ghg-inventory-2025.",
+      "descriptionTh": "ไฟล์บัญชีก๊าซเรือนกระจกปี 2569 ตามที่เจ้าของข้อมูลกำหนด (7 จาก 12 เดือน) ปี 2568 ยังใช้ 1.5_greenhousegass_update2.xlsx",
+      "year": 2569,
+      "path": "/documents/resources/ghg/1.6GreenHouseGas2026_New.xlsx",
+      "fileType": "XLSX",
+      "status": "available",
+      "updated": "2026-09-10",
+      "sourceId": "src-resource:1.6GreenHouseGas2026_New",
+      "realSourcePath": "data/staging/source/1.6GreenHouseGas2026_New.xlsx",
+      "realSourceAvailable": true,
+      "publicationMode": "public-static",
+      "sharePointUrl": null,
+      "sharePointUrlPending": false,
+      "manifestSha256": "d0a75e4cf05319112d10b4d877174782041214678f14ab6875c293769e4a352d",
+      "traceabilityLevel": "indicator",
+      "indicatorCodes": [
+        "1.5.1"
+      ],
+      "issueCodes": [
+        "1.5"
+      ],
+      "categoryCodes": [
+        "cat1"
+      ],
+      "provenance": {
+        "sourceType": "operational-xlsx",
+        "sourceLabel": "Canonical FY2569 GHG workbook 1.6GreenHouseGas2026_New.xlsx",
+        "sourceLabelTh": "ไฟล์บัญชีก๊าซเรือนกระจกปี 2569 1.6GreenHouseGas2026_New.xlsx",
+        "mappingConfidence": "high",
+        "humanVerificationRequired": true
+      },
+      "verification": {
+        "status": "pending",
+        "basis": "PO-required resource source-file publication. Owner-designated FY2569 workbook; not a revival of obsolete 1.6_GreenhouseGas.xlsx. FY2568 stays on 1.5_greenhousegass_update2.xlsx without a second copy.",
+        "basisTh": "เผยแพร่ไฟล์ GHG ปี 2569 ตามที่เจ้าของข้อมูลกำหนด ไม่กู้ชื่อไฟล์เก่า 1.6_GreenhouseGas.xlsx ปี 2568 ใช้ไฟล์ 1.5_greenhousegass_update2.xlsx โดยไม่ทำสำเนาซ้ำ"
       }
     }
   ]

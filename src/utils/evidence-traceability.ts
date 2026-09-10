@@ -1,5 +1,8 @@
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import resourceIndicatorMapData from '../data/resource-indicator-map.json';
 import evidenceIndexData from '../data/evidence-index.json';
+import resourceSourceFilesData from '../data/resource-source-files.json';
 import categoriesData from '../data/criteria/categories.json';
 import issuesData from '../data/criteria/issues.json';
 import indicatorsData from '../data/criteria/indicators.json';
@@ -41,6 +44,47 @@ export interface EvidenceItem {
   publicationMode?: string;
   description?: string;
   descriptionTh?: string;
+}
+
+export const PUBLIC_STATIC_MODE = 'public-static';
+export const INTERNAL_METADATA_MODE = 'internal-metadata-only';
+
+const STALE_ALIAS_PATHS = new Set(
+  (resourceSourceFilesData as { staleAliasPaths?: string[] }).staleAliasPaths || [],
+);
+
+/** True when metadata forbids a local static download, regardless of realSourceAvailable. */
+export function isInternalMetadataOnly(item: Pick<EvidenceItem, 'publicationMode'>): boolean {
+  return item.publicationMode === INTERNAL_METADATA_MODE;
+}
+
+export function isPublicStaticMode(item: Pick<EvidenceItem, 'publicationMode'>): boolean {
+  return item.publicationMode === PUBLIC_STATIC_MODE;
+}
+
+/** Resolve a /documents/... site path to a file under public/, or null if missing. */
+export function resolvePublicFileOnDisk(sitePath?: string | null): string | null {
+  if (!sitePath) return null;
+  const cleaned = sitePath.split('?')[0].split('#')[0];
+  if (!cleaned.startsWith('/documents/')) return null;
+  const rel = cleaned.replace(/^\//, '');
+  const root = process.cwd();
+  const candidates = [join(root, 'public', rel)];
+  try {
+    const decoded = decodeURIComponent(rel);
+    if (decoded !== rel) candidates.push(join(root, 'public', decoded));
+  } catch {
+    /* ignore malformed encoding */
+  }
+  for (const abs of candidates) {
+    if (existsSync(abs)) return abs;
+  }
+  return null;
+}
+
+export function isStaleAliasPath(sitePath?: string | null): boolean {
+  if (!sitePath) return false;
+  return STALE_ALIAS_PATHS.has(sitePath.split('?')[0].split('#')[0]);
 }
 
 export type EvidencePublicationKind =
@@ -131,14 +175,24 @@ export function countCanonicalTaxonomy(): CanonicalTaxonomyCounts {
   };
 }
 
-/** Static site document href — null when placeholder, offline, or missing path (no guessed URLs). */
+/**
+ * Static site document href.
+ * A local XLSX/PDF link may render only for publicationMode=public-static when
+ * the file actually exists under public/. realSourceAvailable is not proof that
+ * `path` is publishable. internal-metadata-only never returns a local href.
+ */
 export function resolvePublicDocumentHref(
   item: EvidenceItem,
   hrefFn: (path: string) => string = (p) => p,
 ): string | null {
   if (item.status === 'placeholder') return null;
-  if (item.realSourceAvailable === false) return null;
+  if (isInternalMetadataOnly(item)) return null;
+  if (item.publicationMode === 'authenticated-link') return null;
+  if (item.publicationMode === 'public-metadata-pending-copy') return null;
+  if (!isPublicStaticMode(item)) return null;
   if (!item.path) return null;
+  if (isStaleAliasPath(item.path)) return null;
+  if (!resolvePublicFileOnDisk(item.path)) return null;
   return hrefFn(item.path);
 }
 
@@ -148,7 +202,6 @@ export function describeEvidencePublication(
   hrefFn: (path: string) => string = (p) => p,
 ): EvidencePublicationView {
   const isPlaceholder = item.status === 'placeholder';
-  const sourceOffline = !isPlaceholder && item.realSourceAvailable === false;
   const documentHref = resolvePublicDocumentHref(item, hrefFn);
   const sharePointUrl = item.sharePointUrl || null;
   const sharePointPending = Boolean(item.sharePointUrlPending && !sharePointUrl);
@@ -162,7 +215,28 @@ export function describeEvidencePublication(
       sharePointPending: false,
     };
   }
-  if (sourceOffline) {
+  if (isInternalMetadataOnly(item)) {
+    if (sharePointUrl) {
+      return {
+        kind: 'sharepoint',
+        label: locale === 'th' ? 'เข้าถึงผ่าน SharePoint' : 'SharePoint access',
+        documentHref: null,
+        sharePointUrl,
+        sharePointPending: false,
+      };
+    }
+    return {
+      kind: 'metadata-internal',
+      label:
+        locale === 'th'
+          ? 'เผยแพร่เมตาดาตา — ไฟล์ต้นฉบับภายใน'
+          : 'Published metadata — internal source',
+      documentHref: null,
+      sharePointUrl: null,
+      sharePointPending,
+    };
+  }
+  if (item.realSourceAvailable === false) {
     return {
       kind: 'source-offline',
       label: pubLabel(SOURCE_OFFLINE, locale),
@@ -189,24 +263,47 @@ export function describeEvidencePublication(
       sharePointPending: false,
     };
   }
-  if (item.publicationMode === 'internal-metadata-only') {
-    return {
-      kind: 'metadata-internal',
-      label:
-        locale === 'th'
-          ? 'เผยแพร่เมตาดาตา — ไฟล์ต้นฉบับภายใน'
-          : 'Published metadata — internal source',
-      documentHref: null,
-      sharePointUrl: null,
-      sharePointPending,
-    };
-  }
   return {
     kind: 'metadata-internal',
     label: pubLabel(NO_PUBLISHED_EVIDENCE, locale),
     documentHref: null,
     sharePointUrl: null,
     sharePointPending,
+  };
+}
+
+export interface ResourceSourcePublication {
+  dashboardId: string;
+  metric: string;
+  baselineWorkbook: string;
+  baselineHref: string | null;
+  currentWorkbook: string;
+  currentHref: string | null;
+  evidenceIds: string[];
+}
+
+export function getResourceSourcePublication(
+  dashboardId: string,
+): ResourceSourcePublication | null {
+  const domains = (resourceSourceFilesData as { domains?: Array<Record<string, unknown>> }).domains || [];
+  const domain = domains.find((entry) => entry.dashboardId === dashboardId);
+  if (!domain) return null;
+  const current = (domain.currentYearWorkbook as Record<string, unknown> | undefined) || null;
+  const baselinePath = String(domain.publicPath || '');
+  const currentPath = current ? String(current.publicPath || '') : baselinePath;
+  const evidenceIds = [String(domain.evidenceId)];
+  if (Array.isArray(domain.secondaryEvidenceIds)) {
+    evidenceIds.push(...domain.secondaryEvidenceIds.map(String));
+  }
+  if (current?.evidenceId) evidenceIds.push(String(current.evidenceId));
+  return {
+    dashboardId,
+    metric: String(domain.metric),
+    baselineWorkbook: String(domain.canonicalWorkbook),
+    baselineHref: resolvePublicFileOnDisk(baselinePath) ? baselinePath : null,
+    currentWorkbook: current ? String(current.canonicalWorkbook) : String(domain.canonicalWorkbook),
+    currentHref: resolvePublicFileOnDisk(currentPath) ? currentPath : null,
+    evidenceIds,
   };
 }
 

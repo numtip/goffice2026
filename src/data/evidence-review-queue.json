@@ -338,15 +338,15 @@
     },
     {
       "reviewId": "review-022",
-      "evidenceId": null,
+      "evidenceId": "ev-resource-xlsx-paper",
       "categoryId": "cat3",
-      "sourceId": "src-xlsx-paper-usage",
+      "sourceId": "src-resource:1.4paper",
       "sourceAvailable": true,
-      "proposedIndicatorCodes": ["3.3.1", "3.3.2"],
-      "confidence": "medium",
-      "mappingBasis": "docs/1.4_Paper.xlsx (form 3.2(1)) contains paper usage and reuse data. Indicator 3.3.1 covers paper conservation measures; indicator 3.3.2 covers paper consumption data per unit compared with targets. No existing evidence record in evidence-index.json corresponds to paper usage data. A new evidence record may be needed.",
-      "decision": "pending",
-      "notes": "New source candidate — no matching placeholder exists in evidence-index.json. Human reviewer should determine whether to: (a) create a new evidence record for paper usage, or (b) map this file to an existing placeholder if scope overlap is confirmed."
+      "proposedIndicatorCodes": ["3.3.2"],
+      "confidence": "high",
+      "mappingBasis": "PO 2026-09-10: paper operational workbook maps to 3.3.2 only. Canonical file is data/staging/source/1.4paper.xlsx, not the missing legacy docs/1.4_Paper.xlsx. Do not map to 1.4.1.",
+      "decision": "accepted",
+      "notes": "Resolved: ev-resource-xlsx-paper published at /documents/resources/paper/1.4paper.xlsx."
     },
     {
       "reviewId": "review-023",

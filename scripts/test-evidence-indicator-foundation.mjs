@@ -18,16 +18,22 @@ const SEARCH = join(ROOT, 'src/data/search-index.json');
 
 function resolvePublicDocumentHref(item) {
   if (item.status === 'placeholder') return null;
-  if (item.realSourceAvailable === false) return null;
+  if (item.publicationMode === 'internal-metadata-only') return null;
+  if (item.publicationMode === 'authenticated-link') return null;
+  if (item.publicationMode === 'public-metadata-pending-copy') return null;
+  if (item.publicationMode !== 'public-static') return null;
   if (!item.path) return null;
   return item.path;
 }
 
 function describeEvidencePublicationKind(item) {
   const isPlaceholder = item.status === 'placeholder';
-  const sourceOffline = !isPlaceholder && item.realSourceAvailable === false;
-  const documentHref = resolvePublicDocumentHref(item);
   if (isPlaceholder) return 'placeholder';
+  if (item.publicationMode === 'internal-metadata-only') {
+    return item.sharePointUrl ? 'sharepoint' : 'metadata-internal';
+  }
+  const sourceOffline = item.realSourceAvailable === false;
+  const documentHref = resolvePublicDocumentHref(item);
   if (sourceOffline) return 'source-offline';
   if (documentHref) return 'public-static';
   if (item.sharePointUrl) return 'sharepoint';
@@ -130,7 +136,22 @@ describe('evidence link contract', () => {
     const offline = items.find((i) => i.realSourceAvailable === false && i.status !== 'placeholder');
     assert.ok(offline);
     assert.equal(resolvePublicDocumentHref(offline), null);
-    assert.equal(describeEvidencePublicationKind(offline), 'source-offline');
+    if (offline.publicationMode === 'internal-metadata-only') {
+      assert.equal(describeEvidencePublicationKind(offline), 'metadata-internal');
+    } else {
+      assert.equal(describeEvidencePublicationKind(offline), 'source-offline');
+    }
+  });
+
+  it('internal-metadata-only never resolves a local download even when realSourceAvailable is true', () => {
+    const internal = {
+      status: 'available',
+      publicationMode: 'internal-metadata-only',
+      realSourceAvailable: true,
+      path: '/documents/cat1/ghg-inventory-2025.xlsx',
+    };
+    assert.equal(resolvePublicDocumentHref(internal), null);
+    assert.equal(describeEvidencePublicationKind(internal), 'metadata-internal');
   });
 
   it('getEvidenceForIndicator returns only indicator-level rows', () => {

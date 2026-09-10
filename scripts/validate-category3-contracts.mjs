@@ -37,6 +37,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { isResourceSourcePublicationEvidence } from './lib/resource-source-publication.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -350,6 +351,8 @@ function main() {
     if (ev.year === 2569) continue;
     if (!(ev.categoryCodes || []).includes('cat3')) continue;
     if (ev.traceabilityLevel !== 'indicator') continue;
+    // Operational resource XLSX are dashboard/evidence source files, not frozen C3 form records.
+    if (isResourceSourcePublicationEvidence(ev)) continue;
     if (!referencedCat3Evidence.has(ev.id)) {
       errors.push(`evidence-index: cat3 indicator-level entry "${ev.id}" is not referenced by any C3 contract record`);
     }

@@ -41,7 +41,7 @@
   "excludedTracks": [
     {
       "code": "TRACK_B_KPI",
-      "note": "water-2569.csv, energy-2569.csv, and operational workbooks remain dashboard-only per PO — not mapped to 3.1.2/3.2.2/3.2.5/3.3.2."
+      "note": "water-2569.csv, energy-2569.csv, and operational workbooks remain outside this measures overlay (not mapped here to 3.1.2/3.2.2/3.2.5/3.3.2). Canonical XLSX source files are published separately via ev-resource-xlsx-* and src/data/resource-source-files.json."
     },
     {
       "code": "SHAREPOINT_B3_2",
