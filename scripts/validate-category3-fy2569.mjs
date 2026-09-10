@@ -13,6 +13,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { isResourceSourcePublicationEvidence } from './lib/resource-source-publication.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -166,6 +167,8 @@ function main() {
     if (!(ev.categoryCodes || []).includes('cat3')) continue;
     if (ev.traceabilityLevel !== 'indicator') continue;
     if (ev.superseded) continue;
+    // Track B operational XLSX are dashboard/evidence source files, not measures overlay records.
+    if (isResourceSourcePublicationEvidence(ev)) continue;
     if (!allReferencedEvidence.has(ev.id)) {
       errors.push(`evidence-index: FY2569 cat3 entry "${ev.id}" is not referenced by any FY2569 overlay record`);
     }
