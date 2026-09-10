@@ -347,17 +347,17 @@ test('comparable months ignore null/invalid values', () => {
   assert.deepStrictEqual(result.currentValues, [95, 100, 115, 125]);
 });
 
-// === TEST 19: GHG partial-year insight uses same-period, never the frozen full-year -35% ===
-test('GHG partial-year insight: same-period +11.8% monitor, never "-35% vs baseline"', () => {
+// === TEST 19: GHG partial-year insight uses same-period, never the frozen full-year -37% ===
+test('GHG partial-year insight: same-period +7.7% monitor, never "-37% vs baseline"', () => {
   const metric = readMetric('ghg');
   const insights = generateExecutiveInsights(metric, 'en');
   const texts = insights.map((i) => i.text);
 
-  // No false annual-reduction claim from comparing 144.8 (partial) vs 222.68 (full).
+  // No false annual-reduction claim from comparing partial FY2569 vs full Resource baseline (231.23).
   assert.strictEqual(
-    texts.some((t) => t.includes('decreased by 35') || t.includes('-35%')),
+    texts.some((t) => t.includes('decreased by 37') || t.includes('-37%')),
     false,
-    'must never claim a -35% reduction from a partial-year vs full-year comparison',
+    'must never claim a -37% reduction from a partial-year vs full-year comparison',
   );
   // No "vs baseline (improvement)" phrasing for the partial GHG increase.
   assert.strictEqual(
@@ -368,7 +368,7 @@ test('GHG partial-year insight: same-period +11.8% monitor, never "-35% vs basel
   // Same-period comparison is surfaced instead.
   const attention = insights.find((i) => i.type === 'attention');
   assert.ok(attention, 'GHG partial-year increase must be flagged for attention');
-  assert.strictEqual(attention.text.includes('increased by 11.8%'), true, 'same-period +11.8% shown');
+  assert.strictEqual(attention.text.includes('increased by 7.7%'), true, 'same-period +7.7% shown');
   assert.strictEqual(attention.text.includes('same-period baseline (Jan–Jul)'), true, 'same-period / Jan–Jul label shown');
 
   // FY2569 stays partial/in_progress — no annual completion claim.

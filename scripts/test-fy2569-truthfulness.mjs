@@ -344,8 +344,8 @@ describe('Current metric values reconcile to audited FY2569 source', () => {
   it('annual total equals the sum of observed monthly values (no fake totals)', () => {
     const EXPECTED = {
       energy: [1, 2, 3, 4, 5, 6, 7, 8], water: [1, 2, 3, 4, 5, 6, 7, 8],
-      fuel: [1, 2, 3, 4, 5, 6, 7], paper: [1, 2, 3, 4, 5, 6, 7],
-      waste: [1, 2, 3, 4, 5, 6, 7], ghg: [1, 2, 3, 4, 5, 6, 7],
+      fuel: [1, 2, 3, 4, 5, 6, 7], paper: [1, 2, 3, 4, 5, 6, 7, 8],
+      waste: [1, 2, 3, 4, 5, 6, 7, 8], ghg: [1, 2, 3, 4, 5, 6, 7],
     };
     for (const metric of METRICS) {
       const data = readJson(`src/data/generated/${metric}.json`);
