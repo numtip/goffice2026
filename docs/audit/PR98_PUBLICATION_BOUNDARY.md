@@ -9,6 +9,8 @@
 - Cat1 GHG contract + dashboard generated JSON alignment (231.23 tCO₂e baseline)
 - Automated checks: `validate-publication-manifest.mjs`, updated resource publication tests
 - Audit matrices for resources; FY2569 form **inventory only** (no bulk publish)
+- Removed stale staging orphan `1.5_greenhousegass_update2.xlsx` (interim Data2568; not in manifest or resource map; superseded by Resource `1.6GreenHouseGas2025.xlsx`)
+- Removed stale public alias `/documents/fy2568/cat1/.../1.5_greenhousegass_update2.xlsx` (listed in `staleAliasPaths`)
 
 ## Out of scope (follow-up PR recommended)
 
