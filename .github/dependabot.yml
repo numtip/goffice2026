@@ -13,6 +13,14 @@ updates:
     commit-message:
       prefix: chore(deps)
     versioning-strategy: auto
+    # ข้ามการอัปเดต major ที่ต้องมีงาน migration ก่อน (ดู issue #7)
+    ignore:
+      - dependency-name: astro
+        update-types: ["version-update:semver-major"]
+      - dependency-name: tailwindcss
+        update-types: ["version-update:semver-major"]
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: '/'
     schedule:
