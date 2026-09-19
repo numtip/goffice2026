@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+/* Tailwind 4 ยังใช้ tailwind.config.mjs เดิมได้ผ่าน @config */
+@config "../../tailwind.config.mjs";
 
 @layer base {
   html {
@@ -182,14 +182,6 @@
 
   .animate-shimmer {
     animation: shimmer 6s linear infinite;
-  }
-
-  .glass-panel {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
   }
 
   .dark-glass {
@@ -446,4 +438,13 @@ html.visit-present .visit-section h2,
 html.visit-present .visit-section header {
   /* Page title and section headers remain visible in presentation mode */
   visibility: visible;
+}
+
+/* Tailwind 4: คลาสที่ถูก @apply จากที่อื่นต้องประกาศเป็น @utility (ของเดิมอยู่ใน @layer utilities แล้ว @apply ไม่ได้) */
+@utility glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
