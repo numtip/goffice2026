@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 const deployTarget = process.env.DEPLOY_TARGET ?? 'local';
@@ -18,12 +18,12 @@ export default defineConfig({
   trailingSlash: 'always',
   output: 'static',
   integrations: [
-    tailwind(),
     sitemap({
       filter: (page) => !page.includes('404'),
     }),
   ],
   vite: {
+    plugins: [tailwindcss()],
     define: {
       'import.meta.env.PUBLIC_PREVIEW_BADGE': JSON.stringify(
         process.env.PUBLIC_PREVIEW_BADGE === 'true'
